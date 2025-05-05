@@ -1,0 +1,65 @@
+[
+	{
+		"name": "Tribsees",
+		"pos": [232.00, 870.00]
+	},
+	{
+		"name": "Drechow",
+		"isMinor": true,
+		"pos": [675.00, 565.00]
+	},
+	{
+		"name": "Zarrentin",
+		"isMinor": true,
+		"pos": [1160.00, 962.00]
+	},
+	{
+		"name": "Nehringen",
+		"isMinor": true,
+		"pos": [910.00, 1529.00]
+	},
+	{
+		"name": "Hohenbarnekow",
+		"isMinor": true,
+		"pos": [1295.0, 535.0]
+	},
+	{
+		"name": "Finkethal",
+		"isMinor": true,
+		"pos": [409.0, 1958.0]
+	},
+	{
+		"name": "Leyerhof",
+		"isMinor": true,
+		"pos": [2045.0, 898.0]
+	},
+	{
+		"name": "Glewitz",
+		"isMinor": true,
+		"pos": [1303.00, 1312.00]
+	},
+	{
+		"name": "Abtshagen",
+		"pos": [1889.31, 173.57]
+	},
+	{
+		"name": "Gnoien",
+		"pos": [115.094, 1740.35]
+	},
+	{
+		"name": "Demmin",
+		"pos": [2473.31, 2170.44]
+	},
+	{
+		"name": "Grimmen",
+		"pos": [2236.61, 634.85]
+	},
+	{
+		"name": "Dargun",
+		"pos": [1212.07, 2178.45]
+	},
+	{
+		"name": "Nossendorf",
+		"pos": [1771.67, 1767.4]
+	}
+]

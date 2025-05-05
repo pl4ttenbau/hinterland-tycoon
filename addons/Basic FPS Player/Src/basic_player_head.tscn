@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kmyakts4l64t"]
+
+[sub_resource type="Sky" id="Sky_my50n"]
+
+[sub_resource type="Environment" id="Environment_6iy88"]
+background_mode = 2
+sky = SubResource("Sky_my50n")
+
+[node name="Head" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera3D"]
+environment = SubResource("Environment_6iy88")

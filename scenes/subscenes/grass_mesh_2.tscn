@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1eqpymlkop3b"]
+
+[ext_resource type="PackedScene" uid="uid://bj54x4a4whcsr" path="res://assets/meshes/nature/grassMesh.glb" id="1_et2us"]
+
+[node name="grassMesh2" instance=ExtResource("1_et2us")]
+
+[node name="grassMesh" parent="." index="0"]
+transform = Transform3D(3.15004, 0, 0, 0, 2.65959, 0, 0, 0, 3.40352, 0, -0.0239779, 0)

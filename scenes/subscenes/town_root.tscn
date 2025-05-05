@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxpgw7agki4gk"]
+
+[ext_resource type="Script" uid="uid://ckll7vpuwx82u" path="res://scenes/scripts/node3ds/town_root.gd" id="1_gwiev"]
+
+[node name="TownRoot" type="Node3D"]
+script = ExtResource("1_gwiev")
+
+[node name="TownLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+pixel_size = 0.15
+billboard = 2
+text = "Town"
+uppercase = true

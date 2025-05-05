@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://itb3eqd3wuv7"
+path.s3tc="res://.godot/imported/city_manor_Volhonka6A.jpg-6be451d12a2dbea91389bcbe8b1e6546.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e76dfe24b371ab73c42c006326365072"
+}
+
+[deps]
+
+source_file="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A.jpg"
+dest_files=["res://.godot/imported/city_manor_Volhonka6A.jpg-6be451d12a2dbea91389bcbe8b1e6546.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
