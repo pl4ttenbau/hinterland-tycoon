@@ -2,7 +2,7 @@
 class_name RailNodeSpecial extends Node3D
 
 @export var nodeType: String
-@export var connectiveTrack: int
+@export var connectiveTracks: Array[int]
 
 static func of(_nodeType: String) -> RailNodeSpecial:
 	var instance = RailNodeSpecial.new()

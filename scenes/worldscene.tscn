@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=60 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="PackedScene" uid="uid://c0vkinwfe80j8" path="res://assets/meshes/nature/tree2.glb" id="1_3kjtq"]
 [ext_resource type="Script" uid="uid://cybdvsu18ydcq" path="res://scenes/globals.gd" id="1_nj174"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://fybuf27ahpae" path="res://assets/textures/grass_darker_n.dds" id="17_c2xmk"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="21_usal5"]
+[ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://scenes/scripts/services/vehicle_placer.gd" id="23_ekgs8"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://scenes/scripts/services/editor/editor_object_container.gd" id="26_c2xmk"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
@@ -54,6 +55,10 @@ _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.792,
 &"depth_blur": 0.0,
+&"dual_scale_far": 170.0,
+&"dual_scale_near": 100.0,
+&"dual_scale_reduction": 0.3,
+&"dual_scale_texture": 0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
 &"height_blending": false,
@@ -63,15 +68,16 @@ _shader_parameters = {
 &"mipmap_bias": 0.72,
 &"noise1_angle": 0.0,
 &"noise1_offset": Vector2(0.5, 0.5),
-&"noise1_scale": 0.04,
+&"noise1_scale": 0.069,
 &"noise2_scale": 0.076,
 &"noise3_scale": 0.225,
 &"noise_texture": SubResource("NoiseTexture2D_p0jcd"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.75,
+&"tri_scale_reduction": 0.3,
 &"world_space_normal_blend": false
 }
-world_background = 0
+dual_scaling = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux8bc"]
 transparency = 4
@@ -223,8 +229,30 @@ sky_material = SubResource("PanoramaSkyMaterial_kq7m5")
 background_mode = 2
 sky = SubResource("Sky_u6qkf")
 reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.65
+tonemap_white = 0.82
+ssr_fade_in = 0.665742
+ssr_fade_out = 1.23114
+ssr_depth_tolerance = 29.21
+sdfgi_read_sky_light = false
+glow_enabled = true
+fog_mode = 1
+fog_light_energy = 1.05
+fog_density = 1.0
+fog_depth_curve = 1.1487
+fog_depth_begin = 17.5
+fog_depth_end = 719.3
+adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hmgqj"]
+exposure_multiplier = 0.77
+dof_blur_far_distance = 367.04
+dof_blur_far_transition = 1157.55
+dof_blur_near_enabled = true
+dof_blur_near_distance = 0.08
+dof_blur_near_transition = -1.0
+dof_blur_amount = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rptdf"]
 albedo_texture = ExtResource("7_jtla5")
@@ -241,25 +269,47 @@ size = Vector2(2600, 2600)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
 
-[sub_resource type="Curve3D" id="Curve3D_c2xmk"]
+[sub_resource type="Curve3D" id="Curve3D_t1xhr"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.583, 20, 0.019, 0, 0, 0, 0, 0, 0, 97.226, 10, 54, 0, 0, 0, 0, 0, 0, 129.1, 21.5, 66, 0, 0, 0, 0, 0, 0, 175.65, 21, 72.692, 0, 0, 0, 0, 0, 0, 207, 18.5, 93, 0, 0, 0, 0, 0, 0, 284, 18, 141.6, 0, 0, 0, 0, 0, 0, 342.868, 19, 166.583, 0, 0, 0, 0, 0, 0, 431, 18, 193, 0, 0, 0, 0, 0, 0, 485.323, 17, 210.261, 0, 0, 0, 0, 0, 0, 619, 16, 304, 0, 0, 0, 0, 0, 0, 655.41, 15, 329.195, 0, 0, 0, 0, 0, 0, 677.1, 16, 348, 0, 0, 0, 0, 0, 0, 725.1, 16.5, 375, 0, 0, 0, 0, 0, 0, 829.9, 14, 470.2, 0, 0, 0, 0, 0, 0, 884.5, 14.5, 508.2, 0, 0, 0, 0, 0, 0, 930.4, 14.5, 538.5, 0, 0, 0, 0, 0, 0, 980.8, 15.5, 548.4, 0, 0, 0, 0, 0, 0, 1015.7, 16.5, 536.4, 0, 0, 0, 0, 0, 0, 1151.7, 16, 537.6, 0, 0, 0, 0, 0, 0, 1277.6, 16.5, 518, 0, 0, 0, 0, 0, 0, 1397.4, 16, 557.6, 0, 0, 0, 0, 0, 0, 1447.9, 15.5, 577.3, 0, 0, 0, 0, 0, 0, 1623.06, 15, 622.35, 0, 0, 0, 0, 0, 0, 1731.5, 15, 643, 0, 0, 0, 0, 0, 0, 2032.78, 15, 651.297),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.583, 20, 0.019, 0, 0, 0, 0, 0, 0, 97.226, 10, 54, 0, 0, 0, 0, 0, 0, 129.1, 21.5, 66, 0, 0, 0, 0, 0, 0, 175.65, 21, 72.692, 0, 0, 0, 0, 0, 0, 207, 18.5, 93, 0, 0, 0, 0, 0, 0, 284, 18, 141.6, 0, 0, 0, 0, 0, 0, 342.868, 19, 166.583, 0, 0, 0, 0, 0, 0, 431, 18, 193, 0, 0, 0, 0, 0, 0, 485.323, 17, 210.261, 0, 0, 0, 0, 0, 0, 619, 16, 304, 0, 0, 0, 0, 0, 0, 655.41, 15, 329.195, 0, 0, 0, 0, 0, 0, 677.1, 16, 348),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 25
+point_count = 12
 
-[sub_resource type="Curve3D" id="Curve3D_ekgs8"]
+[sub_resource type="Curve3D" id="Curve3D_ye1qj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 677.1, 16, 348, 0, 0, 0, 0, 0, 0, 673.5, 17, 379, 0, 0, 0, 0, 0, 0, 673.1, 15, 406.5, 0, 0, 0, 0, 0, 0, 657, 13, 442.6, 0, 0, 0, 0, 0, 0, 656.7, 14, 467, 0, 0, 0, 0, 0, 0, 646.8, 15, 539.4, 0, 0, 0, 0, 0, 0, 619.5, 14, 574.4, 0, 0, 0, 0, 0, 0, 613.4, 14, 600.2, 0, 0, 0, 0, 0, 0, 601.3, 13.5, 655.7, 0, 0, 0, 0, 0, 0, 602.9, 13.5, 699.1, 0, 0, 0, 0, 0, 0, 628.7, 11, 739.8, 0, 0, 0, 0, 0, 0, 645.1, 10, 777.7, 0, 0, 0, 0, 0, 0, 659.5, 12.5, 809.7, 0, 0, 0, 0, 0, 0, 678.5, 11.5, 858.6, 0, 0, 0, 0, 0, 0, 761.3, 11, 893.4, 0, 0, 0, 0, 0, 0, 806.2, 10, 923.8, 0, 0, 0, 0, 0, 0, 876.5, 10.5, 949.5, 0, 0, 0, 0, 0, 0, 904.3, 10, 957.9, 0, 0, 0, 0, 0, 0, 937.3, 11.5, 957.9, 0, 0, 0, 0, 0, 0, 958.9, 10.5, 966.1, 0, 0, 0, 0, 0, 0, 997.9, 9.5, 996.7, 0, 0, 0, 0, 0, 0, 1021, 10, 1036.8, 0, 0, 0, 0, 0, 0, 1057.3, 10, 1079.5, 0, 0, 0, 0, 0, 0, 1129.1, 10.5, 1145.8, 0, 0, 0, 0, 0, 0, 1231.5, 12, 1226.5, 0, 0, 0, 0, 0, 0, 1341.9, 11, 1302.1, 0, 0, 0, 0, 0, 0, 1399.3, 10, 1343.8, 0, 0, 0, 0, 0, 0, 1432.1, 10, 1374.3, 0, 0, 0, 0, 0, 0, 1441.1, 10, 1421.3),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 677.1, 16, 348, 0, 0, 0, 0, 0, 0, 673.5, 17, 379, 0, 0, 0, 0, 0, 0, 673.1, 15, 406.5, 0, 0, 0, 0, 0, 0, 657, 13, 442.6, 0, 0, 0, 0, 0, 0, 656.7, 14, 467, 0, 0, 0, 0, 0, 0, 646.8, 15, 539.4, 0, 0, 0, 0, 0, 0, 619.5, 14, 574.4, 0, 0, 0, 0, 0, 0, 613.4, 14, 600.2, 0, 0, 0, 0, 0, 0, 601.3, 13.5, 655.7, 0, 0, 0, 0, 0, 0, 602.9, 13.5, 699.1, 0, 0, 0, 0, 0, 0, 628.7, 11, 739.8, 0, 0, 0, 0, 0, 0, 645.1, 10, 777.7, 0, 0, 0, 0, 0, 0, 659.5, 12.5, 809.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 29
+point_count = 13
+
+[sub_resource type="Curve3D" id="Curve3D_frv7l"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 659.2, 12.3, 809.4, 0, 0, 0, 0, 0, 0, 627, 11, 865, 0, 0, 0, 0, 0, 0, 598.7, 11, 878.9, 0, 0, 0, 0, 0, 0, 580.2, 10, 883.7, 0, 0, 0, 0, 0, 0, 530.9, 9, 871.6, 0, 0, 0, 0, 0, 0, 472, 11, 852.9, 0, 0, 0, 0, 0, 0, 432.4, 11.5, 848.8, 0, 0, 0, 0, 0, 0, 395.9, 11, 855.3, 0, 0, 0, 0, 0, 0, 283.1, 11.5, 874.7, 0, 0, 0, 0, 0, 0, 258.3, 9.5, 878.5, 0, 0, 0, 0, 0, 0, 214.4, 8, 884.1, 0, 0, 0, 0, 0, 0, 189.5, 8, 882.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_7jvca"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 659.5, 12.5, 809.7, 0, 0, 0, 0, 0, 0, 678.5, 11.5, 858.6, 0, 0, 0, 0, 0, 0, 761.3, 11, 893.4, 0, 0, 0, 0, 0, 0, 806.2, 10, 923.8, 0, 0, 0, 0, 0, 0, 876.5, 10.5, 949.5, 0, 0, 0, 0, 0, 0, 904.3, 10, 957.9, 0, 0, 0, 0, 0, 0, 937.3, 11.5, 957.9, 0, 0, 0, 0, 0, 0, 958.9, 10.5, 966.1, 0, 0, 0, 0, 0, 0, 997.9, 9.5, 996.7, 0, 0, 0, 0, 0, 0, 1021, 10, 1036.8, 0, 0, 0, 0, 0, 0, 1057.3, 10, 1079.5, 0, 0, 0, 0, 0, 0, 1129.1, 10.5, 1145.8, 0, 0, 0, 0, 0, 0, 1231.5, 12, 1226.5, 0, 0, 0, 0, 0, 0, 1341.9, 11, 1302.1, 0, 0, 0, 0, 0, 0, 1399.3, 10, 1343.8, 0, 0, 0, 0, 0, 0, 1432.1, 10, 1374.3, 0, 0, 0, 0, 0, 0, 1441.1, 10, 1421.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+
+[sub_resource type="Curve3D" id="Curve3D_lf4ig"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 677.1, 16, 348, 0, 0, 0, 0, 0, 0, 725.1, 16.5, 375, 0, 0, 0, 0, 0, 0, 829.9, 14, 470.2, 0, 0, 0, 0, 0, 0, 884.5, 14.5, 508.2, 0, 0, 0, 0, 0, 0, 930.4, 14.5, 538.5, 0, 0, 0, 0, 0, 0, 980.8, 15.5, 548.4, 0, 0, 0, 0, 0, 0, 1015.7, 16.5, 536.4, 0, 0, 0, 0, 0, 0, 1151.7, 16, 537.6, 0, 0, 0, 0, 0, 0, 1277.6, 16.5, 518, 0, 0, 0, 0, 0, 0, 1397.4, 16, 557.6, 0, 0, 0, 0, 0, 0, 1447.9, 15.5, 577.3, 0, 0, 0, 0, 0, 0, 1623.06, 15, 622.35, 0, 0, 0, 0, 0, 0, 1731.5, 15, 643, 0, 0, 0, 0, 0, 0, 2032.78, 15, 651.297),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
 
 [node name="Scene" type="Node3D"]
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="Globals" type="Node" parent="World"]
+[node name="Globals" type="Node3D" parent="World"]
+unique_name_in_owner = true
 script = ExtResource("1_nj174")
 
 [node name="Terrain" type="Node3D" parent="World"]
@@ -279,11 +329,11 @@ metadata/_edit_group_ = true
 environment = SubResource("Environment_p8gp8")
 camera_attributes = SubResource("CameraAttributesPractical_hmgqj")
 
-[node name="Water" type="MeshInstance3D" parent="World/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1253.03, 7.32169, 1218.33)
+[node name="Water" type="MeshInstance3D" parent="World/Terrain/WorldTerrain"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.9, 1238.78, 7.32169, 1218.33)
 material_override = SubResource("StandardMaterial3D_rptdf")
 mesh = SubResource("PlaneMesh_s11ye")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
 [node name="Static" type="Node3D" parent="World"]
 
@@ -293,10 +343,13 @@ editor_description = "Town-Centers with Label3D above will be spawned under this
 script = ExtResource("15_kq7m5")
 towns = [null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 
-[node name="Rails" type="Node3D" parent="World/Static"]
+[node name="Infr" type="Node3D" parent="World/Static"]
 
-[node name="RailBuilder" type="Node3D" parent="World/Static/Rails"]
+[node name="Rails" type="Node3D" parent="World/Static/Infr"]
+unique_name_in_owner = true
 script = ExtResource("15_nj174")
+
+[node name="Stations" type="Node3D" parent="World/Static/Infr"]
 
 [node name="Deco" type="Node3D" parent="World/Static"]
 
@@ -409,11 +462,26 @@ text = "Nossendorf"
 
 [node name="EditorInfr" type="Node3D" parent="World/InEditor"]
 
-[node name="@Path3D@25648" type="Path3D" parent="World/InEditor/EditorInfr"]
-curve = SubResource("Curve3D_c2xmk")
+[node name="EditorTrack_Path_1" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_t1xhr")
 
-[node name="@Path3D@25649" type="Path3D" parent="World/InEditor/EditorInfr"]
-curve = SubResource("Curve3D_ekgs8")
+[node name="EditorTrack_Path_2" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ye1qj")
+
+[node name="EditorTrack_Path_3" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_frv7l")
+
+[node name="EditorTrack_Path_4" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_7jvca")
+
+[node name="EditorTrack_Path_5" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_lf4ig")
+
+[node name="Movable" type="Node3D" parent="World"]
+unique_name_in_owner = true
+
+[node name="Vehicles" type="Node3D" parent="World/Movable"]
+script = ExtResource("23_ekgs8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933693, 0.276482, -0.227542, 0.227291, 0.0334054, 0.973254, 0.276688, -0.960439, -0.0316515, 1436.37, 452.369, 745.732)
@@ -441,9 +509,10 @@ script = ExtResource("17_stk68")
 autostart = true
 
 [node name="Locator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 680, 17, 866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 557, 10.7, 920)
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
-[connection signal="ready" from="." to="World/Static/Rails/RailBuilder" method="_on_scene_ready"]
-[connection signal="ready" from="World/Terrain" to="World/Static/Rails/RailBuilder" method="_on_terrain_ready"]
+[connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
+[connection signal="ready" from="World/Terrain" to="World/Static/Infr/Rails" method="_on_terrain_ready"]
+[connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]
 [connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]

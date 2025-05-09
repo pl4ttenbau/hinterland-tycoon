@@ -17,12 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalStore="*res://scenes/globals.gd"
 WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
+Loggie="*res://addons/loggie/loggie.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/3d-first-person-wasd-input-actions/plugin.cfg", "res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/inspector_tabs/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/3d-first-person-wasd-input-actions/plugin.cfg", "res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/cables/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [input]
 
@@ -57,7 +57,6 @@ move_right={
 
 [rendering]
 
-renderer/rendering_method="mobile"
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1

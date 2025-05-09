@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4omlrg65c157"]
+[gd_scene load_steps=6 format=3 uid="uid://4omlrg65c157"]
 
 [ext_resource type="ArrayMesh" uid="uid://beg80bxtayf56" path="res://assets/meshes/infr/rail/rail_bedded.obj" id="1_rd07l"]
+[ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://scenes/subscenes/scripts/rail_path_mesh_3d.gd" id="1_vmfh7"]
 [ext_resource type="Texture2D" uid="uid://beumok1ki8tc1" path="res://assets/meshes/infr/rail/tex_rail_bedded (Kopie).png" id="2_vmfh7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6qkf"]
-albedo_color = Color(0.666569, 0.666569, 0.666569, 1)
-albedo_texture = ExtResource("2_vmfh7")
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
 _data = {
@@ -14,7 +11,21 @@ _data = {
 }
 point_count = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6qkf"]
+albedo_color = Color(0.666569, 0.666569, 0.666569, 1)
+albedo_texture = ExtResource("2_vmfh7")
+
 [node name="TrackContainer" type="Node3D"]
+script = ExtResource("1_vmfh7")
+
+[node name="TrackPath" type="Path3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0)
+curve = SubResource("Curve3D_rd07l")
+
+[node name="TrackPathFollow3D" type="PathFollow3D" parent="TrackPath"]
+cubic_interp = false
+loop = false
+tilt_enabled = false
 
 [node name="TrackMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 mesh = ExtResource("1_rd07l")
@@ -52,7 +63,3 @@ surface_3/sample_cubic = false
 surface_3/tilt = true
 surface_3/offset = Vector2(0, 0)
 material_override = SubResource("StandardMaterial3D_u6qkf")
-
-[node name="TrackPath" type="Path3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0)
-curve = SubResource("Curve3D_rd07l")

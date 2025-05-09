@@ -9,10 +9,11 @@ func _run():
 # aus dem RailLoader
 func spawn_track_paths():
 	var rails_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(json_path))
-	for json_track: Dictionary in rails_json_arr:
+	for track_dict: Dictionary in rails_json_arr:
 		var path: Path3D = Path3D.new()
+		path.name = "EditorTrack_Path_%d" % track_dict.get("num")
 		path.curve = Curve3D.new()
-		for point in json_track.points:
+		for point in track_dict.points:
 			var vec3: Vector3 = vec3_from_float_arr(point.pos)
 			path.curve.add_point(vec3)
 		get_parent().add_child(path)

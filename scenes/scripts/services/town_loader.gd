@@ -1,6 +1,8 @@
 extends Node3D
 
+@onready var globals: Globals = %Globals
 @onready var terrain: Terrain3D = %WorldTerrain
+
 @export var towns: Array[Town] = []
 const json_path = "res://world/jsondata/towns.json"
 const scene_path = "res://scenes/subscenes/town_root.tscn"
@@ -30,7 +32,7 @@ func load_towns():
 	
 func add_town(_town: Town):
 	self.towns.append(_town)
-	GlobalStore.towns.append(_town)
+	globals.towns.append(_town)
 	
 func spawn_town(_town: Town) -> Town:
 	var sceneRes: Resource = ResourceLoader.load(scene_path) as PackedScene
