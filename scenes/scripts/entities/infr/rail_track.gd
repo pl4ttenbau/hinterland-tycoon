@@ -57,12 +57,9 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 		_track.add_node(rail_node_obj)
 		node_index += 1
 	
-func add_node(_rail_node: RailNode):
-	self.nodes.append(_rail_node) 
-	self.vertices.append(_rail_node.position)
-	
-func get_rail_node(_index: int) -> RailNode:
-	return self.nodes.get(_index)
+func add_node(rail_node: RailNode):
+	self.nodes.append(rail_node) 
+	self.vertices.append(rail_node.position)
 
 func _to_string() -> String:
 	return "<RailTrack %d vertices=%d>" % [self.num, self.vertices.size()]
