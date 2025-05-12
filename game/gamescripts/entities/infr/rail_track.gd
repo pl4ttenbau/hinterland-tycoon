@@ -3,12 +3,12 @@ class_name RailTrack extends Node3D
 @onready var spawner = %Rails
 const rail_scene_path = "res://scenes/subscenes/rail_path_mesh_3d.tscn"
 
-var num: int
-var offset: Vector3
-var vertices: Array[Vector3] = []
-var nodes: Array[RailNode] = []
+@export var num: int
+@export var offset: Vector3
+@export var vertices: Array[Vector3] = []
+@export var nodes: Array[RailNode] = []
 @export_storage var scene_node: Node3D
-@export var path_3d: Path3D
+@export var curve: Curve3D
 
 signal created(track: RailTrack)
 
@@ -16,24 +16,19 @@ func _init():
 	Loggie.info("RailTrack object creating..")
 	
 func build_path() -> void:
-	var path = Path3D.new()
-	path.curve = Curve3D.new()
+	self.curve = Curve3D.new()
 	for point: Vector3 in self.vertices:
-		path.curve.add_point(point)
-	self.path_3d = path
+		self.curve.add_point(point)
 	
 func spawn() -> OuterRailTrack:
-	if !self.path_3d: self.build_path()
+	if ! self.curve: 
+		self.build_path()
 	# instanciate Container from PackedScene
 	var scene: Resource = ResourceLoader.load(rail_scene_path)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
-	# build path3d
-	var path3d: Path3D = _container.get_path_3d()
-	for point in self.vertices:
-		path3d.curve.add_point(point)
-	path3d.set_curve(self.path_3d.curve)
-	path3d.curve_changed.emit()
+	_container.get_path_3d().set_curve(self.curve) # set path 3d
+	add_to_group("Rails") # add to rails group
 	return _container
 	
 static func from_json(_track_dict: Dictionary) -> RailTrack:
@@ -51,10 +46,7 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 		var vec3: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
 		var rail_node_obj: RailNode = RailNode.of(node_index, vec3, 
 			"RAIL_750MM", _track)
-		if rail_node_dict.has("special"):
-			var json_special: Dictionary = rail_node_dict.get("special")
-			var special: RailNodeSpecial = RailNodeSpecial.of(json_special.nodeType)
-			rail_node_obj.specialNode = special
+		rail_node_obj.parse_and_add_special(rail_node_dict)
 		_track.add_node(rail_node_obj)
 		node_index += 1
 	
@@ -63,7 +55,9 @@ func add_node(rail_node: RailNode):
 	self.vertices.append(rail_node.position)
 	
 func get_rail_node(_i: int) -> RailNode:
-	return self.nodes.get(_i)
+	if _i > 0:
+		return self.nodes.get(_i)
+	return null
 
 func _to_string() -> String:
 	return "<RailTrack %d vertices=%d>" % [self.num, self.vertices.size()]

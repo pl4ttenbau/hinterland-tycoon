@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://de7g4fgm4pi0q"]
 
-[ext_resource type="Script" uid="uid://cybdvsu18ydcq" path="res://scenes/globals.gd" id="1_nj174"]
+[ext_resource type="Script" uid="uid://cybdvsu18ydcq" path="res://game/gamescripts/state/globals.gd" id="1_nj174"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
@@ -207,6 +207,9 @@ curve = SubResource("Curve3D_7jvca")
 [node name="EditorTrack_Path_5" type="Path3D" parent="World/InEditor/EditorInfr"]
 curve = SubResource("Curve3D_lf4ig")
 
+[node name="Locator" type="Node3D" parent="World/InEditor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 557, 10.7, 920)
+
 [node name="Movable" type="Node3D" parent="World"]
 unique_name_in_owner = true
 
@@ -231,9 +234,6 @@ script = ExtResource("17_stk68")
 
 [node name="UiUpdateTimer" type="Timer" parent="GameWindow"]
 autostart = true
-
-[node name="Locator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 557, 10.7, 920)
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
