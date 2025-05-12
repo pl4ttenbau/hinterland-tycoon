@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var terrain: Terrain3D = %WorldTerrain
+@onready var terrain_container: TerrainContainer = %TerrainContainer
 @onready var railPath: Path3D = %TestRailPath
 
 func _ready() -> void:
@@ -21,5 +21,9 @@ func getRailPathPointGlobalPos(railPointIndex: int) -> Vector3:
 	
 func getRailPointHeightDiff2Terrain(railPointIndex: int) -> float:
 	var globalPos: Vector3 = getRailPathPointGlobalPos(railPointIndex)
-	var terrHeight: float = terrain.data.get_height(globalPos)
-	return absf(globalPos.y - terrHeight)
+	var terr_height: float = get_terrain_height_at(globalPos)
+	return absf(globalPos.y - terr_height)
+
+func get_terrain_height_at(pos3: Vector3) -> float:
+	var terrain_3d: Terrain3D = self.terrain_container.terrain
+	return terrain_3d.data.get_height(pos3)

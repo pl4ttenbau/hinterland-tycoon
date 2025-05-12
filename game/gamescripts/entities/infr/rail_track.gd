@@ -1,18 +1,18 @@
 class_name RailTrack extends Node3D
 
-@onready var container = %Rails
+@onready var spawner = %Rails
 const rail_scene_path = "res://scenes/subscenes/rail_path_mesh_3d.tscn"
 
 var num: int
 var offset: Vector3
 var vertices: Array[Vector3] = []
 var nodes: Array[RailNode] = []
-var node: Node3D
+@export_storage var scene_node: Node3D
 @export var path_3d: Path3D
 
 signal created(track: RailTrack)
 
-func _new():
+func _init():
 	Loggie.info("RailTrack object creating..")
 	
 func build_path() -> void:
@@ -22,11 +22,11 @@ func build_path() -> void:
 		path.curve.add_point(point)
 	self.path_3d = path
 	
-func spawn() -> RailTrackContainer:
+func spawn() -> OuterRailTrack:
 	if !self.path_3d: self.build_path()
 	# instanciate Container from PackedScene
 	var scene: Resource = ResourceLoader.load(rail_scene_path)
-	var _container: RailTrackContainer = scene.instantiate()
+	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
 	# build path3d
 	var path3d: Path3D = _container.get_path_3d()
@@ -49,7 +49,8 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 	var node_index: int = 0
 	for rail_node_dict: Dictionary in _json_track.points:
 		var vec3: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
-		var rail_node_obj: RailNode = RailNode.of(node_index, vec3, "RAIL_750MM")
+		var rail_node_obj: RailNode = RailNode.of(node_index, vec3, 
+			"RAIL_750MM", _track)
 		if rail_node_dict.has("special"):
 			var json_special: Dictionary = rail_node_dict.get("special")
 			var special: RailNodeSpecial = RailNodeSpecial.of(json_special.nodeType)
@@ -60,6 +61,9 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 func add_node(rail_node: RailNode):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
+	
+func get_rail_node(_i: int) -> RailNode:
+	return self.nodes.get(_i)
 
 func _to_string() -> String:
 	return "<RailTrack %d vertices=%d>" % [self.num, self.vertices.size()]

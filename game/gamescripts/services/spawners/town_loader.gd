@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var globals: Globals = %Globals
-@onready var terrain: Terrain3D = %WorldTerrain
+@onready var terrain_container: TerrainContainer = %TerrainContainer
 
 @export var towns: Array[Town] = []
 const json_path = "res://world/jsondata/towns.json"
@@ -48,8 +48,8 @@ func spawn_town(_town: Town) -> Town:
 	
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
-	if (terrain):
-		return Vector3(posXZ.x, terrain.data.get_height(vec3) , posXZ.y)
+	if terrain_container:
+		return terrain_container.get_pos_at_height(vec3)
 	return null
 
 func get_label_pos_at(posXZ: Vector2) -> Vector3:

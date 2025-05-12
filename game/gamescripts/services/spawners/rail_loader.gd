@@ -4,45 +4,44 @@ const rails_json_path = "res://world/jsondata/tracks.json"
 
 @onready var globals: Globals = %Globals
 @onready var rails = %Rails
-@onready var terrain: Terrain3D = %WorldTerrain
+@onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var tracks: Array[RailTrack] = []
+@export var track_containers: Array[OuterRailTrack] = []
 
 signal rails_loaded(_rails: Array[RailTrack])
-signal rails_spawned(_rails: Array[RailTrackContainer])
+signal rails_spawned(_rails: Array[OuterRailTrack])
 
-func load_rails() -> void:
+func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(rails_json_path)
-	var rails_json_arr: Array = JSON.parse_string(rails_arr_str)
-	for json_track in rails_json_arr:
-		var rail_track: RailTrack = RailTrack.from_json(json_track)
-		self.tracks.append(rail_track)
+	for json_track in JSON.parse_string(rails_arr_str):
+		self.tracks.append(RailTrack.from_json(json_track))
 	globals.tracks = self.tracks
 	self.rails_loaded.emit(self.tracks)
 	
 func spawn_rails():
-	var track_containers: Array[RailTrackContainer] = []
-	for track in globals.tracks:
-		var instanciated: RailTrackContainer = track.spawn()
-		add_child(instanciated)
-		track.node = instanciated
-		track_containers.append(instanciated)
+	for track_obj in globals.tracks:
+		spawn_rail_track(track_obj)
 	self.rails_spawned.emit(track_containers)
-	return track_containers
+	
+func spawn_rail_track(track_obj: RailTrack):
+	var instanciated: OuterRailTrack = track_obj.spawn()
+	add_child(instanciated, true)
+	track_obj.scene_node = instanciated
+	self.track_containers.append(instanciated)
 		
 func align_tracks():
 	for track: RailTrack in globals.tracks:
 		var path_3d: Path3D = track.node.get_child(1)
 		for index in path_3d.curve.point_count:
 			var vec_pos: Vector3 = path_3d.curve.get_point_position(index)
-			var terr_height: float = terrain.data.get_height(vec_pos)
+			var terr_height: float = terrain_container.get_height_at(vec_pos)
 			var target: Vector3 = Vector3(vec_pos.x, terr_height, vec_pos.z)
 			path_3d.curve.set_point_position(index, target)
-func _on_terrain_ready():
-	print("terrain ready")
+	
 func _ready() -> void:
-	load_rails()
+	load_rail_tracks()
 	spawn_rails()
-	print("rails precreated")
+	Loggie.info("rails precreated")
 
 func _on_scene_ready() -> void:
 	pass
