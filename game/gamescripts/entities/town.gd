@@ -1,6 +1,6 @@
 @tool
-extends Node3D
-class_name Town
+class_name Town extends Node
+
 
 @export var town_name: String;
 @export var pos_xz: Vector2

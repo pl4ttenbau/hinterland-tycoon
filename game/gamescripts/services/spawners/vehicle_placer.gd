@@ -1,13 +1,12 @@
 class_name VehiclePlacer extends Node3D
 
-@onready var globals: Globals = %Globals
 @export var rail_containers: Array[OuterRailTrack]
 
 func _ready() -> void:
 	load_vehicles()
 	
 func load_vehicles():
-	if !globals:
+	if !GlobalState:
 		push_warning("Cannot save vehicle in scnene: Globals not found")
 		return
 	if !rail_containers:
@@ -26,6 +25,6 @@ func get_rail_path(_num: int) -> OuterRailTrack:
 	return container
 
 func _on_rails_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
-	print("Rails spawned; initializing vehicles ...")
+	Loggie.info("Rails spawned; initializing vehicles ...")
 	self.rail_containers = _rails
-	load_vehicles()
+	# load_vehicles()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=19 format=3 uid="uid://de7g4fgm4pi0q"]
 
-[ext_resource type="Script" uid="uid://cybdvsu18ydcq" path="res://game/gamescripts/state/globals.gd" id="1_nj174"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
+[ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
+[ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
@@ -53,15 +54,12 @@ point_count = 14
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="Globals" type="Node3D" parent="World"]
-unique_name_in_owner = true
-script = ExtResource("1_nj174")
-
 [node name="TerrainContainer" type="Node3D" parent="World"]
 unique_name_in_owner = true
 script = ExtResource("2_t1xhr")
 
 [node name="WorldTerrain" parent="World/TerrainContainer" instance=ExtResource("3_3kjtq")]
+debug_level = 0
 unique_name_in_owner = true
 
 [node name="Static" type="Node3D" parent="World"]
@@ -80,12 +78,21 @@ script = ExtResource("15_nj174")
 
 [node name="Stations" type="Node3D" parent="World/Static/Infr"]
 unique_name_in_owner = true
+script = ExtResource("6_p8gp8")
 
 [node name="Deco" type="Node3D" parent="World/Static"]
 
 [node name="RathausTribsees" type="MeshInstance3D" parent="World/Static/Deco"]
 transform = Transform3D(0.174312, 0, 1.99239, 0, 2, 0, -1.99239, 0, 0.174312, 226.49, 7.5, 855.218)
 mesh = ExtResource("21_usal5")
+
+[node name="WindmillDrechow" type="MeshInstance3D" parent="World/Static/Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 302.6, 17, 190.4)
+mesh = ExtResource("7_s11ye")
+
+[node name="WindmillZarrentin" type="MeshInstance3D" parent="World/Static/Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
+mesh = ExtResource("7_s11ye")
 
 [node name="Player" type="CharacterBody3D" parent="World"]
 unique_name_in_owner = true
@@ -237,6 +244,8 @@ autostart = true
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
+[connection signal="ready" from="." to="World/Static/Infr/Stations" method="_on_scene_ready"]
 [connection signal="ready" from="World/TerrainContainer" to="World/Static/Infr/Rails" method="_on_terrain_ready"]
+[connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Static/Infr/Stations" method="_on_rails_rails_spawned"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]
 [connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]

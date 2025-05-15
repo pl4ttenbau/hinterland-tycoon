@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfibk5fcr42yy"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="1_co1x6"]
+[ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="2_cvx0o"]
+[ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="3_f78a5"]
+[ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="4_6cwuw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
+albedo_texture = ExtResource("2_cvx0o")
+roughness_texture = ExtResource("4_6cwuw")
+normal_enabled = true
+normal_texture = ExtResource("3_f78a5")
+
+[node name="RailStationNode" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_co1x6")
+mesh = ExtResource("1_co1x6")

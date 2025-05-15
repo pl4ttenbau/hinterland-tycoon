@@ -8,6 +8,7 @@ extends Node3D
 "
 
 [node name="TownRoot" type="Node3D"]
+process_mode = 4
 script = SubResource("GDScript_8bnu3")
 
 [node name="TownLabel" type="Label3D" parent="."]

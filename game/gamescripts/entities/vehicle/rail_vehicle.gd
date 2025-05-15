@@ -3,7 +3,6 @@ class_name RailVehicle extends Node3D
 const scene_path = "res://scenes/subscenes/rail_vehicle.tscn"
 
 @export var path_to_next_node: Path3D
-
 @export var starting_track: OuterRailTrack
 @export var rail_section: TrackSection
 
@@ -23,7 +22,7 @@ static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
 	return instance
 	
 func set_origin_point(_point_index: int):
-	self.rail_section.last_node = self.get_node_in_track(_point_index)
+	# self.rail_section.last_node = self.get_node_in_track(_point_index)
 	self.position = self.get_point_in_curve(_point_index)
 	
 func set_target_point(_point_index: int):
@@ -41,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	var forward_vec: Vector3 = Vector3(0, 0, -7 * delta)
 	translate(forward_vec)
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
-		print("Vehicle: Next node reached!")
+		Loggie.info("Vehicle: Next node reached!")
 		reached_next_node.emit(self.rail_section.next_node.index)
 		update_next_point()
 			
@@ -56,10 +55,16 @@ func get_node_in_track(i: int) -> RailNode:
 	return self.starting_track.rail_track.get_rail_node(i)
 	
 func get_last_node_pos() -> Vector3:
-	return self.rail_section.last_node.position
+	if self.rail_section && self.rail_section.last_node:
+		return self.rail_section.last_node.position
+	return Vector3.ZERO
 	
 func get_next_node_pos() -> Vector3:
-	return self.rail_section.next_node.position
+	if self.rail_section.next_node:
+		return self.rail_section.next_node.position
+	else:
+		self.motor.stop()
+		return self.get_last_node_pos()
 	
 func get_next_node_index() -> int:
 	return self.rail_section.next_node.index

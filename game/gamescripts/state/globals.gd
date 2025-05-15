@@ -1,5 +1,5 @@
-class_name Globals extends Node3D
+class_name Globals extends Node
 
-@export var towns: Array[Town] = []
+@export_storage var towns: Array[Town] = []
 @export var tracks: Array[RailTrack] = []
 @export var stations: Array[RailStation] = []

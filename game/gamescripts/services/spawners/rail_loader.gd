@@ -2,7 +2,6 @@ class_name RailsLoader extends Node3D
 
 const rails_json_path = "res://world/jsondata/tracks.json"
 
-@onready var globals: Globals = %Globals
 @onready var rails = %Rails
 @onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var tracks: Array[RailTrack] = []
@@ -15,11 +14,11 @@ func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(rails_json_path)
 	for json_track in JSON.parse_string(rails_arr_str):
 		self.tracks.append(RailTrack.from_json(json_track))
-	globals.tracks = self.tracks
+	GlobalState.tracks = self.tracks
 	self.rails_loaded.emit(self.tracks)
 	
 func spawn_rails():
-	for track_obj in globals.tracks:
+	for track_obj in GlobalState.tracks:
 		spawn_rail_track(track_obj)
 	self.rails_spawned.emit(track_containers)
 	
@@ -30,7 +29,7 @@ func spawn_rail_track(track_obj: RailTrack):
 	self.track_containers.append(instanciated)
 		
 func align_tracks():
-	for track: RailTrack in globals.tracks:
+	for track: RailTrack in GlobalState.tracks:
 		var path_3d: Path3D = track.node.get_child(1)
 		for index in path_3d.curve.point_count:
 			var vec_pos: Vector3 = path_3d.curve.get_point_position(index)

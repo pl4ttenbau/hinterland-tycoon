@@ -6,9 +6,10 @@ const rail_scene_path = "res://scenes/subscenes/rail_path_mesh_3d.tscn"
 @export var num: int
 @export var offset: Vector3
 @export var vertices: Array[Vector3] = []
-@export var nodes: Array[RailNode] = []
+@export_storage var nodes: Array[RailNode] = []
 @export_storage var scene_node: Node3D
 @export var curve: Curve3D
+@export var stations: Array[RailStation] = []
 
 signal created(track: RailTrack)
 
@@ -24,7 +25,7 @@ func spawn() -> OuterRailTrack:
 	if ! self.curve: 
 		self.build_path()
 	# instanciate Container from PackedScene
-	var scene: Resource = ResourceLoader.load(rail_scene_path)
+	var scene: Resource = preload(rail_scene_path)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
 	_container.get_path_3d().set_curve(self.curve) # set path 3d
