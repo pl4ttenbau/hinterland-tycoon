@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=20 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="26_c2xmk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
 
 [sub_resource type="Curve3D" id="Curve3D_t1xhr"]
 _data = {
@@ -106,6 +108,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="World/Player"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
 shape = SubResource("SphereShape3D_vdtib")
+
+[node name="Area3D" type="Area3D" parent="World/Player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Player/Area3D"]
+shape = SubResource("SphereShape3D_s11ye")
 
 [node name="InEditor" type="Node3D" parent="World"]
 script = ExtResource("26_c2xmk")
@@ -244,7 +251,6 @@ autostart = true
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
-[connection signal="ready" from="." to="World/Static/Infr/Stations" method="_on_scene_ready"]
 [connection signal="ready" from="World/TerrainContainer" to="World/Static/Infr/Rails" method="_on_terrain_ready"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Static/Infr/Stations" method="_on_rails_rails_spawned"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]

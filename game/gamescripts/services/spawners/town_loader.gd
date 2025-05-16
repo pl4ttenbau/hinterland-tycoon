@@ -6,9 +6,6 @@ extends Node3D
 const json_path = "res://world/jsondata/towns.json"
 const scene_path = "res://scenes/subscenes/town_root.tscn"
 
-signal town_spawned(town: Town)
-signal towns_loaded()
-
 func _on_scene_ready() -> void:
 	load_towns()
 	
@@ -27,7 +24,7 @@ func load_towns():
 	for parsed_town: Town in parse_towns_json(town_json_str):
 		var spawned_town: Town = spawn_town(parsed_town)
 		add_town(spawned_town)
-	towns_loaded.emit()
+	SignalBus.towns_loaded.emit()
 	
 func add_town(_town: Town):
 	self.towns.append(_town)
@@ -42,7 +39,8 @@ func spawn_town(_town: Town) -> Town:
 	town_container_node.position = get_pos_on_terrain(_town.pos_xz)
 	var town_label: Label3D = town_container_node.get_child(0)
 	town_label.text = _town.town_name
-	town_spawned.emit(_town)
+	# emit signal
+	SignalBus.town_spawned.emit(_town)
 	return _town
 	
 func get_pos_on_terrain(posXZ: Vector2):

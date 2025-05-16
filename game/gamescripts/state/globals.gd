@@ -1,5 +1,5 @@
 class_name Globals extends Node
 
-@export_storage var towns: Array[Town] = []
+@export var towns: Array[Town] = []
 @export var tracks: Array[RailTrack] = []
 @export var stations: Array[RailStation] = []

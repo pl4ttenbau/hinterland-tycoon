@@ -6,8 +6,8 @@ class_name Town extends Node
 @export var pos_xz: Vector2
 @export var totalPops: int
 
-@export var structures: Array[BaseStructure] = []
-@export var stations: Array[RailStation] = []
+@export_storage var structures: Array[BaseStructure] = []
+@export_storage var stations: Array[RailStation] = []
 
 func _to_string():
 	return "<Town %s>" % self.town_name

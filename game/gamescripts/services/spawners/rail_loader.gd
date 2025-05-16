@@ -20,13 +20,19 @@ func load_rail_tracks() -> void:
 func spawn_rails():
 	for track_obj in GlobalState.tracks:
 		spawn_rail_track(track_obj)
+	# emit signals
 	self.rails_spawned.emit(track_containers)
+	SignalBus.rails_spawned.emit()
 	
 func spawn_rail_track(track_obj: RailTrack):
 	var instanciated: OuterRailTrack = track_obj.spawn()
 	add_child(instanciated, true)
 	track_obj.scene_node = instanciated
 	self.track_containers.append(instanciated)
+	# add to rails group as well
+	add_to_group("Rails")
+	# emit
+	SignalBus.rail_spawned.emit(instanciated)
 		
 func align_tracks():
 	for track: RailTrack in GlobalState.tracks:

@@ -1,5 +1,5 @@
 @tool
-class_name RailNodeSpecial extends RefCounted
+class_name RailNodeSpecial extends Node
 
 @export var nodeType: String
 @export var connectiveTracks: Array[int]

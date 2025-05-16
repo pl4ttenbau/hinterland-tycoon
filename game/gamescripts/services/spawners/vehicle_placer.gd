@@ -12,7 +12,7 @@ func load_vehicles():
 	if !rail_containers:
 		push_warning("RailContainers not loaded; aboring vehicle creation")
 		return
-	print("Globals & rails found: initializing vehicles...")
+	Loggie.info("Globals & rails found: initializing vehicles...")
 	var track_num: int = 4
 	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
 	self.add_child(veh)

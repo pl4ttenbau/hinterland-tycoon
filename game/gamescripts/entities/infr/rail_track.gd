@@ -3,18 +3,21 @@ class_name RailTrack extends Node3D
 @onready var spawner = %Rails
 const rail_scene_path = "res://scenes/subscenes/rail_path_mesh_3d.tscn"
 
-@export var num: int
-@export var offset: Vector3
-@export var vertices: Array[Vector3] = []
+@export_storage var num: int
+@export_storage var offset: Vector3
+@export_storage var vertices: Array[Vector3] = []
 @export_storage var nodes: Array[RailNode] = []
 @export_storage var scene_node: Node3D
-@export var curve: Curve3D
-@export var stations: Array[RailStation] = []
+@export_storage var curve: Curve3D
+@export_storage var stations: Array[RailStation] = []
 
 signal created(track: RailTrack)
 
 func _init():
 	Loggie.info("RailTrack object creating..")
+	
+func _to_string() -> String:
+	return "RailTrack@%d" % self.num
 	
 func build_path() -> void:
 	self.curve = Curve3D.new()
@@ -59,6 +62,3 @@ func get_rail_node(_i: int) -> RailNode:
 	if _i > 0:
 		return self.nodes.get(_i)
 	return null
-
-func _to_string() -> String:
-	return "<RailTrack %d vertices=%d>" % [self.num, self.vertices.size()]
