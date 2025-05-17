@@ -3,6 +3,7 @@ class_name VehicleMotor extends Node
 @export var vehicle: RailVehicle
 @export var max_speed: float = .7
 @export var current_speed_percentage = 0
+@export var is_started: bool = true
 
 signal started()
 signal stopped()
@@ -25,5 +26,6 @@ func start() -> bool:
 	return true
 	
 func stop() -> void:
+	self.is_started = false
 	self.current_speed_percentage = 0.0
 	self.stopped.emit()

@@ -3,13 +3,16 @@ class_name RailTrack extends Node3D
 @onready var spawner = %Rails
 const rail_scene_path = "res://scenes/subscenes/rail_path_mesh_3d.tscn"
 
+@export var vertices: Array[Vector3] = []
+@export var nodes: Array[RailNode] = []
+@export var curve: Curve3D
+
 @export_storage var num: int
 @export_storage var offset: Vector3
-@export_storage var vertices: Array[Vector3] = []
-@export_storage var nodes: Array[RailNode] = []
 @export_storage var scene_node: Node3D
-@export_storage var curve: Curve3D
+
 @export_storage var stations: Array[RailStation] = []
+@export_storage var forks: Array[RailFork] = []
 
 signal created(track: RailTrack)
 

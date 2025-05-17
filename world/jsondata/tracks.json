@@ -72,7 +72,13 @@
 				"pos": [646.8, 15, 539.4]
 			},
 			{
-				"pos": [619.5, 14, 574.4]
+				"pos": [619.5, 14, 574.4],
+				"special": {
+					"nodeType": "STATION",
+					"stationTown": "Drechow",
+					"stationName": "Ort",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [613.4, 14, 600.2]
@@ -106,7 +112,7 @@
 				"pos": [659.2, 12.3, 809.4],
 				"special": {
 					"nodeType": "SWITCH",
-					"connectiveTrack": 2
+					"connectiveTracks": [2]
 				}
 			},
 			{
@@ -186,7 +192,13 @@
 				"pos": [958.9, 10.5, 966.1]
 			},
 			{
-				"pos": [997.9, 9.5, 996.7]
+				"pos": [997.9, 9.5, 996.7],
+				"special": {
+					"nodeType": "STATION",
+					"stationTown": "Zarrentin",
+					"stationName": "Feldbhf.",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [1021, 10, 1036.8]
@@ -201,7 +213,13 @@
 				"pos": [1231.5, 12, 1226.5]
 			},
 			{
-				"pos": [1341.9, 11, 1302.1]
+				"pos": [1341.9, 11, 1302.1],
+				"special": {
+					"nodeType": "STATION",
+					"stationTown": "Glewitz",
+					"stationName": "Ort",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [1399.3, 10, 1343.8]
@@ -225,7 +243,7 @@
 				"pos": [677.10, 16, 348.00],
 				"special": {
 					"nodeType": "SWITCH",
-					"connectiveTrack": 2,
+					"connectiveTracks": [2],
 				}
 			},
 			{
@@ -250,7 +268,13 @@
 				"pos": [1151.7, 16.0, 537.6]
 			},
 			{
-				"pos": [1277.6, 16.5, 518.0]
+				"pos": [1277.6, 16.5, 518.0],
+				"special": {
+					"nodeType": "STATION",
+					"stationTown": "Hohenbarnekow",
+					"stationName": "Ort",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [1397.4, 16.0, 557.6]
@@ -265,7 +289,10 @@
 				"pos": [1731.5, 15, 643.0]
 			},
 			{
-				"pos": [2032.78, 15, 651.297],
+				"pos": [2032.78, 15, 651.297]
+			},
+			{
+				"pos": [2157.30, 8.7, 648.0],
 				"special": {
 					"nodeType": "END",
 				}

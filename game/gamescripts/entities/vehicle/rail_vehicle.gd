@@ -36,13 +36,17 @@ func update_next_point():
 	set_target_point(new_origin_index +1)
 	
 func _physics_process(delta: float) -> void:
-	# get_global_transform().basis.z.normalized()
+	if !self.motor.is_started: return
 	var forward_vec: Vector3 = Vector3(0, 0, -7 * delta)
 	translate(forward_vec)
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
 		Loggie.info("Vehicle: Next node reached!")
-		reached_next_node.emit(self.rail_section.next_node.index)
-		update_next_point()
+		var next_node: RailNode = self.rail_section.next_node
+		if next_node:
+			reached_next_node.emit(self.rail_section.next_node.index)
+			update_next_point()
+		else:
+			self.motor.stop()
 			
 # == GETTERS ==
 func get_static_body() -> StaticBody3D:
