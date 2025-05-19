@@ -1,10 +1,11 @@
 extends Node3D
 
-@onready var terrain_container: TerrainContainer = %TerrainContainer
-
-@export var towns: Array[Town] = []
 const json_path = "res://world/jsondata/towns.json"
 const scene_path = "res://scenes/subscenes/town_root.tscn"
+
+@onready var terrain_container: TerrainContainer = %TerrainContainer
+@export var towns: Array[Town] = []
+@export var town_centers: Array[TownCenter]
 
 func _on_scene_ready() -> void:
 	load_towns()
@@ -32,13 +33,10 @@ func add_town(_town: Town):
 	
 func spawn_town(_town: Town) -> Town:
 	var sceneRes: Resource = ResourceLoader.load(scene_path) as PackedScene
-	var town_container_node: Node3D = sceneRes.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	add_child(town_container_node)
-	town_container_node.name = str(_town)
+	var town_container_node: TownCenter = sceneRes.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	town_container_node.town = _town
 	town_container_node.position = get_pos_on_terrain(_town.pos_xz)
-	var town_label: Label3D = town_container_node.get_child(0)
-	town_label.text = _town.town_name
+	add_child(town_container_node)
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town

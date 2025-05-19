@@ -1,0 +1,16 @@
+[
+	{
+		"key": "town_house_1",
+		"name": "Town House",
+		"file_name": "town_house_1.tscn",
+		"type": "TOWN_RESIDENCE",
+		"pops": 5
+	},
+	{
+		"key": "village_house_1",
+		"name": "Village House",
+		"file_name": "village_house_1.tscn",
+		"type": "TOWN_RESIDENCE",
+		"pops": 3
+	}
+]

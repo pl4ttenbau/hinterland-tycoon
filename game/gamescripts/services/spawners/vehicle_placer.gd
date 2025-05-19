@@ -13,12 +13,13 @@ func load_vehicles():
 		push_warning("RailContainers not loaded; aboring vehicle creation")
 		return
 	Loggie.info("Globals & rails found: initializing vehicles...")
-	var track_num: int = 4
+	var track_num: int = 2
 	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
 	self.add_child(veh)
 
 func get_rail_path(_num: int) -> OuterRailTrack:
-	var container: OuterRailTrack = self.rail_containers.get(_num)
+	var track_num: int = _num -1
+	var container: OuterRailTrack = self.rail_containers.get(track_num)
 	if (!container):
 		push_error("Cannot get rail path: container not loaded")
 		return null
