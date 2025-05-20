@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhim6y02imw8o"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgbpsbxmvfvx5" path="res://assets/meshes/infr/road/rural_road.obj" id="1_56l44"]
+
+[sub_resource type="Curve3D" id="Curve3D_6tl4k"]
+
+[node name="OuterRoad" type="Node3D"]
+
+[node name="RoadPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_6tl4k")
+
+[node name="RoadMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+mesh = ExtResource("1_56l44")
+path_3d = NodePath("../RoadPath")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)

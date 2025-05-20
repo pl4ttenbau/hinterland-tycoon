@@ -2,15 +2,15 @@
 	{
 		"key": "town_house_1",
 		"name": "Town House",
-		"file_name": "town_house_1.tscn",
+		"scene_path": "town_house_1.tscn",
 		"type": "TOWN_RESIDENCE",
-		"pops": 5
+		"pops": [3, 3]
 	},
 	{
 		"key": "village_house_1",
 		"name": "Village House",
-		"file_name": "village_house_1.tscn",
+		"scene_path": "village_house_1.tscn",
 		"type": "TOWN_RESIDENCE",
-		"pops": 3
+		"pops": [2, 1]
 	}
 ]

@@ -8,6 +8,9 @@ signal rails_spawned()
 signal stations_spawned()
 
 # == TOWNS == 
-signal town_spawned(town: Town)
+signal town_spawned(town: TownResource)
 signal towns_spawned()
 signal towns_loaded()
+
+# == TERRAIN ==
+signal terrain_initialized(rail_container: TerrainContainer)

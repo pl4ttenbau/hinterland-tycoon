@@ -3,24 +3,24 @@
 		"infrTypeId": "750_MM",
 		"category": "RAIL",
 		"maxSpeedKmh": 40.0,
-		"mesh": "res://scenes/subscenes/rail_path_mesh_3d.tscn"
+		"mesh": "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 	},
 	{
 		"infrTypeId": "NORMAL_GAUGE",
 		"category": "RAIL",
 		"maxSpeedKmh": 80.0,
-		"mesh": "res://scenes/subscenes/rail_path_mesh_3d.tscn"
+		"mesh": "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 	},
 	{
 		"infrTypeId": "WALKING_PATH",
 		"category": "ROAD",
 		"maxSpeedKmh": 15.0,
-		"mesh": "res://scenes/subscenes/walking_path_mesh.tscn"
+		"mesh": "res://scenes/subscenes/infr/walking_path_mesh.tscn"
 	},
 	{
 		"infrTypeId": "COUNTRY_ROAD",
 		"category": "STREET",
 		"maxSpeedKmh": 40.0,
-		"mesh": "res://scenes/subscenes/country_road_mesh.tscn"
+		"mesh": "res://scenes/subscenes/infr/country_road_mesh.tscn"
 	}
 ]

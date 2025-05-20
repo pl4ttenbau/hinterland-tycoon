@@ -7,7 +7,7 @@ func _run():
 	create_new_town_labels()
 	
 func create_new_town_labels():
-	var towns: Array[Town] = parse_towns_json()
+	var towns: Array[TownResource] = parse_towns_json()
 	for town in towns:
 		var editor_label: Label3D = instanciate_editor_label(town)
 		# add to "EditorLabels" container
@@ -15,18 +15,18 @@ func create_new_town_labels():
 		parent.add_child(editor_label)
 		editor_label.owner = get_scene() # make visible in editor
 
-func parse_towns_json() -> Array[Town]:
+func parse_towns_json() -> Array[TownResource]:
 	var town_json_str = FileAccess.get_file_as_string(json_path)
 	var json_arr = JSON.parse_string(town_json_str) as Array[Dictionary]
 	if !json_arr:
 		push_warning("Couldnt load Town from \"%s\"" % town_json_str)
 		return []
-	var town_obj_arr: Array[Town] = []
+	var town_obj_arr: Array[TownResource] = []
 	for town_values_dict: Dictionary in json_arr:
-		town_obj_arr.append(Town.from_json(town_values_dict))
+		town_obj_arr.append(TownResource.from_json(town_values_dict))
 	return town_obj_arr
 	
-func instanciate_editor_label(_town: Town)-> Label3D:
+func instanciate_editor_label(_town: TownResource)-> Label3D:
 	var label = Label3D.new()
 	label.pixel_size = .33
 	label.text = _town.town_name

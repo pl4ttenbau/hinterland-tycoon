@@ -1,6 +1,6 @@
 class_name OuterRailStation extends Node3D
 
-const scene_source_path = "res://scenes/subscenes/outer_rail_station.tscn"
+const scene_source_path = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 
 @export_storage var station_object: RailStation
 

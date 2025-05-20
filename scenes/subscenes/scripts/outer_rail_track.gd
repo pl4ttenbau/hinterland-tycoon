@@ -5,6 +5,7 @@ class_name OuterRailTrack extends Node3D
 
 func set_track(_track: RailTrack):
 	self.rail_track = _track
+	self.get_path_3d().curve = _track.curve
 	# rename name
 	self.name = "RailTrack_%d_Container" % _track.num
 	# set names of children

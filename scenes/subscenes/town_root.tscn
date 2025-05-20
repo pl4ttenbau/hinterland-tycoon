@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxpgw7agki4gk"]
 
-[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/entities/town/town_center.gd" id="1_4e0qw"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town_center.gd" id="1_4e0qw"]
 [ext_resource type="Script" uid="uid://crulhg7rvfhkp" path="res://scenes/subscenes/scripts/town_spawner.gd" id="1_gwiev"]
 
 [node name="TownCenter" type="Node3D"]

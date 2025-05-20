@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=21 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
+[ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
@@ -65,11 +66,10 @@ unique_name_in_owner = true
 
 [node name="Static" type="Node3D" parent="World"]
 
-[node name="Towns" type="Node3D" parent="World/Static" node_paths=PackedStringArray("towns")]
+[node name="Towns" type="Node3D" parent="World/Static"]
 unique_name_in_owner = true
 editor_description = "Town-Centers with Label3D above will be spawned under this node"
 script = ExtResource("15_kq7m5")
-towns = [null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 
 [node name="Infr" type="Node3D" parent="World/Static"]
 
@@ -109,6 +109,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
 shape = SubResource("SphereShape3D_vdtib")
 
 [node name="Area3D" type="Area3D" parent="World/Player"]
+script = ExtResource("10_p8gp8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Player/Area3D"]
 shape = SubResource("SphereShape3D_s11ye")
@@ -258,4 +259,5 @@ autostart = true
 [connection signal="ready" from="World/TerrainContainer" to="World/Static/Infr/Rails" method="_on_terrain_ready"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Static/Infr/Stations" method="_on_rails_rails_spawned"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]
+[connection signal="body_entered" from="World/Player/Area3D" to="World/Player/Area3D" method="_on_body_entered"]
 [connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]

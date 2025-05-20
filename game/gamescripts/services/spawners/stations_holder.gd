@@ -1,6 +1,6 @@
 class_name StationsHolder extends Node3D
 
-@export_storage var stations: Array[RailStation] = []
+@export var stations: Array[RailStation] = []
 
 func spawn_stations():
 	Loggie.info("Spawning stations..")

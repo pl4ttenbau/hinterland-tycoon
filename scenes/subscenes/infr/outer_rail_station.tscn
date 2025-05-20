@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfibk5fcr42yy"]
+
+[ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://scenes/subscenes/scripts/outer_rail_station.gd" id="1_7rvpk"]
+[ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="2_gpfkj"]
+[ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="3_ytynf"]
+[ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="4_hpouk"]
+[ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="5_o8ddr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
+albedo_texture = ExtResource("2_gpfkj")
+roughness_texture = ExtResource("4_hpouk")
+normal_enabled = true
+normal_texture = ExtResource("3_ytynf")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8igvt"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65b5o"]
+size = Vector3(17, 1.3, 7)
+
+[node name="OuterRailStation" type="Node3D"]
+script = ExtResource("1_7rvpk")
+
+[node name="RailStationMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_co1x6")
+mesh = ExtResource("5_o8ddr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_8igvt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399999, 0.15, -6)
+shape = SubResource("BoxShape3D_65b5o")

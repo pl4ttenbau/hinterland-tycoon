@@ -27,7 +27,6 @@ func spawn_rails():
 func spawn_rail_track(track_obj: RailTrack):
 	var instanciated: OuterRailTrack = track_obj.spawn()
 	add_child(instanciated, true)
-	track_obj.scene_node = instanciated
 	self.track_containers.append(instanciated)
 	# add to rails group as well
 	add_to_group("Rails")
