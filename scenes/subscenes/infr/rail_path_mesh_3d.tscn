@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4omlrg65c157"]
 
-[ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://scenes/subscenes/scripts/outer_rail_track.gd" id="1_y72mo"]
+[ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/outer_rail_track.gd" id="1_y72mo"]
 [ext_resource type="ArrayMesh" uid="uid://beg80bxtayf56" path="res://assets/meshes/infr/rail/rail_bedded.obj" id="2_p268h"]
 [ext_resource type="Texture2D" uid="uid://beumok1ki8tc1" path="res://assets/meshes/infr/rail/tex_rail_bedded (Kopie).png" id="3_ejx4k"]
 

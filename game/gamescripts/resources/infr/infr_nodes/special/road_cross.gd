@@ -1,12 +1,8 @@
 class_name RoadCross extends Resource
 
-@export var connectiveRoads: Array
-@export var roadNode: RailNode
-@export var nodeType: String
+@export var connecting_roads: Array[int]
+@export var parent_node: RoadNode
 
-static func of(_node: RailNode, _connected_tracks: Array) -> RailFork:
-	var instance: RailFork = RailFork.new()
-	instance.railNode = _node
-	instance.connectiveTracks = _connected_tracks
-	instance.nodeType = "SWITCH"
-	return instance
+func _init(_node: RoadNode, _connected_roads: Array[int]):
+	self.parent_node = _node
+	self.connecting_roads = _connected_roads

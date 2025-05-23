@@ -1,5 +1,6 @@
 class_name AbstractTrack extends Node3D
 
+@export var infr_type_key: String
 @export var vertices: Array[Vector3] = []
 @export var curve: Curve3D
 @export_storage var num: int

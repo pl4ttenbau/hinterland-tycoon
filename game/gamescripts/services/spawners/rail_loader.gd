@@ -1,8 +1,8 @@
-class_name RailsLoader extends Node3D
+class_name RailsLoader extends Node
 
 const rails_json_path = "res://world/jsondata/tracks.json"
+const rails_group = "Rails"
 
-@onready var rails = %Rails
 @onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var tracks: Array[RailTrack] = []
 @export var track_containers: Array[OuterRailTrack] = []
@@ -33,15 +33,6 @@ func spawn_rail_track(track_obj: RailTrack):
 	# emit
 	SignalBus.rail_spawned.emit(instanciated)
 		
-func align_tracks():
-	for track: RailTrack in GlobalState.tracks:
-		var path_3d: Path3D = track.node.get_child(1)
-		for index in path_3d.curve.point_count:
-			var vec_pos: Vector3 = path_3d.curve.get_point_position(index)
-			var terr_height: float = terrain_container.get_height_at(vec_pos)
-			var target: Vector3 = Vector3(vec_pos.x, terr_height, vec_pos.z)
-			path_3d.curve.set_point_position(index, target)
-	
 func _ready() -> void:
 	load_rail_tracks()
 	spawn_rails()

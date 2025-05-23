@@ -4,6 +4,10 @@ class_name Signals extends Node
 signal rail_spawned(rail_container: OuterRailTrack)
 signal rails_spawned()
 
+# == RAILS ==
+signal road_spawned(road_container: OuterRoad)
+signal roads_spawned()
+
 # == STATIONS ==
 signal stations_spawned()
 

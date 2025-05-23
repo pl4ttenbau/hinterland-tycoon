@@ -1,3 +1,10 @@
 class_name InfrTypesLoader extends RefCounted
 
-static func _dict_to_obj(_infr_type_data: Dictionary) -> In
+static func make_types() -> Array[InfrType]:
+	var infr_types: Array[InfrType] = []
+	# create objects and append
+	infr_types.append(InfrType.new(0, "750_MM", true, "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"))
+	infr_types.append(InfrType.new(1, "NORMAL_GAUGE", true, "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"))
+	infr_types.append(InfrType.new(2, "RURAL_ROAD", false, "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"))
+	# all done
+	return infr_types

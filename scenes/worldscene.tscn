@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=22 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
+[ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
@@ -73,13 +74,16 @@ script = ExtResource("15_kq7m5")
 
 [node name="Infr" type="Node3D" parent="World/Static"]
 
-[node name="Rails" type="Node3D" parent="World/Static/Infr"]
+[node name="Rails" type="Node" parent="World/Static/Infr"]
 unique_name_in_owner = true
 script = ExtResource("15_nj174")
 
-[node name="Stations" type="Node3D" parent="World/Static/Infr"]
+[node name="Stations" type="Node" parent="World/Static/Infr"]
 unique_name_in_owner = true
 script = ExtResource("6_p8gp8")
+
+[node name="Roads" type="Node" parent="World/Static/Infr"]
+script = ExtResource("6_hmgqj")
 
 [node name="Deco" type="Node3D" parent="World/Static"]
 
@@ -256,7 +260,6 @@ autostart = true
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
-[connection signal="ready" from="World/TerrainContainer" to="World/Static/Infr/Rails" method="_on_terrain_ready"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Static/Infr/Stations" method="_on_rails_rails_spawned"]
 [connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]
 [connection signal="body_entered" from="World/Player/Area3D" to="World/Player/Area3D" method="_on_body_entered"]

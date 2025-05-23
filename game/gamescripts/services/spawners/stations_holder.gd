@@ -1,4 +1,4 @@
-class_name StationsHolder extends Node3D
+class_name StationsHolder extends Node
 
 @export var stations: Array[RailStation] = []
 

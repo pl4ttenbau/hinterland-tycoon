@@ -1,4 +1,4 @@
-class_name Globals extends Node
+extends Node
 
 @export var towns: Array[TownResource] = []
 

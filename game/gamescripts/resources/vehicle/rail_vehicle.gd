@@ -52,7 +52,12 @@ func _physics_process(delta: float) -> void:
 func get_static_body() -> StaticBody3D:
 	return self.get_child(0)
 	
+func get_curve() -> Curve3D:
+	return self.starting_track.get_path_3d().curve
+	
 func get_point_in_curve(i: int) -> Vector3:
+	if i >= get_curve().point_count:
+		return Vector3.ZERO
 	return self.starting_track.get_path_3d().curve.get_point_position(i)
 	
 func get_node_in_track(i: int) -> RailNode:

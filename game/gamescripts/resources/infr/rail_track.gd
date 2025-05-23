@@ -1,6 +1,6 @@
 class_name RailTrack extends AbstractTrack
 
-const rail_scene_path = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
+const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
 @export var nodes: Array[RailNode] = []
 @export_storage var stations: Array[RailStation] = []
@@ -9,12 +9,12 @@ const rail_scene_path = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 signal created(track: RailTrack)
 	
 func _to_string() -> String:
-	return "RailTrack@%d" % self.num
+	return "RailTrack_%d" % self.num
 	
 func spawn() -> OuterRailTrack:
 	if ! self.curve: self.build_path()
 	# instanciate Container from PackedScene
-	var scene: Resource = preload(rail_scene_path)
+	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
 	add_to_group("Rails") # add to rails group
@@ -23,6 +23,7 @@ func spawn() -> OuterRailTrack:
 static func from_json(_track_dict: Dictionary) -> RailTrack:
 	var track_instance: RailTrack = RailTrack.new()
 	track_instance.num = int(_track_dict.num)
+	track_instance.infr_type_key = _track_dict.get("type")
 	track_instance.position = WorldUtils.vec3_from_float_arr(_track_dict.offset)
 	track_instance.name = "RailTrack" + str(track_instance.num)
 	add_points_from_json(_track_dict, track_instance)
@@ -44,6 +45,6 @@ func add_node(rail_node: RailNode):
 	self.vertices.append(rail_node.position)
 	
 func get_rail_node(_i: int) -> RailNode:
-	if _i > 0:
+	if _i > 0 && _i < self.nodes.size():
 		return self.nodes.get(_i)
 	return null
