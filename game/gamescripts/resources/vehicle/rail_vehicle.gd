@@ -22,12 +22,15 @@ static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
 	return instance
 	
 func set_origin_point(_point_index: int):
-	# self.rail_section.last_node = self.get_node_in_track(_point_index)
+	var last_node: RailNode = self.get_node_in_track(_point_index)
+	self.rail_section.set_last(last_node)
+	# self.rail_section.last_node = 
 	self.position = self.get_point_in_curve(_point_index)
 	
 func set_target_point(_point_index: int):
 	var next_point: Vector3 = self.get_point_in_curve(_point_index)
-	self.rail_section.next_node = self.get_node_in_track(_point_index)
+	var next_node: RailNode = self.get_node_in_track(_point_index)
+	self.rail_section.set_next(next_node)
 	self.look_at_from_position(self.position, next_point)
 	
 func update_next_point():

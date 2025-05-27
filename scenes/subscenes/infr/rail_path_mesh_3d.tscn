@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://4omlrg65c157"]
 
 [ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/outer_rail_track.gd" id="1_y72mo"]
-[ext_resource type="ArrayMesh" uid="uid://beg80bxtayf56" path="res://assets/meshes/infr/rail/rail_bedded.obj" id="2_p268h"]
-[ext_resource type="Texture2D" uid="uid://beumok1ki8tc1" path="res://assets/meshes/infr/rail/tex_rail_bedded (Kopie).png" id="3_ejx4k"]
+[ext_resource type="ArrayMesh" uid="uid://dlqgju4lobhvb" path="res://assets/meshes/infr/rail/rail_normal_bedded.obj" id="2_y72mo"]
+[ext_resource type="Texture2D" uid="uid://5rfm6dl7ll03" path="res://assets/meshes/infr/rail/tex_railtrack_1_grassy.png" id="3_y72mo"]
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
 _data = {
@@ -13,7 +13,7 @@ point_count = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6qkf"]
 albedo_color = Color(0.666569, 0.666569, 0.666569, 1)
-albedo_texture = ExtResource("3_ejx4k")
+albedo_texture = ExtResource("3_y72mo")
 
 [node name="OuterRailTrack" type="Node3D"]
 script = ExtResource("1_y72mo")
@@ -23,7 +23,7 @@ transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0)
 curve = SubResource("Curve3D_rd07l")
 
 [node name="TrackMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
-mesh = ExtResource("2_p268h")
+mesh = ExtResource("2_y72mo")
 path_3d = NodePath("../TrackPath")
 surface_0/tile_rotation = Vector3(0, 0, 0)
 surface_0/tile_rotation_order = 2
@@ -33,28 +33,4 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
 surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
-surface_1/tile_rotation = Vector3(0, 0, 0)
-surface_1/tile_rotation_order = 2
-surface_1/distribution = 0
-surface_1/alignment = 0
-surface_1/warp_along_curve = true
-surface_1/sample_cubic = false
-surface_1/tilt = true
-surface_1/offset = Vector2(0, 0)
-surface_2/tile_rotation = Vector3(0, 0, 0)
-surface_2/tile_rotation_order = 2
-surface_2/distribution = 0
-surface_2/alignment = 0
-surface_2/warp_along_curve = true
-surface_2/sample_cubic = false
-surface_2/tilt = true
-surface_2/offset = Vector2(0, 0)
-surface_3/tile_rotation = Vector3(0, 0, 0)
-surface_3/tile_rotation_order = 2
-surface_3/distribution = 0
-surface_3/alignment = 0
-surface_3/warp_along_curve = true
-surface_3/sample_cubic = false
-surface_3/tilt = true
-surface_3/offset = Vector2(0, 0)
 material_override = SubResource("StandardMaterial3D_u6qkf")

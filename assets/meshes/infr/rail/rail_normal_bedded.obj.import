@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlqgju4lobhvb"
+path="res://.godot/imported/rail_normal_bedded.obj-9008561d7fe2ed1f80771640d03cdbac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rail_normal_bedded.obj-9008561d7fe2ed1f80771640d03cdbac.mesh"]
+
+source_file="res://assets/meshes/infr/rail/rail_normal_bedded.obj"
+dest_files=["res://.godot/imported/rail_normal_bedded.obj-9008561d7fe2ed1f80771640d03cdbac.mesh", "res://.godot/imported/rail_normal_bedded.obj-9008561d7fe2ed1f80771640d03cdbac.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -27,7 +27,8 @@ static func from_json(_road_dict: Dictionary) -> RoadWay:
 	var road_num := int(_road_dict.get("num"))
 	var type_key := str(_road_dict.get("type"))
 	var road_instance: RoadWay = RoadWay.new(road_num, type_key)
-	road_instance.position = WorldUtils.vec3_from_float_arr(_road_dict.offset)
+	if _road_dict.has("offset"):
+		road_instance.position = WorldUtils.vec3_from_float_arr(_road_dict.offset)
 	road_instance.name = "RoadWay" + str(road_instance.num)
 	add_points_from_json(_road_dict, road_instance)
 	road_instance.created.emit(road_instance)
