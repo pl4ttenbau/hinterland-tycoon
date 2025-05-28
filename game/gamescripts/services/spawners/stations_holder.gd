@@ -2,6 +2,9 @@ class_name StationsHolder extends Node
 
 @export var stations: Array[RailStation] = []
 
+func _enter_tree() -> void:
+	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
+
 func spawn_stations():
 	Loggie.info("Spawning stations..")
 	for station_obj: RailStation in GlobalState.stations:

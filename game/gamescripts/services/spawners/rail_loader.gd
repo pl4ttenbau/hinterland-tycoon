@@ -22,7 +22,7 @@ func spawn_rails():
 		spawn_rail_track(track_obj)
 	# emit signals
 	self.rails_spawned.emit(track_containers)
-	SignalBus.rails_spawned.emit()
+	SignalBus.rails_spawned.emit(track_containers)
 	
 func spawn_rail_track(track_obj: RailTrack):
 	var instanciated: OuterRailTrack = track_obj.spawn()

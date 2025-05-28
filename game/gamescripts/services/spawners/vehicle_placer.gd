@@ -2,6 +2,9 @@ class_name VehiclePlacer extends Node3D
 
 @export var rail_containers: Array[OuterRailTrack]
 
+func _enter_tree() -> void:
+	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
+
 func _ready() -> void:
 	load_vehicles()
 	
@@ -25,7 +28,7 @@ func get_rail_path(_num: int) -> OuterRailTrack:
 		return null
 	return container
 
-func _on_rails_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
+func _on_rails_rails_spawned(containers: Array[OuterRailTrack]) -> void:
 	Loggie.info("Rails spawned; initializing vehicles ...")
-	self.rail_containers = _rails
+	self.rail_containers = containers
 	# load_vehicles()

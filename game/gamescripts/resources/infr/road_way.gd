@@ -8,6 +8,7 @@ const SCENE_PATH = "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"
 signal created(track: RailTrack)
 
 func _init(_num: int, _type: String):
+	super()
 	self.num = _num
 	self.infr_type_key = _type
 	
@@ -27,6 +28,8 @@ static func from_json(_road_dict: Dictionary) -> RoadWay:
 	var road_num := int(_road_dict.get("num"))
 	var type_key := str(_road_dict.get("type"))
 	var road_instance: RoadWay = RoadWay.new(road_num, type_key)
+	if _road_dict.has("name"):
+		road_instance.track_name = _road_dict.get("name")
 	if _road_dict.has("offset"):
 		road_instance.position = WorldUtils.vec3_from_float_arr(_road_dict.offset)
 	road_instance.name = "RoadWay" + str(road_instance.num)
