@@ -260,7 +260,5 @@ autostart = true
 
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
-[connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Static/Infr/Stations" method="_on_rails_rails_spawned"]
-[connection signal="rails_spawned" from="World/Static/Infr/Rails" to="World/Movable/Vehicles" method="_on_rails_rails_spawned"]
 [connection signal="body_entered" from="World/Player/Area3D" to="World/Player/Area3D" method="_on_body_entered"]
 [connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]
