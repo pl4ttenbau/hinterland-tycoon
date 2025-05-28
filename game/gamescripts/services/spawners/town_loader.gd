@@ -1,4 +1,4 @@
-extends Node3D
+class_name TownPlacer extends Node
 
 const json_path = "res://world/jsondata/towns.json"
 const scene_path = "res://scenes/subscenes/town_root.tscn"
