@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/tree3.glb-ceb644369381ba5c65b62b2fd640237b.sc
 [params]
 
 nodes/root_type=""
-nodes/root_name=""
+nodes/root_name="Tree3"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
