@@ -1,7 +1,9 @@
 @icon("res://assets/icons/icon_locomotive_white.png")
 class_name VehiclePlacer extends Node
 
+@export_storage var _next_vehicle_num = 0
 @export var rail_containers: Array[OuterRailTrack]
+@export var rail_vehicles: Array[RailVehicle] = []
 
 func _enter_tree() -> void:
 	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
@@ -18,8 +20,20 @@ func load_vehicles():
 		return
 	Loggie.info("Globals & rails found: initializing vehicles...")
 	var track_num: int = 2
+	self.spawn_vehicle(track_num, 0)
+	
+func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
 	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
+	# assign name and num
+	veh.vehicle_num = self.get_next_vehicle_num()
+	veh.name = "RailVehicle_%d" % veh.vehicle_num
+	self.rail_vehicles.append(veh)
 	self.add_child(veh)
+	return veh
+
+func get_next_vehicle_num() -> int:
+	self._next_vehicle_num += 1
+	return self._next_vehicle_num
 
 func get_rail_path(_num: int) -> OuterRailTrack:
 	var track_num: int = _num -1

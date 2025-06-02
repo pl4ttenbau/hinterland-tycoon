@@ -42,6 +42,9 @@ signal towns_loaded()
 @warning_ignore("unused_signal")
 signal mouse_click(event: InputEventMouseButton)
 
+@warning_ignore("unused_signal")
+signal collider_click(collider: Node3D)
+
 # == UI ==
 @warning_ignore("unused_signal")
 signal ui_update_tick()

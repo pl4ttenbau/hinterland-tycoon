@@ -10,7 +10,12 @@ static func of(_station_obj: RailStation) -> OuterRailStation:
 	instanciated_container.position = _station_obj.position
 	instanciated_container.station_object = _station_obj
 	instanciated_container.set_meta("station", _station_obj)
+	instanciated_container._name_nodes()
 	return instanciated_container
+	
+func _name_nodes():
+	self.name = "OuterRailStation_%d" + self.station_object.station_name
+	self.get_mesh().name = "RailStationMesh_%s" % self.station_object.station_name
 	
 func rotate_to_prev_node():
 	var station_node_index: int = self.station_object.parent_node.index
@@ -23,3 +28,6 @@ func get_parent_track_node_by_index(_i: int) -> RailNode:
 
 func get_mesh() -> MeshInstance3D:
 	return self.get_child(0)
+	
+func get_collider() -> StaticBody3D:
+	return self.get_child(1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=28 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="14_stk68"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
+[ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="21_usal5"]
@@ -225,6 +226,7 @@ transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 
 mesh = ExtResource("7_s11ye")
 
 [node name="Vehicles" type="Node" parent="World"]
+unique_name_in_owner = true
 script = ExtResource("23_ekgs8")
 
 [node name="GameWindow" type="Control" parent="."]
@@ -252,9 +254,11 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Label" type="Label" parent="GameWindow/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="GameWindow/CenterContainer"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-text = "Enter"
+texture = ExtResource("16_ux8bc")
+expand_mode = 1
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
@@ -277,5 +281,3 @@ script = ExtResource("10_p8gp8")
 
 [node name="AreaShape" type="CollisionShape3D" parent="Player/Area3D"]
 shape = SubResource("SphereShape3D_s11ye")
-
-[editable path="Player/Head"]

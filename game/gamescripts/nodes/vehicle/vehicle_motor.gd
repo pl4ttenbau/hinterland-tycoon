@@ -8,7 +8,6 @@ class_name VehicleMotor extends Node
 signal started()
 signal stopped()
 
-
 static func of(_vehicle: RailVehicle) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.vehicle = _vehicle

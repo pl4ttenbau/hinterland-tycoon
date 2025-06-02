@@ -14,7 +14,6 @@ func _input(event: InputEvent) -> void:
 			
 func cast_ray(screen_pos: Vector2):
 	var cam_pos: Vector3 = self.get_camera().project_ray_origin(screen_pos)
-	# cast ray
 	var to = cam_pos + get_camera().project_ray_normal(screen_pos) * 300
 	var space = get_camera().get_world_3d().direct_space_state
 	# create ray
@@ -27,6 +26,7 @@ func cast_ray(screen_pos: Vector2):
 func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if collider:
+		SignalBus.collider_click.emit(collider)
 		var node_path = collider.get_path()
 		Loggie.info("Collided: %s at %s" %[collider.name, node_path])
 
