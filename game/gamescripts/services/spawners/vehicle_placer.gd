@@ -1,4 +1,5 @@
-class_name VehiclePlacer extends Node3D
+@icon("res://assets/icons/icon_locomotive_white.png")
+class_name VehiclePlacer extends Node
 
 @export var rail_containers: Array[OuterRailTrack]
 

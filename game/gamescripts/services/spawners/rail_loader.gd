@@ -1,10 +1,10 @@
+@icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailsLoader extends Node
 
 const rails_json_path := "res://world/jsondata/tracks.json"
 const rails_group := "Rails"
 const MAX_VISIBLE_DIST := 500
 
-@onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var tracks: Array[RailTrack] = []
 @export var track_containers: Array[OuterRailTrack] = []
 

@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/icons/icon_town.png")
 class_name TownCenter extends Node3D
 
 signal town_changed(_town: TownResource)

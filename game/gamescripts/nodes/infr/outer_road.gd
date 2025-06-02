@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_road.png")
 class_name OuterRoad extends Node3D
 
 @export var road: RoadWay

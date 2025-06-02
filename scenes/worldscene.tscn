@@ -62,37 +62,22 @@ script = ExtResource("1_vdtib")
 
 [node name="World" type="Node" parent="."]
 
-[node name="TerrainContainer" type="Node" parent="World"]
+[node name="Terrain" type="Node" parent="World"]
 unique_name_in_owner = true
 script = ExtResource("2_t1xhr")
 
-[node name="WorldTerrain" parent="World/TerrainContainer" instance=ExtResource("3_3kjtq")]
+[node name="WorldTerrain" parent="World/Terrain" instance=ExtResource("3_3kjtq")]
 unique_name_in_owner = true
 
-[node name="Static" type="Node" parent="World"]
-
-[node name="Towns" type="Node" parent="World/Static"]
-unique_name_in_owner = true
-editor_description = "Town-Centers with Label3D above will be spawned under this node"
-script = ExtResource("15_kq7m5")
-
-[node name="Infr" type="Node" parent="World/Static"]
-
-[node name="Rails" type="Node" parent="World/Static/Infr"]
-unique_name_in_owner = true
-script = ExtResource("15_nj174")
-
-[node name="Stations" type="Node" parent="World/Static/Infr"]
-unique_name_in_owner = true
-script = ExtResource("6_p8gp8")
-
-[node name="Roads" type="Node" parent="World/Static/Infr"]
-script = ExtResource("6_hmgqj")
+[node name="WorldUpdateTimer" type="Timer" parent="World/Terrain"]
+wait_time = 3.0
+autostart = true
+script = ExtResource("12_em2l6")
 
 [node name="InEditor" type="Node3D" parent="World"]
 script = ExtResource("26_c2xmk")
 
-[node name="EditorLabels" type="Node3D" parent="World/InEditor"]
+[node name="EditorLabels" type="Node" parent="World/InEditor"]
 editor_description = "generated town labels will spawn here"
 
 [node name="EditorLabel_Town_Tribsees" type="Label3D" parent="World/InEditor/EditorLabels"]
@@ -204,11 +189,23 @@ metadata/track_num = 5
 [node name="Locator" type="Node3D" parent="World/InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2157.3, 8.7, 648)
 
-[node name="Movable" type="Node" parent="World"]
+[node name="Towns" type="Node" parent="World"]
 unique_name_in_owner = true
+editor_description = "Town-Centers with Label3D above will be spawned under this node"
+script = ExtResource("15_kq7m5")
 
-[node name="Vehicles" type="Node3D" parent="World/Movable"]
-script = ExtResource("23_ekgs8")
+[node name="Infr" type="Node" parent="World"]
+
+[node name="Rails" type="Node" parent="World/Infr"]
+unique_name_in_owner = true
+script = ExtResource("15_nj174")
+
+[node name="Stations" type="Node" parent="World/Infr"]
+unique_name_in_owner = true
+script = ExtResource("6_p8gp8")
+
+[node name="Roads" type="Node" parent="World/Infr"]
+script = ExtResource("6_hmgqj")
 
 [node name="Deco" type="Node" parent="World"]
 
@@ -224,10 +221,8 @@ mesh = ExtResource("7_s11ye")
 transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
 mesh = ExtResource("7_s11ye")
 
-[node name="WorldUpdateTimer" type="Timer" parent="World"]
-wait_time = 3.0
-autostart = true
-script = ExtResource("12_em2l6")
+[node name="Vehicles" type="Node" parent="World"]
+script = ExtResource("23_ekgs8")
 
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
