@@ -249,6 +249,15 @@ script = ExtResource("17_stk68")
 autostart = true
 script = ExtResource("14_stk68")
 
+[node name="CenterContainer" type="CenterContainer" parent="GameWindow"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="GameWindow/CenterContainer"]
+layout_mode = 2
+text = "Enter"
+
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.646, 15.6309, 570.467)
