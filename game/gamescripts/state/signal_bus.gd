@@ -39,4 +39,5 @@ signal towns_spawned()
 signal towns_loaded()
 
 # == UI ==
+@warning_ignore("unused_signal")
 signal ui_update_tick()

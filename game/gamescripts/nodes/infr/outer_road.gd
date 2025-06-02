@@ -19,6 +19,6 @@ func get_road_mesh() -> PathMesh3D:
 	
 func get_middle_pos() -> Vector3:
 	var road_vertice_count: int = self.road.vertices.size()
-	var middle_index: int = floor(road_vertice_count /2)
+	var middle_index: int = floori(road_vertice_count /2)
 	return self.road.vertices.get(middle_index)
 	

@@ -1,5 +1,6 @@
 class_name TownSpawner extends Node
 
+@warning_ignore("unused_signal")
 signal town_center_spawned(town: TownResource)
 
 @export_storage var town: TownResource
