@@ -1,4 +1,4 @@
-class_name TerrainContainer extends Node3D
+class_name TerrainContainer extends Node
 
 @export var terrain: Terrain3D
 
@@ -16,3 +16,6 @@ func get_height_at(abs_pos: Vector3) -> float:
 func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 	var y: float = get_height_at(abs_pos)
 	return Vector3(abs_pos.x, y, abs_pos.z)
+
+func _on_world_update_timer_timeout() -> void:
+	SignalBus.world_update.emit()

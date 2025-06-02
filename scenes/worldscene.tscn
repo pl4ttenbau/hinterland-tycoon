@@ -58,7 +58,7 @@ point_count = 15
 
 [node name="World" type="Node" parent="."]
 
-[node name="TerrainContainer" type="Node3D" parent="World"]
+[node name="TerrainContainer" type="Node" parent="World"]
 unique_name_in_owner = true
 script = ExtResource("2_t1xhr")
 
@@ -220,6 +220,10 @@ mesh = ExtResource("7_s11ye")
 transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
 mesh = ExtResource("7_s11ye")
 
+[node name="WorldUpdateTimer" type="Timer" parent="World"]
+wait_time = 3.0
+autostart = true
+
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -258,7 +262,8 @@ script = ExtResource("10_p8gp8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
 shape = SubResource("SphereShape3D_s11ye")
 
-[connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
 [connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
+[connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
+[connection signal="timeout" from="World/WorldUpdateTimer" to="World/TerrainContainer" method="_on_world_update_timer_timeout"]
 [connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]
 [connection signal="body_entered" from="Player/Area3D" to="Player/Area3D" method="_on_body_entered"]

@@ -1,8 +1,11 @@
 class_name Signals extends Node
 
-# == TERRAIN ==
+# == WORLD ==
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: TerrainContainer)
+
+@warning_ignore("unused_signal")
+signal world_update()
 
 # == RAILS ==
 @warning_ignore("unused_signal")

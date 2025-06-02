@@ -1,7 +1,8 @@
 class_name RailsLoader extends Node
 
-const rails_json_path = "res://world/jsondata/tracks.json"
-const rails_group = "Rails"
+const rails_json_path := "res://world/jsondata/tracks.json"
+const rails_group := "Rails"
+const MAX_VISIBLE_DIST := 500
 
 @onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var tracks: Array[RailTrack] = []
@@ -9,6 +10,9 @@ const rails_group = "Rails"
 
 signal rails_loaded(_rails: Array[RailTrack])
 signal rails_spawned(_rails: Array[OuterRailTrack])
+
+func _enter_tree() -> void:
+	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 
 func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(rails_json_path)
@@ -38,5 +42,17 @@ func _ready() -> void:
 	spawn_rails()
 	Loggie.info("rails precreated")
 
+# == EVENT LISTENERS ==
 func _on_scene_ready() -> void:
 	pass
+	
+func _on_world_update() -> void:
+	for container: OuterRailTrack in self.track_containers:
+		var player: Node3D = %Player
+		if player:
+			var middle_pos: Vector3 = container.get_middle_pos()
+			var dist = player.position.distance_to(middle_pos)
+			if dist > MAX_VISIBLE_DIST:
+				container.visible = false
+			else:
+				container.visible = true
