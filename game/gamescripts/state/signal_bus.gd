@@ -38,6 +38,10 @@ signal towns_spawned()
 @warning_ignore("unused_signal")
 signal towns_loaded()
 
+# == INPUT ==
+@warning_ignore("unused_signal")
+signal mouse_click(event: InputEventMouseButton)
+
 # == UI ==
 @warning_ignore("unused_signal")
 signal ui_update_tick()

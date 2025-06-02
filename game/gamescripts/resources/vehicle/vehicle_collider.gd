@@ -1,0 +1,1 @@
+class_name VehicleCollider extends StaticBody3D

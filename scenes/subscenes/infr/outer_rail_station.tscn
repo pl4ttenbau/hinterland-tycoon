@@ -26,10 +26,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 material_override = SubResource("StandardMaterial3D_co1x6")
 mesh = ExtResource("5_o8ddr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StationBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_8igvt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="StationShape3D" type="CollisionShape3D" parent="StationBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399999, 0.15, -6)
 shape = SubResource("BoxShape3D_65b5o")

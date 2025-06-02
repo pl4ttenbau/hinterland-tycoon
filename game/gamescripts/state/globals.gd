@@ -1,5 +1,9 @@
 extends Node
 
+# == PLAYER ==
+@export var player: PlayerHead
+
+# == STATIC ==
 @export var towns: Array[TownResource] = []
 
 # == INFR ==

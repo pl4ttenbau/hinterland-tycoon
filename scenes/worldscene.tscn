@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=27 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
+[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="21_usal5"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="26_c2xmk"]
@@ -264,6 +265,9 @@ metadata/_custom_type_script = "uid://0ou2op0l50qf"
 [node name="Head" parent="Player" instance=ExtResource("13_hmgqj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 
+[node name="PlayerMouseClick" type="Node" parent="Player/Head"]
+script = ExtResource("18_ibik3")
+
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
 shape = SubResource("SphereShape3D_vdtib")
@@ -271,5 +275,7 @@ shape = SubResource("SphereShape3D_vdtib")
 [node name="Area3D" type="Area3D" parent="Player"]
 script = ExtResource("10_p8gp8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+[node name="AreaShape" type="CollisionShape3D" parent="Player/Area3D"]
 shape = SubResource("SphereShape3D_s11ye")
+
+[editable path="Player/Head"]
