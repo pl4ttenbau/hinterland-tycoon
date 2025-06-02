@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=26 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="10_u6qkf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="12_em2l6"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
@@ -208,6 +209,7 @@ script = ExtResource("6_p8gp8")
 script = ExtResource("6_hmgqj")
 
 [node name="Deco" type="Node" parent="World"]
+script = ExtResource("10_u6qkf")
 
 [node name="RathausTribsees" type="MeshInstance3D" parent="World/Deco"]
 transform = Transform3D(0.174312, 0, 1.99239, 0, 2, 0, -1.99239, 0, 0.174312, 226.49, 7.5, 855.218)

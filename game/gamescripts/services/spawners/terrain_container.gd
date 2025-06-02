@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_terrain_white.png")
 class_name TerrainContainer extends Node
 
 @export var terrain: Terrain3D
