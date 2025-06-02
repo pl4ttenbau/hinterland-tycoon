@@ -2,20 +2,20 @@ class_name OuterRailStation extends Node3D
 
 const scene_source_path = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 
-@export_storage var station_object: RailStation
+@export_storage var station_object: RailStationResource
 
-static func of(_station_obj: RailStation) -> OuterRailStation:
+static func of(_station_obj: RailStationResource) -> OuterRailStation:
 	var prefab: PackedScene = preload(scene_source_path)
 	var instanciated_container: OuterRailStation = prefab.instantiate()
 	instanciated_container.position = _station_obj.position
 	instanciated_container.station_object = _station_obj
 	instanciated_container.set_meta("station", _station_obj)
-	instanciated_container._name_nodes()
+	# instanciated_container._name_nodes()
 	return instanciated_container
 	
 func _name_nodes():
-	self.name = "OuterRailStation_%d" + self.station_object.station_name
-	self.get_mesh().name = "RailStationMesh_%s" % self.station_object.station_name
+	self.name = "OuterRailStation_%d" % self.station_object.station_num
+	self.get_mesh().name = "RailStation_%d_Mesh" % self.station_object.station_num
 	
 func rotate_to_prev_node():
 	var station_node_index: int = self.station_object.parent_node.index

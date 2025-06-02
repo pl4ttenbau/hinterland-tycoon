@@ -3,7 +3,7 @@ class_name RailTrack extends AbstractTrack
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
 @export var nodes: Array[RailNode] = []
-@export_storage var stations: Array[RailStation] = []
+@export_storage var stations: Array[RailStationResource] = []
 @export_storage var forks: Array[RailFork] = []
 
 signal created(track: RailTrack)

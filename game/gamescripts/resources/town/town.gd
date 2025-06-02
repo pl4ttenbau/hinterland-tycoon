@@ -6,7 +6,7 @@ class_name TownResource extends Resource
 @export var totalPops: int
 
 @export_storage var structures: Array[BaseStructure] = []
-@export_storage var stations: Array[RailStation] = []
+@export_storage var stations: Array[RailStationResource] = []
 
 func _to_string():
 	return "<Town %s>" % self.town_name

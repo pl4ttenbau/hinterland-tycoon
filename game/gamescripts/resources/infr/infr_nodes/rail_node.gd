@@ -20,7 +20,7 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 			elif json_special.nodeType == "SWITCH": add_fork(json_special)
 	
 func add_station(_special_node_dict: Dictionary):
-	var station_obj = RailStation.of_node_dict(_special_node_dict, self)
+	var station_obj = RailStationResource.of_node_dict(_special_node_dict, self)
 	Loggie.info("Found station: %s" %station_obj.station_name)
 	self.set_meta("station", station_obj)
 	GlobalState.stations.append(station_obj)
