@@ -7,6 +7,9 @@ const scene_path = "res://scenes/subscenes/town_root.tscn"
 @export var towns: Array[TownResource] = []
 @export var town_centers: Array[TownCenter]
 
+func _enter_tree() -> void:
+	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
+
 func _on_scene_ready() -> void:
 	load_towns()
 	

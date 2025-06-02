@@ -1,13 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=25 format=3 uid="uid://de7g4fgm4pi0q"]
 
+[ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
+[ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="12_em2l6"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
+[ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="14_stk68"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
@@ -55,6 +58,7 @@ point_count = 15
 [sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
 
 [node name="Scene" type="Node3D"]
+script = ExtResource("1_vdtib")
 
 [node name="World" type="Node" parent="."]
 
@@ -223,6 +227,7 @@ mesh = ExtResource("7_s11ye")
 [node name="WorldUpdateTimer" type="Timer" parent="World"]
 wait_time = 3.0
 autostart = true
+script = ExtResource("12_em2l6")
 
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
@@ -242,6 +247,7 @@ script = ExtResource("17_stk68")
 
 [node name="UiUpdateTimer" type="Timer" parent="GameWindow"]
 autostart = true
+script = ExtResource("14_stk68")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
@@ -261,9 +267,3 @@ script = ExtResource("10_p8gp8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
 shape = SubResource("SphereShape3D_s11ye")
-
-[connection signal="ready" from="." to="World/Static/Towns" method="_on_scene_ready"]
-[connection signal="ready" from="." to="World/Static/Infr/Rails" method="_on_scene_ready"]
-[connection signal="timeout" from="World/WorldUpdateTimer" to="World/TerrainContainer" method="_on_world_update_timer_timeout"]
-[connection signal="timeout" from="GameWindow/UiUpdateTimer" to="GameWindow/PosLabel" method="_on_ui_update_timer_timeout"]
-[connection signal="body_entered" from="Player/Area3D" to="Player/Area3D" method="_on_body_entered"]

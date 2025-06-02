@@ -2,6 +2,11 @@ class_name TerrainContainer extends Node
 
 @export var terrain: Terrain3D
 
+signal world_update()
+
+func _enter_tree() -> void:
+	self.world_update.connect(Callable(self, "_on_world_update"))
+
 func _ready() -> void:
 	var terrain_3d_obj: Terrain3D = self.get_child(0)
 	if !terrain_3d_obj:
@@ -17,5 +22,5 @@ func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 	var y: float = get_height_at(abs_pos)
 	return Vector3(abs_pos.x, y, abs_pos.z)
 
-func _on_world_update_timer_timeout() -> void:
-	SignalBus.world_update.emit()
+func _on_world_update() -> void:
+	pass
