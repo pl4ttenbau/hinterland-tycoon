@@ -17,3 +17,8 @@ func get_path_3d() -> Path3D:
 	
 func get_rail_mesh() -> PathMesh3D:
 	return self.get_child(1)
+	
+func get_middle_pos() -> Vector3:
+	var road_vertice_count: int = self.rail_track.vertices.size()
+	var middle_index: int = floor(road_vertice_count /2)
+	return self.rail_track.vertices.get(middle_index)

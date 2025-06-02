@@ -240,6 +240,7 @@ name = "straw_d"
 id = 5
 albedo_texture = ExtResource("18_bh3tc")
 normal_texture = ExtResource("19_hwjdr")
+uv_scale = 0.352
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc")])

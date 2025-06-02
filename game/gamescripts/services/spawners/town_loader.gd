@@ -1,4 +1,4 @@
-extends Node3D
+class_name TownPlacer extends Node
 
 const json_path = "res://world/jsondata/towns.json"
 const scene_path = "res://scenes/subscenes/town_root.tscn"
@@ -6,6 +6,9 @@ const scene_path = "res://scenes/subscenes/town_root.tscn"
 @onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var towns: Array[TownResource] = []
 @export var town_centers: Array[TownCenter]
+
+func _enter_tree() -> void:
+	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
 
 func _on_scene_ready() -> void:
 	load_towns()

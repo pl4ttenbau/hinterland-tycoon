@@ -1,8 +1,14 @@
 class_name Signals extends Node
 
-# == TERRAIN ==
+# == WORLD ==
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: TerrainContainer)
+
+@warning_ignore("unused_signal")
+signal world_update()
+
+@warning_ignore("unused_signal")
+signal scene_root_ready()
 
 # == RAILS ==
 @warning_ignore("unused_signal")
@@ -31,3 +37,6 @@ signal towns_spawned()
 
 @warning_ignore("unused_signal")
 signal towns_loaded()
+
+# == UI ==
+signal ui_update_tick()
