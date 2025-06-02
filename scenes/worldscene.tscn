@@ -77,7 +77,7 @@ script = ExtResource("12_em2l6")
 [node name="InEditor" type="Node3D" parent="World"]
 script = ExtResource("26_c2xmk")
 
-[node name="EditorLabels" type="Node" parent="World/InEditor"]
+[node name="EditorLabels" type="Node3D" parent="World/InEditor"]
 editor_description = "generated town labels will spawn here"
 
 [node name="EditorLabel_Town_Tribsees" type="Label3D" parent="World/InEditor/EditorLabels"]
