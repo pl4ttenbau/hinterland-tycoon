@@ -31,10 +31,12 @@ func handle_ray(ray_result: Dictionary):
 			var c_ref: ClickRef = collider.get_click_ref()
 			SignalBus.collider_click.emit(c_ref)
 			Loggie.info("Click %s %d" % [c_ref.get_type_str(), c_ref.entity_num])
+		elif collider is Terrain3D:
+			Loggie.info("Click on terrain at %s" % ray_result.get("position"))
 		else:
 			SignalBus.unhandled_collider_click.emit(collider)
 			var node_path = collider.get_path()
-			Loggie.info("Collided: %s at %s" %[collider.name, node_path])
+			Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
 
 func get_camera() -> Camera3D:
 	var cam: Camera3D = GlobalState.player.cam
