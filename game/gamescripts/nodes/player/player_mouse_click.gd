@@ -1,4 +1,5 @@
-extends Node
+@icon("res://assets/icons/icon_mouse_white.png")
+class_name PlayerMouseClick extends Node
 
 # Signals
 signal player_input(event: InputEvent, event_position: Vector3)
@@ -26,9 +27,14 @@ func cast_ray(screen_pos: Vector2):
 func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if collider:
-		SignalBus.collider_click.emit(collider)
-		var node_path = collider.get_path()
-		Loggie.info("Collided: %s at %s" %[collider.name, node_path])
+		if collider is ClickableCollider:
+			var c_ref: ClickRef = collider.get_click_ref()
+			SignalBus.collider_click.emit(c_ref)
+			Loggie.info("Click %s %d" % [c_ref.get_type_str(), c_ref.entity_num])
+		else:
+			SignalBus.unhandled_collider_click.emit(collider)
+			var node_path = collider.get_path()
+			Loggie.info("Collided: %s at %s" %[collider.name, node_path])
 
 func get_camera() -> Camera3D:
 	var cam: Camera3D = GlobalState.player.cam

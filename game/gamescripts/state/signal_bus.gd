@@ -43,7 +43,11 @@ signal towns_loaded()
 signal mouse_click(event: InputEventMouseButton)
 
 @warning_ignore("unused_signal")
-signal collider_click(collider: Node3D)
+signal collider_click(collider: ClickableCollider)
+
+
+@warning_ignore("unused_signal")
+signal unhandled_collider_click(collider: Node3D)
 
 # == UI ==
 @warning_ignore("unused_signal")

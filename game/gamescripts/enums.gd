@@ -1,6 +1,7 @@
 extends Node
 
 enum EntityTypes {
+	VEHICLE,
 	RAIL,
 	ROAD,
 	STATION,

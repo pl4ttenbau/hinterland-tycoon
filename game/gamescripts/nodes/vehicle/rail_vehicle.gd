@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			self.motor.stop()
 			
-# == GETTERS ==
+# == NODE GETTERS ==
 func get_static_body() -> StaticBody3D:
 	return self.get_child(0)
 	

@@ -23,6 +23,7 @@ script = ExtResource("1_sg37v")
 [node name="RailVehicleStaticBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("6_6sc5c")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
 
 [node name="RailVehicleMesh" type="MeshInstance3D" parent="RailVehicleStaticBody"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.5, 0)
