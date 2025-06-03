@@ -1,10 +1,10 @@
 [gd_scene load_steps=52 format=3 uid="uid://by07vpk0g2xbr"]
 
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/Tree2.tscn" id="1_bh3tc"]
-[ext_resource type="PackedScene" uid="uid://b7qn6xloeiohu" path="res://assets/meshes/nature/bush1.glb" id="2_ap1oq"]
+[ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/Bush1.tscn" id="2_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://2a5aiq71n7m3" path="res://assets/meshes/nature/Tree3.tscn" id="3_hwjdr"]
 [ext_resource type="Texture2D" uid="uid://ce5lbwsqkeod5" path="res://assets/textures/billboard/grass_green1.dds" id="4_oia7n"]
-[ext_resource type="Texture2D" uid="uid://ddh08260rk4o4" path="res://assets/textures/billboard/wheat_d.dds" id="5_bh3tc"]
+[ext_resource type="Texture2D" uid="uid://du1odwt2ia0ii" path="res://assets/textures/billboard/reeds1.png" id="5_bh3tc"]
 [ext_resource type="Texture2D" uid="uid://dg8xpmlbpn16m" path="res://assets/textures/billboard/wheat_n.dds" id="6_hwjdr"]
 [ext_resource type="Texture2D" uid="uid://bte7ncvvtqf1p" path="res://assets/textures/billboard/wheat_2_wide_d.png" id="7_2a4u0"]
 [ext_resource type="Texture2D" uid="uid://btck3st2a2uhi" path="res://assets/textures/grass_mix_d.dds" id="7_ki058"]
@@ -106,8 +106,8 @@ lod0_range = 128.0
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_vdtib"]
 name = "bush1"
 id = 2
-scene_file = ExtResource("2_ap1oq")
-density = 7.57365
+scene_file = ExtResource("2_bh3tc")
+density = 3.37728
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -145,8 +145,12 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhsit"]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.332
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.27
 cull_mode = 2
+depth_draw_mode = 1
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("5_bh3tc")
 normal_enabled = true
