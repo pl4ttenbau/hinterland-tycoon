@@ -1,4 +1,4 @@
-class_name RailVehicle extends Node3D
+class_name RailVehicle extends VisibleObject
 
 const scene_path = "res://scenes/subscenes/rail_vehicle.tscn"
 
@@ -69,7 +69,7 @@ func get_point_in_curve(i: int) -> Vector3:
 	return self.starting_track.get_path_3d().curve.get_point_position(i)
 	
 func get_node_in_track(i: int) -> RailNode:
-	return self.starting_track.rail_track.get_rail_node(i)
+	return self.starting_track.entity.get_rail_node(i)
 	
 func get_last_node_pos() -> Vector3:
 	if self.rail_section && self.rail_section.last_node:

@@ -1,12 +1,14 @@
-class_name RailStationResource extends Resource
+class_name RailStationResource extends GameObject
 
-@export var station_num: int
 @export var parent_node: RailNode
 @export var station_name: String
 @export var station_type: String
 @export var position: Vector3
 @export var town_name: String
 @export_storage var outer_node: OuterRailStation
+
+func _init():
+	super(Enums.EntityTypes.STATION)
 
 static func of_node_dict(_special_node_dict: Dictionary, _node: RailNode):
 	var _station_name: String = _special_node_dict.get("stationName")

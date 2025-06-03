@@ -1,14 +1,11 @@
 ## every curve based infrastructure pieve should inherit from this
-class_name AbstractTrack extends Node3D
+class_name AbstractTrack extends GameObject
 
 @export var infr_type_key: String
 @export_storage var track_name: String
 @export var vertices: Array[Vector3] = []
 @export var curve: Curve3D
-@export_storage var num: int
-
-func _init():
-	pass
+@export var offset: Vector3
 
 func build_path() -> void:
 	# if self.curve: return
