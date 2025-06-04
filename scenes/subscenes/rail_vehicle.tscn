@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://tqwe4a6nmgdg"]
+[gd_scene load_steps=9 format=3 uid="uid://tqwe4a6nmgdg"]
 
-[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/resources/vehicle/rail_vehicle.gd" id="1_sg37v"]
+[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/rail_vehicle.gd" id="1_sg37v"]
 [ext_resource type="Texture2D" uid="uid://b7giqu1siufcl" path="res://assets/meshes/vehicles/tex_faur_d.png" id="2_exafh"]
 [ext_resource type="Texture2D" uid="uid://doytj3qwv2r17" path="res://assets/meshes/vehicles/tex_faur_n.png" id="3_era8q"]
 [ext_resource type="ArrayMesh" uid="uid://irayfhj001w8" path="res://assets/meshes/vehicles/faur.obj" id="3_x85p6"]
 [ext_resource type="Texture2D" uid="uid://cerg020024pi2" path="res://assets/meshes/vehicles/tex_faur_s.png" id="4_era8q"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="6_6sc5c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_era8q"]
 diffuse_mode = 2
@@ -21,6 +22,8 @@ script = ExtResource("1_sg37v")
 
 [node name="RailVehicleStaticBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("6_6sc5c")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
 
 [node name="RailVehicleMesh" type="MeshInstance3D" parent="RailVehicleStaticBody"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.5, 0)

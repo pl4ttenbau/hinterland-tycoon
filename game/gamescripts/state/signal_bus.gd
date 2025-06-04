@@ -38,6 +38,17 @@ signal towns_spawned()
 @warning_ignore("unused_signal")
 signal towns_loaded()
 
+# == INPUT ==
+@warning_ignore("unused_signal")
+signal mouse_click(event: InputEventMouseButton)
+
+@warning_ignore("unused_signal")
+signal collider_click(collider: ClickableCollider)
+
+
+@warning_ignore("unused_signal")
+signal unhandled_collider_click(collider: Node3D)
+
 # == UI ==
 @warning_ignore("unused_signal")
 signal ui_update_tick()

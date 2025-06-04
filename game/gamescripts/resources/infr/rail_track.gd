@@ -3,10 +3,13 @@ class_name RailTrack extends AbstractTrack
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
 @export var nodes: Array[RailNode] = []
-@export_storage var stations: Array[RailStation] = []
+@export_storage var stations: Array[RailStationResource] = []
 @export_storage var forks: Array[RailFork] = []
 
 signal created(track: RailTrack)
+
+func _init():
+	super(Enums.EntityTypes.RAIL)
 	
 func _to_string() -> String:
 	return "RailTrack_%d" % self.num
@@ -17,15 +20,15 @@ func spawn() -> OuterRailTrack:
 	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
-	add_to_group("Rails") # add to rails group
+	# add_to_group("Rails") # add to rails group
 	return _container
 	
 static func from_json(_track_dict: Dictionary) -> RailTrack:
 	var track_instance: RailTrack = RailTrack.new()
 	track_instance.num = int(_track_dict.num)
 	track_instance.infr_type_key = _track_dict.get("type")
-	track_instance.position = WorldUtils.vec3_from_float_arr(_track_dict.offset)
-	track_instance.name = "RailTrack" + str(track_instance.num)
+	track_instance.offset = WorldUtils.vec3_from_float_arr(_track_dict.offset)
+	# track_instance.name = "RailTrack" + str(track_instance.num)
 	add_points_from_json(_track_dict, track_instance)
 	track_instance.created.emit(track_instance)
 	return track_instance

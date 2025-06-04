@@ -1,0 +1,4 @@
+enum EntityTypes {
+	CLASS,
+	B
+}

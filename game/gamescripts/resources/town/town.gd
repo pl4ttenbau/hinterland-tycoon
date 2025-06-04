@@ -1,12 +1,12 @@
 @tool
-class_name TownResource extends Resource
+class_name TownResource extends GameObject
 
 @export var town_name: String;
 @export var pos_xz: Vector2
 @export var totalPops: int
 
 @export_storage var structures: Array[BaseStructure] = []
-@export_storage var stations: Array[RailStation] = []
+@export_storage var stations: Array[RailStationResource] = []
 
 func _to_string():
 	return "<Town %s>" % self.town_name
@@ -14,6 +14,9 @@ func _to_string():
 func add_building(_building: BaseStructure):
 	self.structures.append(_building)
 	_building.town = self
+	
+func _init():
+	super(Enums.EntityTypes.TOWN)
 
 # == CONSTRUCTOR METHODS ==
 static func of(_name: String, _pos2: Vector2, pops = null) -> TownResource:

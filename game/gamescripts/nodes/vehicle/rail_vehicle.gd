@@ -1,7 +1,8 @@
-class_name RailVehicle extends Node3D
+class_name RailVehicle extends VisibleObject
 
 const scene_path = "res://scenes/subscenes/rail_vehicle.tscn"
 
+@export var vehicle_num: int
 @export var path_to_next_node: Path3D
 @export var starting_track: OuterRailTrack
 @export var rail_section: TrackSection
@@ -13,13 +14,17 @@ signal reached_next_node(int)
 static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
 	var scene: PackedScene = load(scene_path)
 	var instance: RailVehicle = scene.instantiate()
+	# put on tracks
 	instance.starting_track = _starting_track
 	instance.motor = VehicleMotor.of(instance)
-	# add start & target track node
-	instance.rail_section = TrackSection.new()
-	instance.set_origin_point(_starts_at)
-	instance.set_target_point(_starts_at +1)
+	instance._initialize_starting_section(_starts_at)
 	return instance
+	
+func _initialize_starting_section(_start_node_index: int) -> void:
+	# add start & target track node
+	self.rail_section = TrackSection.new()
+	self.set_origin_point(_start_node_index)
+	self.set_target_point(_start_node_index +1)
 	
 func set_origin_point(_point_index: int):
 	var last_node: RailNode = self.get_node_in_track(_point_index)
@@ -51,7 +56,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			self.motor.stop()
 			
-# == GETTERS ==
+# == NODE GETTERS ==
 func get_static_body() -> StaticBody3D:
 	return self.get_child(0)
 	
@@ -64,7 +69,7 @@ func get_point_in_curve(i: int) -> Vector3:
 	return self.starting_track.get_path_3d().curve.get_point_position(i)
 	
 func get_node_in_track(i: int) -> RailNode:
-	return self.starting_track.rail_track.get_rail_node(i)
+	return self.starting_track.entity.get_rail_node(i)
 	
 func get_last_node_pos() -> Vector3:
 	if self.rail_section && self.rail_section.last_node:

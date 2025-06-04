@@ -8,7 +8,7 @@ const SCENE_PATH = "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"
 signal created(track: RailTrack)
 
 func _init(_num: int, _type: String):
-	super()
+	super(Enums.EntityTypes.ROAD)
 	self.num = _num
 	self.infr_type_key = _type
 	
@@ -21,7 +21,7 @@ func spawn() -> OuterRoad:
 	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRoad = scene.instantiate() as OuterRoad
 	_container.set_road(self)
-	add_to_group("Roads")
+	# add_to_group("Roads")
 	return _container
 
 static func from_json(_road_dict: Dictionary) -> RoadWay:
@@ -31,8 +31,8 @@ static func from_json(_road_dict: Dictionary) -> RoadWay:
 	if _road_dict.has("name"):
 		road_instance.track_name = _road_dict.get("name")
 	if _road_dict.has("offset"):
-		road_instance.position = WorldUtils.vec3_from_float_arr(_road_dict.offset)
-	road_instance.name = "RoadWay" + str(road_instance.num)
+		road_instance.offset = WorldUtils.vec3_from_float_arr(_road_dict.offset)
+	# road_instance.name = "RoadWay" + str(road_instance.num)
 	add_points_from_json(_road_dict, road_instance)
 	road_instance.created.emit(road_instance)
 	return road_instance

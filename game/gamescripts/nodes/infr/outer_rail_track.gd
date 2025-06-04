@@ -1,11 +1,9 @@
 ## This one will be instanciated out of a scene
 @icon("res://assets/icons/icon_rail_track.png")
-class_name OuterRailTrack extends Node3D
-
-@export var rail_track: RailTrack
+class_name OuterRailTrack extends VisibleObject
 
 func set_track(_track: RailTrack):
-	self.rail_track = _track
+	self.entity = _track
 	self.get_path_3d().curve = _track.curve
 	# rename name
 	self.name = "RailTrack_%d_Container" % _track.num
@@ -21,6 +19,6 @@ func get_rail_mesh() -> PathMesh3D:
 
 ## used for fining center point for distance calculations
 func get_middle_pos() -> Vector3:
-	var road_vertice_count: int = self.rail_track.vertices.size()
+	var road_vertice_count: int = self.entity.vertices.size()
 	var middle_index: int = floori(road_vertice_count /2)
-	return self.rail_track.vertices.get(middle_index)
+	return self.entity.vertices.get(middle_index)
