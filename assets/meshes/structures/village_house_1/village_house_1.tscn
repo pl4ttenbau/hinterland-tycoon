@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1m7fhk2pe2xn"]
+
+[ext_resource type="ArrayMesh" uid="uid://bactj4dp4cjge" path="res://assets/meshes/structures/village_house_1/village_house_1.obj" id="1_tgnxf"]
+
+[node name="VillageHouse1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_tgnxf")
