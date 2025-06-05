@@ -8,8 +8,8 @@ func set_track(_track: RailTrack):
 	# rename name
 	self.name = "RailTrack_%d_Container" % _track.num
 	# set names of children
-	self.get_path_3d().name = "RailTrack_Path_%d" % _track.num
-	self.get_rail_mesh().name = "RailTrack_Mesh_%d" % _track.num
+	self.get_path_3d().name = "RailTrack_%d_Path" % _track.num
+	self.get_rail_mesh().name = "RailTrack_%d_Mesh" % _track.num
 
 func get_path_3d() -> Path3D:
 	return self.get_child(0) as Path3D

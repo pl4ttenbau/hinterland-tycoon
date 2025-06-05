@@ -6,9 +6,3 @@ class_name PlayerHead extends VisibleObject
 	
 func _ready() -> void:
 	GlobalState.player = self
-	# register signals
-	self.area.input_event.connect(Callable(self, "_on_player_input"))
-
-func _on_player_input(camera, event: InputEvent, event_position: Vector3, normal, shape_idx):
-	Loggie.info(JSON.stringify(event))
-	self.player_input.emit(event, event_position)

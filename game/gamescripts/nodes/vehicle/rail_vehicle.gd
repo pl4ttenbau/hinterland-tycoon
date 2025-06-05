@@ -1,6 +1,6 @@
 class_name RailVehicle extends VisibleObject
 
-const scene_path = "res://scenes/subscenes/rail_vehicle.tscn"
+const scene_path = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tscn"
 
 @export var vehicle_num: int
 @export var path_to_next_node: Path3D
@@ -8,7 +8,6 @@ const scene_path = "res://scenes/subscenes/rail_vehicle.tscn"
 @export var rail_section: TrackSection
 
 @export var motor: VehicleMotor
-
 signal reached_next_node(int)
 
 static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:

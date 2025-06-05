@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ia5qs0jsnfbv"
-path.s3tc="res://.godot/imported/tex_faur_r.png-26c5e738e0c06caa00c83194c8600310.s3tc.ctex"
+uid="uid://cerg020024pi2"
+path.s3tc="res://.godot/imported/tex_faur_s.png-09c08f2fc853eb65c7d3f8875701d5bc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/tex_faur_r.png"
-dest_files=["res://.godot/imported/tex_faur_r.png-26c5e738e0c06caa00c83194c8600310.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/loco_faur/tex_faur_s.png"
+dest_files=["res://.godot/imported/tex_faur_s.png-09c08f2fc853eb65c7d3f8875701d5bc.s3tc.ctex"]
 
 [params]
 

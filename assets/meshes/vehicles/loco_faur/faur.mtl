@@ -9,5 +9,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd tex_faur_d.png
-map_Bump -bm 1.000000 tex_faur_n.png
+map_Kd /home/cornelinux/Dokumente/Assets/Vehicles/faur/orig/tex_faur_d.png
+map_Bump -bm 1.000000 /home/cornelinux/Dokumente/Assets/Vehicles/faur/orig/tex_faur_n.png
