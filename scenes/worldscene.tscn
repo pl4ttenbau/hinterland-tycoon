@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=29 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
 [ext_resource type="PackedScene" uid="uid://by07vpk0g2xbr" path="res://scenes/world_terrain.tscn" id="3_3kjtq"]
+[ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
@@ -76,6 +77,9 @@ unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
 script = ExtResource("12_em2l6")
+
+[node name="TerrainRaycaster" type="Node" parent="World/Terrain"]
+script = ExtResource("5_kq7m5")
 
 [node name="InEditor" type="Node3D" parent="World"]
 script = ExtResource("26_c2xmk")

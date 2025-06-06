@@ -25,3 +25,7 @@ func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 
 func _on_world_update() -> void:
 	pass
+	
+func raycast_xz(world_xz: Vector2) -> TerrainRaycastResult:
+	var raycaster: TerrainRaycaster = $TerrainRaycaster
+	var result: TerrainRaycastResult = raycaster.shoot_ray()
