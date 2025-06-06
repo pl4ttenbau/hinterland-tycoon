@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cken0m3w5f5m7"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3ge76kdem3m2" path="res://assets/meshes/structures/city_manor/city_manor.obj" id="1_kr5bw"]
+[ext_resource type="Texture2D" uid="uid://mdk1kvvl6fpx" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A_alfa.jpg" id="2_coaek"]
+[ext_resource type="Texture2D" uid="uid://itb3eqd3wuv7" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A.jpg" id="3_w2jui"]
+[ext_resource type="Texture2D" uid="uid://clanh5mo5drn3" path="res://assets/meshes/structures/city_manor/texy_city_manor_n.png" id="4_1nq56"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vhsy"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_coaek")
+normal_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0i1eh"]
+albedo_texture = ExtResource("3_w2jui")
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("4_1nq56")
+
+[node name="CityManor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_kr5bw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0vhsy")
+surface_material_override/1 = SubResource("StandardMaterial3D_0i1eh")

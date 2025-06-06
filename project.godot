@@ -23,6 +23,7 @@ GlobalState="*res://game/gamescripts/state/globals.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GameTypes="*res://game/gamescripts/state/types.gd"
 Enums="*res://game/gamescripts/enums.gd"
+ResBldTypeLoader="*res://game/gamescripts/services/typeloaders/res_bld_type_loader.gd"
 
 [debug_draw_3d]
 
