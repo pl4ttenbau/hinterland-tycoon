@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://2a5aiq71n7m3"]
+[gd_scene load_steps=8 format=3 uid="uid://dm0lsmac3hf2n"]
 
-[ext_resource type="ArrayMesh" uid="uid://blo11kpqidu4l" path="res://assets/meshes/nature/tree3.obj" id="1_1try6"]
-[ext_resource type="Texture2D" uid="uid://nkjtkuecg32f" path="res://assets/meshes/nature/tree3_bark.jpg" id="2_8dnwa"]
-[ext_resource type="Texture2D" uid="uid://gpgukivvkygk" path="res://assets/meshes/nature/tree3_branch-2-01.png" id="3_q7p5t"]
-[ext_resource type="Texture2D" uid="uid://bbxbkidjcfxom" path="res://assets/meshes/nature/tree3_branch-2-02.png" id="4_jav86"]
+[ext_resource type="ArrayMesh" path="res://assets/meshes/nature/tree3.obj" id="1_1try6"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/tree3_bark.jpg" id="2_8dnwa"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/tree3_branch-2-01.png" id="3_q7p5t"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/tree3_branch-2-02.png" id="4_jav86"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ww3"]
 albedo_texture = ExtResource("2_8dnwa")

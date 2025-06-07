@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://xvm1r526jfod"
-path="res://.godot/imported/tree3.glb-ceb644369381ba5c65b62b2fd640237b.scn"
+uid="uid://c7qaqjhbeqk2w"
+path="res://.godot/imported/bush1.glb-d80709fa7f3dd84a470431f2e8cecd42.scn"
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree3.glb"
-dest_files=["res://.godot/imported/tree3.glb-ceb644369381ba5c65b62b2fd640237b.scn"]
+source_file="res://assets/meshes/nature/bush1/bush1.glb"
+dest_files=["res://.godot/imported/bush1.glb-d80709fa7f3dd84a470431f2e8cecd42.scn"]
 
 [params]
 
 nodes/root_type=""
-nodes/root_name="Tree3"
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
