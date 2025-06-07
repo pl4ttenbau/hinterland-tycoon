@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0r73pox6ohuf"
-path.s3tc="res://.godot/imported/rock1_tex_rock1_d_1.png-ebe40e1a760f82a2e074aeecfc6cfc46.s3tc.ctex"
+uid="uid://ounbwlik1qup"
+path.s3tc="res://.godot/imported/rock1_tex_rock1_d.png-6b1796473cc45a73f9f2d4f7aeeec516.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5464c6ee4d0cb7314ca7f9f6f18e1346"
+"md5": "5c6706c8a330c12749c74f1e6bc15668"
 }
 
 [deps]
 
-source_file="res://assets/meshes/nature/rock1_tex_rock1_d_1.png"
-dest_files=["res://.godot/imported/rock1_tex_rock1_d_1.png-ebe40e1a760f82a2e074aeecfc6cfc46.s3tc.ctex"]
+source_file="res://assets/meshes/nature/rock1/rock1_tex_rock1_d.png"
+dest_files=["res://.godot/imported/rock1_tex_rock1_d.png-6b1796473cc45a73f9f2d4f7aeeec516.s3tc.ctex"]
 
 [params]
 
