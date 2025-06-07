@@ -8,8 +8,8 @@ signal town_center_spawned(town: TownResource)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Loggie.info("Town spawner ready")
-	var town: TownResource = (self.get_parent() as TownCenter).town
-	self._on_town_center_spawned(town)
+	var town_res: TownResource = (self.get_parent() as TownCenter).town
+	self._on_town_center_spawned(town_res)
 	
 func spawn_rnd_building():
 	var rnd_bld_type: ResBldType = ResBldTypeLoader.get_rnd()

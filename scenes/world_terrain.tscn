@@ -105,13 +105,14 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_vdtib"]
-name = "bush1"
+name = "Bush1"
 id = 2
 scene_file = ExtResource("2_hwjdr")
 density = 3.37728
+cast_shadows = 2
 last_lod = 0
 last_shadow_lod = 0
-lod0_range = 128.0
+lod0_range = 139.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_em2l6"]
 name = "Tree3"
@@ -141,6 +142,7 @@ id = 4
 generated_type = 1
 height_offset = 0.5
 material_override = SubResource("StandardMaterial3D_nj174")
+generated_size = Vector2(2, 2)
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
