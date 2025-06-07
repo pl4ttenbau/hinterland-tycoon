@@ -1,0 +1,18 @@
+# Blender 4.0.2 MTL File: 'rock2.blend'
+# www.blender.org
+
+newmtl rock
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+Pr 0.858579
+Pm 1.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd tex_rock2_d.png
+map_Bump -bm 1.000000 tex_rock2_n.png
