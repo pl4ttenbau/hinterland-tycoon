@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://by07vpk0g2xbr"]
+[gd_scene load_steps=56 format=3 uid="uid://by07vpk0g2xbr"]
 
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://csaf0431pmfgp" path="res://assets/meshes/nature/rock2/Rock2.tscn" id="8_hwjdr"]
 [ext_resource type="Texture2D" uid="uid://bxp8wwnik1y26" path="res://assets/textures/grass_mix_n.dds" id="8_ohye1"]
 [ext_resource type="Texture2D" uid="uid://dm0hetls2gfk4" path="res://assets/textures/desert_mud_d.dds" id="9_8q6nl"]
+[ext_resource type="PackedScene" uid="uid://dpva5i8x2a8i1" path="res://assets/meshes/deco/haybale/haybale.tscn" id="9_ki058"]
 [ext_resource type="Texture2D" uid="uid://qh5bnmda7yqr" path="res://assets/textures/desert_mud_n.dds" id="10_m70sx"]
 [ext_resource type="Texture2D" uid="uid://cqcef5m6nxqal" path="res://assets/textures/grass_ground_d.dds" id="11_sjx1o"]
 [ext_resource type="Texture2D" uid="uid://calee8fx0hf8m" path="res://assets/textures/grass_ground_n.dds" id="12_rh5xx"]
@@ -205,6 +206,15 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ohye1"]
+name = "HayBale"
+id = 8
+scene_file = ExtResource("9_ki058")
+density = 0.924264
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_rptdf"]
 name = "grass_mix_d"
 albedo_texture = ExtResource("11_sjx1o")
@@ -259,7 +269,7 @@ normal_texture = ExtResource("19_hwjdr")
 uv_scale = 0.352
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]

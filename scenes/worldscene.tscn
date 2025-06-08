@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=30 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="14_stk68"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
+[ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="15_lhsit"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
@@ -232,6 +233,10 @@ mesh = ExtResource("7_s11ye")
 [node name="Vehicles" type="Node" parent="World"]
 unique_name_in_owner = true
 script = ExtResource("23_ekgs8")
+
+[node name="Industries" type="Node" parent="World"]
+script = ExtResource("15_lhsit")
+metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
