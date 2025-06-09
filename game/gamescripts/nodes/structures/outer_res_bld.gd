@@ -1,4 +1,4 @@
-class_name OuterResBld extends Node3D
+class_name OuterResBld extends VisibleObject
 
 static var last_bld_num: int = 0
 

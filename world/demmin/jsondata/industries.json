@@ -1,5 +1,6 @@
 [
 	{
+		"num": 1,
 		"industryType": "QUARRY",
 		"pos": [661.2, 16.0, 277.4],
 		"resOutput": 20

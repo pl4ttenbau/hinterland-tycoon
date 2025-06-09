@@ -5,4 +5,3 @@ class_name BaseStructure
 @export_storage var connected_stations: Array[RailStationResource]
 
 @export var residence: Residence
-@export var industry: Industry

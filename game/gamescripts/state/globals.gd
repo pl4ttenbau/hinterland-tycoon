@@ -5,6 +5,7 @@ extends Node
 
 # == STATIC ==
 @export var towns: Array[TownResource] = []
+@export var industries: Array[Industry]
 @export var terrain: TerrainContainer
 
 @export var res_bld_containers: Array[Node3D] = []

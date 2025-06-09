@@ -1,8 +1,8 @@
 @icon("res://assets/icons/icon_town_white.png")
 class_name TownPlacer extends Node
 
-const json_path = "res://world/jsondata/towns.json"
-const scene_path = "res://scenes/subscenes/town_root.tscn"
+const MAP_TOWNS_FILEPATH = "res://world/demmin/jsondata/towns.json"
+const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 @onready var terrain_container: TerrainContainer = %Terrain
 @export var towns: Array[TownResource] = []
@@ -26,7 +26,7 @@ func parse_towns_json(_json_str: String) -> Array[TownResource]:
 	return town_obj_arr
 				
 func load_towns():
-	var town_json_str = FileAccess.get_file_as_string(json_path)
+	var town_json_str = FileAccess.get_file_as_string(MAP_TOWNS_FILEPATH)
 	for parsed_town: TownResource in parse_towns_json(town_json_str):
 		var spawned_town: TownResource = spawn_town(parsed_town)
 		add_town(spawned_town)
@@ -37,7 +37,7 @@ func add_town(_town: TownResource):
 	GlobalState.towns.append(_town)
 	
 func spawn_town(_town: TownResource) -> TownResource:
-	var sceneRes: Resource = ResourceLoader.load(scene_path) as PackedScene
+	var sceneRes: Resource = ResourceLoader.load(TOWN_ROOT_SCENE_PATH) as PackedScene
 	var town_container_node: TownCenter = sceneRes.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	town_container_node.town = _town
 	town_container_node.position = get_pos_on_terrain(_town.pos_xz)

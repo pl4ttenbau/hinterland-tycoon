@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_road_white.png")
 class_name RoadsLoader extends Node
 
-const JSON_PATH = "res://world/jsondata/roads.json"
+const JSON_PATH = "res://world/demmin/jsondata/roads.json"
 const NODES_GROUP = "Roads"
 
 @export var roads: Array[RoadWay] = []

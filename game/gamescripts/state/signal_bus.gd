@@ -41,6 +41,16 @@ signal towns_spawned()
 @warning_ignore("unused_signal")
 signal towns_loaded()
 
+# == INDUSTRIES ==
+@warning_ignore("unused_signal")
+signal industry_loaded(industry: Industry)
+
+@warning_ignore("unused_signal")
+signal industries_loaded(industries: Array[Industry])
+
+@warning_ignore("unused_signal")
+signal industry_spawned(container: OuterIndustry)
+
 # == INPUT ==
 @warning_ignore("unused_signal")
 signal mouse_click(event: InputEventMouseButton)
