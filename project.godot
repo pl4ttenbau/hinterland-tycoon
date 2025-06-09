@@ -17,13 +17,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
-Loggie="*res://addons/loggie/loggie.gd"
-GlobalState="*res://game/gamescripts/state/globals.gd"
-SignalBus="*res://game/gamescripts/state/signal_bus.gd"
-GameTypes="*res://game/gamescripts/state/types.gd"
 Enums="*res://game/gamescripts/enums.gd"
-ResBldTypeLoader="*res://game/gamescripts/services/typeloaders/res_bld_type_loader.gd"
+Loggie="*res://addons/loggie/loggie.gd"
+SignalBus="*res://game/gamescripts/state/signal_bus.gd"
+GlobalState="*res://game/gamescripts/state/globals.gd"
+GameTypes="*res://game/gamescripts/state/types.gd"
+TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
+WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
 
 [debug_draw_3d]
 

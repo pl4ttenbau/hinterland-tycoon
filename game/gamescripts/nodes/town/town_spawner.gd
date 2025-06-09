@@ -12,7 +12,7 @@ func _ready() -> void:
 	self._on_town_center_spawned(town_res)
 	
 func spawn_rnd_building():
-	var rnd_bld_type: ResBldType = ResBldTypeLoader.get_rnd()
+	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
 	var instanciated: OuterResBld = load(scene_path).instantiate()
 	instanciated.position = get_rnd_pos()
