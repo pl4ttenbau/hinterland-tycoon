@@ -8,8 +8,8 @@ extends Node
 @export var industries: Array[Industry]
 @export var terrain: TerrainContainer
 
-@export var res_bld_containers: Array[Node3D] = []
-@export var ind_bld_containers: Array[Node3D] = []
+@export var res_bld_containers: Array[OuterResBld] = []
+@export var ind_bld_containers: Array[OuterIndustry] = []
 
 # == INFR ==
 @export var tracks: Array[RailTrack] = []

@@ -4,10 +4,10 @@ class_name TownSpawner extends Node
 signal town_center_spawned(town: TownResource)
 
 @export_storage var town: TownResource
+@export var bld_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Loggie.info("Town spawner ready")
 	var town_res: TownResource = (self.get_parent() as TownCenter).town
 	self._on_town_center_spawned(town_res)
 	
@@ -18,6 +18,7 @@ func spawn_rnd_building():
 	instanciated.position = get_rnd_pos()
 	self.set_rnd_rotation(instanciated)
 	instanciated.res_bld_type = rnd_bld_type
+	# assign num 6 increase counter
 	self.register_spawned_building(instanciated)
 	
 func register_spawned_building(instanciated: OuterResBld):
@@ -27,6 +28,8 @@ func register_spawned_building(instanciated: OuterResBld):
 	# add to city & global state array
 	self.add_child(instanciated)
 	GlobalState.res_bld_containers.append(instanciated)
+	# increase counter
+	self.bld_count += 1
 	
 func get_rnd_pos() -> Vector3: 
 	var rnd_x: float = randf_range(self.town.pos_xz.x - 30, self.town.pos_xz.x + 30)
@@ -42,6 +45,7 @@ func _on_town_center_spawned(_town: TownResource) -> void:
 	self.town = _town
 	for i: int in range(3):
 		self.spawn_rnd_building()
+	Loggie.info("Spawned town %s with %d buildings" % [_town.town_name, self.bld_count])
 	
 func set_rnd_rotation(bld_container: Node3D):
 	bld_container.rotate_y(randf_range(0, TAU))
