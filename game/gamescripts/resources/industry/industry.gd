@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_industry_white.png")
 class_name Industry extends GameObject
 
 @export var pos: Vector3

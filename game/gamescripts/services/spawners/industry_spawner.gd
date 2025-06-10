@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_industry_white.png")
 class_name IndustrySpawner extends Node
 
 @export_storage var _has_terrain_loaded: bool = false

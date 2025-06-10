@@ -3,12 +3,16 @@ class_name RoadsLoader extends Node
 
 const JSON_PATH = "res://world/demmin/jsondata/roads.json"
 const NODES_GROUP = "Roads"
+const MAX_VISIBLE_DIST := 500
 
 @export var roads: Array[RoadWay] = []
 @export var containers: Array[OuterRoad] = []
 
 signal roads_loaded(_roads: Array[RoadWay])
 signal roads_spawned(_roads: Array[OuterRoad])
+
+func _enter_tree() -> void:
+	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 
 func load_roads() -> void:
 	var roads_arr_str: String = FileAccess.get_file_as_string(JSON_PATH)
@@ -38,3 +42,14 @@ func _ready() -> void:
 
 func _on_scene_ready() -> void:
 	pass
+
+func _on_world_update() -> void:
+	for container: OuterRoad in self.containers:
+		var player: Node3D = %Player
+		if player:
+			var middle_pos: Vector3 = container.get_middle_pos()
+			var dist = player.position.distance_to(middle_pos)
+			if dist > MAX_VISIBLE_DIST:
+				container.visible = false
+			else:
+				container.visible = true
