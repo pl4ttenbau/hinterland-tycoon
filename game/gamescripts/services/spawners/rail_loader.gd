@@ -1,8 +1,8 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailsLoader extends Node
 
-const rails_json_path := "res://world/jsondata/tracks.json"
-const rails_group := "Rails"
+const MAP_RAILS_FILEPATH := "res://world/demmin/jsondata/tracks.json"
+const RAILS_INFR_GROUP := "Rails"
 const MAX_VISIBLE_DIST := 500
 
 @export var tracks: Array[RailTrack] = []
@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 
 func load_rail_tracks() -> void:
-	var rails_arr_str: String = FileAccess.get_file_as_string(rails_json_path)
+	var rails_arr_str: String = FileAccess.get_file_as_string(MAP_RAILS_FILEPATH)
 	for json_track in JSON.parse_string(rails_arr_str):
 		self.tracks.append(RailTrack.from_json(json_track))
 	GlobalState.tracks = self.tracks

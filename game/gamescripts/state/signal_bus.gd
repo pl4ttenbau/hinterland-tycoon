@@ -1,5 +1,8 @@
 class_name Signals extends Node
 
+@warning_ignore("unused_signal")
+signal all_types_initialized()
+
 # == WORLD ==
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: TerrainContainer)
@@ -37,6 +40,16 @@ signal towns_spawned()
 
 @warning_ignore("unused_signal")
 signal towns_loaded()
+
+# == INDUSTRIES ==
+@warning_ignore("unused_signal")
+signal industry_loaded(industry: Industry)
+
+@warning_ignore("unused_signal")
+signal industries_loaded(industries: Array[Industry])
+
+@warning_ignore("unused_signal")
+signal industry_spawned(container: OuterIndustry)
 
 # == INPUT ==
 @warning_ignore("unused_signal")

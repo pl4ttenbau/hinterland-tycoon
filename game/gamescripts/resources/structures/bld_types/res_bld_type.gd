@@ -3,7 +3,7 @@ class_name ResBldType extends Resource
 @export var key: String
 @export var name: String
 @export var scene_path: String
-@export var type: String
+@export var res_bld_cat: String
 @export var pops: Array[int]
 
 const STRUCTURES_FOLDER = "res://assets/meshes/structures/"
@@ -15,4 +15,4 @@ func _init(_key: String, _name: String, _popsInt: int):
 	self.scene_path = self.get_scene_path()
 
 func get_scene_path() -> String:
-	return STRUCTURES_FOLDER + self.key + ".tscn"
+	return STRUCTURES_FOLDER + self.key + "/" + self.key + ".tscn"

@@ -7,6 +7,7 @@ signal world_update()
 
 func _enter_tree() -> void:
 	self.world_update.connect(Callable(self, "_on_world_update"))
+	GlobalState.terrain = self
 
 func _ready() -> void:
 	var terrain_3d_obj: Terrain3D = self.get_child(0)
@@ -28,4 +29,5 @@ func _on_world_update() -> void:
 	
 func raycast_xz(world_xz: Vector2) -> TerrainRaycastResult:
 	var raycaster: TerrainRaycaster = $TerrainRaycaster
-	var result: TerrainRaycastResult = raycaster.shoot_ray()
+	var result: TerrainRaycastResult = raycaster.shoot_ray(world_xz)
+	return result

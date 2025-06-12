@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://blif6a8eks534"]
+[gd_scene load_steps=3 format=3 uid="uid://blif6a8eks534"]
 
 [ext_resource type="ArrayMesh" uid="uid://ddhgskkn0qrx3" path="res://assets/meshes/structures/town_house_1/town_house_1.obj" id="1_f5gsw"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_fu5ro"]
 
 [node name="TownHouse1" type="Node3D"]
+script = ExtResource("1_fu5ro")
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("1_f5gsw")
