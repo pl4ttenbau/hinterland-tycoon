@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_industry.png")
-class_name OuterIndustry extends VisibleObject
+class_name OuterIndustry extends HideableObject
 
 static var last_ind_num: int = 0
 

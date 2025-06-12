@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://df3yp88iapvnw"]
+
+[ext_resource type="ArrayMesh" uid="uid://cprvlankihef7" path="res://assets/meshes/nature/tree5/tree5.obj" id="1_0dyqy"]
+[ext_resource type="Texture2D" uid="uid://b4qt0bhknha2l" path="res://assets/meshes/nature/tree5/cedar_01_bark_diffuse.png" id="2_082jb"]
+[ext_resource type="Texture2D" uid="uid://b6s6xljv3lod2" path="res://assets/meshes/nature/tree5/cedar_01_branch_d.png" id="3_0dyqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01o15"]
+albedo_texture = ExtResource("2_082jb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dda7e"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_0dyqy")
+
+[node name="Tree5" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_0dyqy")
+surface_material_override/0 = SubResource("StandardMaterial3D_01o15")
+surface_material_override/1 = SubResource("StandardMaterial3D_dda7e")

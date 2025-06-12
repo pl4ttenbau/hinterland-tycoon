@@ -1,4 +1,4 @@
-class_name OuterRailStation extends VisibleObject
+class_name OuterRailStation extends HideableObject
 
 const scene_source_path = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 

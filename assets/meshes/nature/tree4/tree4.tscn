@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://ms4hvk1eaygn"]
+
+[ext_resource type="ArrayMesh" uid="uid://bhayvgpjv4p8p" path="res://assets/meshes/nature/tree4/tree4.obj" id="1_dtixu"]
+[ext_resource type="Texture2D" uid="uid://dkiyn0ufpfbyb" path="res://assets/meshes/nature/tree4/tex_tree4_branch_d.png" id="2_03yff"]
+[ext_resource type="Texture2D" uid="uid://b2w7xhfw1wrsy" path="res://assets/meshes/nature/tree4/tex_tree4_branch_n.png" id="3_daxgy"]
+[ext_resource type="Texture2D" uid="uid://c4culkbqac6jn" path="res://assets/meshes/nature/tree4/tree4.png" id="4_mu40m"]
+[ext_resource type="Texture2D" uid="uid://cvkpxs8hglyk" path="res://assets/meshes/nature/tree4/tex_tree4_bark_n.png" id="5_tebeu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6snkr"]
+transparency = 2
+alpha_scissor_threshold = 0.53
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_03yff")
+normal_enabled = true
+normal_texture = ExtResource("3_daxgy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w4v0"]
+albedo_texture = ExtResource("4_mu40m")
+albedo_texture_force_srgb = true
+normal_enabled = true
+normal_texture = ExtResource("5_tebeu")
+
+[node name="Tree4" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+gi_mode = 0
+mesh = ExtResource("1_dtixu")
+surface_material_override/0 = SubResource("StandardMaterial3D_6snkr")
+surface_material_override/1 = SubResource("StandardMaterial3D_0w4v0")

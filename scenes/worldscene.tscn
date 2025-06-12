@@ -73,8 +73,10 @@ script = ExtResource("2_t1xhr")
 
 [node name="WorldTerrain" parent="World/Terrain" instance=ExtResource("3_3kjtq")]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
 
 [node name="WorldUpdateTimer" type="Timer" parent="World/Terrain"]
+process_callback = 0
 wait_time = 3.0
 autostart = true
 script = ExtResource("12_em2l6")
@@ -236,8 +238,6 @@ script = ExtResource("23_ekgs8")
 
 [node name="Industries" type="Node" parent="World"]
 script = ExtResource("15_lhsit")
-_has_terrain_loaded = null
-_has_types_loaded = null
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
 [node name="GameWindow" type="Control" parent="."]

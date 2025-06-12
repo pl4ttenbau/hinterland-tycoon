@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://by07vpk0g2xbr"]
+[gd_scene load_steps=63 format=3 uid="uid://by07vpk0g2xbr"]
 
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
@@ -13,7 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://dm0hetls2gfk4" path="res://assets/textures/desert_mud_d.dds" id="9_8q6nl"]
 [ext_resource type="PackedScene" uid="uid://dpva5i8x2a8i1" path="res://assets/meshes/deco/haybale/haybale.tscn" id="9_ki058"]
 [ext_resource type="Texture2D" uid="uid://qh5bnmda7yqr" path="res://assets/textures/desert_mud_n.dds" id="10_m70sx"]
+[ext_resource type="PackedScene" uid="uid://ms4hvk1eaygn" path="res://assets/meshes/nature/tree4/tree4.tscn" id="10_ohye1"]
+[ext_resource type="PackedScene" uid="uid://df3yp88iapvnw" path="res://assets/meshes/nature/tree5/tree5.tscn" id="11_8q6nl"]
 [ext_resource type="Texture2D" uid="uid://cqcef5m6nxqal" path="res://assets/textures/grass_ground_d.dds" id="11_sjx1o"]
+[ext_resource type="Texture2D" uid="uid://b08bg2u1laql" path="res://assets/textures/billboard/grass_2_dry.png" id="12_m70sx"]
 [ext_resource type="Texture2D" uid="uid://calee8fx0hf8m" path="res://assets/textures/grass_ground_n.dds" id="12_rh5xx"]
 [ext_resource type="Texture2D" uid="uid://cdeqsft06i30h" path="res://assets/textures/sand_trail_d.dds" id="13_5aof7"]
 [ext_resource type="Texture2D" uid="uid://wqu8c0ufiheg" path="res://assets/textures/sand_trail_n.dds" id="14_pcif5"]
@@ -160,6 +163,7 @@ distance_fade_min_distance = 128.0
 distance_fade_max_distance = 96.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_usal5"]
+name = "CatTails"
 id = 5
 generated_type = 1
 height_offset = 0.5
@@ -182,6 +186,7 @@ distance_fade_min_distance = 128.0
 distance_fade_max_distance = 96.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bh3tc"]
+name = "FieldGrain"
 id = 6
 generated_type = 1
 height_offset = 0.5
@@ -205,6 +210,46 @@ name = "HayBale"
 id = 8
 scene_file = ExtResource("9_ki058")
 density = 0.924264
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_8q6nl"]
+name = "tree4"
+id = 9
+scene_file = ExtResource("10_ohye1")
+density = 0.752755
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_m70sx"]
+name = "Pine Tree"
+id = 10
+scene_file = ExtResource("11_8q6nl")
+density = 0.0247343
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjx1o"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_m70sx")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_rh5xx"]
+name = "Dry Grass"
+id = 11
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_sjx1o")
+generated_size = Vector2(1, 0.5)
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -263,7 +308,7 @@ normal_texture = ExtResource("19_hwjdr")
 uv_scale = 0.352
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_rh5xx")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
@@ -327,7 +372,6 @@ vertex_spacing = 2.0
 cast_shadows = 0
 top_level = true
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p8gp8")
@@ -339,12 +383,12 @@ material_override = SubResource("StandardMaterial3D_rptdf")
 mesh = SubResource("PlaneMesh_s11ye")
 skeleton = NodePath("../../..")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("20_ap1oq")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.933693, 0.276482, -0.227542, 0.227291, 0.0334054, 0.973254, 0.276688, -0.960438, -0.0316515, 1436.37, 452.369, 745.732)
+transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
 light_energy = 1.46
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-occluder = ExtResource("20_ap1oq")
