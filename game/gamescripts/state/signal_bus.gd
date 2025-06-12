@@ -66,4 +66,4 @@ signal unhandled_collider_click(collider: Node3D)
 signal ui_update_tick()
 
 @warning_ignore("unused_signal")
-signal action_menu_selection(item: ActionMenuItem)
+signal action_menu_triggered(item: ActionMenuItem)
