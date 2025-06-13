@@ -293,7 +293,6 @@ script = ExtResource("23_lhsit")
 layout_mode = 2
 alignment = 2
 script = ExtResource("20_vf50h")
-text = "Connect"
 metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
 
 [node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/HBoxContainer"]
@@ -308,7 +307,6 @@ text = "Connect"
 layout_mode = 2
 alignment = 2
 script = ExtResource("20_vf50h")
-text = "ddd"
 metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
 
 [node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/HBoxContainer2"]

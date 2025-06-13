@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_locomotive.png")
 class_name RailVehicle extends VisibleObject
 
 const scene_path = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tscn"
@@ -84,3 +85,6 @@ func get_next_node_pos() -> Vector3:
 	
 func get_next_node_index() -> int:
 	return self.rail_section.next_node.index
+
+func get_cam() -> Camera3D:
+	return $Camera3D

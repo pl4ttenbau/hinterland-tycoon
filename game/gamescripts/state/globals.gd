@@ -2,6 +2,7 @@ extends Node
 
 # == PLAYER ==
 @export var player: PlayerHead
+@export var active_cam: Camera3D
 
 # == STATIC ==
 @export var towns: Array[TownResource] = []
@@ -17,3 +18,5 @@ extends Node
 @export var forks: Array[RailFork] = []
 
 @export var roads: Array[RoadWay] = []
+
+@export var vehicles: Array[RailVehicle] = []

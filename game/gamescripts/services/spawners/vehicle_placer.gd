@@ -28,6 +28,7 @@ func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
 	veh.vehicle_num = self.get_next_vehicle_num()
 	veh.name = "RailVehicle_%d" % veh.vehicle_num
 	# add to own array and as child
+	GlobalState.vehicles.append(veh)
 	self.rail_vehicles.append(veh)
 	self.add_child(veh)
 	return veh
