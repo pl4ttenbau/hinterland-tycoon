@@ -24,13 +24,13 @@ func load_vehicles():
 	
 func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
 	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
+	self.add_child(veh)
 	# assign name and num
 	veh.vehicle_num = self.get_next_vehicle_num()
 	veh.name = "RailVehicle_%d" % veh.vehicle_num
 	# add to own array and as child
 	GlobalState.vehicles.append(veh)
 	self.rail_vehicles.append(veh)
-	self.add_child(veh)
 	return veh
 
 func get_next_vehicle_num() -> int:

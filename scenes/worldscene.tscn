@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=35 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="2_t1xhr"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
+[ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu_item.gd" id="20_vf50h"]
@@ -247,6 +248,9 @@ metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
 [node name="ActionHandler" type="Node" parent="World/Input"]
 script = ExtResource("16_mg4js")
+
+[node name="EnterAction" type="Node" parent="World/Input/ActionHandler"]
+script = ExtResource("17_c2xmk")
 
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
