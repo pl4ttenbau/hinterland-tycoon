@@ -1,5 +1,5 @@
 class_name ActionMenu extends VBoxContainer
-
+					
 @export_storage var current_item_index: int = 0
 @export var items: Array[ActionMenuItem] = []
 @export var selected_item: ActionMenuItem
@@ -12,6 +12,7 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self._cache_children()
+	self.select(0)
 
 func _shortcut_input(event: InputEvent) -> void:
 	if event.is_pressed() == true:
@@ -25,10 +26,13 @@ func _current_item_changed(_i: int):
 	if self.selected_item:
 		self.selected_item.unselected.emit()
 	# select new one
-	self._select_next_item()
+	self.select_next()
 	
-func _select_next_item():
+func select_next():
 	self.current_item_index += 1
+	self.select(self.current_item_index)
+	
+func select(item_i: int):
 	self.selected_item = self.get_item_by_index(current_item_index)
 	self.selected_item.selected.emit()
 
