@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhjxg1kopme0k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjbi21akhni15" path="res://assets/meshes/vehicles/saechs_wagon_kb4/saechskb4.obj" id="1_85yfu"]
+
+[node name="SaechsKb4Wagon" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_85yfu")

@@ -6,3 +6,4 @@ class_name PlayerHead extends VisibleObject
 	
 func _ready() -> void:
 	GlobalState.player = self
+	GlobalState.active_cam = self.cam

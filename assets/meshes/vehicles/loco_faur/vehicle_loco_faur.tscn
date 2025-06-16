@@ -36,3 +36,7 @@ skeleton = NodePath("../..")
 [node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0.15, 0.0500002)
 shape = SubResource("BoxShape3D_s4m0o")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40508, -3.12912)
+metadata/cam_name = &"CAM_VEHICLE"

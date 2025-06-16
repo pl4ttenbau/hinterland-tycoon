@@ -51,3 +51,7 @@ func get_rail_node(_i: int) -> RailNode:
 	if _i > 0 && _i < self.nodes.size():
 		return self.nodes.get(_i)
 	return null
+
+func get_end_pos() -> Vector3:
+	var last_i: int = self.nodes.size() -1
+	return self.nodes[last_i].position
