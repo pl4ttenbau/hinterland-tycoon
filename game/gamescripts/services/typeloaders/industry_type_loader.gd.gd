@@ -11,8 +11,10 @@ func make_types() -> Array[IndustryType]:
 		IndustryType.new("ICON_MINE", "Coal Mine", 30, [], ["6xiron"]),
 		IndustryType.new("QUARRY", "Quarry", 12, [], ["8xstone"]),
 		IndustryType.new("FISHERY", "Fishery", 9, [], ["5xfish"]),
+		IndustryType.new("FOREST", "Forest", 9, [], ["10xwood"]),
 		# transformers
 		IndustryType.new("SMELTER", "Smelter", 22, ["3xiron", "3xcoal"], ["3xsteel"]),
+		IndustryType.new("SAWMILL", "Sawmill", 12, ["9xwood"], ["3xboards"]),
 		IndustryType.new("BAKERY", "Bakery", 5, ["5xgrains"], ["5xfood"]),
 		IndustryType.new("BUTCHER", "Butcher", 9, ["3xfish"], ["3xmeat"]),
 		# consumers
