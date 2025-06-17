@@ -7,6 +7,10 @@ Written in the Godot Engine
 
 ![Preview June 2025](https://github.com/pl4ttenbau/hinterland-tycoon/blob/main/doc/img/preview_track_and_village.png?raw=true)
 
+### Special Thanks 
+
+* emzetgie for his excellent polish houses models
+
 ### Used Addons
 
 * Terrain3D

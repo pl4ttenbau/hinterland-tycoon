@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_house.png")
 class_name OuterResBld extends HideableObject
 
 static var last_bld_num: int = 0

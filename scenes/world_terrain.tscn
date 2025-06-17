@@ -122,6 +122,9 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nj174"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("4_oia7n")
@@ -233,8 +236,10 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjx1o"]
-transparency = 4
-cull_mode = 2
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+depth_draw_mode = 1
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("12_m70sx")
 backlight_enabled = true
@@ -247,7 +252,7 @@ distance_fade_max_distance = 96.0
 name = "Dry Grass"
 id = 11
 generated_type = 1
-height_offset = 1.0
+height_offset = 0.5
 material_override = SubResource("StandardMaterial3D_sjx1o")
 generated_size = Vector2(1, 0.5)
 last_lod = 0
@@ -331,7 +336,6 @@ tonemap_white = 6.0
 ssr_fade_in = 0.665742
 ssr_fade_out = 1.23114
 ssr_depth_tolerance = 29.21
-ssao_enabled = true
 sdfgi_read_sky_light = false
 fog_mode = 1
 fog_light_energy = 1.05
@@ -342,13 +346,8 @@ fog_depth_end = 719.3
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hmgqj"]
-exposure_multiplier = 0.77
-dof_blur_far_distance = 367.04
-dof_blur_far_transition = 1157.55
-dof_blur_near_enabled = true
-dof_blur_near_distance = 0.08
-dof_blur_near_transition = -1.0
-dof_blur_amount = 0.02
+dof_blur_far_distance = 8.17
+dof_blur_far_transition = 733.27
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rptdf"]
 albedo_texture = ExtResource("18_kxyba")

@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_house_white.png")
 class_name ResBldType extends Resource
 
 @export var key: String
@@ -14,5 +15,6 @@ func _init(_key: String, _name: String, _popsInt: int):
 	self.pops = [_popsInt, roundi(_popsInt / 3)]
 	self.scene_path = self.get_scene_path()
 
+## <folder>/house_name/house_name.tscn
 func get_scene_path() -> String:
 	return STRUCTURES_FOLDER + self.key + "/" + self.key + ".tscn"
