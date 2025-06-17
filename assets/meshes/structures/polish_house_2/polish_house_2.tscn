@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5sdpr8l2ei8d"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxgjyiqjlqv17" path="res://assets/meshes/structures/polish_house_2/polish_house_2.obj" id="1_jfduw"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_uwg7g"]
+
+[node name="PolishHouse2" type="Node3D"]
+script = ExtResource("1_uwg7g")
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_jfduw")

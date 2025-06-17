@@ -244,6 +244,28 @@ script = ExtResource("23_ekgs8")
 script = ExtResource("15_lhsit")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
+[node name="Player" type="CharacterBody3D" parent="World"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.646, 15.6309, 570.467)
+script = ExtResource("12_p8gp8")
+metadata/_custom_type_script = "uid://0ou2op0l50qf"
+
+[node name="Head" parent="World/Player" instance=ExtResource("13_hmgqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
+
+[node name="PlayerMouseClick" type="Node" parent="World/Player/Head"]
+script = ExtResource("18_ibik3")
+
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="World/Player"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
+shape = SubResource("SphereShape3D_vdtib")
+
+[node name="Area3D" type="Area3D" parent="World/Player"]
+script = ExtResource("10_p8gp8")
+
+[node name="AreaShape" type="CollisionShape3D" parent="World/Player/Area3D"]
+shape = SubResource("SphereShape3D_s11ye")
+
 [node name="Input" type="Node" parent="World"]
 
 [node name="ActionHandler" type="Node" parent="World/Input"]
@@ -360,25 +382,3 @@ texture = ExtResource("23_c2xmk")
 [node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemGameMenu"]
 layout_mode = 2
 text = "Game Menu"
-
-[node name="Player" type="CharacterBody3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.646, 15.6309, 570.467)
-script = ExtResource("12_p8gp8")
-metadata/_custom_type_script = "uid://0ou2op0l50qf"
-
-[node name="Head" parent="Player" instance=ExtResource("13_hmgqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
-
-[node name="PlayerMouseClick" type="Node" parent="Player/Head"]
-script = ExtResource("18_ibik3")
-
-[node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
-shape = SubResource("SphereShape3D_vdtib")
-
-[node name="Area3D" type="Area3D" parent="Player"]
-script = ExtResource("10_p8gp8")
-
-[node name="AreaShape" type="CollisionShape3D" parent="Player/Area3D"]
-shape = SubResource("SphereShape3D_s11ye")
