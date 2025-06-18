@@ -43,7 +43,7 @@ func get_pos_at(pos_2d: Vector2) -> Vector3:
 
 func _on_town_center_spawned(_town: TownResource) -> void:
 	self.town = _town
-	for i: int in range(3):
+	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()
 	Loggie.info("Spawned town %s with %d buildings" % [_town.town_name, self.bld_count])
 	

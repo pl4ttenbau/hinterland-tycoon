@@ -1,8 +1,20 @@
 [
 	{
 		"num": 1,
+		"name": "Triebsees Quarry",
 		"industryType": "QUARRY",
-		"pos": [661.2, 16.0, 277.4],
-		"resOutput": 20
+		"pos": [661.2, 16.0, 277.4]
+	},
+	{
+		"num": 1,
+		"name": "Franzburg Forest",
+		"industryType": "FOREST",
+		"pos": [1542.3, 16.5, 320.0]
+	},
+	{
+		"num": 1,
+		"name": "Sägewerk \"Junge\"",
+		"industryType": "SAWMILL",
+		"pos": [451.3, 13.0, 1693.0]
 	}
 ]

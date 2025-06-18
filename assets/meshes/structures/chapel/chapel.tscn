@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://5xuaaujf5s08"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_sl0dg"]
+[ext_resource type="ArrayMesh" uid="uid://dtmt7sp4p0xgb" path="res://assets/meshes/structures/chapel/chapel.obj" id="2_venkv"]
+
+[node name="Chapel" type="Node3D"]
+script = ExtResource("1_sl0dg")
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_venkv")

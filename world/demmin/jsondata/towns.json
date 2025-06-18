@@ -61,5 +61,27 @@
 	{
 		"name": "Nossendorf",
 		"pos": [1771.67, 1767.4]
+	},
+	{
+		"name": "Papenhagen",
+		"isMinor": true,
+		"pos": [1791.0, 484.0]
+	},
+	{
+		"name": "Altkalen",
+		"pos": [163.0, 2205.0]
+	},
+	{
+		"name": "Eixen",
+		"isMinor": true,
+		"pos": [124.0, 337.0]
+	},
+	{
+		"name": "Franzburg",
+		"pos": [1124.3, 124.0]
+	},
+	{
+		"name": "Richtenberg",
+		"pos": [1323.3, 73.0]
 	}
 ]

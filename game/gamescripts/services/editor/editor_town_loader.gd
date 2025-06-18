@@ -1,7 +1,7 @@
 @tool
 extends EditorScript
 	
-const json_path = "res://world/jsondata/towns.json"
+const json_path = "res://world/demmin/jsondata/towns.json"
 
 func _run():
 	create_new_town_labels()
