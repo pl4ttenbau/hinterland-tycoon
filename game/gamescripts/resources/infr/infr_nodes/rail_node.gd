@@ -1,7 +1,6 @@
 class_name RailNode extends BasicInfrNode
 
 @export_storage var parent_track: RailTrack
-@export var specialNode: RailNodeSpecial
 
 static func of(_index: int, _pos: Vector3, _trackType: String, _track: RailTrack) -> RailNode:
 	var instance: RailNode = RailNode.new()
@@ -12,21 +11,20 @@ static func of(_index: int, _pos: Vector3, _trackType: String, _track: RailTrack
 	return instance
 
 func parse_and_add_special(rail_node_dict: Dictionary):
-	if rail_node_dict.has("special"):
-		var json_special: Dictionary = rail_node_dict.get("special")
-		self.specialNode = RailNodeSpecial.of(json_special.nodeType)
-		if json_special:
-			if json_special.nodeType == "STATION": add_station(json_special)
-			elif json_special.nodeType == "SWITCH": add_fork(json_special)
+	if rail_node_dict.has("fork"):
+		var fork_dict: Dictionary = rail_node_dict.get("fork")
+		self.add_fork(RailFork.of_dict(fork_dict, self))
+	if rail_node_dict.has("station"):
+		var station_dict: Dictionary = rail_node_dict.get("station")
+		self.add_station(RailStationResource.of_station_dict(station_dict, self))
 	
-func add_station(_special_node_dict: Dictionary):
-	var station_obj = RailStationResource.of_node_dict(_special_node_dict, self)
-	Loggie.info("Found station: %s" %station_obj.station_name)
-	self.set_meta("station", station_obj)
-	GlobalState.stations.append(station_obj)
+func add_station(station: RailStationResource):
+	Loggie.info("Found station: %s" %station.station_name)
+	self.set_meta("station", station)
+	GlobalState.stations.append(station)
 	
-func add_fork(_special_node_dict: Dictionary):
-	var connected_tracks: Array = _special_node_dict.get("connectiveTracks")
-	var fork_obj = RailFork.of(self, connected_tracks)
-	self.set_meta("fork", fork_obj)
-	GlobalState.forks.append(fork_obj)
+func add_fork(fork: RailFork):
+	self.set_meta("fork", fork)
+	# add to track & global array
+	self.parent_track.add_fork(fork)
+	GlobalState.forks.append(fork)

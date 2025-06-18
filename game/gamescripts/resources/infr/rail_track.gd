@@ -43,9 +43,13 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 		_track.add_node(rail_node_obj)
 		node_index += 1
 	
+# == ADD CHILD NODES ==
 func add_node(rail_node: RailNode):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
+	
+func add_fork(rail_fork: RailFork):
+	self.forks.append(rail_fork)
 	
 func get_rail_node(_i: int) -> RailNode:
 	if _i > 0 && _i < self.nodes.size():

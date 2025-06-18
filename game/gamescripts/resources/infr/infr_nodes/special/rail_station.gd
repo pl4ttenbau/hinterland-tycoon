@@ -10,18 +10,23 @@ class_name RailStationResource extends GameObject
 func _init():
 	super(Enums.EntityTypes.STATION)
 
-static func of_node_dict(_special_node_dict: Dictionary, _node: RailNode):
+static func of_node_dict(_special_node_dict: Dictionary, _node: RailNode) -> RailStationResource:
 	var _station_name: String = _special_node_dict.get("stationName")
 	var _station_town_name: String = _special_node_dict.get("stationTown")
 	var _station_pos: Vector3 = _node.position
-	var _instance: RailStationResource = RailStationResource.of(_node, _station_name, 
-		_station_pos, _station_town_name)
+	var _instance: RailStationResource = RailStationResource.of(_node, _station_name, _station_town_name)
 	return _instance
 	
-static func of(_rail_node: RailNode, _name: String, _pos: Vector3, _town_name: String) -> RailStationResource:
+static func of_station_dict(_station_dict: Dictionary, _node: RailNode) -> RailStationResource:
+	var _name: String = _station_dict.get("name")
+	var _town_name: String = _station_dict.get("townName")
+	var _pos: Vector3 = _node.position
+	return RailStationResource.of(_node, _name, _town_name)
+	
+static func of(_rail_node: RailNode, _name: String, _town_name: String) -> RailStationResource:
 	var instance: RailStationResource = RailStationResource.new()
 	instance.station_name = _name
-	instance.position = _pos
+	instance.position = _rail_node.position
 	instance.parent_node = _rail_node
 	instance.town_name = _town_name
 	instance.set_full_station_name()
