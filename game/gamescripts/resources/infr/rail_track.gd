@@ -2,6 +2,7 @@ class_name RailTrack extends AbstractTrack
 
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
+@export_storage var container: OuterRailTrack
 @export var nodes: Array[RailNode] = []
 @export_storage var stations: Array[RailStationResource] = []
 @export_storage var forks: Array[RailFork] = []
@@ -20,6 +21,7 @@ func spawn() -> OuterRailTrack:
 	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
+	self.container = _container
 	# add_to_group("Rails") # add to rails group
 	return _container
 	
