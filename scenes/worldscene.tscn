@@ -72,22 +72,6 @@ script = ExtResource("1_vdtib")
 
 [node name="World" type="Node" parent="."]
 
-[node name="Terrain" type="Node" parent="World"]
-unique_name_in_owner = true
-script = ExtResource("2_t1xhr")
-
-[node name="WorldTerrain" parent="World/Terrain" instance=ExtResource("3_3kjtq")]
-unique_name_in_owner = true
-
-[node name="WorldUpdateTimer" type="Timer" parent="World/Terrain"]
-process_callback = 0
-wait_time = 3.0
-autostart = true
-script = ExtResource("12_em2l6")
-
-[node name="TerrainRaycaster" type="Node" parent="World/Terrain"]
-script = ExtResource("5_kq7m5")
-
 [node name="InEditor" type="Node3D" parent="World"]
 script = ExtResource("26_c2xmk")
 
@@ -291,6 +275,24 @@ script = ExtResource("16_mg4js")
 
 [node name="EnterAction" type="Node" parent="World/Input/ActionHandler"]
 script = ExtResource("17_c2xmk")
+
+[node name="MapContainer" type="Node" parent="World"]
+
+[node name="Terrain" type="Node" parent="World/MapContainer"]
+unique_name_in_owner = true
+script = ExtResource("2_t1xhr")
+
+[node name="WorldTerrain" parent="World/MapContainer/Terrain" instance=ExtResource("3_3kjtq")]
+unique_name_in_owner = true
+
+[node name="WorldUpdateTimer" type="Timer" parent="World/MapContainer/Terrain"]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+script = ExtResource("12_em2l6")
+
+[node name="TerrainRaycaster" type="Node" parent="World/MapContainer/Terrain"]
+script = ExtResource("5_kq7m5")
 
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvkrjqdpxlmv8"
-path.s3tc="res://.godot/imported/riverbed.jpg-e4f2bef4dd996ef401527794b22f4bd2.s3tc.ctex"
+uid="uid://cw18jy5qltfg7"
+path.s3tc="res://.godot/imported/tree2_bark_n.png-1ade3d6002bd1fb232c1582be8649f11.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/riverbed.jpg"
-dest_files=["res://.godot/imported/riverbed.jpg-e4f2bef4dd996ef401527794b22f4bd2.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree2/tree2_bark_n.png"
+dest_files=["res://.godot/imported/tree2_bark_n.png-1ade3d6002bd1fb232c1582be8649f11.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/meshes/nature/tree2/tree2_bark_n.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

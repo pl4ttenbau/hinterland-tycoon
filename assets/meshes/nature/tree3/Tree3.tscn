@@ -12,15 +12,16 @@ albedo_texture = ExtResource("2_etotd")
 transparency = 2
 alpha_scissor_threshold = 0.105
 alpha_antialiasing_mode = 0
-cull_mode = 2
+cull_mode = 1
 albedo_texture = ExtResource("3_mgrxa")
+metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70qu1"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.345
 alpha_antialiasing_mode = 0
-cull_mode = 2
 albedo_texture = ExtResource("4_635kd")
+metallic_specular = 0.0
 
 [node name="Tree3" type="Node3D"]
 
