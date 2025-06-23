@@ -4,7 +4,7 @@ class_name TownPlacer extends Node
 const MAP_TOWNS_FILEPATH = "res://world/demmin/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
-@onready var terrain_container: TerrainContainer = %Terrain
+@onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var towns: Array[TownResource] = []
 @export var town_centers: Array[TownCenter]
 @export_storage var res_bld_loader: ResidentialBldTypeLoader

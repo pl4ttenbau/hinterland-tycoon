@@ -1,5 +1,6 @@
-[gd_scene load_steps=66 format=3 uid="uid://by07vpk0g2xbr"]
+[gd_scene load_steps=70 format=3 uid="uid://by07vpk0g2xbr"]
 
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="3_hwjdr"]
@@ -30,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://c5huw646vdekm" path="res://assets/textures/sky/autumn_field_2k.exr" id="22_ki058"]
 [ext_resource type="Texture2D" uid="uid://2s6sf0rglioq" path="res://assets/textures/terrain/mountain_1_d.dds" id="25_rh5xx"]
 [ext_resource type="Texture2D" uid="uid://coxlmxk5eujof" path="res://assets/textures/terrain/mountain_1_n.dds" id="26_5aof7"]
+[ext_resource type="Texture2D" uid="uid://cpclb5tft7t7s" path="res://assets/textures/terrain/forest_1_n.dds" id="28_5b2oc"]
+[ext_resource type="Texture2D" uid="uid://b6ycnobwtnppo" path="res://assets/textures/terrain/forest_mossy_d.dds" id="28_wjoci"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -319,10 +322,22 @@ name = "mountain_1_d"
 id = 6
 albedo_texture = ExtResource("25_rh5xx")
 normal_texture = ExtResource("26_5aof7")
+uv_scale = 0.25
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_wjoci"]
+name = "forest_1_d"
+id = 7
+albedo_color = Color(0.577008, 0.577008, 0.577008, 1)
+albedo_texture = ExtResource("28_wjoci")
+normal_texture = ExtResource("28_5b2oc")
+normal_depth = 1.0
+roughness = 0.887
+uv_scale = 0.2
+detiling_rotation = 0.55
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_rh5xx")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
 panorama = ExtResource("22_ki058")
@@ -370,7 +385,11 @@ uv2_scale = Vector3(50, 50, 50)
 [sub_resource type="PlaneMesh" id="PlaneMesh_s11ye"]
 size = Vector2(2600, 2600)
 
-[node name="WorldTerrain" type="Terrain3D"]
+[node name="WorldLoader" type="Node"]
+script = ExtResource("1_5b2oc")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" type="Terrain3D" parent="."]
 data_directory = "res://world/heightdata"
 material = SubResource("Terrain3DMaterial_b5k2k")
 assets = SubResource("Terrain3DAssets_3kjtq")
@@ -381,20 +400,20 @@ top_level = true
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldTerrain"]
 environment = SubResource("Environment_p8gp8")
 camera_attributes = SubResource("CameraAttributesPractical_hmgqj")
 
-[node name="Water" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="WorldTerrain"]
 transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.9, 1238.78, 7.32169, 1218.33)
 material_override = SubResource("StandardMaterial3D_rptdf")
 mesh = SubResource("PlaneMesh_s11ye")
 skeleton = NodePath("../../..")
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="WorldTerrain"]
 occluder = ExtResource("20_ap1oq")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
 transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
 light_energy = 1.46
 light_bake_mode = 0

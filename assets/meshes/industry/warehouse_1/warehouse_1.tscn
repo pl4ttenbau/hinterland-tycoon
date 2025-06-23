@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpmf707hcg5r"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/structures/outer_industry.gd" id="1_1jdkd"]
+[ext_resource type="ArrayMesh" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="2_fwiqu"]
+
+[node name="Warehouse1" type="Node3D"]
+script = ExtResource("1_1jdkd")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_fwiqu")

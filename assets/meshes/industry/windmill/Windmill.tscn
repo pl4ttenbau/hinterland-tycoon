@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cibdludrshpav"]
-
-[ext_resource type="ArrayMesh" uid="uid://bixb4yqlgomhn" path="res://assets/meshes/industry/windmill/windmill.obj" id="1_72joq"]
-
-[node name="Windmill" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_72joq")

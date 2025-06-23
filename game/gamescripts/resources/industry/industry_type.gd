@@ -6,7 +6,7 @@ class_name IndustryType extends Resource
 @export var requires: Array[TransformedResource] = []
 @export var produces: Array[TransformedResource] = []
 
-func _init(_key: String, _name: String, _workers: int, 
+func _init(_key: String, _name: String, mesh_name: String, _workers: int, 
 		_requires_strs: Array[String], _produces_strs: Array[String]):
 	self.key = _key
 	self.name = _name
