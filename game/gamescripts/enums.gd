@@ -7,5 +7,6 @@ enum EntityTypes {
 	STATION,
 	TOWN,
 	RESIDENCIAL,
-	INDUSTRY
+	INDUSTRY,
+	FORK
 }

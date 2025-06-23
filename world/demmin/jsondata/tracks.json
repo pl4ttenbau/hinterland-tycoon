@@ -39,9 +39,9 @@
 			},
 			{
 				"pos": [677.10, 16, 348.00],
-				"special": {
-					"nodeType": "SWITCH",
+				"fork": {
 					"connectiveTracks": [2, 5],
+					"setTo": 2
 				}
 			}
 		]
@@ -53,9 +53,9 @@
 		"points": [
 			{
 				"pos": [677.10, 16, 348.00],
-				"special": {
-					"nodeType": "SWICTH",
-					"connectiveTracks": [1, 5]
+				"fork": {
+					"connectiveTracks": [1, 5],
+					"setTo": 2
 				}
 			},
 			{
@@ -75,10 +75,9 @@
 			},
 			{
 				"pos": [619.5, 14, 574.4],
-				"special": {
-					"nodeType": "STATION",
-					"stationTown": "Drechow",
-					"stationName": "Ort",
+				"station": {
+					"townName": "Drechow",
+					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
 			},
@@ -99,9 +98,9 @@
 			},
 			{
 				"pos": [659.5, 12.5, 809.7],
-				"special": {
-					"nodeType": "SWITCH",
-					"connectiveTracks": [3, 4]
+				"fork": {
+					"connectiveTracks": [3, 4],
+					"setTo": 3
 				}
 			}
 		]
@@ -113,9 +112,9 @@
 		"points": [
 			{
 				"pos": [659.2, 12.3, 809.4],
-				"special": {
-					"nodeType": "SWITCH",
-					"connectiveTracks": [2]
+				"fork": {
+					"connectiveTracks": [2],
+					"setTo": 3
 				}
 			},
 			{
@@ -147,10 +146,9 @@
 			},
 			{
 				"pos": [214.4, 8, 884.1],
-				"special": {
-					"nodeType": "STATION",
-					"stationTown": "Tribsees",
-					"stationName": "Stadt",
+				"station": {
+					"townName": "Tribsees",
+					"name": "Stadt",
 					"stationType": "STATION_PASS"
 				}
 			},
@@ -169,9 +167,9 @@
 		"points": [
 			 {
 				"pos": [659.5, 12.5, 809.7],
-				"special": {
-					"nodeType": "SWITCH",
-					"connectiveTracks": [3]
+				"fork": {
+					"connectiveTracks": [3],
+					"setTo": 4
 				}
 			},
 			{
@@ -197,10 +195,9 @@
 			},
 			{
 				"pos": [997.9, 9.5, 996.7],
-				"special": {
-					"nodeType": "STATION",
-					"stationTown": "Zarrentin",
-					"stationName": "Feldbhf.",
+				"station": {
+					"townName": "Zarrentin",
+					"name": "Feldbhf.",
 					"stationType": "STATION_PASS"
 				}
 			},
@@ -218,10 +215,9 @@
 			},
 			{
 				"pos": [1341.9, 11, 1302.1],
-				"special": {
-					"nodeType": "STATION",
-					"stationTown": "Glewitz",
-					"stationName": "Ort",
+				"station": {
+					"townName": "Glewitz",
+					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
 			},
@@ -246,9 +242,9 @@
 		"points": [
 			{
 				"pos": [677.10, 16, 348.00],
-				"special": {
-					"nodeType": "SWITCH",
+				"fork": {
 					"connectiveTracks": [2],
+					"setTo": 2
 				}
 			},
 			{
@@ -274,10 +270,9 @@
 			},
 			{
 				"pos": [1277.6, 16.5, 518.0],
-				"special": {
-					"nodeType": "STATION",
-					"stationTown": "Hohenbarnekow",
-					"stationName": "Ort",
+				"station": {
+					"townName": "Hohenbarnekow",
+					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
 			},

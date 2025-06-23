@@ -23,8 +23,9 @@ func load_rail_tracks() -> void:
 	self.rails_loaded.emit(self.tracks)
 	
 func spawn_rails():
-	for track_obj in GlobalState.tracks:
-		spawn_rail_track(track_obj)
+	for track_obj: RailTrack in GlobalState.tracks:
+		self.spawn_rail_track(track_obj)
+		self.spawn_rail_forks(track_obj)
 	# emit signals
 	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
@@ -37,6 +38,11 @@ func spawn_rail_track(track_obj: RailTrack):
 	add_to_group("Rails")
 	# emit
 	SignalBus.rail_spawned.emit(instanciated)
+	
+func spawn_rail_forks(parent_track: RailTrack):
+	for fork: RailFork in parent_track.forks:
+		fork.spawn()
+		fork.container.adjust_rotation()
 		
 func _ready() -> void:
 	load_rail_tracks()

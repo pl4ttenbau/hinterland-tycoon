@@ -9,12 +9,14 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 diffuse_mode = 2
 albedo_texture = ExtResource("1_3us0o")
+metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoa1c"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_wecv4")
+metallic_specular = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0uggy"]
 _surfaces = [{

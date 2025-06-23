@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmhr52ku3fria"]
+
+[ext_resource type="Script" uid="uid://8glp66w6di6p" path="res://game/gamescripts/nodes/infr/outer_rail_fork.gd" id="1_8gdjw"]
+[ext_resource type="ArrayMesh" uid="uid://6h75nq3x8brc" path="res://assets/meshes/infr/rail/fork/switch_signal_1.obj" id="2_fvcwk"]
+[ext_resource type="Texture2D" uid="uid://2dlxunf0rosp" path="res://assets/meshes/infr/rail/fork/tex_switch_signal_1_d.jpg" id="2_hlhxy"]
+[ext_resource type="Texture2D" uid="uid://cjild68culii4" path="res://assets/meshes/infr/rail/fork/tex_switch_signal_1_n.png" id="3_hkssp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b3yp"]
+albedo_texture = ExtResource("2_hlhxy")
+normal_enabled = true
+normal_texture = ExtResource("3_hkssp")
+
+[node name="RailFork" type="Node3D"]
+script = ExtResource("1_8gdjw")
+metadata/_custom_type_script = "uid://8glp66w6di6p"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7b3yp")
+mesh = ExtResource("2_fvcwk")

@@ -2,6 +2,7 @@ class_name RailTrack extends AbstractTrack
 
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
+@export_storage var container: OuterRailTrack
 @export var nodes: Array[RailNode] = []
 @export_storage var stations: Array[RailStationResource] = []
 @export_storage var forks: Array[RailFork] = []
@@ -20,6 +21,7 @@ func spawn() -> OuterRailTrack:
 	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRailTrack = scene.instantiate()
 	_container.set_track(self)
+	self.container = _container
 	# add_to_group("Rails") # add to rails group
 	return _container
 	
@@ -43,9 +45,13 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrack):
 		_track.add_node(rail_node_obj)
 		node_index += 1
 	
+# == ADD CHILD NODES ==
 func add_node(rail_node: RailNode):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
+	
+func add_fork(rail_fork: RailFork):
+	self.forks.append(rail_fork)
 	
 func get_rail_node(_i: int) -> RailNode:
 	if _i > 0 && _i < self.nodes.size():
@@ -55,3 +61,7 @@ func get_rail_node(_i: int) -> RailNode:
 func get_end_pos() -> Vector3:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i].position
+	
+func has_node_with_index(_index: int) -> bool:
+	var last_i: int = self.nodes.size() -1
+	return _index >= 0 && _index <= last_i
