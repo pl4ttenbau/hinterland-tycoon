@@ -1,0 +1,13 @@
+# Blender 4.0.2 MTL File: 'switch_signal.blend'
+# www.blender.org
+
+newmtl mat_switch_signal
+Ns 38.202477
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd tex_switch_signal_1_d.jpg
+map_Bump -bm 1.000000 tex_rail_switch_1_n.png
