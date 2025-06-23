@@ -1,4 +1,4 @@
-class_name RailFork extends Resource
+class_name RailFork extends GameObject
 
 @export_storage var container: OuterRailFork
 @export var connectiveTracks: Array
@@ -8,7 +8,7 @@ class_name RailFork extends Resource
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 
 static func of_dict(fork_dict: Dictionary, parent: RailNode) -> RailFork:
-	var inst: RailFork = RailFork.new()
+	var inst: RailFork = RailFork.new(Enums.EntityTypes.FORK)
 	inst.railNode = parent
 	inst.connectiveTracks = fork_dict.get("connectiveTracks") as Array
 	inst.setTo = fork_dict.get("setTo", null)
@@ -16,6 +16,7 @@ static func of_dict(fork_dict: Dictionary, parent: RailNode) -> RailFork:
 
 func spawn() -> OuterRailFork:
 	var instanciated: OuterRailFork = preload(SCENE_PATH).instantiate()
+	instanciated.entity = self
 	# set pos
 	instanciated.position = self.railNode.position
 	self.container = instanciated
@@ -23,5 +24,8 @@ func spawn() -> OuterRailFork:
 	self.get_outer_track().add_child(instanciated)
 	return instanciated
 	
+func get_track() -> RailTrack:
+	return self.railNode.parent_track
+	
 func get_outer_track() -> OuterRailTrack:
-	return self.railNode.parent_track.container
+	return self.get_track().container

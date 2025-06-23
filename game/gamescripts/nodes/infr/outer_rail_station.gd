@@ -23,7 +23,7 @@ func rotate_to_prev_node():
 func get_parent_track_node_by_index(_i: int) -> RailNode:
 	var track: RailTrack = self.entity.parent_node.parent_track
 	return track.get_rail_node(_i)
-
+	
 func get_mesh() -> MeshInstance3D:
 	return self.get_child(0)
 	

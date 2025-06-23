@@ -61,3 +61,7 @@ func get_rail_node(_i: int) -> RailNode:
 func get_end_pos() -> Vector3:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i].position
+	
+func has_node_with_index(_index: int) -> bool:
+	var last_i: int = self.nodes.size() -1
+	return _index >= 0 && _index <= last_i

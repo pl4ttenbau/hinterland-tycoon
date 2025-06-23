@@ -42,6 +42,7 @@ func spawn_rail_track(track_obj: RailTrack):
 func spawn_rail_forks(parent_track: RailTrack):
 	for fork: RailFork in parent_track.forks:
 		fork.spawn()
+		fork.container.adjust_rotation()
 		
 func _ready() -> void:
 	load_rail_tracks()

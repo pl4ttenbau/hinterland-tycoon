@@ -32,3 +32,24 @@ func add_fork(_fork: RailFork):
 	# add to track & global array
 	self.parent_track.add_fork(_fork)
 	GlobalState.forks.append(_fork)
+	
+func as_ref() -> RailNodeRef:
+	var track_num: int = self.parent_track.num
+	return RailNodeRef.new(track_num, self.index)
+	
+func get_previous() -> RailNode:
+	if self.index >= 0:
+		return self.parent_track.get_rail_node(self.index -1)
+	return null
+	
+func get_next() -> RailNode:
+	if self.parent_track.has_node_with_index(self.index +1):
+		return self.parent_track.get_rail_node(self.index +1)
+	return null
+	
+func is_first() -> bool:
+	return self.index == 0
+	
+func is_last() -> bool:
+	var last_index: int = self.parent_track.nodes.size() -1
+	return self.index == last_index
