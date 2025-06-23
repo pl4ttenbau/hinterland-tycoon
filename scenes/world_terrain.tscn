@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://by07vpk0g2xbr"]
+[gd_scene load_steps=66 format=3 uid="uid://by07vpk0g2xbr"]
 
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://c3qca0h6gius" path="res://assets/textures/terrain/straw_n.dds" id="19_hwjdr"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dm8duebdbjh2v" path="res://scenes/mapscenes/demmin_occlusion.occ" id="20_ap1oq"]
 [ext_resource type="Texture2D" uid="uid://c5huw646vdekm" path="res://assets/textures/sky/autumn_field_2k.exr" id="22_ki058"]
+[ext_resource type="Texture2D" uid="uid://2s6sf0rglioq" path="res://assets/textures/terrain/mountain_1_d.dds" id="25_rh5xx"]
+[ext_resource type="Texture2D" uid="uid://coxlmxk5eujof" path="res://assets/textures/terrain/mountain_1_n.dds" id="26_5aof7"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -312,9 +314,15 @@ albedo_texture = ExtResource("18_bh3tc")
 normal_texture = ExtResource("19_hwjdr")
 uv_scale = 0.352
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_pcif5"]
+name = "mountain_1_d"
+id = 6
+albedo_texture = ExtResource("25_rh5xx")
+normal_texture = ExtResource("26_5aof7")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_rh5xx")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
 panorama = ExtResource("22_ki058")
