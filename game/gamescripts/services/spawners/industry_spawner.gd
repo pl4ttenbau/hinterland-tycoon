@@ -2,7 +2,7 @@
 class_name IndustrySpawner extends Node
 
 const MAP_INDUSTRIES_FILEPATH = "res://world/demmin/jsondata/industries.json"
-const IND_SCENE_PATH = "res://assets/meshes/industry/generic_small/generic_industry_sm.tscn"
+const IND_SCENE_PATH = "res://assets/meshes/industry/generic_small/generic_small.tscn"
 
 func _enter_tree() -> void:
 	SignalBus.terrain_initialized.connect(Callable(self, "_on_terrain_loaded"))
