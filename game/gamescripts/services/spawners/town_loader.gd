@@ -4,7 +4,6 @@ class_name TownPlacer extends Node
 const MAP_TOWNS_FILEPATH = "res://world/demmin/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
-@onready var terrain_container: TerrainContainer = %TerrainContainer
 @export var towns: Array[TownResource] = []
 @export var town_centers: Array[TownCenter]
 @export_storage var res_bld_loader: ResidentialBldTypeLoader
@@ -38,7 +37,7 @@ func add_town(_town: TownResource):
 	
 func spawn_town(_town: TownResource) -> TownResource:
 	var sceneRes: Resource = ResourceLoader.load(TOWN_ROOT_SCENE_PATH) as PackedScene
-	var town_container_node: TownCenter = sceneRes.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var town_container_node: TownCenter = sceneRes.instantiate()
 	town_container_node.town = _town
 	town_container_node.position = get_pos_on_terrain(_town.pos_xz)
 	add_child(town_container_node)
@@ -48,9 +47,8 @@ func spawn_town(_town: TownResource) -> TownResource:
 	
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
-	if terrain_container:
-		return terrain_container.get_pos_at_height(vec3)
-	return null
+	var terr_container: TerrainContainer = GlobalState.terrain
+	return terr_container.get_pos_at_height(vec3)
 
 func get_label_pos_at(posXZ: Vector2) -> Vector3:
 	var offset: Vector3 = Vector3(0, 30, 0)
