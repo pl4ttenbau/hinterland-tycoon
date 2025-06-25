@@ -64,7 +64,7 @@ _shader_parameters = {
 &"enable_projection": true,
 &"height_blending": false,
 &"macro_variation1": Color(1, 1, 1, 1),
-&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation2": Color(0.80416, 0.899098, 0.768777, 1),
 &"macro_variation_slope": 0.333,
 &"mipmap_bias": 0.72,
 &"noise1_angle": 0.0,
