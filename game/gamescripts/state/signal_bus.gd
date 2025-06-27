@@ -33,7 +33,7 @@ signal stations_spawned()
 
 # == TOWNS == 
 @warning_ignore("unused_signal")
-signal town_spawned(town: TownResource)
+signal town_spawned(town: TownData)
 
 @warning_ignore("unused_signal")
 signal towns_spawned()

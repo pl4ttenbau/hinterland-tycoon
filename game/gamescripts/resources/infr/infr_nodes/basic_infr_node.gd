@@ -1,4 +1,4 @@
-class_name BasicInfrNode extends Resource
+class_name BasicInfrNodeData extends Resource
 
 @export var index: int
 @export var position: Vector3

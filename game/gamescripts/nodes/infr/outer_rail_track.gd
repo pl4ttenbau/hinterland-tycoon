@@ -4,7 +4,7 @@ class_name OuterRailTrack extends VisibleObject
 
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 
-func set_track(_track: RailTrack):
+func set_track(_track: RailTrackData):
 	self.entity = _track
 	self.get_path_3d().curve = _track.curve
 	# rename name

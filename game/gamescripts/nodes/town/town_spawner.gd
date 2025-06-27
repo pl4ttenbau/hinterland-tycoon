@@ -1,14 +1,14 @@
 class_name TownSpawner extends Node
 
 @warning_ignore("unused_signal")
-signal town_center_spawned(town: TownResource)
+signal town_center_spawned(town: TownData)
 
-@export_storage var town: TownResource
+@export_storage var town: TownData
 @export var bld_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var town_res: TownResource = (self.get_parent() as TownCenter).town
+	var town_res: TownData = (self.get_parent() as TownCenter).town
 	self._on_town_center_spawned(town_res)
 	
 func spawn_rnd_building():
@@ -41,7 +41,7 @@ func get_pos_at(pos_2d: Vector2) -> Vector3:
 	pos_3d.y = GlobalState.terrain.get_height_at(pos_3d)
 	return pos_3d
 
-func _on_town_center_spawned(_town: TownResource) -> void:
+func _on_town_center_spawned(_town: TownData) -> void:
 	self.town = _town
 	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()

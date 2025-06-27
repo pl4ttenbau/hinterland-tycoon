@@ -2,9 +2,9 @@
 @icon("res://assets/icons/icon_town.png")
 class_name TownCenter extends Node3D
 
-signal town_changed(_town: TownResource)
+signal town_changed(_town: TownData)
 
-@export var town: TownResource:
+@export var town: TownData:
 	set(_town):
 		town = _town
 		self.name = _town.to_string()

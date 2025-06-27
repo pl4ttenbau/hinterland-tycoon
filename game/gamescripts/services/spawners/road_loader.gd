@@ -5,10 +5,10 @@ const JSON_PATH = "res://world/demmin/jsondata/roads.json"
 const NODES_GROUP = "Roads"
 const MAX_VISIBLE_DIST := 500
 
-@export var roads: Array[RoadWay] = []
+@export var roads: Array[RoadData] = []
 @export var containers: Array[OuterRoad] = []
 
-signal roads_loaded(_roads: Array[RoadWay])
+signal roads_loaded(_roads: Array[RoadData])
 signal roads_spawned(_roads: Array[OuterRoad])
 
 func _enter_tree() -> void:
@@ -17,7 +17,7 @@ func _enter_tree() -> void:
 func load_roads() -> void:
 	var roads_arr_str: String = FileAccess.get_file_as_string(JSON_PATH)
 	for json_road in JSON.parse_string(roads_arr_str):
-		self.roads.append(RoadWay.from_json(json_road))
+		self.roads.append(RoadData.from_json(json_road))
 	GlobalState.roads = self.roads
 	self.roads_loaded.emit(self.roads)
 	
@@ -28,7 +28,7 @@ func spawn_roads():
 	self.roads_spawned.emit(self.containers)
 	SignalBus.roads_spawned.emit()
 	
-func spawn_road(road: RoadWay):
+func spawn_road(road: RoadData):
 	var instanciated: OuterRoad = road.spawn()
 	add_child(instanciated, true)
 	self.containers.append(instanciated)
