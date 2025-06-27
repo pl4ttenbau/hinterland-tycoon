@@ -27,6 +27,10 @@
 [ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu.gd" id="23_lhsit"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="26_c2xmk"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
+
 [sub_resource type="Curve3D" id="Curve3D_s11ye"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -60.583, 20, 0.019, 0, 0, 0, 0, 0, 0, 97.226, 10, 54, 0, 0, 0, 0, 0, 0, 129.1, 21.5, 66, 0, 0, 0, 0, 0, 0, 175.65, 21, 72.692, 0, 0, 0, 0, 0, 0, 207, 18.5, 93, 0, 0, 0, 0, 0, 0, 284, 18, 141.6, 0, 0, 0, 0, 0, 0, 342.868, 19, 166.583, 0, 0, 0, 0, 0, 0, 431, 18, 193, 0, 0, 0, 0, 0, 0, 485.323, 17, 210.261, 0, 0, 0, 0, 0, 0, 619, 16, 304, 0, 0, 0, 0, 0, 0, 655.41, 15, 329.195, 0, 0, 0, 0, 0, 0, 677.1, 16, 348),
@@ -62,12 +66,38 @@ _data = {
 }
 point_count = 15
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
-
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_vdtib")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.646, 15.6309, 570.467)
+script = ExtResource("12_p8gp8")
+metadata/_custom_type_script = "uid://0ou2op0l50qf"
+
+[node name="Head" parent="Player" instance=ExtResource("13_hmgqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
+
+[node name="PlayerMouseClick" type="Node" parent="Player/Head"]
+script = ExtResource("18_ibik3")
+
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
+shape = SubResource("SphereShape3D_vdtib")
+
+[node name="Area3D" type="Area3D" parent="Player"]
+script = ExtResource("10_p8gp8")
+
+[node name="AreaShape" type="CollisionShape3D" parent="Player/Area3D"]
+shape = SubResource("SphereShape3D_s11ye")
+
+[node name="Input" type="Node" parent="."]
+
+[node name="ActionHandler" type="Node" parent="Input"]
+script = ExtResource("16_mg4js")
+
+[node name="EnterAction" type="Node" parent="Input/ActionHandler"]
+script = ExtResource("17_c2xmk")
 
 [node name="World" type="Node" parent="."]
 
@@ -246,36 +276,6 @@ script = ExtResource("23_ekgs8")
 [node name="Industries" type="Node" parent="World/Static"]
 script = ExtResource("15_lhsit")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
-
-[node name="Player" type="CharacterBody3D" parent="World"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 535.646, 15.6309, 570.467)
-script = ExtResource("12_p8gp8")
-metadata/_custom_type_script = "uid://0ou2op0l50qf"
-
-[node name="Head" parent="World/Player" instance=ExtResource("13_hmgqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
-
-[node name="PlayerMouseClick" type="Node" parent="World/Player/Head"]
-script = ExtResource("18_ibik3")
-
-[node name="PlayerCollisionShape" type="CollisionShape3D" parent="World/Player"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
-shape = SubResource("SphereShape3D_vdtib")
-
-[node name="Area3D" type="Area3D" parent="World/Player"]
-script = ExtResource("10_p8gp8")
-
-[node name="AreaShape" type="CollisionShape3D" parent="World/Player/Area3D"]
-shape = SubResource("SphereShape3D_s11ye")
-
-[node name="Input" type="Node" parent="World"]
-
-[node name="ActionHandler" type="Node" parent="World/Input"]
-script = ExtResource("16_mg4js")
-
-[node name="EnterAction" type="Node" parent="World/Input/ActionHandler"]
-script = ExtResource("17_c2xmk")
 
 [node name="MapContainer" type="Node" parent="World"]
 

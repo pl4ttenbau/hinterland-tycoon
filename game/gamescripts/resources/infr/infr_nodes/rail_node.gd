@@ -43,13 +43,13 @@ func get_previous() -> RailNode:
 	return null
 	
 func get_next() -> RailNode:
-	if self.parent_track.has_node_with_index(self.index +1):
-		return self.parent_track.get_rail_node(self.index +1)
+	var next_index := self.index +1
+	if self.parent_track.has_node_index(next_index):
+		return self.parent_track.get_rail_node(next_index)
 	return null
 	
 func is_first() -> bool:
 	return self.index == 0
 	
 func is_last() -> bool:
-	var last_index: int = self.parent_track.nodes.size() -1
-	return self.index == last_index
+	return self.index == (self.parent_track.nodes.size() -1)

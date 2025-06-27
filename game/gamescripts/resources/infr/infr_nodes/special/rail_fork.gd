@@ -28,4 +28,5 @@ func get_track() -> RailTrack:
 	return self.railNode.parent_track
 	
 func get_outer_track() -> OuterRailTrack:
-	return self.get_track().container
+	var rail_num := self.get_track().num
+	return GlobalState.outer_tracks.get(rail_num -1)

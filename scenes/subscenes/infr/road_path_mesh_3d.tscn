@@ -22,8 +22,8 @@ script = ExtResource("1_6tl4k")
 curve = SubResource("Curve3D_6tl4k")
 
 [node name="RoadMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
-mesh = ExtResource("1_56l44")
 path_3d = NodePath("../RoadPath")
+mesh = ExtResource("1_56l44")
 surface_0/tile_rotation = Vector3(0, 0, 0)
 surface_0/tile_rotation_order = 2
 surface_0/distribution = 0
@@ -32,4 +32,5 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
 surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 0
 material_override = SubResource("StandardMaterial3D_bwekt")
