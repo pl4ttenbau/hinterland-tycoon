@@ -30,14 +30,20 @@ func spawn_rails():
 	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
 	
+func instanciate_rail_track(rail_track: RailTrack) -> OuterRailTrack:
+	if ! rail_track.curve: rail_track.build_path()
+	# instanciate Container from PackedScene
+	var outer_track: OuterRailTrack = preload(OuterRailTrack.SCENE_PATH).instantiate()
+	outer_track.set_track(rail_track)
+	GlobalState.outer_tracks.append(outer_track)
+	return outer_track
+	
 func spawn_rail_track(track_obj: RailTrack):
-	var instanciated: OuterRailTrack = track_obj.spawn()
-	add_child(instanciated, true)
-	self.track_containers.append(instanciated)
-	# add to rails group as well
-	add_to_group("Rails")
+	var outer_track := self.instanciate_rail_track(track_obj)
+	add_child(outer_track, true)
+	self.track_containers.append(outer_track)
 	# emit
-	SignalBus.rail_spawned.emit(instanciated)
+	SignalBus.rail_spawned.emit(outer_track)
 	
 func spawn_rail_forks(parent_track: RailTrack):
 	for fork: RailFork in parent_track.forks:

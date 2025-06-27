@@ -14,9 +14,12 @@ extends Node
 
 # == INFR ==
 @export var tracks: Array[RailTrack] = []
+@export var outer_tracks: Array[OuterRailTrack] = []
+
 @export var stations: Array[RailStationResource] = []
 @export var forks: Array[RailFork] = []
 
 @export var roads: Array[RoadWay] = []
+@export var outer_roads: Array[OuterRoad] = []
 
 @export var vehicles: Array[RailVehicle] = []

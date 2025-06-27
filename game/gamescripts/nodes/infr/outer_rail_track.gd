@@ -2,6 +2,8 @@
 @icon("res://assets/icons/icon_rail_track.png")
 class_name OuterRailTrack extends VisibleObject
 
+const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
+
 func set_track(_track: RailTrack):
 	self.entity = _track
 	self.get_path_3d().curve = _track.curve

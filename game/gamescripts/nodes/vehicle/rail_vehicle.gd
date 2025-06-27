@@ -14,11 +14,11 @@ func _enter_tree() -> void:
 
 static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
 	var rail_num: int = _starting_track.entity.num
-	var instance: RailVehicle = load(SCENE_PATH).instantiate()
-	instance.wheels = VehicleWheels.new(instance, _starting_track.entity, _starts_at)
+	var vehicle: RailVehicle = load(SCENE_PATH).instantiate()
+	vehicle.wheels = VehicleWheels.new(vehicle, _starting_track.entity, _starts_at)
 	# put on tracks
-	instance.motor = VehicleMotor.of(instance)
-	return instance
+	vehicle.motor = VehicleMotor.of(vehicle)
+	return vehicle
 	
 func update_next_point():
 	var new_origin_index: int = self.get_next_node_index()
