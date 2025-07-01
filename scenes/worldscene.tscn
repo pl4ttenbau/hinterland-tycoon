@@ -247,7 +247,6 @@ towns = null
 [node name="Rails" type="Node" parent="World/Static/Infr"]
 unique_name_in_owner = true
 script = ExtResource("15_nj174")
-tracks = null
 
 [node name="Stations" type="Node" parent="World/Static/Infr"]
 unique_name_in_owner = true
