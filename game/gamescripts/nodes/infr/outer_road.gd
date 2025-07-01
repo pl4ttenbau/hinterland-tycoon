@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_road.png")
 class_name OuterRoad extends VisibleObject
 
-func set_road(_road: RoadWay):
+func set_road(_road: RoadData):
 	self.entity = _road
 	self.get_path_3d().curve = _road.curve
 	# rename name

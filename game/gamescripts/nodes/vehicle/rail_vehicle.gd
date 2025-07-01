@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if !self.motor.is_started: return
 	var forward_vec := Vector3(0, 0, -7 * delta)
 	translate(forward_vec)
-	var current_section: TrackSection = self.wheels.current_section
+	var current_section := self.wheels.current_section
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
 		if current_section.end:
 			reached_next_node.emit(current_section.end.index)

@@ -5,7 +5,7 @@ extends Node
 @export var active_cam: Camera3D
 
 # == STATIC ==
-@export var towns: Array[TownResource] = []
+@export var towns: Array[TownData] = []
 @export var industries: Array[Industry]
 @export var terrain: TerrainContainer
 
@@ -13,13 +13,13 @@ extends Node
 @export var ind_bld_containers: Array[OuterIndustry] = []
 
 # == INFR ==
-@export var tracks: Array[RailTrack] = []
+@export var tracks: Array[RailTrackData] = []
 @export var outer_tracks: Array[OuterRailTrack] = []
 
-@export var stations: Array[RailStationResource] = []
-@export var forks: Array[RailFork] = []
+@export var stations: Array[RailStationData] = []
+@export var forks: Array[RailForkData] = []
 
-@export var roads: Array[RoadWay] = []
+@export var roads: Array[RoadData] = []
 @export var outer_roads: Array[OuterRoad] = []
 
 @export var vehicles: Array[RailVehicle] = []
