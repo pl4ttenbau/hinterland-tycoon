@@ -58,11 +58,11 @@ noise = SubResource("FastNoiseLite_a0gsm")
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_b5k2k"]
 _shader_parameters = {
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.792,
+&"blend_sharpness": 0.0,
 &"depth_blur": 1.0,
 &"enable_macro_variation": true,
-&"enable_projection": true,
-&"height_blending": false,
+&"enable_projection": false,
+&"flat_terrain_normals": false,
 &"macro_variation1": Color(1, 1, 1, 1),
 &"macro_variation2": Color(0.80416, 0.899098, 0.768777, 1),
 &"macro_variation_slope": 0.333,
@@ -71,11 +71,8 @@ _shader_parameters = {
 &"noise1_offset": Vector2(0.5, 0.5),
 &"noise1_scale": 0.069,
 &"noise2_scale": 0.076,
-&"noise3_scale": 0.225,
 &"noise_texture": SubResource("NoiseTexture2D_p0jcd"),
-&"projection_angular_division": 2.0,
-&"projection_threshold": 0.75,
-&"world_space_normal_blend": false
+&"projection_threshold": 0.75
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux8bc"]
@@ -287,8 +284,9 @@ name = "grass_ground_d"
 id = 2
 albedo_texture = ExtResource("7_ki058")
 normal_texture = ExtResource("8_ohye1")
-ao_strength = 0.1
-uv_scale = 0.5
+ao_strength = 0.577
+uv_scale = 0.288
+detiling_rotation = 0.642
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_vf50h"]
 name = "sand_trail_d"
@@ -407,7 +405,7 @@ environment = SubResource("Environment_p8gp8")
 camera_attributes = SubResource("CameraAttributesPractical_hmgqj")
 
 [node name="Water" type="MeshInstance3D" parent="WorldTerrain"]
-transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.9, 1238.78, 7.32169, 1218.33)
+transform = Transform3D(0.94, 0, 0, 0, 0.989, 0, 0, 0, 0.882, 1238.78, 7.32169, 1155.96)
 material_override = SubResource("StandardMaterial3D_rptdf")
 mesh = SubResource("PlaneMesh_s11ye")
 skeleton = NodePath("../../..")

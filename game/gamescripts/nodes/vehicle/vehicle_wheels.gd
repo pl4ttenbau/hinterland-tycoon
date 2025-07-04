@@ -19,14 +19,14 @@ func _init(_vehicle: RailVehicle, _track: RailTrackData, _start_index: int):
 
 func set_origin_point(_point_index: int):
 	var start_node: RailNodeData = self.get_node_obj(_point_index)
-	self.current_section.set_start(start_node)
+	self.current_section.start = start_node
 	self.current_node_i = _point_index
 	# self.rail_section.last_node = 
 	self.vehicle.position = self.get_node_pos(_point_index)
 	
 func set_target_point(_point_index: int):
 	var next_node: RailNodeData = self.get_node_obj(_point_index)
-	self.current_section.set_end(next_node)
+	self.current_section.end = next_node
 	if next_node:
 		self.vehicle.rotate_to(next_node.position)
 
