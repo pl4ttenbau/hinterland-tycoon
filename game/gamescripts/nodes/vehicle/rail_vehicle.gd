@@ -8,6 +8,8 @@ const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tsc
 @export var motor: VehicleMotor
 
 signal reached_next_node(int)
+signal entered()
+signal exited()
 
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
@@ -37,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			self.motor.stop()
 			
-# == NODE GETTERS ==
+#region Node Getters
 func get_static_body() -> StaticBody3D:
 	return self.get_child(0)
 	
@@ -53,6 +55,7 @@ func get_next_node_index() -> int:
 
 func get_cam() -> Camera3D:
 	return $Camera3D
+#endregion
 
 func rotate_to(target_pos: Vector3):
 	var rot_before := self.global_rotation

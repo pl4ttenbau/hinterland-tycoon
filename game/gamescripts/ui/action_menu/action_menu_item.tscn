@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://13h04w0a5m6n"]
 
-[ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu_item.gd" id="1_tnnva"]
+[ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu/action_menu_item.gd" id="1_tnnva"]
 [ext_resource type="Texture2D" uid="uid://805kc2lk6rsi" path="res://assets/icons/icon_deco_white.png" id="2_0hp2e"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
