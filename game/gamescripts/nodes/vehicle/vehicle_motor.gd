@@ -1,11 +1,17 @@
 class_name VehicleMotor extends Node
 
 @export var max_speed: float = .7
-@export var current_speed_percentage = 0
+
+@export var current_speed_percentage = 0:
+	set(value):
+		current_speed_percentage = value
+		self.speed_changed.emit(value)
+
 @export var is_started: bool = false
 
 signal started()
 signal stopped()
+signal speed_changed(percentage: float)
 
 static func of(_vehicle: RailVehicle) -> VehicleMotor:
 	var _inst = VehicleMotor.new()

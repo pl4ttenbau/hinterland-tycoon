@@ -15,13 +15,6 @@ func _enter_tree() -> void:
 	# connect to vehicle signals
 	SignalBus.vehicle_entered.connect(Callable(self, "_vehicle_entered"))
 	SignalBus.vehicle_exited.connect(Callable(self, "_vehicle_exited"))
-
-func _ready() -> void:
-	pass # Replace with function body.
-
-func _process(delta: float) -> void:
-	if self.visible && self.current_vehicle:
-		self.current_speed = self.current_vehicle.motor.current_speed_percentage
 	
 func adjust_speedometer():
 	var angle: float = self.current_speed * self.get_angle_range() + LINE_ROTATION_ZERO
@@ -29,13 +22,24 @@ func adjust_speedometer():
 	
 #region Vehicle Callbacks
 func _vehicle_entered(vehicle: RailVehicle):
+	# set current vehicle & speed
 	self.current_vehicle = vehicle
+	self.current_speed = self.current_vehicle.motor.current_speed_percentage
+	# connect to motor speed sifnal
+	vehicle.motor.speed_changed.connect(Callable(self, "_on_motor_speed_changed"))
+	# and show control
 	self.visible = true
 	
 func _vehicle_exited():
+	# disconnect signals
+	self.current_vehicle.motor.speed_changed.disconnect(Callable(self, "_on_motor_speed_changed"))
+	# clear current speed & vehicle & hide
 	self.current_vehicle = null
 	self.current_speed = 0.0
 	self.visible = false
+	
+func _on_motor_speed_changed(speed: float):
+	self.current_speed = speed
 #endregion
 	
 #region Getters
