@@ -8,6 +8,8 @@ const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tsc
 @export var motor: VehicleMotor
 
 signal reached_next_node(int)
+signal entered()
+signal exited()
 
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
