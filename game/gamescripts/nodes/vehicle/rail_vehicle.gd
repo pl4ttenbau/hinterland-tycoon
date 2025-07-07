@@ -29,7 +29,8 @@ func update_next_point():
 	
 func _physics_process(delta: float) -> void:
 	if !self.motor.is_started: return
-	var forward_vec := Vector3(0, 0, -7 * delta)
+	var speed_percent := self.motor.current_speed_percentage
+	var forward_vec := Vector3(0, 0, -7 * delta) * speed_percent
 	translate(forward_vec)
 	var current_section := self.wheels.current_section
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
