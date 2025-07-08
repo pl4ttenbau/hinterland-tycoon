@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 func start() -> bool:
 	self.is_started = true
 	self.started.emit()
-	self.current_speed_percentage = 1.0
+	self.speed.target = 1.0
 	# count ticks since start
 	self.started_at = Time.get_ticks_msec()
 	return true
@@ -48,6 +48,10 @@ func stop() -> void:
 	self.stopped.emit()
 	# also stop tick counting
 	self.started_at = -1
+	
+func on_motor_tick():
+	if self.speed:
+		self.speed.adjust_to_target_speed()
 
 #region Getters
 func get_current_speed() -> float:

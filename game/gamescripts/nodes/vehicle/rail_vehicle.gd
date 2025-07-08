@@ -13,6 +13,14 @@ signal exited()
 
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
+	
+func _ready() -> void:
+	# create speed timer
+	var speed_timer := Timer.new()
+	speed_timer.wait_time = .1
+	speed_timer.timeout.connect(Callable(self, "_on_speed_timer_tick"))
+	self.add_child(speed_timer)
+	speed_timer.start()
 
 static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
 	var rail_num: int = _starting_track.entity.num
@@ -57,6 +65,10 @@ func get_next_node_index() -> int:
 func get_cam() -> Camera3D:
 	return $Camera3D
 #endregion
+
+func _on_speed_timer_tick():
+	if self.motor && self.motor.is_started:
+		self.motor.on_motor_tick()
 
 func rotate_to(target_pos: Vector3):
 	var rot_before := self.global_rotation
