@@ -7,7 +7,8 @@ const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tsc
 @export var wheels: VehicleWheels
 @export var motor: VehicleMotor
 
-signal reached_next_node(int)
+signal reached_next_node(node_num: int)
+signal reached_end_of_track(node_obj: RailNodeData)
 signal entered()
 signal exited()
 
@@ -42,19 +43,20 @@ func _physics_process(delta: float) -> void:
 	translate(forward_vec)
 	var current_section := self.wheels.current_section
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
-		if current_section.end:
-			reached_next_node.emit(current_section.end.index)
+		if current_section.target:
+			reached_next_node.emit(current_section.target.index)
 			update_next_point()
 		else:
-			self.motor.stop()
+			var last_node: RailNodeData = current_section.track.get_end_node()
+			self.wheels.set_on_connected_track(last_node)
 			
 #region Node Getters
 func get_static_body() -> StaticBody3D:
 	return self.get_child(0)
 	
 func get_next_node_pos() -> Vector3:
-	if self.wheels.current_section.end:
-		return self.wheels.current_section.end.position
+	if self.wheels.current_section.target:
+		return self.wheels.current_section.target.position
 	else:
 		self.motor.stop()
 		return self.wheels.current_track.get_end_pos()

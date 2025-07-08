@@ -33,22 +33,29 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrackData)
 		_track.add_node(rail_node_obj)
 		node_index += 1
 	
-# == ADD CHILD NODES ==
+#region Add Nodes
 func add_node(rail_node: RailNodeData):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
 	
 func add_fork(rail_fork: RailForkData):
 	self.forks.append(rail_fork)
-	
+#endregion
+
+#region Get Nodes
 func get_rail_node(_i: int) -> RailNodeData:
 	if _i > 0 && _i < self.nodes.size():
 		return self.nodes.get(_i)
 	return null
+	
+func get_end_node() -> RailNodeData:
+	var last_i: int = self.nodes.size() -1
+	return self.nodes[last_i]
 
 func get_end_pos() -> Vector3:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i].position
+#endregion
 	
 func has_node_index(_index: int) -> bool:
 	var last_i: int = self.nodes.size() -1

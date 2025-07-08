@@ -1,5 +1,7 @@
 class_name VehicleSpeed extends RefCounted
 
+enum direction { FORWADS, BACKWARDS }
+
 signal changed(value: float)
 
 @export_storage var current: float = 0.0:

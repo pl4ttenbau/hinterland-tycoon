@@ -1,12 +1,13 @@
 class_name TrackSectionData extends Resource
 
-@export var start: RailNodeData:
+@export var origin: RailNodeData:
 	set(value):
 		if !value: return
-		start = value
+		origin = value
 		self.track = value.parent_track
 
-@export var end: RailNodeData
+@export var target: RailNodeData
+
 @export_storage var track: RailTrackData
 
 static func of(_last: RailNodeData, _next: RailNodeData) -> TrackSectionData:
