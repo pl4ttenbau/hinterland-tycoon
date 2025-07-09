@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://csvwuyf7fewuy"]
+
+[ext_resource type="Script" uid="uid://cjoj48oprt1f3" path="res://game/gamescripts/nodes/common/hideable_object.gd" id="1_1m5m8"]
+[ext_resource type="ArrayMesh" uid="uid://3he1muigwy14" path="res://assets/meshes/deco/bauwagen/bauwagen.obj" id="1_ebi7e"]
+
+[node name="Bauwagen" type="Node3D"]
+script = ExtResource("1_1m5m8")
+metadata/_custom_type_script = "uid://cjoj48oprt1f3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ebi7e")

@@ -1,6 +1,6 @@
 class_name VehicleSpeed extends RefCounted
 
-enum direction { FORWADS, BACKWARDS }
+enum EnumDirection { FORWADS, BACKWARDS }
 
 signal changed(value: float)
 
@@ -12,6 +12,8 @@ signal changed(value: float)
 		return current
 
 @export_storage var target: float 
+
+@export_storage var direction: EnumDirection = EnumDirection.FORWADS
 
 func adjust_to_target_speed():
 	var speed_diff := self.target - self.current
