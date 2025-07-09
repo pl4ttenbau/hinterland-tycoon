@@ -1,10 +1,7 @@
 class_name VehicleSpeed extends RefCounted
 
-<<<<<<< Updated upstream
-=======
 enum EnumDirection { FORWADS, BACKWARDS }
 
->>>>>>> Stashed changes
 signal changed(value: float)
 
 @export_storage var current: float = 0.0:

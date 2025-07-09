@@ -52,6 +52,11 @@ func stop() -> void:
 func on_motor_tick():
 	if self.speed:
 		self.speed.adjust_to_target_speed()
+		
+func set_on_connected_track(end_node: RailNodeData):
+	if end_node.fork && end_node.fork.setTo:
+		var next_track_num = end_node.fork.setTo
+		Loggie.info("Switching to track with num %d" % next_track_num)
 
 #region Getters
 func get_current_speed() -> float:
