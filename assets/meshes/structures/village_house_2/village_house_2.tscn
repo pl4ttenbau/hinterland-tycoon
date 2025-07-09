@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://baeywcrtv0l1f"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ufve3"]
+[ext_resource type="ArrayMesh" uid="uid://b0u6vne7qq6rl" path="res://assets/meshes/structures/village_house_2/village_house_2.obj" id="2_6p1i1"]
+
+[node name="VillageHouse2" type="Node3D"]
+script = ExtResource("1_ufve3")
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_6p1i1")
