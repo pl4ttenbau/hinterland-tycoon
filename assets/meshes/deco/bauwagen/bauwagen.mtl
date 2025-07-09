@@ -1,0 +1,12 @@
+# Blender 4.0.2 MTL File: 'None'
+# www.blender.org
+
+newmtl Bauwagen.dds-0
+Ns 186.274536
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tex_bauwagen_d.dds

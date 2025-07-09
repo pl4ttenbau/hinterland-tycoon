@@ -1,11 +1,11 @@
-[gd_scene load_steps=70 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=72 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="3_hwjdr"]
-[ext_resource type="Texture2D" uid="uid://ce5lbwsqkeod5" path="res://assets/textures/billboard/grass_green1.dds" id="4_oia7n"]
 [ext_resource type="Texture2D" uid="uid://du1odwt2ia0ii" path="res://assets/textures/billboard/reeds1.png" id="5_bh3tc"]
+[ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="5_hk0ac"]
 [ext_resource type="Texture2D" uid="uid://dg8xpmlbpn16m" path="res://assets/textures/billboard/wheat_n.dds" id="6_hwjdr"]
 [ext_resource type="Texture2D" uid="uid://bte7ncvvtqf1p" path="res://assets/textures/billboard/wheat_2_wide_d.png" id="7_2a4u0"]
 [ext_resource type="Texture2D" uid="uid://btck3st2a2uhi" path="res://assets/textures/terrain/grass_mix_d.dds" id="7_ki058"]
@@ -14,10 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dm0hetls2gfk4" path="res://assets/textures/terrain/desert_mud_d.dds" id="9_8q6nl"]
 [ext_resource type="PackedScene" uid="uid://dpva5i8x2a8i1" path="res://assets/meshes/deco/haybale/haybale.tscn" id="9_ki058"]
 [ext_resource type="Texture2D" uid="uid://qh5bnmda7yqr" path="res://assets/textures/terrain/desert_mud_n.dds" id="10_m70sx"]
-[ext_resource type="PackedScene" uid="uid://ms4hvk1eaygn" path="res://assets/meshes/nature/tree4/tree4.tscn" id="10_ohye1"]
 [ext_resource type="PackedScene" uid="uid://df3yp88iapvnw" path="res://assets/meshes/nature/tree5/tree5.tscn" id="11_8q6nl"]
 [ext_resource type="Texture2D" uid="uid://cqcef5m6nxqal" path="res://assets/textures/terrain/grass_ground_d.dds" id="11_sjx1o"]
-[ext_resource type="Texture2D" uid="uid://b08bg2u1laql" path="res://assets/textures/billboard/grass_2_dry.png" id="12_m70sx"]
 [ext_resource type="Texture2D" uid="uid://calee8fx0hf8m" path="res://assets/textures/terrain/grass_ground_n.dds" id="12_rh5xx"]
 [ext_resource type="Texture2D" uid="uid://cdeqsft06i30h" path="res://assets/textures/terrain/sand_trail_d.dds" id="13_5aof7"]
 [ext_resource type="Texture2D" uid="uid://wqu8c0ufiheg" path="res://assets/textures/terrain/sand_trail_n.dds" id="14_pcif5"]
@@ -33,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://coxlmxk5eujof" path="res://assets/textures/terrain/mountain_1_n.dds" id="26_5aof7"]
 [ext_resource type="Texture2D" uid="uid://cpclb5tft7t7s" path="res://assets/textures/terrain/forest_1_n.dds" id="28_5b2oc"]
 [ext_resource type="Texture2D" uid="uid://b6ycnobwtnppo" path="res://assets/textures/terrain/forest_mossy_d.dds" id="28_wjoci"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="34_hk0ac"]
+[ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="35_6ghl1"]
+[ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="36_x2dbq"]
+[ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="37_yaj22"]
+[ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -129,7 +132,8 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("4_oia7n")
+albedo_color = Color(0.565315, 0.649939, 0.370533, 1)
+albedo_texture = ExtResource("5_hk0ac")
 uv1_scale = Vector3(1, 0.9, 1)
 texture_filter = 2
 disable_receive_shadows = true
@@ -219,11 +223,21 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b5s1"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_8q6nl"]
-name = "tree4"
 id = 9
-scene_file = ExtResource("10_ohye1")
-density = 0.752755
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_4b5s1")
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -233,30 +247,6 @@ name = "Pine Tree"
 id = 10
 scene_file = ExtResource("11_8q6nl")
 density = 0.0247343
-last_lod = 0
-last_shadow_lod = 0
-lod0_range = 128.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjx1o"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-depth_draw_mode = 1
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("12_m70sx")
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
-
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_rh5xx"]
-name = "Dry Grass"
-id = 11
-generated_type = 1
-height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_sjx1o")
-generated_size = Vector2(1, 0.5)
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -334,7 +324,7 @@ uv_scale = 0.2
 detiling_rotation = 0.55
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_rh5xx")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
@@ -419,3 +409,36 @@ light_energy = 1.46
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1
+
+[node name="Deco" type="Node" parent="."]
+script = ExtResource("34_hk0ac")
+
+[node name="RathausTribsees" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.174312, 0, 1.99239, 0, 2, 0, -1.99239, 0, 0.174312, 226.49, 7.5, 855.218)
+mesh = ExtResource("35_6ghl1")
+
+[node name="WindmillDrechow" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 302.6, 17, 190.4)
+mesh = ExtResource("36_x2dbq")
+
+[node name="WindmillZarrentin" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
+mesh = ExtResource("36_x2dbq")
+
+[node name="Tractor" parent="Deco" instance=ExtResource("37_yaj22")]
+transform = Transform3D(-1.44889, 0, -0.388229, 0, 1.5, 0, 0.388229, 0, -1.44889, 522, 8.05, 795)
+
+[node name="Tractor2" parent="Deco" instance=ExtResource("37_yaj22")]
+transform = Transform3D(0.75, 0, 1.29904, 0, 1.5, 0, -1.29904, 0, 0.75, 1523.22, 14.8, 723.943)
+
+[node name="Tractor3" parent="Deco" instance=ExtResource("37_yaj22")]
+transform = Transform3D(0.388229, 0, -1.44889, 0, 1.5, 0, 1.44889, 0, 0.388229, 2052.69, 9.85, 1777.88)
+
+[node name="Tractor4" parent="Deco" instance=ExtResource("37_yaj22")]
+transform = Transform3D(-1.29904, 0, 0.75, 0, 1.5, 0, -0.75, 0, -1.29904, 1798.51, 8.8, 1721.75)
+
+[node name="Bauwagen" parent="Deco" instance=ExtResource("38_8lalv")]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 502, 14.9004, 565.991)
+
+[node name="Bauwagen2" parent="Deco" instance=ExtResource("38_8lalv")]
+transform = Transform3D(-0.707107, 0, 0.707107, -0.0616284, 0.996195, -0.0616284, -0.704416, -0.0871557, -0.704416, 1388.2, 9.50453, 1421.88)

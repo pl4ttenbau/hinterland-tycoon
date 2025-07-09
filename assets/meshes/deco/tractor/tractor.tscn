@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6r7as6v5u5xq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfmetwe5hugid" path="res://assets/meshes/deco/tractor/tractor.obj" id="1_k7uom"]
+
+[node name="Tractor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_k7uom")
