@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="3_hwjdr"]
-[ext_resource type="Texture2D" uid="uid://ce5lbwsqkeod5" path="res://assets/textures/billboard/grass_green1.dds" id="4_oia7n"]
 [ext_resource type="Texture2D" uid="uid://du1odwt2ia0ii" path="res://assets/textures/billboard/reeds1.png" id="5_bh3tc"]
+[ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="5_hk0ac"]
 [ext_resource type="Texture2D" uid="uid://dg8xpmlbpn16m" path="res://assets/textures/billboard/wheat_n.dds" id="6_hwjdr"]
 [ext_resource type="Texture2D" uid="uid://bte7ncvvtqf1p" path="res://assets/textures/billboard/wheat_2_wide_d.png" id="7_2a4u0"]
 [ext_resource type="Texture2D" uid="uid://btck3st2a2uhi" path="res://assets/textures/terrain/grass_mix_d.dds" id="7_ki058"]
@@ -134,7 +134,8 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("4_oia7n")
+albedo_color = Color(0.565315, 0.649939, 0.370533, 1)
+albedo_texture = ExtResource("5_hk0ac")
 uv1_scale = Vector3(1, 0.9, 1)
 texture_filter = 2
 disable_receive_shadows = true

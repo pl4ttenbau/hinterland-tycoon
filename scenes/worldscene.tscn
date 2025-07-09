@@ -1,13 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=33 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://scenes/terrain_demmin.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
-[ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="7_s11ye"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
-[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="10_u6qkf"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="14_stk68"]
@@ -15,15 +13,12 @@
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="15_lhsit"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
-[ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="16_t1xhr"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
-[ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="17_ye1qj"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
 [ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu/action_menu_item.gd" id="20_vf50h"]
-[ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="21_usal5"]
 [ext_resource type="Texture2D" uid="uid://b584wbd2ghs34" path="res://assets/icons/icon_mouse.svg" id="23_c2xmk"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
 [ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu/action_menu.gd" id="23_lhsit"]
@@ -258,39 +253,6 @@ script = ExtResource("6_p8gp8")
 
 [node name="Roads" type="Node" parent="World/Static/Infr"]
 script = ExtResource("6_hmgqj")
-
-[node name="Deco" type="Node" parent="World/Static"]
-script = ExtResource("10_u6qkf")
-
-[node name="RathausTribsees" type="MeshInstance3D" parent="World/Static/Deco"]
-transform = Transform3D(0.174312, 0, 1.99239, 0, 2, 0, -1.99239, 0, 0.174312, 226.49, 7.5, 855.218)
-mesh = ExtResource("21_usal5")
-
-[node name="WindmillDrechow" type="MeshInstance3D" parent="World/Static/Deco"]
-transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 302.6, 17, 190.4)
-mesh = ExtResource("7_s11ye")
-
-[node name="WindmillZarrentin" type="MeshInstance3D" parent="World/Static/Deco"]
-transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
-mesh = ExtResource("7_s11ye")
-
-[node name="Tractor" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
-transform = Transform3D(-1.44889, 0, -0.388229, 0, 1.5, 0, 0.388229, 0, -1.44889, 522, 8.05, 795)
-
-[node name="Tractor2" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
-transform = Transform3D(0.75, 0, 1.29904, 0, 1.5, 0, -1.29904, 0, 0.75, 1523.22, 14.8, 723.943)
-
-[node name="Tractor3" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
-transform = Transform3D(0.388229, 0, -1.44889, 0, 1.5, 0, 1.44889, 0, 0.388229, 2052.69, 9.85, 1777.88)
-
-[node name="Tractor4" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
-transform = Transform3D(-1.29904, 0, 0.75, 0, 1.5, 0, -0.75, 0, -1.29904, 1798.51, 8.8, 1721.75)
-
-[node name="Bauwagen" parent="World/Static/Deco" instance=ExtResource("17_ye1qj")]
-transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 502, 14.9004, 565.991)
-
-[node name="Bauwagen2" parent="World/Static/Deco" instance=ExtResource("17_ye1qj")]
-transform = Transform3D(-0.707107, 0, 0.707107, -0.0616284, 0.996195, -0.0616284, -0.704416, -0.0871557, -0.704416, 1388.2, 9.50453, 1421.88)
 
 [node name="Vehicles" type="Node" parent="World/Static"]
 unique_name_in_owner = true
