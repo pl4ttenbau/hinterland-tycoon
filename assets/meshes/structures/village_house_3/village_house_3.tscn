@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://07c8q4cga63q"]
+[gd_scene load_steps=5 format=3 uid="uid://07c8q4cga63q"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_r5kv1"]
 [ext_resource type="ArrayMesh" uid="uid://dnw57jci8f6ry" path="res://assets/meshes/structures/village_house_3/village_house_3.obj" id="1_tlsud"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_t4273"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udt60"]
+size = Vector3(8.4, 7.1, 13.2)
 
 [node name="VillageHouse3" type="Node3D"]
 script = ExtResource("1_r5kv1")
@@ -9,3 +13,11 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_tlsud")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+script = ExtResource("3_t4273")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 3.55, 0.2)
+shape = SubResource("BoxShape3D_udt60")
