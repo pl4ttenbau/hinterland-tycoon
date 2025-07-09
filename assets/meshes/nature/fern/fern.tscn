@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://8r3ltee0qaj8"]
+
+[ext_resource type="ArrayMesh" uid="uid://hherbbsmbilm" path="res://assets/meshes/nature/fern/fern.obj" id="1_cvfuy"]
+[ext_resource type="Texture2D" uid="uid://crab2nel85d4q" path="res://assets/meshes/nature/fern/tex_fern_d.png" id="2_nxj5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mawk"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.510288, 0.679198, 0.491368, 1)
+albedo_texture = ExtResource("2_nxj5o")
+
+[node name="Fern" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_cvfuy")
+surface_material_override/0 = SubResource("StandardMaterial3D_8mawk")
