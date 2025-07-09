@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=38 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://scenes/terrain_demmin.tscn" id="3_3kjtq"]
@@ -15,9 +15,11 @@
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="15_lhsit"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
+[ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="16_t1xhr"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
+[ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="17_ye1qj"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
 [ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu/action_menu_item.gd" id="20_vf50h"]
@@ -271,6 +273,24 @@ mesh = ExtResource("7_s11ye")
 [node name="WindmillZarrentin" type="MeshInstance3D" parent="World/Static/Deco"]
 transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
 mesh = ExtResource("7_s11ye")
+
+[node name="Tractor" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
+transform = Transform3D(-1.44889, 0, -0.388229, 0, 1.5, 0, 0.388229, 0, -1.44889, 522, 8.05, 795)
+
+[node name="Tractor2" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
+transform = Transform3D(0.75, 0, 1.29904, 0, 1.5, 0, -1.29904, 0, 0.75, 1523.22, 14.8, 723.943)
+
+[node name="Tractor3" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
+transform = Transform3D(0.388229, 0, -1.44889, 0, 1.5, 0, 1.44889, 0, 0.388229, 2052.69, 9.85, 1777.88)
+
+[node name="Tractor4" parent="World/Static/Deco" instance=ExtResource("16_t1xhr")]
+transform = Transform3D(-1.29904, 0, 0.75, 0, 1.5, 0, -0.75, 0, -1.29904, 1798.51, 8.8, 1721.75)
+
+[node name="Bauwagen" parent="World/Static/Deco" instance=ExtResource("17_ye1qj")]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 502, 14.9004, 565.991)
+
+[node name="Bauwagen2" parent="World/Static/Deco" instance=ExtResource("17_ye1qj")]
+transform = Transform3D(-0.707107, 0, 0.707107, -0.0616284, 0.996195, -0.0616284, -0.704416, -0.0871557, -0.704416, 1388.2, 9.50453, 1421.88)
 
 [node name="Vehicles" type="Node" parent="World/Static"]
 unique_name_in_owner = true
