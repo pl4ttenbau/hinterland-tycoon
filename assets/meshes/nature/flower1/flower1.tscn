@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://q7ym1h1okh1y"]
+
+[ext_resource type="ArrayMesh" uid="uid://bpt53xp5178ae" path="res://assets/meshes/nature/flower1/flower1.obj" id="1_oauvn"]
+
+[node name="Flower1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("1_oauvn")

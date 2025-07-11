@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_town.png")
-class_name TownCenter extends Node3D
+class_name TownCenter extends HideableObject
 
 signal town_changed(_town: TownData)
 
