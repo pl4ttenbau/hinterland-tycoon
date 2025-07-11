@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=76 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bj87quukhhn81" path="res://assets/meshes/nature/cow/cow.tscn" id="13_hk0ac"]
 [ext_resource type="Texture2D" uid="uid://wqu8c0ufiheg" path="res://assets/textures/terrain/sand_trail_n.dds" id="14_pcif5"]
 [ext_resource type="Texture2D" uid="uid://b2paoh1c36yfu" path="res://assets/textures/terrain/grass_darker_d.dds" id="15_5b2oc"]
+[ext_resource type="PackedScene" uid="uid://cpwvw3pqwqy40" path="res://assets/meshes/nature/ground_branches/ground_branches.tscn" id="15_6w68g"]
 [ext_resource type="Texture2D" uid="uid://fybuf27ahpae" path="res://assets/textures/terrain/grass_darker_n.dds" id="16_wjoci"]
 [ext_resource type="Texture2D" uid="uid://caoe635nf4s3o" path="res://assets/textures/terrain/straw_d.dds" id="18_bh3tc"]
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="18_kxyba"]
@@ -123,7 +124,6 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 shading_mode = 0
-albedo_color = Color(0.565315, 0.649939, 0.370533, 1)
 albedo_texture = ExtResource("5_hk0ac")
 uv1_scale = Vector3(1, 0.9, 1)
 texture_filter = 2
@@ -139,6 +139,7 @@ name = "Grass1"
 id = 4
 generated_type = 1
 height_offset = 0.5
+density = 4.145
 material_override = SubResource("StandardMaterial3D_nj174")
 generated_size = Vector2(2, 2)
 last_lod = 0
@@ -241,6 +242,15 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1jrh3"]
+name = "ground_branches"
+id = 12
+scene_file = ExtResource("15_6w68g")
+density = 1.9
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_rptdf"]
 name = "grass_mix_d"
 albedo_texture = ExtResource("11_sjx1o")
@@ -314,7 +324,7 @@ uv_scale = 0.2
 detiling_rotation = 0.55
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_6ghl1")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_6ghl1"), SubResource("Terrain3DMeshAsset_1jrh3")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
