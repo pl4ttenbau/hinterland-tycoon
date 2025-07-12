@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=34 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
-[ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://scenes/terrain_demmin.tscn" id="3_3kjtq"]
+[ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://world/demmin/mapscenes/terrain_demmin.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
 [ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu/action_menu.gd" id="23_lhsit"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="26_c2xmk"]
+[ext_resource type="Script" uid="uid://c15ri5f6kq2e" path="res://game/gamescripts/ui/etc/fps_label.gd" id="26_mg4js"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="27_c2xmk"]
 [ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="27_ekgs8"]
 
@@ -282,8 +283,8 @@ script = ExtResource("5_kq7m5")
 [node name="GameWindow" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1150.0
-offset_bottom = 644.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="PosLabel" type="Label" parent="GameWindow"]
 layout_mode = 0
@@ -412,3 +413,11 @@ rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)
 width = 1.0
 default_color = Color(0.87, 0.0783, 0.0783, 1)
+
+[node name="FpsLabel" type="Label" parent="GameWindow"]
+layout_mode = 0
+offset_left = 1065.0
+offset_top = 609.0
+offset_right = 1141.0
+offset_bottom = 632.0
+script = ExtResource("26_mg4js")

@@ -1,14 +1,17 @@
 @icon("res://assets/icons/icon_road.png")
 class_name OuterRoad extends VisibleObject
 
-func set_road(_road: RoadData):
-	self.entity = _road
-	self.get_path_3d().curve = _road.curve
-	# rename name
-	self.name = "Road_%d_Container" % _road.num
-	# set names of children
-	self.get_path_3d().name = "Road_%d_Path" % _road.num
-	self.get_road_mesh().name = "Road_%d_Mesh" % _road.num
+@export var road: RoadData:
+	set(value):
+		self.entity = value
+		self.get_path_3d().curve = value.curve
+		self.assign_node_names()
+	
+func assign_node_names():
+	var track_num: int = self.entity.num
+	self.name = "Road_%d_Container" % track_num
+	self.get_path_3d().name = "Road_%d_Path" % track_num
+	self.get_road_mesh().name = "Road_%d_Mesh" % track_num
 
 func get_path_3d() -> Path3D:
 	return self.get_child(0) as Path3D

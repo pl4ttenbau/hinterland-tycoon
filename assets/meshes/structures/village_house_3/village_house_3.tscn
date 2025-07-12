@@ -11,9 +11,6 @@ size = Vector3(8.4, 7.1, 13.2)
 script = ExtResource("1_r5kv1")
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_tlsud")
-
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
 script = ExtResource("3_t4273")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
@@ -21,3 +18,7 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 3.55, 0.2)
 shape = SubResource("BoxShape3D_udt60")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ResBldCollider"]
+mesh = ExtResource("1_tlsud")
+skeleton = NodePath("../..")

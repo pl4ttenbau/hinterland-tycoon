@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj87quukhhn81"]
+
+[ext_resource type="ArrayMesh" uid="uid://cgujtbl8uyfmg" path="res://assets/meshes/nature/cow/cow.obj" id="1_e4eev"]
+
+[node name="Cow" type="Node3D"]
+
+[node name="Cow" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = ExtResource("1_e4eev")

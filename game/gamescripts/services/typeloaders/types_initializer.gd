@@ -1,3 +1,5 @@
+## Autoloaded
+## hier wird das Laden von allen Typendatein getriggert
 extends Node
 
 func _init() -> void:

@@ -20,7 +20,7 @@ func spawn() -> OuterRoad:
 	# instanciate Container from PackedScene
 	var scene: Resource = preload(SCENE_PATH)
 	var _container: OuterRoad = scene.instantiate() as OuterRoad
-	_container.set_road(self)
+	_container.road = self
 	# add_to_group("Roads")
 	return _container
 

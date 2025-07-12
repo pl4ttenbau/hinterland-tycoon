@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpwvw3pqwqy40"]
+
+[ext_resource type="ArrayMesh" uid="uid://d22q0kafh5t4c" path="res://assets/meshes/nature/ground_branches/ground_branches.obj" id="1_jsusc"]
+[ext_resource type="Texture2D" uid="uid://000g5vj653d4" path="res://assets/meshes/nature/ground_branches/tex_ground_branches_d.png" id="2_8em3c"]
+[ext_resource type="Texture2D" uid="uid://k67ytu2qkq72" path="res://assets/meshes/nature/ground_branches/tex_ground_branches_n.png" id="3_xm5f4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3o6q"]
+albedo_texture = ExtResource("2_8em3c")
+normal_enabled = true
+normal_texture = ExtResource("3_xm5f4")
+
+[node name="GroundBranches" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_jsusc")
+surface_material_override/0 = SubResource("StandardMaterial3D_i3o6q")
