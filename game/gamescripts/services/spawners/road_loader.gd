@@ -3,7 +3,7 @@ class_name RoadsLoader extends Node
 
 const JSON_PATH = "res://world/demmin/jsondata/roads.json"
 const NODES_GROUP = "Roads"
-const MAX_VISIBLE_DIST := 500
+const MAX_VISIBLE_DIST := 200
 
 @export var roads: Array[RoadData] = []
 @export var containers: Array[OuterRoad] = []

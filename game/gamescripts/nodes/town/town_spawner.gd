@@ -15,10 +15,11 @@ func spawn_rnd_building():
 	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
 	var instanciated: OuterResBld = load(scene_path).instantiate()
-	instanciated.position = get_rnd_pos()
-	self.set_rnd_rotation(instanciated)
 	instanciated.res_bld_type = rnd_bld_type
-	# assign num 6 increase counter
+	# set random pos & rotation
+	instanciated.position = get_rnd_pos()
+	instanciated.rotate_y(randf_range(0, TAU))
+	# assign num to increase counter
 	self.register_spawned_building(instanciated)
 	
 func register_spawned_building(instanciated: OuterResBld):
@@ -31,6 +32,7 @@ func register_spawned_building(instanciated: OuterResBld):
 	# increase counter
 	self.bld_count += 1
 	
+#region Getters
 func get_rnd_pos() -> Vector3: 
 	var rnd_x: float = randf_range(self.town.pos_xz.x - 30, self.town.pos_xz.x + 30)
 	var rnd_z: float = randf_range(self.town.pos_xz.y - 30, self.town.pos_xz.y + 30)
@@ -40,12 +42,12 @@ func get_pos_at(pos_2d: Vector2) -> Vector3:
 	var pos_3d: Vector3 = Vector3(pos_2d.x, 12, pos_2d.y)
 	pos_3d.y = GlobalState.terrain.get_height_at(pos_3d)
 	return pos_3d
+#endregion
 
+#region Callbacks
 func _on_town_center_spawned(_town: TownData) -> void:
 	self.town = _town
 	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()
 	Loggie.info("Spawned town %s with %d buildings" % [_town.town_name, self.bld_count])
-	
-func set_rnd_rotation(bld_container: Node3D):
-	bld_container.rotate_y(randf_range(0, TAU))
+#endregion
