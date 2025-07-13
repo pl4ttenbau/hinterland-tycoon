@@ -2,12 +2,13 @@
 @icon("res://assets/icons/icon_town_white.png")
 class_name TownData extends GameObject
 
-@export var town_name: String;
+const BUIDLING_BLOCKAGE_RADIUS = 20.0
+
+@export var town_name: String
 @export var pos_xz: Vector2
 @export var totalPops: int
 @export var is_minor: bool = false
-
-@export_storage var structures: Array[BaseStructure] = []
+@export_storage var res_buildings: Array[OuterResBld] = []
 @export_storage var stations: Array[RailStationData] = []
 
 func _init():
@@ -24,7 +25,7 @@ func add_building(_building: BaseStructure):
 	self.structures.append(_building)
 	_building.town = self
 
-# == CONSTRUCTOR METHODS ==
+#region Constructors
 static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false) -> TownData:
 	var instance := TownData.new()
 	instance.town_name = _name
@@ -46,3 +47,16 @@ static func from_json(_jsonDict: Dictionary) -> TownData:
 		var pops = null
 		var is_minor: bool = _jsonDict.get("isMinor", false)
 		return TownData.of(town_name, posXZ, pops, is_minor)
+#endregion
+
+func add_res_bld(outer_res_bld: OuterResBld):
+	self.res_buildings.append(outer_res_bld)
+	GlobalState.res_bld_containers.append(outer_res_bld)
+	
+func has_bld_around(check_pos: Vector3) -> bool:
+	for outer_res_bld: OuterResBld in self.res_buildings:
+		var dist_to := outer_res_bld.position.distance_to(check_pos)
+		if dist_to <= BUIDLING_BLOCKAGE_RADIUS: 
+			return true
+	# Loggie.warn("Pos %v blocked by building in town %s" % [check_pos, self.town_name])
+	return false
