@@ -1,7 +1,7 @@
 @tool
 extends EditorScript
 
-const json_path = "res://world/jsondata/tracks.json"
+const json_path = "res://world/demmin/jsondata/tracks.json"
 
 func _run():
 	spawn_track_paths()
@@ -24,7 +24,7 @@ func spawn_track_paths():
 func get_parent() -> Node3D:
 	var infr_container = get_scene().get_node("World/InEditor/EditorInfr")
 	if ! infr_container:
-		push_error("Cannt find Node \"World/InEditor/EditorTowns\"")
+		push_error("Cannt find Node \"World/InEditor/EditorInfr\"")
 	return infr_container
 
 func vec3_from_float_arr(float_arr: Array):
