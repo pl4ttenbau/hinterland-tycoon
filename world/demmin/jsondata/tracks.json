@@ -311,6 +311,7 @@
 		"type": "NORMAL_GAUGE",
 		"name": "Demminer Anschlussbahn",
 		"offset": [0, 0, 0],
+		"startsNorthWest": false,
 		"points": [
 			{
 				"pos": [2470.3, 11, 2217.0],
@@ -385,6 +386,7 @@
 		"type": "NORMAL_GAUGE",
 		"name": "Hauptbahn Demmin-Grimmen Süd",
 		"offset": [0, 0, 0],
+		"startsNorthWest": false,
 		"points": [
 			{
 				"pos": [2297.1, 13.3, 1921.1],
@@ -461,6 +463,7 @@
 		"type": "NORMAL_GAUGE",
 		"name": "Hauptbahn Demmin-Grimmen Mitte",
 		"offset": [0, 0, 0],
+		"startsNorthWest": false,
 		"points": [
 			{
 				"pos": [1882.8, 11.0, 1420.0],
