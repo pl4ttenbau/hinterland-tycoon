@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=42 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://world/demmin/mapscenes/terrain_demmin.tscn" id="3_3kjtq"]
@@ -68,10 +68,10 @@ point_count = 17
 
 [sub_resource type="Curve3D" id="Curve3D_frv7l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2470.3, 11, 2217, 0, 0, 0, 0, 0, 0, 2446.3, 11.5, 2206, 0, 0, 0, 0, 0, 0, 2426.3, 12, 2198, 0, 0, 0, 0, 0, 0, 2414.3, 11, 2199, 0, 0, 0, 0, 0, 0, 2403.3, 11, 2201, 0, 0, 0, 0, 0, 0, 2398.3, 11.5, 2191, 0, 0, 0, 0, 0, 0, 2395.5, 11, 2176.3, 0, 0, 0, 0, 0, 0, 2383.8, 10.5, 2157.4, 0, 0, 0, 0, 0, 0, 2372, 9, 2131.7, 0, 0, 0, 0, 0, 0, 2370.6, 10, 2082.1, 0, 0, 0, 0, 0, 0, 2374.8, 12, 2067.2, 0, 0, 0, 0, 0, 0, 2378.4, 13.5, 2050, 0, 0, 0, 0, 0, 0, 2397.3, 13.5, 2016.4, 0, 0, 0, 0, 0, 0, 2380.6, 13.5, 1996.6, 0, 0, 0, 0, 0, 0, 2366.8, 12.5, 1978.9, 0, 0, 0, 0, 0, 0, 2343.3, 11.5, 1976.3, 0, 0, 0, 0, 0, 0, 2324.9, 12.8, 1959.6, 0, 0, 0, 0, 0, 0, 2297.1, 13.3, 1921.1),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2470.3, 11, 2217, 0, 0, 0, 0, 0, 0, 2446.3, 11.5, 2206, 0, 0, 0, 0, 0, 0, 2426.3, 12, 2198, 0, 0, 0, 0, 0, 0, 2414.3, 11, 2199, 0, 0, 0, 0, 0, 0, 2403.3, 11, 2201),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 18
+point_count = 5
 
 [sub_resource type="Curve3D" id="Curve3D_7jvca"]
 _data = {
@@ -103,10 +103,24 @@ point_count = 9
 
 [sub_resource type="Curve3D" id="Curve3D_k3box"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2148.2, 13.5, 528.7, 0, 0, 0, 0, 0, 0, 2148.2, 13.5, 500),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2148.2, 13.5, 528.7, 0, 0, 0, 0, 0, 0, 2147, 13.5, 500),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_63i0b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2240.9, 8.3, 2129, 0, 0, 0, 0, 0, 0, 2256.9, 8.2, 2146, 0, 0, 0, 0, 0, 0, 2287.9, 8.6, 2174, 0, 0, 0, 0, 0, 0, 2323.9, 7.6, 2185, 0, 0, 0, 0, 0, 0, 2353.9, 9, 2184, 0, 0, 0, 0, 0, 0, 2382.9, 11.2, 2196, 0, 0, 0, 0, 0, 0, 2394.9, 11.3, 2197, 0, 0, 0, 0, 0, 0, 2403.3, 11, 2201),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_8tr36"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2403.3, 11, 2201, 0, 0, 0, 0, 0, 0, 2398.3, 11.5, 2191, 0, 0, 0, 0, 0, 0, 2395.5, 11, 2176.3, 0, 0, 0, 0, 0, 0, 2383.8, 10.5, 2157.4, 0, 0, 0, 0, 0, 0, 2372, 9, 2131.7, 0, 0, 0, 0, 0, 0, 2370.6, 10, 2082.1, 0, 0, 0, 0, 0, 0, 2374.8, 12, 2067.2, 0, 0, 0, 0, 0, 0, 2378.4, 13.5, 2050, 0, 0, 0, 0, 0, 0, 2397.3, 13.5, 2016.4, 0, 0, 0, 0, 0, 0, 2380.6, 13.5, 1996.6, 0, 0, 0, 0, 0, 0, 2366.8, 12.5, 1978.9, 0, 0, 0, 0, 0, 0, 2343.3, 11.5, 1976.3, 0, 0, 0, 0, 0, 0, 2324.9, 12.8, 1959.6, 0, 0, 0, 0, 0, 0, 2297.1, 13.3, 1921.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_vdtib")
@@ -251,6 +265,18 @@ pixel_size = 0.33
 billboard = 1
 text = "Eixen"
 
+[node name="EditorLabel_Town_Franzburg" type="Label3D" parent="World/InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1124.3, 26.441, 124)
+pixel_size = 0.33
+billboard = 1
+text = "Franzburg"
+
+[node name="EditorLabel_Town_Richtenberg" type="Label3D" parent="World/InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1323.3, 31.3469, 73)
+pixel_size = 0.33
+billboard = 1
+text = "Richtenberg"
+
 [node name="EditorInfr" type="Node3D" parent="World/InEditor"]
 
 [node name="EditorTrack_Path_1" type="Path3D" parent="World/InEditor/EditorInfr"]
@@ -297,8 +323,16 @@ metadata/track_num = 10
 curve = SubResource("Curve3D_k3box")
 metadata/track_num = 11
 
+[node name="EditorTrack_Path_12" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_63i0b")
+metadata/track_num = 12
+
+[node name="EditorTrack_Path_13" type="Path3D" parent="World/InEditor/EditorInfr"]
+curve = SubResource("Curve3D_8tr36")
+metadata/track_num = 13
+
 [node name="Locator" type="Node3D" parent="World/InEditor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2383.8, 10.2, 903.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
 
 [node name="Static" type="Node" parent="World"]
 

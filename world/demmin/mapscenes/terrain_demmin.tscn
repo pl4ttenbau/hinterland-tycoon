@@ -72,10 +72,10 @@ _shader_parameters = {
 &"enable_macro_variation": true,
 &"enable_projection": false,
 &"flat_terrain_normals": false,
-&"macro_variation1": Color(0.67412, 0.890111, 0.766275, 1),
+&"macro_variation1": Color(1, 1, 1, 1),
 &"macro_variation2": Color(0.80416, 0.899098, 0.768777, 1),
 &"macro_variation_slope": 0.333,
-&"mipmap_bias": 0.72,
+&"mipmap_bias": 1.0,
 &"noise1_angle": 0.0,
 &"noise1_offset": Vector2(0.5, 0.5),
 &"noise1_scale": 0.069,
@@ -466,3 +466,12 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="Bauwagen3" parent="Deco" instance=ExtResource("38_8lalv")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 2254, 7.4, 2117)
+
+[node name="Tractor5" parent="Deco" instance=ExtResource("37_yaj22")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1706.1, 10.7, 1807.83)
+
+[node name="GantryCraneLong2" parent="Deco" instance=ExtResource("42_5161g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 287, 8.8, 927)
+
+[node name="Bauwagen4" parent="Deco" instance=ExtResource("38_8lalv")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 296, 8.7, 934)

@@ -1,10 +1,12 @@
 @tool
 extends EditorScript
 	
-const json_path = "res://world/demmin/jsondata/towns.json"
+const JSON_PATH = "res://world/demmin/jsondata/towns.json"
+const TERRAIN_NODE_PATH = "World/MapContainer/Terrain/WorldTerrain/WorldTerrain"
 
 func _run():
-	create_new_town_labels()
+	self.clear_children()
+	self.create_new_town_labels()
 	
 func create_new_town_labels():
 	var towns: Array[TownData] = parse_towns_json()
@@ -16,7 +18,7 @@ func create_new_town_labels():
 		editor_label.owner = get_scene() # make visible in editor
 
 func parse_towns_json() -> Array[TownData]:
-	var town_json_str = FileAccess.get_file_as_string(json_path)
+	var town_json_str = FileAccess.get_file_as_string(JSON_PATH)
 	var json_arr = JSON.parse_string(town_json_str) as Array[Dictionary]
 	if !json_arr:
 		push_warning("Couldnt load Town from \"%s\"" % town_json_str)
@@ -42,10 +44,15 @@ func get_editor_labels_container():
 		push_error("Cannt find Node \"World/InEditor/EditorTowns\"")
 	return editor_town_container
 	
+func clear_children():
+	for child: Node in self.parent.get_children():
+		child.queue_free()
+	
 func get_terrain() -> Terrain3D:
-	var terrain_3d = get_scene().get_node("World/Terrain/WorldTerrain")
+	var terrain_3d = get_scene().get_node(TERRAIN_NODE_PATH) as Terrain3D
 	if ! terrain_3d:
 		push_error("Cannt find Terrain3D node")
+		return
 	return terrain_3d
 	
 func get_pos_over_terrain(pos_xz: Vector2) -> Vector3:
