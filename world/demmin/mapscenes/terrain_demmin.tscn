@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=80 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -34,11 +34,14 @@
 [ext_resource type="Texture2D" uid="uid://cpclb5tft7t7s" path="res://assets/textures/terrain/forest_1_n.dds" id="28_5b2oc"]
 [ext_resource type="Texture2D" uid="uid://b6ycnobwtnppo" path="res://assets/textures/terrain/forest_mossy_d.dds" id="28_wjoci"]
 [ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="32_6w68g"]
+[ext_resource type="Texture2D" uid="uid://dvemrhd3p2bon" path="res://assets/textures/terrain/gravel_d.dds" id="32_ba7hl"]
+[ext_resource type="Texture2D" uid="uid://bvavhrtdhjar8" path="res://assets/textures/terrain/gravel_n.dds" id="33_5161g"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="34_hk0ac"]
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="35_6ghl1"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="36_x2dbq"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="37_yaj22"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
+[ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="42_5161g"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -266,6 +269,7 @@ name = "desert_mud_d"
 id = 1
 albedo_texture = ExtResource("9_8q6nl")
 normal_texture = ExtResource("10_m70sx")
+roughness = 0.318
 uv_scale = 0.5
 detiling_rotation = 0.149
 
@@ -323,9 +327,18 @@ roughness = 0.887
 uv_scale = 0.2
 detiling_rotation = 0.55
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_b5u8v"]
+name = "gravel_d"
+id = 8
+albedo_color = Color(0.93845, 0.93845, 0.93845, 1)
+albedo_texture = ExtResource("32_ba7hl")
+normal_texture = ExtResource("33_5161g")
+roughness = -0.45
+uv_scale = 0.4
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_6ghl1"), SubResource("Terrain3DMeshAsset_1jrh3")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci"), SubResource("Terrain3DTextureAsset_b5u8v")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
 panorama = ExtResource("32_6w68g")
@@ -447,3 +460,9 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195
 
 [node name="Bauwagen2" parent="Deco" instance=ExtResource("38_8lalv")]
 transform = Transform3D(-0.707107, 0, 0.707107, -0.0616284, 0.996195, -0.0616284, -0.704416, -0.0871557, -0.704416, 1388.2, 9.50453, 1421.88)
+
+[node name="GantryCraneLong" parent="Deco" instance=ExtResource("42_5161g")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2249.34, 7.7, 2135)
+
+[node name="Bauwagen3" parent="Deco" instance=ExtResource("38_8lalv")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 2254, 7.4, 2117)
