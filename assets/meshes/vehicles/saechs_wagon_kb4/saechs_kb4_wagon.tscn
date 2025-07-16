@@ -5,4 +5,5 @@
 [node name="SaechsKb4Wagon" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(90, 0, 0, 0, 90, 0, 0, 0, 90, 0, 0, 0)
 mesh = ExtResource("1_85yfu")

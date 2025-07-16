@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dijk5myp5mjji"]
+
+[ext_resource type="ArrayMesh" uid="uid://cn51odh0h0j60" path="res://assets/meshes/infr/road/rural_road_1/rural_road.obj" id="1_2mygr"]
+
+[node name="RuralRoad1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_2mygr")

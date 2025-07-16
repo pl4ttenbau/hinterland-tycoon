@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cna2au6en7070"
-path="res://.godot/imported/tex_rail_bedded_n.png-65b8f54838f522952001b298a83440e5.ctex"
+uid="uid://bhb253tbjmaid"
+path.s3tc="res://.godot/imported/tex_rural_road_d.png-f0406a3992ac9917967eeb22ff5b652b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/meshes/infr/rail/tex_rail_bedded_n.png"
-dest_files=["res://.godot/imported/tex_rail_bedded_n.png-65b8f54838f522952001b298a83440e5.ctex"]
+source_file="res://assets/meshes/infr/road/rural_road_1/tex_rural_road_d.png"
+dest_files=["res://.godot/imported/tex_rural_road_d.png-f0406a3992ac9917967eeb22ff5b652b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

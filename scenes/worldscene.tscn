@@ -127,7 +127,7 @@ script = ExtResource("1_vdtib")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2168.65, 15.2309, 563.467)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.65, 8.7309, 2160.47)
 script = ExtResource("12_p8gp8")
 metadata/_custom_type_script = "uid://0ou2op0l50qf"
 
@@ -224,7 +224,7 @@ billboard = 1
 text = "Gnoien"
 
 [node name="EditorLabel_Town_Demmin" type="Label3D" parent="World/InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2473.31, 29.6641, 2170.44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.21, 29.6641, 2170.44)
 pixel_size = 0.33
 billboard = 1
 text = "Demmin"
