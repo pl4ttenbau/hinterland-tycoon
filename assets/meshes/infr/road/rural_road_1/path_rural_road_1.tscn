@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhim6y02imw8o"]
 
-[ext_resource type="Script" uid="uid://ds8ckifkf8h16" path="res://game/gamescripts/nodes/infr/outer_road.gd" id="1_6tl4k"]
-[ext_resource type="ArrayMesh" uid="uid://cn51odh0h0j60" path="res://assets/meshes/infr/road/rural_road_1/rural_road.obj" id="2_0qo85"]
+[ext_resource type="Script" uid="uid://ds8ckifkf8h16" path="res://game/gamescripts/nodes/infr/outer_road.gd" id="1_0tb36"]
+[ext_resource type="ArrayMesh" uid="uid://cn51odh0h0j60" path="res://assets/meshes/infr/road/rural_road_1/rural_road.obj" id="2_hx1ak"]
 
 [sub_resource type="Curve3D" id="Curve3D_6tl4k"]
 
 [node name="OuterRoad" type="Node3D"]
-script = ExtResource("1_6tl4k")
+script = ExtResource("1_0tb36")
 
 [node name="RoadPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_6tl4k")
 
 [node name="RoadMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../RoadPath")
-mesh = ExtResource("2_0qo85")
+mesh = ExtResource("2_hx1ak")
 surface_0/tile_rotation = Vector3(0, 0, 0)
 surface_0/tile_rotation_order = 2
 surface_0/distribution = 0
