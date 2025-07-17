@@ -15,7 +15,8 @@ func spawn_rnd_building():
 	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
 	var instanciated: OuterResBld = load(scene_path).instantiate()
-	instanciated.res_bld_type = rnd_bld_type
+	# create & set res bld entity
+	instanciated.res_bld = ResidenceBuildingData.new(rnd_bld_type)
 	# set random pos & rotation
 	instanciated.position = get_checked_rnd_pos()
 	instanciated.rotate_y(randf_range(0, TAU))
@@ -23,9 +24,6 @@ func spawn_rnd_building():
 	self.register_spawned_building(instanciated)
 	
 func register_spawned_building(outer_res_bld: OuterResBld):
-	# assign new bld num
-	outer_res_bld.bld_num = OuterResBld.last_bld_num
-	OuterResBld.last_bld_num += 1
 	# add to city & global state array
 	self.add_child(outer_res_bld)
 	self.town.add_res_bld(outer_res_bld)
