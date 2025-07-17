@@ -17,4 +17,5 @@ func adjust_rotation() -> void:
 		rot_target_node = self.entity.railNode.get_previous()
 	else:
 		rot_target_node = self.entity.railNode.get_next()
-	self.look_at(rot_target_node.position)
+	if rot_target_node && rot_target_node.position:
+		self.look_at(rot_target_node.position)

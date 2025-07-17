@@ -6,15 +6,63 @@
 		"pos": [661.2, 16.0, 277.4]
 	},
 	{
-		"num": 1,
+		"num": 2,
 		"name": "Franzburg Forest",
 		"industryType": "FOREST",
 		"pos": [1542.3, 16.5, 320.0]
 	},
 	{
-		"num": 1,
+		"num": 3,
 		"name": "Sägewerk \"Junge\"",
 		"industryType": "SAWMILL",
 		"pos": [451.3, 13.0, 1693.0]
+	},
+	{
+		"num": 4,
+		"name": "Großbäckerei Tribsees",
+		"industryType": "BAKERY",
+		"pos": [263.9, 8.8, 926.4]
+	},
+	{
+		"num": 5,
+		"name": "Schlachthof Glewitz",
+		"industryType": "BUTCHER",
+		"pos": [1424.9, 9.0, 1349.4]
+	},
+	{
+		"num": 6,
+		"name": "Landgut Nossendorf",
+		"industryType": "FARM",
+		"pos": [1716.9, 9.8, 1783.4]
+	},
+	{
+		"num": 7,
+		"name": "Landgut Nossendorf",
+		"industryType": "FARM",
+		"pos": [1716.9, 9.8, 1773.4]
+	},
+	{
+		"num": 8,
+		"name": "Landgut Nehringen",
+		"industryType": "FARM",
+		"pos": [1017.6, 21.3, 1887.4]
+	},
+	{
+		"num": 9,
+		"name": "Landgut Wendisch-Baggendorf",
+		"industryType": "FARM",
+		"pos": [1741.6, 11.3, 1125.4]
+	},
+	{
+		"num": 10,
+		"name": "Landgut Dreschow",
+		"industryType": "FARM",
+		"pos": [525.6, 13.6, 624.4]
+	},
+	{
+		"num": 11,
+		"name": "Kraftwerk Demmin-Hafen",
+		"industryType": "COAL_PLANT",
+		"pos": [2277.1, 8.0, 2137.0]
 	}
 ]

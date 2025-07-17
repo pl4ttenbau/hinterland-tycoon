@@ -5,6 +5,7 @@ const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
 @export var nodes: Array[RailNodeData] = []
 @export_storage var stations: Array[RailStationData] = []
 @export_storage var forks: Array[RailForkData] = []
+@export var starts_northwest: bool = true
 
 signal created(track: RailForkData)
 
@@ -21,6 +22,8 @@ static func from_json(_track_dict: Dictionary) -> RailTrackData:
 	track_instance.offset = WorldUtils.vec3_from_float_arr(_track_dict.offset)
 	if _track_dict.has("name"):
 		track_instance.track_name = _track_dict.get("name")
+	if _track_dict.has("startsNorthWest"):
+		track_instance.starts_northwest = _track_dict.get("startsNorthWest")
 	add_points_from_json(_track_dict, track_instance)
 	track_instance.created.emit(track_instance)
 	return track_instance

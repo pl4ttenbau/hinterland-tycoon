@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdfuhygw5roim"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5d50w7frbx7c" path="res://assets/meshes/vehicles/soviet_torp_wagon/soviet_torp_wagon.obj" id="1_431q7"]
+
+[node name="SovietTorpWagon" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_431q7")

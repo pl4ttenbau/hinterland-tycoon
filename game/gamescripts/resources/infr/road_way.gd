@@ -1,6 +1,6 @@
 class_name RoadData extends AbstractTrack
 
-const SCENE_PATH = "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"
+const SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 
 @export var nodes: Array[RoadNode] = []
 @export_storage var crosses: Array[RoadCross] = []

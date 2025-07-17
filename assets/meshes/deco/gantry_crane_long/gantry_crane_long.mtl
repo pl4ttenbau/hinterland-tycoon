@@ -1,0 +1,13 @@
+# Blender 4.0.2 MTL File: 'gantry_crane_long.blend'
+# www.blender.org
+
+newmtl mat_gantry_crane_long
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd gantry_crane_long_d.png
+map_Bump -bm 1.000000 gantry_crane_long_n.png
