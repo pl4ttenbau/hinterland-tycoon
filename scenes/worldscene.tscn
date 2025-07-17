@@ -334,32 +334,32 @@ metadata/track_num = 13
 [node name="Locator" type="Node3D" parent="World/InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
 
-[node name="Static" type="Node" parent="World"]
+[node name="Generated" type="Node" parent="World"]
 
-[node name="Towns" type="Node" parent="World/Static"]
+[node name="Towns" type="Node" parent="World/Generated"]
 unique_name_in_owner = true
 editor_description = "Town-Centers with Label3D above will be spawned under this node"
 script = ExtResource("15_kq7m5")
 towns = null
 
-[node name="Infr" type="Node" parent="World/Static"]
+[node name="Infr" type="Node" parent="World/Generated"]
 
-[node name="Rails" type="Node" parent="World/Static/Infr"]
+[node name="Rails" type="Node" parent="World/Generated/Infr"]
 unique_name_in_owner = true
 script = ExtResource("15_nj174")
 
-[node name="Stations" type="Node" parent="World/Static/Infr"]
+[node name="Stations" type="Node" parent="World/Generated/Infr"]
 unique_name_in_owner = true
 script = ExtResource("6_p8gp8")
 
-[node name="Roads" type="Node" parent="World/Static/Infr"]
+[node name="Roads" type="Node" parent="World/Generated/Infr"]
 script = ExtResource("6_hmgqj")
 
-[node name="Vehicles" type="Node" parent="World/Static"]
+[node name="Vehicles" type="Node" parent="World/Generated"]
 unique_name_in_owner = true
 script = ExtResource("23_ekgs8")
 
-[node name="Industries" type="Node" parent="World/Static"]
+[node name="Industries" type="Node" parent="World/Generated"]
 script = ExtResource("15_lhsit")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 

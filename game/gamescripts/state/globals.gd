@@ -9,6 +9,8 @@ extends Node
 @export var industries: Array[Industry]
 @export var terrain: TerrainContainer
 
+@export var res_blds: Array[ResidenceBuildingData] = []
+
 @export var res_bld_containers: Array[OuterResBld] = []
 @export var ind_bld_containers: Array[OuterIndustry] = []
 

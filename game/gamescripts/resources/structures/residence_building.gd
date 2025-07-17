@@ -10,3 +10,5 @@ func _init(_bld_type: ResBldType):
 	OuterResBld.last_bld_num += 1
 	# set bld entity
 	self.bld_type = _bld_type
+	# register in globals
+	GlobalState.res_blds.append(self)

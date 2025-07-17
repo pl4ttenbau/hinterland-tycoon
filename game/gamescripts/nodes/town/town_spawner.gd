@@ -8,15 +8,17 @@ signal town_center_spawned(town: TownData)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var town_res: TownData = (self.get_parent() as TownCenter).town
-	self._on_town_center_spawned(town_res)
+	self.town = (self.get_parent() as TownCenter).town
+	self._on_town_center_spawned(self.town)
 	
 func spawn_rnd_building():
 	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
 	var instanciated: OuterResBld = load(scene_path).instantiate()
 	# create & set res bld entity
-	instanciated.res_bld = ResidenceBuildingData.new(rnd_bld_type)
+	var res_bld_data: ResidenceBuildingData = ResidenceBuildingData.new(rnd_bld_type)
+	res_bld_data.town_num = self.town.num
+	instanciated.res_bld = res_bld_data
 	# set random pos & rotation
 	instanciated.position = get_checked_rnd_pos()
 	instanciated.rotate_y(randf_range(0, TAU))

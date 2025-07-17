@@ -11,8 +11,13 @@ const BUIDLING_BLOCKAGE_RADIUS = 20.0
 @export_storage var res_buildings: Array[OuterResBld] = []
 @export_storage var stations: Array[RailStationData] = []
 
+static var last_town_num: int = 0
+
 func _init():
 	super(Enums.EntityTypes.TOWN)
+	# assign town num
+	self.num = TownData.last_town_num
+	TownData.last_town_num += 1
 
 func _to_string():
 	return "<Town %s>" % self.town_name
