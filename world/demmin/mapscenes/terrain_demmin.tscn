@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=81 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="37_yaj22"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="42_5161g"]
+[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="43_b5u8v"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -478,3 +479,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 287, 8
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 296, 8.7, 934)
 
 [node name="Houses" type="Node" parent="."]
+
+[node name="PolishHouse1" parent="Houses" instance=ExtResource("43_b5u8v")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 2381, 10, 2194)

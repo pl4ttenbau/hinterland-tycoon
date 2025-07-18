@@ -15,6 +15,11 @@ func get_rnd_res_bld() -> ResBldType:
 	randomize()
 	var rnd_i: int = randi_range(0, self.res_bld_types.size() -1)
 	return self.res_bld_types.get(rnd_i)
+	
+func get_res_bld_type(_key: String) -> ResBldType:
+	for res_bld_type: ResBldType in self.res_bld_types:
+		if res_bld_type.key == _key: return res_bld_type
+	return null
 
 func get_ind_type(key: String) -> IndustryType:
 	for found_type: IndustryType in self.industry_types:

@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvytqhl4vno6y"]
+[gd_scene load_steps=6 format=3 uid="uid://bvytqhl4vno6y"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_7rgrk"]
 [ext_resource type="ArrayMesh" uid="uid://drupjwf2dpw4x" path="res://assets/meshes/structures/polish_house_3/polish_house_3.obj" id="1_31yi1"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_c1gto"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1gto"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ap03"]
 size = Vector3(5.6, 6.1, 11.6)
 
 [node name="PolishHouse3" type="Node3D"]
 script = ExtResource("1_7rgrk")
+placed_res_bld_type = "polish_house_3"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -16,6 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = ExtResource("1_31yi1")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_c1gto")
 script = ExtResource("3_c1gto")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
