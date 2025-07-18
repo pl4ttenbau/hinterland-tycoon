@@ -48,7 +48,8 @@
 	},
 	{
 		"name": "Demmin",
-		"pos": [2411.21, 2170.44]
+		"pos": [2411.21, 2170.44],
+		"autogenerateHouses": false
 	},
 	{
 		"name": "Grimmen",

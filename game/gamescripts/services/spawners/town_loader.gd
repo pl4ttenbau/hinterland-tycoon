@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
 
 func _on_scene_ready() -> void:
-	load_towns()
+	self.load_towns()
 	
 func parse_towns_json(_json_str: String) -> Array[TownData]:
 	var json_arr = JSON.parse_string(_json_str) as Array[Dictionary]
@@ -23,6 +23,9 @@ func parse_towns_json(_json_str: String) -> Array[TownData]:
 	for town_values_dict: Dictionary in json_arr:
 		town_obj_arr.append(TownData.from_json(town_values_dict))
 	return town_obj_arr
+	
+func register_preplaced_res_blds():
+	pass
 				
 func load_towns():
 	var town_json_str = FileAccess.get_file_as_string(MAP_TOWNS_FILEPATH)

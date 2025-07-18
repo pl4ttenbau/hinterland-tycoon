@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://de7g4fgm4pi0q"]
+[gd_scene load_steps=43 format=3 uid="uid://de7g4fgm4pi0q"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://bk0k4rfuikqlp" path="res://world/demmin/mapscenes/terrain_demmin.tscn" id="3_3kjtq"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
+[ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town_building_holder.gd" id="10_c2xmk"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
@@ -340,7 +341,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
 unique_name_in_owner = true
 editor_description = "Town-Centers with Label3D above will be spawned under this node"
 script = ExtResource("15_kq7m5")
-towns = null
+
+[node name="BuildingsHolder" type="Node" parent="World/Generated/Towns"]
+script = ExtResource("10_c2xmk")
+metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 
 [node name="Infr" type="Node" parent="World/Generated"]
 

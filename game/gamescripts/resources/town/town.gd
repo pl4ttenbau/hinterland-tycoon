@@ -4,12 +4,21 @@ class_name TownData extends GameObject
 
 const BUIDLING_BLOCKAGE_RADIUS = 20.0
 
+#region Properties
 @export var town_name: String
+
 @export var pos_xz: Vector2
+
 @export var totalPops: int
+
 @export var is_minor: bool = false
+
+@export var autogenerate_houses: bool = true
+
 @export_storage var res_buildings: Array[OuterResBld] = []
+
 @export_storage var stations: Array[RailStationData] = []
+#endregion
 
 static var last_town_num: int = 0
 
@@ -31,11 +40,13 @@ func add_building(_building: BaseStructure):
 	_building.town = self
 
 #region Constructors
-static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false) -> TownData:
+static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false,
+		_autogenerate_houses: bool = false) -> TownData:
 	var instance := TownData.new()
 	instance.town_name = _name
 	instance.pos_xz = _pos2
 	instance.is_minor = _minor
+	instance.autogenerate_houses = _autogenerate_houses
 	if pops && typeof(pops) == TYPE_ARRAY && pops.size() == 2:
 		instance.peasantPops = pops.get(0)
 		instance.bourgiePops = pops.get(1)
@@ -51,7 +62,8 @@ static func from_json(_jsonDict: Dictionary) -> TownData:
 		var posXZ: Vector2 = Vector2(float(townPosArr[0]), float(townPosArr[1]))
 		var pops = null
 		var is_minor: bool = _jsonDict.get("isMinor", false)
-		return TownData.of(town_name, posXZ, pops, is_minor)
+		var autogenerate_houses: bool = _jsonDict.get("autogenerateHouses", true)
+		return TownData.of(town_name, posXZ, pops, is_minor, autogenerate_houses)
 #endregion
 
 func add_res_bld(outer_res_bld: OuterResBld):
