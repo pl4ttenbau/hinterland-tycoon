@@ -4,6 +4,7 @@ class_name StationsHolder extends Node
 @export_storage var _next_station_num: int = 0
 
 func _enter_tree() -> void:
+	Managers.stations = self
 	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
 
 ## Station objects are created with the rail tracks, but instanciated one by one here

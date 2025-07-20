@@ -12,6 +12,7 @@ signal roads_loaded(_roads: Array[RoadData])
 signal roads_spawned(_roads: Array[OuterRoad])
 
 func _enter_tree() -> void:
+	Managers.roads = self
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 
 func load_roads() -> void:
