@@ -12,6 +12,7 @@ signal rails_loaded(_rails: Array[RailTrackData])
 signal rails_spawned(_rails: Array[OuterRailTrack])
 
 func _enter_tree() -> void:
+	Managers.rails = self
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 

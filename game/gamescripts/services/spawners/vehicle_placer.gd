@@ -6,6 +6,7 @@ class_name VehiclePlacer extends Node
 @export var rail_vehicles: Array[RailVehicle] = []
 
 func _enter_tree() -> void:
+	Managers.vehicles = self
 	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
 
 func _ready() -> void:

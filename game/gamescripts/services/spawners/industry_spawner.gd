@@ -5,6 +5,7 @@ const MAP_INDUSTRIES_FILEPATH = "res://world/demmin/jsondata/industries.json"
 const IND_SCENE_PATH = "res://assets/meshes/industry/generic_small/generic_small.tscn"
 
 func _enter_tree() -> void:
+	Managers.industries = self
 	SignalBus.terrain_initialized.connect(Callable(self, "_on_terrain_loaded"))
 	SignalBus.all_types_initialized.connect(Callable(self, "_on_all_types_loaded"))
 	

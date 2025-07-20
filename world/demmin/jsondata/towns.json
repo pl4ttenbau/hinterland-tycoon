@@ -1,86 +1,106 @@
 [
 	{
+		"num": 0,
 		"name": "Tribsees",
 		"pos": [232.00, 870.00]
 	},
 	{
+		"num": 1,
 		"name": "Drechow",
 		"isMinor": true,
 		"pos": [675.00, 565.00]
 	},
 	{
+		"num": 2,
 		"name": "Zarrentin",
 		"isMinor": true,
 		"pos": [1160.00, 962.00]
 	},
 	{
+		"num": 3,
 		"name": "Nehringen",
 		"isMinor": true,
 		"pos": [910.00, 1529.00]
 	},
 	{
+		"num": 4,
 		"name": "Hohenbarnekow",
 		"isMinor": true,
 		"pos": [1295.0, 535.0]
 	},
 	{
+		"num": 5,
 		"name": "Finkethal",
 		"isMinor": true,
 		"pos": [409.0, 1958.0]
 	},
 	{
+		"num": 6,
 		"name": "Leyerhof",
 		"isMinor": true,
 		"pos": [2045.0, 898.0]
 	},
 	{
+		"num": 7,
 		"name": "Glewitz",
 		"isMinor": true,
 		"pos": [1303.00, 1312.00]
 	},
 	{
+		"num": 8,
 		"name": "Abtshagen",
 		"pos": [1889.31, 173.57]
 	},
 	{
+		"num": 9,
 		"name": "Gnoien",
 		"pos": [115.094, 1740.35]
 	},
 	{
+		"num": 10,
 		"name": "Demmin",
-		"pos": [2411.21, 2170.44]
+		"pos": [2411.21, 2170.44],
+		"autogenerateHouses": false
 	},
 	{
+		"num": 11,
 		"name": "Grimmen",
 		"pos": [2236.61, 634.85]
 	},
 	{
+		"num": 12,
 		"name": "Dargun",
 		"pos": [1212.07, 2178.45]
 	},
 	{
+		"num": 13,
 		"name": "Nossendorf",
 		"pos": [1771.67, 1767.4]
 	},
 	{
+		"num": 14,
 		"name": "Papenhagen",
 		"isMinor": true,
 		"pos": [1791.0, 484.0]
 	},
 	{
+		"num": 15,
 		"name": "Altkalen",
 		"pos": [163.0, 2205.0]
 	},
 	{
+		"num": 16,
 		"name": "Eixen",
 		"isMinor": true,
 		"pos": [124.0, 337.0]
 	},
 	{
+		"num": 17,
 		"name": "Franzburg",
 		"pos": [1124.3, 124.0]
 	},
 	{
+		"num": 18,
 		"name": "Richtenberg",
 		"pos": [1323.3, 73.0]
 	}
