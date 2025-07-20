@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=86 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -43,6 +43,11 @@
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="42_5161g"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="43_b5u8v"]
+[ext_resource type="PackedScene" uid="uid://baeywcrtv0l1f" path="res://assets/meshes/structures/village_house_2/village_house_2.tscn" id="44_k0dju"]
+[ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="45_hgrl6"]
+[ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="46_8kc2j"]
+[ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="47_w0rol"]
+[ext_resource type="PackedScene" uid="uid://5xuaaujf5s08" path="res://assets/meshes/structures/chapel/chapel.tscn" id="48_nhxd4"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -481,4 +486,33 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 296, 8.7, 
 [node name="Houses" type="Node" parent="."]
 
 [node name="PolishHouse1" parent="Houses" instance=ExtResource("43_b5u8v")]
-transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 2381, 10, 2194)
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 2388.63, 10.2, 2183.26)
+placed_town_num = 10
+
+[node name="VillageHouse2" parent="Houses" instance=ExtResource("44_k0dju")]
+transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 2412.49, 9.6028, 2173.47)
+placed_town_num = 10
+
+[node name="VillageHouse3" parent="Houses" instance=ExtResource("45_hgrl6")]
+transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 2398.65, 8.1, 2150.91)
+placed_town_num = 10
+
+[node name="PolishHouse2" parent="Houses" instance=ExtResource("46_8kc2j")]
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 2371.44, 11.3, 2176.39)
+placed_town_num = 10
+
+[node name="PolishHouse3" parent="Houses" instance=ExtResource("46_8kc2j")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2392.6, 7.7, 2138)
+placed_town_num = 10
+
+[node name="PolishHouse4" parent="Houses" instance=ExtResource("47_w0rol")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2415.89, 8.7, 2149.95)
+placed_town_num = 10
+
+[node name="Chapel" parent="Houses" instance=ExtResource("48_nhxd4")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 2432.41, 8.2, 2145)
+placed_town_num = 10
+
+[node name="PolishHouse5" parent="Houses" instance=ExtResource("47_w0rol")]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 2455.32, 13, 2160.45)
+placed_town_num = 10

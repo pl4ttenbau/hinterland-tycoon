@@ -4,10 +4,9 @@ class_name TownBuildingHolder extends Node
 @export var placed_buildings: Array[OuterResBld] = []
 
 func _enter_tree() -> void:
-	SignalBus.towns_loaded.connect(Callable(self, "_towns_loaded"))
-	
-func _towns_loaded():
-	self.load_preplaced_town_buildings()
+	Managers.town_buildings = self
+	SignalBus.towns_loaded.connect(Callable(self, "_on_towns_loaded"))
+	SignalBus.towns_spawned.connect(Callable(self, "_on_towns_spawned"))
 		
 func load_preplaced_town_buildings():
 	var map_house_container := self.get_map_houses_container()
@@ -22,11 +21,13 @@ func load_preplaced_town_buildings():
 			town.res_buildings.append(outer_bld)
 			# save here as well
 			self.placed_buildings.append(outer_bld)
-	
+
+#region Getters 
+## the pre-placed buildings are in "TerrainContainer/Houses"
 func get_map_houses_container() -> Node:
 	var map_container: TerrainContainer = GlobalState.terrain
 	if ! map_container:
-		Loggie.error("Cannot collect townm buildings: Terrain data not loaded")
+		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
 	return map_container.get_child(2)
 	
@@ -37,3 +38,9 @@ func get_town_by_num(_num: int) -> TownData:
 	for town: TownData in GlobalState.towns:
 		if town.num == _num: return town
 	return null
+#endregion
+	
+#region Signal Callbacks
+func _on_towns_loaded():
+	self.load_preplaced_town_buildings()
+#endregion

@@ -21,6 +21,7 @@ normal_texture = ExtResource("4_1nq56")
 
 [node name="CityManor" type="Node3D"]
 script = ExtResource("1_coaek")
+placed_res_bld_type = "city_manor"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

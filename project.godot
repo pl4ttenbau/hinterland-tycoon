@@ -24,6 +24,7 @@ GlobalState="*res://game/gamescripts/state/globals.gd"
 GameTypes="*res://game/gamescripts/state/types.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
+Managers="*res://game/gamescripts/state/managers.gd"
 
 [debug_draw_3d]
 

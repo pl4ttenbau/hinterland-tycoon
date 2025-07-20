@@ -9,6 +9,7 @@ size = Vector3(8.4, 7.1, 13.2)
 
 [node name="VillageHouse2" type="Node3D"]
 script = ExtResource("1_ufve3")
+placed_res_bld_type = "village_house_2"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

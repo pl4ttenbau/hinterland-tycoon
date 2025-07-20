@@ -5,10 +5,11 @@ const MAP_TOWNS_FILEPATH = "res://world/demmin/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 @export var towns: Array[TownData] = []
-@export var town_centers: Array[TownCenter]
+@export var town_centers: Array[TownCenter] = []
 @export_storage var res_bld_loader: ResidentialBldTypeLoader
 
 func _enter_tree() -> void:
+	Managers.towns = self
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
 
 func _on_scene_ready() -> void:
@@ -23,27 +24,26 @@ func parse_towns_json(_json_str: String) -> Array[TownData]:
 	for town_values_dict: Dictionary in json_arr:
 		town_obj_arr.append(TownData.from_json(town_values_dict))
 	return town_obj_arr
-	
-func register_preplaced_res_blds():
-	pass
 				
 func load_towns():
 	var town_json_str = FileAccess.get_file_as_string(MAP_TOWNS_FILEPATH)
 	for parsed_town: TownData in parse_towns_json(town_json_str):
+		# save town itself in lists
+		self.towns.append(parsed_town)
+		GlobalState.towns.append(parsed_town)
+		# spawn container 
 		var spawned_town: TownData = spawn_town(parsed_town)
-		add_town(spawned_town)
 	SignalBus.towns_loaded.emit()
-	
-func add_town(_town: TownData):
-	self.towns.append(_town)
-	GlobalState.towns.append(_town)
+	SignalBus.towns_spawned.emit()
 	
 func spawn_town(_town: TownData) -> TownData:
 	var sceneRes: Resource = ResourceLoader.load(TOWN_ROOT_SCENE_PATH) as PackedScene
-	var town_container_node: TownCenter = sceneRes.instantiate()
-	town_container_node.town = _town
-	town_container_node.position = get_pos_on_terrain(_town.pos_xz)
-	add_child(town_container_node)
+	var town_center: TownCenter = sceneRes.instantiate()
+	town_center.town = _town
+	town_center.position = get_pos_on_terrain(_town.pos_xz)
+	# add as child and to center list
+	add_child(town_center)
+	self.town_centers.append(town_center)
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town
@@ -57,3 +57,10 @@ func get_label_pos_at(posXZ: Vector2) -> Vector3:
 	var offset: Vector3 = Vector3(0, 30, 0)
 	var terrainPos: Vector3 = get_pos_on_terrain(posXZ)
 	return terrainPos + offset
+
+func get_town_center(town_num: int) -> TownCenter:
+	for town_center: TownCenter in self.town_centers:
+		if town_center.town && town_center.town.num == town_num:
+			return town_center
+	Loggie.warn("Cannot fimd Town with num %d" % town_num)
+	return null
