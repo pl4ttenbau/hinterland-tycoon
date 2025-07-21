@@ -7,6 +7,7 @@ func _enter_tree() -> void:
 	Managers.town_buildings = self
 	SignalBus.towns_loaded.connect(Callable(self, "_on_towns_loaded"))
 	SignalBus.towns_spawned.connect(Callable(self, "_on_towns_spawned"))
+	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 		
 func load_preplaced_town_buildings():
 	var map_house_container := self.get_map_houses_container()
@@ -44,5 +45,9 @@ func get_town_by_num(_num: int) -> TownData:
 	
 #region Signal Callbacks
 func _on_towns_loaded():
+	#self.load_preplaced_town_buildings()
+	pass
+	
+func _on_map_spawned(terrain_container: TerrainContainer):
 	self.load_preplaced_town_buildings()
 #endregion
