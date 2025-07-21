@@ -12,15 +12,17 @@ func load_preplaced_town_buildings():
 	var map_house_container := self.get_map_houses_container()
 	for child: Node in map_house_container.get_children():
 		if child is OuterResBld:
-			var outer_bld: OuterResBld = child as OuterResBld
-			var res_bld_type := self.get_res_bld_type(outer_bld.placed_res_bld_type)
-			outer_bld.res_bld = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
-			outer_bld.res_bld.num = OuterResBld.next_num()
-			# assign to town
-			var town := self.get_town_by_num(outer_bld.placed_town_num)
-			town.res_buildings.append(outer_bld)
-			# save here as well
-			self.placed_buildings.append(outer_bld)
+			self.place_preplaced_res_bld(child as OuterResBld)
+			
+func place_preplaced_res_bld(outer_bld: OuterResBld):
+	var res_bld_type := self.get_res_bld_type(outer_bld.placed_res_bld_type)
+	outer_bld.res_bld = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
+	outer_bld.res_bld.num = OuterResBld.next_num()
+	# assign to town
+	var town := self.get_town_by_num(outer_bld.placed_town_num)
+	town.res_buildings.append(outer_bld)
+	# save here as well
+	self.placed_buildings.append(outer_bld)
 
 #region Getters 
 ## the pre-placed buildings are in "TerrainContainer/Houses"

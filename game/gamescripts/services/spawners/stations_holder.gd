@@ -17,7 +17,7 @@ func spawn_stations():
 	SignalBus.stations_spawned.emit()
 	
 func spawn_station(station_obj: RailStationData) -> OuterRailStation:
-	station_obj.num = self.get_next_station_num()
+	station_obj.num = RailStationData.next_station_num()
 	var container: OuterRailStation = station_obj.spawn()
 	container._name_nodes()
 	self.add_child(container, true)
@@ -25,7 +25,3 @@ func spawn_station(station_obj: RailStationData) -> OuterRailStation:
 	
 func _on_rails_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
 	spawn_stations()
-
-func get_next_station_num() -> int:
-	self._next_station_num += 1
-	return self._next_station_num

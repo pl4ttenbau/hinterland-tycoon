@@ -14,6 +14,7 @@ signal roads_spawned(_roads: Array[OuterRoad])
 func _enter_tree() -> void:
 	Managers.roads = self
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
+	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 
 func load_roads() -> void:
 	var roads_arr_str: String = FileAccess.get_file_as_string(JSON_PATH)
@@ -38,11 +39,10 @@ func spawn_road(road: RoadData):
 		
 func _ready() -> void:
 	load_roads()
-	spawn_roads()
 	Loggie.info("roads precreated")
-
-func _on_scene_ready() -> void:
-	pass
+	
+func _on_world_spawned(container: TerrainContainer):
+	spawn_roads()
 
 func _on_world_update() -> void:
 	for container: OuterRoad in self.containers:

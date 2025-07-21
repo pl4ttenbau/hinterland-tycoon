@@ -3,6 +3,12 @@ class_name Signals extends Node
 @warning_ignore("unused_signal")
 signal all_types_initialized()
 
+@warning_ignore("unused_signal")
+signal map_list_loaded(map_list: Array[MapData])
+
+@warning_ignore("unused_signal")
+signal map_selected(map_obj: MapData)
+
 #region World
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: TerrainContainer)
@@ -12,6 +18,9 @@ signal world_update()
 
 @warning_ignore("unused_signal")
 signal scene_root_ready()
+
+@warning_ignore("unused_signal")
+signal map_spawned(container: TerrainContainer)
 #endregion
 
 #region Vehicles

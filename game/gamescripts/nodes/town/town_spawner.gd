@@ -54,10 +54,7 @@ func get_pos_at(pos_2d: Vector2) -> Vector3:
 
 #region Callbacks
 func _on_town_center_spawned(_town: TownData) -> void:
-	if self.town.autogenerate_houses == false:
-		Loggie.info("Skipping building generation in %s" % self.town.town_name)
-		return
+	if self.town.autogenerate_houses == false: return
 	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()
-	Loggie.info("Spawned town %s with %d buildings" % [_town.town_name, self.bld_count])
 #endregion

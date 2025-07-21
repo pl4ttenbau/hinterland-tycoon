@@ -10,9 +10,9 @@ const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 func _enter_tree() -> void:
 	Managers.towns = self
-	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
+	SignalBus.scene_root_ready.connect(Callable(self, "_on_map_spawned"))
 
-func _on_scene_ready() -> void:
+func _on_map_spawned() -> void:
 	self.load_towns()
 	
 func parse_towns_json(_json_str: String) -> Array[TownData]:
@@ -47,7 +47,8 @@ func spawn_town(_town: TownData) -> TownData:
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town
-	
+
+#region Getters
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
 	var terr_container: TerrainContainer = GlobalState.terrain
@@ -64,3 +65,4 @@ func get_town_center(town_num: int) -> TownCenter:
 			return town_center
 	Loggie.warn("Cannot fimd Town with num %d" % town_num)
 	return null
+#endregion

@@ -4,6 +4,11 @@ extends Node
 @export var player: PlayerHead
 @export var active_cam: Camera3D
 
+# == PRE-WORLD-LOADING ==
+@export var game_maps: Array[MapData]
+@export var loaded_map_name: String = "demmin"
+@export var loaded_map: MapData 
+
 # == STATIC ==
 @export var towns: Array[TownData] = []
 
