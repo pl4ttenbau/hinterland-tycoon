@@ -25,6 +25,7 @@ GameTypes="*res://game/gamescripts/state/types.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
+MapListLoader="*res://game/gamescripts/services/spawners/map_list_loader.gd"
 
 [debug_draw_3d]
 

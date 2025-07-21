@@ -13,8 +13,12 @@ signal rails_spawned(_rails: Array[OuterRailTrack])
 
 func _enter_tree() -> void:
 	Managers.rails = self
-	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
+	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
+	
+func _ready() -> void:
+	load_rail_tracks()
+	Loggie.info("rails precreated")
 
 func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(MAP_RAILS_FILEPATH)
@@ -50,15 +54,10 @@ func spawn_rail_forks(parent_track: RailTrackData):
 	for fork: RailForkData in parent_track.forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
-		
-func _ready() -> void:
-	load_rail_tracks()
-	spawn_rails()
-	Loggie.info("rails precreated")
 
-# == EVENT LISTENERS ==
-func _on_scene_ready() -> void:
-	pass
+#region Event Listeners
+func _on_map_spawned(container: TerrainContainer):
+	self.spawn_rails()
 	
 func _on_world_update() -> void:
 	for container: OuterRailTrack in self.track_containers:
@@ -70,3 +69,4 @@ func _on_world_update() -> void:
 				container.visible = false
 			else:
 				container.visible = true
+#endregion

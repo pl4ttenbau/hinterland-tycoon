@@ -4,24 +4,28 @@ class_name VehiclePlacer extends Node
 @export_storage var _next_vehicle_num = 0
 @export var rail_containers: Array[OuterRailTrack]
 @export var rail_vehicles: Array[RailVehicle] = []
+@export var start_vehicles_spawned: bool = false
 
 func _enter_tree() -> void:
 	Managers.vehicles = self
 	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
-
-func _ready() -> void:
-	load_vehicles()
 	
-func load_vehicles():
+func _check_rails_and_terrain() -> bool:
 	if !GlobalState:
 		push_warning("Cannot save vehicle in scnene: Globals not found")
-		return
+		return false
 	if !rail_containers:
 		push_warning("RailContainers not loaded; aboring vehicle creation")
-		return
+		return false
+	return true
+	
+func load_vehicles():
+	var all_loaded: bool = self._check_rails_and_terrain()
+	if  !all_loaded: return
 	Loggie.info("Globals & rails found: initializing vehicles...")
 	var track_num: int = 2
 	self.spawn_vehicle(track_num, 0)
+	self.start_vehicles_spawned = true
 	
 func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
 	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
@@ -49,4 +53,4 @@ func get_rail_path(_num: int) -> OuterRailTrack:
 func _on_rails_rails_spawned(containers: Array[OuterRailTrack]) -> void:
 	Loggie.info("Rails spawned; initializing vehicles ...")
 	self.rail_containers = containers
-	# load_vehicles()
+	load_vehicles()

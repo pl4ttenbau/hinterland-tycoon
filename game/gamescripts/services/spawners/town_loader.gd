@@ -10,16 +10,16 @@ const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 func _enter_tree() -> void:
 	Managers.towns = self
-	SignalBus.scene_root_ready.connect(Callable(self, "_on_scene_ready"))
-
-func _on_scene_ready() -> void:
+	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
+	
+func _ready() -> void:
 	self.load_towns()
+
+func _on_map_spawned(container: TerrainContainer) -> void:
+	self.spawn_towns()
 	
 func parse_towns_json(_json_str: String) -> Array[TownData]:
 	var json_arr = JSON.parse_string(_json_str) as Array[Dictionary]
-	if !json_arr:
-		push_warning("Couldnt load Town from \"%s\"" % _json_str)
-		return []
 	var town_obj_arr: Array[TownData] = []
 	for town_values_dict: Dictionary in json_arr:
 		town_obj_arr.append(TownData.from_json(town_values_dict))
@@ -31,9 +31,11 @@ func load_towns():
 		# save town itself in lists
 		self.towns.append(parsed_town)
 		GlobalState.towns.append(parsed_town)
-		# spawn container 
-		var spawned_town: TownData = spawn_town(parsed_town)
 	SignalBus.towns_loaded.emit()
+	
+func spawn_towns():
+	for town: TownData in self.towns:
+		spawn_town(town)
 	SignalBus.towns_spawned.emit()
 	
 func spawn_town(_town: TownData) -> TownData:
@@ -47,7 +49,8 @@ func spawn_town(_town: TownData) -> TownData:
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town
-	
+
+#region Getters
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
 	var terr_container: TerrainContainer = GlobalState.terrain
@@ -64,3 +67,4 @@ func get_town_center(town_num: int) -> TownCenter:
 			return town_center
 	Loggie.warn("Cannot fimd Town with num %d" % town_num)
 	return null
+#endregion

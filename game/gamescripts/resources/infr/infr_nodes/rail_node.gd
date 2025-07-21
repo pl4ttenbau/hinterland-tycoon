@@ -21,7 +21,6 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		self.add_station(RailStationData.of_station_dict(station_dict, self))
 	
 func add_station(_station: RailStationData):
-	Loggie.info("Found station: %s" % _station.station_name)
 	self.station = _station
 	# add to track & global station list
 	self.parent_track.stations.append(_station)

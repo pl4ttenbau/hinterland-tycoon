@@ -7,6 +7,8 @@ class_name RailStationData extends GameObject
 @export var town_name: String
 @export_storage var outer_node: OuterRailStation
 
+static var _last_station_num: int = 0
+
 func _init():
 	super(Enums.EntityTypes.STATION)
 
@@ -42,3 +44,7 @@ func set_full_station_name():
 		
 func get_track() -> RailTrackData:
 	return self.parent_node.parent_track
+	
+static func next_station_num() -> int:
+	RailStationData._last_station_num += 1
+	return RailStationData._last_station_num

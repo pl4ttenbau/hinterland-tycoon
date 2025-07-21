@@ -3,6 +3,7 @@
 extends Node
 
 func _init() -> void:
+	# map object types
 	InfrTypesLoader.new()
 	IndustryTypeLoader.new()
 	ResidentialBldTypeLoader.new()

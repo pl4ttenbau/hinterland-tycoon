@@ -6,8 +6,6 @@
 [node name="TownCenter" type="Node3D"]
 process_mode = 4
 script = ExtResource("1_4e0qw")
-dist2cam = null
-entity = null
 
 [node name="TownLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
