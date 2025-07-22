@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bo8i57ai86euo"
+path="res://.godot/imported/rural_wood_fence_1.obj-79d8231c8b852eae892f5b8f3ddc16fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rural_wood_fence_1.obj-79d8231c8b852eae892f5b8f3ddc16fe.mesh"]
+
+source_file="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1.obj"
+dest_files=["res://.godot/imported/rural_wood_fence_1.obj-79d8231c8b852eae892f5b8f3ddc16fe.mesh", "res://.godot/imported/rural_wood_fence_1.obj-79d8231c8b852eae892f5b8f3ddc16fe.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

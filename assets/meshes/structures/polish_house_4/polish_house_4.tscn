@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7lymmuy3e1k4"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_fiyle"]
+[ext_resource type="ArrayMesh" uid="uid://bbsalwsqyqsfo" path="res://assets/meshes/structures/polish_house_4/polish_house_4.obj" id="2_11i8a"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_d6slb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_11i8a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ayrlt"]
+size = Vector3(9.6, 6.7, 11.7)
+
+[node name="PolishHouse4" type="Node3D"]
+script = ExtResource("1_fiyle")
+placed_res_bld_type = "polish_house_4"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = ExtResource("2_11i8a")
+
+[node name="ClickableCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_11i8a")
+script = ExtResource("3_d6slb")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0.05)
+shape = SubResource("BoxShape3D_ayrlt")

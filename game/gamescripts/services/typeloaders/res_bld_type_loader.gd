@@ -10,6 +10,8 @@ static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 		ResBldType.new("polish_house_1", "Polish House", 3),
 		ResBldType.new("polish_house_2", "Polish House", 4),
 		ResBldType.new("polish_house_3", "Polish House", 6),
+		ResBldType.new("polish_house_4", "Polish House", 4),
+		ResBldType.new("polish_house_5", "Polish House", 12),
 		ResBldType.new("village_house_2", "Village House", 6),
 		ResBldType.new("village_house_3", "Village House", 4),
 		ResBldType.new("chapel", "Chapel", 9),

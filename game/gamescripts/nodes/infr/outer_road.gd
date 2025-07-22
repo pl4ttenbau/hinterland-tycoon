@@ -14,7 +14,7 @@ func assign_node_names():
 	self.get_road_mesh().name = "Road_%d_Mesh" % track_num
 
 func get_path_3d() -> Path3D:
-	return self.get_child(0) as Path3D
+	return $"./RoadPath"
 	
 func get_road_mesh() -> PathMesh3D:
 	return self.get_child(1)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvjmkuicpsgx7"]
+
+[ext_resource type="Script" uid="uid://cjoj48oprt1f3" path="res://game/gamescripts/nodes/common/hideable_object.gd" id="1_bv5ht"]
+[ext_resource type="Texture2D" uid="uid://cykne558y33gg" path="res://assets/meshes/industry/industrial_silo/big_tank_diff_edited.jpg" id="1_omdao"]
+[ext_resource type="Texture2D" uid="uid://bnv4ouwgvbfw8" path="res://assets/meshes/industry/industrial_silo/big_tank_ao.jpg" id="2_bv5ht"]
+[ext_resource type="Texture2D" uid="uid://ctc14jsnjvbk" path="res://assets/meshes/industry/industrial_silo/big_tank_norm.jpg" id="3_vtw40"]
+[ext_resource type="ArrayMesh" uid="uid://bcyfjapf88aoq" path="res://assets/meshes/industry/industrial_silo/industrial_silo.obj" id="4_rn27a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0n68m"]
+albedo_texture = ExtResource("1_omdao")
+normal_enabled = true
+normal_texture = ExtResource("3_vtw40")
+ao_enabled = true
+ao_texture = ExtResource("2_bv5ht")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv5ht"]
+size = Vector3(16.4, 17.2, 4.5)
+
+[node name="IndustrialSilo" type="Node3D"]
+script = ExtResource("1_bv5ht")
+metadata/_custom_type_script = "uid://cjoj48oprt1f3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_0n68m")
+mesh = ExtResource("4_rn27a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 8.6, -0.45)
+shape = SubResource("BoxShape3D_bv5ht")

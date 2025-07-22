@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=91 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://b2paoh1c36yfu" path="res://assets/textures/terrain/grass_darker_d.dds" id="15_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://cpwvw3pqwqy40" path="res://assets/meshes/nature/ground_branches/ground_branches.tscn" id="15_6w68g"]
 [ext_resource type="Texture2D" uid="uid://fybuf27ahpae" path="res://assets/textures/terrain/grass_darker_n.dds" id="16_wjoci"]
+[ext_resource type="PackedScene" uid="uid://dflw0gj0iaht8" path="res://assets/meshes/nature/bush2/bush2.tscn" id="16_yreqa"]
+[ext_resource type="PackedScene" uid="uid://bt2ir7te2xpwh" path="res://assets/meshes/nature/tree6/tree6.tscn" id="17_xwl51"]
 [ext_resource type="Texture2D" uid="uid://caoe635nf4s3o" path="res://assets/textures/terrain/straw_d.dds" id="18_bh3tc"]
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="18_kxyba"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="19_8ddso"]
@@ -43,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="42_5161g"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="43_b5u8v"]
+[ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="43_cv467"]
 [ext_resource type="PackedScene" uid="uid://baeywcrtv0l1f" path="res://assets/meshes/structures/village_house_2/village_house_2.tscn" id="44_k0dju"]
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="45_hgrl6"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="46_8kc2j"]
@@ -103,7 +106,7 @@ lod0_range = 128.0
 name = "Tree2"
 id = 1
 scene_file = ExtResource("1_bh3tc")
-density = 0.0913848
+density = 0.0156687
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -148,10 +151,10 @@ distance_fade_max_distance = 0.5
 name = "Grass1"
 id = 4
 generated_type = 1
-height_offset = 0.5
+height_offset = 0.7
 density = 5.335
 material_override = SubResource("StandardMaterial3D_nj174")
-generated_size = Vector2(2, 1)
+generated_size = Vector2(3, 1.6)
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -211,7 +214,7 @@ lod0_range = 98.55
 name = "Rock2"
 id = 7
 scene_file = ExtResource("8_hwjdr")
-density = 5.61745
+density = 1.25
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -257,6 +260,24 @@ name = "ground_branches"
 id = 12
 scene_file = ExtResource("15_6w68g")
 density = 1.9
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_xwl51"]
+name = "bush2"
+id = 13
+scene_file = ExtResource("16_yreqa")
+density = 0.335365
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_7aipk"]
+name = "Tree6 Birch"
+id = 14
+scene_file = ExtResource("17_xwl51")
+density = 0.01
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -344,7 +365,7 @@ roughness = -0.45
 uv_scale = 0.4
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_3kjtq"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_6ghl1"), SubResource("Terrain3DMeshAsset_1jrh3")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82i1w"), SubResource("Terrain3DMeshAsset_hmgqj"), SubResource("Terrain3DMeshAsset_vdtib"), SubResource("Terrain3DMeshAsset_em2l6"), SubResource("Terrain3DMeshAsset_kq7m5"), SubResource("Terrain3DMeshAsset_usal5"), SubResource("Terrain3DMeshAsset_bh3tc"), SubResource("Terrain3DMeshAsset_ki058"), SubResource("Terrain3DMeshAsset_ohye1"), SubResource("Terrain3DMeshAsset_8q6nl"), SubResource("Terrain3DMeshAsset_m70sx"), SubResource("Terrain3DMeshAsset_6ghl1"), SubResource("Terrain3DMeshAsset_1jrh3"), SubResource("Terrain3DMeshAsset_xwl51"), SubResource("Terrain3DMeshAsset_7aipk")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_rptdf"), SubResource("Terrain3DTextureAsset_3kjtq"), SubResource("Terrain3DTextureAsset_s11ye"), SubResource("Terrain3DTextureAsset_vf50h"), SubResource("Terrain3DTextureAsset_ekgs8"), SubResource("Terrain3DTextureAsset_ki058"), SubResource("Terrain3DTextureAsset_pcif5"), SubResource("Terrain3DTextureAsset_wjoci"), SubResource("Terrain3DTextureAsset_b5u8v")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
@@ -423,7 +444,6 @@ camera_attributes = SubResource("CameraAttributesPractical_hmgqj")
 transform = Transform3D(0.94, 0, 0, 0, 0.989, 0, 0, 0, 0.882, 1238.78, 7.32169, 1155.96)
 material_override = SubResource("StandardMaterial3D_rptdf")
 mesh = SubResource("PlaneMesh_s11ye")
-skeleton = NodePath("../../..")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="WorldTerrain"]
 occluder = SubResource("ArrayOccluder3D_f3io1")
@@ -482,6 +502,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 287, 8
 
 [node name="Bauwagen4" parent="Deco" instance=ExtResource("38_8lalv")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 296, 8.7, 934)
+
+[node name="IndustrialSilo" parent="Deco" instance=ExtResource("43_cv467")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 68, 8.8, 919.828)
+
+[node name="IndustrialSilo2" parent="Deco" instance=ExtResource("43_cv467")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 280.839, 8.1, 950.234)
 
 [node name="Houses" type="Node" parent="."]
 
