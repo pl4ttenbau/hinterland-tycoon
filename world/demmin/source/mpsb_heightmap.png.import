@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkh5tm3710ebw"
-path="res://.godot/imported/SunshineIcon.png-5e316711f0409f2a10a62fcfb2b887a7.ctex"
+uid="uid://djq4ggnaw4rr8"
+path="res://.godot/imported/mpsb_heightmap.png-4ef5eb15ff5cc42fa4aae7ef1e6d41d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SunshineIcon.png"
-dest_files=["res://.godot/imported/SunshineIcon.png-5e316711f0409f2a10a62fcfb2b887a7.ctex"]
+source_file="res://world/demmin/source/mpsb_heightmap.png"
+dest_files=["res://.godot/imported/mpsb_heightmap.png-4ef5eb15ff5cc42fa4aae7ef1e6d41d5.ctex"]
 
 [params]
 

@@ -38,5 +38,11 @@ func add_map_to_lists(map_obj: MapData):
 	GlobalState.game_maps.append(map_obj)
 	
 func select_map():
-	GlobalState.loaded_map = self.map_list[0]
+	GlobalState.loaded_map = self.get_map_data("demmin")
 	SignalBus.map_selected.emit(GlobalState.loaded_map)
+	
+func get_map_data(map_key: String) -> MapData:
+	for map_data: MapData in self.map_list:
+		if map_data.key == map_key: return map_data
+	Loggie.info("Cant load MapData \"%s\": does not exist" % map_key)
+	return null

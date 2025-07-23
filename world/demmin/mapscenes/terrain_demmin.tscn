@@ -525,7 +525,7 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" type="Terrain3D" parent="."]
-data_directory = "res://world/heightdata"
+data_directory = "res://world/demmin/heightdata"
 material = SubResource("Terrain3DMaterial_b5k2k")
 assets = SubResource("Terrain3DAssets_3kjtq")
 save_16_bit = true
