@@ -68,4 +68,7 @@ mesh_lods = 8
 show_checkered = true
 top_level = true
 script = ExtResource("1_60b8f")
+height_file_name = "/home/cornelinux/.godotproj/hinterland-tycoon/world/harzmountains/source/export_4k.exr"
+import_scale = 400.0
+destination_directory = "res://world/harzmountains/heightdata"
 metadata/_edit_lock_ = true
