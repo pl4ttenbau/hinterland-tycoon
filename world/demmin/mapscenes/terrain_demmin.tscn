@@ -519,8 +519,9 @@ _data = {
 }
 point_count = 8
 
-[node name="WorldLoader" type="Node" node_paths=PackedStringArray("terrain")]
+[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_5b2oc")
+map_key = "demmin"
 terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
