@@ -5,9 +5,9 @@ const TRACKS_JSON_PATH = "res://world/demmin/jsondata/tracks.json"
 
 @export_storage var parent: Node3D:
 	get():
-		var infr_container = get_scene().get_node("World/InEditor/EditorInfr")
+		var infr_container = get_scene().find_child("EditorInfr", true)
 		if ! infr_container:
-			push_error("Cannt find Node \"World/InEditor/EditorInfr\"")
+			push_error("Cannt find Node \"EditorInfr\"")
 		return infr_container
 
 func _run():

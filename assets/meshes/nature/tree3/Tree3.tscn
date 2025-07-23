@@ -26,6 +26,7 @@ metallic_specular = 0.0
 [node name="Tree3" type="Node3D"]
 
 [node name="Tree3Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_rm5fa")
 surface_material_override/0 = SubResource("StandardMaterial3D_b3ww3")
 surface_material_override/1 = SubResource("StandardMaterial3D_np5kp")

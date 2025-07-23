@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt2ir7te2xpwh"]
+
+[ext_resource type="ArrayMesh" uid="uid://0maconuby4i4" path="res://assets/meshes/nature/tree6/tree6.obj" id="1_aib1c"]
+[ext_resource type="Texture2D" uid="uid://bak4re1s5dybl" path="res://assets/meshes/nature/tree6/birchtwig.tga" id="2_0mqgf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbx13"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_0mqgf")
+
+[node name="Tree6" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+mesh = ExtResource("1_aib1c")
+surface_material_override/1 = SubResource("StandardMaterial3D_vbx13")

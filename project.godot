@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="HinterlandTycoons"
-run/main_scene="uid://de7g4fgm4pi0q"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

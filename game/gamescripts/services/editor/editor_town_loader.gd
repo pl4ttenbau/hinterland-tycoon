@@ -2,7 +2,6 @@
 extends EditorScript
 	
 const JSON_PATH = "res://world/demmin/jsondata/towns.json"
-const TERRAIN_NODE_PATH = "World/MapContainer/Terrain/WorldTerrain/WorldTerrain"
 
 func _run():
 	self.clear_children()
@@ -37,26 +36,27 @@ func instanciate_editor_label(_town: TownData)-> Label3D:
 	# get town label pos over terrain
 	label.position = get_pos_over_terrain(_town.pos_xz)
 	return label
-
-func get_editor_labels_container():
-	var editor_town_container = get_scene().get_node("World/InEditor/EditorLabels")
-	if ! editor_town_container:
-		push_error("Cannt find Node \"World/InEditor/EditorTowns\"")
-	return editor_town_container
 	
 func clear_children():
 	for child: Node in self.parent.get_children():
 		child.queue_free()
 	
+func get_pos_over_terrain(pos_xz: Vector2) -> Vector3:
+	var vec3 = Vector3(pos_xz.x, 0, pos_xz.y)
+	var height: float = get_terrain().data.get_height(vec3)
+	return Vector3(vec3.x, height + 15, vec3.z)
+
+#region Node Getters
 func get_terrain() -> Terrain3D:
-	var terrain_3d = get_scene().get_node(TERRAIN_NODE_PATH) as Terrain3D
+	var terrain_3d = get_scene().find_child("WorldTerrain", true)
 	if ! terrain_3d:
 		push_error("Cannt find Terrain3D node")
 		return
 	return terrain_3d
 	
-func get_pos_over_terrain(pos_xz: Vector2) -> Vector3:
-	var terrain: Terrain3D = get_terrain()
-	var vec3 = Vector3(pos_xz.x, 0, pos_xz.y)
-	var height: float = terrain.data.get_height(vec3)
-	return Vector3(vec3.x, height + 15, vec3.z)
+func get_editor_labels_container():
+	var editor_town_container = get_scene().find_child("EditorLabels", true)
+	if ! editor_town_container:
+		push_error("Cannt find Node \"World/InEditor/EditorTowns\"")
+	return editor_town_container
+#endregion

@@ -4,14 +4,21 @@
 [ext_resource type="ArrayMesh" uid="uid://cn51odh0h0j60" path="res://assets/meshes/infr/road/rural_road_1/rural_road.obj" id="2_hx1ak"]
 
 [sub_resource type="Curve3D" id="Curve3D_6tl4k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
 
 [node name="OuterRoad" type="Node3D"]
 script = ExtResource("1_0tb36")
 
 [node name="RoadPath" type="Path3D" parent="."]
+rotation_edit_mode = 1
 curve = SubResource("Curve3D_6tl4k")
 
-[node name="RoadMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+[node name="PathMesh3D" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../RoadPath")
 mesh = ExtResource("2_hx1ak")
 surface_0/tile_rotation = Vector3(0, 0, 0)
@@ -20,6 +27,6 @@ surface_0/distribution = 0
 surface_0/alignment = 0
 surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
-surface_0/tilt = false
+surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0
