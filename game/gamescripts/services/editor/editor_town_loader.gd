@@ -1,7 +1,7 @@
 @tool
 extends EditorScript
 	
-const JSON_PATH = "res://world/demmin/jsondata/towns.json"
+const JSON_PATH = "res://world/harzmountains/jsondata/towns.json"
 
 func _run():
 	self.clear_children()

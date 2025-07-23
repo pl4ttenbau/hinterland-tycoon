@@ -372,13 +372,13 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
 panorama = ExtResource("32_6w68g")
 
-[sub_resource type="Sky" id="Sky_u6qkf"]
+[sub_resource type="Sky" id="Sky_7aipk"]
 sky_material = SubResource("PanoramaSkyMaterial_kq7m5")
 
 [sub_resource type="Environment" id="Environment_p8gp8"]
 background_mode = 2
 background_energy_multiplier = 1.12
-sky = SubResource("Sky_u6qkf")
+sky = SubResource("Sky_7aipk")
 ambient_light_source = 3
 ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
 ambient_light_sky_contribution = 0.18

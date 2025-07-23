@@ -1,0 +1,312 @@
+[gd_scene load_steps=29 format=3 uid="uid://caxv06vdsiq0h"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
+[ext_resource type="Texture2D" uid="uid://cqcef5m6nxqal" path="res://assets/textures/terrain/grass_ground_d.dds" id="2_2haya"]
+[ext_resource type="Texture2D" uid="uid://bxp8wwnik1y26" path="res://assets/textures/terrain/grass_mix_n.dds" id="3_3f2cl"]
+[ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="4_7ueg0"]
+[ext_resource type="Texture2D" uid="uid://2s6sf0rglioq" path="res://assets/textures/terrain/mountain_1_d.dds" id="4_o4w5w"]
+[ext_resource type="Texture2D" uid="uid://coxlmxk5eujof" path="res://assets/textures/terrain/mountain_1_n.dds" id="5_3f2cl"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="5_o4w5w"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_3f2cl"]
+[ext_resource type="Texture2D" uid="uid://b2paoh1c36yfu" path="res://assets/textures/terrain/grass_darker_d.dds" id="6_ad1h1"]
+[ext_resource type="Texture2D" uid="uid://fybuf27ahpae" path="res://assets/textures/terrain/grass_darker_n.dds" id="7_ihasx"]
+[ext_resource type="Texture2D" uid="uid://dvemrhd3p2bon" path="res://assets/textures/terrain/gravel_d.dds" id="8_er67g"]
+[ext_resource type="Texture2D" uid="uid://bvavhrtdhjar8" path="res://assets/textures/terrain/gravel_n.dds" id="9_0uh3x"]
+[ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="11_ad1h1"]
+
+[sub_resource type="Gradient" id="Gradient_ad1h1"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ihasx"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_er67g"]
+seamless = true
+color_ramp = SubResource("Gradient_ad1h1")
+noise = SubResource("FastNoiseLite_ihasx")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0uh3x"]
+_shader_parameters = {
+&"auto_base_texture": 1,
+&"auto_height_reduction": 0.149,
+&"auto_overlay_texture": 0,
+&"auto_slope": 3.759,
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.0,
+&"depth_blur": 8.2,
+&"enable_macro_variation": true,
+&"enable_projection": false,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(0.907942, 0.907942, 0.907942, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.118,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_er67g"),
+&"projection_threshold": 0.0
+}
+auto_shader = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_tp1hv"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_4nd3x")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
+name = "grass_ground_d"
+albedo_color = Color(0.822249, 0.790138, 0.661666, 1)
+albedo_texture = ExtResource("2_2haya")
+normal_texture = ExtResource("3_3f2cl")
+uv_scale = 0.193
+detiling_rotation = 0.609
+detiling_shift = 0.69
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ad1h1"]
+name = "mountain_1_d"
+id = 1
+albedo_texture = ExtResource("4_o4w5w")
+normal_texture = ExtResource("5_3f2cl")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
+name = "grass_ground_d"
+id = 2
+albedo_color = Color(0.978667, 0.935189, 0.842238, 1)
+albedo_texture = ExtResource("6_ad1h1")
+normal_texture = ExtResource("7_ihasx")
+uv_scale = 0.155
+detiling_rotation = 0.199
+detiling_shift = 0.475
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_4nd3x"]
+name = "gravel_d"
+id = 3
+albedo_texture = ExtResource("8_er67g")
+normal_texture = ExtResource("9_0uh3x")
+uv_scale = 0.325
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_mxgc7"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x")])
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iyiq"]
+panorama = ExtResource("4_7ueg0")
+
+[sub_resource type="Sky" id="Sky_u6qkf"]
+sky_material = SubResource("PanoramaSkyMaterial_6iyiq")
+
+[sub_resource type="Environment" id="Environment_ohjow"]
+background_mode = 2
+background_energy_multiplier = 1.12
+sky = SubResource("Sky_u6qkf")
+ambient_light_source = 3
+ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
+ambient_light_sky_contribution = 0.18
+ambient_light_energy = 2.0
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 6.0
+ssr_fade_in = 0.665742
+ssr_fade_out = 1.23114
+ssr_depth_tolerance = 29.21
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_intensity = 1.1
+fog_mode = 1
+fog_light_energy = 1.05
+fog_density = 1.0
+fog_depth_curve = 1.1487
+fog_depth_begin = 17.5
+fog_depth_end = 719.3
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ycvjs"]
+dof_blur_far_distance = 8.17
+dof_blur_far_transition = 733.27
+
+[node name="WorldContainer" type="Node"]
+script = ExtResource("1_1ass2")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" type="Terrain3D" parent="."]
+data_directory = "res://world/harzmountains/heightdata"
+material = SubResource("Terrain3DMaterial_0uh3x")
+assets = SubResource("Terrain3DAssets_mxgc7")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldTerrain"]
+environment = SubResource("Environment_ohjow")
+camera_attributes = SubResource("CameraAttributesPractical_ycvjs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
+transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
+light_energy = 1.4
+light_bake_mode = 0
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="Houses" type="Node" parent="."]
+
+[node name="PolishHouse5" parent="Houses" instance=ExtResource("11_ad1h1")]
+transform = Transform3D(0.585566, 0, 0.810625, 0, 1, 0, -0.810625, 0, 0.585566, 1800.68, 37.469, 3218.01)
+
+[node name="Deco" type="Node" parent="."]
+script = ExtResource("5_o4w5w")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="InEditor" type="Node3D" parent="."]
+script = ExtResource("6_3f2cl")
+
+[node name="EditorLabels" type="Node3D" parent="InEditor"]
+editor_description = "generated town labels will spawn here"
+
+[node name="EditorLabel_Town_Wernigerode" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2324, 19.7185, 1520)
+pixel_size = 0.33
+billboard = 1
+text = "Wernigerode"
+
+[node name="EditorLabel_Town_Braunlage" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1196, 61.5751, 2944)
+pixel_size = 0.33
+billboard = 1
+text = "Braunlage"
+
+[node name="EditorLabel_Town_Ilsenburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1580, 20.8067, 1280)
+pixel_size = 0.33
+billboard = 1
+text = "Ilsenburg"
+
+[node name="EditorLabel_Town_Sorge" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1788, 48.5894, 3232)
+pixel_size = 0.33
+billboard = 1
+text = "Sorge"
+
+[node name="EditorLabel_Town_Elend" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1656, 51.8408, 2660)
+pixel_size = 0.33
+billboard = 1
+text = "Elend"
+
+[node name="EditorLabel_Town_Bad Lauterberg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 24.4157, 3984)
+pixel_size = 0.33
+billboard = 1
+text = "Bad Lauterberg"
+
+[node name="EditorLabel_Town_Elbingerode" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2480, 47.7412, 2356)
+pixel_size = 0.33
+billboard = 1
+text = "Elbingerode"
+
+[node name="EditorLabel_Town_Blankenburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3584, 21.376, 2316)
+pixel_size = 0.33
+billboard = 1
+text = "Blankenburg"
+
+[node name="EditorLabel_Town_Drei-Annen-Hohne" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1988, 61.22, 2356)
+pixel_size = 0.33
+billboard = 1
+text = "Drei-Annen-Hohne"
+
+[node name="EditorLabel_Town_Schierke" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1376, 86.7245, 2368)
+pixel_size = 0.33
+billboard = 1
+text = "Schierke"
+
+[node name="EditorLabel_Town_Brocken" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1136, 292.304, 2024)
+pixel_size = 0.33
+billboard = 1
+text = "Brocken"
+
+[node name="EditorLabel_Town_Halberstadt" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3840, 16.2379, 476)
+pixel_size = 0.33
+billboard = 1
+text = "Halberstadt"
+
+[node name="EditorLabel_Town_St_ Andreasberg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3840, 29.2207, 3076)
+pixel_size = 0.33
+billboard = 1
+text = "St. Andreasberg"
+
+[node name="EditorLabel_Town_Wieda" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1332, 29.4222, 3872)
+pixel_size = 0.33
+billboard = 1
+text = "Wieda"
+
+[node name="EditorLabel_Town_Striege" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3124, 50.0883, 3484)
+pixel_size = 0.33
+billboard = 1
+text = "Striege"
+
+[node name="EditorLabel_Town_Hüttenrode" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3172, 48.8127, 2340)
+pixel_size = 0.33
+billboard = 1
+text = "Hüttenrode"
+
+[node name="EditorLabel_Town_Eisfelder Talmühle" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2640, 34.6382, 3996)
+pixel_size = 0.33
+billboard = 1
+text = "Eisfelder Talmühle"
+
+[node name="EditorLabel_Town_Thale" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3980, 19.2038, 2492)
+pixel_size = 0.33
+billboard = 1
+text = "Thale"
+
+[node name="EditorLabel_Town_Harzburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 744, 21.5083, 1028)
+pixel_size = 0.33
+billboard = 1
+text = "Harzburg"
+
+[node name="EditorLabel_Town_Benneckenstein" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1924, 55.262, 3512)
+pixel_size = 0.33
+billboard = 1
+text = "Benneckenstein"
+
+[node name="EditorInfr" type="Node3D" parent="InEditor"]
+
+[node name="Locator" type="Node3D" parent="InEditor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
