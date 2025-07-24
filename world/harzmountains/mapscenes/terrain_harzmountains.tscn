@@ -44,6 +44,10 @@ _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
 &"depth_blur": 8.2,
+&"dual_scale_far": 170.0,
+&"dual_scale_near": 100.0,
+&"dual_scale_reduction": 0.3,
+&"dual_scale_texture": 0,
 &"enable_macro_variation": true,
 &"enable_projection": false,
 &"flat_terrain_normals": false,
@@ -56,9 +60,11 @@ _shader_parameters = {
 &"noise1_scale": 0.118,
 &"noise2_scale": 0.076,
 &"noise_texture": SubResource("NoiseTexture2D_er67g"),
-&"projection_threshold": 0.0
+&"projection_threshold": 0.0,
+&"tri_scale_reduction": 0.3
 }
 auto_shader = true
+dual_scaling = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
 transparency = 4
@@ -80,7 +86,6 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
 name = "grass_ground_d"
-albedo_color = Color(0.700592, 0.818975, 0.785547, 1)
 albedo_texture = ExtResource("2_2haya")
 normal_texture = ExtResource("3_3f2cl")
 uv_scale = 0.193
@@ -96,7 +101,6 @@ normal_texture = ExtResource("5_3f2cl")
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
 name = "grass_ground_d"
 id = 2
-albedo_color = Color(0.978667, 0.935189, 0.842238, 1)
 albedo_texture = ExtResource("6_ad1h1")
 normal_texture = ExtResource("7_ihasx")
 uv_scale = 0.155
