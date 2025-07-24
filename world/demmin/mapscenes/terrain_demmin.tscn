@@ -372,13 +372,13 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kq7m5"]
 panorama = ExtResource("32_6w68g")
 
-[sub_resource type="Sky" id="Sky_u6qkf"]
+[sub_resource type="Sky" id="Sky_7aipk"]
 sky_material = SubResource("PanoramaSkyMaterial_kq7m5")
 
 [sub_resource type="Environment" id="Environment_p8gp8"]
 background_mode = 2
 background_energy_multiplier = 1.12
-sky = SubResource("Sky_u6qkf")
+sky = SubResource("Sky_7aipk")
 ambient_light_source = 3
 ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
 ambient_light_sky_contribution = 0.18
@@ -519,13 +519,14 @@ _data = {
 }
 point_count = 8
 
-[node name="WorldLoader" type="Node" node_paths=PackedStringArray("terrain")]
+[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_5b2oc")
+map_key = "demmin"
 terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" type="Terrain3D" parent="."]
-data_directory = "res://world/heightdata"
+data_directory = "res://world/demmin/heightdata"
 material = SubResource("Terrain3DMaterial_b5k2k")
 assets = SubResource("Terrain3DAssets_3kjtq")
 save_16_bit = true

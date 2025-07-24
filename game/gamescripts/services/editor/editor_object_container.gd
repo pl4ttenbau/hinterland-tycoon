@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_editor.png")
-extends Node3D
+class_name EditorObjectContainer extends Node3D
 
 func _ready():
 	if ! Engine.is_editor_hint():

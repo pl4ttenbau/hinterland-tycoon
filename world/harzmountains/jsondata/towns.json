@@ -1,0 +1,73 @@
+[
+	{
+		"num": 0,
+		"name": "Wernigerode",
+		"pos": [3068, 1214]
+	},
+	{
+		"num": 1,
+		"name": "Braunlage",
+		"pos": [948, 3550]
+	},
+	{
+		"num": 2,
+		"name": "Ilsenburg",
+		"pos": [1900, 644]
+	},
+	{
+		"num": 3,
+		"name": "Tanne",
+		"pos": [2796, 3860]
+	},
+	{
+		"num": 4,
+		"name": "Elend",
+		"pos": [1888, 3396]
+	},
+	{
+		"num": 5,
+		"name": "Bad Lauterberg",
+		"pos": [156.0, 3984.0]
+	},
+	{
+		"num": 6,
+		"name": "Elbingerode",
+		"pos": [3434, 2776]
+	},
+	{
+		"num": 7,
+		"name": "Rübeland",
+		"pos": [3752, 3144]
+	},
+	{
+		"num": 8,
+		"name": "Drei-Annen-Hohne",
+		"pos": [2640, 2784]
+	},
+	{
+		"num": 9,
+		"name": "Schierke",
+		"pos": [1516, 2876]
+	},
+	{
+		"num": 10,
+		"name": "Brocken",
+		"pos": [980, 2232]
+	},
+	{
+		"num": 11,
+		"name": "Halberstadt",
+		"pos": [3840.0, 476.0]
+	},
+	{
+		"num": 12,
+		"name": "Eckertal",
+		"isMinor": true,
+		"pos": [436, 1340]
+	},
+	{
+		"num": 13,
+		"name": "Harzburg",
+		"pos": [340, 480]
+	}
+]
