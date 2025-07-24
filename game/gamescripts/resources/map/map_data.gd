@@ -10,11 +10,16 @@ const MAPS_FOLDER = "res://world/"
 ## NORTHERN_GERMANY | SOUTHERN_GERMANY | POLAND | RUSSIA
 @export var loc: String
 
+@export var start_pos_xz: Vector2
+
 static func of_dict(_dict: Dictionary) -> MapData:
 	var inst: MapData = MapData.new()
 	inst.key = _dict.get("key")
 	inst.name = _dict.get("name")
 	inst.loc = _dict.get("loc")
+	if _dict.has("startPos") && _dict.get("startPos") != null:
+		var pos_xz_arr: Array = _dict.get("startPos")
+		inst.start_pos_xz = Vector2(pos_xz_arr[0], pos_xz_arr[1])
 	return inst
 
 func get_scene_file_path() -> String:

@@ -1,5 +1,7 @@
 {
 	"key": "demmin",
 	"name": "Demmin",
-	"loc": "NORTHERN_GERMAN"
+	"loc": "NORTHERN_GERMAN",
+	
+	"startPos": [2411.65, 2160.47]
 }

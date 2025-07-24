@@ -1,5 +1,7 @@
 {
 	"key": "harzmountains",
 	"name": "Harz Mountains",
-	"loc": "SOUTHERN_GERMANY"
+	"loc": "SOUTHERN_GERMANY",
+	
+	"startPos": [2468.57, 2175.9]
 }

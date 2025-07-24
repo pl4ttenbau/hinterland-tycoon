@@ -153,8 +153,10 @@ adjustment_enabled = true
 dof_blur_far_distance = 8.17
 dof_blur_far_transition = 733.27
 
-[node name="WorldContainer" type="Node"]
+[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
+map_key = "harzmountains"
+terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" type="Terrain3D" parent="."]
@@ -277,4 +279,4 @@ text = "Harzburg"
 [node name="EditorInfr" type="Node3D" parent="InEditor"]
 
 [node name="Locator" type="Node3D" parent="InEditor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2468.57, 22.6609, 2175.9)
