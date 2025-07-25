@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_road_white.png")
 class_name RoadsLoader extends Node
 
-const JSON_PATH = "res://world/demmin/jsondata/roads.json"
+const JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const NODES_GROUP = "Roads"
 const MAX_VISIBLE_DIST := 200
 
@@ -17,7 +17,8 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 
 func load_roads() -> void:
-	var roads_arr_str: String = FileAccess.get_file_as_string(JSON_PATH)
+	var full_json_path := JSON_PATH_FORMAT % GlobalState.loaded_map_name
+	var roads_arr_str: String = FileAccess.get_file_as_string(full_json_path)
 	for json_road in JSON.parse_string(roads_arr_str):
 		self.roads.append(RoadData.from_json(json_road))
 	GlobalState.roads = self.roads
@@ -50,7 +51,5 @@ func _on_world_update() -> void:
 		if player:
 			var middle_pos: Vector3 = container.get_middle_pos()
 			var dist = player.position.distance_to(middle_pos)
-			if dist > MAX_VISIBLE_DIST:
-				container.visible = false
-			else:
-				container.visible = true
+			if dist > MAX_VISIBLE_DIST: container.visible = false
+			else: container.visible = true

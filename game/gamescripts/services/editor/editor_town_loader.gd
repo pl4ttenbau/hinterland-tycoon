@@ -1,7 +1,8 @@
 @tool
 extends EditorScript
-	
-const JSON_PATH = "res://world/harzmountains/jsondata/towns.json"
+
+const MAP_KEY = "harzmountains" # change here
+const JSON_PATH_FORMAT = "res://world/%s/jsondata/towns.json"
 
 func _run():
 	self.clear_children()
@@ -17,7 +18,8 @@ func create_new_town_labels():
 		editor_label.owner = get_scene() # make visible in editor
 
 func parse_towns_json() -> Array[TownData]:
-	var town_json_str = FileAccess.get_file_as_string(JSON_PATH)
+	var full_path := JSON_PATH_FORMAT % MAP_KEY
+	var town_json_str = FileAccess.get_file_as_string(full_path)
 	var json_arr = JSON.parse_string(town_json_str) as Array[Dictionary]
 	if !json_arr:
 		push_warning("Couldnt load Town from \"%s\"" % town_json_str)

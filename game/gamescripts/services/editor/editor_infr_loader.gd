@@ -1,7 +1,8 @@
 @tool
 extends EditorScript
 
-const TRACKS_JSON_PATH = "res://world/demmin/jsondata/tracks.json"
+const MAP_KEY = "harzmountains" # change here
+const TRACKS_JSON_PATH_FORMAT = "res://world/%s/jsondata/tracks.json"
 
 @export_storage var parent: Node3D:
 	get():
@@ -20,7 +21,8 @@ func clear_editor_tracks():
 
 # aus dem RailLoader
 func spawn_track_paths():
-	var rails_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(TRACKS_JSON_PATH))
+	var file_path := TRACKS_JSON_PATH_FORMAT % MAP_KEY
+	var rails_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
 	for track_dict: Dictionary in rails_json_arr:
 		var track_num: int = track_dict.get("num")
 		var path: Path3D = Path3D.new()

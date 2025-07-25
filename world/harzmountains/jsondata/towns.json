@@ -69,5 +69,25 @@
 		"num": 13,
 		"name": "Harzburg",
 		"pos": [340, 480]
+	},
+	{
+		"num": 14,
+		"name": "Hasserode",
+		"pos": [2596, 1919]
+	},
+	{
+		"num": 15,
+		"name": "Torfhaus",
+		"pos": [330, 1952]
+	},
+	{
+		"num": 16,
+		"name": "Darlingerode",
+		"pos": [2227, 1457]
+	},
+	{
+		"num": 17,
+		"name": "Wurmberg",
+		"pos": [1138, 3102]
 	}
 ]

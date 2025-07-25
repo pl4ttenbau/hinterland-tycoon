@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_town_white.png")
 class_name TownPlacer extends Node
 
-const MAP_TOWNS_FILEPATH = "res://world/demmin/jsondata/towns.json"
+const MAP_TOWNS_FILEPATH_FORMAT = "res://world/%s/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 @export var towns: Array[TownData] = []
@@ -26,7 +26,8 @@ func parse_towns_json(_json_str: String) -> Array[TownData]:
 	return town_obj_arr
 				
 func load_towns():
-	var town_json_str = FileAccess.get_file_as_string(MAP_TOWNS_FILEPATH)
+	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.loaded_map_name
+	var town_json_str = FileAccess.get_file_as_string(town_file_path)
 	for parsed_town: TownData in parse_towns_json(town_json_str):
 		# save town itself in lists
 		self.towns.append(parsed_town)
