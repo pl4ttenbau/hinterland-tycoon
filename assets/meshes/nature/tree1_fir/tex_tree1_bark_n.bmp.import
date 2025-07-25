@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csa1pw5vtwrjk"
-path.s3tc="res://.godot/imported/tex_telegraph_pole_d.png-4c9d14bf6f83b739a1eef8b2b320ced9.s3tc.ctex"
+uid="uid://cu0b6mb4mkkyv"
+path="res://.godot/imported/tex_tree1_bark_n.bmp-b0f2eead4a3e7d1abd0abb7ddd9f4e72.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/deco/telegraph_pole/tex_telegraph_pole_d.png"
-dest_files=["res://.godot/imported/tex_telegraph_pole_d.png-4c9d14bf6f83b739a1eef8b2b320ced9.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree1_fir/tex_tree1_bark_n.bmp"
+dest_files=["res://.godot/imported/tex_tree1_bark_n.bmp-b0f2eead4a3e7d1abd0abb7ddd9f4e72.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

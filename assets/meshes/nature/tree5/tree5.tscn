@@ -6,6 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01o15"]
 albedo_texture = ExtResource("2_0dyqy")
+metallic_specular = 0.12
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dda7e"]
 transparency = 2

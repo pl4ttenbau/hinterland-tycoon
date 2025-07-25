@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://torsr2w2g5rn"]
+
+[ext_resource type="ArrayMesh" uid="uid://xotko48m2hph" path="res://assets/meshes/nature/tree1_fir/tree1.obj" id="1_n5i75"]
+[ext_resource type="Texture2D" uid="uid://dib0lf7s7sn1s" path="res://assets/meshes/nature/tree1_fir/tex_tree1_needles_d.tga" id="2_p3hrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg2g5"]
+resource_name = "mat_tree1_needles"
+transparency = 2
+alpha_scissor_threshold = 0.421
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
+albedo_texture = ExtResource("2_p3hrk")
+roughness = 0.9
+
+[node name="Tree1Fir" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_n5i75")
+surface_material_override/0 = SubResource("StandardMaterial3D_wg2g5")
