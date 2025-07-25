@@ -736,7 +736,7 @@ script = ExtResource("6_3f2cl")
 editor_description = "generated town labels will spawn here"
 
 [node name="EditorLabel_Town_Wernigerode" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3068, 19.9627, 1214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3107, 20.609, 1353)
 pixel_size = 0.33
 billboard = 1
 text = "Wernigerode"
@@ -748,7 +748,7 @@ billboard = 1
 text = "Braunlage"
 
 [node name="EditorLabel_Town_Ilsenburg" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1900, 19.8657, 644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1710, 22.9987, 990)
 pixel_size = 0.33
 billboard = 1
 text = "Ilsenburg"
@@ -760,43 +760,43 @@ billboard = 1
 text = "Tanne"
 
 [node name="EditorLabel_Town_Elend" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1888, 56.9211, 3396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1848, 58.1987, 3344)
 pixel_size = 0.33
 billboard = 1
 text = "Elend"
 
-[node name="EditorLabel_Town_Bad Lauterberg" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 89.4392, 3984)
+[node name="EditorLabel_Town_St Andreasberg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 302, 76.7432, 3685)
 pixel_size = 0.33
 billboard = 1
-text = "Bad Lauterberg"
+text = "St Andreasberg"
 
 [node name="EditorLabel_Town_Elbingerode" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3434, 49.9509, 2776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3434, 51.732, 2739)
 pixel_size = 0.33
 billboard = 1
 text = "Elbingerode"
 
 [node name="EditorLabel_Town_Rübeland" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3752, 38.2831, 3144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3971, 36.8634, 3129)
 pixel_size = 0.33
 billboard = 1
 text = "Rübeland"
 
 [node name="EditorLabel_Town_Drei-Annen-Hohne" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2640, 67.3933, 2784)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2535, 66.1631, 2810)
 pixel_size = 0.33
 billboard = 1
 text = "Drei-Annen-Hohne"
 
 [node name="EditorLabel_Town_Schierke" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1516, 103.483, 2876)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1342, 96.306, 2865)
 pixel_size = 0.33
 billboard = 1
 text = "Schierke"
 
 [node name="EditorLabel_Town_Brocken" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 980, 355.769, 2232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1001, 356.06, 2244)
 pixel_size = 0.33
 billboard = 1
 text = "Brocken"
@@ -807,43 +807,79 @@ pixel_size = 0.33
 billboard = 1
 text = "Halberstadt"
 
-[node name="EditorLabel_Town_Eckertal" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 436, 57.9111, 1340)
+[node name="EditorLabel_Town_Stapelburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1309, 22.1401, 445)
 pixel_size = 0.33
 billboard = 1
-text = "Eckertal"
+text = "Stapelburg"
 
 [node name="EditorLabel_Town_Harzburg" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340, 22.8914, 480)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 22.8802, 610)
 pixel_size = 0.33
 billboard = 1
 text = "Harzburg"
 
 [node name="EditorLabel_Town_Hasserode" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2596, 35.2608, 1919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2695, 25.2835, 1702)
 pixel_size = 0.33
 billboard = 1
 text = "Hasserode"
 
 [node name="EditorLabel_Town_Torfhaus" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 330, 115.243, 1952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 132.122, 2073)
 pixel_size = 0.33
 billboard = 1
 text = "Torfhaus"
 
 [node name="EditorLabel_Town_Darlingerode" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2227, 39.6949, 1457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2348, 23.7242, 1221)
 pixel_size = 0.33
 billboard = 1
 text = "Darlingerode"
 
 [node name="EditorLabel_Town_Wurmberg" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1138, 184.719, 3102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1034, 238.524, 3146)
 pixel_size = 0.33
 billboard = 1
 text = "Wurmberg"
 
+[node name="EditorLabel_Town_Königshütte" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2953, 44.0018, 3404)
+pixel_size = 0.33
+billboard = 1
+text = "Königshütte"
+
+[node name="EditorLabel_Town_Plessenburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1688, 69.3746, 1611)
+pixel_size = 0.33
+billboard = 1
+text = "Plessenburg"
+
+[node name="EditorLabel_Town_Eckertalsperre" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432, 58.9913, 1340)
+pixel_size = 0.33
+billboard = 1
+text = "Eckertalsperre"
+
+[node name="EditorLabel_Town_Hartenberg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3736, 60.6488, 2388)
+pixel_size = 0.33
+billboard = 1
+text = "Hartenberg"
+
+[node name="EditorLabel_Town_Susenburg" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3628, 45.3228, 3376)
+pixel_size = 0.33
+billboard = 1
+text = "Susenburg"
+
+[node name="EditorLabel_Town_Nöschenrode" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 22.6739, 1636)
+pixel_size = 0.33
+billboard = 1
+text = "Nöschenrode"
+
 [node name="EditorInfr" type="Node3D" parent="InEditor"]
 
 [node name="Locator" type="Node3D" parent="InEditor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2468.57, 22.6609, 2175.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.792, 11.1251, 647.244)

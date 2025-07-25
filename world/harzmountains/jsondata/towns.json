@@ -2,7 +2,7 @@
 	{
 		"num": 0,
 		"name": "Wernigerode",
-		"pos": [3068, 1214]
+		"pos": [3107, 1353]
 	},
 	{
 		"num": 1,
@@ -12,7 +12,7 @@
 	{
 		"num": 2,
 		"name": "Ilsenburg",
-		"pos": [1900, 644]
+		"pos": [1710, 990]
 	},
 	{
 		"num": 3,
@@ -22,37 +22,37 @@
 	{
 		"num": 4,
 		"name": "Elend",
-		"pos": [1888, 3396]
+		"pos": [1848, 3344]
 	},
 	{
 		"num": 5,
-		"name": "Bad Lauterberg",
-		"pos": [156.0, 3984.0]
+		"name": "St Andreasberg",
+		"pos": [302, 3685]
 	},
 	{
 		"num": 6,
 		"name": "Elbingerode",
-		"pos": [3434, 2776]
+		"pos": [3434, 2739]
 	},
 	{
 		"num": 7,
 		"name": "Rübeland",
-		"pos": [3752, 3144]
+		"pos": [3971, 3129]
 	},
 	{
 		"num": 8,
 		"name": "Drei-Annen-Hohne",
-		"pos": [2640, 2784]
+		"pos": [2535, 2810]
 	},
 	{
 		"num": 9,
 		"name": "Schierke",
-		"pos": [1516, 2876]
+		"pos": [1342, 2865]
 	},
 	{
 		"num": 10,
 		"name": "Brocken",
-		"pos": [980, 2232]
+		"pos": [1001, 2244]
 	},
 	{
 		"num": 11,
@@ -61,33 +61,67 @@
 	},
 	{
 		"num": 12,
-		"name": "Eckertal",
-		"isMinor": true,
-		"pos": [436, 1340]
+		"name": "Stapelburg",
+		"pos": [1309, 445]
 	},
 	{
 		"num": 13,
 		"name": "Harzburg",
-		"pos": [340, 480]
+		"pos": [198, 610]
 	},
 	{
 		"num": 14,
 		"name": "Hasserode",
-		"pos": [2596, 1919]
+		"pos": [2695, 1702]
 	},
 	{
 		"num": 15,
 		"name": "Torfhaus",
-		"pos": [330, 1952]
+		"pos": [280, 2073]
 	},
 	{
 		"num": 16,
 		"name": "Darlingerode",
-		"pos": [2227, 1457]
+		"pos": [2348, 1221]
 	},
 	{
 		"num": 17,
 		"name": "Wurmberg",
-		"pos": [1138, 3102]
+		"pos": [1034, 3146]
+	},
+	{
+		"num": 18,
+		"name": "Königshütte",
+		"pos": [2953, 3404]
+	},
+	{
+		"num": 19,
+		"name": "Plessenburg",
+		"isMinor": true,
+		"pos": [1688, 1611]
+	},
+	{
+		"num": 20,
+		"name": "Eckertalsperre",
+		"isMinor": true,
+		"pos": [432, 1340]
+	},
+	{
+		"num": 21,
+		"name": "Hartenberg",
+		"isMinor": true,
+		"pos": [3736, 2388]
+	},
+	{
+		"num": 22,
+		"name": "Susenburg",
+		"isMinor": true,
+		"pos": [3628, 3376]
+	},
+	{
+		"num": 23,
+		"name": "Nöschenrode",
+		"isMinor": true,
+		"pos": [3368, 1636]
 	}
 ]
