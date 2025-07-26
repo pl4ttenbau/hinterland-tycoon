@@ -1,3 +1,148 @@
 [
-	
+	{
+		"num": 1,
+		"name": "Wernigerode Station Mainline",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [3347.9, 5.1, 1304.9]
+			},
+			{
+				"pos": [3250.2, 5.5, 1294.3]
+			},
+			{
+				"pos": [3168.1, 5.1, 1281.8],
+				"station": {
+					"townName": "Wernigerode",
+					"name": "HBF",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [3046.3, 5.1, 1244.1]
+			},
+			{
+				"pos": [2867.4, 6.0, 1190.3]
+			},
+			{
+				"pos": [2744.0, 6.3, 1178.4],
+				"fork": {
+					"connectiveTracks": [2],
+					"setTo": 2
+				}
+			},
+		]
+	},
+	{
+		"num": 2,
+		"name": "Wernigerode-Darlingerode",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [2744.0, 6.3, 1178.4],
+				"fork": {
+					"connectiveTracks": [1],
+					"setTo": 1
+				}
+			},
+			{
+				"pos": [2647.8, 7.1, 1164.5]
+			},
+			{
+				"pos": [2551.2, 7.7, 1190.0]
+			},
+			{
+				"pos": [2481.6, 8.2, 1207.4]
+			},
+			{
+				"pos": [2375.9, 9.0, 1200.2],
+				"station": {
+					"townName": "Darlingerode",
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [2298.6, 11.5, 1167.6],
+				"fork": {
+					"connectiveTracks": [3],
+					"setTo": 3
+				}
+			}
+		]
+	},
+	{
+		"num": 3,
+		"name": "Darlingerode Section",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [2298.6, 11.5, 1167.6],
+				"fork": {
+					"connectiveTracks": [2],
+					"setTo": 2
+				}
+			},
+			{
+				"pos": [2263.9, 9.5, 1142.8]
+			},
+			{
+				"pos": [2217.0, 10.9, 1112.3]
+			},
+			{
+				"pos": [2122.2, 11.2, 1080.6]
+			},
+			{
+				"pos": [2046.9, 12.0, 1041.4]
+			},
+			{
+				"pos": [1969.4, 13.6, 1038.1]
+			},
+			{
+				"pos": [1911.1, 11.6, 1001.9],
+				"fork": {
+					"connectiveTracks": [4],
+					"setTo": 4
+				}
+			},
+		]
+	},
+	{
+		"num": 4,
+		"name": "Ilsenburg Section",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [1911.1, 11.6, 1001.9],
+				"fork": {
+					"connectiveTracks": [3],
+					"setTo": 3
+				}
+			},
+			{
+				"pos": [1850.1, 12.5, 975.3]
+			},
+			{
+				"pos": [1786.4, 9.0, 928.4],
+				"station": {
+					"townName": "Ilsenburg",
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [1739.4, 7.2, 887.1]
+			},
+			{
+				"pos": [1662.9, 7.8, 806.3]
+			},
+			{
+				"pos": [1629.8,8.7, 734.8]
+			}
+		]
+	}
 ]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://dngwf3sue7eob"]
+
+[ext_resource type="Texture2D" uid="uid://cgvipjrd35rgv" path="res://assets/meshes/vehicles/road/belaz_dumper/tex_belaz_dumper_d.png" id="1_dwbij"]
+[ext_resource type="ArrayMesh" uid="uid://dk3uxgp6jjtgp" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper.obj" id="1_ogrsq"]
+[ext_resource type="Texture2D" uid="uid://cmwi2lralk53d" path="res://assets/meshes/vehicles/road/belaz_dumper/tex_belaz_dumper_n.png" id="2_q3ai4"]
+[ext_resource type="Texture2D" uid="uid://drm0k8fumpnuk" path="res://assets/meshes/vehicles/road/belaz_dumper/tex_belaz_dumper_r.png" id="3_r2rpa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34ce1"]
+albedo_texture = ExtResource("1_dwbij")
+roughness_texture = ExtResource("3_r2rpa")
+normal_enabled = true
+normal_texture = ExtResource("2_q3ai4")
+
+[node name="BelazDumperStatic" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_34ce1")
+mesh = ExtResource("1_ogrsq")
