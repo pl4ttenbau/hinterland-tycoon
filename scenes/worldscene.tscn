@@ -50,10 +50,10 @@ script = ExtResource("18_ibik3")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
 shape = SubResource("SphereShape3D_vdtib")
 
-[node name="Area3D" type="Area3D" parent="Player"]
+[node name="PlayerArea" type="Area3D" parent="Player"]
 script = ExtResource("10_p8gp8")
 
-[node name="AreaShape" type="CollisionShape3D" parent="Player/Area3D"]
+[node name="PlayerAreaShape" type="CollisionShape3D" parent="Player/PlayerArea"]
 shape = SubResource("SphereShape3D_s11ye")
 
 [node name="Input" type="Node" parent="."]
