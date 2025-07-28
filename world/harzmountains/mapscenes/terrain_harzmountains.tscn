@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="4_7ueg0"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="4_mxgc7"]
 [ext_resource type="Texture2D" uid="uid://2s6sf0rglioq" path="res://assets/textures/terrain/mountain_1_d.dds" id="4_o4w5w"]
+[ext_resource type="PackedScene" uid="uid://dl1dd7cjgh654" path="res://assets/meshes/nature/tree4_apple/tree4_apple.tscn" id="5_0ryhu"]
 [ext_resource type="Texture2D" uid="uid://coxlmxk5eujof" path="res://assets/textures/terrain/mountain_1_n.dds" id="5_3f2cl"]
-[ext_resource type="PackedScene" uid="uid://dm0lsmac3hf2n" path="res://assets/meshes/nature/Tree3.tscn" id="5_6iyiq"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="5_o4w5w"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_3f2cl"]
 [ext_resource type="PackedScene" uid="uid://df3yp88iapvnw" path="res://assets/meshes/nature/tree5/tree5.tscn" id="6_6iyiq"]
@@ -58,6 +58,9 @@ noise = SubResource("FastNoiseLite_0uh3x")
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
+&"contour_color": Color(0.85, 0.85, 0.19, 1),
+&"contour_interval": 1.0,
+&"contour_thickness": 1.0,
 &"depth_blur": 8.2,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -74,6 +77,7 @@ _shader_parameters = {
 &"projection_threshold": 0.0
 }
 world_background = 0
+show_contours = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
 transparency = 2
@@ -136,10 +140,10 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ycvjs"]
-name = "Tree3"
+name = "tree4_apple"
 id = 3
-scene_file = ExtResource("5_6iyiq")
-density = 0.1
+scene_file = ExtResource("5_0ryhu")
+density = 0.01
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -340,6 +344,7 @@ data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
 mesh_size = 24
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 

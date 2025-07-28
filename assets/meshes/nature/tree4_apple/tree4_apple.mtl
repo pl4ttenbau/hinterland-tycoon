@@ -1,0 +1,23 @@
+# Blender 4.4.1 MTL File: 'tree4.blend'
+# www.blender.org
+
+newmtl mat_tree4_bark
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.996078
+illum 1
+map_Kd tex_tree4_bark_d.png
+map_Bump -bm 1.000000 tex_tree4_bark_n.png
+
+newmtl mat_tree4_twigs
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_tree4_twigs_d.png
+map_d tex_tree4_twigs_d.png
