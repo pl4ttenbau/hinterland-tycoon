@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailsLoader extends Node
 
-const MAP_RAILS_FILEPATH := "res://world/demmin/jsondata/tracks.json"
+const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
 const MAX_VISIBLE_DIST := 500
 
@@ -21,7 +21,8 @@ func _ready() -> void:
 	Loggie.info("rails precreated")
 
 func load_rail_tracks() -> void:
-	var rails_arr_str: String = FileAccess.get_file_as_string(MAP_RAILS_FILEPATH)
+	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.loaded_map_name
+	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
 		self.tracks.append(RailTrackData.from_json(json_track))
 	GlobalState.tracks = self.tracks
@@ -65,8 +66,6 @@ func _on_world_update() -> void:
 		if player:
 			var middle_pos: Vector3 = container.get_middle_pos()
 			var dist = player.position.distance_to(middle_pos)
-			if dist > MAX_VISIBLE_DIST:
-				container.visible = false
-			else:
-				container.visible = true
+			if dist > MAX_VISIBLE_DIST: container.visible = false
+			else: container.visible = true
 #endregion

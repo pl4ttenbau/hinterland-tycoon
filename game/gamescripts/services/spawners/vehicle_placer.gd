@@ -23,8 +23,9 @@ func load_vehicles():
 	var all_loaded: bool = self._check_rails_and_terrain()
 	if  !all_loaded: return
 	Loggie.info("Globals & rails found: initializing vehicles...")
-	var track_num: int = 2
-	self.spawn_vehicle(track_num, 0)
+	if GlobalState.loaded_map.spawn_vehicles:
+		var track_num: int = 2
+		self.spawn_vehicle(track_num, 0)
 	self.start_vehicles_spawned = true
 	
 func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:

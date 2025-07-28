@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://datqx0f0mdhmc"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/structures/outer_industry.gd" id="1_5qinm"]
+[ext_resource type="ArrayMesh" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="1_iitmb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xpss4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_08gt4"]
+size = Vector3(15.3044, 7.17401, 34.3833)
+
+[node name="WarehouseWooden" type="Node3D"]
+script = ExtResource("1_5qinm")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_iitmb")
+
+[node name="ClickableCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_xpss4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95349, 3.56806, 0.200882)
+shape = SubResource("BoxShape3D_08gt4")

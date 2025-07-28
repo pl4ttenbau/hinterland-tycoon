@@ -5,4 +5,5 @@
 [node name="Tractor" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 mesh = ExtResource("1_k7uom")

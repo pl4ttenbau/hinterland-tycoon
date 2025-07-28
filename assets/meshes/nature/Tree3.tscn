@@ -1,19 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm0lsmac3hf2n"]
+[gd_scene load_steps=9 format=3 uid="uid://dm0lsmac3hf2n"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxbcq2htsnh0i" path="res://assets/meshes/nature/tree3/tree3.obj" id="1_1try6"]
 [ext_resource type="Texture2D" uid="uid://dnxo3y3rjfisk" path="res://assets/meshes/nature/tree3/tree3_bark.jpg" id="2_8dnwa"]
+[ext_resource type="Texture2D" uid="uid://c0lwwp1x02vul" path="res://assets/meshes/nature/tree3/tree3_bark_n.png" id="3_8dnwa"]
 [ext_resource type="Texture2D" uid="uid://clf30p5lyc2ke" path="res://assets/meshes/nature/tree3/tree3_branch-2-01.png" id="3_q7p5t"]
 [ext_resource type="Texture2D" uid="uid://cowg1xmnghpuv" path="res://assets/meshes/nature/tree3/tree3_branch-2-02.png" id="4_jav86"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ww3"]
 albedo_texture = ExtResource("2_8dnwa")
+roughness = 0.73
+normal_enabled = true
+normal_texture = ExtResource("3_8dnwa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8txq"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-diffuse_mode = 2
 albedo_texture = ExtResource("3_q7p5t")
+roughness = 0.67
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7dgd"]
 transparency = 2

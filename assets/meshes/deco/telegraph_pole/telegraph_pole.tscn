@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8wy308b51072"]
+
+[ext_resource type="Texture2D" uid="uid://csa1pw5vtwrjk" path="res://assets/meshes/deco/telegraph_pole/tex_telegraph_pole_d.png" id="1_o1s8c"]
+[ext_resource type="Texture2D" uid="uid://wwtcxrvibpt8" path="res://assets/meshes/deco/telegraph_pole/tex_telegraph_pole_n.png" id="2_mmjvf"]
+[ext_resource type="Texture2D" uid="uid://b50j8hbwt3eud" path="res://assets/meshes/deco/telegraph_pole/tex_telegraph_pole_r.png" id="3_cfl4r"]
+[ext_resource type="ArrayMesh" uid="uid://dbsomexrdemy0" path="res://assets/meshes/deco/telegraph_pole/telegraph_pole.obj" id="4_ki4or"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeutt"]
+albedo_texture = ExtResource("1_o1s8c")
+roughness_texture = ExtResource("3_cfl4r")
+normal_enabled = true
+normal_texture = ExtResource("2_mmjvf")
+
+[node name="TelegraphPole" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_jeutt")
+mesh = ExtResource("4_ki4or")

@@ -33,7 +33,6 @@ grow_amount = 0.992
 [node name="Tree2" type="Node3D"]
 
 [node name="Tree2Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 mesh = ExtResource("1_qh1k2")
 surface_material_override/0 = SubResource("StandardMaterial3D_nj6rd")
 surface_material_override/1 = SubResource("StandardMaterial3D_kksex")

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="HinterlandTycoons"
+config/name="HinterlandTycoon"
 run/main_scene="uid://s6qceyvtti6k"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
@@ -23,7 +23,6 @@ SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GlobalState="*res://game/gamescripts/state/globals.gd"
 GameTypes="*res://game/gamescripts/state/types.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
-WorldUtils="*res://scenes/scripts/utils/world_utils.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*res://game/gamescripts/services/spawners/map_list_loader.gd"
 

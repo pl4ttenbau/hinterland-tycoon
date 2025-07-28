@@ -1,5 +1,9 @@
 {
 	"key": "harzmountains",
 	"name": "Harz Mountains",
-	"loc": "SOUTHERN_GERMANY"
+	"loc": "SOUTHERN_GERMANY",
+	
+	"startPos": [2503.4, 1916.9],
+	
+	"spawnVehicles": false
 }
