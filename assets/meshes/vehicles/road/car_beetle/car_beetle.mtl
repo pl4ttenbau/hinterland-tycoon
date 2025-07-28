@@ -1,0 +1,22 @@
+# Blender 4.4.1 MTL File: 'car_beetle.blend'
+# www.blender.org
+
+newmtl mat_car_beetle_body
+Ns 409.794617
+Ka 0.200000 0.200000 0.200000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd tex_car_beetle_body.png
+
+newmtl mat_car_beetle_window
+Ns 690.662598
+Ka 0.568182 0.568182 0.568182
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+illum 1
+map_Kd tex_car_beetle_window.png
+map_d tex_car_beetle_window.png

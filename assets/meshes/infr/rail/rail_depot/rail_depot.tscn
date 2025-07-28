@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8f1x2eykmxwk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bai2feaxmnr4q" path="res://assets/meshes/infr/rail/rail_depot/rail_depot.obj" id="1_0leoj"]
+
+[node name="RailDepot" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_0leoj")

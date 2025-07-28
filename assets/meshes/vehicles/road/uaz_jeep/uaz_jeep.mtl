@@ -1,0 +1,42 @@
+# Blender 4.4.1 MTL File: 'uaz_jeep.blend'
+# www.blender.org
+
+newmtl mat_uaz_jeep_body
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd uaz_jeep_body_d.png
+
+newmtl mat_uaz_jeep_glass
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd uaz_jeep_glass_d.png
+map_d uaz_jeep_glass_d.png
+
+newmtl mat_uaz_jeep_interiour
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd uaz_jeep_interiour_d.png
+
+newmtl mat_uaz_jeep_tire
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd uaz_jeep_tire_d.png

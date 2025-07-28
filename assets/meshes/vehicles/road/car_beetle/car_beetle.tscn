@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://chv80r6ig8cjd"]
+
+[ext_resource type="ArrayMesh" uid="uid://mn71yv25fvx3" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.obj" id="1_5rati"]
+[ext_resource type="Texture2D" uid="uid://c7x1bdodrlg7i" path="res://assets/meshes/vehicles/road/car_beetle/tex_car_beetle_window.png" id="2_x3tw8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g18sv"]
+transparency = 1
+albedo_texture = ExtResource("2_x3tw8")
+
+[node name="CarBeetle" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_5rati")
+surface_material_override/0 = SubResource("StandardMaterial3D_g18sv")
