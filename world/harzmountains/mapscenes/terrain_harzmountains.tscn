@@ -62,7 +62,7 @@ _shader_parameters = {
 &"blend_sharpness": 0.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
-&"enable_projection": true,
+&"enable_projection": false,
 &"flat_terrain_normals": false,
 &"macro_variation1": Color(0.906896, 0.931722, 0.831417, 1),
 &"macro_variation2": Color(1, 1, 1, 1),
@@ -235,8 +235,8 @@ last_shadow_lod = 0
 lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
-name = "grass_ground_d"
-albedo_color = Color(0.620062, 0.734377, 0.539438, 1)
+name = "Grass Green"
+albedo_color = Color(0.743934, 0.700365, 0.404811, 1)
 albedo_texture = ExtResource("14_y0on3")
 normal_texture = ExtResource("15_es2xk")
 uv_scale = 0.193
@@ -244,7 +244,7 @@ detiling_rotation = 0.609
 detiling_shift = 0.69
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_ad1h1"]
-name = "mountain_1_d"
+name = "Rock"
 id = 1
 albedo_color = Color(0.95158, 0.95158, 0.95158, 1)
 albedo_texture = ExtResource("16_eoc0b")
@@ -255,7 +255,7 @@ uv_scale = 0.15
 detiling_shift = 0.468
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
-name = "grass_ground_d"
+name = "Grass Dark"
 id = 2
 albedo_color = Color(0.630639, 0.997732, 0.851914, 1)
 albedo_texture = ExtResource("18_i4kml")
@@ -276,7 +276,7 @@ normal_texture = ExtResource("21_656qc")
 uv_scale = 0.325
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_0ryhu"]
-name = "straw_d"
+name = "Field"
 id = 4
 albedo_texture = ExtResource("22_pdaa5")
 normal_texture = ExtResource("23_1wsr2")
@@ -285,13 +285,14 @@ detiling_rotation = 0.505
 detiling_shift = 0.18
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_giarj"]
-name = "grass_mix_d"
+name = "Grass Dry"
 id = 5
-albedo_color = Color(0.625002, 0.693113, 0.577809, 1)
+albedo_color = Color(0.724643, 0.724643, 0.724643, 1)
 albedo_texture = ExtResource("24_cy1ic")
 normal_texture = ExtResource("25_p6hwa")
-ao_strength = 0.986
-uv_scale = 0.4
+ao_strength = 1.274
+roughness = 0.342
+uv_scale = 0.18
 detiling_rotation = 0.622
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_mxgc7"]
@@ -342,6 +343,8 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
+mesh_size = 24
+cast_shadows = 0
 top_level = true
 metadata/_edit_lock_ = true
 
