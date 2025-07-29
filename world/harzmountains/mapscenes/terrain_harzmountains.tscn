@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
 [ext_resource type="Texture2D" uid="uid://c4w70qn0y3s0d" path="res://assets/textures/billboard/grass_detail1_darker.tga" id="3_8qtck"]
-[ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="4_7ueg0"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="4_mxgc7"]
 [ext_resource type="PackedScene" uid="uid://dl1dd7cjgh654" path="res://assets/meshes/nature/tree4_apple/tree4_apple.tscn" id="5_0ryhu"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="5_o4w5w"]
@@ -29,8 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://epgjb2mwvxuw" path="res://assets/textures/terrain_new/packed/wheat/wheat_nr.png" id="23_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
-[ext_resource type="Texture2D" uid="uid://dwbv6673uolbk" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_dh.png" id="24_cy1ic"]
-[ext_resource type="Texture2D" uid="uid://c2hvp1daqncmx" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_nr.png" id="25_p6hwa"]
+[ext_resource type="Texture2D" uid="uid://bgk7lpi1gjhqj" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="24_y0on3"]
+[ext_resource type="Texture2D" uid="uid://xxrknaoaupgn" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="25_es2xk"]
+[ext_resource type="Texture2D" uid="uid://cdd4akpn7k0ym" path="res://assets/textures/sky/DaySkyHDRI009A_4K-HDR.exr" id="26_y0on3"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="29_2arlh"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="32_0ryhu"]
@@ -62,9 +62,9 @@ _shader_parameters = {
 &"blend_sharpness": 0.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
-&"enable_projection": false,
+&"enable_projection": true,
 &"flat_terrain_normals": false,
-&"macro_variation1": Color(0.906896, 0.931722, 0.831417, 1),
+&"macro_variation1": Color(0.881937, 0.881937, 0.881937, 1),
 &"macro_variation2": Color(1, 1, 1, 1),
 &"macro_variation_slope": 0.333,
 &"mipmap_bias": 1.0,
@@ -73,7 +73,7 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise_texture": SubResource("NoiseTexture2D_4nd3x"),
-&"projection_threshold": 0.0
+&"projection_threshold": 0.42
 }
 world_background = 0
 
@@ -236,10 +236,11 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
 name = "Grass Green"
-albedo_color = Color(0.743934, 0.700365, 0.404811, 1)
+albedo_color = Color(0.61575, 0.692557, 0.557101, 1)
 albedo_texture = ExtResource("14_y0on3")
 normal_texture = ExtResource("15_es2xk")
-uv_scale = 0.193
+normal_depth = 1.311
+ao_strength = 1.077
 detiling_rotation = 0.609
 detiling_shift = 0.69
 
@@ -257,15 +258,12 @@ detiling_shift = 0.468
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
 name = "Grass Dark"
 id = 2
-albedo_color = Color(0.630639, 0.997732, 0.851914, 1)
+albedo_color = Color(0.539205, 0.911384, 0.577676, 1)
 albedo_texture = ExtResource("18_i4kml")
 normal_texture = ExtResource("19_xiocb")
-normal_depth = 0.788
-ao_strength = 0.32
+normal_depth = 1.509
+ao_strength = 0.415
 roughness = 0.667
-uv_scale = 0.155
-detiling_rotation = 0.199
-detiling_shift = 0.475
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_4nd3x"]
 name = "Gravel"
@@ -273,7 +271,9 @@ id = 3
 albedo_color = Color(0.920995, 0.920995, 0.920995, 1)
 albedo_texture = ExtResource("20_e0u24")
 normal_texture = ExtResource("21_656qc")
-uv_scale = 0.325
+normal_depth = 0.986
+ao_strength = 0.986
+uv_scale = 0.4
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_0ryhu"]
 name = "Field"
@@ -285,11 +285,11 @@ detiling_rotation = 0.505
 detiling_shift = 0.18
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_giarj"]
-name = "Grass Dry"
+name = "Dirt"
 id = 5
-albedo_color = Color(0.724643, 0.724643, 0.724643, 1)
-albedo_texture = ExtResource("24_cy1ic")
-normal_texture = ExtResource("25_p6hwa")
+albedo_color = Color(0.57917, 0.650227, 0.613856, 1)
+albedo_texture = ExtResource("24_y0on3")
+normal_texture = ExtResource("25_es2xk")
 ao_strength = 1.274
 roughness = 0.342
 uv_scale = 0.18
@@ -300,7 +300,7 @@ mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), 
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x"), SubResource("Terrain3DTextureAsset_0ryhu"), SubResource("Terrain3DTextureAsset_giarj")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iyiq"]
-panorama = ExtResource("4_7ueg0")
+panorama = ExtResource("26_y0on3")
 
 [sub_resource type="Sky" id="Sky_u6qkf"]
 sky_material = SubResource("PanoramaSkyMaterial_6iyiq")
@@ -311,8 +311,7 @@ background_energy_multiplier = 1.12
 sky = SubResource("Sky_u6qkf")
 ambient_light_source = 3
 ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
-ambient_light_sky_contribution = 0.18
-ambient_light_energy = 2.0
+ambient_light_sky_contribution = 0.3
 reflected_light_source = 1
 tonemap_white = 6.0
 ssr_fade_in = 0.665742
@@ -354,7 +353,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ycvjs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
 transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
-light_energy = 1.4
+light_energy = 1.723
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1

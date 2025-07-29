@@ -48,7 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="45_hgrl6"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="46_8kc2j"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="47_w0rol"]
-[ext_resource type="PackedScene" uid="uid://5xuaaujf5s08" path="res://assets/meshes/structures/chapel/chapel.tscn" id="48_nhxd4"]
+[ext_resource type="PackedScene" uid="uid://5xuaaujf5s08" path="res://assets/meshes/vehicles/road/chapel.tscn" id="48_nhxd4"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="52_7aipk"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]

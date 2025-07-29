@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj13sfxqf2aaf"]
+
+[ext_resource type="ArrayMesh" uid="uid://cin00t5s6gsl6" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.obj" id="1_6bpo5"]
+[ext_resource type="Texture2D" uid="uid://b1b64dq6si87g" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep_glass_d.png" id="2_mhilk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_787bg"]
+transparency = 1
+albedo_texture = ExtResource("2_mhilk")
+
+[node name="UazJeep" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 200.0
+visibility_range_end_margin = 50.0
+mesh = ExtResource("1_6bpo5")
+surface_material_override/1 = SubResource("StandardMaterial3D_787bg")
