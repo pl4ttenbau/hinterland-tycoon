@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=71 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="29_2arlh"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="32_0ryhu"]
+[ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="35_eoc0b"]
+[ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_tqln3"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -301,6 +303,7 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iyiq"]
 panorama = ExtResource("26_y0on3")
+energy_multiplier = 1.1
 
 [sub_resource type="Sky" id="Sky_u6qkf"]
 sky_material = SubResource("PanoramaSkyMaterial_6iyiq")
@@ -332,6 +335,27 @@ volumetric_fog_density = 0.2289
 dof_blur_far_distance = 8.17
 dof_blur_far_transition = 733.27
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoc0b"]
+albedo_texture = ExtResource("16_eoc0b")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.517632
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqln3"]
+size = Vector3(6, 20, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4kml"]
+albedo_color = Color(0.562446, 0.726809, 0.890124, 1)
+albedo_texture = ExtResource("35_eoc0b")
+metallic = 0.21
+metallic_specular = 0.71
+roughness = 0.6
+normal_enabled = true
+normal_texture = ExtResource("36_tqln3")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xiocb"]
+
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
 map_key = "harzmountains"
@@ -353,7 +377,8 @@ camera_attributes = SubResource("CameraAttributesPractical_ycvjs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
 transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
-light_energy = 1.723
+light_energy = 2.046
+light_indirect_energy = 1.97
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1
@@ -390,6 +415,11 @@ transform = Transform3D(-0.647774, 0, -0.761833, -0.00208755, 0.999996, 0.001775
 
 [node name="WarehouseWoodenStatic" parent="Deco" instance=ExtResource("32_0ryhu")]
 transform = Transform3D(-0.535193, 0, -0.84473, 0, 1, 0, 0.84473, 0, -0.535193, 3641.12, 3.80527, 1066.21)
+
+[node name="Eckertalsperre" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(-0.842565, 0, 0.538594, 0, 1, 0, -0.538594, 0, -0.842565, 470.015, 48.7693, 1395.03)
+material_override = SubResource("StandardMaterial3D_eoc0b")
+mesh = SubResource("BoxMesh_tqln3")
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
@@ -544,4 +574,21 @@ text = "Nöschenrode"
 [node name="EditorInfr" type="Node3D" parent="InEditor"]
 
 [node name="Locator" type="Node3D" parent="InEditor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2125.42, 2.91184, 360.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3033, 2.9119, 1552.79)
+
+[node name="Water" type="Node" parent="."]
+
+[node name="Eckertalsee" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(138.381, 0, 163.407, 0, 1, 0, -196.088, 0, 115.318, 568.73, 57.8153, 1604.57)
+material_override = SubResource("StandardMaterial3D_i4kml")
+mesh = SubResource("PlaneMesh_xiocb")
+
+[node name="Neuwerksee" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(360, 0, 0, 0, 1, 0, 0, 0, 250, 3740.87, 28.8753, 3845.4)
+material_override = SubResource("StandardMaterial3D_i4kml")
+mesh = SubResource("PlaneMesh_xiocb")
+
+[node name="Kalte Bode" type="MeshInstance3D" parent="Water"]
+transform = Transform3D(128.334, 0, 36.2389, 0, 1, 0, -77.6548, 0, 59.8894, 2519.38, 34.8866, 3388.17)
+material_override = SubResource("StandardMaterial3D_i4kml")
+mesh = SubResource("PlaneMesh_xiocb")
