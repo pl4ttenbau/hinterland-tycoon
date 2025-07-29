@@ -123,5 +123,10 @@
 		"name": "Nöschenrode",
 		"isMinor": true,
 		"pos": [3368, 1636]
+	},
+	{
+		"num": 24,
+		"name": "Veckenstedt",
+		"pos": [2231.5, 336.1]
 	}
 ]
