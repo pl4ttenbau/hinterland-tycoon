@@ -28,8 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://epgjb2mwvxuw" path="res://assets/textures/terrain_new/packed/wheat/wheat_nr.png" id="23_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
-[ext_resource type="Texture2D" uid="uid://dwbv6673uolbk" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_dh.png" id="24_cy1ic"]
-[ext_resource type="Texture2D" uid="uid://c2hvp1daqncmx" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_nr.png" id="25_p6hwa"]
+[ext_resource type="Texture2D" uid="uid://bgk7lpi1gjhqj" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="24_y0on3"]
+[ext_resource type="Texture2D" uid="uid://xxrknaoaupgn" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="25_es2xk"]
 [ext_resource type="Texture2D" uid="uid://cdd4akpn7k0ym" path="res://assets/textures/sky/DaySkyHDRI009A_4K-HDR.exr" id="26_y0on3"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="29_2arlh"]
@@ -62,7 +62,7 @@ _shader_parameters = {
 &"blend_sharpness": 0.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
-&"enable_projection": false,
+&"enable_projection": true,
 &"flat_terrain_normals": false,
 &"macro_variation1": Color(0.881937, 0.881937, 0.881937, 1),
 &"macro_variation2": Color(1, 1, 1, 1),
@@ -73,7 +73,7 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise_texture": SubResource("NoiseTexture2D_4nd3x"),
-&"projection_threshold": 0.0
+&"projection_threshold": 0.42
 }
 world_background = 0
 
@@ -285,11 +285,11 @@ detiling_rotation = 0.505
 detiling_shift = 0.18
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_giarj"]
-name = "Grass Dry"
+name = "Dirt"
 id = 5
-albedo_color = Color(0.534775, 0.668676, 0.578811, 1)
-albedo_texture = ExtResource("24_cy1ic")
-normal_texture = ExtResource("25_p6hwa")
+albedo_color = Color(0.57917, 0.650227, 0.613856, 1)
+albedo_texture = ExtResource("24_y0on3")
+normal_texture = ExtResource("25_es2xk")
 ao_strength = 1.274
 roughness = 0.342
 uv_scale = 0.18
@@ -311,8 +311,7 @@ background_energy_multiplier = 1.12
 sky = SubResource("Sky_u6qkf")
 ambient_light_source = 3
 ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
-ambient_light_sky_contribution = 0.18
-ambient_light_energy = 2.0
+ambient_light_sky_contribution = 0.3
 reflected_light_source = 1
 tonemap_white = 6.0
 ssr_fade_in = 0.665742
@@ -354,7 +353,7 @@ camera_attributes = SubResource("CameraAttributesPractical_ycvjs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
 transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
-light_energy = 1.4
+light_energy = 1.723
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1
