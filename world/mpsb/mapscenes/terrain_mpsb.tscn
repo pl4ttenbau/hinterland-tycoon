@@ -1,0 +1,121 @@
+[gd_scene load_steps=21 format=3 uid="uid://dg6j0pswyx2iv"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_b3vrx"]
+[ext_resource type="Terrain3DMaterial" uid="uid://bdct80gpduqri" path="res://assets/packed/terrain_material_default.tres" id="2_lkt25"]
+[ext_resource type="Texture2D" uid="uid://m4k41chdta1u" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_dh.png" id="3_i2q80"]
+[ext_resource type="Texture2D" uid="uid://cgdhltvj20ln2" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_nr.png" id="4_peo3v"]
+[ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="5_lkt25"]
+[ext_resource type="Texture2D" uid="uid://bibqk2geqq8jq" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_dh.png" id="5_mmo8u"]
+[ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="6_2pcia"]
+[ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="6_peo3v"]
+[ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="7_17kfa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2q80"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_peo3v"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_i2q80")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_mmo8u"]
+name = "grass_green_dh"
+albedo_color = Color(0.654433, 0.798701, 0.618085, 1)
+albedo_texture = ExtResource("3_i2q80")
+normal_texture = ExtResource("4_peo3v")
+roughness = 0.775
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_sfns4"]
+name = "grass_dark_dh"
+id = 1
+albedo_color = Color(0.632612, 0.943127, 0.562437, 1)
+albedo_texture = ExtResource("5_mmo8u")
+normal_texture = ExtResource("6_2pcia")
+roughness = 0.505
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_17kfa"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_peo3v")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_mmo8u"), SubResource("Terrain3DTextureAsset_sfns4")])
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2pcia"]
+panorama = ExtResource("5_lkt25")
+
+[sub_resource type="Sky" id="Sky_u6qkf"]
+sky_material = SubResource("PanoramaSkyMaterial_2pcia")
+
+[sub_resource type="Environment" id="Environment_sfns4"]
+background_mode = 2
+background_energy_multiplier = 1.12
+sky = SubResource("Sky_u6qkf")
+ambient_light_source = 3
+ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
+ambient_light_sky_contribution = 0.3
+reflected_light_source = 1
+tonemap_white = 6.0
+ssr_fade_in = 0.665742
+ssr_fade_out = 1.23114
+ssr_depth_tolerance = 29.21
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_intensity = 1.1
+fog_mode = 1
+fog_light_energy = 1.05
+fog_density = 1.0
+fog_depth_curve = 1.1487
+fog_depth_begin = 17.5
+fog_depth_end = 719.3
+volumetric_fog_density = 0.2289
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lrqyy"]
+dof_blur_far_distance = 8.17
+dof_blur_far_transition = 733.27
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmo8u"]
+albedo_texture = ExtResource("6_peo3v")
+metallic = 0.64
+metallic_specular = 1.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("7_17kfa")
+uv1_scale = Vector3(120, 120, 120)
+uv2_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
+size = Vector2(2600, 2600)
+
+[node name="TerrainMpsb" type="Node"]
+script = ExtResource("1_b3vrx")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" type="Terrain3D" parent="."]
+data_directory = "res://world/mpsb/heightdata"
+material = ExtResource("2_lkt25")
+assets = SubResource("Terrain3DAssets_17kfa")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldTerrain"]
+environment = SubResource("Environment_sfns4")
+camera_attributes = SubResource("CameraAttributesPractical_lrqyy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
+transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
+light_energy = 1.723
+light_bake_mode = 0
+shadow_enabled = true
+directional_shadow_mode = 1
+
+[node name="Water" type="MeshInstance3D" parent="WorldTerrain"]
+transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1533.78, 10.2544, 1530.48)
+material_override = SubResource("StandardMaterial3D_mmo8u")
+mesh = SubResource("PlaneMesh_2pcia")
