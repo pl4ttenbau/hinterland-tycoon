@@ -16,7 +16,8 @@ func _ready() -> void:
 func spawn_rnd_building():
 	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
-	var instanciated: OuterResBld = load(scene_path).instantiate()
+	var packed_scene: PackedScene = load(scene_path)
+	var instanciated: OuterResBld = packed_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	# create & set res bld entity
 	instanciated.res_bld = ResidenceBuildingData.new(self.town.num, rnd_bld_type)
 	# set random pos & rotation

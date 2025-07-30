@@ -7,7 +7,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pg7lu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_285rs"]
-size = Vector3(12, 4.9, 9)
+size = Vector3(10.8595, 5.1365, 7.35693)
 
 [node name="PolishHouse1" type="Node3D"]
 script = ExtResource("1_2sr6e")
@@ -23,5 +23,5 @@ script = ExtResource("3_pg7lu")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35103, 2.425, 0.472439)
 shape = SubResource("BoxShape3D_285rs")

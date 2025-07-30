@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="27_c2xmk"]
 [ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="27_ekgs8"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
 
@@ -37,7 +37,6 @@ script = ExtResource("1_vdtib")
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.65, 8.7309, 2160.47)
-collision_layer = 7
 collision_mask = 7
 script = ExtResource("12_p8gp8")
 metadata/_custom_type_script = "uid://0ou2op0l50qf"
@@ -49,8 +48,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 script = ExtResource("18_ibik3")
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 1.53713, 0)
-shape = SubResource("SphereShape3D_vdtib")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53713, 0)
+shape = SubResource("CapsuleShape3D_mg4js")
 
 [node name="PlayerArea" type="Area3D" parent="Player"]
 script = ExtResource("10_p8gp8")

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://crulhg7rvfhkp" path="res://game/gamescripts/nodes/town/town_spawner.gd" id="1_gwiev"]
 
 [node name="TownCenter" type="Node3D"]
-process_mode = 4
 script = ExtResource("1_4e0qw")
 
 [node name="TownLabel" type="Label3D" parent="."]

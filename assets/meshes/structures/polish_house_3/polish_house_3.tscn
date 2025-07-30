@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_c1gto"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c1gto"]
+rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ap03"]
 size = Vector3(5.6, 6.1, 11.6)
@@ -19,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = ExtResource("1_31yi1")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_c1gto")
 script = ExtResource("3_c1gto")
 metadata/_custom_type_script = "uid://chalq0opfem2r"

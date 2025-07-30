@@ -18,6 +18,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 mesh = ExtResource("1_tviml")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_tviml")
 script = ExtResource("2_yrl6a")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
