@@ -7,10 +7,11 @@
 script = ExtResource("1_tnnva")
 metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
+visible = false
 layout_mode = 2
 texture = ExtResource("2_0hp2e")
 
-[node name="Button" type="Button" parent="."]
+[node name="Label" type="Button" parent="."]
 layout_mode = 2
 text = "Place"

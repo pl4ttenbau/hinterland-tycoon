@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh5tt5ioftmq3"]
+
+[ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="1_g7bpn"]
+[ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="2_pa50p"]
+[ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="3_np82f"]
+[ext_resource type="PackedScene" uid="uid://cfchw6ymnp23e" path="res://scenes/ui/action_menu.tscn" id="4_herd4"]
+[ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="7_d5day"]
+[ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="8_4vdqf"]
+[ext_resource type="Script" uid="uid://c15ri5f6kq2e" path="res://game/gamescripts/ui/etc/fps_label.gd" id="9_i2ape"]
+
+[node name="GameWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PosLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 11.0
+offset_right = 104.0
+offset_bottom = 34.0
+text = "Test"
+horizontal_alignment = 1
+script = ExtResource("1_g7bpn")
+
+[node name="UiUpdateTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_pa50p")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Crosshair" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("3_np82f")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 942.0
+offset_top = 538.0
+offset_right = 1142.0
+offset_bottom = 638.0
+script = ExtResource("7_d5day")
+metadata/_custom_type_script = "uid://4e71ygdcuhse"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 95.0
+offset_bottom = 95.0
+texture = ExtResource("8_4vdqf")
+expand_mode = 2
+
+[node name="SpeedLine" type="Line2D" parent="Control"]
+position = Vector2(50, 75)
+rotation = -0.610865
+points = PackedVector2Array(0, 0, 0, -45)
+width = 1.0
+default_color = Color(0.87, 0.0783, 0.0783, 1)
+
+[node name="FpsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1065.0
+offset_top = 609.0
+offset_right = 1141.0
+offset_bottom = 632.0
+script = ExtResource("9_i2ape")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ActionMenu" parent="MarginContainer" instance=ExtResource("4_herd4")]
+layout_mode = 2

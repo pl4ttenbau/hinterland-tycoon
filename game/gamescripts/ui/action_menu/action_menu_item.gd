@@ -12,9 +12,11 @@ func _enter_tree() -> void:
 	
 func _on_selected():
 	self.get_label().add_theme_color_override("font_color", Color.ORANGE)
+	self.get_icon().visible = true
 	
 func _on_unselected():
 		self.get_label().remove_theme_color_override("font_color")
+		self.get_icon().visible = false
 
 # == GETTERS ==
 func get_icon() -> TextureRect: return self.get_child(0) as TextureRect
