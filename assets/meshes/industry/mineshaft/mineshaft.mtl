@@ -1,0 +1,45 @@
+# Blender 4.4.1 MTL File: 'mineshaft.blend'
+# www.blender.org
+
+newmtl mat_mineshaft_fence
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd tex_mineshaft_fence_d.png
+map_d tex_mineshaft_fence_d.png
+
+newmtl mat_mineshaft_house
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_mineshaft_house_d.png
+map_Bump -bm 1.000000 tex_mineshaft_house_n.png
+
+newmtl mat_mineshaft_roof
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_mineshaft_roof_d.png
+map_Bump -bm 0.300000 tex_mineshaft_roof_n.png
+
+newmtl mat_mineshaft_shaftmetal
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_mineshaft_middle_d.png
+map_Bump -bm 1.000000 tex_mineshaft_middle_n.png

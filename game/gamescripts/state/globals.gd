@@ -12,7 +12,7 @@ extends Node
 # == STATIC ==
 @export var towns: Array[TownData] = []
 
-@export var industries: Array[Industry]
+@export var industries: Array[IndustryData]
 @export var terrain: TerrainContainer
 
 @export var res_blds: Array[ResidenceBuildingData] = []
