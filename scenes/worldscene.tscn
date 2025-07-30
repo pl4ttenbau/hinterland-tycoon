@@ -37,6 +37,8 @@ script = ExtResource("1_vdtib")
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.65, 8.7309, 2160.47)
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("12_p8gp8")
 metadata/_custom_type_script = "uid://0ou2op0l50qf"
 
@@ -47,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 script = ExtResource("18_ibik3")
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.53713, 0)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 1.53713, 0)
 shape = SubResource("SphereShape3D_vdtib")
 
 [node name="PlayerArea" type="Area3D" parent="Player"]

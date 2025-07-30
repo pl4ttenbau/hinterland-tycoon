@@ -1,8 +1,68 @@
 [
 	{
 		"num": 1,
-		"name": "Triebsees Quarry",
+		"name": "Elbingerode Quarry",
 		"industryType": "QUARRY",
-		"pos": [661.2, 16.0, 277.4]
+		"pos": [3360.6, 31.0, 3095.0]
+	},
+	{
+		"num": 2,
+		"name": "Rübeland Quarry",
+		"industryType": "QUARRY",
+		"pos": [3722.5, 26.6, 2772.3]
+	},
+	{
+		"num": 3,
+		"name": "Halberstadt Valley Farm",
+		"industryType": "FARM",
+		"pos": [3818.8, 3.75, 1035.3]
+	},
+	{
+		"num": 4,
+		"name": "Stapelburg Forest",
+		"industryType": "FOREST",
+		"pos": [783.4, 10.0, 303.0]
+	},
+	{
+		"num": 5,
+		"name": "Brewery \"Hasseröder\"",
+		"industryType": "BAKERY",
+		"pos": [2677.0, 12.0, 1867.6]
+	},
+	{
+		"num": 6,
+		"name": "Nordharzer Sägewerk",
+		"industryType": "SAWMILL",
+		"pos": [2554.2, 8.0, 1312.9]
+	},
+	{
+		"num": 7,
+		"name": "Berkwerk Büchenberg",
+		"industryType": "IRON_MINE",
+		"pos": [3639.0, 45.5, 2461.8]
+	},
+	{
+		"num": 8,
+		"name": "Ilsenburg Blechwerk",
+		"industryType": "SMELTER",
+		"pos": [1913.5, 6.0, 776.4]
+	},
+	{
+		"num": 9,
+		"name": "Berkwerk Fernab",
+		"industryType": "COAL_MINE",
+		"pos": [839.7, 64.0, 3790.0]
+	},
+	{
+		"num": 10,
+		"name": "Kraftwerk Rübeland",
+		"industryType": "COAL_PLANT",
+		"pos": [4036.8, 33.0, 3163.2]
+	},
+	{
+		"num": 11,
+		"name": "Hof Veckenstedt",
+		"industryType": "FARM",
+		"pos": [2125.4, 3.0, 360.5]
 	}
 ]

@@ -65,10 +65,10 @@ signal towns_loaded()
 
 #region Industries
 @warning_ignore("unused_signal")
-signal industry_loaded(industry: Industry)
+signal industry_loaded(industry: IndustryData)
 
 @warning_ignore("unused_signal")
-signal industries_loaded(industries: Array[Industry])
+signal industries_loaded(industries: Array[IndustryData])
 
 @warning_ignore("unused_signal")
 signal industry_spawned(container: OuterIndustry)

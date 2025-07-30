@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc8xyiepqrbj1"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/structures/outer_industry.gd" id="1_rrjv6"]
+[ext_resource type="ArrayMesh" uid="uid://bbi6ilkjisxdv" path="res://assets/meshes/industry/mineshaft/mineshaft.obj" id="2_acou4"]
+[ext_resource type="Texture2D" uid="uid://bjcsyg51ekmvg" path="res://assets/meshes/industry/mineshaft/tex_mineshaft_fence_d.png" id="3_p1ie3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud687"]
+transparency = 2
+alpha_scissor_threshold = 0.276
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
+cull_mode = 2
+albedo_texture = ExtResource("3_p1ie3")
+
+[node name="Mineshaft" type="Node3D"]
+script = ExtResource("1_rrjv6")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+mesh = ExtResource("2_acou4")
+surface_material_override/3 = SubResource("StandardMaterial3D_ud687")
