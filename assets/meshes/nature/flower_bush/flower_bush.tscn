@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://brjgv2ljcn1fm"]
+
+[ext_resource type="ArrayMesh" uid="uid://k6g2i17bsljt" path="res://assets/meshes/nature/flower_bush/flower_bush.obj" id="1_5jgdc"]
+[ext_resource type="Texture2D" uid="uid://hcrb7xwyv5u" path="res://assets/meshes/nature/flower_bush/flower_bush_01.png" id="1_b3mbi"]
+[ext_resource type="Texture2D" uid="uid://vqa2u7horbcp" path="res://assets/meshes/nature/flower_bush/flower_bush_01_norm.jpg" id="2_fvu8o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcwcy"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_b3mbi")
+normal_enabled = true
+normal_texture = ExtResource("2_fvu8o")
+
+[node name="FlowerBush" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_dcwcy")
+mesh = ExtResource("1_5jgdc")

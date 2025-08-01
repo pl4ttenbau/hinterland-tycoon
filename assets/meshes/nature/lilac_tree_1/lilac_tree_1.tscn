@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbywhitita8te"]
+
+[ext_resource type="ArrayMesh" uid="uid://bfu6bjtoen2gp" path="res://assets/meshes/nature/lilac_tree_1/lilac_tree_1.obj" id="1_8soh5"]
+[ext_resource type="Texture2D" uid="uid://cr4mtghice135" path="res://assets/meshes/nature/lilac_tree_1/tex_lilac_tree_1_branch_d.png" id="2_jpffp"]
+[ext_resource type="Texture2D" uid="uid://bqur4bq1fv76n" path="res://assets/meshes/nature/lilac_tree_1/tex_lilac_tree_1_branch_n.png" id="3_w7xcu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueqho"]
+transparency = 2
+alpha_scissor_threshold = 0.44
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_jpffp")
+normal_enabled = true
+normal_texture = ExtResource("3_w7xcu")
+
+[node name="LilacTree1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_8soh5")
+surface_material_override/1 = SubResource("StandardMaterial3D_ueqho")

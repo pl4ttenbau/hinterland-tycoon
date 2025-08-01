@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://q7ym1h1okh1y"]
+[gd_scene load_steps=4 format=3 uid="uid://q7ym1h1okh1y"]
 
+[ext_resource type="Texture2D" uid="uid://bvd4ywq3psh4o" path="res://assets/meshes/nature/flower1/tex_flower_1_d.tga" id="1_grr78"]
 [ext_resource type="ArrayMesh" uid="uid://bpt53xp5178ae" path="res://assets/meshes/nature/flower1/flower1.obj" id="1_oauvn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gmkl"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_grr78")
 
 [node name="Flower1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_8gmkl")
 mesh = ExtResource("1_oauvn")

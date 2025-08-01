@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://ouqmxw1r03f5"]
+
+[ext_resource type="Texture2D" uid="uid://to1aous2rhmi" path="res://assets/meshes/deco/log_pile/tex_log_pile_d.png" id="1_tmyym"]
+[ext_resource type="Texture2D" uid="uid://dra7p2vxkcjmt" path="res://assets/meshes/deco/log_pile/tex_log_pile_n.png" id="2_gp0ma"]
+[ext_resource type="Texture2D" uid="uid://c45t5whdmkgn7" path="res://assets/meshes/deco/log_pile/tex_log_pile_h.png" id="2_lchby"]
+[ext_resource type="Texture2D" uid="uid://b3rtkidvpqrxp" path="res://assets/meshes/deco/log_pile/tex_log_pile_r.png" id="3_lchby"]
+[ext_resource type="ArrayMesh" uid="uid://d1fts5b6unhua" path="res://assets/meshes/deco/log_pile/log_pile.obj" id="4_de371"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnqiu"]
+albedo_texture = ExtResource("1_tmyym")
+roughness_texture = ExtResource("3_lchby")
+normal_enabled = true
+normal_texture = ExtResource("2_gp0ma")
+heightmap_enabled = true
+heightmap_scale = 2.0
+heightmap_texture = ExtResource("2_lchby")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gp0ma"]
+size = Vector3(3.48663, 1.19342, 3.43216)
+
+[node name="LogPile" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540901, 0.0065217, 0.045553)
+material_override = SubResource("StandardMaterial3D_nnqiu")
+mesh = ExtResource("4_de371")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054718, 0.59024, -0.387833)
+shape = SubResource("BoxShape3D_gp0ma")

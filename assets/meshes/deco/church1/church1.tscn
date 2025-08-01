@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccsdn65orkxqs"]
+
+[ext_resource type="ArrayMesh" uid="uid://c74c4fk274j48" path="res://assets/meshes/deco/church1/church1.obj" id="1_qwf7s"]
+[ext_resource type="Texture2D" uid="uid://cg3rtijgttrf0" path="res://assets/meshes/deco/church1/tex_church_ivy_d.png" id="2_id41u"]
+[ext_resource type="Texture2D" uid="uid://dm7yhqn5jjaqs" path="res://assets/meshes/deco/church1/tex_church_ivy_n.png" id="3_bpgwp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwf7s"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_id41u")
+normal_enabled = true
+normal_texture = ExtResource("3_bpgwp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id41u"]
+size = Vector3(9.3006, 17.6881, 16.6858)
+
+[node name="Church1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_qwf7s")
+surface_material_override/1 = SubResource("StandardMaterial3D_qwf7s")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950104, 8.83031, -0.0748291)
+shape = SubResource("BoxShape3D_id41u")
