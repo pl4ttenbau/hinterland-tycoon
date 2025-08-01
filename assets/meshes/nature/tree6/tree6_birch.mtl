@@ -29,6 +29,6 @@ Ks 0.000000 0.000000 0.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 illum 1
-map_Kd tex_tree6_leaves_d.dds
-map_d tex_tree6_leaves_d.dds
-map_Bump -bm 1.000000 tex_tree6_leaves_n.dds
+map_Kd tex_tree6_leaves_d.png
+map_d tex_tree6_leaves_d.png
+map_Bump -bm 1.000000 tex_tree6_leaves_n.png
