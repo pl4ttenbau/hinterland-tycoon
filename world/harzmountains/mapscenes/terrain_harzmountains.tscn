@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=109 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -25,8 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="16_eoc0b"]
 [ext_resource type="PackedScene" uid="uid://bbywhitita8te" path="res://assets/meshes/nature/lilac_tree_1/lilac_tree_1.tscn" id="17_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://j8k02tmmmrsd" path="res://assets/textures/terrain_new/packed/rock/rock_nr.png" id="17_tqln3"]
+[ext_resource type="PackedScene" uid="uid://cyck4ftd7pu3l" path="res://assets/meshes/nature/rock3/rock3.tscn" id="18_cy1ic"]
 [ext_resource type="Texture2D" uid="uid://bibqk2geqq8jq" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_dh.png" id="18_i4kml"]
 [ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="19_xiocb"]
+[ext_resource type="PackedScene" uid="uid://dtxcqi0tt4471" path="res://assets/meshes/nature/rock4/rock4.tscn" id="20_1806y"]
 [ext_resource type="Texture2D" uid="uid://c77xh5vv2s3jf" path="res://assets/textures/terrain_new/packed/gravel/gravel_dh.png" id="20_e0u24"]
 [ext_resource type="Texture2D" uid="uid://ltpfphsa8w4o" path="res://assets/textures/terrain_new/packed/gravel/gravel_nr.png" id="21_656qc"]
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
@@ -42,6 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_tqln3"]
 [ext_resource type="PackedScene" uid="uid://ouqmxw1r03f5" path="res://assets/meshes/deco/log_pile/log_pile.tscn" id="38_656qc"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="39_xiocb"]
+[ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_1wsr2"]
+[ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="42_p6hwa"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -277,6 +281,33 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_p6hwa"]
+name = "rock3"
+id = 16
+scene_file = ExtResource("18_cy1ic")
+density = 0.123975
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1806y"]
+name = "log_pile"
+id = 17
+scene_file = ExtResource("38_656qc")
+density = 0.573191
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_e4gxf"]
+name = "rock4"
+id = 18
+scene_file = ExtResource("20_1806y")
+density = 0.255153
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
 name = "Grass Green"
 albedo_color = Color(0.61575, 0.692557, 0.557101, 1)
@@ -335,11 +366,11 @@ albedo_texture = ExtResource("24_y0on3")
 normal_texture = ExtResource("25_es2xk")
 ao_strength = 1.274
 roughness = 0.342
-uv_scale = 0.18
+uv_scale = 0.3
 detiling_rotation = 0.622
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_mxgc7"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), SubResource("Terrain3DMeshAsset_6iyiq"), SubResource("Terrain3DMeshAsset_ohjow"), SubResource("Terrain3DMeshAsset_ycvjs"), SubResource("Terrain3DMeshAsset_wh85d"), SubResource("Terrain3DMeshAsset_x08in"), SubResource("Terrain3DMeshAsset_bhs12"), SubResource("Terrain3DMeshAsset_dci7w"), SubResource("Terrain3DMeshAsset_algog"), SubResource("Terrain3DMeshAsset_giarj"), SubResource("Terrain3DMeshAsset_teud8"), SubResource("Terrain3DMeshAsset_0ryhu"), SubResource("Terrain3DMeshAsset_e0u24"), SubResource("Terrain3DMeshAsset_656qc"), SubResource("Terrain3DMeshAsset_pdaa5"), SubResource("Terrain3DMeshAsset_1wsr2")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), SubResource("Terrain3DMeshAsset_6iyiq"), SubResource("Terrain3DMeshAsset_ohjow"), SubResource("Terrain3DMeshAsset_ycvjs"), SubResource("Terrain3DMeshAsset_wh85d"), SubResource("Terrain3DMeshAsset_x08in"), SubResource("Terrain3DMeshAsset_bhs12"), SubResource("Terrain3DMeshAsset_dci7w"), SubResource("Terrain3DMeshAsset_algog"), SubResource("Terrain3DMeshAsset_giarj"), SubResource("Terrain3DMeshAsset_teud8"), SubResource("Terrain3DMeshAsset_0ryhu"), SubResource("Terrain3DMeshAsset_e0u24"), SubResource("Terrain3DMeshAsset_656qc"), SubResource("Terrain3DMeshAsset_pdaa5"), SubResource("Terrain3DMeshAsset_1wsr2"), SubResource("Terrain3DMeshAsset_p6hwa"), SubResource("Terrain3DMeshAsset_1806y"), SubResource("Terrain3DMeshAsset_e4gxf")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x"), SubResource("Terrain3DTextureAsset_0ryhu"), SubResource("Terrain3DTextureAsset_giarj")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iyiq"]
@@ -622,6 +653,18 @@ transform = Transform3D(0.474193, 0.0337743, -0.879773, 0.0102726, 0.998984, 0.0
 
 [node name="LogPile2" parent="Deco" instance=ExtResource("38_656qc")]
 transform = Transform3D(-0.0316808, 0.0441931, -0.998521, 0.128919, 0.990858, 0.0397636, 0.991149, -0.127469, -0.0370885, 2642.85, 50.0686, 2734.7)
+
+[node name="RuinedHouse2" parent="Deco" instance=ExtResource("40_1wsr2")]
+transform = Transform3D(0.981972, 0, 0.189027, 0, 1, 0, -0.189027, 0, 0.981972, 1506, 73.9054, 2963)
+
+[node name="UazJeep" parent="Deco" instance=ExtResource("42_p6hwa")]
+transform = Transform3D(1, 0, 0, 0, 0.994678, 0.103036, 0, -0.103036, 0.994678, 1898.38, 49.4526, 3942.89)
+
+[node name="WarehouseWoodenStatic3" parent="Deco" instance=ExtResource("32_0ryhu")]
+transform = Transform3D(0.246187, 0.0398292, -0.968404, -0.076082, 0.996866, 0.0216583, 0.966232, 0.0683461, 0.248446, 1903.72, 51.0366, 3914.9)
+
+[node name="RuinedHouse3" parent="Deco" instance=ExtResource("40_1wsr2")]
+transform = Transform3D(0.588914, 0, -0.808195, 0, 1, 0, 0.808195, 0, 0.588914, 1845.79, 53.8234, 3898.98)
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")

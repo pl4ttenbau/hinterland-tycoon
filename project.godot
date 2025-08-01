@@ -38,6 +38,10 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 RailTracks=""
