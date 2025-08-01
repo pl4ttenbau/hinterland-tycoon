@@ -1,0 +1,34 @@
+# Blender 4.4.1 MTL File: 'tree6_birch.blend'
+# www.blender.org
+
+newmtl mat_tree6_bark
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_tree6_trunk_d.dds
+map_Bump -bm 1.000000 tex_tree6_trunk_n.dds
+
+newmtl mat_tree6_branch
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_tree6_branch_d.dds
+map_d tex_tree6_branch_d.dds
+
+newmtl mat_tree6_leaves
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_tree6_leaves_d.dds
+map_d tex_tree6_leaves_d.dds
+map_Bump -bm 1.000000 tex_tree6_leaves_n.dds

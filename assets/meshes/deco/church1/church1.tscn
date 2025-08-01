@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccsdn65orkxqs"]
+[gd_scene load_steps=7 format=3 uid="uid://ccsdn65orkxqs"]
 
+[ext_resource type="Script" uid="uid://cjoj48oprt1f3" path="res://game/gamescripts/nodes/common/hideable_object.gd" id="1_bpgwp"]
 [ext_resource type="ArrayMesh" uid="uid://c74c4fk274j48" path="res://assets/meshes/deco/church1/church1.obj" id="1_qwf7s"]
 [ext_resource type="Texture2D" uid="uid://cg3rtijgttrf0" path="res://assets/meshes/deco/church1/tex_church_ivy_d.png" id="2_id41u"]
 [ext_resource type="Texture2D" uid="uid://dm7yhqn5jjaqs" path="res://assets/meshes/deco/church1/tex_church_ivy_n.png" id="3_bpgwp"]
@@ -16,6 +17,8 @@ normal_texture = ExtResource("3_bpgwp")
 size = Vector3(9.3006, 17.6881, 16.6858)
 
 [node name="Church1" type="Node3D"]
+script = ExtResource("1_bpgwp")
+metadata/_custom_type_script = "uid://cjoj48oprt1f3"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_qwf7s")

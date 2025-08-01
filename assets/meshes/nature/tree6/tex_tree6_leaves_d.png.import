@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://copotrtvtf11c"
-path.s3tc="res://.godot/imported/birchbark.bmp-cb52b53b96c92612002a6bda0e915ab4.s3tc.ctex"
+uid="uid://3kxax57td43i"
+path.s3tc="res://.godot/imported/tex_tree6_leaves_d.png-5c7c947f1cd8c640e63c3d5ba5194341.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree6/birchbark.bmp"
-dest_files=["res://.godot/imported/birchbark.bmp-cb52b53b96c92612002a6bda0e915ab4.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree6/tex_tree6_leaves_d.png"
+dest_files=["res://.godot/imported/tex_tree6_leaves_d.png-5c7c947f1cd8c640e63c3d5ba5194341.s3tc.ctex"]
 
 [params]
 

@@ -1,17 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt2ir7te2xpwh"]
+[gd_scene load_steps=8 format=3 uid="uid://bt2ir7te2xpwh"]
 
-[ext_resource type="ArrayMesh" uid="uid://0maconuby4i4" path="res://assets/meshes/nature/tree6/tree6.obj" id="1_aib1c"]
-[ext_resource type="Texture2D" uid="uid://bak4re1s5dybl" path="res://assets/meshes/nature/tree6/birchtwig.tga" id="2_0mqgf"]
+[ext_resource type="ArrayMesh" uid="uid://dubty5bsb2ib8" path="res://assets/meshes/nature/tree6/tree6_birch.obj" id="1_n3wp1"]
+[ext_resource type="Texture2D" uid="uid://c7fdc77tjxbj3" path="res://assets/meshes/nature/tree6/tex_tree6_branch_d.dds" id="2_vbx13"]
+[ext_resource type="Texture2D" uid="uid://3kxax57td43i" path="res://assets/meshes/nature/tree6/tex_tree6_leaves_d.png" id="3_vbx13"]
+[ext_resource type="Texture2D" uid="uid://cxlyckgnmxs0p" path="res://assets/meshes/nature/tree6/tex_tree6_leaves_n.dds" id="4_3wgcu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbx13"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3d66s"]
 transparency = 2
-alpha_scissor_threshold = 0.5
+alpha_scissor_threshold = 0.205
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("2_0mqgf")
+cull_mode = 2
+albedo_texture = ExtResource("2_vbx13")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbx13"]
+load_path = "res://.godot/imported/tex_tree6_leaves_n.png-53a4e69b769e4552c3f30ee030f6d62c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvgw4"]
+transparency = 2
+alpha_scissor_threshold = 0.474
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_vbx13")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_vbx13")
+normal_enabled = true
+normal_texture = ExtResource("4_3wgcu")
 
 [node name="Tree6" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
-mesh = ExtResource("1_aib1c")
-surface_material_override/1 = SubResource("StandardMaterial3D_vbx13")
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+mesh = ExtResource("1_n3wp1")
+surface_material_override/1 = SubResource("StandardMaterial3D_3d66s")
+surface_material_override/2 = SubResource("StandardMaterial3D_rvgw4")
