@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfchw6ymnp23e"]
+
+[ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu/action_menu.gd" id="1_d6qou"]
+[ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu/action_menu_item.gd" id="2_43w1o"]
+[ext_resource type="Texture2D" uid="uid://b584wbd2ghs34" path="res://assets/icons/icon_mouse.svg" id="3_f6xs1"]
+
+[node name="ActionMenuVContainer" type="VBoxContainer"]
+offset_left = 864.0
+offset_top = 15.0
+offset_right = 1131.0
+offset_bottom = 71.0
+script = ExtResource("1_d6qou")
+
+[node name="ConnectItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="ConnectItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="ConnectItem"]
+layout_mode = 2
+text = "Connect"
+
+[node name="PlaceItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="PlaceItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="PlaceItem"]
+layout_mode = 2
+text = "Place"
+
+[node name="EnterItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="EnterItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="EnterItem"]
+layout_mode = 2
+text = "Enter"
+
+[node name="CompanyItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="CompanyItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="CompanyItem"]
+layout_mode = 2
+text = "Company"
+
+[node name="GameMenuItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="GameMenuItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="GameMenuItem"]
+layout_mode = 2
+text = "Game Menu"

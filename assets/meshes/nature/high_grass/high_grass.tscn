@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://w6cyjr0rwal0"]
+
+[ext_resource type="Texture2D" uid="uid://dydus3w4f40gx" path="res://assets/meshes/nature/high_grass/tex_high_grass_d.png" id="1_qmpbu"]
+[ext_resource type="Texture2D" uid="uid://b6g06i2v645l1" path="res://assets/meshes/nature/high_grass/tex_high_grass_n.jpg" id="2_mdikx"]
+[ext_resource type="ArrayMesh" uid="uid://eaxgnv16gl3x" path="res://assets/meshes/nature/high_grass/high_grass.obj" id="2_xjyud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdikx"]
+transparency = 2
+alpha_scissor_threshold = 0.265
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_qmpbu")
+normal_enabled = true
+normal_texture = ExtResource("2_mdikx")
+
+[node name="HighGrass" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mdikx")
+mesh = ExtResource("2_xjyud")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://icjp48xb261d"]
+
+[ext_resource type="Script" uid="uid://cjoj48oprt1f3" path="res://game/gamescripts/nodes/common/hideable_object.gd" id="1_d8bn6"]
+[ext_resource type="ArrayMesh" uid="uid://boppijgkm0owo" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.obj" id="2_hmgug"]
+
+[node name="RuinedHouse2" type="Node3D"]
+script = ExtResource("1_d8bn6")
+metadata/_custom_type_script = "uid://cjoj48oprt1f3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 50.0
+mesh = ExtResource("2_hmgug")

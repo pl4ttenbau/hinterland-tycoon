@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=21 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
@@ -8,26 +8,18 @@
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
-[ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="14_stk68"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="15_lhsit"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map_spawner.gd" id="16_ekgs8"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
-[ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="16_ux8bc"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
-[ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="17_stk68"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
+[ext_resource type="PackedScene" uid="uid://bh5tt5ioftmq3" path="res://scenes/ui/game_window.tscn" id="18_u6qkf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
-[ext_resource type="Script" uid="uid://bvlj3qpio1ssi" path="res://game/gamescripts/ui/action_menu/action_menu_item.gd" id="20_vf50h"]
-[ext_resource type="Texture2D" uid="uid://b584wbd2ghs34" path="res://assets/icons/icon_mouse.svg" id="23_c2xmk"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
-[ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu/action_menu.gd" id="23_lhsit"]
-[ext_resource type="Script" uid="uid://c15ri5f6kq2e" path="res://game/gamescripts/ui/etc/fps_label.gd" id="26_mg4js"]
-[ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="27_c2xmk"]
-[ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="27_ekgs8"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vdtib"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
 
@@ -37,7 +29,6 @@ script = ExtResource("1_vdtib")
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.65, 8.7309, 2160.47)
-collision_layer = 7
 collision_mask = 7
 script = ExtResource("12_p8gp8")
 metadata/_custom_type_script = "uid://0ou2op0l50qf"
@@ -49,8 +40,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 script = ExtResource("18_ibik3")
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 1.53713, 0)
-shape = SubResource("SphereShape3D_vdtib")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53713, 0)
+shape = SubResource("CapsuleShape3D_mg4js")
 
 [node name="PlayerArea" type="Area3D" parent="Player"]
 script = ExtResource("10_p8gp8")
@@ -117,144 +108,4 @@ script = ExtResource("19_mg4js")
 [node name="TerrainRaycaster" type="Node" parent="World/MapSpawner/Terrain"]
 script = ExtResource("5_kq7m5")
 
-[node name="GameWindow" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="PosLabel" type="Label" parent="GameWindow"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 11.0
-offset_right = 104.0
-offset_bottom = 34.0
-text = "Test"
-horizontal_alignment = 1
-script = ExtResource("17_stk68")
-
-[node name="UiUpdateTimer" type="Timer" parent="GameWindow"]
-autostart = true
-script = ExtResource("14_stk68")
-
-[node name="CenterContainer" type="CenterContainer" parent="GameWindow"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="Crosshair" type="TextureRect" parent="GameWindow/CenterContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-texture = ExtResource("16_ux8bc")
-expand_mode = 1
-
-[node name="ActionMenuVContainer" type="VBoxContainer" parent="GameWindow"]
-layout_mode = 0
-offset_left = 864.0
-offset_top = 15.0
-offset_right = 1131.0
-offset_bottom = 71.0
-script = ExtResource("23_lhsit")
-
-[node name="ActionMenuItemConnect" type="HBoxContainer" parent="GameWindow/ActionMenuVContainer"]
-layout_mode = 2
-alignment = 2
-script = ExtResource("20_vf50h")
-metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/ActionMenuItemConnect"]
-layout_mode = 2
-texture = ExtResource("23_c2xmk")
-
-[node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemConnect"]
-layout_mode = 2
-text = "Connect"
-
-[node name="ActionMenuItemPlace" type="HBoxContainer" parent="GameWindow/ActionMenuVContainer"]
-layout_mode = 2
-alignment = 2
-script = ExtResource("20_vf50h")
-metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/ActionMenuItemPlace"]
-layout_mode = 2
-texture = ExtResource("23_c2xmk")
-
-[node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemPlace"]
-layout_mode = 2
-text = "Place"
-
-[node name="ActionMenuItemEnter" type="HBoxContainer" parent="GameWindow/ActionMenuVContainer"]
-layout_mode = 2
-alignment = 2
-script = ExtResource("20_vf50h")
-metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/ActionMenuItemEnter"]
-layout_mode = 2
-texture = ExtResource("23_c2xmk")
-
-[node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemEnter"]
-layout_mode = 2
-text = "Enter"
-
-[node name="ActionMenuItemCompany" type="HBoxContainer" parent="GameWindow/ActionMenuVContainer"]
-layout_mode = 2
-alignment = 2
-script = ExtResource("20_vf50h")
-metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/ActionMenuItemCompany"]
-layout_mode = 2
-texture = ExtResource("23_c2xmk")
-
-[node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemCompany"]
-layout_mode = 2
-text = "Company"
-
-[node name="ActionMenuItemGameMenu" type="HBoxContainer" parent="GameWindow/ActionMenuVContainer"]
-layout_mode = 2
-alignment = 2
-script = ExtResource("20_vf50h")
-metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/ActionMenuVContainer/ActionMenuItemGameMenu"]
-layout_mode = 2
-texture = ExtResource("23_c2xmk")
-
-[node name="Button" type="Button" parent="GameWindow/ActionMenuVContainer/ActionMenuItemGameMenu"]
-layout_mode = 2
-text = "Game Menu"
-
-[node name="Control" type="Control" parent="GameWindow"]
-anchors_preset = 0
-offset_left = 942.0
-offset_top = 538.0
-offset_right = 1142.0
-offset_bottom = 638.0
-script = ExtResource("27_ekgs8")
-metadata/_custom_type_script = "uid://4e71ygdcuhse"
-
-[node name="TextureRect" type="TextureRect" parent="GameWindow/Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 95.0
-offset_bottom = 95.0
-texture = ExtResource("27_c2xmk")
-expand_mode = 2
-
-[node name="SpeedLine" type="Line2D" parent="GameWindow/Control"]
-position = Vector2(50, 75)
-rotation = -0.610865
-points = PackedVector2Array(0, 0, 0, -45)
-width = 1.0
-default_color = Color(0.87, 0.0783, 0.0783, 1)
-
-[node name="FpsLabel" type="Label" parent="GameWindow"]
-layout_mode = 0
-offset_left = 1065.0
-offset_top = 609.0
-offset_right = 1141.0
-offset_bottom = 632.0
-script = ExtResource("26_mg4js")
+[node name="GameWindow" parent="." instance=ExtResource("18_u6qkf")]

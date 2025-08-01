@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailTrackData extends AbstractTrack
 
 const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"

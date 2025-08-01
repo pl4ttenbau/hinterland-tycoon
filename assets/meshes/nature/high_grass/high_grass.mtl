@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'high_grass.blend'
+# www.blender.org
+
+newmtl mat_high_grass
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd tex_high_grass_d.png
+map_d tex_high_grass_d.png
+map_Bump -bm 1.000000 tex_high_grass_n.jpg

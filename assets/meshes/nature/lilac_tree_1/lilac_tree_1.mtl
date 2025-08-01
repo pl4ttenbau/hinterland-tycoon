@@ -1,0 +1,24 @@
+# Blender 4.4.1 MTL File: 'lilac_tree_1.blend'
+# www.blender.org
+
+newmtl mat_lilac_tree_1_bark
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_lilac_tree_bark_d.png
+map_Bump -bm 1.000000 tex_lilac_tree_bark_n.png
+
+newmtl mat_lilac_tree_bark
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_lilac_tree_1_branch_d.png
+map_d tex_lilac_tree_1_branch_d.png
+map_Bump -bm 1.000000 tex_lilac_tree_1_branch_n.png

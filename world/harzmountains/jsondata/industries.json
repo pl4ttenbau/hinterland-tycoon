@@ -64,5 +64,11 @@
 		"name": "Hof Veckenstedt",
 		"industryType": "FARM",
 		"pos": [2125.4, 3.0, 360.5]
+	},
+	{
+		"num": 12,
+		"name": "Holzschnitt Königshütte",
+		"industryType": "FOREST",
+		"pos": [2812.1, 37.5, 3450.0]
 	}
 ]

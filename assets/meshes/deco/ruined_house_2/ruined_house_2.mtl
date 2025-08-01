@@ -1,0 +1,24 @@
+# Blender 4.4.1 MTL File: 'ruined_house_2.blend'
+# www.blender.org
+
+newmtl mat_ruined_house_2_bricks
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_ruined_house_2_bricks_d.jpg
+map_Bump -bm 1.000000 tex_ruined_house_2_bricks_n.png
+
+newmtl mat_ruined_house_2_planks
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_ruined_house_2_planks_d.jpg
+map_Bump -bm 1.000000 tex_ruined_house_2_planks_n.png

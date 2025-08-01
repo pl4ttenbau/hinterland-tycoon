@@ -1,9 +1,16 @@
 class_name RailForkData extends GameObject
 
-@export_storage var container: OuterRailFork
+# json object properties
 @export var connectiveTracks: Array
-@export var railNode: RailNodeData
 @export var setTo: int
+
+# later-set properties
+@export var railNode: RailNodeData
+@export_storage var container: OuterRailFork
+
+@export_storage var track: RailTrackData:
+	get(): return self.railNode.parent_track
+	set(value): pass
 
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 
@@ -24,9 +31,6 @@ func spawn() -> OuterRailFork:
 	self.get_outer_track().add_child(instanciated)
 	return instanciated
 	
-func get_track() -> RailTrackData:
-	return self.railNode.parent_track
-	
 func get_outer_track() -> OuterRailTrack:
-	var rail_num := self.get_track().num
+	var rail_num := self.track.num
 	return GlobalState.outer_tracks.get(rail_num -1)

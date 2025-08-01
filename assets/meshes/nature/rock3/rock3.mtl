@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'rocks3.blend'
+# www.blender.org
+
+newmtl rock3
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd tex_rock3_d.png
+map_Ks tex_rock3_m.tga
+map_Bump -bm 1.000000 tex_rock3_n.png

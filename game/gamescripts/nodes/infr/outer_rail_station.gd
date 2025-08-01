@@ -1,9 +1,9 @@
 class_name OuterRailStation extends HideableObject
 
-const scene_source_path = "res://scenes/subscenes/infr/outer_rail_station.tscn"
+const STATION_SCENE_PATH = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 
 static func of(_station_obj: RailStationData) -> OuterRailStation:
-	var prefab: PackedScene = preload(scene_source_path)
+	var prefab: PackedScene = preload(STATION_SCENE_PATH)
 	var instanciated_container: OuterRailStation = prefab.instantiate()
 	instanciated_container.position = _station_obj.position
 	instanciated_container.entity = _station_obj
@@ -25,7 +25,7 @@ func get_parent_track_node_by_index(_i: int) -> RailNodeData:
 	return track.get_rail_node(_i)
 	
 func get_mesh() -> MeshInstance3D:
-	return self.get_child(0)
+	return $RailStationMesh
 	
 func get_collider() -> StaticBody3D:
-	return self.get_child(1)
+	return $StationBody3D
