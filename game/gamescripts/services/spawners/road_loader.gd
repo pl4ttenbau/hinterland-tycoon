@@ -42,7 +42,7 @@ func _ready() -> void:
 	load_roads()
 	Loggie.info("roads precreated")
 	
-func _on_world_spawned(container: TerrainContainer):
+func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
 
 func _on_world_update() -> void:

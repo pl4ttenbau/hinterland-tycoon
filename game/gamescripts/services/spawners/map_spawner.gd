@@ -17,8 +17,8 @@ func spawn_map(map_data: MapData):
 		var packed_scene: PackedScene = ResourceLoader.load(tscn_path)
 		self.register_scene(packed_scene.instantiate())
 	
-func place_terrain_scene(terrain_container: TerrainContainer):
-	$"./Terrain".add_child(terrain_container)
+func place_terrain_scene(_terrain_container: TerrainContainer):
+	$"./Terrain".add_child(_terrain_container)
 	
 func register_scene(instanciated_scene: TerrainContainer):
 	self.terrain_container = instanciated_scene

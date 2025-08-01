@@ -26,12 +26,15 @@ func load_rail_tracks() -> void:
 	for json_track in JSON.parse_string(rails_arr_str):
 		self.tracks.append(RailTrackData.from_json(json_track))
 	GlobalState.tracks = self.tracks
+	SignalBus.rails_loaded.emit(self.tracks)
 	self.rails_loaded.emit(self.tracks)
+	Managers.depots = DepotLoader.new()
 	
 func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_forks(track_obj)
+	Managers.depots.spawn_depots()
 	# emit signals
 	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
@@ -57,7 +60,7 @@ func spawn_rail_forks(parent_track: RailTrackData):
 		fork.container.adjust_rotation()
 
 #region Event Listeners
-func _on_map_spawned(container: TerrainContainer):
+func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
 	
 func _on_world_update() -> void:

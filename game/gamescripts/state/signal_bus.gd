@@ -33,6 +33,9 @@ signal vehicle_exited()
 
 #region Rails
 @warning_ignore("unused_signal")
+signal rails_loaded(rails: Array[RailTrackData])
+
+@warning_ignore("unused_signal")
 signal rail_spawned(rail_container: OuterRailTrack)
 
 @warning_ignore("unused_signal")

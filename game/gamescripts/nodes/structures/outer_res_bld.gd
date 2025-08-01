@@ -16,5 +16,5 @@ static var last_bld_num: int = 0
 @export var placed_town_num: int
 
 static func next_num() -> int:
-	return OuterResBld.last_bld_num
 	OuterResBld.last_bld_num += 1
+	return OuterResBld.last_bld_num

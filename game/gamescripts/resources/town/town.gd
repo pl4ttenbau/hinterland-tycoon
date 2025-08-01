@@ -58,12 +58,12 @@ static func from_json(_jsonDict: Dictionary) -> TownData:
 		push_warning("Town %s has no known position" % _jsonDict["name"])
 		return null
 	else:	
-		var town_name: String = _jsonDict["name"]
+		var dict_town_name: String = _jsonDict["name"]
 		var posXZ: Vector2 = Vector2(float(townPosArr[0]), float(townPosArr[1]))
 		var pops = null
-		var is_minor: bool = _jsonDict.get("isMinor", false)
-		var autogenerate_houses: bool = _jsonDict.get("autogenerateHouses", true)
-		return TownData.of(town_name, posXZ, pops, is_minor, autogenerate_houses)
+		var dict_is_minor: bool = _jsonDict.get("isMinor", false)
+		var dict_autogenerate_houses: bool = _jsonDict.get("autogenerateHouses", true)
+		return TownData.of(dict_town_name, posXZ, pops, dict_is_minor, dict_autogenerate_houses)
 #endregion
 
 func add_res_bld(outer_res_bld: OuterResBld):

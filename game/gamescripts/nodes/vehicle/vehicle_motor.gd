@@ -31,7 +31,7 @@ static func of(_vehicle: RailVehicle) -> VehicleMotor:
 	_inst.speed = VehicleSpeed.new()
 	return _inst
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	Time.get_ticks_msec()
 
 func start() -> bool:

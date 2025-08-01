@@ -9,8 +9,6 @@ const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tsc
 
 signal reached_next_node(node_num: int)
 signal reached_end_of_track(node_obj: RailNodeData)
-signal entered()
-signal exited()
 
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
