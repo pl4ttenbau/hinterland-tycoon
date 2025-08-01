@@ -13,12 +13,12 @@ func spawn_vehicle():
 		var veh := Managers.vehicles.spawn_vehicle(depot_obj.track_num, 
 			depot_node_index, veh_dir)
 		# start
-		veh.wheels.put_on_track(veh_dir)
+		veh.wheels.put_on_track()
 		veh.motor.start()
 		
-func get_veh_dir_from_depot_pos(depot_pos: String) -> VehicleSpeed.EnumDirection:
-	if depot_pos == "START": return VehicleSpeed.EnumDirection.TRACK_NODES_INCREASE
-	return VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE
+func get_veh_dir_from_depot_pos(depot_pos: String) -> VehicleMotor.Direction:
+	if depot_pos == "START": return VehicleMotor.Direction.TRACK_NODES_INCREASE
+	return VehicleMotor.Direction.TRACK_NODES_DECREASE
 
 func get_closest_depot() -> OuterDepot:
 	var closest_dist: float = 9999.0

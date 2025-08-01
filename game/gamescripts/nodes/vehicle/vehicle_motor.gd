@@ -1,5 +1,8 @@
 class_name VehicleMotor extends Node
 
+enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
+
+
 #region Properties
 @export var max_speed: float = .7
 
@@ -27,7 +30,7 @@ signal speed_changed(percentage: float)
 
 static func of(_vehicle: RailVehicle) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
-	_inst.speed = VehicleSpeed.new(_vehicle.direction)
+	_inst.speed = VehicleSpeed.new()
 	return _inst
 	
 func _physics_process(_delta: float) -> void:
@@ -51,11 +54,6 @@ func stop() -> void:
 func on_motor_tick():
 	if self.speed:
 		self.speed.adjust_to_target_speed()
-		
-func put_on_connected_track(end_node: RailNodeData):
-	if end_node.fork && end_node.fork.setTo:
-		var next_track_num = end_node.fork.setTo
-		Loggie.info("Switching to track with num %d" % next_track_num)
 
 #region Getters
 func get_current_speed() -> float:

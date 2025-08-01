@@ -55,7 +55,7 @@ func add_fork(rail_fork: RailForkData):
 
 #region Get Nodes
 func get_rail_node(_i: int) -> RailNodeData:
-	if _i > 0 && _i < self.nodes.size():
+	if _i >= 0 && _i < self.nodes.size():
 		return self.nodes.get(_i)
 	return null
 	

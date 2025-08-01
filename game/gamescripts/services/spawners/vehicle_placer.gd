@@ -25,10 +25,10 @@ func load_vehicles():
 	Loggie.info("Globals & rails found: initializing vehicles...")
 	if GlobalState.loaded_map.spawn_vehicles:
 		var track_num: int = 2
-		self.spawn_vehicle(track_num, 0, VehicleSpeed.EnumDirection.TRACK_NODES_INCREASE)
+		self.spawn_vehicle(track_num, 0, VehicleMotor.Direction.TRACK_NODES_INCREASE)
 	self.start_vehicles_spawned = true
 	
-func spawn_vehicle(track_num: int, node_index: int, dir: VehicleSpeed.EnumDirection) -> RailVehicle:
+func spawn_vehicle(track_num: int, node_index: int, dir: VehicleMotor.Direction) -> RailVehicle:
 	var outer_track := get_rail_path(track_num)
 	var veh: RailVehicle = RailVehicle.of(outer_track, node_index, dir)
 	self.add_child(veh)

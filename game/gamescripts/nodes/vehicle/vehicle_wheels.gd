@@ -7,9 +7,6 @@ class_name VehicleWheels extends Resource
 
 @export_storage var target: RailNodeData:
 	get: return self.current_section.target
-	
-@export_storage var direction: VehicleSpeed.EnumDirection:
-	get(): return self.vehicle.motor.speed.direction
 
 func _init(_vehicle: RailVehicle, _track: RailTrackData, _start_index: int):
 	self.vehicle = _vehicle
@@ -28,10 +25,10 @@ func set_origin_point(_point_index: int):
 	self.vehicle.position = self.get_node_pos(_point_index)
 	
 func set_target_point(_point_index: int):
-	var next_node: RailNodeData = self.get_node_obj(_point_index)
-	self.current_section.target = next_node
-	if next_node:
-		self.vehicle.rotate_to(next_node.position)
+	var target_node: RailNodeData = self.get_node_obj(_point_index)
+	self.current_section.target = target_node
+	if target_node:
+		self.vehicle.rotate_to(target_node.position)
 
 ## triggered after the vehicle hit a rail fork
 func put_on_connected_track(fork_node: RailNodeData):
@@ -39,15 +36,15 @@ func put_on_connected_track(fork_node: RailNodeData):
 		Loggie.info("Switching to track with num %d" % fork_node.fork.setTo)
 		self.current_track = RailTrackData.get_by_num(fork_node.fork.setTo)
 		self.current_node_i = 0
-		if self.direction == VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE:
+		if self.vehicle.direction == VehicleMotor.Direction.TRACK_NODES_DECREASE:
 			self.current_node_i = current_track.get_end_node().index
-		self.put_on_track(self.direction)
+		self.put_on_track()
 		self.vehicle.motor.start()
 
-func put_on_track(dir: VehicleSpeed.EnumDirection) -> void:
+func put_on_track() -> void:
 	self.set_origin_point(self.current_node_i)
 	var next_i = self.current_node_i +1
-	if dir == VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE:
+	if self.vehicle.direction == VehicleMotor.Direction.TRACK_NODES_DECREASE:
 		next_i = self.current_node_i -1
 	self.set_target_point(next_i)
 
