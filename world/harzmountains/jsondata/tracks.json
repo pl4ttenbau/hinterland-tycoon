@@ -674,7 +674,7 @@
 			{
 				"pos": [3004.6, 6.4, 1548.4],
 				"fork": {
-					"connectiveTracks": [13],
+					"connectiveTracks": [13, 23],
 					"setTo": 13
 				}
 			},
@@ -682,14 +682,14 @@
 	},
 	{
 		"num": 13,
-		"name": "HSB Wewrnigerode",
+		"name": "HSB Wernigerode",
 		"type": "750_MM",
 		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [3004.6, 6.4, 1548.4],
 				"fork": {
-					"connectiveTracks": [12],
+					"connectiveTracks": [12, 23],
 					"setTo": 12
 				}
 			},
@@ -1275,5 +1275,29 @@
 				}
 			},
 		]
-	}	
+	},
+	{
+		"num": 23,
+		"name": "HSB Werningerode Depot",
+		"type": "750_MM",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [3004.6, 6.4, 1548.4],
+				"fork": {
+					"connectiveTracks": [12, 13],
+					"setTo": 12
+				}
+			},
+			{
+				"pos": [2995.4, 6.9, 1521.1]
+			},
+			{
+				"pos": [2970.9, 8.7, 1484.4]
+			},
+			{
+				"pos": [2889.7, 8.6, 1482.4]
+			}
+		]
+	}
 ]

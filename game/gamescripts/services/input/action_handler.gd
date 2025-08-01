@@ -9,4 +9,6 @@ func _on_action_triggered(item: ActionMenuItem) -> bool:
 	Loggie.info("Action Selected: %s" % item.get_action_name())
 	if item.get_action_name() == "Enter":
 		$EnterAction.on_trigger()
+	elif item.get_action_name() == "Spawn":
+		$SpawnAction.on_trigger()
 	return true

@@ -32,7 +32,6 @@ func spawn_depots():
 func spawn_depot(depot_obj: RailDepotData) -> OuterDepot:
 	depot_obj.num = RailDepotData.next_depot_num()
 	var container: OuterDepot = depot_obj.spawn()
-	# container._name_nodes()
 	self.add_child(container, true)
 	container.adjust_rotation()
 	return container

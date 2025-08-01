@@ -29,7 +29,7 @@ func load_vehicles():
 	self.start_vehicles_spawned = true
 	
 func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
-	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
+	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), node_index)
 	self.add_child(veh)
 	# assign name and num
 	veh.vehicle_num = self.get_next_vehicle_num()
@@ -47,7 +47,7 @@ func get_rail_path(_num: int) -> OuterRailTrack:
 	var track_num: int = _num -1
 	var container: OuterRailTrack = self.rail_containers.get(track_num)
 	if (!container):
-		push_error("Cannot get rail path: container not loaded")
+		Loggie.error("Cannot get rail path: container not loaded")
 		return null
 	return container
 

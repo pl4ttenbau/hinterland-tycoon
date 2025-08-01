@@ -17,16 +17,7 @@ static func of(depot_obj: RailDepotData) -> OuterDepot:
 	instanciated_container.position = instanciated_container.get_pos_from_rail()
 	instanciated_container.set_meta("depot", depot_obj)
 	return instanciated_container
-
-func get_pos_from_rail() -> Vector3:
-	if self.depot.track_pos == "START":
-		return self.track.nodes[0].position
-	elif self.depot.track_pos == "END":
-		return self.track.get_end_pos()
-	else:
-		Loggie.error("Cannot get depot position: neither at track START nor END")
-		return Vector3.ZERO
-
+	
 func adjust_rotation():
 	var target_pos: Vector3 = Vector3.ZERO
 	if self.depot.track_pos == "START":
@@ -36,3 +27,12 @@ func adjust_rotation():
 		target_pos = self.track.get_rail_node(rot_target_node_index).position
 	if target_pos != Vector3.ZERO:
 		self.look_at(target_pos)
+	
+#region Depot Track Node Getters
+func get_pos_from_rail() -> Vector3:
+	var rail_node := self.depot.get_depot_rail_node()
+	if !rail_node:
+		Loggie.error("Cannot get depot position: neither at track START nor END")
+		return Vector3.ZERO
+	return rail_node.position
+#endregion

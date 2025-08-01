@@ -28,13 +28,11 @@ func load_rail_tracks() -> void:
 	GlobalState.tracks = self.tracks
 	SignalBus.rails_loaded.emit(self.tracks)
 	self.rails_loaded.emit(self.tracks)
-	Managers.depots = DepotLoader.new()
 	
 func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_forks(track_obj)
-	Managers.depots.spawn_depots()
 	# emit signals
 	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
@@ -58,6 +56,11 @@ func spawn_rail_forks(parent_track: RailTrackData):
 	for fork: RailForkData in parent_track.forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
+		
+func get_cam_pos() -> Vector3:
+	if GlobalState.active_cam != null:
+		return GlobalState.active_cam.global_position
+	return GlobalState.player.global_position
 
 #region Event Listeners
 func _on_map_spawned(_container: TerrainContainer):
@@ -68,7 +71,7 @@ func _on_world_update() -> void:
 		var player: Node3D = %Player
 		if player:
 			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = player.position.distance_to(middle_pos)
+			var dist = self.get_cam_pos().distance_to(middle_pos)
 			if dist > MAX_VISIBLE_DIST: container.visible = false
 			else: container.visible = true
 #endregion
