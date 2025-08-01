@@ -13,7 +13,10 @@ signal changed(value: float)
 
 @export_storage var target: float 
 
-@export_storage var direction: EnumDirection = EnumDirection.TRACK_NODES_INCREASE
+@export_storage var direction: EnumDirection
+
+func _init(dir: VehicleSpeed.EnumDirection):
+	self.direction = dir
 
 func adjust_to_target_speed():
 	var speed_diff := self.target - self.current

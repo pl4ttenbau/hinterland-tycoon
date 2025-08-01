@@ -6,6 +6,7 @@ const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tsc
 @export var vehicle_num: int
 @export var wheels: VehicleWheels
 @export var motor: VehicleMotor
+@export var direction: VehicleSpeed.EnumDirection
 
 signal reached_next_node(node_num: int)
 signal reached_end_of_track(node_obj: RailNodeData)
@@ -21,18 +22,21 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_starting_track: OuterRailTrack, _starts_at: int) -> RailVehicle:
-	var rail_num: int = _starting_track.entity.num
+static func of(_starting_track: OuterRailTrack, _starts_at: int, 
+		_dir: VehicleSpeed.EnumDirection) -> RailVehicle:
 	var vehicle: RailVehicle = load(SCENE_PATH).instantiate()
+	vehicle.direction = _dir
 	vehicle.wheels = VehicleWheels.new(vehicle, _starting_track.entity, _starts_at)
-	# put on tracks
 	vehicle.motor = VehicleMotor.of(vehicle)
 	return vehicle
 	
-func update_next_point():
-	var new_origin_index: int = self.get_next_node_index()
-	self.wheels.set_origin_point(new_origin_index)
-	self.wheels.set_target_point(new_origin_index +1)
+func update_next_point(reached_i: int):
+	var new_next_index: int = reached_i +1
+	if self.direction == VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE:
+		new_next_index = reached_i -1
+	Loggie.info("next section: from %d to %d" % [reached_i, new_next_index])
+	self.wheels.set_origin_point(reached_i)
+	self.wheels.set_target_point(new_next_index)
 	
 func _physics_process(delta: float) -> void:
 	if !self.motor.is_started: return
@@ -43,10 +47,10 @@ func _physics_process(delta: float) -> void:
 	if (position.distance_to(self.get_next_node_pos()) <= 1):
 		if current_section.target:
 			reached_next_node.emit(current_section.target.index)
-			update_next_point()
+			update_next_point(current_section.target.index)
 		else:
 			var last_node: RailNodeData = current_section.track.get_end_node()
-			self.wheels.set_on_connected_track(last_node)
+			self.wheels.put_on_connected_track(last_node)
 			
 #region Node Getters
 func get_static_body() -> StaticBody3D:
@@ -75,9 +79,8 @@ func rotate_to(target_pos: Vector3):
 	self.look_at(target_pos, Vector3(0,1,0))
 	var rot_target := global_rotation
 	self.global_rotation = rot_before
-	Loggie.info("Rotate from %s to %s" % [rot_before, rot_target])
 	self.look_at(target_pos, Vector3(0,1,0))
 	
 func _on_world_ready():
-	self.wheels.put_on_track()
+	self.wheels.put_on_track(self.direction)
 	self.motor.start()

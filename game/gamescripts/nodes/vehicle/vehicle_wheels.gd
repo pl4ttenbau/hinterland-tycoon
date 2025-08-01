@@ -7,6 +7,9 @@ class_name VehicleWheels extends Resource
 
 @export_storage var target: RailNodeData:
 	get: return self.current_section.target
+	
+@export_storage var direction: VehicleSpeed.EnumDirection:
+	get(): return self.vehicle.motor.speed.direction
 
 func _init(_vehicle: RailVehicle, _track: RailTrackData, _start_index: int):
 	self.vehicle = _vehicle
@@ -29,19 +32,24 @@ func set_target_point(_point_index: int):
 	self.current_section.target = next_node
 	if next_node:
 		self.vehicle.rotate_to(next_node.position)
-		
-func set_on_connected_track(end_node: RailNodeData):
-	if end_node.fork && end_node.fork.setTo:
-		var next_track_num = end_node.fork.setTo
-		Loggie.info("Switching to track with num %d" % next_track_num)
-		self.current_track = self.get_rail_by_num(next_track_num)
+
+## triggered after the vehicle hit a rail fork
+func put_on_connected_track(fork_node: RailNodeData):
+	if fork_node.fork && fork_node.fork.setTo:
+		Loggie.info("Switching to track with num %d" % fork_node.fork.setTo)
+		self.current_track = RailTrackData.get_by_num(fork_node.fork.setTo)
 		self.current_node_i = 0
-		self.put_on_track()
+		if self.direction == VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE:
+			self.current_node_i = current_track.get_end_node().index
+		self.put_on_track(self.direction)
 		self.vehicle.motor.start()
 
-func put_on_track() -> void:
+func put_on_track(dir: VehicleSpeed.EnumDirection) -> void:
 	self.set_origin_point(self.current_node_i)
-	self.set_target_point(self.current_node_i +1)
+	var next_i = self.current_node_i +1
+	if dir == VehicleSpeed.EnumDirection.TRACK_NODES_DECREASE:
+		next_i = self.current_node_i -1
+	self.set_target_point(next_i)
 
 #region Getters
 func get_node_obj(_i: int) -> RailNodeData:
@@ -49,12 +57,4 @@ func get_node_obj(_i: int) -> RailNodeData:
 	
 func get_node_pos(_i: int) -> Vector3:
 	return self.current_track.vertices[_i]
-	
-func get_rail_by_num(rail_num: int) -> RailTrackData:
-	var index := rail_num -1
-	var rail: RailTrackData = GlobalState.tracks[index]
-	if ! rail:
-		Loggie.warn("Cannot get track with num %d" % rail_num)
-		return null
-	return rail
 #endregion

@@ -6,8 +6,7 @@ class_name VehicleMotor extends Node
 @export_storage var speed: VehicleSpeed
 
 @export var current_speed_percentage: float = 0.0:
-	set(value):
-		self.speed.current = value
+	set(value): self.speed.current = value
 	get(): return self.speed.current
 
 @export var is_started: bool = false
@@ -28,7 +27,7 @@ signal speed_changed(percentage: float)
 
 static func of(_vehicle: RailVehicle) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
-	_inst.speed = VehicleSpeed.new()
+	_inst.speed = VehicleSpeed.new(_vehicle.direction)
 	return _inst
 	
 func _physics_process(_delta: float) -> void:
@@ -53,7 +52,7 @@ func on_motor_tick():
 	if self.speed:
 		self.speed.adjust_to_target_speed()
 		
-func set_on_connected_track(end_node: RailNodeData):
+func put_on_connected_track(end_node: RailNodeData):
 	if end_node.fork && end_node.fork.setTo:
 		var next_track_num = end_node.fork.setTo
 		Loggie.info("Switching to track with num %d" % next_track_num)
