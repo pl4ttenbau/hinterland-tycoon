@@ -17,6 +17,11 @@ func place_to_map_start():
 	if GlobalState.loaded_map && GlobalState.loaded_map.start_pos_xz:
 		var spawn_pos = WorldUtils.pos_on_map(GlobalState.loaded_map.start_pos_xz)
 		self.get_parent_node_3d().position = spawn_pos + SPAWN_OFFSET
+		
+static func get_cam_pos() -> Vector3:
+	if GlobalState.active_cam != null:
+		return GlobalState.active_cam.global_position
+	return GlobalState.player.global_position
 	
-func _on_map_spawned(terrain: TerrainContainer):
+func _on_map_spawned(_terrain: TerrainContainer):
 	self.place_to_map_start()

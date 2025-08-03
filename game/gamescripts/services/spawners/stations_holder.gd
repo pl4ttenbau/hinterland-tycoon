@@ -1,7 +1,6 @@
 class_name StationsHolder extends Node
 
 @export var stations: Array[RailStationData] = []
-@export_storage var _next_station_num: int = 0
 
 func _enter_tree() -> void:
 	Managers.stations = self

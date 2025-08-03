@@ -4,6 +4,7 @@ enum EntityTypes {
 	VEHICLE,
 	RAIL,
 	ROAD,
+	DEPOT,
 	STATION,
 	TOWN,
 	RESIDENCIAL,

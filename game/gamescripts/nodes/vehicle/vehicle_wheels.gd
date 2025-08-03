@@ -25,23 +25,28 @@ func set_origin_point(_point_index: int):
 	self.vehicle.position = self.get_node_pos(_point_index)
 	
 func set_target_point(_point_index: int):
-	var next_node: RailNodeData = self.get_node_obj(_point_index)
-	self.current_section.target = next_node
-	if next_node:
-		self.vehicle.rotate_to(next_node.position)
-		
-func set_on_connected_track(end_node: RailNodeData):
-	if end_node.fork && end_node.fork.setTo:
-		var next_track_num = end_node.fork.setTo
-		Loggie.info("Switching to track with num %d" % next_track_num)
-		self.current_track = self.get_rail_by_num(next_track_num)
+	var target_node: RailNodeData = self.get_node_obj(_point_index)
+	self.current_section.target = target_node
+	if target_node:
+		self.vehicle.rotate_to(target_node.position)
+
+## triggered after the vehicle hit a rail fork
+func put_on_connected_track(fork_node: RailNodeData):
+	if fork_node.fork && fork_node.fork.setTo:
+		Loggie.info("Switching to track with num %d" % fork_node.fork.setTo)
+		self.current_track = RailTrackData.get_by_num(fork_node.fork.setTo)
 		self.current_node_i = 0
+		if self.vehicle.direction == VehicleMotor.Direction.TRACK_NODES_DECREASE:
+			self.current_node_i = current_track.get_end_node().index
 		self.put_on_track()
 		self.vehicle.motor.start()
 
 func put_on_track() -> void:
 	self.set_origin_point(self.current_node_i)
-	self.set_target_point(self.current_node_i +1)
+	var next_i = self.current_node_i +1
+	if self.vehicle.direction == VehicleMotor.Direction.TRACK_NODES_DECREASE:
+		next_i = self.current_node_i -1
+	self.set_target_point(next_i)
 
 #region Getters
 func get_node_obj(_i: int) -> RailNodeData:
@@ -49,12 +54,4 @@ func get_node_obj(_i: int) -> RailNodeData:
 	
 func get_node_pos(_i: int) -> Vector3:
 	return self.current_track.vertices[_i]
-	
-func get_rail_by_num(rail_num: int) -> RailTrackData:
-	var index := rail_num -1
-	var rail: RailTrackData = GlobalState.tracks[index]
-	if ! rail:
-		Loggie.warn("Cannot get track with num %d" % rail_num)
-		return null
-	return rail
 #endregion

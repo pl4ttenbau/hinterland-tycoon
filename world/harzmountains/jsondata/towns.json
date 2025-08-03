@@ -52,7 +52,8 @@
 	{
 		"num": 10,
 		"name": "Brocken",
-		"pos": [1001, 2244]
+		"pos": [1001, 2244],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 11,

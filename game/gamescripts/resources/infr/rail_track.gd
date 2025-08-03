@@ -37,6 +37,12 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrackData)
 		rail_node_obj.parse_and_add_special(rail_node_dict)
 		_track.add_node(rail_node_obj)
 		node_index += 1
+		
+static func get_by_num(_rail_num: int) -> RailTrackData:
+	if _rail_num > GlobalState.tracks.size() +1:
+		Loggie.error("Cannot get track %d; out of index" % _rail_num)
+		return null
+	return GlobalState.tracks[_rail_num -1]
 	
 #region Add Nodes
 func add_node(rail_node: RailNodeData):
@@ -49,7 +55,7 @@ func add_fork(rail_fork: RailForkData):
 
 #region Get Nodes
 func get_rail_node(_i: int) -> RailNodeData:
-	if _i > 0 && _i < self.nodes.size():
+	if _i >= 0 && _i < self.nodes.size():
 		return self.nodes.get(_i)
 	return null
 	

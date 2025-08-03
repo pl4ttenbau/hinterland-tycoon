@@ -36,7 +36,7 @@ func select_next():
 	self.current_item_index += 1
 	self.select(self.current_item_index)
 	
-func select(item_i: int):
+func select(_item_i: int):
 	self.selected_item = self.get_item_by_index(current_item_index)
 	self.selected_item.selected.emit()
 	

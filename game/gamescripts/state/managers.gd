@@ -10,6 +10,7 @@ extends Node
 @export var roads: RoadsLoader
 @export var stations: StationsHolder
 
+@export var depots: DepotLoader
 @export var vehicles: VehiclePlacer
 #endregion
 

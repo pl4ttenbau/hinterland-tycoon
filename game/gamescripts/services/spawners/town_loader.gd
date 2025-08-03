@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	self.load_towns()
 
-func _on_map_spawned(container: TerrainContainer) -> void:
+func _on_map_spawned(_container: TerrainContainer) -> void:
 	self.spawn_towns()
 	
 func parse_towns_json(_json_str: String) -> Array[TownData]:

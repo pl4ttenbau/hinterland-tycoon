@@ -48,6 +48,6 @@ func _on_towns_loaded():
 	#self.load_preplaced_town_buildings()
 	pass
 	
-func _on_map_spawned(terrain_container: TerrainContainer):
+func _on_map_spawned(_terrain_container: TerrainContainer):
 	self.load_preplaced_town_buildings()
 #endregion

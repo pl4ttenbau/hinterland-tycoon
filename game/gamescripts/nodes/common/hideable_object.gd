@@ -10,10 +10,14 @@ func _ready() -> void:
 func _on_map_tick():
 	var player: PlayerHead = GlobalState.player
 	if !player: return
-	var player_g_pos: Vector3 = player.global_position
 	var own_g_pos: Vector3 = self.global_position
-	self.dist2cam = player_g_pos.distance_to(own_g_pos)
+	self.dist2cam = get_cam_pos().distance_to(own_g_pos)
 	if self.dist2cam <= HIDING_DISTANCE:
 		self.visible = true
 	else:
 		self.visible = false
+		
+func get_cam_pos() -> Vector3:
+	if GlobalState.active_cam != null:
+		return GlobalState.active_cam.global_position
+	return GlobalState.player.global_position

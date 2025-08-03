@@ -3,13 +3,10 @@ class_name RailsLoader extends Node
 
 const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
-const MAX_VISIBLE_DIST := 500
+const MAX_VISIBLE_DIST := 300
 
 @export var tracks: Array[RailTrackData] = []
 @export var track_containers: Array[OuterRailTrack] = []
-
-signal rails_loaded(_rails: Array[RailTrackData])
-signal rails_spawned(_rails: Array[OuterRailTrack])
 
 func _enter_tree() -> void:
 	Managers.rails = self
@@ -26,14 +23,13 @@ func load_rail_tracks() -> void:
 	for json_track in JSON.parse_string(rails_arr_str):
 		self.tracks.append(RailTrackData.from_json(json_track))
 	GlobalState.tracks = self.tracks
-	self.rails_loaded.emit(self.tracks)
+	SignalBus.rails_loaded.emit(self.tracks)
 	
 func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_forks(track_obj)
 	# emit signals
-	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
 	
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
@@ -55,9 +51,14 @@ func spawn_rail_forks(parent_track: RailTrackData):
 	for fork: RailForkData in parent_track.forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
+		
+func get_cam_pos() -> Vector3:
+	if GlobalState.active_cam != null:
+		return GlobalState.active_cam.global_position
+	return GlobalState.player.global_position
 
 #region Event Listeners
-func _on_map_spawned(container: TerrainContainer):
+func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
 	
 func _on_world_update() -> void:
@@ -65,7 +66,7 @@ func _on_world_update() -> void:
 		var player: Node3D = %Player
 		if player:
 			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = player.position.distance_to(middle_pos)
+			var dist = self.get_cam_pos().distance_to(middle_pos)
 			if dist > MAX_VISIBLE_DIST: container.visible = false
 			else: container.visible = true
 #endregion

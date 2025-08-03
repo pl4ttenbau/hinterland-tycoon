@@ -27,6 +27,6 @@ surface_0/distribution = 0
 surface_0/alignment = 0
 surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
-surface_0/tilt = true
+surface_0/tilt = false
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0

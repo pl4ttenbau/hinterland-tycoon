@@ -25,11 +25,12 @@ func load_vehicles():
 	Loggie.info("Globals & rails found: initializing vehicles...")
 	if GlobalState.loaded_map.spawn_vehicles:
 		var track_num: int = 2
-		self.spawn_vehicle(track_num, 0)
+		self.spawn_vehicle(track_num, 0, VehicleMotor.Direction.TRACK_NODES_INCREASE)
 	self.start_vehicles_spawned = true
 	
-func spawn_vehicle(track_num: int, node_index: int) -> RailVehicle:
-	var veh: RailVehicle = RailVehicle.of(get_rail_path(track_num), 0)
+func spawn_vehicle(track_num: int, node_index: int, dir: VehicleMotor.Direction) -> RailVehicle:
+	var outer_track := get_rail_path(track_num)
+	var veh: RailVehicle = RailVehicle.of(outer_track, node_index, dir)
 	self.add_child(veh)
 	# assign name and num
 	veh.vehicle_num = self.get_next_vehicle_num()
@@ -47,7 +48,7 @@ func get_rail_path(_num: int) -> OuterRailTrack:
 	var track_num: int = _num -1
 	var container: OuterRailTrack = self.rail_containers.get(track_num)
 	if (!container):
-		push_error("Cannot get rail path: container not loaded")
+		Loggie.error("Cannot get rail path: container not loaded")
 		return null
 	return container
 

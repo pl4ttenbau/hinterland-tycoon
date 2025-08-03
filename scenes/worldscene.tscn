@@ -1,13 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=23 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/stations_holder.gd" id="6_p8gp8"]
+[ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="8_ux8bc"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town_building_holder.gd" id="10_c2xmk"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="10_p8gp8"]
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="12_p8gp8"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="13_hmgqj"]
+[ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/depot_spawner.gd" id="15_ibik3"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town_loader.gd" id="15_kq7m5"]
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="15_lhsit"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/rail_loader.gd" id="15_nj174"]
@@ -57,6 +59,10 @@ script = ExtResource("16_mg4js")
 [node name="EnterAction" type="Node" parent="Input/ActionHandler"]
 script = ExtResource("17_c2xmk")
 
+[node name="SpawnAction" type="Node" parent="Input/ActionHandler"]
+script = ExtResource("8_ux8bc")
+metadata/_custom_type_script = "uid://dei7w8gduhci"
+
 [node name="World" type="Node" parent="."]
 
 [node name="Generated" type="Node" parent="World"]
@@ -79,8 +85,6 @@ script = ExtResource("15_nj174")
 [node name="Stations" type="Node" parent="World/Generated/Infr"]
 unique_name_in_owner = true
 script = ExtResource("6_p8gp8")
-stations = null
-_next_station_num = null
 
 [node name="Roads" type="Node" parent="World/Generated/Infr"]
 script = ExtResource("6_hmgqj")
@@ -92,6 +96,10 @@ script = ExtResource("23_ekgs8")
 [node name="Industries" type="Node" parent="World/Generated"]
 script = ExtResource("15_lhsit")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
+
+[node name="Depots" type="Node" parent="World/Generated"]
+script = ExtResource("15_ibik3")
+metadata/_custom_type_script = "uid://bcymy2uish8jw"
 
 [node name="MapSpawner" type="Node" parent="World"]
 script = ExtResource("16_ekgs8")

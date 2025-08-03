@@ -71,6 +71,21 @@ texture = ExtResource("3_f6xs1")
 layout_mode = 2
 text = "Company"
 
+[node name="SpawnItem" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+script = ExtResource("2_43w1o")
+metadata/_custom_type_script = "uid://bvlj3qpio1ssi"
+
+[node name="Icon" type="TextureRect" parent="SpawnItem"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_f6xs1")
+
+[node name="Label" type="Button" parent="SpawnItem"]
+layout_mode = 2
+text = "Spawn"
+
 [node name="GameMenuItem" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 2
