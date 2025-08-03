@@ -3,13 +3,10 @@ class_name RailsLoader extends Node
 
 const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
-const MAX_VISIBLE_DIST := 500
+const MAX_VISIBLE_DIST := 300
 
 @export var tracks: Array[RailTrackData] = []
 @export var track_containers: Array[OuterRailTrack] = []
-
-signal rails_loaded(_rails: Array[RailTrackData])
-signal rails_spawned(_rails: Array[OuterRailTrack])
 
 func _enter_tree() -> void:
 	Managers.rails = self
@@ -27,14 +24,12 @@ func load_rail_tracks() -> void:
 		self.tracks.append(RailTrackData.from_json(json_track))
 	GlobalState.tracks = self.tracks
 	SignalBus.rails_loaded.emit(self.tracks)
-	self.rails_loaded.emit(self.tracks)
 	
 func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_forks(track_obj)
 	# emit signals
-	self.rails_spawned.emit(track_containers)
 	SignalBus.rails_spawned.emit(track_containers)
 	
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
