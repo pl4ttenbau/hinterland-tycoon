@@ -2,6 +2,7 @@ class_name ResidenceBuildingData extends GameObject
 
 @export var town_num: int
 @export var bld_type: ResBldType
+@export_storage var connected_station: RailStationData
 @export_storage var is_registered: bool = false
 
 func _init(_town_num: int, _bld_type: ResBldType):

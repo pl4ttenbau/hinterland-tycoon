@@ -58,4 +58,5 @@ func _on_town_center_spawned(_town: TownData) -> void:
 	if self.town.autogenerate_houses == false: return
 	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()
+	self.town.reassign_buildings_to_stations()
 #endregion
