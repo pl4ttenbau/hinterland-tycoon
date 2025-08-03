@@ -15,6 +15,7 @@
 				"pos": [3168.1, 5.1, 1281.8],
 				"station": {
 					"townName": "Wernigerode",
+					"townNum": 0,
 					"name": "HBF",
 					"stationType": "STATION_PASS"
 				}
@@ -60,6 +61,7 @@
 				"pos": [2375.9, 9.0, 1200.2],
 				"station": {
 					"townName": "Darlingerode",
+					"townNum": 16,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -130,6 +132,7 @@
 				"pos": [1786.4, 9.0, 928.4],
 				"station": {
 					"townName": "Ilsenburg",
+					"townNum": 2,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -164,6 +167,7 @@
 				"pos": [4011.5, 22.1, 3075.4],
 				"station": {
 					"townName": "Rübeland",
+					"townNum": 7,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -218,6 +222,7 @@
 				"pos": [3759.6, 23.6, 3152.3],
 				"station": {
 					"townName": "Rübeland",
+					"townNum": 7,
 					"name": "Kleiner Stein",
 					"stationType": "STATION_GOODS"
 				}
@@ -292,6 +297,7 @@
 				"pos": [2503.2, 51.9, 2792.3],
 				"station": {
 					"townName": "Drei-Annen-Hohne",
+					"townNum": 8,
 					"name": "Kreuz",
 					"stationType": "STATION_PASS"
 				}
@@ -646,6 +652,7 @@
 				"pos": [2674.9, 8.7, 1765.8],
 				"station": {
 					"townName": "Hasserode",
+					"townNum": 14,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -718,6 +725,7 @@
 				"pos": [3096.0, 5.5, 1292.7],
 				"station": {
 					"townName": "Wernigerode",
+					"townNum": 0,
 					"name": "Kleinbahnhof",
 					"stationType": "STATION_PASS"
 				}
@@ -753,6 +761,7 @@
 				"pos": [1919.9, 42.4, 3389.7],
 				"station": {
 					"townName": "Elend",
+					"townNum": 4,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -1254,6 +1263,7 @@
 				"pos": [1572.6, 115.9, 2803.1],
 				"station": {
 					"townName": "Schierke",
+					"townNum": 9,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
@@ -1596,6 +1606,7 @@
 				"pos": [1004.3, 341.5, 2250.1],
 				"station": {
 					"townName": "Brocken",
+					"townNum": 10,
 					"name": "Spitze",
 					"stationType": "STATION_PASS"
 				}

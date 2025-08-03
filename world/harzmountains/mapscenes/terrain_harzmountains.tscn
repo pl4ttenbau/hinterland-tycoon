@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=120 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://bj87quukhhn81" path="res://assets/meshes/nature/cow/cow.tscn" id="16_e0u24"]
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="16_eoc0b"]
 [ext_resource type="PackedScene" uid="uid://bbywhitita8te" path="res://assets/meshes/nature/lilac_tree_1/lilac_tree_1.tscn" id="17_pdaa5"]
-[ext_resource type="Texture2D" uid="uid://j8k02tmmmrsd" path="res://assets/textures/terrain_new/packed/rock/rock_nr.png" id="17_tqln3"]
 [ext_resource type="PackedScene" uid="uid://cyck4ftd7pu3l" path="res://assets/meshes/nature/rock3/rock3.tscn" id="18_cy1ic"]
 [ext_resource type="Texture2D" uid="uid://bibqk2geqq8jq" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_dh.png" id="18_i4kml"]
 [ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="19_xiocb"]
@@ -34,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://epgjb2mwvxuw" path="res://assets/textures/terrain_new/packed/wheat/wheat_nr.png" id="23_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
+[ext_resource type="Texture2D" uid="uid://d0y1uiglfdsxk" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh.png" id="23_kkdmv"]
+[ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="24_hvil5"]
 [ext_resource type="Texture2D" uid="uid://bgk7lpi1gjhqj" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="24_y0on3"]
 [ext_resource type="Texture2D" uid="uid://xxrknaoaupgn" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="25_es2xk"]
 [ext_resource type="Texture2D" uid="uid://cdd4akpn7k0ym" path="res://assets/textures/sky/DaySkyHDRI009A_4K-HDR.exr" id="26_y0on3"]
@@ -325,11 +326,12 @@ detiling_shift = 0.69
 name = "Rock"
 id = 1
 albedo_color = Color(0.95158, 0.95158, 0.95158, 1)
-albedo_texture = ExtResource("16_eoc0b")
-normal_texture = ExtResource("17_tqln3")
+albedo_texture = ExtResource("23_kkdmv")
+normal_texture = ExtResource("24_hvil5")
 normal_depth = 0.932
 ao_strength = 0.662
 uv_scale = 0.15
+detiling_rotation = 0.11
 detiling_shift = 0.468
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
