@@ -9,5 +9,6 @@ enum EntityTypes {
 	TOWN,
 	RESIDENCIAL,
 	INDUSTRY,
-	FORK
+	FORK,
+	GOOD
 }

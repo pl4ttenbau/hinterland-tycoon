@@ -91,7 +91,6 @@ _shader_parameters = {
 &"projection_threshold": 0.42
 }
 world_background = 0
-show_region_grid = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
 transparency = 2
@@ -648,10 +647,8 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
-show_grid = true
 mesh_size = 24
 cast_shadows = 0
-show_region_grid = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -745,6 +742,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 969.475, 350.831, 2274.1)
 
 [node name="RuinedHouse4" parent="Deco" instance=ExtResource("40_1wsr2")]
 transform = Transform3D(0.954438, 0, 0.298408, 0, 1, 0, -0.298408, 0, 0.954438, 828.771, 252.262, 2395.82)
+
+[node name="RuinedHouse5" parent="Deco" instance=ExtResource("40_1wsr2")]
+transform = Transform3D(0.998444, 0.0557692, 0, -0.0557692, 0.998444, 0, 0, 0, 1, 2380.7, 18.9608, 2042.71)
+
+[node name="RuinedHouse6" parent="Deco" instance=ExtResource("40_1wsr2")]
+transform = Transform3D(-0.746626, 0, -0.665243, 0, 1, 0, 0.665243, 0, -0.746626, 2675.15, 45.0074, 2540.05)
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")

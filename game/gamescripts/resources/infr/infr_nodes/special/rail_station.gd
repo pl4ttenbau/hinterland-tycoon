@@ -1,4 +1,4 @@
-class_name RailStationData extends GameObject
+class_name RailStationData extends ResourceContainer
 
 # json properties
 @export var station_name: String
@@ -49,9 +49,6 @@ func _register_connected_town():
 		if town.num == self.town_num:
 			self.connected_town = town
 			town.connect_new_station(self)
-		
-func get_track() -> RailTrackData:
-	return self.parent_node.parent_track
 
 #region Helper Methods
 static func next_station_num() -> int:

@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_town_white.png")
 class_name TownSpawner extends Node
 
 const MAX_PLACING_TRIES: int = 6

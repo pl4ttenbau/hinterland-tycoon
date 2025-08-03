@@ -1,4 +1,4 @@
-class_name ResidentialBldTypeLoader extends Node
+class_name ResidentialBldTypeLoader extends AbstractGameTypeLoader
 
 @export var types: Array[ResBldType]
 
