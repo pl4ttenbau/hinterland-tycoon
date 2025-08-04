@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=123 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -35,12 +35,14 @@
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
 [ext_resource type="Texture2D" uid="uid://d0y1uiglfdsxk" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh.png" id="23_kkdmv"]
 [ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="24_hvil5"]
-[ext_resource type="Texture2D" uid="uid://bgk7lpi1gjhqj" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="24_y0on3"]
-[ext_resource type="Texture2D" uid="uid://xxrknaoaupgn" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="25_es2xk"]
 [ext_resource type="Texture2D" uid="uid://cdd4akpn7k0ym" path="res://assets/textures/sky/DaySkyHDRI009A_4K-HDR.exr" id="26_y0on3"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="29_2arlh"]
+[ext_resource type="Texture2D" uid="uid://dwbv6673uolbk" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_dh.png" id="31_kkdmv"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="32_0ryhu"]
+[ext_resource type="Texture2D" uid="uid://c2hvp1daqncmx" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_nr.png" id="32_hvil5"]
+[ext_resource type="Texture2D" uid="uid://c4cbf2jc060q" path="res://assets/textures/terrain_new/packed/forest/forest_dh.png" id="33_rbmqa"]
+[ext_resource type="Texture2D" uid="uid://cx3yb8aq0o2ot" path="res://assets/textures/terrain_new/packed/forest/forest_nr.png" id="34_el7bl"]
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="35_eoc0b"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="35_iof1f"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_tqln3"]
@@ -363,19 +365,25 @@ detiling_rotation = 0.505
 detiling_shift = 0.18
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_giarj"]
-name = "Dirt"
+name = "Patchy Grass"
 id = 5
 albedo_color = Color(0.57917, 0.650227, 0.613856, 1)
-albedo_texture = ExtResource("24_y0on3")
-normal_texture = ExtResource("25_es2xk")
+albedo_texture = ExtResource("31_kkdmv")
+normal_texture = ExtResource("32_hvil5")
 ao_strength = 1.274
 roughness = 0.342
 uv_scale = 0.3
 detiling_rotation = 0.622
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_jvv7c"]
+name = "forest_dh"
+id = 6
+albedo_texture = ExtResource("33_rbmqa")
+normal_texture = ExtResource("34_el7bl")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_mxgc7"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), SubResource("Terrain3DMeshAsset_6iyiq"), SubResource("Terrain3DMeshAsset_ohjow"), SubResource("Terrain3DMeshAsset_ycvjs"), SubResource("Terrain3DMeshAsset_wh85d"), SubResource("Terrain3DMeshAsset_x08in"), SubResource("Terrain3DMeshAsset_bhs12"), SubResource("Terrain3DMeshAsset_dci7w"), SubResource("Terrain3DMeshAsset_algog"), SubResource("Terrain3DMeshAsset_giarj"), SubResource("Terrain3DMeshAsset_teud8"), SubResource("Terrain3DMeshAsset_0ryhu"), SubResource("Terrain3DMeshAsset_e0u24"), SubResource("Terrain3DMeshAsset_656qc"), SubResource("Terrain3DMeshAsset_pdaa5"), SubResource("Terrain3DMeshAsset_1wsr2"), SubResource("Terrain3DMeshAsset_p6hwa"), SubResource("Terrain3DMeshAsset_1806y"), SubResource("Terrain3DMeshAsset_e4gxf")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x"), SubResource("Terrain3DTextureAsset_0ryhu"), SubResource("Terrain3DTextureAsset_giarj")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x"), SubResource("Terrain3DTextureAsset_0ryhu"), SubResource("Terrain3DTextureAsset_giarj"), SubResource("Terrain3DTextureAsset_jvv7c")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6iyiq"]
 panorama = ExtResource("26_y0on3")
