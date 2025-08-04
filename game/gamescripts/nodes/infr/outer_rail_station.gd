@@ -32,4 +32,4 @@ func get_parent_track_node_by_index(_i: int) -> RailNodeData:
 	return track.get_rail_node(_i)
 	
 func _on_resource_change():
-	$StationLabel.text = self.station_obj.resources.size()
+	$StationLabel.text = str(self.station_obj.resources.size())

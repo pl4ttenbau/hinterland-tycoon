@@ -28,14 +28,16 @@ func spawn_station(station_obj: RailStationData) -> OuterRailStation:
 #region Goods Spawning
 func spawn_rnd_passenger():
 	var rnd_start_bld := GlobalState.res_blds.pick_random() as ResidenceBuildingData
+	var start_town_name := TownData.get_town_by_num(rnd_start_bld.town_num).town_name
+
 	var start_station: RailStationData = rnd_start_bld.connected_station
 	if !start_station:
-		var bld_town_name := TownData.get_town_by_num(rnd_start_bld.town_num).town_name
-		Loggie.warn("skip passenger spawning in \"%s\": not connected to any station" % bld_town_name) 
+		Loggie.warn("skip passenger spawning in \"%s\": not connected to any station" % start_town_name) 
 		return
 	var spawned_res = SpawnedResource.new("passenger")
 	start_station.add_resource(spawned_res)
 	spawned_res.target_location = GlobalState.res_blds.pick_random()
+	Loggie.info("Spawn passengers in town %s" % start_town_name)
 #endregion
 	
 #region Callbacks
