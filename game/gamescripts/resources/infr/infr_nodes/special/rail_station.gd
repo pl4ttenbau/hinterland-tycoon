@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_station_white.png")
 class_name RailStationData extends ResourceContainer
 
 # json properties
@@ -45,10 +46,10 @@ func _set_full_station_name():
 	
 ## save local town and also add itself to town's station list
 func _register_connected_town():
-	for town in GlobalState.towns:
-		if town.num == self.town_num:
-			self.connected_town = town
-			town.connect_new_station(self)
+	var connected_town := TownData.get_town_by_num(self.town_num)
+	if connected_town:
+		self.connected_town = connected_town
+		connected_town.connect_new_station(self)
 
 #region Helper Methods
 static func next_station_num() -> int:

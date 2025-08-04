@@ -24,17 +24,6 @@ func _init():
 	self.num = TownData.last_town_num
 	TownData.last_town_num += 1
 
-func _to_string():
-	return "<Town %s>" % self.town_name
-	
-func get_initial_bld_count() -> int:
-	if self.is_minor: return 3
-	else: return 5
-	
-func add_building(_building: BaseStructure):
-	self.structures.append(_building)
-	_building.town = self
-
 #region Constructors
 static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false,
 		_autogenerate_houses: bool = false) -> TownData:
@@ -63,6 +52,10 @@ static func from_json(_jsonDict: Dictionary) -> TownData:
 #endregion
 
 #region Buildings
+func add_building(_building: BaseStructure):
+	self.structures.append(_building)
+	_building.town = self
+	
 func add_res_bld(outer_res_bld: OuterResBld):
 	self.res_bld_containers.append(outer_res_bld)
 	GlobalState.res_bld_containers.append(outer_res_bld)
@@ -97,4 +90,19 @@ func find_closest_station_to_bld(res_bld: OuterResBld) -> RailStationData:
 			closest_station_distance = dist
 			closest_station_obj = station
 	return closest_station_obj
+#endregion
+
+#region Helper-Methods
+func _to_string():
+	return "<Town %s>" % self.town_name
+	
+static func get_town_by_num(_num: int) -> TownData:
+	for town: TownData in GlobalState.towns:
+		if town.num == _num: return town
+	Loggie.error("Cannot get town with num %d" % _num)
+	return null
+	
+func get_initial_bld_count() -> int:
+	if self.is_minor: return 3
+	else: return 5
 #endregion

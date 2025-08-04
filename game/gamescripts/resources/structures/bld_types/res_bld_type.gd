@@ -1,17 +1,13 @@
 @icon("res://assets/icons/icon_house_white.png")
-class_name ResBldType extends Resource
+class_name ResBldType extends AbstractBldType
 
-@export var key: String
-@export var name: String
-@export var scene_path: String
 @export var res_bld_cat: String
 @export var pops: Array[int]
 
 const STRUCTURES_FOLDER = "res://assets/meshes/structures/"
 
 func _init(_key: String, _name: String, _popsInt: int):
-	self.key = _key
-	self.name = _name
+	super(_key, _name)
 	self.pops = [_popsInt, roundi(_popsInt / 3)]
 	self.scene_path = self.get_scene_path()
 

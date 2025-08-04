@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_industry_white.png")
-class_name IndustryData extends GameObject
+class_name IndustryData extends ResourceContainer
 
 @export var pos: Vector3
 @export var ind_type: IndustryType
@@ -20,9 +20,8 @@ func _get_ind_type_by_str(ind_type_key: String) -> IndustryType:
 # == LOADING FROM JSON ==
 static func from_dict(ind_data: Dictionary) -> IndustryData:
 	var dict_num: int = ind_data.get("num", null)
-	var ind_type_key: String = ind_data.get("industryType")
 	var dict_pos: Vector3 = arr_to_vec3(ind_data.get("pos"))
-	var ind_obj := IndustryData.new(ind_type_key, dict_pos)
+	var ind_obj := IndustryData.new(ind_data.get("industryType"), dict_pos)
 	ind_obj.num = dict_num
 	SignalBus.industry_loaded.emit(ind_obj)
 	return ind_obj

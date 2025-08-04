@@ -20,7 +20,7 @@ func place_preplaced_res_bld(outer_bld: OuterResBld):
 	outer_bld.res_bld = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
 	outer_bld.res_bld.num = OuterResBld.next_num()
 	# assign to town
-	var town := self.get_town_by_num(outer_bld.placed_town_num)
+	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
 	town.res_buildings.append(outer_bld)
 	# save here as well
 	self.placed_buildings.append(outer_bld)
@@ -36,11 +36,6 @@ func get_map_houses_container() -> Node:
 	
 func get_res_bld_type(key: String) -> ResBldType:
 	return GameTypes.get_res_bld_type(key)
-
-func get_town_by_num(_num: int) -> TownData:
-	for town: TownData in GlobalState.towns:
-		if town.num == _num: return town
-	return null
 #endregion
 	
 #region Signal Callbacks
