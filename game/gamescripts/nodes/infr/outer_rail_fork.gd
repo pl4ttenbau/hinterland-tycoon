@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	self.fork_obj.set_to_changed.connect(Callable(self, "_on_set_to_changed"))
 	
 func _ready() -> void:
-	self._on_set_to_changed(self.fork_obj.setTo)
+	self._on_set_to_changed(self.fork_obj.set_to)
 
 func adjust_rotation() -> void:
 	var rot_target_node: RailNodeData = null

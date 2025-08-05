@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=124 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="35_eoc0b"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="35_iof1f"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_tqln3"]
+[ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="37_el7bl"]
 [ext_resource type="PackedScene" uid="uid://ouqmxw1r03f5" path="res://assets/meshes/deco/log_pile/log_pile.tscn" id="38_656qc"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="39_xiocb"]
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_1wsr2"]
@@ -634,8 +635,8 @@ point_count = 12
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4kml"]
 albedo_color = Color(0.562446, 0.726809, 0.890124, 1)
 albedo_texture = ExtResource("35_eoc0b")
-metallic = 0.42
-metallic_specular = 1.0
+metallic = 0.52
+metallic_specular = 0.75
 roughness = 0.6
 normal_enabled = true
 normal_scale = 6.58
@@ -674,6 +675,9 @@ directional_shadow_mode = 1
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="WorldTerrain"]
 occluder = ExtResource("11_0uh3x")
+
+[node name="SignalTower" parent="WorldTerrain" instance=ExtResource("37_el7bl")]
+transform = Transform3D(0.894185, 0, -0.447697, 0, 1, 0, 0.447697, 0, 0.894185, 1855.32, 12.0725, 1003.53)
 
 [node name="Houses" type="Node" parent="."]
 
@@ -824,7 +828,7 @@ billboard = 1
 text = "Schierke"
 
 [node name="EditorLabel_Town_Brocken" type="Label3D" parent="InEditor/EditorLabels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1001, 356.06, 2244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1001, 355.449, 2244)
 pixel_size = 0.33
 billboard = 1
 text = "Brocken"
@@ -906,6 +910,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 22.6739, 1636)
 pixel_size = 0.33
 billboard = 1
 text = "Nöschenrode"
+
+[node name="EditorLabel_Town_Veckenstedt" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2231.5, 18.4999, 336.1)
+pixel_size = 0.33
+billboard = 1
+text = "Veckenstedt"
+
+[node name="EditorLabel_Town_Neu-Wernigerode" type="Label3D" parent="InEditor/EditorLabels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3058, 19.7349, 1079.3)
+pixel_size = 0.33
+billboard = 1
+text = "Neu-Wernigerode"
 
 [node name="EditorInfr" type="Node3D" parent="InEditor"]
 
@@ -1044,3 +1060,6 @@ mesh = SubResource("PlaneMesh_xiocb")
 transform = Transform3D(128.334, 0, 36.2389, 0, 1, 0, -77.6548, 0, 59.8894, 2519.38, 34.8866, 3388.17)
 material_override = SubResource("StandardMaterial3D_i4kml")
 mesh = SubResource("PlaneMesh_xiocb")
+
+[node name="SignalTower" parent="." instance=ExtResource("37_el7bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3184.17, 4.65653, 1299.32)

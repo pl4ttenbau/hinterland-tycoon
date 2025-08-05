@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'stellwerk.blend'
+# www.blender.org
+
+newmtl TexMap
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_stellwerk_d.png
+map_Bump -bm 1.000000 tex_stellwerk_n.png

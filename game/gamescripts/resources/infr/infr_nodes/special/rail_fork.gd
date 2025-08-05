@@ -3,10 +3,10 @@ class_name RailForkData extends GameObject
 
 # json object properties
 @export var connectiveTracks: Array
-@export var setTo: int:
-	get(): return setTo
+@export var set_to: int:
+	get(): return set_to
 	set(value): 
-		setTo = value
+		set_to = value
 		self.set_to_changed.emit(value)
 
 # later-set properties
@@ -25,7 +25,7 @@ static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailForkData
 	var inst := RailForkData.new(Enums.EntityTypes.FORK)
 	inst.railNode = parent
 	inst.connectiveTracks = fork_dict.get("connectiveTracks") as Array
-	inst.setTo = fork_dict.get("setTo", null)
+	inst.set_to = fork_dict.get("setTo", null)
 	return inst
 
 func spawn() -> OuterRailFork:
