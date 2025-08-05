@@ -1,4 +1,4 @@
-class_name IndustryTypeLoader extends Node
+class_name IndustryTypeLoader extends AbstractGameTypeLoader
 
 func _init() -> void:
 	self.make_types()

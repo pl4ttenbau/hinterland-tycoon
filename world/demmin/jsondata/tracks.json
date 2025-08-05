@@ -77,6 +77,7 @@
 				"pos": [619.5, 14, 574.4],
 				"station": {
 					"townName": "Drechow",
+					"stationNum": 1,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
@@ -148,6 +149,7 @@
 				"pos": [214.4, 8, 884.1],
 				"station": {
 					"townName": "Tribsees",
+					"townNum": 0,
 					"name": "Stadt",
 					"stationType": "STATION_PASS"
 				}
@@ -197,6 +199,7 @@
 				"pos": [997.9, 9.5, 996.7],
 				"station": {
 					"townName": "Zarrentin",
+					"townNum": 2,
 					"name": "Feldbhf.",
 					"stationType": "STATION_PASS"
 				}
@@ -217,6 +220,7 @@
 				"pos": [1341.9, 11, 1302.1],
 				"station": {
 					"townName": "Glewitz",
+					"townNum": 7,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
@@ -273,6 +277,7 @@
 				"pos": [1277.6, 16.5, 518.0],
 				"station": {
 					"townName": "Hohenbarnekow",
+					"townNum": 4,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
@@ -306,6 +311,7 @@
 				"pos": [2426.3, 12.0, 2198.0],
 				"station": {
 					"townName": "Demmin",
+					"townNum": 10,
 					"name": "HBF",
 					"stationType": "STATION_PASS"
 				}
@@ -496,6 +502,7 @@
 				"pos": [2282.2, 10.5, 617.6],
 				"station": {
 					"townName": "Grimmen",
+					"townNum": 11,
 					"name": "Stadt",
 					"stationType": "STATION_PASS"
 				}

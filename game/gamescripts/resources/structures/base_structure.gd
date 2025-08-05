@@ -1,4 +1,7 @@
-class_name BaseStructure extends Resource
+class_name BaseStructure extends ResourceContainer
 
-@export_storage var town: TownData
-@export_storage var connected_stations: Array[RailStationData] = []
+@export var town_num: int
+@export var bld_type: AbstractBldType
+@export var is_registered: bool = false
+
+@export_storage var connected_station: RailStationData

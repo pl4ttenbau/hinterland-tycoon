@@ -14,6 +14,16 @@ normal_texture = ExtResource("3_hkssp")
 script = ExtResource("1_8gdjw")
 metadata/_custom_type_script = "uid://8glp66w6di6p"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="ForkMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.869609)
 material_override = SubResource("StandardMaterial3D_7b3yp")
 mesh = ExtResource("2_fvcwk")
+
+[node name="ForkLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+pixel_size = 0.015
+billboard = 2
+double_sided = false
+text = "-1"
+font_size = 80
+outline_size = 24

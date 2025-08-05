@@ -15,6 +15,7 @@
 				"pos": [3168.1, 5.1, 1281.8],
 				"station": {
 					"townName": "Wernigerode",
+					"townNum": 0,
 					"name": "HBF",
 					"stationType": "STATION_PASS"
 				}
@@ -23,7 +24,13 @@
 				"pos": [3046.3, 5.1, 1244.1]
 			},
 			{
-				"pos": [2867.4, 6.0, 1190.3]
+				"pos": [2867.4, 6.0, 1190.3],
+				"station": {
+					"townName": "Wernigerode",
+					"townNum": 25,
+					"name": "Neustadt",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [2744.0, 6.3, 1178.4],
@@ -60,6 +67,7 @@
 				"pos": [2375.9, 9.0, 1200.2],
 				"station": {
 					"townName": "Darlingerode",
+					"townNum": 16,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -130,6 +138,7 @@
 				"pos": [1786.4, 9.0, 928.4],
 				"station": {
 					"townName": "Ilsenburg",
+					"townNum": 2,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -164,6 +173,7 @@
 				"pos": [4011.5, 22.1, 3075.4],
 				"station": {
 					"townName": "Rübeland",
+					"townNum": 7,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -218,6 +228,7 @@
 				"pos": [3759.6, 23.6, 3152.3],
 				"station": {
 					"townName": "Rübeland",
+					"townNum": 7,
 					"name": "Kleiner Stein",
 					"stationType": "STATION_GOODS"
 				}
@@ -292,6 +303,7 @@
 				"pos": [2503.2, 51.9, 2792.3],
 				"station": {
 					"townName": "Drei-Annen-Hohne",
+					"townNum": 8,
 					"name": "Kreuz",
 					"stationType": "STATION_PASS"
 				}
@@ -617,7 +629,7 @@
 			{
 				"pos": [2559.9, 9.7, 1776.8],
 				"fork": {
-					"connectiveTracks": [12],
+					"connectiveTracks": [12, 29],
 					"setTo": 12
 				}
 			}
@@ -632,8 +644,8 @@
 			{
 				"pos": [2559.9, 9.7, 1776.8],
 				"fork": {
-					"connectiveTracks": [12],
-					"setTo": 12
+					"connectiveTracks": [11, 29],
+					"setTo": 11
 				}
 			},
 			{
@@ -646,6 +658,7 @@
 				"pos": [2674.9, 8.7, 1765.8],
 				"station": {
 					"townName": "Hasserode",
+					"townNum": 14,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -667,6 +680,15 @@
 			},
 			{
 				"pos": [2920.8, 6.8, 1604.8]
+			},
+			{
+				"pos": [2950.2, 7.0, 1589.8],
+				"station": {
+					"townName": "Wernigerode",
+					"townNum": 14,
+					"name": "Hochschule",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [2969.8, 6.6, 1573.7]
@@ -700,13 +722,13 @@
 				"pos": [3016.4, 6.2, 1457.0]
 			},
 			{
-				"pos": [3001.5, 5.7, 1408.6]
+				"pos": [3009.8, 6.1, 1419.0]
 			},
 			{
-				"pos": [2999.7, 5.7, 1366.6]
+				"pos": [3010.9, 5.8, 1387.7]
 			},
 			{
-				"pos": [3011.2, 6.1, 1330.1]
+				"pos": [3016.1, 6.5, 1340.3]
 			},
 			{
 				"pos": [3032.1, 5.5, 1319.4]
@@ -718,6 +740,7 @@
 				"pos": [3096.0, 5.5, 1292.7],
 				"station": {
 					"townName": "Wernigerode",
+					"townNum": 0,
 					"name": "Kleinbahnhof",
 					"stationType": "STATION_PASS"
 				}
@@ -753,6 +776,7 @@
 				"pos": [1919.9, 42.4, 3389.7],
 				"station": {
 					"townName": "Elend",
+					"townNum": 4,
 					"name": "Bhf",
 					"stationType": "STATION_PASS"
 				}
@@ -1254,6 +1278,7 @@
 				"pos": [1572.6, 115.9, 2803.1],
 				"station": {
 					"townName": "Schierke",
+					"townNum": 9,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
 				}
@@ -1596,6 +1621,7 @@
 				"pos": [1004.3, 341.5, 2250.1],
 				"station": {
 					"townName": "Brocken",
+					"townNum": 10,
 					"name": "Spitze",
 					"stationType": "STATION_PASS"
 				}
@@ -1689,6 +1715,42 @@
 					"setTo": 26
 				}
 			}
+		]
+	},
+	{
+		"num": 29,
+		"name": "HSB Hasserode Brauerei",
+		"type": "750_MM",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [2559.9, 9.7, 1776.8],
+				"fork": {
+					"connectiveTracks": [12],
+					"setTo": 12
+				}
+			},
+			{
+				"pos": [2585.0, 9.8, 1792.8]
+			},
+			{
+				"pos": [2605, 10.0, 1816.6]
+			},
+			{
+				"pos": [2635.8, 10.3, 1833.5]
+			},
+			{
+				"pos": [2674.1, 10.8, 1844.8],
+				"station": {
+					"townName": "Hasserode",
+					"townNum": 14,
+					"name": "Brauhaus",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [2700.7, 11.2, 1849.1]
+			},
 		]
 	}
 ]

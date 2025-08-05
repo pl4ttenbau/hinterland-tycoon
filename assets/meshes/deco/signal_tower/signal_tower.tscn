@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://blqw3dknktgg8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dowibrbq7ylje" path="res://assets/meshes/deco/signal_tower/stellwerk.obj" id="1_8qde8"]
+[ext_resource type="Script" uid="uid://cjoj48oprt1f3" path="res://game/gamescripts/nodes/common/hideable_object.gd" id="1_dafpg"]
+[ext_resource type="Texture2D" uid="uid://dvqo4qx6yscdu" path="res://assets/meshes/deco/signal_tower/tex_stellwerk_d.png" id="2_dafpg"]
+[ext_resource type="Texture2D" uid="uid://b3li87a7kr6wd" path="res://assets/meshes/deco/signal_tower/tex_stellwerk_n.png" id="3_20i1o"]
+[ext_resource type="Texture2D" uid="uid://btpgst1mbyurb" path="res://assets/meshes/deco/signal_tower/tex_stellwerk_r.png" id="4_dr7lr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwo5h"]
+cull_mode = 2
+albedo_texture = ExtResource("2_dafpg")
+roughness_texture = ExtResource("4_dr7lr")
+normal_enabled = true
+normal_texture = ExtResource("3_20i1o")
+
+[node name="SignalTower" type="Node3D"]
+script = ExtResource("1_dafpg")
+metadata/_custom_type_script = "uid://cjoj48oprt1f3"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 2
+mesh = ExtResource("1_8qde8")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwo5h")

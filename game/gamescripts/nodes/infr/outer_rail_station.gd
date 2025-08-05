@@ -1,6 +1,13 @@
+@icon("res://assets/icons/icon_station.png")
 class_name OuterRailStation extends HideableObject
 
 const STATION_SCENE_PATH = "res://scenes/subscenes/infr/outer_rail_station.tscn"
+
+@export_storage var station_obj: RailStationData:
+	get(): return self.entity as RailStationData
+
+func _enter_tree() -> void:
+	self.station_obj.resource_change.connect(Callable(self, "_on_resource_change"))
 
 static func of(_station_obj: RailStationData) -> OuterRailStation:
 	var prefab: PackedScene = preload(STATION_SCENE_PATH)
@@ -13,7 +20,7 @@ static func of(_station_obj: RailStationData) -> OuterRailStation:
 	
 func _name_nodes():
 	self.name = "OuterRailStation_%d" % self.entity.num
-	self.get_mesh().name = "RailStation_%d_Mesh" % self.entity.num
+	$RailStationMesh.name = "RailStation_%d_Mesh" % self.entity.num
 	
 func rotate_to_prev_node():
 	var station_node_index: int = self.entity.parent_node.index
@@ -24,8 +31,5 @@ func get_parent_track_node_by_index(_i: int) -> RailNodeData:
 	var track: RailTrackData = self.entity.parent_node.parent_track
 	return track.get_rail_node(_i)
 	
-func get_mesh() -> MeshInstance3D:
-	return $RailStationMesh
-	
-func get_collider() -> StaticBody3D:
-	return $StationBody3D
+func _on_resource_change():
+	$StationLabel.text = str(self.station_obj.resources.size())

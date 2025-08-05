@@ -36,3 +36,10 @@ metadata/_custom_type_script = "uid://bjj02tduewuut"
 [node name="StationShape3D" type="CollisionShape3D" parent="StationBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399999, 0.15, -6)
 shape = SubResource("BoxShape3D_65b5o")
+
+[node name="StationLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+pixel_size = 0.03
+billboard = 2
+text = "0"
+font_size = 80

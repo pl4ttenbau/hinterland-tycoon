@@ -1,4 +1,4 @@
-class_name InfrTypesLoader extends Node
+class_name InfrTypesLoader extends AbstractGameTypeLoader
 
 func _init() -> void:
 	self.make_types()

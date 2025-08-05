@@ -8,7 +8,7 @@ static var last_bld_num: int = 0
 	set(value): self.entity.num = value
 		
 @export_storage var res_bld: ResidenceBuildingData:
-	get: return self.entity
+	get: return self.entity as ResidenceBuildingData
 	set(value): self.entity = value
 
 ## when its spawned from map

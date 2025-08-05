@@ -2,6 +2,8 @@ extends Node
 
 @export var maps: Array[MapData] = []
 
+@export var resource_types: Dictionary
+
 @export var infr_types: Array[InfrType]
 @export var industry_types: Array[IndustryType]
 @export var res_bld_types: Array[ResBldType]

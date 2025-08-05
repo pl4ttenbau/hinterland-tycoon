@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_town_white.png")
 class_name TownSpawner extends Node
 
 const MAX_PLACING_TRIES: int = 6
@@ -58,4 +59,5 @@ func _on_town_center_spawned(_town: TownData) -> void:
 	if self.town.autogenerate_houses == false: return
 	for i: int in range(_town.get_initial_bld_count()):
 		self.spawn_rnd_building()
+	self.town.reassign_buildings_to_stations()
 #endregion
