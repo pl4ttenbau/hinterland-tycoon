@@ -86,6 +86,7 @@ move_right={
 
 [rendering]
 
+renderer/rendering_method="mobile"
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1

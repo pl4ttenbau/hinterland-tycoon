@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=104 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -40,6 +40,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="35_6ghl1"]
 [ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="36_x2dbq"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="37_yaj22"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="37_yreqa"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="38_8lalv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="42_5161g"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="43_b5u8v"]
@@ -148,6 +149,7 @@ distance_fade_max_distance = 0.5
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_kq7m5"]
 name = "Grass1"
 id = 4
+enabled = false
 generated_type = 1
 height_offset = 0.7
 density = 5.335
@@ -555,6 +557,9 @@ light_energy = 1.4
 light_bake_mode = 0
 shadow_enabled = true
 directional_shadow_mode = 1
+
+[node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("37_yreqa")]
+terrain = NodePath("..")
 
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("34_hk0ac")
