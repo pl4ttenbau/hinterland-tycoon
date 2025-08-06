@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://68lyd8rt6mqc"]
+
+[ext_resource type="Script" uid="uid://bp7r4ppgq1m0g" path="res://addons/terrain_3d/extras/particle_example/terrain_3D_particles.gd" id="1_muyvk"]
+[ext_resource type="Material" uid="uid://el5y10hnh13g" path="res://addons/terrain_3d/extras/particle_example/process_material.tres" id="2_t2tbg"]
+[ext_resource type="Material" uid="uid://dbmjrvosa64js" path="res://assets/packed/grass_material.tres" id="3_sip6t"]
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_fwrtk"]
+shape = 0
+section_length = 0.18
+section_segments = 1
+
+[node name="CustomTerrain3DParticles" type="Node3D"]
+script = ExtResource("1_muyvk")
+instance_spacing = 0.25
+cell_width = 24.0
+grid_width = 5
+rows = 96
+amount = 9216
+process_material = ExtResource("2_t2tbg")
+mesh = SubResource("RibbonTrailMesh_fwrtk")
+shadow_mode = 0
+mesh_material_override = ExtResource("3_sip6t")
+min_draw_distance = 60.0
+particle_count = 230400
+metadata/_edit_lock_ = true

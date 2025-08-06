@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dbmjrvosa64js"]
+
+[ext_resource type="Shader" uid="uid://c0648phnvpvtj" path="res://assets/packed/grass_mat_shader.gdshader" id="1_xjlxo"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xjlxo")
+shader_parameter/wind_direction = Vector2(1, 1)

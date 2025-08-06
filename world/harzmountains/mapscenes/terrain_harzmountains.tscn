@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=125 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="35_iof1f"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_tqln3"]
 [ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="37_el7bl"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="37_jvv7c"]
 [ext_resource type="PackedScene" uid="uid://ouqmxw1r03f5" path="res://assets/meshes/deco/log_pile/log_pile.tscn" id="38_656qc"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="39_xiocb"]
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_1wsr2"]
@@ -108,6 +109,7 @@ distance_fade_max_distance = 96.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_tp1hv"]
 name = "Grass1"
+enabled = false
 generated_type = 1
 height_offset = 0.5
 density = 3.0
@@ -135,6 +137,7 @@ distance_fade_max_distance = 96.0
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_6iyiq"]
 name = "Grass1 Dark"
 id = 1
+enabled = false
 generated_type = 1
 height_offset = 0.5
 density = 2.0
@@ -657,7 +660,6 @@ data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
 mesh_size = 24
-cast_shadows = 0
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -676,8 +678,8 @@ directional_shadow_mode = 1
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="WorldTerrain"]
 occluder = ExtResource("11_0uh3x")
 
-[node name="SignalTower" parent="WorldTerrain" instance=ExtResource("37_el7bl")]
-transform = Transform3D(0.894185, 0, -0.447697, 0, 1, 0, 0.447697, 0, 0.894185, 1855.32, 12.0725, 1003.53)
+[node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("37_jvv7c")]
+terrain = NodePath("..")
 
 [node name="Houses" type="Node" parent="."]
 
