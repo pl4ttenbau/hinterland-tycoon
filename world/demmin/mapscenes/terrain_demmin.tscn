@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=103 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
@@ -48,7 +48,6 @@
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="45_hgrl6"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="46_8kc2j"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="47_w0rol"]
-[ext_resource type="PackedScene" uid="uid://5xuaaujf5s08" path="res://assets/meshes/vehicles/road/chapel.tscn" id="48_nhxd4"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="52_7aipk"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]
@@ -635,10 +634,6 @@ placed_town_num = 10
 
 [node name="PolishHouse4" parent="Houses" instance=ExtResource("47_w0rol")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2415.89, 8.7, 2149.95)
-placed_town_num = 10
-
-[node name="Chapel" parent="Houses" instance=ExtResource("48_nhxd4")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 2432.41, 8.2, 2145)
 placed_town_num = 10
 
 [node name="PolishHouse5" parent="Houses" instance=ExtResource("47_w0rol")]

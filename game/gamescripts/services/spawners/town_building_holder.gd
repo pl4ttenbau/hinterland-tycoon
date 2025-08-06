@@ -21,7 +21,7 @@ func place_preplaced_res_bld(outer_bld: OuterResBld):
 	outer_bld.res_bld.num = OuterResBld.next_num()
 	# assign to town
 	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
-	town.res_buildings.append(outer_bld)
+	town.res_bld_containers.append(outer_bld)
 	# save here as well
 	self.placed_buildings.append(outer_bld)
 
