@@ -77,6 +77,7 @@
 				"pos": [619.5, 14, 574.4],
 				"station": {
 					"townName": "Drechow",
+					"townNum": 1,
 					"stationNum": 1,
 					"name": "Ort",
 					"stationType": "STATION_PASS"
