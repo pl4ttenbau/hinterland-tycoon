@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/outer_rail_track.gd" id="1_1bs3w"]
 [ext_resource type="ArrayMesh" uid="uid://vphafb1c2c38" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_tracks.obj" id="2_yowo4"]
-[ext_resource type="Texture2D" uid="uid://binw7t2rdhujt" path="res://assets/meshes/infr/rail/rail_track_normal/tex_rail_track_normal_tracks_d.png" id="3_v6bnm"]
+[ext_resource type="Texture2D" uid="uid://bvoumqg0lg1kd" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_tracks_tracks_d.png" id="3_yowo4"]
+[ext_resource type="Texture2D" uid="uid://cxefopgvu5ewq" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_tracks_tracks_n.png" id="4_80rmx"]
 [ext_resource type="ArrayMesh" uid="uid://dxlt24spn86wr" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_ground.obj" id="4_vtcfp"]
 [ext_resource type="Texture2D" uid="uid://cj08uu08hj8vb" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_d.png" id="5_80rmx"]
 [ext_resource type="Texture2D" uid="uid://bauuoftegomi6" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_ao.png" id="6_xkmyj"]
-[ext_resource type="Texture2D" uid="uid://dwteixswguywv" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_tracks_n.png" id="7_wym3d"]
 [ext_resource type="Texture2D" uid="uid://wcnvp7fwig3s" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_r.png" id="8_i5qf7"]
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
@@ -17,17 +17,15 @@ _data = {
 point_count = 2
 up_vector_enabled = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x5v6"]
-albedo_texture = ExtResource("3_v6bnm")
-metallic = 0.28
-roughness = 0.55
-distance_fade_max_distance = 41.75
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yowo4"]
+albedo_texture = ExtResource("3_yowo4")
+normal_enabled = true
+normal_texture = ExtResource("4_80rmx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4emru"]
 albedo_texture = ExtResource("5_80rmx")
 roughness_texture = ExtResource("8_i5qf7")
 normal_enabled = true
-normal_texture = ExtResource("7_wym3d")
 ao_enabled = true
 ao_texture = ExtResource("6_xkmyj")
 heightmap_scale = 2.2
@@ -49,7 +47,7 @@ surface_0/distribution = 0
 surface_0/alignment = 0
 surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
-surface_0/tilt = false
+surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0
 surface_1/tile_rotation = Vector3(0, 0, 0)
@@ -58,10 +56,10 @@ surface_1/distribution = 0
 surface_1/alignment = 0
 surface_1/warp_along_curve = true
 surface_1/sample_cubic = false
-surface_1/tilt = false
+surface_1/tilt = true
 surface_1/offset = Vector2(0, 0)
 surface_1/triangle_count = 0
-material_override = SubResource("StandardMaterial3D_1x5v6")
+material_override = SubResource("StandardMaterial3D_yowo4")
 
 [node name="BedPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
