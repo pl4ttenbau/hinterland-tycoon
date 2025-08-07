@@ -35,7 +35,8 @@ func spawn_rails():
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	if ! rail_track.curve: rail_track.build_path()
 	# instanciate Container from PackedScene
-	var outer_track: OuterRailTrack = preload(OuterRailTrack.SCENE_PATH).instantiate()
+	var scene_path = OuterRailTrack.get_scene_path(rail_track)
+	var outer_track: OuterRailTrack = load(scene_path).instantiate()
 	outer_track.track = rail_track
 	GlobalState.outer_tracks.append(outer_track)
 	return outer_track

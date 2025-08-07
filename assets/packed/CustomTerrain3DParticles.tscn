@@ -11,15 +11,14 @@ section_segments = 1
 
 [node name="CustomTerrain3DParticles" type="Node3D"]
 script = ExtResource("1_muyvk")
-instance_spacing = 0.25
 cell_width = 24.0
 grid_width = 5
-rows = 96
-amount = 9216
+rows = 48
+amount = 2304
 process_material = ExtResource("2_t2tbg")
 mesh = SubResource("RibbonTrailMesh_fwrtk")
 shadow_mode = 0
 mesh_material_override = ExtResource("3_sip6t")
 min_draw_distance = 60.0
-particle_count = 230400
+particle_count = 57600
 metadata/_edit_lock_ = true
