@@ -6,6 +6,7 @@ class_name RailStationData extends ResourceContainer
 @export var station_type: String
 @export var town_name: String
 @export var town_num: int
+@export var hide_building: bool
 
 # indirect properties
 @export var position: Vector3
@@ -23,7 +24,11 @@ static func of_station_dict(_station_dict: Dictionary, _node: RailNodeData) -> R
 	var _town_name: String = _station_dict.get("townName")
 	var _town_num: int = _station_dict.get("townNum")
 	var _pos: Vector3 = _node.position
-	return RailStationData.of(_node, _name, _town_num, _town_name)
+	var station_obj := RailStationData.of(_node, _name, _town_num, _town_name)
+	# set optional values
+	if _station_dict.has("hideBuilding"):
+		station_obj.hide_building = _station_dict.get("hideBuilding", false)
+	return station_obj
 	
 static func of(_rail_node: RailNodeData, _name: String, _town_num: int, _town_name: String) -> RailStationData:
 	var instance := RailStationData.new()

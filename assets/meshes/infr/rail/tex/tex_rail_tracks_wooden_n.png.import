@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://binw7t2rdhujt"
-path.s3tc="res://.godot/imported/tex_rail_track_normal_tracks_d.png-06ac56f142151da1235f39d3ca51803a.s3tc.ctex"
+uid="uid://dwsr7pp2doaky"
+path.s3tc="res://.godot/imported/tex_rail_tracks_wooden_n.png-6e44b56ec85c7d32ded7a8699172b7c5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/infr/rail/rail_track_normal/tex_rail_track_normal_tracks_d.png"
-dest_files=["res://.godot/imported/tex_rail_track_normal_tracks_d.png-06ac56f142151da1235f39d3ca51803a.s3tc.ctex"]
+source_file="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_n.png"
+dest_files=["res://.godot/imported/tex_rail_tracks_wooden_n.png-6e44b56ec85c7d32ded7a8699172b7c5.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_n.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

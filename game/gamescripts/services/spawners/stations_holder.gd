@@ -20,7 +20,7 @@ func spawn_stations():
 func spawn_station(station_obj: RailStationData) -> OuterRailStation:
 	station_obj.num = RailStationData.next_station_num()
 	var container: OuterRailStation = station_obj.spawn()
-	container._name_nodes()
+	# container._name_nodes()
 	self.add_child(container, true)
 	return container
 #endregion
