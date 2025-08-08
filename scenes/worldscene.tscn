@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=27 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
@@ -20,11 +20,17 @@
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="18_ibik3"]
 [ext_resource type="PackedScene" uid="uid://bh5tt5ioftmq3" path="res://scenes/ui/game_window.tscn" id="18_u6qkf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
+[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="22_nj174"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
+[ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="23_lhsit"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s11ye"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_usal5"]
+transform_format = 1
+mesh = ExtResource("23_lhsit")
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_vdtib")
@@ -123,3 +129,13 @@ script = ExtResource("19_mg4js")
 script = ExtResource("5_kq7m5")
 
 [node name="GameWindow" parent="." instance=ExtResource("18_u6qkf")]
+
+[node name="Features" type="Node3D" parent="."]
+visible = false
+
+[node name="PolishHouse1" parent="Features" instance=ExtResource("22_nj174")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Features"]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Features"]
+multimesh = SubResource("MultiMesh_usal5")
