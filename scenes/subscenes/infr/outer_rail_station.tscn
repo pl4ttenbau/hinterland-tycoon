@@ -39,6 +39,8 @@ shape = SubResource("BoxShape3D_65b5o")
 
 [node name="StationLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
 pixel_size = 0.03
 billboard = 2
 text = "0"

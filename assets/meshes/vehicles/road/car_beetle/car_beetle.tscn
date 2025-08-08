@@ -10,5 +10,7 @@ albedo_texture = ExtResource("2_x3tw8")
 [node name="CarBeetle" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
 mesh = ExtResource("1_5rati")
 surface_material_override/0 = SubResource("StandardMaterial3D_g18sv")

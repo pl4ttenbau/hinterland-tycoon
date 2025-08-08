@@ -2,7 +2,8 @@
 @icon("res://assets/icons/icon_rail_track.png")
 class_name OuterRailTrack extends VisibleObject
 
-const SCENE_PATH = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
+const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
+const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mml_bedded.tscn"
 
 signal track_assigned(track: RailTrackData)
 
@@ -17,6 +18,11 @@ func _enter_tree() -> void:
 		self.entity = value
 		$TrackPath.curve = value.curve
 		self.track_assigned.emit(track)
+		
+static func get_scene_path(track_obj: RailTrackData) -> String:
+	if track_obj.infr_type_key == "750_MM":
+		return SCENE_PATH_750MM
+	else: return SCENE_PATH_NORMAL
 
 func assign_node_names():
 	self.name = "RailTrack_%d_Container" % self.entity.num

@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://tqwe4a6nmgdg"]
+
+[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/rail_vehicle.gd" id="1_e1swg"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="2_1ck1c"]
+[ext_resource type="Texture2D" uid="uid://b7giqu1siufcl" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_d.png" id="3_juh36"]
+[ext_resource type="Texture2D" uid="uid://doytj3qwv2r17" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_n.png" id="4_532cl"]
+[ext_resource type="Texture2D" uid="uid://cerg020024pi2" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_s.png" id="5_wprfx"]
+[ext_resource type="ArrayMesh" uid="uid://irayfhj001w8" path="res://assets/meshes/vehicles/rail/loco_faur/faur.obj" id="6_by2im"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_era8q"]
+diffuse_mode = 2
+albedo_texture = ExtResource("3_juh36")
+roughness_texture = ExtResource("5_wprfx")
+normal_enabled = true
+normal_texture = ExtResource("4_532cl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4m0o"]
+size = Vector3(2.2, 3.3, 9.5)
+
+[node name="RailVehicle" type="Node3D"]
+script = ExtResource("1_e1swg")
+
+[node name="RailVehicleMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_era8q")
+custom_aabb = AABB(0, 0, 0, 0, 0, 9)
+ignore_occlusion_culling = true
+mesh = ExtResource("6_by2im")
+
+[node name="RailVehicleStaticBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("2_1ck1c")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0.15, 0.0500002)
+shape = SubResource("BoxShape3D_s4m0o")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40508, -3.12912)
+metadata/cam_name = &"CAM_VEHICLE"

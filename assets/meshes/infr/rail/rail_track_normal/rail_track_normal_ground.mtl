@@ -1,7 +1,7 @@
-# Blender 4.0.2 MTL File: 'rail_track_normal_ground.blend'
+# Blender 4.4.1 MTL File: 'rail_track_normal_ground.blend'
 # www.blender.org
 
-newmtl matRailTrack
+newmtl matRailTrack.001
 Ns 7.458684
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -10,4 +10,4 @@ Ni 1.450000
 d 1.000000
 illum 2
 map_Kd tex_rail_track_normal_ground_d.png
-map_Bump -bm 0.600000 tex_rail_track_normal_ground_n.png
+map_Bump -bm 1.000000 tex_rail_track_normal_ground_n.png

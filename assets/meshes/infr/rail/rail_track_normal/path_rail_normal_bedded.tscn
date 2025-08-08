@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://4omlrg65c157"]
+[gd_scene load_steps=10 format=3 uid="uid://4omlrg65c157"]
 
 [ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/outer_rail_track.gd" id="1_juvrw"]
 [ext_resource type="ArrayMesh" uid="uid://cbvd8qsqmfkle" path="res://assets/meshes/infr/rail/rail_track_normal/rail_track_normal_tracks.obj" id="2_nf7tf"]
-[ext_resource type="Texture2D" uid="uid://binw7t2rdhujt" path="res://assets/meshes/infr/rail/rail_track_normal/tex_rail_track_normal_tracks_d.png" id="3_8hblo"]
 [ext_resource type="ArrayMesh" uid="uid://co6ollv1jfm4m" path="res://assets/meshes/infr/rail/rail_track_normal/rail_track_normal_ground.obj" id="4_a1me6"]
 [ext_resource type="Texture2D" uid="uid://cnlqyh0volrot" path="res://assets/meshes/infr/rail/rail_track_normal/tex_rail_track_normal_ground_d.png" id="5_2e2mo"]
 [ext_resource type="Texture2D" uid="uid://br6dgs70lr0fr" path="res://assets/meshes/infr/rail/rail_track_normal/tex_rail_track_normal_ground_ao.png" id="6_6kv1a"]
@@ -16,12 +15,6 @@ _data = {
 }
 point_count = 2
 up_vector_enabled = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x5v6"]
-albedo_texture = ExtResource("3_8hblo")
-metallic = 0.28
-roughness = 0.55
-distance_fade_max_distance = 41.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4emru"]
 albedo_texture = ExtResource("5_2e2mo")
@@ -49,7 +42,7 @@ surface_0/distribution = 0
 surface_0/alignment = 0
 surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
-surface_0/tilt = false
+surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0
 surface_1/tile_rotation = Vector3(0, 0, 0)
@@ -58,10 +51,9 @@ surface_1/distribution = 0
 surface_1/alignment = 0
 surface_1/warp_along_curve = true
 surface_1/sample_cubic = false
-surface_1/tilt = false
+surface_1/tilt = true
 surface_1/offset = Vector2(0, 0)
 surface_1/triangle_count = 0
-material_override = SubResource("StandardMaterial3D_1x5v6")
 
 [node name="BedPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
@@ -72,7 +64,7 @@ surface_0/distribution = 0
 surface_0/alignment = 0
 surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
-surface_0/tilt = false
+surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0
 material_override = SubResource("StandardMaterial3D_4emru")

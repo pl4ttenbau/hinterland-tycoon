@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_locomotive.png")
 class_name RailVehicle extends VisibleObject
 
-const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tscn"
+const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn"
 
 @export var vehicle_num: int
 @export var wheels: VehicleWheels
@@ -59,10 +59,10 @@ func _physics_process(delta: float) -> void:
 			self.wheels.put_on_connected_track(last_node)
 			
 func get_end_node(track: RailTrackData, dir: VehicleMotor.Direction) -> RailNodeData:
-	var rail_end_index: int = self.nodes.size() -1
+	var rail_end_index: int = track.nodes.size() -1
 	if dir == VehicleMotor.Direction.TRACK_NODES_DECREASE:
 		rail_end_index = 0
-	return self.nodes[rail_end_index]
+	return track.nodes[rail_end_index]
 			
 #region Node Getters
 func get_static_body() -> StaticBody3D:

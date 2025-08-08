@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjbi21akhni15"
+path="res://.godot/imported/saechskb4.obj-fef46a3101d16d9f3df1d04af1a7b66a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/saechskb4.obj-fef46a3101d16d9f3df1d04af1a7b66a.mesh"]
+
+source_file="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechskb4.obj"
+dest_files=["res://.godot/imported/saechskb4.obj-fef46a3101d16d9f3df1d04af1a7b66a.mesh", "res://.godot/imported/saechskb4.obj-fef46a3101d16d9f3df1d04af1a7b66a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

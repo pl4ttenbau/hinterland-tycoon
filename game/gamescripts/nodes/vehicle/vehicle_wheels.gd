@@ -32,9 +32,9 @@ func set_target_point(_point_index: int):
 
 ## triggered after the vehicle hit a rail fork
 func put_on_connected_track(fork_node: RailNodeData):
-	if fork_node.fork && fork_node.fork.setTo:
-		Loggie.info("Switching to track with num %d" % fork_node.fork.setTo)
-		self.current_track = RailTrackData.get_by_num(fork_node.fork.setTo)
+	if fork_node.fork && fork_node.fork.set_to:
+		Loggie.info("Switching to track with num %d" % fork_node.fork.set_to)
+		self.current_track = RailTrackData.get_by_num(fork_node.fork.set_to)
 		self.current_node_i = 0
 		if self.vehicle.direction == VehicleMotor.Direction.TRACK_NODES_DECREASE:
 			self.current_node_i = current_track.get_end_node().index

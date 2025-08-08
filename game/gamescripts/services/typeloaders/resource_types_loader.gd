@@ -5,9 +5,9 @@ class_name ResourceTypesLoader extends AbstractGameTypeLoader
 
 func _init():
 	GameTypes.resource_types = self.make_types()
-
-func make_types() -> Dictionary:
-	var types_list: Array[BaseResourceType] = [
+	
+func make_types_list() -> Array[BaseResourceType]:
+	return [
 		BaseResourceType.new("passenger", BaseResourceType.ResourceCategory.PASSENGER),
 		BaseResourceType.new("grains", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("bread", BaseResourceType.ResourceCategory.FREIGHT),
@@ -15,12 +15,13 @@ func make_types() -> Dictionary:
 		BaseResourceType.new("coal", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("iron", BaseResourceType.ResourceCategory.FREIGHT)
 	]
-	var types_by_key: Dictionary = self.sort_types_by_key(types_list)
-	return types_by_key
+
+func make_types() -> Dictionary:
+	self.types_by_key = self.sort_types_by_key(self.make_types_list())
+	return self.types_by_key
 	
 func sort_types_by_key(types_list: Array[BaseResourceType]) -> Dictionary:
 	var dict: Dictionary = {}
 	for res_type: BaseResourceType in types_list:
-		var key: StringName = res_type.key
-		dict.set(key, res_type)
+		dict.set(res_type.key, res_type)
 	return dict
