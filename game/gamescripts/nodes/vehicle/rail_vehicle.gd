@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_locomotive.png")
 class_name RailVehicle extends VisibleObject
 
-const SCENE_PATH = "res://assets/meshes/vehicles/loco_faur/vehicle_loco_faur.tscn"
+const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn"
 
 @export var vehicle_num: int
 @export var wheels: VehicleWheels

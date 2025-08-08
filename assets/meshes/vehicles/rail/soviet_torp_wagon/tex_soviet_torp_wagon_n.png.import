@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dujgilqixehjh"
-path="res://.godot/imported/tex_soviet_torp_wagon_n.png-c8f251ae2ea6c8f1dc55af24e0552a31.ctex"
+path="res://.godot/imported/tex_soviet_torp_wagon_n.png-1680650f98864699825a67ad7e196ab6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/soviet_torp_wagon/tex_soviet_torp_wagon_n.png"
-dest_files=["res://.godot/imported/tex_soviet_torp_wagon_n.png-c8f251ae2ea6c8f1dc55af24e0552a31.ctex"]
+source_file="res://assets/meshes/vehicles/rail/soviet_torp_wagon/tex_soviet_torp_wagon_n.png"
+dest_files=["res://.godot/imported/tex_soviet_torp_wagon_n.png-1680650f98864699825a67ad7e196ab6.ctex"]
 
 [params]
 

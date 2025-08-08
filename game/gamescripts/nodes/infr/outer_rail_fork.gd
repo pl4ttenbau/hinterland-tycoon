@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_fork.png")
-class_name OuterRailFork extends HideableObject
+class_name OuterRailFork extends VisibleObject
 
 const NINETY_DEG_IN_RAD = 1.57
 

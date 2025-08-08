@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7giqu1siufcl"
-path.s3tc="res://.godot/imported/tex_faur_d.png-c868cc4d62f3851a300689bf33a06a82.s3tc.ctex"
+uid="uid://b7pfsoyrf5c0t"
+path.s3tc="res://.godot/imported/tex_saechskb4_body2x_d.png-cf2740e1acab630248b90ceb755a2713.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/loco_faur/tex_faur_d.png"
-dest_files=["res://.godot/imported/tex_faur_d.png-c868cc4d62f3851a300689bf33a06a82.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/tex_saechskb4_body2x_d.png"
+dest_files=["res://.godot/imported/tex_saechskb4_body2x_d.png-cf2740e1acab630248b90ceb755a2713.s3tc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgr5cy3gdw25d"
-path="res://.godot/imported/tex_saechskb4_n.png-2dd56f818cc67723120568cdab2b5ecd.ctex"
+uid="uid://8xqfirfeoeh5"
+path="res://.godot/imported/tex_uzd_wagon_bogeys_n.png-10a9c7d295ef1134d5827a73b44bc945.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/saechs_wagon_kb4/tex_saechskb4_n.png"
-dest_files=["res://.godot/imported/tex_saechskb4_n.png-2dd56f818cc67723120568cdab2b5ecd.ctex"]
+source_file="res://assets/meshes/vehicles/rail/soviet_torp_wagon/tex_uzd_wagon_bogeys_n.png"
+dest_files=["res://.godot/imported/tex_uzd_wagon_bogeys_n.png-10a9c7d295ef1134d5827a73b44bc945.ctex"]
 
 [params]
 

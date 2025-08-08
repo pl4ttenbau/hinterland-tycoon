@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7pfsoyrf5c0t"
-path.s3tc="res://.godot/imported/tex_saechskb4_body2x_d.png-145f7a95db6b48baaf1830128459ba79.s3tc.ctex"
+uid="uid://c5eqlb7yhcvft"
+path.s3tc="res://.godot/imported/tex_soviet_torp_wagon_d.png-7b7138ff666d1308d36aae2169c7df25.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/saechs_wagon_kb4/tex_saechskb4_body2x_d.png"
-dest_files=["res://.godot/imported/tex_saechskb4_body2x_d.png-145f7a95db6b48baaf1830128459ba79.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/soviet_torp_wagon/tex_soviet_torp_wagon_d.png"
+dest_files=["res://.godot/imported/tex_soviet_torp_wagon_d.png-7b7138ff666d1308d36aae2169c7df25.s3tc.ctex"]
 
 [params]
 

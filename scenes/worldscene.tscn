@@ -131,6 +131,7 @@ script = ExtResource("5_kq7m5")
 [node name="GameWindow" parent="." instance=ExtResource("18_u6qkf")]
 
 [node name="Features" type="Node3D" parent="."]
+editor_description = "why? https://docs.godotengine.org/en/latest/tutorials/performance/pipeline_compilations.html#doc-pipeline-compilations"
 visible = false
 
 [node name="PolishHouse1" parent="Features" instance=ExtResource("22_nj174")]
