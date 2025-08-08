@@ -5,7 +5,6 @@ const STATION_SCENE_PATH = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 
 @export_storage var station_obj: RailStationData:
 	get(): return self.entity as RailStationData
-		
 
 func _enter_tree() -> void:
 	self.station_obj.resource_change.connect(Callable(self, "_on_resource_change"))
