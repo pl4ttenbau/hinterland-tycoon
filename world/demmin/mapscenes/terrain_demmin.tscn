@@ -1,6 +1,6 @@
 [gd_scene load_steps=104 format=3 uid="uid://bk0k4rfuikqlp"]
 
-[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_5b2oc"]
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://mttu5cyxem5i" path="res://assets/meshes/nature/tree2/Tree2.tscn" id="1_bh3tc"]
 [ext_resource type="PackedScene" uid="uid://q7ym1h1okh1y" path="res://assets/meshes/nature/flower1/flower1.tscn" id="2_6w68g"]
 [ext_resource type="PackedScene" uid="uid://danhxbnof3n3a" path="res://assets/meshes/nature/bush1/Bush1.tscn" id="2_hwjdr"]

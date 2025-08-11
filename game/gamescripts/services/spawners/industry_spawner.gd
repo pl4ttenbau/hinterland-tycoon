@@ -9,7 +9,7 @@ func _enter_tree() -> void:
 	SignalBus.all_types_initialized.connect(Callable(self, "_on_all_types_loaded"))
 	
 func load_industries():
-	var industry_json_path := INDUSTRIES_PATH_TEMPLATE % GlobalState.loaded_map_name
+	var industry_json_path := INDUSTRIES_PATH_TEMPLATE % GlobalState.selected_map_name
 	var json_str: String = FileAccess.get_file_as_string(industry_json_path)
 	for ind_dict: Dictionary in JSON.parse_string(json_str):
 		IndustryData.from_dict(ind_dict)
