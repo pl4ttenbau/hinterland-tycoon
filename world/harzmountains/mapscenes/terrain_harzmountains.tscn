@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=132 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -24,11 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="16_eoc0b"]
 [ext_resource type="PackedScene" uid="uid://bbywhitita8te" path="res://assets/meshes/nature/lilac_tree_1/lilac_tree_1.tscn" id="17_pdaa5"]
 [ext_resource type="PackedScene" uid="uid://cyck4ftd7pu3l" path="res://assets/meshes/nature/rock3/rock3.tscn" id="18_cy1ic"]
-[ext_resource type="Texture2D" uid="uid://bibqk2geqq8jq" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_dh.png" id="18_i4kml"]
-[ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="19_xiocb"]
 [ext_resource type="PackedScene" uid="uid://dtxcqi0tt4471" path="res://assets/meshes/nature/rock4/rock4.tscn" id="20_1806y"]
 [ext_resource type="Texture2D" uid="uid://c77xh5vv2s3jf" path="res://assets/textures/terrain_new/packed/gravel/gravel_dh.png" id="20_e0u24"]
 [ext_resource type="Texture2D" uid="uid://ltpfphsa8w4o" path="res://assets/textures/terrain_new/packed/gravel/gravel_nr.png" id="21_656qc"]
+[ext_resource type="Texture2D" uid="uid://m4k41chdta1u" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_dh.png" id="21_rbmqa"]
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://epgjb2mwvxuw" path="res://assets/textures/terrain_new/packed/wheat/wheat_nr.png" id="23_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
@@ -52,6 +51,10 @@
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="42_p6hwa"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="48_kkdmv"]
+[ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="49_el7bl"]
+[ext_resource type="PackedScene" uid="uid://stuogce200cl" path="res://assets/meshes/industry/generic_small/generic_small.tscn" id="53_l0gw6"]
+[ext_resource type="PackedScene" uid="uid://dpmf707hcg5r" path="res://assets/meshes/industry/warehouse_1/warehouse_1.tscn" id="54_1vtbi"]
+[ext_resource type="PackedScene" uid="uid://datqx0f0mdhmc" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.tscn" id="55_0y8xh"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -318,8 +321,8 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
 name = "Grass Green"
-albedo_color = Color(0.480686, 0.711475, 0.389427, 1)
-albedo_texture = ExtResource("31_kkdmv")
+albedo_color = Color(0.604577, 0.695176, 0.443035, 1)
+albedo_texture = ExtResource("21_rbmqa")
 normal_texture = ExtResource("15_es2xk")
 normal_depth = 1.311
 ao_strength = 1.077
@@ -341,9 +344,9 @@ detiling_shift = 0.468
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_er67g"]
 name = "Grass Dark"
 id = 2
-albedo_color = Color(0.539205, 0.911384, 0.577676, 1)
-albedo_texture = ExtResource("18_i4kml")
-normal_texture = ExtResource("19_xiocb")
+albedo_color = Color(0.468766, 0.550617, 0.374219, 1)
+albedo_texture = ExtResource("21_rbmqa")
+normal_texture = ExtResource("15_es2xk")
 normal_depth = 1.509
 ao_strength = 0.415
 roughness = 0.667
@@ -810,6 +813,12 @@ transform = Transform3D(-0.176793, 0, -0.984248, 0, 1, 0, 0.984248, 0, -0.176793
 material_override = SubResource("StandardMaterial3D_eoc0b")
 mesh = SubResource("BoxMesh_tqln3")
 
+[node name="SignalTower" parent="Deco" instance=ExtResource("37_el7bl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3184.17, 4.65653, 1299.32)
+
+[node name="GantryCraneLong" parent="Deco" instance=ExtResource("49_el7bl")]
+transform = Transform3D(0.259881, 0, 0.965641, 0, 1, 0, -0.965641, 0, 0.259881, 3006.31, 4.94389, 1233.05)
+
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
 
@@ -1131,9 +1140,15 @@ material_override = SubResource("StandardMaterial3D_i4kml")
 mesh = SubResource("PlaneMesh_xiocb")
 
 [node name="Zilierbachsperre" type="MeshInstance3D" parent="Water"]
-transform = Transform3D(29.6962, 0, 123.287, 0, 0.5, 0, -177.533, 0, 20.6224, 3035.58, 38.5817, 2536.15)
+transform = Transform3D(29.6962, 0, 123.287, 0, 0.5, 0, -177.533, 0, 20.6224, 2983.21, 38.5817, 2527.39)
 material_override = SubResource("StandardMaterial3D_i4kml")
 mesh = SubResource("PlaneMesh_xiocb")
 
-[node name="SignalTower" parent="." instance=ExtResource("37_el7bl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3184.17, 4.65653, 1299.32)
+[node name="GenericIndustrySm" parent="." instance=ExtResource("53_l0gw6")]
+transform = Transform3D(0.921721, 0, -0.387853, 0, 1, 0, 0.387853, 0, 0.921721, 3038.79, 4.75882, 1217.28)
+
+[node name="Warehouse1" parent="." instance=ExtResource("54_1vtbi")]
+transform = Transform3D(-0.254939, 0, -0.966957, 0, 1, 0, 0.966957, 0, -0.254939, 3021.26, 5.27593, 1261.18)
+
+[node name="WarehouseWooden" parent="." instance=ExtResource("55_0y8xh")]
+transform = Transform3D(-0.301621, 0, 0.953428, 0, 1, 0, -0.953428, 0, -0.301621, 3064.99, 4.674, 1287.46)
