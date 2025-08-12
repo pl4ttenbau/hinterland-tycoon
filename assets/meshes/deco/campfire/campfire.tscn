@@ -1,0 +1,50 @@
+[gd_scene load_steps=15 format=3 uid="uid://cym4f2u6i3kjx"]
+
+[ext_resource type="ArrayMesh" uid="uid://1dfcpr7udtas" path="res://assets/meshes/deco/campfire/campfire.obj" id="1_jli70"]
+[ext_resource type="Texture2D" uid="uid://cpm3nx6mbra7o" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_d.png" id="2_eushf"]
+[ext_resource type="Texture2D" uid="uid://cjrvmgi2e8ykh" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_g.png" id="3_il04e"]
+[ext_resource type="Texture2D" uid="uid://2dkrttra1qag" path="res://assets/meshes/deco/campfire/tex_campfire_rocks_d.png" id="3_kamm1"]
+[ext_resource type="Texture2D" uid="uid://deejyvbao3gy1" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_d.png" id="4_5cbku"]
+[ext_resource type="Texture2D" uid="uid://bp8ohtal8ks1" path="res://assets/meshes/deco/campfire/tex_campfire_rocks_n.png" id="4_kamm1"]
+[ext_resource type="Texture2D" uid="uid://ccjf6b6hhk5y5" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_n.png" id="4_rwrt2"]
+[ext_resource type="Texture2D" uid="uid://b0v1o1tfvuop0" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_r.png" id="5_rwrt2"]
+[ext_resource type="Texture2D" uid="uid://btsg1cuuaw6ym" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_n.png" id="9_b4au2"]
+[ext_resource type="Texture2D" uid="uid://dg6ugnuvjxsik" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_r.png" id="10_y0lpw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il04e"]
+albedo_texture = ExtResource("2_eushf")
+roughness_texture = ExtResource("5_rwrt2")
+emission_enabled = true
+emission_texture = ExtResource("3_il04e")
+normal_enabled = true
+normal_texture = ExtResource("4_rwrt2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwrt2"]
+albedo_texture = ExtResource("3_kamm1")
+normal_enabled = true
+normal_texture = ExtResource("4_kamm1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fhhk"]
+albedo_texture = ExtResource("4_5cbku")
+roughness_texture = ExtResource("10_y0lpw")
+normal_enabled = true
+normal_texture = ExtResource("9_b4au2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4au2"]
+size = Vector3(2.23694, 2.63739, 2.16064)
+
+[node name="Campfire" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+mesh = ExtResource("1_jli70")
+surface_material_override/0 = SubResource("StandardMaterial3D_il04e")
+surface_material_override/1 = SubResource("StandardMaterial3D_rwrt2")
+surface_material_override/2 = SubResource("StandardMaterial3D_0fhhk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100708, 1.33597, -0.029541)
+shape = SubResource("BoxShape3D_b4au2")

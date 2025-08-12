@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=28 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="22_nj174"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicle_placer.gd" id="23_ekgs8"]
 [ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="23_lhsit"]
+[ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="24_usal5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
@@ -140,3 +141,5 @@ visible = false
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Features"]
 multimesh = SubResource("MultiMesh_usal5")
+
+[node name="Campfire" parent="Features" instance=ExtResource("24_usal5")]

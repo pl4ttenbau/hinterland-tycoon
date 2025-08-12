@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxr0m833vfemd"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8bfk7ddm2vuc" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ryg52"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_rveds"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rveds"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rt3yr"]
+size = Vector3(6.45221, 11.491, 12.3604)
+
+[node name="HalfTimbered1" type="Node3D"]
+script = ExtResource("1_ryg52")
+placed_res_bld_type = "half_timbered_1"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_78jwu")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_rveds")
+script = ExtResource("3_rveds")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0570984, 5.69278, 0.0699997)
+shape = SubResource("BoxShape3D_rt3yr")

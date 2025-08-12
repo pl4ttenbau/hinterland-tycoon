@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=134 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -52,9 +52,11 @@
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="42_p6hwa"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="48_kkdmv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="49_el7bl"]
+[ext_resource type="PackedScene" uid="uid://c474km5fgqu6p" path="res://assets/meshes/deco/tent_1/tent_1.tscn" id="50_1vtbi"]
 [ext_resource type="PackedScene" uid="uid://stuogce200cl" path="res://assets/meshes/industry/generic_small/generic_small.tscn" id="53_l0gw6"]
 [ext_resource type="PackedScene" uid="uid://dpmf707hcg5r" path="res://assets/meshes/industry/warehouse_1/warehouse_1.tscn" id="54_1vtbi"]
 [ext_resource type="PackedScene" uid="uid://datqx0f0mdhmc" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.tscn" id="55_0y8xh"]
+[ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="57_0y8xh"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -81,6 +83,9 @@ noise = SubResource("FastNoiseLite_0uh3x")
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
+&"contour_color": Color(0.85, 0.85, 0.19, 1),
+&"contour_interval": 1.0,
+&"contour_thickness": 1.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -97,6 +102,7 @@ _shader_parameters = {
 &"projection_threshold": 0.42
 }
 world_background = 0
+show_contours = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
 transparency = 2
@@ -702,6 +708,7 @@ data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
 mesh_size = 24
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -818,6 +825,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3184.17, 4.65653, 1299.32)
 
 [node name="GantryCraneLong" parent="Deco" instance=ExtResource("49_el7bl")]
 transform = Transform3D(0.259881, 0, 0.965641, 0, 1, 0, -0.965641, 0, 0.259881, 3006.31, 4.94389, 1233.05)
+
+[node name="Tent1" parent="Deco" instance=ExtResource("50_1vtbi")]
+transform = Transform3D(0.326047, 0, 0.945354, 0, 1, 0, -0.945354, 0, 0.326047, 3334.67, 38.6941, 2742.59)
+
+[node name="Tent2" parent="Deco" instance=ExtResource("50_1vtbi")]
+transform = Transform3D(-0.998481, 0, 0.0551069, 0, 1, 0, -0.0551069, 0, -0.998481, 3340.95, 38.8701, 2746.49)
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
@@ -1152,3 +1165,6 @@ transform = Transform3D(-0.254939, 0, -0.966957, 0, 1, 0, 0.966957, 0, -0.254939
 
 [node name="WarehouseWooden" parent="." instance=ExtResource("55_0y8xh")]
 transform = Transform3D(-0.301621, 0, 0.953428, 0, 1, 0, -0.953428, 0, -0.301621, 3064.99, 4.674, 1287.46)
+
+[node name="Campfire" parent="." instance=ExtResource("57_0y8xh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3339.08, 38.6679, 2741.27)

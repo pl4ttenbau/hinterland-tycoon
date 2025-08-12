@@ -1,0 +1,67 @@
+# Blender 4.4.1 MTL File: 'half_timbered_1.blend'
+# www.blender.org
+
+newmtl brick
+Ns 94.117653
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_half_timbered_1_bricks_d.tga
+map_Bump -bm 1.000000 tex_half_timbered_1_bricks_n.tga
+
+newmtl door
+Ns 94.117653
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_half_timbered_1_door_d.tga
+map_Bump -bm 1.000000 tex_half_timbered_1_door_n.tga
+
+newmtl inside
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd tex_half_timbered_1_reflections.png
+
+newmtl roof
+Ns 94.117653
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_half_timbered_1_roof_d.tga
+map_Bump -bm 1.000000 tex_half_timbered_1_roof_n.tga
+
+newmtl window
+Ns 94.117653
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_half_timbered_1_window_d.tga
+map_Bump -bm 1.000000 tex_half_timbered_1_window_n.tga
+
+newmtl wood
+Ns 94.117653
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_half_timbered_1_wood_d.tga
+map_Bump -bm 1.000000 tex_half_timbered_1_wood_n.tga

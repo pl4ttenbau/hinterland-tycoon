@@ -6,19 +6,19 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k6kh0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6kh0"]
-size = Vector3(15.4799, 6.58325, 13.8879)
+size = Vector3(18.3074, 7.61292, 16.5604)
 
 [node name="GenericIndustrySm" type="Node3D"]
 script = ExtResource("1_7gmxi")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = ExtResource("1_kwqhb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_k6kh0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0294495, 3.25598, -0.0194092)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146126, 3.77081, 0.0566711)
 shape = SubResource("BoxShape3D_k6kh0")
