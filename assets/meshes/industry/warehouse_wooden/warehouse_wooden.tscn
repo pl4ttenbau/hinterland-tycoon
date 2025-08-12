@@ -13,6 +13,8 @@ script = ExtResource("1_5qinm")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 20.0
 mesh = ExtResource("1_iitmb")
 
 [node name="ClickableCollider" type="StaticBody3D" parent="."]
