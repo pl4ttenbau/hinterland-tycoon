@@ -832,6 +832,9 @@ transform = Transform3D(0.326047, 0, 0.945354, 0, 1, 0, -0.945354, 0, 0.326047, 
 [node name="Tent2" parent="Deco" instance=ExtResource("50_1vtbi")]
 transform = Transform3D(-0.998481, 0, 0.0551069, 0, 1, 0, -0.0551069, 0, -0.998481, 3340.95, 38.8701, 2746.49)
 
+[node name="Campfire" parent="Deco" instance=ExtResource("57_0y8xh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3339.08, 38.6679, 2741.27)
+
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
 
@@ -1165,6 +1168,3 @@ transform = Transform3D(-0.254939, 0, -0.966957, 0, 1, 0, 0.966957, 0, -0.254939
 
 [node name="WarehouseWooden" parent="." instance=ExtResource("55_0y8xh")]
 transform = Transform3D(-0.301621, 0, 0.953428, 0, 1, 0, -0.953428, 0, -0.301621, 3064.99, 4.674, 1287.46)
-
-[node name="Campfire" parent="." instance=ExtResource("57_0y8xh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3339.08, 38.6679, 2741.27)
