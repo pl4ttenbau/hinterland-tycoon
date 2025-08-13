@@ -21,6 +21,8 @@ script = ExtResource("1_bpgwp")
 metadata/_custom_type_script = "uid://cjoj48oprt1f3"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 400.0
+visibility_range_end_margin = 40.0
 mesh = ExtResource("1_qwf7s")
 surface_material_override/1 = SubResource("StandardMaterial3D_qwf7s")
 

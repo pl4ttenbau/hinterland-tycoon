@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://im3qmv7naoyb"]
+
+[ext_resource type="ArrayMesh" uid="uid://catv5q3tt2o6l" path="res://assets/meshes/infr/rail/bridge/truss_bridge/truss_bridge.obj" id="1_es16y"]
+[ext_resource type="Texture2D" uid="uid://bntuw1y310417" path="res://assets/meshes/infr/rail/bridge/truss_bridge/tex_truss_bridge_d.png" id="2_6phjt"]
+[ext_resource type="Texture2D" uid="uid://dv2m2285avbdr" path="res://assets/meshes/infr/rail/bridge/truss_bridge/tex_truss_bridge_n.png" id="3_buc2q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1r7v"]
+albedo_texture = ExtResource("2_6phjt")
+normal_enabled = true
+normal_texture = ExtResource("3_buc2q")
+
+[node name="TrussBridge" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_es16y")
+surface_material_override/0 = SubResource("StandardMaterial3D_n1r7v")
