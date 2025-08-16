@@ -15,15 +15,22 @@ func _enter_tree() -> void:
 	Managers.roads = self
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
+	
+func _ready() -> void:
+	load_roads()
+	Loggie.info("roads precreated")
 
+#region Road Loading
 func load_roads() -> void:
-	var full_json_path := JSON_PATH_FORMAT % GlobalState.loaded_map_name
+	var full_json_path := JSON_PATH_FORMAT % GlobalState.selected_map_name
 	var roads_arr_str: String = FileAccess.get_file_as_string(full_json_path)
 	for json_road in JSON.parse_string(roads_arr_str):
 		self.roads.append(RoadData.from_json(json_road))
 	GlobalState.roads = self.roads
 	self.roads_loaded.emit(self.roads)
+#endregion
 	
+#region Road Spawning
 func spawn_roads():
 	for road in GlobalState.roads:
 		spawn_road(road)
@@ -37,15 +44,16 @@ func spawn_road(road: RoadData):
 	self.containers.append(instanciated)
 	add_to_group(NODES_GROUP)
 	SignalBus.road_spawned.emit(instanciated)
-		
-func _ready() -> void:
-	load_roads()
-	Loggie.info("roads precreated")
+#endregion
 	
 func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
 
 func _on_world_update() -> void:
+	# self.hide_far_roads()
+	pass
+			
+func hide_far_roads():
 	for container: OuterRoad in self.containers:
 		var player: Node3D = %Player
 		if player:

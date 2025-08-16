@@ -49,6 +49,13 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 			road_node.set_meta("cross", cross)
 		_road.add_node(road_node)
 		node_index += 1
+		
+func get_type_scene() -> String:
+	if self.infr_type_key == "rural_road":
+		return "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
+	elif self.infr_type_key == "dirt_path":
+		return "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn"
+	return "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 
 func add_node(_road_node: RoadNode):
 	self.nodes.append(_road_node) 

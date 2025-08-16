@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpmf707hcg5r"]
+[gd_scene load_steps=6 format=3 uid="uid://dpmf707hcg5r"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/structures/outer_industry.gd" id="1_1jdkd"]
 [ext_resource type="ArrayMesh" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="2_fwiqu"]
+[ext_resource type="Script" uid="uid://bjj02tduewuut" path="res://game/gamescripts/nodes/common/clickable_collider.gd" id="3_fwiqu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8embk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0h862"]
+size = Vector3(14.406, 4.57373, 10.2098)
 
 [node name="Warehouse1" type="Node3D"]
 script = ExtResource("1_1jdkd")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("2_fwiqu")
+
+[node name="ClickableCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_8embk")
+script = ExtResource("3_fwiqu")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178101, 2.27271, 0.408142)
+shape = SubResource("BoxShape3D_0h862")

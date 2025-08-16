@@ -26,7 +26,7 @@ func parse_towns_json(_json_str: String) -> Array[TownData]:
 	return town_obj_arr
 				
 func load_towns():
-	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.loaded_map_name
+	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var town_json_str = FileAccess.get_file_as_string(town_file_path)
 	for parsed_town: TownData in parse_towns_json(town_json_str):
 		# save town itself in lists

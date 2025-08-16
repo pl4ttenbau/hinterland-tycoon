@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c474km5fgqu6p"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1dgkk82ueeby" path="res://assets/meshes/deco/tent_1/tent_1.obj" id="1_ns87g"]
+[ext_resource type="Texture2D" uid="uid://cnprr36jyojaa" path="res://assets/meshes/deco/tent_1/tex_tent_1_d.jpg" id="2_wsvma"]
+[ext_resource type="Texture2D" uid="uid://dnbwj11l7xtrx" path="res://assets/meshes/deco/tent_1/tex_tent_1_n.jpg" id="3_k8ksr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spdhy"]
+cull_mode = 2
+albedo_texture = ExtResource("2_wsvma")
+normal_enabled = true
+normal_texture = ExtResource("3_k8ksr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ns87g"]
+size = Vector3(2.71722, 1.86304, 4.40717)
+
+[node name="Tent1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+mesh = ExtResource("1_ns87g")
+surface_material_override/0 = SubResource("StandardMaterial3D_spdhy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.169224, 0.89856, -0.0844178)
+shape = SubResource("BoxShape3D_ns87g")

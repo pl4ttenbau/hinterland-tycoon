@@ -8,6 +8,8 @@ const MAX_VISIBLE_DIST := 300
 @export var tracks: Array[RailTrackData] = []
 @export var track_containers: Array[OuterRailTrack] = []
 
+@export var tracks_by_num: Dictionary = {}
+
 func _enter_tree() -> void:
 	Managers.rails = self
 	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
@@ -18,13 +20,19 @@ func _ready() -> void:
 	Loggie.info("rails precreated")
 
 func load_rail_tracks() -> void:
-	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.loaded_map_name
+	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
-		self.tracks.append(RailTrackData.from_json(json_track))
+		var track_obj := RailTrackData.from_json(json_track)
+		self.tracks.append(track_obj)
+		var track_num_str = "%d" % track_obj.num
+		self.tracks_by_num.set(track_num_str, track_obj)
+	# add to holding arrays
 	GlobalState.tracks = self.tracks
+	# trigger signal
 	SignalBus.rails_loaded.emit(self.tracks)
-	
+
+#region RailTrack Spawning
 func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
@@ -52,11 +60,7 @@ func spawn_rail_forks(parent_track: RailTrackData):
 	for fork: RailForkData in parent_track.forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
-		
-func get_cam_pos() -> Vector3:
-	if GlobalState.active_cam != null:
-		return GlobalState.active_cam.global_position
-	return GlobalState.player.global_position
+#endregion
 
 #region Event Listeners
 func _on_map_spawned(_container: TerrainContainer):
@@ -67,7 +71,14 @@ func _on_world_update() -> void:
 		var player: Node3D = %Player
 		if player:
 			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = self.get_cam_pos().distance_to(middle_pos)
+			var dist = self._get_cam_pos().distance_to(middle_pos)
 			if dist > MAX_VISIBLE_DIST: container.visible = false
 			else: container.visible = true
+#endregion
+
+#region Helper-Methods
+func _get_cam_pos() -> Vector3:
+	if GlobalState.active_cam != null:
+		return GlobalState.active_cam.global_position
+	return GlobalState.player.global_position
 #endregion

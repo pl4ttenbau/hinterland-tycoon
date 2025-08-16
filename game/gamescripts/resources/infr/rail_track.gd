@@ -1,8 +1,6 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailTrackData extends AbstractTrack
 
-const SCENE_PATH = "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"
-
 @export var nodes: Array[RailNodeData] = []
 @export_storage var stations: Array[RailStationData] = []
 @export_storage var forks: Array[RailForkData] = []
@@ -39,10 +37,11 @@ static func add_points_from_json(_json_track: Dictionary, _track: RailTrackData)
 		node_index += 1
 		
 static func get_by_num(_rail_num: int) -> RailTrackData:
-	if _rail_num > GlobalState.tracks.size() +1:
-		Loggie.error("Cannot get track %d; out of index" % _rail_num)
+	var found := Managers.rails.tracks_by_num.get(str(_rail_num)) as RailTrackData
+	if ! found:
+		Loggie.error("Cannot get track %d; out of index?" % _rail_num)
 		return null
-	return GlobalState.tracks[_rail_num -1]
+	return found
 	
 #region Add Nodes
 func add_node(rail_node: RailNodeData):

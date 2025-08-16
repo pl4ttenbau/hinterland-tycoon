@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://dg6j0pswyx2iv"]
 
-[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/services/spawners/terrain_container.gd" id="1_b3vrx"]
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_b3vrx"]
 [ext_resource type="Terrain3DMaterial" uid="uid://bdct80gpduqri" path="res://assets/packed/terrain_material_default.tres" id="2_lkt25"]
 [ext_resource type="Texture2D" uid="uid://m4k41chdta1u" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_dh.png" id="3_i2q80"]
 [ext_resource type="Texture2D" uid="uid://cgdhltvj20ln2" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_nr.png" id="4_peo3v"]

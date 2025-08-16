@@ -15,6 +15,8 @@ placed_res_bld_type = "polish_house_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("1_bh2hy")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]

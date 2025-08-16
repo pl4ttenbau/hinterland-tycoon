@@ -8,4 +8,6 @@ script = ExtResource("1_1m5m8")
 metadata/_custom_type_script = "uid://cjoj48oprt1f3"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 220.0
+visibility_range_end_margin = 22.0
 mesh = ExtResource("1_ebi7e")

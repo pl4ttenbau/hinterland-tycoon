@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'bush_hazel.blend'
+# www.blender.org
+
+newmtl CommonHazel_Mat
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_bush_hazel_d.png
+map_d tex_bush_hazel_d.png
+map_Bump -bm 1.000000 tex_bush_hazel_n.png

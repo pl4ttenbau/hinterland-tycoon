@@ -14,7 +14,7 @@ func _enter_tree() -> void:
 #region Loading
 func load_depots():
 	Loggie.info("Loading depots..")
-	var full_json_path := MAP_DEPOTS_FILEPATH_FORMAT % GlobalState.loaded_map_name
+	var full_json_path := MAP_DEPOTS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var json_str: String = FileAccess.get_file_as_string(full_json_path)
 	for depot_dict in JSON.parse_string(json_str).depots:
 		self.depots.append(RailDepotData.of_json(depot_dict))
