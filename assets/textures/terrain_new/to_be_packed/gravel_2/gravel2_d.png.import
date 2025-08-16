@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx3yb8aq0o2ot"
-path.s3tc="res://.godot/imported/forest_nr.png-8ff7ff0832e2006b2a9a8eabb0695832.s3tc.ctex"
+uid="uid://up2q7bi2rsq"
+path="res://.godot/imported/gravel2_d.png-2f6692491470f2c4102cadcc169abdbe.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/terrain_new/packed/forest/forest_nr.png"
-dest_files=["res://.godot/imported/forest_nr.png-8ff7ff0832e2006b2a9a8eabb0695832.s3tc.ctex"]
+source_file="res://assets/textures/terrain_new/to_be_packed/gravel_2/gravel2_d.png"
+dest_files=["res://.godot/imported/gravel2_d.png-2f6692491470f2c4102cadcc169abdbe.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

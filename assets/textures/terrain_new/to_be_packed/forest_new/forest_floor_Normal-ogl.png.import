@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmuxb171v0xg"
-path.s3tc="res://.godot/imported/forest_dh.png-48edc5389a95f2b1dccfb314e31b45bf.s3tc.ctex"
+uid="uid://bonyb3wm4krct"
+path="res://.godot/imported/forest_floor_Normal-ogl.png-9f9a20e1c795f363b08a5dfc3a7908cb.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/terrain_new/packed/forest/forest_dh.png"
-dest_files=["res://.godot/imported/forest_dh.png-48edc5389a95f2b1dccfb314e31b45bf.s3tc.ctex"]
+source_file="res://assets/textures/terrain_new/to_be_packed/forest_new/forest_floor_Normal-ogl.png"
+dest_files=["res://.godot/imported/forest_floor_Normal-ogl.png-9f9a20e1c795f363b08a5dfc3a7908cb.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
