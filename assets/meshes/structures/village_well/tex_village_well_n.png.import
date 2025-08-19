@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1cwxnbxhl3v5"
-path="res://.godot/imported/producer-icon.svg-be5a0b4c1a9db245c9812cb27a6a40d8.ctex"
+uid="uid://bedtqa1q6f5bd"
+path="res://.godot/imported/tex_village_well_n.png-63f7390bf73e72de55006ed0946c1d2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/cables/icons/producer-icon.svg"
-dest_files=["res://.godot/imported/producer-icon.svg-be5a0b4c1a9db245c9812cb27a6a40d8.ctex"]
+source_file="res://assets/meshes/structures/village_well/tex_village_well_n.png"
+dest_files=["res://.godot/imported/tex_village_well_n.png-63f7390bf73e72de55006ed0946c1d2d.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

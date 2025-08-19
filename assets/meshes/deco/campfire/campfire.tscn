@@ -36,6 +36,7 @@ size = Vector3(2.23694, 2.63739, 2.16064)
 [node name="Campfire" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 32
 visibility_range_end = 200.0
 visibility_range_end_margin = 20.0
 mesh = ExtResource("1_jli70")
