@@ -19,6 +19,8 @@ alpha_antialiasing_edge = 0.3
 cull_mode = 1
 albedo_texture = ExtResource("3_kksex")
 metallic_specular = 0.0
+backlight_enabled = true
+backlight = Color(0.548963, 0.548963, 0.548963, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa30x"]
 transparency = 2
@@ -28,6 +30,8 @@ alpha_antialiasing_edge = 0.3
 cull_mode = 2
 albedo_texture = ExtResource("4_n2c4d")
 metallic_specular = 0.0
+backlight_enabled = true
+backlight = Color(0.779291, 0.779291, 0.779291, 1)
 grow_amount = 0.992
 
 [node name="Tree2" type="Node3D"]
