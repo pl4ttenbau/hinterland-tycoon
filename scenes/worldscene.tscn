@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=32 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
@@ -32,6 +32,43 @@
 [sub_resource type="MultiMesh" id="MultiMesh_usal5"]
 transform_format = 1
 mesh = ExtResource("23_lhsit")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_usal5"]
+sky_top_color = Color(0.531276, 0.638049, 0.819422, 1)
+sky_horizon_color = Color(0.608579, 0.618465, 0.634073, 1)
+sky_energy_multiplier = 1.1
+
+[sub_resource type="Sky" id="Sky_u6qkf"]
+sky_material = SubResource("ProceduralSkyMaterial_usal5")
+
+[sub_resource type="Environment" id="Environment_vf50h"]
+background_mode = 2
+background_energy_multiplier = 1.12
+sky = SubResource("Sky_u6qkf")
+ambient_light_source = 3
+ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
+ambient_light_sky_contribution = 0.3
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_white = 6.0
+ssr_fade_in = 0.665742
+ssr_fade_out = 1.23114
+ssr_depth_tolerance = 29.21
+ssao_enabled = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_intensity = 1.1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.568581, 0.594123, 0.608135, 1)
+fog_density = 0.5501
+fog_sky_affect = 0.116
+fog_depth_curve = 2.63903
+fog_depth_begin = 463.2
+fog_depth_end = 1389.5
+volumetric_fog_density = 0.2078
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mg4js"]
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_vdtib")
@@ -143,3 +180,7 @@ visible = false
 multimesh = SubResource("MultiMesh_usal5")
 
 [node name="Campfire" parent="Features" instance=ExtResource("24_usal5")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vf50h")
+camera_attributes = SubResource("CameraAttributesPractical_mg4js")

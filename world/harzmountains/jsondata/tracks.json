@@ -1772,7 +1772,11 @@
 		"offset": [0, 0, 0],
 		"points": [
 			{
-				"pos": [3583.2, 4.5, 1125.3]
+				"pos": [3583.2, 4.5, 1125.3],
+				"fork": {
+					"connectiveTracks": [35],
+					"setTo": 35
+				}
 			},
 			{
 				"pos": [3560.9, 4.7, 1149.6]
@@ -1946,6 +1950,82 @@
 			},
 			{
 				"pos": [3806.3, 30.5, 2791.3]
+			}
+		]
+	},
+	{
+		"num": 35,
+		"name": "Wernigerode-Heudeber Mainline",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [3617.7, 4.1, 747.9],
+				"fork": {
+					"connectiveTracks": [36],
+					"setTo": 36
+				}
+			},
+			{
+				"pos": [3606.8, 3.7, 811.4]
+			},
+			{
+				"pos": [3587.9, 3.8, 896.5]
+			},
+			{
+				"pos": [3582.9, 4.5, 988.1]
+			},
+			{
+				"pos": [3594.3, 4.6, 1022.8]
+			},
+			{
+				"pos": [3589.5, 4.6, 1076.2]
+			},
+			{
+				"pos": [3595.6, 4.5, 1104.4]
+			},
+			{
+				"pos": [3583.2, 4.5, 1125.3],
+				"fork": {
+					"connectiveTracks": [30],
+					"setTo": 30
+				}
+			},
+		]
+	},
+	{
+		"num": 36,
+		"name": "Heudeber Mainline",
+		"type": "NORMAL_GAUGE",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [3617.7, 4.1, 747.9],
+				"fork": {
+					"connectiveTracks": [35],
+					"setTo": 35
+				}
+			},
+			{
+				"pos": [3629.0, 4.2, 694.6]
+			},
+			{
+				"pos": [3673.3, 4.1, 605.4]
+			},
+			{
+				"pos": [3715.2, 3.9, 518.7]
+			},	
+			{
+				"pos": [3760.5, 3.8, 458.6],
+				"station": {
+					"townName": "Heudeber",
+					"townNum": 11,
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
+			},	
+			{
+				"pos": [3772.6, 3.9, 425.9]
 			}
 		]
 	}

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b82twlvcceu4x"]
+
+[ext_resource type="ArrayMesh" uid="uid://k66vkjic2wlk" path="res://assets/meshes/deco/substation/substation.obj" id="1_amc61"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_amc61"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amc61"]
+size = Vector3(9.782, 4.53564, 5.92567)
+
+[node name="Substation" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0393515)
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_amc61")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_amc61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0275497, 2.26001, 0.109413)
+shape = SubResource("BoxShape3D_amc61")

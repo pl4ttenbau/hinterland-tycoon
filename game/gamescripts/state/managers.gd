@@ -3,6 +3,8 @@ extends Node
 #region Map & Terrain
 @export var map_list_loader: MapLoader
 @export var map_spawner: MapSpawner
+
+@export var deco: DecoSpawner
 #endregion
 
 #region Infrastructure
