@@ -88,6 +88,9 @@ noise = SubResource("FastNoiseLite_0uh3x")
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
+&"contour_color": Color(0.85, 0.85, 0.19, 1),
+&"contour_interval": 1.0,
+&"contour_thickness": 1.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -104,6 +107,7 @@ _shader_parameters = {
 &"projection_threshold": 0.42
 }
 world_background = 0
+show_contours = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nd3x"]
 transparency = 2
@@ -757,6 +761,7 @@ data_directory = "res://world/harzmountains/heightdata"
 material = SubResource("Terrain3DMaterial_0uh3x")
 assets = SubResource("Terrain3DAssets_mxgc7")
 mesh_size = 24
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 

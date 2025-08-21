@@ -35,6 +35,8 @@ surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 373
 material_override = SubResource("StandardMaterial3D_ryvcd")
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 
 [node name="Path3D" type="Path3D" parent="PathMesh3D"]
 curve = SubResource("Curve3D_8maub")
