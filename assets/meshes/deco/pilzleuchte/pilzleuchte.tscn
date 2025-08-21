@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://di33devkk6mhv"]
+
+[ext_resource type="ArrayMesh" uid="uid://7g4bmvs4n5da" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.obj" id="1_ki2ff"]
+[ext_resource type="Texture2D" uid="uid://gp5sr2haxqyg" path="res://assets/meshes/deco/pilzleuchte/tex_pilzleuchte_d.png" id="2_aygp4"]
+[ext_resource type="Texture2D" uid="uid://bm4fxk8suwlgl" path="res://assets/meshes/deco/pilzleuchte/tex_pilzleuchte_n.png" id="3_lvq1s"]
+[ext_resource type="Texture2D" uid="uid://df7muo5qidmkc" path="res://assets/meshes/deco/pilzleuchte/tex_pilzleuchte_r.png" id="4_re4ev"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a4rp"]
+cull_mode = 2
+albedo_texture = ExtResource("2_aygp4")
+roughness_texture = ExtResource("4_re4ev")
+normal_enabled = true
+normal_texture = ExtResource("3_lvq1s")
+
+[node name="Pilzleuchte" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ki2ff")
+surface_material_override/0 = SubResource("StandardMaterial3D_8a4rp")

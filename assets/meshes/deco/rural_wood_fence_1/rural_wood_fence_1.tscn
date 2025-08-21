@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://egg4cyr45ifw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bo8i57ai86euo" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1.obj" id="1_1tfm5"]
+[ext_resource type="Texture2D" uid="uid://da3ndlvlb45kd" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1_d.png" id="2_o3im6"]
+[ext_resource type="Texture2D" uid="uid://1ag3s0mvbnhw" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1_n.png" id="3_6p2a6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4m324"]
+albedo_texture = ExtResource("2_o3im6")
+roughness = 0.63
+normal_enabled = true
+normal_texture = ExtResource("3_6p2a6")
+
+[node name="RuralWoodFence1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_1tfm5")
+surface_material_override/0 = SubResource("StandardMaterial3D_4m324")
