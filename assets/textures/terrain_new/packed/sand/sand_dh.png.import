@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb8wsybeoj1g5"
-path.s3tc="res://.godot/imported/dirt_dh.png-6d7c2334ce63d074c3948b8db1d48dae.s3tc.ctex"
+uid="uid://cy6oiqs83gual"
+path.s3tc="res://.godot/imported/sand_dh.png-84aa67a28eeba79c8553535198e70600.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png"
-dest_files=["res://.godot/imported/dirt_dh.png-6d7c2334ce63d074c3948b8db1d48dae.s3tc.ctex"]
+source_file="res://assets/textures/terrain_new/packed/sand/sand_dh.png"
+dest_files=["res://.godot/imported/sand_dh.png-84aa67a28eeba79c8553535198e70600.s3tc.ctex"]
 
 [params]
 
