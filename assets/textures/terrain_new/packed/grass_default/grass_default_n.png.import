@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b32dech6vtlom"
-path.s3tc="res://.godot/imported/grass_default_nr.png-aa3310d429e240ad76ff5b0e59a9c6e3.s3tc.ctex"
+uid="uid://c04lw21mpw6wy"
+path="res://.godot/imported/grass_default_n.png-9dd8e5340d48a8f1446f7045a23842f8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/terrain_new/packed/grass_default/grass_default_nr.png"
-dest_files=["res://.godot/imported/grass_default_nr.png-aa3310d429e240ad76ff5b0e59a9c6e3.s3tc.ctex"]
+source_file="res://assets/textures/terrain_new/packed/grass_default/grass_default_n.png"
+dest_files=["res://.godot/imported/grass_default_n.png-9dd8e5340d48a8f1446f7045a23842f8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

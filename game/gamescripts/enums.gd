@@ -10,5 +10,7 @@ enum EntityTypes {
 	RESIDENCIAL,
 	INDUSTRY,
 	FORK,
-	GOOD
+	GOOD,
+	DECO_STATIC,
+	DECO_SPLINE
 }
