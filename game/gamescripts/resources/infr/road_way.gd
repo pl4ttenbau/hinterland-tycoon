@@ -1,7 +1,5 @@
 class_name RoadData extends AbstractTrack
 
-const SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
-
 @export var nodes: Array[RoadNode] = []
 @export_storage var crosses: Array[RoadCross] = []
 
@@ -18,7 +16,7 @@ func _to_string() -> String:
 func spawn() -> OuterRoad:
 	if ! self.curve: self.build_path()
 	# instanciate Container from PackedScene
-	var scene: Resource = preload(SCENE_PATH)
+	var scene: Resource = load(self.get_type_scene())
 	var _container: OuterRoad = scene.instantiate() as OuterRoad
 	_container.road = self
 	# add_to_group("Roads")
