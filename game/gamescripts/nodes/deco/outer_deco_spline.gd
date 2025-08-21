@@ -1,3 +1,5 @@
+## Scenes for Deco Splines must be in a subfolder of the "meshes/deco"-folder and
+## named <spline_key>_spline.tscn
 @icon("res://assets/icons/icon_deco.png")
 class_name OuterDecoSpline extends VisibleObject
 
