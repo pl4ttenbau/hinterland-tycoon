@@ -4,11 +4,12 @@ class_name RailsLoader extends Node
 const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
 const MAX_VISIBLE_DIST := 300
+const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
 @export var tracks: Array[RailTrackData] = []
 @export var track_containers: Array[OuterRailTrack] = []
-
 @export var tracks_by_num: Dictionary = {}
+@export var outer_buffers: Array[OuterRailBuffer] = []
 
 func _enter_tree() -> void:
 	Managers.rails = self
@@ -37,6 +38,7 @@ func spawn_rails():
 	for track_obj: RailTrackData in GlobalState.tracks:
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_forks(track_obj)
+		self.spawn_rail_buffers(track_obj)
 	# emit signals
 	SignalBus.rails_spawned.emit(track_containers)
 	
@@ -55,11 +57,28 @@ func spawn_rail_track(track_obj: RailTrackData):
 	self.track_containers.append(outer_track)
 	# emit
 	SignalBus.rail_spawned.emit(outer_track)
-	
+#endregion
+
+#region Rail Children Spawning
 func spawn_rail_forks(parent_track: RailTrackData):
 	for fork: RailForkData in parent_track.forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
+		
+func spawn_rail_buffers(parent_track: RailTrackData):
+	for rail_node: RailNodeData in parent_track.nodes:
+		if rail_node.is_end == true:
+			self.spawn_buffer(rail_node)
+			
+func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
+	var outer_buffer: OuterRailBuffer = load(BUFFER_PATH).instantiate()
+	outer_buffer.parent_node = rail_node
+	outer_buffer.adjust_rotation()
+	# add to list
+	self.outer_buffers.append(outer_buffer)
+	# and as track child
+	self.add_child(outer_buffer)
+	return outer_buffer
 #endregion
 
 #region Event Listeners

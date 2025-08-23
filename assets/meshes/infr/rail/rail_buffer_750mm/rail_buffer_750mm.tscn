@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0ekog7mdea2u"]
+
+[ext_resource type="Script" uid="uid://bbwknr2xuuraa" path="res://game/gamescripts/nodes/infr/outer_rail_buffer.gd" id="1_ak78i"]
+[ext_resource type="ArrayMesh" uid="uid://dao2wfyby2kyl" path="res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.obj" id="1_qjl6r"]
+
+[node name="RailBuffer750mm" type="Node3D"]
+script = ExtResource("1_ak78i")
+metadata/_custom_type_script = "uid://bbwknr2xuuraa"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.09116e-07, 0, -1.24814)
+mesh = ExtResource("1_qjl6r")
