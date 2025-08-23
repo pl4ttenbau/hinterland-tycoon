@@ -1,8 +1,9 @@
 class_name RailNodeData extends BasicInfrNodeData
 
-@export_storage var parent_track: RailTrackData
-@export_storage var fork: RailForkData
-@export_storage var station: RailStationData
+@export var parent_track: RailTrackData
+@export var fork: RailForkData
+@export var station: RailStationData
+@export var is_end: bool = false
 
 static func of(_index: int, _pos: Vector3, _trackType: String, _track: RailTrackData) -> RailNodeData:
 	var instance := RailNodeData.new()
@@ -13,6 +14,8 @@ static func of(_index: int, _pos: Vector3, _trackType: String, _track: RailTrack
 	return instance
 
 func parse_and_add_special(rail_node_dict: Dictionary):
+	if rail_node_dict.has("end") && rail_node_dict.get("end") == true:
+		self.is_end = true
 	if rail_node_dict.has("fork"):
 		var fork_dict: Dictionary = rail_node_dict.get("fork")
 		self.add_fork(RailForkData.of_dict(fork_dict, self))

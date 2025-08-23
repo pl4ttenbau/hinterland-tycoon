@@ -2,8 +2,8 @@
 class_name RailTrackData extends AbstractTrack
 
 @export var nodes: Array[RailNodeData] = []
-@export_storage var stations: Array[RailStationData] = []
-@export_storage var forks: Array[RailForkData] = []
+@export var stations: Array[RailStationData] = []
+@export var forks: Array[RailForkData] = []
 @export var starts_northwest: bool = true
 
 signal created(track: RailForkData)

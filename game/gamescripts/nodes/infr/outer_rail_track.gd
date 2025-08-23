@@ -12,11 +12,12 @@ func _enter_tree() -> void:
 
 @export var curve: Curve3D:
 	get(): return $TrackPath.curve
+	set(value): $TrackPath.curve = value
 
 @export var track: RailTrackData:
 	set(value):
 		self.entity = value
-		$TrackPath.curve = value.curve
+		self.curve = value.curve
 		self.track_assigned.emit(track)
 		
 static func get_scene_path(track_obj: RailTrackData) -> String:

@@ -60,4 +60,7 @@ func _register_connected_town():
 static func next_station_num() -> int:
 	RailStationData._last_station_num += 1
 	return RailStationData._last_station_num
+	
+func _to_string() -> String:
+	return "Station-%s@%s" % [self.station_name, self.town_name]
 #endregion
