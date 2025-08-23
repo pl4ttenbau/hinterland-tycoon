@@ -26,10 +26,9 @@ func load_deco_splines():
 	var json_str: String = FileAccess.get_file_as_string(json_path)
 	# load splines
 	for spline_dict in JSON.parse_string(json_str).splines:
-		Loggie.info(spline_dict)
 		self.splines.append(DecoSplineData.from_dict(spline_dict))
 	
-func spawn_deco_splines():
+func spawn_deco_splines() -> void:
 	for spline_obj in self.splines:
 		var outer_spline := spline_obj.spawn()
 		self.outer_splines.append(outer_spline)

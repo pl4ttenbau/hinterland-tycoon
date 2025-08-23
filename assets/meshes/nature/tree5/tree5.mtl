@@ -1,4 +1,4 @@
-# Blender 4.0.2 MTL File: 'tree5.blend'
+# Blender 4.4.1 MTL File: 'None'
 # www.blender.org
 
 newmtl cedar_01_bark
@@ -9,7 +9,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /home/cornelinux/Dokumente/Assets/Nature/tree5/cedar_01_bark_diffuse.png
+map_Kd cedar_01_bark_diffuse.png
 
 newmtl cedar_01_branch
 Ns 96.078453
@@ -18,5 +18,5 @@ Ks 0.000000 0.000000 0.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 illum 1
-map_Kd /home/cornelinux/Dokumente/Assets/Nature/tree5/cedar_01_branch_diffuse_256.png
-map_d /home/cornelinux/Dokumente/Assets/Nature/tree5/cedar_01_branch_diffuse_256.png
+map_Kd cedar_01_branch_diffuse_256.png
+map_d cedar_01_branch_diffuse_256.png
