@@ -190,8 +190,7 @@ multimesh = SubResource("MultiMesh_usal5")
 
 [node name="Tree3" parent="Features" instance=ExtResource("25_vf50h")]
 
-[node name="CustomTerrain3DParticles" parent="Features" node_paths=PackedStringArray("terrain") instance=ExtResource("26_mg4js")]
-terrain = NodePath("")
+[node name="CustomTerrain3DParticles" parent="Features" instance=ExtResource("26_mg4js")]
 instance_spacing = 0.296875
 rows = 80
 amount = 6400
