@@ -187,7 +187,7 @@ void start() {
 	// Calculate scale
 	vec3 scale = vec3(
 		mix(min_scale.x, max_scale.x, r.x) * width_modifier,
-		mix(min_scale.y, max_scale.y, r.y) + clods,
+		mix(min_scale.y, max_scale.y, r.y) + clods *0.1,
 		mix(min_scale.z, max_scale.z, r.z) * width_modifier) * patch;
 
 	// Apply scale to offset

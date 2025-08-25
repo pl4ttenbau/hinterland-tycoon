@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=35 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="5_kq7m5"]
@@ -25,6 +25,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="23_lhsit"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="24_usal5"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="25_vf50h"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="26_mg4js"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
@@ -33,6 +34,11 @@
 [sub_resource type="MultiMesh" id="MultiMesh_usal5"]
 transform_format = 1
 mesh = ExtResource("23_lhsit")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_c2xmk"]
+shape = 0
+section_length = 0.18
+section_segments = 1
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_usal5"]
 sky_top_color = Color(0.531276, 0.638049, 0.819422, 1)
@@ -183,6 +189,13 @@ multimesh = SubResource("MultiMesh_usal5")
 [node name="Campfire" parent="Features" instance=ExtResource("24_usal5")]
 
 [node name="Tree3" parent="Features" instance=ExtResource("25_vf50h")]
+
+[node name="CustomTerrain3DParticles" parent="Features" instance=ExtResource("26_mg4js")]
+instance_spacing = 0.296875
+rows = 80
+amount = 6400
+mesh = SubResource("RibbonTrailMesh_c2xmk")
+particle_count = 160000
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vf50h")

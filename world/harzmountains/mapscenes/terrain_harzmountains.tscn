@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=159 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
 [ext_resource type="Texture2D" uid="uid://epgjb2mwvxuw" path="res://assets/textures/terrain_new/packed/wheat/wheat_nr.png" id="23_1wsr2"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="23_bhs12"]
+[ext_resource type="PackedScene" uid="uid://dpva5i8x2a8i1" path="res://assets/meshes/deco/haybale/haybale.tscn" id="23_gf88f"]
 [ext_resource type="Texture2D" uid="uid://d0y1uiglfdsxk" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh.png" id="23_kkdmv"]
 [ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="24_hvil5"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
@@ -58,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_1wsr2"]
 [ext_resource type="Texture2D" uid="uid://n1b7x14pidwk" path="res://assets/textures/terrain_new/packed/plowed/plowed_nr.png" id="40_6egt6"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="40_kfgxf"]
+[ext_resource type="PackedScene" uid="uid://baeywcrtv0l1f" path="res://assets/meshes/structures/village_house_2/village_house_2.tscn" id="42_nfbri"]
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="42_p6hwa"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="48_kkdmv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="49_el7bl"]
@@ -69,6 +71,7 @@
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="57_0y8xh"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="63_76csh"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/rail/bridge/truss_bridge/truss_bridge.tscn" id="63_th5q3"]
+[ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="71_gf88f"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -228,18 +231,89 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teud8"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("11_algog")
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
+[sub_resource type="Shader" id="Shader_0lssg"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
+uniform float alpha_scissor_threshold : hint_range(0.0, 1.0, 0.001);
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec4 backlight : source_color;
+uniform sampler2D texture_backlight : hint_default_black, filter_linear_mipmap, repeat_enable;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+
+	// Vertex Color Use as Albedo: Enabled
+	albedo_tex *= COLOR;
+
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	ALPHA *= albedo.a * albedo_tex.a;
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+
+	// Distance Fade: Pixel Alpha
+	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, length(VERTEX)), 0.0, 1.0);
+
+	// Backlight: Enabled
+	vec3 backlight_tex = texture(texture_backlight, base_uv).rgb;
+	BACKLIGHT = (backlight.rgb + backlight_tex);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6egt6"]
+render_priority = 0
+shader = SubResource("Shader_0lssg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("11_algog")
+shader_parameter/distance_fade_min = 128.0
+shader_parameter/distance_fade_max = 96.0
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/albedo_texture_size = Vector2i(1486, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_giarj"]
 name = "Grain Row"
@@ -248,7 +322,7 @@ generated_type = 1
 height_offset = 0.5
 density = 2.0
 cast_shadows = 0
-material_override = SubResource("StandardMaterial3D_teud8")
+material_override = SubResource("ShaderMaterial_6egt6")
 generated_faces = 1
 generated_size = Vector2(3.5, 1.5)
 last_lod = 0
@@ -349,6 +423,15 @@ name = "pilzleuchte"
 id = 20
 scene_file = ExtResource("22_a0w5c")
 density = 2.19898
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yd6n5"]
+name = "haybale"
+id = 21
+scene_file = ExtResource("23_gf88f")
+density = 0.525
 last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
@@ -474,7 +557,7 @@ roughness = 0.384
 uv_scale = 0.33
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_mxgc7"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), SubResource("Terrain3DMeshAsset_6iyiq"), SubResource("Terrain3DMeshAsset_ohjow"), SubResource("Terrain3DMeshAsset_ycvjs"), SubResource("Terrain3DMeshAsset_wh85d"), SubResource("Terrain3DMeshAsset_x08in"), SubResource("Terrain3DMeshAsset_bhs12"), SubResource("Terrain3DMeshAsset_dci7w"), SubResource("Terrain3DMeshAsset_algog"), SubResource("Terrain3DMeshAsset_giarj"), SubResource("Terrain3DMeshAsset_teud8"), SubResource("Terrain3DMeshAsset_0ryhu"), SubResource("Terrain3DMeshAsset_e0u24"), SubResource("Terrain3DMeshAsset_656qc"), SubResource("Terrain3DMeshAsset_pdaa5"), SubResource("Terrain3DMeshAsset_1wsr2"), SubResource("Terrain3DMeshAsset_p6hwa"), SubResource("Terrain3DMeshAsset_1806y"), SubResource("Terrain3DMeshAsset_e4gxf"), SubResource("Terrain3DMeshAsset_th5q3"), SubResource("Terrain3DMeshAsset_aq4xy")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_tp1hv"), SubResource("Terrain3DMeshAsset_6iyiq"), SubResource("Terrain3DMeshAsset_ohjow"), SubResource("Terrain3DMeshAsset_ycvjs"), SubResource("Terrain3DMeshAsset_wh85d"), SubResource("Terrain3DMeshAsset_x08in"), SubResource("Terrain3DMeshAsset_bhs12"), SubResource("Terrain3DMeshAsset_dci7w"), SubResource("Terrain3DMeshAsset_algog"), SubResource("Terrain3DMeshAsset_giarj"), SubResource("Terrain3DMeshAsset_teud8"), SubResource("Terrain3DMeshAsset_0ryhu"), SubResource("Terrain3DMeshAsset_e0u24"), SubResource("Terrain3DMeshAsset_656qc"), SubResource("Terrain3DMeshAsset_pdaa5"), SubResource("Terrain3DMeshAsset_1wsr2"), SubResource("Terrain3DMeshAsset_p6hwa"), SubResource("Terrain3DMeshAsset_1806y"), SubResource("Terrain3DMeshAsset_e4gxf"), SubResource("Terrain3DMeshAsset_th5q3"), SubResource("Terrain3DMeshAsset_aq4xy"), SubResource("Terrain3DMeshAsset_yd6n5")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_8qtck"), SubResource("Terrain3DTextureAsset_ad1h1"), SubResource("Terrain3DTextureAsset_er67g"), SubResource("Terrain3DTextureAsset_4nd3x"), SubResource("Terrain3DTextureAsset_0ryhu"), SubResource("Terrain3DTextureAsset_giarj"), SubResource("Terrain3DTextureAsset_jvv7c"), SubResource("Terrain3DTextureAsset_h4u4t"), SubResource("Terrain3DTextureAsset_nfbri"), SubResource("Terrain3DTextureAsset_yd6n5")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoc0b"]
@@ -782,14 +865,28 @@ shadow_enabled = true
 directional_shadow_mode = 1
 
 [node name="TerrainOccluder" type="OccluderInstance3D" parent="WorldTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0018, -6, -8.41406)
 occluder = ExtResource("11_0uh3x")
+
+[node name="PolishHouse2" parent="WorldTerrain/TerrainOccluder" instance=ExtResource("48_kkdmv")]
+transform = Transform3D(0.186181, 0, 0.982515, 0, 1, 0, -0.982515, 0, 0.186181, 2342.03, 14.3166, 1164.71)
 
 [node name="DecoOccluder" type="OccluderInstance3D" parent="WorldTerrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53687, -3.1062, 2.22168)
 occluder = ExtResource("11_0uh3x")
 
+[node name="VillageHouse2" parent="WorldTerrain/DecoOccluder" instance=ExtResource("42_nfbri")]
+transform = Transform3D(0.198632, 0, 0.980074, 0, 1, 0, -0.980074, 0, 0.198632, 2358.02, 11.7506, 1182.79)
+
 [node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("37_jvv7c")]
 terrain = NodePath("..")
+instance_spacing = 0.296875
+rows = 80
+amount = 6400
+particle_count = 160000
+
+[node name="PolishHouse3" parent="WorldTerrain" instance=ExtResource("35_iof1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2283.78, 10.544, 1172.73)
 
 [node name="Houses" type="Node" parent="."]
 
@@ -810,6 +907,12 @@ placed_town_num = 16
 
 [node name="Bauwagen" parent="Houses" instance=ExtResource("35_5l13i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2290.23, 12.5892, 1422.54)
+
+[node name="PolishHouse4" parent="Houses" instance=ExtResource("35_iof1f")]
+transform = Transform3D(0.258127, 0, 0.966111, 0, 1, 0, -0.966111, 0, 0.258127, 2344.71, 9.23547, 1175.81)
+
+[node name="VillageHouse3" parent="Houses" instance=ExtResource("71_gf88f")]
+transform = Transform3D(0.260319, 0, 0.965523, 0, 1, 0, -0.965523, 0, 0.260319, 2323.25, 9.62969, 1170.15)
 
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("5_o4w5w")

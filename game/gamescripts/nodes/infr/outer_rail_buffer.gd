@@ -13,8 +13,10 @@ func adjust_rotation():
 	if ! self.parent_node:
 		Loggie.error("Cannot spawn track vuffer correctly: not connected to rail node!")
 	var rot_target_node: RailNodeData = null
-	if self.is_at_end(): rot_target_node = self.parent_node.get_previous()
-	else: rot_target_node = self.parent_node.get_next()
+	if self.is_at_end():
+		rot_target_node = self.parent_node.get_previous()
+	else: 
+		rot_target_node = self.parent_node.get_next()
 	if rot_target_node && rot_target_node.position:
 		self.look_at_from_position(self.position, rot_target_node.position)
 
