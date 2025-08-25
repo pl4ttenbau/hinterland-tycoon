@@ -327,7 +327,7 @@
 			{
 				"pos": [2279.3, 8.7, 1122.6],
 				"cross": {
-					"connectiveRoads": [9, 10]
+					"connectiveRoads": [9, 10, 28]
 				}
 			},
 			{
@@ -862,6 +862,29 @@
 			},
 			{
 				"pos": [2388.9, 7.2, 1057.0]
+			}
+		]
+	},
+	{
+		"num": 28,
+		"type": "dirt_path",
+		"name": "Darlingerode Kleiner Feldweg",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [2279.3, 8.7, 1122.6],
+				"cross": {
+					"connectiveRoads": [9, 10, 11]
+				}
+			},
+			{
+				"pos": [2278.9, 9.6, 1141.6]
+			},
+			{
+				"pos": [2277.4, 10.3, 1152.1]
+			},
+			{
+				"pos": [2279.2, 10.7, 1173.5]
 			}
 		]
 	}

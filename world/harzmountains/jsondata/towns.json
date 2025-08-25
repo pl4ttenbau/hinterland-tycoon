@@ -83,7 +83,8 @@
 	{
 		"num": 16,
 		"name": "Darlingerode",
-		"pos": [2348, 1221]
+		"pos": [2348, 1221],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 17,
