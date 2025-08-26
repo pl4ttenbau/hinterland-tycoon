@@ -15,6 +15,7 @@ func _init() -> void:
 func load_map_data():
 	var map_folders := DirAccess.get_directories_at(MAP_FOLDER_PATH)
 	for map_folder_name: String in map_folders:
+		if map_folder_name == "default": continue
 		if map_folder_name == "heightdata": continue
 		var full_folder_path := MAP_FOLDER_PATH + "/" + map_folder_name + \
 			"/jsondata/"

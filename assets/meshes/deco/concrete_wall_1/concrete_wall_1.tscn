@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gccyxvcce125"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0xl572vmq2uh" path="res://assets/meshes/deco/concrete_wall_1/concrete_wall_1.obj" id="1_37yal"]
+
+[node name="ConcreteWall1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_37yal")

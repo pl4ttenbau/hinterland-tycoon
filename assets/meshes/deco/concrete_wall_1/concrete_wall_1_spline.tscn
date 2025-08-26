@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bapyryldba3u8"]
+
+[ext_resource type="Script" uid="uid://cj7eqw8kkicjm" path="res://game/gamescripts/nodes/deco/outer_deco_spline.gd" id="1_lqt1h"]
+[ext_resource type="ArrayMesh" uid="uid://b0xl572vmq2uh" path="res://assets/meshes/deco/concrete_wall_1/concrete_wall_1.obj" id="2_fljmj"]
+[ext_resource type="Texture2D" uid="uid://b4ujemwj8y0db" path="res://assets/meshes/deco/concrete_wall_1/tex_concrete_wall_1.png" id="3_kgnwt"]
+[ext_resource type="Texture2D" uid="uid://c2fvm3hmbg3sf" path="res://assets/meshes/deco/concrete_wall_1/tex_concrete_wall_1_n.png" id="4_8004j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4oyt"]
+albedo_texture = ExtResource("3_kgnwt")
+normal_enabled = true
+normal_texture = ExtResource("4_8004j")
+
+[sub_resource type="Curve3D" id="Curve3D_8maub"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="ConcreteWall1Spline" type="Node3D"]
+script = ExtResource("1_lqt1h")
+metadata/_custom_type_script = "uid://cj7eqw8kkicjm"
+
+[node name="PathMesh3D" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+path_3d = NodePath("Path3D")
+mesh = ExtResource("2_fljmj")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 77
+material_override = SubResource("StandardMaterial3D_c4oyt")
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+
+[node name="Path3D" type="Path3D" parent="PathMesh3D"]
+curve = SubResource("Curve3D_8maub")

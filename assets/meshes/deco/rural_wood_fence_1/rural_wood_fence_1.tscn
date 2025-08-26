@@ -13,5 +13,7 @@ normal_texture = ExtResource("3_6p2a6")
 [node name="RuralWoodFence1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("1_1tfm5")
 surface_material_override/0 = SubResource("StandardMaterial3D_4m324")
