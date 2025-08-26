@@ -19,5 +19,7 @@ metadata/_custom_type_script = "uid://cxm4x8fqdhuii"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 2
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
 mesh = ExtResource("1_8qde8")
 surface_material_override/0 = SubResource("StandardMaterial3D_dwo5h")

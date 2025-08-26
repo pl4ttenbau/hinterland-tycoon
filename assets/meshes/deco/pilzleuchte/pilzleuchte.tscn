@@ -15,5 +15,7 @@ normal_texture = ExtResource("3_lvq1s")
 [node name="Pilzleuchte" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 250.0
+visibility_range_end_margin = 25.0
 mesh = ExtResource("1_ki2ff")
 surface_material_override/0 = SubResource("StandardMaterial3D_8a4rp")

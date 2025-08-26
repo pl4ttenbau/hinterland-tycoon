@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://5wcyosapiqd6"]
+
+[ext_resource type="ArrayMesh" uid="uid://llv7d62re5i1" path="res://assets/meshes/deco/watchtower/watchtower.obj" id="1_m834t"]
+[ext_resource type="Texture2D" uid="uid://cmotb2gs8to16" path="res://assets/meshes/deco/watchtower/tex_watchtower_d.png" id="2_gsa3c"]
+[ext_resource type="Texture2D" uid="uid://bw701cs8sv4v7" path="res://assets/meshes/deco/watchtower/tex_watchtower_n.png" id="3_toxpm"]
+[ext_resource type="Texture2D" uid="uid://caksjgp4svkmk" path="res://assets/meshes/deco/watchtower/tex_watchtower_r.png" id="4_cwob8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jnyn"]
+albedo_texture = ExtResource("2_gsa3c")
+roughness_texture = ExtResource("4_cwob8")
+normal_enabled = true
+normal_texture = ExtResource("3_toxpm")
+
+[node name="Watchtower" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_m834t")
+surface_material_override/0 = SubResource("StandardMaterial3D_2jnyn")

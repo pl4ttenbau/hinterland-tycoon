@@ -13,4 +13,6 @@ normal_texture = ExtResource("2_3mreq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_1b5oo")
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("3_ou8ss")

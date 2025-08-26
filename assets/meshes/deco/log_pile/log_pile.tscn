@@ -23,6 +23,8 @@ size = Vector3(3.48663, 1.19342, 3.43216)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0540901, 0.0065217, 0.045553)
 material_override = SubResource("StandardMaterial3D_nnqiu")
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("4_de371")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
