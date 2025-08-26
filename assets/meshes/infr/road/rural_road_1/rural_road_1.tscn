@@ -5,4 +5,6 @@
 [node name="RuralRoad1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 250.0
+visibility_range_end_margin = 50.0
 mesh = ExtResource("1_2mygr")

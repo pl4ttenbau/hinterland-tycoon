@@ -64,6 +64,8 @@ surface_1/tilt = true
 surface_1/offset = Vector2(0, 0)
 surface_1/triangle_count = 0
 material_override = SubResource("StandardMaterial3D_a1me6")
+visibility_range_end = 330.0
+visibility_range_end_margin = 30.0
 
 [node name="BedPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
@@ -78,3 +80,5 @@ surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
 surface_0/triangle_count = 0
 material_override = SubResource("StandardMaterial3D_4emru")
+visibility_range_end = 330.0
+visibility_range_end_margin = 33.0

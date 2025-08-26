@@ -81,11 +81,7 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 	return outer_buffer
 #endregion
 
-#region Event Listeners
-func _on_map_spawned(_container: TerrainContainer):
-	self.spawn_rails()
-	
-func _on_world_update() -> void:
+func hide_far_rails():
 	for container: OuterRailTrack in self.track_containers:
 		var player: Node3D = %Player
 		if player:
@@ -93,6 +89,15 @@ func _on_world_update() -> void:
 			var dist = self._get_cam_pos().distance_to(middle_pos)
 			if dist > MAX_VISIBLE_DIST: container.visible = false
 			else: container.visible = true
+
+#region Event Listeners
+func _on_map_spawned(_container: TerrainContainer):
+	self.spawn_rails()
+	
+func _on_world_update() -> void:
+	# self.hide_far_rails()
+	pass
+	
 #endregion
 
 #region Helper-Methods

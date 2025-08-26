@@ -9,4 +9,6 @@ metadata/_custom_type_script = "uid://bbwknr2xuuraa"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.09116e-07, 0, -1.24814)
+visibility_range_end = 250.0
+visibility_range_end_margin = 25.0
 mesh = ExtResource("1_qjl6r")
