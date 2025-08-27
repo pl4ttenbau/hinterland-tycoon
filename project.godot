@@ -83,7 +83,8 @@ move_right={
 
 [physics]
 
-3d/physics_engine="GodotPhysics3D"
+3d/physics_engine="Jolt Physics"
+jolt_physics_3d/limits/world_boundary_shape_size=6000.0
 
 [rendering]
 

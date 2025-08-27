@@ -2,7 +2,8 @@
 	{
 		"num": 0,
 		"name": "Wernigerode",
-		"pos": [3107, 1353]
+		"pos": [3107, 1353],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 1,

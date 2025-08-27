@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://18qe7fevwwwu"]
+
+[ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="1_hcwwi"]
+
+[node name="Rathaus" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.1, 0, 0, 0, 2.1, 0, 0, 0, 2.1, 0, 0, 0)
+layers = 8
+visibility_range_end = 400.0
+visibility_range_end_margin = 40.0
+mesh = ExtResource("1_hcwwi")

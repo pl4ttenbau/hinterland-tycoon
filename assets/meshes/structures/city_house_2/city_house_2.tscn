@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcb46mio1xry1"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ej4o3"]
+[ext_resource type="ArrayMesh" uid="uid://bpvox0cmvj8df" path="res://assets/meshes/structures/city_house_2/city_house_2.obj" id="2_i4yxx"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_p4h6d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4h6d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slvg6"]
+size = Vector3(7.48216, 13.2784, 9.39987)
+
+[node name="CityHouse2" type="Node3D"]
+script = ExtResource("1_ej4o3")
+placed_res_bld_type = "city_house_2"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
+mesh = ExtResource("2_i4yxx")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_p4h6d")
+script = ExtResource("3_p4h6d")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0932999, 6.67155, 0.0157623)
+shape = SubResource("BoxShape3D_slvg6")

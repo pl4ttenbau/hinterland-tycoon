@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'water_tower_big.blend'
+# www.blender.org
+
+newmtl BigWaterTower
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd tex_water_tower_big_d.png
+map_Ns tex_water_tower_big_r.png
+map_Bump -bm 1.000000 tex_water_tower_big_n.png
