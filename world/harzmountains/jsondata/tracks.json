@@ -2021,7 +2021,7 @@
 	{	
 		"num": 37,
 		"name": "Brocken Spitze Runter",
-		"type": "NORMAL_GAUGE",
+		"type": "750_MM",
 		"offset": [0, 0, 0],
 		"points": [
 			{
@@ -2049,6 +2049,30 @@
 					"connectiveTracks": [27],
 					"setTo": 27
 				}
+			}
+		]
+	},
+	{
+		"num": 38,
+		"name": "HSB Wernigerode Kleinbhf Nebengleis",
+		"type": "750_MM",
+		"offset": [0, 0, 0],
+		"points": [
+			{
+				"pos": [3121.3, 5.6, 1302.6],
+				"end": true
+			},
+			{
+				"pos": [3094.7, 5.6, 1305.2]
+			},
+			{
+				"pos": [3081.3, 5.5, 1306.1]
+			},
+			{
+				"pos": [3068.2, 5.5, 1303.8]
+			},
+			{
+				"pos": [3059.7, 5.5, 1303.4]
 			}
 		]
 	}

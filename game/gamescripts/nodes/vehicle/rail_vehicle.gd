@@ -89,7 +89,6 @@ func _on_speed_timer_tick():
 func rotate_to(target_pos: Vector3):
 	var rot_before := self.global_rotation
 	self.look_at(target_pos, Vector3(0,1,0))
-	var rot_target := global_rotation
 	self.global_rotation = rot_before
 	self.look_at(target_pos, Vector3(0,1,0))
 	

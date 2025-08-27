@@ -1,0 +1,14 @@
+# Blender 4.4.1 MTL File: 'city_house_2.blend'
+# www.blender.org
+
+newmtl NoName,1
+Ka 1.000000 1.000000 1.000000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.996078
+illum 9
+map_Kd tex_city_house_2_d.png
+map_Ns tex_city_house_2_r.png
+map_refl tex_city_house_2_m.png
+map_Bump -bm 1.000000 tex_city_house_2_n.png

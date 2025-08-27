@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxr0m833vfemd"]
+[gd_scene load_steps=7 format=3 uid="uid://cxr0m833vfemd"]
 
 [ext_resource type="ArrayMesh" uid="uid://c8bfk7ddm2vuc" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ryg52"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_rveds"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rveds"]
+albedo_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+metallic = 1.0
+roughness = 0.25
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rveds"]
 
@@ -16,6 +21,7 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_78jwu")
+surface_material_override/2 = SubResource("StandardMaterial3D_rveds")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_rveds")

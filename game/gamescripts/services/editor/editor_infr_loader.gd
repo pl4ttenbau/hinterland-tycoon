@@ -3,6 +3,8 @@ extends EditorScript
 
 const MAP_KEY = "harzmountains" # change here
 const TRACKS_JSON_PATH_FORMAT = "res://world/%s/jsondata/tracks.json"
+const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
+
 
 @export_storage var parent: Node3D:
 	get():
@@ -14,6 +16,7 @@ const TRACKS_JSON_PATH_FORMAT = "res://world/%s/jsondata/tracks.json"
 func _run():
 	self.clear_editor_tracks()
 	self.spawn_track_paths()
+	self.spawn_road_paths()
 
 func clear_editor_tracks():
 	for child: Node in self.parent.get_children():
@@ -26,10 +29,25 @@ func spawn_track_paths():
 	for track_dict: Dictionary in rails_json_arr:
 		var track_num: int = track_dict.get("num")
 		var path: Path3D = Path3D.new()
-		path.name = "EditorTrack_Path_%d" % track_num
+		path.name = "Editor_Track%d" % track_num
 		path.set_meta("track_num", track_num)
 		path.curve = Curve3D.new()
 		for point in track_dict.points:
+			var vec3: Vector3 = vec3_from_float_arr(point.pos)
+			path.curve.add_point(vec3)
+		self.parent.add_child(path, true)
+		path.owner = get_scene()
+		
+func spawn_road_paths():
+	var file_path := ROADS_JSON_PATH_FORMAT % MAP_KEY
+	var roads_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
+	for road_dict: Dictionary in roads_json_arr:
+		var road_num: int = road_dict.get("num")
+		var path: Path3D = Path3D.new()
+		path.name = "Editor_Road%d" % road_num
+		path.set_meta("road_num", road_num)
+		path.curve = Curve3D.new()
+		for point in road_dict.points:
 			var vec3: Vector3 = vec3_from_float_arr(point.pos)
 			path.curve.add_point(vec3)
 		self.parent.add_child(path, true)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck6t5hx5n8rva"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_fravo"]
+[ext_resource type="ArrayMesh" uid="uid://bwe3hdlyw2gqu" path="res://assets/meshes/structures/city_house_3/city_house_3.obj" id="2_6kui1"]
+[ext_resource type="Texture2D" uid="uid://dtfmpluhy7klq" path="res://assets/meshes/structures/city_house_3/tex_city_house_3_d.png" id="3_e3lrm"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_gtjmp"]
+[ext_resource type="Texture2D" uid="uid://d4edqeb7vu86f" path="res://assets/meshes/structures/city_house_3/tex_city_house_3_m.png" id="4_ig4dg"]
+[ext_resource type="Texture2D" uid="uid://evpkkdnhf5gw" path="res://assets/meshes/structures/city_house_3/tex_city_house_3_n.png" id="5_5p0b2"]
+[ext_resource type="Texture2D" uid="uid://cyqbl3lg87t0v" path="res://assets/meshes/structures/city_house_3/tex_city_house_3_r.png" id="6_tyx4y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ti6h2"]
+albedo_texture = ExtResource("3_e3lrm")
+metallic = 1.0
+metallic_specular = 0.88
+metallic_texture = ExtResource("4_ig4dg")
+roughness_texture = ExtResource("6_tyx4y")
+normal_enabled = true
+normal_texture = ExtResource("5_5p0b2")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e3lrm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e3lrm"]
+size = Vector3(8.79221, 10.5796, 12.5292)
+
+[node name="CityHouse3" type="Node3D"]
+script = ExtResource("1_fravo")
+placed_res_bld_type = "city_house_3"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
+visibility_range_end = 330.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("2_6kui1")
+surface_material_override/0 = SubResource("StandardMaterial3D_ti6h2")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_e3lrm")
+script = ExtResource("3_gtjmp")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083725, 5.35609, 0.0038147)
+shape = SubResource("BoxShape3D_e3lrm")
