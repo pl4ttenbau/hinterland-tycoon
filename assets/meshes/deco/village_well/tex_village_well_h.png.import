@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca4v8s0pc1q18"
-path="res://.godot/imported/tex_village_well_r.png-505293fa0e0f687e5ab3d9cd39bf77c4.ctex"
+uid="uid://xjbrpkxj3sam"
+path="res://.godot/imported/tex_village_well_h.png-3ab3da60729ae72c87117264cf67b706.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/structures/village_well/tex_village_well_r.png"
-dest_files=["res://.godot/imported/tex_village_well_r.png-505293fa0e0f687e5ab3d9cd39bf77c4.ctex"]
+source_file="res://assets/meshes/deco/village_well/tex_village_well_h.png"
+dest_files=["res://.godot/imported/tex_village_well_h.png-3ab3da60729ae72c87117264cf67b706.ctex"]
 
 [params]
 

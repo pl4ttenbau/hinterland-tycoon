@@ -5,7 +5,7 @@ const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 static var _last_fork_num = -1
 
 # json object properties
-@export var connectiveTracks: Array[int] = []
+@export var connective_tracks: Array[int] = []
 
 @export var all_connective_tracks: Array[int] = []
 
@@ -36,7 +36,7 @@ static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailForkData
 	inst.all_connective_tracks.append(parent.parent_track.num)
 	var _connective_tracks = fork_dict.get("connectiveTracks") as Array
 	for connective_track in _connective_tracks:
-		inst.connectiveTracks.append(int(connective_track))
+		inst.connective_tracks.append(int(connective_track))
 		inst.all_connective_tracks.append(int(connective_track))
 	# set to
 	inst.set_to = fork_dict.get("setTo", null)

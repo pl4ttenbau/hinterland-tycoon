@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0xb4aat57wrt"]
+
+[ext_resource type="ArrayMesh" uid="uid://b883p7huvrb6d" path="res://assets/meshes/deco/village_well/village_well.obj" id="1_72qwf"]
+
+[node name="VillageWell" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 32
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_72qwf")
