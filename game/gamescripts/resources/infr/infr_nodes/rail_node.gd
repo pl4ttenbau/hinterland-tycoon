@@ -32,8 +32,8 @@ func add_station(_station: RailStationData):
 func add_fork(_fork: RailForkData):
 	self.fork = _fork
 	# add to track & global array
-	self.parent_track.add_fork(_fork)
-	GlobalState.forks.append(_fork)
+	# self.parent_track.add_fork(_fork)
+	# GlobalState.forks.append(_fork)
 	
 func as_ref() -> RailNodeRef:
 	var track_num: int = self.parent_track.num
