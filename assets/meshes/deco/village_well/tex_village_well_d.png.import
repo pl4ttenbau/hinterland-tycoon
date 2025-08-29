@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3h02ksc0ldw1"
-path.s3tc="res://.godot/imported/tex_village_well_d.png-a5cddbb5465ab003ac8c83e8e608835c.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_village_well_d.png-fca1a1fe5a0442a7417756360a13b6dd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/village_well/tex_village_well_d.png"
-dest_files=["res://.godot/imported/tex_village_well_d.png-a5cddbb5465ab003ac8c83e8e608835c.s3tc.ctex"]
+source_file="res://assets/meshes/deco/village_well/tex_village_well_d.png"
+dest_files=["res://.godot/imported/tex_village_well_d.png-fca1a1fe5a0442a7417756360a13b6dd.s3tc.ctex"]
 
 [params]
 

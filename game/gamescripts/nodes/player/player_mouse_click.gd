@@ -27,6 +27,12 @@ func cast_ray(screen_pos: Vector2):
 func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if collider:
+		if collider is RailForkCollider:
+			var c_ref: ClickRef = collider.get_click_ref()
+			var fork: RailForkData  = RailForkData.get_by_num(c_ref.entity_num)
+			if fork:
+				fork.set_to_next_track()
+			return
 		if collider is ClickableCollider:
 			var c_ref: ClickRef = collider.get_click_ref()
 			SignalBus.collider_click.emit(c_ref)

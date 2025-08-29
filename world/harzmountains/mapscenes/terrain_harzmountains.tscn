@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=212 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -80,6 +80,7 @@
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="71_gf88f"]
 [ext_resource type="PackedScene" uid="uid://dhjxg1kopme0k" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechs_kb4_wagon.tscn" id="73_yd6n5"]
 [ext_resource type="PackedScene" uid="uid://dcb46mio1xry1" path="res://assets/meshes/structures/city_house_2/city_house_2.tscn" id="77_r10ie"]
+[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="81_3nsqt"]
 
 [sub_resource type="Gradient" id="Gradient_er67g"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -1129,6 +1130,42 @@ uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xiocb"]
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
+ground_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PhysicalSkyMaterial_gn88m")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_f8w8m"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
 map_key = "harzmountains"
@@ -1142,14 +1179,6 @@ assets = SubResource("Terrain3DAssets_mxgc7")
 mesh_size = 24
 top_level = true
 metadata/_edit_lock_ = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
-transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
-light_energy = 2.046
-light_indirect_energy = 1.97
-light_bake_mode = 0
-shadow_enabled = true
-directional_shadow_mode = 1
 
 [node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("37_jvv7c")]
 terrain = NodePath("..")
@@ -1877,3 +1906,7 @@ mesh = SubResource("PlaneMesh_xiocb")
 transform = Transform3D(29.6962, 0, 123.287, 0, 0.5, 0, -177.533, 0, 20.6224, 2983.21, 38.5817, 2527.39)
 material_override = SubResource("StandardMaterial3D_i4kml")
 mesh = SubResource("PlaneMesh_xiocb")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("81_3nsqt")]
+environment = SubResource("Environment_f8w8m")
+camera_attributes = SubResource("CameraAttributesPractical_qo5hu")

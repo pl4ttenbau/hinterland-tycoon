@@ -16,6 +16,7 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+layers = 8
 mesh = ExtResource("2_11i8a")
 
 [node name="ClickableCollider" type="StaticBody3D" parent="."]
