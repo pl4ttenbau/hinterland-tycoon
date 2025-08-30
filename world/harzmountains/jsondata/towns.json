@@ -74,7 +74,8 @@
 	{
 		"num": 14,
 		"name": "Hasserode",
-		"pos": [2695, 1702]
+		"pos": [2695, 1702],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 15,
@@ -134,7 +135,7 @@
 	},
 	{
 		"num": 25,
-		"name": "Neu-Wernigerode",
+		"name": "Reddeber",
 		"pos": [3058.0, 1079.3]
 	}
 ]
