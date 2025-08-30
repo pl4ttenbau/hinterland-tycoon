@@ -1498,6 +1498,9 @@ transform = Transform3D(-0.147481, 0, 0.989065, 0, 1, 0, -0.989065, 0, -0.147481
 [node name="Tractor5" parent="Deco" instance=ExtResource("28_giarj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2786.31, 8.37374, 1729.7)
 
+[node name="Bauwagen3" parent="Deco" instance=ExtResource("35_5l13i")]
+transform = Transform3D(0.794309, 0, -0.607515, 0, 1, 0, 0.607515, 0, 0.794309, 2823.15, 8.64692, 1703.56)
+
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
 
