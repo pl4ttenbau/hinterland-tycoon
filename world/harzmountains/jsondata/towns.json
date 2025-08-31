@@ -114,7 +114,8 @@
 		"num": 21,
 		"name": "Hartenberg",
 		"isMinor": true,
-		"pos": [3736, 2388]
+		"pos": [3736, 2388],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 22,
@@ -126,7 +127,8 @@
 		"num": 23,
 		"name": "Nöschenrode",
 		"isMinor": true,
-		"pos": [3368, 1636]
+		"pos": [3368, 1636],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 24,

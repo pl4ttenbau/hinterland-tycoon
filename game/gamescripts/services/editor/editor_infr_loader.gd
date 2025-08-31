@@ -22,36 +22,47 @@ func clear_editor_tracks():
 	for child: Node in self.parent.get_children():
 		child.queue_free()
 
-# aus dem RailLoader
+#region Rail Path Spawning
 func spawn_track_paths():
 	var file_path := TRACKS_JSON_PATH_FORMAT % MAP_KEY
 	var rails_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
 	for track_dict: Dictionary in rails_json_arr:
-		var track_num: int = track_dict.get("num")
-		var path: Path3D = Path3D.new()
-		path.name = "Editor_Track%d" % track_num
-		path.set_meta("track_num", track_num)
-		path.curve = Curve3D.new()
-		for point in track_dict.points:
-			var vec3: Vector3 = vec3_from_float_arr(point.pos)
-			path.curve.add_point(vec3)
-		self.parent.add_child(path, true)
-		path.owner = get_scene()
+		self.spawn_single_track_path(track_dict)
 		
+func spawn_single_track_path(track_data_dict: Dictionary):
+	var track_num: int = track_data_dict.get("num")
+	var path: Path3D = Path3D.new()
+	path.name = "Editor_Track%d" % track_num
+	path.set_meta("track_num", track_num)
+	path.set_meta("name", track_data_dict.get("name", null))
+	path.curve = Curve3D.new()
+	for point in track_data_dict.points:
+		path.curve.add_point(vec3_from_float_arr(point.pos))
+	self.parent.add_child(path, true)
+	path.owner = get_scene()
+#endregion
+
+#region Road Path Spawning
 func spawn_road_paths():
 	var file_path := ROADS_JSON_PATH_FORMAT % MAP_KEY
 	var roads_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
 	for road_dict: Dictionary in roads_json_arr:
-		var road_num: int = road_dict.get("num")
-		var path: Path3D = Path3D.new()
-		path.name = "Editor_Road%d" % road_num
-		path.set_meta("road_num", road_num)
-		path.curve = Curve3D.new()
-		for point in road_dict.points:
-			var vec3: Vector3 = vec3_from_float_arr(point.pos)
-			path.curve.add_point(vec3)
-		self.parent.add_child(path, true)
-		path.owner = get_scene()
+		self.spawn_road_track_path(road_dict)
+		
+func spawn_road_track_path(road_data_dict: Dictionary):
+	var road_num: int = road_data_dict.get("num")
+	var path: Path3D = Path3D.new()
+	path.name = "Editor_Road%d" % road_num
+	path.set_meta("road_num", road_num)
+	path.set_meta("name", road_data_dict.get("name", null))
+	# create curve
+	path.curve = Curve3D.new()
+	for point in road_data_dict.points:
+		path.curve.add_point(vec3_from_float_arr(point.pos))
+	# add as parent and to editor scene
+	self.parent.add_child(path, true)
+	path.owner = get_scene()
+#endregion
 
 func vec3_from_float_arr(float_arr: Array):
 	var vec3: Vector3 = Vector3()
