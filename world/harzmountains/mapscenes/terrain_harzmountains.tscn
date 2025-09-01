@@ -1394,6 +1394,16 @@ placed_town_num = 21
 transform = Transform3D(0.937081, 0, 0.349112, 0, 1, 0, -0.349112, 0, 0.937081, 3734.59, 45.771, 2388.72)
 placed_town_num = 21
 
+[node name="CityHouse11" parent="Houses" instance=ExtResource("45_r10ie")]
+transform = Transform3D(0.885694, 0, 0.46427, 0, 1, 0, -0.46427, 0, 0.885694, 3025.86, 5.4446, 1428.22)
+
+[node name="PolishHouse16" parent="Houses" instance=ExtResource("48_kkdmv")]
+transform = Transform3D(-0.581385, 0, 0.813629, 0, 1, 0, -0.813629, 0, -0.581385, 2708.13, 8.86192, 1771.32)
+placed_town_num = 14
+
+[node name="PolishHouse17" parent="Houses" instance=ExtResource("48_kkdmv")]
+transform = Transform3D(-0.899847, 0, -0.436205, 0, 1, 0, 0.436205, 0, -0.899847, 3038.34, 5.94789, 1448.62)
+
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("5_o4w5w")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
@@ -1560,11 +1570,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53687, -3.1062, 2.22168)
 layers = 63
 occluder = ExtResource("11_0uh3x")
 
-[node name="DecoOccluder2" type="OccluderInstance3D" parent="Deco"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53687, -3.1062, 2.22168)
-layers = 63
-occluder = ExtResource("11_0uh3x")
-
 [node name="CarBeetle2" parent="Deco" instance=ExtResource("56_x5l52")]
 transform = Transform3D(-0.110619, 0, 0.993863, 0, 1, 0, -0.993863, 0, -0.110619, 3040.25, 5.02156, 1273.38)
 
@@ -1585,6 +1590,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2746.54, 8.12009, 1740.5)
 
 [node name="VillageWell2" parent="Deco" instance=ExtResource("57_uh36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3721.44, 45.8406, 2411.7)
+
+[node name="Church2" parent="Deco" instance=ExtResource("39_xiocb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3017.97, 5.54206, 1403)
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
