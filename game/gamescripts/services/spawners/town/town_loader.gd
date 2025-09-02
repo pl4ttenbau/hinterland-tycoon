@@ -4,38 +4,42 @@ class_name TownPlacer extends Node
 const MAP_TOWNS_FILEPATH_FORMAT = "res://world/%s/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
-@export var towns: Array[TownData] = []
+@export var storage: TownStore = TownStore.new()
 @export var town_centers: Array[TownCenter] = []
 @export_storage var res_bld_loader: ResidentialBldTypeLoader
 
+#region Initialization
 func _enter_tree() -> void:
 	Managers.towns = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
+	# create internal town storage
 	
 func _ready() -> void:
 	self.load_towns()
 
 func _on_map_spawned(_container: TerrainContainer) -> void:
 	self.spawn_towns()
+#endregion	
+
+#region Town Loading
+func load_towns():
+	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.selected_map_name
+	var town_json_str = FileAccess.get_file_as_string(town_file_path)
+	for parsed_town: TownData in self._parse_towns_json(town_json_str):
+		self.storage.add(parsed_town)
+	SignalBus.towns_loaded.emit()
 	
-func parse_towns_json(_json_str: String) -> Array[TownData]:
+func _parse_towns_json(_json_str: String) -> Array[TownData]:
 	var json_arr = JSON.parse_string(_json_str) as Array[Dictionary]
 	var town_obj_arr: Array[TownData] = []
 	for town_values_dict: Dictionary in json_arr:
 		town_obj_arr.append(TownData.from_json(town_values_dict))
 	return town_obj_arr
-				
-func load_towns():
-	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.selected_map_name
-	var town_json_str = FileAccess.get_file_as_string(town_file_path)
-	for parsed_town: TownData in parse_towns_json(town_json_str):
-		# save town itself in lists
-		self.towns.append(parsed_town)
-		GlobalState.towns.append(parsed_town)
-	SignalBus.towns_loaded.emit()
-	
+#endregion
+
+#region Town Spawning
 func spawn_towns():
-	for town: TownData in self.towns:
+	for town: TownData in self.storage.get_all():
 		spawn_town(town)
 	SignalBus.towns_spawned.emit()
 	
@@ -50,6 +54,7 @@ func spawn_town(_town: TownData) -> TownData:
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town
+#endregion
 
 #region Getters
 func get_pos_on_terrain(posXZ: Vector2):
