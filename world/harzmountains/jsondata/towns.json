@@ -74,7 +74,8 @@
 	{
 		"num": 14,
 		"name": "Hasserode",
-		"pos": [2695, 1702]
+		"pos": [2695, 1702],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 15,
@@ -113,7 +114,8 @@
 		"num": 21,
 		"name": "Hartenberg",
 		"isMinor": true,
-		"pos": [3736, 2388]
+		"pos": [3736, 2388],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 22,
@@ -125,7 +127,8 @@
 		"num": 23,
 		"name": "Nöschenrode",
 		"isMinor": true,
-		"pos": [3368, 1636]
+		"pos": [3368, 1636],
+		"autogenerateHouses": false
 	},
 	{
 		"num": 24,
@@ -134,7 +137,7 @@
 	},
 	{
 		"num": 25,
-		"name": "Neu-Wernigerode",
+		"name": "Reddeber",
 		"pos": [3058.0, 1079.3]
 	}
 ]

@@ -16,6 +16,8 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
 mesh = ExtResource("2_ggw8a")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]

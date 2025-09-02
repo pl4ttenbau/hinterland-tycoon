@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjfrcs1obghq6"]
+
+[ext_resource type="PackedScene" uid="uid://csur415hhqfgi" path="res://addons/open-world-database/demo/resources/terrain/terrain.tscn" id="1_2ssfv"]
+[ext_resource type="Script" uid="uid://ceomc5hataa02" path="res://addons/open-world-database/demo/demo_scene.gd" id="1_8msht"]
+[ext_resource type="Script" uid="uid://b46e3mat8dx5" path="res://addons/open-world-database/src/open_world_database.gd" id="1_aw7xk"]
+[ext_resource type="PackedScene" uid="uid://dndq0a8q5mofo" path="res://addons/open-world-database/demo/resources/player/Player.tscn" id="3_bfajm"]
+[ext_resource type="AudioStream" uid="uid://2ndhhn35xm60" path="res://addons/open-world-database/demo/resources/sound/adventuring_song.mp3" id="7_bfajm"]
+[ext_resource type="PackedScene" uid="uid://bpdhh3x8mbrdu" path="res://addons/open-world-database/demo/resources/tree/tree.tscn" id="7_xpfyc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aw7xk"]
+sky_top_color = Color(0.193826, 0.635623, 1, 1)
+sky_horizon_color = Color(0.906755, 0.806899, 0.777034, 1)
+sky_curve = 0.0494818
+ground_horizon_color = Color(0.905882, 0.807843, 0.776471, 1)
+ground_curve = 0.109283
+
+[sub_resource type="Sky" id="Sky_2ssfv"]
+sky_material = SubResource("ProceduralSkyMaterial_aw7xk")
+
+[sub_resource type="Environment" id="Environment_tejrk"]
+background_mode = 2
+sky = SubResource("Sky_2ssfv")
+ambient_light_color = Color(0.585872, 0.585872, 0.585872, 1)
+ambient_light_sky_contribution = 0.33
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.448731, 0.687368, 1, 1)
+fog_density = 0.25
+fog_sky_affect = 0.0
+
+[node name="DemoScene" type="Node3D"]
+script = ExtResource("1_8msht")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, -4.77885, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tejrk")
+
+[node name="Terrain" parent="." instance=ExtResource("1_2ssfv")]
+
+[node name="Player" parent="." instance=ExtResource("3_bfajm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8113, 3.48392, -31.8389)
+
+[node name="OpenWorldDatabase" type="Node" parent="."]
+script = ExtResource("1_aw7xk")
+chunk_sizes = Array[float]([4.0, 8.0, 16.0])
+debug_enabled = true
+metadata/_custom_type_script = "uid://b46e3mat8dx5"
+
+[node name="Enemies" type="Node" parent="OpenWorldDatabase"]
+metadata/_owd_uid = "Enemies"
+
+[node name="Foliage" type="Node" parent="OpenWorldDatabase"]
+metadata/_owd_uid = "Foliage"
+
+[node name="Tree-1753846727553_3971" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7356, 3.47922, -24.1596)
+metadata/_owd_uid = "Tree-1753846727553_3971"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree7-1753846727555_9732" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0879, 3.64111, -33.6293)
+metadata/_owd_uid = "Tree7-1753846727555_9732"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree2-1753846727554_9219" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4934, 2.94351, -31.5944)
+metadata/_owd_uid = "Tree2-1753846727554_9219"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree3-1753846727554_3340" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09297, 3.49451, -19.9938)
+metadata/_owd_uid = "Tree3-1753846727554_3340"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree4-1753846727554_3231" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.62474, 2.7396, -26.0721)
+metadata/_owd_uid = "Tree4-1753846727554_3231"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree5-1753846727555_5622" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45934, 3.60671, -30.9288)
+metadata/_owd_uid = "Tree5-1753846727555_5622"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Tree6-1753846727555_1056" type="Node3D" parent="OpenWorldDatabase/Foliage" instance=ExtResource("7_xpfyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2607, 3.43598, -32.1656)
+metadata/_owd_uid = "Tree6-1753846727555_1056"
+metadata/_owd_last_scale = Vector3(1, 1, 1)
+metadata/_owd_last_size = 11.6331
+
+[node name="Gems" type="Node" parent="OpenWorldDatabase"]
+metadata/_owd_uid = "Gems"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bfajm")
