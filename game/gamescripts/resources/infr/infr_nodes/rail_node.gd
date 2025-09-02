@@ -1,16 +1,20 @@
 class_name RailNodeData extends BasicInfrNodeData
 
-@export var parent_track: RailTrackData
+@export var parent_track: RailTrackData:
+	set(value): 
+		parent_track = value
+		# self.track_type = value.infr_type_key
+	get(): return parent_track
+
 @export var fork: RailForkData
 @export var station: RailStationData
 @export var is_end: bool = false
 
-static func of(_index: int, _pos: Vector3, _trackType: String, _track: RailTrackData) -> RailNodeData:
+static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeData:
 	var instance := RailNodeData.new()
 	instance.parent_track = _track
 	instance.index = _index
 	instance.position = _pos
-	instance.trackType = _trackType
 	return instance
 
 func parse_and_add_special(rail_node_dict: Dictionary):

@@ -16,12 +16,10 @@ func load_map_data():
 	var map_folders := DirAccess.get_directories_at(MAP_FOLDER_PATH)
 	for map_folder_name: String in map_folders:
 		if map_folder_name == "default": continue
-		if map_folder_name == "heightdata": continue
 		var full_folder_path := MAP_FOLDER_PATH + "/" + map_folder_name + \
 			"/jsondata/"
 		var map_info_file_path = full_folder_path + "mapinfo.json"
-		var map_info_dict := self.get_map_info_dict(map_info_file_path)
-		var map_obj = MapData.of_dict(map_info_dict)
+		var map_obj := MapData.of_dict(self.get_map_info_dict(map_info_file_path))
 		# add to lists & trigger signals
 		self.add_map_to_lists(map_obj)
 	Loggie.info("Map List loaded")

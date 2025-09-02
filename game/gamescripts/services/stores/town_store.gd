@@ -8,9 +8,6 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/towns.dat"
 @export var _by_name: Dictionary = {}
 
 signal town_added(town_obj: TownData)
-
-func _init() -> void:
-	self.name = "TownStorage"
 	
 func _enter_tree() -> void:
 	self.town_added.connect(Callable(self, "_on_town_loaded"))
@@ -18,12 +15,12 @@ func _enter_tree() -> void:
 #region Add City
 func add(town_obj: TownData):
 	self._list.append(town_obj)
+	self._create_indexes(town_obj)
 	self.town_added.emit(town_obj)
 	
 func _create_indexes(town_obj: TownData):
 	self._by_id.set(town_obj.num, town_obj)
-	var city_name: StringName = StringName(town_obj.town_name)
-	self._by_name.set(city_name, town_obj)
+	self._by_name.set(StringName(town_obj.town_name), town_obj)
 #endregion
 
 #region Get City
@@ -39,6 +36,5 @@ func get_by_name(town_name: StringName) -> TownData:
 
 #region Callbacks & Helpers 
 func _on_town_loaded(town_obj: TownData):
-	self._create_indexes(town_obj)
 	GlobalState.towns.append(town_obj)
 #endregion

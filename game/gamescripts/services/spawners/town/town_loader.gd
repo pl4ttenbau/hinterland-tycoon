@@ -25,16 +25,10 @@ func _on_map_spawned(_container: TerrainContainer) -> void:
 func load_towns():
 	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var town_json_str = FileAccess.get_file_as_string(town_file_path)
-	for parsed_town: TownData in self._parse_towns_json(town_json_str):
+	var json_arr_dict: Array = JSON.parse_string(town_json_str) as Array
+	for parsed_town: TownData in TownMapper.town_list_from_dict_arr(json_arr_dict):
 		self.storage.add(parsed_town)
 	SignalBus.towns_loaded.emit()
-	
-func _parse_towns_json(_json_str: String) -> Array[TownData]:
-	var json_arr = JSON.parse_string(_json_str) as Array[Dictionary]
-	var town_obj_arr: Array[TownData] = []
-	for town_values_dict: Dictionary in json_arr:
-		town_obj_arr.append(TownData.from_json(town_values_dict))
-	return town_obj_arr
 #endregion
 
 #region Town Spawning
