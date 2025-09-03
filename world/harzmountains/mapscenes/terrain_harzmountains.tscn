@@ -1591,9 +1591,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2746.54, 8.12009, 1740.5)
 [node name="VillageWell2" parent="Deco" instance=ExtResource("57_uh36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3721.44, 45.8406, 2411.7)
 
-[node name="Church2" parent="Deco" instance=ExtResource("39_xiocb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3017.97, 5.54206, 1403)
-
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")
 
