@@ -3,6 +3,7 @@ class_name TownPlacer extends Node
 
 const MAP_TOWNS_FILEPATH_FORMAT = "res://world/%s/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
+const LOAD_FROM_JSON = false
 
 @export var storage: TownStore = TownStore.new()
 @export_storage var res_bld_loader: ResidentialBldTypeLoader
@@ -21,6 +22,7 @@ func _on_map_spawned(_container: TerrainContainer) -> void:
 
 #region Town Loading
 func load_towns():
+	if  !LOAD_FROM_JSON: return
 	var town_file_path = MAP_TOWNS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var town_json_str = FileAccess.get_file_as_string(town_file_path)
 	var json_arr_dict: Array = JSON.parse_string(town_json_str) as Array
@@ -31,9 +33,19 @@ func load_towns():
 
 #region Town Spawning
 func spawn_towns():
-	for town: TownData in self.storage.get_all():
-		spawn_town(town)
-	SignalBus.towns_spawned.emit()
+	if LOAD_FROM_JSON:
+		Loggie.info("Loading towns from json")
+		for town: TownData in self.storage.get_all():
+			spawn_town(town)
+		SignalBus.towns_spawned.emit()
+	else:
+		Loggie.info("Loading towns from map")
+		var map_towns: Node = GlobalState.world_container.find_child("Towns")
+		for towns_child: Node in map_towns.get_children():
+			if towns_child is TownCenter:
+				self.storage.add_outter(towns_child)
+				self.storage.add(towns_child.town)
+				GlobalState.towns.append(towns_child.town)
 	
 func spawn_town(_town: TownData) -> TownData:
 	var sceneRes: Resource = ResourceLoader.load(TOWN_ROOT_SCENE_PATH) as PackedScene
@@ -51,7 +63,7 @@ func spawn_town(_town: TownData) -> TownData:
 #region Getters
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
-	var terr_container: TerrainContainer = GlobalState.terrain
+	var terr_container: TerrainContainer = GlobalState.world_container
 	return terr_container.get_pos_at_height(vec3)
 
 func get_label_pos_at(posXZ: Vector2) -> Vector3:

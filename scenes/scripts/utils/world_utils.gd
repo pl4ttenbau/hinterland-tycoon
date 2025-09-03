@@ -11,7 +11,7 @@ static func vec3_from_float_arr(float_arr: Array):
 	return vec3	
 
 static func pos_on_map(vec2: Vector2) -> Vector3:
-	if GlobalState.terrain:
+	if GlobalState.world_container:
 		var vec3 := Vector3(vec2.x, 0, vec2.y)
-		return GlobalState.terrain.get_pos_at_height(vec3)
+		return GlobalState.world_container.get_pos_at_height(vec3)
 	return Vector3.ZERO

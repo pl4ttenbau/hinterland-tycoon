@@ -9,7 +9,7 @@ signal world_update()
 
 func _enter_tree() -> void:
 	# self-register in GlobalState
-	GlobalState.terrain = self
+	GlobalState.world_container = self
 	# connect to signals
 	self.world_update.connect(Callable(self, "_on_world_update"))
 
