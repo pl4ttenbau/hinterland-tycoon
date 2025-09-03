@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_town.png")
-class_name TownCenter extends HideableObject
+class_name TownCenter extends VisibleObject
 
 signal town_changed(_town: TownData)
 
@@ -10,9 +10,10 @@ signal town_changed(_town: TownData)
 		self.name = _town.to_string()
 		set_label_text()
 		self.town_changed.emit(_town)
+	get(): return town
 	
 func set_label_text():
-	self.get_child(0).text = self.town.town_name
+	$TownLabel.text = self.town.town_name
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

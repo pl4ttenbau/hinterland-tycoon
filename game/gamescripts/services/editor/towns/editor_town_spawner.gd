@@ -26,7 +26,7 @@ func parse_towns_json() -> Array[TownData]:
 		return []
 	var town_obj_arr: Array[TownData] = []
 	for town_values_dict: Dictionary in json_arr:
-		town_obj_arr.append(TownData.from_json(town_values_dict))
+		town_obj_arr.append(TownMapper.town_dict_2_obj(town_values_dict))
 	return town_obj_arr
 	
 func instanciate_editor_label(_town: TownData)-> Label3D:

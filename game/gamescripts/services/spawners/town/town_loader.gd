@@ -5,14 +5,12 @@ const MAP_TOWNS_FILEPATH_FORMAT = "res://world/%s/jsondata/towns.json"
 const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 
 @export var storage: TownStore = TownStore.new()
-@export var town_centers: Array[TownCenter] = []
 @export_storage var res_bld_loader: ResidentialBldTypeLoader
 
 #region Initialization
 func _enter_tree() -> void:
 	Managers.towns = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-	# create internal town storage
 	
 func _ready() -> void:
 	self.load_towns()
@@ -44,7 +42,7 @@ func spawn_town(_town: TownData) -> TownData:
 	town_center.position = get_pos_on_terrain(_town.pos_xz)
 	# add as child and to center list
 	add_child(town_center)
-	self.town_centers.append(town_center)
+	self.storage.add_outter(town_center)
 	# emit signal
 	SignalBus.town_spawned.emit(_town)
 	return _town
@@ -60,11 +58,4 @@ func get_label_pos_at(posXZ: Vector2) -> Vector3:
 	var offset: Vector3 = Vector3(0, 30, 0)
 	var terrainPos: Vector3 = get_pos_on_terrain(posXZ)
 	return terrainPos + offset
-
-func get_town_center(town_num: int) -> TownCenter:
-	for town_center: TownCenter in self.town_centers:
-		if town_center.town && town_center.town.num == town_num:
-			return town_center
-	Loggie.warn("Cannot fimd Town with num %d" % town_num)
-	return null
 #endregion

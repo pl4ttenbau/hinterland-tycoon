@@ -22,7 +22,7 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		self.is_end = true
 	if rail_node_dict.has("fork"):
 		var fork_dict: Dictionary = rail_node_dict.get("fork")
-		self.add_fork(RailForkData.of_dict(fork_dict, self))
+		self.fork = RailForkData.of_dict(fork_dict, self)
 	if rail_node_dict.has("station"):
 		var station_dict: Dictionary = rail_node_dict.get("station")
 		self.add_station(RailStationData.of_station_dict(station_dict, self))
@@ -32,12 +32,6 @@ func add_station(_station: RailStationData):
 	# add to track & global station list
 	self.parent_track.stations.append(_station)
 	GlobalState.stations.append(_station)
-	
-func add_fork(_fork: RailForkData):
-	self.fork = _fork
-	# add to track & global array
-	# self.parent_track.add_fork(_fork)
-	# GlobalState.forks.append(_fork)
 	
 func as_ref() -> RailNodeRef:
 	var track_num: int = self.parent_track.num
