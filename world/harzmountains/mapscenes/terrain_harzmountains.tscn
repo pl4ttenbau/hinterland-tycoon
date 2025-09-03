@@ -1,4 +1,4 @@
-[gd_scene load_steps=256 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=255 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="Texture2D" uid="uid://cd0dc8ih65s5o" path="res://assets/textures/billboard/grass_detail1.tga" id="2_tp1hv"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://c77xh5vv2s3jf" path="res://assets/textures/terrain_new/packed/gravel/gravel_dh.png" id="20_e0u24"]
 [ext_resource type="Texture2D" uid="uid://ltpfphsa8w4o" path="res://assets/textures/terrain_new/packed/gravel/gravel_nr.png" id="21_656qc"]
 [ext_resource type="PackedScene" uid="uid://c5u23kilg3agv" path="res://assets/meshes/nature/bush3_hazel/bush3_hazel.tscn" id="21_iwo6h"]
-[ext_resource type="Texture2D" uid="uid://du0f8jsxnwfng" path="res://assets/textures/terrain_new/packed/grass_default/grass_default_dh.png" id="21_j7mxv"]
 [ext_resource type="Texture2D" uid="uid://m4k41chdta1u" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_dh.png" id="21_rbmqa"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="22_a0w5c"]
 [ext_resource type="Texture2D" uid="uid://dqauqr5dvbxnt" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh.png" id="22_pdaa5"]
@@ -467,7 +466,7 @@ image = SubResource("Image_wip5f")
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_8qtck"]
 name = "Grass Green"
 albedo_color = Color(0.533018, 0.620121, 0.289089, 1)
-albedo_texture = ExtResource("21_j7mxv")
+albedo_texture = ExtResource("21_rbmqa")
 normal_texture = SubResource("ImageTexture_th5q3")
 normal_depth = 1.311
 ao_strength = 1.077
