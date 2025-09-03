@@ -1,7 +1,9 @@
+@tool
 class_name GameObject extends Resource
 
-@export var type: Enums.EntityTypes
 @export var num: int
+
+@export_storage var type: Enums.EntityTypes
 
 func _init(_type: Enums.EntityTypes):
 	self.type = _type

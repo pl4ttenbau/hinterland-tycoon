@@ -4,12 +4,23 @@ class_name TownData extends GameObject
 
 const BUIDLING_BLOCKAGE_RADIUS = 20.0
 
+signal town_name_changed(new_name: String)
+
 #region Properties
-@export var town_name: String
+@export var town_name: String:
+	set(value):
+		town_name = value
+		self.town_name_changed.emit(value)
+	get():
+		return town_name
+
 @export var pos_xz: Vector2
-@export var totalPops: int
+
 @export var is_minor: bool = false
+
 @export var autogenerate_houses: bool = true
+
+@export_storage var totalPops: int
 
 @export_storage var res_bld_containers: Array[OuterResBld] = []
 @export_storage var stations: Array[RailStationData] = []
