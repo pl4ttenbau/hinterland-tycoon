@@ -50,7 +50,7 @@ func get_checked_rnd_pos() -> Vector3:
 
 func get_pos_at(pos_2d: Vector2) -> Vector3:
 	var pos_3d: Vector3 = Vector3(pos_2d.x, -1, pos_2d.y)
-	pos_3d.y = GlobalState.terrain.get_height_at(pos_3d)
+	pos_3d.y = GlobalState.world_container.get_height_at(pos_3d)
 	return pos_3d
 #endregion
 

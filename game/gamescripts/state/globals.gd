@@ -6,14 +6,14 @@ extends Node
 
 # == PRE-WORLD-LOADING ==
 @export var game_maps: Array[MapData]
-@export var selected_map_name: String = "harzmountains"
+@export var selected_map_name: String = "demmin"
 @export var loaded_map: MapData 
 
 # == STATIC ==
 @export var towns: Array[TownData] = []
 
 @export var industries: Array[IndustryData]
-@export var terrain: TerrainContainer
+@export var world_container: TerrainContainer
 
 @export var res_blds: Array[ResidenceBuildingData] = []
 

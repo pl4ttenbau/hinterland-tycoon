@@ -26,7 +26,7 @@ func parse_towns_json() -> Array[TownData]:
 		return []
 	var town_obj_arr: Array[TownData] = []
 	for town_values_dict: Dictionary in json_arr:
-		town_obj_arr.append(TownData.from_json(town_values_dict))
+		town_obj_arr.append(TownMapper.town_dict_2_obj(town_values_dict))
 	return town_obj_arr
 	
 func instanciate_editor_label(_town: TownData)-> Label3D:
@@ -51,14 +51,12 @@ func get_pos_over_terrain(pos_xz: Vector2) -> Vector3:
 #region Node Getters
 func get_terrain() -> Terrain3D:
 	var terrain_3d = get_scene().find_child("WorldTerrain", true)
-	if ! terrain_3d:
-		push_error("Cannt find Terrain3D node")
-		return
+	if ! terrain_3d: Loggie.error("Cannt find Terrain3D node")
 	return terrain_3d
 	
 func get_editor_labels_container():
 	var editor_town_container = get_scene().find_child("EditorLabels", true)
 	if ! editor_town_container:
-		push_error("Cannt find Node \"World/InEditor/EditorTowns\"")
+		Loggie.error("Cannt find Node \"EditorLabels\"")
 	return editor_town_container
 #endregion

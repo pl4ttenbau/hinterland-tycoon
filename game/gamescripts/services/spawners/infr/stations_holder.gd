@@ -28,19 +28,17 @@ func spawn_station(station_obj: RailStationData) -> OuterRailStation:
 
 #region Goods Spawning
 func spawn_rnd_passenger():
-	var rnd_start_bld := GlobalState.res_blds.pick_random() as ResidenceBuildingData
-	var start_town_name := TownData.get_town_by_num(rnd_start_bld.town_num).town_name
-
+	var rnd_start_bld = GlobalState.res_blds.pick_random() as ResidenceBuildingData
 	var start_station: RailStationData = rnd_start_bld.connected_station
-	if !start_station: return
-	var spawned_res = SpawnedResource.new("passenger")
-	start_station.add_resource(spawned_res)
-	spawned_res.target_location = GlobalState.res_blds.pick_random()
+	if start_station:
+		var spawned_res = SpawnedResource.new("passenger")
+		spawned_res.target_location = GlobalState.res_blds.pick_random()
+		start_station.add_resource(spawned_res)
 #endregion
 	
 #region Callbacks
 func _on_rails_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
-	spawn_stations()
+	self.spawn_stations()
 	
 func _on_station_timer_tick():
 	self.spawn_rnd_passenger()

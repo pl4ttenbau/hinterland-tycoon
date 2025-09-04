@@ -7,10 +7,14 @@
 script = ExtResource("1_4e0qw")
 
 [node name="TownLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+visibility_range_end = 900.0
+visibility_range_end_margin = 90.0
 pixel_size = 0.15
 billboard = 2
 text = "Town"
+font_size = 50
+outline_size = 15
 uppercase = true
 
 [node name="TownSpawner" type="Node" parent="."]

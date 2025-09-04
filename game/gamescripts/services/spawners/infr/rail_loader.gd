@@ -6,9 +6,8 @@ const RAILS_INFR_GROUP := "Rails"
 const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
-@export var tracks: Array[RailTrackData] = []
+@export var track_storage: RailTrackStore = RailTrackStore.new()
 @export var track_containers: Array[OuterRailTrack] = []
-@export var tracks_by_num: Dictionary = {}
 
 @export var forks: Array[RailForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
@@ -18,7 +17,6 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 
 func _enter_tree() -> void:
 	Managers.rails = self
-	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 	
 func _ready() -> void:
@@ -30,18 +28,13 @@ func load_rail_tracks() -> void:
 	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
-		var track_obj := RailTrackData.from_json(json_track)
-		self.tracks.append(track_obj)
-		var track_num_str = "%d" % track_obj.num
-		self.tracks_by_num.set(track_num_str, track_obj)
-	# add to holding arrays
-	GlobalState.tracks = self.tracks
+		self.track_storage.add(RailMapper.rail_track_from_dict(json_track))
 	# trigger signal
-	SignalBus.rails_loaded.emit(self.tracks)
+	SignalBus.rails_loaded.emit(self.track_storage.get_all())
 
 #region RailTrack Spawning
 func spawn_rails():
-	for track_obj: RailTrackData in GlobalState.tracks:
+	for track_obj: RailTrackData in self.track_storage.get_all():
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_buffers(track_obj)
 	self.spawn_rail_forks()
@@ -67,7 +60,7 @@ func spawn_rail_track(track_obj: RailTrackData):
 
 #region Rail Children Spawning
 func sort_rail_forks():
-	for rail_track in self.tracks:
+	for rail_track in self.track_storage.get_all():
 		for track_node in rail_track.nodes:
 			if track_node.fork:
 				if ! self.forks_by_pos.has(track_node.position):
@@ -96,23 +89,9 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 	return outer_buffer
 #endregion
 
-func hide_far_rails():
-	for container: OuterRailTrack in self.track_containers:
-		var player: Node3D = %Player
-		if player:
-			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = self._get_cam_pos().distance_to(middle_pos)
-			if dist > MAX_VISIBLE_DIST: container.visible = false
-			else: container.visible = true
-
 #region Event Listeners
 func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
-	
-func _on_world_update() -> void:
-	# self.hide_far_rails()
-	pass
-	
 #endregion
 
 #region Helper-Methods

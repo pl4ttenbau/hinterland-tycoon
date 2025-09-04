@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/icon_terrain_white.png")
 class_name TerrainContainer extends Node
 
@@ -8,7 +9,7 @@ signal world_update()
 
 func _enter_tree() -> void:
 	# self-register in GlobalState
-	GlobalState.terrain = self
+	GlobalState.world_container = self
 	# connect to signals
 	self.world_update.connect(Callable(self, "_on_world_update"))
 
@@ -28,6 +29,9 @@ func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 
 func _on_world_update() -> void:
 	pass
+	
+func get_terrain() -> Terrain3D:
+	return self.get_child(0)
 	
 func raycast_xz(world_xz: Vector2) -> TerrainRaycastResult:
 	var result: TerrainRaycastResult = $TerrainRaycaster.shoot_ray(world_xz)

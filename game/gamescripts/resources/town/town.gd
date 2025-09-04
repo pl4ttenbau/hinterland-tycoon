@@ -4,12 +4,23 @@ class_name TownData extends GameObject
 
 const BUIDLING_BLOCKAGE_RADIUS = 20.0
 
+signal town_name_changed(new_name: String)
+
 #region Properties
-@export var town_name: String
+@export var town_name: String:
+	set(value):
+		town_name = value
+		self.town_name_changed.emit(value)
+	get():
+		return town_name
+
 @export var pos_xz: Vector2
-@export var totalPops: int
+
 @export var is_minor: bool = false
+
 @export var autogenerate_houses: bool = true
+
+@export_storage var totalPops: int
 
 @export_storage var res_bld_containers: Array[OuterResBld] = []
 @export_storage var stations: Array[RailStationData] = []
@@ -36,19 +47,6 @@ static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false,
 		instance.peasantPops = pops.get(0)
 		instance.bourgiePops = pops.get(1)
 	return instance
-
-static func from_json(_jsonDict: Dictionary) -> TownData:
-	var townPosArr = _jsonDict["pos"] as Array
-	if ! townPosArr:
-		push_warning("Town %s has no known position" % _jsonDict["name"])
-		return null
-	else:	
-		var dict_town_name: String = _jsonDict["name"]
-		var posXZ: Vector2 = Vector2(float(townPosArr[0]), float(townPosArr[1]))
-		var pops = null
-		var dict_is_minor: bool = _jsonDict.get("isMinor", false)
-		var dict_autogenerate_houses: bool = _jsonDict.get("autogenerateHouses", true)
-		return TownData.of(dict_town_name, posXZ, pops, dict_is_minor, dict_autogenerate_houses)
 #endregion
 
 #region Buildings
@@ -97,8 +95,7 @@ func _to_string():
 	return "<Town %s>" % self.town_name
 	
 static func get_town_by_num(_num: int) -> TownData:
-	for town: TownData in GlobalState.towns:
-		if town.num == _num: return town
+	return Managers.towns.storage.get_by_num(_num)
 	Loggie.error("Cannot get town with num %d" % _num)
 	return null
 	

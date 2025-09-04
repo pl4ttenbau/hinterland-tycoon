@@ -10,8 +10,7 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 		
 func load_preplaced_town_buildings():
-	var map_house_container := self.get_map_houses_container()
-	for child: Node in map_house_container.get_children():
+	for child: Node in self.get_map_houses_container().get_children():
 		if child is OuterResBld:
 			self.place_preplaced_res_bld(child as OuterResBld)
 			
@@ -20,15 +19,15 @@ func place_preplaced_res_bld(outer_bld: OuterResBld):
 	outer_bld.res_bld = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
 	outer_bld.res_bld.num = OuterResBld.next_num()
 	# assign to town
-	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
-	town.res_bld_containers.append(outer_bld)
-	# save here as well
-	self.placed_buildings.append(outer_bld)
+	var town := get_res_bld_town_obj(outer_bld)
+	if town: 
+		town.res_bld_containers.append(outer_bld)
+		self.placed_buildings.append(outer_bld) # save here as well
 
 #region Getters 
 ## the pre-placed buildings are in "TerrainContainer/Houses"
 func get_map_houses_container() -> Node:
-	var map_container: TerrainContainer = GlobalState.terrain
+	var map_container: TerrainContainer = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
@@ -36,11 +35,16 @@ func get_map_houses_container() -> Node:
 	
 func get_res_bld_type(key: String) -> ResBldType:
 	return GameTypes.get_res_bld_type(key)
+	
+func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
+	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
+	if ! town:
+		Loggie.error("Cannot spawn pre-placed building in Town %s: not found" % outer_bld.placed_town_num)
+	return town
 #endregion
 	
 #region Signal Callbacks
 func _on_towns_loaded():
-	#self.load_preplaced_town_buildings()
 	pass
 	
 func _on_map_spawned(_terrain_container: TerrainContainer):
