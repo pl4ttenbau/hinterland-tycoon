@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=64 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_b3vrx"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="2_7yi3v"]
@@ -12,8 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="6_2pcia"]
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="6_peo3v"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="7_17kfa"]
+[ext_resource type="Texture2D" uid="uid://dwbv6673uolbk" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_dh.png" id="7_lh2pu"]
+[ext_resource type="Texture2D" uid="uid://c2hvp1daqncmx" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_nr.png" id="8_74w14"]
+[ext_resource type="Texture2D" uid="uid://d0y1uiglfdsxk" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh.png" id="9_ls53n"]
 [ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="9_mmo8u"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="10_2pcia"]
+[ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="10_d52qy"]
+[ext_resource type="Texture2D" uid="uid://cb8wsybeoj1g5" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="11_ln5b8"]
+[ext_resource type="Texture2D" uid="uid://rv0bx6mqw587" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="12_t40ec"]
+[ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="21_74w14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2q80"]
 transparency = 4
@@ -35,7 +42,7 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_mmo8u"]
 name = "grass_green_dh"
-albedo_color = Color(0.654433, 0.798701, 0.618085, 1)
+albedo_color = Color(0.470362, 0.617326, 0.433224, 1)
 albedo_texture = ExtResource("3_i2q80")
 normal_texture = ExtResource("4_peo3v")
 roughness = 0.775
@@ -48,9 +55,27 @@ albedo_texture = ExtResource("5_mmo8u")
 normal_texture = ExtResource("6_2pcia")
 roughness = 0.505
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_iicsu"]
+name = "grass_dry_dh"
+id = 2
+albedo_texture = ExtResource("7_lh2pu")
+normal_texture = ExtResource("8_74w14")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_x6ynq"]
+name = "rock_sandstone_dh"
+id = 3
+albedo_texture = ExtResource("9_ls53n")
+normal_texture = ExtResource("10_d52qy")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_hmqbw"]
+name = "rock_mossy_dh"
+id = 4
+albedo_texture = ExtResource("11_ln5b8")
+normal_texture = ExtResource("12_t40ec")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_17kfa"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_peo3v")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_mmo8u"), SubResource("Terrain3DTextureAsset_sfns4")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_mmo8u"), SubResource("Terrain3DTextureAsset_sfns4"), SubResource("Terrain3DTextureAsset_iicsu"), SubResource("Terrain3DTextureAsset_x6ynq"), SubResource("Terrain3DTextureAsset_hmqbw")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmo8u"]
 albedo_texture = ExtResource("6_peo3v")
@@ -431,8 +456,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_gj2ut"]
 script = ExtResource("4_wa0ur")
 town_name = "Iven-Janow"
-pos_xz = Vector2(1256.2, 2312.9)
-is_minor = true
+pos_xz = Vector2(0, 0)
+is_minor = false
 autogenerate_houses = true
 totalPops = 0
 res_bld_containers = Array[ExtResource("3_naxkj")]([])
@@ -442,17 +467,18 @@ num = 25
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_74w14"]
 ground_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_tyhie"]
-sky_material = SubResource("PhysicalSkyMaterial_gn88m")
+sky_material = SubResource("PhysicalSkyMaterial_74w14")
 radiance_size = 2
 
-[sub_resource type="Environment" id="Environment_f8w8m"]
+[sub_resource type="Environment" id="Environment_ls53n"]
 background_mode = 2
 background_intensity = 100000.0
 sky = SubResource("Sky_tyhie")
+ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 tonemap_white = 8.0
 ssao_enabled = true
@@ -469,7 +495,7 @@ volumetric_fog_anisotropy = 0.7
 volumetric_fog_sky_affect = 0.295
 adjustment_saturation = 1.17
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d52qy"]
 exposure_multiplier = 3.069
 auto_exposure_scale = 0.22
 auto_exposure_speed = 0.8
@@ -486,8 +512,6 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 data_directory = "res://world/mpsb/heightdata"
 material = ExtResource("2_lkt25")
 assets = SubResource("Terrain3DAssets_17kfa")
-show_vertex_grid = true
-show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -610,10 +634,13 @@ town = SubResource("Resource_fa4dg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
 town = SubResource("Resource_gj2ut")
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("9_mmo8u")]
-environment = SubResource("Environment_f8w8m")
-camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
-
 [node name="DecoSpawner" type="Node" parent="."]
 script = ExtResource("10_2pcia")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="HalfTimberedBarn" parent="." instance=ExtResource("21_74w14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1881.42, 17.7059, 2835.85)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("9_mmo8u")]
+environment = SubResource("Environment_ls53n")
+camera_attributes = SubResource("CameraAttributesPractical_d52qy")
