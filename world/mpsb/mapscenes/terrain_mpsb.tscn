@@ -42,7 +42,7 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_mmo8u"]
 name = "grass_green_dh"
-albedo_color = Color(0.470362, 0.617326, 0.433224, 1)
+albedo_color = Color(0.612751, 0.762471, 0.575008, 1)
 albedo_texture = ExtResource("3_i2q80")
 normal_texture = ExtResource("4_peo3v")
 roughness = 0.775
