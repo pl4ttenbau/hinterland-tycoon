@@ -59,8 +59,10 @@ roughness = 0.505
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_iicsu"]
 name = "grass_dry_dh"
 id = 2
+albedo_color = Color(0.60933, 0.60933, 0.60933, 1)
 albedo_texture = ExtResource("7_lh2pu")
 normal_texture = ExtResource("8_74w14")
+uv_scale = 0.22
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_x6ynq"]
 name = "rock_sandstone_dh"
