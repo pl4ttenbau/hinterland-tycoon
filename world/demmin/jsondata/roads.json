@@ -6,9 +6,7 @@
 		"points": [
 			{
 				"pos": [573.3, 15.5, 558.1],
-				"cross": {
-					"connectiveRoads": [6]
-				}
+				"roadCrossWith": [6]
 			},
 			{
 				"pos": [539.6, 15.5, 552.2]
@@ -21,9 +19,7 @@
 			},
 			{
 				"pos": [442.3, 15.0, 557.2],
-				"cross": {
-					"connectiveRoads": [2, 3]
-				}
+				"roadCrossWith": [2, 3]
 			}
 		]
 	},
@@ -33,9 +29,7 @@
 		"points": [
 			{
 				"pos": [442.3, 15.0, 557.2],
-				"cross": {
-					"connectiveRoads": [1, 3]
-				}
+				"roadCrossWith": [1, 3]
 			},
 			{
 				"pos": [446.2, 15.0, 582.6]
@@ -92,9 +86,7 @@
 			},
 			{
 				"pos": [211.3, 7.5, 842.7],
-				"cross": {
-					"connectiveRoads": [5]
-				}
+				"roadCrossWith": [5]
 			}
 		]
 	},
@@ -104,9 +96,7 @@
 		"points": [
 			{
 				"pos": [442.3, 15.0, 557.2],
-				"cross": {
-					"connectiveRoads": [1, 2]
-				}
+				"roadCrossWith": [1, 2]
 			},
 			{
 				"pos": [434.7, 16.0, 534.6]
@@ -119,9 +109,7 @@
 			},
 			{
 				"pos": [416.6, 14.5, 472.6],
-				"cross": {
-					"connectiveRoads": [4]
-				}
+				"roadCrossWith": [4]
 			}
 		]
 	},
@@ -132,9 +120,7 @@
 		"points": [
 			{
 				"pos": [416.6, 14.5, 472.6],
-				"cross": {
-					"connectiveRoads": [3]
-				}
+				"roadCrossWith": [3]
 			},
 			{
 				"pos": [392.1, 13.5, 446.8]
@@ -160,9 +146,7 @@
 		"points": [
 			{
 				"pos": [211.3, 7.5, 842.7],
-				"cross": {
-					"connectiveRoads": [2]
-				}
+				"roadCrossWith": [2]
 			},
 			{
 				"pos": [213.5, 7.5, 858.9]
@@ -193,9 +177,7 @@
 		"points": [
 			{
 				"pos": [573.3, 15.5, 558.1],
-				"cross": {
-					"connectiveRoads": [1]
-				}
+				"roadCrossWith": [1]
 			},
 			{
 				"pos": [589.3, 14.5, 556.2]
@@ -237,9 +219,7 @@
 			},
 			{
 				"pos": [816.3, 13.2, 676.0],
-				"cross": {
-					"connectiveRoads": [7]
-				}
+				"roadCrossWith": [7]
 			}
 		]
 	},
@@ -250,9 +230,7 @@
 		"points": [
 			{
 				"pos": [816.3, 13.2, 676.0],
-				"cross": {
-					"connectiveRoads": [6]
-				}
+				"roadCrossWith": [6]
 			},
 			{
 				"pos": [841.1, 14.5, 654.1]
@@ -300,9 +278,7 @@
 			{
 				"pos": [976.2, 10.5, 322.5],
 				"bridge": true,
-				"cross": {
-					"connectiveRoads": [-1]
-				}
+				"roadCrossWith": [-1]
 			}
 		]
 	},
@@ -316,9 +292,7 @@
 				"plaza": {
 					"townName": "Demmin"
 				},
-				"cross": {
-					"connectiveRoads": [-1]
-				}
+				"roadCrossWith": [-1]
 			},
 			{
 				"pos": [2424.7, 9.6, 2164.0],
@@ -344,9 +318,7 @@
 		"points": [
 			{
 				"pos": [2412.3, 9.0, 2165.3],
-				"cross": {
-					"connectiveRoads": [8]
-				}
+				"roadCrossWith": [8]
 			},
 			{
 				"pos": [2402.7, 9.9, 2167.0],
@@ -359,9 +331,7 @@
 			},
 			{
 				"pos": [2368.8, 10.2, 2163.2],
-				"cross": {
-					"connectiveRoads": [10, 11]
-				}
+				"roadCrossWith": [10, 11]
 			}
 		]
 	},
@@ -372,9 +342,7 @@
 		"points": [
 			{
 				"pos": [2368.8, 10.2, 2163.2],
-				"cross": {
-					"connectiveRoads": [9, 11]
-				}
+				"roadCrossWith": [9, 11]
 			},
 			{
 				"pos": [2368.2, 9.9, 2153.3],
@@ -401,9 +369,7 @@
 		"points": [
 			{
 				"pos": [2368.8, 10.2, 2163.2],
-				"cross": {
-					"connectiveRoads": [9, 10]
-				}
+				"roadCrossWith": [9, 10]
 			},
 			{
 				"pos": [2353.3, 11.5, 2164.8],
