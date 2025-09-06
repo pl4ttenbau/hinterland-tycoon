@@ -1,14 +1,26 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=64 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_b3vrx"]
+[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="2_7yi3v"]
 [ext_resource type="Terrain3DMaterial" uid="uid://bdct80gpduqri" path="res://assets/packed/terrain_material_default.tres" id="2_lkt25"]
 [ext_resource type="Texture2D" uid="uid://m4k41chdta1u" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_dh.png" id="3_i2q80"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="3_naxkj"]
 [ext_resource type="Texture2D" uid="uid://cgdhltvj20ln2" path="res://assets/textures/terrain_new/packed/grass_green/grass_green_nr.png" id="4_peo3v"]
-[ext_resource type="Texture2D" uid="uid://dxgq8cdab2gmy" path="res://assets/textures/sky/lonely_road_afternoon_2k.exr" id="5_lkt25"]
+[ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_wa0ur"]
 [ext_resource type="Texture2D" uid="uid://bibqk2geqq8jq" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_dh.png" id="5_mmo8u"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/infr_nodes/special/rail_station.gd" id="5_my4h6"]
 [ext_resource type="Texture2D" uid="uid://b2tff7oboebmh" path="res://assets/textures/terrain_new/packed/grass_dark/grass_dark_nr.png" id="6_2pcia"]
 [ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="6_peo3v"]
 [ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="7_17kfa"]
+[ext_resource type="Texture2D" uid="uid://dwbv6673uolbk" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_dh.png" id="7_lh2pu"]
+[ext_resource type="Texture2D" uid="uid://c2hvp1daqncmx" path="res://assets/textures/terrain_new/packed/grass_dry/grass_dry_nr.png" id="8_74w14"]
+[ext_resource type="Texture2D" uid="uid://d0y1uiglfdsxk" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh.png" id="9_ls53n"]
+[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="9_mmo8u"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="10_2pcia"]
+[ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="10_d52qy"]
+[ext_resource type="Texture2D" uid="uid://cb8wsybeoj1g5" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="11_ln5b8"]
+[ext_resource type="Texture2D" uid="uid://rv0bx6mqw587" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="12_t40ec"]
+[ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="21_74w14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2q80"]
 transparency = 4
@@ -30,7 +42,7 @@ lod0_range = 128.0
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_mmo8u"]
 name = "grass_green_dh"
-albedo_color = Color(0.654433, 0.798701, 0.618085, 1)
+albedo_color = Color(0.470362, 0.617326, 0.433224, 1)
 albedo_texture = ExtResource("3_i2q80")
 normal_texture = ExtResource("4_peo3v")
 roughness = 0.775
@@ -43,42 +55,27 @@ albedo_texture = ExtResource("5_mmo8u")
 normal_texture = ExtResource("6_2pcia")
 roughness = 0.505
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_iicsu"]
+name = "grass_dry_dh"
+id = 2
+albedo_texture = ExtResource("7_lh2pu")
+normal_texture = ExtResource("8_74w14")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_x6ynq"]
+name = "rock_sandstone_dh"
+id = 3
+albedo_texture = ExtResource("9_ls53n")
+normal_texture = ExtResource("10_d52qy")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_hmqbw"]
+name = "rock_mossy_dh"
+id = 4
+albedo_texture = ExtResource("11_ln5b8")
+normal_texture = ExtResource("12_t40ec")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_17kfa"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_peo3v")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_mmo8u"), SubResource("Terrain3DTextureAsset_sfns4")])
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2pcia"]
-panorama = ExtResource("5_lkt25")
-
-[sub_resource type="Sky" id="Sky_u6qkf"]
-sky_material = SubResource("PanoramaSkyMaterial_2pcia")
-
-[sub_resource type="Environment" id="Environment_sfns4"]
-background_mode = 2
-background_energy_multiplier = 1.12
-sky = SubResource("Sky_u6qkf")
-ambient_light_source = 3
-ambient_light_color = Color(0.77084, 0.770839, 0.770839, 1)
-ambient_light_sky_contribution = 0.3
-reflected_light_source = 1
-tonemap_white = 6.0
-ssr_fade_in = 0.665742
-ssr_fade_out = 1.23114
-ssr_depth_tolerance = 29.21
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_intensity = 1.1
-fog_mode = 1
-fog_light_energy = 1.05
-fog_density = 1.0
-fog_depth_curve = 1.1487
-fog_depth_begin = 17.5
-fog_depth_end = 719.3
-volumetric_fog_density = 0.2289
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lrqyy"]
-dof_blur_far_distance = 8.17
-dof_blur_far_transition = 733.27
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_mmo8u"), SubResource("Terrain3DTextureAsset_sfns4"), SubResource("Terrain3DTextureAsset_iicsu"), SubResource("Terrain3DTextureAsset_x6ynq"), SubResource("Terrain3DTextureAsset_hmqbw")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmo8u"]
 albedo_texture = ExtResource("6_peo3v")
@@ -93,8 +90,422 @@ uv2_scale = Vector3(50, 50, 50)
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
 size = Vector2(2600, 2600)
 
-[node name="TerrainMpsb" type="Node"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yi3v"]
+albedo_texture = ExtResource("6_peo3v")
+metallic = 0.64
+metallic_specular = 1.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("7_17kfa")
+uv1_scale = Vector3(12, 12, 12)
+uv2_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
+size = Vector2(500, 270)
+
+[sub_resource type="Resource" id="Resource_2yqys"]
+script = ExtResource("4_wa0ur")
+town_name = "Anklam"
+pos_xz = Vector2(2781, 1735)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 0
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_7yi3v"]
+script = ExtResource("4_wa0ur")
+town_name = "Jarmen"
+pos_xz = Vector2(1005, 1296)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 1
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_naxkj"]
+script = ExtResource("4_wa0ur")
+town_name = "Altentreptow-Mühlenhagen"
+pos_xz = Vector2(760, 2933)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 2
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_wa0ur"]
+script = ExtResource("4_wa0ur")
+town_name = "Friedland"
+pos_xz = Vector2(2160.5, 3251.5)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 3
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_my4h6"]
+script = ExtResource("4_wa0ur")
+town_name = "Dersekow"
+pos_xz = Vector2(669, 252)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 4
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_rlgyo"]
+script = ExtResource("4_wa0ur")
+town_name = "Ramelow"
+pos_xz = Vector2(1859.2, 2832)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 5
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_lh2pu"]
+script = ExtResource("4_wa0ur")
+town_name = "Sarnow"
+pos_xz = Vector2(2568.5, 2656.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 6
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_74w14"]
+script = ExtResource("4_wa0ur")
+town_name = "Stolpe"
+pos_xz = Vector2(1941, 1590.6)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 7
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ls53n"]
+script = ExtResource("4_wa0ur")
+town_name = "Burow"
+pos_xz = Vector2(829.8, 2542.1)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 8
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_d52qy"]
+script = ExtResource("4_wa0ur")
+town_name = "Daberkow"
+pos_xz = Vector2(839.9, 2121.8)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 9
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ln5b8"]
+script = ExtResource("4_wa0ur")
+town_name = "Gützkow"
+pos_xz = Vector2(1386.5, 1148.7)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 10
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_t40ec"]
+script = ExtResource("4_wa0ur")
+town_name = "Spantekow-Wegezin"
+pos_xz = Vector2(1899.7, 2223.1)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 11
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_iicsu"]
+script = ExtResource("4_wa0ur")
+town_name = "Krien"
+pos_xz = Vector2(1674.3, 1979.4)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 12
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_x6ynq"]
+script = ExtResource("4_wa0ur")
+town_name = "Neetzow"
+pos_xz = Vector2(1183.3, 1597.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 13
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_hmqbw"]
+script = ExtResource("4_wa0ur")
+town_name = "Ziethen"
+pos_xz = Vector2(2768.1, 1397.7)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 14
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_etys5"]
+script = ExtResource("4_wa0ur")
+town_name = "Schmarsow"
+pos_xz = Vector2(376, 1746.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 15
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_due5e"]
+script = ExtResource("4_wa0ur")
+town_name = "Tutow"
+pos_xz = Vector2(540.9, 1335.2)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 16
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_nrdma"]
+script = ExtResource("4_wa0ur")
+town_name = "Blesewitz"
+pos_xz = Vector2(2439.6, 2051.6)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 17
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_dnrjp"]
+script = ExtResource("4_wa0ur")
+town_name = "Züssow"
+pos_xz = Vector2(2068, 761.3)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 18
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ybrkc"]
+script = ExtResource("4_wa0ur")
+town_name = "Karlsburg"
+pos_xz = Vector2(2432, 757.8)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 19
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_eakb4"]
+script = ExtResource("4_wa0ur")
+town_name = "Buddenhagen"
+pos_xz = Vector2(2796.8, 442.8)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 20
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ek2el"]
+script = ExtResource("4_wa0ur")
+town_name = "Beseritz"
+pos_xz = Vector2(1586.1, 2982.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 21
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_nnahk"]
+script = ExtResource("4_wa0ur")
+town_name = "Medow"
+pos_xz = Vector2(2057.6, 1919.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 22
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_u03sw"]
+script = ExtResource("4_wa0ur")
+town_name = "Stretense"
+pos_xz = Vector2(2681, 2315)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 23
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_fa4dg"]
+script = ExtResource("4_wa0ur")
+town_name = "Rebelow-Japenzin"
+pos_xz = Vector2(1589.1, 2576.1)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 24
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_gj2ut"]
+script = ExtResource("4_wa0ur")
+town_name = "Iven-Janow"
+pos_xz = Vector2(0, 0)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("3_naxkj")]([])
+stations = Array[ExtResource("5_my4h6")]([])
+station_blds_assigned = false
+num = 25
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_74w14"]
+ground_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PhysicalSkyMaterial_74w14")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_ls53n"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d52qy"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
+[node name="TerrainMpsb" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_b3vrx")
+terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" type="Terrain3D" parent="."]
@@ -104,18 +515,132 @@ assets = SubResource("Terrain3DAssets_17kfa")
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="WorldTerrain"]
-environment = SubResource("Environment_sfns4")
-camera_attributes = SubResource("CameraAttributesPractical_lrqyy")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldTerrain"]
-transform = Transform3D(0.933693, 0.325953, -0.14823, 0.227291, -0.219629, 0.948737, 0.276688, -0.91952, -0.279153, 1291.68, 353.365, 1174.38)
-light_energy = 1.723
-light_bake_mode = 0
-shadow_enabled = true
-directional_shadow_mode = 1
-
 [node name="Water" type="MeshInstance3D" parent="WorldTerrain"]
 transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1533.78, 10.2544, 1530.48)
 material_override = SubResource("StandardMaterial3D_mmo8u")
 mesh = SubResource("PlaneMesh_2pcia")
+
+[node name="Water2" type="MeshInstance3D" parent="WorldTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.46, 10.2545, 3199.59)
+material_override = SubResource("StandardMaterial3D_7yi3v")
+mesh = SubResource("PlaneMesh_naxkj")
+
+[node name="Locator" type="Node3D" parent="WorldTerrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.15, 21.9283, 2312.9)
+
+[node name="Towns" type="Node" parent="."]
+
+[node name="TownCenter_Anklam" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
+town = SubResource("Resource_2yqys")
+
+[node name="TownCenter_Jarmen" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 12.2968, 1296)
+town = SubResource("Resource_7yi3v")
+
+[node name="TownCenter_Altentreptow-Mühlenhagen" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 760, 11.782, 2933)
+town = SubResource("Resource_naxkj")
+
+[node name="TownCenter_Friedland" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2160.5, 12.0384, 3251.5)
+town = SubResource("Resource_wa0ur")
+
+[node name="TownCenter_Dersekow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 669, 18.4402, 252)
+town = SubResource("Resource_my4h6")
+
+[node name="TownCenter_Ramelow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1859.2, 17.4914, 2832)
+town = SubResource("Resource_rlgyo")
+
+[node name="TownCenter_Sarnow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2568.5, 13.3314, 2656.5)
+town = SubResource("Resource_lh2pu")
+
+[node name="TownCenter_Stolpe" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1941, 11.7904, 1590.6)
+town = SubResource("Resource_74w14")
+
+[node name="TownCenter_Burow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829.8, 21.0748, 2542.1)
+town = SubResource("Resource_ls53n")
+
+[node name="TownCenter_Daberkow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 839.9, 14.5964, 2121.8)
+town = SubResource("Resource_d52qy")
+
+[node name="TownCenter_Gützkow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1386.5, 14.0996, 1148.7)
+town = SubResource("Resource_ln5b8")
+
+[node name="TownCenter_Spantekow-Wegezin" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1899.7, 12.899, 2223.1)
+town = SubResource("Resource_t40ec")
+
+[node name="TownCenter_Krien" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.3, 11.6269, 1979.4)
+town = SubResource("Resource_iicsu")
+
+[node name="TownCenter_Neetzow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1183.3, 11.5198, 1597.5)
+town = SubResource("Resource_x6ynq")
+
+[node name="TownCenter_Ziethen" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.1, 11.6229, 1397.7)
+town = SubResource("Resource_hmqbw")
+
+[node name="TownCenter_Schmarsow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 376, 14.3446, 1746.5)
+town = SubResource("Resource_etys5")
+
+[node name="TownCenter_Tutow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540.9, 12.1945, 1335.2)
+town = SubResource("Resource_due5e")
+
+[node name="TownCenter_Blesewitz" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2439.6, 12.5734, 2051.6)
+town = SubResource("Resource_nrdma")
+
+[node name="TownCenter_Züssow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2068, 20.3429, 761.3)
+town = SubResource("Resource_dnrjp")
+
+[node name="TownCenter_Karlsburg" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2432, 20.3247, 757.8)
+town = SubResource("Resource_ybrkc")
+
+[node name="TownCenter_Buddenhagen" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2796.8, 20.4792, 442.8)
+town = SubResource("Resource_eakb4")
+
+[node name="TownCenter_Beseritz" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1586.1, 14.399, 2982.5)
+town = SubResource("Resource_ek2el")
+
+[node name="TownCenter_Medow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.6, 13.041, 1919.5)
+town = SubResource("Resource_nnahk")
+
+[node name="TownCenter_Stretense" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2681, 12.2136, 2315)
+town = SubResource("Resource_u03sw")
+
+[node name="TownCenter_Rebelow-Japenzin" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1589.1, 15.1677, 2576.1)
+town = SubResource("Resource_fa4dg")
+
+[node name="TownCenter_Iven-Janow" parent="Towns" instance=ExtResource("2_7yi3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
+town = SubResource("Resource_gj2ut")
+
+[node name="DecoSpawner" type="Node" parent="."]
+script = ExtResource("10_2pcia")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="HalfTimberedBarn" parent="." instance=ExtResource("21_74w14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1881.42, 17.7059, 2835.85)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("9_mmo8u")]
+environment = SubResource("Environment_ls53n")
+camera_attributes = SubResource("CameraAttributesPractical_d52qy")
