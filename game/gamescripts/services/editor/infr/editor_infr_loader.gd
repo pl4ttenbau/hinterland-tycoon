@@ -1,7 +1,6 @@
 @tool
 extends EditorScript
 
-const MAP_KEY = "harzmountains" # change here
 const TRACKS_JSON_PATH_FORMAT = "res://world/%s/jsondata/tracks.json"
 const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 
@@ -14,16 +13,18 @@ const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 
 func _run():
 	self.clear_editor_tracks()
-	self.spawn_track_paths()
-	self.spawn_road_paths()
+	var map_name: String = get_map_name()
+	if map_name:
+		self.spawn_track_paths(map_name)
+		self.spawn_road_paths(map_name)
 
 func clear_editor_tracks():
 	for child: Node in self.parent.get_children():
 		child.queue_free()
 
 #region Rail Path Spawning
-func spawn_track_paths():
-	var file_path := TRACKS_JSON_PATH_FORMAT % MAP_KEY
+func spawn_track_paths(map_key: String):
+	var file_path := TRACKS_JSON_PATH_FORMAT % map_key
 	var rails_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
 	for track_dict: Dictionary in rails_json_arr:
 		self.spawn_single_track_path(track_dict)
@@ -42,8 +43,8 @@ func spawn_single_track_path(track_data_dict: Dictionary):
 #endregion
 
 #region Road Path Spawning
-func spawn_road_paths():
-	var file_path := ROADS_JSON_PATH_FORMAT % MAP_KEY
+func spawn_road_paths(map_key: String):
+	var file_path := ROADS_JSON_PATH_FORMAT % map_key
 	var roads_json_arr: Array = JSON.parse_string(FileAccess.get_file_as_string(file_path))
 	for road_dict: Dictionary in roads_json_arr:
 		self.spawn_road_track_path(road_dict)
@@ -62,3 +63,10 @@ func spawn_road_track_path(road_data_dict: Dictionary):
 	self.parent.add_child(path, true)
 	path.owner = get_scene()
 #endregion
+
+func get_map_name():
+	var editor_map_name = EditorUtils.get_editor_map_name()
+	if ! editor_map_name:
+		Loggie.error("Cannot generate editor infrastructure: cannot get open editor map")
+		return null
+	return editor_map_name
