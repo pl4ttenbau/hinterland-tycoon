@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=66 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_b3vrx"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="2_7yi3v"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dlevlv0lqt2mw" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_nr.png" id="10_d52qy"]
 [ext_resource type="Texture2D" uid="uid://cb8wsybeoj1g5" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh.png" id="11_ln5b8"]
 [ext_resource type="Texture2D" uid="uid://rv0bx6mqw587" path="res://assets/textures/terrain_new/packed/dirt/dirt_nr.png" id="12_t40ec"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="15_ls53n"]
 [ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="21_74w14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2q80"]
@@ -101,7 +102,12 @@ uv1_scale = Vector3(12, 12, 12)
 uv2_scale = Vector3(50, 50, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
-size = Vector2(500, 270)
+size = Vector2(750, 270)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
+shape = 0
+section_length = 0.18
+section_segments = 1
 
 [sub_resource type="Resource" id="Resource_2yqys"]
 script = ExtResource("4_wa0ur")
@@ -521,12 +527,20 @@ material_override = SubResource("StandardMaterial3D_mmo8u")
 mesh = SubResource("PlaneMesh_2pcia")
 
 [node name="Water2" type="MeshInstance3D" parent="WorldTerrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.46, 10.2545, 3199.59)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2176.32, 10.2545, 3199.59)
 material_override = SubResource("StandardMaterial3D_7yi3v")
 mesh = SubResource("PlaneMesh_naxkj")
 
 [node name="Locator" type="Node3D" parent="WorldTerrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.15, 21.9283, 2312.9)
+
+[node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("15_ls53n")]
+terrain = NodePath("..")
+instance_spacing = 0.296875
+rows = 80
+amount = 6400
+mesh = SubResource("RibbonTrailMesh_d52qy")
+particle_count = 160000
 
 [node name="Towns" type="Node" parent="."]
 

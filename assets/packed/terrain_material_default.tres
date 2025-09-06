@@ -38,6 +38,6 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise_texture": SubResource("NoiseTexture2D_4nd3x"),
-&"projection_threshold": 0.42
+&"projection_threshold": 0.0
 }
 world_background = 0
