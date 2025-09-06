@@ -1,6 +1,6 @@
 class_name RoadCross extends Resource
 
-@export var connecting_roads: Array[int]
+@export var connecting_roads: PackedInt32Array
 @export var parent_node: RoadNode
 
 func _init(_node: RoadNode, _connected_roads: Array[int]):

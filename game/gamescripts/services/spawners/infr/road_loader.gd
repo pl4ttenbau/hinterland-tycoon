@@ -13,7 +13,7 @@ signal roads_spawned(_roads: Array[OuterRoad])
 
 func _enter_tree() -> void:
 	Managers.roads = self
-	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
+	# SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 	
 func _ready() -> void:
@@ -25,7 +25,7 @@ func load_roads() -> void:
 	var full_json_path := JSON_PATH_FORMAT % GlobalState.selected_map_name
 	var roads_arr_str: String = FileAccess.get_file_as_string(full_json_path)
 	for json_road in JSON.parse_string(roads_arr_str):
-		self.roads.append(RoadData.from_json(json_road))
+		self.roads.append(RoadMapper.from_json(json_road))
 	GlobalState.roads = self.roads
 	self.roads_loaded.emit(self.roads)
 #endregion
@@ -48,16 +48,3 @@ func spawn_road(road: RoadData):
 	
 func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
-
-func _on_world_update() -> void:
-	# self.hide_far_roads()
-	pass
-			
-func hide_far_roads():
-	for container: OuterRoad in self.containers:
-		var player: Node3D = %Player
-		if player:
-			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = player.position.distance_to(middle_pos)
-			if dist > MAX_VISIBLE_DIST: container.visible = false
-			else: container.visible = true
