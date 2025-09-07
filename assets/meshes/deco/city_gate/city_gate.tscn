@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn7pc6dlp7jl8"]
+
+[ext_resource type="Texture2D" uid="uid://bce3dlv4ihnvb" path="res://assets/meshes/deco/city_gate/tex_kroepi.png" id="1_8ie74"]
+[ext_resource type="ArrayMesh" uid="uid://b6qg5rmxel58l" path="res://assets/meshes/deco/city_gate/kroepelinertor.obj" id="1_cruts"]
+[ext_resource type="Texture2D" uid="uid://ce46ugbxp0xmq" path="res://assets/meshes/deco/city_gate/tex_kroepi_n.png" id="2_nmg1a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h41ym"]
+albedo_texture = ExtResource("1_8ie74")
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = ExtResource("2_nmg1a")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ie74"]
+size = Vector3(6.38867, 25.2135, 6.85768)
+
+[node name="CityGate" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 32
+material_override = SubResource("StandardMaterial3D_h41ym")
+visibility_range_end = 800.0
+visibility_range_end_margin = 80.0
+mesh = ExtResource("1_cruts")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.479492, 12.4963, -0.17292)
+shape = SubResource("BoxShape3D_8ie74")
