@@ -10,8 +10,6 @@ signal world_update()
 func _enter_tree() -> void:
 	# self-register in GlobalState
 	GlobalState.world_container = self
-	# connect to signals
-	self.world_update.connect(Callable(self, "_on_world_update"))
 
 func _ready() -> void:
 	var terrain_3d_obj: Terrain3D = self.get_child(0)
@@ -26,9 +24,6 @@ func get_height_at(abs_pos: Vector3) -> float:
 
 func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 	return Vector3(abs_pos.x, get_height_at(abs_pos), abs_pos.z)
-
-func _on_world_update() -> void:
-	pass
 	
 func get_terrain() -> Terrain3D:
 	return self.get_child(0)

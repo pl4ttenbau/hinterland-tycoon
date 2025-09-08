@@ -13,7 +13,6 @@ signal roads_spawned(_roads: Array[OuterRoad])
 
 func _enter_tree() -> void:
 	Managers.roads = self
-	SignalBus.world_update.connect(Callable(self, "_on_world_update"))
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 	
 func _ready() -> void:
@@ -48,16 +47,3 @@ func spawn_road(road: RoadData):
 	
 func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
-
-func _on_world_update() -> void:
-	# self.hide_far_roads()
-	pass
-			
-func hide_far_roads():
-	for container: OuterRoad in self.containers:
-		var player: Node3D = %Player
-		if player:
-			var middle_pos: Vector3 = container.get_middle_pos()
-			var dist = player.position.distance_to(middle_pos)
-			if dist > MAX_VISIBLE_DIST: container.visible = false
-			else: container.visible = true

@@ -105,7 +105,7 @@ metallic_specular = 1.0
 roughness = 0.0
 normal_enabled = true
 normal_texture = ExtResource("7_17kfa")
-uv1_scale = Vector3(12, 12, 12)
+uv1_scale = Vector3(24, 12, 12)
 uv2_scale = Vector3(50, 50, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
@@ -669,9 +669,6 @@ amount = 6400
 mesh = SubResource("RibbonTrailMesh_d52qy")
 particle_count = 160000
 
-[node name="CityGate" parent="WorldTerrain" instance=ExtResource("16_ln5b8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2882.86, 11.0593, 1766.16)
-
 [node name="Towns" type="Node" parent="."]
 
 [node name="TownCenter_Anklam" parent="Towns" instance=ExtResource("2_7yi3v")]
@@ -781,6 +778,9 @@ town = SubResource("Resource_gj2ut")
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("10_2pcia")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="AnklamCityGate" parent="Deco" instance=ExtResource("16_ln5b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2882.86, 11.0593, 1766.16)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("9_mmo8u")]
 environment = SubResource("Environment_ls53n")
