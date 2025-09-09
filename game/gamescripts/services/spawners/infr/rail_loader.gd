@@ -93,10 +93,3 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
 #endregion
-
-#region Helper-Methods
-func _get_cam_pos() -> Vector3:
-	if GlobalState.active_cam != null:
-		return GlobalState.active_cam.global_position
-	return GlobalState.player.global_position
-#endregion
