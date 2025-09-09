@@ -1,3 +1,4 @@
+@tool
 class_name BaseStructure extends ResourceContainer
 
 @export var town_num: int

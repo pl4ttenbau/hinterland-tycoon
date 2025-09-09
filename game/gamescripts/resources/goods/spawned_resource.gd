@@ -1,3 +1,4 @@
+@tool
 class_name SpawnedResource extends GameObject
 
 @export var res_type: BaseResourceType

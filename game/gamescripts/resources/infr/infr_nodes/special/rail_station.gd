@@ -51,10 +51,10 @@ func _set_full_station_name():
 	
 ## save local town and also add itself to town's station list
 func _register_connected_town():
-	var connected_town := TownData.get_town_by_num(self.town_num)
-	if connected_town:
-		self.connected_town = connected_town
-		connected_town.connect_new_station(self)
+	var _connected_town := TownData.get_town_by_num(self.town_num)
+	if _connected_town:
+		self.connected_town = _connected_town
+		_connected_town.connect_new_station(self)
 
 #region Helper Methods
 static func next_station_num() -> int:

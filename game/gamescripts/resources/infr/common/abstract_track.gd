@@ -1,4 +1,5 @@
 ## every curve based infrastructure pieve should inherit from this
+@tool
 class_name AbstractTrack extends GameObject
 
 @export var infr_type_key: String
