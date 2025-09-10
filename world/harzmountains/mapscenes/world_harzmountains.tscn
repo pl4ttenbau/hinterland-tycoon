@@ -1251,10 +1251,13 @@ dof_blur_far_distance = 1.44
 dof_blur_near_distance = 0.01
 auto_exposure_min_sensitivity = 8.01
 
-[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
+[node name="WorldContainer" type="Node"]
 script = ExtResource("1_tey3n")
 map_key = "harzmountains"
+<<<<<<< Updated upstream
 terrain = NodePath("WorldTerrain")
+=======
+>>>>>>> Stashed changes
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" type="Terrain3D" parent="."]

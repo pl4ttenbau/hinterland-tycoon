@@ -1,27 +1,7 @@
-[gd_resource type="Terrain3DMaterial" load_steps=4 format=3 uid="uid://bdct80gpduqri"]
-
-[sub_resource type="Gradient" id="Gradient_ijetp"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vlcoi"]
-noise_type = 2
-frequency = 0.03
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_myge2"]
-seamless = true
-color_ramp = SubResource("Gradient_ijetp")
-noise = SubResource("FastNoiseLite_vlcoi")
+[gd_resource type="Terrain3DMaterial" format=3 uid="uid://bdct80gpduqri"]
 
 [resource]
+<<<<<<< Updated upstream
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.5,
@@ -40,4 +20,6 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_myge2"),
 &"projection_threshold": 0.8
 }
+=======
+>>>>>>> Stashed changes
 world_background = 0
