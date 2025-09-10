@@ -8,6 +8,11 @@ const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_fau
 @export var motor: VehicleMotor
 @export var direction: VehicleMotor.Direction
 
+@export var current_rail_node: RailNodeData:
+	get(): 
+		var track: RailTrackData = self.wheels.current_section.track
+		return track.get_rail_node(self.wheels.current_node_i)
+
 signal reached_next_node(node_num: int)
 signal reached_end_of_track(node_obj: RailNodeData)
 
@@ -15,6 +20,8 @@ func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
 	
 func _ready() -> void:
+	# create vehicle path
+	self.add_child(VehiclePath.new(self))
 	# create speed timer
 	var speed_timer := Timer.new()
 	speed_timer.wait_time = .1
@@ -82,16 +89,18 @@ func get_cam() -> Camera3D:
 	return $Camera3D
 #endregion
 
-func _on_speed_timer_tick():
-	if self.motor && self.motor.is_started:
-		self.motor.on_motor_tick()
-
 func rotate_to(target_pos: Vector3):
 	var rot_before := self.global_rotation
 	self.look_at(target_pos, Vector3(0,1,0))
 	self.global_rotation = rot_before
 	self.look_at(target_pos, Vector3(0,1,0))
+
+#region Callbacks
+func _on_speed_timer_tick():
+	if self.motor && self.motor.is_started:
+		self.motor.on_motor_tick()
 	
 func _on_world_ready():
 	self.wheels.put_on_track()
 	self.motor.start()
+#endregion

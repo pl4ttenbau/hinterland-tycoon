@@ -40,6 +40,9 @@ signal rail_spawned(rail_container: OuterRailTrack)
 
 @warning_ignore("unused_signal")
 signal rails_spawned(containers: Array[OuterRailTrack])
+
+@warning_ignore("unused_signal")
+signal fork_changed(fork: RailForkData)
 #endregion
 
 #region Roads 

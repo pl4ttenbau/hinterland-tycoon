@@ -14,9 +14,11 @@ static var _last_fork_num = -1
 	set(value): 
 		set_to = value
 		self.set_to_changed.emit(value)
+		SignalBus.fork_changed.emit(self)
 
 # later-set properties
 @export var railNode: RailNodeData
+
 @export_storage var container: OuterRailFork
 
 @export_storage var track: RailTrackData:

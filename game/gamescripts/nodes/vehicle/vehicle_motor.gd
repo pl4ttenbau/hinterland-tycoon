@@ -2,7 +2,6 @@ class_name VehicleMotor extends Node
 
 enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
 
-
 #region Properties
 @export var max_speed: float = .7
 
