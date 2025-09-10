@@ -14,9 +14,11 @@ static var _last_fork_num = -1
 	set(value): 
 		set_to = value
 		self.set_to_changed.emit(value)
+		SignalBus.fork_changed.emit(self)
 
 # later-set properties
 @export var railNode: RailNodeData
+
 @export_storage var container: OuterRailFork
 
 @export_storage var track: RailTrackData:
@@ -40,12 +42,12 @@ static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailForkData
 		inst.all_connective_tracks.append(int(connective_track))
 	# set to
 	inst.set_to = fork_dict.get("setTo", null)
+	# register in fork store
+	Managers.rails.fork_storage.add(inst)
 	return inst
 	
 static func get_by_num(fork_num: int) -> RailForkData:
-	for rail_fork in Managers.rails.forks:
-		if rail_fork.num == fork_num: return rail_fork
-	return null
+	return Managers.rails.fork_storage.get_by_num(fork_num)
 
 func spawn() -> OuterRailFork:
 	var instanciated: OuterRailFork = preload(SCENE_PATH).instantiate()

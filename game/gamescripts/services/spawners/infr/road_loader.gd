@@ -24,7 +24,7 @@ func load_roads() -> void:
 	var full_json_path := JSON_PATH_FORMAT % GlobalState.selected_map_name
 	var roads_arr_str: String = FileAccess.get_file_as_string(full_json_path)
 	for json_road in JSON.parse_string(roads_arr_str):
-		self.roads.append(RoadData.from_json(json_road))
+		self.roads.append(RoadMapper.road_from_data_json(json_road))
 	GlobalState.roads = self.roads
 	self.roads_loaded.emit(self.roads)
 #endregion

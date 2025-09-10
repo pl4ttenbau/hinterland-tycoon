@@ -7,8 +7,9 @@ const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
-@export var track_containers: Array[OuterRailTrack] = []
+@export var fork_storage: RailForkStore = RailForkStore.new()
 
+## here we only store visible forks
 @export var forks: Array[RailForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
 @export var forks_by_pos: Dictionary = {}
@@ -39,7 +40,7 @@ func spawn_rails():
 		self.spawn_rail_buffers(track_obj)
 	self.spawn_rail_forks()
 	# emit signals
-	SignalBus.rails_spawned.emit(track_containers)
+	SignalBus.rails_spawned.emit(self.track_storage._containers)
 	
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	if ! rail_track.curve: rail_track.build_path()
@@ -52,8 +53,9 @@ func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	
 func spawn_rail_track(track_obj: RailTrackData):
 	var outer_track := self.instanciate_rail_track(track_obj)
+	# save in storage and as child
+	self.track_storage.add_container(outer_track)
 	add_child(outer_track, true)
-	self.track_containers.append(outer_track)
 	# emit
 	SignalBus.rail_spawned.emit(outer_track)
 #endregion
@@ -63,6 +65,7 @@ func sort_rail_forks():
 	for rail_track in self.track_storage.get_all():
 		for track_node in rail_track.nodes:
 			if track_node.fork:
+				## only take first at a pos
 				if ! self.forks_by_pos.has(track_node.position):
 					self.forks_by_pos.set(track_node.position, track_node.fork)
 					self.forks.append(track_node.fork)

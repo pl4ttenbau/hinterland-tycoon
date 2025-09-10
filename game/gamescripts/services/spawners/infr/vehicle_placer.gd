@@ -29,7 +29,7 @@ func load_vehicles():
 	self.start_vehicles_spawned = true
 	
 func spawn_vehicle(track_num: int, node_index: int, dir: VehicleMotor.Direction) -> RailVehicle:
-	var outer_track := get_rail_path(track_num)
+	var outer_track := Managers.rails.track_storage.get_container_by_num(track_num)
 	var veh: RailVehicle = RailVehicle.of(outer_track, node_index, dir)
 	self.add_child(veh)
 	# assign name and num
@@ -43,14 +43,6 @@ func spawn_vehicle(track_num: int, node_index: int, dir: VehicleMotor.Direction)
 func get_next_vehicle_num() -> int:
 	self._next_vehicle_num += 1
 	return self._next_vehicle_num
-
-func get_rail_path(_num: int) -> OuterRailTrack:
-	var track_num: int = _num -1
-	var container: OuterRailTrack = self.rail_containers.get(track_num)
-	if (!container):
-		Loggie.error("Cannot get rail path: container not loaded")
-		return null
-	return container
 
 func _on_rails_rails_spawned(containers: Array[OuterRailTrack]) -> void:
 	Loggie.info("Rails spawned; initializing vehicles ...")

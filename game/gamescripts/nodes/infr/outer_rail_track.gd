@@ -19,6 +19,8 @@ func _enter_tree() -> void:
 		self.entity = value
 		self.curve = value.curve
 		self.track_assigned.emit(track)
+	get():
+		return self.entity as RailTrackData
 		
 static func get_scene_path(track_obj: RailTrackData) -> String:
 	if track_obj.infr_type_key == "750_MM":

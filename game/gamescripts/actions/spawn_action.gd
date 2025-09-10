@@ -10,10 +10,8 @@ func spawn_vehicle():
 		var depot_node_index := depot_obj.get_depot_rail_node().index
 		var veh_dir = self.get_veh_dir_from_depot_pos(depot_obj.track_pos)
 		Loggie.info("Spawn new vehicle in direction: %s" % veh_dir)
-		var veh := Managers.vehicles.spawn_vehicle(depot_obj.track_num, 
-			depot_node_index, veh_dir)
+		var veh := Managers.vehicles.spawn_vehicle(depot_obj.track_num, depot_node_index, veh_dir)
 		# start
-		veh.wheels.put_on_track()
 		veh.motor.start()
 		
 func get_veh_dir_from_depot_pos(depot_pos: String) -> VehicleMotor.Direction:
