@@ -1,0 +1,476 @@
+[gd_scene load_steps=31 format=3 uid="uid://bongrkjiwclhd"]
+
+[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
+[ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_icu33"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/infr_nodes/special/rail_station.gd" id="4_n5hqh"]
+
+[sub_resource type="Resource" id="Resource_2yqys"]
+script = ExtResource("3_icu33")
+town_name = "Anklam"
+pos_xz = Vector2(2781, 1735)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 0
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_7yi3v"]
+script = ExtResource("3_icu33")
+town_name = "Jarmen"
+pos_xz = Vector2(1005, 1296)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 1
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_naxkj"]
+script = ExtResource("3_icu33")
+town_name = "Altentreptow-Mühlenhagen"
+pos_xz = Vector2(760, 2933)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 2
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_wa0ur"]
+script = ExtResource("3_icu33")
+town_name = "Friedland"
+pos_xz = Vector2(2160.5, 3251.5)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 3
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_my4h6"]
+script = ExtResource("3_icu33")
+town_name = "Dersekow"
+pos_xz = Vector2(669, 252)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 4
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_rlgyo"]
+script = ExtResource("3_icu33")
+town_name = "Ramelow"
+pos_xz = Vector2(1859.2, 2832)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 5
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_lh2pu"]
+script = ExtResource("3_icu33")
+town_name = "Sarnow"
+pos_xz = Vector2(2568.5, 2656.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 6
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_74w14"]
+script = ExtResource("3_icu33")
+town_name = "Stolpe"
+pos_xz = Vector2(1941, 1590.6)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 7
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ls53n"]
+script = ExtResource("3_icu33")
+town_name = "Burow"
+pos_xz = Vector2(829.8, 2542.1)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 8
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_d52qy"]
+script = ExtResource("3_icu33")
+town_name = "Daberkow"
+pos_xz = Vector2(839.9, 2121.8)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 9
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ln5b8"]
+script = ExtResource("3_icu33")
+town_name = "Gützkow"
+pos_xz = Vector2(1386.5, 1148.7)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 10
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_t40ec"]
+script = ExtResource("3_icu33")
+town_name = "Spantekow-Wegezin"
+pos_xz = Vector2(1899.7, 2223.1)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 11
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_iicsu"]
+script = ExtResource("3_icu33")
+town_name = "Krien"
+pos_xz = Vector2(1674.3, 1979.4)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 12
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_x6ynq"]
+script = ExtResource("3_icu33")
+town_name = "Neetzow"
+pos_xz = Vector2(1352.9, 1597.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 13
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_hmqbw"]
+script = ExtResource("3_icu33")
+town_name = "Ziethen"
+pos_xz = Vector2(2768.1, 1397.7)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 14
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_etys5"]
+script = ExtResource("3_icu33")
+town_name = "Schmarsow"
+pos_xz = Vector2(376, 1746.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 15
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_due5e"]
+script = ExtResource("3_icu33")
+town_name = "Tutow"
+pos_xz = Vector2(540.9, 1335.2)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 16
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_nrdma"]
+script = ExtResource("3_icu33")
+town_name = "Blesewitz"
+pos_xz = Vector2(2439.6, 2051.6)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 17
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_dnrjp"]
+script = ExtResource("3_icu33")
+town_name = "Züssow"
+pos_xz = Vector2(2068, 761.3)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 18
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ybrkc"]
+script = ExtResource("3_icu33")
+town_name = "Karlsburg"
+pos_xz = Vector2(2432, 757.8)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 19
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_eakb4"]
+script = ExtResource("3_icu33")
+town_name = "Buddenhagen"
+pos_xz = Vector2(2796.8, 442.8)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 20
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ek2el"]
+script = ExtResource("3_icu33")
+town_name = "Beseritz"
+pos_xz = Vector2(1586.1, 2982.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 21
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_nnahk"]
+script = ExtResource("3_icu33")
+town_name = "Medow"
+pos_xz = Vector2(2057.6, 1919.5)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 22
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_u03sw"]
+script = ExtResource("3_icu33")
+town_name = "Stretense"
+pos_xz = Vector2(2681, 2315)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 23
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_fa4dg"]
+script = ExtResource("3_icu33")
+town_name = "Rebelow-Japenzin"
+pos_xz = Vector2(1589.1, 2576.1)
+is_minor = true
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 24
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_gj2ut"]
+script = ExtResource("3_icu33")
+town_name = "Iven-Janow"
+pos_xz = Vector2(0, 0)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 25
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[node name="Towns" type="Node"]
+
+[node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
+town = SubResource("Resource_2yqys")
+
+[node name="TownCenter_Jarmen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 12.2968, 1296)
+town = SubResource("Resource_7yi3v")
+
+[node name="TownCenter_Altentreptow-Mühlenhagen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 760, 11.782, 2933)
+town = SubResource("Resource_naxkj")
+
+[node name="TownCenter_Friedland" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2160.5, 12.0384, 3251.5)
+town = SubResource("Resource_wa0ur")
+
+[node name="TownCenter_Dersekow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 669, 18.4402, 252)
+town = SubResource("Resource_my4h6")
+
+[node name="TownCenter_Ramelow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1859.2, 17.4914, 2832)
+town = SubResource("Resource_rlgyo")
+
+[node name="TownCenter_Sarnow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2568.5, 13.3314, 2656.5)
+town = SubResource("Resource_lh2pu")
+
+[node name="TownCenter_Stolpe" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1941, 11.7904, 1590.6)
+town = SubResource("Resource_74w14")
+
+[node name="TownCenter_Burow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829.8, 21.0748, 2542.1)
+town = SubResource("Resource_ls53n")
+
+[node name="TownCenter_Daberkow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 839.9, 14.5964, 2121.8)
+town = SubResource("Resource_d52qy")
+
+[node name="TownCenter_Gützkow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1386.5, 14.0996, 1148.7)
+town = SubResource("Resource_ln5b8")
+
+[node name="TownCenter_Spantekow-Wegezin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1899.7, 12.899, 2223.1)
+town = SubResource("Resource_t40ec")
+
+[node name="TownCenter_Krien" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.3, 11.6269, 1979.4)
+town = SubResource("Resource_iicsu")
+
+[node name="TownCenter_Neetzow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1352.9, 12.4481, 1597.5)
+town = SubResource("Resource_x6ynq")
+
+[node name="TownCenter_Ziethen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.1, 11.6229, 1397.7)
+town = SubResource("Resource_hmqbw")
+
+[node name="TownCenter_Schmarsow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 376, 14.3446, 1746.5)
+town = SubResource("Resource_etys5")
+
+[node name="TownCenter_Tutow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540.9, 12.1945, 1335.2)
+town = SubResource("Resource_due5e")
+
+[node name="TownCenter_Blesewitz" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2439.6, 12.5734, 2051.6)
+town = SubResource("Resource_nrdma")
+
+[node name="TownCenter_Züssow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2068, 20.3429, 761.3)
+town = SubResource("Resource_dnrjp")
+
+[node name="TownCenter_Karlsburg" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2432, 20.3247, 757.8)
+town = SubResource("Resource_ybrkc")
+
+[node name="TownCenter_Buddenhagen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2796.8, 20.4792, 442.8)
+town = SubResource("Resource_eakb4")
+
+[node name="TownCenter_Beseritz" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1586.1, 14.399, 2982.5)
+town = SubResource("Resource_ek2el")
+
+[node name="TownCenter_Medow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.6, 13.041, 1919.5)
+town = SubResource("Resource_nnahk")
+
+[node name="TownCenter_Stretense" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2681, 12.2136, 2315)
+town = SubResource("Resource_u03sw")
+
+[node name="TownCenter_Rebelow-Japenzin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1589.1, 15.1677, 2576.1)
+town = SubResource("Resource_fa4dg")
+
+[node name="TownCenter_Iven-Janow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
+town = SubResource("Resource_gj2ut")
