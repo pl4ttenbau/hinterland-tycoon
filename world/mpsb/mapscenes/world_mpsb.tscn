@@ -1,0 +1,288 @@
+[gd_scene load_steps=31 format=3 uid="uid://dg6j0pswyx2iv"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/terrain/terrain_container.gd" id="1_b3vrx"]
+[ext_resource type="PackedScene" uid="uid://dsjabskd6gp2c" path="res://world/mpsb/mapscenes/terrain_mpsb.scn" id="2_vr760"]
+[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="9_mmo8u"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="10_2pcia"]
+[ext_resource type="PackedScene" uid="uid://dn7pc6dlp7jl8" path="res://assets/meshes/deco/city_gate/city_gate.tscn" id="16_ln5b8"]
+[ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="21_74w14"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="23_d52qy"]
+[ext_resource type="PackedScene" uid="uid://ixv6becst2fk" path="res://world/mpsb/mapscenes/towns_mpsb.tscn" id="39_a2xg2"]
+[ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="47_lkb2c"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_74w14"]
+ground_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PhysicalSkyMaterial_74w14")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_ls53n"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+ambient_light_sky_contribution = 0.9
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_d52qy"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
+[sub_resource type="Curve3D" id="Curve3D_ln5b8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2057.1, 15.1, 3179.3, 0, 0, 0, 0, 0, 0, 2056.7, 15.2, 3142.1, 0, 0, 0, 0, 0, 0, 2057.5, 14.9, 3120.1, 0, 0, 0, 0, 0, 0, 2044.2, 14.8, 3071.4),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_t40ec"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2044.2, 14.8, 3071.4, 0, 0, 0, 0, 0, 0, 2051.3, 14.6, 3062.3, 0, 0, 0, 0, 0, 0, 2045.3, 13.2, 3032.6),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_iicsu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2044.2, 14.8, 3071.4, 0, 0, 0, 0, 0, 0, 2026.9, 14.9, 3059.7, 0, 0, 0, 0, 0, 0, 2010.2, 15.4, 3039.8, 0, 0, 0, 0, 0, 0, 1997, 16.1, 3026.8, 0, 0, 0, 0, 0, 0, 1978.8, 17.3, 3021.2, 0, 0, 0, 0, 0, 0, 1952.7, 18.8, 3019.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_x6ynq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1952.7, 18.8, 3019.7, 0, 0, 0, 0, 0, 0, 1934.7, 19.2, 3020.4, 0, 0, 0, 0, 0, 0, 1923.2, 19.4, 3017.8, 0, 0, 0, 0, 0, 0, 1883.5, 18.4, 2974.6),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_hmqbw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1883.5, 18.4, 2974.6, 0, 0, 0, 0, 0, 0, 1859.5, 16.9, 2950.6, 0, 0, 0, 0, 0, 0, 1849.5, 16, 2931.3, 0, 0, 0, 0, 0, 0, 1842, 16.4, 2874.1, 0, 0, 0, 0, 0, 0, 1840.3, 17.7, 2848.5, 0, 0, 0, 0, 0, 0, 1830.8, 17.7, 2834.3, 0, 0, 0, 0, 0, 0, 1815.7, 17.8, 2807.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_etys5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1815.7, 17.8, 2807.1, 0, 0, 0, 0, 0, 0, 1805, 15.9, 2795.5, 0, 0, 0, 0, 0, 0, 1786.2, 14.7, 2782.5, 0, 0, 0, 0, 0, 0, 1769.5, 13.6, 2757.6, 0, 0, 0, 0, 0, 0, 1762.8, 14, 2752.8, 0, 0, 0, 0, 0, 0, 1756.4, 13.2, 2736.1, 0, 0, 0, 0, 0, 0, 1756.3, 12.1, 2717.3, 0, 0, 0, 0, 0, 0, 1751.3, 14, 2681.3, 0, 0, 0, 0, 0, 0, 1735.5, 15.4, 2671),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_due5e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1735.5, 15.4, 2671, 0, 0, 0, 0, 0, 0, 1708.6, 16.3, 2650.1, 0, 0, 0, 0, 0, 0, 1703.3, 16.5, 2637.2, 0, 0, 0, 0, 0, 0, 1703.4, 16.9, 2623.1, 0, 0, 0, 0, 0, 0, 1715, 17, 2597.9, 0, 0, 0, 0, 0, 0, 1716.4, 15.6, 2572.4, 0, 0, 0, 0, 0, 0, 1720.8, 15.5, 2554),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_nrdma"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1720.8, 15.5, 2554, 0, 0, 0, 0, 0, 0, 1720.4, 15.4, 2543, 0, 0, 0, 0, 0, 0, 1728.1, 15.5, 2527.4, 0, 0, 0, 0, 0, 0, 1746.4, 14.9, 2486.9, 0, 0, 0, 0, 0, 0, 1755, 14.9, 2458.6, 0, 0, 0, 0, 0, 0, 1768.7, 14.9, 2432.3, 0, 0, 0, 0, 0, 0, 1788.4, 14.7, 2401.4, 0, 0, 0, 0, 0, 0, 1794, 14.8, 2380.6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_dnrjp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1794, 14.8, 2380.6, 0, 0, 0, 0, 0, 0, 1791.8, 14.4, 2359, 0, 0, 0, 0, 0, 0, 1773.6, 13.8, 2330.7, 0, 0, 0, 0, 0, 0, 1757.6, 13.7, 2310.1, 0, 0, 0, 0, 0, 0, 1739.1, 13.1, 2273.3, 0, 0, 0, 0, 0, 0, 1711.7, 13, 2195.6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_ybrkc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1711.7, 13, 2195.6, 0, 0, 0, 0, 0, 0, 1697.9, 13, 2126.3, 0, 0, 0, 0, 0, 0, 1666.9, 13.3, 2087.4, 0, 0, 0, 0, 0, 0, 1640.2, 13.5, 2036.6, 0, 0, 0, 0, 0, 0, 1636.8, 12.8, 2013.5, 0, 0, 0, 0, 0, 0, 1635.7, 12, 1961.2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_eakb4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1635.7, 12, 1961.2, 0, 0, 0, 0, 0, 0, 1629.9, 12.1, 1938.7, 0, 0, 0, 0, 0, 0, 1611.5, 12.6, 1911.7, 0, 0, 0, 0, 0, 0, 1597.7, 13, 1889.5, 0, 0, 0, 0, 0, 0, 1580, 12.9, 1871.3, 0, 0, 0, 0, 0, 0, 1560.2, 13, 1853.9, 0, 0, 0, 0, 0, 0, 1521.8, 12.8, 1827.4, 0, 0, 0, 0, 0, 0, 1486.7, 12.7, 1815.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_ek2el"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1486.7, 12.7, 1815.5, 0, 0, 0, 0, 0, 0, 1471.4, 12.3, 1824, 0, 0, 0, 0, 0, 0, 1453.4, 11.6, 1836.6, 0, 0, 0, 0, 0, 0, 1436.2, 12.7, 1846.4, 0, 0, 0, 0, 0, 0, 1425.3, 12.8, 1848.4, 0, 0, 0, 0, 0, 0, 1401.8, 12.8, 1834.4, 0, 0, 0, 0, 0, 0, 1374.7, 12.1, 1818.8, 0, 0, 0, 0, 0, 0, 1355.6, 11.9, 1794.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_nnahk"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1355.6, 11.9, 1794.3, 0, 0, 0, 0, 0, 0, 1339.1, 11.8, 1773.9, 0, 0, 0, 0, 0, 0, 1322, 11.6, 1750.1, 0, 0, 0, 0, 0, 0, 1306.6, 12, 1706.8, 0, 0, 0, 0, 0, 0, 1302.2, 12.3, 1668.8, 0, 0, 0, 0, 0, 0, 1293.7, 11.6, 1637.1, 0, 0, 0, 0, 0, 0, 1282.5, 11.5, 1620.4, 0, 0, 0, 0, 0, 0, 1264.6, 11.8, 1601.5, 0, 0, 0, 0, 0, 0, 1243.7, 11.8, 1576.1, 0, 0, 0, 0, 0, 0, 1233.2, 12.2, 1550),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_u03sw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1233.2, 12.2, 1550, 0, 0, 0, 0, 0, 0, 1222.3, 12.1, 1518.1, 0, 0, 0, 0, 0, 0, 1207.4, 11.8, 1490.4, 0, 0, 0, 0, 0, 0, 1206.9, 11.2, 1457.8, 0, 0, 0, 0, 0, 0, 1212.9, 11.1, 1424.1, 0, 0, 0, 0, 0, 0, 1208.2, 11.3, 1393.8, 0, 0, 0, 0, 0, 0, 1196, 11.1, 1362.5, 0, 0, 0, 0, 0, 0, 1169.9, 11.1, 1325.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_fa4dg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1169.9, 11.1, 1325.1, 0, 0, 0, 0, 0, 0, 1153.6, 11.1, 1307.9, 0, 0, 0, 0, 0, 0, 1121.4, 11.1, 1291.7, 0, 0, 0, 0, 0, 0, 1092.1, 11.1, 1271.8),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_gj2ut"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1092.1, 11.1, 1271.8, 0, 0, 0, 0, 0, 0, 1072.6, 11.1, 1262.6, 0, 0, 0, 0, 0, 0, 1056, 11.1, 1247.2, 0, 0, 0, 0, 0, 0, 1036.5, 11.1, 1228),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_gxjrr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1092.1, 11.1, 1271.8, 0, 0, 0, 0, 0, 0, 1076.6, 11.1, 1251, 0, 0, 0, 0, 0, 0, 1039.2, 11.1, 1214.4),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
+script = ExtResource("1_b3vrx")
+map_key = "mpsb"
+terrain = NodePath("")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." instance=ExtResource("2_vr760")]
+
+[node name="Towns" parent="." instance=ExtResource("39_a2xg2")]
+
+[node name="Deco" type="Node" parent="."]
+script = ExtResource("10_2pcia")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="AnklamCityGate" parent="Deco" instance=ExtResource("16_ln5b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2882.86, 11.0593, 1766.16)
+
+[node name="Campfire" parent="Deco" instance=ExtResource("47_lkb2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2733.55, 12.9653, 2537.82)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("9_mmo8u")]
+environment = SubResource("Environment_ls53n")
+camera_attributes = SubResource("CameraAttributesPractical_d52qy")
+
+[node name="Houses" type="Node" parent="."]
+
+[node name="HalfTimberedBarn" parent="Houses" instance=ExtResource("21_74w14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1881.42, 17.7059, 2835.85)
+
+[node name="InEditor" type="Node3D" parent="."]
+script = ExtResource("23_d52qy")
+
+[node name="EditorInfr" type="Node3D" parent="InEditor"]
+
+[node name="Editor_Track1" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ln5b8")
+metadata/track_num = 1
+metadata/name = "Friedland Station Mainline"
+
+[node name="Editor_Track2" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_t40ec")
+metadata/track_num = 2
+metadata/name = "Friedland Curve East"
+
+[node name="Editor_Track3" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_iicsu")
+metadata/track_num = 3
+metadata/name = "Friedland Curve West"
+
+[node name="Editor_Track4" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_x6ynq")
+metadata/track_num = 4
+metadata/name = "Friedland-Ramelow South"
+
+[node name="Editor_Track5" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_hmqbw")
+metadata/track_num = 5
+metadata/name = "Friedland-Ramelow Bridge"
+
+[node name="Editor_Track6" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_etys5")
+metadata/track_num = 6
+metadata/name = "Ramelow-Jagezin"
+
+[node name="Editor_Track7" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_due5e")
+metadata/track_num = 7
+metadata/name = "Jagezin Station"
+
+[node name="Editor_Track8" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_nrdma")
+metadata/track_num = 8
+metadata/name = "Jagezin-Weiche Spantekow"
+
+[node name="Editor_Track9" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_dnrjp")
+metadata/track_num = 9
+metadata/name = "Weiche Spantekow Northern Branch"
+
+[node name="Editor_Track10" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ybrkc")
+metadata/track_num = 10
+metadata/name = "Weiche Spantekow Northern Branch"
+
+[node name="Editor_Track11" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_eakb4")
+metadata/track_num = 11
+metadata/name = "Krien Northern"
+
+[node name="Editor_Track12" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ek2el")
+metadata/track_num = 12
+metadata/name = "Neetzow Southern"
+
+[node name="Editor_Track13" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_nnahk")
+metadata/track_num = 13
+metadata/name = "Neetzow Northern"
+
+[node name="Editor_Track14" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_u03sw")
+metadata/track_num = 14
+metadata/name = "Neetzow North-Peene River"
+
+[node name="Editor_Track15" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_fa4dg")
+metadata/track_num = 15
+metadata/name = "Jarmen Peene Rail"
+
+[node name="Editor_Track16" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_gj2ut")
+metadata/track_num = 15
+metadata/name = "Jarmen Hafenbhf Track 1"
+
+[node name="Editor_Track17" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_gxjrr")
+metadata/track_num = 16
+metadata/name = "Jarmen Hafenbhf Track 2"
+
+[node name="Locator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1693.8, 21.9283, 1954.74)

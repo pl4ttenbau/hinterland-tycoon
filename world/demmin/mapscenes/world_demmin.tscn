@@ -1,0 +1,159 @@
+[gd_scene load_steps=22 format=3 uid="uid://bk0k4rfuikqlp"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/terrain/terrain_container.gd" id="1_qnuhp"]
+[ext_resource type="PackedScene" uid="uid://boo08mdeea0lr" path="res://world/demmin/mapscenes/terrain_demmin.scn" id="2_pdqxb"]
+[ext_resource type="PackedScene" uid="uid://b7n4ptp80p1ea" path="res://world/demmin/mapscenes/towns_demmin.tscn" id="3_7j68d"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="4_uvsps"]
+[ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="5_0mofa"]
+[ext_resource type="ArrayMesh" uid="uid://c3qomn5klsmus" path="res://assets/meshes/structures/windmill/windmill.obj" id="6_l50nr"]
+[ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="7_hkm85"]
+[ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="8_alq3q"]
+[ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="9_n51jm"]
+[ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo.tscn" id="10_cfp70"]
+[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="11_hjp2c"]
+[ext_resource type="PackedScene" uid="uid://baeywcrtv0l1f" path="res://assets/meshes/structures/village_house_2/village_house_2.tscn" id="12_dpr7t"]
+[ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="13_tpoor"]
+[ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="14_ka7dy"]
+[ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="15_dgjvg"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="16_nei13"]
+[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="17_n5hml"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
+ground_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PhysicalSkyMaterial_gn88m")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_f8w8m"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
+[node name="WorldContainer" type="Node"]
+script = ExtResource("1_qnuhp")
+map_key = "demmin"
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." instance=ExtResource("2_pdqxb")]
+
+[node name="Towns" parent="." instance=ExtResource("3_7j68d")]
+
+[node name="Deco" type="Node" parent="."]
+script = ExtResource("4_uvsps")
+
+[node name="RathausTribsees" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.174312, 0, 1.99239, 0, 2, 0, -1.99239, 0, 0.174312, 226.49, 7.5, 855.218)
+mesh = ExtResource("5_0mofa")
+
+[node name="WindmillDrechow" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 302.6, 17, 190.4)
+mesh = ExtResource("6_l50nr")
+
+[node name="WindmillZarrentin" type="MeshInstance3D" parent="Deco"]
+transform = Transform3D(0.85, 0, -1.47224, 0, 1.7, 0, 1.47224, 0, 0.85, 709.12, 18.36, 910.494)
+mesh = ExtResource("6_l50nr")
+
+[node name="Tractor" parent="Deco" instance=ExtResource("7_hkm85")]
+transform = Transform3D(-1.44889, 0, -0.388229, 0, 1.5, 0, 0.388229, 0, -1.44889, 522, 8.05, 795)
+
+[node name="Tractor2" parent="Deco" instance=ExtResource("7_hkm85")]
+transform = Transform3D(0.75, 0, 1.29904, 0, 1.5, 0, -1.29904, 0, 0.75, 1523.22, 14.8, 723.943)
+
+[node name="Tractor3" parent="Deco" instance=ExtResource("7_hkm85")]
+transform = Transform3D(0.388229, 0, -1.44889, 0, 1.5, 0, 1.44889, 0, 0.388229, 2052.69, 9.85, 1777.88)
+
+[node name="Tractor4" parent="Deco" instance=ExtResource("7_hkm85")]
+transform = Transform3D(-1.29904, 0, 0.75, 0, 1.5, 0, -0.75, 0, -1.29904, 1798.51, 8.8, 1721.75)
+
+[node name="Bauwagen" parent="Deco" instance=ExtResource("8_alq3q")]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 502, 14.9004, 565.991)
+
+[node name="Bauwagen2" parent="Deco" instance=ExtResource("8_alq3q")]
+transform = Transform3D(-0.707107, 0, 0.707107, -0.0616284, 0.996195, -0.0616284, -0.704416, -0.0871557, -0.704416, 1388.2, 9.50453, 1421.88)
+
+[node name="GantryCraneLong" parent="Deco" instance=ExtResource("9_n51jm")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2249.34, 7.7, 2135)
+
+[node name="Bauwagen3" parent="Deco" instance=ExtResource("8_alq3q")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 2254, 7.4, 2117)
+
+[node name="Tractor5" parent="Deco" instance=ExtResource("7_hkm85")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 1706.1, 10.7, 1807.83)
+
+[node name="GantryCraneLong2" parent="Deco" instance=ExtResource("9_n51jm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 287, 8.8, 927)
+
+[node name="Bauwagen4" parent="Deco" instance=ExtResource("8_alq3q")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 296, 8.7, 934)
+
+[node name="IndustrialSilo" parent="Deco" instance=ExtResource("10_cfp70")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 68, 8.8, 919.828)
+
+[node name="IndustrialSilo2" parent="Deco" instance=ExtResource("10_cfp70")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 280.839, 8.1, 950.234)
+
+[node name="Houses" type="Node" parent="."]
+
+[node name="PolishHouse1" parent="Houses" instance=ExtResource("11_hjp2c")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 2388.63, 10.2, 2183.26)
+placed_town_num = 10
+
+[node name="VillageHouse2" parent="Houses" instance=ExtResource("12_dpr7t")]
+transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 2412.49, 9.6028, 2173.47)
+placed_town_num = 10
+
+[node name="VillageHouse3" parent="Houses" instance=ExtResource("13_tpoor")]
+transform = Transform3D(0.0871558, 0, 0.996195, 0, 1, 0, -0.996195, 0, 0.0871558, 2398.65, 8.1, 2150.91)
+placed_town_num = 10
+
+[node name="PolishHouse2" parent="Houses" instance=ExtResource("14_ka7dy")]
+transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 2371.44, 11.3, 2176.39)
+placed_town_num = 10
+
+[node name="PolishHouse3" parent="Houses" instance=ExtResource("14_ka7dy")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2392.6, 7.7, 2138)
+placed_town_num = 10
+
+[node name="PolishHouse4" parent="Houses" instance=ExtResource("15_dgjvg")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2415.89, 8.7, 2149.95)
+placed_town_num = 10
+
+[node name="PolishHouse5" parent="Houses" instance=ExtResource("15_dgjvg")]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, 2455.32, 13, 2160.45)
+placed_town_num = 10
+
+[node name="InEditor" type="Node3D" parent="."]
+script = ExtResource("16_nei13")
+
+[node name="EditorInfr" type="Node3D" parent="InEditor"]
+
+[node name="Locator" type="Node3D" parent="InEditor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2394.9, 11.2, 2197)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("17_n5hml")]
+environment = SubResource("Environment_f8w8m")
+camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
