@@ -25,7 +25,7 @@ func spawn_industries():
 		self.add_child(instanciated)
 
 # == LISTENERS == 
-func _on_terrain_loaded(_terrain_container: TerrainContainer):
+func _on_terrain_loaded(_terrain_container: WorldContainer):
 	self.spawn_industries()
 	
 func _on_all_types_loaded():

@@ -7,5 +7,5 @@ func remove_all_children():
 	for child in self.get_children():
 		child.queue_free()
 
-func _on_terrain_loaded(_terrain_container: TerrainContainer):
+func _on_terrain_loaded(_terrain_container: WorldContainer):
 	self.remove_all_children()

@@ -19,8 +19,8 @@ size = Vector3(6.38867, 25.2135, 6.85768)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 32
 material_override = SubResource("StandardMaterial3D_h41ym")
-visibility_range_end = 800.0
-visibility_range_end_margin = 80.0
+visibility_range_end = 600.0
+visibility_range_end_margin = 60.0
 mesh = ExtResource("1_cruts")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

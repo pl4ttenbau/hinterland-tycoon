@@ -1,4 +1,3 @@
-@tool
 class_name ResourceContainer extends GameObject
 
 signal resource_change()

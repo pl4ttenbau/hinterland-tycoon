@@ -27,7 +27,7 @@ func place_preplaced_res_bld(outer_bld: OuterResBld):
 #region Getters 
 ## the pre-placed buildings are in "TerrainContainer/Houses"
 func get_map_houses_container() -> Node:
-	var map_container: TerrainContainer = GlobalState.world_container
+	var map_container: WorldContainer = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
@@ -47,6 +47,6 @@ func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
 func _on_towns_loaded():
 	pass
 	
-func _on_map_spawned(_terrain_container: TerrainContainer):
+func _on_map_spawned(_terrain_container: WorldContainer):
 	self.load_preplaced_town_buildings()
 #endregion

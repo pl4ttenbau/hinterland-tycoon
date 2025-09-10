@@ -95,9 +95,9 @@ func _to_string():
 	return "<Town %s>" % self.town_name
 	
 static func get_town_by_num(_num: int) -> TownData:
-	return Managers.towns.storage.get_by_num(_num)
-	Loggie.error("Cannot get town with num %d" % _num)
-	return null
+	var found_town: TownData = Managers.towns.storage.get_by_num(_num)
+	if ! found_town: Loggie.error("Cannot get town with num %d" % _num)
+	return found_town
 	
 func get_initial_bld_count() -> int:
 	if self.is_minor: return 3

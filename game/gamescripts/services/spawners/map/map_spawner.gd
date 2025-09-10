@@ -1,6 +1,6 @@
 class_name MapSpawner extends Node
 
-@export var terrain_container: TerrainContainer
+@export var terrain_container: WorldContainer
 
 func _enter_tree() -> void:
 	Managers.map_spawner = self
@@ -17,10 +17,10 @@ func spawn_map(map_data: MapData):
 		var packed_scene: PackedScene = ResourceLoader.load(tscn_path)
 		self.register_scene(packed_scene.instantiate())
 	
-func place_terrain_scene(_terrain_container: TerrainContainer):
+func place_terrain_scene(_terrain_container: WorldContainer):
 	$"./Terrain".add_child(_terrain_container)
 	
-func register_scene(instanciated_scene: TerrainContainer):
+func register_scene(instanciated_scene: WorldContainer):
 	self.terrain_container = instanciated_scene
 	self.place_terrain_scene(instanciated_scene)
 	# finished

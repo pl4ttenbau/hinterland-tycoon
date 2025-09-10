@@ -11,7 +11,7 @@ signal map_selected(map_obj: MapData)
 
 #region World
 @warning_ignore("unused_signal")
-signal terrain_initialized(container: TerrainContainer)
+signal terrain_initialized(container: WorldContainer)
 
 @warning_ignore("unused_signal")
 signal world_update()
@@ -20,7 +20,7 @@ signal world_update()
 signal scene_root_ready()
 
 @warning_ignore("unused_signal")
-signal map_spawned(container: TerrainContainer)
+signal map_spawned(container: WorldContainer)
 #endregion
 
 #region Vehicles

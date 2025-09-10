@@ -13,7 +13,7 @@ extends Node
 @export var towns: Array[TownData] = []
 
 @export var industries: Array[IndustryData]
-@export var world_container: TerrainContainer
+@export var world_container: WorldContainer
 
 @export var res_blds: Array[ResidenceBuildingData] = []
 

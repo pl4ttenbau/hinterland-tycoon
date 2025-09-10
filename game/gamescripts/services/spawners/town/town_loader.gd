@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	self.load_towns()
 
-func _on_map_spawned(_container: TerrainContainer) -> void:
+func _on_map_spawned(_container: WorldContainer) -> void:
 	self.spawn_towns()
 #endregion	
 
@@ -63,7 +63,7 @@ func spawn_town(_town: TownData) -> TownData:
 #region Getters
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
-	var terr_container: TerrainContainer = GlobalState.world_container
+	var terr_container: WorldContainer = GlobalState.world_container
 	return terr_container.get_pos_at_height(vec3)
 
 func get_label_pos_at(posXZ: Vector2) -> Vector3:

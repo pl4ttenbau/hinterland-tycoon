@@ -1,11 +1,9 @@
 @tool
 @icon("res://assets/icons/icon_terrain_white.png")
-class_name TerrainContainer extends Node
+class_name WorldContainer extends Node
 
 @export var map_key: String
 @export var terrain: Terrain3D
-
-signal world_update()
 
 func _enter_tree() -> void:
 	# self-register in GlobalState
@@ -16,8 +14,9 @@ func _ready() -> void:
 	if !terrain_3d_obj:
 		Loggie.error("Bei Erstellung des TerrainContainers kann das
 		 Terrain3D-Objeckt nicht gefunden werden")
-	self.terrain = $WorldTerrain
-	SignalBus.terrain_initialized.emit(self)
+	if not Engine.is_editor_hint():
+		self.terrain = $WorldTerrain
+		SignalBus.terrain_initialized.emit(self)
 
 func get_height_at(abs_pos: Vector3) -> float:
 	return self.terrain.data.get_height(abs_pos)
