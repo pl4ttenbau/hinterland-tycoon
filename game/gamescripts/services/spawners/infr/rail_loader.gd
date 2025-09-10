@@ -7,7 +7,6 @@ const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
-@export var track_containers: Array[OuterRailTrack] = []
 
 @export var forks: Array[RailForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
@@ -39,7 +38,7 @@ func spawn_rails():
 		self.spawn_rail_buffers(track_obj)
 	self.spawn_rail_forks()
 	# emit signals
-	SignalBus.rails_spawned.emit(track_containers)
+	SignalBus.rails_spawned.emit(self.track_storage._containers)
 	
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	if ! rail_track.curve: rail_track.build_path()
@@ -52,8 +51,9 @@ func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	
 func spawn_rail_track(track_obj: RailTrackData):
 	var outer_track := self.instanciate_rail_track(track_obj)
+	# save in storage and as child
+	self.track_storage.add_container(outer_track)
 	add_child(outer_track, true)
-	self.track_containers.append(outer_track)
 	# emit
 	SignalBus.rail_spawned.emit(outer_track)
 #endregion

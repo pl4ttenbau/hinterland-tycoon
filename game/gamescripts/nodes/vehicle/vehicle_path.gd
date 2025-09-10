@@ -4,9 +4,6 @@ class_name VehiclePath extends Path3D
 
 @export var vehicle: RailVehicle
 	
-@export var current_node: RailNodeData:
-	get(): return vehicle.current_rail_node
-	
 func _init(_vehicle: RailVehicle):
 	self.vehicle = _vehicle
 	self.curve = Curve3D.new()
@@ -15,7 +12,7 @@ func rebuild_path_on_current_track():
 	var continues: bool = true
 	var iterations: int = 0
 	while continues && iterations <= 20:
-		var track = self.current_node.parent_track
+		var track = self.vehicle.last_node.parent_track
 		var track_end := self.add_track_nodes(track, self.vehicle.direction)
 		if track_end && track_end.fork && track_end.fork.set_to:
 			var next_track_num = track_end.fork.set_to
