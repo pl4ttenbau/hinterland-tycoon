@@ -30,4 +30,4 @@ static func of_dict(_dict: Dictionary) -> MapData:
 	return inst
 
 func get_scene_file_path() -> String:
-	return MAPS_FOLDER + self.key + "/mapscenes/" + "terrain_" + self.key + ".tscn"
+	return MAPS_FOLDER + self.key + "/mapscenes/" + "world_" + self.key + ".tscn"

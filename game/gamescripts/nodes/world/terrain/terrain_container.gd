@@ -14,8 +14,8 @@ func _ready() -> void:
 	if !terrain_3d_obj:
 		Loggie.error("Bei Erstellung des TerrainContainers kann das
 		 Terrain3D-Objeckt nicht gefunden werden")
+	self.terrain = $WorldTerrain
 	if not Engine.is_editor_hint():
-		self.terrain = $WorldTerrain
 		SignalBus.terrain_initialized.emit(self)
 
 func get_height_at(abs_pos: Vector3) -> float:
