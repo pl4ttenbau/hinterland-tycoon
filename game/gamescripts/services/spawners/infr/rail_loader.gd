@@ -7,7 +7,9 @@ const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
+@export var fork_storage: RailForkStore = RailForkStore.new()
 
+## here we only store visible forks
 @export var forks: Array[RailForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
 @export var forks_by_pos: Dictionary = {}
@@ -63,6 +65,7 @@ func sort_rail_forks():
 	for rail_track in self.track_storage.get_all():
 		for track_node in rail_track.nodes:
 			if track_node.fork:
+				## only take first at a pos
 				if ! self.forks_by_pos.has(track_node.position):
 					self.forks_by_pos.set(track_node.position, track_node.fork)
 					self.forks.append(track_node.fork)

@@ -4,8 +4,12 @@ class_name RailVehicle extends VisibleObject
 const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn"
 
 @export var vehicle_num: int
+
 @export var motor: VehicleMotor
+
 @export var direction: VehicleMotor.Direction
+
+## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
 signal reached_next_node(node_num: int)
@@ -15,8 +19,6 @@ func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
 	
 func _ready() -> void:
-	# create vehicle path
-	self.add_child(VehiclePath.new(self))
 	# create speed timer
 	var speed_timer := Timer.new()
 	speed_timer.wait_time = .1
@@ -31,7 +33,12 @@ static func of(_starting_track: OuterRailTrack, _starts_at: int,
 	vehicle.motor = VehicleMotor.of(vehicle)
 	# save start node
 	vehicle.last_node = _starting_track.track.get_rail_node(_starts_at)
+	# vehicle.position = vehicle.last_node.position
 	return vehicle
+	
+func _physics_process(delta: float) -> void:
+	if self.motor.is_started:
+		$VehiclePath/PathFollow3D.progress += .1
 
 #region Node Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
@@ -45,7 +52,8 @@ func get_next_node_pos() -> Vector3:
 	
 func get_next_node_index() -> int: return self.wheels.target.index
 
-func get_cam() -> Camera3D: return $Camera3D
+func get_cam() -> Camera3D: 
+	return self.find_child("Camera3D", true)
 #endregion
 
 #region Callbacks
