@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=34 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
@@ -106,7 +106,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_74w14"]
 script = ExtResource("3_icu33")
 town_name = "Stolpe"
-pos_xz = Vector2(1941, 1590.6)
+pos_xz = Vector2(2147.2, 1605)
 is_minor = true
 autogenerate_houses = true
 totalPops = 0
@@ -161,8 +161,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_t40ec"]
 script = ExtResource("3_icu33")
-town_name = "Spantekow-Wegezin"
-pos_xz = Vector2(1899.7, 2223.1)
+town_name = "Wegezin-Dennin"
+pos_xz = Vector2(1693.1, 2305.9)
 is_minor = false
 autogenerate_houses = true
 totalPops = 0
@@ -178,7 +178,7 @@ script = ExtResource("3_icu33")
 town_name = "Krien"
 pos_xz = Vector2(1674.3, 1979.4)
 is_minor = false
-autogenerate_houses = true
+autogenerate_houses = false
 totalPops = 0
 res_bld_containers = Array[ExtResource("2_agjpo")]([])
 stations = Array[ExtResource("4_n5hqh")]([])
@@ -369,6 +369,48 @@ num = 25
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_xyttb"]
+script = ExtResource("3_icu33")
+town_name = "Spantekow"
+pos_xz = Vector2(2041.7, 2428.7)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 26
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_agjpo"]
+script = ExtResource("3_icu33")
+town_name = "Völschow"
+pos_xz = Vector2(863.1, 1753.5)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 27
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_icu33"]
+script = ExtResource("3_icu33")
+town_name = "Spantekow-Neunenkirchen"
+pos_xz = Vector2(2072.3, 2490.4)
+is_minor = false
+autogenerate_houses = true
+totalPops = 0
+res_bld_containers = Array[ExtResource("2_agjpo")]([])
+stations = Array[ExtResource("4_n5hqh")]([])
+station_blds_assigned = false
+num = 28
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 
 [node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
@@ -400,7 +442,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2568.5, 13.3314, 2656.5)
 town = SubResource("Resource_lh2pu")
 
 [node name="TownCenter_Stolpe" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1941, 11.7904, 1590.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2147.22, 11.79, 1605.03)
 town = SubResource("Resource_74w14")
 
 [node name="TownCenter_Burow" parent="." instance=ExtResource("1_xyttb")]
@@ -415,8 +457,8 @@ town = SubResource("Resource_d52qy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1386.5, 14.0996, 1148.7)
 town = SubResource("Resource_ln5b8")
 
-[node name="TownCenter_Spantekow-Wegezin" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1899.7, 12.899, 2223.1)
+[node name="TownCenter_Wegezin-Dennin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1693.1, 13.3, 2305.9)
 town = SubResource("Resource_t40ec")
 
 [node name="TownCenter_Krien" parent="." instance=ExtResource("1_xyttb")]
@@ -474,3 +516,12 @@ town = SubResource("Resource_fa4dg")
 [node name="TownCenter_Iven-Janow" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
 town = SubResource("Resource_gj2ut")
+
+[node name="TownCenter_Spantekow" parent="." instance=ExtResource("1_xyttb")]
+town = SubResource("Resource_xyttb")
+
+[node name="TownCenter_Völschow" parent="." instance=ExtResource("1_xyttb")]
+town = SubResource("Resource_agjpo")
+
+[node name="TownCenter_Spantekow-Neunenkirchen" parent="." instance=ExtResource("1_xyttb")]
+town = SubResource("Resource_icu33")
