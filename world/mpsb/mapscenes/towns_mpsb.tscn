@@ -192,7 +192,7 @@ script = ExtResource("3_icu33")
 town_name = "Neetzow"
 pos_xz = Vector2(1352.9, 1597.5)
 is_minor = true
-autogenerate_houses = true
+autogenerate_houses = false
 totalPops = 0
 res_bld_containers = Array[ExtResource("2_agjpo")]([])
 stations = Array[ExtResource("4_n5hqh")]([])
@@ -399,7 +399,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_icu33"]
 script = ExtResource("3_icu33")
-town_name = "Spantekow-Neunenkirchen"
+town_name = "Spantekow-Neuenkirchen"
 pos_xz = Vector2(2072.3, 2490.4)
 is_minor = false
 autogenerate_houses = true
@@ -523,5 +523,6 @@ town = SubResource("Resource_xyttb")
 [node name="TownCenter_Völschow" parent="." instance=ExtResource("1_xyttb")]
 town = SubResource("Resource_agjpo")
 
-[node name="TownCenter_Spantekow-Neunenkirchen" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Spantekow-Neuenkirchen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2072.3, 14.827, 2490.4)
 town = SubResource("Resource_icu33")
