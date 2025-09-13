@@ -1,6 +1,8 @@
 class_name VehicleCollider extends ClickableCollider
 
-@onready var vehicle: RailVehicle = self.get_parent_node_3d() as RailVehicle
+@export var vehicle: OuterRailVehicle:
+	get(): 
+		return self.get_parent_node_3d() as OuterRailVehicle
 
 func get_click_ref() -> ClickRef:
 	var num: int = self.vehicle.vehicle_num

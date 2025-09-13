@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_locomotive.png")
-class_name RailVehicle extends VisibleObject
+class_name OuterRailVehicle extends VisibleObject
 
 const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn"
 
@@ -27,8 +27,8 @@ func _ready() -> void:
 	speed_timer.start()
 
 static func of(_starting_track: OuterRailTrack, _starts_at: int, 
-		_dir: VehicleMotor.Direction) -> RailVehicle:
-	var vehicle: RailVehicle = load(SCENE_PATH).instantiate()
+		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
+	var vehicle: OuterRailVehicle = load(SCENE_PATH).instantiate()
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
 	# save start node

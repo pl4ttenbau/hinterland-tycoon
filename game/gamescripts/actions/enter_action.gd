@@ -11,7 +11,7 @@ static func activate_cam(cam: Camera3D):
 	GlobalState.active_cam = cam
 	
 func enter_vehicle():
-	var veh := GlobalState.vehicles.get(0) as RailVehicle
+	var veh := GlobalState.vehicles.get(0) as OuterRailVehicle
 	if ! veh:
 		Loggie.error("Cannot get into vehicle: none found on map")
 		return

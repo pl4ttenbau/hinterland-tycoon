@@ -31,4 +31,4 @@ extends Node
 @export var roads: Array[RoadData] = []
 @export var outer_roads: Array[OuterRoad] = []
 
-@export var vehicles: Array[RailVehicle] = []
+@export var vehicles: Array[OuterRailVehicle] = []

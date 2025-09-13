@@ -27,7 +27,7 @@ signal stopped()
 signal speed_changed(percentage: float)
 #endregion
 
-static func of(_vehicle: RailVehicle) -> VehicleMotor:
+static func of(_vehicle: OuterRailVehicle) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.speed = VehicleSpeed.new()
 	return _inst

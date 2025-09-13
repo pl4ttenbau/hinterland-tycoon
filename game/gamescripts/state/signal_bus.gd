@@ -25,7 +25,7 @@ signal map_spawned(container: TerrainContainer)
 
 #region Vehicles
 @warning_ignore("unused_signal")
-signal vehicle_entered(vehicle: RailVehicle)
+signal vehicle_entered(vehicle: OuterRailVehicle)
 
 @warning_ignore("unused_signal")
 signal vehicle_exited()

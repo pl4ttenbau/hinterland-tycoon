@@ -2,7 +2,7 @@ class_name VehiclePath extends Path3D
 
 @export var tracks: Array[RailTrackData] = []
 
-@export var vehicle: RailVehicle
+@export var vehicle: OuterRailVehicle
 
 func rebuild_path_on_current_track():
 	self.curve = Curve3D.new()
