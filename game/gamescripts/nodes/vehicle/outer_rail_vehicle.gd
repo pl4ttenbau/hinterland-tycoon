@@ -9,6 +9,8 @@ const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_fau
 
 @export var direction: VehicleMotor.Direction
 
+@export var type_obj: RailVehicleType
+
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
@@ -26,9 +28,15 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_starting_track: OuterRailTrack, _starts_at: int, 
+static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_at: int, 
 		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
+	# get vehicle type
+	var veh_type_obj: RailVehicleType = null
+	for veh_type: RailVehicleType in GameTypes.vehicle_types:
+		if veh_type.key == _veh_type_key:
+			veh_type_obj = veh_type
 	var vehicle: OuterRailVehicle = load(SCENE_PATH).instantiate()
+	vehicle.type_obj = veh_type_obj
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
 	# save start node

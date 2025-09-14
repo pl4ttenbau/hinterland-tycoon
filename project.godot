@@ -25,6 +25,8 @@ GameTypes="*res://game/gamescripts/state/types.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*res://game/gamescripts/services/spawners/map/map_list_loader.gd"
+Modals="*res://addons/modal_window/modal_window_manager.gd"
+ModalWindowManager="res://addons/modal_window/modal_window_manager.gd"
 
 [debug_draw_3d]
 
@@ -36,7 +38,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/scene_texture/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [filesystem]
 

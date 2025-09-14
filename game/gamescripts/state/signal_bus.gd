@@ -9,6 +9,11 @@ signal map_list_loaded(map_list: Array[MapData])
 @warning_ignore("unused_signal")
 signal map_selected(map_obj: MapData)
 
+#region UI
+@warning_ignore("unused_signal")
+signal dialog_vehicle_selection(veh_type_key: String)
+#endregion
+
 #region World
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: TerrainContainer)

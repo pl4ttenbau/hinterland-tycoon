@@ -7,6 +7,7 @@ extends Node
 @export var infr_types: Array[InfrType]
 @export var industry_types: Array[IndustryType]
 @export var res_bld_types: Array[ResBldType]
+@export var vehicle_types: Array[RailVehicleType]
 
 # == GETTER METHODS ==
 func get_infr_type(key: String) -> InfrType:
