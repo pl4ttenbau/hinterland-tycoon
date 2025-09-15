@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cggxaw6e2rdpv"]
+
+[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/outer_rail_vehicle.gd" id="1_2pc3c"]
+[ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/vehicle_path.gd" id="2_o0de4"]
+[ext_resource type="ArrayMesh" uid="uid://coeow3igmellm" path="res://assets/meshes/vehicles/rail/wismar_railbus/railcar_wismar.obj" id="3_k4ho6"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="7_rielv"]
+
+[sub_resource type="Curve3D" id="Curve3D_2m8wh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4m0o"]
+size = Vector3(2.5, 3.3, 11.668)
+
+[node name="RailVehicle" type="Node3D"]
+script = ExtResource("1_2pc3c")
+
+[node name="VehiclePath" type="Path3D" parent="." node_paths=PackedStringArray("vehicle")]
+curve = SubResource("Curve3D_2m8wh")
+script = ExtResource("2_o0de4")
+vehicle = NodePath("..")
+metadata/_custom_type_script = "uid://c0t1y6s3qpq27"
+
+[node name="PathFollow3D" type="PathFollow3D" parent="VehiclePath"]
+v_offset = 0.2
+use_model_front = true
+loop = false
+
+[node name="Node3D" type="Node3D" parent="VehiclePath/PathFollow3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="RailVehicleMesh" type="MeshInstance3D" parent="VehiclePath/PathFollow3D/Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+custom_aabb = AABB(0, 0, 0, 0, 0, 9)
+ignore_occlusion_culling = true
+visibility_range_end = 600.0
+visibility_range_end_margin = 60.0
+mesh = ExtResource("3_k4ho6")
+skeleton = NodePath("../../../..")
+
+[node name="RailVehicleStaticBody" type="StaticBody3D" parent="VehiclePath/PathFollow3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("7_rielv")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="RailVehicleCollision" type="CollisionShape3D" parent="VehiclePath/PathFollow3D/Node3D/RailVehicleStaticBody"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.15, 0)
+shape = SubResource("BoxShape3D_s4m0o")
+
+[node name="Camera3D" type="Camera3D" parent="VehiclePath/PathFollow3D/Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.44676, 3.27309, -1.50662e-07)
+metadata/cam_name = &"CAM_VEHICLE"

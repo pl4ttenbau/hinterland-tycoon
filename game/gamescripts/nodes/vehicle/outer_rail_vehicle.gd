@@ -31,12 +31,8 @@ func _ready() -> void:
 static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_at: int, 
 		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
 	# get vehicle type
-	var veh_type_obj: RailVehicleType = null
-	for veh_type: RailVehicleType in GameTypes.vehicle_types:
-		if veh_type.key == _veh_type_key:
-			veh_type_obj = veh_type
 	var vehicle: OuterRailVehicle = load(SCENE_PATH).instantiate()
-	vehicle.type_obj = veh_type_obj
+	vehicle.type_obj = RailVehicleType.get_by_key(_veh_type_key)
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
 	# save start node
@@ -44,19 +40,19 @@ static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_a
 	# vehicle.position = vehicle.last_node.position
 	return vehicle
 	
+static func load_vehicle_type_obj(_veh_type_key: String) -> RailVehicleType:
+	var veh_type_obj: RailVehicleType = null
+	for veh_type: RailVehicleType in GameTypes.vehicle_types:
+		if veh_type.key == _veh_type_key:
+			veh_type_obj = veh_type
+	return veh_type_obj
+	
 func _physics_process(delta: float) -> void:
 	if self.motor.is_started:
 		$VehiclePath/PathFollow3D.progress += .1
 
 #region Node Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
-	
-func get_next_node_pos() -> Vector3:
-	if self.current_section.target:
-		return self.current_section.target.position
-	else:
-		self.motor.stop()
-		return self.current_track.get_end_pos()
 	
 func get_next_node_index() -> int: return self.wheels.target.index
 

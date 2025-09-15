@@ -5,7 +5,7 @@ func _init() -> void:
 
 static func make_types() -> Array[RailVehicleType]:
 	var vehicle_types: Array[RailVehicleType] = [
-		new_vehicle("faur", 45, "750_MM"),
+		new_vehicle("loco_faur", 45, "750_MM"),
 		new_vehicle("wismar_railbus", 40, "NORMAL_GAUGE")
 	]
 	return vehicle_types
