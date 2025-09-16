@@ -1,3 +1,8 @@
 [
-	
+	{
+		"num": 1,
+		"name": "Kieswerk Müssenthin",
+		"industryType": "QUARRY",
+		"pos": [860.1, 14.6, 1297.0]
+	}
 ]
