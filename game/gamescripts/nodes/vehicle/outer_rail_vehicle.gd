@@ -1,8 +1,6 @@
 @icon("res://assets/icons/icon_locomotive.png")
 class_name OuterRailVehicle extends VisibleObject
 
-const SCENE_PATH = "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn"
-
 @export var vehicle_num: int
 
 @export var motor: VehicleMotor
@@ -31,8 +29,11 @@ func _ready() -> void:
 static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_at: int, 
 		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
 	# get vehicle type
-	var vehicle: OuterRailVehicle = load(SCENE_PATH).instantiate()
-	vehicle.type_obj = RailVehicleType.get_by_key(_veh_type_key)
+	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)
+	var scene_path: String = veh_type_obj.get_mesh_path()
+	# instanciate correct scene
+	var vehicle: OuterRailVehicle = load(scene_path).instantiate()
+	vehicle.type_obj = veh_type_obj
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
 	# save start node
@@ -47,7 +48,7 @@ static func load_vehicle_type_obj(_veh_type_key: String) -> RailVehicleType:
 			veh_type_obj = veh_type
 	return veh_type_obj
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.motor.is_started:
 		$VehiclePath/PathFollow3D.progress += .1
 
