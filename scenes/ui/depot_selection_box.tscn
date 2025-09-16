@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64fmi7wwrunq"]
+
+[ext_resource type="Script" uid="uid://cchncmqt0rwn2" path="res://game/gamescripts/ui/etc/depot_selection_box.gd" id="1_ufcoj"]
+
+[node name="DepotSelectionBox" type="MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+script = ExtResource("1_ufcoj")
+metadata/_custom_type_script = "uid://cchncmqt0rwn2"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "A"
