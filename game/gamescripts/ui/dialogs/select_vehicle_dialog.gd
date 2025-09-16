@@ -2,7 +2,9 @@ class_name SelectVehicleDialog extends Control
 
 const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/depot_selection_box.tscn" 
 
-@export var selected: String
+@export var selected_vehicle_type: String
+
+@export var selected_depot_num: int
 
 signal vehicle_spawn_triggered(veh_type_key: String)
 
@@ -24,6 +26,8 @@ func add_depot_btn(_depot: RailDepotData) -> DepotSelectionBox:
 	var instance: DepotSelectionBox = load(DEPOT_BOX_SCENE_PATH).instantiate()
 	instance.depot = _depot
 	%DepotSelectionHLayout.add_child(instance)
+	# connect to signal
+	instance.depot_selected.connect(Callable(self, "_on_depot_selection_changed"))
 	return instance
 #endregion
 
@@ -48,5 +52,9 @@ func _on_spawn_button_click():
 	self.close()
 	
 func _on_vehicle_selection_changed(veh_type_key: String):
-	self.selected = veh_type_key
+	self.selected_vehicle_type = veh_type_key
+	
+func _on_depot_selection_changed(depot: RailDepotData):
+	Loggie.info("Selected Depot: %d" % depot.num)
+	self.selected_depot_num = depot.num
 #endregion
