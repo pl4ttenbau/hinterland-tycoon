@@ -6,7 +6,7 @@ const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/depot_selection_box.tscn"
 
 @export var selected_depot_num: int
 
-signal vehicle_spawn_triggered(veh_type_key: String)
+signal vehicle_spawn_triggered(spawn_dto: VehicleSpawnDto)
 
 #region Initialization
 func _ready() -> void:
@@ -47,7 +47,9 @@ func close():
 #region Callbacks
 func _on_spawn_button_click():
 	# trigger signal
-	self.vehicle_spawn_triggered.emit(self.selected)
+	var spawn_dto := VehicleSpawnDto.new(self.selected_vehicle_type, 
+		self.selected_depot_num)
+	self.vehicle_spawn_triggered.emit(spawn_dto)
 	# disconnect signals & close
 	self.close()
 	
