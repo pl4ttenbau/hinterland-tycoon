@@ -1,8 +1,11 @@
+@icon("res://assets/icons/icon_road_white.png")
+@warning_ignore("missing_tool")
 class_name RoadData extends AbstractTrack
 
 @export var nodes: Array[RoadNode] = []
 @export_storage var crosses: Array[RoadCross] = []
 
+@warning_ignore("unused_signal")
 signal created(track: RoadData)
 
 func _init(_num: int, _type: String):
@@ -10,8 +13,8 @@ func _init(_num: int, _type: String):
 	self.num = _num
 	self.infr_type_key = _type
 	
-func _to_string() -> String:
-	return "RoadWay_%d" % self.num
+static func get_by_num(road_num: int) -> RoadData:
+	return Managers.roads.storage.get_by_num(road_num)
 
 func spawn() -> OuterRoad:
 	if ! self.curve: self.build_path()
@@ -37,3 +40,6 @@ func get_road_node(_i: int) -> RoadNode:
 	if _i > 0:
 		return self.nodes.get(_i)
 	return null
+
+func _to_string() -> String:
+	return "RoadWay_%d" % self.num
