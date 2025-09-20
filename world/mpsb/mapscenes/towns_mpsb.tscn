@@ -102,6 +102,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Wegezin-Dennin"
 pos_xz = Vector2(1693.1, 2305.9)
+autogenerate_houses = false
 num = 11
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -240,7 +241,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_icu33"]
 script = ExtResource("3_icu33")
-town_name = "Spantekow-Neuenkirchen"
+town_name = "Spantekow"
 pos_xz = Vector2(2072.3, 2490.4)
 num = 28
 type = 5
@@ -356,6 +357,6 @@ town = SubResource("Resource_gj2ut")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 863.1, 15.3, 1753.5)
 town = SubResource("Resource_agjpo")
 
-[node name="TownCenter_Spantekow-Neuenkirchen" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Spantekow" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2072.3, 14.827, 2490.4)
 town = SubResource("Resource_icu33")

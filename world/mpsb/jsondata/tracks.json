@@ -317,7 +317,13 @@
 				"pos": [1757.6, 13.7, 2310.1]
 			},
 			{
-				"pos": [1739.1, 13.1, 2273.3]
+				"pos": [1739.1, 13.1, 2273.3],
+				"station": {
+					"townName": "Wegezin-Dennin",
+					"townNum": 11,
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
 			},
 			{
 				"pos": [1711.7, 13.0, 2195.6],
