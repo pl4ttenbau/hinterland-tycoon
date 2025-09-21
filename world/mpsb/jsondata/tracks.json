@@ -838,7 +838,7 @@
 				"pos": [2098.3, 13.0, 1978.7],
 				"station": {
 					"townName": "Medow",
-					"townNum": 22,
+					"townNum": 22		,
 					"name": "Dorf",
 					"stationType": "STATION_PASS"
 				}

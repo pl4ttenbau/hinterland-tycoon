@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://i8633wxac7u6"]
+
+[ext_resource type="ArrayMesh" uid="uid://cebpf7gw48d7n" path="res://assets/meshes/deco/tank_trailer/tank_trailer.obj" id="1_wv1od"]
+
+[node name="TankTrailer" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 220.0
+visibility_range_end_margin = 22.0
+mesh = ExtResource("1_wv1od")
