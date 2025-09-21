@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcsvjcncllnxi"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_r16pd"]
+[ext_resource type="ArrayMesh" uid="uid://brwlxjhpc8goc" path="res://assets/meshes/structures/northern_german_house/mecklenburg_peasant_house_merged.obj" id="1_tuijv"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_u4bk2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5w3u5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r16pd"]
+size = Vector3(24.5914, 8.043396, 13.566101)
+
+[node name="NorthernGermanHouse" type="Node3D"]
+script = ExtResource("1_r16pd")
+placed_res_bld_type = "northern_german_house"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18942547, 0)
+visibility_range_end = 330.0
+visibility_range_end_margin = 33.0
+mesh = ExtResource("1_tuijv")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_5w3u5")
+script = ExtResource("3_u4bk2")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4864349, 3.971344, -0.15914917)
+shape = SubResource("BoxShape3D_r16pd")

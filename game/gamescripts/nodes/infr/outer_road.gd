@@ -6,6 +6,7 @@ class_name OuterRoad extends VisibleObject
 		self.entity = value
 		self.get_path_3d().curve = value.curve
 		self.assign_node_names()
+	get(): return self.entity as RoadData
 	
 func assign_node_names():
 	var track_num: int = self.entity.num

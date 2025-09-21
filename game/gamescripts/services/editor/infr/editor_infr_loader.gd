@@ -35,6 +35,7 @@ func spawn_single_track_path(track_data_dict: Dictionary):
 	path.name = "Editor_Track%d" % track_num
 	path.set_meta("track_num", track_num)
 	path.set_meta("name", track_data_dict.get("name", null))
+	path.debug_custom_color = Color(0, 0, 0)
 	path.curve = Curve3D.new()
 	for point in track_data_dict.points:
 		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))

@@ -10,7 +10,6 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/rail_tracks.dat"
 @export_storage var _containers_by_id: Dictionary = {}
 
 signal track_added(track_obj: RailTrackData)
-signal container_added(outer_track: OuterRailTrack)
 	
 func _enter_tree() -> void:
 	self.track_added.connect(Callable(self, "_on_track_loaded"))

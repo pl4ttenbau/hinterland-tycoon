@@ -17,14 +17,14 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_myge2"]
-seamless = true
-color_ramp = SubResource("Gradient_ijetp")
 noise = SubResource("FastNoiseLite_vlcoi")
+color_ramp = SubResource("Gradient_ijetp")
+seamless = true
 
 [resource]
 _shader_parameters = {
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.0,
+&"blend_sharpness": 0.5,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,

@@ -9,12 +9,11 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 2
 alpha_antialiasing_edge = 0.3
-cull_mode = 2
 albedo_texture = ExtResource("2_ptjer")
 normal_enabled = true
 normal_texture = ExtResource("3_ptjer")
 backlight_enabled = true
-backlight = Color(0.800491, 0.800491, 0.800491, 1)
+backlight = Color(1, 1, 1, 1)
 
 [node name="Bush3Hazel" type="Node3D"]
 
