@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=34 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
@@ -32,6 +32,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Friedland"
 pos_xz = Vector2(2160.5, 3251.5)
+autogenerate_houses = false
 num = 3
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -201,6 +202,7 @@ script = ExtResource("3_icu33")
 town_name = "Medow"
 pos_xz = Vector2(2057.6, 1919.5)
 is_minor = true
+autogenerate_houses = false
 num = 22
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -244,6 +246,15 @@ script = ExtResource("3_icu33")
 town_name = "Spantekow"
 pos_xz = Vector2(2072.3, 2490.4)
 num = 28
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_xyttb"]
+script = ExtResource("3_icu33")
+town_name = "Putzar"
+pos_xz = Vector2(2889.6, 2863.1)
+is_minor = true
+num = 29
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -360,3 +371,7 @@ town = SubResource("Resource_agjpo")
 [node name="TownCenter_Spantekow" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2072.3, 14.827, 2490.4)
 town = SubResource("Resource_icu33")
+
+[node name="TownCenter_Putzar" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2889.6, 12.9, 2863.1)
+town = SubResource("Resource_xyttb")
