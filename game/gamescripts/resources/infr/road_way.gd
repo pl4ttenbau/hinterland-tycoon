@@ -1,5 +1,5 @@
+@tool
 @icon("res://assets/icons/icon_road_white.png")
-@warning_ignore("missing_tool")
 class_name RoadData extends AbstractTrack
 
 @export var nodes: Array[RoadNode] = []
@@ -8,10 +8,8 @@ class_name RoadData extends AbstractTrack
 @warning_ignore("unused_signal")
 signal created(track: RoadData)
 
-func _init(_num: int, _type: String):
+func _init():
 	super(Enums.EntityTypes.ROAD)
-	self.num = _num
-	self.infr_type_key = _type
 	
 static func get_by_num(road_num: int) -> RoadData:
 	return Managers.roads.storage.get_by_num(road_num)
