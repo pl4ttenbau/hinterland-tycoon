@@ -1,7 +1,6 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailTrackData extends AbstractTrack
 
-@export var starts_northwest: bool = true
 @export var nodes: Array[RailNodeData] = []
 
 # child objects

@@ -13,10 +13,7 @@ static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 	# optionals
 	if _track_dict.has("name"):
 		track_instance.track_name = _track_dict.get("name")
-	if _track_dict.has("startsNorthWest"):
-		track_instance.starts_northwest = _track_dict.get("startsNorthWest")
 	_add_points_from_json(_track_dict, track_instance)
-	track_instance.created.emit(track_instance)
 	return track_instance
 	
 static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData):
