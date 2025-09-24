@@ -11,6 +11,8 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/towns.dat"
 @export var _centers_by_id: Dictionary = {}
 
 signal town_added(town_obj: TownData)
+
+@warning_ignore("unused_signal")
 signal center_added(town_center: TownCenter)
 	
 func _enter_tree() -> void:
