@@ -1,8 +1,7 @@
-[gd_scene load_steps=107 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=98 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
-[ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="2_jb2rk"]
-[ext_resource type="Terrain3DAssets" uid="uid://dvep21n01mie6" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.tres" id="3_aasxw"]
+[ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
 [ext_resource type="PackedScene" uid="uid://ck6t5hx5n8rva" path="res://assets/meshes/structures/city_house_3/city_house_3.tscn" id="6_ac0fl"]
 [ext_resource type="PackedScene" uid="uid://br01p22j70jhf" path="res://assets/meshes/deco/water_tower_big/water_tower_big.tscn" id="7_jynyo"]
 [ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="12_cb211"]
@@ -10,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
-[ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="35_sah7j"]
-[ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="36_6smno"]
-[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="37_4otlq"]
 [ext_resource type="PackedScene" uid="uid://bongrkjiwclhd" path="res://world/mpsb/mapscenes/towns_mpsb.tscn" id="38_d7utl"]
 [ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="40_rrrix"]
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_v0v3v"]
@@ -35,37 +31,6 @@
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="63_ea3s5"]
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="64_7r2i1"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="65_c4uv5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmo8u"]
-albedo_texture = ExtResource("35_sah7j")
-metallic = 0.64
-metallic_specular = 1.0
-roughness = 0.0
-normal_enabled = true
-normal_texture = ExtResource("36_6smno")
-uv1_scale = Vector3(120, 120, 120)
-uv2_scale = Vector3(50, 50, 50)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
-size = Vector2(2400, 2400)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yi3v"]
-albedo_texture = ExtResource("35_sah7j")
-metallic = 0.64
-metallic_specular = 1.0
-roughness = 0.0
-normal_enabled = true
-normal_texture = ExtResource("36_6smno")
-uv1_scale = Vector3(24, 12, 12)
-uv2_scale = Vector3(50, 50, 50)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
-size = Vector2(750, 270)
-
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
-shape = 0
-section_length = 0.18
-section_segments = 1
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_74w14"]
 ground_color = Color(0, 0, 0, 1)
@@ -543,34 +508,7 @@ map_key = "mpsb"
 terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
-[node name="WorldTerrain" type="Terrain3D" parent="."]
-data_directory = "res://world/mpsb/heightdata"
-material = ExtResource("2_jb2rk")
-assets = ExtResource("3_aasxw")
-top_level = true
-metadata/_edit_lock_ = true
-
-[node name="WaterMain" type="MeshInstance3D" parent="WorldTerrain"]
-transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1662.391, 10, 1673.171)
-material_override = SubResource("StandardMaterial3D_mmo8u")
-mesh = SubResource("PlaneMesh_2pcia")
-skeleton = NodePath("")
-
-[node name="WaterFriedland" type="MeshInstance3D" parent="WorldTerrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2176.32, 10.2545, 3199.59)
-material_override = SubResource("StandardMaterial3D_7yi3v")
-mesh = SubResource("PlaneMesh_naxkj")
-skeleton = NodePath("")
-
-[node name="CustomTerrain3DParticles" parent="WorldTerrain" node_paths=PackedStringArray("terrain") instance=ExtResource("37_4otlq")]
-terrain = NodePath("..")
-instance_spacing = 0.296875
-cell_width = 14.0
-rows = 47
-amount = 2209
-mesh = SubResource("RibbonTrailMesh_d52qy")
-min_draw_distance = 35.0
-particle_count = 55225
+[node name="WorldTerrain" parent="." instance=ExtResource("2_jynyo")]
 
 [node name="Towns" parent="." instance=ExtResource("38_d7utl")]
 
