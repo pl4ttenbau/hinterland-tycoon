@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=117 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="2_jb2rk"]
@@ -547,7 +547,7 @@ point_count = 5
 
 [sub_resource type="Curve3D" id="Curve3D_ujakq"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2311, 12, 1911.6, 0, 0, 0, 0, 0, 0, 2337.2, 11.7, 1912.4, 0, 0, 0, 0, 0, 0, 2347.7, 11.9, 1907.1, 0, 0, 0, 0, 0, 0, 2360.6, 12, 1894.2, 0, 0, 0, 0, 0, 0, 2399.5, 11.9, 1891.2, 0, 0, 0, 0, 0, 0, 2456.2, 12, 1884.8, 0, 0, 0, 0, 0, 0, 2424.4, 12.1, 1877.4, 0, 0, 0, 0, 0, 0, 2574.4, 12.1, 1871.7),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2311, 12, 1911.6, 0, 0, 0, 0, 0, 0, 2337.2, 11.7, 1912.4, 0, 0, 0, 0, 0, 0, 2347.7, 11.9, 1907.1, 0, 0, 0, 0, 0, 0, 2360.6, 12, 1894.2, 0, 0, 0, 0, 0, 0, 2399.5, 11.9, 1891.2, 0, 0, 0, 0, 0, 0, 2456.2, 12, 1884.8, 0, 0, 0, 0, 0, 0, 2524.4, 12.1, 1877.4, 0, 0, 0, 0, 0, 0, 2574.4, 12.1, 1871.7),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -572,6 +572,34 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_cgylm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2017.8, 16.2, 2453.4, 0, 0, 0, 0, 0, 0, 2015.4, 15.5, 2468.1, 0, 0, 0, 0, 0, 0, 2013.9, 15.4, 2486.7, 0, 0, 0, 0, 0, 0, 2012.6, 15.2, 2502.8, 0, 0, 0, 0, 0, 0, 2012.4, 15, 2511.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_vvswy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2012.4, 15, 2511.5, 0, 0, 0, 0, 0, 0, 2012.8, 15.3, 2524.9, 0, 0, 0, 0, 0, 0, 2013.5, 16.4, 2540.6),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_hs1kp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2012.4, 15, 2511.5, 0, 0, 0, 0, 0, 0, 1999.6, 15.3, 2510.9, 0, 0, 0, 0, 0, 0, 1989.9, 15.2, 2510.7, 0, 0, 0, 0, 0, 0, 1975.3, 15.6, 2506.8, 0, 0, 0, 0, 0, 0, 1950.6, 14.3, 2500.1, 0, 0, 0, 0, 0, 0, 1943.4, 14.2, 2499.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_ku7ty"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1943.4, 14.2, 2499.5, 0, 0, 0, 0, 0, 0, 1950.8, 14.2, 2476.4, 0, 0, 0, 0, 0, 0, 1955.7, 14.3, 2464, 0, 0, 0, 0, 0, 0, 1968.3, 15.1, 2448.9, 0, 0, 0, 0, 0, 0, 1983.6, 15, 2445.7, 0, 0, 0, 0, 0, 0, 1999.8, 15, 2449.4, 0, 0, 0, 0, 0, 0, 2017.8, 16.2, 2453.4),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -607,6 +635,9 @@ amount = 2209
 mesh = SubResource("RibbonTrailMesh_d52qy")
 min_draw_distance = 35.0
 particle_count = 55225
+
+[node name="Church1" parent="WorldTerrain" instance=ExtResource("59_51ymi")]
+transform = Transform3D(0.6406995, 0, -0.7677917, 0, 1, 0, 0.7677917, 0, 0.6406995, 1967.1924, 13.597928, 2475.2969)
 
 [node name="Towns" parent="." instance=ExtResource("38_d7utl")]
 
@@ -729,6 +760,9 @@ transform = Transform3D(-0.30333462, 0, -0.9528841, 0, 1, 0, 0.9528841, 0, -0.30
 
 [node name="FriedlandAnklamGate" parent="Deco" instance=ExtResource("43_bn6oj")]
 transform = Transform3D(-0.0019373127, 0, -0.99999815, 0, 1, 0, 0.99999815, 0, -0.0019373127, 2183.098, 11.824295, 3142.1677)
+
+[node name="VillageWellBlesewitz" parent="Deco" instance=ExtResource("40_rrrix")]
+transform = Transform3D(0.7453713, 0, -0.6666495, 0, 1, 0, 0.6666495, 0, 0.7453713, 2492.9592, 11.709154, 2066.8835)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("44_tkkvf")]
 environment = SubResource("Environment_ls53n")
@@ -906,12 +940,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2502.7307, 12.157069, 2049.74
 placed_town_num = 17
 
 [node name="VillageHouse17" parent="Houses" instance=ExtResource("49_v0v3v")]
-transform = Transform3D(0.7813136, 0, -0.62413865, 0, 1, 0, 0.62413865, 0, 0.7813136, 2494.9792, 11.385874, 2066.8477)
+transform = Transform3D(0.7813136, 0, -0.62413865, 0, 1, 0, 0.62413865, 0, 0.7813136, 2527.5088, 11.3214445, 2059.6074)
 placed_town_num = 17
 
 [node name="CityHouse8" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.6393988, 0, 0.76887524, 0, 1, 0, -0.76887524, 0, -0.6393988, 2478.4377, 11.347803, 2086.0645)
 placed_town_num = 17
+
+[node name="VillageHouse18" parent="Houses" instance=ExtResource("50_1ktam")]
+transform = Transform3D(-0.09940664, 0, -0.9950467, 0, 1, 0, 0.9950467, 0, -0.09940664, 1999.8389, 14.757708, 2500.1414)
+placed_town_num = 28
+
+[node name="PolishHouse13" parent="Houses" instance=ExtResource("7_emjn5")]
+transform = Transform3D(0.9229417, 0, 0.38493976, 0, 1, 0, -0.38493976, 0, 0.9229417, 1979.5426, 14.861725, 2495.3516)
+placed_town_num = 28
+
+[node name="VillageHouse19" parent="Houses" instance=ExtResource("49_v0v3v")]
+transform = Transform3D(0.74274766, 0, -0.6695715, 0, 1, 0, 0.6695715, 0, 0.74274766, 2000.4125, 14.608255, 2479.6309)
+placed_town_num = 28
+
+[node name="VillageHouse20" parent="Houses" instance=ExtResource("49_v0v3v")]
+transform = Transform3D(0.895199, 0, -0.44566667, 0, 1, 0, 0.44566667, 0, 0.895199, 2014.2687, 16.091778, 2437.0032)
+placed_town_num = 28
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
@@ -1252,6 +1302,26 @@ metadata/name = "Spantekow Castle Pathway"
 curve = SubResource("Curve3D_asg2x")
 metadata/road_num = 42
 metadata/name = "Spantekow Burgstr South"
+
+[node name="Editor_Road43" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_cgylm")
+metadata/road_num = 43
+metadata/name = "Spantekow Hauptstr"
+
+[node name="Editor_Road44" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_vvswy")
+metadata/road_num = 44
+metadata/name = "Spantekow Hauptstr South"
+
+[node name="Editor_Road45" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_hs1kp")
+metadata/road_num = 45
+metadata/name = "Spantekow Ringstr South Main"
+
+[node name="Editor_Road46" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ku7ty")
+metadata/road_num = 46
+metadata/name = "Spantekow Ringstr Main"
 
 [node name="Locator" type="Node3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2889.6458, 12.925942, 2863.1006)

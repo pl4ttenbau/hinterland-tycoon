@@ -246,6 +246,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Spantekow"
 pos_xz = Vector2(2072.3, 2490.4)
+autogenerate_houses = false
 num = 28
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
