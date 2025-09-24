@@ -8,10 +8,14 @@ class_name RoadData extends AbstractTrack
 @warning_ignore("unused_signal")
 signal created(track: RoadData)
 
-func _init(_num: int, _type: String):
+func _init():
 	super(Enums.EntityTypes.ROAD)
-	self.num = _num
-	self.infr_type_key = _type
+	
+static func of(_num: int, _type: String) -> RoadData:
+	var inst := RoadData.new()
+	inst.num = _num
+	inst.infr_type_key = _type
+	return inst
 	
 static func get_by_num(road_num: int) -> RoadData:
 	return Managers.roads.storage.get_by_num(road_num)

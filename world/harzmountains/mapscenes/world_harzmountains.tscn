@@ -707,7 +707,7 @@ auto_exposure_min_sensitivity = 8.01
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
 map_key = "harzmountains"
-terrain = NodePath("")
+terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_6duku")]
@@ -1492,3 +1492,5 @@ mesh = SubResource("PlaneMesh_xiocb")
 [node name="WorldEnvironment" parent="." instance=ExtResource("81_3nsqt")]
 environment = SubResource("Environment_f8w8m")
 camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
+
+[node name="Roads" type="Node3D" parent="."]

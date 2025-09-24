@@ -12,7 +12,10 @@ class_name OuterRailVehicle extends VisibleObject
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
+@warning_ignore("unused_signal")
 signal reached_next_node(node_num: int)
+
+@warning_ignore("unused_signal")
 signal reached_end_of_track(node_obj: RailNodeData)
 
 func _enter_tree() -> void:

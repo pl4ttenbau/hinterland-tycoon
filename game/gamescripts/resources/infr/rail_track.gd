@@ -8,8 +8,6 @@ class_name RailTrackData extends AbstractTrack
 @export var stations: Array[RailStationData] = []
 @export var forks: Array[RailForkData] = []
 
-signal created(track: RailForkData)
-
 func _init():
 	super(Enums.EntityTypes.RAIL)
 	
