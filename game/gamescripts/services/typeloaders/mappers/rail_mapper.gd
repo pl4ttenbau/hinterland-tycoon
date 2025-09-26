@@ -24,3 +24,12 @@ static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData
 		rail_node_obj.parse_and_add_special(rail_node_dict)
 		_track.add_node(rail_node_obj)
 		node_index += 1
+		
+static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
+	var track_num: int = track_data_dict.get("num")
+	var track_path := Path3D.new()
+	track_path.name = "Editor_Track%d" % track_num
+	track_path.set_meta("track_num", track_num)
+	track_path.set_meta("name", track_data_dict.get("name", null))
+	# path.debug_custom_color = Color(0, 0, 0)
+	return track_path

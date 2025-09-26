@@ -4,7 +4,7 @@ extends EditorScript
 const TRACKS_JSON_PATH_FORMAT = "res://world/%s/jsondata/tracks.json"
 const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 
-@export_storage var parent: Node3D:
+@export_storage var editor_infr_node: Node3D:
 	get():
 		var infr_container = get_scene().find_child("EditorInfr", true)
 		if ! infr_container:
@@ -19,7 +19,7 @@ func _run():
 		self.spawn_road_paths(map_name)
 
 func clear_editor_tracks():
-	for child: Node in self.parent.get_children():
+	for child: Node in self.editor_infr_node.get_children():
 		child.queue_free()
 
 #region Rail Path Spawning
@@ -30,17 +30,14 @@ func spawn_track_paths(map_key: String):
 		self.spawn_single_track_path(track_dict)
 		
 func spawn_single_track_path(track_data_dict: Dictionary):
-	var track_num: int = track_data_dict.get("num")
-	var path: Path3D = Path3D.new()
-	path.name = "Editor_Track%d" % track_num
-	path.set_meta("track_num", track_num)
-	path.set_meta("name", track_data_dict.get("name", null))
-	path.debug_custom_color = Color(0, 0, 0)
+	var path := RailMapper.path3d_from_data(track_data_dict)
 	path.curve = Curve3D.new()
 	for point in track_data_dict.points:
 		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
-	self.parent.add_child(path, true)
+	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
+	
+
 #endregion
 
 #region Road Path Spawning
@@ -51,18 +48,15 @@ func spawn_road_paths(map_key: String):
 		self.spawn_road_track_path(road_dict)
 		
 func spawn_road_track_path(road_data_dict: Dictionary):
-	var road_num: int = road_data_dict.get("num")
-	var path: Path3D = Path3D.new()
-	path.name = "Editor_Road%d" % road_num
-	path.set_meta("road_num", road_num)
-	path.set_meta("name", road_data_dict.get("name", null))
+	var path: Path3D = RoadMapper.path3d_from_data(road_data_dict)
 	# create curve
 	path.curve = Curve3D.new()
 	for point in road_data_dict.points:
 		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
 	# add as parent and to editor scene
-	self.parent.add_child(path, true)
+	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
+
 #endregion
 
 func get_map_name():

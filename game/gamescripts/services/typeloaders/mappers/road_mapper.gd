@@ -35,3 +35,11 @@ static func cross_from_dict_and_data(parent_node: RoadNode, road_data: Dictionar
 		for conn_road_float: float in connective_roads:
 			road_cross.connecting_roads.append(int(conn_road_float))
 	return road_cross
+
+static func path3d_from_data(road_data_dict: Dictionary) -> Path3D:
+	var road_num: int = road_data_dict.get("num")
+	var road_path := Path3D.new()
+	road_path.name = "Editor_Road%d" % road_num
+	road_path.set_meta("road_num", road_num)
+	road_path.set_meta("name", road_data_dict.get("name", null))
+	return road_path
