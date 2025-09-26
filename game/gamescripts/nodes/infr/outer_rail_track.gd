@@ -32,12 +32,6 @@ func assign_node_names():
 	$TrackPath.name = "RailTrack_%d_Path" % self.entity.num
 	$BedPathMesh.name = "RailTrack_%d_BeddingMesh" % self.entity.num
 	$TrackPathMesh.name = "RailTrack_%d_TracksMesh" % self.entity.num
-
-## used for finding center point for distance calculations
-func get_middle_pos() -> Vector3:
-	var road_vertice_count: int = self.entity.vertices.size()
-	var middle_index: int = floori(road_vertice_count /2)
-	return self.entity.vertices.get(middle_index)
 		
-func _on_track_set(track: RailTrackData):
+func _on_track_set(_track: RailTrackData):
 	self.assign_node_names()

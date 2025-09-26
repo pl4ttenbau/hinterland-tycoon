@@ -2,8 +2,8 @@
 class_name PlayerMouseClick extends Node
 
 # Signals
+@warning_ignore("unused_signal")
 signal player_input(event: InputEvent, event_position: Vector3)
-signal player_clicked()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

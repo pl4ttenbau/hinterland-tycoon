@@ -10,9 +10,9 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 @export var fork_storage: RailForkStore = RailForkStore.new()
 
 ## here we only store visible forks
-@export var forks: Array[RailForkData] = []
+@export var visible_forks: Array[RailForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
-@export var forks_by_pos: Dictionary = {}
+@export var visible_forks_by_pos: Dictionary = {}
 
 @export var outer_buffers: Array[OuterRailBuffer] = []
 
@@ -45,8 +45,7 @@ func spawn_rails():
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
 	if ! rail_track.curve: rail_track.build_path()
 	# instanciate Container from PackedScene
-	var scene_path = OuterRailTrack.get_scene_path(rail_track)
-	var outer_track: OuterRailTrack = load(scene_path).instantiate()
+	var outer_track: OuterRailTrack = load(OuterRailTrack.get_scene_path(rail_track)).instantiate()
 	outer_track.track = rail_track
 	GlobalState.outer_tracks.append(outer_track)
 	return outer_track
@@ -66,13 +65,20 @@ func sort_rail_forks():
 		for track_node in rail_track.nodes:
 			if track_node.fork:
 				## only take first at a pos
-				if ! self.forks_by_pos.has(track_node.position):
-					self.forks_by_pos.set(track_node.position, track_node.fork)
-					self.forks.append(track_node.fork)
-					GlobalState.forks.append(track_node.fork)
+				if ! self.visible_forks_by_pos.has(track_node.position):
+					self.visible_forks_by_pos.set(track_node.position, track_node.fork)
+	# add list to self and global state
+	self.visible_forks = self.get_visible_forks()
+	GlobalState.forks = self.get_visible_forks()
+					
+func get_visible_forks() -> Array[RailForkData]:
+	var visible_outer_forks: Array[RailForkData] = []
+	for outer_fork: RailForkData in self.visible_forks_by_pos.values():
+		visible_outer_forks.append(outer_fork)
+	return visible_outer_forks
 
 func spawn_rail_forks():
-	for fork: RailForkData in self.forks:
+	for fork: RailForkData in self.visible_forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
 		
@@ -84,10 +90,8 @@ func spawn_rail_buffers(parent_track: RailTrackData):
 func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 	var outer_buffer: OuterRailBuffer = load(BUFFER_PATH).instantiate()
 	outer_buffer.parent_node = rail_node
-	outer_buffer.adjust_rotation()
-	# add to list
+	# add to list & as own child
 	self.outer_buffers.append(outer_buffer)
-	# and as track child
 	self.add_child(outer_buffer)
 	return outer_buffer
 #endregion

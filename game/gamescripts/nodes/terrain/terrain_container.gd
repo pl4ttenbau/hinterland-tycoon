@@ -5,6 +5,7 @@ class_name TerrainContainer extends Node
 @export var map_key: String
 @export var terrain: Terrain3D
 
+@warning_ignore("unused_signal")
 signal world_update()
 
 func _enter_tree() -> void:

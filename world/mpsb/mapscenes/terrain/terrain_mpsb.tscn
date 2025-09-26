@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://7cwc6ja1jrn2"]
+
+[ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="1_ebicv"]
+[ext_resource type="Terrain3DAssets" uid="uid://dvep21n01mie6" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.tres" id="2_60ypj"]
+[ext_resource type="Texture2D" uid="uid://dvkrjqdpxlmv8" path="res://assets/textures/terrain/riverbed.jpg" id="3_u1nfi"]
+[ext_resource type="Texture2D" uid="uid://mucqv6eydo55" path="res://assets/textures/terrain/riverbed_jpg.png" id="4_tjj1p"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="5_4t3nh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmo8u"]
+albedo_texture = ExtResource("3_u1nfi")
+metallic = 0.64
+metallic_specular = 1.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("4_tjj1p")
+uv1_scale = Vector3(120, 120, 120)
+uv2_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
+size = Vector2(2400, 2400)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yi3v"]
+albedo_texture = ExtResource("3_u1nfi")
+metallic = 0.64
+metallic_specular = 1.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("4_tjj1p")
+uv1_scale = Vector3(24, 12, 12)
+uv2_scale = Vector3(50, 50, 50)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
+size = Vector2(750, 270)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
+shape = 0
+section_length = 0.18
+section_segments = 1
+
+[node name="WorldTerrain" type="Terrain3D"]
+data_directory = "res://world/mpsb/heightdata"
+material = ExtResource("1_ebicv")
+assets = ExtResource("2_60ypj")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="WaterMain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1662.391, 10, 1673.171)
+material_override = SubResource("StandardMaterial3D_mmo8u")
+mesh = SubResource("PlaneMesh_2pcia")
+skeleton = NodePath("")
+
+[node name="WaterFriedland" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2176.32, 10.2545, 3199.59)
+material_override = SubResource("StandardMaterial3D_7yi3v")
+mesh = SubResource("PlaneMesh_naxkj")
+skeleton = NodePath("")
+
+[node name="CustomTerrain3DParticles" parent="." node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
+terrain = NodePath("..")
+instance_spacing = 0.296875
+cell_width = 14.0
+rows = 47
+amount = 2209
+mesh = SubResource("RibbonTrailMesh_d52qy")
+min_draw_distance = 35.0
+particle_count = 55225

@@ -1,14 +1,11 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailTrackData extends AbstractTrack
 
-@export var starts_northwest: bool = true
 @export var nodes: Array[RailNodeData] = []
 
 # child objects
 @export var stations: Array[RailStationData] = []
 @export var forks: Array[RailForkData] = []
-
-signal created(track: RailForkData)
 
 func _init():
 	super(Enums.EntityTypes.RAIL)

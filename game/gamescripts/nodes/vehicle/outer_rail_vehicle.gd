@@ -12,7 +12,10 @@ class_name OuterRailVehicle extends VisibleObject
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
+@warning_ignore("unused_signal")
 signal reached_next_node(node_num: int)
+
+@warning_ignore("unused_signal")
 signal reached_end_of_track(node_obj: RailNodeData)
 
 func _enter_tree() -> void:
@@ -30,9 +33,8 @@ static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_a
 		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
 	# get vehicle type
 	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)
-	var scene_path: String = veh_type_obj.get_mesh_path()
 	# instanciate correct scene
-	var vehicle: OuterRailVehicle = load(scene_path).instantiate()
+	var vehicle: OuterRailVehicle = load(veh_type_obj.get_mesh_path()).instantiate()
 	vehicle.type_obj = veh_type_obj
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
