@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch2bcl2ishefa"]
+
+[ext_resource type="ArrayMesh" uid="uid://5j1y5yt5c347" path="res://assets/meshes/nature/waterplants/reeds2/reeds2.obj" id="1_xxwyp"]
+[ext_resource type="Texture2D" uid="uid://ctkcd315e6156" path="res://assets/meshes/nature/waterplants/tex/tex_waterplants_d.png" id="2_qut5f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsiu0"]
+transparency = 2
+alpha_scissor_threshold = 0.148
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_qut5f")
+backlight_enabled = true
+backlight = Color(0.39308554, 0.39308554, 0.39308533, 1)
+
+[node name="Reeds2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_xxwyp")
+surface_material_override/0 = SubResource("StandardMaterial3D_tsiu0")
