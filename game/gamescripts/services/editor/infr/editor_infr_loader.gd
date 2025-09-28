@@ -36,8 +36,6 @@ func spawn_single_track_path(track_data_dict: Dictionary):
 		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
 	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
-	
-
 #endregion
 
 #region Road Path Spawning
@@ -56,7 +54,6 @@ func spawn_road_track_path(road_data_dict: Dictionary):
 	# add as parent and to editor scene
 	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
-
 #endregion
 
 func get_map_name():
