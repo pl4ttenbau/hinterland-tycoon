@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_1xysp"]
 script = ExtResource("3_4bctd")
 town_name = "Braunlage"
-pos_xz = Vector2(948, 3550)
+pos_xz = Vector2(938.7, 3749.4)
 autogenerate_houses = false
 num = 1
 type = 5
@@ -238,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3107, 5.60901, 1353)
 town = SubResource("Resource_sdbyp")
 
 [node name="TownCenter_Braunlage" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 948, 66.6957, 3550)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 938.7, 58.1, 3749.4)
 town = SubResource("Resource_1xysp")
 
 [node name="TownCenter_Ilsenburg" parent="." instance=ExtResource("1_tj431")]

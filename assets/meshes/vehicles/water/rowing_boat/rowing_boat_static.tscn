@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://huj60dribkuj"]
+
+[ext_resource type="ArrayMesh" uid="uid://8bf6qxl2oy8o" path="res://assets/meshes/vehicles/water/rowing_boat/rowing_boat.obj" id="1_6scr8"]
+[ext_resource type="Texture2D" uid="uid://bv1fm4fop00eu" path="res://assets/meshes/vehicles/water/rowing_boat/tex_rowing_boat_d.png" id="2_2k38a"]
+[ext_resource type="Texture2D" uid="uid://bqlj3perbpsbj" path="res://assets/meshes/vehicles/water/rowing_boat/tex_rowing_boat_n.png" id="3_5gce3"]
+[ext_resource type="Texture2D" uid="uid://b47yitsykfe0g" path="res://assets/meshes/vehicles/water/rowing_boat/tex_rowing_boat_r.png" id="4_8i8sy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ad34y"]
+albedo_texture = ExtResource("2_2k38a")
+roughness_texture = ExtResource("4_8i8sy")
+normal_enabled = true
+normal_texture = ExtResource("3_5gce3")
+
+[node name="RowingBoatStatic" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_6scr8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ad34y")
