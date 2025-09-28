@@ -11,6 +11,12 @@
 			"name": "DR Depot Wernigerode",
 			"trackNum": 32,
 			"trackPos": "START"
+		},
+		{
+			"num": 3,
+			"name": "Braunlage Depot SHE",
+			"trackNum": 48,
+			"trackPos": "END"
 		}
 	]
 }
