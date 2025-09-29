@@ -18,10 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 Enums="*res://game/gamescripts/enums.gd"
+GameTypes="*res://game/gamescripts/state/types.gd"
 Loggie="*res://addons/loggie/loggie.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GlobalState="*res://game/gamescripts/state/globals.gd"
-GameTypes="*res://game/gamescripts/state/types.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*res://game/gamescripts/services/spawners/map/map_list_loader.gd"

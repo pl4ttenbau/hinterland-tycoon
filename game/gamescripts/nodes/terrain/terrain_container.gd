@@ -9,10 +9,12 @@ class_name TerrainContainer extends Node
 signal world_update()
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	# self-register in GlobalState
 	GlobalState.world_container = self
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	var terrain_3d_obj: Terrain3D = self.get_child(0)
 	if !terrain_3d_obj:
 		Loggie.error("Bei Erstellung des TerrainContainers kann das
