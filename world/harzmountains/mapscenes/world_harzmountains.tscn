@@ -1,4 +1,4 @@
-[gd_scene load_steps=171 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=173 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
@@ -894,6 +894,20 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Curve3D" id="Curve3D_5liue"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 771.2, 86, 3516.7, 0, 0, 0, 0, 0, 0, 740.6, 89, 3516.2, 0, 0, 0, 0, 0, 0, 707.1, 92.6, 3507.8, 0, 0, 0, 0, 0, 0, 685, 93.3, 3510.2, 0, 0, 0, 0, 0, 0, 675.2, 95.4, 3511.2, 0, 0, 0, 0, 0, 0, 663, 96.6, 3512, 0, 0, 0, 0, 0, 0, 637.7, 99.8, 3509.5, 0, 0, 0, 0, 0, 0, 621, 103.9, 3500.9),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_rqudx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 621, 103.9, 3500.9, 0, 0, 0, 0, 0, 0, 596, 111, 3484.4, 0, 0, 0, 0, 0, 0, 576, 115.1, 3460.1, 0, 0, 0, 0, 0, 0, 563.9, 116.1, 3436.8, 0, 0, 0, 0, 0, 0, 547.2, 121, 3413.8, 0, 0, 0, 0, 0, 0, 536.4, 121.5, 3397.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
 ground_color = Color(0, 0, 0, 1)
 
@@ -936,6 +950,7 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_6duku")]
+show_instancer_grid = true
 
 [node name="Towns" parent="." instance=ExtResource("44_tey3n")]
 
@@ -1930,10 +1945,20 @@ metadata/name = "Braunlage Harburger Str Climb Top"
 [node name="Editor_Road71" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_cs011")
 metadata/road_num = 69
-metadata/name = "Braunlage Harburger At Ulrichswasser"
+metadata/name = "Braunlage Harzburger At Ulrichswasser"
+
+[node name="Editor_Road72" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_5liue")
+metadata/road_num = 70
+metadata/name = "Braunlage Harzburger Str To Koenigskrug"
+
+[node name="Editor_Road73" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_rqudx")
+metadata/road_num = 71
+metadata/name = "Braunlage Harzburger Str To Koenigskrug"
 
 [node name="Locator" type="Node3D" parent="InEditor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 938.78296, 58.09055, 3749.3677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.18195, 143.10123, 2799.9204)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("81_3nsqt")]
 environment = SubResource("Environment_f8w8m")
