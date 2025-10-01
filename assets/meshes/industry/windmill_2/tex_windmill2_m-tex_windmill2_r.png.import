@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6caew5xc3ps4"
-path.s3tc="res://.godot/imported/tex_half_timbered_1_door_d.tga-ca6e81ccc08e853ed4ac2976408e6be7.s3tc.ctex"
+uid="uid://xb8wm213pdcy"
+path.s3tc="res://.godot/imported/tex_windmill2_m-tex_windmill2_r.png-909a684a0be833be621409288b9964b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_door_d.tga"
-dest_files=["res://.godot/imported/tex_half_timbered_1_door_d.tga-ca6e81ccc08e853ed4ac2976408e6be7.s3tc.ctex"]
+source_file="res://assets/meshes/industry/windmill_2/tex_windmill2_m-tex_windmill2_r.png"
+dest_files=["res://.godot/imported/tex_windmill2_m-tex_windmill2_r.png-909a684a0be833be621409288b9964b0.s3tc.ctex"]
 
 [params]
 

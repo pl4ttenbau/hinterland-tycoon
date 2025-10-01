@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmtodxubdw7"]
+
+[ext_resource type="PackedScene" uid="uid://bghlbsssajtmn" path="res://assets/meshes/industry/windmill_2/windmill2.gltf" id="1_c5nb8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
+size = Vector3(5.6219482, 12.417358, 4.5319824)
+
+[node name="Windmill2Static" type="Node3D"]
+
+[node name="windmill2" parent="." instance=ExtResource("1_c5nb8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18060303, 6.0460815, 0.17468262)
+shape = SubResource("BoxShape3D_c5nb8")

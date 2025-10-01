@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://evyj11ram0if"
-path.s3tc="res://.godot/imported/tex_half_timbered_1_window_d.tga-aee0b01f0b8c793d2a2a8c5cf63943d2.s3tc.ctex"
+uid="uid://bu2nas7o228c0"
+path.s3tc="res://.godot/imported/tex_wooden_shack_r.png-4f0e30fe8dc225d36678718a20cff079.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_window_d.tga"
-dest_files=["res://.godot/imported/tex_half_timbered_1_window_d.tga-aee0b01f0b8c793d2a2a8c5cf63943d2.s3tc.ctex"]
+source_file="res://assets/meshes/structures/wooden_shack/tex_wooden_shack_r.png"
+dest_files=["res://.godot/imported/tex_wooden_shack_r.png-4f0e30fe8dc225d36678718a20cff079.s3tc.ctex"]
 
 [params]
 

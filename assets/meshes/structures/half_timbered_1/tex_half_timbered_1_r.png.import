@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddbyd2boa14w1"
-path.s3tc="res://.godot/imported/tex_half_timbered_1_bricks_d.tga-95f41373ab6ba58a58ce5b952483c002.s3tc.ctex"
+uid="uid://cl3a1e3oarpxs"
+path.s3tc="res://.godot/imported/tex_half_timbered_1_r.png-b4440e6c31ebb7acc5a311ad9008b178.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_bricks_d.tga"
-dest_files=["res://.godot/imported/tex_half_timbered_1_bricks_d.tga-95f41373ab6ba58a58ce5b952483c002.s3tc.ctex"]
+source_file="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_r.png"
+dest_files=["res://.godot/imported/tex_half_timbered_1_r.png-b4440e6c31ebb7acc5a311ad9008b178.s3tc.ctex"]
 
 [params]
 

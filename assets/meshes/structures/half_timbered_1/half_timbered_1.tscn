@@ -1,13 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxr0m833vfemd"]
+[gd_scene load_steps=10 format=3 uid="uid://cxr0m833vfemd"]
 
-[ext_resource type="ArrayMesh" uid="uid://c8bfk7ddm2vuc" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
+[ext_resource type="ArrayMesh" uid="uid://dcto13dfge4gi" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ryg52"]
+[ext_resource type="Texture2D" uid="uid://kkjh5nnb8s1h" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_d.png" id="3_l5q24"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_rveds"]
+[ext_resource type="Texture2D" uid="uid://cmxh2x34xk78k" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_n.png" id="4_imfsi"]
+[ext_resource type="Texture2D" uid="uid://cl3a1e3oarpxs" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_r.png" id="5_xcg7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeyoj"]
+albedo_texture = ExtResource("3_l5q24")
+roughness_texture = ExtResource("5_xcg7d")
+normal_enabled = true
+normal_texture = ExtResource("4_imfsi")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rveds"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rt3yr"]
-size = Vector3(6.45221, 11.491, 12.3604)
+size = Vector3(7.8400955, 10.252877, 8.230237)
 
 [node name="HalfTimbered1" type="Node3D"]
 script = ExtResource("1_ryg52")
@@ -17,6 +26,7 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 8
 mesh = ExtResource("1_78jwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xeyoj")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_rveds")
@@ -24,5 +34,5 @@ script = ExtResource("3_rveds")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0570984, 5.69278, 0.0699997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042087793, 5.0648236, 0.11382866)
 shape = SubResource("BoxShape3D_rt3yr")

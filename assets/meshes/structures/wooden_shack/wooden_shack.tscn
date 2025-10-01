@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://dk0ya0g6x485k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsrdw11d1b0ku" path="res://assets/meshes/structures/wooden_shack/wooden_shack.obj" id="1_ml27w"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_t8m3y"]
+[ext_resource type="Texture2D" uid="uid://b1y47gn7mgjre" path="res://assets/meshes/structures/wooden_shack/tex_wooden_shack_d.png" id="2_1wnca"]
+[ext_resource type="Texture2D" uid="uid://dh6wip1uswtut" path="res://assets/meshes/structures/wooden_shack/tex_wooden_shack_m.png" id="3_t8m3y"]
+[ext_resource type="Texture2D" uid="uid://c1a7jsm3tgbs" path="res://assets/meshes/structures/wooden_shack/tex_wooden_shack_n.png" id="4_yw1rv"]
+[ext_resource type="Texture2D" uid="uid://bu2nas7o228c0" path="res://assets/meshes/structures/wooden_shack/tex_wooden_shack_r.png" id="5_a1lvm"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="6_1wnca"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fawl"]
+albedo_texture = ExtResource("2_1wnca")
+metallic = 1.0
+metallic_texture = ExtResource("3_t8m3y")
+roughness_texture = ExtResource("5_a1lvm")
+normal_enabled = true
+normal_texture = ExtResource("4_yw1rv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0tvf"]
+albedo_texture = ExtResource("2_1wnca")
+metallic = 1.0
+metallic_texture = ExtResource("3_t8m3y")
+roughness_texture = ExtResource("5_a1lvm")
+normal_enabled = true
+normal_texture = ExtResource("4_yw1rv")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1wnca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8m3y"]
+size = Vector3(8.412811, 4.7969666, 6.3432617)
+
+[node name="WoodenShack" type="Node3D"]
+script = ExtResource("1_t8m3y")
+placed_res_bld_type = "wooden_shack"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_ml27w")
+surface_material_override/0 = SubResource("StandardMaterial3D_4fawl")
+surface_material_override/1 = SubResource("StandardMaterial3D_i0tvf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_1wnca")
+script = ExtResource("6_1wnca")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1612091, 2.2568817, -0.118652344)
+shape = SubResource("BoxShape3D_t8m3y")
