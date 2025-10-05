@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'statue_1.blend'
+# www.blender.org
+
+newmtl mat_statue_1
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_statue_1_d.png
+map_Bump -bm 1.000000 tex_statue_1_n.png
