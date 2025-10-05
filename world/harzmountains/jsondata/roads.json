@@ -2632,7 +2632,268 @@
 				"pos": [109.6, 20.5, 1072.0]
 			},
 			{
-				"pos": [126.8, 19.2, 1054.2]
+				"pos": [126.8, 19.2, 1054.2],
+				"cross": {
+					"connectiveRoads": [89]
+				}
+			}
+		]
+	},
+	{
+		"num": 89,
+		"name": "B4 Kunstmanntal",
+		"points": [
+			{
+				"pos": [126.8, 19.2, 1054.2],
+				"cross": {
+					"connectiveRoads": [88]
+				}
+			},
+			{
+				"pos": [140.3, 18.4, 1036.1]
+			},
+			{
+				"pos": [142.4, 18.0, 1017.9]
+			},
+			{
+				"pos": [141.4, 16.9, 985.2]
+			},
+			{
+				"pos": [144.6, 16.1, 955.3]
+			},
+			{
+				"pos": [152.3, 14.6, 917.4]
+			},
+			{
+				"pos": [155.8, 13.7, 889.1]
+			},
+			{
+				"pos": [161.4, 13.0, 862.5]
+			},
+			{
+				"pos": [186.3, 11.9, 825.2]
+			},
+			{
+				"pos": [194.4, 11.3, 793.6]
+			},
+			{
+				"pos": [195.3, 11.1, 774.1],
+				"cross": {
+					"connectiveRoads": [90]
+				}
+			}
+		]
+	},
+	{
+		"num": 90,
+		"name": "B4 Schmalenberg",
+		"points": [
+			{
+				"pos": [195.3, 11.1, 774.1],
+				"cross": {
+					"connectiveRoads": [89]
+				}
+			},
+			{
+				"pos": [194.9, 10.7, 761.1]
+			},
+			{
+				"pos": [187.8, 10.5, 727.7]
+			},
+			{
+				"pos": [195.4, 10.0, 710.3]
+			},
+			{
+				"pos": [223.8, 9.2, 683.1]
+			},
+			{
+				"pos": [241.2, 9.2, 661.0]
+			},
+			{
+				"pos": [250.6, 9.3, 644.3]
+			},
+			{
+				"pos": [261.6, 9.4, 622.6]
+			},
+			{
+				"pos": [266.8,8.9, 606.6],
+				"cross": {
+					"connectiveRoads": [91]
+				}
+			}
+		]
+	},
+	{
+		"num": 91,
+		"name": "Harzburg Duke Julius Str North",
+		"points": [
+			{
+				"pos": [266.8,8.9, 606.6],
+				"cross": {
+					"connectiveRoads": [90]
+				}
+			},
+			{
+				"pos": [271.8, 9.0, 594.5]
+			},
+			{
+				"pos": [274.2, 8.4, 572.7]
+			},
+			{
+				"pos": [271.1, 8.0, 556.1]
+			},
+			{
+				"pos": [264.7, 7.8, 534.2],
+				"cross": {
+					"connectiveRoads": [92]
+				}
+			}
+		]
+	},
+	{
+		"num": 92,
+		"name": "Harzburg Duke Julius Str South",
+		"points": [
+			{
+				"pos": [264.7, 7.8, 534.2],
+				"cross": {
+					"connectiveRoads": [91]
+				}
+			},
+			{
+				"pos": [258.9, 7.4, 520.1],
+				"cross": {
+					"connectiveRoads": [93]
+				}
+			}
+		]
+	},
+	{
+		"num": 93,
+		"name": "Harzburg Duke Julius Str South",
+		"points": [
+			{
+				"pos": [258.9, 7.4, 520.1],
+				"cross": {
+					"connectiveRoads": [92, 94]
+				}
+			},
+			{
+				"pos": [247.1, 7.2, 501.2]
+			},
+			{
+				"pos": [238.1, 7.3, 490.9]
+			}
+		]
+	},
+	{
+		"num": 94,
+		"name": "Harzburg Ilsenburger Str Westernmost",
+		"points": [
+			{
+				"pos": [258.9, 7.4, 520.1],
+				"cross": {
+					"connectiveRoads": [92, 93]
+				}
+			},
+			{
+				"pos": [270.1, 8.3, 518.5]
+			},
+			{
+				"pos": [290.9, 8.4, 519.4]
+			},
+			{
+				"pos": [321.8, 8.5, 519.0],
+				"cross": {
+					"connectiveRoads": [95]
+				}
+			}
+		]
+	},
+	{
+		"num": 95,
+		"name": "Harzburg Ilsenburger Str Ostviertel",
+		"points": [
+			{
+				"pos": [321.8, 8.5, 519.0],
+				"cross": {
+					"connectiveRoads": [94]
+				}
+			},
+			{
+				"pos": [350.8, 9.1, 519.0]
+			},
+			{
+				"pos": [382.9, 9.7, 519.6]
+			},
+			{
+				"pos": [402.7, 10.1, 520.0],
+				"cross": {
+					"connectiveRoads": [96]
+				}
+			}
+		]
+	},
+	{
+		"num": 96,
+		"name": "Harzburg Ilsenburger Str Butterberg",
+		"points": [
+			{
+				"pos": [402.7, 10.1, 520.0],
+				"cross": {
+					"connectiveRoads": [95]
+				}
+			},
+			{
+				"pos": [427.6, 10.3, 518.3]
+			},
+			{
+				"pos": [449.9, 10.7, 522.3]
+			},
+			{
+				"pos": [469.9, 11.4, 531.1],
+				"cross": {
+					"connectiveRoads": [97]
+				}
+			}
+		]
+	},
+	{
+		"num": 97,
+		"name": "Harzburg Ilsenburger Str Wolfstein",
+		"points": [
+			{
+				"pos": [469.9, 11.4, 531.1],
+				"cross": {
+					"connectiveRoads": [96]
+				}
+			},
+			{
+				"pos": [491.2, 11.8, 539.1]
+			},
+			{
+				"pos": [518.4, 12.4, 546.1]
+			},
+			{
+				"pos": [537.1, 14.4, 548.0]
+			},
+			{
+				"pos": [551.9, 16.6, 547.1]
+			},
+			{
+				"pos": [571.8, 17.7, 544.0]
+			},
+			{
+				"pos": [597.9, 15.9, 537.6]
+			},
+			{
+				"pos": [613.1, 15.1, 528.7]
+			},
+			{
+				"pos": [635.1, 15.8, 511.1]
+			},
+			{
+				"pos": [646.3, 15.5, 505.1]
 			}
 		]
 	}

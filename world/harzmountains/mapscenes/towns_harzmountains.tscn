@@ -120,6 +120,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Bad Harzburg"
 pos_xz = Vector2(198, 610)
+autogenerate_houses = false
 num = 13
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
