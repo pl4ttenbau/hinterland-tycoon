@@ -1,0 +1,14 @@
+# Blender 4.4.1 MTL File: 'village_house_4.blend'
+# www.blender.org
+
+newmtl tx_4k_House_02
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd tex_wooden_shack_d.png
+map_Ns tex_wooden_shack_r.png
+map_refl tex_wooden_shack_m.png
+map_Bump -bm 1.000000 tex_wooden_shack_n.png

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ddw12ptgw05tb"]
+[gd_scene load_steps=32 format=3 uid="uid://ddw12ptgw05tb"]
 
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_tj431"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_ftij8"]
@@ -16,7 +16,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_1xysp"]
 script = ExtResource("3_4bctd")
 town_name = "Braunlage"
-pos_xz = Vector2(948, 3550)
+pos_xz = Vector2(938.7, 3749.4)
+autogenerate_houses = false
 num = 1
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -119,6 +120,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Bad Harzburg"
 pos_xz = Vector2(198, 610)
+autogenerate_houses = false
 num = 13
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -230,6 +232,16 @@ num = 25
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_tj431"]
+script = ExtResource("3_4bctd")
+town_name = "Oderbrück"
+pos_xz = Vector2(191.1, 2799.9)
+is_minor = true
+autogenerate_houses = false
+num = 26
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 
 [node name="TownCenter_Wernigerode" parent="." instance=ExtResource("1_tj431")]
@@ -237,7 +249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3107, 5.60901, 1353)
 town = SubResource("Resource_sdbyp")
 
 [node name="TownCenter_Braunlage" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 948, 66.6957, 3550)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 938.7, 58.1, 3749.4)
 town = SubResource("Resource_1xysp")
 
 [node name="TownCenter_Ilsenburg" parent="." instance=ExtResource("1_tj431")]
@@ -335,3 +347,7 @@ town = SubResource("Resource_xbdss")
 [node name="TownCenter_Reddeber" parent="." instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3058, 4.73489, 1079.3)
 town = SubResource("Resource_iwpts")
+
+[node name="TownCenter_Oderbrück" parent="." instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.1, 143, 2799.9)
+town = SubResource("Resource_tj431")

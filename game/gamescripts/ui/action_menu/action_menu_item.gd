@@ -1,4 +1,4 @@
-@tool
+#@tool
 class_name ActionMenuItem extends HBoxContainer
 
 signal selected()
@@ -17,6 +17,7 @@ signal unselected()
 	get(): return text
 	
 func _enter_tree() -> void:
+	if Engine.is_editor_hint(): return
 	self.selected.connect(Callable(self, "_on_selected"))
 	self.unselected.connect(Callable(self, "_on_unselected"))
 	

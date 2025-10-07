@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_rail_road_white.png")
+@icon("res://assets/icons/icon_road_white.png")
 class_name RoadStore extends Resource
 
 @export var _list: Array[RoadData] = []

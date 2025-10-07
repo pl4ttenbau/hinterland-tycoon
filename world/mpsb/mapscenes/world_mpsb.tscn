@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=109 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="12_emjn5"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
 [ext_resource type="PackedScene" uid="uid://bongrkjiwclhd" path="res://world/mpsb/mapscenes/towns_mpsb.tscn" id="38_d7utl"]
 [ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="40_rrrix"]
@@ -662,6 +663,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2680.682, 11.280067, 1917.655
 
 [node name="Pilzleuchte3" parent="Deco/AnklamAirport" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2694.649, 11.280067, 1917.6552)
+
+[node name="MesserschmittBf109" parent="Deco/AnklamAirport" instance=ExtResource("33_cb211")]
+transform = Transform3D(0.047357067, 0.058278415, -0.9971765, -0.0027645926, 0.9983003, 0.058212794, 0.9988743, 0, 0.047437698, 2597.3086, 11.831832, 1938.1155)
+
+[node name="MesserschmittBf110" parent="Deco/AnklamAirport" instance=ExtResource("33_cb211")]
+transform = Transform3D(-0.03671345, 0, -0.9993259, 0, 1, 0, 0.9993259, 0, -0.03671345, 2659.344, 11.297325, 1989.1307)
 
 [node name="WaterTowerBig" parent="Deco" instance=ExtResource("7_jynyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2040.1655, 6.5769014, 3189.4224)

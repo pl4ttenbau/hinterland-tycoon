@@ -2075,5 +2075,338 @@
 				"pos": [3059.7, 5.5, 1303.4]
 			}
 		]
+	},
+	{
+		"num": 39,
+		"name": "SHE Braunlage Bhf Main Track",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [959.2, 56.4, 3920.2],
+				"end": true
+			},
+			{
+				"pos": [974.6, 56.0, 3930.5],
+				"station": {
+					"townName": "Braunlage",
+					"townNum": 1,
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [997.0, 55.9, 3942.0]
+			},
+			{
+				"pos": [1011.5, 55.9, 3949.3],
+				"fork": {
+					"connectiveTracks": [40, 41, 48],
+					"setTo": 41
+				}
+			}
+		]
+	},
+	{
+		"num": 40,
+		"name": "SHE Braunlage Bhf Outwards",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1011.5, 55.9, 3949.3],
+				"fork": {
+					"connectiveTracks": [39, 41],
+					"setTo": 39
+				}
+			},
+			{
+				"pos": [1031.1, 56.1, 3959.7]
+			},
+			{
+				"pos": [1044.9, 56.2, 3963.7]
+			},
+			{
+				"pos": [1064.5, 56.1, 3964.3]
+			},
+			{
+				"pos": [1080.2, 56.6, 3965.8]
+			}
+		]
+	},
+	{
+		"num": 41,
+		"name": "SHE Braunlage Bhf Bend",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1011.5, 55.9, 3949.3],
+				"fork": {
+					"connectiveTracks": [39, 40],
+					"setTo": 39
+				}
+			},
+			{
+				"pos": [1021.2, 55.7, 3950.8]
+			},
+			{
+				"pos": [1031.7, 54.9, 3946.6]
+			},
+			{
+				"pos": [1036.6, 54.7, 3941.1]
+			},
+			{
+				"pos": [1037.6, 54.3, 3932.1]
+			},
+			{
+				"pos": [1031.9, 54.0, 3923.5]
+			},
+			{
+				"pos": [1021.4, 53.6, 3917.5],
+				"fork": {
+					"connectiveTracks": [42],
+					"setTo": 42
+				}
+			}
+		]
+	},
+	{
+		"num": 42,
+		"name": "SHE Braunlage West River",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1021.4, 53.6, 3917.5],
+				"fork": {
+					"connectiveTracks": [41],
+					"setTo": 41
+				}
+			},
+			{
+				"pos": [999.4, 54.0, 3902.0]
+			},
+			{
+				"pos": [983.6, 54.3, 3886.3]
+			},
+			{
+				"pos": [970.2, 54.9, 3873.0]
+			},
+			{
+				"pos": [965.8, 55.6, 3862.5]
+			},
+			{
+				"pos": [965.5, 56.1, 3851.0],
+				"fork": {
+					"connectiveTracks": [43],
+					"setTo": 43
+				}
+			}
+		]
+	},
+	{
+		"num": 43,
+		"name": "SHE Braunlage Park Bridge",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [965.5, 56.1, 3851.0],
+				"fork": {
+					"connectiveTracks": [42],
+					"setTo": 42
+				}
+			},
+			{
+				"pos": [969.6, 55.8, 3842.4]
+			},
+			{
+				"pos": [972.2, 55.8, 3830.8],
+				"bridge": true
+			},
+			{
+				"pos": [975.0, 56.7, 3803.3],
+				"bridge": true
+			},
+			{
+				"pos": [973.3, 56.9, 3782.7]
+			},
+			{
+				"pos": [973.5, 57.6, 3765.6],
+				"fork": {
+					"connectiveTracks": [44],
+					"setTo": 44
+				}
+			}
+		]
+	},
+	{
+		"num": 44,
+		"name": "SHE Braunlage Crossing Elbingeröder",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [973.5, 57.6, 3765.6],
+				"fork": {
+					"connectiveTracks": [43],
+					"setTo": 43
+				}
+			},
+			{
+				"pos": [970.7, 58.5, 3755.2]
+			},
+			{
+				"pos": [961.7, 59.1, 3734.2]
+			},
+			{
+				"pos": [960.1, 59.3, 3721.0]
+			},
+			{
+				"pos": [958.4, 59.9, 3694.7]
+			},
+			{
+				"pos": [955.7, 60.6, 3672.4]
+			},
+			{
+				"pos": [950.1, 61.1, 3663.2],
+				"fork": {
+					"connectiveTracks": [45],
+					"setTo": 45
+				}
+			}
+		]
+	},
+	{
+		"num": 45,
+		"name": "SHE Braunlage Hütteberg Bend",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [950.1, 61.1, 3663.2],
+				"fork": {
+					"connectiveTracks": [44],
+					"setTo": 44
+				}
+			},
+			{
+				"pos": [943.4, 61.6, 3655.4]
+			},
+			{
+				"pos": [930.5, 62.8, 3641.2]
+			},
+			{
+				"pos": [924.9, 63.3, 3635.0]
+			},
+			{
+				"pos": [923.3, 63.1, 3629.1]
+			},
+			{
+				"pos": [924.4, 63.1, 3622.7]
+			},
+			{
+				"pos": [935.7, 64.0, 3612.3],
+				"fork": {
+					"connectiveTracks": [46],
+					"setTo": 46
+				}
+			}
+		]
+	},
+	{
+		"num": 46,
+		"name": "SHE Braunlage Wurmberg Stretch",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [935.7, 64.0, 3612.3],
+				"fork": {
+					"connectiveTracks": [45],
+					"setTo": 45
+				}
+			},
+			{
+				"pos": [945.9, 64.8, 3603.4]
+			},
+			{
+				"pos": [956.0, 65.2, 3591.4]
+			},
+			{
+				"pos": [959.8, 65.6, 3578.9]
+			},
+			{
+				"pos": [960.4, 66.2, 3565.8]
+			},
+			{
+				"pos": [954.2, 67.7, 3539.6]
+			},
+			{
+				"pos": [947.0, 69.2, 3522.9],
+				"fork": {
+					"connectiveTracks": [47],
+					"setTo": 47
+				}
+			}
+		]
+	},
+	{
+		"num": 47,
+		"name": "SHE Braunlage Wurmberg End",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [947.0, 69.2, 3522.9],
+				"fork": {
+					"connectiveTracks": [46],
+					"setTo": 46
+				}
+			},
+			{
+				"pos": [941.0, 70.4, 3512.6]
+			},
+			{
+				"pos": [928.5, 72.4, 3499.6]
+			},
+			{
+				"pos": [919.5, 72.7, 3491.5]
+			},
+			{
+				"pos": [907.6, 73.2, 3482.8]
+			},
+			{
+				"pos": [892.1, 73.9, 3474.3]
+			},
+			{
+				"pos": [860.8, 75.5, 3459.6],
+				"station": {
+					"townName": "Braunlage",
+					"townNum": 1,
+					"name": "Wurmberg",
+					"stationType": "STATION_PASS"
+				}
+			},
+			{
+				"pos": [834.0, 77.0, 3443.1],
+				"end": true
+			}
+		]
+	},
+	{
+		"num": 48,
+		"name": "SHE Braunlage Bhf Depot",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1011.5, 55.9, 3949.3],
+				"fork": {
+					"connectiveTracks": [40, 41, 39],
+					"setTo": 41
+				}
+			},
+			{
+				"pos": [1002.0, 55.9, 3936.5]
+			},
+			{
+				"pos": [982.5, 55.5, 3918.4]
+			},
+			{
+				"pos": [974.7, 56.5, 3906.1]
+			}
+		]
 	}
 ]

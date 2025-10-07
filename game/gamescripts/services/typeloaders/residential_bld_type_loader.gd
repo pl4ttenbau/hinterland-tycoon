@@ -7,6 +7,7 @@ func _init():
 
 static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 	return [
+		ResBldType.new("wooden_shack", "Shack", 3),
 		ResBldType.new("polish_house_1", "Polish House", 3),
 		ResBldType.new("polish_house_2", "Polish House", 4),
 		ResBldType.new("polish_house_3", "Polish House", 6),
@@ -16,7 +17,7 @@ static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 		ResBldType.new("village_house_3", "Village House", 4),
 		ResBldType.new("half_timbered_1", "Tudor House", 6),
 		ResBldType.new("half_timbered_barn", "Tudor Barn", 5),
-		ResBldType.new("northern_german_house", "Longhouse", 12),
+		ResBldType.new("northern_german_house", "Tudor Cottage", 12),
 		# ResBldType.new("city_manor", "City Manor", 12)
 	]
 	

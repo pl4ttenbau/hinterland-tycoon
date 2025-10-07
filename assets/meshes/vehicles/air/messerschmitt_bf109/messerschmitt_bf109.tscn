@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://db2tpqxnrr7uk"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwy2s0wm3okpr" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.obj" id="1_hu4kg"]
+
+[node name="MesserschmittBf109" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_hu4kg")
