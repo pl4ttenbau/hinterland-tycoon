@@ -6,7 +6,7 @@ extends Node
 
 # == PRE-WORLD-LOADING ==
 @export var game_maps: Array[MapData]
-@export var selected_map_name: String = "harzmountains"
+@export var selected_map_name: String = "mpsb"
 @export var loaded_map: MapData 
 
 # == STATIC ==

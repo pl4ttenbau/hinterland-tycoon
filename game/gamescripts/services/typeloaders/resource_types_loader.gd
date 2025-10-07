@@ -10,17 +10,29 @@ func make_types_list() -> Array[BaseResourceType]:
 	return [
 		BaseResourceType.new("passenger", BaseResourceType.ResourceCategory.PASSENGER),
 		BaseResourceType.new("tourists", BaseResourceType.ResourceCategory.PASSENGER),
+		BaseResourceType.new("soldiers", BaseResourceType.ResourceCategory.PASSENGER),
+
 		BaseResourceType.new("grains", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("beets", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("meat", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("bread", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("sugar", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("alcohol", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("fertilizer", BaseResourceType.ResourceCategory.FREIGHT),
+
 		BaseResourceType.new("lumber", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("boards", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("coal", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("ore", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("ingots", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("bricks", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("gravel", BaseResourceType.ResourceCategory.FREIGHT),
 		BaseResourceType.new("concrete", BaseResourceType.ResourceCategory.FREIGHT),
+
+		BaseResourceType.new("coal", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("ore", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("ingots", BaseResourceType.ResourceCategory.FREIGHT),
+
+		BaseResourceType.new("paper", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("motors", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseResourceType.new("rail_tracks", BaseResourceType.ResourceCategory.FREIGHT),
 	]
 
 func make_types() -> Dictionary:

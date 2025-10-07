@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=36 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
@@ -95,6 +95,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Gützkow"
 pos_xz = Vector2(1386.5, 1148.7)
+autogenerate_houses = false
 num = 10
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -260,6 +261,24 @@ num = 29
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_n5hqh"]
+script = ExtResource("3_icu33")
+town_name = "Dargezin-Bandelin"
+pos_xz = Vector2(1459.2, 822)
+is_minor = true
+autogenerate_houses = false
+num = 30
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_03w28"]
+script = ExtResource("3_icu33")
+town_name = "Dargelin-Behrenhoff"
+pos_xz = Vector2(1063.2, 469.4)
+num = 31
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 
 [node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
@@ -377,3 +396,11 @@ town = SubResource("Resource_icu33")
 [node name="TownCenter_Putzar" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2889.6, 12.9, 2863.1)
 town = SubResource("Resource_xyttb")
+
+[node name="TownCenter_Dargezin-Bandelin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1459.2, 15.1, 822)
+town = SubResource("Resource_n5hqh")
+
+[node name="TownCenter_Dargelin-Behrenhoff" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1063.2, 23.1, 469.4)
+town = SubResource("Resource_03w28")
