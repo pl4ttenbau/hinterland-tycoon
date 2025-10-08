@@ -1391,3 +1391,6 @@ metadata/name = "Spantekow Ringstr Main"
 
 [node name="Locator" type="Node3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1063.1893, 23.088047, 469.44412)
+
+[node name="TrussBridge" parent="." instance=ExtResource("21_ugno1")]
+transform = Transform3D(0.8996797, 0, -0.43655056, 0, 1, 0, 0.43655056, 0, 0.8996797, 2517.5208, 12.09012, 2891.838)

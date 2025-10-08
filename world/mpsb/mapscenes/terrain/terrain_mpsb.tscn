@@ -41,6 +41,7 @@ section_segments = 1
 data_directory = "res://world/mpsb/heightdata"
 material = ExtResource("1_ebicv")
 assets = ExtResource("2_60ypj")
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -57,6 +58,7 @@ mesh = SubResource("PlaneMesh_naxkj")
 skeleton = NodePath("")
 
 [node name="CustomTerrain3DParticles" parent="." node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
+visible = false
 terrain = NodePath("..")
 instance_spacing = 0.296875
 cell_width = 14.0
