@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_good_white.png")
-class_name ResourceTypesLoader extends AbstractGameTypeLoader
+class_name GoodsTypesLoader extends AbstractGameTypeLoader
 
 @export var types_by_key: Dictionary
 

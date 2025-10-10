@@ -41,7 +41,9 @@ func get_pos_on_terrain(pos_xz: Vector2) -> Vector3:
 func get_editor_terrain() -> Terrain3D:
 	var edited_scene_root: Node = EditorInterface.get_edited_scene_root()
 	var terrain_3d = edited_scene_root.find_child("WorldTerrain", true)
-	if ! terrain_3d: Loggie.error("Cannt find Terrain3D node")
+	if ! terrain_3d: 
+		Loggie.error("Cannt find Terrain3D node")
+		return null
 	return terrain_3d
 
 #endregion
