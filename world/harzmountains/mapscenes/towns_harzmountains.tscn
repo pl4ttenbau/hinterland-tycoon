@@ -10,6 +10,7 @@ script = ExtResource("3_4bctd")
 town_name = "Wernigerode"
 pos_xz = Vector2(3107, 1353)
 autogenerate_houses = false
+num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -175,6 +176,7 @@ script = ExtResource("3_4bctd")
 town_name = "Plessenburg"
 pos_xz = Vector2(1688, 1611)
 is_minor = true
+autogenerate_houses = false
 num = 19
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"

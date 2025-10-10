@@ -29,6 +29,7 @@ func make_types() -> Array[IndustryType]:
 		IndustryType.new("COAL_PLANT", "Coal Plant", "generic_small", 20, ["4xcoal"], []),
 		IndustryType.new("SMALL_STORE", "Small Store", "warehouse_1", 20, ["2xbread", "2xmeat", "1xalcohol"], []),
 		IndustryType.new("BIG_STORE", "Big Store", "warehouse_1", 20, ["4xcoal"], []),
+		IndustryType.new("RESTAURANT", "Restaurant", "warehouse_1", 20, ["2xalcohol", "2xbread", "2xfish"], []),
 	]
 	GameTypes.industry_types = industry_types
 	return industry_types

@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=203 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://ck6t5hx5n8rva" path="res://assets/meshes/structures/city_house_3/city_house_3.tscn" id="45_r10ie"]
 [ext_resource type="PackedScene" uid="uid://cxr0m833vfemd" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.tscn" id="45_u0uu3"]
 [ext_resource type="PackedScene" uid="uid://du7j51h025uyf" path="res://assets/meshes/deco/statue_1/statue_1.tscn" id="46_o6yo0"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/industry/world_industries.gd" id="47_wmk8x"]
+[ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="48_76jr6"]
 [ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="48_kkdmv"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="49_el7bl"]
 [ext_resource type="PackedScene" uid="uid://c474km5fgqu6p" path="res://assets/meshes/deco/tent_1/tent_1.tscn" id="50_1vtbi"]
@@ -1384,6 +1386,18 @@ placed_town_num = 13
 transform = Transform3D(-0.9999782, 0, 0.006614715, 0, 1, 0, -0.006614715, 0, -0.9999782, 234.25253, 7.3892937, 556.5427)
 placed_town_num = 13
 
+[node name="CityHouse25" parent="Houses" instance=ExtResource("77_r10ie")]
+transform = Transform3D(0.93361795, 0, -0.3582702, 0, 1, 0, 0.3582702, 0, 0.93361795, 1774.7499, 43.684338, 1590.3058)
+placed_town_num = 19
+
+[node name="WoodenShack2" parent="Houses" instance=ExtResource("45_ihmag")]
+transform = Transform3D(-0.49073648, 0, -0.8713081, 0, 1, 0, 0.8713081, 0, -0.49073648, 1777.6428, 41.629234, 1555.8445)
+placed_town_num = 19
+
+[node name="PolishHouse25" parent="Houses" instance=ExtResource("48_kkdmv")]
+transform = Transform3D(0.5646934, 0, 0.8253008, 0, 1, 0, -0.8253008, 0, 0.5646934, 1790.7902, 41.536842, 1562.0425)
+placed_town_num = 19
+
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("5_o4w5w")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
@@ -1618,6 +1632,102 @@ transform = Transform3D(0.2852869, 0, -0.95844215, 0, 1, 0, 0.95844215, 0, 0.285
 
 [node name="Statue1" parent="Deco" instance=ExtResource("46_o6yo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 208.71169, 7.5984507, 586.57776)
+
+[node name="Industries" type="Node" parent="." node_paths=PackedStringArray("world_scene")]
+script = ExtResource("47_wmk8x")
+world_scene = NodePath("..")
+metadata/_custom_type_script = "uid://g6bsjtyavuig"
+
+[node name="Quarry_Elbingerode" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3360.6, 32.42955, 3095)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "QUARRY"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Ruebeland_Quarry" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3722.5, 26.2, 2772.3)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "QUARRY"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Halberstadt_Farm" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3818.8, 3.75, 1035.3)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "FARM"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Stapelburg_Forest" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783.4, 10, 303)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "FOREST"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Hasserode_Brewery" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2677, 12, 1867.6)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "BREWERY"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Nordharz_Sawmill" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2554.2, 8, 1312.9)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "SAWMILL"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="IronMine_Buechenberg" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3639, 45.5, 2461.8)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "IRON_MINE"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Smelter_Ilsenburg" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 776.4)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "SMELTER"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="FarAway_CoalMine" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 839.7, 64, 3790)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "COAL_MINE"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="CoalPlant_Ruebeland" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4036.8, 33, 3163.2)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "COAL_PLANT"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Ranch_Veckenstedt" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2125.4, 3, 360.5)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "RANCH"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Forest_Koenigshuette" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2812.1, 38.207184, 3450)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "FOREST"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Restaurant_Plessenburg" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1754.7004, 43.909065, 1577.4403)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "RESTAURANT"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("6_3f2cl")

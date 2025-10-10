@@ -58,7 +58,6 @@ mesh = SubResource("PlaneMesh_naxkj")
 skeleton = NodePath("")
 
 [node name="CustomTerrain3DParticles" parent="." node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
-visible = false
 terrain = NodePath("..")
 instance_spacing = 0.296875
 cell_width = 14.0
