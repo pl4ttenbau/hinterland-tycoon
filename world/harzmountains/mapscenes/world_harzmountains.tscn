@@ -1645,7 +1645,7 @@ script = ExtResource("48_76jr6")
 type_key = "QUARRY"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
-[node name="Ruebeland_Quarry" type="Marker3D" parent="Industries"]
+[node name="Quarry_Ruebeland" type="Marker3D" parent="Industries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3722.5, 26.2, 2772.3)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
@@ -1659,14 +1659,14 @@ script = ExtResource("48_76jr6")
 type_key = "FARM"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
-[node name="Stapelburg_Forest" type="Marker3D" parent="Industries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 783.4, 10, 303)
+[node name="Forest_Stapelburg" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 790.6584, 10.994263, 307.1703)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 type_key = "FOREST"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
-[node name="Hasserode_Brewery" type="Marker3D" parent="Industries"]
+[node name="Brewery_Hasserode" type="Marker3D" parent="Industries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2677, 12, 1867.6)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
@@ -1727,6 +1727,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1754.7004, 43.909065, 1577.44
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 type_key = "RESTAURANT"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Farm_Darlingerode" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2407.7512, 6.883989, 1060.6354)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "FARM"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Ranch_Darlingerode" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2363.6318, 8.708779, 1269.8975)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+type_key = "FARM"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="InEditor" type="Node3D" parent="."]
