@@ -8,25 +8,42 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_terrain_loaded"))
 	SignalBus.all_types_initialized.connect(Callable(self, "_on_all_types_loaded"))
 	
-func load_industries():
+func load_industries_from_json():
 	var industry_json_path := INDUSTRIES_PATH_TEMPLATE % GlobalState.selected_map_name
 	var json_str: String = FileAccess.get_file_as_string(industry_json_path)
 	for ind_dict: Dictionary in JSON.parse_string(json_str):
 		IndustryData.from_dict(ind_dict)
+		
+func load_industries_from_map():
+	for child_node in self.get_map_industry_container().get_children():
+		if ! child_node is IndustryPlaceholder: continue
+		var ind_placeholder: IndustryPlaceholder = child_node as IndustryPlaceholder
+		IndustryData.from_placeholder(ind_placeholder) # will autoregister
 	
 func spawn_industries():
 	Loggie.info("ready to spawn industries")
-	self.load_industries()
+	self.load_industries_from_map()
 	for ind_obj: IndustryData in GlobalState.industries:
 		var scene_path := ind_obj.ind_type.get_mesh_path()
 		var instanciated: OuterIndustry = load(scene_path).instantiate()
 		instanciated.entity = ind_obj
 		instanciated.position = ind_obj.pos
 		self.add_child(instanciated)
+		
+#region Getters
+func get_map_industry_container() -> WorldIndustries:
+	var map_container: TerrainContainer = GlobalState.world_container
+	if ! map_container:
+		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
+		return null
+	return map_container.find_child("Industries")
+#endregion
 
-# == LISTENERS == 
+#region Callbacks
 func _on_terrain_loaded(_terrain_container: TerrainContainer):
 	self.spawn_industries()
 	
 func _on_all_types_loaded():
-	self.load_industries()
+	pass
+	# self.load_industries_from_map()
+#endregion

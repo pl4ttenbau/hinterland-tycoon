@@ -1642,6 +1642,7 @@ metadata/_custom_type_script = "uid://g6bsjtyavuig"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3360.6, 32.42955, 3095)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 1
 type_key = "QUARRY"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1649,6 +1650,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3722.5, 26.2, 2772.3)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 2
 type_key = "QUARRY"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1656,6 +1658,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3818.8, 3.75, 1035.3)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 3
 type_key = "FARM"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1663,6 +1666,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 790.6584, 10.994263, 307.1703)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 4
 type_key = "FOREST"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1670,6 +1674,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2677, 12, 1867.6)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 5
 type_key = "BREWERY"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1677,6 +1682,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2554.2, 8, 1312.9)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 6
 type_key = "SAWMILL"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1684,6 +1690,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3639, 45.5, 2461.8)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 7
 type_key = "IRON_MINE"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1691,6 +1698,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 776.4)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 8
 type_key = "SMELTER"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1698,6 +1706,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 839.7, 64, 3790)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 9
 type_key = "COAL_MINE"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1705,6 +1714,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4036.8, 33, 3163.2)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 10
 type_key = "COAL_PLANT"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1712,6 +1722,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2125.4, 3, 360.5)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 11
 type_key = "RANCH"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1719,6 +1730,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2812.1, 38.207184, 3450)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 12
 type_key = "FOREST"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1726,6 +1738,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1754.7004, 43.909065, 1577.4403)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 13
 type_key = "RESTAURANT"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1733,6 +1746,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2407.7512, 6.883989, 1060.6354)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 14
 type_key = "FARM"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
@@ -1740,6 +1754,7 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2363.6318, 8.708779, 1269.8975)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
+num = 15
 type_key = "FARM"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
