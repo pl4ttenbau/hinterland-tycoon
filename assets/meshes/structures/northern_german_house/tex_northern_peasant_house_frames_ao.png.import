@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4yi52x8usb8f"
-path="res://.godot/imported/tex_northern_peasant_house_wall_d.jpg-ff43f88c1e458ac87d657130e512a055.ctex"
+uid="uid://c6xn0fxy3exed"
+path="res://.godot/imported/tex_northern_peasant_house_frames_ao.png-048a3a5051cb613d1118ed42331fc723.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/structures/northern_german_house/tex_northern_peasant_house_wall_d.jpg"
-dest_files=["res://.godot/imported/tex_northern_peasant_house_wall_d.jpg-ff43f88c1e458ac87d657130e512a055.ctex"]
+source_file="res://assets/meshes/structures/northern_german_house/tex_northern_peasant_house_frames_ao.png"
+dest_files=["res://.godot/imported/tex_northern_peasant_house_frames_ao.png-048a3a5051cb613d1118ed42331fc723.ctex"]
 
 [params]
 
