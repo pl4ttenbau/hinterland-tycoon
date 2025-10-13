@@ -6,8 +6,8 @@ func _init() -> void:
 func make_types() -> Array[IndustryType]:
 	var industry_types: Array[IndustryType] = [
 		# producers: food
-		IndustryType.new("FARM", "Farm", "windmill", 8, [], ["4xgrains", "2xbeets"]),
-		IndustryType.new("RANCH", "Ranch", "windmill", 8, [], ["3xmeat"]),
+		IndustryType.new("FARM", "Farm", "windmill_2", 8, [], ["4xgrains", "2xbeets"]),
+		IndustryType.new("RANCH", "Ranch", "windmill_2", 8, [], ["3xmeat"]),
 		IndustryType.new("FISHERY", "Fishery", "warehouse_1",  9, [], ["5xfish"]),
 		# producers: aggregates
 		IndustryType.new("COAL_MINE", "Coal Mine", "mineshaft", 20, [], ["4xcoal"]),

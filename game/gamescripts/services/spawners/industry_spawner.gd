@@ -3,6 +3,8 @@ class_name IndustrySpawner extends Node
 
 const INDUSTRIES_PATH_TEMPLATE = "res://world/%s/jsondata/industries.json"
 
+@export_storage var ind_placeholder_parent: WorldIndustries
+
 func _enter_tree() -> void:
 	Managers.industries = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_terrain_loaded"))
@@ -32,11 +34,13 @@ func spawn_industries():
 		
 #region Getters
 func get_map_industry_container() -> WorldIndustries:
+	if self.ind_placeholder_parent != null: return self.ind_placeholder_parent
 	var map_container: TerrainContainer = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
-	return map_container.find_child("Industries")
+	self.ind_placeholder_parent = map_container.find_child("Industries")
+	return self.ind_placeholder_parent
 #endregion
 
 #region Callbacks

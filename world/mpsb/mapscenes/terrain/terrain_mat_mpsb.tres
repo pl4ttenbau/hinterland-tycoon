@@ -25,9 +25,6 @@ seamless = true
 _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
-&"contour_color": Color(0.85, 0.85, 0.19, 1),
-&"contour_interval": 0.25,
-&"contour_thickness": 1.0,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -44,4 +41,3 @@ _shader_parameters = {
 &"projection_threshold": 0.8
 }
 world_background = 0
-show_contours = true
