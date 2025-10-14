@@ -10,6 +10,7 @@
 script = ExtResource("3_icu33")
 town_name = "Anklam"
 pos_xz = Vector2(2781, 1735)
+num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -17,6 +18,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Jarmen"
 pos_xz = Vector2(1005, 1296)
+autogenerate_houses = false
 num = 1
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
