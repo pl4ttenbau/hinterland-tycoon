@@ -61,6 +61,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Elbingerode"
 pos_xz = Vector2(3434, 2739)
+autogenerate_houses = false
 num = 6
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -167,6 +168,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Könighshütte"
 pos_xz = Vector2(2953, 3404)
+autogenerate_houses = false
 num = 18
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -259,7 +261,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1710, 7.99872, 990)
 town = SubResource("Resource_wip5f")
 
 [node name="TownCenter_Tanne" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2796, 40.6438, 3860)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2579.783, 38.234352, 4065.088)
 town = SubResource("Resource_g5dug")
 
 [node name="TownCenter_Elend" parent="." instance=ExtResource("1_tj431")]
