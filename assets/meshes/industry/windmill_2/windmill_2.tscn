@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://t3w5105b3jht"]
 
-[ext_resource type="PackedScene" uid="uid://bghlbsssajtmn" path="res://assets/meshes/industry/windmill_2/windmill2.gltf" id="1_2cqj3"]
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_lak53"]
+[ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/windmill_2_mesh.tscn" id="2_lak53"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
 size = Vector3(5.6219482, 12.417358, 4.5319824)
@@ -10,7 +10,7 @@ size = Vector3(5.6219482, 12.417358, 4.5319824)
 script = ExtResource("1_lak53")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="windmill2" parent="." instance=ExtResource("1_2cqj3")]
+[node name="windmill2" parent="." instance=ExtResource("2_lak53")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

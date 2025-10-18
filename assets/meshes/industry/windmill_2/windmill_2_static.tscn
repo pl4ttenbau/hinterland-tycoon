@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vmtodxubdw7"]
 
-[ext_resource type="PackedScene" uid="uid://bghlbsssajtmn" path="res://assets/meshes/industry/windmill_2/windmill2.gltf" id="1_c5nb8"]
+[ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/windmill_2_mesh.tscn" id="1_c5nb8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
 size = Vector3(5.6219482, 12.417358, 4.5319824)
