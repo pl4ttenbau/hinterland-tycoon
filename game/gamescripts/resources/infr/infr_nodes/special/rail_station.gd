@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_station_white.png")
-class_name RailStationData extends ResourceContainer
+class_name RailStationData extends GoodsInventory
 
 # json properties
 @export var station_name: String

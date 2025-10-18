@@ -6,8 +6,8 @@ const IND_SCENE_PATH = "res://assets/meshes/industry/%s/%s.tscn"
 @export var name: String
 @export var mesh_name: String
 @export var workers: int
-@export var requires: Array[TransformedResource] = []
-@export var produces: Array[TransformedResource] = []
+@export var requires: Array[TransformedGood] = []
+@export var produces: Array[TransformedGood] = []
 
 func _init(_key: String, _name: String, _mesh_name: String, _workers: int, 
 		_requires_strs: Array[String], _produces_strs: Array[String]):
@@ -16,9 +16,9 @@ func _init(_key: String, _name: String, _mesh_name: String, _workers: int,
 	self.mesh_name = _mesh_name
 	self.workers = _workers
 	for requires_str: String in _requires_strs:
-		self.requires.append(TransformedResource.from_string(requires_str))
+		self.requires.append(TransformedGood.from_string(requires_str))
 	for produces_str: String in _produces_strs:
-		self.produces.append(TransformedResource.from_string(produces_str))
+		self.produces.append(TransformedGood.from_string(produces_str))
 		
 func get_mesh_path() -> String:
 	return IND_SCENE_PATH % [self.mesh_name, self.mesh_name]

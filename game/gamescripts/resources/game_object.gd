@@ -1,4 +1,3 @@
-@tool
 class_name GameObject extends Resource
 
 @export var num: int

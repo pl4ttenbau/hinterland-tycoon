@@ -6,41 +6,41 @@ class_name GoodsTypesLoader extends AbstractGameTypeLoader
 func _init():
 	GameTypes.resource_types = self.make_types()
 	
-func make_types_list() -> Array[BaseResourceType]:
+func make_types_list() -> Array[BaseGoodsType]:
 	return [
-		BaseResourceType.new("passenger", BaseResourceType.ResourceCategory.PASSENGER),
-		BaseResourceType.new("tourists", BaseResourceType.ResourceCategory.PASSENGER),
-		BaseResourceType.new("soldiers", BaseResourceType.ResourceCategory.PASSENGER),
+		BaseGoodsType.new("passenger", BaseGoodsType.ResourceCategory.PASSENGER),
+		BaseGoodsType.new("tourist", BaseGoodsType.ResourceCategory.PASSENGER),
+		BaseGoodsType.new("soldier", BaseGoodsType.ResourceCategory.PASSENGER),
 
-		BaseResourceType.new("grains", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("beets", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("meat", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("bread", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("sugar", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("alcohol", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("fertilizer", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("grains", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("beets", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("meat", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("bread", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("sugar", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("alcohol", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("fertilizer", BaseGoodsType.ResourceCategory.FREIGHT),
 
-		BaseResourceType.new("lumber", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("boards", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("bricks", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("gravel", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("concrete", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("lumber", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("boards", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("bricks", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("gravel", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("concrete", BaseGoodsType.ResourceCategory.FREIGHT),
 
-		BaseResourceType.new("coal", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("ore", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("ingots", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("coal", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("ore", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("ingots", BaseGoodsType.ResourceCategory.FREIGHT),
 
-		BaseResourceType.new("paper", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("motors", BaseResourceType.ResourceCategory.FREIGHT),
-		BaseResourceType.new("rail_tracks", BaseResourceType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("paper", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("motors", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("rail_tracks", BaseGoodsType.ResourceCategory.FREIGHT),
 	]
 
 func make_types() -> Dictionary:
 	self.types_by_key = self.sort_types_by_key(self.make_types_list())
 	return self.types_by_key
 	
-func sort_types_by_key(types_list: Array[BaseResourceType]) -> Dictionary:
+func sort_types_by_key(types_list: Array[BaseGoodsType]) -> Dictionary:
 	var dict: Dictionary = {}
-	for res_type: BaseResourceType in types_list:
+	for res_type: BaseGoodsType in types_list:
 		dict.set(res_type.key, res_type)
 	return dict

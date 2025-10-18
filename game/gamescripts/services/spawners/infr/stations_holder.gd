@@ -31,9 +31,9 @@ func spawn_rnd_passenger():
 	var rnd_start_bld = GlobalState.res_blds.pick_random() as ResidenceBuildingData
 	var start_station: RailStationData = rnd_start_bld.connected_station
 	if start_station:
-		var spawned_res = SpawnedResource.new("passenger")
+		var spawned_res = SpawnedGood.new("passenger", 1)
 		spawned_res.target_location = GlobalState.res_blds.pick_random()
-		start_station.add_resource(spawned_res)
+		start_station.add_spawned_good(spawned_res)
 #endregion
 	
 #region Callbacks
