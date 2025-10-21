@@ -321,7 +321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1034, 223.524, 3146)
 town = SubResource("Resource_f8qlp")
 
 [node name="TownCenter_Könighshütte" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2953, 29.0018, 3404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2836.5627, 29.985369, 3336.8352)
 town = SubResource("Resource_dle3q")
 
 [node name="TownCenter_Plessenburg" parent="." instance=ExtResource("1_tj431")]
@@ -345,7 +345,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 7.67, 1636)
 town = SubResource("Resource_k8dum")
 
 [node name="TownCenter_Veckenstedt" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2231, 3.49769, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2443.5278, 2.179844, 85.58118)
 town = SubResource("Resource_xbdss")
 
 [node name="TownCenter_Reddeber" parent="." instance=ExtResource("1_tj431")]

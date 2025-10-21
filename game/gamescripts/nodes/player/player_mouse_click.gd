@@ -36,7 +36,8 @@ func handle_ray(ray_result: Dictionary):
 		if collider is ClickableCollider:
 			var c_ref: ClickRef = collider.get_click_ref()
 			SignalBus.collider_click.emit(c_ref)
-			Loggie.info("Click %s %d" % [c_ref.get_type_str(), c_ref.entity_num])
+			if c_ref.get_type_str():
+				Loggie.info("Click %s %d" % [c_ref.get_type_str(), c_ref.entity_num])
 		elif collider is Terrain3D:
 			Loggie.info("Click on terrain at %s" % ray_result.get("position"))
 		else:
