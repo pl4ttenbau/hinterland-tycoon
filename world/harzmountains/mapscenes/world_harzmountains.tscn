@@ -1968,6 +1968,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 1
 type_key = "QUARRY"
+ind_name = "Elbingerode Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Quarry_Ruebeland" type="Marker3D" parent="Industries"]
@@ -1976,6 +1977,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 2
 type_key = "QUARRY"
+ind_name = "Rübeland Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Halberstadt_Farm" type="Marker3D" parent="Industries"]
@@ -1984,6 +1986,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 3
 type_key = "FARM"
+ind_name = "Danstedt Farm"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Stapelburg" type="Marker3D" parent="Industries"]
@@ -1992,6 +1995,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 4
 type_key = "FOREST"
+ind_name = "Stapelburg Forest"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Brewery_Hasserode" type="Marker3D" parent="Industries"]
@@ -2000,6 +2004,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 5
 type_key = "BREWERY"
+ind_name = "Brauhaus Hasserode"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Nordharz_Sawmill" type="Marker3D" parent="Industries"]
@@ -2008,6 +2013,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 6
 type_key = "SAWMILL"
+ind_name = "Nordharz Säge"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="IronMine_Buechenberg" type="Marker3D" parent="Industries"]
@@ -2016,6 +2022,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 7
 type_key = "IRON_MINE"
+ind_name = "Schacht Büchenberg"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Smelter_Ilsenburg" type="Marker3D" parent="Industries"]
@@ -2024,6 +2031,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 8
 type_key = "SMELTER"
+ind_name = "Ilsenburger Blechwerk"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="FarAway_CoalMine" type="Marker3D" parent="Industries"]
@@ -2032,6 +2040,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 9
 type_key = "COAL_MINE"
+ind_name = "Coal Mine Far Off"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="CoalPlant_Ruebeland" type="Marker3D" parent="Industries"]
@@ -2040,6 +2049,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 10
 type_key = "COAL_PLANT"
+ind_name = "Stauwerk Rübeland"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Ranch_Veckenstedt" type="Marker3D" parent="Industries"]
@@ -2048,6 +2058,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 11
 type_key = "RANCH"
+ind_name = "VEckenstedt Ranch"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Koenigshuette" type="Marker3D" parent="Industries"]
@@ -2056,6 +2067,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 12
 type_key = "FOREST"
+ind_name = "Forest Königshütte"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Restaurant_Plessenburg" type="Marker3D" parent="Industries"]
@@ -2064,6 +2076,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 13
 type_key = "RESTAURANT"
+ind_name = "Plessenburg Hotel"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Farm_Darlingerode" type="Marker3D" parent="Industries"]
@@ -2072,6 +2085,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 14
 type_key = "FARM"
+ind_name = "Darlingerode Agriculture"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Ranch_Darlingerode" type="Marker3D" parent="Industries"]
@@ -2080,6 +2094,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 15
 type_key = "FARM"
+ind_name = "Darlingerode Meadows"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="PaperMill_Obenauf" type="Marker3D" parent="Industries"]
@@ -2088,6 +2103,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 16
 type_key = "PAPER_MILL"
+ind_name = "Paper Mill \"Obenauf\""
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="SteelMill_Koenigshuette" type="Marker3D" parent="Industries"]
@@ -2096,6 +2112,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 17
 type_key = "SMELTER"
+ind_name = "Rotheshütte"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="ConcreteFactory_Koenigshuette" type="Marker3D" parent="Industries"]
@@ -2104,6 +2121,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 18
 type_key = "BRICKWORKS"
+ind_name = "Kalkwerk Rübeland"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Restaurant_Elbingerode" type="Marker3D" parent="Industries"]
@@ -2112,6 +2130,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 19
 type_key = "RESTAURANT"
+ind_name = "Gasthof Elbingerode"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Bakery_Noeschenrode" type="Marker3D" parent="Industries"]
@@ -2120,6 +2139,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 20
 type_key = "BAKERY"
+ind_name = "Nöschenrode Bakery"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Restaurant_Mandelholz" type="Marker3D" parent="Industries"]
@@ -2128,6 +2148,7 @@ gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 21
 type_key = "RESTAURANT"
+ind_name = "Hotel Mandelhof"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="InEditor" type="Node3D" parent="."]

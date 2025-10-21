@@ -4,6 +4,9 @@ signal resource_change()
 
 @export var storage: BaseGoodsStorage = BaseGoodsStorage.new()
 
+@export var total_amount: int:
+	get(): return self.storage.current_storage
+
 #region Add Or Remove
 func add_good_of(res_type_key: StringName) -> SpawnedGood:
 	var spawned_res := SpawnedGood.new(res_type_key, 1)

@@ -3,6 +3,9 @@ class_name IndustryData extends GoodsInventory
 
 @export var pos: Vector3
 @export var ind_type: IndustryType
+@export var ind_name: String
+
+@export var station_connection: RailStationConnections
 
 #region Scene Callbacks
 func _init(_ind_type_str: String, _pos: Vector3):
@@ -19,7 +22,7 @@ func _autoregister():
 func _get_ind_type_by_str(ind_type_key: String) -> IndustryType:
 	return GameTypes.get_ind_type(ind_type_key)
 
-# == LOADING FROM JSON OR PLACEHOLDER ==
+#region Mapping from other classes
 static func from_dict(ind_data: Dictionary) -> IndustryData:
 	var dict_num: int = ind_data.get("num", null)
 	var dict_pos: Vector3 = arr_to_vec3(ind_data.get("pos"))
@@ -30,8 +33,10 @@ static func from_dict(ind_data: Dictionary) -> IndustryData:
 	
 static func from_placeholder(placeholder: IndustryPlaceholder) -> IndustryData:
 	var ind_obj := IndustryData.new(placeholder.type_key, placeholder.global_position)
-	# ind_obj.num = placeholder.num
+	if placeholder.ind_name:
+		ind_obj.ind_name = placeholder.ind_name
 	return ind_obj
+#endregion
 
 #region Getters
 static func arr_to_vec3(float_arr: Array) -> Vector3:
@@ -39,7 +44,6 @@ static func arr_to_vec3(float_arr: Array) -> Vector3:
 	
 func has_required_goods() -> bool:
 	for required_res: TransformedGood in self.ind_type.requires:
-		@warning_ignore("narrowing_conversion")
 		var spawned_good := SpawnedGood.new(required_res.res_key, required_res.res_modifier)
 		if ! self.has_enough(spawned_good): return false
 	return true

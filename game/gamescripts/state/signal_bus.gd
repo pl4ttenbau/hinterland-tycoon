@@ -83,6 +83,9 @@ signal industries_loaded(industries: Array[IndustryData])
 
 @warning_ignore("unused_signal")
 signal industry_spawned(container: OuterIndustry)
+
+@warning_ignore("unused_signal")
+signal industries_spawned()
 #endregion
 
 #region Input

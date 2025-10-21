@@ -6,15 +6,16 @@ class_name StationsHolder extends Node
 
 func _enter_tree() -> void:
 	Managers.stations = self
-	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
+	SignalBus.industries_spawned.connect(Callable(self, "_on_industries_spawned"))
 
 #region Spawning
 ## Station objects are created with the rail tracks, but instanciated one by one here
 func spawn_stations():
 	Loggie.info("Spawning stations..")
 	for station_obj: RailStationData in GlobalState.stations:
-		var container: OuterRailStation = spawn_station(station_obj)
-		container.adjust_rotation_from_track()
+		var outer_station := self.spawn_station(station_obj)
+		outer_station.adjust_rotation_from_track()
+	self.connect_industries()
 	SignalBus.stations_spawned.emit()
 	
 func spawn_station(station_obj: RailStationData) -> OuterRailStation:
@@ -24,6 +25,22 @@ func spawn_station(station_obj: RailStationData) -> OuterRailStation:
 	self.outer_stations.append(outer_station)
 	self.add_child(outer_station, true)
 	return outer_station
+#endregion
+
+#region Connections
+func connect_industries():
+	Loggie.info("Connecting industries ..")
+	for industry: IndustryData in GlobalState.industries:
+		var closest_station: RailStationData = null
+		var closest_distance: float = 99999
+		for station: RailStationData in GlobalState.stations:
+			Loggie.info("compare %s and %s" % [industry.ind_type.name, station.station_name])
+			var sq_dist: float = industry.pos.distance_squared_to(station.position)
+			if sq_dist <= closest_distance:
+				closest_station = station
+				closest_distance = sq_dist
+		if closest_station:
+			closest_station.connect_industry(industry)
 #endregion
 
 #region Goods Spawning
@@ -37,7 +54,7 @@ func spawn_rnd_passenger():
 #endregion
 	
 #region Callbacks
-func _on_rails_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
+func _on_industries_spawned() -> void:
 	self.spawn_stations()
 	
 func _on_station_timer_tick():

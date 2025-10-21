@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="51_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="59_51ymi"]
-[ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
+[ext_resource type="PackedScene" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
 [ext_resource type="PackedScene" uid="uid://dpmf707hcg5r" path="res://assets/meshes/industry/warehouse_1/warehouse_1.tscn" id="61_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="62_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="63_ea3s5"]
@@ -1621,6 +1621,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 1
 type_key = "RANCH"
+ind_name = "Medow Ranch"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Krien_Bakery" type="Marker3D" parent="Industries"]
@@ -1629,6 +1630,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 2
 type_key = "BAKERY"
+ind_name = "Krien Bakery"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Ranch_Putzar" type="Marker3D" parent="Industries"]
@@ -1637,6 +1639,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 3
 type_key = "RANCH"
+ind_name = "Putzar Mansion"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Sawmill_Rebelow" type="Marker3D" parent="Industries"]
@@ -1645,6 +1648,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 4
 type_key = "SAWMILL"
+ind_name = "Rebelow Saw"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Quarry_Ramelow" type="Marker3D" parent="Industries"]
@@ -1653,6 +1657,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 5
 type_key = "QUARRY"
+ind_name = "Rebelow Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Brickworks_Ramelow" type="Marker3D" parent="Industries"]
@@ -1661,6 +1666,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 6
 type_key = "QUARRY"
+ind_name = "Ramelow Brickworks"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Farm_Neetzow" type="Marker3D" parent="Industries"]
@@ -1669,6 +1675,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 7
 type_key = "FARM"
+ind_name = "Neetzow Farm"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="SugarMill_Jarmen" type="Marker3D" parent="Industries"]
@@ -1677,6 +1684,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 8
 type_key = "SUGAR_MILL"
+ind_name = "Jarmen Sugar Mill"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Sawmill_Behrendorf" type="Marker3D" parent="Industries"]
@@ -1685,6 +1693,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 9
 type_key = "SAWMILL"
+ind_name = "Behrendorf Saw"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Farm_Guetzkow" type="Marker3D" parent="Industries"]
@@ -1693,6 +1702,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 10
 type_key = "FARM"
+ind_name = "Gützkow Farm"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Ranch_AltTellin" type="Marker3D" parent="Industries"]
@@ -1701,6 +1711,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 11
 type_key = "RANCH"
+ind_name = "AltTellin Meadows"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Bentzin" type="Marker3D" parent="Industries"]
@@ -1709,6 +1720,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 12
 type_key = "FOREST"
+ind_name = "Benztzin Forest"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Anklam_Stadtbruch" type="Marker3D" parent="Industries"]
@@ -1717,6 +1729,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 13
 type_key = "COAL_MINE"
+ind_name = "Anklam Torpworks"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Blesewitz" type="Marker3D" parent="Industries"]
@@ -1725,6 +1738,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 14
 type_key = "FOREST"
+ind_name = "Blesewitz Forest"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Bakery_Blesewitz" type="Marker3D" parent="Industries"]
@@ -1733,6 +1747,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 15
 type_key = "BAKERY"
+ind_name = "Blesewitz Bakery"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Dennin" type="Marker3D" parent="Industries"]
@@ -1741,6 +1756,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 16
 type_key = "FOREST"
+ind_name = "Dennin Forest"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="SugarMill_Anklam" type="Marker3D" parent="Industries"]
@@ -1749,6 +1765,7 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 17
 type_key = "SUGAR_MILL"
+ind_name = "Anklam Suhgar Mill"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Quarry_Muessenthin" type="Marker3D" parent="Industries"]
@@ -1757,4 +1774,5 @@ gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 18
 type_key = "QUARRY"
+ind_name = "Müssenthin Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"

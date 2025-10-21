@@ -33,6 +33,7 @@ func spawn_industries():
 		var instanciated: OuterIndustry = load(scene_path).instantiate()
 		instanciated.industry = ind_obj
 		self.add_child(instanciated)
+	SignalBus.industries_spawned.emit()
 		
 #region Getters
 func get_map_industry_container() -> WorldIndustries:
