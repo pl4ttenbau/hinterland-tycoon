@@ -1,3 +1,4 @@
+## loads buildings from map "Houses" node, registers them and places them below OuterTown
 @icon("res://assets/icons/icon_house_white.png")
 class_name TownBuildingHolder extends Node
 
@@ -39,7 +40,7 @@ func get_res_bld_type(key: String) -> ResBldType:
 func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
 	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
 	if ! town:
-		Loggie.error("Cannot spawn pre-placed building in Town %s: not found" % outer_bld.placed_town_num)
+		Loggie.error("Cannot spawn pre-placed building %s in Town %s: not found" % [outer_bld.name, outer_bld.placed_town_num])
 	return town
 #endregion
 	

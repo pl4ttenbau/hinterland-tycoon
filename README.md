@@ -13,6 +13,7 @@ Written in the Godot Engine
 
 * Reiner Prokein - reinerstilesets.de
 * emzetgie for his excellent polish houses models
+* the one and onmly Pitagoras991 for his Wismar Railbus meshes
 
 ### Used Addons
 

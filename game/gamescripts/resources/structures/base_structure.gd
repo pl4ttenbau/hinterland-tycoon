@@ -1,5 +1,4 @@
-@tool
-class_name BaseStructure extends ResourceContainer
+class_name BaseStructure extends GoodsInventory
 
 @export var town_num: int
 @export var bld_type: AbstractBldType

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhmhtln2j7806"]
+
+[ext_resource type="ArrayMesh" uid="uid://chsv4cvftd80m" path="res://assets/meshes/industry/generic_small/factory1.obj" id="2_tg4ld"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k6kh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6kh0"]
+size = Vector3(18.3074, 7.61292, 16.5604)
+
+[node name="GenericIndustrySm" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("2_tg4ld")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_k6kh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146126, 3.77081, 0.0566711)
+shape = SubResource("BoxShape3D_k6kh0")

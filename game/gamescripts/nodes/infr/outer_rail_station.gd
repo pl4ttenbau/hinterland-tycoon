@@ -36,7 +36,8 @@ func get_parent_track_node_by_index(_i: int) -> RailNodeData:
 	return track.get_rail_node(_i)
 	
 func _on_resource_change():
-	$StationLabel.text = str(self.station_obj.resources.size())
+	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
+	$StationLabel.text = str(passengers_amount)
 	
 func _to_string() -> String:
 	return "OuterStation-%s@%s" % [self.station_name, self.town_name]

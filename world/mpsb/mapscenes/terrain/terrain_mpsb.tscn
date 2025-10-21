@@ -41,6 +41,7 @@ section_segments = 1
 data_directory = "res://world/mpsb/heightdata"
 material = ExtResource("1_ebicv")
 assets = ExtResource("2_60ypj")
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 

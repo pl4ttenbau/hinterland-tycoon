@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce7uwh35i56pf"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvx5cy8vw4urm" path="res://assets/meshes/deco/wooden_pier/wooden_pier.obj" id="1_i4jtf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shtsh"]
+size = Vector3(2.2266235, 3.3235168, 8.248657)
+
+[node name="WoodenPier" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_i4jtf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0077209473, -0.12898254, 4.0564575)
+shape = SubResource("BoxShape3D_shtsh")

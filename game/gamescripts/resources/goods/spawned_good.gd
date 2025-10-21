@@ -1,0 +1,19 @@
+class_name SpawnedGood extends GameObject
+
+@export var res_type: BaseGoodsType
+@export var amount: int = 1
+
+# can be stored in any resource container class
+@export var current_location: GoodsInventory
+
+# but only be targeted to a residential or industry structure
+@export var target_location: BaseStructure
+
+func _init(_type: StringName, _amount: int) -> void:
+	super(Enums.EntityTypes.GOOD)
+	self.res_type = BaseGoodsType.get_by_key(_type)
+
+func move_res_to(target_container: GoodsInventory):
+	if self.current_location != null:
+		self.current_location.remove_spawned_good(self)
+	target_container.add_spawned_good(self)

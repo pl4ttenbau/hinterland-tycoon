@@ -1,7 +1,7 @@
 # Blender 4.4.1 MTL File: 'mecklenburg_peasant_house_merged.blend'
 # www.blender.org
 
-newmtl mat_northern_peasant_house_bricks
+newmtl mat_bricks
 Ns 125.702492
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
@@ -12,31 +12,44 @@ illum 2
 map_Kd tex_northern_peasant_house_bricks_d.png
 map_Bump -bm 1.000000 tex_northern_peasant_house_bricks_n.png
 
-newmtl mat_northern_peasant_house_frames
+newmtl mat_deco
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_northern_peasant_house_decos_d.png
+
+newmtl mat_frames
 Ns 46.887600
 Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
 map_Kd tex_northern_peasant_house_frames_d.png
-map_Bump -bm 1.000000 tex_northern_peasant_house_frames_n.png
+map_Bump -bm 2.000000 tex_northern_peasant_house_frames_n.png
 
-newmtl mat_northern_peasant_house_roof
+newmtl mat_roof
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
 map_Kd tex_northern_peasant_house_roof_d.png
-map_Bump -bm 1.000000 tex_northern_peasant_house_roof_n.png
+map_Bump -bm 2.000000 tex_northern_peasant_house_roof_n.png
 
-newmtl mat_northern_peasant_house_wall
+newmtl mat_wall
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.500000
@@ -44,7 +57,7 @@ d 1.000000
 illum 2
 map_Kd tex_northern_peasant_house_wall_d.png
 
-newmtl window
+newmtl mat_window
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000

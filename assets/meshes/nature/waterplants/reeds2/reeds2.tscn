@@ -9,7 +9,6 @@ alpha_scissor_threshold = 0.148
 alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("2_qut5f")
-backlight_enabled = true
 backlight = Color(0.39308554, 0.39308554, 0.39308533, 1)
 
 [node name="Reeds2" type="Node3D"]

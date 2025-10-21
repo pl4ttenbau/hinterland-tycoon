@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwqg67pnls6nh"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtxomxyxxgl2v" path="res://assets/meshes/structures/merchant_house_1/merchant_house_1.obj" id="1_jfg6s"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_l4sfv"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_t0je8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_serbl"]
+size = Vector3(5.451782, 9.539673, 8.222229)
+
+[node name="MerchantHouse1" type="Node3D"]
+script = ExtResource("1_l4sfv")
+placed_res_bld_type = "merchant_house_1"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_jfg6s")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+script = ExtResource("3_t0je8")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0095825195, 4.669983, -0.050445557)
+shape = SubResource("BoxShape3D_serbl")

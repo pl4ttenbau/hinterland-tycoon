@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_tj431"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_ftij8"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_4bctd"]
-[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/infr_nodes/special/rail_station.gd" id="4_16jbh"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_station.gd" id="4_16jbh"]
 
 [sub_resource type="Resource" id="Resource_sdbyp"]
 script = ExtResource("3_4bctd")
 town_name = "Wernigerode"
 pos_xz = Vector2(3107, 1353)
 autogenerate_houses = false
+num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -60,6 +61,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Elbingerode"
 pos_xz = Vector2(3434, 2739)
+autogenerate_houses = false
 num = 6
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -166,6 +168,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Könighshütte"
 pos_xz = Vector2(2953, 3404)
+autogenerate_houses = false
 num = 18
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -175,6 +178,7 @@ script = ExtResource("3_4bctd")
 town_name = "Plessenburg"
 pos_xz = Vector2(1688, 1611)
 is_minor = true
+autogenerate_houses = false
 num = 19
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -257,7 +261,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1710, 7.99872, 990)
 town = SubResource("Resource_wip5f")
 
 [node name="TownCenter_Tanne" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2796, 40.6438, 3860)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2579.783, 38.234352, 4065.088)
 town = SubResource("Resource_g5dug")
 
 [node name="TownCenter_Elend" parent="." instance=ExtResource("1_tj431")]
@@ -317,7 +321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1034, 223.524, 3146)
 town = SubResource("Resource_f8qlp")
 
 [node name="TownCenter_Könighshütte" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2953, 29.0018, 3404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2836.5627, 29.985369, 3336.8352)
 town = SubResource("Resource_dle3q")
 
 [node name="TownCenter_Plessenburg" parent="." instance=ExtResource("1_tj431")]
@@ -341,7 +345,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 7.67, 1636)
 town = SubResource("Resource_k8dum")
 
 [node name="TownCenter_Veckenstedt" parent="." instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2231, 3.49769, 336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2443.5278, 2.179844, 85.58118)
 town = SubResource("Resource_xbdss")
 
 [node name="TownCenter_Reddeber" parent="." instance=ExtResource("1_tj431")]
