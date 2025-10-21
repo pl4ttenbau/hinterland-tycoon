@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ol70eqwws6n"]
+
+[ext_resource type="ArrayMesh" uid="uid://b11ju28m1b6st" path="res://assets/meshes/vehicles/rail/pv40_soviet_wagon/pv40.obj" id="1_v5cf8"]
+
+[node name="Pv40SovietWagon" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 330.0
+visibility_range_end_margin = 33.0
+mesh = ExtResource("1_v5cf8")
