@@ -4,6 +4,8 @@ class_name StationsHolder extends Node
 @export var stations: Array[RailStationData] = []
 @export var outer_stations: Array[OuterRailStation] = []
 
+static var MAX_INDUSTRY_DIST = 200
+
 func _enter_tree() -> void:
 	Managers.stations = self
 	SignalBus.industries_spawned.connect(Callable(self, "_on_industries_spawned"))
@@ -34,12 +36,11 @@ func connect_industries():
 		var closest_station: RailStationData = null
 		var closest_distance: float = 99999
 		for station: RailStationData in GlobalState.stations:
-			Loggie.info("compare %s and %s" % [industry.ind_type.name, station.station_name])
 			var sq_dist: float = industry.pos.distance_squared_to(station.position)
 			if sq_dist <= closest_distance:
 				closest_station = station
 				closest_distance = sq_dist
-		if closest_station:
+		if closest_station && closest_distance > MAX_INDUSTRY_DIST:
 			closest_station.connect_industry(industry)
 #endregion
 

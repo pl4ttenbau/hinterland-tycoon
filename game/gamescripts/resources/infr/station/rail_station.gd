@@ -1,27 +1,17 @@
 @icon("res://assets/icons/icon_station_white.png")
-class_name RailStationData extends GoodsInventory
-
-#region JSON Properties
-@export var station_name: String
-@export var station_type: String
-@export var town_name: String
-@export var town_num: int
-@export var hide_building: bool
-#endregion
+class_name RailStationData extends AbstractStation
 
 #region Generated Properties
-@export var position: Vector3
 @export var parent_node: RailNodeData
 @export_storage var outer_node: OuterRailStation
 @export_storage var connected_town: TownData
-@export var connections: RailStationConnections
 #endregion
 
 static var _last_station_num: int = 0
 
 func _init():
 	super(Enums.EntityTypes.STATION)
-	self.connections = RailStationConnections.new(self)
+	self.connections = StationConnections.new(self)
 
 static func of(_rail_node: RailNodeData, _name: String, _town_num: int, _town_name: String) -> RailStationData:
 	var instance := RailStationData.new()

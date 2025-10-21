@@ -5,7 +5,7 @@ class_name IndustryData extends GoodsInventory
 @export var ind_type: IndustryType
 @export var ind_name: String
 
-@export var station_connection: RailStationConnections
+@export var station_connection: StationConnections
 
 #region Scene Callbacks
 func _init(_ind_type_str: String, _pos: Vector3):
