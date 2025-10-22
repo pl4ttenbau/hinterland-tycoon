@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_1jdkd"]
 [ext_resource type="ArrayMesh" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="2_fwiqu"]
-[ext_resource type="Script" uid="uid://bjj02tduewuut" path="res://game/gamescripts/nodes/common/clickable_collider.gd" id="3_fwiqu"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/industry/industry_collider.gd" id="3_fwiqu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8embk"]
 
@@ -21,7 +21,7 @@ mesh = ExtResource("2_fwiqu")
 [node name="ClickableCollider" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_8embk")
 script = ExtResource("3_fwiqu")
-metadata/_custom_type_script = "uid://bjj02tduewuut"
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.178101, 2.27271, 0.408142)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://t3w5105b3jht"]
+[gd_scene load_steps=5 format=3 uid="uid://t3w5105b3jht"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_lak53"]
 [ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/windmill_2_mesh.tscn" id="2_lak53"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/industry/industry_collider.gd" id="3_ykqts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
 size = Vector3(5.6219482, 12.417358, 4.5319824)
@@ -13,6 +14,8 @@ metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 [node name="windmill2" parent="." instance=ExtResource("2_lak53")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("3_ykqts")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18060303, 6.0460815, 0.17468262)

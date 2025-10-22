@@ -21,6 +21,11 @@ func _autoregister():
 
 func _get_ind_type_by_str(ind_type_key: String) -> IndustryType:
 	return GameTypes.get_ind_type(ind_type_key)
+	
+static func get_by_num(ind_num: int) -> IndustryData:
+	for industry: IndustryData in GlobalState.industries:
+		if industry.num == ind_num: return industry
+	return null
 
 #region Mapping from other classes
 static func from_dict(ind_data: Dictionary) -> IndustryData:

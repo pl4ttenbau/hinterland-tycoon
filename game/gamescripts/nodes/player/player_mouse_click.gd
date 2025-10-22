@@ -1,6 +1,8 @@
 @icon("res://assets/icons/icon_mouse_white.png")
 class_name PlayerMouseClick extends Node
 
+static var INDUSTRY_DIAG_PATH = "res://scenes/ui/dialogs/industry_dialog.tscn"
+
 # Signals
 @warning_ignore("unused_signal")
 signal player_input(event: InputEvent, event_position: Vector3)
@@ -33,7 +35,12 @@ func handle_ray(ray_result: Dictionary):
 			if fork:
 				fork.set_to_next_track()
 			return
+		if collider is IndustryCollider:
+			self.on_industry_click(collider)
+			return
 		if collider is ClickableCollider:
+			if collider.get_click_ref().entity_type == Enums.EntityTypes.INDUSTRY:
+				pass
 			var c_ref: ClickRef = collider.get_click_ref()
 			SignalBus.collider_click.emit(c_ref)
 			if c_ref.get_type_str():
@@ -44,6 +51,15 @@ func handle_ray(ray_result: Dictionary):
 			SignalBus.unhandled_collider_click.emit(collider)
 			var node_path = collider.get_path()
 			Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
+			
+func on_industry_click(c_ref: IndustryCollider):
+	var ind_num: int = c_ref.get_click_ref().entity_num
+	var clicked_ind: IndustryData = IndustryData.get_by_num(ind_num)
+	# open diag
+	var diag_scene: PackedScene = load(INDUSTRY_DIAG_PATH)
+	var instance: IndustryDialog = diag_scene.instantiate()
+	instance.industry = clicked_ind
+	$/root.add_child(instance)
 
 func get_camera() -> Camera3D:
 	var cam: Camera3D = GlobalState.player.cam
