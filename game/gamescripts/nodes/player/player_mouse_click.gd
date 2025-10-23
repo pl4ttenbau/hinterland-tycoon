@@ -39,8 +39,6 @@ func handle_ray(ray_result: Dictionary):
 			self.on_industry_click(collider)
 			return
 		if collider is ClickableCollider:
-			if collider.get_click_ref().entity_type == Enums.EntityTypes.INDUSTRY:
-				pass
 			var c_ref: ClickRef = collider.get_click_ref()
 			SignalBus.collider_click.emit(c_ref)
 			if c_ref.get_type_str():

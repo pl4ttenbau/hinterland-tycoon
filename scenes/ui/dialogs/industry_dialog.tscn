@@ -96,6 +96,7 @@ theme_override_font_sizes/font_size = 26
 text = "Connected Station"
 
 [node name="StationsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer3/StationLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 auto_height = true
 item_count = 1
@@ -115,6 +116,7 @@ theme_override_font_sizes/font_size = 26
 text = "Requirements"
 
 [node name="InputGoodsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer/InputsLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 auto_height = true
 item_count = 1
@@ -134,6 +136,7 @@ theme_override_font_sizes/font_size = 26
 text = "Production"
 
 [node name="OutputGoodsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer2/OutputsLayout"]
+unique_name_in_owner = true
 layout_mode = 2
 auto_height = true
 item_count = 1
