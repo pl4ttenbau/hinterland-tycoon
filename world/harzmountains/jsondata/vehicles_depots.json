@@ -17,6 +17,12 @@
 			"name": "Braunlage Depot SHE",
 			"trackNum": 48,
 			"trackPos": "END"
+		},
+		{
+			"num": 4,
+			"name": "Rübeland Depot RÜB",
+			"trackNum": 55,
+			"trackPos": "END"
 		}
 	]
 }

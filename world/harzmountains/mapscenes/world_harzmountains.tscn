@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_3f2cl"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="16_4rfc7"]
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="16_eoc0b"]
-[ext_resource type="PackedScene" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="23_bhs12"]
+[ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="23_bhs12"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="28_giarj"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="29_2arlh"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="32_0ryhu"]
@@ -1681,7 +1681,26 @@ metadata/_edit_group_ = true
 [node name="PolishHouse36" parent="Houses" instance=ExtResource("40_kfgxf")]
 transform = Transform3D(-0.6134999, 0, 0.78969485, 0, 1, 0, -0.78969485, 0, -0.6134999, 2500.9468, 2.4999857, 129.46973)
 placed_town_num = 24
-metadata/_edit_group_ = true
+
+[node name="CityHouse38" parent="Houses" instance=ExtResource("77_r10ie")]
+transform = Transform3D(0.44916308, 0, 0.8934498, 0, 1, 0, -0.8934498, 0, 0.44916308, 3919.0396, 21.279408, 3131.4915)
+placed_town_num = 7
+
+[node name="PolishHouse37" parent="Houses" instance=ExtResource("48_kkdmv")]
+transform = Transform3D(-0.43920225, 0, -0.89838815, 0, 1, 0, 0.89838815, 0, -0.43920225, 3932.785, 21.498629, 3141.1443)
+placed_town_num = 7
+
+[node name="VillageHouse17" parent="Houses" instance=ExtResource("42_nfbri")]
+transform = Transform3D(0.7757381, 0, 0.63105494, 0, 1, 0, -0.63105494, 0, 0.7757381, 3891.9136, 22.781343, 3055.6797)
+placed_town_num = 7
+
+[node name="HalfTimbered9" parent="Houses" instance=ExtResource("45_u0uu3")]
+transform = Transform3D(-1, 0, 0.00013962586, 0, 1, 0, -0.00013962586, 0, -1, 3885.175, 22.839224, 3094.3198)
+placed_town_num = 7
+
+[node name="VillageHouse18" parent="Houses" instance=ExtResource("42_nfbri")]
+transform = Transform3D(-0.029544163, 0, -0.99956346, 0, 1, 0, 0.99956346, 0, -0.029544163, 3960.7537, 22.856543, 3150.0935)
+placed_town_num = 7
 
 [node name="Deco" type="Node" parent="."]
 script = ExtResource("5_o4w5w")
@@ -1956,6 +1975,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3265.9895, 7.44347, 1618.2024
 
 [node name="IndustrialSilo3" parent="Deco" instance=ExtResource("23_bhs12")]
 transform = Transform3D(0.9398834, 0, 0.34149516, 0, 1, 0, -0.34149516, 0, 0.9398834, 2980.5315, 45.619015, 3071.4229)
+
+[node name="Tractor8" parent="Deco" instance=ExtResource("28_giarj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2403.836, 2.3979986, 76.11846)
 
 [node name="Industries" type="Node" parent="." node_paths=PackedStringArray("world_scene")]
 script = ExtResource("47_wmk8x")
