@@ -5,7 +5,7 @@ class_name IndustryData extends GoodsInventory
 @export var ind_type: IndustryType
 @export var ind_name: String
 
-@export var station_connection: StationConnections
+@export var station_connection: StationIndustryConnection
 
 #region Scene Callbacks
 func _init(_ind_type_str: String, _pos: Vector3):
@@ -21,6 +21,11 @@ func _autoregister():
 
 func _get_ind_type_by_str(ind_type_key: String) -> IndustryType:
 	return GameTypes.get_ind_type(ind_type_key)
+	
+static func get_by_num(ind_num: int) -> IndustryData:
+	for industry: IndustryData in GlobalState.industries:
+		if industry.num == ind_num: return industry
+	return null
 
 #region Mapping from other classes
 static func from_dict(ind_data: Dictionary) -> IndustryData:

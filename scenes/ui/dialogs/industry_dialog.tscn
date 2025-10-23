@@ -1,0 +1,150 @@
+[gd_scene load_steps=2 format=3 uid="uid://caj48q47flyok"]
+
+[ext_resource type="Script" uid="uid://b7c7otc1f063h" path="res://game/gamescripts/ui/dialogs/industry_dialog.gd" id="1_nnmjh"]
+
+[node name="IndustryDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_right = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_nnmjh")
+metadata/_custom_type_script = "uid://b7c7otc1f063h"
+metadata/_edit_use_anchors_ = true
+
+[node name="OuterPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -258.5
+offset_right = 352.0
+offset_bottom = 258.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OuterMargin" type="MarginContainer" parent="OuterPanel"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Industry"
+horizontal_alignment = 1
+
+[node name="NameAndTypeMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="NameAndTypeVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/NameAndTypeMargin"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/NameAndTypeMargin/NameAndTypeVLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "unbekannt"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/NameAndTypeMargin/NameAndTypeVLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+theme_override_font_sizes/font_size = 26
+text = "Coal Mine"
+horizontal_alignment = 1
+
+[node name="StationAndProductionMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="StationAndProductionVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 14
+
+[node name="StationLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StationHeading" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer3/StationLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Connected Station"
+
+[node name="StationsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer3/StationLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+item_count = 1
+item_0/text = "Station A"
+
+[node name="MarginContainer" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 14
+
+[node name="InputsLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InputsHeading" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer/InputsLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Requirements"
+
+[node name="InputGoodsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer/InputsLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+item_count = 1
+item_0/text = "1 Wood"
+
+[node name="MarginContainer2" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 14
+
+[node name="OutputsLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OutputsHeading" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer2/OutputsLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Production"
+
+[node name="OutputGoodsTable" type="ItemList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout/MarginContainer2/OutputsLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+item_count = 1
+item_0/text = "2 Steel"
+
+[node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Close
+"

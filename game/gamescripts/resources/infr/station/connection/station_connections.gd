@@ -16,7 +16,9 @@ func connect_house(house: OuterResBld):
 	self.new_connection.emit(false)
 	
 func connect_industry(industry: IndustryData):
-	self.industries.append(StationIndustryConnection.new(self.parent, industry))
+	var ind_connection := StationIndustryConnection.new(self.parent, industry)
+	self.industries.append(ind_connection)
+	industry.station_connection = ind_connection
 	self.new_connection.emit(true)
 #endregion
 
