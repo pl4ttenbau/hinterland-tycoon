@@ -31,7 +31,7 @@ func handle_ray(ray_result: Dictionary):
 	if collider:
 		if collider is RailForkCollider:
 			var c_ref: ClickRef = collider.get_click_ref()
-			var fork: RailForkData  = RailForkData.get_by_num(c_ref.entity_num)
+			var fork: RailNodeForkData  = RailNodeForkData.get_by_num(c_ref.entity_num)
 			if fork:
 				fork.set_to_next_track()
 			return

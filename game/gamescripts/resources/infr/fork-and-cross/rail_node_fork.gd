@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_fork_white.png")
-class_name RailForkData extends GameObject
+class_name RailNodeForkData extends GameObject
 
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 static var _last_fork_num = -1
@@ -29,10 +29,10 @@ signal set_to_changed(track_num: int)
 
 func _init():
 	super(Enums.EntityTypes.FORK)
-	self.num = RailForkData._next_fork_num()
+	self.num = RailNodeForkData._next_fork_num()
 
-static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailForkData:
-	var inst := RailForkData.new()
+static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailNodeForkData:
+	var inst := RailNodeForkData.new()
 	inst.railNode = parent
 	# connective tracks
 	inst.all_connective_tracks.append(parent.parent_track.num)
@@ -46,7 +46,7 @@ static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailForkData
 	Managers.rails.fork_storage.add(inst)
 	return inst
 	
-static func get_by_num(fork_num: int) -> RailForkData:
+static func get_by_num(fork_num: int) -> RailNodeForkData:
 	return Managers.rails.fork_storage.get_by_num(fork_num)
 
 func spawn() -> OuterRailFork:
@@ -71,5 +71,5 @@ func set_to_next_track():
 	self.set_to = self.all_connective_tracks[future_index]
 	
 static func _next_fork_num() -> int:
-	RailForkData._last_fork_num += 1
-	return RailForkData._last_fork_num
+	RailNodeForkData._last_fork_num += 1
+	return RailNodeForkData._last_fork_num

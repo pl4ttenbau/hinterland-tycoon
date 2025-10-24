@@ -6,7 +6,7 @@ class_name RailNodeData extends BasicInfrNodeData
 		# self.track_type = value.infr_type_key
 	get(): return parent_track
 
-@export var fork: RailForkData
+@export var fork: RailNodeForkData
 @export var station: RailStationData
 @export var is_end: bool = false
 
@@ -22,7 +22,7 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		self.is_end = true
 	if rail_node_dict.has("fork"):
 		var fork_dict: Dictionary = rail_node_dict.get("fork")
-		self.fork = RailForkData.of_dict(fork_dict, self)
+		self.fork = RailNodeForkData.of_dict(fork_dict, self)
 	if rail_node_dict.has("station"):
 		var station_dict: Dictionary = rail_node_dict.get("station")
 		self.add_station(RailStationData.of_station_dict(station_dict, self))

@@ -3,11 +3,11 @@ class_name OuterRailFork extends VisibleObject
 
 const NINETY_DEG_IN_RAD = 1.57
 
-@export var fork_obj: RailForkData:
-	get(): return self.entity as RailForkData
+@export var fork_obj: RailNodeForkData:
+	get(): return self.entity as RailNodeForkData
 	set(value): self.entity = value
 
-static func of(_fork: RailForkData) -> OuterRailFork:
+static func of(_fork: RailNodeForkData) -> OuterRailFork:
 	var inst := OuterRailFork.new()
 	inst.entity = _fork
 	return inst

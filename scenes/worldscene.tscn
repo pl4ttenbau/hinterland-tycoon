@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=45 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_63i0b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/infr/road_loader.gd" id="6_hmgqj"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/stations_holder.gd" id="6_p8gp8"]
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="8_ux8bc"]
+[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_8tr36"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="10_c2xmk"]
 [ext_resource type="Script" uid="uid://b3bi617vpnii0" path="res://game/gamescripts/nodes/triggers/goods_generation_timer.gd" id="13_kq7m5"]
 [ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="15_ibik3"]
@@ -104,6 +105,10 @@ metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 [node name="Rails" type="Node" parent="World/Generated/Infr"]
 unique_name_in_owner = true
 script = ExtResource("15_nj174")
+
+[node name="RailForkLoader" type="Node" parent="World/Generated/Infr/Rails"]
+script = ExtResource("9_8tr36")
+metadata/_custom_type_script = "uid://bpdu211yk5uj2"
 
 [node name="Stations" type="Node" parent="World/Generated/Infr"]
 unique_name_in_owner = true

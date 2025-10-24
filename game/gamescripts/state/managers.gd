@@ -9,6 +9,7 @@ extends Node
 
 #region Infrastructure
 @export var rails: RailsLoader
+@export var forks: RailForkLoader
 @export var roads: RoadsLoader
 @export var stations: StationsHolder
 

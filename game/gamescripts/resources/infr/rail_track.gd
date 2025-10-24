@@ -5,7 +5,7 @@ class_name RailTrackData extends AbstractTrack
 
 # child objects
 @export var stations: Array[RailStationData] = []
-@export var forks: Array[RailForkData] = []
+@export var forks: Array[RailNodeForkData] = []
 
 func _init():
 	super(Enums.EntityTypes.RAIL)
@@ -21,7 +21,7 @@ func add_node(rail_node: RailNodeData):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
 	
-func add_fork(rail_fork: RailForkData):
+func add_fork(rail_fork: RailNodeForkData):
 	self.forks.append(rail_fork)
 #endregion
 

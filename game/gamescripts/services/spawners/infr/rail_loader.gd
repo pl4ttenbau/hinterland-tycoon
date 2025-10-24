@@ -10,7 +10,7 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 @export var fork_storage: RailForkStore = RailForkStore.new()
 
 ## here we only store visible forks
-@export var visible_forks: Array[RailForkData] = []
+@export var visible_forks: Array[RailNodeForkData] = []
 @export var outer_forks: Array[OuterRailFork] = []
 @export var visible_forks_by_pos: Dictionary = {}
 
@@ -29,7 +29,8 @@ func load_rail_tracks() -> void:
 	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
-		self.track_storage.add(RailMapper.rail_track_from_dict(json_track))
+		var rail_track: RailTrackData = RailMapper.rail_track_from_dict(json_track)
+		self.track_storage.add(rail_track)
 	# trigger signal
 	SignalBus.rails_loaded.emit(self.track_storage.get_all())
 
@@ -71,14 +72,14 @@ func sort_rail_forks():
 	self.visible_forks = self.get_visible_forks()
 	GlobalState.forks = self.get_visible_forks()
 					
-func get_visible_forks() -> Array[RailForkData]:
-	var visible_outer_forks: Array[RailForkData] = []
-	for outer_fork: RailForkData in self.visible_forks_by_pos.values():
+func get_visible_forks() -> Array[RailNodeForkData]:
+	var visible_outer_forks: Array[RailNodeForkData] = []
+	for outer_fork: RailNodeForkData in self.visible_forks_by_pos.values():
 		visible_outer_forks.append(outer_fork)
 	return visible_outer_forks
 
 func spawn_rail_forks():
-	for fork: RailForkData in self.visible_forks:
+	for fork: RailNodeForkData in self.visible_forks:
 		fork.spawn()
 		fork.container.adjust_rotation()
 		
