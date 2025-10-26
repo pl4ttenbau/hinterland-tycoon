@@ -2,18 +2,23 @@ class_name RailForkSetting extends Resource
 
 @export var parent: NewRailForkData
 
-@export var connected_tracks: Array[int] = []
-
-@export var main_set_to: int
+@export var current: CurrentForkSetting
 
 @export var all_set_to: Array[int] = []
+
+@export var is_changeable: bool = true
+
 func _init(_parent: NewRailForkData):
 	self.parent = _parent
-
-func add_connected(track_num: int):
-	self.connected_tracks.append(track_num)
-	self._find_main_set_to(track_num)
-
-func _find_main_set_to(added_track_num: int):
-	if self.connected_tracks.count(added_track_num) >= 2:
-		self.main_set_to = added_track_num
+	
+func init_current_setting():
+	# not connected to anything, rly only track end
+	if self.parent.connected_tracks.size() <= 1: 
+		self.is_changeable = false
+		return
+	if parent.connected_tracks.size() == 2:
+		self.is_changeable = false
+	else:
+		self.is_changeable = true
+	self.current = CurrentForkSetting.new(self.parent.connected_tracks[0], 
+			self.parent.connected_tracks[1])
