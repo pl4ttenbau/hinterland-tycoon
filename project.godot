@@ -39,6 +39,14 @@ window/vsync/vsync_mode=0
 
 enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://game/gamescripts/": "blue",
+"res://world/": "green"
+}
+
 [filesystem]
 
 import/blender/enabled=false
