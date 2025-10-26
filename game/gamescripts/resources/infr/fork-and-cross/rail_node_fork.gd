@@ -48,16 +48,6 @@ static func of_dict(fork_dict: Dictionary, parent: RailNodeData) -> RailNodeFork
 	
 static func get_by_num(fork_num: int) -> RailNodeForkData:
 	return Managers.rails.fork_storage.get_by_num(fork_num)
-
-#func spawn() -> OuterRailFork:
-	#var instanciated: OuterRailFork = preload(SCENE_PATH).instantiate()
-	#instanciated.entity = self
-	## set pos
-	#instanciated.position = self.railNode.position
-	#self.container = instanciated
-	## add as rail container child
-	#self.get_outer_track().add_child(instanciated)
-	#return instanciated
 	
 func set_to_next_track():
 	var current_index: int = self.all_connective_tracks.find(self.set_to)

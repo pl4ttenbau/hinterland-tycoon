@@ -30,10 +30,9 @@ func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if collider:
 		if collider is RailForkCollider:
-			var c_ref: ClickRef = collider.get_click_ref()
-			var fork: RailNodeForkData  = RailNodeForkData.get_by_num(c_ref.entity_num)
+			var fork: NewRailForkData = collider.get_fork()
 			if fork:
-				fork.set_to_next_track()
+				fork.switch()
 			return
 		if collider is IndustryCollider:
 			self.on_industry_click(collider)

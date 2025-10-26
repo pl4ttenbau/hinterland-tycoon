@@ -10,7 +10,9 @@ const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 @export var connected_tracks: Array[int] = []
 
 signal node_added(node: RailNodeData)
+signal switched(curr_setting: CurrentForkSetting)
 
+#region Initialization & Spawning
 func _init(_pos: Vector3):
 	super(Enums.EntityTypes.FORK)
 	self.pos = _pos
@@ -32,6 +34,13 @@ func spawn() -> OuterRailFork:
 	# add as rail container child
 	Managers.forks.add_child(instanciated)
 	return instanciated
+#endregion
+
+#region Switching
+func switch():
+	var curr_setting: CurrentForkSetting = self.setting.set_to_next_track()
+	self.switched.emit(curr_setting)
+#endregion
 
 #region Callables
 func _on_forks_spawned():

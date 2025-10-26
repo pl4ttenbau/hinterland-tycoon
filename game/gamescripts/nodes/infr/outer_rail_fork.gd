@@ -13,12 +13,10 @@ static func of(_fork: NewRailForkData) -> OuterRailFork:
 	return inst
 	
 func _enter_tree() -> void:
-	pass
-	# self.fork_obj.set_to_changed.connect(Callable(self, "_on_set_to_changed"))
+	self.fork_obj.switched.connect(Callable(self, "_on_set_to_changed"))
 	
 func _ready() -> void:
-	pass
-	# self._on_set_to_changed(self.fork_obj.set_to)
+	self._on_set_to_changed(self.fork_obj.setting.current)
 
 func adjust_rotation() -> void:
 	pass
@@ -30,8 +28,9 @@ func adjust_rotation() -> void:
 		#self.rotate_y(NINETY_DEG_IN_RAD)
 
 #region Callbacks
-func _on_set_to_changed(track_num: int):
-	$ForkLabel.text = str(track_num)
+func _on_set_to_changed(new_setting: CurrentForkSetting):
+	# $ForkLabel.text = str(new_setting.connected)
+	pass
 #endregion
 
 #region Helper-Methods
