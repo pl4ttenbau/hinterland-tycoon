@@ -10,6 +10,7 @@ const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 @export var connected_tracks: Array[int] = []
 
 signal node_added(node: RailNodeData)
+
 signal switched(curr_setting: CurrentForkSetting)
 
 #region Initialization & Spawning
@@ -38,7 +39,7 @@ func spawn() -> OuterRailFork:
 
 #region Switching
 func switch():
-	var curr_setting: CurrentForkSetting = self.setting.set_to_next_track()
+	var curr_setting: CurrentForkSetting = self.setting.switch()
 	self.switched.emit(curr_setting)
 #endregion
 

@@ -1,5 +1,9 @@
 class_name CurrentForkSetting extends Resource
 
+signal setting_changed()
+
+signal setting_initialized()
+
 @export var root: int
 
 @export var connected: int:
@@ -7,9 +11,8 @@ class_name CurrentForkSetting extends Resource
 	set(value):
 		connected = value
 		self.setting_changed.emit()
-		
-signal setting_changed()
 
 func _init(_root: int, _connected: int):
 	self.root = _root
 	self.connected = _connected
+	self.setting_initialized.emit()

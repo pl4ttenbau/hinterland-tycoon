@@ -16,7 +16,8 @@ func _enter_tree() -> void:
 	self.fork_obj.switched.connect(Callable(self, "_on_set_to_changed"))
 	
 func _ready() -> void:
-	self._on_set_to_changed(self.fork_obj.setting.current)
+	# self._on_set_to_changed(self.fork_obj.setting.current)
+	pass
 
 func adjust_rotation() -> void:
 	pass
@@ -29,8 +30,11 @@ func adjust_rotation() -> void:
 
 #region Callbacks
 func _on_set_to_changed(new_setting: CurrentForkSetting):
-	# $ForkLabel.text = str(new_setting.connected)
-	pass
+	$ForkLabel.text = str(new_setting.connected)
+	#show arrow
+	var target: Vector3 = self.fork_obj.setting.get_connected_next_node().position
+	$ForkArrow.look_at(target)
+	$ForkArrow.visible = true
 #endregion
 
 #region Helper-Methods
