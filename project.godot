@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Loggie="*res://addons/loggie/loggie.gd"
 Enums="*res://game/gamescripts/enums.gd"
 GameTypes="*res://game/gamescripts/state/types.gd"
-Loggie="*res://addons/loggie/loggie.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GlobalState="*res://game/gamescripts/state/globals.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
@@ -37,7 +37,15 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/scene_container/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "orange",
+"res://game/gamescripts/": "blue",
+"res://world/": "green"
+}
 
 [filesystem]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://316sldx8eq36"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyhp23xtt6rab" path="res://assets/meshes/deco/castle_tower/castle_tower.obj" id="1_d67fa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d67fa"]
+size = Vector3(12.841187, 26.77771, 19.686707)
+
+[node name="CastleTower" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_d67fa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8751831, 13.200989, 0.6789856)
+shape = SubResource("BoxShape3D_d67fa")

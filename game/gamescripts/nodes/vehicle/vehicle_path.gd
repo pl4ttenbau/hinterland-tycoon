@@ -49,6 +49,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	self.rebuild_path_on_current_track()
 
-func _on_fork_changed(fork: RailForkData):
+func _on_fork_changed(fork: RailNodeForkData):
 	self.rebuild_path_on_current_track()
 #endregion

@@ -1,8 +1,9 @@
-[gd_scene load_steps=222 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=223 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
 [ext_resource type="PackedScene" uid="uid://dn7pc6dlp7jl8" path="res://assets/meshes/deco/city_gate/city_gate.tscn" id="3_4rfc7"]
+[ext_resource type="PackedScene" uid="uid://316sldx8eq36" path="res://assets/meshes/deco/castle_tower/castle_tower.tscn" id="3_kw45s"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="5_o4w5w"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_3f2cl"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="16_4rfc7"]
@@ -1978,6 +1979,9 @@ transform = Transform3D(0.9398834, 0, 0.34149516, 0, 1, 0, -0.34149516, 0, 0.939
 
 [node name="Tractor8" parent="Deco" instance=ExtResource("28_giarj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2403.836, 2.3979986, 76.11846)
+
+[node name="WernigerodeCastle" parent="Deco" instance=ExtResource("3_kw45s")]
+transform = Transform3D(0.11448636, 0, 0.99342483, 0, 1, 0, -0.99342483, 0, 0.11448636, 3293.333, 16.1404, 1543.0076)
 
 [node name="Industries" type="Node" parent="." node_paths=PackedStringArray("world_scene")]
 script = ExtResource("47_wmk8x")
