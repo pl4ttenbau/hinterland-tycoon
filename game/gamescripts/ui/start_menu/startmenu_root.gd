@@ -3,7 +3,7 @@ class_name StartmenuRoot extends Control
 const INITIAL_SCENE_NAME = "root_buttons"
 const SUB_SCENE_FOLDER = "res://scenes/ui/startmenu/subscenes/"
 
-@export var current_menu: StartmenuSubscene = null
+@export var current_menu: StartmenuSubscene = null 
 
 #region Initialization
 func _init() -> void:
@@ -20,6 +20,9 @@ func _exit_tree() -> void:
 	UiState.main_menu_scene = null
 	# capture mouse again
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func close() -> void:
+	self.queue_free()
 
 func load_menu(subscene_name: String) -> void:
 	if self.current_menu != null:
