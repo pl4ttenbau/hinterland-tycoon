@@ -7,8 +7,9 @@ func _enter_tree() -> void:
 	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
 
 func _ready() -> void:
-	var loaded_map: MapData = GlobalState.loaded_map
-	self.spawn_map(loaded_map)
+	# var loaded_map: MapData = GlobalState.loaded_map
+	# self.spawn_map(loaded_map)
+	pass
 
 func spawn_map(map_data: MapData):
 	var tscn_path := map_data.get_scene_file_path()

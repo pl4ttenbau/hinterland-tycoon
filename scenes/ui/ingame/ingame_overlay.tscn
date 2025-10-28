@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="1_g7bpn"]
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="2_pa50p"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="3_np82f"]
-[ext_resource type="PackedScene" uid="uid://cfchw6ymnp23e" path="res://scenes/ui/action_menu.tscn" id="4_herd4"]
+[ext_resource type="PackedScene" uid="uid://cfchw6ymnp23e" path="res://scenes/ui/ingame/actionmenu/action_menu.tscn" id="4_herd4"]
 [ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="7_d5day"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="8_4vdqf"]
 [ext_resource type="Script" uid="uid://c15ri5f6kq2e" path="res://game/gamescripts/ui/etc/fps_label.gd" id="9_i2ape"]

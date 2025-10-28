@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2r2nkmrpdya7"]
+
+[ext_resource type="Script" uid="uid://cc3wbpwnuy4n7" path="res://game/gamescripts/ui/start_menu/startmenu_button.gd" id="1_sjl7f"]
+
+[node name="StartmenuButton" type="Control"]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sjl7f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_bottom = 18
+
+[node name="Button" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 56)
+layout_mode = 2

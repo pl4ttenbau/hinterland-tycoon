@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfchw6ymnp23e"]
 
 [ext_resource type="Script" uid="uid://pwmjcnejs1wg" path="res://game/gamescripts/ui/action_menu/action_menu.gd" id="1_d6qou"]
-[ext_resource type="PackedScene" uid="uid://13h04w0a5m6n" path="res://game/gamescripts/ui/action_menu/action_menu_item.tscn" id="2_f6xs1"]
+[ext_resource type="PackedScene" uid="uid://13h04w0a5m6n" path="res://scenes/ui/ingame/actionmenu/action_menu_item.tscn" id="2_f6xs1"]
 [ext_resource type="Texture2D" uid="uid://b584wbd2ghs34" path="res://assets/icons/icon_mouse.svg" id="3_f6xs1"]
 
 [node name="MarginContainer" type="MarginContainer"]
