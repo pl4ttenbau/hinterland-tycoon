@@ -24,8 +24,8 @@ SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GlobalState="*res://game/gamescripts/state/globals.gd"
 TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
-MapListLoader="*res://game/gamescripts/services/spawners/map/map_list_loader.gd"
 UiState="*res://game/gamescripts/state/ui_state.gd"
+MapListLoader="*res://game/gamescripts/services/spawners/map/map_list_loader.gd"
 
 [debug_draw_3d]
 
@@ -37,13 +37,14 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/scene_container/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "orange",
 "res://game/gamescripts/": "blue",
+"res://scenes/": "yellow",
 "res://world/": "green"
 }
 
