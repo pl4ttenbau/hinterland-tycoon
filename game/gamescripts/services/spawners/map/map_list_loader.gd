@@ -24,8 +24,9 @@ func load_map_data():
 		self.add_map_to_lists(map_obj)
 	Loggie.info("Map List loaded")
 	# trigger signals & mock map selection
+	GlobalState.game_maps = self.map_list
 	SignalBus.map_list_loaded.emit(self.map_list)
-	self.select_map()
+	# self.select_map()
 		
 func get_map_info_dict(file_path: String) -> Dictionary:
 	var file = FileAccess.open(file_path, FileAccess.READ)

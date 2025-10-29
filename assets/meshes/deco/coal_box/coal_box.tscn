@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://da6aro1thpm5n"]
+
+[ext_resource type="ArrayMesh" uid="uid://c066gpir4xs8h" path="res://assets/meshes/deco/coal_box/coal_box.obj" id="1_an2mb"]
+
+[node name="CoalBox" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_an2mb")

@@ -1983,6 +1983,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2403.836, 2.3979986, 76.11846
 [node name="WernigerodeCastle" parent="Deco" instance=ExtResource("3_kw45s")]
 transform = Transform3D(0.11448636, 0, 0.99342483, 0, 1, 0, -0.99342483, 0, 0.11448636, 3293.333, 16.1404, 1543.0076)
 
+[node name="Tractor9" parent="Deco" instance=ExtResource("28_giarj")]
+transform = Transform3D(0.4890932, 0, 0.87223154, 0, 1, 0, -0.87223154, 0, 0.4890932, 2453.8777, 2.534415, 106.00655)
+
 [node name="Industries" type="Node" parent="." node_paths=PackedStringArray("world_scene")]
 script = ExtResource("47_wmk8x")
 world_scene = NodePath("..")

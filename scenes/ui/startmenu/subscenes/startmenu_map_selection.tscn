@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv3nyf0fe6py0"]
+
+[ext_resource type="Script" uid="uid://d3ccnd777ajsg" path="res://game/gamescripts/ui/start_menu/subscenes/startmenu_map_selection.gd" id="1_vw5qn"]
+
+[node name="MapSelection" type="MarginContainer"]
+offset_right = 480.0
+offset_bottom = 372.0
+theme_override_constants/margin_top = 64
+script = ExtResource("1_vw5qn")
+key = "map_selection"
+metadata/_custom_type_script = "uid://d3ccnd777ajsg"
+
+[node name="VLayout" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0

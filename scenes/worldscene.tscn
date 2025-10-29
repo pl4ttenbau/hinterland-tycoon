@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=46 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_63i0b"]
@@ -16,8 +16,9 @@
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map/map_spawner.gd" id="16_ekgs8"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
-[ext_resource type="PackedScene" uid="uid://bh5tt5ioftmq3" path="res://scenes/ui/game_window.tscn" id="18_u6qkf"]
+[ext_resource type="PackedScene" uid="uid://bh5tt5ioftmq3" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="18_u6qkf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
+[ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="19_tyqvd"]
 [ext_resource type="Script" uid="uid://xrq8d2iqxk0u" path="res://game/gamescripts/nodes/common/feature_mock_container.gd" id="22_8tr36"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="22_nj174"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/infr/vehicle_placer.gd" id="23_ekgs8"]
@@ -149,7 +150,10 @@ script = ExtResource("19_mg4js")
 [node name="TerrainRaycaster" type="Node" parent="World/MapSpawner/Terrain"]
 script = ExtResource("5_kq7m5")
 
+[node name="StartmenuMain" parent="." instance=ExtResource("19_tyqvd")]
+
 [node name="GameWindow" parent="." instance=ExtResource("18_u6qkf")]
+visible = false
 
 [node name="Features" type="Node3D" parent="."]
 editor_description = "why? https://docs.godotengine.org/en/latest/tutorials/performance/pipeline_compilations.html#doc-pipeline-compilations"

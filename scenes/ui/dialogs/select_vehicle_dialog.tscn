@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3ddoxn5ku6ym"]
 
 [ext_resource type="Script" uid="uid://dyc8ufvx7m744" path="res://game/gamescripts/ui/dialogs/select_vehicle_dialog.gd" id="1_edxwn"]
-[ext_resource type="PackedScene" uid="uid://dp74jgcnqagp8" path="res://scenes/ui/vehicle_selection_btn.tscn" id="1_usukj"]
+[ext_resource type="PackedScene" uid="uid://dp74jgcnqagp8" path="res://scenes/ui/ingame/entity_items/vehicle_selection_btn.tscn" id="1_usukj"]
 
 [node name="SelectVehicleDialog" type="Control"]
 layout_mode = 3

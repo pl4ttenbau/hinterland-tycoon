@@ -46,6 +46,7 @@ func connect_industries():
 
 #region Goods Spawning
 func spawn_rnd_passenger():
+	if ! GlobalState.loaded_map: return
 	var rnd_start_bld = GlobalState.res_blds.pick_random() as ResidenceBuildingData
 	var start_station: RailStationData = rnd_start_bld.connected_station
 	if start_station:

@@ -1,7 +1,5 @@
 extends Node
 
-@export var maps: Array[MapData] = []
-
 @export var resource_types: Dictionary
 
 @export var infr_types: Array[InfrType]
