@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh5tt5ioftmq3"]
+[gd_scene load_steps=9 format=3 uid="uid://4vshk56t46ml"]
 
 [ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="1_g7bpn"]
 [ext_resource type="Script" uid="uid://d1qo6hqa3cq3r" path="res://game/gamescripts/ui/game_window.gd" id="1_ki5ow"]
