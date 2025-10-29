@@ -1,0 +1,24 @@
+# Blender 4.4.1 MTL File: 'coal_box.blend'
+# www.blender.org
+
+newmtl mat_box
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_coal_box_box_d.png
+map_Bump -bm 1.000000 tex_coal_box_box_n.png
+
+newmtl mat_coal
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_coal_box_coal_d.png
+map_Bump -bm 1.000000 tex_coal_box_coal_n.png
