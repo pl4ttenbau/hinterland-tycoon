@@ -32,7 +32,7 @@ func adjust_rotation_from_track():
 	self.rotate_y(NINETY_DEG_IN_RAD)
 	
 func get_parent_track_node_by_index(_i: int) -> RailNodeData:
-	var track: RailTrackData = self.entity.parent_node.parent_track
+	var track: RailTrackData = self.station_obj.parent_node.parent_track
 	return track.get_rail_node(_i)
 	
 func _on_resource_change():

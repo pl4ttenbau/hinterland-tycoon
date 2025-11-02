@@ -13,10 +13,13 @@ signal roads_spawned(_roads: Array[OuterRoad])
 func _enter_tree() -> void:
 	Managers.roads = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
+	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
+
 	
 func _ready() -> void:
-	load_roads()
-	Loggie.info("roads precreated")
+	pass
+	# load_roads()
+	# Loggie.info("roads precreated")
 
 #region Road Loading
 func load_roads() -> void:
@@ -44,3 +47,6 @@ func spawn_road(road: RoadData):
 	
 func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
+
+func _on_map_selected(selected_map: MapData):
+	self.load_roads()

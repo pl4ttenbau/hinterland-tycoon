@@ -4,6 +4,7 @@ class_name OuterRoad extends VisibleObject
 @export var road: RoadData:
 	set(value):
 		self.entity = value
+		self.global_position = value.start_pos
 		self.get_path_3d().curve = value.curve
 		self.assign_node_names()
 	get(): return self.entity as RoadData

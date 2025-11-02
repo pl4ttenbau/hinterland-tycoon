@@ -10,6 +10,9 @@ static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 		track_instance.offset = WorldUtils.vec3_from_float_arr(_track_dict.offset)
 	else:
 		track_instance.offset = Vector3.ZERO
+	# start pos
+	var start_pos_arr =  _track_dict.points[0].pos
+	track_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# optionals
 	if _track_dict.has("name"):
 		track_instance.track_name = _track_dict.get("name")
@@ -31,5 +34,5 @@ static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
 	track_path.name = "Editor_Track%d" % track_num
 	track_path.set_meta("track_num", track_num)
 	track_path.set_meta("name", track_data_dict.get("name", null))
-	# path.debug_custom_color = Color(0, 0, 0)
+	track_path.debug_custom_color = Color(0, 0, 0)
 	return track_path
