@@ -20,12 +20,6 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
 
-	
-func _ready() -> void:
-	# self.load_rail_tracks()
-	# Loggie.info("rails precreated")
-	pass
-
 func load_rail_tracks() -> void:
 	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
@@ -79,6 +73,6 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
 	
-func _on_map_selected(selected_map: MapData):
+func _on_map_selected(_selected_map: MapData):
 	self.load_rail_tracks()
 #endregion
