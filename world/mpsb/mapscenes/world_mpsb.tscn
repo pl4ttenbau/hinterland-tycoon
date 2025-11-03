@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="12_emjn5"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/rail/bridge/truss_bridge/truss_bridge.tscn" id="21_ugno1"]
+[ext_resource type="PackedScene" uid="uid://hpd8av52bwn" path="res://assets/meshes/industry/warehouse_1/warehouse_1_static.tscn" id="24_vqub3"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
@@ -37,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="59_51ymi"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
-[ext_resource type="PackedScene" uid="uid://dpmf707hcg5r" path="res://assets/meshes/industry/warehouse_1/warehouse_1.tscn" id="61_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="62_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="63_ea3s5"]
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="64_7r2i1"]
@@ -700,15 +700,6 @@ transform = Transform3D(-0.919479, 0, 0.39314, 0, 1, 0, -0.39314, 0, -0.919479, 
 [node name="IndustrialSilo" parent="Deco" instance=ExtResource("60_vybcg")]
 transform = Transform3D(0.717786, 0, -0.696264, 0, 1, 0, 0.696264, 0, 0.717786, 1055.86, 10.597, 1239.97)
 
-[node name="Warehouse1" parent="Deco" instance=ExtResource("61_0o4a4")]
-transform = Transform3D(-0.795548, 0, 0.605891, 0, 1, 0, -0.605891, 0, -0.795548, 1055.58, 11.4046, 1264.38)
-
-[node name="Warehouse2" parent="Deco" instance=ExtResource("61_0o4a4")]
-transform = Transform3D(-0.909447, 0, 0.415821, 0, 1, 0, -0.415821, 0, -0.909447, 1073.83, 11.4007, 1275.35)
-
-[node name="Bauwagen" parent="Deco" instance=ExtResource("62_0o4a4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1043.99, 11.4792, 1251.41)
-
 [node name="Bauwagen2" parent="Deco" instance=ExtResource("62_0o4a4")]
 transform = Transform3D(0.059741974, 0, 0.9982138, 0, 1, 0, -0.9982138, 0, 0.059741974, 818.2025, 14.754762, 1275.8922)
 
@@ -840,19 +831,28 @@ transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.2588
 [node name="RowingBoatStatic" parent="Deco" instance=ExtResource("38_wtafe")]
 transform = Transform3D(0.36149436, 0, -0.93237424, 0, 1, 0, 0.93237424, 0, 0.36149436, 1457.6237, 10.090041, 1249.0588)
 
-[node name="Jarmen" type="Node" parent="Deco"]
+[node name="JarmenHarbour" type="Node" parent="Deco"]
 
-[node name="Church8" parent="Deco/Jarmen" instance=ExtResource("59_51ymi")]
+[node name="Church8" parent="Deco/JarmenHarbour" instance=ExtResource("59_51ymi")]
 transform = Transform3D(-0.63966703, 0, -0.76865214, 0, 1, 0, 0.76865214, 0, -0.63966703, 1074.2539, 12.886723, 1333.2556)
 
-[node name="Substation2" parent="Deco/Jarmen" instance=ExtResource("12_emjn5")]
+[node name="Substation2" parent="Deco/JarmenHarbour" instance=ExtResource("12_emjn5")]
 transform = Transform3D(-0.8754899, 0, 0.48323646, 0, 1, 0, -0.48323646, 0, -0.8754899, 1037.88, 11.872489, 1277.5858)
 
-[node name="Statue1" parent="Deco/Jarmen" instance=ExtResource("39_mlv4m")]
+[node name="Statue1" parent="Deco/JarmenHarbour" instance=ExtResource("39_mlv4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1037.3666, 12.330012, 1323.134)
 
-[node name="WarehouseWoodenStatic4" parent="Deco/Jarmen" instance=ExtResource("63_ea3s5")]
+[node name="WarehouseWoodenStatic4" parent="Deco/JarmenHarbour" instance=ExtResource("63_ea3s5")]
 transform = Transform3D(0.8275121, 0, 0.5614481, 0, 1, 0, -0.5614481, 0, 0.8275121, 1016.09735, 10.897583, 1226.447)
+
+[node name="Warehouse1Static" parent="Deco/JarmenHarbour" instance=ExtResource("24_vqub3")]
+transform = Transform3D(-0.88532865, 0, 0.46496576, 0, 1, 0, -0.46496576, 0, -0.88532865, 1072.8896, 11.536734, 1275.3026)
+
+[node name="Warehouse1Static2" parent="Deco/JarmenHarbour" instance=ExtResource("24_vqub3")]
+transform = Transform3D(-0.75504154, 0, 0.6556771, 0, 1, 0, -0.6556771, 0, -0.75504154, 1056.3208, 11.5931015, 1263.434)
+
+[node name="Bauwagen" parent="Deco/JarmenHarbour" instance=ExtResource("62_0o4a4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1043.99, 11.4792, 1251.41)
 
 [node name="WoodenPier4" parent="Deco" instance=ExtResource("36_emjn5")]
 transform = Transform3D(0.32337248, 0, -0.9462718, 0, 1, 0, 0.9462718, 0, 0.32337248, 1463.6503, 9.913699, 1157.5278)
@@ -875,8 +875,8 @@ transform = Transform3D(0.76033795, 0, -0.64952767, 0, 1, 0, 0.64952767, 0, 0.76
 [node name="Windmill2Static" parent="Deco" instance=ExtResource("42_vqub3")]
 transform = Transform3D(0.6420386, 0, -0.7666723, 0, 1, 0, 0.7666723, 0, 0.6420386, 2000.4751, 15.446791, 2528.7322)
 
-[node name="VillageWell" parent="Deco/Windmill2Static" instance=ExtResource("40_rrrix")]
-transform = Transform3D(0.6420386, 0, 0.7666723, 0, 1, 0, -0.7666723, 0, 0.6420386, -309.13135, -1.7127676, 181.50488)
+[node name="VillageWell7" parent="Deco" instance=ExtResource("40_rrrix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1662.8461, 13.734023, 2408.263)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("44_tkkvf")]
 environment = SubResource("Environment_ls53n")

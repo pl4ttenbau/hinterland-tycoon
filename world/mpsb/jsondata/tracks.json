@@ -1066,7 +1066,7 @@
 	},
 	{
 		"num": 30,
-		"name": "GJK Gützkow Station Outeards",
+		"name": "GJK Gützkow Station Outwards",
 		"type": "750_MM",
 		"points": [
 			{
@@ -1098,7 +1098,11 @@
 				"pos": [1444.4, 17.5, 893.1]
 			},
 			{
-				"pos": [1454.3, 18.3, 880.6]
+				"pos": [1454.3, 18.3, 880.6],
+				"fork": {
+					"connectiveTracks": [34, 35],
+					"setTo": 34
+				}
 			}
 		]
 	},
@@ -1201,6 +1205,95 @@
 				"pos": [1036.5, 11.1, 1228.0],
 				"end": true
 			}
+		]
+	},
+	{
+		"num": 34,
+		"name": "GJK Dargezin Fork SW-W",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1454.3, 18.3, 880.6],
+				"fork": {
+					"connectiveTracks": [30, 35],
+					"setTo": 30
+				}
+			},
+			{
+				"pos": [1464.0, 18.1, 872.0]
+			},
+			{
+				"pos": [1471.9, 18.1, 868.4]
+			},
+			{
+				"pos": [1477.6, 18.3, 866.8]
+			},
+			{
+				"pos": [1488.8, 18.2, 864.3],
+				"fork": {
+					"connectiveTracks": [36],
+					"setTo": 36
+				}
+			}
+		]
+	},
+	{
+		"num": 35,
+		"name": "GJK Dargezin Fork SW-N",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1454.3, 18.3, 880.6],
+				"fork": {
+					"connectiveTracks": [30, 35],
+					"setTo": 30
+				}
+			},
+			{
+				"pos": [1454.2, 18.2, 873.8]
+			},
+			{
+				"pos": [1454.2, 18.0, 861.0]
+			},
+			{
+				"pos": [1453.5, 18.2, 852.0]
+			},
+			{
+				"pos": [1450.1, 18.7, 844.5]
+			}
+		]
+	},
+	{
+		"num": 36,
+		"name": "GJK Dargezin",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1488.8, 18.2, 864.3],
+				"fork": {
+					"connectiveTracks": [34],
+					"setTo": 34
+				}
+			},
+			{
+				"pos": [1498.5, 18.1, 865.6]
+			},
+			{
+				"pos": [1512.3, 18.0, 867.0]
+			},
+			{
+				"pos": [1532.4, 17.9, 869.9]
+			},
+			{
+				"pos": [1544.3, 17.8, 871.0],
+				"station": {
+					"townName": "Dargezin",
+					"townNum": 30,
+					"name": "Bhf",
+					"stationType": "STATION_PASS"
+				}
+			},
+			
 		]
 	}
 ]
