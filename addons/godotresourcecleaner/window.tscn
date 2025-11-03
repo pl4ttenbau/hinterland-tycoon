@@ -1,0 +1,953 @@
+[gd_scene load_steps=12 format=3 uid="uid://wtvvtdcms4ax"]
+
+[ext_resource type="Script" uid="uid://b5b8w5appi7jq" path="res://addons/godotresourcecleaner/window.gd" id="1_p0mwy"]
+[ext_resource type="Script" uid="uid://cv0p2lykupdql" path="res://addons/godotresourcecleaner/grid_container.gd" id="2_rch45"]
+
+[sub_resource type="DPITexture" id="DPITexture_7peqy"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M4 1 3 3l1 2v4H2v3.5a2.5 2.5 0 0 0 5 0V9H5V5l1-2-1-2zm6 .174a3 3 0 0 0 0 5.652V14a1 1 0 0 0 2 0V6.824a3 3 0 0 0 0-5.648V4a1 1 0 0 1-2 0z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_um2sv"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m2 2v2h2v-2zm4 0v2h8v-2zm-4 5v2h2v-2zm4 0v2h8v-2zm-4 5v2h2v-2zm4 0v2h8v-2z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_ch44y"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M10.168 8.754a5 5 0 1 0-1.414 1.414l4.316 4.316 1.414-1.414zM6 3a3 3 0 0 1 0 6 3 3 0 0 1 0-6z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_ujiyn"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m8 1a1 1 0 0 0 -1 1v5h-2c-1.108 0-2 .892-2 2v1h10v-1c0-1.108-.892-2-2-2h-2v-5a1 1 0 0 0 -1-1zm-5 10v4l10-1v-3z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_e2hhq"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m4 1v1l1 1v3h6v-3l1-1v-1zm1 6-2 3h10l-2-3zm2 4v2l1 2 1-2v-2z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_wxa38"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m5 1v1h-4v2h14v-2h-4v-1zm-3 4v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8zm1 2h2v6h-2zm4 0h2v6h-2zm4 0h2v6h-2z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_slwqc"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"16\"><path fill=\"none\" stroke=\"#e0e0e0\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M6 2 2 8l4 6\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_71fj7"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M5 8a4 4 0 1 1 4 4v2a6 6 0 1 0-6-6H1l3 4 3-4z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[sub_resource type="DPITexture" id="DPITexture_npq5g"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ffdd65\" d=\"M8 2a1 1 0 0 0-.85.484l-6 10A1 1 0 0 0 2 14h12a1 1 0 0 0 .857-1.514l-6-10a1 1 0 0 0-.85-.484zM7 5h2v5H7zm0 6h2v2H7z\"/></svg>
+"
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(1, 0.87, 0.4, 1)
+}
+
+[node name="Window" type="Window"]
+oversampling_override = 1.0
+title = "Godot Resource Cleaner"
+position = Vector2i(0, 36)
+size = Vector2i(720, 720)
+min_size = Vector2i(720, 720)
+script = ExtResource("1_p0mwy")
+
+[node name="Main" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonSetting" type="Button" parent="Main/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Settings"
+icon = SubResource("DPITexture_7peqy")
+
+[node name="ButtonKeepList" type="Button" parent="Main/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Keep List"
+icon = SubResource("DPITexture_um2sv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Godot Resource Cleaner"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LEFilter" type="LineEdit" parent="Main/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Filter Files"
+clear_button_enabled = true
+
+[node name="ButtonScan" type="Button" parent="Main/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Scan"
+icon = SubResource("DPITexture_ch44y")
+
+[node name="ButtonClean" type="Button" parent="Main/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Clean"
+icon = SubResource("DPITexture_ujiyn")
+
+[node name="Panel" type="Panel" parent="Main/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxMain" type="VBoxContainer" parent="Main/VBoxContainer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+text = "⚠️ Use With Caution ⚠️
+Deletion of files is permanent!
+Always make a backup of your project before using this tool.
+Even if a file has no visible dependencies, it may still be referenced.
+This tool can break your project. Use at your own risk!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Label2" type="Label" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain/MarginContainer"]
+layout_mode = 2
+text = "⚙️ Settings:
+Customize the scan behavior if needed.
+📌 Keep List: 
+Displays resources you want to preserve. Anything here won’t show up in future scans.
+🔍 Scan: 
+Scans the project for unused files and resources with no known dependencies.
+🧹 Clean: 
+Finds and removes orphaned .import, .uid files, and empty folders."
+
+[node name="HSeparator2" type="HSeparator" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Label3" type="Label" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain/MarginContainer2"]
+layout_mode = 2
+text = "🛠️ How It Works 🛠️
+📋 Press Scan to find unused resources.
+✅ Select the resources you want to keep or delete.
+📌 Use Keep to save them to the Keep List.
+🗑️ Use Delete to permanently remove them.
+🧹 Optionally press Clean to remove orphaned files and empty folders."
+
+[node name="HSeparator3" type="HSeparator" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Main/VBoxContainer/Panel/ScrollContainer/VBoxMain"]
+layout_mode = 2
+text = "🛈 Godot Resource Cleaner v0.7.1
+Licensed under the MIT License.
+© 2025 FreeTimeDev"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Main/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonKeep" type="Button" parent="Main/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_color = Color(0.333333, 1, 0.333333, 1)
+text = "Keep"
+icon = SubResource("DPITexture_e2hhq")
+
+[node name="ButtonDelete" type="Button" parent="Main/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_color = Color(1, 0.333333, 0.333333, 1)
+text = "Delete"
+icon = SubResource("DPITexture_wxa38")
+
+[node name="Setting" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Setting"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonDoneSetting" type="Button" parent="Setting/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Done"
+icon = SubResource("DPITexture_slwqc")
+
+[node name="VSeparator" type="VSeparator" parent="Setting/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ButtonSettingReset" type="Button" parent="Setting/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Reset"
+icon = SubResource("DPITexture_71fj7")
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Setting/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FilterCheckButton" type="CheckButton" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Filter by Extensions"
+
+[node name="HBoxFilter" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer"]
+layout_mode = 2
+
+[node name="ButtonImages" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Images"
+
+[node name="Images" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../ButtonImages")
+
+[node name="png" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".png"
+
+[node name="svg" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".svg"
+
+[node name="jpg" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".jpg"
+
+[node name="jpeg" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".jpeg"
+
+[node name="bmp" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".bmp"
+
+[node name="tga" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Images"]
+layout_mode = 2
+text = ".tga"
+
+[node name="ButtonFonts" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fonts"
+
+[node name="Fonts" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../ButtonFonts")
+
+[node name="ttf" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Fonts"]
+layout_mode = 2
+text = ".ttf"
+
+[node name="otf" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Fonts"]
+layout_mode = 2
+text = ".otf"
+
+[node name="ButtonGodot" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Godot"
+
+[node name="Godot" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../ButtonGodot")
+
+[node name="gd" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Godot"]
+layout_mode = 2
+text = ".gd"
+
+[node name="tres" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Godot"]
+layout_mode = 2
+text = ".tres"
+
+[node name="res" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Godot"]
+layout_mode = 2
+text = ".res"
+
+[node name="tscn" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Godot"]
+layout_mode = 2
+text = ".tscn"
+
+[node name="gdshader" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer/VBoxContainer/Godot"]
+layout_mode = 2
+text = ".gdshader"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2"]
+layout_mode = 2
+
+[node name="ButtonAudio" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+
+[node name="Audio" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../ButtonAudio")
+
+[node name="wav" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Audio"]
+layout_mode = 2
+text = ".wav"
+
+[node name="mp3" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Audio"]
+layout_mode = 2
+text = ".mp3"
+
+[node name="ogg" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Audio"]
+layout_mode = 2
+text = ".ogg"
+
+[node name="Button3DModels" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "3DModels"
+
+[node name="3DModels" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../Button3DModels")
+
+[node name="gltf" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/3DModels"]
+layout_mode = 2
+text = ".gltf"
+
+[node name="glb" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/3DModels"]
+layout_mode = 2
+text = ".glb"
+
+[node name="fbx" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/3DModels"]
+layout_mode = 2
+text = ".fbx"
+
+[node name="obj" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/3DModels"]
+layout_mode = 2
+text = ".obj"
+
+[node name="stl" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/3DModels"]
+layout_mode = 2
+text = ".stl"
+
+[node name="ButtonSpecial" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Special"
+
+[node name="Special" type="GridContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer" node_paths=PackedStringArray("root_window", "button")]
+layout_mode = 2
+columns = 4
+script = ExtResource("2_rch45")
+root_window = NodePath("../../../../../../../..")
+button = NodePath("../ButtonSpecial")
+
+[node name="json" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".json"
+
+[node name="xml" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".xml"
+
+[node name="csv" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".csv"
+
+[node name="aseprite" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".aseprite"
+
+[node name="ase" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".ase"
+
+[node name="txt" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".txt"
+
+[node name="reapeaks" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".reapeaks"
+
+[node name="tmp" type="CheckBox" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/HBoxFilter/MarginContainer2/VBoxContainer/Special"]
+layout_mode = 2
+text = ".tmp"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="IgnoreCheckButton" type="CheckButton" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ignore"
+
+[node name="VBoxIgnore" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Folders (i.e.: \"src\"):"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEditIgnFolder" type="TextEdit" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Folder"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxIgnFolder" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Extensions (i.e.: \".gd\"):"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="TextEditIgnExt" type="TextEdit" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Extension"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxIgnExt" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UseMultithreadingCheckButton" type="CheckButton" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Enable Multithreading
+Speeds up file scanning by using multiple CPU cores
+Best for large projects with many files.
+
+Notes:
+• Increases CPU and memory usage during scans
+• Small projects may see little benefit
+• Disable if you encounter crashes or instability"
+button_pressed = true
+text = "Use Multithreading ⚠️"
+
+[node name="HSeparator3" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExcludeButton" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0.333333, 0.333333, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+text = "Show Excluded"
+icon = SubResource("DPITexture_npq5g")
+
+[node name="VBoxExclude" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude"]
+layout_mode = 2
+text = "⚠️ Warning: These will be excluded from dependency checks ⚠️"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Folders:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEditExcFolder" type="TextEdit" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Folder"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxFolder" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Extensions:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEditExcExt" type="TextEdit" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Extension"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxExt" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "If Contains String:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEditExcContaining" type="TextEdit" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add String"
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HSeparator" type="HSeparator" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContains" type="VBoxContainer" parent="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="KeepList" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="KeepList"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeepList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KeepList/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonDoneKL" type="Button" parent="KeepList/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Done"
+icon = SubResource("DPITexture_slwqc")
+
+[node name="VSeparator" type="VSeparator" parent="KeepList/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonRemoveAll" type="Button" parent="KeepList/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " All "
+icon = SubResource("DPITexture_wxa38")
+
+[node name="HSeparator" type="HSeparator" parent="KeepList/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="KeepList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="KeepList/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxKeepList" type="VBoxContainer" parent="KeepList/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Overlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.019607844, 0.019607844, 0.019607844, 0.8)
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -64.0
+offset_right = 210.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Overlay/PanelContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProgressContainer" type="VBoxContainer" parent="Overlay/PanelContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="Overlay/PanelContainer/Panel/MarginContainer/ProgressContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scan complete!"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Overlay/PanelContainer/Panel/MarginContainer/ProgressContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+value = 100.0
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/PanelContainer/Panel/MarginContainer/ProgressContainer"]
+layout_mode = 2
+
+[node name="CancelButton" type="Button" parent="Overlay/PanelContainer/Panel/MarginContainer/ProgressContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cancel"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(360, 180)
+unresizable = true
+ok_button_text = "Delete"
+dialog_text = "Are you sure you want to permanently delete the selected files? This action cannot be undone."
+dialog_autowrap = true
+
+[node name="ConfirmationDialogClean" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(360, 185)
+unresizable = true
+ok_button_text = "Clean"
+dialog_autowrap = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationDialogClean"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ConfirmationDialogClean/VBoxContainer"]
+layout_mode = 2
+text = "Clean..."
+
+[node name="CBImport" type="CheckBox" parent="ConfirmationDialogClean/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Orphaned .import"
+
+[node name="CBUid" type="CheckBox" parent="ConfirmationDialogClean/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Orphaned .uid"
+
+[node name="CBFolders" type="CheckBox" parent="ConfirmationDialogClean/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Empty folders"
+
+[node name="ConfirmationDialogKLRemoveAll" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(360, 180)
+unresizable = true
+ok_button_text = "Remove All"
+dialog_text = "Are you sure you want to remove all files from the Keep List?"
+dialog_autowrap = true
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonSetting" to="." method="_on_button_setting_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonKeepList" to="." method="_on_button_keep_list_pressed"]
+[connection signal="text_changed" from="Main/VBoxContainer/HBoxContainer/VBoxContainer/LEFilter" to="." method="_on_le_filter_text_changed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonScan" to="." method="_on_button_scan_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer/ButtonClean" to="." method="_on_button_clean_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer2/ButtonKeep" to="." method="_on_button_keep_pressed"]
+[connection signal="pressed" from="Main/VBoxContainer/HBoxContainer2/ButtonDelete" to="." method="_on_button_delete_pressed"]
+[connection signal="pressed" from="Setting/VBoxContainer/HBoxContainer/ButtonDoneSetting" to="." method="_on_button_done_pressed"]
+[connection signal="toggled" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/FilterCheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/IgnoreCheckButton" to="." method="_on_ignore_check_button_toggled"]
+[connection signal="pressed" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_ign_folder_pressed"]
+[connection signal="pressed" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxIgnore/HBoxContainer/VBoxContainer2/HBoxContainer/Button" to="." method="_on_button_ign_ext_pressed"]
+[connection signal="toggled" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/UseMultithreadingCheckButton" to="." method="_on_use_multithreading_check_button_toggled"]
+[connection signal="toggled" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/ExcludeButton" to="." method="_on_exclude_check_button_toggled"]
+[connection signal="pressed" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_exclude_folder_pressed"]
+[connection signal="pressed" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_exclude_ext_pressed"]
+[connection signal="pressed" from="Setting/VBoxContainer/ScrollContainer/VBoxContainer/VBoxExclude/HBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_exclude_cont_pressed"]
+[connection signal="pressed" from="KeepList/VBoxContainer/HBoxContainer/ButtonDoneKL" to="." method="_on_button_done_kl_pressed"]
+[connection signal="pressed" from="KeepList/VBoxContainer/HBoxContainer/ButtonRemoveAll" to="." method="_on_button_remove_all_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="confirmed" from="ConfirmationDialogClean" to="." method="_on_confirmation_dialog_clean_confirmed"]
+[connection signal="confirmed" from="ConfirmationDialogKLRemoveAll" to="." method="_on_confirmation_dialog_kl_remove_all_confirmed"]
