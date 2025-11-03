@@ -5,6 +5,12 @@
 			"name": "Friedland Depot",
 			"trackNum": 2,
 			"trackPos": "END"
+		},
+		{
+			"num": 2,
+			"name": "Züssow Depot GJK",
+			"trackNum": 43,
+			"trackPos": "END"
 		}
    	]
 }

@@ -1,6 +1,6 @@
 class_name SelectVehicleDialog extends Control
 
-const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/depot_selection_box.tscn" 
+const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/ingame/entity_items/depot_selection_box.tscn" 
 
 @export var selected_vehicle_type: String
 
