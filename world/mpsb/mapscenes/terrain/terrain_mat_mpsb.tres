@@ -44,4 +44,5 @@ _shader_parameters = {
 &"projection_threshold": 0.8
 }
 world_background = 0
+show_instancer_grid = true
 show_contours = true
