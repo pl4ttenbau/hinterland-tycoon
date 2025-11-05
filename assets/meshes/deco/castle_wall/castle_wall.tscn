@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://by8p3lehwrg8a"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0u8vfkbmj8yi" path="res://assets/meshes/deco/castle_wall/castle_wall.obj" id="1_pjq5p"]
+
+[node name="CastleWall" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.7905521, 0)
+mesh = ExtResource("1_pjq5p")

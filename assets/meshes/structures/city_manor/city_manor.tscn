@@ -26,6 +26,8 @@ metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visibility_range_end = 500.0
+visibility_range_end_margin = 50.0
 mesh = ExtResource("1_kr5bw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vhsy")
 surface_material_override/1 = SubResource("StandardMaterial3D_0i1eh")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy0372eidhhtw"]
+
+[ext_resource type="ArrayMesh" uid="uid://n7m1maq37h7q" path="res://assets/meshes/deco/cathedral/cathedral.obj" id="1_sf0wy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6uw7t"]
+size = Vector3(43.629257, 48.405273, 24.579193)
+
+[node name="Cathedral" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+visibility_range_end = 700.0
+visibility_range_end_margin = 70.0
+mesh = ExtResource("1_sf0wy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29842377, 22.154785, -0.20118713)
+shape = SubResource("BoxShape3D_6uw7t")
