@@ -6,4 +6,6 @@
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.7905521, 0)
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 mesh = ExtResource("1_pjq5p")

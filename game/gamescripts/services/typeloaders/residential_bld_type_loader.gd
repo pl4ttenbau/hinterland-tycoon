@@ -15,10 +15,12 @@ static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 		ResBldType.new("polish_house_5", "Polish House", 12),
 		ResBldType.new("village_house_2", "Village House", 6),
 		ResBldType.new("village_house_3", "Village House", 4),
+		ResBldType.new("city_house_2", "City House", 8),
+		ResBldType.new("city_corner_house", "City House", 8),
 		ResBldType.new("half_timbered_1", "Tudor House", 6),
 		ResBldType.new("half_timbered_barn", "Tudor Barn", 5),
 		ResBldType.new("northern_german_house", "Tudor Cottage", 12),
-		# ResBldType.new("city_manor", "City Manor", 12)
+		ResBldType.new("city_manor", "City Manor", 15, true)
 	]
 	
 func get_types() -> Array[ResBldType]:
@@ -28,5 +30,4 @@ func get_types() -> Array[ResBldType]:
 func get_rnd() -> ResBldType:
 	var bld_types: Array[ResBldType] = GameTypes.res_bld_types
 	randomize()
-	var rnd_i: int = randi_range(0, bld_types.size() -1)
-	return bld_types.get(rnd_i)
+	return bld_types.get(randi_range(0, bld_types.size() -1))
