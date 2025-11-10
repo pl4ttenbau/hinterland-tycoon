@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxysqltjdo85w"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccb58warj2m0a" path="res://assets/meshes/deco/wooden_cart/wooden_cart.obj" id="1_f1heg"]
+
+[node name="WoodenCart" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_f1heg")
