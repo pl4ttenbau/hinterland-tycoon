@@ -46,6 +46,7 @@ script = ExtResource("3_icu33")
 town_name = "Ramelow"
 pos_xz = Vector2(1859.2, 2832)
 is_minor = true
+autogenerate_houses = false
 num = 5
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"

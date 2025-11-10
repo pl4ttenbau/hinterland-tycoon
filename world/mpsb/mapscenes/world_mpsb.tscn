@@ -2396,7 +2396,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1863.5883, 20.009138, 2992.05
 gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 6
-type_key = "QUARRY"
+type_key = "BRICKWORKS"
 ind_name = "Ramelow Brickworks"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
