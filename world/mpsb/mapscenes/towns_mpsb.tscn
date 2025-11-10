@@ -34,8 +34,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_my4h6"]
 script = ExtResource("3_icu33")
-town_name = "Dersekow"
-pos_xz = Vector2(669, 252)
+town_name = "Zastrow"
+pos_xz = Vector2(616.6, 522.9)
 is_minor = true
 num = 4
 type = 5
@@ -128,6 +128,7 @@ script = ExtResource("3_icu33")
 town_name = "Ziethen-Relzow"
 pos_xz = Vector2(2835.3, 1410)
 is_minor = true
+autogenerate_houses = false
 num = 14
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -300,7 +301,8 @@ town = SubResource("Resource_naxkj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2160.5, 12.0384, 3251.5)
 town = SubResource("Resource_wa0ur")
 
-[node name="TownCenter_Dersekow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Zastrow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 616.6228, 22.617773, 522.90295)
 town = SubResource("Resource_my4h6")
 
 [node name="TownCenter_Ramelow" parent="." instance=ExtResource("1_xyttb")]

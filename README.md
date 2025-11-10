@@ -9,11 +9,19 @@ Written in the Godot Engine
 
 ![Preview August 2025](https://github.com/pl4ttenbau/hinterland-tycoon/blob/main/doc/img/preview_wernigerode.png?raw=true)
 
+### TODO
+
+* [ ] narrower fields
+* [ ] "Kopfweide" trees
+* [ ] settlements shields
+* [ ] no straw bales -> piles instead
+
 ### Special Thanks 
 
 * Reiner Prokein - reinerstilesets.de
 * emzetgie for his excellent polish houses models
 * the one and onmly Pitagoras991 for his Wismar Railbus meshes
+* Konrad
 
 ### Used Addons
 

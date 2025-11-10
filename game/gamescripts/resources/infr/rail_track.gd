@@ -7,6 +7,7 @@ class_name RailTrackData extends AbstractTrack
 @export var stations: Array[RailStationData] = []
 @export var forks: Array[RailNodeForkData] = []
 
+## global pos of the first rail node
 @export var start_pos: Vector3
 
 func _init():

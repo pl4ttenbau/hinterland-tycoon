@@ -2,7 +2,7 @@
 	"depots": [
 		{
 			"num": 1,
-			"name": "Friedland Depot",
+			"name": "Friedland Depot MPSB",
 			"trackNum": 2,
 			"trackPos": "END"
 		},
@@ -11,6 +11,12 @@
 			"name": "Züssow Depot GJK",
 			"trackNum": 43,
 			"trackPos": "END"
+		},
+		{
+			"num": 3,
+			"name": "Anklam Depot MPSB",
+			"trackNum": 51,
+			"trackPos": "END"
 		}
-   	]
+	]
 }
