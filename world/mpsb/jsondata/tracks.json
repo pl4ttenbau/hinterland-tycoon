@@ -154,6 +154,7 @@
 					"townName": "Ramelow",
 					"townNum": 5,
 					"name": "Ort",
+					"hideBuilding": true,
 					"stationType": "STATION_PASS"
 				}
 			},

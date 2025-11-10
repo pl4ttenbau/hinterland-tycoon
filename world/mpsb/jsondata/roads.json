@@ -1000,7 +1000,7 @@
 	},
 	{
 		"num": 33,
-		"name": "Anklam Schwanbeker Chausee Bridge",
+		"name": "Friedland Schwanbeker Chausee Bridge",
 		"points": [
 			{
 				"pos": [2174.9, 12.3, 3127.7],
@@ -1020,13 +1020,16 @@
 				"bridge": true
 			},
 			{
-				"pos": [2099.5, 12.3, 3130.8]
+				"pos": [2099.5, 12.3, 3130.8],
+				"cross": {
+					"connectiveRoads": [69]
+				}
 			}
 		]
 	},
 	{
 		"num": 34,
-		"name": "Anklam Riemannstr Gate",
+		"name": "Friedland Riemannstr Gate",
 		"points": [
 			{
 				"pos": [2174.9, 12.3, 3127.7],
@@ -1050,7 +1053,7 @@
 	},
 	{
 		"num": 35,
-		"name": "Anklam Riemannstr Church",
+		"name": "Friedland Riemannstr Church",
 		"points": [
 			{
 				"pos": [2159.5, 12.3, 3195.5],
@@ -1068,7 +1071,7 @@
 	},
 	{
 		"num": 36,
-		"name": "Anklam Riemannstr Church Cross",
+		"name": "Friedland Riemannstr Church Cross",
 		"points": [
 			{
 				"pos": [2149.4, 12.5, 3226.2],
@@ -1083,7 +1086,7 @@
 	},
 	{
 		"num": 37,
-		"name": "Anklam Ringstr South",
+		"name": "Friedland Ringstr South",
 		"points": [
 			{
 				"pos": [2149.4, 12.5, 3226.2],
@@ -1116,7 +1119,7 @@
 	},
 	{
 		"num": 38,
-		"name": "Anklam Ringstr North",
+		"name": "Friedland Ringstr North",
 		"points": [
 			{
 				"pos": [2204.2, 14.2, 3170.3],
@@ -1908,6 +1911,194 @@
 			},
 			{
 				"pos": [2728.0, 11.0, 1633.9]
+			}
+		]
+	},
+	{
+		"num": 69,
+		"name": "Friedland Schwanbecker Str Kleinbahn",
+		"points": [
+			{
+				"pos": [2099.5, 12.3, 3130.8],
+				"cross": {
+					"connectiveRoads": [33]
+				}
+			},
+			{
+				"pos": [2079.6, 12.3, 3130.1]
+			},
+			{
+				"pos": [2069.9, 13.5, 3130.4]
+			},
+			{
+				"pos": [2062.1, 15.0, 3130.2]
+			},
+			{
+				"pos": [2041.8, 15.1, 3129.4],
+				"cross": {
+					"connectiveRoads": [70]
+				}
+			}
+		]
+	},
+	{
+		"num": 70,
+		"name": "Friedland Schwanbecker Str Uphill",
+		"points": [
+			{
+				"pos": [2041.8, 15.1, 3129.4],
+				"cross": {
+					"connectiveRoads": [69]
+				}
+			},
+			{
+				"pos": [2024.9, 16.2, 3127.4]
+			},
+			{
+				"pos": [2000.2, 18.5, 3122.5]
+			},
+			{
+				"pos": [1985.1, 20.0, 3117.7]
+			},
+			{
+				"pos": [1971.2, 21.5, 3112.1]
+			},
+			{
+				"pos": [1956.5, 21.9, 3103.5]
+			},
+			{
+				"pos": [1935.9, 21.9, 3090.2],
+				"cross": {
+					"connectiveRoads": [71]
+				}
+			}
+		]
+	},
+	{
+		"num": 71,
+		"name": "Dishley Hauptstr",
+		"points": [
+			{
+				"pos": [1935.9, 21.9, 3090.2],
+				"cross": {
+					"connectiveRoads": [70]
+				}
+			},
+			{
+				"pos": [1910.9, 21.8, 3074.2]
+			},
+			{
+				"pos": [1896.2, 21.9, 3059.7]
+			},
+			{
+				"pos": [1882.9, 22.0, 3033.3]
+			},
+			{
+				"pos": [1882.9, 22.0, 3031.4]
+			},
+			{
+				"pos": [1871.8, 21.3, 3023.4]
+			},
+			{
+				"pos": [1853.8, 20.4, 3007.1]
+			},
+			{
+				"pos": [1846.7, 19.3, 2993.0],
+				"cross": {
+					"connectiveRoads": [72]
+				}
+			}
+		]
+	},
+	{
+		"num": 72,
+		"name": "Dishley-Ramelow Waldstr",
+		"points": [
+			{
+				"pos": [1846.7, 19.3, 2993.0],
+				"cross": {
+					"connectiveRoads": [71]
+				}
+			},
+			{
+				"pos": [1846.2, 18.3, 2974.0]
+			},
+			{
+				"pos": [1849.4, 17.9, 2961.0]
+			},
+			{
+				"pos": [1862.3, 15.9, 2940.8]
+			},
+			{
+				"pos": [1872.3, 13.8, 2925.0],
+				"bridge": true
+			},
+			{
+				"pos": [1872.3, 13.8, 2925.0],
+				"bridge": true
+			},
+			{
+				"pos": [1883.2, 14.6, 2907.3]
+			},
+			{
+				"pos": [1885.6, 16.2, 2894.9]
+			},
+			{
+				"pos": [1882.0, 16.8, 2882.3]
+			},
+			{
+				"pos": [1874.9, 17.7, 2855.5],
+				"cross": {
+					"connectiveRoads": [73, 74]
+				}
+			}
+		]
+	},
+	{
+		"num": 73,
+		"name": "Ramelow F.-Bachert Str Central",
+		"points": [
+			{
+				"pos": [1874.9, 17.7, 2855.5],
+				"cross": {
+					"connectiveRoads": [72, 74]
+				}
+			},
+			{
+				"pos": [1857.7, 17.6, 2854.6]
+			},
+			{
+				"pos": [1847.6, 17.8, 2845.5]
+			},
+			{
+				"pos": [1834.1, 17.8, 2821.5]
+			},
+			{
+				"pos": [1826.1, 17.0, 2804.3]
+			}
+		]
+	},
+	{
+		"num": 74,
+		"name": "Ramelow F.-Bachert Str Eastwards",
+		"points": [
+			{
+				"pos": [1874.9, 17.7, 2855.5],
+				"cross": {
+					"connectiveRoads": [72, 73]
+				}
+			},
+			{
+				"pos": [1925.2, 17.6, 2868.3]
+			},
+			{
+				"pos": [1938.0, 16.7, 2876.3]
+			},
+			{
+				"pos": [1948.7, 16.7, 2885.2]
+			},
+			{
+				"pos": [1958.4, 16.6, 2886.0]
 			}
 		]
 	}
