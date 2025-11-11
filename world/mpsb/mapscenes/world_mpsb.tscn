@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=187 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -563,10 +563,10 @@ point_count = 7
 
 [sub_resource type="Curve3D" id="Curve3D_lidr3"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1082.5, 12.2, 1321.2, 0, 0, 0, 0, 0, 0, 1076.9, 12.3, 1303.8, 0, 0, 0, 0, 0, 0, 1062.2, 12, 1281.5, 0, 0, 0, 0, 0, 0, 1040.8, 12, 1265.6, 0, 0, 0, 0, 0, 0, 1016.1, 11.8, 1258.8),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1082.5, 12.2, 1321.2, 0, 0, 0, 0, 0, 0, 1076.9, 12.3, 1303.8, 0, 0, 0, 0, 0, 0, 1052.3, 11.9, 1274),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 5
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_k6b7d"]
 _data = {
@@ -952,6 +952,76 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_dixvn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2099.5, 12.3, 3130.8, 0, 0, 0, 0, 0, 0, 2079.6, 12.3, 3130.1, 0, 0, 0, 0, 0, 0, 2069.9, 13.5, 3130.4, 0, 0, 0, 0, 0, 0, 2062.1, 15, 3130.2, 0, 0, 0, 0, 0, 0, 2041.8, 15.1, 3129.4),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_00a3a"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2041.8, 15.1, 3129.4, 0, 0, 0, 0, 0, 0, 2024.9, 16.2, 3127.4, 0, 0, 0, 0, 0, 0, 2000.2, 18.5, 3122.5, 0, 0, 0, 0, 0, 0, 1985.1, 20, 3117.7, 0, 0, 0, 0, 0, 0, 1971.2, 21.5, 3112.1, 0, 0, 0, 0, 0, 0, 1956.5, 21.9, 3103.5, 0, 0, 0, 0, 0, 0, 1935.9, 21.9, 3090.2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_iwf62"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1935.9, 21.9, 3090.2, 0, 0, 0, 0, 0, 0, 1910.9, 21.8, 3074.2, 0, 0, 0, 0, 0, 0, 1896.2, 21.9, 3059.7, 0, 0, 0, 0, 0, 0, 1882.9, 22, 3033.3, 0, 0, 0, 0, 0, 0, 1882.9, 22, 3031.4, 0, 0, 0, 0, 0, 0, 1871.8, 21.3, 3023.4, 0, 0, 0, 0, 0, 0, 1853.8, 20.4, 3007.1, 0, 0, 0, 0, 0, 0, 1846.7, 19.3, 2993),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_510mg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1846.7, 19.3, 2993, 0, 0, 0, 0, 0, 0, 1846.2, 18.3, 2974, 0, 0, 0, 0, 0, 0, 1849.4, 17.9, 2961, 0, 0, 0, 0, 0, 0, 1862.3, 15.9, 2940.8, 0, 0, 0, 0, 0, 0, 1872.3, 13.8, 2925, 0, 0, 0, 0, 0, 0, 1872.3, 13.8, 2925, 0, 0, 0, 0, 0, 0, 1883.2, 14.6, 2907.3, 0, 0, 0, 0, 0, 0, 1885.6, 16.2, 2894.9, 0, 0, 0, 0, 0, 0, 1882, 16.8, 2882.3, 0, 0, 0, 0, 0, 0, 1874.9, 17.7, 2855.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_ffk7l"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1874.9, 17.7, 2855.5, 0, 0, 0, 0, 0, 0, 1857.7, 17.6, 2854.6, 0, 0, 0, 0, 0, 0, 1847.6, 17.8, 2845.5, 0, 0, 0, 0, 0, 0, 1834.1, 17.8, 2821.5, 0, 0, 0, 0, 0, 0, 1826.1, 17, 2804.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_qfmbx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1874.9, 17.7, 2855.5, 0, 0, 0, 0, 0, 0, 1925.2, 17.6, 2868.3, 0, 0, 0, 0, 0, 0, 1938, 16.7, 2876.3, 0, 0, 0, 0, 0, 0, 1948.7, 16.7, 2885.2, 0, 0, 0, 0, 0, 0, 1958.4, 16.6, 2886),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_renrm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1052.3, 11.9, 1274, 0, 0, 0, 0, 0, 0, 1040.8, 12, 1265.6, 0, 0, 0, 0, 0, 0, 1016.1, 11.8, 1258.8, 0, 0, 0, 0, 0, 0, 1002.5, 12.5, 1261.7, 0, 0, 0, 0, 0, 0, 987.9, 12.7, 1267.9, 0, 0, 0, 0, 0, 0, 977.7, 12.5, 1283.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_fxmr3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1031.8, 12.5, 1307.3, 0, 0, 0, 0, 0, 0, 1041.3, 12.3, 1292.9),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_cyida"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1031.8, 12.5, 1307.3, 0, 0, 0, 0, 0, 0, 1012.1, 12.5, 1298.9, 0, 0, 0, 0, 0, 0, 991.9, 12.6, 1290.6, 0, 0, 0, 0, 0, 0, 977.7, 12.5, 1283.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_qcmki"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1031.8, 12.5, 1307.3, 0, 0, 0, 0, 0, 0, 1023.7, 12.6, 1320.9, 0, 0, 0, 0, 0, 0, 1017.1, 12.8, 1335.3),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -2160,32 +2230,32 @@ metadata/name = "L31 Dennin-Spantekow South"
 [node name="Editor_Road33" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_hitby")
 metadata/road_num = 33
-metadata/name = "Anklam Schwanbeker Chausee Bridge"
+metadata/name = "Friedland Schwanbeker Chausee Bridge"
 
 [node name="Editor_Road34" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_0p828")
 metadata/road_num = 34
-metadata/name = "Anklam Riemannstr Gate"
+metadata/name = "Friedland Riemannstr Gate"
 
 [node name="Editor_Road35" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_ryrn8")
 metadata/road_num = 35
-metadata/name = "Anklam Riemannstr Church"
+metadata/name = "Friedland Riemannstr Church"
 
 [node name="Editor_Road36" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_nwh4d")
 metadata/road_num = 36
-metadata/name = "Anklam Riemannstr Church Cross"
+metadata/name = "Friedland Riemannstr Church Cross"
 
 [node name="Editor_Road37" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_nisqk")
 metadata/road_num = 37
-metadata/name = "Anklam Ringstr South"
+metadata/name = "Friedland Ringstr South"
 
 [node name="Editor_Road38" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_2dus3")
 metadata/road_num = 38
-metadata/name = "Anklam Ringstr North"
+metadata/name = "Friedland Ringstr North"
 
 [node name="Editor_Road39" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_wm230")
@@ -2336,6 +2406,56 @@ metadata/name = "Anklam Am Hafen"
 curve = SubResource("Curve3D_o20vd")
 metadata/road_num = 68
 metadata/name = "Anklam Peene Bridge"
+
+[node name="Editor_Road69" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_dixvn")
+metadata/road_num = 69
+metadata/name = "Friedland Schwanbecker Str Kleinbahn"
+
+[node name="Editor_Road70" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_00a3a")
+metadata/road_num = 70
+metadata/name = "Friedland Schwanbecker Str Uphill"
+
+[node name="Editor_Road71" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_iwf62")
+metadata/road_num = 71
+metadata/name = "Dishley Hauptstr"
+
+[node name="Editor_Road72" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_510mg")
+metadata/road_num = 72
+metadata/name = "Dishley-Ramelow Waldstr"
+
+[node name="Editor_Road73" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ffk7l")
+metadata/road_num = 73
+metadata/name = "Ramelow F.-Bachert Str Central"
+
+[node name="Editor_Road74" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_qfmbx")
+metadata/road_num = 74
+metadata/name = "Ramelow F.-Bachert Str Eastwards"
+
+[node name="Editor_Road75" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_renrm")
+metadata/road_num = 75
+metadata/name = "Jarmen Harbourside"
+
+[node name="Editor_Road76" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_fxmr3")
+metadata/road_num = 76
+metadata/name = "Jarmen Neuer Markt N"
+
+[node name="Editor_Road77" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_cyida")
+metadata/road_num = 77
+metadata/name = "Jarmen Fabrikstr"
+
+[node name="Editor_Road78" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_qcmki")
+metadata/road_num = 78
+metadata/name = "Jarmen Neuer Markt S"
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 616.6228, 22.617773, 522.90295)

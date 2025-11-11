@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_7yi3v"]
 script = ExtResource("3_icu33")
 town_name = "Jarmen"
-pos_xz = Vector2(1005, 1296)
+pos_xz = Vector2(1005, 1313.7)
 autogenerate_houses = false
 num = 1
 type = 5
@@ -292,6 +292,7 @@ script = ExtResource("1_agjpo")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 
 [node name="TownCenter_Jarmen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 12.37, 1313.684)
 town = SubResource("Resource_7yi3v")
 
 [node name="TownCenter_Altentreptow-Mühlenhagen" parent="." instance=ExtResource("1_xyttb")]
