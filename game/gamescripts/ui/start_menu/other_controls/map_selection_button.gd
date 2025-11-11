@@ -7,6 +7,13 @@ signal pressed(map_key: String)
 	set(value):
 		map_data = value
 		%MapNameLabel.text = map_data.name
+		self._load_preview_pic()
+		
+func _load_preview_pic():
+	var preview_path: String = self.map_data.get_preview_image_path()
+	var img: Image = Image.load_from_file(preview_path)
+	var texture = ImageTexture.create_from_image(img)
+	%PreviewImg.texture = texture
 
 func _gui_input(event: InputEvent) -> void:
 	if ! self.map_data: return
