@@ -18,10 +18,7 @@
 			{
 				"pos": [2056.7, 15.2, 3142.1],
 				"station": {
-					"townName": "Friedland",
-					"townNum": 3,
-					"name": "Kleinbhf",
-					"stationType": "STATION_PASS"
+					"num": 1
 				}
 			},
 			{
@@ -151,11 +148,7 @@
 			{
 				"pos": [1830.8, 17.7, 2834.3],
 				"station": {
-					"townName": "Ramelow",
-					"townNum": 5,
-					"name": "Ort",
-					"hideBuilding": true,
-					"stationType": "STATION_PASS"
+					"num": 2
 				}
 			},
 			{
@@ -231,10 +224,7 @@
 			{
 				"pos": [1703.3, 16.5, 2637.2],
 				"station": {
-					"townName": "Rebelow",
-					"townNum": 24,
-					"name": "Ort",
-					"stationType": "STATION_PASS"
+					"num": 3
 				}
 			},
 			{
@@ -320,10 +310,7 @@
 			{
 				"pos": [1739.1, 13.1, 2273.3],
 				"station": {
-					"townName": "Wegezin-Dennin",
-					"townNum": 11,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 4
 				}
 			},
 			{
@@ -359,10 +346,7 @@
 			{
 				"pos": [1640.2, 13.5, 2036.6],
 				"station": {
-					"townName": "Krien",
-					"townNum": 12,
-					"name": "Ort",
-					"stationType": "STATION_PASS"
+					"num": 5
 				}
 			},
 			{
@@ -806,10 +790,7 @@
 			{
 				"pos": [2098.3, 13.0, 1978.7],
 				"station": {
-					"townName": "Medow",
-					"townNum": 22		,
-					"name": "Dorf",
-					"stationType": "STATION_PASS"
+					"num": 6
 				}
 			},
 			{
@@ -916,10 +897,7 @@
 			{
 				"pos": [1419.3, 11.0, 1242.3],
 				"station": {
-					"townName": "Gützkow",
-					"townNum": 10,
-					"name": "Ferry",
-					"stationType": "STATION_PASS"
+					"num": 7
 				}
 			},
 			{
@@ -1204,10 +1182,7 @@
 			{
 				"pos": [1056.0, 11.1, 1247.2],
 				"station": {
-					"townName": "Jarmen",
-					"townNum": 1,
-					"name": "Hafenbhf",
-					"stationType": "STATION_PASS"
+					"num": 8
 				}
 			},
 			{
@@ -1296,10 +1271,7 @@
 			{
 				"pos": [1544.3, 17.8, 871.0],
 				"station": {
-					"townName": "Dargezin",
-					"townNum": 30,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 9
 				}
 			},
 			{
@@ -1529,10 +1501,7 @@
 			{
 				"pos": [2005.3, 22.0, 744.5],
 				"station": {
-					"townName": "Züssow",
-					"townNum": 30,
-					"name": "Kleinbhf",
-					"stationType": "STATION_PASS"
+					"num": 10
 				}
 			},
 			{
@@ -1621,10 +1590,7 @@
 			{
 				"pos": [2495.3, 12.4, 2040.5],
 				"station": {
-					"townName": "Blesewitz",
-					"townNum": 17,
-					"name": "Ort",
-					"stationType": "STATION_PASS"
+					"num": 11
 				}
 			},
 			{
@@ -1807,10 +1773,7 @@
 			{
 				"pos": [2918.9, 11.4, 1771.1],
 				"station": {
-					"townName": "Anklam",
-					"townNum": 32,
-					"name": "Kleinbhf (MPSB)",
-					"stationType": "STATION_PASS"
+					"num": 12
 				}
 			},
 			{
@@ -1885,10 +1848,7 @@
 			{
 				"pos": [2801.2, 11.4, 1692.8],
 				"station": {
-					"townName": "Anklam",
-					"townNum": 32,
-					"name": "Harbour (MPSB)",
-					"stationType": "STATION_PASS"
+					"num": 13
 				}
 			},
 			{

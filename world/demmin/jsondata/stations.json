@@ -1,0 +1,51 @@
+[
+	{
+		"num": 1,
+        "name": "Ort",
+		"townNum": 1,
+		"type": "STATION_PASS",
+        "townName": "Drechow"
+	},
+    {
+		"num": 2,
+        "name": "Stadt",
+		"townNum": 0,
+		"type": "STATION_PASS",
+        "townName": "Tribsees"
+	},
+    {
+		"num": 3,
+        "name": "Land",
+		"townNum": 2,
+		"type": "STATION_PASS",
+        "townName": "Zarrentin"
+	},
+    {
+		"num": 4,
+        "name": "Ort",
+		"townNum": 7,
+		"type": "STATION_PASS",
+        "townName": "Glewitz"
+	},
+    {
+		"num": 5,
+        "name": "Ort",
+		"townNum": 4,
+		"type": "STATION_PASS",
+        "townName": "Hohenbarnekow"
+	},
+    {
+		"num": 6,
+        "name": "HBF",
+		"townNum": 10,
+		"type": "STATION_PASS",
+        "townName": "Demmin"
+	},
+    {
+		"num": 7,
+        "name": "HBF",
+		"townNum": 11,
+		"type": "STATION_PASS",
+        "townName": "Grimmen"
+	}
+]

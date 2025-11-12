@@ -1,0 +1,123 @@
+[
+	{
+		"num": 1,
+		"name": "HBF",
+		"townNum": 0,
+		"type": "STATION_PASS",
+		"townName": "Wernigerode",
+		"hideBuilding": true
+	},
+	{
+		"num": 2,
+		"name": "Neustadt",
+		"townNum": 0,
+		"type": "STATION_PASS",
+		"townName": "Wernigerode"
+	},
+	{
+		"num": 3,
+		"name": "Bhf",
+		"townNum": 16,
+		"type": "STATION_PASS",
+		"townName": "Darlingerode"
+	},
+	{
+		"num": 4,
+		"name": "HBF",
+		"townNum": 2,
+		"type": "STATION_PASS",
+		"townName": "Ilsenburg"
+	},
+	{
+		"num": 5,
+		"name": "Bhf",
+		"townNum": 7,
+		"type": "STATION_PASS",
+		"townName": "Rübeland"
+	},
+	{
+		"num": 6,
+		"name": "Kleiner Stein",
+		"townNum": 7,
+		"type": "STATION_GOODS",
+		"townName": "Rübeland",
+		"hideBuilding": true
+	},
+	{
+		"num": 7,
+		"name": "Bhf",
+		"townNum": 8,
+		"type": "STATION_PASS",
+		"townName": "Drei-Annen-Hohne"
+	},
+	{
+		"num": 8,
+		"name": "Bhf",
+		"townNum": 14,
+		"type": "STATION_PASS",
+		"townName": "Hasserode"
+	},
+	{
+		"num": 9,
+		"name": "Hochschule",
+		"townNum": 14,
+		"type": "STATION_PASS",
+		"townName": "Hasserode"
+	},
+	{
+		"num": 10,
+		"name": "Ort",
+		"townNum": 4,
+		"type": "STATION_PASS",
+		"townName": "Elend",
+	},
+	{
+		"num": 11,
+		"name": "Ort",
+		"townNum": 9,
+		"type": "STATION_PASS",
+		"townName": "Schierke",
+	},
+	{
+		"num": 12,
+		"name": "Brewery",
+		"townNum": 14,
+		"type": "STATION_GOODS",
+		"townName": "Hasserode",
+	},
+	{
+		"num": 13,
+		"name": "Bhf",
+		"townNum": 6,
+		"type": "STATION_PASS",
+		"townName": "Elbingerode",
+	},
+	{
+		"num": 14,
+		"name": "Bhf",
+		"townNum": 11,
+		"type": "STATION_PASS",
+		"townName": "Heudeber",
+	},
+	{
+		"num": 15,
+		"name": "HBF",
+		"townNum": 1,
+		"type": "STATION_PASS",
+		"townName": "Braunlage",
+	},
+	{
+		"num": 16,
+		"name": "Wurmberg",
+		"townNum": 1,
+		"type": "STATION_PASS",
+		"townName": "Braunlage",
+	},
+	{
+		"num": 17,
+		"name": "Peak",
+		"townNum": 1,
+		"type": "STATION_PASS",
+		"townName": "Brocken",
+	},
+]

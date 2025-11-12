@@ -1,0 +1,93 @@
+[
+	{
+		"num": 1,
+		"name": "MPSB",
+		"townNum": 3,
+		"type": "STATION_PASS",
+		"townName": "Friedland"
+	},
+	{
+		"num": 2,
+		"name": "Ort",
+		"townNum": 5,
+		"type": "STATION_PASS",
+		"townName": "Ramelow"
+	},
+	{
+		"num": 3,
+		"name": "Land",
+		"townNum": 24,
+		"type": "STATION_PASS",
+		"townName": "Rebelow"
+	},
+	{
+		"num": 4,
+		"name": "Ort",
+		"townNum": 11,
+		"type": "STATION_PASS",
+		"townName": "Wegezin-Dennin"
+	},
+	{
+		"num": 5,
+		"name": "Ort",
+		"townNum": 12,
+		"type": "STATION_PASS",
+		"townName": "Krien"
+	},
+	{
+		"num": 6,
+		"name": "Dorf",
+		"townNum": 22,
+		"type": "STATION_PASS",
+		"townName": "Medow"
+	},
+	{
+		"num": 7,
+		"name": "Ort",
+		"townNum": 10,
+		"type": "STATION_PASS",
+		"townName": "Gützkow"
+	},
+	{
+		"num": 8,
+		"name": "Harbour",
+		"townNum": 1,
+		"type": "STATION_PASS",
+		"townName": "Jarmen"
+	},
+	{
+		"num": 9,
+		"name": "Ort",
+		"townNum": 30,
+		"type": "STATION_PASS",
+		"townName": "Dargezin"
+	},
+	{
+		"num": 10,
+		"name": "Kleinbhf",
+		"townNum": 10,
+		"type": "STATION_PASS",
+		"townName": "Züssow"
+	},
+	{
+		"num": 11,
+		"name": "Ort",
+		"townNum": 17,
+		"type": "STATION_PASS",
+		"townName": "Blesewitz"
+	},
+	{
+		"num": 12,
+		"name": "Kleinbhf (MPSB)",
+		"townNum": 23,
+		"type": "STATION_PASS",
+		"townName": "Anklam"
+	},
+	{
+		"num": 13,
+		"name": "Harbour (MPSB)",
+		"townNum": 17,
+		"type": "STATION_PASS",
+		"townName": "Anklam"
+	}
+]

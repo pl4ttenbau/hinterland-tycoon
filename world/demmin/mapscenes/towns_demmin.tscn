@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_qcsxq"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_tp0mh"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_1soj5"]
-[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_station.gd" id="4_ifr34"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="4_ifr34"]
 
 [sub_resource type="Resource" id="Resource_mwxu1"]
 script = ExtResource("3_1soj5")

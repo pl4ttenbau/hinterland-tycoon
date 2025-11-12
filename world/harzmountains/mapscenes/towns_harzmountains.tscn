@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddw12ptgw05tb"]
+[gd_scene load_steps=33 format=3 uid="uid://ddw12ptgw05tb"]
 
+[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/town/world_towns.gd" id="1_ftij8"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_tj431"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_ftij8"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_4bctd"]
-[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_station.gd" id="4_16jbh"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="4_16jbh"]
 
 [sub_resource type="Resource" id="Resource_sdbyp"]
 script = ExtResource("3_4bctd")
@@ -248,6 +249,8 @@ type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [node name="Towns" type="Node"]
+script = ExtResource("1_ftij8")
+metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 
 [node name="TownCenter_Wernigerode" parent="." instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3107, 5.60901, 1353)
