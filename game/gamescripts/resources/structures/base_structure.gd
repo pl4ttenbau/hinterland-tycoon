@@ -4,4 +4,4 @@ class_name BaseStructure extends GoodsInventory
 @export var bld_type: AbstractBldType
 @export var is_registered: bool = false
 
-@export_storage var connected_station: RailStationData
+@export_storage var connected_station: RailNodeStationData

@@ -4,7 +4,7 @@ class_name RailTrackData extends AbstractTrack
 @export var nodes: Array[RailNodeData] = []
 
 # child objects
-@export var stations: Array[RailStationData] = []
+@export var node_stations: Array[RailNodeStationData] = []
 @export var forks: Array[RailNodeForkData] = []
 
 ## global pos of the first rail node

@@ -7,6 +7,8 @@ class_name IndustryData extends GoodsInventory
 
 @export var station_connection: StationIndustryConnection
 
+static var _last_ind_num: int = 0
+
 #region Scene Callbacks
 func _init(_ind_type_str: String, _pos: Vector3):
 	super(Enums.EntityTypes.INDUSTRY)
@@ -15,8 +17,12 @@ func _init(_ind_type_str: String, _pos: Vector3):
 	self._autoregister()
 
 func _autoregister():
-	if !self.num: self.num = GlobalState.industries.size()
-	GlobalState.industries.append(self)
+	# assign num when not done before
+	if !self.num: 
+		IndustryData._last_ind_num += 1
+		self.num = IndustryData._last_ind_num
+	# add to storage & global state
+	Managers.industries.storage.add(self)
 #endregion
 
 func _get_ind_type_by_str(ind_type_key: String) -> IndustryType:
