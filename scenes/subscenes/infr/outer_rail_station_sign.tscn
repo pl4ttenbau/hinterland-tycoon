@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nx0xye5kd2gv"]
+[gd_scene load_steps=3 format=3 uid="uid://nx0xye5kd2gv"]
 
 [ext_resource type="Texture2D" uid="uid://n5ylbic5bdgi" path="res://assets/icons/icon_station.svg" id="1_62j3t"]
+[ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 8
@@ -8,16 +9,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -167.0
-offset_top = -71.0
-offset_right = 167.0
-offset_bottom = 71.0
+offset_left = -186.0
+offset_top = -48.5
+offset_right = 186.0
+offset_bottom = 48.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 7
 theme_override_constants/margin_right = 15
@@ -25,6 +28,7 @@ theme_override_constants/margin_bottom = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="StationIcon3D" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -47,6 +51,17 @@ text = "Ort"
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = ": "
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="StationIcon3D" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_hcpwm")
+stretch_mode = 4
 
 [node name="ResourceAmountLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

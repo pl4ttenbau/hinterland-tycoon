@@ -55,7 +55,7 @@ scaling_3d_scale = 2.0
 fsr_sharpness = 0.1
 gui_disable_input = true
 sdf_scale = 0
-size = Vector2i(600, 124)
+size = Vector2i(600, 100)
 size_2d_override_stretch = true
 
-[node name="PanelContainer" parent="SubViewport" instance=ExtResource("7_ytynf")]
+[node name="StationSignPanel" parent="SubViewport" instance=ExtResource("7_ytynf")]
