@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_house_white.png")
+@icon("res://assets/icons/icon_town_white.png")
 class_name WorldTowns extends Node
 
 @export var world_scene: TerrainContainer

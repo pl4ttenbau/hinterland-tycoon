@@ -16,7 +16,7 @@ static var MAX_INDUSTRY_DIST = 200
 func _enter_tree() -> void:
 	Managers.stations = self
 	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
-	SignalBus.industries_spawned.connect(Callable(self, "_on_industries_spawned"))
+	SignalBus.stations_loaded.connect(Callable(self, "_on_stations_loaded"))
 	
 #region Loading
 func load_stations():
@@ -45,10 +45,11 @@ func connect_node_stations():
 ## Station objects are created with the rail tracks, but instanciated one by one here
 func spawn_stations():
 	Loggie.info("Spawning stations..")
-	for station_obj: RailNodeStationData in GlobalState.node_stations:
-		# var outer_station := self.spawn_station(station_obj)
-		# outer_station.adjust_rotation_from_track()
-		pass
+	for track: RailTrackData in Managers.rails.track_storage.get_all():
+		for rail_node_station: RailNodeStationData in track.node_stations:
+			var outer_station := self.spawn_station(rail_node_station)
+			self.add_child(outer_station, true)
+			outer_station.adjust_rotation_from_track()
 	#self.connect_industries()
 	SignalBus.stations_spawned.emit()
 	
@@ -88,7 +89,7 @@ func spawn_rnd_passenger():
 #endregion
 	
 #region Callbacks
-func _on_industries_spawned() -> void:
+func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
 	self.spawn_stations()
 	
 func _on_station_timer_tick():

@@ -13,6 +13,8 @@ class_name RailNodeStationData extends GameObject
 @export var track_num: int:
 	set(value): pass
 	get(): return self.parent_node.parent_track.num
+	
+@export_storage var station3d: OuterRailStation
 #endregion
 
 static var _last_station_num: int = 0
@@ -28,8 +30,8 @@ static func of(_rail_node: RailNodeData, _station_num: int) -> RailNodeStationDa
 	return instance
 	
 func spawn() -> OuterRailStation:
-	self.outer_node = OuterRailStation.of(self)
-	return self.outer_node
+	self.station3d = OuterRailStation.of(self)
+	return self.station3d
 
 #region Connections
 func connect_house(outer_res_bld: OuterResBld):

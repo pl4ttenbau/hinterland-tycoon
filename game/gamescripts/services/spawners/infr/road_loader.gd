@@ -48,5 +48,5 @@ func spawn_road(road: RoadData):
 func _on_world_spawned(_container: TerrainContainer):
 	spawn_roads()
 
-func _on_map_selected(selected_map: MapData):
+func _on_map_selected(_selected_map: MapData):
 	self.load_roads()
