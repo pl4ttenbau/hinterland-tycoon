@@ -59,3 +59,4 @@ size = Vector2i(600, 100)
 size_2d_override_stretch = true
 
 [node name="StationSignPanel" parent="SubViewport" instance=ExtResource("7_ytynf")]
+unique_name_in_owner = true

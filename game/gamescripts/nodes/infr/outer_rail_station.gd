@@ -11,6 +11,7 @@ const NINETY_DEG_IN_RAD = 1.57
 		self.position = value.position
 		self._update_station_name()
 
+#region Initialization
 func _enter_tree() -> void:
 	if self.node_station.parent_station:
 		var parent_station: RailStationData = self.node_station.parent_station
@@ -24,7 +25,9 @@ static func of(_node_station: RailNodeStationData) -> OuterRailStation:
 	var instanciated_container: OuterRailStation = prefab.instantiate()
 	instanciated_container.node_station = _node_station
 	return instanciated_container
-	
+#endregion
+
+#region Helper-Methods
 func adjust_rotation_from_track():
 	var track_node: RailNodeData = self.node_station.parent_node
 	var prev_node = self.get_parent_track_node_by_index(track_node.index -1)
@@ -35,13 +38,16 @@ func get_parent_track_node_by_index(_i: int) -> RailNodeData:
 	var track: RailTrackData = self.node_station.parent_node.parent_track
 	return track.get_rail_node(_i)
 	
+func _to_string() -> String:
+	return "OuterStation-%s@%s" % [self.station_name, self.town_name]
+#endregion
+
+#region Callbacks & Triggers
 func _on_resource_change():
 	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
-	%ResourceAmountLabel.text = str(passengers_amount)
+	%StationSignPanel.res_amount = str(passengers_amount)
 	
 func _update_station_name():
 	if self.node_station && self.node_station.parent_station:
-		%StationNameLabel.text = self.node_station.parent_station.town_name
-	
-func _to_string() -> String:
-	return "OuterStation-%s@%s" % [self.station_name, self.town_name]
+		%StationSignPanel.station_name = self.node_station.parent_station.town_name
+#endregion
