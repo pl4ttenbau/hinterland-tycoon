@@ -11,7 +11,3 @@ class_name StationSignPanel extends PanelContainer
 	set(value):
 		res_amount = value
 		%ResourceAmountLabel.text = value
-
-func _ready() -> void:
-	self.station_name_label = %StationNameLabel
-	self.res_amount_label = %ResourceAmountLabel

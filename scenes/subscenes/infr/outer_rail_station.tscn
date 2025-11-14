@@ -18,7 +18,7 @@ normal_texture = ExtResource("3_ytynf")
 rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_65b5o"]
-size = Vector3(17, 1.3, 7)
+size = Vector3(16.579529, 1.826587, 6.1153564)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
 viewport_path = NodePath("SubViewport")
@@ -40,11 +40,13 @@ script = ExtResource("6_gpfkj")
 metadata/_custom_type_script = "uid://bjj02tduewuut"
 
 [node name="StationShape3D" type="CollisionShape3D" parent="StationBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.399999, 0.15, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98322046, -0.20379636, -6.442322)
 shape = SubResource("BoxShape3D_65b5o")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0120583, 20, 0)
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 pixel_size = 0.02
 billboard = 2
 texture = SubResource("ViewportTexture_ytynf")
