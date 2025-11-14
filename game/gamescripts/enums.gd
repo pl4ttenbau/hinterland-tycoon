@@ -5,6 +5,7 @@ enum EntityTypes {
 	RAIL,
 	ROAD,
 	DEPOT,
+	NODE_STATION,
 	STATION,
 	TOWN,
 	RESIDENCIAL,
@@ -13,4 +14,21 @@ enum EntityTypes {
 	GOOD,
 	DECO_STATIC,
 	DECO_SPLINE
+}
+
+enum InfrType {
+	RAIL,
+	ROAD,
+	WATER,
+	AIR,
+	STATIONARY
+}
+
+enum TownSize {
+	POI,
+	SETTLEMENT,
+	VILLAGE,
+	VILAGE_TOWN,
+	TOWN,
+	CITY
 }

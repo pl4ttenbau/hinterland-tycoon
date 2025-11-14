@@ -8,6 +8,7 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
 @export var fork_storage: RailForkStore = RailForkStore.new()
+@export var node_stations_storage: NodeStationStore = NodeStationStore.new()
 
 ## here we only store visible forks
 @export var visible_forks: Array[RailNodeForkData] = []
@@ -18,12 +19,10 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 func _enter_tree() -> void:
 	Managers.rails = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-	
-func _ready() -> void:
-	self.load_rail_tracks()
-	Loggie.info("rails precreated")
+	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
 
 func load_rail_tracks() -> void:
+	Loggie.info("Loading rail track from json..")
 	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
@@ -75,4 +74,7 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 #region Event Listeners
 func _on_map_spawned(_container: TerrainContainer):
 	self.spawn_rails()
+	
+func _on_map_selected(_selected_map: MapData):
+	self.load_rail_tracks()
 #endregion

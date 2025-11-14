@@ -7,7 +7,7 @@ class_name RailNodeData extends BasicInfrNodeData
 	get(): return parent_track
 
 @export var fork: RailNodeForkData
-@export var station: RailStationData
+@export var station: RailNodeStationData
 @export var is_end: bool = false
 
 static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeData:
@@ -25,13 +25,13 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		self.fork = RailNodeForkData.of_dict(fork_dict, self)
 	if rail_node_dict.has("station"):
 		var station_dict: Dictionary = rail_node_dict.get("station")
-		self.add_station(RailStationData.of_station_dict(station_dict, self))
+		self.add_node_station(RailNodeStationData.of_station_dict(station_dict, self))
 	
-func add_station(_station: RailStationData):
+func add_node_station(_station: RailNodeStationData):
 	self.station = _station
 	# add to track & global station list
-	self.parent_track.stations.append(_station)
-	GlobalState.stations.append(_station)
+	self.parent_track.node_stations.append(_station)
+	Managers.rails.node_stations_storage.add(_station)
 	
 func as_ref() -> RailNodeRef:
 	var track_num: int = self.parent_track.num

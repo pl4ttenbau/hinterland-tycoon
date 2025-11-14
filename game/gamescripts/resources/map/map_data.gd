@@ -31,3 +31,6 @@ static func of_dict(_dict: Dictionary) -> MapData:
 
 func get_scene_file_path() -> String:
 	return MAPS_FOLDER + self.key + "/mapscenes/" + "world_" + self.key + ".tscn"
+	
+func get_preview_image_path() -> String:
+	return MAPS_FOLDER + self.key + "/preview.png"

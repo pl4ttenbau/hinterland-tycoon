@@ -4,6 +4,7 @@ class_name IndustrySpawner extends Node
 const INDUSTRIES_PATH_TEMPLATE = "res://world/%s/jsondata/industries.json"
 
 @export_storage var ind_placeholder_parent: WorldIndustries
+@export var storage: IndustryStore = IndustryStore.new()
 
 func _enter_tree() -> void:
 	Managers.industries = self

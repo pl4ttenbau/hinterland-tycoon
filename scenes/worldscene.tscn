@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map/map_spawner.gd" id="16_ekgs8"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="16_mg4js"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="17_c2xmk"]
-[ext_resource type="PackedScene" uid="uid://bh5tt5ioftmq3" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="18_u6qkf"]
+[ext_resource type="PackedScene" uid="uid://4vshk56t46ml" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="18_u6qkf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_mg4js"]
 [ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="19_tyqvd"]
 [ext_resource type="Script" uid="uid://xrq8d2iqxk0u" path="res://game/gamescripts/nodes/common/feature_mock_container.gd" id="22_8tr36"]

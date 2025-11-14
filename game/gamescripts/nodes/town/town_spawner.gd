@@ -15,7 +15,7 @@ func _ready() -> void:
 	self._on_town_center_spawned(self.town)
 	
 func spawn_rnd_building():
-	var rnd_bld_type: ResBldType = GameTypes.get_rnd_res_bld()
+	var rnd_bld_type: ResBldType = GameTypes.get_rnd_placable_res_bld()
 	var scene_path: String = rnd_bld_type.get_scene_path()
 	var packed_scene: PackedScene = load(scene_path)
 	var instanciated: OuterResBld = packed_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)

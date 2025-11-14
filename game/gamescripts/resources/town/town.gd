@@ -23,7 +23,7 @@ signal town_name_changed(new_name: String)
 @export_storage var totalPops: int
 
 @export_storage var res_bld_containers: Array[OuterResBld] = []
-@export_storage var stations: Array[RailStationData] = []
+@export_storage var stations: Array[RailNodeStationData] = []
 @export_storage var station_blds_assigned: bool = false
 #endregion
 
@@ -68,7 +68,7 @@ func has_bld_around(check_pos: Vector3) -> bool:
 #endregion
 
 #region Stations
-func connect_new_station(station: RailStationData):
+func connect_new_station(station: AbstractStation):
 	self.stations.append(station)
 	self.reassign_buildings_to_stations()
 	
@@ -79,10 +79,10 @@ func reassign_buildings_to_stations():
 		if closest_station_obj:
 			res_bld_container.res_bld.connected_station = closest_station_obj
 			
-func find_closest_station_to_bld(res_bld: OuterResBld) -> RailStationData:
-	var closest_station_obj: RailStationData
+func find_closest_station_to_bld(res_bld: OuterResBld) -> RailNodeStationData:
+	var closest_station_obj: RailNodeStationData
 	var closest_station_distance: float = 9999
-	for station: RailStationData in self.stations:
+	for station: RailNodeStationData in self.stations:
 		var dist = res_bld.global_position.distance_to(station.position)
 		if dist < closest_station_distance:
 			closest_station_distance = dist

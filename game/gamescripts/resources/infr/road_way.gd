@@ -5,6 +5,8 @@ class_name RoadData extends AbstractTrack
 @export var nodes: Array[RoadNode] = []
 @export_storage var crosses: Array[RoadCross] = []
 
+@export var start_pos: Vector3
+
 @warning_ignore("unused_signal")
 signal created(track: RoadData)
 
@@ -24,10 +26,10 @@ func spawn() -> OuterRoad:
 	if ! self.curve: self.build_path()
 	# instanciate Container from PackedScene
 	var scene: Resource = load(self.get_type_scene())
-	var _container: OuterRoad = scene.instantiate() as OuterRoad
-	_container.road = self
+	var outer_road: OuterRoad = scene.instantiate() as OuterRoad
+	outer_road.road = self
 	# add_to_group("Roads")
-	return _container
+	return outer_road
 		
 func get_type_scene() -> String:
 	if self.infr_type_key == "rural_road":
@@ -47,3 +49,10 @@ func get_road_node(_i: int) -> RoadNode:
 
 func _to_string() -> String:
 	return "RoadWay_%d" % self.num
+	
+func build_path() -> void:
+	# if self.curve: return
+	self.curve = Curve3D.new()
+	self.curve.up_vector_enabled = true
+	for road_node: RoadNode in self.nodes:
+		self.curve.add_point(road_node.rel_position)

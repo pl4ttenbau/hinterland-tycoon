@@ -1,53 +1,50 @@
-@icon("res://assets/icons/icon_road_white.png")
-class_name RoadStore extends Resource
+@icon("res://assets/icons/icon_industry_white.png")
+class_name IndustryStore extends Resource
 
-@export var _list: Array[RoadData] = []
+@export var _list: Array[IndustryData] = []
 @export var _by_id: Dictionary = {}
 
-@export_storage var _containers: Array[OuterRoad] = []
+@export_storage var _containers: Array[OuterIndustry] = []
 @export_storage var _containers_by_id: Dictionary = {}
 
-signal road_added(road_obj: RoadData)
+signal industry_added(ind_obj: IndustryData)
 	
 func _enter_tree() -> void:
-	self.road_added.connect(Callable(self, "_on_road_loaded"))
+	self.industry_added.connect(Callable(self, "_on_industry_loaded"))
 
-#region Add road
-func add(road_obj: RoadData):
-	self._list.append(road_obj)
-	self._create_indexes(road_obj)
-	self.road_added.emit(road_obj)
+#region Add Industry
+func add(ind_obj: IndustryData):
+	self._list.append(ind_obj)
+	self._create_indexes(ind_obj)
+	self.industry_added.emit(ind_obj)
 	
-func add_container(outer_road: OuterRoad):
-	self._containers.append(outer_road)
-	self._containers_by_id.set(outer_road.road.num, outer_road)
+func add_container(outer_ind: OuterIndustry):
+	self._containers.append(outer_ind)
+	self._containers_by_id.set(outer_ind.industry.num, outer_ind)
 	
-func _create_indexes(road_obj: RoadData):
-	self._by_id.set(road_obj.num, road_obj)
+func _create_indexes(ind_obj: IndustryData):
+	self._by_id.set(ind_obj.num, ind_obj)
 #endregion
 
-#region Get Rail roads
-func get_all() -> Array[RoadData]:
+#region Get Rail industry
+func get_all() -> Array[IndustryData]:
 	return self._list
 
-func get_by_num(road_num: int) -> RoadData:
-	var found: RoadData =  self._by_id.get(road_num)
-	if ! found: Loggie.error("Cannot get road %d; out of index?" % road_num)
+func get_by_num(ind_num: int) -> IndustryData:
+	var found: IndustryData =  self._by_id.get(ind_num)
+	if ! found: Loggie.error("Cannot get industry %d; out of index?" % ind_num)
 	return found
 	
-func get_by_name(road_name: StringName) -> RoadData:
-	return self._by_name.get(road_name)
-	
-func get_containers() -> Array[OuterRoad]:
+func get_containers() -> Array[OuterIndustry]:
 	return self._containers
 	
-func get_container_by_num(road_num: int) -> OuterRoad:
-	var found: OuterRoad = self._containers_by_id.get(road_num, null)
-	if ! found: Loggie.error("Cannot get OuterRoad %d; out of index?" % road_num)
+func get_container_by_num(ind_num: int) -> OuterIndustry:
+	var found: OuterIndustry = self._containers_by_id.get(ind_num, null)
+	if ! found: Loggie.error("Cannot get OuterIndustry %d; out of index?" % ind_num)
 	return found
 #endregion
 
 #region Callbacks & Helpers 
-func _on_road_loaded(road_obj: RoadData):
-	GlobalState.roads.append(road_obj)
+func _on_industry_loaded(ind_obj: IndustryData):
+	GlobalState.industries.append(ind_obj)
 #endregion

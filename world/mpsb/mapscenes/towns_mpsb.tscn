@@ -4,20 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_icu33"]
-[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_station.gd" id="4_n5hqh"]
-
-[sub_resource type="Resource" id="Resource_2yqys"]
-script = ExtResource("3_icu33")
-town_name = "Anklam"
-pos_xz = Vector2(2781, 1735)
-num = 31
-type = 5
-metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="4_n5hqh"]
 
 [sub_resource type="Resource" id="Resource_7yi3v"]
 script = ExtResource("3_icu33")
 town_name = "Jarmen"
-pos_xz = Vector2(1005, 1296)
+pos_xz = Vector2(1005, 1313.7)
 autogenerate_houses = false
 num = 1
 type = 5
@@ -42,8 +34,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_my4h6"]
 script = ExtResource("3_icu33")
-town_name = "Dersekow"
-pos_xz = Vector2(669, 252)
+town_name = "Zastrow"
+pos_xz = Vector2(616.6, 522.9)
 is_minor = true
 num = 4
 type = 5
@@ -54,6 +46,7 @@ script = ExtResource("3_icu33")
 town_name = "Ramelow"
 pos_xz = Vector2(1859.2, 2832)
 is_minor = true
+autogenerate_houses = false
 num = 5
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -133,9 +126,10 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_hmqbw"]
 script = ExtResource("3_icu33")
-town_name = "Ziethen"
-pos_xz = Vector2(2768.1, 1397.7)
+town_name = "Ziethen-Relzow"
+pos_xz = Vector2(2835.3, 1410)
 is_minor = true
+autogenerate_houses = false
 num = 14
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -173,6 +167,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_icu33")
 town_name = "Züssow"
 pos_xz = Vector2(2068, 761.3)
+autogenerate_houses = false
 num = 18
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -283,15 +278,21 @@ num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_2yqys"]
+script = ExtResource("3_icu33")
+town_name = "Anklam"
+pos_xz = Vector2(2781, 1735)
+autogenerate_houses = false
+num = 32
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 script = ExtResource("1_agjpo")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 
-[node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
-town = SubResource("Resource_2yqys")
-
 [node name="TownCenter_Jarmen" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 12.37, 1313.684)
 town = SubResource("Resource_7yi3v")
 
 [node name="TownCenter_Altentreptow-Mühlenhagen" parent="." instance=ExtResource("1_xyttb")]
@@ -302,7 +303,8 @@ town = SubResource("Resource_naxkj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2160.5, 12.0384, 3251.5)
 town = SubResource("Resource_wa0ur")
 
-[node name="TownCenter_Dersekow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Zastrow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 616.6228, 22.617773, 522.90295)
 town = SubResource("Resource_my4h6")
 
 [node name="TownCenter_Ramelow" parent="." instance=ExtResource("1_xyttb")]
@@ -341,8 +343,8 @@ town = SubResource("Resource_iicsu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1352.9, 12.4481, 1597.5)
 town = SubResource("Resource_x6ynq")
 
-[node name="TownCenter_Ziethen" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.1, 11.6229, 1397.7)
+[node name="TownCenter_Ziethen-Relzow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2835.2832, 12.810767, 1409.9482)
 town = SubResource("Resource_hmqbw")
 
 [node name="TownCenter_Schmarsow" parent="." instance=ExtResource("1_xyttb")]
@@ -408,3 +410,7 @@ town = SubResource("Resource_n5hqh")
 [node name="TownCenter_Dargelin-Behrenhoff" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1063.2, 23.1, 469.4)
 town = SubResource("Resource_03w28")
+
+[node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
+town = SubResource("Resource_2yqys")

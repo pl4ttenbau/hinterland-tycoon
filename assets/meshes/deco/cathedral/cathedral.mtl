@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'cathedral.blend'
+# www.blender.org
+
+newmtl mat_cathedral
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_cathedral_d.png
+map_Ns tex_cathedral_r.png
+map_Bump -bm 1.000000 tex_cathedral_n.png

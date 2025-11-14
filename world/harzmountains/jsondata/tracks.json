@@ -18,11 +18,7 @@
 			{
 				"pos": [3168.1, 5.4, 1281.8],
 				"station": {
-					"townName": "Wernigerode",
-					"townNum": 0,
-					"name": "HBF",
-					"hideBuilding": true,
-					"stationType": "STATION_PASS"
+					"num": 1
 				}
 			},
 			{
@@ -34,10 +30,7 @@
 			{
 				"pos": [2867.4, 6.0, 1190.3],
 				"station": {
-					"townName": "Wernigerode",
-					"townNum": 25,
-					"name": "Neustadt",
-					"stationType": "STATION_PASS"
+					"num": 2
 				}
 			},
 			{
@@ -74,10 +67,7 @@
 			{
 				"pos": [2375.9, 9.0, 1200.2],
 				"station": {
-					"townName": "Darlingerode",
-					"townNum": 16,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 3
 				}
 			},
 			{
@@ -145,10 +135,7 @@
 			{
 				"pos": [1786.4, 9.0, 928.4],
 				"station": {
-					"townName": "Ilsenburg",
-					"townNum": 2,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 4
 				}
 			},
 			{
@@ -178,10 +165,7 @@
 			{
 				"pos": [3995.5, 22.3, 3109.4],
 				"station": {
-					"townName": "Rübeland",
-					"townNum": 7,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 5
 				}
 			},
 			{
@@ -230,10 +214,7 @@
 			{
 				"pos": [3759.6, 23.6, 3152.3],
 				"station": {
-					"townName": "Rübeland",
-					"townNum": 7,
-					"name": "Kleiner Stein",
-					"stationType": "STATION_GOODS"
+					"num": 6
 				}
 			},
 			{
@@ -309,10 +290,7 @@
 			{
 				"pos": [2503.2, 51.9, 2792.3],
 				"station": {
-					"townName": "Drei-Annen-Hohne",
-					"townNum": 8,
-					"name": "Kreuz",
-					"stationType": "STATION_PASS"
+					"num": 7
 				}
 			},
 			{
@@ -664,10 +642,7 @@
 			{
 				"pos": [2674.9, 8.7, 1765.8],
 				"station": {
-					"townName": "Hasserode",
-					"townNum": 14,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 8
 				}
 			},
 			{
@@ -691,10 +666,7 @@
 			{
 				"pos": [2950.2, 7.0, 1589.8],
 				"station": {
-					"townName": "Wernigerode",
-					"townNum": 14,
-					"name": "Hochschule",
-					"stationType": "STATION_PASS"
+					"num": 9
 				}
 			},
 			{
@@ -746,10 +718,7 @@
 			{
 				"pos": [3096.0, 5.5, 1292.7],
 				"station": {
-					"townName": "Wernigerode",
-					"townNum": 0,
-					"name": "Kleinbahnhof",
-					"stationType": "STATION_PASS"
+					"num": 1
 				}
 			},
 			{
@@ -783,10 +752,7 @@
 			{
 				"pos": [1919.9, 42.4, 3389.7],
 				"station": {
-					"townName": "Elend",
-					"townNum": 4,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 10
 				}
 			},
 			{
@@ -1286,10 +1252,7 @@
 			{
 				"pos": [1572.6, 115.9, 2803.1],
 				"station": {
-					"townName": "Schierke",
-					"townNum": 9,
-					"name": "Ort",
-					"stationType": "STATION_PASS"
+					"num": 11
 				}
 			},
 			{
@@ -1630,10 +1593,7 @@
 			{
 				"pos": [1004.3, 341.5, 2250.1],
 				"station": {
-					"townName": "Brocken",
-					"townNum": 10,
-					"name": "Spitze",
-					"stationType": "STATION_PASS"
+					"num": 17
 				}
 			},
 			{
@@ -1737,10 +1697,7 @@
 			{
 				"pos": [2674.1, 10.8, 1844.8],
 				"station": {
-					"townName": "Hasserode",
-					"townNum": 14,
-					"name": "Brauhaus",
-					"stationType": "STATION_PASS"
+					"num": 12
 				}
 			},
 			{
@@ -1896,10 +1853,7 @@
 			{
 				"pos": [3436.5, 34.9, 2821.6],
 				"station": {
-					"townName": "Elbingerode",
-					"townNum": 6,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 13
 				}
 			},
 			{
@@ -2006,10 +1960,7 @@
 			{
 				"pos": [3760.5, 3.8, 458.6],
 				"station": {
-					"townName": "Heudeber",
-					"townNum": 11,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 14
 				}
 			},	
 			{
@@ -2087,10 +2038,7 @@
 			{
 				"pos": [974.6, 56.0, 3930.5],
 				"station": {
-					"townName": "Braunlage",
-					"townNum": 1,
-					"name": "Bhf",
-					"stationType": "STATION_PASS"
+					"num": 15
 				}
 			},
 			{
@@ -2373,10 +2321,7 @@
 			{
 				"pos": [860.8, 75.5, 3459.6],
 				"station": {
-					"townName": "Braunlage",
-					"townNum": 1,
-					"name": "Wurmberg",
-					"stationType": "STATION_PASS"
+					"num": 16
 				}
 			},
 			{

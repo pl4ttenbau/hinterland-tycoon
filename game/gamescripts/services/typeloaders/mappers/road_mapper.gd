@@ -9,6 +9,9 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 		road_instance.track_name = _road_dict.get("name")
 	if _road_dict.has("offset"):
 		road_instance.offset = WorldUtils.vec3_from_float_arr(_road_dict.offset)
+	# start pos
+		var start_pos_arr =  _road_dict.points[0].pos
+		road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# road_instance.name = "RoadWay" + str(road_instance.num)
 	add_points_from_json(_road_dict, road_instance)
 	road_instance.created.emit(road_instance)
@@ -17,8 +20,9 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 	var node_index: int = 0
 	for rail_node_dict: Dictionary in _json_track.points:
-		var vec3: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
-		var road_node := RoadNode.of(node_index, vec3, _road)
+		var abs_node_pos: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
+		var road_node := RoadNode.of(node_index, abs_node_pos, _road)
+		road_node.rel_position = abs_node_pos - _road.start_pos
 		if rail_node_dict.has("cross"):
 			var road_cross := cross_from_dict_and_data(road_node, rail_node_dict.get("cross"))
 			# and add to road cross list

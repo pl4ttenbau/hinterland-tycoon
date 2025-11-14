@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_gears_white.png")
 extends Node
 
 #region Map & Terrain

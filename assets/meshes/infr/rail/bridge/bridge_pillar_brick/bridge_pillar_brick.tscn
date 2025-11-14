@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dib4on5rgw5g4"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsqo6deiroy8r" path="res://assets/meshes/infr/rail/bridge/bridge_pillar_brick/bridge_pillar_brick.obj" id="1_wt7ri"]
+
+[node name="BridgePillarBrick" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_wt7ri")

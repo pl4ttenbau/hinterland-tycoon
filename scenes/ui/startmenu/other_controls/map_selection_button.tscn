@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo3i1ysuhm323"]
+[gd_scene load_steps=3 format=3 uid="uid://bo3i1ysuhm323"]
 
 [ext_resource type="Script" uid="uid://yt1h813m0ct7" path="res://game/gamescripts/ui/start_menu/other_controls/map_selection_button.gd" id="1_31t4v"]
+[ext_resource type="Texture2D" uid="uid://4b2eylqkv3hn" path="res://world/default/preview.png" id="2_bufug"]
 
 [node name="MapSelectionButton" type="Container"]
 custom_minimum_size = Vector2(0, 128)
@@ -15,9 +16,12 @@ metadata/_custom_type_script = "uid://yt1h813m0ct7"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+[node name="PreviewImg" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+texture = ExtResource("2_bufug")
+expand_mode = 4
 
 [node name="Filler" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(18, 0)

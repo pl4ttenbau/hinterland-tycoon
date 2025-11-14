@@ -19,6 +19,13 @@ func get_rnd_res_bld() -> ResBldType:
 	var rnd_i: int = randi_range(0, self.res_bld_types.size() -1)
 	return self.res_bld_types.get(rnd_i)
 	
+func get_rnd_placable_res_bld() -> ResBldType:
+	for i in range(5):
+		var rnd_res_type: ResBldType = self.get_rnd_res_bld()
+		if rnd_res_type.block_auto_placement == false:
+			return rnd_res_type
+	return null
+
 func get_res_bld_type(_key: String) -> ResBldType:
 	for res_bld_type: ResBldType in self.res_bld_types:
 		if res_bld_type.key == _key: return res_bld_type

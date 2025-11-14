@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://nx0xye5kd2gv"]
+
+[ext_resource type="Texture2D" uid="uid://n5ylbic5bdgi" path="res://assets/icons/icon_station.svg" id="1_62j3t"]
+[ext_resource type="Script" uid="uid://dtnqsrt4d6dv2" path="res://game/gamescripts/nodes/infr/station_sign_panel.gd" id="1_xsmea"]
+[ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -48.5
+offset_right = 186.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_xsmea")
+metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="StationIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_62j3t")
+stretch_mode = 4
+
+[node name="StationNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Ort"
+
+[node name="DotSpaceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = ":"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ResourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_hcpwm")
+stretch_mode = 4
+
+[node name="ResourceAmountLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "0"

@@ -60,6 +60,9 @@ signal roads_spawned()
 
 #region Stations
 @warning_ignore("unused_signal")
+signal stations_loaded(station_objs: RailStationData)
+
+@warning_ignore("unused_signal")
 signal stations_spawned()
 #endregion
 
