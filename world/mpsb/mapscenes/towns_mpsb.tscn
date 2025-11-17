@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=39 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/town/world_towns.gd" id="1_agjpo"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
@@ -56,6 +56,7 @@ script = ExtResource("3_icu33")
 town_name = "Sarnow"
 pos_xz = Vector2(2568.5, 2656.5)
 is_minor = true
+autogenerate_houses = false
 num = 6
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -210,8 +211,8 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_u03sw"]
 script = ExtResource("3_icu33")
-town_name = "Stretense"
-pos_xz = Vector2(2681, 2315)
+town_name = "Rossin"
+pos_xz = Vector2(2969.9, 2461.4)
 is_minor = true
 num = 23
 type = 5
@@ -293,6 +294,15 @@ town_name = "Müggenburg"
 pos_xz = Vector2(2417.6, 2366.1)
 autogenerate_houses = false
 num = 33
+type = 6
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_u3yc0"]
+script = ExtResource("3_icu33")
+town_name = "Boldekow"
+pos_xz = Vector2(2411.5, 2903.8)
+autogenerate_houses = false
+num = 34
 type = 6
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -388,8 +398,8 @@ town = SubResource("Resource_ek2el")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.6, 13.041, 1919.5)
 town = SubResource("Resource_nnahk")
 
-[node name="TownCenter_Stretense" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2681, 12.2136, 2315)
+[node name="TownCenter_Rossin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2969.9219, 12.812617, 2461.3628)
 town = SubResource("Resource_u03sw")
 
 [node name="TownCenter_Rebelow-Japenzin" parent="." instance=ExtResource("1_xyttb")]
@@ -427,3 +437,7 @@ town = SubResource("Resource_2yqys")
 [node name="TownCenter_Müggenburg" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2417.6, 13.4, 2366.1)
 town = SubResource("Resource_6bq2n")
+
+[node name="TownCenter_Boldekow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.4893, 16.062994, 2903.8215)
+town = SubResource("Resource_u3yc0")
