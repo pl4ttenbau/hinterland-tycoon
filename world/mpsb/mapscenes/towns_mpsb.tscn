@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=38 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/town/world_towns.gd" id="1_agjpo"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
@@ -287,6 +287,15 @@ num = 32
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_6bq2n"]
+script = ExtResource("3_icu33")
+town_name = "Müggenburg"
+pos_xz = Vector2(2417.6, 2366.1)
+autogenerate_houses = false
+num = 33
+type = 6
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 script = ExtResource("1_agjpo")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -414,3 +423,7 @@ town = SubResource("Resource_03w28")
 [node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
 town = SubResource("Resource_2yqys")
+
+[node name="TownCenter_Müggenburg" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2417.6, 13.4, 2366.1)
+town = SubResource("Resource_6bq2n")
