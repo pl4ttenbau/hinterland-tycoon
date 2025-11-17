@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=222 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -1253,6 +1253,20 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_263a2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2613.2, 13.4, 2530, 0, 0, 0, 0, 0, 0, 2607.3, 13.8, 2514.1, 0, 0, 0, 0, 0, 0, 2597.9, 14.3, 2493.5, 0, 0, 0, 0, 0, 0, 2594.7, 14.5, 2474.2, 0, 0, 0, 0, 0, 0, 2594.1, 14.4, 2449, 0, 0, 0, 0, 0, 0, 2596.9, 14.1, 2435.2, 0, 0, 0, 0, 0, 0, 2606.8, 13.9, 2421.1, 0, 0, 0, 0, 0, 0, 2630.1, 13.8, 2397.5, 0, 0, 0, 0, 0, 0, 2645.5, 13.3, 2384.1, 0, 0, 0, 0, 0, 0, 2659.4, 12.3, 2371.4, 0, 0, 0, 0, 0, 0, 2673.7, 12.4, 2355.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_kjxrc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2673.7, 12.4, 2355.3, 0, 0, 0, 0, 0, 0, 2686.7, 12.4, 2341.2, 0, 0, 0, 0, 0, 0, 2702.5, 12.3, 2323.3, 0, 0, 0, 0, 0, 0, 2717.2, 13, 2304.6, 0, 0, 0, 0, 0, 0, 2729.3, 12.9, 2293.5, 0, 0, 0, 0, 0, 0, 2740.2, 12.1, 2283.2, 0, 0, 0, 0, 0, 0, 2747.9, 12.6, 2273.3, 0, 0, 0, 0, 0, 0, 2756.8, 12.1, 2257.2, 0, 0, 0, 0, 0, 0, 2761.3, 11.8, 2249, 0, 0, 0, 0, 0, 0, 2763.6, 11.6, 2237.6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -2894,6 +2908,16 @@ metadata/name = "Sarnow Anklamer Str. Townwards"
 curve = SubResource("Curve3D_yi2ff")
 metadata/road_num = 104
 metadata/name = "Sarnow Anklamer Str. Outwards"
+
+[node name="Editor_Road105" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_263a2")
+metadata/road_num = 105
+metadata/name = "Anklamer Str. Wusseken Lakeside"
+
+[node name="Editor_Road106" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_kjxrc")
+metadata/road_num = 106
+metadata/name = "Anklamer Str. Stretense"
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.4893, 16.062994, 2903.8215)
