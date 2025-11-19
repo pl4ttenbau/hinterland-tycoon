@@ -14,6 +14,11 @@ func _init(_key: String, _name: String, _popsInt: int, _block_auto_creation = fa
 	if _block_auto_creation:
 		self.block_auto_placement = _block_auto_creation
 
+#region Getters
 ## <folder>/house_name/house_name.tscn
 func get_scene_path() -> String:
 	return STRUCTURES_FOLDER + self.key + "/" + self.key + ".tscn"
+	
+static func get_by_key(_key: String) -> ResBldType:
+	return GameTypes.res_bld_store.get_by_key(_key)
+#endregion

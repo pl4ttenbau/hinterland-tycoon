@@ -66,6 +66,11 @@ signal stations_loaded(station_objs: RailStationData)
 signal stations_spawned()
 #endregion
 
+#region Residential Buildings
+@warning_ignore("unused_signal")
+signal res_bld_types_loaded()
+#endregion
+
 #region Towns
 @warning_ignore("unused_signal")
 signal town_spawned(town: TownData)

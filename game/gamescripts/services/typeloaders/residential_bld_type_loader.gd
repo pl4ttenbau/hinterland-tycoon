@@ -1,9 +1,10 @@
 class_name ResidentialBldTypeLoader extends AbstractGameTypeLoader
 
 @export var types: Array[ResBldType]
+@export var storage: ResBldTypeStore = ResBldTypeStore.new()
 
 func _init():
-	GameTypes.res_bld_types = self.get_types()
+	self.load_types()
 
 static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 	return [
@@ -24,9 +25,12 @@ static func _dict_to_obj(_bld_type_data: Dictionary) -> Array[ResBldType]:
 		ResBldType.new("city_manor", "City Manor", 15, true)
 	]
 	
-func get_types() -> Array[ResBldType]:
-	if !self.types: self.types = _dict_to_obj(Dictionary())
-	return self.types
+func load_types() -> void:
+	if  self.storage.is_empty():
+		for res_bld_type: ResBldType in self._dict_to_obj(Dictionary()):
+			self.storage.add(res_bld_type)
+		SignalBus.res_bld_types_loaded.emit()
+		Loggie.info("Loading ResBldTypes... finished.")
 
 func get_rnd() -> ResBldType:
 	var bld_types: Array[ResBldType] = GameTypes.res_bld_types

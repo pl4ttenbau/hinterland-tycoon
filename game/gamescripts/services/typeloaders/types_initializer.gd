@@ -1,5 +1,6 @@
 ## Autoloaded
 ## hier wird das Laden von allen Typendatein getriggert
+@icon("res://assets/icons/icon_gears_white.png")
 extends Node
 
 @export_storage var industries: IndustryTypeLoader
