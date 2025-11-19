@@ -20,11 +20,11 @@ visibility_range_end = 330.0
 visibility_range_end_margin = 33.0
 mesh = ExtResource("2_i4yxx")
 
-[node name="ResBldCollider" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_p4h6d")
 script = ExtResource("3_p4h6d")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0932999, 6.67155, 0.0157623)
 shape = SubResource("BoxShape3D_slvg6")
