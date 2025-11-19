@@ -1,3 +1,4 @@
+@icon("icon_infr_node_white")
 class_name RoadNode extends BasicInfrNodeData
 
 @export var parent_track: RoadData
