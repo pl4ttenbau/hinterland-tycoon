@@ -60,7 +60,7 @@ signal roads_spawned()
 
 #region Stations
 @warning_ignore("unused_signal")
-signal stations_loaded(station_objs: RailStationData)
+signal stations_loaded(station_objs: Array[RailStationData])
 
 @warning_ignore("unused_signal")
 signal stations_spawned()
@@ -69,6 +69,9 @@ signal stations_spawned()
 #region Residential Buildings
 @warning_ignore("unused_signal")
 signal res_bld_types_loaded()
+
+@warning_ignore("unused_signal")
+signal town_buildings_spawned()
 #endregion
 
 #region Towns

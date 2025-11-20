@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=48 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/scene_root.gd" id="1_vdtib"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_63i0b"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="8_ux8bc"]
 [ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_8tr36"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="10_c2xmk"]
+[ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="12_u1670"]
+[ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="13_jlqps"]
 [ext_resource type="Script" uid="uid://b3bi617vpnii0" path="res://game/gamescripts/nodes/triggers/goods_generation_timer.gd" id="13_kq7m5"]
 [ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="15_ibik3"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="15_kq7m5"]
@@ -97,7 +99,7 @@ unique_name_in_owner = true
 editor_description = "Town-Centers with Label3D above will be spawned under this node"
 script = ExtResource("15_kq7m5")
 
-[node name="BuildingsHolder" type="Node" parent="World/Generated/Towns"]
+[node name="WorldTownBldPlacer" type="Node" parent="World/Generated/Towns"]
 script = ExtResource("10_c2xmk")
 metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 
@@ -119,6 +121,14 @@ script = ExtResource("6_p8gp8")
 wait_time = 5.0
 autostart = true
 script = ExtResource("13_kq7m5")
+
+[node name="StationIndustryConnector" type="Node" parent="World/Generated/Infr/Stations"]
+script = ExtResource("12_u1670")
+metadata/_custom_type_script = "uid://cebmcnxlern8g"
+
+[node name="StationResidenceConnector" type="Node" parent="World/Generated/Infr/Stations"]
+script = ExtResource("13_jlqps")
+metadata/_custom_type_script = "uid://8e0con4047ai"
 
 [node name="Roads" type="Node" parent="World/Generated/Infr"]
 script = ExtResource("6_hmgqj")
@@ -163,6 +173,9 @@ metadata/_custom_type_script = "uid://xrq8d2iqxk0u"
 
 [node name="PolishHouse1" parent="Features" instance=ExtResource("22_nj174")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1174, 7.99088, 15.6514)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Features"]
 

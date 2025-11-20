@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=233 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://by8p3lehwrg8a" path="res://assets/meshes/deco/castle_wall/castle_wall.tscn" id="27_ssk1k"]
 [ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="28_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
 [ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="35_emjn5"]
@@ -1602,7 +1603,9 @@ transform = Transform3D(-0.0019373127, 0, -0.99999815, 0, 1, 0, 0.99999815, 0, -
 
 [node name="PolishHouse8" parent="Deco/FriedlandCenter" instance=ExtResource("29_jynyo")]
 transform = Transform3D(-0.9989887, 0, 0.044961937, 0, 1, 0, -0.044961937, 0, -0.9989887, 2147.4, 11.674444, 3140.9202)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="Züssow" type="Node" parent="Deco"]
 
@@ -1659,530 +1662,803 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2733.55, 12.9653, 2537.82)
 [node name="WoodenPier3" parent="Deco/StretenseLake" instance=ExtResource("36_emjn5")]
 transform = Transform3D(-0.36155945, 0, 0.932349, 0, 1, 0, -0.932349, 0, -0.36155945, 2661.0823, 9.874431, 2494.1628)
 
+[node name="VillageWell" parent="Deco" instance=ExtResource("40_rrrix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2753.1653, 12.64318, 1425.1041)
+
 [node name="WorldEnvironment" parent="." instance=ExtResource("44_tkkvf")]
 environment = SubResource("Environment_ls53n")
 camera_attributes = SubResource("CameraAttributesPractical_d52qy")
 
 [node name="Houses" type="Node" parent="."]
+script = ExtResource("32_pgcnb")
+metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
 
 [node name="CityCornerHouse" parent="Houses" instance=ExtResource("3_xmflw")]
 transform = Transform3D(-0.99967706, 0, -0.02540933, 0, 1, 0, 0.02540933, 0, -0.99967706, 2843.6567, 11.198119, 1767.243)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityCornerHouse2" parent="Houses" instance=ExtResource("3_xmflw")]
 transform = Transform3D(-0.33504045, 0, -0.9422037, 0, 1, 0, 0.9422037, 0, -0.33504045, 2761.1995, 11.993412, 1845.6821)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="HalfTimberedBarn" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.33128852, 0, -0.9435295, 0, 1, 0, 0.9435295, 0, 0.33128852, 1864.6682, 16.922943, 2872.7747)
+num = null
 placed_town_num = 5
+dist2cam = null
 
 [node name="CityHouse2" parent="Houses" instance=ExtResource("45_hw0ba")]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 1652.65, 11.6792, 1998.21)
+num = null
 placed_town_num = 12
+dist2cam = null
 
 [node name="PolishHouse2" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.96142, -0.00815193, -0.274963, -0.010946, 0.999903, 0.00862866, 0.274866, 0.0113055, -0.961416, 1694.27, 12.0895, 2005.06)
+num = null
 placed_town_num = 12
+dist2cam = null
 
 [node name="VillageHouse3" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.58592, 0, 0.810369, 0, 1, 0, -0.810369, 0, 0.58592, 1648.94, 11.308, 1948.77)
+num = null
 placed_town_num = 12
+dist2cam = null
 
 [node name="VillageHouse2" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.658387, 0, 0.752679, 0, 1, 0, -0.752679, 0, 0.658387, 1619.62, 11.3628, 1973.53)
+num = null
 placed_town_num = 12
+dist2cam = null
 
 [node name="PolishHouse3" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(0.66769, 0, 0.74444, 0, 1, 0, -0.74444, 0, 0.66769, 1672.97, 11.4654, 1967)
+num = null
 placed_town_num = 12
+dist2cam = null
 
 [node name="VillageHouse4" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.753793, 0, -0.657112, 0, 1, 0, 0.657112, 0, 0.753793, 2046.65, 12.7747, 2341.92)
+num = null
 placed_town_num = 28
+dist2cam = null
 
 [node name="HalfTimberedBarn2" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.639399, 0, 0.768875, 0, 1, 0, -0.768875, 0, 0.639399, 1403.18, 12.3577, 1563.5)
+num = null
 placed_town_num = 13
+dist2cam = null
 
 [node name="VillageHouse5" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.715717, 0, -0.69839, 0, 1, 0, 0.69839, 0, 0.715717, 1380.3, 11.8886, 1541.63)
+num = null
 placed_town_num = 13
+dist2cam = null
 
 [node name="PolishHouse4" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(0.86613, 0, -0.499819, 0, 1, 0, 0.499819, 0, 0.86613, 1365.23, 12.8252, 1567.75)
+num = null
 placed_town_num = 13
+dist2cam = null
 
 [node name="PolishHouse5" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(0.07078372, 0, -0.9974917, 0, 1, 0, 0.9974917, 0, 0.07078372, 2150.086, 11.929518, 1609.344)
+num = null
 placed_town_num = 7
+dist2cam = null
 
 [node name="VillageHouse6" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.96527684, 0, -0.26122904, 0, 1, 0, 0.26122904, 0, 0.96527684, 2142.7205, 10.453045, 1587.1282)
+num = null
 placed_town_num = 7
+dist2cam = null
 
 [node name="HalfTimberedBarn3" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.47287375, 0, -0.8811302, 0, 1, 0, 0.8811302, 0, 0.47287375, 2114.265, 10.886394, 1585.3595)
+num = null
 placed_town_num = 7
+dist2cam = null
 
 [node name="VillageHouse7" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-1, 0, -0.0004015267, 0, 1, 0, 0.0004015267, 0, -1, 2153.7908, 12.938263, 1631.6835)
+num = null
 placed_town_num = 7
+dist2cam = null
 
 [node name="AirportHotelAnklam" parent="Houses" instance=ExtResource("29_jynyo")]
 transform = Transform3D(-0.998907, 0, -0.046740234, 0, 1, 0, 0.046740234, 0, -0.998907, 2701.4285, 11.951101, 1908.7155)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="PolishHouse6" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.3343497, 0, -0.9424491, 0, 1, 0, 0.9424491, 0, -0.3343497, 1312.1486, 11.887902, 1533.0378)
+num = null
 placed_town_num = 13
+dist2cam = null
 
 [node name="VillageHouse8" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(-0.9957921, 0, 0.09164065, 0, 1, 0, -0.09164065, 0, -0.9957921, 2130.2456, 12.575766, 1914.8679)
+num = null
 placed_town_num = 23
+dist2cam = null
 
 [node name="VillageHouse9" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.2504307, 0, 0.9681345, 0, 1, 0, -0.9681345, 0, -0.2504307, 2095.8635, 12.767511, 1927.1293)
+num = null
 placed_town_num = 23
+dist2cam = null
 
 [node name="HalfTimberedBarn4" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.9450003, 0, -0.32706946, 0, 1, 0, 0.32706946, 0, 0.9450003, 2108.8657, 13.762483, 1955.7886)
+num = null
 placed_town_num = 23
+dist2cam = null
 
 [node name="PolishHouse7" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.6397074, 0, -0.7686186, 0, 1, 0, 0.7686186, 0, -0.6397074, 1640.0508, 14.037048, 2416.5505)
+num = null
 placed_town_num = 11
+dist2cam = null
 
 [node name="VillageHouse10" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.3798275, 0, -0.9250571, 0, 1, 0, 0.9250571, 0, 0.3798275, 1763.1572, 12.726005, 2282.6372)
+num = null
 placed_town_num = 11
+dist2cam = null
 
 [node name="HalfTimberedBarn5" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(-0.56319445, 0, 0.82632434, 0, 1, 0, -0.82632434, 0, -0.56319445, 1797.5302, 12.5848675, 2326.9849)
+num = null
 placed_town_num = 11
+dist2cam = null
 
 [node name="CityHouse1" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.6682092, 0, -0.7439735, 0, 1, 0, 0.7439735, 0, -0.6682092, 1650.7622, 14.476555, 2392.6714)
+num = null
 placed_town_num = 11
+dist2cam = null
 
 [node name="CityHouse3" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(0.35582474, 0, 0.9345527, 0, 1, 0, -0.9345527, 0, 0.35582474, 2143.686, 11.890436, 3201.954)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="VillageHouse12" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2086.5872, 11.92244, 3149.0728)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="VillageHouse13" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.9753654, 0, -0.22059529, 0, 1, 0, 0.22059529, 0, 0.9753654, 2084.31, 11.868169, 3172.823)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="VillageHouse14" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.14252517, 0, -0.9897913, 0, 1, 0, 0.9897913, 0, -0.14252517, 2187.1892, 11.935973, 3159.8474)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="VillageHouse15" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(-0.28891483, 0, -0.9573548, 0, 1, 0, 0.9573548, 0, -0.28891483, 2134.73, 12.008768, 3223.3643)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="CityHouse4" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.9841275, 0, 0.17746276, 0, 1, 0, -0.17746276, 0, -0.9841275, 2157.795, 11.869532, 3170.3997)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="CityHouse5" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.9974195, 0, 0.071793504, 0, 1, 0, -0.071793504, 0, -0.9974195, 2160.7869, 11.869534, 3150.5059)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="CityHouse6" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.96481025, 0, 0.26294708, 0, 1, 0, -0.26294708, 0, -0.96481025, 2155.9094, 11.869531, 3178.767)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="CityHouse7" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.9973666, 0, 0.07252458, 0, 1, 0, -0.07252458, 0, -0.9973666, 2161.4165, 11.869531, 3141.6753)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="PolishHouse9" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(-0.039521456, 0, -0.9992187, 0, 1, 0, 0.9992187, 0, -0.039521456, 2103.611, 12.088566, 3122.9155)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="PolishHouse10" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(0.04959939, 0, 0.99876916, 0, 1, 0, -0.99876916, 0, 0.04959939, 2082.5376, 12.06296, 3121.1248)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="NorthernGermanHouse" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.99352247, 0, -0.11363675, 0, 1, 0, 0.11363675, 0, 0.99352247, 2060.2654, 13.467861, 1952.6462)
+num = null
 placed_town_num = 23
+dist2cam = null
 
 [node name="NorthernGermanHouse2" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.93759793, 0, -0.34772125, 0, 1, 0, 0.34772125, 0, 0.93759793, 1893.071, 17.012321, 2844.1655)
+num = null
 placed_town_num = 5
+dist2cam = null
 
 [node name="PolishHouse11" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(0.7788347, 0, 0.62722933, 0, 1, 0, -0.62722933, 0, 0.7788347, 1854.2577, 17.745602, 2835.0933)
+num = null
 placed_town_num = 5
+dist2cam = null
 
 [node name="NorthernGermanHouse3" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.9714167, 0, -0.23738071, 0, 1, 0, 0.23738071, 0, 0.9714167, 2864.3542, 13.435524, 2888.131)
+num = null
 placed_town_num = 29
+dist2cam = null
 
 [node name="PolishHouse12" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.9806419, 0, 0.19580925, 0, 1, 0, -0.19580925, 0, -0.9806419, 2843.9019, 12.9763, 2859.0723)
+num = null
 placed_town_num = 29
+dist2cam = null
 
 [node name="VillageHouse16" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.93046874, 0, -0.3663713, 0, 1, 0, 0.3663713, 0, 0.93046874, 2484.0046, 11.836186, 2055.9324)
+num = null
 placed_town_num = 17
+dist2cam = null
 
 [node name="PolishHouse1" parent="Houses" instance=ExtResource("7_emjn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2502.7307, 12.157069, 2049.7412)
+num = null
 placed_town_num = 17
+dist2cam = null
 
 [node name="VillageHouse17" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.7813136, 0, -0.62413865, 0, 1, 0, 0.62413865, 0, 0.7813136, 2533.42, 11.068902, 2064.3438)
+num = null
 placed_town_num = 17
+dist2cam = null
 
 [node name="CityHouse8" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.6393988, 0, 0.76887524, 0, 1, 0, -0.76887524, 0, -0.6393988, 2478.4377, 11.347803, 2086.0645)
+num = null
 placed_town_num = 17
+dist2cam = null
 
 [node name="VillageHouse18" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.09940664, 0, -0.9950467, 0, 1, 0, 0.9950467, 0, -0.09940664, 1999.8389, 14.757708, 2500.1414)
+num = null
 placed_town_num = 28
+dist2cam = null
 
 [node name="PolishHouse13" parent="Houses" instance=ExtResource("7_emjn5")]
 transform = Transform3D(0.9229417, 0, 0.38493976, 0, 1, 0, -0.38493976, 0, 0.9229417, 1979.5426, 14.861725, 2495.3516)
+num = null
 placed_town_num = 28
+dist2cam = null
 
 [node name="VillageHouse19" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.74274766, 0, -0.6695715, 0, 1, 0, 0.6695715, 0, 0.74274766, 2000.4125, 14.608255, 2479.6309)
+num = null
 placed_town_num = 28
+dist2cam = null
 
 [node name="VillageHouse21" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.644444, 0, 0.76465154, 0, 1, 0, -0.76465154, 0, 0.644444, 1393.2391, 13.891592, 1078.0355)
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="VillageHouse22" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.58295995, 0, 0.8125009, 0, 1, 0, -0.8125009, 0, 0.58295995, 1377.678, 11.212101, 1103.5621)
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="NorthernGermanHouse4" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(-0.59583247, 0, -0.8031087, 0, 1, 0, 0.8031087, 0, -0.59583247, 1287.8462, 14.002671, 1074.5237)
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="PolishHouse14" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(-0.12841494, 0, -0.99172056, 0, 1, 0, 0.99172056, 0, -0.12841494, 1326.991, 11.136342, 1081.1788)
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="CityHouse9" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(-0.12479649, 0, -0.9921824, 0, 1, 0, 0.9921824, 0, -0.12479649, 1347.3337, 12.483189, 1054.4442)
 top_level = true
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="CityHouse10" parent="Houses" instance=ExtResource("45_hw0ba")]
 transform = Transform3D(-0.019249843, 0, 0.9998147, 0, 1, 0, -0.9998147, 0, -0.019249843, 1414.3893, 13.82284, 1200.4398)
+num = null
 placed_town_num = 10
+dist2cam = null
 
 [node name="VillageHouse23" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1536.1882, 18.121801, 853.7918)
+num = null
 placed_town_num = 30
+dist2cam = null
 
 [node name="VillageHouse24" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.08757307, 0, -0.9961581, 0, 1, 0, 0.9961581, 0, -0.08757307, 1554.2346, 17.512959, 856.8001)
+num = null
 placed_town_num = 30
+dist2cam = null
 
 [node name="PolishHouse15" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.9999982, 0, -0.0019024917, 0, 1, 0, 0.0019024917, 0, -0.9999982, 1512.7919, 18.32083, 852.69556)
+num = null
 placed_town_num = 30
+dist2cam = null
 
 [node name="VillageHouse25" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.742993, 0, 0.6692992, 0, 1, 0, -0.6692992, 0, 0.742993, 889.04297, 14.060027, 1779.9647)
+num = null
 placed_town_num = 27
+dist2cam = null
 
 [node name="VillageHouse26" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.044281974, 0, 0.9990191, 0, 1, 0, -0.9990191, 0, 0.044281974, 860.9546, 13.980282, 1808.2573)
+num = null
 placed_town_num = 27
+dist2cam = null
 
 [node name="VillageHouse27" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.74729955, 0, -0.66448724, 0, 1, 0, 0.66448724, 0, 0.74729955, 863.5074, 14.164615, 1784.5182)
+num = null
 placed_town_num = 27
+dist2cam = null
 
 [node name="PolishHouse16" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(0.31384328, 0, 0.9494748, 0, 1, 0, -0.9494748, 0, 0.31384328, 877.51276, 15.023718, 1757.9271)
+num = null
 placed_town_num = 27
+dist2cam = null
 
 [node name="CityHouse11" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.8483348, 0, 0.5294604, 0, 1, 0, -0.5294604, 0, -0.8483348, 1010.07007, 12.453619, 1322.6848)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse12" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.8483348, 0, 0.5294604, 0, 1, 0, -0.5294604, 0, -0.8483348, 1014.87384, 12.453619, 1315.0741)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse13" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.056762375, 0, -0.9983879, 0, 1, 0, 0.9983879, 0, 0.056762375, 1015.7658, 12.679802, 1347.6835)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse14" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.056762375, 0, -0.9983879, 0, 1, 0, 0.9983879, 0, 0.056762375, 1006.7779, 12.679802, 1348.1487)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse15" parent="Houses" instance=ExtResource("45_hw0ba")]
 transform = Transform3D(0.60565513, 0, -0.79572725, 0, 1, 0, 0.79572725, 0, 0.60565513, 1054.7015, 11.722577, 1295.8197)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="VillageHouse29" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1011.63245, 12.782259, 1375.7777)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="VillageHouse30" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.9756725, 0, 0.21923321, 0, 1, 0, -0.21923321, 0, 0.9756725, 1059.7272, 12.263829, 1313.8506)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse16" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(-0.052283682, 0, 0.99863225, 0, 1, 0, -0.99863225, 0, -0.052283682, 979.9831, 12.668287, 1323.7611)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="PolishHouse17" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(-0.11778005, 0, -0.9930397, 0, 1, 0, 0.9930397, 0, -0.11778005, 973.83075, 13.218515, 1373.6837)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="PolishHouse18" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(0.15995008, 0, 0.9871251, 0, 1, 0, -0.9871251, 0, 0.15995008, 993.64075, 13.288591, 1379.1836)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="VillageHouse31" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.41385132, 0, -0.9103445, 0, 1, 0, 0.9103445, 0, -0.41385132, 989.51575, 12.46394, 1303.8075)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="PolishHouse19" parent="Houses" instance=ExtResource("7_emjn5")]
 transform = Transform3D(0.9993987, 0, 0.03467274, 0, 1, 0, -0.03467274, 0, 0.9993987, 952.9974, 13.630334, 1329.0841)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="CityHouse17" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(0.38783735, 0, 0.92172784, 0, 1, 0, -0.92172784, 0, 0.38783735, 1012.4955, 12.096186, 1288.6249)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="MerchantHouse1" parent="Houses" instance=ExtResource("40_q805a")]
 transform = Transform3D(0.9255735, 0, -0.37856784, 0, 1, 0, 0.37856784, 0, 0.9255735, 1027.3856, 12.230018, 1296.39)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="VillageHouse28" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.61633515, 0, -0.787484, 0, 1, 0, 0.787484, 0, 0.61633515, 995.221, 12.196455, 1277.3103)
+num = null
 placed_town_num = 1
+dist2cam = null
 
 [node name="NorthernGermanHouse5" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.7595552, 0, 0.6504429, 0, 1, 0, -0.6504429, 0, 0.7595552, 502.95667, 11.984034, 1218.0935)
+num = null
 placed_town_num = 16
+dist2cam = null
 
 [node name="VillageHouse32" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.112683, 0, 0.99363106, 0, 1, 0, -0.99363106, 0, 0.112683, 513.09973, 11.574145, 1175.3081)
+num = null
 placed_town_num = 16
+dist2cam = null
 
 [node name="VillageHouse33" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.75604, 11.4745, 1191.2097)
+num = null
 placed_town_num = 16
+dist2cam = null
 
 [node name="WoodenShack" parent="Houses" instance=ExtResource("41_nawyd")]
 transform = Transform3D(-0.8692276, 0, 0.49441215, 0, 1, 0, -0.49441215, 0, -0.8692276, 541.8777, 12.131272, 1162.8641)
+num = null
 placed_town_num = 16
+dist2cam = null
 
 [node name="NorthernGermanHouse6" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.16654505, 0, -0.98603386, 0, 1, 0, 0.98603386, 0, 0.16654505, 1997.1261, 15.556896, 2427.915)
+num = null
 placed_town_num = 28
+dist2cam = null
 
 [node name="NorthernGermanHouse7" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.80141044, 0, -0.59811485, 0, 1, 0, 0.59811485, 0, 0.80141044, 1682.336, 13.662198, 2412.1409)
+num = null
 placed_town_num = 11
+dist2cam = null
 
 [node name="CityManor" parent="Houses" instance=ExtResource("3_vwabj")]
 transform = Transform3D(-0.51862395, 0, 0.8550024, 0, 1, 0, -0.8550024, 0, -0.51862395, 2127.6914, 22.58024, 653.1009)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="VillageHouse11" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2067.9714, 22.553747, 655.50604)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="CityHouse18" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(0.694269, 0, -0.71971565, 0, 1, 0, 0.71971565, 0, 0.694269, 2083.6765, 22.749525, 680.4177)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="PolishHouse20" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.98486227, 0, -0.17333882, 0, 1, 0, 0.17333882, 0, -0.98486227, 2048.1543, 20.320606, 722.484)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="HalfTimberedBarn6" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.99955165, 0, 0.029945403, 0, 1, 0, -0.029945403, 0, 0.99955165, 2033.7291, 25.38785, 615.9253)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="VillageHouse20" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.66485226, 0, 0.7469748, 0, 1, 0, -0.7469748, 0, 0.66485226, 2021.4813, 23.343634, 682.4085)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="WoodenShack2" parent="Houses" instance=ExtResource("41_nawyd")]
 transform = Transform3D(-0.744929, 0, -0.66714376, 0, 1, 0, 0.66714376, 0, -0.744929, 2096.8872, 22.900423, 641.3125)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="CityHouse19" parent="Houses" instance=ExtResource("45_hw0ba")]
 transform = Transform3D(-0.06367904, 0, -0.9979706, 0, 1, 0, 0.9979706, 0, -0.06367904, 2391.6902, 18.989853, 763.92377)
+num = null
 placed_town_num = 19
+dist2cam = null
 
 [node name="NorthernGermanHouse8" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(-0.044299453, 0, -0.9990183, 0, 1, 0, 0.9990183, 0, -0.044299453, 2366.8794, 19.072643, 757.25433)
+num = null
 placed_town_num = 19
+dist2cam = null
 
 [node name="VillageHouse34" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.7802776, 0, -0.6254333, 0, 1, 0, 0.6254333, 0, 0.7802776, 2405.2908, 19.298273, 755.29584)
+num = null
 placed_town_num = 19
+dist2cam = null
 
 [node name="PolishHouse21" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.0811036, 0, -0.99670565, 0, 1, 0, 0.99670565, 0, -0.0811036, 2434.6677, 19.234446, 792.4259)
+num = null
 placed_town_num = 19
+dist2cam = null
 
 [node name="CityHouse21" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.1809827, 0, 0.98348624, 0, 1, 0, -0.98348624, 0, 0.1809827, 2751.1208, 13.106361, 1774.7725)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse22" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.1809827, 0, 0.98348624, 0, 1, 0, -0.98348624, 0, 0.1809827, 2742.3508, 13.106358, 1773.1792)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse28" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.96497977, 0, 0.26232406, 0, 1, 0, -0.26232406, 0, -0.96497977, 2741.7979, 12.133799, 1831.0508)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse29" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.96497977, 0, 0.26232406, 0, 1, 0, -0.26232406, 0, -0.96497977, 2739.4795, 11.593037, 1839.6575)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse23" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.89811194, 0, -0.43976682, 0, 1, 0, 0.43976682, 0, 0.89811194, 2829.6892, 12.5711975, 1815.1678)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse24" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.93977004, 0, -0.34180704, 0, 1, 0, 0.34180704, 0, 0.93977004, 2833.2085, 12.650082, 1806.8533)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse25" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(0.9839691, 0, -0.17833877, 0, 1, 0, 0.17833877, 0, 0.9839691, 2835.5115, 12.650078, 1798.1996)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse26" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.98519015, 0, -0.17146474, 0, 1, 0, 0.17146474, 0, -0.98519015, 2815.547, 10.932272, 1742.944)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse27" parent="Houses" instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.98519015, 0, -0.17146474, 0, 1, 0, 0.17146474, 0, -0.98519015, 2817.0955, 10.932268, 1751.7216)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="MerchantHouse2" parent="Houses" instance=ExtResource("40_q805a")]
 transform = Transform3D(0.16181046, 0, 0.98682183, 0, 1, 0, -0.98682183, 0, 0.16181046, 2763.636, 12.919838, 1777.0819)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="CityHouse20" parent="Houses" instance=ExtResource("45_hw0ba")]
 transform = Transform3D(-0.70668703, 0, -0.7075264, 0, 1, 0, 0.7075264, 0, -0.70668703, 2749.841, 10.7724495, 1745.6016)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse35" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.98517525, 0, -0.17155083, 0, 1, 0, 0.17155083, 0, 0.98517525, 2838.3137, 12.18008, 1783.3127)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse36" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.38348946, 0, 0.92354524, 0, 1, 0, -0.92354524, 0, 0.38348946, 2781.95, 12.5710945, 1836.6688)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse37" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.14760232, 0, -0.9890468, 0, 1, 0, 0.9890468, 0, 0.14760232, 2786.1716, 12.730226, 1854.5737)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse38" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.06467165, 0, -0.99790573, 0, 1, 0, 0.99790573, 0, 0.06467165, 2862.4336, 12.291972, 1830.664)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse39" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.86725324, 0, 0.4978673, 0, 1, 0, -0.4978673, 0, 0.86725324, 2723.3308, 12.2139845, 1833.0446)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="PolishHouse22" parent="Houses" instance=ExtResource("7_emjn5")]
 transform = Transform3D(0.974609, 0, 0.22391357, 0, 1, 0, -0.22391357, 0, 0.974609, 2886.3384, 12.406928, 1827.1123)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="PolishHouse23" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.26619545, 0, -0.96391904, 0, 1, 0, 0.96391904, 0, -0.26619545, 2836.1926, 12.905931, 1842.9213)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="PolishHouse24" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(-0.24698211, 0, 0.96902, 0, 1, 0, -0.96902, 0, -0.24698211, 2743.6016, 12.48223, 1867.9033)
+num = null
 placed_town_num = 32
+dist2cam = null
 
 [node name="VillageHouse40" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(0.45433262, 0, -0.8908321, 0, 1, 0, 0.8908321, 0, 0.45433262, 2919.2158, 13.40996, 1370.0303)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="HalfTimberedBarn7" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.39365315, 0, 0.9192591, 0, 1, 0, -0.9192591, 0, 0.39365315, 2906.9475, 14.154844, 1354.2948)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="NorthernGermanHouse9" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(-0.012461384, 0, 0.99992234, 0, 1, 0, -0.99992234, 0, -0.012461384, 2750.7632, 12.648136, 1407.029)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="VillageHouse41" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2727.6116, 12.331388, 1405.3564)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="VillageHouse42" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(-0.14950079, 0, -0.98876154, 0, 1, 0, 0.98876154, 0, -0.14950079, 2725.3496, 12.6389065, 1369.591)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="NorthernGermanHouse10" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.93539464, 0, -0.3536054, 0, 1, 0, 0.3536054, 0, 0.93539464, 2390.023, 13.342391, 2366.8264)
+num = null
 placed_town_num = 33
+dist2cam = null
 
 [node name="HalfTimberedBarn8" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.4322275, 0, 0.90176475, 0, 1, 0, -0.90176475, 0, 0.4322275, 2421.74, 13.155955, 2380.7786)
+num = null
 placed_town_num = 33
+dist2cam = null
 
 [node name="WoodenShack3" parent="Houses" instance=ExtResource("41_nawyd")]
 transform = Transform3D(0.96035695, 0, 0.27877322, 0, 1, 0, -0.27877322, 0, 0.96035695, 2437.0596, 13.4284115, 2359.2266)
+num = null
 placed_town_num = 33
+dist2cam = null
 
 [node name="VillageHouse43" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.6909455, 0, 0.7229068, 0, 1, 0, -0.7229068, 0, 0.6909455, 2414.6594, 12.739633, 2338.2)
+num = null
 placed_town_num = 33
+dist2cam = null
 
 [node name="CityHouse30" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(-0.967449, 0, 0.25306576, 0, 1, 0, -0.25306576, 0, -0.967449, 2417.1943, 14.916267, 2916.4585)
+num = null
 placed_town_num = 34
+dist2cam = null
 
 [node name="VillageHouse44" parent="Houses" instance=ExtResource("49_v0v3v")]
 transform = Transform3D(-0.78502524, 0, 0.619464, 0, 1, 0, -0.619464, 0, -0.78502524, 2407.954, 16.439226, 2890.036)
+num = null
 placed_town_num = 34
+dist2cam = null
 
 [node name="HalfTimberedBarn9" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.9547971, 0, -0.29725823, 0, 1, 0, 0.29725823, 0, 0.9547971, 2445.7422, 13.98646, 2926.6282)
+num = null
 placed_town_num = 34
+dist2cam = null
 
 [node name="PolishHouse25" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.9646725, 0, 0.26345217, 0, 1, 0, -0.26345217, 0, -0.9646725, 2423.9822, 15.230189, 2889.765)
+num = null
 placed_town_num = 34
+dist2cam = null
 
 [node name="VillageHouse45" parent="Houses" instance=ExtResource("50_1ktam")]
 transform = Transform3D(0.5007707, 0, 0.86558, 0, 1, 0, -0.86558, 0, 0.5007707, 2374.3928, 18.701899, 2906.6995)
+num = null
 placed_town_num = 34
+dist2cam = null
 
 [node name="PolishHouse8" parent="Houses" instance=ExtResource("29_jynyo")]
 transform = Transform3D(-0.6177498, 0, 0.7863747, 0, 1, 0, -0.7863747, 0, -0.6177498, 2031.6626, 23.01299, 699.1862)
+num = null
 placed_town_num = 18
+dist2cam = null
 
 [node name="HalfTimbered1" parent="Houses" instance=ExtResource("3_7yuns")]
 transform = Transform3D(0.2282319, 0, 0.97360677, 0, 1, 0, -0.97360677, 0, 0.2282319, 2513.5059, 11.606885, 2030.0713)
+num = null
 placed_town_num = 17
+dist2cam = null
 
 [node name="HalfTimberedBarn10" parent="Houses" instance=ExtResource("45_onop4")]
 transform = Transform3D(0.99915254, 0, -0.041160688, 0, 1, 0, 0.041160688, 0, 0.99915254, 2159.654, 12.082484, 3114.7498)
+num = null
+placed_town_num = null
+dist2cam = null
 
 [node name="CityCornerHouse3" parent="Houses" instance=ExtResource("3_xmflw")]
 transform = Transform3D(0.019284679, 0, -0.99981403, 0, 1, 0, 0.99981403, 0, 0.019284679, 2747.013, 12.379943, 1375.3948)
+num = null
 placed_town_num = 14
+dist2cam = null
 
 [node name="PolishHouse26" parent="Houses" instance=ExtResource("48_rrrix")]
 transform = Transform3D(-0.29529116, 0, 0.9554073, 0, 1, 0, -0.9554073, 0, -0.29529116, 2191.0774, 12.142317, 3100.1646)
+num = null
 placed_town_num = 3
+dist2cam = null
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
@@ -3312,6 +3588,3 @@ num = 25
 type_key = "RESTAURANT"
 ind_name = "Ziethen Hotel Adler"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
-
-[node name="VillageWell" parent="." instance=ExtResource("40_rrrix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2753.1653, 12.64318, 1425.1041)

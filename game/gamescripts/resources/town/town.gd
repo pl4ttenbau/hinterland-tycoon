@@ -15,14 +15,12 @@ signal town_name_changed(new_name: String)
 		return town_name
 
 @export var pos_xz: Vector2
-
 @export var is_minor: bool = false
 
 @export var autogenerate_houses: bool = true
-
 @export_storage var totalPops: int
-
 @export_storage var res_bld_containers: Array[OuterResBld] = []
+
 @export_storage var stations: Array[RailNodeStationData] = []
 @export_storage var station_blds_assigned: bool = false
 #endregion

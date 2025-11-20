@@ -4,7 +4,7 @@ extends Node
 
 @export var infr_types: Array[InfrType]
 @export var industry_types: Array[IndustryType]
-@export var res_bld_store: ResBldTypeStore
+@export var res_bld_type_store: ResBldTypeStore = ResBldTypeStore.new()
 @export var vehicle_types: Array[RailVehicleType]
 
 # == GETTER METHODS ==

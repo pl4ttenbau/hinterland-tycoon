@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://bongrkjiwclhd"]
 
-[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/town/world_towns.gd" id="1_agjpo"]
+[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/world_towns.gd" id="1_agjpo"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="2_agjpo"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_icu33"]

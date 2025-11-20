@@ -17,5 +17,5 @@ font_size = 50
 outline_size = 15
 uppercase = true
 
-[node name="TownSpawner" type="Node" parent="."]
+[node name="TownBldGenerator" type="Node" parent="."]
 script = ExtResource("1_gwiev")

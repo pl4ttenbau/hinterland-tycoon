@@ -16,7 +16,6 @@ const MAX_PLACING_TRIES: int = 6
 #region Initialization
 func _enter_tree() -> void:
 	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
-
 func _ready() -> void:
 	self.town = (self.get_parent() as TownCenter).town
 	self._on_town_center_spawned(self.town)
@@ -24,11 +23,11 @@ func _ready() -> void:
 
 #region Town Building Spawning
 func spawn_rnd_buildings():
-	
-	if self.town.autogenerate_houses == false: return
-	for i: int in range(self.town.get_initial_bld_count()):
-		self.spawn_single_rnd_building()
-	self.town.reassign_buildings_to_stations()
+	pass
+	#if self.town.autogenerate_houses == false: return
+	#for i: int in range(self.town.get_initial_bld_count()):
+	#	self.spawn_single_rnd_building()
+	#self.town.reassign_buildings_to_stations()
 
 func spawn_single_rnd_building():
 	if !self.has_bld_types_loaded || !self.has_spawned_self: return

@@ -23,6 +23,7 @@ func add(town_obj: TownData):
 	self._list.append(town_obj)
 	self._create_indexes(town_obj)
 	self.town_added.emit(town_obj)
+	GlobalState.towns.append(town_obj)
 	
 func _create_indexes(town_obj: TownData):
 	self._by_id.set(town_obj.num, town_obj)
