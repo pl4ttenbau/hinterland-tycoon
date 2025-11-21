@@ -48,7 +48,6 @@ func spawn_stations():
 	for track: RailTrackData in Managers.rails.track_storage.get_all():
 		for rail_node_station: RailNodeStationData in track.node_stations:
 			var outer_station := self.spawn_station(rail_node_station)
-			self.add_child(outer_station, true)
 			outer_station.adjust_rotation_from_track()
 	#self.connect_industries()
 	SignalBus.stations_spawned.emit()

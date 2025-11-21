@@ -20,5 +20,5 @@ func get_scene_path() -> String:
 	return STRUCTURES_FOLDER + self.key + "/" + self.key + ".tscn"
 	
 static func get_by_key(_key: String) -> ResBldType:
-	return GameTypes.res_bld_store.get_by_key(_key)
+	return GameTypes.res_bld_type_store.get_by_key(_key)
 #endregion

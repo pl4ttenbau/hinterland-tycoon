@@ -8,6 +8,7 @@ class_name StationResidencesConnector extends Node
 func _enter_tree() -> void:
 	SignalBus.stations_loaded.connect(Callable(self, "_on_stations_loaded"))
 	SignalBus.town_buildings_spawned.connect(Callable(self, "_on_residences_placed"))
+	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_spawned"))
 	
 func connect_stations_to_residences():
 	if !self.has_buildings_placed || !self.has_stations_loaded: return
@@ -17,8 +18,11 @@ func connect_stations_to_residences():
 	
 func _on_stations_loaded(_stations: Array[RailStationData]):
 	self.has_stations_loaded = true
-	self.connect_stations_to_residences()
+	# self.connect_stations_to_residences()
 	
 func _on_residences_placed():
 	self.has_buildings_placed = true
+	# self.connect_stations_to_residences()
+	
+func _on_rails_spawned(_containers: Array[OuterRailTrack]):
 	self.connect_stations_to_residences()

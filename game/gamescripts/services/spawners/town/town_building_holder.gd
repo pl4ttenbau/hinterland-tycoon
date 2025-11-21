@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	
 func load_preplaced_town_buildings():
 	## abort if res bld types or map isnt loaded yet
-	if !self.has_res_bld_types_loaded: return
+	# if !self.has_res_bld_types_loaded: return
 	Loggie.info("spawning pre-placed ResBlds...")
 	for child: Node in self.get_map_houses_container().get_children():
 		if child is OuterResBld:
