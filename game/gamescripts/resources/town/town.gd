@@ -68,24 +68,8 @@ func has_bld_around(check_pos: Vector3) -> bool:
 #region Stations
 func connect_new_station(station: AbstractStation):
 	self.stations.append(station)
-	self.reassign_buildings_to_stations()
+	# self.reassign_buildings_to_stations()
 	
-func reassign_buildings_to_stations():
-	for res_bld_container: OuterResBld in self.res_bld_containers:
-		var closest_station_obj := self.find_closest_station_to_bld(res_bld_container)
-		self.station_blds_assigned = true
-		if closest_station_obj:
-			res_bld_container.res_bld.connected_station = closest_station_obj
-			
-func find_closest_station_to_bld(res_bld: OuterResBld) -> RailNodeStationData:
-	var closest_station_obj: RailNodeStationData
-	var closest_station_distance: float = 9999
-	for station: RailNodeStationData in self.stations:
-		var dist = res_bld.global_position.distance_to(station.position)
-		if dist < closest_station_distance:
-			closest_station_distance = dist
-			closest_station_obj = station
-	return closest_station_obj
 #endregion
 
 #region Helper-Methods

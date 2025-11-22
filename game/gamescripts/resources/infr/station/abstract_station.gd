@@ -8,7 +8,7 @@ class_name AbstractStation extends GoodsInventory
 	get(): return town_num
 	set(value):
 		town_num = value
-		self.connect_to_town(value)
+		# self.connect_to_town(value)
 
 @export var station_type: String
 
