@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=40 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/world_towns.gd" id="1_agjpo"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
@@ -306,6 +306,16 @@ num = 34
 type = 6
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_2llhm"]
+script = ExtResource("3_icu33")
+town_name = "Schmatzin"
+pos_xz = Vector2(2208.1, 1134.2)
+is_minor = true
+autogenerate_houses = false
+num = 35
+type = 6
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node"]
 script = ExtResource("1_agjpo")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -441,3 +451,7 @@ town = SubResource("Resource_6bq2n")
 [node name="TownCenter_Boldekow" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.4893, 16.062994, 2903.8215)
 town = SubResource("Resource_u3yc0")
+
+[node name="TownCenter_Schmatzin" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2208.0547, 17.800982, 1134.2361)
+town = SubResource("Resource_2llhm")

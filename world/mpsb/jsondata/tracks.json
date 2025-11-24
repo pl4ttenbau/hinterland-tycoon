@@ -375,8 +375,8 @@
 			{
 				"pos": [1635.7, 12.0, 1961.2],
 				"fork": {
-					"connectiveTracks": [11],
-					"setTo": 11
+					"connectiveTracks": [65],
+					"setTo": 65
 				}
 			},
 			{
@@ -831,14 +831,14 @@
 	},
 	{
 		"num": 23,
-		"name": "MPSB Blesewitz-Medow Branch End",
+		"name": "MPSB Blesewitz-Medow Branch",
 		"type": "750_MM",
 		"points": [
 			{
 				"pos": [2119.6, 13.5, 1974.6],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [66],
+					"setTo": 66
 				}
 			},
 			{
@@ -2213,8 +2213,8 @@
 			{
 				"pos": [1684.3, 12.6, 2109.9],
 				"fork": {
-					"connectiveTracks": [10],
-					"setTo": 10
+					"connectiveTracks": [65],
+					"setTo": 65
 				}
 			}
 		]
@@ -2289,6 +2289,89 @@
 			},
 			{
 				"pos": [2151.6, 12.6, 2180.2]
+			}
+		]
+	},
+	{
+		"num": 65,
+		"name": "MPSB Krien Town",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [1684.3, 12.6, 2109.9],
+				"fork": {
+					"connectiveTracks": [62],
+					"setTo": 62
+				}
+			},
+			{
+				"pos": [1674.9, 12.8, 2097.8]
+			},
+			{
+				"pos": [1665.1, 13.0, 2084.2]
+			},
+			{
+				"pos": [1656.0, 13.1, 2066.8],
+				"station": {
+					"num": 5
+				}
+			},
+			{
+				"pos": [1643.7, 13.4, 2043.7]
+			},
+			{
+				"pos": [1639.5, 13.3, 2032.8]
+			},
+			{
+				"pos": [1637.3, 12.9, 2016.0]
+			},
+			{
+				"pos": [1636.4, 11.8, 1991.3]
+			},
+			{
+				"pos": [1636.1, 11.7, 1973.2]
+			},
+			{
+				"pos": [1635.7, 12.0, 1961.2],
+				"fork": {
+					"connectiveTracks": [11],
+					"setTo": 11
+				}
+			}
+		]
+	},
+	{
+		"num": 66,
+		"name": "MPSB Medow Branch End",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [2119.6, 13.5, 1974.6],
+				"fork": {
+					"connectiveTracks": [66],
+					"setTo": 66
+				}
+			},
+			{
+				"pos": [2101.1, 13.3, 1974.6]
+			},
+			{
+				"pos": [2076.6, 13.3, 1973.3]
+			},
+			{
+				"pos": [2055.4, 13.4, 1973.9]
+			},
+			{
+				"pos": [2041.2, 13.4, 1971.7],
+				"station": {
+					"num": 6
+				}
+			},
+			{
+				"pos": [2023.5, 13.2, 1964.6]
+			},
+			{
+				"pos": [2000.8, 12.6, 1950.5]
 			}
 		]
 	}
