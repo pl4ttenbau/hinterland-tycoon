@@ -79,12 +79,13 @@ func connect_industries():
 #region Goods Spawning
 func spawn_rnd_passenger():
 	if ! GlobalState.loaded_map: return
-	var rnd_outer_residence = GlobalState.res_bld_containers.pick_random() as OuterResBld
-	var start_station: RailNodeStationData = rnd_outer_residence.connected_station
-	if start_station:
-		var spawned_res = SpawnedGood.new("passenger", 1)
-		spawned_res.target_location = GlobalState.res_blds.pick_random()
-		start_station.add_spawned_good(spawned_res)
+	var rnd_outer_residence = GlobalState.res_bld_containers.pick_random()
+	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
+		var start_node_station: RailNodeStationData = rnd_outer_residence.connected_station
+		if start_node_station:
+			var spawned_res = SpawnedGood.new("passenger", 1)
+			spawned_res.target_location = GlobalState.res_blds.pick_random()
+			start_node_station.parent_station.add_spawned_good(spawned_res)
 #endregion
 	
 #region Callbacks

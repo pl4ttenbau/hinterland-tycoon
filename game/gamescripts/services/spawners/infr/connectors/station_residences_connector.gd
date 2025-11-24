@@ -31,7 +31,7 @@ func reassign_town_buildings_to_stations(town: TownData) -> int:
 		# self.has_made_initial_connections = true
 		if closest_station_obj:
 			Loggie.info("Connect House %s to station %s" % [res_bld_container.name, closest_station_obj.parent_station.station_name])
-			res_bld_container.res_bld.connected_station = closest_station_obj
+			res_bld_container.res_bld_obj.connected_station = closest_station_obj
 			closest_station_obj.parent_station.connected_town = town
 			connected_town_buildings += 1
 	return connected_town_buildings

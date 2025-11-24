@@ -1,3 +1,4 @@
+## Created for every pre-placed res bld in TownBuildingsHolder class
 class_name ResidenceBuildingData extends BaseStructure
 
 @export_storage var res_bld_type: ResBldType:

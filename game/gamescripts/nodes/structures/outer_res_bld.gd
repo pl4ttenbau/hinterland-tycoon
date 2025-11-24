@@ -7,9 +7,12 @@ static var last_bld_num: int = 0
 	get: return self.entity.num
 	set(value): self.entity.num = value
 
-@export_storage var res_bld: ResidenceBuildingData:
+@export_storage var res_bld_obj: ResidenceBuildingData:
 	get: return self.entity as ResidenceBuildingData
 	set(value): self.entity = value
+
+@export_storage var connected_station: RailNodeStationData:
+	get(): return self.res_bld_obj.connected_station
 
 ## when its spawned from map
 @export var placed_res_bld_type: String

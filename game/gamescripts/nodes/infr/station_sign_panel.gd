@@ -10,4 +10,4 @@ class_name StationSignPanel extends PanelContainer
 	get(): return res_amount
 	set(value):
 		res_amount = value
-		%ResourceAmountLabel.text = value
+		%ResourceAmountLabel.text = str(value)

@@ -48,7 +48,7 @@ func register_spawned_building(outer_res_bld: OuterResBld):
 	# add to city & global state array
 	self.add_child(outer_res_bld)
 	self.town.add_res_bld(outer_res_bld)
-	outer_res_bld.res_bld.is_registered = true
+	outer_res_bld.res_bld_obj.is_registered = true
 	# increase counter
 	self.bld_count += 1
 #endregion

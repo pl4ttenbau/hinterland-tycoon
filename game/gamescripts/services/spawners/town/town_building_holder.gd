@@ -25,8 +25,8 @@ func load_preplaced_town_buildings():
 			
 func place_preplaced_res_bld(outer_bld: OuterResBld):
 	var res_bld_type := ResBldType.get_by_key(outer_bld.placed_res_bld_type)
-	outer_bld.res_bld = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
-	outer_bld.res_bld.num = OuterResBld.next_num()
+	outer_bld.res_bld_obj = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
+	outer_bld.res_bld_obj.num = OuterResBld.next_num()
 	# assign to town
 	var town := get_res_bld_town_obj(outer_bld)
 	if town: 
