@@ -1,4 +1,4 @@
-[gd_scene load_steps=239 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=245 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -1350,7 +1350,7 @@ point_count = 6
 
 [sub_resource type="Curve3D" id="Curve3D_eu11a"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1378.7, 14.2, 962.3, 0, 0, 0, 0, 0, 0, 1386.8, 14.7, 949.9, 0, 0, 0, 0, 0, 0, 1400.2, 15.3, 936.3, 0, 0, 0, 0, 0, 0, 1422.1, 16.3, 920.6, 0, 0, 0, 0, 0, 0, 1432.2, 16.9, 910.4, 0, 0, 0, 0, 0, 0, 1449.4, 17.5, 900.9, 0, 0, 0, 0, 0, 0, 1462.4, 18.4, 893.3, 0, 0, 0, 0, 0, 0, 1471.4, 18.6, 887.1, 0, 0, 0, 0, 0, 0, 1490.9, 18.2, 876.9),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1378.7, 14.2, 962.3, 0, 0, 0, 0, 0, 0, 1386.8, 14.7, 949.9, 0, 0, 0, 0, 0, 0, 1400.2, 15.3, 936.3, 0, 0, 0, 0, 0, 0, 1422.1, 16.3, 920.6, 0, 0, 0, 0, 0, 0, 1436.2, 16.9, 910.4, 0, 0, 0, 0, 0, 0, 1449.4, 17.5, 900.9, 0, 0, 0, 0, 0, 0, 1462.4, 18.4, 893.3, 0, 0, 0, 0, 0, 0, 1471.4, 18.6, 887.1, 0, 0, 0, 0, 0, 0, 1490.9, 18.2, 876.9),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
@@ -1368,6 +1368,48 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_61w1n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1576.3, 17.3, 891.3, 0, 0, 0, 0, 0, 0, 1589.6, 17.5, 900.4, 0, 0, 0, 0, 0, 0, 1598.2, 17.4, 910.6, 0, 0, 0, 0, 0, 0, 1608.1, 18.1, 931.2, 0, 0, 0, 0, 0, 0, 1620.4, 16, 948.9, 0, 0, 0, 0, 0, 0, 1640.1, 15.1, 962.7, 0, 0, 0, 0, 0, 0, 1659.2, 15.4, 971.2, 0, 0, 0, 0, 0, 0, 1676.3, 16.1, 975.6, 0, 0, 0, 0, 0, 0, 1694.6, 16.7, 977.9, 0, 0, 0, 0, 0, 0, 1715, 16.5, 978.6, 0, 0, 0, 0, 0, 0, 1757.5, 16.6, 967.9, 0, 0, 0, 0, 0, 0, 1771.9, 17.4, 953.2, 0, 0, 0, 0, 0, 0, 1787.6, 17.7, 937.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="Curve3D" id="Curve3D_xcvaq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1571, 14.7, 2357.2, 0, 0, 0, 0, 0, 0, 1554.7, 14.1, 2345.3, 0, 0, 0, 0, 0, 0, 1543.1, 13.7, 2340.9, 0, 0, 0, 0, 0, 0, 1530.5, 13.4, 2338.5, 0, 0, 0, 0, 0, 0, 1518.1, 14.7, 2337.6, 0, 0, 0, 0, 0, 0, 1499.1, 14.5, 2334.5, 0, 0, 0, 0, 0, 0, 1481.8, 14.2, 2328, 0, 0, 0, 0, 0, 0, 1467.1, 14.3, 2320.9, 0, 0, 0, 0, 0, 0, 1454.9, 14.4, 2315.6, 0, 0, 0, 0, 0, 0, 1444.9, 14.5, 2312.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_mjtkx"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1444.9, 14.5, 2312.3, 0, 0, 0, 0, 0, 0, 1428.8, 14.4, 2309.8, 0, 0, 0, 0, 0, 0, 1416.3, 14.3, 2308.2, 0, 0, 0, 0, 0, 0, 1394.1, 14.3, 2302.5, 0, 0, 0, 0, 0, 0, 1382.4, 14.6, 2300.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_4tuih"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 898.1, 13.5, 1584.8, 0, 0, 0, 0, 0, 0, 889.8, 13.7, 1605.5, 0, 0, 0, 0, 0, 0, 886.6, 14.2, 1620, 0, 0, 0, 0, 0, 0, 881.8, 14.5, 1643.5, 0, 0, 0, 0, 0, 0, 874.1, 15.3, 1668.1, 0, 0, 0, 0, 0, 0, 866.6, 15.8, 1692.6, 0, 0, 0, 0, 0, 0, 860.3, 15.7, 1710, 0, 0, 0, 0, 0, 0, 856.5, 15.7, 1723, 0, 0, 0, 0, 0, 0, 855.5, 15.7, 1735.2, 0, 0, 0, 0, 0, 0, 857.7, 15.7, 1745.6),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_d8y8s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 857.7, 15.7, 1745.6, 0, 0, 0, 0, 0, 0, 860.4, 15.6, 1757.9, 0, 0, 0, 0, 0, 0, 860, 15.1, 1768.8, 0, 0, 0, 0, 0, 0, 856.1, 14.8, 1775, 0, 0, 0, 0, 0, 0, 847.3, 14.6, 1782.7, 0, 0, 0, 0, 0, 0, 833.5, 14.4, 1793.4, 0, 0, 0, 0, 0, 0, 821.3, 14.2, 1800.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_ri5o3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 857.7, 15.7, 1745.6, 0, 0, 0, 0, 0, 0, 879.4, 15.7, 1746.6, 0, 0, 0, 0, 0, 0, 885.5, 15.4, 1749.8, 0, 0, 0, 0, 0, 0, 890.2, 15.2, 1756.9, 0, 0, 0, 0, 0, 0, 896, 14.7, 1772.1, 0, 0, 0, 0, 0, 0, 906.7, 14.5, 1781.3, 0, 0, 0, 0, 0, 0, 911, 14.2, 1797, 0, 0, 0, 0, 0, 0, 913.7, 14.2, 1811.3, 0, 0, 0, 0, 0, 0, 919.9, 14.4, 1820.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -2254,6 +2296,26 @@ placed_town_num = 35
 transform = Transform3D(-0.68635154, 0, -0.7272698, 0, 1, 0, 0.7272698, 0, -0.68635154, 2184.729, 18.03951, 1146.8107)
 placed_town_num = 35
 
+[node name="HalfTimberedBarn12" parent="Houses" instance=ExtResource("45_onop4")]
+transform = Transform3D(0.20323162, 0, -0.9791306, 0, 1, 0, 0.9791306, 0, 0.20323162, 822.3284, 13.119379, 2049.7231)
+placed_town_num = 9
+
+[node name="VillageHouse46" parent="Houses" instance=ExtResource("50_1ktam")]
+transform = Transform3D(0.26888618, 0, 0.96317196, 0, 1, 0, -0.96317196, 0, 0.26888618, 853.62256, 13.0332985, 2044.6478)
+placed_town_num = 9
+
+[node name="WoodenShack5" parent="Houses" instance=ExtResource("41_nawyd")]
+transform = Transform3D(-0.3134953, 0, 0.9495897, 0, 1, 0, -0.9495897, 0, -0.3134953, 815.72687, 13.259633, 2019.8551)
+placed_town_num = 9
+
+[node name="VillageHouse47" parent="Houses" instance=ExtResource("49_v0v3v")]
+transform = Transform3D(0.54892075, 0, 0.8358744, 0, 1, 0, -0.8358744, 0, 0.54892075, 844.7757, 13.21262, 2017.383)
+placed_town_num = 9
+
+[node name="PolishHouse28" parent="Houses" instance=ExtResource("48_rrrix")]
+transform = Transform3D(0.18326506, 0, 0.9830635, 0, 1, 0, -0.9830635, 0, 0.18326506, 869.0576, 13.466551, 2025.9213)
+placed_town_num = 9
+
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
 
@@ -2737,7 +2799,7 @@ metadata/name = "Dennin Wegenziner Str"
 [node name="Editor_Road30" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_vhgaf")
 metadata/road_num = 30
-metadata/name = "Dennin Iwen Str"
+metadata/name = "Dennin Unterdorf"
 
 [node name="Editor_Road31" type="Path3D" parent="InEditor/EditorInfr"]
 curve = SubResource("Curve3D_jgs7s")
@@ -3173,6 +3235,36 @@ metadata/name = "Dargezin Hauptstr Westwards"
 curve = SubResource("Curve3D_65nlv")
 metadata/road_num = 116
 metadata/name = "Dargezin Hauptstr Eastwards"
+
+[node name="Editor_Road118" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_61w1n")
+metadata/road_num = 117
+metadata/name = "Dargezin-Kölzin Landstr"
+
+[node name="Editor_Road119" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_xcvaq")
+metadata/road_num = 118
+metadata/name = "Dennin-Iwener Landweg"
+
+[node name="Editor_Road120" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_mjtkx")
+metadata/road_num = 119
+metadata/name = "Iwen Dorfstr."
+
+[node name="Editor_Road121" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_4tuih")
+metadata/road_num = 120
+metadata/name = "Völschow Str. nach Jarmen"
+
+[node name="Editor_Road122" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_d8y8s")
+metadata/road_num = 121
+metadata/name = "Völschow Dorfstr. NW"
+
+[node name="Editor_Road123" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ri5o3")
+metadata/road_num = 122
+metadata/name = "Völschow Dorfstr. NE"
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2208.0547, 17.800982, 1134.2361)
