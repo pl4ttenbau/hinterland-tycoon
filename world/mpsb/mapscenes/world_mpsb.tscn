@@ -1,4 +1,4 @@
-[gd_scene load_steps=245 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=251 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -1410,6 +1410,48 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_4t08p"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 821.3, 14.2, 1800.3, 0, 0, 0, 0, 0, 0, 804.2, 14.2, 1806.4, 0, 0, 0, 0, 0, 0, 789.6, 14.2, 1813.4, 0, 0, 0, 0, 0, 0, 777.6, 14.3, 1822.6, 0, 0, 0, 0, 0, 0, 765.8, 13.9, 1836.7, 0, 0, 0, 0, 0, 0, 758.3, 13.7, 1846.1),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_1x0gc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 758.3, 13.7, 1846.1, 0, 0, 0, 0, 0, 0, 750.7, 13.7, 1868.2, 0, 0, 0, 0, 0, 0, 747.2, 13.9, 1890.1, 0, 0, 0, 0, 0, 0, 751.1, 13.8, 1904.8, 0, 0, 0, 0, 0, 0, 761.7, 13.7, 1919.7, 0, 0, 0, 0, 0, 0, 782.8, 13.6, 1944.4, 0, 0, 0, 0, 0, 0, 797.6, 13.6, 1965.3, 0, 0, 0, 0, 0, 0, 810.3, 13.7, 1986.2, 0, 0, 0, 0, 0, 0, 823.7, 13.8, 2007.1, 0, 0, 0, 0, 0, 0, 830, 13.6, 2024.4),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_xueo0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 830, 13.6, 2024.4, 0, 0, 0, 0, 0, 0, 859.2, 13.6, 2034.2, 0, 0, 0, 0, 0, 0, 879.9, 13.7, 2038.4, 0, 0, 0, 0, 0, 0, 900.1, 13.6, 2039, 0, 0, 0, 0, 0, 0, 918.6, 13.7, 2038, 0, 0, 0, 0, 0, 0, 944.2, 14.1, 2041.6, 0, 0, 0, 0, 0, 0, 969.4, 14.4, 2047.8, 0, 0, 0, 0, 0, 0, 995.6, 14.7, 2055.9, 0, 0, 0, 0, 0, 0, 1022.3, 15.7, 2065.4),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_gai2d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1022.3, 15.7, 2065.4, 0, 0, 0, 0, 0, 0, 1037.4, 16.4, 2073.7, 0, 0, 0, 0, 0, 0, 1053.9, 17.9, 2081.3, 0, 0, 0, 0, 0, 0, 1071.4, 19.5, 2088.4, 0, 0, 0, 0, 0, 0, 1093.1, 20.6, 2094.7, 0, 0, 0, 0, 0, 0, 1110.4, 20.7, 2101.6, 0, 0, 0, 0, 0, 0, 1122, 19.6, 2110.2, 0, 0, 0, 0, 0, 0, 1130.5, 19.1, 2120, 0, 0, 0, 0, 0, 0, 1138, 18.7, 2128.8, 0, 0, 0, 0, 0, 0, 1143.9, 18.4, 2141.6, 0, 0, 0, 0, 0, 0, 1151.6, 18.1, 2162),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_dhysq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1151.6, 18.1, 2162, 0, 0, 0, 0, 0, 0, 1159, 18.1, 2183.8, 0, 0, 0, 0, 0, 0, 1161.1, 18.2, 2194.9, 0, 0, 0, 0, 0, 0, 1164.3, 18.2, 2212.1, 0, 0, 0, 0, 0, 0, 1168.6, 17.9, 2226.2, 0, 0, 0, 0, 0, 0, 1178.1, 17.3, 2250.9, 0, 0, 0, 0, 0, 0, 1180.1, 17.2, 2273.9, 0, 0, 0, 0, 0, 0, 1182.9, 17.2, 2295.6, 0, 0, 0, 0, 0, 0, 1188.8, 17, 2306.3, 0, 0, 0, 0, 0, 0, 1197.7, 16.6, 2313.9, 0, 0, 0, 0, 0, 0, 1214.3, 15.6, 2321.4, 0, 0, 0, 0, 0, 0, 1226.4, 15.6, 2322.5, 0, 0, 0, 0, 0, 0, 1240.8, 15.4, 2328),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="Curve3D" id="Curve3D_orgc6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1240.8, 15.4, 2328, 0, 0, 0, 0, 0, 0, 1264.7, 14.2, 2315.4, 0, 0, 0, 0, 0, 0, 1295.3, 14.1, 2305.3, 0, 0, 0, 0, 0, 0, 1321.1, 14.2, 2295.2, 0, 0, 0, 0, 0, 0, 1333.2, 14, 2293, 0, 0, 0, 0, 0, 0, 1345.5, 14.4, 2294.3, 0, 0, 0, 0, 0, 0, 1361.6, 15.4, 2300.9, 0, 0, 0, 0, 0, 0, 1382.4, 14.6, 2300.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -3265,6 +3307,36 @@ metadata/name = "Völschow Dorfstr. NW"
 curve = SubResource("Curve3D_ri5o3")
 metadata/road_num = 122
 metadata/name = "Völschow Dorfstr. NE"
+
+[node name="Editor_Road124" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_4t08p")
+metadata/road_num = 123
+metadata/name = "Völschow Daberkower Weg"
+
+[node name="Editor_Road125" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_1x0gc")
+metadata/road_num = 124
+metadata/name = "Daberkow Völschower Str."
+
+[node name="Editor_Road126" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_xueo0")
+metadata/road_num = 125
+metadata/name = "Daberkow Pritzenower Str.."
+
+[node name="Editor_Road127" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_gai2d")
+metadata/road_num = 126
+metadata/name = "Torfberger Str."
+
+[node name="Editor_Road128" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_dhysq")
+metadata/road_num = 127
+metadata/name = "Janow Neuendorfer Str."
+
+[node name="Editor_Road129" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_orgc6")
+metadata/road_num = 128
+metadata/name = "Janow Neuendorfer Str."
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2208.0547, 17.800982, 1134.2361)

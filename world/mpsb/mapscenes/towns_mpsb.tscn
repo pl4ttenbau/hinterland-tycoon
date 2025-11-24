@@ -236,7 +236,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_agjpo"]
 script = ExtResource("3_icu33")
-town_name = "Völschow"
+town_name = "Völschow-Jagetzow"
 pos_xz = Vector2(863.1, 1753.5)
 is_minor = true
 num = 27
@@ -420,7 +420,7 @@ town = SubResource("Resource_fa4dg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
 town = SubResource("Resource_gj2ut")
 
-[node name="TownCenter_Völschow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Völschow-Jagetzow" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 863.1, 15.3, 1753.5)
 town = SubResource("Resource_agjpo")
 
