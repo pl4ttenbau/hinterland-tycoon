@@ -15,14 +15,12 @@ signal town_name_changed(new_name: String)
 		return town_name
 
 @export var pos_xz: Vector2
-
 @export var is_minor: bool = false
 
 @export var autogenerate_houses: bool = true
-
 @export_storage var totalPops: int
-
 @export_storage var res_bld_containers: Array[OuterResBld] = []
+
 @export_storage var stations: Array[RailNodeStationData] = []
 @export_storage var station_blds_assigned: bool = false
 #endregion
@@ -70,24 +68,8 @@ func has_bld_around(check_pos: Vector3) -> bool:
 #region Stations
 func connect_new_station(station: AbstractStation):
 	self.stations.append(station)
-	self.reassign_buildings_to_stations()
+	# self.reassign_buildings_to_stations()
 	
-func reassign_buildings_to_stations():
-	for res_bld_container: OuterResBld in self.res_bld_containers:
-		var closest_station_obj := self.find_closest_station_to_bld(res_bld_container)
-		self.station_blds_assigned = true
-		if closest_station_obj:
-			res_bld_container.res_bld.connected_station = closest_station_obj
-			
-func find_closest_station_to_bld(res_bld: OuterResBld) -> RailNodeStationData:
-	var closest_station_obj: RailNodeStationData
-	var closest_station_distance: float = 9999
-	for station: RailNodeStationData in self.stations:
-		var dist = res_bld.global_position.distance_to(station.position)
-		if dist < closest_station_distance:
-			closest_station_distance = dist
-			closest_station_obj = station
-	return closest_station_obj
 #endregion
 
 #region Helper-Methods

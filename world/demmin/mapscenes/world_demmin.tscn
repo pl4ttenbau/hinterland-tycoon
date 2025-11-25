@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk0k4rfuikqlp"]
+[gd_scene load_steps=23 format=3 uid="uid://bk0k4rfuikqlp"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://c0itf7153euwk" path="res://world/demmin/mapscenes/terrain/terrain_demmin.tscn" id="2_qnuhp"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/world_houses.gd" id="11_pdqxb"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="34_hk0ac"]
 [ext_resource type="ArrayMesh" uid="uid://c4lsqrukhf224" path="res://assets/meshes/structures/rathaus/rathaus.obj" id="35_6ghl1"]
 [ext_resource type="PackedScene" uid="uid://ba8ms6yjtyx0o" path="res://world/demmin/mapscenes/towns_demmin.tscn" id="36_sgqwu"]
@@ -118,6 +119,8 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 280.839, 8.1, 950.234)
 
 [node name="Houses" type="Node" parent="."]
+script = ExtResource("11_pdqxb")
+metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
 
 [node name="PolishHouse1" parent="Houses" instance=ExtResource("43_b5u8v")]
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, 2388.63, 10.2, 2183.26)

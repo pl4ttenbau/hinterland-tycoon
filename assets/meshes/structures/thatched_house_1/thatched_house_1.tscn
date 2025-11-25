@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkw15rso2gb44"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_2gaaj"]
+[ext_resource type="ArrayMesh" uid="uid://5tucoc6kscya" path="res://assets/meshes/structures/thatched_house_1/thatched_house_1.obj" id="2_hm8ey"]
+[ext_resource type="Texture2D" uid="uid://c0be0w1ge2b13" path="res://assets/meshes/structures/thatched_house_1/tex_thatched_house_roof_d.png" id="3_xltcc"]
+[ext_resource type="Texture2D" uid="uid://cxj4ubpfmkyq" path="res://assets/meshes/structures/thatched_house_1/tex_thatched_house_roof_n.png" id="4_jk36b"]
+[ext_resource type="Texture2D" uid="uid://dg184bqyc1eor" path="res://assets/meshes/structures/thatched_house_1/tex_thatched_house_roof_r.png" id="5_n4ql1"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="6_xltcc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krhnx"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_xltcc")
+roughness_texture = ExtResource("5_n4ql1")
+normal_enabled = true
+normal_texture = ExtResource("4_jk36b")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jk36b"]
+size = Vector3(7.661133, 8.342346, 19.34198)
+
+[node name="ThatchedHouse1" type="Node3D"]
+script = ExtResource("1_2gaaj")
+placed_res_bld_type = "thatched_house_1"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_hm8ey")
+surface_material_override/0 = SubResource("StandardMaterial3D_krhnx")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="."]
+script = ExtResource("6_xltcc")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14501953, 4.1023865, -0.24777222)
+shape = SubResource("BoxShape3D_jk36b")

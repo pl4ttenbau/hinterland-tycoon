@@ -48,7 +48,6 @@ func spawn_stations():
 	for track: RailTrackData in Managers.rails.track_storage.get_all():
 		for rail_node_station: RailNodeStationData in track.node_stations:
 			var outer_station := self.spawn_station(rail_node_station)
-			self.add_child(outer_station, true)
 			outer_station.adjust_rotation_from_track()
 	#self.connect_industries()
 	SignalBus.stations_spawned.emit()
@@ -80,12 +79,13 @@ func connect_industries():
 #region Goods Spawning
 func spawn_rnd_passenger():
 	if ! GlobalState.loaded_map: return
-	var rnd_start_bld = GlobalState.res_blds.pick_random() as ResidenceBuildingData
-	var start_station: RailNodeStationData = rnd_start_bld.connected_station
-	if start_station:
-		var spawned_res = SpawnedGood.new("passenger", 1)
-		spawned_res.target_location = GlobalState.res_blds.pick_random()
-		start_station.add_spawned_good(spawned_res)
+	var rnd_outer_residence = GlobalState.res_bld_containers.pick_random()
+	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
+		var start_node_station: RailNodeStationData = rnd_outer_residence.connected_station
+		if start_node_station:
+			var spawned_res = SpawnedGood.new("passenger", 1)
+			spawned_res.target_location = GlobalState.res_blds.pick_random()
+			start_node_station.parent_station.add_spawned_good(spawned_res)
 #endregion
 	
 #region Callbacks

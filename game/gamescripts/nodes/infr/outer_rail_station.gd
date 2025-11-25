@@ -4,12 +4,15 @@ class_name OuterRailStation extends HideableObject
 const STATION_SCENE_PATH = "res://scenes/subscenes/infr/outer_rail_station.tscn"
 const NINETY_DEG_IN_RAD = 1.57
 
-@export_storage var node_station: RailNodeStationData:
+@export var node_station: RailNodeStationData:
 	get(): return self.entity as RailNodeStationData
 	set(value): 
 		self.entity = value
 		self.position = value.position
 		self._update_station_name()
+		
+@export var station_obj: RailStationData:
+	get(): return self.node_station.parent_station
 
 #region Initialization
 func _enter_tree() -> void:
