@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=259 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
 [ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="35_emjn5"]
 [ext_resource type="PackedScene" uid="uid://ce7uwh35i56pf" path="res://assets/meshes/deco/wooden_pier/wooden_pier.tscn" id="36_emjn5"]
-[ext_resource type="Script" path="res://game/gamescripts/nodes/world/world_industries.gd" id="36_pfqmd"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/world_industries.gd" id="36_pfqmd"]
 [ext_resource type="PackedScene" uid="uid://bongrkjiwclhd" path="res://world/mpsb/mapscenes/towns_mpsb.tscn" id="38_d7utl"]
 [ext_resource type="PackedScene" uid="uid://huj60dribkuj" path="res://assets/meshes/vehicles/water/rowing_boat/rowing_boat_static.tscn" id="38_wtafe"]
 [ext_resource type="PackedScene" uid="uid://du7j51h025uyf" path="res://assets/meshes/deco/statue_1/statue_1.tscn" id="39_mlv4m"]
@@ -1481,6 +1481,34 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Curve3D" id="Curve3D_brumn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1382.4, 14.6, 2300.7, 0, 0, 0, 0, 0, 0, 1376.8, 14.7, 2316, 0, 0, 0, 0, 0, 0, 1374.9, 14.6, 2329.9, 0, 0, 0, 0, 0, 0, 1377.6, 14.4, 2338.6, 0, 0, 0, 0, 0, 0, 1383.7, 14.3, 2345, 0, 0, 0, 0, 0, 0, 1393.4, 14.5, 2350.6, 0, 0, 0, 0, 0, 0, 1406.2, 14.4, 2353.9, 0, 0, 0, 0, 0, 0, 1418.9, 14.4, 2352.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_qx1gl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1444.9, 14.5, 2312.3, 0, 0, 0, 0, 0, 0, 1444.4, 14.3, 2324.3, 0, 0, 0, 0, 0, 0, 1442.5, 14.3, 2333.8, 0, 0, 0, 0, 0, 0, 1438.3, 14.3, 2341.7, 0, 0, 0, 0, 0, 0, 1431.1, 14.4, 2347.7, 0, 0, 0, 0, 0, 0, 1418.9, 14.4, 2352.7),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_hnfrr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 529.1, 12.4, 1165.8, 0, 0, 0, 0, 0, 0, 529.6, 11.6, 1185.6, 0, 0, 0, 0, 0, 0, 529.9, 12, 1204.5, 0, 0, 0, 0, 0, 0, 529.9, 12.5, 1221.1, 0, 0, 0, 0, 0, 0, 526.4, 12.6, 1242.1, 0, 0, 0, 0, 0, 0, 523.8, 12.3, 1254, 0, 0, 0, 0, 0, 0, 524.2, 11.9, 1269.3, 0, 0, 0, 0, 0, 0, 524.5, 11.6, 1283.8, 0, 0, 0, 0, 0, 0, 528.6, 12.1, 1302.4, 0, 0, 0, 0, 0, 0, 532.5, 12.3, 1312.2, 0, 0, 0, 0, 0, 0, 541.3, 12.6, 1326.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_ug0wq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 541.3, 12.6, 1326.3, 0, 0, 0, 0, 0, 0, 549.5, 12.3, 1342.7, 0, 0, 0, 0, 0, 0, 560.4, 12.3, 1369, 0, 0, 0, 0, 0, 0, 571.1, 12.2, 1394.9, 0, 0, 0, 0, 0, 0, 578.7, 11.9, 1415, 0, 0, 0, 0, 0, 0, 582.5, 11.7, 1431.9, 0, 0, 0, 0, 0, 0, 583.4, 11.7, 1445.2, 0, 0, 0, 0, 0, 0, 580.1, 12.3, 1456.9, 0, 0, 0, 0, 0, 0, 568.31, 12.7, 1471.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
 map_key = "mpsb"
@@ -1810,6 +1838,14 @@ transform = Transform3D(-0.36155945, 0, 0.932349, 0, 1, 0, -0.932349, 0, -0.3615
 
 [node name="VillageWell" parent="Deco" instance=ExtResource("40_rrrix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2753.1653, 12.64318, 1425.1041)
+
+[node name="IvenJanow" type="Node" parent="Deco"]
+
+[node name="Tractor" parent="Deco/IvenJanow" instance=ExtResource("58_c4uv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.7697, 15.095522, 2310.2249)
+
+[node name="VillageWell" parent="Deco/IvenJanow" instance=ExtResource("40_rrrix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1225.1654, 15.256286, 2313.6216)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("44_tkkvf")]
 environment = SubResource("Environment_ls53n")
@@ -2388,6 +2424,38 @@ placed_town_num = 9
 
 [node name="JanowForsthaus" parent="Houses" instance=ExtResource("6_ac0fl")]
 transform = Transform3D(0.79938066, 0, 0.6008249, 0, 1, 0, -0.6008249, 0, 0.79938066, 1185.7291, 12.51844, 2412.6172)
+placed_town_num = 25
+
+[node name="CityCornerHouse4" parent="Houses" instance=ExtResource("3_xmflw")]
+transform = Transform3D(0.07436955, 0, 0.99723077, 0, 1, 0, -0.99723077, 0, 0.07436955, 1432.799, 13.705745, 2325.3772)
+placed_town_num = 25
+
+[node name="VillageHouse48" parent="Houses" instance=ExtResource("50_1ktam")]
+transform = Transform3D(0.9804742, 0, -0.19664782, 0, 1, 0, 0.19664782, 0, 0.9804742, 1389.4825, 14.153275, 2317.1008)
+placed_town_num = 25
+
+[node name="VillageHouse49" parent="Houses" instance=ExtResource("49_v0v3v")]
+transform = Transform3D(-0.96902, 0, 0.24698216, 0, 1, 0, -0.24698216, 0, -0.96902, 1363.9425, 14.272825, 2316.5464)
+placed_town_num = 25
+
+[node name="PolishHouse29" parent="Houses" instance=ExtResource("51_o3cyl")]
+transform = Transform3D(0.43791622, 0, -0.8990158, 0, 1, 0, 0.8990158, 0, 0.43791622, 1422.2537, 14.176887, 2340.7932)
+placed_town_num = 25
+
+[node name="ThatchedHouse4" parent="Houses" instance=ExtResource("51_hw0ba")]
+transform = Transform3D(0.14839624, 0, 0.98892796, 0, 1, 0, -0.98892796, 0, 0.14839624, 1426.2306, 13.988431, 2298.5427)
+placed_town_num = 25
+
+[node name="HalfTimberedBarn13" parent="Houses" instance=ExtResource("45_onop4")]
+transform = Transform3D(0.9188463, 0, 0.39461556, 0, 1, 0, -0.39461556, 0, 0.9188463, 1253.5021, 14.137716, 2304.3372)
+placed_town_num = 25
+
+[node name="VillageHouse50" parent="Houses" instance=ExtResource("50_1ktam")]
+transform = Transform3D(0.29070222, 0, -0.9568136, 0, 1, 0, 0.9568136, 0, 0.29070222, 1257.2063, 13.922454, 2333.373)
+placed_town_num = 25
+
+[node name="NorthernGermanHouse12" parent="Houses" instance=ExtResource("35_ac0fl")]
+transform = Transform3D(0.10383415, 0, 0.99459463, 0, 1, 0, -0.99459463, 0, 0.10383415, 1221.1307, 15.180574, 2295.434)
 placed_town_num = 25
 
 [node name="InEditor" type="Node3D" parent="."]
@@ -3390,6 +3458,26 @@ curve = SubResource("Curve3D_b73m2")
 metadata/road_num = 128
 metadata/name = "Janow Neuendorfer Str."
 
+[node name="Editor_Road130" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_brumn")
+metadata/road_num = 129
+metadata/name = "Iven Dorfring W"
+
+[node name="Editor_Road131" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_qx1gl")
+metadata/road_num = 130
+metadata/name = "Iven Dorfring E"
+
+[node name="Editor_Road132" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_hnfrr")
+metadata/road_num = 131
+metadata/name = "Bentzin Tutower Str."
+
+[node name="Editor_Road133" type="Path3D" parent="InEditor/EditorInfr"]
+curve = SubResource("Curve3D_ug0wq")
+metadata/road_num = 132
+metadata/name = "Zemmin Hauptstr."
+
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2208.0547, 17.800982, 1134.2361)
 gizmo_extents = 15.0
@@ -3621,4 +3709,13 @@ script = ExtResource("35_emjn5")
 num = 25
 type_key = "RESTAURANT"
 ind_name = "Ziethen Hotel Adler"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="SmallStore_Iven" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1409.5194, 14.381299, 2324.9124)
+gizmo_extents = 10.0
+script = ExtResource("35_emjn5")
+num = 26
+type_key = "SMALL_STORE"
+ind_name = "Iven Landmarkt"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
