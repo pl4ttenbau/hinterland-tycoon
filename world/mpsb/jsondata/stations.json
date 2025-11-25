@@ -89,5 +89,19 @@
 		"townNum": 17,
 		"type": "STATION_PASS",
 		"townName": "Anklam"
+	},
+	{
+		"num": 14,
+		"name": "Stadt",
+		"townNum": 25,
+		"type": "STATION_PASS",
+		"townName": "Iven"
+	},
+	{
+		"num": 15,
+		"name": "Forsthaus",
+		"townNum": 25,
+		"type": "STATION_GOODS",
+		"townName": "Janow"
 	}
 ]
