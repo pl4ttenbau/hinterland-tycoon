@@ -1847,6 +1847,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1232.7697, 15.095522, 2310.22
 [node name="VillageWell" parent="Deco/IvenJanow" instance=ExtResource("40_rrrix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1225.1654, 15.256286, 2313.6216)
 
+[node name="Rossin" type="Node" parent="Deco"]
+
+[node name="Church1" parent="Deco/Rossin" instance=ExtResource("59_51ymi")]
+transform = Transform3D(0.2638899, 0, -0.9645528, 0, 1, 0, 0.9645528, 0, 0.2638899, 2972.773, 11.630552, 2474.4294)
+
 [node name="WorldEnvironment" parent="." instance=ExtResource("44_tkkvf")]
 environment = SubResource("Environment_ls53n")
 camera_attributes = SubResource("CameraAttributesPractical_d52qy")
@@ -2457,6 +2462,30 @@ placed_town_num = 25
 [node name="NorthernGermanHouse12" parent="Houses" instance=ExtResource("35_ac0fl")]
 transform = Transform3D(0.10383415, 0, 0.99459463, 0, 1, 0, -0.99459463, 0, 0.10383415, 1221.1307, 15.180574, 2295.434)
 placed_town_num = 25
+
+[node name="ThatchedHouse5" parent="Houses" instance=ExtResource("51_hw0ba")]
+transform = Transform3D(0.24958572, 0, 0.96835274, 0, 1, 0, -0.96835274, 0, 0.24958572, 2592.2502, 13.0499, 2612.0293)
+placed_town_num = 6
+
+[node name="PolishHouse30" parent="Houses" instance=ExtResource("7_emjn5")]
+transform = Transform3D(0.14072846, 0, 0.9900482, 0, 1, 0, -0.9900482, 0, 0.14072846, 2605.0437, 14.00704, 2627.5615)
+placed_town_num = 6
+
+[node name="NorthernGermanHouse14" parent="Houses" instance=ExtResource("35_ac0fl")]
+transform = Transform3D(0.8051112, 0, -0.59312385, 0, 1, 0, 0.59312385, 0, 0.8051112, 2972.5776, 12.838682, 2443.1987)
+placed_town_num = 23
+
+[node name="VillageHouse51" parent="Houses" instance=ExtResource("50_1ktam")]
+transform = Transform3D(-0.99311346, 0, 0.11715602, 0, 1, 0, -0.11715602, 0, -0.99311346, 3000.457, 12.25085, 2471.1326)
+placed_town_num = 23
+
+[node name="VillageHouse52" parent="Houses" instance=ExtResource("49_v0v3v")]
+transform = Transform3D(0.44011164, 0, 0.897943, 0, 1, 0, -0.897943, 0, 0.44011164, 3020.5322, 12.423279, 2480.6577)
+placed_town_num = 23
+
+[node name="NorthernGermanHouse13" parent="Houses" instance=ExtResource("35_ac0fl")]
+transform = Transform3D(-0.8238493, 0, -0.5668088, 0, 1, 0, 0.5668088, 0, -0.8238493, 2631.7644, 12.263748, 2596.0889)
+placed_town_num = 6
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
@@ -3719,3 +3748,27 @@ num = 26
 type_key = "SMALL_STORE"
 ind_name = "Iven Landmarkt"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Butcher_sarnow" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2589.0664, 13.81059, 2654.7798)
+gizmo_extents = 10.0
+script = ExtResource("35_emjn5")
+num = 27
+type_key = "BUTCHER"
+ind_name = "Sarnow Butcher"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Farm_Rossin" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2977.8572, 12.706205, 2398.197)
+gizmo_extents = 10.0
+script = ExtResource("35_emjn5")
+num = 28
+type_key = "FARM"
+ind_name = "Farm Rossin"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="RuinedHouse2" parent="." instance=ExtResource("40_v0v3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2769.1965, 13.514503, 2918.866)
+
+[node name="Windmill2Static" parent="." instance=ExtResource("42_vqub3")]
+transform = Transform3D(0.6417843, 0, -0.76688516, 0, 1, 0, 0.76688516, 0, 0.6417843, 2424.394, 22.376493, 2733.2358)
