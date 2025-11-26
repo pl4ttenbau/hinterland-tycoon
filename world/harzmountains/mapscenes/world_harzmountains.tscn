@@ -1,4 +1,4 @@
-[gd_scene load_steps=236 format=3 uid="uid://caxv06vdsiq0h"]
+[gd_scene load_steps=232 format=3 uid="uid://caxv06vdsiq0h"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://vmtodxubdw7" path="res://assets/meshes/industry/windmill_2/windmill_2_static.tscn" id="49_fewm8"]
 [ext_resource type="PackedScene" uid="uid://c474km5fgqu6p" path="res://assets/meshes/deco/tent_1/tent_1.tscn" id="50_1vtbi"]
 [ext_resource type="ArrayOccluder3D" uid="uid://bdfudjor4mr7m" path="res://world/harzmountains/mapscenes/houses_harzmountains_objects.occ" id="51_ilwe5"]
+[ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="52_vuti8"]
 [ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="53_nynls"]
 [ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="56_x1dpf"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="56_x5l52"]
@@ -51,7 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="71_gf88f"]
 [ext_resource type="PackedScene" uid="uid://dhjxg1kopme0k" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechs_kb4_wagon.tscn" id="73_yd6n5"]
 [ext_resource type="PackedScene" uid="uid://dcb46mio1xry1" path="res://assets/meshes/structures/city_house_2/city_house_2.tscn" id="77_r10ie"]
-[ext_resource type="PackedScene" uid="uid://bs2jm62cmkbrk" path="res://addons/instant-realistic-light/light_scene.tscn" id="81_3nsqt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoc0b"]
 albedo_texture = ExtResource("16_eoc0b")
@@ -1300,41 +1300,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_gn88m"]
-ground_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_tyhie"]
-sky_material = SubResource("PhysicalSkyMaterial_gn88m")
-radiance_size = 2
-
-[sub_resource type="Environment" id="Environment_f8w8m"]
-background_mode = 2
-background_intensity = 100000.0
-sky = SubResource("Sky_tyhie")
-tonemap_mode = 3
-tonemap_white = 8.0
-ssao_enabled = true
-ssao_detail = 2.0
-sdfgi_enabled = true
-sdfgi_bounce_feedback = 0.9
-glow_enabled = true
-glow_normalized = true
-glow_bloom = 0.2
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
-volumetric_fog_gi_inject = 1.14
-volumetric_fog_anisotropy = 0.7
-volumetric_fog_sky_affect = 0.295
-adjustment_saturation = 1.17
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
-exposure_multiplier = 3.069
-auto_exposure_scale = 0.22
-auto_exposure_speed = 0.8
-dof_blur_far_distance = 1.44
-dof_blur_near_distance = 0.01
-auto_exposure_min_sensitivity = 8.01
 
 [node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
@@ -3160,8 +3125,6 @@ metadata/name = "Wernigerode Darlingeröder Str"
 [node name="Locator" type="Node3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.18195, 143.10123, 2799.9204)
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("81_3nsqt")]
-environment = SubResource("Environment_f8w8m")
-camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
-
 [node name="Roads" type="Node3D" parent="."]
+
+[node name="DayEnvironment" parent="." instance=ExtResource("52_vuti8")]
