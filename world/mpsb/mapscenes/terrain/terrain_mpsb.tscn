@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7cwc6ja1jrn2"]
+[gd_scene load_steps=9 format=3 uid="uid://7cwc6ja1jrn2"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="1_ebicv"]
 [ext_resource type="Terrain3DAssets" uid="uid://dvep21n01mie6" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.tres" id="2_60ypj"]
@@ -9,7 +9,11 @@
 size = Vector2(2400, 2400)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_naxkj"]
-size = Vector2(750, 270)
+resource_local_to_scene = true
+size = Vector2(200, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b6nfv"]
+size = Vector2(700, 240)
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
 shape = 0
@@ -29,11 +33,16 @@ material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_2pcia")
 skeleton = NodePath("")
 
-[node name="WaterFriedland" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2176.32, 10.2545, 3199.59)
+[node name="SiesenbollentinGroßerSee" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.4226, 15.304442, 2872.6414)
 material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_naxkj")
 skeleton = NodePath("")
+
+[node name="WaterFriedland2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2158.813, 10.024422, 3207.9233)
+material_override = ExtResource("3_b6nfv")
+mesh = SubResource("PlaneMesh_b6nfv")
 
 [node name="CustomTerrain3DParticles" parent="." node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
 terrain = NodePath("..")
