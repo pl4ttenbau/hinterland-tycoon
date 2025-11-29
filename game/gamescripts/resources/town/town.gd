@@ -5,6 +5,7 @@ class_name TownData extends GameObject
 const BUIDLING_BLOCKAGE_RADIUS = 20.0
 
 signal town_name_changed(new_name: String)
+signal buildings_changed()
 
 #region Properties
 @export var town_name: String:
@@ -48,13 +49,10 @@ static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false,
 #endregion
 
 #region Buildings
-func add_building(_building: BaseStructure):
-	self.structures.append(_building)
-	_building.town = self
-	
 func add_res_bld(outer_res_bld: OuterResBld):
 	self.res_bld_containers.append(outer_res_bld)
 	GlobalState.res_bld_containers.append(outer_res_bld)
+	self.buildings_changed.emit()
 	
 func has_bld_around(check_pos: Vector3) -> bool:
 	for outer_res_bld: OuterResBld in self.res_bld_containers:

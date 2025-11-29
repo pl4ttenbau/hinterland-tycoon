@@ -11,8 +11,6 @@ const MAP_STATIONS_FILEPATH_FORMAT := "res://world/%s/jsondata/stations.json"
 
 @export var towns: Array[TownData]
 
-static var MAX_INDUSTRY_DIST = 200
-
 func _enter_tree() -> void:
 	Managers.stations = self
 	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
@@ -28,12 +26,12 @@ func load_stations():
 		self.stations_objs.append(station_obj)
 		stations_by_num.set(station_obj.num, station_obj)
 	# connect RailNodeStations to parents
-	self.connect_node_stations()
+	self.connect_node_stations_to_parents()
 	# save in global state & inform signal bus
 	GlobalState.station_objs = self.stations_objs
 	SignalBus.stations_loaded.emit(self.stations_objs)
 	
-func connect_node_stations():
+func connect_node_stations_to_parents():
 	for track: RailTrackData in Managers.rails.track_storage.get_all():
 		for rail_node_station: RailNodeStationData in track.node_stations:
 			var parent_num: int = rail_node_station.station_num
@@ -49,7 +47,6 @@ func spawn_stations():
 		for rail_node_station: RailNodeStationData in track.node_stations:
 			var outer_station := self.spawn_station(rail_node_station)
 			outer_station.adjust_rotation_from_track()
-	#self.connect_industries()
 	SignalBus.stations_spawned.emit()
 	
 func spawn_station(station_obj: RailNodeStationData) -> OuterRailStation:
@@ -60,40 +57,10 @@ func spawn_station(station_obj: RailNodeStationData) -> OuterRailStation:
 	self.add_child(outer_station, true)
 	return outer_station
 #endregion
-
-#region Connections
-func connect_industries():
-	Loggie.info("Connecting industries ..")
-	for industry: IndustryData in GlobalState.industries:
-		var closest_station: RailNodeStationData = null
-		var closest_distance: float = 99999
-		for station: RailNodeStationData in GlobalState.node_stations:
-			var sq_dist: float = industry.pos.distance_squared_to(station.position)
-			if sq_dist <= closest_distance:
-				closest_station = station
-				closest_distance = sq_dist
-		if closest_station && closest_distance > MAX_INDUSTRY_DIST:
-			closest_station.connect_industry(industry)
-#endregion
-
-#region Goods Spawning
-func spawn_rnd_passenger():
-	if ! GlobalState.loaded_map: return
-	var rnd_outer_residence = GlobalState.res_bld_containers.pick_random()
-	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
-		var start_node_station: RailNodeStationData = rnd_outer_residence.connected_station
-		if start_node_station:
-			var spawned_res = SpawnedGood.new("passenger", 1)
-			spawned_res.target_location = GlobalState.res_blds.pick_random()
-			start_node_station.parent_station.add_spawned_good(spawned_res)
-#endregion
 	
 #region Callbacks
 func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
 	self.spawn_stations()
-	
-func _on_station_timer_tick():
-	self.spawn_rnd_passenger()
 
 func _on_map_towns_loaded(map_towns: Array[TownData]):
 	self.towns = map_towns

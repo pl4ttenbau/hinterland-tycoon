@@ -1,0 +1,62 @@
+# Blender 4.4.1 MTL File: 'gaz_aa_truck.blend'
+# www.blender.org
+
+newmtl gaz_aa_box
+Ns 19.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.082900 0.082900 0.082900
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box.jpg
+
+newmtl gaz_aa_box_cabin
+Ns 45.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.418200 0.418200 0.418200
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box cabin.jpg
+
+newmtl gaz_aa_box_detail
+Ns 21.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.108000 0.108000 0.108000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box detail.jpg
+
+newmtl gaz_aa_box_frame
+Ns 36.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.182000 0.182000 0.182000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box frame.jpg
+
+newmtl gaz_aa_box_wheel
+Ns 16.000006
+Ka 1.000000 1.000000 1.000000
+Ks 0.062100 0.062100 0.062100
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box wheel.jpg
+
+newmtl gaz_aa_box_wing
+Ns 31.000008
+Ka 1.000000 1.000000 1.000000
+Ks 0.193500 0.193500 0.193500
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd gaz-aa box wing.jpg

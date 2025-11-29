@@ -41,6 +41,19 @@ func connect_industry(industry: IndustryData):
 	self.connections.connect_industry(industry)
 #endregion
 
+#region Find By Distance
+static func find_closest_station_to_bld(res_bld: OuterResBld) -> RailNodeStationData:
+	var closest_node_station: RailNodeStationData
+	var closest_station_distance: float = 9999
+	for station: RailStationData in GlobalState.station_objs:
+		for node_station: RailNodeStationData in station.node_stations:
+			var dist = res_bld.global_position.distance_to(node_station.position)
+			if dist <= 200 && dist < closest_station_distance:
+				closest_station_distance = dist
+				closest_node_station = node_station
+	return closest_node_station
+#endregion
+
 #region Helper Methods
 static func of_station_dict(_station_dict: Dictionary, _node: RailNodeData) -> RailNodeStationData:
 	var station_obj := RailNodeStationData.of(_node, _station_dict.get("num"))
