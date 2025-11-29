@@ -32,19 +32,29 @@ func spawn_track_paths(map_key: String):
 		self.spawn_single_track_line(track_dict)
 		
 func spawn_single_track_path(track_data_dict: Dictionary) -> Path3D:
+	var start_pos: Vector3 = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
 	var path := RailMapper.path3d_from_data(track_data_dict)
+	path.position = start_pos
 	path.curve = Curve3D.new()
+	# create curve
 	for point in track_data_dict.points:
-		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
+		var abs_pos = WorldUtils.vec3_from_float_arr(point.pos)
+		var rel_pos: Vector3 = abs_pos - start_pos
+		path.curve.add_point(rel_pos)
 	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
 	return path
 	
 func spawn_single_track_line(track_data_dict: Dictionary) -> LinePath3D:
+	var start_pos: Vector3 = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
 	var line3d := RailMapper.line3d_from_data(track_data_dict)
+	line3d.position = start_pos
+	# create curve
 	line3d.curve = Curve3D.new()
 	for point in track_data_dict.points:
-		line3d.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
+		var abs_pos = WorldUtils.vec3_from_float_arr(point.pos)
+		var rel_pos: Vector3 = abs_pos - start_pos
+		line3d.curve.add_point(rel_pos)
 	self.editor_infr_node.add_child(line3d, true)
 	line3d.owner = get_scene()
 	# set color
@@ -62,22 +72,30 @@ func spawn_road_paths(map_key: String):
 		self.spawn_road_line_3d(road_dict)
 		
 func spawn_road_track_path(road_data_dict: Dictionary) -> Path3D:
+	var start_pos: Vector3 = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
 	var path: Path3D = RoadMapper.path3d_from_data(road_data_dict)
+	path.position = start_pos
 	# create curve
 	path.curve = Curve3D.new()
 	for point in road_data_dict.points:
-		path.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
+		var abs_pos = WorldUtils.vec3_from_float_arr(point.pos)
+		var rel_pos: Vector3 = abs_pos - start_pos
+		path.curve.add_point(rel_pos)
 	# add as parent and to editor scene
 	self.editor_infr_node.add_child(path, true)
 	path.owner = get_scene()
 	return path
 	
 func spawn_road_line_3d(road_data_dict: Dictionary) -> LinePath3D:
+	var start_pos: Vector3 = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
 	var line3d: LinePath3D = RoadMapper.line3d_from_data(road_data_dict)
+	line3d.position = start_pos
 	# create curve
 	line3d.curve = Curve3D.new()
 	for point in road_data_dict.points:
-		line3d.curve.add_point(WorldUtils.vec3_from_float_arr(point.pos))
+		var abs_pos = WorldUtils.vec3_from_float_arr(point.pos)
+		var rel_pos: Vector3 = abs_pos - start_pos
+		line3d.curve.add_point(rel_pos)
 	# add as parent and to editor scene
 	self.editor_infr_node.add_child(line3d, true)
 	line3d.owner = get_scene()
