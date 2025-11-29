@@ -47,3 +47,11 @@ static func path3d_from_data(road_data_dict: Dictionary) -> Path3D:
 	road_path.set_meta("road_num", road_num)
 	road_path.set_meta("name", road_data_dict.get("name", null))
 	return road_path
+	
+static func line3d_from_data(road_data_dict: Dictionary) -> LinePath3D:
+	var road_num: int = road_data_dict.get("num")
+	var road_line_3d := LinePath3D.new()
+	road_line_3d.name = "Editor_Road%d" % road_num
+	road_line_3d.set_meta("road_num", road_num)
+	road_line_3d.set_meta("name", road_data_dict.get("name", null))
+	return road_line_3d

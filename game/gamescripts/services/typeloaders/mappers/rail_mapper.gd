@@ -37,5 +37,14 @@ static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
 	track_path.name = "Editor_Track%d" % track_num
 	track_path.set_meta("track_num", track_num)
 	track_path.set_meta("name", track_data_dict.get("name", null))
-	track_path.debug_custom_color = Color(0, 0, 0)
+	track_path.debug_custom_color = Color(0, 0.01, 0)
 	return track_path
+	
+static func line3d_from_data(track_data_dict: Dictionary) -> LinePath3D:
+	var track_num: int = track_data_dict.get("num")
+	var track_line_3d := LinePath3D.new()
+	track_line_3d.name = "Editor_Track%d" % track_num
+	track_line_3d.set_meta("track_num", track_num)
+	track_line_3d.set_meta("name", track_data_dict.get("name", null))
+	track_line_3d.debug_custom_color = Color(0, 0.01, 0)
+	return track_line_3d
