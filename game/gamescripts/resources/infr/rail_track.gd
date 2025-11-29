@@ -7,9 +7,6 @@ class_name RailTrackData extends AbstractTrack
 @export var node_stations: Array[RailNodeStationData] = []
 @export var forks: Array[RailNodeForkData] = []
 
-## global pos of the first rail node
-@export var start_pos: Vector3
-
 func _init():
 	super(Enums.EntityTypes.RAIL)
 	
@@ -47,9 +44,10 @@ func has_node_index(_index: int) -> bool:
 	var last_i: int = self.nodes.size() -1
 	return _index >= 0 && _index <= last_i
 
-func build_path() -> void:
+func build_curve() -> void:
 	# if self.curve: return
 	self.curve = Curve3D.new()
 	self.curve.up_vector_enabled = true
 	for point: Vector3 in self.vertices:
 		self.curve.add_point(point)
+	InfrUtils.smooth_curve3d(self.curve)

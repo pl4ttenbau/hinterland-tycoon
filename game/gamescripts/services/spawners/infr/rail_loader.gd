@@ -40,7 +40,7 @@ func spawn_rails():
 	SignalBus.rails_spawned.emit(self.track_storage._containers)
 	
 func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
-	if ! rail_track.curve: rail_track.build_path()
+	if ! rail_track.curve: rail_track.build_curve()
 	# instanciate Container from PackedScene
 	var outer_track: OuterRailTrack = load(OuterRailTrack.get_scene_path(rail_track)).instantiate()
 	outer_track.track = rail_track

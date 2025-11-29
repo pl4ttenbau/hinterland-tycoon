@@ -2,8 +2,14 @@
 @tool
 class_name AbstractTrack extends GameObject
 
-@export var infr_type_key: String
 @export_storage var track_name: String
-@export var vertices: Array[Vector3] = []
+
+## global pos of the first node
+@export var start_pos: Vector3
+
+# infr type
+@export var infr_type_key: String
+
+# curve & nodes
 @export var curve: Curve3D
-@export var offset: Vector3
+@export var vertices: Array[Vector3] = []
