@@ -1,8 +1,6 @@
 @icon("res://assets/icons/icon_gears_white.png")
 extends Node
 
-@export var triggers: WorldTriggers
-
 #region Map & Terrain
 @export var map_list_loader: MapLoader
 @export var map_spawner: MapSpawner

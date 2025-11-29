@@ -16,7 +16,7 @@ func _on_map_tick():
 		self.visible = true
 	else:
 		self.visible = false
-		
+
 func get_cam_pos() -> Vector3:
 	if GlobalState.active_cam != null:
 		return GlobalState.active_cam.global_position
