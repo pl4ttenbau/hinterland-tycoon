@@ -33,9 +33,8 @@ func place_preplaced_res_bld(outer_bld: OuterResBld):
 		self.register_res_bld(outer_bld, town)
 
 func register_res_bld(outer_bld: OuterResBld, parent_town: TownData):
-	parent_town.res_bld_containers.append(outer_bld)
 	self.placed_buildings.append(outer_bld) # save here as well
-	GlobalState.res_bld_containers.append(outer_bld)
+	parent_town.add_res_bld(outer_bld)
 
 #region Getters 
 ## the pre-placed buildings are in "TerrainContainer/Houses"

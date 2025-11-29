@@ -18,6 +18,11 @@ static var last_bld_num: int = 0
 @export var placed_res_bld_type: String
 @export var placed_town_num: int
 
+#region Static Getters
+static func get_random() -> OuterResBld:
+	return GlobalState.res_bld_containers.pick_random() as OuterResBld
+#endregion
+
 static func next_num() -> int:
 	OuterResBld.last_bld_num += 1
 	return OuterResBld.last_bld_num
