@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct04jq8arx0hn"]
+
+[ext_resource type="Script" uid="uid://dgircfhdm4xsv" path="res://scenes/scripts/player_pos_label.gd" id="1_qnjfh"]
+[ext_resource type="Script" uid="uid://c15ri5f6kq2e" path="res://game/gamescripts/ui/etc/fps_label.gd" id="2_4qg54"]
+
+[node name="OuterBottomBar" type="MarginContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
+[node name="ButtomBarLaybout" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PosLabelPanel" type="PanelContainer" parent="ButtomBarLaybout"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtomBarLaybout/PosLabelPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="PosLabel" type="Label" parent="ButtomBarLaybout/PosLabelPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "43.4 4335.1 0.00"
+horizontal_alignment = 1
+script = ExtResource("1_qnjfh")
+
+[node name="Filler" type="Control" parent="ButtomBarLaybout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FpsLabel" type="Label" parent="ButtomBarLaybout"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "99"
+script = ExtResource("2_4qg54")
