@@ -11,7 +11,6 @@ func _ready() -> void:
 func spawn_rnd_passenger():
 	if ! self.has_map_selected: return
 	if ! GlobalState.loaded_map: return
-	Loggie.info("Spawning passenger")
 	var rnd_outer_residence = OuterResBld.get_random()
 	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
 		var start_node_station: RailNodeStationData = rnd_outer_residence.connected_station

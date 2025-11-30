@@ -41,7 +41,7 @@ static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
 	
 static func editor_line_from_data(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var track_num: int = track_data_dict.get("num")
-	var editor_line3d := EditorInfrLine3D.new(Enums.InfrDomain.RAIL, track_num,
+	var editor_line3d := EditorInfrLine3D.of(Enums.InfrDomain.RAIL, track_num,
 			track_data_dict.get("name", null))
 	editor_line3d.position = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
 	return editor_line3d

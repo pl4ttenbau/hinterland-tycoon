@@ -36,7 +36,6 @@ func reassign_town_buildings_to_stations(town: TownData) -> int:
 	
 func connect_residence_to_station(outer_res_bld: OuterResBld, closest_node_station: RailNodeStationData,
 		res_bld_town: TownData):
-	Loggie.info("Connect House %s to station %s" % [outer_res_bld.name, closest_node_station.parent_station.station_name])
 	outer_res_bld.res_bld_obj.connected_station = closest_node_station
 	closest_node_station.parent_station.connected_town = res_bld_town
 

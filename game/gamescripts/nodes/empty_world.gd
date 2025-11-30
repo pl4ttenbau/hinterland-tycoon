@@ -1,4 +1,4 @@
-class_name SceneRoot extends Node3D
+class_name EmptyWorldRoot extends Node3D
 
 signal scene_root_ready()
 

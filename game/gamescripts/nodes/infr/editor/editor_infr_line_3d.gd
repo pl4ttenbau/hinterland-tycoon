@@ -13,12 +13,14 @@ const ROAD_COLOR = Color.DARK_ORANGE
 	get(): return self._get_color()
 
 #region Initialization
-func _init(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") -> void:
-	self.infr_domain = _domain
-	self.num = _num
-	self.infr_name = _name
+static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") -> EditorInfrLine3D:
+	var inst := EditorInfrLine3D.new()
+	inst.infr_domain = _domain
+	inst.num = _num
+	inst.infr_name = _name
 	# auto-set node name
-	self.name = self._get_node_name()
+	inst.name = inst._get_node_name()
+	return inst
 	
 func _enter_tree():
 	super()
