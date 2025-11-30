@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_house_white.png")
 class_name WorldHouses extends Node
 
-@export var world_scene: TerrainContainer
+@export var world_scene: WorldMapScene
 
 @export_storage var houses: Array[OuterResBld]:
 	get(): 

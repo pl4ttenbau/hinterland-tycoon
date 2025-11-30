@@ -1,6 +1,6 @@
 [gd_scene load_steps=468 format=3 uid="uid://dg6j0pswyx2iv"]
 
-[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_6w6pc"]
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
 [ext_resource type="PackedScene" uid="uid://cxr0m833vfemd" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.tscn" id="3_7yuns"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="3_o0hqk"]
@@ -4608,7 +4608,7 @@ shader_parameter/metallic = 0.0
 shader_parameter/specular = 0.5
 shader_parameter/roughness = 0.5
 
-[node name="WorldContainer" type="Node" node_paths=PackedStringArray("terrain")]
+[node name="WorldMapScene" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
 map_key = "mpsb"
 terrain = NodePath("WorldTerrain")

@@ -72,7 +72,7 @@ func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
 #endregion
 
 #region Event Listeners
-func _on_map_spawned(_container: TerrainContainer):
+func _on_map_spawned(_container: WorldMapScene):
 	self.spawn_rails()
 	
 func _on_map_selected(_selected_map: MapData):

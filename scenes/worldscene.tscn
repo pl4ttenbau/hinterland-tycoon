@@ -127,7 +127,6 @@ metadata/_custom_type_script = "uid://8e0con4047ai"
 
 [node name="StationGoodsSpawner" type="Node" parent="World/Generated/Infr/Stations"]
 script = ExtResource("14_sqhi7")
-metadata/_custom_type_script = "uid://c2m2e8o027sgu"
 
 [node name="SpawnPassengersTimer" type="Timer" parent="World/Generated/Infr/Stations/StationGoodsSpawner"]
 wait_time = 3.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bk0k4rfuikqlp"]
 
-[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_5b2oc"]
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_5b2oc"]
 [ext_resource type="PackedScene" uid="uid://c0itf7153euwk" path="res://world/demmin/mapscenes/terrain/terrain_demmin.tscn" id="2_qnuhp"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/world_houses.gd" id="11_pdqxb"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="18_pdqxb"]

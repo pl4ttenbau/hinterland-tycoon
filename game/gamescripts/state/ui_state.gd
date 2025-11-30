@@ -1,3 +1,4 @@
+@icon("uid://r84qkk5fcxhq")
 extends Node
 
 # == MAIN MENU ==

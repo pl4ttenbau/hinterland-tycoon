@@ -1,3 +1,5 @@
+## be careful - you can only run this script with the WorldMap (per exmaple MPSB) open
+## do not try to run with the Empty "Worldscene" open
 @tool
 extends EditorScript
 

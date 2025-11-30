@@ -16,7 +16,7 @@ signal dialog_vehicle_selection(veh_type_key: String)
 
 #region World
 @warning_ignore("unused_signal")
-signal terrain_initialized(container: TerrainContainer)
+signal terrain_initialized(container: WorldMapScene)
 
 @warning_ignore("unused_signal")
 signal world_update()
@@ -25,7 +25,7 @@ signal world_update()
 signal scene_root_ready()
 
 @warning_ignore("unused_signal")
-signal map_spawned(container: TerrainContainer)
+signal map_spawned(container: WorldMapScene)
 #endregion
 
 #region Vehicles

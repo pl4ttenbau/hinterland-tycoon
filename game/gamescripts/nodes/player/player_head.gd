@@ -23,5 +23,5 @@ static func get_cam_pos() -> Vector3:
 		return GlobalState.active_cam.global_position
 	return GlobalState.player.global_position
 	
-func _on_map_spawned(_terrain: TerrainContainer):
+func _on_map_spawned(_terrain: WorldMapScene):
 	self.place_to_map_start()

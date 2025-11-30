@@ -1,3 +1,4 @@
+@icon("uid://r84qkk5fcxhq")
 extends Node
 
 # == PLAYER ==
@@ -6,14 +7,14 @@ extends Node
 
 # == PRE-WORLD-LOADING ==
 @export var game_maps: Array[MapData]
-@export var selected_map_name: String = "harzmountains"
+@export var selected_map_name: String
 @export var loaded_map: MapData 
 
 # == STATIC ==
 @export var towns: Array[TownData] = []
 
 @export var industries: Array[IndustryData]
-@export var world_container: TerrainContainer
+@export var world_container: WorldMapScene
 
 @export var res_blds: Array[ResidenceBuildingData] = []
 

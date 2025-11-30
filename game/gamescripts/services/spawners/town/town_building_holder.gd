@@ -37,9 +37,9 @@ func register_res_bld(outer_bld: OuterResBld, parent_town: TownData):
 	parent_town.add_res_bld(outer_bld)
 
 #region Getters 
-## the pre-placed buildings are in "TerrainContainer/Houses"
+## the pre-placed buildings are in "WorldMapScene/Houses"
 func get_map_houses_container() -> Node:
-	var map_container: TerrainContainer = GlobalState.world_container
+	var map_container: WorldMapScene = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
@@ -53,7 +53,7 @@ func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
 #endregion
 	
 #region Signal Callbacks
-func _on_map_spawned(_terrain_container: TerrainContainer):
+func _on_map_spawned(_terrain_container: WorldMapScene):
 	self.has_map_spawned = true
 	self.load_preplaced_town_buildings()
 	

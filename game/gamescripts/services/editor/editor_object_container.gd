@@ -10,9 +10,17 @@ class_name EditorObjectContainer extends Node3D
 @export_tool_button("Empty Infr.")
 var empty_infr = Callable(self, "do_empty_infr")
 
+#region Initializaion
 func _ready():
-	if ! Engine.is_editor_hint():
-		self.visible = false
+	if ! Engine.is_editor_hint(): self._ingame_ready()
+	else: self._editor_ready()
+
+func _editor_ready():
+	pass
+	
+func _ingame_ready():
+	self.visible = false
+#endregion
 
 #region Button Action
 func do_empty_infr() -> void:

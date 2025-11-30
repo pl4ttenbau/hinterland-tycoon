@@ -39,7 +39,7 @@ func spawn_industries():
 #region Getters
 func get_map_industry_container() -> WorldIndustries:
 	if self.ind_placeholder_parent != null: return self.ind_placeholder_parent
-	var map_container: TerrainContainer = GlobalState.world_container
+	var map_container: WorldMapScene = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
@@ -48,7 +48,7 @@ func get_map_industry_container() -> WorldIndustries:
 #endregion
 
 #region Callbacks
-func _on_terrain_loaded(_terrain_container: TerrainContainer):
+func _on_terrain_loaded(_terrain_container: WorldMapScene):
 	self.spawn_industries()
 	
 func _on_all_types_loaded():

@@ -45,7 +45,7 @@ func spawn_road(road: RoadData):
 	SignalBus.road_spawned.emit(instanciated)
 #endregion
 	
-func _on_world_spawned(_container: TerrainContainer):
+func _on_world_spawned(_container: WorldMapScene):
 	spawn_roads()
 
 func _on_map_selected(_selected_map: MapData):

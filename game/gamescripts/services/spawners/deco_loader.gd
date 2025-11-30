@@ -36,6 +36,6 @@ func spawn_deco_splines() -> void:
 #endregion	
 
 #region Event Callbacks
-func _on_world_spawned(_container: TerrainContainer):
+func _on_world_spawned(_container: WorldMapScene):
 	spawn_deco_splines()
 #endregion
