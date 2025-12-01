@@ -41,3 +41,4 @@ _shader_parameters = {
 &"projection_threshold": 0.8
 }
 world_background = 0
+show_region_grid = true

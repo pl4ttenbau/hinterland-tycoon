@@ -1,4 +1,4 @@
-[gd_scene load_steps=500 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=540 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -1926,10 +1926,10 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_vbmro"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -18.5, -0.19999981, -23.199951, 0, 0, 0, 0, 0, 0, -19.199951, 0.3000002, -49.299927, 0, 0, 0, 0, 0, 0, -29.599976, -0.3000002, -63.400024),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -18.5, -0.19999981, -23.199951),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trp48"]
 render_priority = 0
@@ -2476,7 +2476,7 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_bdq2f"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26.199951, -0.3000002, 0.8000488, 0, 0, 0, 0, 0, 0, 36.69995, -0.10000038, -4.5, 0, 0, 0, 0, 0, 0, 49.600098, 0, -17.400024, 0, 0, 0, 0, 0, 0, 88.5, -0.10000038, -20.400024, 0, 0, 0, 0, 0, 0, 145.19995, 0, -26.799927),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26.199951, -0.3000002, 0.8000488, 0, 0, 0, 0, 0, 0, 36.69995, -0.10000038, -4.5, 0, 0, 0, 0, 0, 0, 49.600098, 0, -17.400024, 0, 0, 0, 0, 0, 0, 88.5, -0.10000038, -20.400024, 0, 0, 0, 0, 0, 0, 145.19995, -0.39999962, -26.799927),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -4940,12 +4940,452 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_sgae1"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22.199951, 0.10000038, 0.099975586),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10.100098, 0.3000002, -3.2999268, 0, 0, 0, 0, 0, 0, -22.399902, 0.5, -6.699951),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ok45v"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_lsb5e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -16.200195, -0.6000004, -5.7000732, 0, 0, 0, 0, 0, 0, -28.800049, -0.6999998, -9.5, 0, 0, 0, 0, 0, 0, -41.700195, -0.6999998, -13.200073),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urboa"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_s2bam"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7.300049, -0.3000002, 21.200073, 0, 0, 0, 0, 0, 0, -12.100098, -0.5999994, 34.200073, 0, 0, 0, 0, 0, 0, -17, -0.5999994, 48.30005),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofx6k"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_5vob1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -18, -0.09999943, -2.5, 0, 0, 0, 0, 0, 0, -33.700195, -0.09999943, -1.5999756, 0, 0, 0, 0, 0, 0, -42.900146, -0.09999943, 2.2000732, 0, 0, 0, 0, 0, 0, -48.200195, -0.09999943, 8.599976, 0, 0, 0, 0, 0, 0, -54.600098, -0.39999962, 25.099976, 0, 0, 0, 0, 0, 0, -58.600098, -0.5999994, 36.900024, 0, 0, 0, 0, 0, 0, -58.600098, -0.5999994, 36.900024, 0, 0, 0, 0, 0, 0, -62.200195, -0.8999996, 49.599976),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avbty"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_lnkuc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -17.299805, -0.3000002, 14.600098, 0, 0, 0, 0, 0, 0, -34.19995, -0.6999998, 21.300049, 0, 0, 0, 0, 0, 0, -49.299805, -0.40000057, 24.900024, 0, 0, 0, 0, 0, 0, -66.3999, -0.9000006, 30.900024, 0, 0, 0, 0, 0, 0, -84.5, -0.5, 37.30005, 0, 0, 0, 0, 0, 0, -108.69995, -0.10000038, 43.200073, 0, 0, 0, 0, 0, 0, -127.799805, -0.19999981, 46.600098),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysq4x"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_62h8d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -21.900146, -0.20000076, 5, 0, 0, 0, 0, 0, 0, -47.80005, -0.20000076, 6, 0, 0, 0, 0, 0, 0, -64.80005, -0.3000002, 6.7999268, 0, 0, 0, 0, 0, 0, -79.90015, -0.5, 8.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noxey"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_4i2ig"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.100098, 0.29999924, -5.199951, 0, 0, 0, 0, 0, 0, 31.100098, -0.10000038, -5.8999634, 0, 0, 0, 0, 0, 0, 45.600098, -0.5, -8.799988, 0, 0, 0, 0, 0, 0, 55.900024, -0.79999924, -14, 0, 0, 0, 0, 0, 0, 65.30005, -0.8999996, -26.199951, 0, 0, 0, 0, 0, 0, 69.90015, -0.70000076, -41.19995, 0, 0, 0, 0, 0, 0, 71.5, -0.5, -59.099976, 0, 0, 0, 0, 0, 0, 69.90015, -0.29999924, -72, 0, 0, 0, 0, 0, 0, 65.90015, 0.20000076, -84.69995, 0, 0, 0, 0, 0, 0, 60.5, 0.70000076, -94.79999),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc1ab"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_kjw7j"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18.100098, 0.39999962, -14.700012, 0, 0, 0, 0, 0, 0, 32.400146, 0.79999924, -27.200012, 0, 0, 0, 0, 0, 0, 42.30005, 0.69999886, -36.299988),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlmrk"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_0e7s5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8.099976, 0.69999886, -8.599976, 0, 0, 0, 0, 0, 0, -18, 1.5, -19.399963, 0, 0, 0, 0, 0, 0, -28, 2.1999989, -28.299988),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kg75c"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_si7oj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.6999512, 0.5, -26.099976, 0, 0, 0, 0, 0, 0, -11.099976, -0.10000038, -40.200073),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fepvh"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_jqwls"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14.099976, 0.39999962, 3.2999268, 0, 0, 0, 0, 0, 0, 29.300049, 0.19999981, 12.899902, 0, 0, 0, 0, 0, 0, 44.599976, -0.5, 25.099976),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gdita"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_sqd3r"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.6999512, 0, -23.900024, 0, 0, 0, 0, 0, 0, 14.600098, 0, -52.400024, 0, 0, 0, 0, 0, 0, 24.199951, 0, -74.80005, 0, 0, 0, 0, 0, 0, 34.5, 0, -99.599976, 0, 0, 0, 0, 0, 0, 46.899902, 1, -130.09998, 0, 0, 0, 0, 0, 0, 54.69995, 1.8999996, -154.5, 0, 0, 0, 0, 0, 0, 63.600098, 2.5, -180.70007, 0, 0, 0, 0, 0, 0, 70.8999, 2.1000004, -194.59998, 0, 0, 0, 0, 0, 0, 88.30005, 1.8999996, -216.70007, 0, 0, 0, 0, 0, 0, 99, 1.8999996, -232),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ttlgb"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_2h62c"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -17.100098, -0.19999981, -6.2000732, 0, 0, 0, 0, 0, 0, -32.600098, -0.19999981, -10.200073, 0, 0, 0, 0, 0, 0, -42.399902, -0.19999981, -11.800049, 0, 0, 0, 0, 0, 0, -55.69995, -0.8999996, -12.400024, 0, 0, 0, 0, 0, 0, -76.5, -0.29999924, -13, 0, 0, 0, 0, 0, 0, -88.69995, 0.10000038, -14.200073),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clgkb"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_5ht8w"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13.800049, 0, 3.7999268, 0, 0, 0, 0, 0, 0, 25.300049, 0.20000076, 4.5999756, 0, 0, 0, 0, 0, 0, 40.30005, 0.5, 1.2999268, 0, 0, 0, 0, 0, 0, 70.1001, 0.9000006, -10.400024, 0, 0, 0, 0, 0, 0, 81.8999, 1.1000004, -14.700073, 0, 0, 0, 0, 0, 0, 99.69995, 0.9000006, -24.599976, 0, 0, 0, 0, 0, 0, 108.69995, 1.3000002, -32.400024, 0, 0, 0, 0, 0, 0, 116.8999, 1.5, -44.200073),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwynn"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_lf0bp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22.199951, 0.10000038, 0.099975586, 0, 0, 0, 0, 0, 0, 42.399902, -0.6000004, 0.5, 0, 0, 0, 0, 0, 0, 56.19995, -0.39999962, 0.89990234, 0, 0, 0, 0, 0, 0, 62.799805, -0.39999962, -2.7000732, 0, 0, 0, 0, 0, 0, 70.59985, -0.39999962, -13.300049, 0, 0, 0, 0, 0, 0, 82.3999, -0.5, -23.900024, 0, 0, 0, 0, 0, 0, 96.19995, -0.39999962, -28.200073, 0, 0, 0, 0, 0, 0, 120.69995, 0.10000038, -31.400024),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo60s"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_utkoa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.699951, 0.099998474, -0.5, 0, 0, 0, 0, 0, 0, 13.5, 0.8999996, -0.5999756, 0, 0, 0, 0, 0, 0, 24.5, 0.29999924, -1.7000732, 0, 0, 0, 0, 0, 0, 34.599854, 0.79999924, -3.4000244, 0, 0, 0, 0, 0, 0, 45.30005, 0.39999962, -7.2000732, 0, 0, 0, 0, 0, 0, 55.899902, 0.69999886, -11, 0, 0, 0, 0, 0, 0, 70.5, 0.39999962, -14.900024),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yx5xe"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_amja6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19.599854, 0.29999924, -4.9000244, 0, 0, 0, 0, 0, 0, 32.80005, 0.8999996, -8.599976, 0, 0, 0, 0, 0, 0, 53.099854, 1.1000004, -13.800049, 0, 0, 0, 0, 0, 0, 69, 1.3999996, -17.699951, 0, 0, 0, 0, 0, 0, 81.8999, 1.8999996, -19.599976, 0, 0, 0, 0, 0, 0, 93.09985, 1.8999996, -21.199951),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84ipw"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_073fu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -12.299805, -0.29999924, -25.100098, 0, 0, 0, 0, 0, 0, -28.199951, -0.70000076, -57.200073, 0, 0, 0, 0, 0, 0, -37.69995, -1, -78.30005, 0, 0, 0, 0, 0, 0, -51.099854, -1.3999996, -103.80005, 0, 0, 0, 0, 0, 0, -66, -1.7999992, -133.90002, 0, 0, 0, 0, 0, 0, -77.5, -1.5, -177.20007, 0, 0, 0, 0, 0, 0, -81.3999, -1.2999992, -194.00006),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h7ud"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_rtj7b"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0.29999924, -15.299988, 0, 0, 0, 0, 0, 0, 5.800049, 1, -32.200012, 0, 0, 0, 0, 0, 0, 13.100098, 1.6999989, -53.899963, 0, 0, 0, 0, 0, 0, 18.600098, 1.6999989, -72.599976, 0, 0, 0, 0, 0, 0, 23, 1.6999989, -85.599976, 0, 0, 0, 0, 0, 0, 24.699951, 1.3999996, -94.29999, 0, 0, 0, 0, 0, 0, 24.800049, 0.29999924, -115.79999),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4hht"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_k1pxj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -16.600098, 0, -1.4000244, 0, 0, 0, 0, 0, 0, -26.100098, 0.29999924, -3, 0, 0, 0, 0, 0, 0, -38, 0, -4.9000244),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inerx"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_sl0cy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -13.5, -0.20000076, -1.5, 0, 0, 0, 0, 0, 0, -21.900146, -0.20000076, -3.3999634, 0, 0, 0, 0, 0, 0, -28.300049, -0.20000076, -4.799988),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t84x"]
 render_priority = 0
 shader = ExtResource("50_o3cyl")
 shader_parameter/line_width = 0.25
@@ -4967,6 +5407,8 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_jynyo")]
+show_grid = true
+show_region_grid = true
 
 [node name="Towns" parent="." node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
@@ -6672,7 +7114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1112.1, 12.5, 1384.6)
 curve = SubResource("Curve3D_vbmro")
 script = ExtResource("49_1ktam")
 num = 14
-infr_name = "Jarmen Burgstr North"
+infr_name = "Jarmen Klinkenberg"
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_trp48")
@@ -8037,15 +8479,215 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_m61kt")
 
-[node name="RoadWay_199" type="Path3D" parent="InEditor/EditorInfr"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2218.6, 18.1, 1161.3)
+[node name="RoadWay_151" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2728, 12.5, 1849.6)
 curve = SubResource("Curve3D_sgae1")
 script = ExtResource("49_1ktam")
-num = 199
-infr_name = "Schmatzin Schlatkower Str."
+num = 150
+infr_name = "Anklam Leipziger Str. W"
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ok45v")
+
+[node name="RoadWay_152" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2705.6, 13, 1842.9)
+curve = SubResource("Curve3D_lsb5e")
+script = ExtResource("49_1ktam")
+num = 151
+infr_name = "Anklam A.-Bebel-Str."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_urboa")
+
+[node name="RoadWay_153" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
+curve = SubResource("Curve3D_s2bam")
+script = ExtResource("49_1ktam")
+num = 152
+infr_name = "Anklam Priesterstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_ofx6k")
+
+[node name="RoadWay_154" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
+curve = SubResource("Curve3D_5vob1")
+script = ExtResource("49_1ktam")
+num = 153
+infr_name = "Anklam Priesterstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_avbty")
+
+[node name="RoadWay_155" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2663.9, 12.3, 1829.7)
+curve = SubResource("Curve3D_lnkuc")
+script = ExtResource("49_1ktam")
+num = 154
+infr_name = "Anklam Demminer Landstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_ysq4x")
+
+[node name="RoadWay_156" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2536.1, 12.1, 1876.3)
+curve = SubResource("Curve3D_62h8d")
+script = ExtResource("49_1ktam")
+num = 155
+infr_name = "L199 Görke"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_noxey")
+
+[node name="RoadWay_157" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1987.7, 22, 790.1)
+curve = SubResource("Curve3D_4i2ig")
+script = ExtResource("49_1ktam")
+num = 156
+infr_name = "Züssow Chausseestr. Outwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_oc1ab")
+
+[node name="RoadWay_158" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.2, 22.7, 695.3)
+curve = SubResource("Curve3D_kjw7j")
+script = ExtResource("49_1ktam")
+num = 157
+infr_name = "Züssow Chausseestr. In Town"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_vlmrk")
+
+[node name="RoadWay_159" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.2, 22.7, 695.3)
+curve = SubResource("Curve3D_0e7s5")
+script = ExtResource("49_1ktam")
+num = 158
+infr_name = "Züssow Schulstr S"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_kg75c")
+
+[node name="RoadWay_160" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.6, 12.3, 1361.4)
+curve = SubResource("Curve3D_si7oj")
+script = ExtResource("49_1ktam")
+num = 159
+infr_name = "Jarmen Burgstr"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_fepvh")
+
+[node name="RoadWay_161" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1049, 12.8, 1336.3)
+curve = SubResource("Curve3D_jqwls")
+script = ExtResource("49_1ktam")
+num = 160
+infr_name = "Jarmen Dr.-Kohnert-Str."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_gdita")
+
+[node name="RoadWay_162" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2728, 11, 1633.9)
+curve = SubResource("Curve3D_sqd3r")
+script = ExtResource("49_1ktam")
+num = 161
+infr_name = "Jarmen Greifswalder Str."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_ttlgb")
+
+[node name="RoadWay_163" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2827, 12.9, 1401.9)
+curve = SubResource("Curve3D_2h62c")
+script = ExtResource("49_1ktam")
+num = 162
+infr_name = "Ziethen Dorfstr. Eastwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_clgkb")
+
+[node name="RoadWay_164" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2827, 12.9, 1401.9)
+curve = SubResource("Curve3D_5ht8w")
+script = ExtResource("49_1ktam")
+num = 163
+infr_name = "Relzow Hauptstr. Westwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_iwynn")
+
+[node name="RoadWay_165" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2218.6, 18.1, 1161.3)
+curve = SubResource("Curve3D_lf0bp")
+script = ExtResource("49_1ktam")
+num = 164
+infr_name = "Landstr. Schlatkow-Bünzow Westwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_qo60s")
+
+[node name="RoadWay_166" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2339.3, 18.2, 1129.9)
+curve = SubResource("Curve3D_utkoa")
+script = ExtResource("49_1ktam")
+num = 165
+infr_name = "Landstr. Schlatkow-Bünzow Bhf."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_yx5xe")
+
+[node name="RoadWay_167" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2409.8, 18.6, 1115)
+curve = SubResource("Curve3D_amja6")
+script = ExtResource("49_1ktam")
+num = 166
+infr_name = "Landstr. Schlatkow-Bünzow Eastwards."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_84ipw")
+
+[node name="RoadWay_168" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2502.9, 20.5, 1093.8)
+curve = SubResource("Curve3D_073fu")
+script = ExtResource("49_1ktam")
+num = 167
+infr_name = "Landstr. Bünzow-Karlsburg S"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_8h7ud")
+
+[node name="RoadWay_169" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2421.5, 19.2, 899.8)
+curve = SubResource("Curve3D_rtj7b")
+script = ExtResource("49_1ktam")
+num = 168
+infr_name = "Landstr. Bünzow-Karlsburg N"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_k4hht")
+
+[node name="RoadWay_170" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2446.3, 19.5, 784)
+curve = SubResource("Curve3D_k1pxj")
+script = ExtResource("49_1ktam")
+num = 169
+infr_name = "Karlsburg Schloßstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_inerx")
+
+[node name="RoadWay_171" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2408.3, 19.5, 779.1)
+curve = SubResource("Curve3D_sl0cy")
+script = ExtResource("49_1ktam")
+num = 170
+infr_name = "Karlsburg Schulstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_7t84x")
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1704.2155, 15.903505, 3042.8225)
