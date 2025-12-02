@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=49 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/empty_world.gd" id="1_eorrk"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_11abr"]
@@ -12,8 +12,9 @@
 [ext_resource type="Script" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
 [ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
 [ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
-[ext_resource type="Script" path="res://game/gamescripts/services/spawners/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
+[ext_resource type="Script" uid="uid://c2m2e8o027sgu" path="res://game/gamescripts/services/spawners/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/infr/road_loader.gd" id="14_0dtnv"]
+[ext_resource type="Script" uid="uid://5fhring754pq" path="res://game/gamescripts/services/spawners/infr/connectors/road_industry_exit_connector.gd" id="15_11abr"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicles/vehicle_placer.gd" id="15_g3fbs"]
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="16_6wawu"]
 [ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="17_qsvwm"]
@@ -134,6 +135,10 @@ autostart = true
 
 [node name="Roads" type="Node" parent="World/Generated/Infr"]
 script = ExtResource("14_0dtnv")
+
+[node name="RoadIndustryExitConnector" type="Node" parent="World/Generated/Infr/Roads"]
+script = ExtResource("15_11abr")
+metadata/_custom_type_script = "uid://5fhring754pq"
 
 [node name="Vehicles" type="Node" parent="World/Generated"]
 unique_name_in_owner = true

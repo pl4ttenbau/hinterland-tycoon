@@ -19,6 +19,7 @@ func make_types_list() -> Array[BaseGoodsType]:
 		BaseGoodsType.new("sugar", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("alcohol", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("fertilizer", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("fish", BaseGoodsType.ResourceCategory.FREIGHT),
 
 		BaseGoodsType.new("lumber", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("boards", BaseGoodsType.ResourceCategory.FREIGHT),

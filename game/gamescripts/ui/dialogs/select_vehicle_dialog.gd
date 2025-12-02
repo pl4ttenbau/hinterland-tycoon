@@ -11,7 +11,7 @@ signal vehicle_spawn_triggered(spawn_dto: VehicleSpawnDto)
 #region Initialization
 func _ready() -> void:
 	# unlock mouse
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_MAX
 	# bind signals
 	%SpawnButton.pressed.connect(Callable(self, "_on_spawn_button_click"))
 	SignalBus.dialog_vehicle_selection.connect(Callable(self, "_on_vehicle_selection_changed"))

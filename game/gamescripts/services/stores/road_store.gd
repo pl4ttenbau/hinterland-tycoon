@@ -17,6 +17,7 @@ func add(road_obj: RoadData):
 	self._list.append(road_obj)
 	self._create_indexes(road_obj)
 	self.road_added.emit(road_obj)
+	GlobalState.roads.append(road_obj)
 	
 func add_container(outer_road: OuterRoad):
 	self._containers.append(outer_road)

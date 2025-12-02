@@ -15,12 +15,6 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
 
-	
-func _ready() -> void:
-	pass
-	# load_roads()
-	# Loggie.info("roads precreated")
-
 #region Road Loading
 func load_roads() -> void:
 	var full_json_path := JSON_PATH_FORMAT % GlobalState.selected_map_name
@@ -44,9 +38,11 @@ func spawn_road(road: RoadData):
 	self.storage.add_container(instanciated)
 	SignalBus.road_spawned.emit(instanciated)
 #endregion
-	
+
+#region Callbacks
 func _on_world_spawned(_container: WorldMapScene):
 	spawn_roads()
 
 func _on_map_selected(_selected_map: MapData):
 	self.load_roads()
+#endregion

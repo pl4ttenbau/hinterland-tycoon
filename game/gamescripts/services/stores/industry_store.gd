@@ -17,10 +17,13 @@ func add(ind_obj: IndustryData):
 	self._list.append(ind_obj)
 	self._create_indexes(ind_obj)
 	self.industry_added.emit(ind_obj)
+	# add to global state as well
+	GlobalState.industries.append(ind_obj)
 	
 func add_container(outer_ind: OuterIndustry):
 	self._containers.append(outer_ind)
 	self._containers_by_id.set(outer_ind.industry.num, outer_ind)
+	GlobalState.ind_bld_containers.append(outer_ind)
 	
 func _create_indexes(ind_obj: IndustryData):
 	self._by_id.set(ind_obj.num, ind_obj)

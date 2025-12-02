@@ -10,7 +10,7 @@ func _init() -> void:
 	UiState.main_menu_root = self
 
 func _enter_tree() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_MAX
 	self.load_menu(INITIAL_SCENE_NAME)
 #endregion
 

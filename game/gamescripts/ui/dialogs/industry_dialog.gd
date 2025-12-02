@@ -51,7 +51,7 @@ func set_production_consumption():
 
 func _ready() -> void:
 	# unlocke mouse from player
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_MAX
 	# bind signals
 	%CloseButton.pressed.connect(Callable(self, "_on_close_button_click"))
 	

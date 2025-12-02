@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_lak53"]
 [ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/windmill_2_mesh.tscn" id="2_lak53"]
-[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/industry/industry_collider.gd" id="3_ykqts"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ykqts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
 size = Vector3(5.6219482, 12.417358, 4.5319824)

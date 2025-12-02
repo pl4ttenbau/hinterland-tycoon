@@ -6,6 +6,7 @@ class_name IndustryData extends GoodsInventory
 @export var ind_name: String
 
 @export var station_connection: StationIndustryConnection
+@export_storage var road_exit: RoadNode
 
 static var _last_ind_num: int = 0
 
@@ -46,6 +47,8 @@ static func from_placeholder(placeholder: IndustryPlaceholder) -> IndustryData:
 	var ind_obj := IndustryData.new(placeholder.type_key, placeholder.global_position)
 	if placeholder.ind_name:
 		ind_obj.ind_name = placeholder.ind_name
+	else:
+		ind_obj.name = placeholder.name
 	return ind_obj
 #endregion
 

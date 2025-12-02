@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_5qinm"]
 [ext_resource type="ArrayMesh" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="1_iitmb"]
-[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/industry/industry_collider.gd" id="3_ggyj6"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ggyj6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xpss4"]
 
