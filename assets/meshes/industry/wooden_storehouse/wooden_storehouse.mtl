@@ -1,0 +1,14 @@
+# Blender 4.4.1 MTL File: 'wooden_storehouse.blend'
+# www.blender.org
+
+newmtl tx_4k_StorageHouse
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd tex_storehouse_d.png
+map_Ns tex_storehouse_r.png
+map_refl tex_storehouse_m.png
+map_Bump -bm 1.000000 tex_storehouse_n.png
