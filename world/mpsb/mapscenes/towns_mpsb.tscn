@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bongrkjiwclhd"]
+[gd_scene load_steps=42 format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/world_towns.gd" id="1_agjpo"]
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
@@ -312,7 +312,7 @@ town_name = "Schmatzin"
 pos_xz = Vector2(2208.1, 1134.2)
 is_minor = true
 autogenerate_houses = false
-num = 36
+num = 35
 type = 6
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -321,6 +321,16 @@ script = ExtResource("3_icu33")
 town_name = "Siedenbollentin"
 pos_xz = Vector2(1307.8, 2875.5)
 num = 36
+type = 6
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ybg6y"]
+script = ExtResource("3_icu33")
+town_name = "Kartlow"
+pos_xz = Vector2(584.6, 1522.6)
+is_minor = true
+autogenerate_houses = false
+num = 37
 type = 6
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
@@ -467,3 +477,7 @@ town = SubResource("Resource_2llhm")
 [node name="TownCenter_Siedenbollentin" parent="." instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1307.8353, 19.16925, 2875.4863)
 town = SubResource("Resource_jsqfv")
+
+[node name="TownCenter_Kartlow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 584.621, 13.897997, 1522.6177)
+town = SubResource("Resource_ybg6y")
