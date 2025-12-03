@@ -14,7 +14,7 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 @export var visible_forks: Array[RailNodeForkData] = []
 @export var visible_forks_by_pos: Dictionary = {}
 
-@export var outer_buffers: Array[OuterRailBuffer] = []
+@export var outer_buffers: Array[RailBuffer3D] = []
 
 func _enter_tree() -> void:
 	Managers.rails = self
@@ -39,10 +39,10 @@ func spawn_rails():
 	# emit signals
 	SignalBus.rails_spawned.emit(self.track_storage._containers)
 	
-func instanciate_rail_track(rail_track: RailTrackData) -> OuterRailTrack:
+func instanciate_rail_track(rail_track: RailTrackData) -> RailTrack3D:
 	if ! rail_track.curve: rail_track.build_curve()
 	# instanciate Container from PackedScene
-	var outer_track: OuterRailTrack = load(OuterRailTrack.get_scene_path(rail_track)).instantiate()
+	var outer_track: RailTrack3D = load(RailTrack3D.get_scene_path(rail_track)).instantiate()
 	outer_track.track = rail_track
 	GlobalState.outer_tracks.append(outer_track)
 	return outer_track
@@ -62,8 +62,8 @@ func spawn_rail_buffers(parent_track: RailTrackData):
 		if rail_node.is_end == true:
 			self.spawn_buffer(rail_node)
 			
-func spawn_buffer(rail_node: RailNodeData) -> OuterRailBuffer:
-	var outer_buffer: OuterRailBuffer = load(BUFFER_PATH).instantiate()
+func spawn_buffer(rail_node: RailNodeData) -> RailBuffer3D:
+	var outer_buffer: RailBuffer3D = load(BUFFER_PATH).instantiate()
 	outer_buffer.parent_node = rail_node
 	# add to list & as own child
 	self.outer_buffers.append(outer_buffer)

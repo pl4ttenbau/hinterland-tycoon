@@ -19,7 +19,7 @@ static var _last_fork_num = -1
 # later-set properties
 @export var railNode: RailNodeData
 
-@export_storage var container: OuterRailFork
+@export_storage var container: RailFork3D
 
 @export_storage var track: RailTrackData:
 	get(): return self.railNode.parent_track

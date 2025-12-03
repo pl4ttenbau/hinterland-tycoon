@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cken0m3w5f5m7"]
 
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_coaek"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_coaek"]
 [ext_resource type="ArrayMesh" uid="uid://b3ge76kdem3m2" path="res://assets/meshes/structures/city_manor/city_manor.obj" id="1_kr5bw"]
 [ext_resource type="Texture2D" uid="uid://mdk1kvvl6fpx" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A_alfa.jpg" id="2_coaek"]
 [ext_resource type="Texture2D" uid="uid://itb3eqd3wuv7" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A.jpg" id="3_w2jui"]

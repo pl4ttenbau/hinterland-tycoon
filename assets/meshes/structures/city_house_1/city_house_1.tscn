@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck1dycgwdj1sd"]
 
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_3wd6s"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_3wd6s"]
 [ext_resource type="ArrayMesh" uid="uid://gqe67rvf2737" path="res://assets/meshes/structures/city_house_1/city_house_1.obj" id="1_phg10"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="2_3wd6s"]
 

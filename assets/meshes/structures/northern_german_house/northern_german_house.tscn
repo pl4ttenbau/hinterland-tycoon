@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcsvjcncllnxi"]
 
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_r16pd"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_r16pd"]
 [ext_resource type="ArrayMesh" uid="uid://brwlxjhpc8goc" path="res://assets/meshes/structures/northern_german_house/mecklenburg_peasant_house_merged.obj" id="1_tuijv"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_u4bk2"]
 

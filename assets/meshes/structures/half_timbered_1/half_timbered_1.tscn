@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxr0m833vfemd"]
 
 [ext_resource type="ArrayMesh" uid="uid://dcto13dfge4gi" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_ryg52"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ryg52"]
 [ext_resource type="Texture2D" uid="uid://kkjh5nnb8s1h" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_d.png" id="3_l5q24"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_rveds"]
 [ext_resource type="Texture2D" uid="uid://cmxh2x34xk78k" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_n.png" id="4_imfsi"]

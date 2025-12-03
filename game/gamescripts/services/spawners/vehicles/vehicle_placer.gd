@@ -2,7 +2,7 @@
 class_name VehiclePlacer extends Node
 
 @export_storage var _next_vehicle_num = 0
-@export var rail_containers: Array[OuterRailTrack]
+@export var rail_containers: Array[RailTrack3D]
 @export var rail_vehicles: Array[OuterRailVehicle] = []
 @export var start_vehicles_spawned: bool = false
 
@@ -44,7 +44,7 @@ func get_next_vehicle_num() -> int:
 	self._next_vehicle_num += 1
 	return self._next_vehicle_num
 
-func _on_rails_rails_spawned(containers: Array[OuterRailTrack]) -> void:
+func _on_rails_rails_spawned(containers: Array[RailTrack3D]) -> void:
 	Loggie.info("Rails spawned; initializing vehicles ...")
 	self.rail_containers = containers
 	load_vehicles()

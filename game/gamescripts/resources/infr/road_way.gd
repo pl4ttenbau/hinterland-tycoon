@@ -23,11 +23,11 @@ static func of(_num: int, _type: String) -> RoadData:
 #endregion
 
 #region Creation
-func spawn() -> OuterRoad:
+func spawn() -> RoadWay3D:
 	if ! self.curve: self.build_curve()
 	# instanciate Container from PackedScene
 	var scene: Resource = load(self.get_type_scene())
-	var outer_road: OuterRoad = scene.instantiate() as OuterRoad
+	var outer_road: RoadWay3D = scene.instantiate() as RoadWay3D
 	outer_road.road = self
 	# add_to_group("Roads")
 	return outer_road

@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_fork.png")
-class_name OuterRailFork extends VisibleObject
+class_name RailFork3D extends VisibleObject
 
 const NINETY_DEG_IN_RAD = 1.57
 
@@ -7,8 +7,8 @@ const NINETY_DEG_IN_RAD = 1.57
 	get(): return self.entity as NewRailForkData
 	set(value): self.entity = value
 
-static func of(_fork: NewRailForkData) -> OuterRailFork:
-	var inst := OuterRailFork.new()
+static func of(_fork: NewRailForkData) -> RailFork3D:
+	var inst := RailFork3D.new()
 	inst.entity = _fork
 	return inst
 	

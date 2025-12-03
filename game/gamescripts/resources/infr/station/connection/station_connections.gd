@@ -11,7 +11,7 @@ func _init(_parent: AbstractStation) -> void:
 	self.parent = _parent
 
 #region Add Connection
-func connect_house(house: OuterResBld):
+func connect_house(house: Residence3D):
 	self.houses.append(StationResidentialConnection.new(self.parent, house))
 	self.new_connection.emit(false)
 	

@@ -31,7 +31,7 @@ func spawn_industries():
 			Loggie.error("cannot spawn industry! type \"%s\" unknown" % ind_obj.ind_type)
 			continue
 		var scene_path := ind_obj.ind_type.get_mesh_path()
-		var instanciated: OuterIndustry = load(scene_path).instantiate()
+		var instanciated: Industry3D = load(scene_path).instantiate()
 		instanciated.industry = ind_obj
 		self.add_child(instanciated)
 		# register

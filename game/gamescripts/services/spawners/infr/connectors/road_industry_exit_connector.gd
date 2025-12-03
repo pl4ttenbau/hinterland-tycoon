@@ -1,18 +1,14 @@
 @icon("res://assets/icons/icon_gears_white.png")
 class_name RoadIndustryExitConnector extends Node
 
-const MAX_INDUSTRY_SQ_DIST = 400
+# Constants
+const MAX_IND_ROAD_DIST = 400
+const MAX_IND_NODE_DIST = 60
 const LOG_EXIT_FINDING = false
 
-@export var has_roads_loaded: bool = false:
-	set(value): 
-		has_roads_loaded = value
-		self.try_industry_exit_finding()
-		
-@export var has_industries_loaded: bool = false:
-	set(value):
-		has_industries_loaded = value
-		self.try_industry_exit_finding()
+# Loading FLags
+@export var has_roads_loaded: bool = false
+@export var has_industries_loaded: bool = false
 
 #region Initialization
 func _enter_tree() -> void:
@@ -23,7 +19,7 @@ func _enter_tree() -> void:
 func try_industry_exit_finding():
 	if !self.has_industries_loaded || !self.has_roads_loaded: return
 	var found_road_exits: int = 0
-	for industry3d: OuterIndustry in GlobalState.ind_bld_containers:
+	for industry3d: Industry3D in GlobalState.ind_bld_containers:
 		var closest_road_node = self.find_closest_road_node(industry3d.industry)
 		if closest_road_node:
 			industry3d.industry.road_exit = closest_road_node
@@ -36,7 +32,7 @@ func find_close_roads(industry: IndustryData) -> Array[RoadData]:
 	for road: RoadData in GlobalState.roads:
 		var road_center: Vector3 = road.center
 		var sq_dist_to_center := industry.pos.distance_to(road_center)
-		if sq_dist_to_center <= MAX_INDUSTRY_SQ_DIST:
+		if sq_dist_to_center <= MAX_IND_ROAD_DIST:
 			close_roads.append(road)
 	return close_roads
 	
@@ -47,7 +43,7 @@ func find_closest_road_node(industry: IndustryData) -> RoadNode:
 	for road: RoadData in self.find_close_roads(industry):
 		for road_node: RoadNode in road.nodes:
 			var sq_dist: float = pos.distance_to(road_node.position)
-			if sq_dist > 30: continue
+			if sq_dist > MAX_IND_NODE_DIST: continue
 			if sq_dist <= closest_node_dist:
 				closest_node_dist = sq_dist
 				closest_node = road_node
@@ -60,7 +56,9 @@ func find_closest_road_node(industry: IndustryData) -> RoadNode:
 #region Callbacks
 func _on_roads_spawned():
 	self.has_roads_loaded = true
+	self.try_industry_exit_finding()
 	
 func _on_industries_spawned():
 	self.has_industries_loaded = true
+	self.try_industry_exit_finding()	
 #endregion

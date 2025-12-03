@@ -40,5 +40,5 @@ func spawn_depot(depot_obj: RailDepotData) -> OuterDepot:
 func _on_rails_loaded(_rails: Array[RailTrackData]) -> void:
 	load_depots()
 	
-func _on_rails_spawned(_rails: Array[OuterRailTrack]) -> void:
+func _on_rails_spawned(_rails: Array[RailTrack3D]) -> void:
 	spawn_depots()

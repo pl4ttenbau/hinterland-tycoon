@@ -1,4 +1,4 @@
-class_name OuterRailBuffer extends VisibleObject
+class_name RailBuffer3D extends VisibleObject
 
 const NINETY_DEG_IN_RAD = 1.57
 

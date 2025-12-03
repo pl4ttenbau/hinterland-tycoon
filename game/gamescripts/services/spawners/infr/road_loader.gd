@@ -8,7 +8,7 @@ const MAX_VISIBLE_DIST := 200
 @export var storage: RoadStore = RoadStore.new()
 
 signal roads_loaded(_roads: Array[RoadData])
-signal roads_spawned(_roads: Array[OuterRoad])
+signal roads_spawned(_roads: Array[RoadWay3D])
 
 func _enter_tree() -> void:
 	Managers.roads = self
@@ -33,7 +33,7 @@ func spawn_roads():
 	SignalBus.roads_spawned.emit()
 	
 func spawn_road(road: RoadData):
-	var instanciated: OuterRoad = road.spawn()
+	var instanciated: RoadWay3D = road.spawn()
 	add_child(instanciated, true)
 	self.storage.add_container(instanciated)
 	SignalBus.road_spawned.emit(instanciated)

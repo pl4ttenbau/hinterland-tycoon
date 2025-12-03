@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_road.png")
-class_name OuterRoad extends VisibleObject
+class_name RoadWay3D extends VisibleObject
 
 @export var road: RoadData:
 	set(value):

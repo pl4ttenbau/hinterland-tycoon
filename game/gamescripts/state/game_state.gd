@@ -18,12 +18,12 @@ extends Node
 
 @export var res_blds: Array[ResidenceBuildingData] = []
 
-@export var res_bld_containers: Array[OuterResBld] = []
-@export var ind_bld_containers: Array[OuterIndustry] = []
+@export var res_bld_containers: Array[Residence3D] = []
+@export var ind_bld_containers: Array[Industry3D] = []
 
 # == INFR ==
 @export var tracks: Array[RailTrackData] = []
-@export var outer_tracks: Array[OuterRailTrack] = []
+@export var outer_tracks: Array[RailTrack3D] = []
 
 @export var node_stations: Array[RailNodeStationData] = []
 @export var station_objs: Array[RailStationData] = []
@@ -32,6 +32,6 @@ extends Node
 @export var forks: Array[RailNodeForkData] = []
 
 @export var roads: Array[RoadData] = []
-@export var outer_roads: Array[OuterRoad] = []
+@export var outer_roads: Array[RoadWay3D] = []
 
 @export var vehicles: Array[OuterRailVehicle] = []

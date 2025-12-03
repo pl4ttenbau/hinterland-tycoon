@@ -36,7 +36,7 @@ func spawn() -> RailNodeStation3D:
 	return self.station3d
 
 #region Connections
-func connect_house(outer_res_bld: OuterResBld):
+func connect_house(outer_res_bld: Residence3D):
 	self.connections.connect_house(outer_res_bld)
 	
 func connect_industry(industry: IndustryData):
@@ -44,7 +44,7 @@ func connect_industry(industry: IndustryData):
 #endregion
 
 #region Find By Distance
-static func find_closest_station_to_bld(res_bld: OuterResBld) -> RailNodeStationData:
+static func find_closest_station_to_bld(res_bld: Residence3D) -> RailNodeStationData:
 	var closest_node_station: RailNodeStationData
 	var closest_station_distance: float = 9999
 	for station: RailStationData in GlobalState.station_objs:

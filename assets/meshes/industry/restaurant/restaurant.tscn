@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ctaxui6oj0kwf"]
 
-[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_jfdgb"]
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry_3d.gd" id="1_jfdgb"]
 [ext_resource type="ArrayMesh" uid="uid://cyaai7n6y26x8" path="res://assets/meshes/industry/restaurant/restaurant.obj" id="2_0ratj"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ljf2g"]
 [ext_resource type="Texture2D" uid="uid://b666mknuvjkoj" path="res://assets/meshes/industry/restaurant/tex_restaurant_d.png" id="3_r7ln6"]

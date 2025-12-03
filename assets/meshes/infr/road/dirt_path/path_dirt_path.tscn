@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://0ntlp3b2lym4"]
 
-[ext_resource type="Script" uid="uid://ds8ckifkf8h16" path="res://game/gamescripts/nodes/infr/outer_road.gd" id="1_4qmth"]
+[ext_resource type="Script" uid="uid://ds8ckifkf8h16" path="res://game/gamescripts/nodes/infr/roadway_3d.gd" id="1_4qmth"]
 [ext_resource type="ArrayMesh" uid="uid://dukwi0f2fvbch" path="res://assets/meshes/infr/road/dirt_path/dirt_path.obj" id="2_fc1nh"]
 
 [sub_resource type="Curve3D" id="Curve3D_6tl4k"]
