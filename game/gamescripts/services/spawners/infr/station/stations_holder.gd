@@ -4,7 +4,7 @@ class_name StationsHolder extends Node
 const MAP_STATIONS_FILEPATH_FORMAT := "res://world/%s/jsondata/stations.json"
 
 @export var node_stations: Array[RailNodeStationData] = []
-@export var outer_stations: Array[OuterRailStation] = []
+@export var outer_stations: Array[RailNodeStation3D] = []
 
 @export var stations_objs: Array[RailStationData] = []
 @export var stations_by_num: Dictionary = {}
@@ -49,9 +49,9 @@ func spawn_stations():
 			outer_station.adjust_rotation_from_track()
 	SignalBus.stations_spawned.emit()
 	
-func spawn_station(station_obj: RailNodeStationData) -> OuterRailStation:
+func spawn_station(station_obj: RailNodeStationData) -> RailNodeStation3D:
 	station_obj.num = RailNodeStationData.next_station_num()
-	var outer_station: OuterRailStation = station_obj.spawn()
+	var outer_station: RailNodeStation3D = station_obj.spawn()
 	# container._name_nodes()
 	self.outer_stations.append(outer_station)
 	self.add_child(outer_station, true)

@@ -47,14 +47,13 @@ func find_closest_road_node(industry: IndustryData) -> RoadNode:
 	for road: RoadData in self.find_close_roads(industry):
 		for road_node: RoadNode in road.nodes:
 			var sq_dist: float = pos.distance_to(road_node.position)
+			if sq_dist > 30: continue
 			if sq_dist <= closest_node_dist:
 				closest_node_dist = sq_dist
 				closest_node = road_node
 	if LOG_EXIT_FINDING:
-		if closest_node:
-			Loggie.info("Found road exit for industry \"%s\"" % industry.ind_name)
-		else:
-			Loggie.warn("Cant find exit for industry \"%s\"" % industry.ind_name)
+		if closest_node: Loggie.info("Found road exit for industry \"%s\"" % industry.ind_name)
+		else: Loggie.warn("Cant find exit for industry \"%s\"" % industry.ind_name)
 	return closest_node
 #endregion
 

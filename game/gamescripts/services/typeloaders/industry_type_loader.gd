@@ -8,7 +8,7 @@ func make_types() -> Array[IndustryType]:
 		# producers: food
 		IndustryType.new("FARM", "Farm", "windmill_2", 8, [], ["4xgrains", "2xbeets"]),
 		IndustryType.new("RANCH", "Ranch", "windmill_2", 8, [], ["3xmeat"]),
-		IndustryType.new("FISHERY", "Fishery", "warehouse_1",  9, [], ["5xfish"]),
+		IndustryType.new("FISHERY", "Fishery", "wooden_storehouse",  9, [], ["5xfish"]),
 		# producers: aggregates
 		IndustryType.new("COAL_MINE", "Coal Mine", "mineshaft", 20, [], ["4xcoal"]),
 		IndustryType.new("IRON_MINE","Iron Mine", "mineshaft", 30, [], ["6xore"]),
@@ -17,7 +17,7 @@ func make_types() -> Array[IndustryType]:
 		# transformers: food
 		IndustryType.new("SUGAR_MILL", "Sugar Mill", "generic_small", 9, ["6xbeets"], ["3xsugar"]),
 		IndustryType.new("BREWERY", "Brewery", "generic_small", 9, ["6xgrains", "2xsugar"], ["3xalcohol"]),
-		IndustryType.new("BAKERY", "Bakery", "wooden_storehouse", 5, ["5xgrains", "1xsugar"], ["2xbread"]),
+		IndustryType.new("BAKERY", "Bakery", "restaurant", 5, ["5xgrains", "1xsugar"], ["2xbread"]),
 		IndustryType.new("BUTCHER", "Butcher", "warehouse_1", 9, ["3xfish"], ["3xmeat"]),
 		# transformers: aggregates
 		IndustryType.new("SMELTER", "Smelter", "generic_small", 22, ["3xore", "3xcoal"], ["3xingots"]),
@@ -29,7 +29,7 @@ func make_types() -> Array[IndustryType]:
 		IndustryType.new("COAL_PLANT", "Coal Plant", "generic_small", 20, ["4xcoal"], []),
 		IndustryType.new("SMALL_STORE", "Small Store", "wooden_storehouse", 20, ["2xbread", "2xmeat", "1xalcohol"], []),
 		IndustryType.new("BIG_STORE", "Big Store", "warehouse_1", 20, ["4xcoal"], []),
-		IndustryType.new("RESTAURANT", "Restaurant", "wooden_storehouse", 20, ["2xalcohol", "2xbread", "2xfish"], []),
+		IndustryType.new("RESTAURANT", "Restaurant", "restaurant", 20, ["2xalcohol", "2xbread", "2xfish"], []),
 	]
 	GameTypes.industry_types = industry_types
 	return industry_types

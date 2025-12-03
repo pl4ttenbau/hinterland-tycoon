@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctaxui6oj0kwf"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/outer_industry.gd" id="1_jfdgb"]
+[ext_resource type="ArrayMesh" uid="uid://cyaai7n6y26x8" path="res://assets/meshes/industry/restaurant/restaurant.obj" id="2_0ratj"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ljf2g"]
+[ext_resource type="Texture2D" uid="uid://b666mknuvjkoj" path="res://assets/meshes/industry/restaurant/tex_restaurant_d.png" id="3_r7ln6"]
+[ext_resource type="Texture2D" uid="uid://cnjrhq0skfm5u" path="res://assets/meshes/industry/restaurant/tex_restaurant_n.png" id="4_e41w3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qra3x"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_r7ln6")
+normal_enabled = true
+normal_texture = ExtResource("4_e41w3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljf2g"]
+size = Vector3(11.2487335, 16.403564, 12.422577)
+
+[node name="Restaurant" type="Node3D"]
+script = ExtResource("1_jfdgb")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visibility_range_end = 330.0
+visibility_range_end_margin = 33.0
+mesh = ExtResource("2_0ratj")
+surface_material_override/0 = SubResource("StandardMaterial3D_qra3x")
+
+[node name="IndustryCollider" type="StaticBody3D" parent="."]
+script = ExtResource("3_ljf2g")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024742126, 7.2625732, -0.09074402)
+shape = SubResource("BoxShape3D_ljf2g")
