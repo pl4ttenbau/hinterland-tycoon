@@ -2,7 +2,7 @@ class_name NewRailForkData extends GameObject
 
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 
-@export_storage var container: OuterRailFork
+@export_storage var container: RailFork3D
 @export var setting: RailForkSetting
 @export var pos: Vector3
 
@@ -26,8 +26,8 @@ func add_node(rail_node: RailNodeData):
 	self.connected_tracks.append(rail_node.parent_track.num)
 	self.node_added.emit(rail_node)
 	
-func spawn() -> OuterRailFork:
-	var instanciated: OuterRailFork = preload(SCENE_PATH).instantiate()
+func spawn() -> RailFork3D:
+	var instanciated: RailFork3D = preload(SCENE_PATH).instantiate()
 	instanciated.fork_obj = self
 	# set pos
 	instanciated.position = self.pos

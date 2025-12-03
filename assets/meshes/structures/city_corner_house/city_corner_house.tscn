@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwlcfsgeh3x0l"]
 
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_f4xky"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_f4xky"]
 [ext_resource type="ArrayMesh" uid="uid://b5qq4wbj6nav0" path="res://assets/meshes/structures/city_corner_house/city_corner_house.obj" id="1_revu7"]
 [ext_resource type="Texture2D" uid="uid://d0v82plmiwsoq" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_d.png" id="2_ju1nm"]
 [ext_resource type="Texture2D" uid="uid://827tcltgtlpq" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_s.png" id="3_f4xky"]

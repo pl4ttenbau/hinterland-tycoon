@@ -4,7 +4,7 @@ class_name RoadStore extends Resource
 @export var _list: Array[RoadData] = []
 @export var _by_id: Dictionary = {}
 
-@export_storage var _containers: Array[OuterRoad] = []
+@export_storage var _containers: Array[RoadWay3D] = []
 @export_storage var _containers_by_id: Dictionary = {}
 
 signal road_added(road_obj: RoadData)
@@ -17,8 +17,9 @@ func add(road_obj: RoadData):
 	self._list.append(road_obj)
 	self._create_indexes(road_obj)
 	self.road_added.emit(road_obj)
+	GlobalState.roads.append(road_obj)
 	
-func add_container(outer_road: OuterRoad):
+func add_container(outer_road: RoadWay3D):
 	self._containers.append(outer_road)
 	self._containers_by_id.set(outer_road.road.num, outer_road)
 	
@@ -38,12 +39,12 @@ func get_by_num(road_num: int) -> RoadData:
 func get_by_name(road_name: StringName) -> RoadData:
 	return self._by_name.get(road_name)
 	
-func get_containers() -> Array[OuterRoad]:
+func get_containers() -> Array[RoadWay3D]:
 	return self._containers
 	
-func get_container_by_num(road_num: int) -> OuterRoad:
-	var found: OuterRoad = self._containers_by_id.get(road_num, null)
-	if ! found: Loggie.error("Cannot get OuterRoad %d; out of index?" % road_num)
+func get_container_by_num(road_num: int) -> RoadWay3D:
+	var found: RoadWay3D = self._containers_by_id.get(road_num, null)
+	if ! found: Loggie.error("Cannot get RoadWay3D %d; out of index?" % road_num)
 	return found
 #endregion
 

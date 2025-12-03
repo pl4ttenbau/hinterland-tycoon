@@ -4,7 +4,7 @@ class_name IndustryStore extends Resource
 @export var _list: Array[IndustryData] = []
 @export var _by_id: Dictionary = {}
 
-@export_storage var _containers: Array[OuterIndustry] = []
+@export_storage var _containers: Array[Industry3D] = []
 @export_storage var _containers_by_id: Dictionary = {}
 
 signal industry_added(ind_obj: IndustryData)
@@ -17,10 +17,13 @@ func add(ind_obj: IndustryData):
 	self._list.append(ind_obj)
 	self._create_indexes(ind_obj)
 	self.industry_added.emit(ind_obj)
+	# add to global state as well
+	GlobalState.industries.append(ind_obj)
 	
-func add_container(outer_ind: OuterIndustry):
+func add_container(outer_ind: Industry3D):
 	self._containers.append(outer_ind)
 	self._containers_by_id.set(outer_ind.industry.num, outer_ind)
+	GlobalState.ind_bld_containers.append(outer_ind)
 	
 func _create_indexes(ind_obj: IndustryData):
 	self._by_id.set(ind_obj.num, ind_obj)
@@ -35,12 +38,12 @@ func get_by_num(ind_num: int) -> IndustryData:
 	if ! found: Loggie.error("Cannot get industry %d; out of index?" % ind_num)
 	return found
 	
-func get_containers() -> Array[OuterIndustry]:
+func get_containers() -> Array[Industry3D]:
 	return self._containers
 	
-func get_container_by_num(ind_num: int) -> OuterIndustry:
-	var found: OuterIndustry = self._containers_by_id.get(ind_num, null)
-	if ! found: Loggie.error("Cannot get OuterIndustry %d; out of index?" % ind_num)
+func get_container_by_num(ind_num: int) -> Industry3D:
+	var found: Industry3D = self._containers_by_id.get(ind_num, null)
+	if ! found: Loggie.error("Cannot get Industry3D %d; out of index?" % ind_num)
 	return found
 #endregion
 

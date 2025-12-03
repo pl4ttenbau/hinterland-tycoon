@@ -5,11 +5,6 @@ static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 	var track_instance := RailTrackData.new()
 	track_instance.num = int(_track_dict.num)
 	track_instance.infr_type_key = _track_dict.get("type")
-	# offset
-	if _track_dict.has("offset"):
-		track_instance.offset = WorldUtils.vec3_from_float_arr(_track_dict.offset)
-	else:
-		track_instance.offset = Vector3.ZERO
 	# start pos
 	var start_pos_arr =  _track_dict.points[0].pos
 	track_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
@@ -30,21 +25,24 @@ static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData
 		rail_node_obj.parse_and_add_special(rail_node_dict)
 		_track.add_node(rail_node_obj)
 		node_index += 1
-		
+
+#region Path3D or Line3D
 static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
 	var track_num: int = track_data_dict.get("num")
 	var track_path := Path3D.new()
 	track_path.name = "Editor_Track%d" % track_num
+	# position
+	track_path.position = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
+	# set metadata
 	track_path.set_meta("track_num", track_num)
 	track_path.set_meta("name", track_data_dict.get("name", null))
 	track_path.debug_custom_color = Color(0, 0.01, 0)
 	return track_path
 	
-static func line3d_from_data(track_data_dict: Dictionary) -> LinePath3D:
+static func editor_line_from_data(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var track_num: int = track_data_dict.get("num")
-	var track_line_3d := LinePath3D.new()
-	track_line_3d.name = "Editor_Track%d" % track_num
-	track_line_3d.set_meta("track_num", track_num)
-	track_line_3d.set_meta("name", track_data_dict.get("name", null))
-	track_line_3d.debug_custom_color = Color(0, 0.01, 0)
-	return track_line_3d
+	var editor_line3d := EditorInfrLine3D.of(Enums.InfrDomain.RAIL, track_num,
+			track_data_dict.get("name", null))
+	editor_line3d.position = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
+	return editor_line3d
+#endregion

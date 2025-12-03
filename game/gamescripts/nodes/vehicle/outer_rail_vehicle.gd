@@ -29,7 +29,7 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_veh_type_key: String, _starting_track: OuterRailTrack, _starts_at: int, 
+static func of(_veh_type_key: String, _starting_track: RailTrack3D, _starts_at: int, 
 		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
 	# get vehicle type
 	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)

@@ -2,7 +2,7 @@
 @icon("res://assets/icons/icon_house_white.png")
 class_name TownBuildingHolder extends Node
 
-@export var placed_buildings: Array[OuterResBld] = []
+@export var placed_buildings: Array[Residence3D] = []
 
 # Loading State
 @export var has_map_spawned: bool = true
@@ -19,33 +19,33 @@ func load_preplaced_town_buildings():
 	# if !self.has_res_bld_types_loaded: return
 	Loggie.info("spawning pre-placed ResBlds...")
 	for child: Node in self.get_map_houses_container().get_children():
-		if child is OuterResBld:
-			self.place_preplaced_res_bld(child as OuterResBld)
+		if child is Residence3D:
+			self.place_preplaced_res_bld(child as Residence3D)
 	SignalBus.town_buildings_spawned.emit()
 			
-func place_preplaced_res_bld(outer_bld: OuterResBld):
+func place_preplaced_res_bld(outer_bld: Residence3D):
 	var res_bld_type := ResBldType.get_by_key(outer_bld.placed_res_bld_type)
 	outer_bld.res_bld_obj = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
-	outer_bld.res_bld_obj.num = OuterResBld.next_num()
+	outer_bld.res_bld_obj.num = Residence3D.next_num()
 	# assign to town
 	var town := get_res_bld_town_obj(outer_bld)
 	if town: 
 		self.register_res_bld(outer_bld, town)
 
-func register_res_bld(outer_bld: OuterResBld, parent_town: TownData):
+func register_res_bld(outer_bld: Residence3D, parent_town: TownData):
 	self.placed_buildings.append(outer_bld) # save here as well
 	parent_town.add_res_bld(outer_bld)
 
 #region Getters 
-## the pre-placed buildings are in "TerrainContainer/Houses"
+## the pre-placed buildings are in "WorldMapScene/Houses"
 func get_map_houses_container() -> Node:
-	var map_container: TerrainContainer = GlobalState.world_container
+	var map_container: WorldMapScene = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
 	return map_container.find_child("Houses")
 	
-func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
+func get_res_bld_town_obj(outer_bld: Residence3D) -> TownData:
 	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
 	if ! town:
 		Loggie.error("Cannot spawn pre-placed building %s in Town %s: not found" % [outer_bld.name, outer_bld.placed_town_num])
@@ -53,7 +53,7 @@ func get_res_bld_town_obj(outer_bld: OuterResBld) -> TownData:
 #endregion
 	
 #region Signal Callbacks
-func _on_map_spawned(_terrain_container: TerrainContainer):
+func _on_map_spawned(_terrain_container: WorldMapScene):
 	self.has_map_spawned = true
 	self.load_preplaced_town_buildings()
 	

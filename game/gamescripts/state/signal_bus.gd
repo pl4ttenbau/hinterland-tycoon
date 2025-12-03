@@ -16,7 +16,7 @@ signal dialog_vehicle_selection(veh_type_key: String)
 
 #region World
 @warning_ignore("unused_signal")
-signal terrain_initialized(container: TerrainContainer)
+signal terrain_initialized(container: WorldMapScene)
 
 @warning_ignore("unused_signal")
 signal world_update()
@@ -25,7 +25,7 @@ signal world_update()
 signal scene_root_ready()
 
 @warning_ignore("unused_signal")
-signal map_spawned(container: TerrainContainer)
+signal map_spawned(container: WorldMapScene)
 #endregion
 
 #region Vehicles
@@ -41,10 +41,10 @@ signal vehicle_exited()
 signal rails_loaded(rails: Array[RailTrackData])
 
 @warning_ignore("unused_signal")
-signal rail_spawned(rail_container: OuterRailTrack)
+signal rail_spawned(rail_container: RailTrack3D)
 
 @warning_ignore("unused_signal")
-signal rails_spawned(containers: Array[OuterRailTrack])
+signal rails_spawned(containers: Array[RailTrack3D])
 
 @warning_ignore("unused_signal")
 signal fork_changed(fork: RailNodeForkData)
@@ -52,7 +52,7 @@ signal fork_changed(fork: RailNodeForkData)
 
 #region Roads 
 @warning_ignore("unused_signal")
-signal road_spawned(road_container: OuterRoad)
+signal road_spawned(road_container: RoadWay3D)
 
 @warning_ignore("unused_signal")
 signal roads_spawned()
@@ -93,7 +93,7 @@ signal industry_loaded(industry: IndustryData)
 signal industries_loaded(industries: Array[IndustryData])
 
 @warning_ignore("unused_signal")
-signal industry_spawned(container: OuterIndustry)
+signal industry_spawned(container: Industry3D)
 
 @warning_ignore("unused_signal")
 signal industries_spawned()

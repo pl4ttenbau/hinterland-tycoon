@@ -1,3 +1,4 @@
+@icon("uid://r84qkk5fcxhq")
 extends Node
 
 # == MAIN MENU ==
@@ -7,7 +8,7 @@ extends Node
 
 @export var main_menu_scene: StartmenuSubscene
 
-# == IN GAME == 
+# == IN GAME ==
 @export var movement_blocked: bool = false
 
 @export var current_diag: GameDialog

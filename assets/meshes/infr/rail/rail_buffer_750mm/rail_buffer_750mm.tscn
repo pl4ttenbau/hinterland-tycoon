@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0ekog7mdea2u"]
 
-[ext_resource type="Script" uid="uid://bbwknr2xuuraa" path="res://game/gamescripts/nodes/infr/outer_rail_buffer.gd" id="1_ak78i"]
+[ext_resource type="Script" uid="uid://bbwknr2xuuraa" path="res://game/gamescripts/nodes/infr/rail_track/rail_buffer_3d.gd" id="1_ak78i"]
 [ext_resource type="ArrayMesh" uid="uid://dao2wfyby2kyl" path="res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.obj" id="1_qjl6r"]
 
 [node name="RailBuffer750mm" type="Node3D"]

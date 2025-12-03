@@ -27,16 +27,15 @@ func reassign_all_buildings_to_stations():
 	
 func reassign_town_buildings_to_stations(town: TownData) -> int:
 	var connected_town_buildings: int = 0
-	for outer_res_bld: OuterResBld in town.res_bld_containers:
+	for outer_res_bld: Residence3D in town.res_bld_containers:
 		var closest_node_station := RailNodeStationData.find_closest_station_to_bld(outer_res_bld)
 		if closest_node_station:
 			self.connect_residence_to_station(outer_res_bld, closest_node_station, town)
 			connected_town_buildings += 1
 	return connected_town_buildings
 	
-func connect_residence_to_station(outer_res_bld: OuterResBld, closest_node_station: RailNodeStationData,
+func connect_residence_to_station(outer_res_bld: Residence3D, closest_node_station: RailNodeStationData,
 		res_bld_town: TownData):
-	Loggie.info("Connect House %s to station %s" % [outer_res_bld.name, closest_node_station.parent_station.station_name])
 	outer_res_bld.res_bld_obj.connected_station = closest_node_station
 	closest_node_station.parent_station.connected_town = res_bld_town
 
@@ -49,6 +48,6 @@ func _on_residences_placed():
 	self.has_buildings_placed = true
 	# self.connect_stations_to_residences()
 	
-func _on_rails_spawned(_containers: Array[OuterRailTrack]):
+func _on_rails_spawned(_containers: Array[RailTrack3D]):
 	self.connect_stations_to_residences()
 #endregion

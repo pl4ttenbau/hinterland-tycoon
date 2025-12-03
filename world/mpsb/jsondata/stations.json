@@ -103,5 +103,12 @@
 		"townNum": 25,
 		"type": "STATION_GOODS",
 		"townName": "Janow"
+	},
+	{
+		"num": 16,
+		"name": "Ort",
+		"townNum": 33,
+		"type": "STATION_GOODS",
+		"townName": "Müggenburg"
 	}
 ]

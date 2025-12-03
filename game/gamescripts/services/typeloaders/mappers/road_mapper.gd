@@ -7,11 +7,9 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	var road_instance := RoadData.of(road_num, type_key)
 	if _road_dict.has("name"):
 		road_instance.track_name = _road_dict.get("name")
-	if _road_dict.has("offset"):
-		road_instance.offset = WorldUtils.vec3_from_float_arr(_road_dict.offset)
 	# start pos
-		var start_pos_arr =  _road_dict.points[0].pos
-		road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
+	var start_pos_arr =  _road_dict.points[0].pos
+	road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# road_instance.name = "RoadWay" + str(road_instance.num)
 	add_points_from_json(_road_dict, road_instance)
 	road_instance.created.emit(road_instance)
@@ -43,15 +41,17 @@ static func cross_from_dict_and_data(parent_node: RoadNode, road_data: Dictionar
 static func path3d_from_data(road_data_dict: Dictionary) -> Path3D:
 	var road_num: int = road_data_dict.get("num")
 	var road_path := Path3D.new()
+	# position
+	road_path.position = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
+	# set metadata
 	road_path.name = "Editor_Road%d" % road_num
 	road_path.set_meta("road_num", road_num)
 	road_path.set_meta("name", road_data_dict.get("name", null))
 	return road_path
 	
-static func line3d_from_data(road_data_dict: Dictionary) -> LinePath3D:
+static func editor_line_from_data(road_data_dict: Dictionary) -> EditorInfrLine3D:
 	var road_num: int = road_data_dict.get("num")
-	var road_line_3d := LinePath3D.new()
-	road_line_3d.name = "Editor_Road%d" % road_num
-	road_line_3d.set_meta("road_num", road_num)
-	road_line_3d.set_meta("name", road_data_dict.get("name", null))
-	return road_line_3d
+	var editor_line3d := EditorInfrLine3D.of(Enums.InfrDomain.ROAD, road_num,
+			road_data_dict.get("name", null))
+	editor_line3d.position = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
+	return editor_line3d

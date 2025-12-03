@@ -7,9 +7,9 @@ class_name SpawnedGood extends GameObject
 @export var current_location: GoodsInventory
 
 # but only be targeted to a residential or industry structure
-@export var target_location: BaseStructure
+@export var target_location: AbstractStructure
 
-func _init(_type: StringName, _amount: int, _target: BaseStructure = null) -> void:
+func _init(_type: StringName, _amount: int, _target: AbstractStructure = null) -> void:
 	super(Enums.EntityTypes.GOOD)
 	self.res_type = BaseGoodsType.get_by_key(_type)
 	self.target_location = _target

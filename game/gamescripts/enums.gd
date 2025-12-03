@@ -16,7 +16,7 @@ enum EntityTypes {
 	DECO_SPLINE
 }
 
-enum InfrType {
+enum InfrDomain {
 	RAIL,
 	ROAD,
 	WATER,

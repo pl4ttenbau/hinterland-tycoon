@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmyoy80c8kald"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry_3d.gd" id="1_4djgp"]
+[ext_resource type="ArrayMesh" uid="uid://c6bb2ey7r74bx" path="res://assets/meshes/industry/wooden_storehouse/wooden_storehouse.obj" id="1_y5e2g"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="2_k3ep1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4djgp"]
+size = Vector3(11.717346, 9.578918, 10.322388)
+
+[node name="WoodenStorehouse" type="Node3D"]
+script = ExtResource("1_4djgp")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -2.8914027, 0, 0)
+layers = 8
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
+mesh = ExtResource("1_y5e2g")
+
+[node name="IndustryCollider" type="StaticBody3D" parent="."]
+script = ExtResource("2_k3ep1")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12905884, 4.289459, 0.9849243)
+shape = SubResource("BoxShape3D_4djgp")

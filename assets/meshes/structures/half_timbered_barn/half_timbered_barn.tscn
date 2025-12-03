@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcu2pbepp6rxt"]
 
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_q2107"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_q2107"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="2_bb2cl"]
 [ext_resource type="ArrayMesh" uid="uid://oc5u0xnyqqpt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.obj" id="2_ggw8a"]
 

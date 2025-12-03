@@ -31,15 +31,17 @@ func spawn_industries():
 			Loggie.error("cannot spawn industry! type \"%s\" unknown" % ind_obj.ind_type)
 			continue
 		var scene_path := ind_obj.ind_type.get_mesh_path()
-		var instanciated: OuterIndustry = load(scene_path).instantiate()
+		var instanciated: Industry3D = load(scene_path).instantiate()
 		instanciated.industry = ind_obj
 		self.add_child(instanciated)
+		# register
+		self.storage.add_container(instanciated)
 	SignalBus.industries_spawned.emit()
-		
+
 #region Getters
 func get_map_industry_container() -> WorldIndustries:
 	if self.ind_placeholder_parent != null: return self.ind_placeholder_parent
-	var map_container: TerrainContainer = GlobalState.world_container
+	var map_container: WorldMapScene = GlobalState.world_container
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
@@ -48,7 +50,7 @@ func get_map_industry_container() -> WorldIndustries:
 #endregion
 
 #region Callbacks
-func _on_terrain_loaded(_terrain_container: TerrainContainer):
+func _on_terrain_loaded(_terrain_container: WorldMapScene):
 	self.spawn_industries()
 	
 func _on_all_types_loaded():

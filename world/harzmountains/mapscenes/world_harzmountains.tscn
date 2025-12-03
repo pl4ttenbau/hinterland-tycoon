@@ -1,6 +1,6 @@
 [gd_scene load_steps=232 format=3 uid="uid://caxv06vdsiq0h"]
 
-[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/terrain/terrain_container.gd" id="1_1ass2"]
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
 [ext_resource type="PackedScene" uid="uid://dn7pc6dlp7jl8" path="res://assets/meshes/deco/city_gate/city_gate.tscn" id="3_4rfc7"]
 [ext_resource type="PackedScene" uid="uid://316sldx8eq36" path="res://assets/meshes/deco/castle_tower/castle_tower.tscn" id="3_kw45s"]

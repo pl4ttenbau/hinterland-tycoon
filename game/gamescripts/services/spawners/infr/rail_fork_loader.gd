@@ -37,6 +37,6 @@ func _on_track_loaded(track: RailTrackData):
 		if node.fork:
 			self.add_new_or_connection(node.fork)
 			
-func _on_rails_spawned(_outer_rails: Array[OuterRailTrack]):
+func _on_rails_spawned(_outer_rails: Array[RailTrack3D]):
 	self.spawn_rail_forks()
 #endregion

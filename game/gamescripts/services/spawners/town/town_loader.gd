@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 	Managers.towns = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 
-func _on_map_spawned(_container: TerrainContainer) -> void:
+func _on_map_spawned(_container: WorldMapScene) -> void:
 	self.index_map_towns()
 #endregion	
 
@@ -32,7 +32,7 @@ func index_map_towns():
 #region Getters
 func get_pos_on_terrain(posXZ: Vector2):
 	var vec3: Vector3 = Vector3(posXZ.x, 0, posXZ.y)
-	var terr_container: TerrainContainer = GlobalState.world_container
+	var terr_container: WorldMapScene = GlobalState.world_container
 	return terr_container.get_pos_at_height(vec3)
 
 func get_label_pos_at(posXZ: Vector2) -> Vector3:

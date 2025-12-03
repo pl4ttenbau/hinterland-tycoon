@@ -33,7 +33,7 @@ func spawn_single_rnd_building():
 	if !self.has_bld_types_loaded || !self.has_spawned_self: return
 	var rnd_bld_type: ResBldType = GameTypes.get_rnd_placable_res_bld()
 	var packed_scene: PackedScene = load(rnd_bld_type.get_scene_path())
-	var instanciated: OuterResBld = packed_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var instanciated: Residence3D = packed_scene.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	# create & set res bld entity
 	instanciated.res_bld = ResidenceBuildingData.new(self.town.num, rnd_bld_type)
 	# set random pos & rotation
@@ -44,7 +44,7 @@ func spawn_single_rnd_building():
 #endregion
 
 #region Helper-Methods
-func register_spawned_building(outer_res_bld: OuterResBld):
+func register_spawned_building(outer_res_bld: Residence3D):
 	# add to city & global state array
 	self.add_child(outer_res_bld)
 	self.town.add_res_bld(outer_res_bld)

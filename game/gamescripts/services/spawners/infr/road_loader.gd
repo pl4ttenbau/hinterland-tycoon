@@ -8,18 +8,12 @@ const MAX_VISIBLE_DIST := 200
 @export var storage: RoadStore = RoadStore.new()
 
 signal roads_loaded(_roads: Array[RoadData])
-signal roads_spawned(_roads: Array[OuterRoad])
+signal roads_spawned(_roads: Array[RoadWay3D])
 
 func _enter_tree() -> void:
 	Managers.roads = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
 	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
-
-	
-func _ready() -> void:
-	pass
-	# load_roads()
-	# Loggie.info("roads precreated")
 
 #region Road Loading
 func load_roads() -> void:
@@ -39,14 +33,16 @@ func spawn_roads():
 	SignalBus.roads_spawned.emit()
 	
 func spawn_road(road: RoadData):
-	var instanciated: OuterRoad = road.spawn()
+	var instanciated: RoadWay3D = road.spawn()
 	add_child(instanciated, true)
 	self.storage.add_container(instanciated)
 	SignalBus.road_spawned.emit(instanciated)
 #endregion
-	
-func _on_world_spawned(_container: TerrainContainer):
+
+#region Callbacks
+func _on_world_spawned(_container: WorldMapScene):
 	spawn_roads()
 
 func _on_map_selected(_selected_map: MapData):
 	self.load_roads()
+#endregion

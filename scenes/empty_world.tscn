@@ -1,0 +1,262 @@
+[gd_scene load_steps=49 format=3 uid="uid://s6qceyvtti6k"]
+
+[ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/empty_world.gd" id="1_eorrk"]
+[ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_11abr"]
+[ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="3_oj3vo"]
+[ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
+[ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
+[ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="6_nc0f4"]
+[ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="7_rnkef"]
+[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail_loader.gd" id="8_pcopj"]
+[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_t6nuv"]
+[ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
+[ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
+[ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
+[ext_resource type="Script" uid="uid://c2m2e8o027sgu" path="res://game/gamescripts/services/spawners/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
+[ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/infr/road_loader.gd" id="14_0dtnv"]
+[ext_resource type="Script" uid="uid://5fhring754pq" path="res://game/gamescripts/services/spawners/infr/connectors/road_industry_exit_connector.gd" id="15_11abr"]
+[ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicles/vehicle_placer.gd" id="15_g3fbs"]
+[ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="16_6wawu"]
+[ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="17_qsvwm"]
+[ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map/map_spawner.gd" id="18_yvyyf"]
+[ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_waht2"]
+[ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="20_20yvh"]
+[ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="21_sc7tx"]
+[ext_resource type="PackedScene" uid="uid://4vshk56t46ml" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="22_mwjue"]
+[ext_resource type="Script" uid="uid://xrq8d2iqxk0u" path="res://game/gamescripts/nodes/common/feature_mock_container.gd" id="23_0fk02"]
+[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="24_5fpmr"]
+[ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="25_x7ydu"]
+[ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="26_fx0ak"]
+[ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="27_x7krn"]
+[ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/rail_track/rail_track_3d.gd" id="28_gd460"]
+[ext_resource type="ArrayMesh" uid="uid://vphafb1c2c38" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_tracks.obj" id="29_bdr0o"]
+[ext_resource type="Texture2D" uid="uid://do0eodfbabq40" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_d.png" id="30_4l87q"]
+[ext_resource type="Texture2D" uid="uid://dwsr7pp2doaky" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_n.png" id="31_o3twt"]
+[ext_resource type="Texture2D" uid="uid://0yxx8lqgtmom" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_r.png" id="32_cygkk"]
+[ext_resource type="ArrayMesh" uid="uid://dxlt24spn86wr" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_ground.obj" id="33_xpq3x"]
+[ext_resource type="Texture2D" uid="uid://cj08uu08hj8vb" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_d.png" id="34_q7swn"]
+[ext_resource type="Texture2D" uid="uid://bauuoftegomi6" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_ao.png" id="35_nyf3i"]
+[ext_resource type="Texture2D" uid="uid://wcnvp7fwig3s" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_r.png" id="36_ovmcp"]
+[ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="37_62uyd"]
+[ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="38_0315r"]
+[ext_resource type="PackedScene" uid="uid://bdjerkhg2knfu" path="res://world/default/terrain_default.tscn" id="39_mk0on"]
+[ext_resource type="ArrayMesh" uid="uid://oc5u0xnyqqpt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.obj" id="40_r6qy7"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="41_p6dso"]
+
+[sub_resource type="MultiMesh" id="MultiMesh_usal5"]
+transform_format = 1
+mesh = ExtResource("25_x7ydu")
+
+[sub_resource type="Curve3D" id="Curve3D_rd07l"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.63323, 0.619491, 0.867334, 1, 0, 0, 0, 0, 0, -4.79795, -0.160339, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yowo4"]
+albedo_texture = ExtResource("30_4l87q")
+roughness_texture = ExtResource("32_cygkk")
+normal_enabled = true
+normal_texture = ExtResource("31_o3twt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4emru"]
+albedo_texture = ExtResource("34_q7swn")
+roughness_texture = ExtResource("36_ovmcp")
+normal_enabled = true
+ao_enabled = true
+ao_texture = ExtResource("35_nyf3i")
+heightmap_scale = 2.2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bb2cl"]
+size = Vector3(25.3006, 11.7227, 9.16028)
+
+[node name="EmptyWorldRoot" type="Node3D"]
+script = ExtResource("1_eorrk")
+
+[node name="OuterPlayer" parent="." instance=ExtResource("2_11abr")]
+
+[node name="Input" type="Node" parent="."]
+
+[node name="ActionHandler" type="Node" parent="Input"]
+script = ExtResource("3_oj3vo")
+
+[node name="EnterAction" type="Node" parent="Input/ActionHandler"]
+script = ExtResource("4_oo77m")
+
+[node name="SpawnAction" type="Node" parent="Input/ActionHandler"]
+script = ExtResource("5_drms0")
+metadata/_custom_type_script = "uid://dei7w8gduhci"
+
+[node name="World" type="Node" parent="."]
+
+[node name="Generated" type="Node" parent="World"]
+
+[node name="Towns" type="Node" parent="World/Generated"]
+unique_name_in_owner = true
+editor_description = "Town-Centers with Label3D above will be spawned under this node"
+script = ExtResource("6_nc0f4")
+
+[node name="WorldTownBldPlacer" type="Node" parent="World/Generated/Towns"]
+script = ExtResource("7_rnkef")
+metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
+
+[node name="Infr" type="Node" parent="World/Generated"]
+
+[node name="Rails" type="Node" parent="World/Generated/Infr"]
+unique_name_in_owner = true
+script = ExtResource("8_pcopj")
+
+[node name="RailForkLoader" type="Node" parent="World/Generated/Infr/Rails"]
+script = ExtResource("9_t6nuv")
+metadata/_custom_type_script = "uid://bpdu211yk5uj2"
+
+[node name="Stations" type="Node" parent="World/Generated/Infr"]
+unique_name_in_owner = true
+script = ExtResource("10_c37kc")
+
+[node name="StationIndustryConnector" type="Node" parent="World/Generated/Infr/Stations"]
+script = ExtResource("11_5swda")
+metadata/_custom_type_script = "uid://cebmcnxlern8g"
+
+[node name="StationResidenceConnector" type="Node" parent="World/Generated/Infr/Stations"]
+script = ExtResource("12_7yd2d")
+metadata/_custom_type_script = "uid://8e0con4047ai"
+
+[node name="StationGoodsSpawner" type="Node" parent="World/Generated/Infr/Stations"]
+script = ExtResource("13_o2h5t")
+
+[node name="SpawnPassengersTimer" type="Timer" parent="World/Generated/Infr/Stations/StationGoodsSpawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="Roads" type="Node" parent="World/Generated/Infr"]
+script = ExtResource("14_0dtnv")
+
+[node name="RoadIndustryExitConnector" type="Node" parent="World/Generated/Infr/Roads"]
+script = ExtResource("15_11abr")
+metadata/_custom_type_script = "uid://5fhring754pq"
+
+[node name="Vehicles" type="Node" parent="World/Generated"]
+unique_name_in_owner = true
+script = ExtResource("15_g3fbs")
+
+[node name="Industries" type="Node" parent="World/Generated"]
+script = ExtResource("16_6wawu")
+metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
+
+[node name="Depots" type="Node" parent="World/Generated"]
+script = ExtResource("17_qsvwm")
+metadata/_custom_type_script = "uid://bcymy2uish8jw"
+
+[node name="MapSpawner" type="Node" parent="World"]
+script = ExtResource("18_yvyyf")
+
+[node name="Terrain" type="Node" parent="World/MapSpawner"]
+unique_name_in_owner = true
+
+[node name="WorldUpdateTimer" type="Timer" parent="World/MapSpawner/Terrain"]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+script = ExtResource("19_waht2")
+
+[node name="TerrainRaycaster" type="Node" parent="World/MapSpawner/Terrain"]
+script = ExtResource("20_20yvh")
+
+[node name="StartmenuMain" parent="." instance=ExtResource("21_sc7tx")]
+
+[node name="GameWindow" parent="." instance=ExtResource("22_mwjue")]
+visible = false
+
+[node name="Features" type="Node3D" parent="."]
+editor_description = "why? https://docs.godotengine.org/en/latest/tutorials/performance/pipeline_compilations.html#doc-pipeline-compilations"
+visible = false
+script = ExtResource("23_0fk02")
+metadata/_custom_type_script = "uid://xrq8d2iqxk0u"
+
+[node name="PolishHouse1" parent="Features" instance=ExtResource("24_5fpmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1174, 7.99088, 15.6514)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Features"]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Features"]
+multimesh = SubResource("MultiMesh_usal5")
+
+[node name="Campfire" parent="Features" instance=ExtResource("26_fx0ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.8981, 6.64192, 80.5601)
+
+[node name="Tree3" parent="Features" instance=ExtResource("27_x7krn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.7584, 6.9311, 64.4647)
+
+[node name="OuterRailTrack" type="Node3D" parent="Features"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.793, 7.56636, 23.55)
+script = ExtResource("28_gd460")
+
+[node name="TrackPath" type="Path3D" parent="Features/OuterRailTrack"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+rotation_edit_mode = 1
+curve = SubResource("Curve3D_rd07l")
+
+[node name="TrackPathMesh" type="PathMesh3D" parent="Features/OuterRailTrack" node_paths=PackedStringArray("path_3d")]
+path_3d = NodePath("../TrackPath")
+mesh = ExtResource("29_bdr0o")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 192
+surface_1/tile_rotation = Vector3(0, 0, 0)
+surface_1/tile_rotation_order = 2
+surface_1/distribution = 0
+surface_1/alignment = 0
+surface_1/warp_along_curve = true
+surface_1/sample_cubic = false
+surface_1/tilt = true
+surface_1/offset = Vector2(0, 0)
+surface_1/triangle_count = 1248
+material_override = SubResource("StandardMaterial3D_yowo4")
+
+[node name="BedPathMesh" type="PathMesh3D" parent="Features/OuterRailTrack" node_paths=PackedStringArray("path_3d")]
+path_3d = NodePath("../TrackPath")
+mesh = ExtResource("33_xpq3x")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 256
+material_override = SubResource("StandardMaterial3D_4emru")
+
+[node name="SignalTower" parent="Features" instance=ExtResource("37_62uyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
+
+[node name="Pilzleuchte" parent="Features" instance=ExtResource("38_0315r")]
+
+[node name="TestTerrain" type="Node3D" parent="Features"]
+
+[node name="Terrain3D" parent="Features/TestTerrain" instance=ExtResource("39_mk0on")]
+
+[node name="HalfTimberedBarn" type="Node3D" parent="Features"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Features/HalfTimberedBarn"]
+mesh = ExtResource("40_r6qy7")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn"]
+physics_material_override = SubResource("PhysicsMaterial_ggw8a")
+script = ExtResource("41_p6dso")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/ResBldCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168365, 5.36136, -0.0531616)
+shape = SubResource("BoxShape3D_bb2cl")

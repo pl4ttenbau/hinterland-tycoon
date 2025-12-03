@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwqg67pnls6nh"]
 
 [ext_resource type="ArrayMesh" uid="uid://dtxomxyxxgl2v" path="res://assets/meshes/structures/merchant_house_1/merchant_house_1.obj" id="1_jfg6s"]
-[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/outer_res_bld.gd" id="1_l4sfv"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_l4sfv"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_t0je8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_serbl"]

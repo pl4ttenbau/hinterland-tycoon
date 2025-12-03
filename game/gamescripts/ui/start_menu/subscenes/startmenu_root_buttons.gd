@@ -17,8 +17,8 @@ func _on_load_game_click():
 	pass
 	
 func _on_settings_click():
-	pass
+	get_tree().quit()
 	
 func _on_exit_click():
-	pass
+	$/root.queue_free()
 #endregion
