@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_locomotive.png")
-class_name OuterRailVehicle extends VisibleObject
+class_name RailVehicle3D extends VisibleObject
 
 @export var vehicle_num: int
 
@@ -30,11 +30,11 @@ func _ready() -> void:
 	speed_timer.start()
 
 static func of(_veh_type_key: String, _starting_track: RailTrack3D, _starts_at: int, 
-		_dir: VehicleMotor.Direction) -> OuterRailVehicle:
+		_dir: VehicleMotor.Direction) -> RailVehicle3D:
 	# get vehicle type
 	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)
 	# instanciate correct scene
-	var vehicle: OuterRailVehicle = load(veh_type_obj.get_mesh_path()).instantiate()
+	var vehicle: RailVehicle3D = load(veh_type_obj.get_mesh_path()).instantiate()
 	vehicle.type_obj = veh_type_obj
 	vehicle.direction = _dir
 	vehicle.motor = VehicleMotor.of(vehicle)
@@ -52,7 +52,7 @@ static func load_vehicle_type_obj(_veh_type_key: String) -> RailVehicleType:
 	
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started:
-		$VehiclePath/PathFollow3D.progress += .1
+		$VehiclePath/PathFollow3D.progress += self.motor.get_current_speed()
 
 #region Node Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)

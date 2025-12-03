@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_depot.png")
-class_name OuterDepot extends HideableObject
+class_name RailDepot3D extends HideableObject
 
-const SCENE_PATH = "res://assets/meshes/infr/rail/rail_depot/rail_depot.tscn"
+const SCENE_PATH = "uid://c8f1x2eykmxwk"
 
 @export_storage var track: RailTrackData:
 	get(): return RailTrackData.get_by_num(self.depot.track_num)
@@ -9,10 +9,11 @@ const SCENE_PATH = "res://assets/meshes/infr/rail/rail_depot/rail_depot.tscn"
 @export_storage var depot: RailDepotData:
 	get(): return self.entity as RailDepotData
 	set(value): self.entity = value
-	
-static func of(depot_obj: RailDepotData) -> OuterDepot:
+
+#region Initialization
+static func of(depot_obj: RailDepotData) -> RailDepot3D:
 	var prefab: PackedScene = preload(SCENE_PATH)
-	var instanciated_container: OuterDepot = prefab.instantiate()
+	var instanciated_container: RailDepot3D = prefab.instantiate()
 	instanciated_container.depot = depot_obj
 	instanciated_container.position = instanciated_container.get_pos_from_rail()
 	instanciated_container.set_meta("depot", depot_obj)
@@ -27,6 +28,7 @@ func adjust_rotation():
 		target_pos = self.track.get_rail_node(rot_target_node_index).position
 	if target_pos != Vector3.ZERO:
 		self.look_at(target_pos)
+#endregion
 	
 #region Depot Track Node Getters
 func get_pos_from_rail() -> Vector3:

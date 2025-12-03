@@ -27,7 +27,7 @@ signal stopped()
 signal speed_changed(percentage: float)
 #endregion
 
-static func of(_vehicle: OuterRailVehicle) -> VehicleMotor:
+static func of(_vehicle: RailVehicle3D) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.speed = VehicleSpeed.new()
 	return _inst
@@ -53,6 +53,7 @@ func stop() -> void:
 func on_motor_tick():
 	if self.speed:
 		self.speed.adjust_to_target_speed()
+		Loggie.info("Curr speed: %f" % self.speed.current)
 
 #region Getters
 func get_current_speed() -> float:

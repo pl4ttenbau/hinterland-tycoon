@@ -3,7 +3,7 @@ class_name SpeedometerControl extends Control
 const LINE_ROTATION_ZERO := -35.0
 const LINE_ROTATION_MAX := 35.0
 
-@export_storage var current_vehicle: OuterRailVehicle
+@export_storage var current_vehicle: RailVehicle3D
 
 @export_storage var current_speed: float = 0.0:
 	set(value):
@@ -23,7 +23,7 @@ func adjust_speedometer():
 	self.get_speed_line().rotation_degrees = angle
 	
 #region Vehicle Callbacks
-func _vehicle_entered(vehicle: OuterRailVehicle):
+func _vehicle_entered(vehicle: RailVehicle3D):
 	# set current vehicle & speed
 	self.current_vehicle = vehicle
 	self.current_speed = self.current_vehicle.motor.current_speed_percentage

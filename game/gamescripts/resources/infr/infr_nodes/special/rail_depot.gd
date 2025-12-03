@@ -33,8 +33,8 @@ static func of_json(_dict: Dictionary) -> RailDepotData:
 	return inst
 #endregion
 
-func spawn() -> OuterDepot:
-	return OuterDepot.of(self)
+func spawn() -> RailDepot3D:
+	return RailDepot3D.of(self)
 
 #region Getters
 func get_depot_rail_node() -> RailNodeData:

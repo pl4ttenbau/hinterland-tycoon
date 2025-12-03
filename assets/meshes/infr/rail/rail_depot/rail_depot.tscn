@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8f1x2eykmxwk"]
 
 [ext_resource type="ArrayMesh" uid="uid://bai2feaxmnr4q" path="res://assets/meshes/infr/rail/rail_depot/rail_depot.obj" id="1_0leoj"]
-[ext_resource type="Script" uid="uid://dqw3uvri4i6ex" path="res://game/gamescripts/nodes/infr/outer_depot.gd" id="1_q7jsm"]
+[ext_resource type="Script" uid="uid://dqw3uvri4i6ex" path="res://game/gamescripts/nodes/infr/rail_depot_3d.gd" id="1_q7jsm"]
 
 [node name="RailDepot" type="Node3D"]
 script = ExtResource("1_q7jsm")

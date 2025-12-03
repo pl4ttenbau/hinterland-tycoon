@@ -4,7 +4,7 @@ class_name DepotLoader extends Node
 const MAP_DEPOTS_FILEPATH_FORMAT := "res://world/%s/jsondata/vehicles_depots.json"
 
 @export var depots: Array[RailDepotData] = []
-@export var containers: Array[OuterDepot] = []
+@export var containers: Array[RailDepot3D] = []
 
 func _enter_tree() -> void:
 	Managers.depots = self
@@ -26,12 +26,12 @@ func load_depots():
 func spawn_depots():
 	Loggie.info("Spawning depots..")
 	for depot_obj: RailDepotData in self.depots:
-		var container: OuterDepot = spawn_depot(depot_obj)
+		var container: RailDepot3D = spawn_depot(depot_obj)
 		self.containers.append(container)
 	
-func spawn_depot(depot_obj: RailDepotData) -> OuterDepot:
+func spawn_depot(depot_obj: RailDepotData) -> RailDepot3D:
 	depot_obj.num = RailDepotData.next_depot_num()
-	var container: OuterDepot = depot_obj.spawn()
+	var container: RailDepot3D = depot_obj.spawn()
 	self.add_child(container, true)
 	container.adjust_rotation()
 	return container
