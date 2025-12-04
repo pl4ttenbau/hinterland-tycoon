@@ -12,11 +12,16 @@ func set_vehicle_speed(speed_percent: float):
 	if ! self.curr_vehicle:
 		Loggie.warn("Cannot set vehicle speed: is not sitting inside anything")
 		return
-	var speed_float: float = 1 - (speed_percent / 100)
+	var speed_float := self._clamp_speed(1 - (speed_percent / 100))
 	Loggie.info("Setting vehicle speed perc: %f" % speed_float)
 	self.curr_vehicle.motor.speed.target = speed_float
 	# set handle pos
 	$ControlHandle.position.y = speed_percent
+	
+func _clamp_speed(input_f: float) -> float:
+	if input_f > 1: return 1
+	elif input_f < 0: return 0
+	return input_f
 
 #region Callables
 func _on_gui_input(ev: InputEvent):

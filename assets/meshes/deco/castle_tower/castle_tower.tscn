@@ -8,8 +8,8 @@ size = Vector3(12.841187, 26.77771, 19.686707)
 [node name="CastleTower" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visibility_range_end = 700.0
-visibility_range_end_margin = 70.0
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
 mesh = ExtResource("1_d67fa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

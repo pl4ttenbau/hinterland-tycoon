@@ -1,0 +1,38 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cd24vo6bnaj5u"]
+
+[ext_resource type="Shader" uid="uid://m5ixwtr3m6o1" path="res://assets/packed/shaders/water/new_water.gdshader" id="1_7ajjn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ajjn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_udify"]
+noise = SubResource("FastNoiseLite_7ajjn")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tjj1p"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4t3nh"]
+noise = SubResource("FastNoiseLite_tjj1p")
+seamless = true
+normalize = false
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7ajjn")
+shader_parameter/surfacecolour = Color(0, 0, 0, 1)
+shader_parameter/volumecolour = Color(0, 0, 0, 1)
+shader_parameter/AirIOR = 1.0
+shader_parameter/IOR = 1.33
+shader_parameter/sampler1speed = Vector2(0.02, 0)
+shader_parameter/sampler2speed = Vector2(0, 0.02)
+shader_parameter/samplermix = 0.5
+shader_parameter/samplerscale = Vector2(0.1, 0.1)
+shader_parameter/normal1tex = SubResource("NoiseTexture2D_4t3nh")
+shader_parameter/normalstrength = 2.35999994724928
+shader_parameter/heightstrength = 0.0
+shader_parameter/edge1tex = SubResource("NoiseTexture2D_udify")
+shader_parameter/refrationamount = 0.0
+shader_parameter/fog_underwater = false
+shader_parameter/edge_size = 0.07999999821184
+shader_parameter/foam_or_fade = false
+shader_parameter/far_clip = 50.0
+shader_parameter/steps = 512
+shader_parameter/ssr_screen_fade = 0.05
