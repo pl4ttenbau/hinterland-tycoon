@@ -11,16 +11,18 @@ func rebuild_path_on_current_track():
 	var next_track = self.vehicle.last_node.parent_track
 	var next_direction = self.vehicle.direction
 	while continues && iterations <= 20:
-		var track_end := self.add_track_nodes(next_track, next_direction)
-		if track_end && track_end.fork && track_end.fork.set_to:
-			var next_track_num = track_end.fork.set_to
+		var segment_end := self.add_track_nodes(next_track, next_direction)
+		# track goes on
+		if segment_end && segment_end.fork && segment_end.fork.set_to:
+			var next_track_num = segment_end.fork.set_to
 			next_track = RailTrackData.get_by_num(next_track_num)
-			next_direction = get_next_dir_from_fork(next_track.num, track_end.position)
+			next_direction = get_next_dir_from_fork(next_track.num, segment_end.position)
 		else:
 			continues = false
 			self.vehicle.motor.stop()
 			return
 		iterations += 1
+	InfrUtils.smooth_curve3d(self.curve)
 		
 func get_next_dir_from_fork(track_num: int, fork_pos: Vector3) -> VehicleMotor.Direction:
 	var track_obj: RailTrackData = RailTrackData.get_by_num(track_num)
@@ -43,12 +45,11 @@ func add_track_nodes(track: RailTrackData, dir: VehicleMotor.Direction) -> RailN
 	
 #region Callbacks
 func _enter_tree() -> void:
-	# self.vehicle = self.get_parent_node_3d()
 	SignalBus.fork_changed.connect(Callable(self, "_on_fork_changed"))
 	
 func _ready() -> void:
 	self.rebuild_path_on_current_track()
 
-func _on_fork_changed(fork: RailNodeForkData):
+func _on_fork_changed(_fork: RailNodeForkData):
 	self.rebuild_path_on_current_track()
 #endregion
