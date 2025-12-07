@@ -1,4 +1,4 @@
-[gd_scene load_steps=583 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=591 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://by8p3lehwrg8a" path="res://assets/meshes/deco/castle_wall/castle_wall.tscn" id="27_ssk1k"]
 [ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="28_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
@@ -47,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bkw15rso2gb44" path="res://assets/meshes/structures/thatched_house_1/thatched_house_1.tscn" id="51_hw0ba"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="51_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="51_rrrix"]
+[ext_resource type="PackedScene" uid="uid://cjujd0ypwds3l" path="res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/mpsb_wismar_wagon_static.tscn" id="55_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="59_51ymi"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
@@ -5863,6 +5865,72 @@ shader_parameter/metallic = 0.0
 shader_parameter/specular = 0.5
 shader_parameter/roughness = 0.5
 
+[sub_resource type="Curve3D" id="Curve3D_j65nw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, -0.19999981, 2, 0, 0, 0, 0, 0, 0, 27.5, 1.5, 6.5, 0, 0, 0, 0, 0, 0, 46.80005, 2.1000004, 17.099976, 0, 0, 0, 0, 0, 0, 58.5, 2.2000008, 19.299927, 0, 0, 0, 0, 0, 0, 85.3999, 2.1000004, 22.099976, 0, 0, 0, 0, 0, 0, 114.19995, 1.6999998, 38.399902, 0, 0, 0, 0, 0, 0, 125, 1.6000004, 40.69995, 0, 0, 0, 0, 0, 0, 131.8999, 1.5, 39.599976, 0, 0, 0, 0, 0, 0, 143.19995, 1.5, 34.69995, 0, 0, 0, 0, 0, 0, 152.59985, 0.6999998, 29.299927, 0, 0, 0, 0, 0, 0, 163.59985, 1.1000004, 24.199951, 0, 0, 0, 0, 0, 0, 177.8999, 0.8000002, 21.199951),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfocc"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_e60qg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.400146, 0.09999943, -0.5999756, 0, 0, 0, 0, 0, 0, 32, 0.5, -1.0999756, 0, 0, 0, 0, 0, 0, 43.19995, 0.3000002, -3.8000488, 0, 0, 0, 0, 0, 0, 58.100098, 0.8999996, -9, 0, 0, 0, 0, 0, 0, 70.6001, 0.5999994, -13.199951, 0, 0, 0, 0, 0, 0, 81.90015, 0.8999996, -16.5, 0, 0, 0, 0, 0, 0, 97, 0.8999996, -21.199951, 0, 0, 0, 0, 0, 0, 110.5, 1.1999998, -23.400024, 0, 0, 0, 0, 0, 0, 130.80005, 0.8000002, -30.099976, 0, 0, 0, 0, 0, 0, 149.30005, 0, -35.69995, 0, 0, 0, 0, 0, 0, 165.19995, -0.10000038, -44.69995),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njlp4"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_j5v02"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.600098, 0.10000038, -7.6000977, 0, 0, 0, 0, 0, 0, 32.30005, 0.40000057, -12.400024, 0, 0, 0, 0, 0, 0, 52.100098, 0.19999981, -14.600098, 0, 0, 0, 0, 0, 0, 73.1001, 0.19999981, -18.100098, 0, 0, 0, 0, 0, 0, 87.80005, 0.40000057, -20.600098, 0, 0, 0, 0, 0, 0, 103.40015, 0.40000057, -24.900024, 0, 0, 0, 0, 0, 0, 127.1001, 0.6000004, -26.700073, 0, 0, 0, 0, 0, 0, 145.30005, 0.5, -26.300049),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p7vf"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
 [node name="WorldMapScene" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
 map_key = "mpsb"
@@ -6041,44 +6109,55 @@ transform = Transform3D(0.2315102, 0, 0.9728326, 0, 1, 0, -0.9728326, 0, 0.23151
 [node name="WaterTowerBig" parent="Deco/AnklamCity" instance=ExtResource("7_jynyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2936.0698, 2.5098944, 1803.4937)
 
-[node name="AnklamHarbour" type="Node" parent="Deco/AnklamCity"]
+[node name="Harbour" type="Node" parent="Deco/AnklamCity"]
 
-[node name="IndustrialSilo" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("60_vybcg")]
+[node name="IndustrialSilo" parent="Deco/AnklamCity/Harbour" instance=ExtResource("60_vybcg")]
 transform = Transform3D(0.9660837, 0, -0.25822902, 0, 1, 0, 0.25822902, 0, 0.9660837, 2744.0732, 10.625243, 1704.6786)
 
-[node name="GantryCraneLong" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("3_o0hqk")]
+[node name="GantryCraneLong" parent="Deco/AnklamCity/Harbour" instance=ExtResource("3_o0hqk")]
 transform = Transform3D(0.017783988, 0, 0.99984187, 0, 1, 0, -0.99984187, 0, 0.017783988, 2773.8657, 10.740049, 1689.2631)
 
-[node name="Pilzleuchte" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2778.373, 10.464547, 1701.8302)
 
-[node name="Pilzleuchte2" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte2" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2792.6416, 10.464547, 1701.6151)
 
-[node name="Pilzleuchte3" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte3" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2807.4053, 10.464547, 1700.9761)
 
-[node name="AnklamHarbourBridges" type="Node" parent="Deco/AnklamCity/AnklamHarbour"]
+[node name="AnklamHarbourBridges" type="Node" parent="Deco/AnklamCity/Harbour"]
 
-[node name="BridgePillarBrick" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("26_d7utl")]
+[node name="BridgePillarBrick" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("26_d7utl")]
 transform = Transform3D(0.9964151, 0, -0.08459958, 0, 1, 0, 0.08459958, 0, 0.9964151, 2725.7878, 4.9870167, 1671.4592)
 
-[node name="TrussBridge" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="TrussBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2725.4824, 10.642697, 1677.3237)
 
-[node name="TrussBridge2" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="TrussBridge2" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2726.0447, 10.642697, 1665.077)
 
-[node name="ALKBBridge" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="ALKBBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(-0.10860666, 0, -0.9940848, 0, 1, 0, 0.9940848, 0, -0.10860666, 2734.6143, 10.647117, 1673.0508)
 
-[node name="AnklamSugarFactory" type="Node" parent="Deco/AnklamCity"]
+[node name="SugarFactory" type="Node" parent="Deco/AnklamCity"]
 
-[node name="Warehouse1Static" parent="Deco/AnklamCity/AnklamSugarFactory" instance=ExtResource("24_vqub3")]
+[node name="Warehouse1Static" parent="Deco/AnklamCity/SugarFactory" instance=ExtResource("24_vqub3")]
 transform = Transform3D(0.7690315, 0, -0.6392109, 0, 1, 0, 0.6392109, 0, 0.7690315, 2976.086, 10.788218, 1742.2598)
 
-[node name="WarehouseWoodenStatic" parent="Deco/AnklamCity/AnklamSugarFactory" instance=ExtResource("63_ea3s5")]
+[node name="WarehouseWoodenStatic" parent="Deco/AnklamCity/SugarFactory" instance=ExtResource("63_ea3s5")]
 transform = Transform3D(0.7650675, 0, -0.64395005, 0, 1, 0, 0.64395005, 0, 0.7650675, 2995.554, 10.6195345, 1714.4772)
+
+[node name="MainStation" type="Node" parent="Deco/AnklamCity"]
+
+[node name="MpsbWismarWagon" parent="Deco/AnklamCity/MainStation" instance=ExtResource("55_o3cyl")]
+transform = Transform3D(0.7050675, 0, 0.7091402, 0, 1, 0, -0.7091402, 0, 0.7050675, 2890.3223, 11.783287, 1744.9911)
+
+[node name="MpsbWismarWagon2" parent="Deco/AnklamCity/MainStation" instance=ExtResource("55_o3cyl")]
+transform = Transform3D(0.6738898, 0, 0.7388318, 0, 1, 0, -0.7388318, 0, 0.6738898, 2898.8445, 11.783287, 1753.2018)
+
+[node name="SignalTower" parent="Deco/AnklamCity/MainStation" instance=ExtResource("30_xx03p")]
+transform = Transform3D(-0.82023174, 0, 0.57203144, 0, 1, 0, -0.57203144, 0, -0.82023174, 2977.7966, 10.997799, 1817.8721)
 
 [node name="FriedlandCenter" type="Node" parent="Deco"]
 
@@ -9422,6 +9501,36 @@ infr_name = "Japenzin Landgrabenstr."
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_4sfd1")
+
+[node name="RoadWay_190" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2161.3, 14, 1373.3)
+curve = SubResource("Curve3D_j65nw")
+script = ExtResource("49_1ktam")
+num = 188
+infr_name = "Landstr. Vitense-Relzow Westwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_kfocc")
+
+[node name="RoadWay_191" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2339.2, 14.8, 1394.5)
+curve = SubResource("Curve3D_e60qg")
+script = ExtResource("49_1ktam")
+num = 189
+infr_name = "Landstr. Vitense-Relzow Middle"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_njlp4")
+
+[node name="RoadWay_192" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2504.4, 14.7, 1349.8)
+curve = SubResource("Curve3D_j5v02")
+script = ExtResource("49_1ktam")
+num = 190
+infr_name = "Landstr. Vitense-Relzow Eastwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_5p7vf")
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 584.621, 13.897997, 1522.6177)
