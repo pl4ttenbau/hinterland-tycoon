@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_station.png")
 class_name RailNodeStation3D extends HideableObject
 
-const STATION_SCENE_PATH = "res://scenes/subscenes/infr/outer_rail_station.tscn"
+const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"
 const NINETY_DEG_IN_RAD = 1.57
 
 @export var node_station: RailNodeStationData:

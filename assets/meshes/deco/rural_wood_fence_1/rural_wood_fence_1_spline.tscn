@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdw28tsnabtbu"]
 
-[ext_resource type="Script" uid="uid://cj7eqw8kkicjm" path="res://game/gamescripts/nodes/deco/outer_deco_spline.gd" id="1_4xmdf"]
+[ext_resource type="Script" uid="uid://cj7eqw8kkicjm" path="res://game/gamescripts/nodes/deco/deco_spline3d.gd" id="1_4xmdf"]
 [ext_resource type="ArrayMesh" uid="uid://bo8i57ai86euo" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1.obj" id="1_mxcl3"]
 [ext_resource type="Texture2D" uid="uid://da3ndlvlb45kd" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1_d.png" id="2_4xmdf"]
 [ext_resource type="Texture2D" uid="uid://1ag3s0mvbnhw" path="res://assets/meshes/deco/rural_wood_fence_1/rural_wood_fence_1_n.png" id="3_mgq4g"]

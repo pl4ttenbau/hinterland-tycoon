@@ -13,6 +13,8 @@ static var PRODUCTION_TIMER_SECONDS = 5.0
 		self.position = value.pos
 		self._set_name(value)
 		
+@export var sign3d: IndustrySign3D
+		
 #region Initialization
 func _enter_tree() -> void:
 	var production_timer: Timer = Timer.new()
@@ -21,6 +23,12 @@ func _enter_tree() -> void:
 	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
 	self.add_child(production_timer)
 	production_timer.start(PRODUCTION_TIMER_SECONDS)
+	
+func _ready() -> void:
+	self.spawn_industry_label()
+	
+func spawn_industry_label() -> IndustrySign3D:
+	return IndustrySign3D.of(self)
 #endregion
 
 #region Production

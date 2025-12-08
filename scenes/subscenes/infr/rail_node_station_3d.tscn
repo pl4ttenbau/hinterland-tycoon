@@ -1,18 +1,18 @@
 [gd_scene load_steps=12 format=3 uid="uid://bfibk5fcr42yy"]
 
-[ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/rail_node_station_3d.gd" id="1_7rvpk"]
-[ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="2_gpfkj"]
-[ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="3_ytynf"]
-[ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="4_hpouk"]
-[ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="5_o8ddr"]
-[ext_resource type="Script" uid="uid://3luml11nug4p" path="res://game/gamescripts/nodes/infr/station/station_collider.gd" id="6_gpfkj"]
-[ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/outer_rail_station_sign.tscn" id="7_ytynf"]
+[ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/rail_node_station_3d.gd" id="1_irhm8"]
+[ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="2_dexin"]
+[ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="3_3v6kh"]
+[ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="4_jgr20"]
+[ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="5_yrxoh"]
+[ext_resource type="Script" uid="uid://3luml11nug4p" path="res://game/gamescripts/nodes/infr/station/station_collider.gd" id="6_tr2ff"]
+[ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/rail_station_3d_sign_ui.tscn" id="7_1bt8b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
-albedo_texture = ExtResource("2_gpfkj")
-roughness_texture = ExtResource("4_hpouk")
+albedo_texture = ExtResource("2_dexin")
+roughness_texture = ExtResource("4_jgr20")
 normal_enabled = true
-normal_texture = ExtResource("3_ytynf")
+normal_texture = ExtResource("3_3v6kh")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8igvt"]
 rough = true
@@ -23,20 +23,20 @@ size = Vector3(16.579529, 1.826587, 6.1153564)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
 viewport_path = NodePath("SubViewport")
 
-[node name="OuterRailStation" type="Node3D"]
-script = ExtResource("1_7rvpk")
+[node name="RailNodeStation3D" type="Node3D"]
+script = ExtResource("1_irhm8")
 
 [node name="RailStationMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 material_override = SubResource("StandardMaterial3D_co1x6")
 visibility_range_end = 350.0
 visibility_range_end_margin = 35.0
-mesh = ExtResource("5_o8ddr")
+mesh = ExtResource("5_yrxoh")
 
 [node name="StationBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_8igvt")
-script = ExtResource("6_gpfkj")
+script = ExtResource("6_tr2ff")
 metadata/_custom_type_script = "uid://bjj02tduewuut"
 
 [node name="StationShape3D" type="CollisionShape3D" parent="StationBody3D"]
@@ -60,5 +60,5 @@ sdf_scale = 0
 size = Vector2i(600, 100)
 size_2d_override_stretch = true
 
-[node name="StationSignPanel" parent="SubViewport" instance=ExtResource("7_ytynf")]
+[node name="StationSignPanel" parent="SubViewport" instance=ExtResource("7_1bt8b")]
 unique_name_in_owner = true

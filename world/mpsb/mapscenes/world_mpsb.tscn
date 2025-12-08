@@ -9647,7 +9647,7 @@ ind_name = "AltTellin Meadows"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Forest_Bentzin" type="Marker3D" parent="Industries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 448.68146, 12.067348, 1294.0957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 445.52402, 11.964155, 1350.0404)
 gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 12
@@ -9781,7 +9781,7 @@ type_key = "SMALL_STORE"
 ind_name = "Iven Landmarkt"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
-[node name="Butcher_sarnow" type="Marker3D" parent="Industries"]
+[node name="Butcher_Sarnow" type="Marker3D" parent="Industries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2589.0664, 13.81059, 2654.7798)
 gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
@@ -9815,6 +9815,15 @@ script = ExtResource("35_emjn5")
 num = 30
 type_key = "SAWMILL"
 ind_name = "Boldekow Sawmill"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Farm_Schmatzin" type="Marker3D" parent="Industries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2103.2668, 16.065258, 1390.2756)
+gizmo_extents = 10.0
+script = ExtResource("35_emjn5")
+num = 31
+type_key = "FARM"
+ind_name = "Schmatzin Fields"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="DayEnvironment" parent="." instance=ExtResource("51_rrrix")]

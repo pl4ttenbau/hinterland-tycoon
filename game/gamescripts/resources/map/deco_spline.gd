@@ -24,8 +24,8 @@ static func from_dict(_dict: Dictionary) -> DecoSplineData:
 		spline_obj.points.append(point_vec3)
 	return spline_obj
 	
-func spawn() -> OuterDecoSpline:
+func spawn() -> DecoSpline3D:
 	var scene: Resource = load(self.get_scene_path())
-	var outer_spline: OuterDecoSpline = scene.instantiate() as OuterDecoSpline
+	var outer_spline: DecoSpline3D = scene.instantiate() as DecoSpline3D
 	outer_spline.spline = self
 	return outer_spline

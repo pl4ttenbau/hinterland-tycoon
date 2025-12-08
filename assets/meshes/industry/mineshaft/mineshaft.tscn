@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bc8xyiepqrbj1"]
 
-[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry_3d.gd" id="1_rrjv6"]
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_rrjv6"]
 [ext_resource type="ArrayMesh" uid="uid://bbi6ilkjisxdv" path="res://assets/meshes/industry/mineshaft/mineshaft.obj" id="2_acou4"]
 [ext_resource type="Texture2D" uid="uid://bjcsyg51ekmvg" path="res://assets/meshes/industry/mineshaft/tex_mineshaft_fence_d.png" id="3_p1ie3"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="4_acou4"]
