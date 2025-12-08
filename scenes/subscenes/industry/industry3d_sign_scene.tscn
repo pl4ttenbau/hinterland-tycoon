@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5bylj7g1h04"]
+
+[ext_resource type="PackedScene" uid="uid://bd2uy1o84p7hi" path="res://scenes/subscenes/industry/industry3d_sign_ui.tscn" id="1_lbpun"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q75wx"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Industry3dSignScene" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0120583, 20, 0)
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+pixel_size = 0.02
+billboard = 2
+texture = SubResource("ViewportTexture_q75wx")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+scaling_3d_scale = 2.0
+fsr_sharpness = 0.1
+gui_disable_input = true
+sdf_scale = 0
+size = Vector2i(900, 100)
+size_2d_override_stretch = true
+
+[node name="Industry3DSign" parent="SubViewport" instance=ExtResource("1_lbpun")]
