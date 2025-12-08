@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqojfek3b58la"]
+
+[ext_resource type="Script" uid="uid://ba5kb48hi8xa4" path="res://AsyncScene/addons/AsyncSceneManager/Examples/scene_to_load.gd" id="1_m27bf"]
+
+[node name="scene_to_load" type="Node2D"]
+script = ExtResource("1_m27bf")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 289.0
+offset_right = 700.0
+offset_bottom = 550.0
+theme_override_font_sizes/font_size = 191
+text = "Scene 2"
+horizontal_alignment = 1
+vertical_alignment = 1

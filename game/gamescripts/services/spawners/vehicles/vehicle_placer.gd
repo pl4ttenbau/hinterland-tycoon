@@ -3,7 +3,7 @@ class_name VehiclePlacer extends Node
 
 @export_storage var _next_vehicle_num = 0
 @export var rail_containers: Array[RailTrack3D]
-@export var rail_vehicles: Array[OuterRailVehicle] = []
+@export var rail_vehicles: Array[RailVehicle3D] = []
 @export var start_vehicles_spawned: bool = false
 
 func _enter_tree() -> void:
@@ -28,9 +28,9 @@ func load_vehicles():
 		self.spawn_vehicle("loco_faur", track_num, 0, VehicleMotor.Direction.TRACK_NODES_INCREASE)
 	self.start_vehicles_spawned = true
 	
-func spawn_vehicle(veh_type_key: String, track_num: int, node_index: int, dir: VehicleMotor.Direction) -> OuterRailVehicle:
+func spawn_vehicle(veh_type_key: String, track_num: int, node_index: int, dir: VehicleMotor.Direction) -> RailVehicle3D:
 	var outer_track := Managers.rails.track_storage.get_container_by_num(track_num)
-	var veh := OuterRailVehicle.of(veh_type_key, outer_track, node_index, dir)
+	var veh := RailVehicle3D.of(veh_type_key, outer_track, node_index, dir)
 	self.add_child(veh)
 	# assign name and num
 	veh.vehicle_num = self.get_next_vehicle_num()

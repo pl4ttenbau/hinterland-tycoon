@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cggxaw6e2rdpv"]
 
-[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/outer_rail_vehicle.gd" id="1_2pc3c"]
+[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_2pc3c"]
 [ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/vehicle_path.gd" id="2_o0de4"]
 [ext_resource type="ArrayMesh" uid="uid://coeow3igmellm" path="res://assets/meshes/vehicles/rail/wismar_railbus/railcar_wismar.obj" id="3_k4ho6"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="7_rielv"]

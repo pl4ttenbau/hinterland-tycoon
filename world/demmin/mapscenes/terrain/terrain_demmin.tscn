@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cul3wlwsf1bbo" path="res://assets/textures/terrain_new/packed/wheat/wheat_dh_1024.png" id="21_rkxag"]
 [ext_resource type="Texture2D" uid="uid://bk0b1qa6hsmen" path="res://assets/textures/terrain_new/packed/rock_sandstone/rock_sandstone_dh_1024.png" id="22_3dwbm"]
 [ext_resource type="Texture2D" uid="uid://bcdjenx2jms41" path="res://assets/textures/terrain_new/packed/forest/forest_dh_1024.png" id="23_518vt"]
-[ext_resource type="Material" uid="uid://ct4tfb0wwk3vs" path="res://assets/packed/water_shader/water_material.tres" id="24_dnor5"]
+[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="24_dnor5"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="26_ray5n"]
 
 [sub_resource type="Gradient" id="Gradient_gse23"]

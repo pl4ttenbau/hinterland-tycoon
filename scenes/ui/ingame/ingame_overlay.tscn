@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://4vshk56t46ml"]
+[gd_scene load_steps=7 format=3 uid="uid://4vshk56t46ml"]
 
 [ext_resource type="Script" uid="uid://d1qo6hqa3cq3r" path="res://game/gamescripts/ui/game_window.gd" id="1_ki5ow"]
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="2_pa50p"]
 [ext_resource type="Texture2D" uid="uid://c7di38c8uitfl" path="res://assets/ui/crosshair.png" id="3_np82f"]
 [ext_resource type="PackedScene" uid="uid://cfchw6ymnp23e" path="res://scenes/ui/ingame/actionmenu/action_menu.tscn" id="4_herd4"]
+[ext_resource type="PackedScene" uid="uid://j2h5rs86mkrj" path="res://scenes/ui/ingame/vehicle_control/vehicle_control_outer.tscn" id="6_ao8ui"]
 [ext_resource type="PackedScene" uid="uid://ct04jq8arx0hn" path="res://scenes/ui/ingame/bottom_bar.tscn" id="7_a3llv"]
-[ext_resource type="Script" uid="uid://4e71ygdcuhse" path="res://game/gamescripts/ui/speedometer/speedometer.gd" id="7_d5day"]
-[ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="8_4vdqf"]
 
 [node name="GameWindow" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ki5ow")
 metadata/_custom_type_script = "uid://d1qo6hqa3cq3r"
 
@@ -21,9 +22,12 @@ autostart = true
 script = ExtResource("2_pa50p")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Crosshair" type="TextureRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(30, 30)
@@ -31,35 +35,15 @@ layout_mode = 2
 texture = ExtResource("3_np82f")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 103.0
-offset_bottom = 108.0
-script = ExtResource("7_d5day")
-metadata/_custom_type_script = "uid://4e71ygdcuhse"
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 95.0
-offset_bottom = 95.0
-texture = ExtResource("8_4vdqf")
-expand_mode = 2
-
-[node name="SpeedLine" type="Line2D" parent="Control"]
-position = Vector2(50, 75)
-rotation = -0.610865
-points = PackedVector2Array(0, 0, 0, -45)
-width = 1.0
-default_color = Color(0.87, 0.0783, 0.0783, 1)
-
 [node name="OuterActionMenu" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -248.0
 grow_horizontal = 0
+grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -71,3 +55,17 @@ layout_mode = 2
 [node name="OuterBottomBar" parent="." instance=ExtResource("7_a3llv")]
 layout_mode = 1
 offset_top = -48.0
+
+[node name="VehicleControlContainer" parent="." instance=ExtResource("6_ao8ui")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 356.0
+offset_bottom = 167.0
+grow_horizontal = 1
+grow_vertical = 1

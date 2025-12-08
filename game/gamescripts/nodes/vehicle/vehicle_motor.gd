@@ -3,7 +3,7 @@ class_name VehicleMotor extends Node
 enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
 
 #region Properties
-@export var max_speed: float = .7
+@export var MAX_ABS_SPEED: float = .12
 
 @export_storage var speed: VehicleSpeed
 
@@ -24,10 +24,9 @@ enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
 
 signal started()
 signal stopped()
-signal speed_changed(percentage: float)
 #endregion
 
-static func of(_vehicle: OuterRailVehicle) -> VehicleMotor:
+static func of(_vehicle: RailVehicle3D) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.speed = VehicleSpeed.new()
 	return _inst
@@ -56,7 +55,7 @@ func on_motor_tick():
 
 #region Getters
 func get_current_speed() -> float:
-	return current_speed_percentage * max_speed
+	return current_speed_percentage * MAX_ABS_SPEED
 	
 func get_speed_vector() -> Vector3:
 	return Vector3(0, 0, -self.get_current_speed())

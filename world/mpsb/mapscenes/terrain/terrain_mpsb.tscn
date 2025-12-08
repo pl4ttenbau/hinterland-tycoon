@@ -2,7 +2,7 @@
 
 [ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="1_ebicv"]
 [ext_resource type="Terrain3DAssets" uid="uid://dvep21n01mie6" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.tres" id="2_60ypj"]
-[ext_resource type="Material" uid="uid://ct4tfb0wwk3vs" path="res://assets/packed/water_shader/water_material.tres" id="3_b6nfv"]
+[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_b6nfv"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="5_4t3nh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]

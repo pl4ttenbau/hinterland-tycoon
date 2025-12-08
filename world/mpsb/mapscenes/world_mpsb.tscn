@@ -1,4 +1,4 @@
-[gd_scene load_steps=569 format=3 uid="uid://dg6j0pswyx2iv"]
+[gd_scene load_steps=591 format=3 uid="uid://dg6j0pswyx2iv"]
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/world_map_scene.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://by8p3lehwrg8a" path="res://assets/meshes/deco/castle_wall/castle_wall.tscn" id="27_ssk1k"]
 [ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="28_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
@@ -47,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bkw15rso2gb44" path="res://assets/meshes/structures/thatched_house_1/thatched_house_1.tscn" id="51_hw0ba"]
 [ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="51_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="51_rrrix"]
+[ext_resource type="PackedScene" uid="uid://cjujd0ypwds3l" path="res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/mpsb_wismar_wagon_static.tscn" id="55_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="59_51ymi"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
@@ -2367,10 +2369,10 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_oo1e3"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.300049, 0.3000002, 12.399902, 0, 0, 0, 0, 0, 0, 32.900024, 1.3000002, 25.799805, 0, 0, 0, 0, 0, 0, 57.900024, 0.6999998, 28.5, 0, 0, 0, 0, 0, 0, 86.400024, 0.5, 30.099854, 0, 0, 0, 0, 0, 0, 103.400024, 0.5, 32.899902, 0, 0, 0, 0, 0, 0, 121.099976, 0.8999996, 41.69995, 0, 0, 0, 0, 0, 0, 131.40002, 1.1000004, 48.599854),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.300049, 0.3000002, 12.399902, 0, 0, 0, 0, 0, 0, 32.900024, 1.3000002, 25.799805, 0, 0, 0, 0, 0, 0, 57.900024, 0.6999998, 28.5, 0, 0, 0, 0, 0, 0, 86.400024, 0.5, 30.099854, 0, 0, 0, 0, 0, 0, 103.400024, 0.5, 32.899902),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 8
+point_count = 6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_usp0g"]
 render_priority = 0
@@ -2389,10 +2391,10 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_7ytay"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.199951, 0, 9.9001465, 0, 0, 0, 0, 0, 0, 36.099976, -0.40000057, 20.400146, 0, 0, 0, 0, 0, 0, 53.400024, 0.29999924, 28.400146, 0, 0, 0, 0, 0, 0, 75.19995, 0.29999924, 35.69995, 0, 0, 0, 0, 0, 0, 100.400024, 0.8999996, 41.100098, 0, 0, 0, 0, 0, 0, 117.69995, 0.6999998, 41.30005, 0, 0, 0, 0, 0, 0, 131.59998, -0.8000002, 41.5, 0, 0, 0, 0, 0, 0, 141.19995, -0.40000057, 40.19995, 0, 0, 0, 0, 0, 0, 158.90002, -0.9000006, 40.30005),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17.699951, 0.39999962, 8.800049, 0, 0, 0, 0, 0, 0, 28, 0.6000004, 15.699951, 0, 0, 0, 0, 0, 0, 44.19995, 0.6000004, 25.600098, 0, 0, 0, 0, 0, 0, 64.099976, 0.19999981, 36.100098, 0, 0, 0, 0, 0, 0, 81.400024, 0.8999996, 44.100098, 0, 0, 0, 0, 0, 0, 103.19995, 0.8999996, 51.399902, 0, 0, 0, 0, 0, 0, 128.40002, 1.5, 56.80005, 0, 0, 0, 0, 0, 0, 145.69995, 1.3000002, 57, 0, 0, 0, 0, 0, 0, 159.59998, -0.19999981, 57.19995, 0, 0, 0, 0, 0, 0, 169.19995, 0.19999981, 55.899902, 0, 0, 0, 0, 0, 0, 186.90002, -0.3000002, 56),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 10
+point_count = 12
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rbqdx"]
 render_priority = 0
@@ -5709,6 +5711,226 @@ shader_parameter/metallic = 0.0
 shader_parameter/specular = 0.5
 shader_parameter/roughness = 0.5
 
+[sub_resource type="Curve3D" id="Curve3D_tn3sy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -17.5, -0.19999886, 1.2999878, 0, 0, 0, 0, 0, 0, -31.600098, -0.5, 6, 0, 0, 0, 0, 0, 0, -38.399902, -0.29999924, 5.5, 0, 0, 0, 0, 0, 0, -53, 0.70000076, -4.299988, 0, 0, 0, 0, 0, 0, -68.80005, 1.6000004, -18.399963, 0, 0, 0, 0, 0, 0, -86.8999, 2.1000004, -26.700012, 0, 0, 0, 0, 0, 0, -104.30005, 2.4000015, -30.799988, 0, 0, 0, 0, 0, 0, -111.19995, 2.5, -36, 0, 0, 0, 0, 0, 0, -123.3999, 2.5, -51.700012, 0, 0, 0, 0, 0, 0, -130.5, 2.5, -61.899963),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yta35"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_i07e4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7.699951, 0.10000038, -9.700012, 0, 0, 0, 0, 0, 0, -16.600098, 0, -15.400024, 0, 0, 0, 0, 0, 0, -28.199951, -0.099998474, -18.400024, 0, 0, 0, 0, 0, 0, -41.399902, 0, -19, 0, 0, 0, 0, 0, 0, -61.100098, 0.30000114, -17.700012, 0, 0, 0, 0, 0, 0, -71.8999, 0.9000015, -19.5, 0, 0, 0, 0, 0, 0, -80.30005, 1.3000011, -25.900024, 0, 0, 0, 0, 0, 0, -90.5, 1.3000011, -40.400024, 0, 0, 0, 0, 0, 0, -98, 1.4000015, -45.80005, 0, 0, 0, 0, 0, 0, -110.69995, 1.4000015, -48.200012, 0, 0, 0, 0, 0, 0, -129.30005, 1.4000015, -46.100037, 0, 0, 0, 0, 0, 0, -141.6001, 1.3000011, -45, 0, 0, 0, 0, 0, 0, -150.69995, 1.4000015, -47.900024, 0, 0, 0, 0, 0, 0, -159, 1.6000004, -53.400024),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrw43"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_q62vj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -9.699951, 0.39999962, -11.799988, 0, 0, 0, 0, 0, 0, -13.399902, 0.80000114, -23.299988, 0, 0, 0, 0, 0, 0, -13.699951, 1.1000004, -29.700012, 0, 0, 0, 0, 0, 0, -12.699951, 1.3000011, -36.099976),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfn2e"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_6qbsn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, -0.3000002, -12.800049, 0, 0, 0, 0, 0, 0, 25.800049, -0.3000002, -25.399902, 0, 0, 0, 0, 0, 0, 33.900024, -0.39999962, -33.30005, 0, 0, 0, 0, 0, 0, 44.19995, -0.5999994, -37.69995, 0, 0, 0, 0, 0, 0, 62.69995, -0.8999996, -39.30005),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1lvy"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_fr2aq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4.5999756, -0.10000038, 15.699951, 0, 0, 0, 0, 0, 0, -13.800049, -0.19999981, 23.5, 0, 0, 0, 0, 0, 0, -39.69995, 0.39999962, 37.30005, 0, 0, 0, 0, 0, 0, -55.80005, 0.3000002, 48.5, 0, 0, 0, 0, 0, 0, -68.69995, 0.19999981, 61.30005, 0, 0, 0, 0, 0, 0, -78.400024, 0.8999996, 82.30005),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl4rf"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_dyhbu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -6.4000244, -0.29999924, 15.199951, 0, 0, 0, 0, 0, 0, -13.599976, -0.5999994, 25.599854, 0, 0, 0, 0, 0, 0, -28.5, -0.29999924, 30, 0, 0, 0, 0, 0, 0, -40.799927, -0.29999924, 29, 0, 0, 0, 0, 0, 0, -56, -0.5, 19, 0, 0, 0, 0, 0, 0, -69.5, -0.39999962, 11.0998535),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hq6tm"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_1oiq7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -21.699951, -0.10000038, -8.5, 0, 0, 0, 0, 0, 0, -40.400024, -0.5, -8.699951, 0, 0, 0, 0, 0, 0, -54.099976, -0.5, -3, 0, 0, 0, 0, 0, 0, -80.099976, -0.6000004, 14.200195, 0, 0, 0, 0, 0, 0, -97.69995, -0.6000004, 26, 0, 0, 0, 0, 0, 0, -109.29993, -0.5, 34.200195),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sfd1"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_j65nw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, -0.19999981, 2, 0, 0, 0, 0, 0, 0, 27.5, 1.5, 6.5, 0, 0, 0, 0, 0, 0, 46.80005, 2.1000004, 17.099976, 0, 0, 0, 0, 0, 0, 58.5, 2.2000008, 19.299927, 0, 0, 0, 0, 0, 0, 85.3999, 2.1000004, 22.099976, 0, 0, 0, 0, 0, 0, 114.19995, 1.6999998, 38.399902, 0, 0, 0, 0, 0, 0, 125, 1.6000004, 40.69995, 0, 0, 0, 0, 0, 0, 131.8999, 1.5, 39.599976, 0, 0, 0, 0, 0, 0, 143.19995, 1.5, 34.69995, 0, 0, 0, 0, 0, 0, 152.59985, 0.6999998, 29.299927, 0, 0, 0, 0, 0, 0, 163.59985, 1.1000004, 24.199951, 0, 0, 0, 0, 0, 0, 177.8999, 0.8000002, 21.199951),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfocc"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_e60qg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.400146, 0.09999943, -0.5999756, 0, 0, 0, 0, 0, 0, 32, 0.5, -1.0999756, 0, 0, 0, 0, 0, 0, 43.19995, 0.3000002, -3.8000488, 0, 0, 0, 0, 0, 0, 58.100098, 0.8999996, -9, 0, 0, 0, 0, 0, 0, 70.6001, 0.5999994, -13.199951, 0, 0, 0, 0, 0, 0, 81.90015, 0.8999996, -16.5, 0, 0, 0, 0, 0, 0, 97, 0.8999996, -21.199951, 0, 0, 0, 0, 0, 0, 110.5, 1.1999998, -23.400024, 0, 0, 0, 0, 0, 0, 130.80005, 0.8000002, -30.099976, 0, 0, 0, 0, 0, 0, 149.30005, 0, -35.69995, 0, 0, 0, 0, 0, 0, 165.19995, -0.10000038, -44.69995),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njlp4"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[sub_resource type="Curve3D" id="Curve3D_j5v02"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16.600098, 0.10000038, -7.6000977, 0, 0, 0, 0, 0, 0, 32.30005, 0.40000057, -12.400024, 0, 0, 0, 0, 0, 0, 52.100098, 0.19999981, -14.600098, 0, 0, 0, 0, 0, 0, 73.1001, 0.19999981, -18.100098, 0, 0, 0, 0, 0, 0, 87.80005, 0.40000057, -20.600098, 0, 0, 0, 0, 0, 0, 103.40015, 0.40000057, -24.900024, 0, 0, 0, 0, 0, 0, 127.1001, 0.6000004, -26.700073, 0, 0, 0, 0, 0, 0, 145.30005, 0.5, -26.300049),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p7vf"]
+render_priority = 0
+shader = ExtResource("50_o3cyl")
+shader_parameter/line_width = 0.25
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(1, 0.54901963, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
 [node name="WorldMapScene" type="Node" node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
 map_key = "mpsb"
@@ -5716,6 +5938,8 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_jynyo")]
+show_grid = false
+show_region_grid = false
 
 [node name="Towns" parent="." node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
@@ -5887,44 +6111,55 @@ transform = Transform3D(0.2315102, 0, 0.9728326, 0, 1, 0, -0.9728326, 0, 0.23151
 [node name="WaterTowerBig" parent="Deco/AnklamCity" instance=ExtResource("7_jynyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2936.0698, 2.5098944, 1803.4937)
 
-[node name="AnklamHarbour" type="Node" parent="Deco/AnklamCity"]
+[node name="Harbour" type="Node" parent="Deco/AnklamCity"]
 
-[node name="IndustrialSilo" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("60_vybcg")]
+[node name="IndustrialSilo" parent="Deco/AnklamCity/Harbour" instance=ExtResource("60_vybcg")]
 transform = Transform3D(0.9660837, 0, -0.25822902, 0, 1, 0, 0.25822902, 0, 0.9660837, 2744.0732, 10.625243, 1704.6786)
 
-[node name="GantryCraneLong" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("3_o0hqk")]
+[node name="GantryCraneLong" parent="Deco/AnklamCity/Harbour" instance=ExtResource("3_o0hqk")]
 transform = Transform3D(0.017783988, 0, 0.99984187, 0, 1, 0, -0.99984187, 0, 0.017783988, 2773.8657, 10.740049, 1689.2631)
 
-[node name="Pilzleuchte" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2778.373, 10.464547, 1701.8302)
 
-[node name="Pilzleuchte2" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte2" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2792.6416, 10.464547, 1701.6151)
 
-[node name="Pilzleuchte3" parent="Deco/AnklamCity/AnklamHarbour" instance=ExtResource("21_iyo02")]
+[node name="Pilzleuchte3" parent="Deco/AnklamCity/Harbour" instance=ExtResource("21_iyo02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2807.4053, 10.464547, 1700.9761)
 
-[node name="AnklamHarbourBridges" type="Node" parent="Deco/AnklamCity/AnklamHarbour"]
+[node name="AnklamHarbourBridges" type="Node" parent="Deco/AnklamCity/Harbour"]
 
-[node name="BridgePillarBrick" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("26_d7utl")]
+[node name="BridgePillarBrick" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("26_d7utl")]
 transform = Transform3D(0.9964151, 0, -0.08459958, 0, 1, 0, 0.08459958, 0, 0.9964151, 2725.7878, 4.9870167, 1671.4592)
 
-[node name="TrussBridge" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="TrussBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2725.4824, 10.642697, 1677.3237)
 
-[node name="TrussBridge2" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="TrussBridge2" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2726.0447, 10.642697, 1665.077)
 
-[node name="ALKBBridge" parent="Deco/AnklamCity/AnklamHarbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
+[node name="ALKBBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" instance=ExtResource("21_ugno1")]
 transform = Transform3D(-0.10860666, 0, -0.9940848, 0, 1, 0, 0.9940848, 0, -0.10860666, 2734.6143, 10.647117, 1673.0508)
 
-[node name="AnklamSugarFactory" type="Node" parent="Deco/AnklamCity"]
+[node name="SugarFactory" type="Node" parent="Deco/AnklamCity"]
 
-[node name="Warehouse1Static" parent="Deco/AnklamCity/AnklamSugarFactory" instance=ExtResource("24_vqub3")]
+[node name="Warehouse1Static" parent="Deco/AnklamCity/SugarFactory" instance=ExtResource("24_vqub3")]
 transform = Transform3D(0.7690315, 0, -0.6392109, 0, 1, 0, 0.6392109, 0, 0.7690315, 2976.086, 10.788218, 1742.2598)
 
-[node name="WarehouseWoodenStatic" parent="Deco/AnklamCity/AnklamSugarFactory" instance=ExtResource("63_ea3s5")]
+[node name="WarehouseWoodenStatic" parent="Deco/AnklamCity/SugarFactory" instance=ExtResource("63_ea3s5")]
 transform = Transform3D(0.7650675, 0, -0.64395005, 0, 1, 0, 0.64395005, 0, 0.7650675, 2995.554, 10.6195345, 1714.4772)
+
+[node name="MainStation" type="Node" parent="Deco/AnklamCity"]
+
+[node name="MpsbWismarWagon" parent="Deco/AnklamCity/MainStation" instance=ExtResource("55_o3cyl")]
+transform = Transform3D(0.7050675, 0, 0.7091402, 0, 1, 0, -0.7091402, 0, 0.7050675, 2890.3223, 11.783287, 1744.9911)
+
+[node name="MpsbWismarWagon2" parent="Deco/AnklamCity/MainStation" instance=ExtResource("55_o3cyl")]
+transform = Transform3D(0.6738898, 0, 0.7388318, 0, 1, 0, -0.7388318, 0, 0.6738898, 2898.8445, 11.783287, 1753.2018)
+
+[node name="SignalTower" parent="Deco/AnklamCity/MainStation" instance=ExtResource("30_xx03p")]
+transform = Transform3D(-0.82023174, 0, 0.57203144, 0, 1, 0, -0.57203144, 0, -0.82023174, 2977.7966, 10.997799, 1817.8721)
 
 [node name="FriedlandCenter" type="Node" parent="Deco"]
 
@@ -6093,6 +6328,19 @@ transform = Transform3D(0.1790426, 0, 0.9838413, 0, 1, 0, -0.9838413, 0, 0.17904
 
 [node name="Church1" parent="Deco/KartlowSchmarsow" instance=ExtResource("59_51ymi")]
 transform = Transform3D(0.12578347, 0, -0.99205774, 0, 1, 0, 0.99205774, 0, 0.12578347, 406.9818, 14.723825, 1754.2474)
+
+[node name="RebelowJapenzin" type="Node" parent="Deco"]
+
+[node name="Church1" parent="Deco/RebelowJapenzin" instance=ExtResource("59_51ymi")]
+transform = Transform3D(0.29574138, 0, 0.955268, 0, 1, 0, -0.955268, 0, 0.29574138, 1616.6472, 14.236541, 2564.7275)
+
+[node name="Tractor" parent="Deco/RebelowJapenzin" instance=ExtResource("58_c4uv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1603.6105, 14.135777, 2396.2415)
+
+[node name="Siedenbollentin" type="Node" parent="Deco"]
+
+[node name="Church1" parent="Deco/Siedenbollentin" instance=ExtResource("59_51ymi")]
+transform = Transform3D(0.041247897, 0, -0.99914896, 0, 1, 0, 0.99914896, 0, 0.041247897, 1313.3229, 19.072042, 2875.945)
 
 [node name="Houses" type="Node" parent="."]
 script = ExtResource("32_pgcnb")
@@ -6752,6 +7000,18 @@ placed_town_num = 15
 [node name="ThatchedHouse6" parent="Houses" instance=ExtResource("51_hw0ba")]
 transform = Transform3D(0.93014866, 0, -0.36718315, 0, 1, 0, 0.36718315, 0, 0.93014866, 454.5865, 15.004997, 1752.0083)
 placed_town_num = 15
+
+[node name="ThatchedHouse7" parent="Houses" instance=ExtResource("51_hw0ba")]
+transform = Transform3D(0.98723096, 0, -0.15929538, 0, 1, 0, 0.15929538, 0, 0.98723096, 1582.6118, 15.313799, 2557.7393)
+placed_town_num = 24
+
+[node name="HalfTimberedBarn15" parent="Houses" instance=ExtResource("45_onop4")]
+transform = Transform3D(0.99375236, 0, 0.111607686, 0, 1, 0, -0.111607686, 0, 0.99375236, 1612.8336, 14.45103, 2517.4934)
+placed_town_num = 24
+
+[node name="PolishHouse31" parent="Houses" instance=ExtResource("51_o3cyl")]
+transform = Transform3D(0.25407863, 0, 0.96718353, 0, 1, 0, -0.96718353, 0, 0.25407863, 1583.8566, 14.461184, 2538.7476)
+placed_town_num = 24
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
@@ -7664,13 +7924,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1653.1, 14, 2410.6)
 curve = SubResource("Curve3D_oo1e3")
 script = ExtResource("49_1ktam")
 num = 31
-infr_name = "L31 Dennin-Spantekow North"
+infr_name = "Dennin Neue Dorfstr."
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_usp0g")
 
 [node name="RoadWay_32" type="Path3D" parent="InEditor/EditorInfr"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1784.5, 15.1, 2459.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1756.5, 14.5, 2443.5)
 curve = SubResource("Curve3D_7ytay")
 script = ExtResource("49_1ktam")
 num = 32
@@ -9178,6 +9438,106 @@ infr_name = "Boldekow Alte Dorfstr. S"
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_g7y76")
+
+[node name="RoadWay_183" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2380, 19.3, 774.3)
+curve = SubResource("Curve3D_tn3sy")
+script = ExtResource("49_1ktam")
+num = 181
+infr_name = "Karlsburg Nepziner Weg"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_yta35")
+
+[node name="RoadWay_184" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2249.5, 21.8, 712.4)
+curve = SubResource("Curve3D_i07e4")
+script = ExtResource("49_1ktam")
+num = 182
+infr_name = "Züssow Waldstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_jrw43")
+
+[node name="RoadWay_185" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2020.2, 24.9, 667)
+curve = SubResource("Curve3D_q62vj")
+script = ExtResource("49_1ktam")
+num = 183
+infr_name = "Züssow Schulstr. N"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_hfn2e")
+
+[node name="RoadWay_186" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1571, 14.7, 2357.2)
+curve = SubResource("Curve3D_6qbsn")
+script = ExtResource("49_1ktam")
+num = 184
+infr_name = "Dennin Schlachthofstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_s1lvy")
+
+[node name="RoadWay_187" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1756.5, 14.5, 2443.5)
+curve = SubResource("Curve3D_fr2aq")
+script = ExtResource("49_1ktam")
+num = 185
+infr_name = "Dennin Eichenweg"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_sl4rf")
+
+[node name="RoadWay_188" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1678.1, 15.4, 2525.8)
+curve = SubResource("Curve3D_dyhbu")
+script = ExtResource("49_1ktam")
+num = 186
+infr_name = "Japenzin Feldweg"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_hq6tm")
+
+[node name="RoadWay_189" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1608.6, 15, 2536.9)
+curve = SubResource("Curve3D_1oiq7")
+script = ExtResource("49_1ktam")
+num = 187
+infr_name = "Japenzin Landgrabenstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_4sfd1")
+
+[node name="RoadWay_190" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2161.3, 14, 1373.3)
+curve = SubResource("Curve3D_j65nw")
+script = ExtResource("49_1ktam")
+num = 188
+infr_name = "Landstr. Vitense-Relzow Westwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_kfocc")
+
+[node name="RoadWay_191" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2339.2, 14.8, 1394.5)
+curve = SubResource("Curve3D_e60qg")
+script = ExtResource("49_1ktam")
+num = 189
+infr_name = "Landstr. Vitense-Relzow Middle"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_njlp4")
+
+[node name="RoadWay_192" type="Path3D" parent="InEditor/EditorInfr"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2504.4, 14.7, 1349.8)
+curve = SubResource("Curve3D_j5v02")
+script = ExtResource("49_1ktam")
+num = 190
+infr_name = "Landstr. Vitense-Relzow Eastwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+material = SubResource("ShaderMaterial_5p7vf")
 
 [node name="Locator" type="Marker3D" parent="InEditor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 584.621, 13.897997, 1522.6177)
