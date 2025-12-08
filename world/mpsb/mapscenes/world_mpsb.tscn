@@ -5938,6 +5938,8 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_jynyo")]
+show_grid = false
+show_region_grid = false
 
 [node name="Towns" parent="." node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
@@ -6334,6 +6336,11 @@ transform = Transform3D(0.29574138, 0, 0.955268, 0, 1, 0, -0.955268, 0, 0.295741
 
 [node name="Tractor" parent="Deco/RebelowJapenzin" instance=ExtResource("58_c4uv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1603.6105, 14.135777, 2396.2415)
+
+[node name="Siedenbollentin" type="Node" parent="Deco"]
+
+[node name="Church1" parent="Deco/Siedenbollentin" instance=ExtResource("59_51ymi")]
+transform = Transform3D(0.041247897, 0, -0.99914896, 0, 1, 0, 0.99914896, 0, 0.041247897, 1313.3229, 19.072042, 2875.945)
 
 [node name="Houses" type="Node" parent="."]
 script = ExtResource("32_pgcnb")
