@@ -33,7 +33,6 @@ func spawn() -> RoadWay3D:
 	return outer_road
 	
 func build_curve() -> void:
-	# if self.curve: return
 	self.curve = Curve3D.new()
 	self.curve.up_vector_enabled = true
 	for road_node: RoadNode in self.nodes:

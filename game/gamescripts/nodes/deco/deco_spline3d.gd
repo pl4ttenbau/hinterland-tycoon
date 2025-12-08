@@ -13,6 +13,7 @@ class_name DecoSpline3D extends VisibleObject
 	set(value): 
 		curve = value
 		$PathMesh3D/Path3D.curve = value
+	get(): return $PathMesh3D/Path3D.curve
 
 func _build_curve():
 	var temp_curve: Curve3D = Curve3D.new()
