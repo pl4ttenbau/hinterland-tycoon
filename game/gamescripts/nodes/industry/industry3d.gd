@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_industry.png")
-class_name Industry3D extends HideableObject
+class_name Industry3D extends VisibleObject
 
 static var last_ind_num: int = 0
 static var PRODUCTION_TIMER_SECONDS = 5.0

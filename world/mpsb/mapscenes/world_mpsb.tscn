@@ -6048,8 +6048,6 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." instance=ExtResource("2_jynyo")]
-show_grid = false
-show_region_grid = false
 
 [node name="Towns" parent="." node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
@@ -7125,6 +7123,10 @@ placed_town_num = 24
 [node name="PolishHouse31" parent="Houses" instance=ExtResource("51_o3cyl")]
 transform = Transform3D(0.25407863, 0, 0.96718353, 0, 1, 0, -0.96718353, 0, 0.25407863, 1583.8566, 14.461184, 2538.7476)
 placed_town_num = 24
+
+[node name="HalfTimbered2" parent="Houses" instance=ExtResource("3_7yuns")]
+transform = Transform3D(0.9885466, 0, -0.15091576, 0, 1, 0, 0.15091576, 0, 0.9885466, 1893.8893, 16.931858, 2871.2422)
+placed_town_num = 5
 
 [node name="InEditor" type="Node3D" parent="."]
 script = ExtResource("46_wc4in")
@@ -9747,7 +9749,7 @@ ind_name = "Rebelow Saw"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Quarry_Ramelow" type="Marker3D" parent="Industries"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1967.982, 13.463856, 2835.7788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1954.7799, 16.291023, 2865.343)
 gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 5
