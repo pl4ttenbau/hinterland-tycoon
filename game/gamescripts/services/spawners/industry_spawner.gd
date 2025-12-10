@@ -27,15 +27,10 @@ func spawn_industries():
 	Loggie.info("ready to spawn industries")
 	self.load_industries_from_map()
 	for ind_obj: IndustryData in GlobalState.industries:
-		if ! ind_obj.ind_type:
-			Loggie.error("cannot spawn industry! type \"%s\" unknown" % ind_obj.ind_type)
-			continue
-		var scene_path := ind_obj.ind_type.get_mesh_path()
-		var instanciated: Industry3D = load(scene_path).instantiate()
-		instanciated.industry = ind_obj
-		self.add_child(instanciated)
-		# register
-		self.storage.add_container(instanciated)
+		var industry3d := Industry3D.of(ind_obj)
+		if industry3d: # register
+			self.add_child(industry3d)
+			self.storage.add_container(industry3d)
 	SignalBus.industries_spawned.emit()
 
 #region Getters

@@ -8,8 +8,8 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Sprite3D" type="Sprite3D"]
 layers = 8
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0
 pixel_size = 0.02
 billboard = 2
 texture = SubResource("ViewportTexture_q75wx")

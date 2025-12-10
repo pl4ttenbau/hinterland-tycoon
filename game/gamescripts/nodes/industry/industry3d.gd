@@ -16,6 +16,15 @@ static var PRODUCTION_TIMER_SECONDS = 5.0
 @export var sign3d: IndustrySign3D
 		
 #region Initialization
+static func of(_industry: IndustryData) -> Industry3D:
+	if ! _industry.ind_type:
+		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
+		return null
+	var scene_path := _industry.ind_type.get_mesh_path()
+	var instanciated: Industry3D = load(scene_path).instantiate()
+	instanciated.industry = _industry
+	return instanciated
+
 func _enter_tree() -> void:
 	var production_timer: Timer = Timer.new()
 	production_timer.wait_time = PRODUCTION_TIMER_SECONDS

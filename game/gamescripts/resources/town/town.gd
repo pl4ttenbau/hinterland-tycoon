@@ -66,8 +66,6 @@ func has_bld_around(check_pos: Vector3) -> bool:
 #region Stations
 func connect_new_station(station: AbstractStation):
 	self.stations.append(station)
-	# self.reassign_buildings_to_stations()
-	
 #endregion
 
 #region Helper-Methods

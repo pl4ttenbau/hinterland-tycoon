@@ -4,6 +4,8 @@ class_name TownBuildingHolder extends Node
 
 @export var placed_buildings: Array[Residence3D] = []
 
+const MOVE_UNDER_TOWN_NODE = true
+
 # Loading State
 @export var has_map_spawned: bool = true
 @export var has_res_bld_types_loaded: bool = false
@@ -35,6 +37,8 @@ func place_preplaced_res_bld(outer_bld: Residence3D):
 func register_res_bld(outer_bld: Residence3D, parent_town: TownData):
 	self.placed_buildings.append(outer_bld) # save here as well
 	parent_town.add_res_bld(outer_bld)
+	if MOVE_UNDER_TOWN_NODE:
+		pass
 
 #region Getters 
 ## the pre-placed buildings are in "WorldMapScene/Houses"

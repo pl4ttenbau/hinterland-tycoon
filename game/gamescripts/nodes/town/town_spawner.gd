@@ -17,7 +17,7 @@ const MAX_PLACING_TRIES: int = 6
 func _enter_tree() -> void:
 	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
 func _ready() -> void:
-	self.town = (self.get_parent() as TownCenter).town
+	self.town = (self.get_parent() as Town3D).town
 	self._on_town_center_spawned(self.town)
 #endregion
 
