@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://s6qceyvtti6k"]
+[gd_scene load_steps=51 format=3 uid="uid://s6qceyvtti6k"]
 
 [ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/empty_world.gd" id="1_eorrk"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_11abr"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://bdjerkhg2knfu" path="res://world/default/terrain_default.tscn" id="39_mk0on"]
 [ext_resource type="ArrayMesh" uid="uid://oc5u0xnyqqpt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.obj" id="40_r6qy7"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="41_p6dso"]
+[ext_resource type="PackedScene" uid="uid://bb5bylj7g1h04" path="res://scenes/subscenes/industry/industry3d_sign_scene.tscn" id="42_oj3vo"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_usal5"]
 transform_format = 1
@@ -68,6 +69,9 @@ normal_enabled = true
 ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oj3vo"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
 
@@ -102,6 +106,8 @@ script = ExtResource("6_nc0f4")
 
 [node name="WorldTownBldPlacer" type="Node" parent="World/Generated/Towns"]
 script = ExtResource("7_rnkef")
+has_map_spawned = null
+has_res_bld_types_loaded = null
 metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 
 [node name="Infr" type="Node" parent="World/Generated"]
@@ -174,14 +180,11 @@ visible = false
 
 [node name="Features" type="Node3D" parent="."]
 editor_description = "why? https://docs.godotengine.org/en/latest/tutorials/performance/pipeline_compilations.html#doc-pipeline-compilations"
-visible = false
 script = ExtResource("23_0fk02")
 metadata/_custom_type_script = "uid://xrq8d2iqxk0u"
 
 [node name="PolishHouse1" parent="Features" instance=ExtResource("24_5fpmr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1174, 7.99088, 15.6514)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Features"]
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Features"]
 multimesh = SubResource("MultiMesh_usal5")
@@ -250,13 +253,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
 [node name="HalfTimberedBarn" type="Node3D" parent="Features"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Features/HalfTimberedBarn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.498554, 8.586021, 67.92201)
 mesh = ExtResource("40_r6qy7")
 
-[node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn"]
+[node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" instance=ExtResource("42_oj3vo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
+texture = SubResource("ViewportTexture_oj3vo")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
 physics_material_override = SubResource("PhysicsMaterial_ggw8a")
 script = ExtResource("41_p6dso")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/MeshInstance3D/ResBldCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168365, 5.36136, -0.0531616)
 shape = SubResource("BoxShape3D_bb2cl")
