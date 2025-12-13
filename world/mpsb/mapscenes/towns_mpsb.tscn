@@ -81,7 +81,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_d52qy"]
 script = ExtResource("3_icu33")
-town_name = "Daberkow"
+town_name = "Daberkow-Bartow"
 pos_xz = Vector2(824.9, 2017.2)
 is_minor = true
 num = 9
@@ -370,8 +370,8 @@ town = SubResource("Resource_74w14")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829.8, 21.0748, 2542.1)
 town = SubResource("Resource_ls53n")
 
-[node name="TownCenter_Daberkow" parent="." instance=ExtResource("1_xyttb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 824.9, 13.44, 2017.2)
+[node name="Town3D_Daberkow-Bartow" parent="." instance=ExtResource("1_xyttb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 918.8167, 20.703087, 2137.5574)
 town = SubResource("Resource_d52qy")
 
 [node name="TownCenter_Gützkow" parent="." instance=ExtResource("1_xyttb")]
