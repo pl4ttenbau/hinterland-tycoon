@@ -58,6 +58,7 @@ static func arr_to_vec3(float_arr: Array) -> Vector3:
 	
 func has_required_goods() -> bool:
 	for required_res: TransformedGood in self.ind_type.requires:
+		@warning_ignore("narrowing_conversion")
 		var spawned_good := SpawnedGood.new(required_res.res_key, required_res.res_modifier)
 		if ! self.has_enough(spawned_good): return false
 	return true

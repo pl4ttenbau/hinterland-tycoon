@@ -108,7 +108,28 @@
 		"num": 16,
 		"name": "Ort",
 		"townNum": 33,
-		"type": "STATION_GOODS",
+		"type": "STATION_PASS",
 		"townName": "Müggenburg"
+	},
+	{
+		"num": 17,
+		"name": "Kreuz",
+		"townNum": 15,
+		"type": "STATION_PASS",
+		"townName": "Schmarsow"
+	},
+	{
+		"num": 18,
+		"name": "Meadows",
+		"townNum": 27,
+		"type": "STATION_GOODS",
+		"townName": "Alt-Tellin"
+	},
+	{
+		"num": 19,
+		"name": "Ort",
+		"townNum": 9,
+		"type": "STATION_PASS",
+		"townName": "Daberkow"
 	}
 ]

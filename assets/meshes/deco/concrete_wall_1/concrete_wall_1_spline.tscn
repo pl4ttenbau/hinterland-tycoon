@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bapyryldba3u8"]
 
-[ext_resource type="Script" uid="uid://cj7eqw8kkicjm" path="res://game/gamescripts/nodes/deco/outer_deco_spline.gd" id="1_lqt1h"]
+[ext_resource type="Script" uid="uid://cj7eqw8kkicjm" path="res://game/gamescripts/nodes/deco/deco_spline3d.gd" id="1_lqt1h"]
 [ext_resource type="ArrayMesh" uid="uid://b0xl572vmq2uh" path="res://assets/meshes/deco/concrete_wall_1/concrete_wall_1.obj" id="2_fljmj"]
 [ext_resource type="Texture2D" uid="uid://b4ujemwj8y0db" path="res://assets/meshes/deco/concrete_wall_1/tex_concrete_wall_1.png" id="3_kgnwt"]
 [ext_resource type="Texture2D" uid="uid://c2fvm3hmbg3sf" path="res://assets/meshes/deco/concrete_wall_1/tex_concrete_wall_1_n.png" id="4_8004j"]

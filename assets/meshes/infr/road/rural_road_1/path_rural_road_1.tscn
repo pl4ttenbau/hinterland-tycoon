@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_6tl4k"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -20),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -21,6 +21,9 @@ curve = SubResource("Curve3D_6tl4k")
 [node name="PathMesh3D" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../RoadPath")
 mesh = ExtResource("2_hx1ak")
+collision_mode = 2
+convex_collision_clean = true
+convex_collision_simplify = false
 surface_0/tile_rotation = Vector3(0, 0, 0)
 surface_0/tile_rotation_order = 2
 surface_0/distribution = 0
@@ -29,6 +32,6 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
 surface_0/tilt = false
 surface_0/offset = Vector2(0, 0)
-surface_0/triangle_count = 0
+surface_0/triangle_count = 68
 visibility_range_end = 200.0
 visibility_range_end_margin = 20.0

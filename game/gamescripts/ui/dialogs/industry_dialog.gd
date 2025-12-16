@@ -51,14 +51,13 @@ func set_production_consumption():
 
 func _ready() -> void:
 	# unlocke mouse from player
-	Input.mouse_mode = Input.MOUSE_MODE_MAX
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	# bind signals
 	%CloseButton.pressed.connect(Callable(self, "_on_close_button_click"))
 	
 #region Actions
 func close():
 	Loggie.info("Closing...")
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	super.close()
 #endregion
 

@@ -47,3 +47,4 @@ _shader_parameters = {
 }
 world_background = 0
 dual_scaling = true
+show_region_grid = true

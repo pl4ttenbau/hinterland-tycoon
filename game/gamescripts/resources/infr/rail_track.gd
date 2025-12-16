@@ -2,6 +2,7 @@
 class_name RailTrackData extends AbstractTrack
 
 @export var nodes: Array[RailNodeData] = []
+@export var hideFill: bool = false
 
 # child objects
 @export var node_stations: Array[RailNodeStationData] = []
@@ -25,6 +26,14 @@ func add_fork(rail_fork: RailNodeForkData):
 	self.forks.append(rail_fork)
 #endregion
 
+func build_curve() -> void:
+	# if self.curve: return
+	self.curve = Curve3D.new()
+	self.curve.up_vector_enabled = true
+	for point: Vector3 in self.vertices:
+		self.curve.add_point(point)
+	InfrUtils.smooth_curve3d(self.curve)
+
 #region Get Nodes
 func get_rail_node(_i: int) -> RailNodeData:
 	if _i >= 0 && _i < self.nodes.size():
@@ -38,16 +47,8 @@ func get_end_node() -> RailNodeData:
 func get_end_pos() -> Vector3:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i].position
-#endregion
 	
 func has_node_index(_index: int) -> bool:
 	var last_i: int = self.nodes.size() -1
 	return _index >= 0 && _index <= last_i
-
-func build_curve() -> void:
-	# if self.curve: return
-	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = true
-	for point: Vector3 in self.vertices:
-		self.curve.add_point(point)
-	InfrUtils.smooth_curve3d(self.curve)
+#endregion

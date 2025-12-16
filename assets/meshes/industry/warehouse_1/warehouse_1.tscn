@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dpmf707hcg5r"]
 
-[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry_3d.gd" id="1_1jdkd"]
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_1jdkd"]
 [ext_resource type="ArrayMesh" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="2_fwiqu"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_fwiqu"]
 

@@ -1,7 +1,7 @@
 ## Scenes for Deco Splines must be in a subfolder of the "meshes/deco"-folder and
 ## named <spline_key>_spline.tscn
 @icon("res://assets/icons/icon_deco.png")
-class_name OuterDecoSpline extends VisibleObject
+class_name DecoSpline3D extends VisibleObject
 
 @export var spline: DecoSplineData:
 	get(): return self.entity
@@ -13,6 +13,7 @@ class_name OuterDecoSpline extends VisibleObject
 	set(value): 
 		curve = value
 		$PathMesh3D/Path3D.curve = value
+	get(): return $PathMesh3D/Path3D.curve
 
 func _build_curve():
 	var temp_curve: Curve3D = Curve3D.new()

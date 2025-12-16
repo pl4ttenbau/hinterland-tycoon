@@ -4,7 +4,7 @@ class_name IndustrySignPanel extends PanelContainer
 	get(): return industry_name
 	set(value):
 		industry_name = value
-		%StationNameLabel.text = value
+		%IndustryNameLabel.text = value
 		
 @export var res_amount: int:
 	get(): return res_amount

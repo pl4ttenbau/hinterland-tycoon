@@ -13,7 +13,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -53,7 +53,7 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
 surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
-surface_0/triangle_count = 0
+surface_0/triangle_count = 280
 surface_1/tile_rotation = Vector3(0, 0, 0)
 surface_1/tile_rotation_order = 2
 surface_1/distribution = 0
@@ -62,7 +62,7 @@ surface_1/warp_along_curve = true
 surface_1/sample_cubic = false
 surface_1/tilt = true
 surface_1/offset = Vector2(0, 0)
-surface_1/triangle_count = 0
+surface_1/triangle_count = 936
 material_override = SubResource("StandardMaterial3D_a1me6")
 visibility_range_end = 330.0
 visibility_range_end_margin = 30.0
@@ -70,6 +70,9 @@ visibility_range_end_margin = 30.0
 [node name="BedPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
 mesh = ExtResource("4_a1me6")
+collision_mode = 2
+convex_collision_clean = true
+convex_collision_simplify = false
 surface_0/tile_rotation = Vector3(0, 0, 0)
 surface_0/tile_rotation_order = 2
 surface_0/distribution = 0
@@ -78,7 +81,8 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = false
 surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
-surface_0/triangle_count = 0
+surface_0/triangle_count = 158
+unique_name_in_owner = true
 material_override = SubResource("StandardMaterial3D_4emru")
 visibility_range_end = 330.0
 visibility_range_end_margin = 33.0

@@ -7,13 +7,13 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/towns.dat"
 @export var _by_id: Dictionary = {}
 @export var _by_name: Dictionary = {}
 
-@export_storage var _centers_list: Array[TownCenter] = []
+@export_storage var _centers_list: Array[Town3D] = []
 @export var _centers_by_id: Dictionary = {}
 
 signal town_added(town_obj: TownData)
 
 @warning_ignore("unused_signal")
-signal center_added(town_center: TownCenter)
+signal center_added(town_center: Town3D)
 	
 func _enter_tree() -> void:
 	self.town_added.connect(Callable(self, "_on_town_loaded"))
@@ -29,7 +29,7 @@ func _create_indexes(town_obj: TownData):
 	self._by_id.set(town_obj.num, town_obj)
 	self._by_name.set(StringName(town_obj.town_name), town_obj)
 	
-func add_outter(town_center: TownCenter):
+func add_outter(town_center: Town3D):
 	self._centers_list.append(town_center)
 	self._centers_by_id.set(town_center.town.num, town_center)
 #endregion
@@ -44,10 +44,10 @@ func get_by_num(town_num: int) -> TownData:
 func get_by_name(town_name: StringName) -> TownData:
 	return self._by_name.get(town_name)
 	
-func get_centers() -> Array[TownCenter]:
+func get_centers() -> Array[Town3D]:
 	return self._centers_list
 	
-func get_center_by_num(town_num: int) -> TownCenter:
+func get_center_by_num(town_num: int) -> Town3D:
 	return self._centers_by_id.get(town_num)
 #endregion
 

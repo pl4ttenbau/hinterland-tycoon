@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_town.png")
-class_name TownCenter extends VisibleObject
+class_name Town3D extends VisibleObject
 
 signal town_changed(_town: TownData)
 
@@ -18,21 +18,17 @@ var position_action = do_position
 	
 func set_label_text(new_name: String):
 	if new_name:
-		self.name = "TownCenter_%s" % new_name
+		self.name = "Town3D_%s" % new_name
 		$TownLabel.text = new_name
-		
-func do_position() -> void:
-	var pos_xz = self.town.pos_xz
-	self.global_position = self.get_pos_on_terrain(pos_xz)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 func _on_town_name_changed(town_name: String):
 	self.set_label_text(town_name)
 	
-#region Terrain related helpers
+#region Editor Auto-Positioning (disabled)
+func do_position() -> void:
+	var pos_xz = self.town.pos_xz
+	self.global_position = self.get_pos_on_terrain(pos_xz)
+	
 func get_pos_on_terrain(pos_xz: Vector2) -> Vector3:
 	var xz_vec3 = Vector3(pos_xz.x, 0, pos_xz.y)
 	var terrain_y = self.get_editor_terrain().data.get_height(xz_vec3)
@@ -45,5 +41,4 @@ func get_editor_terrain() -> Terrain3D:
 		Loggie.error("Cannt find Terrain3D node")
 		return null
 	return terrain_3d
-
 #endregion

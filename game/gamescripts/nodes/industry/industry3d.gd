@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_industry.png")
-class_name Industry3D extends HideableObject
+class_name Industry3D extends VisibleObject
 
 static var last_ind_num: int = 0
 static var PRODUCTION_TIMER_SECONDS = 5.0
@@ -13,7 +13,18 @@ static var PRODUCTION_TIMER_SECONDS = 5.0
 		self.position = value.pos
 		self._set_name(value)
 		
+@export var sign3d: IndustrySign3D
+		
 #region Initialization
+static func of(_industry: IndustryData) -> Industry3D:
+	if ! _industry.ind_type:
+		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
+		return null
+	var scene_path := _industry.ind_type.get_mesh_path()
+	var instanciated: Industry3D = load(scene_path).instantiate()
+	instanciated.industry = _industry
+	return instanciated
+
 func _enter_tree() -> void:
 	var production_timer: Timer = Timer.new()
 	production_timer.wait_time = PRODUCTION_TIMER_SECONDS
@@ -21,6 +32,12 @@ func _enter_tree() -> void:
 	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
 	self.add_child(production_timer)
 	production_timer.start(PRODUCTION_TIMER_SECONDS)
+	
+func _ready() -> void:
+	self.spawn_industry_label()
+	
+func spawn_industry_label() -> IndustrySign3D:
+	return IndustrySign3D.of(self)
 #endregion
 
 #region Production

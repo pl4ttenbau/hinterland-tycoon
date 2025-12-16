@@ -6,7 +6,7 @@ const DECO_FILEPATH_FORMAT := "res://world/%s/jsondata/decoration.json"
 @export var splines: Array[DecoSplineData] = []
 @export var static_objs: Array[DecoObjectData] = []
 
-@export var outer_splines: Array[OuterDecoSpline] = []
+@export var outer_splines: Array[DecoSpline3D] = []
 
 func _enter_tree() -> void:
 	Managers.deco = self
