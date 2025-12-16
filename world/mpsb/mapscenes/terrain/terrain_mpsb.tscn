@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://7cwc6ja1jrn2"]
+[gd_scene format=3 uid="uid://7cwc6ja1jrn2"]
 
-[ext_resource type="Terrain3DMaterial" uid="uid://8v58h2bkf8nn" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.tres" id="1_ebicv"]
-[ext_resource type="Terrain3DAssets" uid="uid://dvep21n01mie6" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.tres" id="2_60ypj"]
+[ext_resource type="Terrain3DMaterial" uid="uid://e7xqm4l7b5dq" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.res" id="1_b6nfv"]
+[ext_resource type="Terrain3DAssets" uid="uid://bm1sl0reyqaud" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.res" id="2_b6nfv"]
 [ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_b6nfv"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="5_4t3nh"]
 
@@ -20,33 +20,31 @@ shape = 0
 section_length = 0.18
 section_segments = 1
 
-[node name="WorldTerrain" type="Terrain3D"]
+[node name="WorldTerrain" type="Terrain3D" unique_id=336419630]
 data_directory = "res://world/mpsb/heightdata"
-material = ExtResource("1_ebicv")
-assets = ExtResource("2_60ypj")
-show_grid = true
-show_region_grid = true
+material = ExtResource("1_b6nfv")
+assets = ExtResource("2_b6nfv")
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="WaterMain" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1662.391, 10, 1673.171)
+[node name="WaterMain" type="MeshInstance3D" parent="." unique_id=847731422]
+transform = Transform3D(1.18, 0, 0, 0, 1, 0, 0, 0, 1.18, 1662.2557, 10.0000305, 1674.0017)
 material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_2pcia")
 skeleton = NodePath("")
 
-[node name="SiesenbollentinGroßerSee" type="MeshInstance3D" parent="."]
+[node name="SiesenbollentinGroßerSee" type="MeshInstance3D" parent="." unique_id=1148509052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.4226, 15.304442, 2872.6414)
 material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_naxkj")
 skeleton = NodePath("")
 
-[node name="WaterFriedland2" type="MeshInstance3D" parent="."]
+[node name="WaterFriedland2" type="MeshInstance3D" parent="." unique_id=1026000945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2158.813, 10.024422, 3207.9233)
 material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_b6nfv")
 
-[node name="CustomTerrain3DParticles" parent="." node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
+[node name="CustomTerrain3DParticles" parent="." unique_id=1992740137 node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
 terrain = NodePath("..")
 instance_spacing = 0.296875
 cell_width = 14.0

@@ -9,11 +9,11 @@ const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const RAIL_COLOR = Color.BLACK
 const ROAD_COLOR = Color.DARK_ORANGE
 
-@export_storage var editor_infr_node: Node3D:
+@export_storage var editor_infr_node: EditorInfrContainer:
 	get():
 		var infr_container = get_scene().find_child("EditorInfr", true)
 		if ! infr_container: push_error("Cannt find Node \"EditorInfr\"")
-		return infr_container
+		return infr_container as EditorInfrContainer
 
 func _run():
 	self.clear_editor_tracks()
@@ -23,7 +23,11 @@ func _run():
 		self.spawn_road_paths(map_name)
 
 func clear_editor_tracks():
-	for child: Node in self.editor_infr_node.get_children():
+	var rail_container: Node = self.editor_infr_node.find_child("EditorRails")
+	for child: Node in rail_container.get_children(true):
+		child.queue_free()
+	var roads_container: Node = self.editor_infr_node.find_child("EditorRails")
+	for child: Node in roads_container.get_children(true):
 		child.queue_free()
 
 #region Rail Path Spawning
@@ -37,8 +41,7 @@ func spawn_single_track_line(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var line3d := RailMapper.editor_line_from_data(track_data_dict)
 	line3d.create_curve_from_dict(track_data_dict, true)
 	# add as child & assign to editor scene
-	self.editor_infr_node.add_child(line3d, true)
-	line3d.owner = get_scene()
+	self.editor_infr_node.add_rail(line3d, self.get_scene())
 	return line3d
 #endregion
 
@@ -53,8 +56,7 @@ func spawn_road_line_3d(road_data_dict: Dictionary) -> LinePath3D:
 	var line3d := RoadMapper.editor_line_from_data(road_data_dict)
 	line3d.create_curve_from_dict(road_data_dict, false)
 	# add as child & assign to editor scene
-	self.editor_infr_node.add_child(line3d, true)
-	line3d.owner = get_scene()
+	self.editor_infr_node.add_road(line3d, self.get_scene())
 	return line3d
 #endregion
 
