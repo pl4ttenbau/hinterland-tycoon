@@ -1,4 +1,4 @@
-doc/messtisch_strecken/*
+doc/messtisch*
 # Godot 4+ specific ignores
 .godot/
 /android/

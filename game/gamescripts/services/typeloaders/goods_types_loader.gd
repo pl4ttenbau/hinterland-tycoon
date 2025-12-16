@@ -8,10 +8,11 @@ func _init():
 	
 func make_types_list() -> Array[BaseGoodsType]:
 	return [
+		# passengers
 		BaseGoodsType.new("passenger", BaseGoodsType.ResourceCategory.PASSENGER),
 		BaseGoodsType.new("tourist", BaseGoodsType.ResourceCategory.PASSENGER),
 		BaseGoodsType.new("soldier", BaseGoodsType.ResourceCategory.PASSENGER),
-
+		# food types
 		BaseGoodsType.new("grains", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("beets", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("meat", BaseGoodsType.ResourceCategory.FREIGHT),
@@ -20,19 +21,22 @@ func make_types_list() -> Array[BaseGoodsType]:
 		BaseGoodsType.new("alcohol", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("fertilizer", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("fish", BaseGoodsType.ResourceCategory.FREIGHT),
-
+		# construction goods
 		BaseGoodsType.new("lumber", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("boards", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("bricks", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("gravel", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("concrete", BaseGoodsType.ResourceCategory.FREIGHT),
-
+		# aggregate goods
 		BaseGoodsType.new("coal", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("ore", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("ingots", BaseGoodsType.ResourceCategory.FREIGHT),
-
+		# smithy goods
+		BaseGoodsType.new("weapons", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("tools", BaseGoodsType.ResourceCategory.FREIGHT),
+		# final & railroad goods
 		BaseGoodsType.new("paper", BaseGoodsType.ResourceCategory.FREIGHT),
-		BaseGoodsType.new("motors", BaseGoodsType.ResourceCategory.FREIGHT),
+		BaseGoodsType.new("machines", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("rail_tracks", BaseGoodsType.ResourceCategory.FREIGHT),
 	]
 
