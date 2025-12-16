@@ -1,5 +1,5 @@
 @tool
-class_name EditorInfrContainer extends Node
+class_name GeneratedInfrContainer extends Node3D
 
 @export_group("Infr. Actions")
 @export_tool_button("Empty Infr.")
@@ -21,6 +21,6 @@ func add_road(line3d: EditorInfrLine3D, _owner):
 func do_empty_infr() -> void:
 	for child in $EditorRails.get_children():
 		if child is Path3D: child.queue_free()
-	for child in $EditorRails.get_children():
+	for child in $EditorRoads.get_children():
 		if child is Path3D: child.queue_free()
 #endregion

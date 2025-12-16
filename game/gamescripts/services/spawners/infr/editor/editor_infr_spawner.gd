@@ -9,11 +9,11 @@ const ROADS_JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const RAIL_COLOR = Color.BLACK
 const ROAD_COLOR = Color.DARK_ORANGE
 
-@export_storage var editor_infr_node: EditorInfrContainer:
+@export_storage var editor_infr_node: GeneratedInfrContainer:
 	get():
 		var infr_container = get_scene().find_child("EditorInfr", true)
 		if ! infr_container: push_error("Cannt find Node \"EditorInfr\"")
-		return infr_container as EditorInfrContainer
+		return infr_container as GeneratedInfrContainer
 
 func _run():
 	self.clear_editor_tracks()
