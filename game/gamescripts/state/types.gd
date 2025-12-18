@@ -1,6 +1,7 @@
 extends Node
 
 @export var resource_types: Dictionary
+@export var vehicle_types_dict: Dictionary
 
 @export var infr_types: Array[InfrType]
 @export var industry_types: Array[IndustryType]
@@ -16,7 +17,7 @@ func get_infr_type(key: String) -> InfrType:
 	return null
 #endregion
 
-#region Residential Buiildings
+#region Residential Buildings
 func get_rnd_placable_res_bld() -> ResBldType:
 	for i in range(5):
 		var rnd_res_type: ResBldType = self.res_bld_store.get_random()
@@ -33,5 +34,17 @@ func get_ind_type(key: String) -> IndustryType:
 	for found_type: IndustryType in self.industry_types:
 		if found_type.key == key: return found_type
 	Loggie.error("IndustryType \"%s\" could not be found" % key)
+	return null
+#endregion
+
+#region Vehicle Types
+func set_and_sort_veh_types(veh_type_arr: Array[RailVehicleType]):
+	for veh_type: RailVehicleType in veh_type_arr:
+		self.vehicle_types_dict.set(veh_type.key, veh_type)
+
+func get_veh_type(veh_type_key: String) -> RailVehicleType:
+	if self.vehicle_types_dict.has(veh_type_key):
+		return self.vehicle_types_dict.get(veh_type_key)
+	Loggie.warn("Cannot find VehicleType \"%s\"" % veh_type_key)
 	return null
 #endregion

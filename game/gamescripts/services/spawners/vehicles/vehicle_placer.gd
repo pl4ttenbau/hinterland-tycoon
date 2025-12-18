@@ -6,6 +6,7 @@ class_name VehiclePlacer extends Node
 @export var rail_vehicles: Array[RailVehicle3D] = []
 @export var start_vehicles_spawned: bool = false
 
+#region Initialization
 func _enter_tree() -> void:
 	Managers.vehicles = self
 	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
@@ -23,9 +24,10 @@ func load_vehicles():
 	var all_loaded: bool = self._check_rails_and_terrain()
 	if  !all_loaded: return
 	Loggie.info("Globals & rails found: initializing vehicles...")
-
 	self.start_vehicles_spawned = true
-	
+#endregion
+
+#region Vehicle Spawning
 func spawn_vehicle(veh_type_key: String, start_pos: VehicleStartPos) -> RailVehicle3D:
 	var veh_3d := RailVehicle3D.of(veh_type_key, start_pos)
 	self.add_child(veh_3d)
@@ -40,8 +42,11 @@ func spawn_vehicle(veh_type_key: String, start_pos: VehicleStartPos) -> RailVehi
 func get_next_vehicle_num() -> int:
 	self._next_vehicle_num += 1
 	return self._next_vehicle_num
+#endregion
 
+#region Callbacks
 func _on_rails_rails_spawned(containers: Array[RailTrack3D]) -> void:
 	Loggie.info("Rails spawned; initializing vehicles ...")
 	self.rail_containers = containers
 	load_vehicles()
+#endregion

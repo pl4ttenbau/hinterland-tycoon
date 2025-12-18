@@ -45,13 +45,6 @@ func set_onto_track(start_pos: VehicleStartPos):
 	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
 	# vehicle.position = vehicle.last_node.position
 	
-static func load_vehicle_type_obj(_veh_type_key: String) -> RailVehicleType:
-	var veh_type_obj: RailVehicleType = null
-	for veh_type: RailVehicleType in GameTypes.vehicle_types:
-		if veh_type.key == _veh_type_key:
-			veh_type_obj = veh_type
-	return veh_type_obj
-	
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started:
 		$VehiclePath/PathFollow3D.progress += self.motor.get_current_speed()
