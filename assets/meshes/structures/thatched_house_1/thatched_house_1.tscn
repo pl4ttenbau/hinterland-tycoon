@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkw15rso2gb44"]
+[gd_scene format=3 uid="uid://bkw15rso2gb44"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_2gaaj"]
 [ext_resource type="ArrayMesh" uid="uid://5tucoc6kscya" path="res://assets/meshes/structures/thatched_house_1/thatched_house_1.obj" id="2_hm8ey"]
@@ -19,19 +19,21 @@ normal_texture = ExtResource("4_jk36b")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jk36b"]
 size = Vector3(7.661133, 8.342346, 19.34198)
 
-[node name="ThatchedHouse1" type="Node3D"]
+[node name="ThatchedHouse1" type="Node3D" unique_id=1594713119]
 script = ExtResource("1_2gaaj")
 placed_res_bld_type = "thatched_house_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=141316872]
+visibility_range_end = 280.0
+visibility_range_end_margin = 28.0
 mesh = ExtResource("2_hm8ey")
 surface_material_override/0 = SubResource("StandardMaterial3D_krhnx")
 
-[node name="ResBldCollider" type="StaticBody3D" parent="."]
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=789570995]
 script = ExtResource("6_xltcc")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=667652852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14501953, 4.1023865, -0.24777222)
 shape = SubResource("BoxShape3D_jk36b")

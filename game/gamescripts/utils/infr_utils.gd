@@ -14,3 +14,10 @@ static func smooth_curve3d(curve: Curve3D):
 			var normalized = delta.normalized() *2
 			curve.set_point_in(idx, -normalized)
 			curve.set_point_out(idx, +normalized)
+
+static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
+	if infr_domain_str == "RAIL": return Enums.InfrDomain.RAIL
+	elif infr_domain_str == "ROAD": return Enums.InfrDomain.ROAD
+	elif infr_domain_str == "WATER": return Enums.InfrDomain.WATER
+	elif infr_domain_str == "AIR": return Enums.InfrDomain.AIR
+	else: return Enums.InfrDomain.STATIONARY
