@@ -1,6 +1,6 @@
 class_name RailVehicleData extends GameObject
 
-@export var veh_type: RailVehicleType
+@export var veh_type: VehicleTypeData
 
 @export var direction: VehicleMotor.Direction
 

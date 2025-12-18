@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="VehicleTypesList" format=3 uid="uid://dvg2baoqt25dh"]
 
-[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/rail_vehicle_type.gd" id="1_sefoc"]
 [ext_resource type="Resource" uid="uid://cnnga7ui47iix" path="res://game/godotdata/vehicle_types/loco_faur.tres" id="2_ojcly"]
 [ext_resource type="Resource" uid="uid://ci67bydr7bpay" path="res://game/godotdata/vehicle_types/wismar_railbus.tres" id="3_bevio"]
 [ext_resource type="Resource" uid="uid://bnjk8mpcdv6yb" path="res://game/godotdata/vehicle_types/sachs_wagon_kb4.tres" id="4_msx6d"]
@@ -11,5 +10,5 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("7_go33c")
-list = Array[ExtResource("1_sefoc")]([ExtResource("2_ojcly"), ExtResource("3_bevio"), ExtResource("4_msx6d"), ExtResource("5_p8gr1"), ExtResource("6_ofegq")])
+list = [ExtResource("2_ojcly"), ExtResource("3_bevio"), ExtResource("4_msx6d"), ExtResource("5_p8gr1"), ExtResource("6_ofegq")]
 metadata/_custom_type_script = "uid://dt7yf5qlkl5ln"

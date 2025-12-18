@@ -1,8 +1,8 @@
 @tool
 class_name VehicleMapper extends RefCounted
 
-static func type_dict_to_class(_dict: Dictionary) -> RailVehicleType:
-	var inst := RailVehicleType.of_key(_dict.get("key"))
+static func type_dict_to_class(_dict: Dictionary) -> VehicleTypeData:
+	var inst := VehicleTypeData.of_key(_dict.get("key"))
 	inst.display_name = _dict.get("name")
 	inst.scene_path = _dict.get("scene_path")
 	inst.max_speed_kmh = _dict.get("max_speed_kmh")

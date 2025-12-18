@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tqwe4a6nmgdg"]
+[gd_scene format=3 uid="uid://tqwe4a6nmgdg"]
 
 [ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_e1swg"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="2_1ck1c"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://doytj3qwv2r17" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_n.png" id="4_532cl"]
 [ext_resource type="Texture2D" uid="uid://cerg020024pi2" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_s.png" id="5_wprfx"]
 [ext_resource type="ArrayMesh" uid="uid://irayfhj001w8" path="res://assets/meshes/vehicles/rail/loco_faur/faur.obj" id="6_by2im"]
-[ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/vehicle_path.gd" id="7_r4p0k"]
+[ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_path.gd" id="7_r4p0k"]
 
 [sub_resource type="Curve3D" id="Curve3D_2m8wh"]
 

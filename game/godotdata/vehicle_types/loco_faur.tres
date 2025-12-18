@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RailVehicleType" format=3 uid="uid://cnnga7ui47iix"]
 
-[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/rail_vehicle_type.gd" id="1_pls35"]
+[ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_pls35"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_53mrj"]
 
 [sub_resource type="Resource" id="Resource_nc0f4"]

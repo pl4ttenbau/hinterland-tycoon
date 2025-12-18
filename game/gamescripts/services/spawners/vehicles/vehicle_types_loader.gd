@@ -8,7 +8,7 @@ const VEHICLE_TYPES_RES_PATH = "res://game/godotdata/vehicle_types/vehicle_types
 
 #region Initialization
 func _ready() -> void:
-	var veh_types: Array[RailVehicleType] = self.types_list.list
+	var veh_types: Array[VehicleTypeData] = self.types_list.list
 	GameTypes.set_and_sort_veh_types(veh_types)
 	Loggie.info("%d vehicle types loaded" % veh_types.size())
 

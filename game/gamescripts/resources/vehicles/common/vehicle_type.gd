@@ -1,5 +1,5 @@
 @icon("uid://dxyodhnxhip0d")
-class_name RailVehicleType extends Resource
+class_name VehicleTypeData extends Resource
 
 const SCENE_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/vehicle_%s.tscn"
 const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
@@ -19,12 +19,12 @@ const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
 @export var capacity: GoodsCapacity
 
 #region Initialization
-static func of_key(_key: String) -> RailVehicleType:
-	var inst: RailVehicleType = RailVehicleType.new()
+static func of_key(_key: String) -> VehicleTypeData:
+	var inst: VehicleTypeData = VehicleTypeData.new()
 	inst.key = _key
 	return inst
 	
-static func of_dict(_dict: Dictionary) -> RailVehicleType:
+static func of_dict(_dict: Dictionary) -> VehicleTypeData:
 	return VehicleMapper.type_dict_to_class(_dict)
 #endregion
 
@@ -37,6 +37,6 @@ func get_preview_img_path() -> String:
 	
 func is_locomotive(): return self.has_motor
 
-static func get_by_key(veh_type_key: String) -> RailVehicleType:
+static func get_by_key(veh_type_key: String) -> VehicleTypeData:
 	return GameTypes.get_veh_type(veh_type_key)
 #endregion

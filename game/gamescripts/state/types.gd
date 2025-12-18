@@ -6,7 +6,7 @@ extends Node
 @export var infr_types: Array[InfrType]
 @export var industry_types: Array[IndustryType]
 @export var res_bld_type_store: ResBldTypeStore = ResBldTypeStore.new()
-@export var vehicle_types: Array[RailVehicleType]
+@export var vehicle_types: Array[VehicleTypeData]
 
 # == GETTER METHODS ==
 #region Infrastructure
@@ -38,11 +38,11 @@ func get_ind_type(key: String) -> IndustryType:
 #endregion
 
 #region Vehicle Types
-func set_and_sort_veh_types(veh_type_arr: Array[RailVehicleType]):
-	for veh_type: RailVehicleType in veh_type_arr:
+func set_and_sort_veh_types(veh_type_arr: Array[VehicleTypeData]):
+	for veh_type: VehicleTypeData in veh_type_arr:
 		self.vehicle_types_dict.set(veh_type.key, veh_type)
 
-func get_veh_type(veh_type_key: String) -> RailVehicleType:
+func get_veh_type(veh_type_key: String) -> VehicleTypeData:
 	if self.vehicle_types_dict.has(veh_type_key):
 		return self.vehicle_types_dict.get(veh_type_key)
 	Loggie.warn("Cannot find VehicleType \"%s\"" % veh_type_key)

@@ -7,7 +7,7 @@ class_name RailVehicle3D extends VisibleObject
 
 @export var direction: VehicleMotor.Direction
 
-@export var type_obj: RailVehicleType
+@export var type_obj: VehicleTypeData
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -31,7 +31,7 @@ func _ready() -> void:
 
 static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> RailVehicle3D:
 	# get vehicle type
-	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)
+	var veh_type_obj := VehicleTypeData.get_by_key(_veh_type_key)
 	# instanciate correct scene
 	var vehicle: RailVehicle3D = load(veh_type_obj.get_mesh_path()).instantiate()
 	vehicle.type_obj = veh_type_obj

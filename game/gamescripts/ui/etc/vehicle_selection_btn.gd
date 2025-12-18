@@ -18,7 +18,7 @@ class_name VehicleSelectionButton extends Control
 #endregion
 
 func set_vehicle_image():
-	var veh_type_obj := RailVehicleType.get_by_key(self.veh_type_key)
+	var veh_type_obj := VehicleTypeData.get_by_key(self.veh_type_key)
 	var preview_tex: Texture = load(veh_type_obj.get_preview_img_path())
 	%PreviewTextureRect.texture = preview_tex
 
