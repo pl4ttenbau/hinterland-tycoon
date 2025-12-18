@@ -1,13 +1,17 @@
 @icon("res://assets/icons/icon_locomotive.png")
 class_name RailVehicle3D extends VisibleObject
 
-@export var vehicle_num: int
+@export var vehicle_obj: RailVehicleData:
+	get(): return self.entity as RailVehicleData
+	set(value):
+		self.entity = value
 
 @export var motor: VehicleMotor
 
 @export var direction: VehicleMotor.Direction
 
-@export var type_obj: VehicleTypeData
+var vehicle_num: int: 
+	get(): return self.vehicle_obj.num
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -31,12 +35,13 @@ func _ready() -> void:
 
 static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> RailVehicle3D:
 	# get vehicle type
-	var veh_type_obj := VehicleTypeData.get_by_key(_veh_type_key)
+	var veh_obj := RailVehicleData.of(_veh_type_key)
+	var scene_path = veh_obj.veh_type.scene_path
 	# instanciate correct scene
-	var vehicle: RailVehicle3D = load(veh_type_obj.get_mesh_path()).instantiate()
-	vehicle.type_obj = veh_type_obj
-	vehicle.set_onto_track(start_pos)
-	return vehicle
+	var vehicle3d: RailVehicle3D = load(scene_path).instantiate()
+	vehicle3d.vehicle_obj = veh_obj
+	vehicle3d.set_onto_track(start_pos)
+	return vehicle3d
 	
 func set_onto_track(start_pos: VehicleStartPos):
 	self.direction = start_pos.dir
