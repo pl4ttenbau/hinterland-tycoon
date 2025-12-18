@@ -29,19 +29,21 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_veh_type_key: String, _starting_track: RailTrack3D, _starts_at: int, 
-		_dir: VehicleMotor.Direction) -> RailVehicle3D:
+static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> RailVehicle3D:
 	# get vehicle type
 	var veh_type_obj := RailVehicleType.get_by_key(_veh_type_key)
 	# instanciate correct scene
 	var vehicle: RailVehicle3D = load(veh_type_obj.get_mesh_path()).instantiate()
 	vehicle.type_obj = veh_type_obj
-	vehicle.direction = _dir
-	vehicle.motor = VehicleMotor.of(vehicle)
-	# save start node
-	vehicle.last_node = _starting_track.track.get_rail_node(_starts_at)
-	# vehicle.position = vehicle.last_node.position
+	vehicle.set_onto_track(start_pos)
 	return vehicle
+	
+func set_onto_track(start_pos: VehicleStartPos):
+	self.direction = start_pos.dir
+	self.motor = VehicleMotor.of(self)
+	# save start node
+	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
+	# vehicle.position = vehicle.last_node.position
 	
 static func load_vehicle_type_obj(_veh_type_key: String) -> RailVehicleType:
 	var veh_type_obj: RailVehicleType = null

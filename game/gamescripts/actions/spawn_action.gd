@@ -13,13 +13,16 @@ func on_trigger():
 func spawn_vehicle(spawn_dto: VehicleSpawnDto):
 	var depot_obj := self.get_depot_by_num(spawn_dto.depot_num)
 	if depot_obj:
-		var depot_node_index := depot_obj.get_depot_rail_node().index
-		var veh_dir = self.get_veh_dir_from_depot_pos(depot_obj.track_pos)
-		Loggie.info("Spawn new vehicle in direction: %s" % veh_dir)
-		var veh_type_key: String = spawn_dto.vehicle_type_key
-		var veh := Managers.vehicles.spawn_vehicle(veh_type_key, depot_obj.track_num, depot_node_index, veh_dir)
+		var start_pos := self.build_start_pos_dto(depot_obj)
+		var veh := Managers.vehicles.spawn_vehicle(spawn_dto.vehicle_type_key, start_pos)
+		Loggie.info("Spawned new vehicle in direction: %s" % start_pos.dir)
 		# start
 		veh.motor.start()
+		
+func build_start_pos_dto(depot_obj: RailDepotData) -> VehicleStartPos:
+	var depot_node_index := depot_obj.get_depot_rail_node().index
+	var veh_dir = self.get_veh_dir_from_depot_pos(depot_obj.track_pos)
+	return VehicleStartPos.of(depot_obj.track_num, depot_node_index, veh_dir)
 		
 func get_veh_dir_from_depot_pos(depot_pos: String) -> VehicleMotor.Direction:
 	if depot_pos == "START": return VehicleMotor.Direction.TRACK_NODES_INCREASE

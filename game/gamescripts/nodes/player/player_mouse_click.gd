@@ -21,7 +21,7 @@ func cast_ray(screen_pos: Vector2):
 	var space = get_camera().get_world_3d().direct_space_state
 	# create ray
 	var ray_query = PhysicsRayQueryParameters3D.create(cam_pos, to)
-	ray_query.collide_with_areas = true
+	ray_query.collide_with_areas = false
 	# shoot
 	var ray_result: Dictionary = space.intersect_ray(ray_query)
 	self.handle_ray(ray_result)
