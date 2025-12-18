@@ -4,7 +4,6 @@ class_name RailNodeData extends BasicInfrNodeData
 @export var parent_track: RailTrackData:
 	set(value): 
 		parent_track = value
-		# self.track_type = value.infr_type_key
 	get(): return parent_track
 
 @export var fork: RailNodeForkData
