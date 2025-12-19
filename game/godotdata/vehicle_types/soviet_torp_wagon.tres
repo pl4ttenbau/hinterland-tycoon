@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RailVehicleType" format=3 uid="uid://yu8infp73xip"]
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://yu8infp73xip"]
 
 [ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_lo8gl"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_ejk1x"]

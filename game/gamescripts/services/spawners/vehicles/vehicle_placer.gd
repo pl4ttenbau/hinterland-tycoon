@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	
 func _check_rails_and_terrain() -> bool:
 	if !GlobalState:
-		push_warning("Cannot save vehicle in scnene: Globals not found")
+		push_warning("Cannot save vehicle in scene: Globals not found")
 		return false
 	if !rail_containers:
 		push_warning("RailContainers not loaded; aboring vehicle creation")

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://w11u4nrwls1c"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_mesh_3d.gd" id="1_ygfmm"]
+[ext_resource type="ArrayMesh" uid="uid://coeow3igmellm" path="res://assets/meshes/vehicles/rail/wismar_railbus/railcar_wismar.obj" id="2_dub3o"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_roq3u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4m0o"]
+size = Vector3(2.5, 3.3, 11.668)
+
+[node name="VehicleModel3D" type="Node3D" unique_id=1221912797]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_ygfmm")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="RailVehicleMesh" type="MeshInstance3D" parent="." unique_id=516148676]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+custom_aabb = AABB(0, 0, 0, 0, 0, 9)
+ignore_occlusion_culling = true
+mesh = ExtResource("2_dub3o")
+skeleton = NodePath("../../../..")
+
+[node name="RailVehicleStaticBody" type="StaticBody3D" parent="." unique_id=242610703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("3_roq3u")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody" unique_id=1383764509]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.15, 0)
+shape = SubResource("BoxShape3D_s4m0o")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=804151714]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.44676, 3.27309, -1.50662e-07)
+metadata/cam_name = &"CAM_VEHICLE"

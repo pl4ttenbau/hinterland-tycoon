@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bup28wigxefjq"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_mesh_3d.gd" id="1_qsyfb"]
+[ext_resource type="Texture2D" uid="uid://b7giqu1siufcl" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_d.png" id="2_q545g"]
+[ext_resource type="Texture2D" uid="uid://doytj3qwv2r17" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_n.png" id="3_iu6jf"]
+[ext_resource type="Texture2D" uid="uid://cerg020024pi2" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_s.png" id="4_tbmo5"]
+[ext_resource type="ArrayMesh" uid="uid://irayfhj001w8" path="res://assets/meshes/vehicles/rail/loco_faur/faur.obj" id="5_jj8rk"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="6_w357n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_era8q"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_q545g")
+roughness_texture = ExtResource("4_tbmo5")
+normal_enabled = true
+normal_texture = ExtResource("3_iu6jf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4m0o"]
+size = Vector3(2.2, 3.3, 9.5)
+
+[node name="VehicleModel" type="Node3D" unique_id=379846466]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_qsyfb")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="RailVehicleMesh" type="MeshInstance3D" parent="." unique_id=1026358862]
+material_override = SubResource("StandardMaterial3D_era8q")
+custom_aabb = AABB(0, 0, 0, 0, 0, 9)
+ignore_occlusion_culling = true
+mesh = ExtResource("5_jj8rk")
+skeleton = NodePath("../../../..")
+
+[node name="RailVehicleStaticBody" type="StaticBody3D" parent="." unique_id=27310662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("6_w357n")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody" unique_id=1606114445]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.19209e-07, 0.15, 0.0500002)
+shape = SubResource("BoxShape3D_s4m0o")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1151536141]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.70864, 3.45253, -1.18398e-07)
+metadata/cam_name = &"CAM_VEHICLE"

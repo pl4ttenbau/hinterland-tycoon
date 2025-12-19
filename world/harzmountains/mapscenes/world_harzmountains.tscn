@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="63_76csh"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/rail/bridge/truss_bridge/truss_bridge.tscn" id="63_th5q3"]
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="71_gf88f"]
-[ext_resource type="PackedScene" uid="uid://dhjxg1kopme0k" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechs_kb4_wagon.tscn" id="73_yd6n5"]
+[ext_resource type="PackedScene" uid="uid://dhjxg1kopme0k" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/model_saechs_kb4_wagon.tscn" id="73_yd6n5"]
 [ext_resource type="PackedScene" uid="uid://dcb46mio1xry1" path="res://assets/meshes/structures/city_house_2/city_house_2.tscn" id="77_r10ie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoc0b"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="RailVehicleType" format=3 uid="uid://bnjk8mpcdv6yb"]
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://bnjk8mpcdv6yb"]
 
 [ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/vehicles/common/goods_capacity.gd" id="1_45i1r"]
 [ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="2_i50rx"]
