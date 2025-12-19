@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dtvxtmrro2uq6"]
+
+[ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_ii4dv"]
+[ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_path.gd" id="2_shg3x"]
+
+[sub_resource type="Curve3D" id="Curve3D_4iei7"]
+
+[node name="RailVehicle3D" type="Node3D" unique_id=2132247974]
+script = ExtResource("1_ii4dv")
+metadata/_custom_type_script = "uid://vu364fy8qnrb"
+
+[node name="VehiclePath" type="Path3D" parent="." unique_id=658100243]
+curve = SubResource("Curve3D_4iei7")
+script = ExtResource("2_shg3x")
+metadata/_custom_type_script = "uid://c0t1y6s3qpq27"
+
+[node name="PathFollow3D" type="PathFollow3D" parent="VehiclePath" unique_id=1103899047]

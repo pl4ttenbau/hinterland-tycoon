@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bxmb5ddkk54u8"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvjwj4nh4koe" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car.obj" id="1_qb4h3"]
+[ext_resource type="Texture2D" uid="uid://dtishjy460f5b" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat1_d.png" id="2_dmdde"]
+[ext_resource type="Texture2D" uid="uid://mwrmxbl4qow0" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat2_d.png" id="3_bqipq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uepph"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_dmdde")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qyke"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_bqipq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_prjf2"]
+size = Vector3(1.7795258, 1.982666, 5.187744)
+
+[node name="OldtimerCarStatic" type="Node3D" unique_id=918026973]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=52528644]
+mesh = ExtResource("1_qb4h3")
+surface_material_override/0 = SubResource("StandardMaterial3D_uepph")
+surface_material_override/1 = SubResource("StandardMaterial3D_6qyke")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=380306418]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=396740023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029472351, 0.9869385, -0.026977539)
+shape = SubResource("BoxShape3D_prjf2")
