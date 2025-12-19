@@ -10,6 +10,8 @@ const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
 
 @export var scene_path: String
 
+@export var model_scene_path: String
+
 @export var max_speed_kmh: int
 
 @export var usable_infr: UsableInfrType

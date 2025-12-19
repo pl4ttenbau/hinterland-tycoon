@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://ci67bydr7bpay"]
 
 [ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/vehicles/common/goods_capacity.gd" id="1_07l7y"]
-[ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="2_yrm37"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="2_yrm37"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="3_et502"]
 
 [sub_resource type="Resource" id="Resource_t6nuv"]
@@ -19,6 +19,7 @@ script = ExtResource("2_yrm37")
 key = "wismar_railbus"
 display_name = "Wismar Railbus"
 scene_path = "res://assets/meshes/vehicles/rail/wismar_railbus/vehicle_wismar_railbus.tscn"
+model_scene_path = "res://assets/meshes/vehicles/rail/wismar_railbus/model_wismar_railbus.tscn"
 max_speed_kmh = 60
 usable_infr = SubResource("Resource_rnkef")
 has_motor = true

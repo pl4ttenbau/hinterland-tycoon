@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://yu8infp73xip"]
 
-[ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_lo8gl"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_lo8gl"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_ejk1x"]
 
 [sub_resource type="Resource" id="Resource_6wawu"]
@@ -13,7 +13,7 @@ script = ExtResource("1_lo8gl")
 key = "soviet_torp_wagon"
 display_name = "Soviet Kipper Wagon"
 scene_path = "res://assets/meshes/vehicles/rail/soviet_torp_wagon/soviet_torp_wagon.tscn"
+model_scene_path = "res://assets/meshes/vehicles/rail/soviet_torp_wagon/model_soviet_torp_wagon.tscn"
 max_speed_kmh = 60
 usable_infr = SubResource("Resource_6wawu")
-has_motor = null
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

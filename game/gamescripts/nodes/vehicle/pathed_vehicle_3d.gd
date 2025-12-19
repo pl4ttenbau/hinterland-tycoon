@@ -1,27 +1,33 @@
 @icon("res://assets/icons/icon_locomotive.png")
-class_name RailVehicle3D extends VisibleObject
+class_name PathedVehicle3D extends VisibleObject
+
+const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/vehicle_with_path_3d.tscn"
 
 @export var vehicle_obj: RailVehicleData:
 	get(): return self.entity as RailVehicleData
 	set(value):
 		self.entity = value
+		
+@export var model3d: VehicleModel3D:
+	get(): return model3d
+	set(value):
+		model3d = value
+		self.find_child("PathFollow3D", true).add_child(model3d)
 
 @export var motor: VehicleMotor
-
-@export var direction: VehicleMotor.Direction
-
-var vehicle_num: int: 
-	get(): return self.vehicle_obj.num
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
+#region Definition: Signals
 @warning_ignore("unused_signal")
 signal reached_next_node(node_num: int)
 
 @warning_ignore("unused_signal")
 signal reached_end_of_track(node_obj: RailNodeData)
+#endregion
 
+#region Initialization
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
 	
@@ -33,19 +39,30 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> RailVehicle3D:
+static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> PathedVehicle3D:
 	# get vehicle type
 	var veh_obj := RailVehicleData.of(_veh_type_key)
-	var scene_path = veh_obj.veh_type.scene_path
+	# var scene_path = veh_obj.veh_type.scene_path
 	# instanciate correct scene
-	var vehicle3d: RailVehicle3D = load(scene_path).instantiate()
-	vehicle3d.vehicle_obj = veh_obj
-	vehicle3d.set_onto_track(start_pos)
-	return vehicle3d
+	# var inst: PathedVehicle3D = load(scene_path).instantiate()
+	var inst: PathedVehicle3D = load(EMPTY_SCENE_PATH).instantiate()
+	inst.vehicle_obj = veh_obj
+	inst._load_and_add_mesh()
+	inst.set_onto_track(start_pos)
+	return inst
 	
+func _load_and_add_mesh():
+	var mesh_scene_path = self.vehicle_obj.veh_type.model_scene_path
+	self.model3d = load(mesh_scene_path).instantiate()
+	
+func _create_motor(_dir: Enums.PathDirection):
+	var _motor := VehicleMotor.of(self)
+	_motor.direction = _dir
+	self.add_child(_motor)
+#endregion
+
 func set_onto_track(start_pos: VehicleStartPos):
-	self.direction = start_pos.dir
-	self.motor = VehicleMotor.of(self)
+	self._create_motor(start_pos.dir)
 	# save start node
 	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
 	# vehicle.position = vehicle.last_node.position
@@ -60,7 +77,9 @@ func get_static_body() -> StaticBody3D: return self.get_child(0)
 func get_next_node_index() -> int: return self.wheels.target.index
 
 func get_cam() -> Camera3D: 
-	return self.find_child("Camera3D", true)
+	var model_cam: Camera3D = self.model3d.find_child("Camera3D", true)
+	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.model3d.name)
+	return model_cam
 #endregion
 
 #region Callbacks

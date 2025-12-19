@@ -1,6 +1,6 @@
 class_name SpeedInfoPanel extends CenterContainer
 
-@export var curr_vehicle: RailVehicle3D
+@export var curr_vehicle: PathedVehicle3D
 
 @export var brake: bool = false
 @export var reverse: bool = false
@@ -30,7 +30,7 @@ func _on_reverse_click(_state: bool):
 	self.reverse = !self.reverse
 	self._on_reverse_change(self.reverse)
 	
-func _on_vehicle_entered(veh3d: RailVehicle3D):
+func _on_vehicle_entered(veh3d: PathedVehicle3D):
 	self.curr_vehicle = veh3d
 	
 func _on_vehicle_exited():

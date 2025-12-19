@@ -1,6 +1,5 @@
+@icon("uid://1bbvrckmpv38")
 class_name VehicleMotor extends Node
-
-enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
 
 #region Properties
 @export var MAX_ABS_SPEED: float = .12
@@ -15,18 +14,20 @@ enum Direction { TRACK_NODES_INCREASE, TRACK_NODES_DECREASE }
 
 @export var running_time: int:
 	get():
-		if self.is_started && self.started_at >= 0:
-			return Time.get_ticks_msec() - self.started_at
+		if self.is_started && self.running_msec >= 0:
+			return Time.get_ticks_msec() - self.running_msec
 		return -1
+		
+@export var direction: Enums.PathDirection
 
 ## engine ticks since this motor was started
-@export var started_at: int = -1
+@export var running_msec: int = -1
 
 signal started()
 signal stopped()
 #endregion
 
-static func of(_vehicle: RailVehicle3D) -> VehicleMotor:
+static func of(_vehicle: PathedVehicle3D) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.speed = VehicleSpeed.new()
 	return _inst
@@ -39,7 +40,7 @@ func start() -> bool:
 	self.started.emit()
 	self.speed.target = 1.0
 	# count ticks since start
-	self.started_at = Time.get_ticks_msec()
+	self.running_msec = Time.get_ticks_msec()
 	return true
 	
 func stop() -> void:
@@ -47,7 +48,7 @@ func stop() -> void:
 	self.current_speed_percentage = 0.0
 	self.stopped.emit()
 	# also stop tick counting
-	self.started_at = -1
+	self.running_msec = -1
 	
 func on_motor_tick():
 	if self.speed:

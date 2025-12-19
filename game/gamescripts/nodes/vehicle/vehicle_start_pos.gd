@@ -10,9 +10,9 @@ class_name VehicleStartPos extends Resource
 
 @export var node_index: int
 
-@export var dir: VehicleMotor.Direction
+@export var dir: Enums.PathDirection
 
-static func of(_track_num: int, _node_index: int, _dir: VehicleMotor.Direction) -> VehicleStartPos:
+static func of(_track_num: int, _node_index: int, _dir: Enums.PathDirection) -> VehicleStartPos:
 	var inst = VehicleStartPos.new()
 	inst.track_num = _track_num
 	inst.node_index = _node_index

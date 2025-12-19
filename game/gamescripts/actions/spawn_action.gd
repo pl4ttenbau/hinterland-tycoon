@@ -24,9 +24,9 @@ func build_start_pos_dto(depot_obj: RailDepotData) -> VehicleStartPos:
 	var veh_dir = self.get_veh_dir_from_depot_pos(depot_obj.track_pos)
 	return VehicleStartPos.of(depot_obj.track_num, depot_node_index, veh_dir)
 		
-func get_veh_dir_from_depot_pos(depot_pos: String) -> VehicleMotor.Direction:
-	if depot_pos == "START": return VehicleMotor.Direction.TRACK_NODES_INCREASE
-	return VehicleMotor.Direction.TRACK_NODES_DECREASE
+func get_veh_dir_from_depot_pos(depot_pos: String) -> Enums.PathDirection:
+	if depot_pos == "START": return Enums.PathDirection.TRACK_NODES_INCREASE
+	return Enums.PathDirection.TRACK_NODES_DECREASE
 
 func get_depot_by_num(depot_num: int) -> RailDepotData:
 	for depot: RailDepotData in GlobalState.depots:
