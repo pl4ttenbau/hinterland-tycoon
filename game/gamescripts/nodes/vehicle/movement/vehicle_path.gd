@@ -2,14 +2,17 @@ class_name VehiclePath extends Path3D
 
 @export var tracks: Array[RailTrackData] = []
 
-@export var vehicle: PathedVehicle3D
+@export var vehicle3d: PathedVehicle3D
+
+@export var motor: VehicleMotor:
+	get(): return self.vehicle3d.motor
 
 func rebuild_path_on_current_track():
 	self.curve = Curve3D.new()
 	var continues: bool = true
 	var iterations: int = 0
-	var next_track = self.vehicle.last_node.parent_track
-	var next_direction = self.vehicle.motor.direction
+	var next_track = self.vehicle3d.last_node.parent_track
+	var next_direction = self.motor.direction
 	while continues && iterations <= 20:
 		var segment_end := self.add_track_nodes(next_track, next_direction)
 		# track goes on
@@ -19,7 +22,7 @@ func rebuild_path_on_current_track():
 			next_direction = get_next_dir_from_fork(next_track.num, segment_end.position)
 		else:
 			continues = false
-			self.vehicle.motor.stop()
+			self.motor.stop()
 			return
 		iterations += 1
 	InfrUtils.smooth_curve3d(self.curve)

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://tqwe4a6nmgdg"]
+[gd_scene format=3 uid="uid://c0dkj13d2rlky"]
 
 [ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/pathed_vehicle_3d.gd" id="1_e1swg"]
 [ext_resource type="PackedScene" uid="uid://bup28wigxefjq" path="res://assets/meshes/vehicles/rail/loco_faur/model_loco_faur.tscn" id="3_70d8g"]
@@ -8,7 +8,6 @@
 
 [node name="RailVehicle" type="Node3D" unique_id=1968492489]
 script = ExtResource("1_e1swg")
-direction = null
 
 [node name="VehiclePath" type="Path3D" parent="." unique_id=952965938 node_paths=PackedStringArray("vehicle")]
 curve = SubResource("Curve3D_2m8wh")

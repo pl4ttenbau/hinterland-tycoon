@@ -9,10 +9,10 @@
 script = ExtResource("1_ii4dv")
 metadata/_custom_type_script = "uid://vu364fy8qnrb"
 
-[node name="VehiclePath" type="Path3D" parent="." unique_id=658100243 node_paths=PackedStringArray("vehicle")]
+[node name="VehiclePath" type="Path3D" parent="." unique_id=658100243 node_paths=PackedStringArray("vehicle3d")]
 curve = SubResource("Curve3D_4iei7")
 script = ExtResource("2_shg3x")
-vehicle = NodePath("..")
+vehicle3d = NodePath("..")
 metadata/_custom_type_script = "uid://c0t1y6s3qpq27"
 
 [node name="PathFollow3D" type="PathFollow3D" parent="VehiclePath" unique_id=1103899047]

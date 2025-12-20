@@ -13,6 +13,12 @@ const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/vehicle_with_path_3d.ts
 	set(value):
 		model3d = value
 		self.find_child("PathFollow3D", true).add_child(model3d)
+		
+@export var start_pos: VehicleStartPos:
+	set(value):
+		self._create_motor(value.dir)
+		self._load_and_add_mesh()
+		self.last_node = value.track_obj.get_rail_node(value.node_index)
 
 @export var motor: VehicleMotor
 
@@ -39,16 +45,10 @@ func _ready() -> void:
 	self.add_child(speed_timer)
 	speed_timer.start()
 
-static func of(_veh_type_key: String, start_pos: VehicleStartPos) -> PathedVehicle3D:
-	# get vehicle type
-	var veh_obj := RailVehicleData.of(_veh_type_key)
-	# var scene_path = veh_obj.veh_type.scene_path
-	# instanciate correct scene
-	# var inst: PathedVehicle3D = load(scene_path).instantiate()
+static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> PathedVehicle3D:
 	var inst: PathedVehicle3D = load(EMPTY_SCENE_PATH).instantiate()
-	inst.vehicle_obj = veh_obj
-	inst._load_and_add_mesh()
-	inst.set_onto_track(start_pos)
+	inst.vehicle_obj = RailVehicleData.of(_veh_type_key)
+	inst.start_pos = _start_pos
 	return inst
 	
 func _load_and_add_mesh():
@@ -58,15 +58,10 @@ func _load_and_add_mesh():
 func _create_motor(_dir: Enums.PathDirection):
 	var _motor := VehicleMotor.of(self)
 	_motor.direction = _dir
+	self.motor = _motor
 	self.add_child(_motor)
 #endregion
 
-func set_onto_track(start_pos: VehicleStartPos):
-	self._create_motor(start_pos.dir)
-	# save start node
-	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
-	# vehicle.position = vehicle.last_node.position
-	
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started:
 		$VehiclePath/PathFollow3D.progress += self.motor.get_current_speed()

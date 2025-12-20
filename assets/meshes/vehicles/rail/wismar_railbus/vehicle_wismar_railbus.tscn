@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cggxaw6e2rdpv"]
+[gd_scene format=3 uid="uid://bx7bxw1wbpkwk"]
 
 [ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/pathed_vehicle_3d.gd" id="1_2pc3c"]
 [ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_path.gd" id="2_o0de4"]
@@ -8,7 +8,6 @@
 
 [node name="RailVehicle" type="Node3D" unique_id=112504994]
 script = ExtResource("1_2pc3c")
-direction = null
 
 [node name="VehiclePath" type="Path3D" parent="." unique_id=458012597 node_paths=PackedStringArray("vehicle")]
 curve = SubResource("Curve3D_2m8wh")
