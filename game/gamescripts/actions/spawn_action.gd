@@ -10,14 +10,14 @@ func on_trigger():
 	# show dialog
 	$/root.add_child(instance)
 		
-func spawn_vehicle(spawn_dto: VehicleSpawnDto):
+func spawn_train(spawn_dto: VehicleSpawnDto):
 	var depot_obj := self.get_depot_by_num(spawn_dto.depot_num)
 	if depot_obj:
 		var start_pos := self.build_start_pos_dto(depot_obj)
-		var veh := Managers.vehicles.spawn_vehicle(spawn_dto.vehicle_type_key, start_pos)
+		var train3d := Managers.vehicles.spawn_train(spawn_dto.vehicle_type_key, start_pos)
 		Loggie.info("Spawned new vehicle in direction: %s" % start_pos.dir)
 		# start
-		veh.motor.start()
+		train3d.motor.start()
 		
 func build_start_pos_dto(depot_obj: RailDepotData) -> VehicleStartPos:
 	var depot_node_index := depot_obj.get_depot_rail_node().index
@@ -37,5 +37,5 @@ func get_depot_by_num(depot_num: int) -> RailDepotData:
 #region Callbacks
 func _on_vehicle_spawn_pressed(spawn_dto: VehicleSpawnDto) -> void:
 	Loggie.info("Vehicle spawning btn pressed: %s in depot %s" % [spawn_dto.vehicle_type_key, spawn_dto.depot_num])
-	self.spawn_vehicle(spawn_dto)
+	self.spawn_train(spawn_dto)
 #endregion

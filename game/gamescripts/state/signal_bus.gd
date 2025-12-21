@@ -30,10 +30,10 @@ signal map_spawned(container: WorldMapScene)
 
 #region Vehicles
 @warning_ignore("unused_signal")
-signal train_entered(vehicle: Train3D)
+signal train_entered(train3d: Train3D)
 
 @warning_ignore("unused_signal")
-signal vehicle_exited()
+signal train_exited()
 #endregion
 
 #region Rails
