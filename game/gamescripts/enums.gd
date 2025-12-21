@@ -2,6 +2,7 @@ extends Node
 
 enum EntityTypes {
 	VEHICLE,
+	TRAIN,
 	RAIL,
 	ROAD,
 	DEPOT,
