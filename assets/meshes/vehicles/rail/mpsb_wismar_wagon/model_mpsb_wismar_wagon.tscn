@@ -12,7 +12,7 @@ roughness_texture = ExtResource("3_s7tre")
 distance_fade_max_distance = 300.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5r4t"]
-size = Vector3(1.692627, 2.5043793, 11.310944)
+size = Vector3(1.692627, 2.5043793, 11.76371)
 
 [node name="MpsbWismarWagon" type="Node3D" unique_id=1880112983]
 script = ExtResource("1_ns6kf")
@@ -27,5 +27,5 @@ script = ExtResource("5_e0tyd")
 metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=695725738]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009887695, 1.2524033, -0.020492554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009887695, 1.2524033, 0.0008506775)
 shape = SubResource("BoxShape3D_r5r4t")
