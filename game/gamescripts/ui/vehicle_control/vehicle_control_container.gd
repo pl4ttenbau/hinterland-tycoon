@@ -6,7 +6,7 @@ func _enter_tree() -> void:
 	SignalBus.vehicle_exited.connect(Callable(self, "_on_vehicle_exited"))
 	
 #region Callbacks
-func _on_vehicle_entered(_vehicle3d: RailVehicle3D):
+func _on_vehicle_entered(_vehicle3d: PathedVehicle3D):
 	self.visible = true
 
 func _on_vehicle_exited():

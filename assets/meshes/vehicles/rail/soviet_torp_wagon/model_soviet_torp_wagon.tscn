@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cdfuhygw5roim"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_model_3d.gd" id="1_fhdlm"]
+[ext_resource type="ArrayMesh" uid="uid://b5d50w7frbx7c" path="res://assets/meshes/vehicles/rail/soviet_torp_wagon/soviet_torp_wagon.obj" id="2_2gfw4"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_ej48p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l81xu"]
+size = Vector3(2.1593933, 1.9597778, 7.212158)
+
+[node name="SovietTorpWagon" type="Node3D" unique_id=1265576275]
+script = ExtResource("1_fhdlm")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=140869555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26892418, 0)
+mesh = ExtResource("2_2gfw4")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=434377811]
+script = ExtResource("3_ej48p")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1947722039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011978149, 0.9800465, 0.012084961)
+shape = SubResource("BoxShape3D_l81xu")

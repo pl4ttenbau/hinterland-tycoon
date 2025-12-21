@@ -32,3 +32,8 @@ enum TownSize {
 	TOWN,
 	CITY
 }
+
+enum PathDirection {
+	TRACK_NODES_INCREASE, 
+	TRACK_NODES_DECREASE
+}

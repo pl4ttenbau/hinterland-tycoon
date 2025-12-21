@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dhjxg1kopme0k"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_model_3d.gd" id="1_a7o5p"]
+[ext_resource type="ArrayMesh" uid="uid://bjbi21akhni15" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechskb4.obj" id="2_l2u2v"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_vw1jw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6tnkd"]
+size = Vector3(2.3565063, 3.2348633, 12.256088)
+
+[node name="SaechsKb4Wagon" type="Node3D" unique_id=1998388570]
+script = ExtResource("1_a7o5p")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=306864341]
+mesh = ExtResource("2_l2u2v")
+skeleton = NodePath("")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1455307438]
+script = ExtResource("3_vw1jw")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=279632270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093688965, 1.6340332, -0.009498596)
+shape = SubResource("BoxShape3D_6tnkd")

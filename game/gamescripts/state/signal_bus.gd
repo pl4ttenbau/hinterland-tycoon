@@ -30,7 +30,7 @@ signal map_spawned(container: WorldMapScene)
 
 #region Vehicles
 @warning_ignore("unused_signal")
-signal vehicle_entered(vehicle: RailVehicle3D)
+signal vehicle_entered(vehicle: PathedVehicle3D)
 
 @warning_ignore("unused_signal")
 signal vehicle_exited()

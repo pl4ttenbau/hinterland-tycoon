@@ -1,0 +1,22 @@
+# Blender 4.4.1 MTL File: 'oldtimer_car.blend'
+# www.blender.org
+
+newmtl mat1
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd oldtimer_mat1_d.jpg
+
+newmtl mat2
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd oldtimer_mat2_d.jpg

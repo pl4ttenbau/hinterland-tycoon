@@ -1,6 +1,6 @@
 class_name SpeedControl extends Control
 
-@export var curr_vehicle: RailVehicle3D
+@export var curr_vehicle: PathedVehicle3D
 
 func _enter_tree() -> void:
 	self.gui_input.connect(Callable(self, "_on_gui_input"))
@@ -29,7 +29,7 @@ func _on_gui_input(ev: InputEvent):
 		var speed_perc = ev.position.y
 		self.set_vehicle_speed(speed_perc)
 
-func _on_vehicle_entered(veh3d: RailVehicle3D):
+func _on_vehicle_entered(veh3d: PathedVehicle3D):
 	self.curr_vehicle = veh3d
 	
 func _on_vehicle_exited():

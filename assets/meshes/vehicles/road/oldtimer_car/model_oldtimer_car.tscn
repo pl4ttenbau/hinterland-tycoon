@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://p21qyxaoccix"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_model_3d.gd" id="1_cljlh"]
+[ext_resource type="ArrayMesh" uid="uid://bvjwj4nh4koe" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car.obj" id="2_bfghf"]
+[ext_resource type="Texture2D" uid="uid://dtishjy460f5b" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat1_d.png" id="3_42hxn"]
+[ext_resource type="Texture2D" uid="uid://mwrmxbl4qow0" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat2_d.png" id="4_kk6ls"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="5_iaksc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kk6ls"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_42hxn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iaksc"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("4_kk6ls")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tbmvt"]
+size = Vector3(1.7795258, 1.982666, 5.187744)
+
+[node name="OldtimerCar" type="Node3D" unique_id=1413446915]
+script = ExtResource("1_cljlh")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=706561821]
+mesh = ExtResource("2_bfghf")
+surface_material_override/0 = SubResource("StandardMaterial3D_kk6ls")
+surface_material_override/1 = SubResource("StandardMaterial3D_iaksc")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=953358091]
+script = ExtResource("5_iaksc")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=365141421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029472351, 0.9869385, -0.026977539)
+shape = SubResource("BoxShape3D_tbmvt")

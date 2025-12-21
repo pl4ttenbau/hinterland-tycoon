@@ -1,0 +1,73 @@
+[
+	{
+		"key": "loco_faur",
+		"name": "FAUR 750mm",
+		"scene_path": "res://assets/meshes/vehicles/rail/loco_faur/vehicle_loco_faur.tscn",
+		"max_speed_kmh": "40",
+		"usable_infr": {
+			"domain": "RAIL",
+			"subtype": "750_MM",
+		},
+		"has_motor": true
+	},
+	{
+		"key": "wismar_railbus",
+		"name": "Wismar Railbus",
+		"scene_path": "res://assets/meshes/vehicles/rail/wismar_railbus/vehicle_wismar_railbus.tscn",
+		"max_speed_kmh": "65",
+		"usable_infr": {
+			"domain": "RAIL",
+			"subtype": "NORMAL_GAUGE",
+		},
+		"has_motor": true,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 40
+		}
+	},
+	{
+		"key": "mpsb_wismar_wagon",
+		"name": "MPSB Passenger Carriage",
+		"scene_path": "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/mpsb_wismar_wagon.tscn",
+		"max_speed_kmh": "35",
+		"usable_infr": {
+			"domain": "RAIL",
+			"subtype": "750_MM",
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 32
+		}
+	},
+	{
+		"key": "saechs_wagon_kb4",
+		"name": "Saxon Narrow Gauge Wagon",
+		"scene_path": "res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechs_kb4_wagon.tscn",
+		"max_speed_kmh": "45",
+		"usable_infr": {
+			"domain": "RAIL",
+			"subtype": "750_MM",
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 56
+		}
+	},
+	{
+		"key": "soviet_torp_wagon",
+		"name": "Soviet Torp Wagon",
+		"scene_path": "res://assets/meshes/vehicles/rail/soviet_torp_wagon/soviet_torp_wagon.tscn",
+		"max_speed_kmh": "50",
+		"usable_infr": {
+			"domain": "RAIL",
+			"subtype": "750_MM",
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 33
+		}
+	}
+]
