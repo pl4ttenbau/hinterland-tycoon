@@ -27,7 +27,7 @@ signal started()
 signal stopped()
 #endregion
 
-static func of(_vehicle: PathedVehicle3D) -> VehicleMotor:
+static func of(_vehicle: Train3D) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
 	_inst.speed = VehicleSpeed.new()
 	return _inst

@@ -2,11 +2,11 @@ extends MarginContainer
 
 func _enter_tree() -> void:
 	# connect to signals
-	SignalBus.vehicle_entered.connect(Callable(self, "_on_vehicle_entered"))
+	SignalBus.train_entered.connect(Callable(self, "_on_train_entered"))
 	SignalBus.vehicle_exited.connect(Callable(self, "_on_vehicle_exited"))
 	
 #region Callbacks
-func _on_vehicle_entered(_vehicle3d: PathedVehicle3D):
+func _on_train_entered(_vehicle3d: Train3D):
 	self.visible = true
 
 func _on_vehicle_exited():

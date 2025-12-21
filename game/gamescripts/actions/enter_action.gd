@@ -11,13 +11,13 @@ static func activate_cam(cam: Camera3D):
 	GlobalState.active_cam = cam
 	
 func enter_vehicle():
-	var veh := GlobalState.vehicles.get(0) as PathedVehicle3D
+	var veh := GlobalState.vehicles.get(0) as Train3D
 	if ! veh:
 		Loggie.error("Cannot get into vehicle: none found on map")
 		return
 	self.activate_cam(veh.get_cam())
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.vehicle_entered.emit(veh)
+	SignalBus.train_entered.emit(veh)
 	
 func exit_vehicle():
 	SignalBus.vehicle_exited.emit()
