@@ -11,7 +11,7 @@ static var _last_train_num: int = 0
 	get(): return self.entity as TrainData
 	set(value):
 		self.entity = value
-		
+
 @export var vehicles: Array[Vehicle3D] = []
 
 @export var locomotive: Vehicle3D
@@ -20,8 +20,6 @@ static var _last_train_num: int = 0
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
-
-@export var vehicles_count: int = 0
 
 static func _next_train_num() -> int:
 	Train3D._last_train_num += 1
@@ -41,7 +39,7 @@ func _ready() -> void:
 
 static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	var inst: Train3D = load(EMPTY_SCENE_PATH).instantiate()
-	inst.spawn_vehicle(VehicleData.of(_veh_type_key), _start_pos)
+	inst.spawn_locomotive(VehicleData.of(_veh_type_key), _start_pos)
 	return inst
 	
 func _create_motor(_dir: Enums.PathDirection):
@@ -52,34 +50,34 @@ func _create_motor(_dir: Enums.PathDirection):
 #endregion
 
 #region Vehicle Spawning
-func spawn_vehicle(veh_data: VehicleData, start_pos: VehicleStartPos):
+func spawn_locomotive(veh_data: VehicleData, start_pos: VehicleStartPos):
 	self._create_motor(start_pos.dir)
 	# load vehicle 
-	var mesh_scene_path = veh_data.veh_type.model_scene_path
-	var veh3d = load(mesh_scene_path).instantiate()
-	self.add_vehicle(veh3d, true)
+	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), true)
 	# set starting node
 	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
 	
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
-	self.vehicles_count += 1
 	# add to lists
 	self.vehicles.append(veh3d)
 	if is_locomotive: self.locomotive = veh3d
 	# create pathfollow node
-	var veh_follow = self.add_path_follow()
-	veh_follow.add_child(veh3d)
-	
-func add_path_follow() -> PathFollow3D:
-	var veh_follow := PathFollow3D.new()
-	veh_follow.loop = false
-	veh_follow.use_model_front = true
-	veh_follow.name = "PathFollow_Vehicle_%d" % self.vehicles_count
-	$TrainPath.add_child(veh_follow)
-	return veh_follow
+	$TrainPath.add_child(VehiclePathFollow.of_train_vehicle(self.count(), veh3d))
 #endregion
 
-#region Node Getters
+#region Size Getters
+func count() -> int:
+	return self.vehicles.size()
+	
+func length_in_m() -> float:
+	var total_length: float = 0.0
+	for attached_veh: Vehicle3D in self.vehicles:
+		if attached_veh.vehicle_obj && attached_veh.vehicle_obj.veh_type:
+			total_length += attached_veh.vehicle_obj.veh_type.length_metres
+	return total_length
+#endregion
+
+#region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
 	
 func get_next_node_index() -> int: return self.wheels.target.index
