@@ -62,10 +62,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_51ymi"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.018663483, 0, 1.999913, -0.018663483, 0, -1.999913, -0.099853516, 0, -10.699951, 0.021511957, -0.0053759897, 1.999877, -0.021511957, 0.0053759897, -1.999877, -0.5, 0.09999943, -47.899902, -0.07267692, 0.0272522, 1.9984933, 0.07267692, -0.0272522, -1.9984933, 0.30004883, -0.20000076, -69.8999, 0.526904, 0.003961647, 1.9293408, -0.526904, -0.003961647, -1.9293408, -13, -0.3000002, -118.6001),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.66905737, -0.007509061, 1.8847561, 0.66905737, 0.007509061, -1.8847561, 8.910034, 0.10000038, -25.099854, -0.5144631, 0, 1.9326997, 0.5144631, 0, -1.9326997, 14.5, 0.10000038, -46.099854, -0.11141864, 0, 1.9968941, 0.11141864, 0, -1.9968941, 15.800049, 0.10000038, -69.3999, -0.106305, -0.007593773, 1.9971584, 0.106305, 0.007593773, -1.9971584, 17.199951, 0.20000076, -95.69995, -0.5331824, 0.010253162, 1.927592, 0.5331824, -0.010253162, -1.927592, 22.400146, 0.10000038, -114.5, -0.89395565, 0.06385558, 1.7879503, 0.89395565, -0.06385558, -1.7879503, 28, -0.29999924, -125.69995),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 5
+point_count = 7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noqu6"]
 render_priority = 0
@@ -84,10 +84,10 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_vybcg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.2301172, 0.03465068, 1.576582, 1.2301172, -0.03465068, -1.576582, 7.1000977, -0.19999981, -9.0998535, 0.39561814, 0.092310935, 1.9583066, -0.39561814, -0.092310935, -1.9583066, 1.1000977, -1.6000004, -38.799805),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.1413184, 0, 1.6423739, 1.1413184, 0, -1.6423739, 12.300049, 0, -17.699951, -0.7674371, -0.008433316, 1.846881, 0.7674371, 0.008433316, -1.846881, 21.400146, 0.10000038, -39.599854, -0.4007747, 0, 1.9594336, 0.4007747, 0, -1.9594336, 25, 0.10000038, -57.19995, -0.038902923, -0.0077806143, 1.9996065, 0.038902923, 0.0077806143, -1.9996065, 25.5, 0.20000076, -82.8999, 0.02115778, 0, 1.9998882, -0.02115778, 0, -1.9998882, 25.300049, 0.20000076, -101.799805, -0.22445944, 0.041567314, 1.9869298, 0.22445944, -0.041567314, -1.9869298, 28, -0.29999924, -125.69995),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 3
+point_count = 7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0o4a4"]
 render_priority = 0
@@ -414,10 +414,10 @@ shader_parameter/roughness = 0.5
 
 [sub_resource type="Curve3D" id="Curve3D_onop4"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.80727553, 0, 1.8298377, 0.80727553, 0, -1.8298377, 6, 0, -13.600098, -0.5414814, -0.012032965, 1.9252671, 0.5414814, 0.012032965, -1.9252671, 10.5, 0.10000038, -29.600098),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.9342649, 0, -1.7683747, -0.9342649, 0, 1.7683747, -5.6000977, 0, 10.5998535, 1.067986, 0, -1.6909778, -1.067986, 0, 1.6909778, -11.600098, 0, 20.099854, 1.3674968, 0, -1.4594358, -1.3674968, 0, 1.4594358, -23.5, 0, 32.799805),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wc4in"]
 render_priority = 0
@@ -7507,7 +7507,7 @@ transform = Transform3D(-0.82023174, 0, 0.57203144, 0, 1, 0, -0.57203144, 0, -0.
 [node name="FriedlandCenter" type="Node" parent="Deco" unique_id=2004051435]
 
 [node name="WaterTowerBig" parent="Deco/FriedlandCenter" unique_id=1993940730 instance=ExtResource("7_jynyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2040.1655, 6.5769014, 3189.4224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2032.4297, 6.6241035, 3221.2996)
 
 [node name="UazJeep2" parent="Deco/FriedlandCenter" unique_id=305748018 instance=ExtResource("64_7r2i1")]
 transform = Transform3D(0.7329587, 0, 0.68027323, 0, 1, 0, -0.68027323, 0, 0.7329587, 2177.353, 11.949901, 3171.854)
@@ -8482,23 +8482,23 @@ metadata/_custom_type_script = "uid://bbivri4py26we"
 script = ExtResource("53_3yyxn")
 metadata/_custom_type_script = "uid://dvf4vwgtk252x"
 
-[node name="RailTrack_1" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=256258783]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.2, 15.1, 3190)
+[node name="RailTrack_1" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2036474040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2033.2, 14.9, 3243.9)
 curve = SubResource("Curve3D_51ymi")
 script = ExtResource("54_51ymi")
 num = 1
-infr_name = "Friedland Station Mainline"
+infr_name = "Friedland Station MPSB Track 1"
 material = SubResource("ShaderMaterial_noqu6")
 
-[node name="RailTrack_2" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=216690439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2044.2, 14.8, 3071.4)
+[node name="RailTrack_2" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1857691093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2033.2, 14.9, 3243.9)
 curve = SubResource("Curve3D_vybcg")
 script = ExtResource("54_51ymi")
 num = 2
-infr_name = "Friedland Curve East"
+infr_name = "Friedland Station MPSB Track 2"
 material = SubResource("ShaderMaterial_0o4a4")
 
-[node name="RailTrack_3" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1783074192]
+[node name="RailTrack_3" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1707533457]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2044.2, 14.8, 3071.4)
 curve = SubResource("Curve3D_ea3s5")
 script = ExtResource("54_51ymi")
@@ -8506,7 +8506,7 @@ num = 3
 infr_name = "Friedland Curve West"
 material = SubResource("ShaderMaterial_speqn")
 
-[node name="RailTrack_4" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1069274626]
+[node name="RailTrack_4" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1855618132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1952.7, 18.8, 3019.7)
 curve = SubResource("Curve3D_7r2i1")
 script = ExtResource("54_51ymi")
@@ -8514,7 +8514,7 @@ num = 4
 infr_name = "Friedland-Ramelow South"
 material = SubResource("ShaderMaterial_c4uv5")
 
-[node name="RailTrack_5" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=208889557]
+[node name="RailTrack_5" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1247798620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1883.5, 18.4, 2974.6)
 curve = SubResource("Curve3D_ovu55")
 script = ExtResource("54_51ymi")
@@ -8522,7 +8522,7 @@ num = 5
 infr_name = "Friedland-Ramelow Bridge"
 material = SubResource("ShaderMaterial_wbg1f")
 
-[node name="RailTrack_6" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=341222674]
+[node name="RailTrack_6" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1981826474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1815.7, 17.8, 2807.1)
 curve = SubResource("Curve3D_4vn1c")
 script = ExtResource("54_51ymi")
@@ -8530,7 +8530,7 @@ num = 6
 infr_name = "Ramelow-Jagezin"
 material = SubResource("ShaderMaterial_kfs73")
 
-[node name="RailTrack_7" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=932539909]
+[node name="RailTrack_7" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1327351523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1735.5, 15.4, 2671)
 curve = SubResource("Curve3D_1grwi")
 script = ExtResource("54_51ymi")
@@ -8538,7 +8538,7 @@ num = 7
 infr_name = "Jagezin Station"
 material = SubResource("ShaderMaterial_x7bc8")
 
-[node name="RailTrack_8" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=873212681]
+[node name="RailTrack_8" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=793856812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1720.8, 15.5, 2554)
 curve = SubResource("Curve3D_1f3li")
 script = ExtResource("54_51ymi")
@@ -8546,7 +8546,7 @@ num = 8
 infr_name = "Jagezin Nord"
 material = SubResource("ShaderMaterial_fjbwy")
 
-[node name="RailTrack_9" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=666703632]
+[node name="RailTrack_9" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=93404147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1704.5, 14.1, 2377.4)
 curve = SubResource("Curve3D_83gd7")
 script = ExtResource("54_51ymi")
@@ -8554,7 +8554,7 @@ num = 9
 infr_name = "MPSB Fork-Wegezin"
 material = SubResource("ShaderMaterial_phrqb")
 
-[node name="RailTrack_10" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1045619856]
+[node name="RailTrack_10" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1721677522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1780.7, 13.3, 2304.2)
 curve = SubResource("Curve3D_1fmbe")
 script = ExtResource("54_51ymi")
@@ -8562,7 +8562,7 @@ num = 10
 infr_name = "MPSB Wegezin-Thurow Fork"
 material = SubResource("ShaderMaterial_qcsmb")
 
-[node name="RailTrack_11" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1812464910]
+[node name="RailTrack_11" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=371884942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1635.7, 12, 1961.2)
 curve = SubResource("Curve3D_euojj")
 script = ExtResource("54_51ymi")
@@ -8570,7 +8570,7 @@ num = 11
 infr_name = "Krien Northern"
 material = SubResource("ShaderMaterial_fxfnv")
 
-[node name="RailTrack_12" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2050316315]
+[node name="RailTrack_12" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1193542034]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1486.7, 12.7, 1815.5)
 curve = SubResource("Curve3D_sah7j")
 script = ExtResource("54_51ymi")
@@ -8578,7 +8578,7 @@ num = 12
 infr_name = "Neetzow Southern"
 material = SubResource("ShaderMaterial_6smno")
 
-[node name="RailTrack_13" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=700485265]
+[node name="RailTrack_13" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1856957236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1355.6, 11.9, 1794.3)
 curve = SubResource("Curve3D_4otlq")
 script = ExtResource("54_51ymi")
@@ -8586,7 +8586,7 @@ num = 13
 infr_name = "Neetzow Northern"
 material = SubResource("ShaderMaterial_3ar6u")
 
-[node name="RailTrack_14" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=608772968]
+[node name="RailTrack_14" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2098675046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1233.2, 12.2, 1550)
 curve = SubResource("Curve3D_eqcg3")
 script = ExtResource("54_51ymi")
@@ -8594,7 +8594,7 @@ num = 14
 infr_name = "Neetzow North-Peene River"
 material = SubResource("ShaderMaterial_635db")
 
-[node name="RailTrack_15" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1082072325]
+[node name="RailTrack_15" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=431983276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1169.9, 11.1, 1325.1)
 curve = SubResource("Curve3D_pixdy")
 script = ExtResource("54_51ymi")
@@ -8602,7 +8602,7 @@ num = 15
 infr_name = "Jarmen Peene Rail"
 material = SubResource("ShaderMaterial_sdc0u")
 
-[node name="RailTrack_16" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1963544331]
+[node name="RailTrack_16" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=998082487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1092.1, 11.1, 1271.8)
 curve = SubResource("Curve3D_bn6oj")
 script = ExtResource("54_51ymi")
@@ -8610,15 +8610,15 @@ num = 16
 infr_name = "Jarmen Hafenbhf Track 2"
 material = SubResource("ShaderMaterial_tkkvf")
 
-[node name="RailTrack_17" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=120728059]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2046.7, 15, 3219.6)
+[node name="RailTrack_17" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1597405904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2108.3, 12.3, 3066.6)
 curve = SubResource("Curve3D_onop4")
 script = ExtResource("54_51ymi")
 num = 17
 infr_name = "Friedland Depot Track"
 material = SubResource("ShaderMaterial_wc4in")
 
-[node name="RailTrack_18" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1233711022]
+[node name="RailTrack_18" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=477157581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.2, 15.1, 3190)
 curve = SubResource("Curve3D_g483g")
 script = ExtResource("54_51ymi")
@@ -8626,7 +8626,7 @@ num = 18
 infr_name = "Friedland Track 2"
 material = SubResource("ShaderMaterial_mnddl")
 
-[node name="RailTrack_19" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=399799440]
+[node name="RailTrack_19" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1289836347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2812.1, 11.3, 1646.3)
 curve = SubResource("Curve3D_llt1w")
 script = ExtResource("54_51ymi")
@@ -8634,7 +8634,7 @@ num = 19
 infr_name = "Anklam Station Northwards"
 material = SubResource("ShaderMaterial_1ijy2")
 
-[node name="RailTrack_20" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1727883965]
+[node name="RailTrack_20" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1569986993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1988.9, 12.6, 2217.4)
 curve = SubResource("Curve3D_f2h3i")
 script = ExtResource("54_51ymi")
@@ -8642,7 +8642,7 @@ num = 20
 infr_name = "MPSB Thurow Fork-Nerdin"
 material = SubResource("ShaderMaterial_38yw2")
 
-[node name="RailTrack_21" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=460142460]
+[node name="RailTrack_21" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2116097244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2123.8, 13, 2097.1)
 curve = SubResource("Curve3D_ujakq")
 script = ExtResource("54_51ymi")
@@ -8650,7 +8650,7 @@ num = 21
 infr_name = "MPSB Nerdin-Alt Sanitz"
 material = SubResource("ShaderMaterial_g5pbw")
 
-[node name="RailTrack_22" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1449028978]
+[node name="RailTrack_22" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1976355649]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2395, 11.7, 2128.9)
 curve = SubResource("Curve3D_u1rro")
 script = ExtResource("54_51ymi")
@@ -8658,7 +8658,7 @@ num = 22
 infr_name = "MPSB Blesewitz Fork Southwards"
 material = SubResource("ShaderMaterial_asg2x")
 
-[node name="RailTrack_23" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=704301419]
+[node name="RailTrack_23" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=836740890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2119.6, 13.5, 1974.6)
 curve = SubResource("Curve3D_cgylm")
 script = ExtResource("54_51ymi")
@@ -8666,7 +8666,7 @@ num = 23
 infr_name = "MPSB Blesewitz-Medow Branch"
 material = SubResource("ShaderMaterial_vvswy")
 
-[node name="RailTrack_24" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1049580866]
+[node name="RailTrack_24" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1354803811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2322.2, 11.7, 1922.1)
 curve = SubResource("Curve3D_hs1kp")
 script = ExtResource("54_51ymi")
@@ -8674,7 +8674,7 @@ num = 24
 infr_name = "MPSB Blesewitz-Medow Branch"
 material = SubResource("ShaderMaterial_ku7ty")
 
-[node name="RailTrack_25" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=287555366]
+[node name="RailTrack_25" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1694542323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1420.2, 11, 1252.3)
 curve = SubResource("Curve3D_41r1n")
 script = ExtResource("54_51ymi")
@@ -8682,7 +8682,7 @@ num = 25
 infr_name = "GJK Gützkow Ferry Station"
 material = SubResource("ShaderMaterial_pxxep")
 
-[node name="RailTrack_26" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1635643696]
+[node name="RailTrack_26" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=208569784]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1357.7, 11.3, 1180.9)
 curve = SubResource("Curve3D_tv0kd")
 script = ExtResource("54_51ymi")
@@ -8690,7 +8690,7 @@ num = 26
 infr_name = "GJK Gützkow Ferry Bridge"
 material = SubResource("ShaderMaterial_6fw81")
 
-[node name="RailTrack_27" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1746377621]
+[node name="RailTrack_27" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=740904837]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1270.2, 14.7, 1084)
 curve = SubResource("Curve3D_c6f1s")
 script = ExtResource("54_51ymi")
@@ -8698,7 +8698,7 @@ num = 27
 infr_name = "GJK Gützkow Fork-Station"
 material = SubResource("ShaderMaterial_6ouey")
 
-[node name="RailTrack_28" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=198046691]
+[node name="RailTrack_28" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=963111757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1292, 14.4, 1025.7)
 curve = SubResource("Curve3D_eqw7x")
 script = ExtResource("54_51ymi")
@@ -8706,7 +8706,7 @@ num = 28
 infr_name = "GJK Gützkow Station Track 1"
 material = SubResource("ShaderMaterial_pijin")
 
-[node name="RailTrack_29" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2057002659]
+[node name="RailTrack_29" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=185549620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1292, 14.4, 1025.7)
 curve = SubResource("Curve3D_g4an6")
 script = ExtResource("54_51ymi")
@@ -8714,7 +8714,7 @@ num = 29
 infr_name = "GJK Gützkow Station Track 1"
 material = SubResource("ShaderMaterial_lidr3")
 
-[node name="RailTrack_30" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=677317162]
+[node name="RailTrack_30" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1706268539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1320, 15.9, 970.1)
 curve = SubResource("Curve3D_k6b7d")
 script = ExtResource("54_51ymi")
@@ -8722,7 +8722,7 @@ num = 30
 infr_name = "GJK Gützkow Station Outwards"
 material = SubResource("ShaderMaterial_vkbwy")
 
-[node name="RailTrack_31" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=451028504]
+[node name="RailTrack_31" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=505449297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1270.2, 14.7, 1084)
 curve = SubResource("Curve3D_qqguv")
 script = ExtResource("54_51ymi")
@@ -8730,7 +8730,7 @@ num = 31
 infr_name = "GJK Gützkow Fork-Branch Jarmen"
 material = SubResource("ShaderMaterial_msurn")
 
-[node name="RailTrack_32" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1926754028]
+[node name="RailTrack_32" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1592505936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1082.1, 12.9, 1140.2)
 curve = SubResource("Curve3D_hdsg8")
 script = ExtResource("54_51ymi")
@@ -8738,7 +8738,7 @@ num = 32
 infr_name = "GJK Jarmen North Of Bridge"
 material = SubResource("ShaderMaterial_68so6")
 
-[node name="RailTrack_33" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2134080758]
+[node name="RailTrack_33" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1954762443]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1092.1, 11.1, 1271.8)
 curve = SubResource("Curve3D_m3abj")
 script = ExtResource("54_51ymi")
@@ -8746,7 +8746,7 @@ num = 33
 infr_name = "Jarmen Hafenbhf Track 1"
 material = SubResource("ShaderMaterial_i2fmn")
 
-[node name="RailTrack_34" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1003946666]
+[node name="RailTrack_34" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1053411132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1454.3, 18.3, 880.6)
 curve = SubResource("Curve3D_v0xro")
 script = ExtResource("54_51ymi")
@@ -8754,7 +8754,7 @@ num = 34
 infr_name = "GJK Dargezin Fork SW-W"
 material = SubResource("ShaderMaterial_b8xen")
 
-[node name="RailTrack_35" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=61462256]
+[node name="RailTrack_35" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=439101328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1454.3, 18.3, 880.6)
 curve = SubResource("Curve3D_1kf8p")
 script = ExtResource("54_51ymi")
@@ -8762,7 +8762,7 @@ num = 35
 infr_name = "GJK Dargezin Fork SW-N"
 material = SubResource("ShaderMaterial_dilid")
 
-[node name="RailTrack_36" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1071914838]
+[node name="RailTrack_36" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=914884980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1488.8, 18.2, 864.3)
 curve = SubResource("Curve3D_ppfyi")
 script = ExtResource("54_51ymi")
@@ -8770,7 +8770,7 @@ num = 36
 infr_name = "GJK Dargezin"
 material = SubResource("ShaderMaterial_kuv6w")
 
-[node name="RailTrack_37" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1801942823]
+[node name="RailTrack_37" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=363305567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1619.3, 16.2, 921.6)
 curve = SubResource("Curve3D_d7chg")
 script = ExtResource("54_51ymi")
@@ -8778,7 +8778,7 @@ num = 37
 infr_name = "GJK Dargezin Outwards"
 material = SubResource("ShaderMaterial_8k3hc")
 
-[node name="RailTrack_38" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=315303068]
+[node name="RailTrack_38" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=806897525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1775.1, 17.4, 952.7)
 curve = SubResource("Curve3D_t6q2q")
 script = ExtResource("54_51ymi")
@@ -8786,7 +8786,7 @@ num = 38
 infr_name = "GJK Ranzin Bridge"
 material = SubResource("ShaderMaterial_6cinh")
 
-[node name="RailTrack_39" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=630325889]
+[node name="RailTrack_39" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1696859438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1902.5, 19.3, 925.9)
 curve = SubResource("Curve3D_2xt23")
 script = ExtResource("54_51ymi")
@@ -8794,7 +8794,7 @@ num = 39
 infr_name = "GJK Züssow Outwards"
 material = SubResource("ShaderMaterial_hitby")
 
-[node name="RailTrack_40" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1029573239]
+[node name="RailTrack_40" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1772235509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1959.7, 17.9, 886.5)
 curve = SubResource("Curve3D_0p828")
 script = ExtResource("54_51ymi")
@@ -8802,7 +8802,7 @@ num = 40
 infr_name = "GJK Züssow Town"
 material = SubResource("ShaderMaterial_ryrn8")
 
-[node name="RailTrack_41" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=152375549]
+[node name="RailTrack_41" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1195678287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2026.9, 21.6, 784.9)
 curve = SubResource("Curve3D_nwh4d")
 script = ExtResource("54_51ymi")
@@ -8810,7 +8810,7 @@ num = 41
 infr_name = "GJK Züsssow Track 1"
 material = SubResource("ShaderMaterial_nisqk")
 
-[node name="RailTrack_42" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1209612647]
+[node name="RailTrack_42" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=491876883]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2026.9, 21.6, 784.9)
 curve = SubResource("Curve3D_2dus3")
 script = ExtResource("54_51ymi")
@@ -8818,7 +8818,7 @@ num = 42
 infr_name = "GJK Züssow Track 2"
 material = SubResource("ShaderMaterial_wm230")
 
-[node name="RailTrack_43" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=432850821]
+[node name="RailTrack_43" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1388605861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1992.3, 22, 732)
 curve = SubResource("Curve3D_kw7va")
 script = ExtResource("54_51ymi")
@@ -8826,7 +8826,7 @@ num = 43
 infr_name = "GJK Züssow Depot"
 material = SubResource("ShaderMaterial_cane3")
 
-[node name="RailTrack_44" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1953331106]
+[node name="RailTrack_44" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1725929216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2418.7, 12.9, 2025.1)
 curve = SubResource("Curve3D_vtarj")
 script = ExtResource("54_51ymi")
@@ -8834,7 +8834,7 @@ num = 44
 infr_name = "MPSB Blesewitz Fork Westward"
 material = SubResource("ShaderMaterial_vhgaf")
 
-[node name="RailTrack_45" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1263907809]
+[node name="RailTrack_45" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=709142580]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2611.1, 11.8, 2038.3)
 curve = SubResource("Curve3D_jgs7s")
 script = ExtResource("54_51ymi")
@@ -8842,7 +8842,7 @@ num = 45
 infr_name = "MPSB Blesewitz-Anklam"
 material = SubResource("ShaderMaterial_8yevo")
 
-[node name="RailTrack_46" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1521242687]
+[node name="RailTrack_46" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=613532216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2755.7, 12, 1995.1)
 curve = SubResource("Curve3D_rcdqj")
 script = ExtResource("54_51ymi")
@@ -8850,7 +8850,7 @@ num = 46
 infr_name = "MPSB Anklam By Airport"
 material = SubResource("ShaderMaterial_5dt0i")
 
-[node name="RailTrack_47" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1415244030]
+[node name="RailTrack_47" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=410477925]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2887.3, 12.2, 1864.7)
 curve = SubResource("Curve3D_j4rl3")
 script = ExtResource("54_51ymi")
@@ -8858,7 +8858,7 @@ num = 47
 infr_name = "MPSB Anklam Suburbs"
 material = SubResource("ShaderMaterial_5q4j8")
 
-[node name="RailTrack_48" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1321786610]
+[node name="RailTrack_48" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1343112911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2963.5, 11.9, 1821.1)
 curve = SubResource("Curve3D_go5en")
 script = ExtResource("54_51ymi")
@@ -8866,7 +8866,7 @@ num = 48
 infr_name = "MPSB Anklam Kleinbhf 1"
 material = SubResource("ShaderMaterial_8qhj4")
 
-[node name="RailTrack_49" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=638500437]
+[node name="RailTrack_49" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=310913498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2963.5, 11.9, 1821.1)
 curve = SubResource("Curve3D_khnvk")
 script = ExtResource("54_51ymi")
@@ -8874,7 +8874,7 @@ num = 49
 infr_name = "MPSB Anklam Kleinbhf 2"
 material = SubResource("ShaderMaterial_h4arv")
 
-[node name="RailTrack_50" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=142455302]
+[node name="RailTrack_50" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1056674370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2864.1, 11.8, 1717.6)
 curve = SubResource("Curve3D_ddecb")
 script = ExtResource("54_51ymi")
@@ -8882,7 +8882,7 @@ num = 50
 infr_name = "MPSB Anklam Harbour"
 material = SubResource("ShaderMaterial_71las")
 
-[node name="RailTrack_51" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=364809318]
+[node name="RailTrack_51" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=903670244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2887.3, 12.2, 1864.7)
 curve = SubResource("Curve3D_buk7n")
 script = ExtResource("54_51ymi")
@@ -8890,7 +8890,7 @@ num = 51
 infr_name = "MPSB Anklam Depot"
 material = SubResource("ShaderMaterial_vowpl")
 
-[node name="RailTrack_52" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=393106247]
+[node name="RailTrack_52" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1479714088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3004.1, 11.6, 1826.2)
 curve = SubResource("Curve3D_5d1is")
 script = ExtResource("54_51ymi")
@@ -8898,7 +8898,7 @@ num = 52
 infr_name = "Anklam HBF DRG Track 2"
 material = SubResource("ShaderMaterial_66wt7")
 
-[node name="RailTrack_53" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1562988631]
+[node name="RailTrack_53" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=23949335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3004.1, 11.6, 1826.2)
 curve = SubResource("Curve3D_viuyn")
 script = ExtResource("54_51ymi")
@@ -8906,7 +8906,7 @@ num = 53
 infr_name = "Anklam HBF DRG Track 3"
 material = SubResource("ShaderMaterial_ow0ne")
 
-[node name="RailTrack_54" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1937818692]
+[node name="RailTrack_54" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=871357484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3004.1, 11.6, 1826.2)
 curve = SubResource("Curve3D_3w6jv")
 script = ExtResource("54_51ymi")
@@ -8914,7 +8914,7 @@ num = 54
 infr_name = "Anklam HBF DRG Track 1"
 material = SubResource("ShaderMaterial_gh67h")
 
-[node name="RailTrack_55" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1073005134]
+[node name="RailTrack_55" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2113038257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3068.1, 11.8, 1880.6)
 curve = SubResource("Curve3D_3ul3m")
 script = ExtResource("54_51ymi")
@@ -8922,7 +8922,7 @@ num = 55
 infr_name = "Anklam HBF DRG Track 2"
 material = SubResource("ShaderMaterial_kncg4")
 
-[node name="RailTrack_56" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=278364554]
+[node name="RailTrack_56" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=583182763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2870.1, 11.4, 1709.9)
 curve = SubResource("Curve3D_p4nd6")
 script = ExtResource("54_51ymi")
@@ -8930,7 +8930,7 @@ num = 56
 infr_name = "MPSB Anklam Depot"
 material = SubResource("ShaderMaterial_u3lfm")
 
-[node name="RailTrack_57" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1446808058]
+[node name="RailTrack_57" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1464683898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1743.2, 14.3, 2451.6)
 curve = SubResource("Curve3D_o20vd")
 script = ExtResource("54_51ymi")
@@ -8938,7 +8938,7 @@ num = 57
 infr_name = "MPSB Wegezin-Dennin Bhf Track 2"
 material = SubResource("ShaderMaterial_dixvn")
 
-[node name="RailTrack_58" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=291510140]
+[node name="RailTrack_58" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=476652325]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1704.5, 14.1, 2377.4)
 curve = SubResource("Curve3D_00a3a")
 script = ExtResource("54_51ymi")
@@ -8946,7 +8946,7 @@ num = 58
 infr_name = "MPSB Wegezin-Dennin Bhf Track 2 N"
 material = SubResource("ShaderMaterial_iwf62")
 
-[node name="RailTrack_59" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1991109866]
+[node name="RailTrack_59" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=643336731]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1743.2, 14.3, 2451.6)
 curve = SubResource("Curve3D_510mg")
 script = ExtResource("54_51ymi")
@@ -8954,7 +8954,7 @@ num = 59
 infr_name = "MPSB Wegezin-Dennin Bhf Track 1"
 material = SubResource("ShaderMaterial_ffk7l")
 
-[node name="RailTrack_60" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1101875965]
+[node name="RailTrack_60" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1155710966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1685.3, 14, 2352.9)
 curve = SubResource("Curve3D_qfmbx")
 script = ExtResource("54_51ymi")
@@ -8962,7 +8962,7 @@ num = 60
 infr_name = "MPSB Wegezin-Dennin Station-Fork A"
 material = SubResource("ShaderMaterial_renrm")
 
-[node name="RailTrack_61" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2004410070]
+[node name="RailTrack_61" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1253130793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.8, 14.1, 2335.2)
 curve = SubResource("Curve3D_fxmr3")
 script = ExtResource("54_51ymi")
@@ -8970,7 +8970,7 @@ num = 61
 infr_name = "MPSB Wegezin-Dennin Fork A-B"
 material = SubResource("ShaderMaterial_cyida")
 
-[node name="RailTrack_62" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2086730899]
+[node name="RailTrack_62" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=960487949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1675.1, 13.6, 2307.1)
 curve = SubResource("Curve3D_qcmki")
 script = ExtResource("54_51ymi")
@@ -8978,7 +8978,7 @@ num = 62
 infr_name = "MPSB Wegezin-Dennin<>Krien"
 material = SubResource("ShaderMaterial_liqft")
 
-[node name="RailTrack_63" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1149754977]
+[node name="RailTrack_63" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=90848779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2539.4, 11.8, 2041.1)
 curve = SubResource("Curve3D_l7a42")
 script = ExtResource("54_51ymi")
@@ -8986,7 +8986,7 @@ num = 63
 infr_name = "MPSB Blesewitz Fork Eastward"
 material = SubResource("ShaderMaterial_ge16p")
 
-[node name="RailTrack_64" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1510325675]
+[node name="RailTrack_64" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=702249522]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1988.9, 12.6, 2217.4)
 curve = SubResource("Curve3D_e5me4")
 script = ExtResource("54_51ymi")
@@ -8994,7 +8994,7 @@ num = 64
 infr_name = "MPSB Thurow Fork-Neuenkirchen"
 material = SubResource("ShaderMaterial_8ot8l")
 
-[node name="RailTrack_65" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1748923747]
+[node name="RailTrack_65" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1290702446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1684.3, 12.6, 2109.9)
 curve = SubResource("Curve3D_ua2qw")
 script = ExtResource("54_51ymi")
@@ -9002,7 +9002,7 @@ num = 65
 infr_name = "MPSB Krien Town"
 material = SubResource("ShaderMaterial_377hk")
 
-[node name="RailTrack_66" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=82142018]
+[node name="RailTrack_66" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1265262013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2119.6, 13.5, 1974.6)
 curve = SubResource("Curve3D_nh2mt")
 script = ExtResource("54_51ymi")
@@ -9010,7 +9010,7 @@ num = 66
 infr_name = "MPSB Medow Branch End"
 material = SubResource("ShaderMaterial_xsu76")
 
-[node name="RailTrack_67" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1989777605]
+[node name="RailTrack_67" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=375337250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.8, 14.1, 2335.2)
 curve = SubResource("Curve3D_7mfnw")
 script = ExtResource("54_51ymi")
@@ -9018,7 +9018,7 @@ num = 67
 infr_name = "MPSB Wegezin-Dennin Storehouse Branch"
 material = SubResource("ShaderMaterial_4tu6r")
 
-[node name="RailTrack_68" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1920678049]
+[node name="RailTrack_68" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1447461581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1675.1, 13.6, 2307.1)
 curve = SubResource("Curve3D_0nkm0")
 script = ExtResource("54_51ymi")
@@ -9026,7 +9026,7 @@ num = 68
 infr_name = "MPSB Wegezin-Dennin Fork B<>Iven Branch"
 material = SubResource("ShaderMaterial_sv00d")
 
-[node name="RailTrack_69" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2036389428]
+[node name="RailTrack_69" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1252058896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1574.7, 13.9, 2295.3)
 curve = SubResource("Curve3D_sogna")
 script = ExtResource("54_51ymi")
@@ -9034,7 +9034,7 @@ num = 69
 infr_name = "MPSB Iven"
 material = SubResource("ShaderMaterial_qchji")
 
-[node name="RailTrack_70" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1820785310]
+[node name="RailTrack_70" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1466425833]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1375.3, 13.9, 2374.7)
 curve = SubResource("Curve3D_t43je")
 script = ExtResource("54_51ymi")
@@ -9042,7 +9042,7 @@ num = 70
 infr_name = "MPSB Janow"
 material = SubResource("ShaderMaterial_sohd1")
 
-[node name="RailTrack_71" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=414047968]
+[node name="RailTrack_71" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1195972644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2151.6, 12.6, 2180.2)
 curve = SubResource("Curve3D_xfham")
 script = ExtResource("54_51ymi")
@@ -9050,7 +9050,7 @@ num = 71
 infr_name = "MPSB Neuenkirchen"
 material = SubResource("ShaderMaterial_17kjt")
 
-[node name="RailTrack_72" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1539288203]
+[node name="RailTrack_72" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1733781320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2323.8, 12.7, 2250)
 curve = SubResource("Curve3D_x50n7")
 script = ExtResource("54_51ymi")
@@ -9058,7 +9058,7 @@ num = 72
 infr_name = "MPSB Müggenburg"
 material = SubResource("ShaderMaterial_x6tbj")
 
-[node name="RailTrack_73" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=416483403]
+[node name="RailTrack_73" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2114277693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2820.4, 11.2, 1690.1)
 curve = SubResource("Curve3D_ttf0f")
 script = ExtResource("54_51ymi")
@@ -9066,7 +9066,7 @@ num = 73
 infr_name = "Anklam Harbour Track 1"
 material = SubResource("ShaderMaterial_s8bxi")
 
-[node name="RailTrack_74" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1888689206]
+[node name="RailTrack_74" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=580462289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2820.4, 11.2, 1690.1)
 curve = SubResource("Curve3D_o75ua")
 script = ExtResource("54_51ymi")
@@ -9074,7 +9074,7 @@ num = 74
 infr_name = "Anklam Harbour Track 2"
 material = SubResource("ShaderMaterial_oxwqd")
 
-[node name="RailTrack_75" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=665148097]
+[node name="RailTrack_75" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1171500428]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2752.4, 11, 1690.7)
 curve = SubResource("Curve3D_6ogy7")
 script = ExtResource("54_51ymi")
@@ -9082,7 +9082,7 @@ num = 75
 infr_name = "Anklam Harbour Bridge ALKB"
 material = SubResource("ShaderMaterial_6eepr")
 
-[node name="RailTrack_76" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1314273647]
+[node name="RailTrack_76" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=795256734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.4, 13.5, 1600.4)
 curve = SubResource("Curve3D_udo4q")
 script = ExtResource("54_51ymi")
@@ -9090,7 +9090,7 @@ num = 76
 infr_name = "Schmarsow Demmin Exit DKBO"
 material = SubResource("ShaderMaterial_x76sj")
 
-[node name="RailTrack_77" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1511345738]
+[node name="RailTrack_77" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=831117627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 346.9, 14.5, 1633.6)
 curve = SubResource("Curve3D_tnl2e")
 script = ExtResource("54_51ymi")
@@ -9098,7 +9098,7 @@ num = 77
 infr_name = "Schmarsow Fork-Eastwards DKBO"
 material = SubResource("ShaderMaterial_pxrue")
 
-[node name="RailTrack_78" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2142839553]
+[node name="RailTrack_78" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=71301910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 346.9, 14.5, 1633.6)
 curve = SubResource("Curve3D_l0cif")
 script = ExtResource("54_51ymi")
@@ -9106,7 +9106,7 @@ num = 78
 infr_name = "Schmarsow Fork-Southwards DKBO"
 material = SubResource("ShaderMaterial_yi2ff")
 
-[node name="RailTrack_79" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=775918316]
+[node name="RailTrack_79" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=865896812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 341.9, 14.1, 1787.1)
 curve = SubResource("Curve3D_263a2")
 script = ExtResource("54_51ymi")
@@ -9114,7 +9114,7 @@ num = 79
 infr_name = "Schmarsow Southern Bend DKBO"
 material = SubResource("ShaderMaterial_kjxrc")
 
-[node name="RailTrack_80" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=795556020]
+[node name="RailTrack_80" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1845523280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 584.7, 15.1, 1883.1)
 curve = SubResource("Curve3D_mljlc")
 script = ExtResource("54_51ymi")
@@ -9122,7 +9122,7 @@ num = 80
 infr_name = "Schmarsow Southern Bend DKBO"
 material = SubResource("ShaderMaterial_2so07")
 
-[node name="RailTrack_81" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=752040286]
+[node name="RailTrack_81" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=930446768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 780.2, 14.5, 1860.8)
 curve = SubResource("Curve3D_oeot3")
 script = ExtResource("54_51ymi")
@@ -9130,7 +9130,7 @@ num = 81
 infr_name = "Daberkow Stretch DKBO"
 material = SubResource("ShaderMaterial_4gf44")
 
-[node name="RailTrack_82" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=423528515]
+[node name="RailTrack_82" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1276794627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 888.2, 14.8, 2017.4)
 curve = SubResource("Curve3D_mwegy")
 script = ExtResource("54_51ymi")
@@ -9138,7 +9138,7 @@ num = 82
 infr_name = "Daberkow-Bartow DKBO"
 material = SubResource("ShaderMaterial_378n3")
 
-[node name="RailTrack_83" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=194823449]
+[node name="RailTrack_83" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1630714145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1024.4, 18.4, 2184.2)
 curve = SubResource("Curve3D_vbmro")
 script = ExtResource("54_51ymi")
@@ -9146,7 +9146,7 @@ num = 83
 infr_name = "Bartow Track 1 DKBO"
 material = SubResource("ShaderMaterial_trp48")
 
-[node name="RailTrack_84" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2002460217]
+[node name="RailTrack_84" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=122800423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1024.4, 18.4, 2184.2)
 curve = SubResource("Curve3D_6bbi7")
 script = ExtResource("54_51ymi")
@@ -9154,7 +9154,7 @@ num = 84
 infr_name = "Bartow Track 2 DKBO"
 material = SubResource("ShaderMaterial_cbhbx")
 
-[node name="RailTrack_85" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1446735893]
+[node name="RailTrack_85" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1860629697]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1003.2, 19.6, 2247.4)
 curve = SubResource("Curve3D_qnjj5")
 script = ExtResource("54_51ymi")
@@ -9162,7 +9162,7 @@ num = 85
 infr_name = "Bartow-Peene Bridge DKBO"
 material = SubResource("ShaderMaterial_10e0c")
 
-[node name="RailTrack_86" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=207953581]
+[node name="RailTrack_86" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1818692050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 971, 13.5, 2388)
 curve = SubResource("Curve3D_ee34l")
 script = ExtResource("54_51ymi")
@@ -9170,7 +9170,7 @@ num = 86
 infr_name = "Peene Bridge DKBO"
 material = SubResource("ShaderMaterial_kpjr8")
 
-[node name="RailTrack_87" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1555664455]
+[node name="RailTrack_87" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=906415459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 963.6, 13, 2407.7)
 curve = SubResource("Curve3D_eu11a")
 script = ExtResource("54_51ymi")
@@ -9178,7 +9178,7 @@ num = 87
 infr_name = "Landgraben Climb DKBO"
 material = SubResource("ShaderMaterial_ybiae")
 
-[node name="RailTrack_88" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=550875237]
+[node name="RailTrack_88" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=65870993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1054.6, 11.8, 2444.7)
 curve = SubResource("Curve3D_65nlv")
 script = ExtResource("54_51ymi")
@@ -9186,7 +9186,7 @@ num = 88
 infr_name = "Kölln Climb DKBO"
 material = SubResource("ShaderMaterial_61w1n")
 
-[node name="RailTrack_89" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=752114151]
+[node name="RailTrack_89" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1738176555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1109.1, 17.2, 2513.9)
 curve = SubResource("Curve3D_xcvaq")
 script = ExtResource("54_51ymi")
@@ -9194,7 +9194,7 @@ num = 89
 infr_name = "Wodarg DKBO"
 material = SubResource("ShaderMaterial_mjtkx")
 
-[node name="RailTrack_90" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1161427978]
+[node name="RailTrack_90" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2142274687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1153.1, 24.3, 2740.8)
 curve = SubResource("Curve3D_4tuih")
 script = ExtResource("54_51ymi")
@@ -9206,7 +9206,7 @@ material = SubResource("ShaderMaterial_d8y8s")
 script = ExtResource("56_51ymi")
 metadata/_custom_type_script = "uid://b157dhgx7ojrw"
 
-[node name="RoadWay_1" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1185330254]
+[node name="RoadWay_1" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2003648715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1705.9, 12.4, 2021.4)
 curve = SubResource("Curve3D_ri5o3")
 script = ExtResource("54_51ymi")
@@ -9216,7 +9216,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_4t08p")
 
-[node name="RoadWay_2" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=276946934]
+[node name="RoadWay_2" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1422042035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1804.9, 12.6, 1962.6)
 curve = SubResource("Curve3D_1x0gc")
 script = ExtResource("54_51ymi")
@@ -9226,7 +9226,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_xueo0")
 
-[node name="RoadWay_3" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1427454185]
+[node name="RoadWay_3" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1794196031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1705.9, 12.4, 2021.4)
 curve = SubResource("Curve3D_gai2d")
 script = ExtResource("54_51ymi")
@@ -9236,7 +9236,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dhysq")
 
-[node name="RoadWay_4" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1909848568]
+[node name="RoadWay_4" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1263704674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1705.9, 12.4, 2021.4)
 curve = SubResource("Curve3D_orgc6")
 script = ExtResource("54_51ymi")
@@ -9246,7 +9246,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_35wo4")
 
-[node name="RoadWay_5" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=132369755]
+[node name="RoadWay_5" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=274726386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1598.8, 11.7, 1967.9)
 curve = SubResource("Curve3D_wjivg")
 script = ExtResource("54_51ymi")
@@ -9256,7 +9256,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_xcnt8")
 
-[node name="RoadWay_6" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=155031349]
+[node name="RoadWay_6" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=940893199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1500, 12.1, 1917.6)
 curve = SubResource("Curve3D_b73m2")
 script = ExtResource("54_51ymi")
@@ -9266,7 +9266,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_brumn")
 
-[node name="RoadWay_7" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1165320212]
+[node name="RoadWay_7" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=134238853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1333.2, 12.5, 1824.2)
 curve = SubResource("Curve3D_qx1gl")
 script = ExtResource("54_51ymi")
@@ -9276,7 +9276,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_hnfrr")
 
-[node name="RoadWay_8" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1720115881]
+[node name="RoadWay_8" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1965777775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1339.2, 11.7, 1703.4)
 curve = SubResource("Curve3D_ug0wq")
 script = ExtResource("54_51ymi")
@@ -9286,7 +9286,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_creun")
 
-[node name="RoadWay_9" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=195880055]
+[node name="RoadWay_9" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=32939293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1379.5, 12.7, 1559.6)
 curve = SubResource("Curve3D_l4x4u")
 script = ExtResource("54_51ymi")
@@ -9296,7 +9296,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_sl65b")
 
-[node name="RoadWay_10" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2119888450]
+[node name="RoadWay_10" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2116741354]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1379.5, 12.7, 1559.6)
 curve = SubResource("Curve3D_rxbgm")
 script = ExtResource("54_51ymi")
@@ -9306,7 +9306,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_i5mxf")
 
-[node name="RoadWay_11" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1463581243]
+[node name="RoadWay_11" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1916096814]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1259.7, 12.7, 1494.6)
 curve = SubResource("Curve3D_2foko")
 script = ExtResource("54_51ymi")
@@ -9316,7 +9316,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ri6lr")
 
-[node name="RoadWay_12" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1738315004]
+[node name="RoadWay_12" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=399000936]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1221.4, 12.4, 1386.5)
 curve = SubResource("Curve3D_5vwtn")
 script = ExtResource("54_51ymi")
@@ -9326,7 +9326,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_bi0ev")
 
-[node name="RoadWay_13" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1723305729]
+[node name="RoadWay_13" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=7444324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1082.5, 12.2, 1321.2)
 curve = SubResource("Curve3D_5l1se")
 script = ExtResource("54_51ymi")
@@ -9336,7 +9336,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_oo1e3")
 
-[node name="RoadWay_14" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1044622942]
+[node name="RoadWay_14" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1354426768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1112.1, 12.5, 1384.6)
 curve = SubResource("Curve3D_usp0g")
 script = ExtResource("54_51ymi")
@@ -9346,7 +9346,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7ytay")
 
-[node name="RoadWay_15" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=900715188]
+[node name="RoadWay_15" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1563089392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2140.8, 13.1, 1621.7)
 curve = SubResource("Curve3D_rbqdx")
 script = ExtResource("54_51ymi")
@@ -9356,7 +9356,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_11cpm")
 
-[node name="RoadWay_16" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1949102392]
+[node name="RoadWay_16" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=870709630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2140.8, 13.1, 1621.7)
 curve = SubResource("Curve3D_b5tvq")
 script = ExtResource("54_51ymi")
@@ -9366,7 +9366,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_al5tb")
 
-[node name="RoadWay_17" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=312651940]
+[node name="RoadWay_17" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1013877030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2115.1, 13, 1934.2)
 curve = SubResource("Curve3D_hi6ow")
 script = ExtResource("54_51ymi")
@@ -9376,7 +9376,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_sca7a")
 
-[node name="RoadWay_18" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=835643101]
+[node name="RoadWay_18" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1221277371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2049.3, 12.8, 1820.2)
 curve = SubResource("Curve3D_bdq2f")
 script = ExtResource("54_51ymi")
@@ -9386,7 +9386,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_l5dec")
 
-[node name="RoadWay_19" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1015430093]
+[node name="RoadWay_19" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=948919280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1976.1, 12.7, 1905.2)
 curve = SubResource("Curve3D_36ku8")
 script = ExtResource("54_51ymi")
@@ -9396,7 +9396,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_cgf36")
 
-[node name="RoadWay_20" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1167834104]
+[node name="RoadWay_20" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1921698383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2115.1, 13, 1934.2)
 curve = SubResource("Curve3D_vm73l")
 script = ExtResource("54_51ymi")
@@ -9406,7 +9406,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vtoq0")
 
-[node name="RoadWay_21" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1733782658]
+[node name="RoadWay_21" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2032778305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2155.6, 13.9, 1962.5)
 curve = SubResource("Curve3D_lqry5")
 script = ExtResource("54_51ymi")
@@ -9416,7 +9416,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_f4e7p")
 
-[node name="RoadWay_22" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=934887309]
+[node name="RoadWay_22" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1042308906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2155.6, 13.9, 1962.5)
 curve = SubResource("Curve3D_d1ast")
 script = ExtResource("54_51ymi")
@@ -9426,7 +9426,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lpu1d")
 
-[node name="RoadWay_23" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=11390267]
+[node name="RoadWay_23" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1910545696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.4, 12.9, 2077.4)
 curve = SubResource("Curve3D_rn4s0")
 script = ExtResource("54_51ymi")
@@ -9436,7 +9436,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_75edn")
 
-[node name="RoadWay_24" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1724548466]
+[node name="RoadWay_24" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1870675387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2030.7, 13.2, 2176.8)
 curve = SubResource("Curve3D_f7ntm")
 script = ExtResource("54_51ymi")
@@ -9446,7 +9446,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_e4x4q")
 
-[node name="RoadWay_25" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1022810358]
+[node name="RoadWay_25" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=713324752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2030.7, 13.2, 2176.8)
 curve = SubResource("Curve3D_f7rb5")
 script = ExtResource("54_51ymi")
@@ -9456,7 +9456,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_bel2k")
 
-[node name="RoadWay_26" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1625165117]
+[node name="RoadWay_26" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1587006338]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1916.1, 13.4, 2277.3)
 curve = SubResource("Curve3D_oebdu")
 script = ExtResource("54_51ymi")
@@ -9466,7 +9466,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_grdcp")
 
-[node name="RoadWay_27" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=65544287]
+[node name="RoadWay_27" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2069554425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1784.8, 13.3, 2291.4)
 curve = SubResource("Curve3D_8hp06")
 script = ExtResource("54_51ymi")
@@ -9476,7 +9476,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_epr02")
 
-[node name="RoadWay_28" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1605766277]
+[node name="RoadWay_28" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1609093470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1784.8, 13.3, 2291.4)
 curve = SubResource("Curve3D_jdk4p")
 script = ExtResource("54_51ymi")
@@ -9486,7 +9486,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_yrgda")
 
-[node name="RoadWay_29" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1964979141]
+[node name="RoadWay_29" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=137726617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1698.5, 14.1, 2353.8)
 curve = SubResource("Curve3D_ulf7u")
 script = ExtResource("54_51ymi")
@@ -9496,7 +9496,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_igvw6")
 
-[node name="RoadWay_30" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1779632771]
+[node name="RoadWay_30" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1379880945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1653.1, 14, 2410.6)
 curve = SubResource("Curve3D_uj0x0")
 script = ExtResource("54_51ymi")
@@ -9506,7 +9506,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tovpt")
 
-[node name="RoadWay_31" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1341561310]
+[node name="RoadWay_31" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1608539013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1653.1, 14, 2410.6)
 curve = SubResource("Curve3D_cg5hi")
 script = ExtResource("54_51ymi")
@@ -9516,7 +9516,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_i02lx")
 
-[node name="RoadWay_32" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1375529144]
+[node name="RoadWay_32" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2117927416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1756.5, 14.5, 2443.5)
 curve = SubResource("Curve3D_l3ge5")
 script = ExtResource("54_51ymi")
@@ -9526,7 +9526,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gjim4")
 
-[node name="RoadWay_33" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1370043735]
+[node name="RoadWay_33" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1632879351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2174.9, 12.3, 3127.7)
 curve = SubResource("Curve3D_ui45p")
 script = ExtResource("54_51ymi")
@@ -9536,7 +9536,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_6yfis")
 
-[node name="RoadWay_34" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1521054995]
+[node name="RoadWay_34" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2017227304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2174.9, 12.3, 3127.7)
 curve = SubResource("Curve3D_bffx6")
 script = ExtResource("54_51ymi")
@@ -9546,7 +9546,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j1iki")
 
-[node name="RoadWay_35" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1670457622]
+[node name="RoadWay_35" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2140373010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2159.5, 12.3, 3195.5)
 curve = SubResource("Curve3D_ua73l")
 script = ExtResource("54_51ymi")
@@ -9556,7 +9556,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_iriny")
 
-[node name="RoadWay_36" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1273030455]
+[node name="RoadWay_36" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=538979677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2149.4, 12.5, 3226.2)
 curve = SubResource("Curve3D_gxebp")
 script = ExtResource("54_51ymi")
@@ -9566,7 +9566,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_if0dl")
 
-[node name="RoadWay_37" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1639831270]
+[node name="RoadWay_37" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=768216569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2149.4, 12.5, 3226.2)
 curve = SubResource("Curve3D_6kvgb")
 script = ExtResource("54_51ymi")
@@ -9576,7 +9576,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gg8ck")
 
-[node name="RoadWay_38" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1860256088]
+[node name="RoadWay_38" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1027336843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2204.2, 14.2, 3170.3)
 curve = SubResource("Curve3D_xogk3")
 script = ExtResource("54_51ymi")
@@ -9586,7 +9586,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_m0cfu")
 
-[node name="RoadWay_39" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2035385183]
+[node name="RoadWay_39" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1960326509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2311, 12, 1911.6)
 curve = SubResource("Curve3D_0rf4n")
 script = ExtResource("54_51ymi")
@@ -9596,7 +9596,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_4pgvg")
 
-[node name="RoadWay_40" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1781815795]
+[node name="RoadWay_40" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1124083679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2136.8, 12.8, 2323.7)
 curve = SubResource("Curve3D_ggy83")
 script = ExtResource("54_51ymi")
@@ -9606,7 +9606,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_fn2sh")
 
-[node name="RoadWay_41" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=796979045]
+[node name="RoadWay_41" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=592361117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2046.3, 13.9, 2389.1)
 curve = SubResource("Curve3D_k06ww")
 script = ExtResource("54_51ymi")
@@ -9616,7 +9616,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_m5nax")
 
-[node name="RoadWay_42" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=613602264]
+[node name="RoadWay_42" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1594466112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2046.3, 13.9, 2389.1)
 curve = SubResource("Curve3D_ei0n4")
 script = ExtResource("54_51ymi")
@@ -9626,7 +9626,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_c1q1l")
 
-[node name="RoadWay_43" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=505314704]
+[node name="RoadWay_43" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=122059218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2017.8, 16.2, 2453.4)
 curve = SubResource("Curve3D_hyoya")
 script = ExtResource("54_51ymi")
@@ -9636,7 +9636,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j13xn")
 
-[node name="RoadWay_44" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1452111869]
+[node name="RoadWay_44" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1333403947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2012.4, 15, 2511.5)
 curve = SubResource("Curve3D_3nil6")
 script = ExtResource("54_51ymi")
@@ -9646,7 +9646,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7ng4f")
 
-[node name="RoadWay_45" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2100858318]
+[node name="RoadWay_45" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=766187001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2012.4, 15, 2511.5)
 curve = SubResource("Curve3D_ycu6n")
 script = ExtResource("54_51ymi")
@@ -9656,7 +9656,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_el53u")
 
-[node name="RoadWay_46" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1614634634]
+[node name="RoadWay_46" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1819140800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1943.4, 14.2, 2499.5)
 curve = SubResource("Curve3D_jskoj")
 script = ExtResource("54_51ymi")
@@ -9666,7 +9666,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ja7jf")
 
-[node name="RoadWay_47" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1693795700]
+[node name="RoadWay_47" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1794727411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1429.9, 11, 1248.3)
 curve = SubResource("Curve3D_4gm73")
 script = ExtResource("54_51ymi")
@@ -9676,7 +9676,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2ypma")
 
-[node name="RoadWay_48" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=722298403]
+[node name="RoadWay_48" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2051097496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1427.2, 14.7, 1196)
 curve = SubResource("Curve3D_oebit")
 script = ExtResource("54_51ymi")
@@ -9686,7 +9686,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lm58a")
 
-[node name="RoadWay_49" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2110442707]
+[node name="RoadWay_49" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=642790585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1423.1, 11.9, 1126.4)
 curve = SubResource("Curve3D_psgtg")
 script = ExtResource("54_51ymi")
@@ -9696,7 +9696,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tm6hv")
 
-[node name="RoadWay_50" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=989756881]
+[node name="RoadWay_50" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=856868625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1355.9, 11.9, 1071.7)
 curve = SubResource("Curve3D_v7asg")
 script = ExtResource("54_51ymi")
@@ -9706,7 +9706,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_okhe4")
 
-[node name="RoadWay_51" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1167185984]
+[node name="RoadWay_51" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=579056345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1355.9, 11.9, 1071.7)
 curve = SubResource("Curve3D_qnyra")
 script = ExtResource("54_51ymi")
@@ -9716,7 +9716,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_36r1s")
 
-[node name="RoadWay_52" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=451956429]
+[node name="RoadWay_52" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1024886110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
 curve = SubResource("Curve3D_3kfy2")
 script = ExtResource("54_51ymi")
@@ -9726,7 +9726,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_67dmt")
 
-[node name="RoadWay_53" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1598283713]
+[node name="RoadWay_53" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1919719596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.9, 13.2, 1789.2)
 curve = SubResource("Curve3D_5ix1h")
 script = ExtResource("54_51ymi")
@@ -9736,7 +9736,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_awtqo")
 
-[node name="RoadWay_54" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1420575429]
+[node name="RoadWay_54" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=996445711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2822.1, 13, 1805.4)
 curve = SubResource("Curve3D_asikc")
 script = ExtResource("54_51ymi")
@@ -9746,7 +9746,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5deqe")
 
-[node name="RoadWay_55" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1581356001]
+[node name="RoadWay_55" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=9821907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2822.1, 13, 1805.4)
 curve = SubResource("Curve3D_8j0kc")
 script = ExtResource("54_51ymi")
@@ -9756,7 +9756,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_yvxtc")
 
-[node name="RoadWay_56" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=30451595]
+[node name="RoadWay_56" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1061476886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2814.9, 12.3, 1824.3)
 curve = SubResource("Curve3D_whnog")
 script = ExtResource("54_51ymi")
@@ -9766,7 +9766,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_itafo")
 
-[node name="RoadWay_57" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=535942072]
+[node name="RoadWay_57" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1485714115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2794.6, 12.5, 1869.3)
 curve = SubResource("Curve3D_p8fuh")
 script = ExtResource("54_51ymi")
@@ -9776,7 +9776,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lktil")
 
-[node name="RoadWay_58" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=811743410]
+[node name="RoadWay_58" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=661913493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.9, 13.2, 1789.2)
 curve = SubResource("Curve3D_rcqwr")
 script = ExtResource("54_51ymi")
@@ -9786,7 +9786,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_060q6")
 
-[node name="RoadWay_59" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1107319897]
+[node name="RoadWay_59" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=738154845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2759.5, 12.4, 1817.3)
 curve = SubResource("Curve3D_a6d6j")
 script = ExtResource("54_51ymi")
@@ -9796,7 +9796,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_21xvd")
 
-[node name="RoadWay_60" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=849140202]
+[node name="RoadWay_60" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1894216719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2759.5, 12.4, 1817.3)
 curve = SubResource("Curve3D_7toid")
 script = ExtResource("54_51ymi")
@@ -9806,7 +9806,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_14s28")
 
-[node name="RoadWay_61" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=88332975]
+[node name="RoadWay_61" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1424726768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2768.9, 13.2, 1789.2)
 curve = SubResource("Curve3D_axg6a")
 script = ExtResource("54_51ymi")
@@ -9816,7 +9816,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_beir5")
 
-[node name="RoadWay_62" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=290756699]
+[node name="RoadWay_62" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=268069855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2774, 11.8, 1752.8)
 curve = SubResource("Curve3D_p3178")
 script = ExtResource("54_51ymi")
@@ -9826,7 +9826,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_31yp6")
 
-[node name="RoadWay_63" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=38675032]
+[node name="RoadWay_63" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2009043921]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2774, 11.8, 1752.8)
 curve = SubResource("Curve3D_ivcuu")
 script = ExtResource("54_51ymi")
@@ -9836,7 +9836,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_s58ar")
 
-[node name="RoadWay_64" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2035042697]
+[node name="RoadWay_64" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1781398759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
 curve = SubResource("Curve3D_3m75b")
 script = ExtResource("54_51ymi")
@@ -9846,7 +9846,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_0827v")
 
-[node name="RoadWay_65" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1803835793]
+[node name="RoadWay_65" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2040992089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2746.3, 12.3, 1854.8)
 curve = SubResource("Curve3D_rictl")
 script = ExtResource("54_51ymi")
@@ -9856,7 +9856,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_sncj6")
 
-[node name="RoadWay_66" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1552271110]
+[node name="RoadWay_66" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1624776153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2746.3, 12.3, 1854.8)
 curve = SubResource("Curve3D_a6kep")
 script = ExtResource("54_51ymi")
@@ -9866,7 +9866,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_pl60l")
 
-[node name="RoadWay_67" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=192734509]
+[node name="RoadWay_67" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1811123204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2830.5, 11.6, 1758.3)
 curve = SubResource("Curve3D_qhuou")
 script = ExtResource("54_51ymi")
@@ -9876,7 +9876,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_oryys")
 
-[node name="RoadWay_68" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1621523772]
+[node name="RoadWay_68" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=805534488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2749.7, 11.1, 1729.8)
 curve = SubResource("Curve3D_ggfpb")
 script = ExtResource("54_51ymi")
@@ -9886,7 +9886,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_okasw")
 
-[node name="RoadWay_69" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=999264924]
+[node name="RoadWay_69" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=148967892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2099.5, 12.3, 3130.8)
 curve = SubResource("Curve3D_q685e")
 script = ExtResource("54_51ymi")
@@ -9896,7 +9896,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gl123")
 
-[node name="RoadWay_70" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=65909690]
+[node name="RoadWay_70" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1627009074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2041.8, 15.1, 3129.4)
 curve = SubResource("Curve3D_kkdnm")
 script = ExtResource("54_51ymi")
@@ -9906,7 +9906,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_o1uq8")
 
-[node name="RoadWay_71" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=200662657]
+[node name="RoadWay_71" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1857500008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1935.9, 21.9, 3090.2)
 curve = SubResource("Curve3D_yjfv1")
 script = ExtResource("54_51ymi")
@@ -9916,7 +9916,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2o8xn")
 
-[node name="RoadWay_72" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1914037905]
+[node name="RoadWay_72" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1812336355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1846.7, 19.3, 2993)
 curve = SubResource("Curve3D_u8eq4")
 script = ExtResource("54_51ymi")
@@ -9926,7 +9926,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_innpj")
 
-[node name="RoadWay_73" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1456889419]
+[node name="RoadWay_73" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1922318300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1874.9, 17.7, 2855.5)
 curve = SubResource("Curve3D_rrcya")
 script = ExtResource("54_51ymi")
@@ -9936,7 +9936,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_1v0se")
 
-[node name="RoadWay_74" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1363873460]
+[node name="RoadWay_74" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=767641821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1874.9, 17.7, 2855.5)
 curve = SubResource("Curve3D_gir4l")
 script = ExtResource("54_51ymi")
@@ -9946,7 +9946,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_qvhnx")
 
-[node name="RoadWay_75" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=593065064]
+[node name="RoadWay_75" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1462515767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1052.3, 11.9, 1274)
 curve = SubResource("Curve3D_spr3h")
 script = ExtResource("54_51ymi")
@@ -9956,7 +9956,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_g060f")
 
-[node name="RoadWay_76" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1463575714]
+[node name="RoadWay_76" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1360622108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.8, 12.5, 1307.3)
 curve = SubResource("Curve3D_bmlam")
 script = ExtResource("54_51ymi")
@@ -9966,7 +9966,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_krsv5")
 
-[node name="RoadWay_77" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1940255590]
+[node name="RoadWay_77" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=637190960]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.8, 12.5, 1307.3)
 curve = SubResource("Curve3D_fitvo")
 script = ExtResource("54_51ymi")
@@ -9976,7 +9976,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_kp84j")
 
-[node name="RoadWay_78" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=675001796]
+[node name="RoadWay_78" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2085784407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1031.8, 12.5, 1307.3)
 curve = SubResource("Curve3D_eo2g6")
 script = ExtResource("54_51ymi")
@@ -9986,7 +9986,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_b5jw3")
 
-[node name="RoadWay_79" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1365639462]
+[node name="RoadWay_79" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1286132581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1052.3, 11.9, 1274)
 curve = SubResource("Curve3D_u0i2i")
 script = ExtResource("54_51ymi")
@@ -9996,7 +9996,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_3i5el")
 
-[node name="RoadWay_80" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=531642913]
+[node name="RoadWay_80" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1786279497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1041.3, 12.3, 1292.9)
 curve = SubResource("Curve3D_foxlv")
 script = ExtResource("54_51ymi")
@@ -10006,7 +10006,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_v5ss8")
 
-[node name="RoadWay_81" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=754616850]
+[node name="RoadWay_81" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1130630370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1049, 12.8, 1336.3)
 curve = SubResource("Curve3D_ywrxn")
 script = ExtResource("54_51ymi")
@@ -10016,7 +10016,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_6jpf8")
 
-[node name="RoadWay_82" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1378715908]
+[node name="RoadWay_82" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=700154430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1017.1, 12.8, 1335.3)
 curve = SubResource("Curve3D_4dag8")
 script = ExtResource("54_51ymi")
@@ -10026,7 +10026,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_axg6d")
 
-[node name="RoadWay_83" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1192658074]
+[node name="RoadWay_83" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=167452181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1017.1, 12.8, 1335.3)
 curve = SubResource("Curve3D_kdv56")
 script = ExtResource("54_51ymi")
@@ -10036,7 +10036,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dra72")
 
-[node name="RoadWay_84" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=41349881]
+[node name="RoadWay_84" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=504220796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 981, 13.5, 1337.4)
 curve = SubResource("Curve3D_luw0t")
 script = ExtResource("54_51ymi")
@@ -10046,7 +10046,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lth1c")
 
-[node name="RoadWay_85" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1841545542]
+[node name="RoadWay_85" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=556201790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 944.8, 14, 1379)
 curve = SubResource("Curve3D_yofwc")
 script = ExtResource("54_51ymi")
@@ -10056,7 +10056,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gepls")
 
-[node name="RoadWay_86" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=603651462]
+[node name="RoadWay_86" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=290063267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1023.6, 12.8, 1397.5)
 curve = SubResource("Curve3D_afqrr")
 script = ExtResource("54_51ymi")
@@ -10066,7 +10066,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_pmqcy")
 
-[node name="RoadWay_87" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1013135809]
+[node name="RoadWay_87" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=661409751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1221.4, 12.4, 1386.5)
 curve = SubResource("Curve3D_dqtwt")
 script = ExtResource("54_51ymi")
@@ -10076,7 +10076,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5nyr5")
 
-[node name="RoadWay_88" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1427157015]
+[node name="RoadWay_88" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=374100767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1254.6, 11.4, 1289.2)
 curve = SubResource("Curve3D_r27m2")
 script = ExtResource("54_51ymi")
@@ -10086,7 +10086,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_py4b2")
 
-[node name="RoadWay_89" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1859626610]
+[node name="RoadWay_89" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1920465526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1208, 13.1, 1175.2)
 curve = SubResource("Curve3D_pmx0x")
 script = ExtResource("54_51ymi")
@@ -10096,7 +10096,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_x1u8i")
 
-[node name="RoadWay_90" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=132798142]
+[node name="RoadWay_90" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=782420245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1943.4, 14.2, 2499.5)
 curve = SubResource("Curve3D_3nqra")
 script = ExtResource("54_51ymi")
@@ -10106,7 +10106,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_o0fkd")
 
-[node name="RoadWay_91" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=609077204]
+[node name="RoadWay_91" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=952569733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1818.7, 15.9, 2640.1)
 curve = SubResource("Curve3D_0ield")
 script = ExtResource("54_51ymi")
@@ -10116,7 +10116,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_fe04b")
 
-[node name="RoadWay_92" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1466369130]
+[node name="RoadWay_92" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=459764894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 977.7, 12.5, 1283.1)
 curve = SubResource("Curve3D_o7uri")
 script = ExtResource("54_51ymi")
@@ -10126,7 +10126,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_56r43")
 
-[node name="RoadWay_93" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=304427797]
+[node name="RoadWay_93" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=910698076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 747.5, 13.5, 1241.1)
 curve = SubResource("Curve3D_jb851")
 script = ExtResource("54_51ymi")
@@ -10136,7 +10136,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vr21o")
 
-[node name="RoadWay_94" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1839315380]
+[node name="RoadWay_94" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=912487819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 659.5, 11.9, 1232.5)
 curve = SubResource("Curve3D_rl6tv")
 script = ExtResource("54_51ymi")
@@ -10146,7 +10146,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_c8wu7")
 
-[node name="RoadWay_95" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2091955888]
+[node name="RoadWay_95" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=908390753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 582, 11.7, 1195.5)
 curve = SubResource("Curve3D_g044f")
 script = ExtResource("54_51ymi")
@@ -10156,7 +10156,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vf76a")
 
-[node name="RoadWay_96" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=682333890]
+[node name="RoadWay_96" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=817874164]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.4, 12.9, 2077.4)
 curve = SubResource("Curve3D_6oosx")
 script = ExtResource("54_51ymi")
@@ -10166,7 +10166,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_baomo")
 
-[node name="RoadWay_97" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1126337156]
+[node name="RoadWay_97" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1013407627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2372.4, 12.1, 2125)
 curve = SubResource("Curve3D_rju4h")
 script = ExtResource("54_51ymi")
@@ -10176,7 +10176,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_17gff")
 
-[node name="RoadWay_98" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=31653960]
+[node name="RoadWay_98" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2067344057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2510.7, 11.7, 2061.9)
 curve = SubResource("Curve3D_0sfyg")
 script = ExtResource("54_51ymi")
@@ -10186,7 +10186,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2jlg4")
 
-[node name="RoadWay_99" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1332688960]
+[node name="RoadWay_99" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=252603827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2174.9, 12.3, 3127.7)
 curve = SubResource("Curve3D_nrw3y")
 script = ExtResource("54_51ymi")
@@ -10196,7 +10196,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_8msi3")
 
-[node name="RoadWay_100" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=620879220]
+[node name="RoadWay_100" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=602609264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2322.5, 11.9, 3100.9)
 curve = SubResource("Curve3D_sft70")
 script = ExtResource("54_51ymi")
@@ -10206,7 +10206,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_8fe4s")
 
-[node name="RoadWay_101" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=262197772]
+[node name="RoadWay_101" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1321780667]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2423.2, 14.8, 2932.4)
 curve = SubResource("Curve3D_co8js")
 script = ExtResource("54_51ymi")
@@ -10216,7 +10216,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2423n")
 
-[node name="RoadWay_102" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=869587675]
+[node name="RoadWay_102" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=470296607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2440.1, 15.4, 2872.6)
 curve = SubResource("Curve3D_cy3p4")
 script = ExtResource("54_51ymi")
@@ -10226,7 +10226,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_co33w")
 
-[node name="RoadWay_103" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1691179181]
+[node name="RoadWay_103" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=996982638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2490.9, 14.1, 2664.2)
 curve = SubResource("Curve3D_0nkh6")
 script = ExtResource("54_51ymi")
@@ -10236,7 +10236,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_acwyi")
 
-[node name="RoadWay_104" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=132574112]
+[node name="RoadWay_104" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=906646540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2572.3, 13, 2592.5)
 curve = SubResource("Curve3D_ccbvh")
 script = ExtResource("54_51ymi")
@@ -10246,7 +10246,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_rkjal")
 
-[node name="RoadWay_105" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1341699038]
+[node name="RoadWay_105" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1412428901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2613.2, 13.4, 2530)
 curve = SubResource("Curve3D_p04n7")
 script = ExtResource("54_51ymi")
@@ -10256,7 +10256,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7m43c")
 
-[node name="RoadWay_106" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1804048315]
+[node name="RoadWay_106" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=437155942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2673.7, 12.4, 2355.3)
 curve = SubResource("Curve3D_7rs18")
 script = ExtResource("54_51ymi")
@@ -10266,7 +10266,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ljdr2")
 
-[node name="RoadWay_107" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=441129823]
+[node name="RoadWay_107" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1860080371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2763.6, 11.6, 2237.6)
 curve = SubResource("Curve3D_s04dp")
 script = ExtResource("54_51ymi")
@@ -10276,7 +10276,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7kvq2")
 
-[node name="RoadWay_108" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1384620672]
+[node name="RoadWay_108" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=519458674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2136.8, 12.8, 2323.7)
 curve = SubResource("Curve3D_hv4dr")
 script = ExtResource("54_51ymi")
@@ -10286,7 +10286,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_m4h1y")
 
-[node name="RoadWay_109" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=795650131]
+[node name="RoadWay_109" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1579473531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2253.8, 13, 2217.8)
 curve = SubResource("Curve3D_drqse")
 script = ExtResource("54_51ymi")
@@ -10296,7 +10296,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_cbb1b")
 
-[node name="RoadWay_110" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1441540150]
+[node name="RoadWay_110" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=729505865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2415.8, 13.6, 2357)
 curve = SubResource("Curve3D_ebpp1")
 script = ExtResource("54_51ymi")
@@ -10306,7 +10306,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_6vr1s")
 
-[node name="RoadWay_111" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1977876389]
+[node name="RoadWay_111" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1593140546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2415.8, 13.6, 2357)
 curve = SubResource("Curve3D_1buyo")
 script = ExtResource("54_51ymi")
@@ -10316,7 +10316,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lgm8d")
 
-[node name="RoadWay_112" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1288717898]
+[node name="RoadWay_112" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1107399288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2253.8, 13, 2217.8)
 curve = SubResource("Curve3D_n5xgp")
 script = ExtResource("54_51ymi")
@@ -10326,7 +10326,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_1i7mu")
 
-[node name="RoadWay_113" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=323186202]
+[node name="RoadWay_113" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1844016652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2510.7, 11.7, 2061.9)
 curve = SubResource("Curve3D_r6imf")
 script = ExtResource("54_51ymi")
@@ -10336,7 +10336,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_wv2r4")
 
-[node name="RoadWay_114" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=380088489]
+[node name="RoadWay_114" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2137161782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1378.7, 14.2, 962.3)
 curve = SubResource("Curve3D_qj18k")
 script = ExtResource("54_51ymi")
@@ -10346,7 +10346,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_i35uk")
 
-[node name="RoadWay_115" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=410696546]
+[node name="RoadWay_115" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=652890009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1490.9, 18.2, 876.9)
 curve = SubResource("Curve3D_4j7rk")
 script = ExtResource("54_51ymi")
@@ -10356,7 +10356,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tcdk3")
 
-[node name="RoadWay_116" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=560894837]
+[node name="RoadWay_116" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1721913068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1524.2, 18.1, 880.2)
 curve = SubResource("Curve3D_6kw3w")
 script = ExtResource("54_51ymi")
@@ -10366,7 +10366,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_h0y0j")
 
-[node name="RoadWay_117" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=589775764]
+[node name="RoadWay_117" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1577272335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1576.3, 17.3, 891.3)
 curve = SubResource("Curve3D_sfrid")
 script = ExtResource("54_51ymi")
@@ -10376,7 +10376,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_y4dp4")
 
-[node name="RoadWay_118" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2003449810]
+[node name="RoadWay_118" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=352121620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1571, 14.7, 2357.2)
 curve = SubResource("Curve3D_2emcv")
 script = ExtResource("54_51ymi")
@@ -10386,7 +10386,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_4akt7")
 
-[node name="RoadWay_119" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=762924830]
+[node name="RoadWay_119" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2144093812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1444.9, 14.5, 2312.3)
 curve = SubResource("Curve3D_coh2w")
 script = ExtResource("54_51ymi")
@@ -10396,7 +10396,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ht8ft")
 
-[node name="RoadWay_120" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=337755251]
+[node name="RoadWay_120" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=640766372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 898.1, 13.5, 1584.8)
 curve = SubResource("Curve3D_c85fl")
 script = ExtResource("54_51ymi")
@@ -10406,7 +10406,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ehfq7")
 
-[node name="RoadWay_121" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=101438773]
+[node name="RoadWay_121" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1448172820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 857.7, 15.7, 1745.6)
 curve = SubResource("Curve3D_ewmy5")
 script = ExtResource("54_51ymi")
@@ -10416,7 +10416,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_q2iow")
 
-[node name="RoadWay_122" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1707899609]
+[node name="RoadWay_122" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=737917807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 857.7, 15.7, 1745.6)
 curve = SubResource("Curve3D_5sk37")
 script = ExtResource("54_51ymi")
@@ -10426,7 +10426,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_d1yyy")
 
-[node name="RoadWay_123" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1474613567]
+[node name="RoadWay_123" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1331329071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 821.3, 14.2, 1800.3)
 curve = SubResource("Curve3D_co6mg")
 script = ExtResource("54_51ymi")
@@ -10436,7 +10436,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_cm4ke")
 
-[node name="RoadWay_124" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1532379438]
+[node name="RoadWay_124" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=277305941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 758.3, 13.7, 1846.1)
 curve = SubResource("Curve3D_xsyos")
 script = ExtResource("54_51ymi")
@@ -10446,7 +10446,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_847ui")
 
-[node name="RoadWay_125" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=397016754]
+[node name="RoadWay_125" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1453279616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 830, 13.6, 2024.4)
 curve = SubResource("Curve3D_ago6u")
 script = ExtResource("54_51ymi")
@@ -10456,7 +10456,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_f6kmc")
 
-[node name="RoadWay_126" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1496259827]
+[node name="RoadWay_126" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1650222134]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1022.3, 15.7, 2065.4)
 curve = SubResource("Curve3D_8rgtb")
 script = ExtResource("54_51ymi")
@@ -10466,7 +10466,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j62t4")
 
-[node name="RoadWay_127" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=200237547]
+[node name="RoadWay_127" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=51377320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1151.6, 18.1, 2162)
 curve = SubResource("Curve3D_nqphp")
 script = ExtResource("54_51ymi")
@@ -10476,7 +10476,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_xms0r")
 
-[node name="RoadWay_128" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=446179527]
+[node name="RoadWay_128" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1324574427]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1240.8, 15.4, 2328)
 curve = SubResource("Curve3D_70gwh")
 script = ExtResource("54_51ymi")
@@ -10486,7 +10486,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_8d81n")
 
-[node name="RoadWay_129" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1343151068]
+[node name="RoadWay_129" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1530965742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1382.4, 14.6, 2300.7)
 curve = SubResource("Curve3D_cv0y4")
 script = ExtResource("54_51ymi")
@@ -10496,7 +10496,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_m61kt")
 
-[node name="RoadWay_130" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1956043501]
+[node name="RoadWay_130" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1253943363]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1444.9, 14.5, 2312.3)
 curve = SubResource("Curve3D_sgae1")
 script = ExtResource("54_51ymi")
@@ -10506,7 +10506,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ok45v")
 
-[node name="RoadWay_131" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1912244639]
+[node name="RoadWay_131" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2118481754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 529.1, 12.4, 1165.8)
 curve = SubResource("Curve3D_lsb5e")
 script = ExtResource("54_51ymi")
@@ -10516,7 +10516,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_urboa")
 
-[node name="RoadWay_132" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2063852490]
+[node name="RoadWay_132" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=510928483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 541.3, 12.6, 1326.3)
 curve = SubResource("Curve3D_s2bam")
 script = ExtResource("54_51ymi")
@@ -10526,7 +10526,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ofx6k")
 
-[node name="RoadWay_133" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1965755031]
+[node name="RoadWay_133" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1956069680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2012.4, 15, 2511.5)
 curve = SubResource("Curve3D_5vob1")
 script = ExtResource("54_51ymi")
@@ -10536,7 +10536,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_avbty")
 
-[node name="RoadWay_134" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=110425918]
+[node name="RoadWay_134" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1442745578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2126.7, 16.8, 2489.5)
 curve = SubResource("Curve3D_lnkuc")
 script = ExtResource("54_51ymi")
@@ -10546,7 +10546,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ysq4x")
 
-[node name="RoadWay_135" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1903235356]
+[node name="RoadWay_135" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=813503624]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2210.6, 19.7, 2545.3)
 curve = SubResource("Curve3D_62h8d")
 script = ExtResource("54_51ymi")
@@ -10556,7 +10556,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_noxey")
 
-[node name="RoadWay_136" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=311370674]
+[node name="RoadWay_136" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1170162827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2322.6, 16.9, 2546.8)
 curve = SubResource("Curve3D_4i2ig")
 script = ExtResource("54_51ymi")
@@ -10566,7 +10566,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_oc1ab")
 
-[node name="RoadWay_137" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=148362916]
+[node name="RoadWay_137" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1758777828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1423.1, 11.9, 1126.4)
 curve = SubResource("Curve3D_kjw7j")
 script = ExtResource("54_51ymi")
@@ -10576,7 +10576,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vlmrk")
 
-[node name="RoadWay_138" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1436730040]
+[node name="RoadWay_138" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1419301057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1607.9, 16.2, 1203.8)
 curve = SubResource("Curve3D_0e7s5")
 script = ExtResource("54_51ymi")
@@ -10586,7 +10586,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_kg75c")
 
-[node name="RoadWay_139" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=714285115]
+[node name="RoadWay_139" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=609859123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1817.7, 13.5, 1342.8)
 curve = SubResource("Curve3D_si7oj")
 script = ExtResource("54_51ymi")
@@ -10596,7 +10596,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_fepvh")
 
-[node name="RoadWay_140" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=239348371]
+[node name="RoadWay_140" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1767167070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2127, 14.9, 1375.1)
 curve = SubResource("Curve3D_jqwls")
 script = ExtResource("54_51ymi")
@@ -10606,7 +10606,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gdita")
 
-[node name="RoadWay_141" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=434123825]
+[node name="RoadWay_141" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2138288048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2161.3, 14, 1373.3)
 curve = SubResource("Curve3D_sqd3r")
 script = ExtResource("54_51ymi")
@@ -10616,7 +10616,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ttlgb")
 
-[node name="RoadWay_142" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=903462066]
+[node name="RoadWay_142" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=293567797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2155.5, 16.8, 1220.8)
 curve = SubResource("Curve3D_2h62c")
 script = ExtResource("54_51ymi")
@@ -10626,7 +10626,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_clgkb")
 
-[node name="RoadWay_143" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1164345472]
+[node name="RoadWay_143" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2074853444]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2155.5, 16.8, 1220.8)
 curve = SubResource("Curve3D_5ht8w")
 script = ExtResource("54_51ymi")
@@ -10636,7 +10636,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_iwynn")
 
-[node name="RoadWay_144" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=688963631]
+[node name="RoadWay_144" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1913942987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2159.7, 17.8, 1159.8)
 curve = SubResource("Curve3D_lf0bp")
 script = ExtResource("54_51ymi")
@@ -10646,7 +10646,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_qo60s")
 
-[node name="RoadWay_145" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=698911351]
+[node name="RoadWay_145" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1360514411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2159.7, 17.8, 1159.8)
 curve = SubResource("Curve3D_utkoa")
 script = ExtResource("54_51ymi")
@@ -10656,7 +10656,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_yx5xe")
 
-[node name="RoadWay_146" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2053305982]
+[node name="RoadWay_146" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=145809051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2150.6, 16.4, 1004.7)
 curve = SubResource("Curve3D_amja6")
 script = ExtResource("54_51ymi")
@@ -10666,7 +10666,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_84ipw")
 
-[node name="RoadWay_147" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=605550653]
+[node name="RoadWay_147" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=875261229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1980.7, 17.1, 950.5)
 curve = SubResource("Curve3D_073fu")
 script = ExtResource("54_51ymi")
@@ -10676,7 +10676,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_8h7ud")
 
-[node name="RoadWay_148" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1736391408]
+[node name="RoadWay_148" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1394439569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1787.6, 17.7, 937.1)
 curve = SubResource("Curve3D_rtj7b")
 script = ExtResource("54_51ymi")
@@ -10686,7 +10686,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_k4hht")
 
-[node name="RoadWay_149" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=530491052]
+[node name="RoadWay_149" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1111393312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1869.3, 19, 883.4)
 curve = SubResource("Curve3D_k1pxj")
 script = ExtResource("54_51ymi")
@@ -10696,7 +10696,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_inerx")
 
-[node name="RoadWay_150" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1389618709]
+[node name="RoadWay_150" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2100866781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2728, 12.5, 1849.6)
 curve = SubResource("Curve3D_sl0cy")
 script = ExtResource("54_51ymi")
@@ -10706,7 +10706,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7t84x")
 
-[node name="RoadWay_151" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1113241564]
+[node name="RoadWay_151" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=841808491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2705.6, 13, 1842.9)
 curve = SubResource("Curve3D_f18cu")
 script = ExtResource("54_51ymi")
@@ -10716,7 +10716,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_l8jic")
 
-[node name="RoadWay_152" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=45750698]
+[node name="RoadWay_152" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1976762236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
 curve = SubResource("Curve3D_wb113")
 script = ExtResource("54_51ymi")
@@ -10726,7 +10726,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tdcbx")
 
-[node name="RoadWay_153" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2057171449]
+[node name="RoadWay_153" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2111233109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2726.1, 13.2, 1780.1)
 curve = SubResource("Curve3D_7k4gy")
 script = ExtResource("54_51ymi")
@@ -10736,7 +10736,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_6wnt7")
 
-[node name="RoadWay_154" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=953128395]
+[node name="RoadWay_154" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=917352830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2663.9, 12.3, 1829.7)
 curve = SubResource("Curve3D_bfwtl")
 script = ExtResource("54_51ymi")
@@ -10746,7 +10746,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_r1qip")
 
-[node name="RoadWay_155" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=76258588]
+[node name="RoadWay_155" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1199640642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2536.1, 12.1, 1876.3)
 curve = SubResource("Curve3D_7p2a6")
 script = ExtResource("54_51ymi")
@@ -10756,7 +10756,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_upqr6")
 
-[node name="RoadWay_156" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=758232687]
+[node name="RoadWay_156" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1461109293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1987.7, 22, 790.1)
 curve = SubResource("Curve3D_42ueg")
 script = ExtResource("54_51ymi")
@@ -10766,7 +10766,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_jqju3")
 
-[node name="RoadWay_157" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1286069765]
+[node name="RoadWay_157" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1701424488]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.2, 22.7, 695.3)
 curve = SubResource("Curve3D_bp3jy")
 script = ExtResource("54_51ymi")
@@ -10776,7 +10776,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ni04t")
 
-[node name="RoadWay_158" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1566356938]
+[node name="RoadWay_158" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1934264526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2048.2, 22.7, 695.3)
 curve = SubResource("Curve3D_6upnw")
 script = ExtResource("54_51ymi")
@@ -10786,7 +10786,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_mc4pu")
 
-[node name="RoadWay_159" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=702853434]
+[node name="RoadWay_159" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1919573104]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1093.6, 12.3, 1361.4)
 curve = SubResource("Curve3D_cb5w1")
 script = ExtResource("54_51ymi")
@@ -10796,7 +10796,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5fpn1")
 
-[node name="RoadWay_160" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=346066111]
+[node name="RoadWay_160" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1661065183]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1049, 12.8, 1336.3)
 curve = SubResource("Curve3D_x8v2g")
 script = ExtResource("54_51ymi")
@@ -10806,7 +10806,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_eutm1")
 
-[node name="RoadWay_161" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1531809718]
+[node name="RoadWay_161" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1987813453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2728, 11, 1633.9)
 curve = SubResource("Curve3D_enli2")
 script = ExtResource("54_51ymi")
@@ -10816,7 +10816,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_r5wms")
 
-[node name="RoadWay_162" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1683351929]
+[node name="RoadWay_162" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=902279881]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2827, 12.9, 1401.9)
 curve = SubResource("Curve3D_i1oay")
 script = ExtResource("54_51ymi")
@@ -10826,7 +10826,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_3ctqx")
 
-[node name="RoadWay_163" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1505263971]
+[node name="RoadWay_163" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1167022589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2827, 12.9, 1401.9)
 curve = SubResource("Curve3D_twjch")
 script = ExtResource("54_51ymi")
@@ -10836,7 +10836,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_055bh")
 
-[node name="RoadWay_164" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1541985919]
+[node name="RoadWay_164" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1383616103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2218.6, 18.1, 1161.3)
 curve = SubResource("Curve3D_vr21m")
 script = ExtResource("54_51ymi")
@@ -10846,7 +10846,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_wgvka")
 
-[node name="RoadWay_165" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1570851065]
+[node name="RoadWay_165" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2096424632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2339.3, 18.2, 1129.9)
 curve = SubResource("Curve3D_g7y76")
 script = ExtResource("54_51ymi")
@@ -10856,7 +10856,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tn3sy")
 
-[node name="RoadWay_166" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1963535740]
+[node name="RoadWay_166" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2106820291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2409.8, 18.6, 1115)
 curve = SubResource("Curve3D_yta35")
 script = ExtResource("54_51ymi")
@@ -10866,7 +10866,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_i07e4")
 
-[node name="RoadWay_167" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1367915366]
+[node name="RoadWay_167" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=177474314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2502.9, 20.5, 1093.8)
 curve = SubResource("Curve3D_jrw43")
 script = ExtResource("54_51ymi")
@@ -10876,7 +10876,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_q62vj")
 
-[node name="RoadWay_168" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=566110258]
+[node name="RoadWay_168" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=346931256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2421.5, 19.2, 899.8)
 curve = SubResource("Curve3D_hfn2e")
 script = ExtResource("54_51ymi")
@@ -10886,7 +10886,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_6qbsn")
 
-[node name="RoadWay_169" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1405839148]
+[node name="RoadWay_169" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1233811221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2446.3, 19.5, 784)
 curve = SubResource("Curve3D_s1lvy")
 script = ExtResource("54_51ymi")
@@ -10896,7 +10896,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_fr2aq")
 
-[node name="RoadWay_170" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1107225322]
+[node name="RoadWay_170" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=490123813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2408.3, 19.5, 779.1)
 curve = SubResource("Curve3D_sl4rf")
 script = ExtResource("54_51ymi")
@@ -10906,7 +10906,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dyhbu")
 
-[node name="RoadWay_171" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1311771248]
+[node name="RoadWay_171" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1786117874]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2814.9, 12.3, 1824.3)
 curve = SubResource("Curve3D_hq6tm")
 script = ExtResource("54_51ymi")
@@ -10916,7 +10916,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_1oiq7")
 
-[node name="RoadWay_172" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=722601683]
+[node name="RoadWay_172" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1738766813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2915, 12.3, 1831.1)
 curve = SubResource("Curve3D_4sfd1")
 script = ExtResource("54_51ymi")
@@ -10926,7 +10926,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j65nw")
 
-[node name="RoadWay_173" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=206439786]
+[node name="RoadWay_173" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1272353701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2915, 12.3, 1831.1)
 curve = SubResource("Curve3D_kfocc")
 script = ExtResource("54_51ymi")
@@ -10936,7 +10936,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_e60qg")
 
-[node name="RoadWay_174" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1497349920]
+[node name="RoadWay_174" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=871102180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2995.3, 12.3, 1878.7)
 curve = SubResource("Curve3D_njlp4")
 script = ExtResource("54_51ymi")
@@ -10946,7 +10946,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j5v02")
 
-[node name="RoadWay_175" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1708519081]
+[node name="RoadWay_175" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1976721849]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2738.3, 13, 1387.7)
 curve = SubResource("Curve3D_5p7vf")
 script = ExtResource("54_51ymi")
@@ -10956,7 +10956,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_yyaqi")
 
-[node name="RoadWay_176" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1366812414]
+[node name="RoadWay_176" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1099050349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2649.7, 15.2, 1323.5)
 curve = SubResource("Curve3D_6d2qe")
 script = ExtResource("54_51ymi")
@@ -10966,7 +10966,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dqyof")
 
-[node name="RoadWay_177" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=195036700]
+[node name="RoadWay_177" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=425661261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 568.31, 12.7, 1471.5)
 curve = SubResource("Curve3D_v2iwk")
 script = ExtResource("54_51ymi")
@@ -10976,7 +10976,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_tdgc2")
 
-[node name="RoadWay_178" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1138922602]
+[node name="RoadWay_178" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1498756283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 502.7, 14.9, 1591.9)
 curve = SubResource("Curve3D_8d152")
 script = ExtResource("54_51ymi")
@@ -10986,7 +10986,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_piuhg")
 
-[node name="RoadWay_179" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=890557147]
+[node name="RoadWay_179" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=165175751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2440.1, 15.4, 2872.6)
 curve = SubResource("Curve3D_50akx")
 script = ExtResource("54_51ymi")
@@ -10996,7 +10996,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2cc6a")
 
-[node name="RoadWay_180" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=219972515]
+[node name="RoadWay_180" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1592565474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2391.5, 18, 2903.9)
 curve = SubResource("Curve3D_1bj52")
 script = ExtResource("54_51ymi")
@@ -11006,7 +11006,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_2thit")
 
-[node name="RoadWay_181" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=92608729]
+[node name="RoadWay_181" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=670719751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2380, 19.3, 774.3)
 curve = SubResource("Curve3D_doi2g")
 script = ExtResource("54_51ymi")
@@ -11016,7 +11016,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_pqt6l")
 
-[node name="RoadWay_182" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1429643430]
+[node name="RoadWay_182" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=204030435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2249.5, 21.8, 712.4)
 curve = SubResource("Curve3D_860l2")
 script = ExtResource("54_51ymi")
@@ -11026,7 +11026,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gexs5")
 
-[node name="RoadWay_183" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=568453484]
+[node name="RoadWay_183" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1743720466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2020.2, 24.9, 667)
 curve = SubResource("Curve3D_li3vh")
 script = ExtResource("54_51ymi")
@@ -11036,7 +11036,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_r5qur")
 
-[node name="RoadWay_184" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2010216602]
+[node name="RoadWay_184" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1939874614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1571, 14.7, 2357.2)
 curve = SubResource("Curve3D_ru83f")
 script = ExtResource("54_51ymi")
@@ -11046,7 +11046,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_rbq7m")
 
-[node name="RoadWay_185" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1934048452]
+[node name="RoadWay_185" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=995326933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1756.5, 14.5, 2443.5)
 curve = SubResource("Curve3D_vdlab")
 script = ExtResource("54_51ymi")
@@ -11056,7 +11056,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5f55g")
 
-[node name="RoadWay_186" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2078122375]
+[node name="RoadWay_186" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1191328238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1678.1, 15.4, 2525.8)
 curve = SubResource("Curve3D_8fa2x")
 script = ExtResource("54_51ymi")
@@ -11066,7 +11066,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_qshm0")
 
-[node name="RoadWay_187" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1409175836]
+[node name="RoadWay_187" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=656624294]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1608.6, 15, 2536.9)
 curve = SubResource("Curve3D_vg1uf")
 script = ExtResource("54_51ymi")
@@ -11076,7 +11076,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_o4qk8")
 
-[node name="RoadWay_188" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1721955325]
+[node name="RoadWay_188" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=340201165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2161.3, 14, 1373.3)
 curve = SubResource("Curve3D_dkyh2")
 script = ExtResource("54_51ymi")
@@ -11086,7 +11086,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_j26e2")
 
-[node name="RoadWay_189" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=129346462]
+[node name="RoadWay_189" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=374002569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2339.2, 14.8, 1394.5)
 curve = SubResource("Curve3D_1tcmg")
 script = ExtResource("54_51ymi")
@@ -11096,7 +11096,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_g40uf")
 
-[node name="RoadWay_190" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1702234486]
+[node name="RoadWay_190" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=232872216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2504.4, 14.7, 1349.8)
 curve = SubResource("Curve3D_m0rrr")
 script = ExtResource("54_51ymi")
@@ -11106,7 +11106,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_abgja")
 
-[node name="RoadWay_191" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1789930172]
+[node name="RoadWay_191" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=442285775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2440.1, 15.4, 2872.6)
 curve = SubResource("Curve3D_2hp5p")
 script = ExtResource("54_51ymi")
@@ -11116,7 +11116,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lq1h3")
 
-[node name="RoadWay_192" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=613988601]
+[node name="RoadWay_192" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1919213334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2537.9, 12.9, 2902.7)
 curve = SubResource("Curve3D_0lst4")
 script = ExtResource("54_51ymi")
@@ -11126,7 +11126,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_x54j5")
 
-[node name="RoadWay_193" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=383030609]
+[node name="RoadWay_193" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1371974979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2757.9, 12.9, 2884.7)
 curve = SubResource("Curve3D_ljo6d")
 script = ExtResource("54_51ymi")
@@ -11136,7 +11136,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dn2gn")
 
-[node name="RoadWay_194" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=369024586]
+[node name="RoadWay_194" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=136216093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2834, 14.1, 2902.1)
 curve = SubResource("Curve3D_mjj03")
 script = ExtResource("54_51ymi")
@@ -11146,7 +11146,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_llslp")
 
-[node name="RoadWay_195" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=122067900]
+[node name="RoadWay_195" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=505160367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2834, 14.1, 2902.1)
 curve = SubResource("Curve3D_r2isa")
 script = ExtResource("54_51ymi")
@@ -11156,7 +11156,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_uft65")
 
-[node name="RoadWay_196" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1838317552]
+[node name="RoadWay_196" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2131887388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2995.3, 12.3, 1878.7)
 curve = SubResource("Curve3D_yvgbc")
 script = ExtResource("54_51ymi")
@@ -11166,7 +11166,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_o5r72")
 
-[node name="RoadWay_197" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=60549309]
+[node name="RoadWay_197" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=962907558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 403.1, 14.9, 1691.7)
 curve = SubResource("Curve3D_j3fdl")
 script = ExtResource("54_51ymi")
@@ -11176,7 +11176,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7r4de")
 
-[node name="RoadWay_198" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1721019952]
+[node name="RoadWay_198" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1622270493]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 390.1, 15.4, 1724.1)
 curve = SubResource("Curve3D_0yvyk")
 script = ExtResource("54_51ymi")
@@ -11186,7 +11186,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_g80yx")
 
-[node name="RoadWay_199" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2066792330]
+[node name="RoadWay_199" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1774370159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 374.8, 14.9, 1763)
 curve = SubResource("Curve3D_aoagp")
 script = ExtResource("54_51ymi")
@@ -11196,7 +11196,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vhhde")
 
-[node name="RoadWay_200" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=206860800]
+[node name="RoadWay_200" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1869708321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 830, 13.6, 2024.4)
 curve = SubResource("Curve3D_h6du8")
 script = ExtResource("54_51ymi")
@@ -11206,7 +11206,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_82yvm")
 
-[node name="RoadWay_201" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=725982528]
+[node name="RoadWay_201" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=966305997]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 914.2, 18.9, 2223.8)
 curve = SubResource("Curve3D_wgm23")
 script = ExtResource("54_51ymi")
@@ -11216,7 +11216,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_d0rmi")
 
-[node name="RoadWay_202" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=979552099]
+[node name="RoadWay_202" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=543593496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 921, 15.6, 2357.5)
 curve = SubResource("Curve3D_p6hrc")
 script = ExtResource("54_51ymi")
@@ -11226,7 +11226,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_potks")
 
-[node name="RoadWay_203" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1512111200]
+[node name="RoadWay_203" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=121759684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 917.3, 13.3, 2380.7)
 curve = SubResource("Curve3D_q6mov")
 script = ExtResource("54_51ymi")
@@ -11236,7 +11236,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vhwp7")
 
-[node name="RoadWay_204" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=681476421]
+[node name="RoadWay_204" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2020821627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 908.5, 11.5, 2412.6)
 curve = SubResource("Curve3D_xh8b2")
 script = ExtResource("54_51ymi")
@@ -11246,7 +11246,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_jtkkq")
 
-[node name="RoadWay_205" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=654980405]
+[node name="RoadWay_205" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=391603114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 795.7, 22.8, 2526.6)
 curve = SubResource("Curve3D_76puj")
 script = ExtResource("54_51ymi")
@@ -11256,7 +11256,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_qtd6n")
 
-[node name="RoadWay_206" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1583269803]
+[node name="RoadWay_206" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1152551506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 795.3, 23.9, 2581.8)
 curve = SubResource("Curve3D_hg533")
 script = ExtResource("54_51ymi")
@@ -11266,7 +11266,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_gplu8")
 
-[node name="RoadWay_207" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1222041796]
+[node name="RoadWay_207" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=63204431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 795.7, 22.8, 2526.6)
 curve = SubResource("Curve3D_6u4wb")
 script = ExtResource("54_51ymi")
@@ -11276,7 +11276,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_y3cuh")
 
-[node name="RoadWay_208" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=214466325]
+[node name="RoadWay_208" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1975045122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 763.2, 22.9, 2532.5)
 curve = SubResource("Curve3D_amnk0")
 script = ExtResource("54_51ymi")
@@ -11286,7 +11286,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_fvskv")
 
-[node name="RoadWay_209" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=700012530]
+[node name="RoadWay_209" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=623188264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 733.2, 23.2, 2535.8)
 curve = SubResource("Curve3D_tlsuy")
 script = ExtResource("54_51ymi")
@@ -11296,7 +11296,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ruroh")
 
-[node name="RoadWay_210" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1652939262]
+[node name="RoadWay_210" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=696675215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 731.3, 25.2, 2582.5)
 curve = SubResource("Curve3D_xqkwf")
 script = ExtResource("54_51ymi")
@@ -11306,7 +11306,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ktl17")
 
-[node name="RoadWay_211" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=729287424]
+[node name="RoadWay_211" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1242344545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 908.5, 11.5, 2412.6)
 curve = SubResource("Curve3D_5caqh")
 script = ExtResource("54_51ymi")
@@ -11316,7 +11316,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_a707m")
 
-[node name="RoadWay_212" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=969285247]
+[node name="RoadWay_212" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=424448802]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1045.7, 17, 2506.6)
 curve = SubResource("Curve3D_2dngs")
 script = ExtResource("54_51ymi")
@@ -11326,7 +11326,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_n3evp")
 
-[node name="RoadWay_213" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=579292784]
+[node name="RoadWay_213" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=42232178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1148.1, 22.8, 2615.5)
 curve = SubResource("Curve3D_0ib3f")
 script = ExtResource("54_51ymi")
@@ -11336,7 +11336,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_4hmiu")
 
-[node name="RoadWay_214" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=208473158]
+[node name="RoadWay_214" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=242814622]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1211, 23.5, 2796.1)
 curve = SubResource("Curve3D_ggqy5")
 script = ExtResource("54_51ymi")
@@ -11346,7 +11346,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_ycite")
 
-[node name="RoadWay_215" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1452319384]
+[node name="RoadWay_215" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1592331015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1211, 23.5, 2796.1)
 curve = SubResource("Curve3D_ka6a4")
 script = ExtResource("54_51ymi")
@@ -11356,7 +11356,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_x1p1k")
 
-[node name="RoadWay_216" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1125918210]
+[node name="RoadWay_216" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=361191791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1321.4, 18.8, 2829.5)
 curve = SubResource("Curve3D_etxpw")
 script = ExtResource("54_51ymi")
@@ -11366,7 +11366,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7k6cq")
 
-[node name="RoadWay_217" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=738258477]
+[node name="RoadWay_217" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=585355534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1321.4, 18.8, 2829.5)
 curve = SubResource("Curve3D_txddo")
 script = ExtResource("54_51ymi")
@@ -11376,7 +11376,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_7q4me")
 
-[node name="RoadWay_218" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1743020223]
+[node name="RoadWay_218" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=777537117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1289.8, 19.2, 2866.2)
 curve = SubResource("Curve3D_4t5ol")
 script = ExtResource("54_51ymi")
@@ -11386,7 +11386,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_1e8uj")
 
-[node name="RoadWay_219" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=859942553]
+[node name="RoadWay_219" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=387426808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1290.8, 19.3, 2889)
 curve = SubResource("Curve3D_ir82d")
 script = ExtResource("54_51ymi")
@@ -11396,7 +11396,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_mgiid")
 
-[node name="RoadWay_220" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=783214877]
+[node name="RoadWay_220" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=971807283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1328.4, 19.4, 2889.8)
 curve = SubResource("Curve3D_kju4c")
 script = ExtResource("54_51ymi")
@@ -11406,7 +11406,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5mtny")
 
-[node name="RoadWay_221" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1629355167]
+[node name="RoadWay_221" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1585950691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1328.4, 19.4, 2889.8)
 curve = SubResource("Curve3D_loitq")
 script = ExtResource("54_51ymi")
@@ -11416,7 +11416,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_x5uy6")
 
-[node name="RoadWay_222" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1326389318]
+[node name="RoadWay_222" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=978393554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1299.6, 19.6, 2925.5)
 curve = SubResource("Curve3D_2ekkx")
 script = ExtResource("54_51ymi")
@@ -11426,7 +11426,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_lkih0")
 
-[node name="RoadWay_223" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=262233212]
+[node name="RoadWay_223" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=195102856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1321.4, 18.8, 2829.5)
 curve = SubResource("Curve3D_hy4b6")
 script = ExtResource("54_51ymi")
@@ -11436,7 +11436,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_bk3b3")
 
-[node name="RoadWay_224" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=370497135]
+[node name="RoadWay_224" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1585819583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1495.6, 12.7, 2897.4)
 curve = SubResource("Curve3D_shwc5")
 script = ExtResource("54_51ymi")
@@ -11446,7 +11446,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_qlw47")
 
-[node name="RoadWay_225" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1572028541]
+[node name="RoadWay_225" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1157523086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1514.7, 12.9, 2892.6)
 curve = SubResource("Curve3D_ecgem")
 script = ExtResource("54_51ymi")
@@ -11456,7 +11456,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dxc5e")
 
-[node name="RoadWay_226" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1758727719]
+[node name="RoadWay_226" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1886290158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1584.4, 16, 2881.3)
 curve = SubResource("Curve3D_scse1")
 script = ExtResource("54_51ymi")
@@ -11466,7 +11466,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_5ssx6")
 
-[node name="RoadWay_227" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1765609629]
+[node name="RoadWay_227" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1624918261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2664.6, 11.8, 2192.3)
 curve = SubResource("Curve3D_h6qpt")
 script = ExtResource("54_51ymi")
@@ -11476,7 +11476,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_al7xa")
 
-[node name="RoadWay_228" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=902412287]
+[node name="RoadWay_228" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1372431527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1642.7, 16.1, 2825.1)
 curve = SubResource("Curve3D_6wmfj")
 script = ExtResource("54_51ymi")
@@ -11486,7 +11486,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_0ybuh")
 
-[node name="RoadWay_229" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=438113360]
+[node name="RoadWay_229" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1965541481]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1740, 14.3, 2812.8)
 curve = SubResource("Curve3D_wkhjb")
 script = ExtResource("54_51ymi")
@@ -11496,7 +11496,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_cnr1j")
 
-[node name="RoadWay_230" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1730278120]
+[node name="RoadWay_230" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2102433778]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1766.7, 14.3, 2812.9)
 curve = SubResource("Curve3D_1venl")
 script = ExtResource("54_51ymi")
@@ -11506,7 +11506,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_dpftc")
 
-[node name="RoadWay_231" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1783275064]
+[node name="RoadWay_231" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1583332393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 914.2, 18.9, 2223.8)
 curve = SubResource("Curve3D_83emt")
 script = ExtResource("54_51ymi")
@@ -11516,7 +11516,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_bcui8")
 
-[node name="RoadWay_232" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2135023161]
+[node name="RoadWay_232" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1099697253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 979.8, 19.9, 2214.2)
 curve = SubResource("Curve3D_qcgh0")
 script = ExtResource("54_51ymi")
@@ -11526,7 +11526,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_1ij0v")
 
-[node name="RoadWay_233" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1309263575]
+[node name="RoadWay_233" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1148007561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 979.8, 19.9, 2214.2)
 curve = SubResource("Curve3D_t6i2f")
 script = ExtResource("54_51ymi")
@@ -11536,7 +11536,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_cphmv")
 
-[node name="RoadWay_234" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1409489285]
+[node name="RoadWay_234" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1303366042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 403.1, 14.9, 1691.7)
 curve = SubResource("Curve3D_qk1qv")
 script = ExtResource("54_51ymi")
@@ -11546,7 +11546,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_vae7k")
 
-[node name="RoadWay_235" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=610996588]
+[node name="RoadWay_235" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=152995829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 452.2, 15.1, 1710.8)
 curve = SubResource("Curve3D_7dhkv")
 script = ExtResource("54_51ymi")
@@ -11556,7 +11556,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_n7xvu")
 
-[node name="RoadWay_236" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=967622152]
+[node name="RoadWay_236" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1539678763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 452.2, 15.1, 1710.8)
 curve = SubResource("Curve3D_c7bfq")
 script = ExtResource("54_51ymi")
@@ -11566,7 +11566,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_bgfxy")
 
-[node name="RoadWay_237" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1155135978]
+[node name="RoadWay_237" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=263192133]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.4, 15.2, 1876.7)
 curve = SubResource("Curve3D_rpcci")
 script = ExtResource("54_51ymi")
@@ -11576,7 +11576,7 @@ infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 material = SubResource("ShaderMaterial_seiru")
 
-[node name="RoadWay_238" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1869367751]
+[node name="RoadWay_238" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1480933167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 556.8, 15.2, 1902.2)
 curve = SubResource("Curve3D_1jxe5")
 script = ExtResource("54_51ymi")
@@ -11636,7 +11636,7 @@ ind_name = "Rebelow Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Brickworks_Ramelow" type="Marker3D" parent="Industries" unique_id=1799753987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1863.5883, 20.009138, 2992.0552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1883.5266, 21.935637, 3078.2786)
 gizmo_extents = 10.0
 script = ExtResource("35_emjn5")
 num = 6
