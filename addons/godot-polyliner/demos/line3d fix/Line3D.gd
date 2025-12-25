@@ -28,7 +28,7 @@ var nxt_p = Vector3()
 var cur_step = 0
 const STEPS = 0
 func _process(delta):
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		cur_step -= 1
 		
 		if get_point_count() > 3:
