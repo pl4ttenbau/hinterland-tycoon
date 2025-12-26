@@ -30,6 +30,7 @@ func adjust_rotation() -> void:
 
 #region Callbacks
 func _on_set_to_changed(new_setting: CurrentForkSetting):
+	if !new_setting || !new_setting.connected: return
 	$ForkLabel.text = str(new_setting.connected)
 	#show arrow
 	var target: Vector3 = self.fork_obj.setting.get_connected_next_node().position

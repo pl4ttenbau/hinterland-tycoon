@@ -15,6 +15,9 @@ func spawn_train(spawn_dto: VehicleSpawnDto):
 	if depot_obj:
 		var start_pos := self.build_start_pos_dto(depot_obj)
 		var train3d := Managers.vehicles.spawn_train(spawn_dto.vehicle_type_key, start_pos)
+		# temporary: spawn with wagon
+		var wagon_veh_data := VehicleData.of("mpsb_wismar_wagon")
+		train3d.spawn_wagon(wagon_veh_data)
 		Loggie.info("Spawned new vehicle in direction: %s" % start_pos.dir)
 		# start
 		train3d.motor.start()

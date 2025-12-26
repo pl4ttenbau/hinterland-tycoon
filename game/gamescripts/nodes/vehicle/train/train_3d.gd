@@ -43,10 +43,8 @@ static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	return inst
 	
 func _create_motor(_dir: Enums.PathDirection):
-	var _motor := VehicleMotor.of(self)
-	_motor.direction = _dir
-	self.motor = _motor
-	self.add_child(_motor)
+	self.motor = VehicleMotor.of(self, _dir)
+	self.add_child(self.motor)
 #endregion
 
 #region Vehicle Spawning
@@ -56,13 +54,18 @@ func spawn_locomotive(veh_data: VehicleData, start_pos: VehicleStartPos):
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), true)
 	# set starting node
 	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
-	
+
+func spawn_wagon(veh_data: VehicleData):
+	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
+
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	# add to lists
 	self.vehicles.append(veh3d)
 	if is_locomotive: self.locomotive = veh3d
-	# create pathfollow node
-	$TrainPath.add_child(VehiclePathFollow.of_train_vehicle(self.count(), veh3d))
+	# create pathfollow node: move so far that it appears before the vehicle beyond
+	var veh_path_follow := VehiclePathFollow.of_train_vehicle(self.count(), veh3d)
+	veh_path_follow.progress += self.length_in_m()
+	$TrainPath.add_child(veh_path_follow)
 #endregion
 
 #region Size Getters

@@ -27,8 +27,9 @@ signal started()
 signal stopped()
 #endregion
 
-static func of(_vehicle: Train3D) -> VehicleMotor:
+static func of(_vehicle: Train3D, _dir: Enums.PathDirection) -> VehicleMotor:
 	var _inst = VehicleMotor.new()
+	_inst.direction = _dir
 	_inst.speed = VehicleSpeed.new()
 	return _inst
 	
