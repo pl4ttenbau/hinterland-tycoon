@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bup28wigxefjq"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_model_3d.gd" id="1_qsyfb"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_qsyfb"]
 [ext_resource type="Texture2D" uid="uid://b7giqu1siufcl" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_d.png" id="2_q545g"]
 [ext_resource type="Texture2D" uid="uid://doytj3qwv2r17" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_n.png" id="3_iu6jf"]
 [ext_resource type="Texture2D" uid="uid://cerg020024pi2" path="res://assets/meshes/vehicles/rail/loco_faur/tex_faur_s.png" id="4_tbmo5"]

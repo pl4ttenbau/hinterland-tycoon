@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://c70jc2ui74i2k"]
 
-[ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/vehicles/common/goods_capacity.gd" id="1_qfsk5"]
+[ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/goods/goods_capacity.gd" id="1_qfsk5"]
 [ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="2_3h4lo"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="3_vyfai"]
 
@@ -18,9 +18,9 @@ metadata/_custom_type_script = "uid://dp38h2f55xv7v"
 script = ExtResource("2_3h4lo")
 key = "mpsb_wismar_wagon"
 display_name = "MPSB Passenger Wagon"
-scene_path = "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/mpsb_wismar_wagon.tscn"
 model_scene_path = "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/model_mpsb_wismar_wagon.tscn"
 max_speed_kmh = 35
 usable_infr = SubResource("Resource_0dtnv")
 capacity = SubResource("Resource_g3fbs")
+length_metres = 11.764
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

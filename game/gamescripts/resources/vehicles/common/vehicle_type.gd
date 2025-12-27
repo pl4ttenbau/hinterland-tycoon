@@ -8,8 +8,6 @@ const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
 
 @export var display_name: String
 
-@export var scene_path: String
-
 @export var model_scene_path: String
 
 @export var max_speed_kmh: int
@@ -19,6 +17,8 @@ const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
 @export var has_motor: bool = false
 
 @export var capacity: GoodsCapacity
+
+@export var length_metres: float
 
 #region Initialization
 static func of_key(_key: String) -> VehicleTypeData:

@@ -2,7 +2,7 @@
 class_name VehiclePlacer extends Node
 
 @export var rail_containers: Array[RailTrack3D]
-@export var rail_vehicles: Array[PathedVehicle3D] = []
+@export var trains: Array[Train3D] = []
 @export var start_vehicles_spawned: bool = false
 
 #region Initialization
@@ -27,15 +27,15 @@ func load_vehicles():
 #endregion
 
 #region Vehicle Spawning
-func spawn_vehicle(veh_type_key: String, start_pos: VehicleStartPos) -> PathedVehicle3D:
-	var veh_3d := PathedVehicle3D.of(veh_type_key, start_pos)
-	self.add_child(veh_3d)
+func spawn_train(veh_type_key: String, start_pos: VehicleStartPos) -> Train3D:
+	var train3d := Train3D.of(veh_type_key, start_pos)
+	self.add_child(train3d)
 	# assign name and num
-	veh_3d.name = "RailVehicle_%d" % veh_3d.vehicle_obj.num
+	train3d.name = "Train_%d" % train3d.num
 	# add to own array and as child
-	GlobalState.vehicles.append(veh_3d)
-	self.rail_vehicles.append(veh_3d)
-	return veh_3d
+	GlobalState.trains.append(train3d)
+	self.trains.append(train3d)
+	return train3d
 #endregion
 
 #region Callbacks

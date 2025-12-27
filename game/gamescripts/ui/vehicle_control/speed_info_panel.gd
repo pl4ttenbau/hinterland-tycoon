@@ -1,6 +1,6 @@
 class_name SpeedInfoPanel extends CenterContainer
 
-@export var curr_vehicle: PathedVehicle3D
+@export var curr_vehicle: Train3D
 
 @export var brake: bool = false
 @export var reverse: bool = false
@@ -8,7 +8,7 @@ class_name SpeedInfoPanel extends CenterContainer
 #region Initialization
 func _ready() -> void:
 	# connect to vehicle
-	SignalBus.vehicle_entered.connect(Callable(self, "_on_vehicle_entered"))
+	SignalBus.train_entered.connect(Callable(self, "_on_train_entered"))
 	SignalBus.vehicle_exited.connect(Callable(self, "_on_vehicle_exited"))
 	# connect Brake & Reverse buttons
 	%BrakeButton.toggled.connect(Callable(self, "_on_brake_click"))
@@ -30,7 +30,7 @@ func _on_reverse_click(_state: bool):
 	self.reverse = !self.reverse
 	self._on_reverse_change(self.reverse)
 	
-func _on_vehicle_entered(veh3d: PathedVehicle3D):
+func _on_train_entered(veh3d: Train3D):
 	self.curr_vehicle = veh3d
 	
 func _on_vehicle_exited():

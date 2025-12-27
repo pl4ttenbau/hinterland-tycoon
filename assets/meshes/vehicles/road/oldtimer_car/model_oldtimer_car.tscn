@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://p21qyxaoccix"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_model_3d.gd" id="1_cljlh"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_cljlh"]
 [ext_resource type="ArrayMesh" uid="uid://bvjwj4nh4koe" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car.obj" id="2_bfghf"]
 [ext_resource type="Texture2D" uid="uid://dtishjy460f5b" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat1_d.png" id="3_42hxn"]
 [ext_resource type="Texture2D" uid="uid://mwrmxbl4qow0" path="res://assets/meshes/vehicles/road/oldtimer_car/tex_oldtimer_mat2_d.png" id="4_kk6ls"]

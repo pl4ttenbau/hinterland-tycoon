@@ -2,7 +2,7 @@ class_name VehiclePath extends Path3D
 
 @export var tracks: Array[RailTrackData] = []
 
-@export var vehicle3d: PathedVehicle3D
+@export var vehicle3d: Train3D
 
 @export var motor: VehicleMotor:
 	get(): return self.vehicle3d.motor

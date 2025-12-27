@@ -22,10 +22,10 @@
 	},
 	{
 		"num": 4,
-		"name": "Ort",
+		"name": "Bahnhof",
 		"townNum": 11,
 		"type": "STATION_PASS",
-		"townName": "Wegezin-Dennin"
+		"townName": "Dennin"
 	},
 	{
 		"num": 5,

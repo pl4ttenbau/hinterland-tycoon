@@ -3,7 +3,7 @@ class_name SpeedometerControl extends Control
 const LINE_ROTATION_ZERO := -35.0
 const LINE_ROTATION_MAX := 35.0
 
-@export_storage var current_vehicle: PathedVehicle3D
+@export_storage var current_vehicle: Train3D
 
 @export_storage var current_speed: float = 0.0:
 	set(value):
@@ -15,7 +15,7 @@ const LINE_ROTATION_MAX := 35.0
 func _enter_tree() -> void:
 	self.visible = false
 	# connect to vehicle signals
-	SignalBus.vehicle_entered.connect(Callable(self, "_vehicle_entered"))
+	SignalBus.train_entered.connect(Callable(self, "_train_entered"))
 	SignalBus.vehicle_exited.connect(Callable(self, "_vehicle_exited"))
 	
 func adjust_speedometer():
@@ -23,7 +23,7 @@ func adjust_speedometer():
 	self.get_speed_line().rotation_degrees = angle
 	
 #region Vehicle Callbacks
-func _vehicle_entered(vehicle: PathedVehicle3D):
+func _train_entered(vehicle: Train3D):
 	# set current vehicle & speed
 	self.current_vehicle = vehicle
 	self.current_speed = self.current_vehicle.motor.current_speed_percentage

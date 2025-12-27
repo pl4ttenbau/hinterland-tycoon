@@ -38,9 +38,6 @@ func get_ind_type(key: String) -> IndustryType:
 #endregion
 
 #region Vehicle Types
-func set_and_sort_veh_types(veh_type_arr: Array[VehicleTypeData]):
-	for veh_type: VehicleTypeData in veh_type_arr:
-		self.vehicle_types_dict.set(veh_type.key, veh_type)
 
 func get_veh_type(veh_type_key: String) -> VehicleTypeData:
 	if self.vehicle_types_dict.has(veh_type_key):
