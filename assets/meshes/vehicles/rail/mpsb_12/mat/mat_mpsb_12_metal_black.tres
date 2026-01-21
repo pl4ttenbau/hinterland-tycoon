@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://g7hg5i85pgf5"]
+
+[ext_resource type="Texture2D" uid="uid://bv4smc4g3itf0" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_black.jpg" id="1_5a0ey"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_5a0ey")
+metallic = 0.8
+metallic_specular = 0.66

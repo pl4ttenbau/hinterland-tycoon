@@ -54,6 +54,7 @@
 [ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="56_51ymi"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="59_51ymi"]
+[ext_resource type="PackedScene" uid="uid://vxdij2cph7i" path="res://assets/meshes/vehicles/rail/mpsb_12/static_mpsb_12.tscn" id="60_noqu6"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="60_vybcg"]
 [ext_resource type="PackedScene" uid="uid://csvwuyf7fewuy" path="res://assets/meshes/deco/bauwagen/bauwagen.tscn" id="62_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="63_ea3s5"]
@@ -12171,3 +12172,6 @@ ind_name = "Bierhaus Bartow"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="DayEnvironment" parent="." unique_id=1951453717 instance=ExtResource("51_rrrix")]
+
+[node name="StaticMpsb12" parent="." unique_id=1463434606 instance=ExtResource("60_noqu6")]
+transform = Transform3D(0.66846895, 0, 0.74374014, 0, 1, 0, -0.74374014, 0, 0.66846895, 2906.928, 11.735432, 1760.5692)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vxdij2cph7i"]
+
+[ext_resource type="PackedScene" uid="uid://bjt46bsgk67rc" path="res://assets/meshes/vehicles/rail/mpsb_12/gltf_mpsb_12.gltf" id="1_7xt7c"]
+
+[node name="StaticMpsb12" type="Node3D" unique_id=1463434606]
+
+[node name="gltf_mpsb_12" parent="." unique_id=609889666 instance=ExtResource("1_7xt7c")]

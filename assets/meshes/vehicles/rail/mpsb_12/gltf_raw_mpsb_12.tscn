@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ccomif15segn5"]
+
+[ext_resource type="PackedScene" uid="uid://bjt46bsgk67rc" path="res://assets/meshes/vehicles/rail/mpsb_12/gltf_mpsb_12.gltf" id="1_6kkak"]
+[ext_resource type="Material" uid="uid://cy5odaleu5brj" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_metal_red.tres" id="2_g7efb"]
+[ext_resource type="Material" uid="uid://cc16e5knw1l0q" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_wheels.tres" id="3_npuf7"]
+[ext_resource type="Material" uid="uid://g7hg5i85pgf5" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_metal_black.tres" id="4_pcvit"]
+
+[node name="gltf_raw_mpsb_12" unique_id=597580916 instance=ExtResource("1_6kkak")]
+
+[node name="BottomPlatform" parent="." index="2" unique_id=877648817]
+surface_material_override/0 = ExtResource("2_g7efb")
+
+[node name="WheelFeathering" parent="." index="3" unique_id=2003677230]
+surface_material_override/0 = ExtResource("3_npuf7")
+
+[node name="SteamChangerFront" parent="." index="4" unique_id=696907782]
+surface_material_override/0 = ExtResource("4_pcvit")
+
+[node name="SteamChamber" parent="." index="5" unique_id=1324301120]
+surface_material_override/0 = ExtResource("4_pcvit")
+
+[node name="CabinDecoration" parent="." index="6" unique_id=1993124097]
+surface_material_override/0 = ExtResource("4_pcvit")
+
+[node name="Cabin" parent="." index="7" unique_id=1178583342]
+surface_material_override/0 = ExtResource("4_pcvit")
+
+[node name="FrontLights" parent="." index="10" unique_id=979318017]
+surface_material_override/0 = ExtResource("4_pcvit")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://o8mlyh8q4d0i"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_sp4jc"]
+[ext_resource type="PackedScene" uid="uid://bjt46bsgk67rc" path="res://assets/meshes/vehicles/rail/mpsb_12/gltf_mpsb_12.gltf" id="2_qwih4"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_igccd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0lan"]
+size = Vector3(2.8498719, 4.3135743, 10.364075)
+
+[node name="ModelMpsb12" type="Node3D" unique_id=1194085553]
+script = ExtResource("1_sp4jc")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="mpsb_12" parent="." unique_id=609889666 instance=ExtResource("2_qwih4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.4671607, 0, 0)
+
+[node name="RailVehicleStaticBody" type="StaticBody3D" parent="." unique_id=206344739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("3_igccd")
+metadata/_custom_type_script = "uid://bjj02tduewuut"
+
+[node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody" unique_id=603033288]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.16427624, 0.65678716, 0.0049838987)
+shape = SubResource("BoxShape3D_c0lan")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1326880125]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.70864, 3.45253, -1.18398e-07)
+metadata/cam_name = &"CAM_VEHICLE"
