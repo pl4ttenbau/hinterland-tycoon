@@ -51,6 +51,7 @@
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="41_p6dso"]
 [ext_resource type="PackedScene" uid="uid://bb5bylj7g1h04" path="res://scenes/subscenes/industry/industry3d_sign_scene.tscn" id="42_oj3vo"]
 [ext_resource type="Script" uid="uid://j838sj2jcrb7" path="res://game/gamescripts/services/spawners/vehicles/vehicle_types_loader.gd" id="44_oo77m"]
+[ext_resource type="Script" uid="uid://cr3yk242noau8" path="res://addons/monitor_overlay/monitor_overlay.gd" id="52_7yd2d"]
 
 [sub_resource type="Resource" id="Resource_yvyyf"]
 resource_local_to_scene = true
@@ -84,7 +85,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5swda"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_o2h5t"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -277,7 +278,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_5swda")
+texture = SubResource("ViewportTexture_o2h5t")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
@@ -288,3 +289,16 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/MeshInstance3D/ResBldCollider" unique_id=670645782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168365, 5.36136, -0.0531616)
 shape = SubResource("BoxShape3D_bb2cl")
+
+[node name="MonitorOverlay" type="VBoxContainer" parent="." unique_id=1124311776]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 40.0
+script = ExtResource("52_7yd2d")
+objects = true
+resources = true
+nodes = true
+objects_drawn = true
+primitives_drawn = true
+total_draw_calls = true
+metadata/_custom_type_script = "uid://cr3yk242noau8"
