@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bjt46bsgk67rc"
-path="res://.godot/imported/gltf_mpsb_12.gltf-3c509d5fc03f39ec88d02c1c871be648.scn"
+uid="uid://ck66aqkw634l7"
+path="res://.godot/imported/mpsb_12.gltf-93167be9762006b3b33837281c5e8eb0.scn"
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/rail/mpsb_12/gltf_mpsb_12.gltf"
-dest_files=["res://.godot/imported/gltf_mpsb_12.gltf-3c509d5fc03f39ec88d02c1c871be648.scn"]
+source_file="res://assets/meshes/vehicles/rail/mpsb_12/orig/mpsb_12.gltf"
+dest_files=["res://.godot/imported/mpsb_12.gltf-93167be9762006b3b33837281c5e8eb0.scn"]
 
 [params]
 
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=0.65
+nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -27,7 +27,7 @@ meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
-skins/use_named_skins=false
+skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
