@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv4smc4g3itf0"
-path.s3tc="res://.godot/imported/mat_metal_black.jpg-097c3ab19c2cf369e513080567aef1a5.s3tc.ctex"
+path.s3tc="res://.godot/imported/mat_metal_black.jpg-46c77649467be3418853e9d492c188ea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_black.jpg"
-dest_files=["res://.godot/imported/mat_metal_black.jpg-097c3ab19c2cf369e513080567aef1a5.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_black.jpg"
+dest_files=["res://.godot/imported/mat_metal_black.jpg-46c77649467be3418853e9d492c188ea.s3tc.ctex"]
 
 [params]
 

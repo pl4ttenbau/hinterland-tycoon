@@ -4,21 +4,23 @@
 [ext_resource type="Material" uid="uid://cy5odaleu5brj" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_metal_red.tres" id="2_h146l"]
 [ext_resource type="Material" uid="uid://cc16e5knw1l0q" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_wheels.tres" id="3_lp2wc"]
 [ext_resource type="Material" uid="uid://g7hg5i85pgf5" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_metal_black.tres" id="4_37vxn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbxfj"]
+[ext_resource type="Material" uid="uid://cxnmalgsben60" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_metal_black_deco.tres" id="4_lbxfj"]
+[ext_resource type="Material" uid="uid://fxus6lpg24" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_mpsb_12_lights.tres" id="6_0vbci"]
 
 [node name="mpsb_12" unique_id=1189418842 instance=ExtResource("1_11kyw")]
 
-[node name="Bottom" parent="." index="0" unique_id=608526965]
+[node name="Bottom" parent="." index="0" unique_id=1985584482]
 surface_material_override/0 = ExtResource("2_h146l")
 surface_material_override/1 = ExtResource("3_lp2wc")
 
-[node name="SteamChamber" parent="." index="1" unique_id=1219227376]
+[node name="SteamChamber" parent="." index="1" unique_id=710551528]
+surface_material_override/0 = ExtResource("4_lbxfj")
+surface_material_override/1 = ExtResource("4_37vxn")
+
+[node name="Cabin" parent="." index="2" unique_id=577742061]
 surface_material_override/0 = ExtResource("4_37vxn")
 
-[node name="Cabin" parent="." index="2" unique_id=489214230]
-surface_material_override/0 = ExtResource("4_37vxn")
-
-[node name="Deco" parent="." index="3" unique_id=2135883442]
-surface_material_override/0 = ExtResource("4_37vxn")
-surface_material_override/1 = SubResource("StandardMaterial3D_lbxfj")
+[node name="Deco" parent="." index="3" unique_id=1547421288]
+surface_material_override/0 = ExtResource("4_lbxfj")
+surface_material_override/1 = ExtResource("4_37vxn")
+surface_material_override/2 = ExtResource("6_0vbci")

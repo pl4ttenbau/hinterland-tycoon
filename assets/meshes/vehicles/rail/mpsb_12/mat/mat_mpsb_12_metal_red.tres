@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cy5odaleu5brj"]
 
-[ext_resource type="Texture2D" uid="uid://diunfhgvscjdw" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_red.jpg" id="1_pitib"]
-[ext_resource type="Texture2D" uid="uid://xtrrkalfi2k6" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_red_n.png" id="2_voqxc"]
+[ext_resource type="Texture2D" uid="uid://diunfhgvscjdw" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_red.jpg" id="1_pitib"]
+[ext_resource type="Texture2D" uid="uid://xtrrkalfi2k6" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_red_n.png" id="2_voqxc"]
 
 [resource]
 cull_mode = 2

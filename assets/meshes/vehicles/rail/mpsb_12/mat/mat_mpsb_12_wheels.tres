@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cc16e5knw1l0q"]
 
-[ext_resource type="Texture2D" uid="uid://diunfhgvscjdw" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_red.jpg" id="1_1peqy"]
-[ext_resource type="Texture2D" uid="uid://xtrrkalfi2k6" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_red_n.png" id="2_k7afj"]
+[ext_resource type="Texture2D" uid="uid://diunfhgvscjdw" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_red.jpg" id="1_1peqy"]
+[ext_resource type="Texture2D" uid="uid://xtrrkalfi2k6" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_red_n.png" id="2_k7afj"]
 
 [resource]
 albedo_color = Color(0.8560673, 0.8560673, 0.85606724, 1)

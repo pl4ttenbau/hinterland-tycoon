@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dugu5h8mv7n6q"
-path.s3tc="res://.godot/imported/mat_metal_black_n.png-0524a0f87fcd48122e00a012070b28b3.s3tc.ctex"
+uid="uid://xtrrkalfi2k6"
+path.s3tc="res://.godot/imported/mat_metal_red_n.png-3f03535c6b1c6871c155bcdb1c43fff1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/rail/mpsb_12/mat/mat_metal_black_n.png"
-dest_files=["res://.godot/imported/mat_metal_black_n.png-0524a0f87fcd48122e00a012070b28b3.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/mpsb_12/mat/tex/mat_metal_red_n.png"
+dest_files=["res://.godot/imported/mat_metal_red_n.png-3f03535c6b1c6871c155bcdb1c43fff1.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/meshes/vehicles/rail/mpsb_12/mat_metal_black_n.png"
+roughness/src_normal="res://assets/meshes/vehicles/rail/mpsb_12/mat_metal_red_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
