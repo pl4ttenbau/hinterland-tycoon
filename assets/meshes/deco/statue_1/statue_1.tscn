@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://du7j51h025uyf"]
+[gd_scene format=3 uid="uid://du7j51h025uyf"]
 
 [ext_resource type="ArrayMesh" uid="uid://u0semgety7ne" path="res://assets/meshes/deco/statue_1/statue_1.obj" id="1_j4gca"]
 
@@ -7,14 +7,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4gca"]
 size = Vector3(1.8442383, 4.876007, 3.4210205)
 
-[node name="Statue1" type="Node3D"]
+[node name="Statue1" type="Node3D" unique_id=1436603720]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1881239072]
+visibility_range_end = 200.0
+visibility_range_end_margin = 25.0
 mesh = ExtResource("1_j4gca")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=608860757]
 physics_material_override = SubResource("PhysicsMaterial_j4gca")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1822573156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42211914, 2.4224396, -0.07659912)
 shape = SubResource("BoxShape3D_j4gca")
