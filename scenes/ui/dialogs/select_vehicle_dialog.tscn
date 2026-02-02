@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3ddoxn5ku6ym"]
+[gd_scene format=3 uid="uid://d3ddoxn5ku6ym"]
 
 [ext_resource type="Script" uid="uid://dyc8ufvx7m744" path="res://game/gamescripts/ui/dialogs/select_vehicle_dialog.gd" id="1_edxwn"]
-[ext_resource type="PackedScene" uid="uid://dp74jgcnqagp8" path="res://scenes/ui/ingame/entity_items/vehicle_selection_btn.tscn" id="1_usukj"]
+[ext_resource type="PackedScene" uid="uid://c260ksylv54r6" path="res://scenes/ui/list/vehicle_list.tscn" id="2_edxwn"]
 
-[node name="SelectVehicleDialog" type="Control"]
+[node name="SelectVehicleDialog" type="Control" unique_id=692806534]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,7 +19,7 @@ size_flags_vertical = 4
 script = ExtResource("1_edxwn")
 metadata/_edit_use_anchors_ = true
 
-[node name="OuterPanel" type="PanelContainer" parent="."]
+[node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,55 +33,42 @@ offset_bottom = 258.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OuterMargin" type="MarginContainer" parent="OuterPanel"]
+[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1264418081]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin"]
+[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=1966774023]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 
-[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout"]
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1318486676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Select Vehicle"
 horizontal_alignment = 1
 
-[node name="VehicleSelectionHLayout" type="HBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout"]
-custom_minimum_size = Vector2(0, 300)
+[node name="VehicleList" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=692177351 instance=ExtResource("2_edxwn")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="VehicleSelectionBtn" parent="OuterPanel/OuterMargin/OuterVLayout/VehicleSelectionHLayout" instance=ExtResource("1_usukj")]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 1
-headline_text = "Wismar Railbus"
-veh_type_key = "wismar_railbus"
-
-[node name="VehicleSelectionBtn2" parent="OuterPanel/OuterMargin/OuterVLayout/VehicleSelectionHLayout" instance=ExtResource("1_usukj")]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-headline_text = "FAUR Diesel"
-veh_type_key = "loco_faur"
-
-[node name="DepotSelectionMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout"]
+[node name="DepotSelectionMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1463347688]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 12
 
-[node name="DepotSelectionHLayout" type="HBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/DepotSelectionMargin"]
+[node name="DepotSelectionHLayout" type="HBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/DepotSelectionMargin" unique_id=553891098]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/DepotSelectionMargin/DepotSelectionHLayout"]
+[node name="Label" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/DepotSelectionMargin/DepotSelectionHLayout" unique_id=511297641]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Depot:  "
 
-[node name="SpawnButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout"]
+[node name="SpawnButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1348525671]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
