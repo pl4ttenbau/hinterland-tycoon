@@ -3,6 +3,7 @@ class_name VehicleListItem extends PanelContainer
 signal clicked()
 
 @export_storage var is_ready: bool = false
+@export var is_highlighted: bool = false
 
 @export var headline_text: String:
 	get(): return headline_text
@@ -19,6 +20,7 @@ signal clicked()
 #region Initialization
 func _ready() -> void:
 	self.clicked.connect(Callable(self, "_on_button_pressed"))
+	SignalBus.dialog_vehicle_selection.connect(Callable(self, "_on_vehicle_selected"))
 	self.is_ready = true
 
 func set_vehicle_image():
@@ -28,10 +30,25 @@ func set_vehicle_image():
 		%PreviewTextureRect.texture = preview_tex
 #endregion
 
+#region Highlighting
+func highlight():
+	self.is_highlighted = true
+	%SelectedHighlighting.visible = true
+	
+func unhighlight():
+	%SelectedHighlighting.visible = false
+#endregion
+
 #region Callbacks & Events
 func _on_button_pressed() -> void:
 	Loggie.info("Vehicle Selected: %s" % self.headline_text)
 	SignalBus.dialog_vehicle_selection.emit(self.veh_type_key)
+	
+func _on_vehicle_selected(_veh_type_key: String):
+	if (_veh_type_key == self.veh_type_key):
+		self.highlight()
+	elif self.is_highlighted:
+		self.unhighlight()
 	
 func _gui_input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and event.pressed) or (event is InputEventScreenTouch and event.is_pressed()):

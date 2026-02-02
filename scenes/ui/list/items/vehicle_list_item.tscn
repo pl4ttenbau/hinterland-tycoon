@@ -3,12 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://bjgav1hxh7ij6" path="res://assets/meshes/vehicles/rail/wismar_railbus/preview.png" id="1_1y4ey"]
 [ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/lists/vehicle_list_item.gd" id="1_7ud4v"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_detail = 1
+
 [node name="VehicleListItem" type="PanelContainer" unique_id=227950610]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 99.0
 grow_horizontal = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ud4v")
 script = ExtResource("1_7ud4v")
 metadata/_custom_type_script = "uid://x2wvtbn1k2jg"
 
@@ -41,3 +50,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Vehicle_type"
 horizontal_alignment = 1
+
+[node name="SelectedHighlighting" type="ColorRect" parent="." unique_id=1975556360]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+color = Color(1, 1, 1, 0.09411765)

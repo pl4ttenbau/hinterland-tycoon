@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b57silj6wixmw" path="res://game/gamescripts/ui/lists/vehicle_list.gd" id="1_21jf3"]
 [ext_resource type="PackedScene" uid="uid://beff5g4mv3wc6" path="res://scenes/ui/list/items/vehicle_list_item.tscn" id="2_ogo2b"]
 
+[sub_resource type="Theme" id="Theme_ogo2b"]
+
 [node name="VehicleList" type="MarginContainer" unique_id=692177351]
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,3 +28,4 @@ size_flags_horizontal = 3
 
 [node name="VehicleListItem" parent="ScrollContainer/ItemsContainer" unique_id=227950610 instance=ExtResource("2_ogo2b")]
 layout_mode = 2
+theme = SubResource("Theme_ogo2b")

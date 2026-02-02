@@ -5,7 +5,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j4gca"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4gca"]
-size = Vector3(1.8442383, 4.876007, 3.4210205)
+size = Vector3(2.3370361, 4.876007, 3.4210205)
 
 [node name="Statue1" type="Node3D" unique_id=1436603720]
 
@@ -18,5 +18,5 @@ mesh = ExtResource("1_j4gca")
 physics_material_override = SubResource("PhysicsMaterial_j4gca")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1822573156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42211914, 2.4224396, -0.07659912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.422, 0)
 shape = SubResource("BoxShape3D_j4gca")
