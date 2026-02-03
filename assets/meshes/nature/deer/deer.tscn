@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cls2o3l33e34l"]
+
+[ext_resource type="ArrayMesh" uid="uid://de1ypwko1kbke" path="res://assets/meshes/nature/deer/deer.obj" id="1_py43r"]
+
+[node name="Deer" type="Node3D" unique_id=415987295]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1506568043]
+layers = 32
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0
+mesh = ExtResource("1_py43r")
