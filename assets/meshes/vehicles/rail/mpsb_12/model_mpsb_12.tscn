@@ -5,24 +5,25 @@
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_igccd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0lan"]
-size = Vector3(1.8076195, 2.8278077, 7.100441)
+size = Vector3(1.8076195, 2.8278077, 6.7947636)
 
 [node name="ModelMpsb12" type="Node3D" unique_id=1194085553]
 script = ExtResource("1_sp4jc")
 metadata/_custom_type_script = "uid://bo44os5px2kcj"
 
 [node name="mpsb_12" parent="." unique_id=1189418842 instance=ExtResource("2_qwih4")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.52181923)
 
 [node name="RailVehicleStaticBody" type="StaticBody3D" parent="." unique_id=206344739]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, -0.52875626)
+rotation_edit_mode = 1
 script = ExtResource("3_igccd")
 metadata/_custom_type_script = "uid://bjj02tduewuut"
 
 [node name="RailVehicleCollision" type="CollisionShape3D" parent="RailVehicleStaticBody" unique_id=603033288]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.39785373, -0.08609617, -0.0053978264)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.552, 0, 0)
 shape = SubResource("BoxShape3D_c0lan")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1326880125]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.70864, 3.45253, -1.18398e-07)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6461384, 1.3841435, 0.7651844)
 metadata/cam_name = &"CAM_VEHICLE"

@@ -16,5 +16,5 @@ model_scene_path = "res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn
 max_speed_kmh = 38
 usable_infr = SubResource("Resource_msx6d")
 has_motor = true
-length_metres = 7.1
+length_metres = 6.8
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

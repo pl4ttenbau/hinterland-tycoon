@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c260ksylv54r6"]
+
+[ext_resource type="Script" uid="uid://b57silj6wixmw" path="res://game/gamescripts/ui/lists/vehicle_list.gd" id="1_21jf3"]
+[ext_resource type="PackedScene" uid="uid://beff5g4mv3wc6" path="res://scenes/ui/list/items/vehicle_list_item.tscn" id="2_ogo2b"]
+
+[sub_resource type="Theme" id="Theme_ogo2b"]
+
+[node name="VehicleList" type="MarginContainer" unique_id=692177351]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_21jf3")
+metadata/_custom_type_script = "uid://b57silj6wixmw"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1986572626]
+layout_mode = 2
+
+[node name="ItemsContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=407291866]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VehicleListItem" parent="ScrollContainer/ItemsContainer" unique_id=227950610 instance=ExtResource("2_ogo2b")]
+layout_mode = 2
+theme = SubResource("Theme_ogo2b")
