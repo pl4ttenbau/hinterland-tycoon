@@ -5,6 +5,8 @@ class_name EditorInfrLine3D extends LinePath3D
 const RAIL_COLOR = Color.BLACK
 const ROAD_COLOR = Color.DARK_ORANGE
 
+const LINE_WIDTH = .5
+
 @export var num: int = -1
 @export var infr_name: String
 @export var infr_domain: Enums.InfrDomain
@@ -24,7 +26,7 @@ static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") 
 	
 func _enter_tree():
 	super()
-	self.material.set("shader_parameter/line_width", .25)
+	self.material.set("shader_parameter/line_width", LINE_WIDTH)
 	self.material.set("shader_parameter/color", self.color)
 #endregion
 
