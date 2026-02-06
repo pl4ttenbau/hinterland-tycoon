@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3vit2corgd4l"
-path.s3tc="res://.godot/imported/tex_bridge_pillar_brick_d.png-8fa31e6ffcf8f69e6dc44be37ec289c3.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_bridge_pillar_brick_d.png-8c449a158532f644bfc180898fdc0e29.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/infr/rail/bridge/bridge_pillar_brick/tex_bridge_pillar_brick_d.png"
-dest_files=["res://.godot/imported/tex_bridge_pillar_brick_d.png-8fa31e6ffcf8f69e6dc44be37ec289c3.s3tc.ctex"]
+source_file="res://assets/meshes/infr/bridge/bridge_pillar_brick/tex_bridge_pillar_brick_d.png"
+dest_files=["res://.godot/imported/tex_bridge_pillar_brick_d.png-8c449a158532f644bfc180898fdc0e29.s3tc.ctex"]
 
 [params]
 

@@ -1,5 +1,5 @@
 @icon("uid://1bbvrckmpv38")
-class_name VehicleMotor extends Node
+class_name TrainMotor extends Node
 
 #region Properties
 @export var MAX_ABS_SPEED: float = .12
@@ -27,8 +27,8 @@ signal started()
 signal stopped()
 #endregion
 
-static func of(_vehicle: Train3D, _dir: Enums.PathDirection) -> VehicleMotor:
-	var _inst = VehicleMotor.new()
+static func of(_dir: Enums.PathDirection) -> TrainMotor:
+	var _inst = TrainMotor.new()
 	_inst.direction = _dir
 	_inst.speed = VehicleSpeed.new()
 	return _inst

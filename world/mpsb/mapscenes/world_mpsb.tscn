@@ -13,12 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="12_cb211"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="12_emjn5"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
-[ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/rail/bridge/truss_bridge/truss_bridge.tscn" id="21_ugno1"]
+[ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge.tscn" id="21_ugno1"]
 [ext_resource type="PackedScene" uid="uid://hpd8av52bwn" path="res://assets/meshes/industry/warehouse_1/warehouse_1_static.tscn" id="24_vqub3"]
-[ext_resource type="PackedScene" uid="uid://dib4on5rgw5g4" path="res://assets/meshes/infr/rail/bridge/bridge_pillar_brick/bridge_pillar_brick.tscn" id="26_d7utl"]
+[ext_resource type="PackedScene" uid="uid://dib4on5rgw5g4" path="res://assets/meshes/infr/bridge/bridge_pillar_brick/bridge_pillar_brick.tscn" id="26_d7utl"]
 [ext_resource type="PackedScene" uid="uid://by8p3lehwrg8a" path="res://assets/meshes/deco/castle_wall/castle_wall.tscn" id="27_ssk1k"]
 [ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="28_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="PackedScene" uid="uid://dbegcmeyngyia" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge_wide.tscn" id="29_vybcg"]
 [ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
@@ -7628,6 +7629,12 @@ transform = Transform3D(0.4830073, 0, -0.8756162, 0, 1, 0, 0.8756162, 0, 0.48300
 [node name="Tractor2" parent="Deco/KrienNeetzow" unique_id=980907513 instance=ExtResource("58_c4uv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1670.5713, 11.818765, 1925.7961)
 
+[node name="TrussBridgeWideNeetzow" parent="Deco/KrienNeetzow" unique_id=1172939094 instance=ExtResource("29_vybcg")]
+transform = Transform3D(0.7925589, 0.028196128, -0.6091432, -0.030555585, 0.9995119, 0.006509578, 0.60902935, 0.013453501, 0.7930336, 1343.3925, 11.454185, 1533.032)
+
+[node name="TrussBridgeWideKrien" parent="Deco/KrienNeetzow" unique_id=199098136 instance=ExtResource("29_vybcg")]
+transform = Transform3D(0.96137714, -6.9849193e-09, 0.2752349, -9.313226e-10, 0.99999994, -2.3283064e-09, -0.27523473, -9.313226e-09, 0.96137667, 1936.9298, 12.231299, 1911.6091)
+
 [node name="Zarrenthin" type="Node" parent="Deco" unique_id=28900390]
 
 [node name="Bauwagen2" parent="Deco/Zarrenthin" unique_id=1606999683 instance=ExtResource("62_0o4a4")]
@@ -7708,6 +7715,9 @@ transform = Transform3D(0.717786, 0, -0.696264, 0, 1, 0, 0.696264, 0, 0.717786, 
 [node name="VillageWell4" parent="Deco/JarmenHarbour" unique_id=1868870657 instance=ExtResource("40_rrrix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000.11633, 12.370306, 1313.6844)
 
+[node name="TrussBridgeWide" parent="Deco/JarmenHarbour" unique_id=363279706 instance=ExtResource("29_vybcg")]
+transform = Transform3D(0.15206955, 0, 1.0899702, 0, 1, 0, -1.5729716, 0, 0.10537463, 1257.578, 10.607261, 1314.9504)
+
 [node name="Guetzkow" type="Node" parent="Deco" unique_id=1495190703]
 
 [node name="TrussBridgeGuetzkow" parent="Deco/Guetzkow" unique_id=409423276 instance=ExtResource("21_ugno1")]
@@ -7785,14 +7795,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2807.4053, 10.464547, 1700.97
 [node name="BridgePillarBrick" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=560100035 instance=ExtResource("26_d7utl")]
 transform = Transform3D(0.9964151, 0, -0.08459958, 0, 1, 0, 0.08459958, 0, 0.9964151, 2725.7878, 4.9870167, 1671.4592)
 
-[node name="TrussBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=540969644 instance=ExtResource("21_ugno1")]
-transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2725.4824, 10.642697, 1677.3237)
-
-[node name="TrussBridge2" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=1331993209 instance=ExtResource("21_ugno1")]
-transform = Transform3D(0.047856152, 0, 0.9988542, 0, 1, 0, -0.9988542, 0, 0.047856152, 2726.0447, 10.642697, 1665.077)
-
 [node name="ALKBBridge" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=2117637635 instance=ExtResource("21_ugno1")]
 transform = Transform3D(-0.10860666, 0, -0.9940848, 0, 1, 0, 0.9940848, 0, -0.10860666, 2734.6143, 10.647117, 1673.0508)
+
+[node name="TrussBridgeWide" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=497896177 instance=ExtResource("29_vybcg")]
+transform = Transform3D(0.091849186, 0, 0.99577296, 0, 1, 0, -0.99577296, 0, 0.091849186, 2725.2837, 10.75105, 1677.2554)
+
+[node name="TrussBridgeWide2" parent="Deco/AnklamCity/Harbour/AnklamHarbourBridges" unique_id=520941075 instance=ExtResource("29_vybcg")]
+transform = Transform3D(0.091849186, 0, 0.99577296, 0, 1, 0, -0.99577296, 0, 0.091849186, 2726.3933, 10.741798, 1665.1504)
 
 [node name="SugarFactory" type="Node" parent="Deco/AnklamCity" unique_id=371786817]
 

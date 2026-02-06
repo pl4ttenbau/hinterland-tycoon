@@ -9,6 +9,7 @@ const STRUCTURES_FOLDER = "res://assets/meshes/structures/"
 
 func _init(_key: String, _name: String, _popsInt: int, _block_auto_creation = false):
 	super(_key, _name)
+	@warning_ignore("integer_division")
 	self.pops = [_popsInt, roundi(_popsInt / 3)]
 	self.scene_path = self.get_scene_path()
 	if _block_auto_creation:

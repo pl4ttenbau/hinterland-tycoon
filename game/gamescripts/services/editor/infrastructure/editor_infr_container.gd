@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/icons/icon_data.png")
 class_name GeneratedInfrContainer extends Node3D
 
 @export_group("Infr. Actions")
@@ -31,8 +32,12 @@ func do_empty_infr() -> void:
 		if child is Path3D: child.queue_free()
 		
 func do_generate_rail_tracks():
-	WorldTracksGenerator.new().spawn_track_paths()
+	var generator := WorldTracksGenerator.new()
+	generator.spawn_track_paths()
+	generator.queue_free()
 	
 func do_generate_road_ways():
-	WorldRoadsGenerator.new().spawn_road_paths()
+	var generator := WorldRoadsGenerator.new()
+	generator.spawn_road_paths()
+	generator.queue_free()
 #endregion
