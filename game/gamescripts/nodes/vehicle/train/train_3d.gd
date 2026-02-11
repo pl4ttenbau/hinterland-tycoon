@@ -64,8 +64,9 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	if is_locomotive: self.locomotive = veh3d
 	# create pathfollow node: move so far that it appears before the vehicle beyond
 	var veh_path_follow := VehiclePathFollow.of_train_vehicle(self.count(), veh3d)
+	# move train forwards by 1x its length before the new vehicle
 	# TODO: works now?
-	veh_path_follow.progress += veh3d.vehicle_obj.veh_type.length_metres
+	veh_path_follow.progress += self.length_in_m()
 	$TrainPath.add_child(veh_path_follow)
 #endregion
 
