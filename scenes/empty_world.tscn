@@ -266,6 +266,7 @@ material_override = SubResource("StandardMaterial3D_4emru")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
 
 [node name="Pilzleuchte" parent="Features" unique_id=508584394 instance=ExtResource("38_0315r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.845093, 9.050041, 30.95818)
 
 [node name="TestTerrain" type="Node3D" parent="Features" unique_id=816951878]
 

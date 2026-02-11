@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwjt3qhpf8i36"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjo5scjh8oqrh" path="res://assets/meshes/deco/bunker/bunker.obj" id="1_fs1t0"]
+
+[node name="Bunker" type="Node3D" unique_id=1579729109]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=737747830]
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0
+mesh = ExtResource("1_fs1t0")
