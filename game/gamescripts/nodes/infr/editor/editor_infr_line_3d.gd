@@ -13,6 +13,8 @@ const LINE_WIDTH = .5
 
 @export var color: Color:
 	get(): return self._get_color()
+	
+@export var abs_aabb: AABB
 
 #region Initialization
 static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") -> EditorInfrLine3D:
@@ -33,10 +35,14 @@ func _enter_tree():
 #region Curve
 func create_curve_from_dict(infr_dict: Dictionary, smooth: bool = false):
 	self.curve = Curve3D.new()
+	var abs_points: Array[Vector3] = []
 	for point in infr_dict.points:
-		var abs_pos = WorldUtils.vec3_from_float_arr(point.pos)
+		abs_points.append(WorldUtils.vec3_from_float_arr(point.pos))
+	for abs_pos in abs_points:
 		var rel_pos: Vector3 = abs_pos - self.position
 		self.curve.add_point(rel_pos)
+	# generate aabb
+	self.abs_aabb = InfrUtils.get_aabb(abs_points)
 	if smooth:
 		InfrUtils.smooth_curve3d(self.curve)
 #endregion
