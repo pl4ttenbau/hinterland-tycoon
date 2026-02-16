@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="3_oj3vo"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
+[ext_resource type="Script" uid="uid://c7rapfs44v5lx" path="res://game/gamescripts/actions/show_near_action.gd" id="6_0dtnv"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="6_nc0f4"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="7_rnkef"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail_loader.gd" id="8_pcopj"]
@@ -66,7 +67,7 @@ mesh = ExtResource("25_x7ydu")
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.63323, 0.619491, 0.867334, 1, 0, 0, 0, 0, 0, -4.79795, -0.160339, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.234018, 0.61949205, 0.8673334, 1, 0, 0, 0, 0, 0, -4.7979507, 0.23966122, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -86,7 +87,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_o2h5t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0dtnv"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -110,6 +111,10 @@ script = ExtResource("4_oo77m")
 [node name="SpawnAction" type="Node" parent="Input/ActionHandler" unique_id=256787768]
 script = ExtResource("5_drms0")
 metadata/_custom_type_script = "uid://dei7w8gduhci"
+
+[node name="ShowNearInfrAction" type="Node" parent="Input/ActionHandler" unique_id=1407016425]
+script = ExtResource("6_0dtnv")
+metadata/_custom_type_script = "uid://c7rapfs44v5lx"
 
 [node name="World" type="Node" parent="." unique_id=1193711136]
 
@@ -280,7 +285,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_o2h5t")
+texture = SubResource("ViewportTexture_0dtnv")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
@@ -289,7 +294,7 @@ script = ExtResource("41_p6dso")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/MeshInstance3D/ResBldCollider" unique_id=670645782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168365, 5.36136, -0.0531616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16836548, -16.533134, -0.05316162)
 shape = SubResource("BoxShape3D_bb2cl")
 
 [node name="MonitorOverlay" type="VBoxContainer" parent="." unique_id=1124311776]

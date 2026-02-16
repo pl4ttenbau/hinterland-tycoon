@@ -8,6 +8,8 @@ class_name RailTrackData extends AbstractTrack
 @export var node_stations: Array[RailNodeStationData] = []
 @export var forks: Array[RailNodeForkData] = []
 
+const NEAR_DISTANCE_MAX: float = 100.0
+
 func _init():
 	super(Enums.EntityTypes.RAIL)
 	
@@ -32,7 +34,18 @@ func build_curve() -> void:
 	self.curve.up_vector_enabled = true
 	for point: Vector3 in self.vertices:
 		self.curve.add_point(point)
+	# generate AABB & smooth
+	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
 	InfrUtils.smooth_curve3d(self.curve)
+	
+func is_near(pos: Vector3) -> bool:
+	if self.get_start_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
+		return true
+	elif self.get_center_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
+		return true
+	elif self.get_end_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
+		return true
+	return false
 
 #region Get Nodes
 func get_rail_node(_i: int) -> RailNodeData:
@@ -43,12 +56,28 @@ func get_rail_node(_i: int) -> RailNodeData:
 func get_end_node() -> RailNodeData:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i]
+	
+func get_start_pos() -> Vector3:
+	return self.vertices[0]
 
 func get_end_pos() -> Vector3:
 	var last_i: int = self.nodes.size() -1
 	return self.nodes[last_i].position
 	
+func get_center_pos() -> Vector3:
+	@warning_ignore("integer_division")
+	var middle_index: int = roundi(self.vertices.size() /2)
+	return self.vertices[middle_index]
+	
 func has_node_index(_index: int) -> bool:
 	var last_i: int = self.nodes.size() -1
 	return _index >= 0 && _index <= last_i
+	
+func get_node_forks() -> Array[RailNodeForkData]:
+	var node_forks: Array[RailNodeForkData] = []
+	if self.nodes[0].fork:
+		node_forks.append(self.nodes[0].fork)
+	if self.get_end_node().fork:
+		node_forks.append(self.get_end_node().fork)
+	return node_forks
 #endregion

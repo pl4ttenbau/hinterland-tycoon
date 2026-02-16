@@ -4,6 +4,8 @@ class_name AbstractTrack extends GameObject
 
 @export_storage var track_name: String
 
+@export var abs_aabb: AABB
+
 ## global pos of the first node
 @export var start_pos: Vector3
 

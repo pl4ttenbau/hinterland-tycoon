@@ -25,6 +25,9 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 		existing.setting.all_set_to.append(node_fork.set_to)
 		existing.add_node(node_fork.railNode)
 		
+func get_fork_at_pos(fork_pos: Vector3) -> NewRailForkData:
+	return self.forks_by_pos.get(fork_pos)
+		
 func spawn_rail_forks():
 	for fork: NewRailForkData in self.forks_by_pos.values():
 		var container = fork.spawn()

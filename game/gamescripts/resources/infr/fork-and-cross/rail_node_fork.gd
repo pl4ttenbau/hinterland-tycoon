@@ -19,6 +19,9 @@ static var _last_fork_num = -1
 # later-set properties
 @export var railNode: RailNodeData
 
+@export var position: Vector3:
+	get(): return railNode.position
+
 @export_storage var container: RailFork3D
 
 @export_storage var track: RailTrackData:
