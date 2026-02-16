@@ -7,16 +7,10 @@
 transparency = 1
 albedo_color = Color(0, 0.7294118, 0.25882354, 0.5058824)
 
-[node name="SelectedNode" type="Node3D" unique_id=714620249]
+[node name="SelectedNodeMarker3D" type="Node3D" unique_id=714620249]
 script = ExtResource("1_4a8i5")
 metadata/_custom_type_script = "uid://de0y62sdjwk5n"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1589722443]
 mesh = ExtResource("1_ndome")
 surface_material_override/0 = SubResource("StandardMaterial3D_drxcc")
-
-[node name="DestroyAgainTimer" type="Timer" parent="." unique_id=368101544]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-autostart = true

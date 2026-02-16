@@ -12,3 +12,5 @@ extends Node
 @export var movement_blocked: bool = false
 
 @export var current_diag: GameDialog
+
+@export var building_mode_on: bool = false

@@ -36,5 +36,10 @@ func count_tracks() -> int:
 	return Managers.rails.track_storage.get_all().size()
 	
 func spawn_fork_marker(_fork: NewRailForkData):
+	self.enable_building_mode()
 	var marker: SelectedNodeMarker3D = load(MARKER_SCENE).instantiate()
 	_fork.container.add_child(marker)
+
+func enable_building_mode():
+	UiState.building_mode_on = true
+	SignalBus.building_mode_switched.emit(true)

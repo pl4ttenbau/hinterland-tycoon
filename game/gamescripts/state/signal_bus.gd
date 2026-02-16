@@ -14,6 +14,9 @@ signal map_selected(map_obj: MapData)
 signal dialog_vehicle_selection(veh_type_key: String)
 #endregion
 
+@warning_ignore("unused_signal")
+signal building_mode_switched(enabled: bool)
+
 #region World
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: WorldMapScene)

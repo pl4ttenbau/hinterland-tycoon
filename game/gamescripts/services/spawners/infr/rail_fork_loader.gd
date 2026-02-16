@@ -2,6 +2,7 @@
 class_name RailForkLoader extends Node
 
 @export var forks_by_pos: Dictionary = {}
+@export var fork_store: RailForkStore = RailForkStore.new()
 
 signal forks_spawned()
 
@@ -24,6 +25,12 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 		var existing: NewRailForkData = self.forks_by_pos.get(fork_pos)
 		existing.setting.all_set_to.append(node_fork.set_to)
 		existing.add_node(node_fork.railNode)
+
+# TODO: use
+func _get_or_create_fork(_fork_pos: Vector3) -> NewRailForkData:
+	var fork_at_pos: NewRailForkData = forks_by_pos.get(_fork_pos, null)
+	if fork_at_pos: return fork_at_pos
+	else: return NewRailForkData.new(_fork_pos)
 		
 func get_fork_at_pos(fork_pos: Vector3) -> NewRailForkData:
 	return self.forks_by_pos.get(fork_pos)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4vshk56t46ml"]
+[gd_scene format=3 uid="uid://4vshk56t46ml"]
 
 [ext_resource type="Script" uid="uid://d1qo6hqa3cq3r" path="res://game/gamescripts/ui/game_window.gd" id="1_ki5ow"]
 [ext_resource type="Script" uid="uid://dif2wxw03ty67" path="res://game/gamescripts/nodes/triggers/ui_update_timer.gd" id="2_pa50p"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cfchw6ymnp23e" path="res://scenes/ui/ingame/actionmenu/action_menu.tscn" id="4_herd4"]
 [ext_resource type="PackedScene" uid="uid://j2h5rs86mkrj" path="res://scenes/ui/ingame/vehicle_control/vehicle_control_outer.tscn" id="6_ao8ui"]
 [ext_resource type="PackedScene" uid="uid://ct04jq8arx0hn" path="res://scenes/ui/ingame/bottom_bar.tscn" id="7_a3llv"]
+[ext_resource type="Script" uid="uid://fnhu4tgr3y86" path="res://game/gamescripts/ui/etc/building_mode_icon.gd" id="7_fjjva"]
+[ext_resource type="Texture2D" uid="uid://bp3o3csdxx07v" path="res://assets/ui/baustelle.png" id="7_ki5ow"]
 
-[node name="GameWindow" type="Control"]
+[node name="GameWindow" type="Control" unique_id=357452690]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,11 +19,11 @@ grow_vertical = 2
 script = ExtResource("1_ki5ow")
 metadata/_custom_type_script = "uid://d1qo6hqa3cq3r"
 
-[node name="UiUpdateTimer" type="Timer" parent="."]
+[node name="UiUpdateTimer" type="Timer" parent="." unique_id=253382661]
 autostart = true
 script = ExtResource("2_pa50p")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1927687158]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,13 +31,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Crosshair" type="TextureRect" parent="CenterContainer"]
+[node name="Crosshair" type="TextureRect" parent="CenterContainer" unique_id=253842443]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("3_np82f")
 expand_mode = 1
 
-[node name="OuterActionMenu" type="MarginContainer" parent="."]
+[node name="OuterActionMenu" type="MarginContainer" parent="." unique_id=1499502663]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -49,14 +51,14 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ActionMenu" parent="OuterActionMenu" instance=ExtResource("4_herd4")]
+[node name="ActionMenu" parent="OuterActionMenu" unique_id=486585409 instance=ExtResource("4_herd4")]
 layout_mode = 2
 
-[node name="OuterBottomBar" parent="." instance=ExtResource("7_a3llv")]
+[node name="OuterBottomBar" parent="." unique_id=767599168 instance=ExtResource("7_a3llv")]
 layout_mode = 1
 offset_top = -48.0
 
-[node name="VehicleControlContainer" parent="." instance=ExtResource("6_ao8ui")]
+[node name="VehicleControlContainer" parent="." unique_id=1074897106 instance=ExtResource("6_ao8ui")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -69,3 +71,26 @@ offset_right = 356.0
 offset_bottom = 167.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="BuildingModeIcon" type="MarginContainer" parent="." unique_id=981042772]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -133.0
+offset_right = 39.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+script = ExtResource("7_fjjva")
+
+[node name="BuildingModeIconImage" type="TextureRect" parent="BuildingModeIcon" unique_id=821246702]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("7_ki5ow")
+expand_mode = 4
