@@ -41,5 +41,5 @@ func spawn_fork_marker(_fork: NewRailForkData):
 	_fork.container.add_child(marker)
 
 func enable_building_mode():
-	UiState.building_mode_on = true
-	SignalBus.building_mode_switched.emit(true)
+	UiState.ui_mode = Enums.UiMode.BUILD_INFR
+	SignalBus.ui_mode_switched.emit(Enums.UiMode.BUILD_INFR)

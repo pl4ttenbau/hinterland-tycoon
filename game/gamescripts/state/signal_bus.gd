@@ -15,7 +15,7 @@ signal dialog_vehicle_selection(veh_type_key: String)
 #endregion
 
 @warning_ignore("unused_signal")
-signal building_mode_switched(enabled: bool)
+signal ui_mode_switched(mode: Enums.UiMode)
 
 #region World
 @warning_ignore("unused_signal")
