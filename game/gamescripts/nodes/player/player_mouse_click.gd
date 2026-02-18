@@ -33,15 +33,18 @@ func cast_ray(screen_pos: Vector2):
 	
 func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
-	if collider:
-		var is_click_on_entity: bool = self.entity_click_handler.handle_click(collider)
-		if ! is_click_on_entity:
-			if collider is Terrain3D:
-				Loggie.info("Click on terrain at %s" % ray_result.get("position"))
-			else:
-				SignalBus.unhandled_collider_click.emit(collider)
-				var node_path = collider.get_path()
-				Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
+	if !collider: return
+	var is_click_on_entity: bool = self.entity_click_handler.handle_click(collider)
+	if ! is_click_on_entity:
+		if collider is Terrain3D:
+			var click_pos: Vector3 = ray_result.get("position")
+			Loggie.info("Click on terrain at %v" % click_pos)
+			SignalBus.terrain_click.emit(click_pos)
+			get_viewport().set_input_as_handled()
+		else:
+			SignalBus.unhandled_collider_click.emit(collider)
+			var node_path = collider.get_path()
+			Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
 
 func get_camera() -> Camera3D:
 	var cam: Camera3D = GlobalState.player.cam

@@ -111,6 +111,9 @@ signal collider_click(collider: ClickableCollider)
 
 @warning_ignore("unused_signal")
 signal unhandled_collider_click(collider: Node3D)
+
+@warning_ignore("unused_signal")
+signal terrain_click(pos: Vector3)
 #endregion
 
 #region UI
