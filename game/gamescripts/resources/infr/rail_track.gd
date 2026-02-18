@@ -1,6 +1,8 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name RailTrackData extends AbstractTrack
 
+signal track_changed()
+
 @export var nodes: Array[RailNodeData] = []
 @export var hideFill: bool = false
 
@@ -20,9 +22,12 @@ static func get_by_num(_rail_num: int) -> RailTrackData:
 	return Managers.rails.track_storage.get_by_num(_rail_num)
 	
 #region Add Nodes
-func add_node(rail_node: RailNodeData):
+func add_node(rail_node: RailNodeData, update: bool):
 	self.nodes.append(rail_node) 
 	self.vertices.append(rail_node.position)
+	if update:
+		self.track_changed.emit()
+		self.build_curve()
 	
 func add_fork(rail_fork: RailNodeForkData):
 	self.forks.append(rail_fork)

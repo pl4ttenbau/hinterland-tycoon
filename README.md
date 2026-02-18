@@ -20,12 +20,13 @@ Written in the Godot Engine
 #### Editor & Ease Of Use
 
 * [ ] place player marker on map
+* [ ] create HinterlandEditor tab in bottom bar
 
 #### Infrastructure
 
 * [ ] make "connect" working
-  * [ ] mark nearest track node with pin or circle
-	* [ ] find closest infr node method
+  * [x] mark nearest track node with pin or circle
+	* [x] find closest infr node method
   * [ ] extend from said selected node
 
 ### Special Thanks 

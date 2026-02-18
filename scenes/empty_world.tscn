@@ -9,13 +9,14 @@
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="6_nc0f4"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="7_6wawu"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="7_rnkef"]
-[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail_loader.gd" id="8_pcopj"]
+[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail/rail_loader.gd" id="8_pcopj"]
 [ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/player/click_handlers/base_entity_click_handler.gd" id="8_qsvwm"]
-[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_t6nuv"]
+[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail/rail_fork_loader.gd" id="9_t6nuv"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
 [ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
 [ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
 [ext_resource type="Script" uid="uid://c2m2e8o027sgu" path="res://game/gamescripts/services/spawners/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
+[ext_resource type="Script" uid="uid://qqx8i6ggh8v7" path="res://game/gamescripts/services/spawners/infr/rail/new_rail_builder.gd" id="13_qsvwm"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/infr/road_loader.gd" id="14_0dtnv"]
 [ext_resource type="Script" uid="uid://5fhring754pq" path="res://game/gamescripts/services/spawners/infr/connectors/road_industry_exit_connector.gd" id="15_11abr"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicles/vehicle_placer.gd" id="15_g3fbs"]
@@ -89,7 +90,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yvyyf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6wawu"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -149,6 +150,10 @@ script = ExtResource("8_pcopj")
 [node name="RailForkLoader" type="Node" parent="World/Generated/Infr/Rails" unique_id=968754972]
 script = ExtResource("9_t6nuv")
 metadata/_custom_type_script = "uid://bpdu211yk5uj2"
+
+[node name="NewRailBuilder" type="Node" parent="World/Generated/Infr/Rails" unique_id=2032657844]
+script = ExtResource("13_qsvwm")
+metadata/_custom_type_script = "uid://qqx8i6ggh8v7"
 
 [node name="Stations" type="Node" parent="World/Generated/Infr" unique_id=1725096012]
 unique_name_in_owner = true
@@ -294,7 +299,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_yvyyf")
+texture = SubResource("ViewportTexture_6wawu")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)

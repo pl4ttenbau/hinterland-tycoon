@@ -7,15 +7,14 @@ const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
-@export var fork_storage: RailForkStore = RailForkStore.new()
+@export var fork_storage: RailNodeForkStore = RailNodeForkStore.new()
 @export var node_stations_storage: NodeStationStore = NodeStationStore.new()
-
-## here we only store visible forks
-@export var visible_forks: Array[RailNodeForkData] = []
-@export var visible_forks_by_pos: Dictionary = {}
-
 @export var outer_buffers: Array[RailBuffer3D] = []
 
+@export var builder: NewRailBuilder:
+	get(): return $NewRailBuilder as NewRailBuilder
+
+#region Initialization
 func _enter_tree() -> void:
 	Managers.rails = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
@@ -30,6 +29,7 @@ func load_rail_tracks() -> void:
 		self.track_storage.add(rail_track)
 	# trigger signal
 	SignalBus.rails_loaded.emit(self.track_storage.get_all())
+#endregion
 
 #region RailTrack Spawning
 func spawn_rails():

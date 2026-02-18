@@ -2,7 +2,7 @@
 class_name RailForkLoader extends Node
 
 @export var forks_by_pos: Dictionary = {}
-@export var fork_store: RailForkStore = RailForkStore.new()
+@export var fork_store: RailNodeForkStore = RailNodeForkStore.new()
 
 signal forks_spawned()
 

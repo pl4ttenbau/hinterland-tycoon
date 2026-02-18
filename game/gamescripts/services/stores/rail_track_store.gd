@@ -5,6 +5,7 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/rail_tracks.dat"
 
 @export var _list: Array[RailTrackData] = []
 @export var _by_id: Dictionary = {}
+@export var _max_num: int = -1
 
 @export_storage var _containers: Array[RailTrack3D] = []
 @export_storage var _containers_by_id: Dictionary = {}
@@ -19,6 +20,8 @@ func add(track_obj: RailTrackData):
 	self._list.append(track_obj)
 	self._create_indexes(track_obj)
 	self.track_added.emit(track_obj)
+	if track_obj.num > self._max_num:
+		self._max_num = track_obj.num
 	
 func add_container(outer_track: RailTrack3D):
 	self._containers.append(outer_track)

@@ -1,4 +1,4 @@
-class_name RailForkStore extends Resource
+class_name RailNodeForkStore extends Resource
 
 @export var _list: Array[RailNodeForkData] = []
 @export var _by_num: Dictionary = {}
