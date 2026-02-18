@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="1_6v6yf"]
 [ext_resource type="PackedScene" uid="uid://kmyakts4l64t" path="res://addons/Basic FPS Player/Src/basic_player_head.tscn" id="2_r2xi1"]
-[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="3_kurfp"]
 [ext_resource type="Script" uid="uid://dnf1l0dsr6sxl" path="res://game/gamescripts/nodes/player/player_collision_area.gd" id="4_42bqs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
@@ -14,6 +13,7 @@
 [node name="Player" type="CharacterBody3D" parent="." unique_id=196254571]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.65, 8.7309, 2160.47)
+collision_layer = 0
 collision_mask = 7
 input_ray_pickable = false
 script = ExtResource("1_6v6yf")
@@ -24,14 +24,16 @@ metadata/_custom_type_script = "uid://0ou2op0l50qf"
 [node name="Head" parent="Player" unique_id=1678724210 instance=ExtResource("2_r2xi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54172, 0)
 
-[node name="PlayerMouseClick" type="Node" parent="Player/Head" unique_id=94416816]
-script = ExtResource("3_kurfp")
-
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player" unique_id=77284677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53713, 0)
 shape = SubResource("CapsuleShape3D_mg4js")
 
 [node name="PlayerArea" type="Area3D" parent="Player" unique_id=1592848934]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+monitoring = false
+monitorable = false
 script = ExtResource("4_42bqs")
 
 [node name="PlayerAreaShape" type="CollisionShape3D" parent="Player/PlayerArea" unique_id=2133829350]

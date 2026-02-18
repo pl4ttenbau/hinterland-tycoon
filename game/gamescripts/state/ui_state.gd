@@ -14,3 +14,4 @@ extends Node
 @export var current_diag: GameDialog
 
 @export var ui_mode: Enums.UiMode = Enums.UiMode.WALKING
+@export_storage var build_infr_mode: UiModeBuildInfr

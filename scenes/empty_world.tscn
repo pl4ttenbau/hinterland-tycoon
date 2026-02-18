@@ -7,8 +7,10 @@
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
 [ext_resource type="Script" uid="uid://c7rapfs44v5lx" path="res://game/gamescripts/actions/show_near_action.gd" id="6_0dtnv"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="6_nc0f4"]
+[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="7_6wawu"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="7_rnkef"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail_loader.gd" id="8_pcopj"]
+[ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/player/click_handlers/base_entity_click_handler.gd" id="8_qsvwm"]
 [ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_t6nuv"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
 [ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
@@ -87,7 +89,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0dtnv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yvyyf"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -115,6 +117,13 @@ metadata/_custom_type_script = "uid://dei7w8gduhci"
 [node name="ShowNearInfrAction" type="Node" parent="Input/ActionHandler" unique_id=1407016425]
 script = ExtResource("6_0dtnv")
 metadata/_custom_type_script = "uid://c7rapfs44v5lx"
+
+[node name="PlayerMouseClick" type="Node" parent="Input" unique_id=1119828470]
+script = ExtResource("7_6wawu")
+
+[node name="EntityClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1092272095]
+script = ExtResource("8_qsvwm")
+metadata/_custom_type_script = "uid://c3n1pjne8toik"
 
 [node name="World" type="Node" parent="." unique_id=1193711136]
 
@@ -285,7 +294,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_0dtnv")
+texture = SubResource("ViewportTexture_yvyyf")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
