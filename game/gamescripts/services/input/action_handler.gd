@@ -11,6 +11,6 @@ func _on_action_triggered(item: ActionMenuItem) -> bool:
 		$EnterAction.on_trigger()
 	elif item.get_action_name() == "Spawn":
 		$SpawnAction.on_trigger()
-	elif item.get_action_name() == "NearInfr":
-		$ShowNearInfrAction.on_trigger()
+	elif item.get_action_name() == "Connect":
+		$ConnectAction.on_trigger()
 	return true

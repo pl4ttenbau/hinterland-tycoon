@@ -49,8 +49,3 @@ text = "Company"
 layout_mode = 2
 icon = ExtResource("3_f6xs1")
 text = "Game Menu"
-
-[node name="ShowNearInfrItem" parent="ActionMenuVContainer" unique_id=1621639278 instance=ExtResource("2_f6xs1")]
-layout_mode = 2
-icon = ExtResource("3_f6xs1")
-text = "NearInfr"

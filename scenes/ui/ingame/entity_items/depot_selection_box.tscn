@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c64fmi7wwrunq"]
+[gd_scene format=3 uid="uid://c64fmi7wwrunq"]
 
 [ext_resource type="Script" uid="uid://cchncmqt0rwn2" path="res://game/gamescripts/ui/etc/depot_selection_box.gd" id="1_ufcoj"]
 
-[node name="DepotSelectionBox" type="MarginContainer"]
+[node name="DepotSelectionBox" type="MarginContainer" unique_id=1204162265]
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
@@ -17,7 +17,7 @@ theme_override_constants/margin_bottom = 6
 script = ExtResource("1_ufcoj")
 metadata/_custom_type_script = "uid://cchncmqt0rwn2"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=2090510470]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28

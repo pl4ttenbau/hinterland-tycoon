@@ -4,7 +4,7 @@ const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/ingame/entity_items/depot_selectio
 
 @export var selected_vehicle_type: String
 
-@export var selected_depot_num: int
+@export var selected_depot_num: int = -1
 
 signal vehicle_spawn_triggered(spawn_dto: VehicleSpawnDto)
 
