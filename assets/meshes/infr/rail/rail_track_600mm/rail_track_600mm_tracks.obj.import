@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6wuxnb4q7m2h"
+path="res://.godot/imported/rail_track_600mm_tracks.obj-8564cba9dec2e6b3e941d0adee6e7555.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rail_track_600mm_tracks.obj-8564cba9dec2e6b3e941d0adee6e7555.mesh"]
+
+source_file="res://assets/meshes/infr/rail/rail_track_600mm/rail_track_600mm_tracks.obj"
+dest_files=["res://.godot/imported/rail_track_600mm_tracks.obj-8564cba9dec2e6b3e941d0adee6e7555.mesh", "res://.godot/imported/rail_track_600mm_tracks.obj-8564cba9dec2e6b3e941d0adee6e7555.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

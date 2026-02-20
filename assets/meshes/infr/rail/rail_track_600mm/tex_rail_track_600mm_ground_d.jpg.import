@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bauuoftegomi6"
-path.s3tc="res://.godot/imported/tex_rail_track_normal_ground_ao.png-5893736cd8c8c258a75a029e55f07002.s3tc.ctex"
+uid="uid://b5w6ik27blb5e"
+path.s3tc="res://.godot/imported/tex_rail_track_600mm_ground_d.jpg-be8f8b6877bca68a7191e3d1bf51b32d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_ao.png"
-dest_files=["res://.godot/imported/tex_rail_track_normal_ground_ao.png-5893736cd8c8c258a75a029e55f07002.s3tc.ctex"]
+source_file="res://assets/meshes/infr/rail/rail_track_600mm/tex_rail_track_600mm_ground_d.jpg"
+dest_files=["res://.godot/imported/tex_rail_track_600mm_ground_d.jpg-be8f8b6877bca68a7191e3d1bf51b32d.s3tc.ctex"]
 
 [params]
 
@@ -26,8 +26,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
-roughness/src_normal="res://assets/meshes/infr/rail/rail_track_600mm/tex_rail_track_600mm_ground_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

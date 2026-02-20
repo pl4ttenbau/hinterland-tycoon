@@ -3,7 +3,8 @@
 class_name RailTrack3D extends VisibleObject
 
 const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
-const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mml_bedded.tscn"
+const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn"
+const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_600mm_bedded.tscn"
 
 signal track_assigned(track: RailTrackData)
 
@@ -39,6 +40,8 @@ func _hide_bed_when_required(track_obj: RailTrackData):
 static func get_scene_path(track_obj: RailTrackData) -> String:
 	if track_obj.infr_type_key == "750_MM":
 		return SCENE_PATH_750MM
+	elif track_obj.infr_type_key == "600_MM":
+		return SCENE_PATH_600MM
 	else: return SCENE_PATH_NORMAL
 	
 func get_bed_mesh() -> PathMesh3D:
