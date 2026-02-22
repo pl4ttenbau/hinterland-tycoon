@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjf3k54llhqk5"]
+[gd_scene format=3 uid="uid://cjf3k54llhqk5"]
 
 [ext_resource type="Script" uid="uid://b7objiaoeqyua" path="res://game/gamescripts/ui/start_menu/startmenu_root.gd" id="1_tybhy"]
 
-[node name="StartmenuMain" type="Control"]
+[node name="StartmenuMain" type="Control" unique_id=695359083]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_tybhy")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=945618740]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SubsceneContainer" type="CenterContainer" parent="."]
+[node name="SubsceneContainer" type="CenterContainer" parent="." unique_id=2018382697]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
