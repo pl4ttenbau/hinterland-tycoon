@@ -37,6 +37,8 @@ func build_curve() -> void:
 	self.curve.up_vector_enabled = true
 	for road_node: RoadNode in self.nodes:
 		self.curve.add_point(road_node.rel_position)
+	# generate AABB
+	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
 	
 func add_node(_road_node: RoadNode):
 	self.nodes.append(_road_node) 

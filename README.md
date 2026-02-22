@@ -1,7 +1,6 @@
 # Hinterland Tycoon
 
-A narrow gauge (and a little road) simulator game that stands somewhere between
-OpenTTD, Railroads Online & Satisfactory.
+A narrow gauge (and a little road) simulator game that stands somewhere in the dusty garage, not being minded by anyone.
 
 Written in the Godot Engine
 
@@ -11,17 +10,31 @@ Written in the Godot Engine
 
 ### TODO
 
-* [ ] narrower fields
+#### Maps
+
+* [x] narrower fields
 * [ ] "Kopfweide" trees
 * [ ] settlements shields
 * [ ] no straw bales -> piles instead
+
+#### Editor & Ease Of Use
+
+* [ ] place player marker on map
+* [ ] create HinterlandEditor tab in bottom bar
+
+#### Infrastructure
+
+* [ ] make "connect" working
+  * [x] mark nearest track node with pin or circle
+	* [x] find closest infr node method
+  * [ ] extend from said selected node
 
 ### Special Thanks 
 
 * Reiner Prokein - reinerstilesets.de
 * emzetgie for his excellent polish houses models
-* the one and onmly Pitagoras991 for his Wismar Railbus meshes
-* Konrad
+* the one and only Pitagoras991 for his Wismar Railbus meshes
+* Konrad for his village life enhancements
 
 ### Used Addons
 

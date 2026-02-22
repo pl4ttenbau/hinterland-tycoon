@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b0rih8aralchx"]
+
+[ext_resource type="ArrayMesh" uid="uid://dl3h5ubplgcaw" path="res://assets/meshes/deco/hangar/hangar.obj" id="1_ywisk"]
+
+[node name="Hangar" type="Node3D" unique_id=958689959]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=755879916]
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+mesh = ExtResource("1_ywisk")

@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_industry_white.png")
 class_name IndustryType extends Resource
 
 const IND_SCENE_PATH = "res://assets/meshes/industry/%s/%s.tscn"

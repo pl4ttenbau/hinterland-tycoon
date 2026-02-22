@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_gears_white.png")
+@icon("res://assets/icons/icon_connect_white.png")
 class_name StationResidencesConnector extends Node
 
 @export var has_stations_loaded: bool = false

@@ -14,6 +14,9 @@ signal map_selected(map_obj: MapData)
 signal dialog_vehicle_selection(veh_type_key: String)
 #endregion
 
+@warning_ignore("unused_signal")
+signal ui_mode_switched(mode: Enums.UiMode)
+
 #region World
 @warning_ignore("unused_signal")
 signal terrain_initialized(container: WorldMapScene)
@@ -108,6 +111,9 @@ signal collider_click(collider: ClickableCollider)
 
 @warning_ignore("unused_signal")
 signal unhandled_collider_click(collider: Node3D)
+
+@warning_ignore("unused_signal")
+signal terrain_click(pos: Vector3)
 #endregion
 
 #region UI

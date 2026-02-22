@@ -5,7 +5,7 @@ signal depot_selected(depot: RailDepotData)
 @export var depot: RailDepotData:
 	set(value):
 		depot = value
-		self.update_text()			
+		self.update_text()
 		
 func _ready():
 	%Button.pressed.connect(Callable(self, "_on_depot_selection_click"))

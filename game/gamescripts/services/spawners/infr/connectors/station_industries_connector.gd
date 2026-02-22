@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_gears_white.png")
+@icon("res://assets/icons/icon_connect_white.png")
 class_name StationIndustriesConnector extends Node
 
 static var MAX_INDUSTRY_DIST = 200

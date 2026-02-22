@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dwuixifho5nx6"]
+
+[ext_resource type="Texture2D" uid="uid://eugkt7yc41p5" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/tex_laenderbahn_wagon_d.png" id="1_t7des"]
+[ext_resource type="Texture2D" uid="uid://c3xh5p1ic6bd8" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/tex_laenderbahn_wagon_n.png" id="2_73dn2"]
+[ext_resource type="ArrayMesh" uid="uid://1vh4negobtd7" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon.obj" id="2_t7des"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_73dn2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ptri"]
+cull_mode = 2
+albedo_texture = ExtResource("1_t7des")
+metallic = 0.5
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_73dn2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5r4t"]
+size = Vector3(2.9279785, 4.100334, 10.840459)
+
+[node name="LaenderbahnWagonStatic" type="Node3D" unique_id=472795576]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1592660720]
+material_override = SubResource("StandardMaterial3D_1ptri")
+mesh = ExtResource("2_t7des")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1116706351]
+script = ExtResource("3_73dn2")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=695725738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+shape = SubResource("BoxShape3D_r5r4t")

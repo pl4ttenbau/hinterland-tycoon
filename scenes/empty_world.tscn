@@ -5,14 +5,18 @@
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="3_oj3vo"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
+[ext_resource type="Script" uid="uid://c7rapfs44v5lx" path="res://game/gamescripts/actions/show_near_action.gd" id="6_0dtnv"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/spawners/town/town_loader.gd" id="6_nc0f4"]
+[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="7_6wawu"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/spawners/town/town_building_holder.gd" id="7_rnkef"]
-[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail_loader.gd" id="8_pcopj"]
-[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail_fork_loader.gd" id="9_t6nuv"]
+[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail/rail_loader.gd" id="8_pcopj"]
+[ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/player/click_handlers/base_entity_click_handler.gd" id="8_qsvwm"]
+[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail/rail_fork_loader.gd" id="9_t6nuv"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
 [ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
 [ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
 [ext_resource type="Script" uid="uid://c2m2e8o027sgu" path="res://game/gamescripts/services/spawners/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
+[ext_resource type="Script" uid="uid://qqx8i6ggh8v7" path="res://game/gamescripts/services/spawners/infr/rail/new_rail_builder.gd" id="13_qsvwm"]
 [ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/spawners/infr/road_loader.gd" id="14_0dtnv"]
 [ext_resource type="Script" uid="uid://5fhring754pq" path="res://game/gamescripts/services/spawners/infr/connectors/road_industry_exit_connector.gd" id="15_11abr"]
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicles/vehicle_placer.gd" id="15_g3fbs"]
@@ -20,19 +24,19 @@
 [ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="17_qsvwm"]
 [ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="18_5swda"]
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map/map_spawner.gd" id="18_yvyyf"]
-[ext_resource type="Resource" uid="uid://cnnga7ui47iix" path="res://game/godotdata/vehicle_types/loco_faur.tres" id="19_7yd2d"]
+[ext_resource type="Resource" uid="uid://cnnga7ui47iix" path="res://game/godotdata/vehicle_types/singular/loco_faur.tres" id="19_7yd2d"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_waht2"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="20_20yvh"]
-[ext_resource type="Resource" uid="uid://ci67bydr7bpay" path="res://game/godotdata/vehicle_types/wismar_railbus.tres" id="20_o2h5t"]
-[ext_resource type="Resource" uid="uid://bnjk8mpcdv6yb" path="res://game/godotdata/vehicle_types/sachs_wagon_kb4.tres" id="21_0dtnv"]
+[ext_resource type="Resource" uid="uid://ci67bydr7bpay" path="res://game/godotdata/vehicle_types/singular/wismar_railbus.tres" id="20_o2h5t"]
+[ext_resource type="Resource" uid="uid://bnjk8mpcdv6yb" path="res://game/godotdata/vehicle_types/singular/sachs_wagon_kb4.tres" id="21_0dtnv"]
 [ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="21_sc7tx"]
-[ext_resource type="Resource" uid="uid://c70jc2ui74i2k" path="res://game/godotdata/vehicle_types/mpsb_wismar_wagon.tres" id="22_g3fbs"]
+[ext_resource type="Resource" uid="uid://c70jc2ui74i2k" path="res://game/godotdata/vehicle_types/singular/mpsb_wismar_wagon.tres" id="22_g3fbs"]
 [ext_resource type="PackedScene" uid="uid://4vshk56t46ml" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="22_mwjue"]
 [ext_resource type="Script" uid="uid://xrq8d2iqxk0u" path="res://game/gamescripts/nodes/common/feature_mock_container.gd" id="23_0fk02"]
-[ext_resource type="Resource" uid="uid://yu8infp73xip" path="res://game/godotdata/vehicle_types/soviet_torp_wagon.tres" id="23_6wawu"]
+[ext_resource type="Resource" uid="uid://yu8infp73xip" path="res://game/godotdata/vehicle_types/singular/soviet_torp_wagon.tres" id="23_6wawu"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="24_5fpmr"]
-[ext_resource type="Resource" uid="uid://8i6ww7xod4q8" path="res://game/godotdata/vehicle_types/mpsb_12.tres" id="24_o2h5t"]
-[ext_resource type="Script" uid="uid://dt7yf5qlkl5ln" path="res://game/gamescripts/services/spawners/vehicles/vehicle_types_list.gd" id="24_qsvwm"]
+[ext_resource type="Resource" uid="uid://8i6ww7xod4q8" path="res://game/godotdata/vehicle_types/singular/mpsb_12.tres" id="24_o2h5t"]
+[ext_resource type="Script" uid="uid://dt7yf5qlkl5ln" path="res://game/gamescripts/collections/typed_lists/vehicle_types_list.gd" id="24_qsvwm"]
 [ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="25_x7ydu"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="26_fx0ak"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="27_x7krn"]
@@ -66,7 +70,7 @@ mesh = ExtResource("25_x7ydu")
 
 [sub_resource type="Curve3D" id="Curve3D_rd07l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.63323, 0.619491, 0.867334, 1, 0, 0, 0, 0, 0, -4.79795, -0.160339, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.234018, 0.61949205, 0.8673334, 1, 0, 0, 0, 0, 0, -4.7979507, 0.23966122, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -86,7 +90,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_o2h5t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qsvwm"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -110,6 +114,17 @@ script = ExtResource("4_oo77m")
 [node name="SpawnAction" type="Node" parent="Input/ActionHandler" unique_id=256787768]
 script = ExtResource("5_drms0")
 metadata/_custom_type_script = "uid://dei7w8gduhci"
+
+[node name="ConnectAction" type="Node" parent="Input/ActionHandler" unique_id=1407016425]
+script = ExtResource("6_0dtnv")
+metadata/_custom_type_script = "uid://c7rapfs44v5lx"
+
+[node name="PlayerMouseClick" type="Node" parent="Input" unique_id=1119828470]
+script = ExtResource("7_6wawu")
+
+[node name="EntityClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1092272095]
+script = ExtResource("8_qsvwm")
+metadata/_custom_type_script = "uid://c3n1pjne8toik"
 
 [node name="World" type="Node" parent="." unique_id=1193711136]
 
@@ -135,6 +150,10 @@ script = ExtResource("8_pcopj")
 [node name="RailForkLoader" type="Node" parent="World/Generated/Infr/Rails" unique_id=968754972]
 script = ExtResource("9_t6nuv")
 metadata/_custom_type_script = "uid://bpdu211yk5uj2"
+
+[node name="NewRailBuilder" type="Node" parent="World/Generated/Infr/Rails" unique_id=2032657844]
+script = ExtResource("13_qsvwm")
+metadata/_custom_type_script = "uid://qqx8i6ggh8v7"
 
 [node name="Stations" type="Node" parent="World/Generated/Infr" unique_id=1725096012]
 unique_name_in_owner = true
@@ -266,6 +285,7 @@ material_override = SubResource("StandardMaterial3D_4emru")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
 
 [node name="Pilzleuchte" parent="Features" unique_id=508584394 instance=ExtResource("38_0315r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.845093, 9.050041, 30.95818)
 
 [node name="TestTerrain" type="Node3D" parent="Features" unique_id=816951878]
 
@@ -279,7 +299,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_o2h5t")
+texture = SubResource("ViewportTexture_qsvwm")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
@@ -288,7 +308,7 @@ script = ExtResource("41_p6dso")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Features/HalfTimberedBarn/MeshInstance3D/ResBldCollider" unique_id=670645782]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.168365, 5.36136, -0.0531616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16836548, -16.533134, -0.05316162)
 shape = SubResource("BoxShape3D_bb2cl")
 
 [node name="MonitorOverlay" type="VBoxContainer" parent="." unique_id=1124311776]

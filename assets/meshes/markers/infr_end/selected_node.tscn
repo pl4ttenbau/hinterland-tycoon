@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dyxve2khuk1xe"]
+
+[ext_resource type="Script" uid="uid://de0y62sdjwk5n" path="res://game/gamescripts/nodes/marker/selected_node_marker.gd" id="1_4a8i5"]
+[ext_resource type="ArrayMesh" uid="uid://7njuyvaosjiu" path="res://assets/meshes/markers/infr_end/selected_node.obj" id="1_ndome"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drxcc"]
+transparency = 1
+albedo_color = Color(0, 0.7294118, 0.25882354, 0.5058824)
+
+[node name="SelectedNodeMarker3D" type="Node3D" unique_id=714620249]
+script = ExtResource("1_4a8i5")
+metadata/_custom_type_script = "uid://de0y62sdjwk5n"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1589722443]
+mesh = ExtResource("1_ndome")
+surface_material_override/0 = SubResource("StandardMaterial3D_drxcc")

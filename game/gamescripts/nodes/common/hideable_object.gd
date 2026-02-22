@@ -8,14 +8,9 @@ func _ready() -> void:
 	SignalBus.world_update.connect(Callable(self, "_on_map_tick"))
 	
 func _on_map_tick():
-	var player: PlayerHead = GlobalState.player
-	if !player: return
-	var own_g_pos: Vector3 = self.global_position
-	self.dist2cam = get_cam_pos().distance_to(own_g_pos)
-	if self.dist2cam <= HIDING_DISTANCE:
-		self.visible = true
-	else:
-		self.visible = false
+	if ! GlobalState.player: return
+	self.dist2cam = get_cam_pos().distance_to(self.global_position)
+	self.visible = self.dist2cam <= HIDING_DISTANCE
 
 func get_cam_pos() -> Vector3:
 	if GlobalState.active_cam != null:

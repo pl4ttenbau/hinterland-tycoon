@@ -4,7 +4,7 @@ class_name VehiclePath extends Path3D
 
 @export var vehicle3d: Train3D
 
-@export var motor: VehicleMotor:
+@export var motor: TrainMotor:
 	get(): return self.vehicle3d.motor
 
 func rebuild_path_on_current_track():

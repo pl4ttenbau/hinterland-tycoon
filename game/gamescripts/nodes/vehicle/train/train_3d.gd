@@ -16,7 +16,7 @@ static var _last_train_num: int = 0
 
 @export var locomotive: Vehicle3D
 
-@export var motor: VehicleMotor
+@export var motor: TrainMotor
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -43,7 +43,7 @@ static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	return inst
 	
 func _create_motor(_dir: Enums.PathDirection):
-	self.motor = VehicleMotor.of(self, _dir)
+	self.motor = TrainMotor.of(_dir)
 	self.add_child(self.motor)
 #endregion
 
@@ -64,6 +64,8 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	if is_locomotive: self.locomotive = veh3d
 	# create pathfollow node: move so far that it appears before the vehicle beyond
 	var veh_path_follow := VehiclePathFollow.of_train_vehicle(self.count(), veh3d)
+	# move train forwards by 1x its length before the new vehicle
+	# TODO: works now?
 	veh_path_follow.progress += self.length_in_m()
 	$TrainPath.add_child(veh_path_follow)
 #endregion
@@ -82,7 +84,7 @@ func length_in_m() -> float:
 
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
-	
+
 func get_next_node_index() -> int: return self.wheels.target.index
 
 func get_cam() -> Camera3D:

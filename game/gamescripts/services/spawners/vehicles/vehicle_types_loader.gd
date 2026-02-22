@@ -1,3 +1,4 @@
+## edit in editor and let it fill the relevant arrays and dicts on game run
 @tool
 @icon("uid://r84qkk5fcxhq")
 class_name VehicleTypesLoader extends Node
