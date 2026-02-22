@@ -27,7 +27,8 @@ Written in the Godot Engine
 * [ ] make "connect" working
   * [x] mark nearest track node with pin or circle
 	* [x] find closest infr node method
-  * [ ] extend from said selected node
+  * [x] extend from said selected node
+    * connect to alreadx existing RailForks
 
 ### Special Thanks 
 

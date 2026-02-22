@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://dwuixifho5nx6" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon_static.tscn" id="32_speqn"]
+[ext_resource type="PackedScene" uid="uid://bp78xcvc46yww" path="res://assets/meshes/vehicles/rail/boxcar_german/boxcar_german_static.tscn" id="33_7r2i1"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bxmb5ddkk54u8" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car_static.tscn" id="35_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
@@ -8123,6 +8124,12 @@ transform = Transform3D(0.6272972, 0, 0.7787799, 0, 1, 0, -0.7787799, 0, 0.62729
 
 [node name="LaenderbahnWagonStatic2" parent="Deco/AnklamCity/MainStation" unique_id=436002920 instance=ExtResource("32_speqn")]
 transform = Transform3D(0.5800918, 0, 0.8145511, 0, 1, 0, -0.8145511, 0, 0.5800918, 2908.7917, 11.957998, 1738.3564)
+
+[node name="BoxcarGerman" parent="Deco/AnklamCity/MainStation" unique_id=1858482538 instance=ExtResource("33_7r2i1")]
+transform = Transform3D(0.74981093, 0, -0.66165215, 0, 1, 0, 0.66165215, 0, 0.74981093, 2965.7134, 11.892589, 1778.4669)
+
+[node name="BoxcarGerman2" parent="Deco/AnklamCity/MainStation" unique_id=2132980024 instance=ExtResource("33_7r2i1")]
+transform = Transform3D(0.74981093, 0, -0.66165215, 0, 1, 0, 0.66165215, 0, 0.74981093, 2958.928, 11.892589, 1772.445)
 
 [node name="AnklamAirport" type="Node" parent="Deco/AnklamCity" unique_id=683994386]
 
