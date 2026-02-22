@@ -122,4 +122,10 @@ signal ui_update_tick()
 
 @warning_ignore("unused_signal")
 signal action_menu_triggered(item: ActionMenuItem)
+
+@warning_ignore("unused_signal")
+signal loading_started()
+
+@warning_ignore("unused_signal")
+signal loading_finished()
 #endregion

@@ -61,7 +61,7 @@ func spawn_rail_buffers(parent_track: RailTrackData):
 	for rail_node: RailNodeData in parent_track.nodes:
 		if rail_node.is_end == true:
 			self.spawn_buffer(rail_node)
-			
+
 func spawn_buffer(rail_node: RailNodeData) -> RailBuffer3D:
 	var outer_buffer: RailBuffer3D = load(BUFFER_PATH).instantiate()
 	outer_buffer.parent_node = rail_node

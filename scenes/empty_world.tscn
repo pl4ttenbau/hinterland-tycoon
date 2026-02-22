@@ -213,6 +213,8 @@ script = ExtResource("19_waht2")
 [node name="TerrainRaycaster" type="Node" parent="World/MapSpawner/Terrain" unique_id=2050387968]
 script = ExtResource("20_20yvh")
 
+[node name="Placeholder" type="Node3D" parent="World/MapSpawner/Terrain" unique_id=796044951]
+
 [node name="StartmenuMain" parent="." unique_id=1370471896 instance=ExtResource("21_sc7tx")]
 
 [node name="GameWindow" parent="." unique_id=985310913 instance=ExtResource("22_mwjue")]

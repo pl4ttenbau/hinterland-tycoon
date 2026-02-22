@@ -1,7 +1,9 @@
 class_name StartmenuRoot extends Control
 
 const INITIAL_SCENE_NAME = "root_buttons"
+
 const SUB_SCENE_FOLDER = "res://scenes/ui/startmenu/subscenes/"
+const SPINNER_SCENE = "res://scenes/ui/startmenu/loading_spinner.tscn"
 
 @export var current_menu: StartmenuSubscene = null 
 
@@ -40,3 +42,9 @@ func spawn_submenu(submenu: StartmenuSubscene):
 	submenu.startmenu_root = self
 	%SubsceneContainer.add_child(submenu)
 	self.current_menu = submenu
+
+## returns the container of said spinner tho
+func spawn_loading_spinner() -> LoadingSpinner:
+	var spinner: LoadingSpinner = load(SPINNER_SCENE).instantiate()
+	self.add_child(spinner)
+	return spinner
