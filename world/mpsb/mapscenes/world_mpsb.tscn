@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dbegcmeyngyia" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge_wide.tscn" id="29_vybcg"]
 [ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="32_pgcnb"]
+[ext_resource type="PackedScene" uid="uid://dwuixifho5nx6" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon_static.tscn" id="32_speqn"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bxmb5ddkk54u8" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car_static.tscn" id="35_0o4a4"]
 [ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
@@ -8113,6 +8114,15 @@ transform = Transform3D(-0.82023174, 0, 0.57203144, 0, 1, 0, -0.57203144, 0, -0.
 [node name="StaticMpsb12" parent="Deco/AnklamCity/MainStation" unique_id=1463434606 instance=ExtResource("60_noqu6")]
 transform = Transform3D(0.66846895, 0, 0.74374014, 0, 1, 0, -0.74374014, 0, 0.66846895, 2906.1665, 11.735432, 1759.8201)
 rotation_edit_mode = 1
+
+[node name="LaenderbahnWagonStatic" parent="Deco/AnklamCity/MainStation" unique_id=472795576 instance=ExtResource("32_speqn")]
+transform = Transform3D(0.64292127, 0, 0.76593226, 0, 1, 0, -0.76593226, 0, 0.64292127, 2926.028, 11.957998, 1751.9475)
+
+[node name="LaenderbahnWagonStatic3" parent="Deco/AnklamCity/MainStation" unique_id=1752297824 instance=ExtResource("32_speqn")]
+transform = Transform3D(0.6272972, 0, 0.7787799, 0, 1, 0, -0.7787799, 0, 0.6272972, 2917.549, 11.957998, 1744.9589)
+
+[node name="LaenderbahnWagonStatic2" parent="Deco/AnklamCity/MainStation" unique_id=436002920 instance=ExtResource("32_speqn")]
+transform = Transform3D(0.5800918, 0, 0.8145511, 0, 1, 0, -0.8145511, 0, 0.5800918, 2908.7917, 11.957998, 1738.3564)
 
 [node name="AnklamAirport" type="Node" parent="Deco/AnklamCity" unique_id=683994386]
 
