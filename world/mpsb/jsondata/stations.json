@@ -131,5 +131,26 @@
 		"townNum": 9,
 		"type": "STATION_PASS",
 		"townName": "Daberkow"
+	},
+	{
+		"num": 20,
+		"name": "Ort",
+		"townNum": 37,
+		"type": "STATION_PASS",
+		"townName": "Kartlow"
+	},
+	{
+		"num": 21,
+		"name": "Quarry",
+		"townNum": 1,
+		"type": "STATION_GOODS",
+		"townName": "Jarmen"
+	},
+	{
+		"num": 22,
+		"name": "Town",
+		"townNum": 1,
+		"type": "STATION_PASS",
+		"townName": "Jarmen"
 	}
 ]
