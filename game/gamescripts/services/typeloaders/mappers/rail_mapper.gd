@@ -11,8 +11,10 @@ static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 	# optionals
 	if _track_dict.has("name"):
 		track_instance.track_name = _track_dict.get("name")
-	if _track_dict.has("hideBed") &&  _track_dict.get("hideBed") == true:
-		track_instance.hideFill = true
+	if _track_dict.has("hideBed"):
+		track_instance.hideFill = _track_dict.get("hideBed")
+	if _track_dict.has("tag"):
+		track_instance.tag = _track_dict.get("tag")
 	# add path nodes
 	_add_points_from_json(_track_dict, track_instance)
 	return track_instance
@@ -44,8 +46,7 @@ static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
 	
 static func editor_line_from_data(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var track_num: int = track_data_dict.get("num")
-	var editor_line3d := EditorInfrLine3D.of(Enums.InfrDomain.RAIL, track_num,
-			track_data_dict.get("name", null))
+	var editor_line3d := EditorInfrLine3D.ofRail(track_num, track_data_dict.get("name", null))
 	editor_line3d.position = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
 	return editor_line3d
 #endregion

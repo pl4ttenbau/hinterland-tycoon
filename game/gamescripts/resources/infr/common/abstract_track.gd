@@ -2,8 +2,13 @@
 @tool
 class_name AbstractTrack extends GameObject
 
+## z.B. "Rübeländer Landstr." oder "MPSB Friedland Kurve"
 @export_storage var track_name: String
 
+## z.B. "A20" oder "ALKB"
+@export var tag: String
+
+## minimum & maximum position of this rail track
 @export var abs_aabb: AABB
 
 ## global pos of the first node

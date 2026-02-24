@@ -8102,6 +8102,7 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." unique_id=1969216949 instance=ExtResource("2_jynyo")]
+show_contours = true
 
 [node name="Towns" parent="." unique_id=917386385 node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
@@ -8203,6 +8204,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000.11633, 12.370306, 1313.6
 
 [node name="TrussBridgeWide" parent="Deco/JarmenHarbour" unique_id=363279706 instance=ExtResource("29_vybcg")]
 transform = Transform3D(0.15206955, 0, 1.0899702, 0, 1, 0, -1.5729716, 0, 0.10537463, 1257.578, 10.607261, 1314.9504)
+
+[node name="BridgePillarBrick" parent="Deco/JarmenHarbour" unique_id=2036175147 instance=ExtResource("26_d7utl")]
+transform = Transform3D(0.9744094, 0, -0.22478095, 0, 1, 0, 0.22478095, 0, 0.9744094, 981.7784, 5.2136927, 1144.0538)
 
 [node name="Guetzkow" type="Node" parent="Deco" unique_id=1495190703]
 
@@ -8352,9 +8356,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2704.1743, 11.367314, 1956.33
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2591.9138, 11.666911, 1962.6589)
 
 [node name="FriedlandCenter" type="Node" parent="Deco" unique_id=2004051435]
-
-[node name="WaterTowerBig" parent="Deco/FriedlandCenter" unique_id=1993940730 instance=ExtResource("7_jynyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2032.4297, 6.6241035, 3221.2996)
 
 [node name="UazJeep2" parent="Deco/FriedlandCenter" unique_id=305748018 instance=ExtResource("64_7r2i1")]
 transform = Transform3D(0.7329587, 0, 0.68027323, 0, 1, 0, -0.68027323, 0, 0.7329587, 2177.353, 11.949901, 3171.854)
