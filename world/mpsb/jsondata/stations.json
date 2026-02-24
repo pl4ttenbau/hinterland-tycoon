@@ -152,5 +152,12 @@
 		"townNum": 1,
 		"type": "STATION_PASS",
 		"townName": "Jarmen"
+	},
+	{
+		"num": 23,
+		"name": "Halt",
+		"townNum": 13,
+		"type": "STATION_PASS",
+		"townName": "Neetzow"
 	}
 ]
