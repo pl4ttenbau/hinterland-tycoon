@@ -5,12 +5,15 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	var road_num := int(_road_dict.get("num"))
 	var type_key := str(_road_dict.get("type"))
 	var road_instance := RoadData.of(road_num, type_key)
+	# optionals
 	if _road_dict.has("name"):
 		road_instance.track_name = _road_dict.get("name")
+	if _road_dict.has("tag"):
+		road_instance.tag = _road_dict.get("tag", null)
 	# start pos
 	var start_pos_arr =  _road_dict.points[0].pos
 	road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
-	# road_instance.name = "RoadWay" + str(road_instance.num)
+	# create vertexes/curve
 	add_points_from_json(_road_dict, road_instance)
 	road_instance.created.emit(road_instance)
 	return road_instance
@@ -51,7 +54,6 @@ static func path3d_from_data(road_data_dict: Dictionary) -> Path3D:
 	
 static func editor_line_from_data(road_data_dict: Dictionary) -> EditorInfrLine3D:
 	var road_num: int = road_data_dict.get("num")
-	var editor_line3d := EditorInfrLine3D.of(Enums.InfrDomain.ROAD, road_num,
-			road_data_dict.get("name", null))
+	var editor_line3d := EditorInfrLine3D.ofRoad(road_num, road_data_dict.get("name", null))
 	editor_line3d.position = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
 	return editor_line3d

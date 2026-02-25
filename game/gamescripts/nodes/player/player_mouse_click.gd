@@ -12,7 +12,7 @@ var entity_click_handler: BaseEntityClickHandler:
 @warning_ignore("unused_signal")
 signal player_input(event: InputEvent, event_position: Vector3)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		# only delegate events at end of click

@@ -1,73 +1,87 @@
-[gd_scene load_steps=4 format=3 uid="uid://nx0xye5kd2gv"]
+[gd_scene format=3 uid="uid://nx0xye5kd2gv"]
 
 [ext_resource type="Texture2D" uid="uid://n5ylbic5bdgi" path="res://assets/icons/icon_station.svg" id="1_62j3t"]
 [ext_resource type="Script" uid="uid://dtnqsrt4d6dv2" path="res://game/gamescripts/nodes/infr/station/station_sign_panel.gd" id="1_xsmea"]
 [ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
+[ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="3_4u520"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u520"]
+bg_color = Color(0.15476868, 0.26705974, 0.55177903, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="RailStation3DSign" type="PanelContainer" unique_id=351898367]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -186.0
-offset_top = -48.5
-offset_right = 186.0
-offset_bottom = 48.5
+offset_left = -147.5
+offset_top = -25.25
+offset_right = 124.5
+offset_bottom = 43.75
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4u520")
 script = ExtResource("1_xsmea")
 metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1668365335]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 7
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=697961583]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StationiconMargin" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1885180259]
+layout_mode = 2
 theme_override_constants/margin_right = 7
 
-[node name="StationIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+[node name="StationIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StationiconMargin" unique_id=2094296389]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("1_62j3t")
 stretch_mode = 4
 
-[node name="StationNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="StationNameLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1093963455]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4u520")
 theme_override_font_sizes/font_size = 60
 text = "Ort"
 
-[node name="DotSpaceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="DotSpaceLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1138073525]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4u520")
 theme_override_font_sizes/font_size = 60
 text = ":"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=752203986]
 layout_mode = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_right = 7
 
-[node name="ResourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer"]
+[node name="ResourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=665423765]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_hcpwm")
 stretch_mode = 4
 
-[node name="ResourceAmountLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="ResourceAmountLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1026922840]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4u520")
 theme_override_font_sizes/font_size = 60
 text = "0"

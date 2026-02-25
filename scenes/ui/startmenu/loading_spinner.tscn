@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bp2ntepr6d7tu"]
+
+[ext_resource type="Texture2D" path="res://assets/ui/loading_spinner_animated.svg" id="1_bvapy"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/etc/loading_spinner.gd" id="2_nagjm"]
+
+[node name="LoadingSpinner" type="CenterContainer" unique_id=781196228]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_nagjm")
+metadata/_custom_type_script = "uid://wknv2lqs4wwb"
+
+[node name="Panel" type="Panel" parent="." unique_id=2074418632]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="LoadingSpinnerImage" type="TextureRect" parent="Panel" unique_id=1327024154]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 86.0
+offset_bottom = 86.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("1_bvapy")
+stretch_mode = 3

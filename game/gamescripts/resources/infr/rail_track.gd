@@ -1,4 +1,5 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
+@warning_ignore("missing_tool")
 class_name RailTrackData extends AbstractTrack
 
 signal track_changed()

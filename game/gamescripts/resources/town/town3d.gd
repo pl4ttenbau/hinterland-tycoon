@@ -19,7 +19,7 @@ var position_action = do_position
 func set_label_text(new_name: String):
 	if new_name:
 		self.name = "Town3D_%s" % new_name
-		$TownLabel.text = new_name
+		$SubViewport/Town3DSign.town_name = new_name
 
 func _on_town_name_changed(town_name: String):
 	self.set_label_text(town_name)

@@ -29,6 +29,14 @@ Written in the Godot Engine
 	* [x] find closest infr node method
   * [ ] extend from said selected node
 
+#### Connectivity
+
+* [ ] refactor vehicle root class so it can accomodate roads vehicles -> AbstractVehicle
+  * [ ] make registry for road vehicles too
+* [ ] make ways for player to enter and exit vehicle
+  * [ ] with click at it
+	* [ ] new VehicleClickHandler manager
+
 ### Special Thanks 
 
 * Reiner Prokein - reinerstilesets.de

@@ -27,5 +27,5 @@ script = ExtResource("5_e0tyd")
 metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=695725738]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009887695, 1.2524033, 0.0008506775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.252, 0)
 shape = SubResource("BoxShape3D_r5r4t")

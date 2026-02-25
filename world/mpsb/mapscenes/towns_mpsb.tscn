@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bongrkjiwclhd"]
 
 [ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/collections/world_towns.gd" id="1_agjpo"]
-[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town_root.tscn" id="1_xyttb"]
+[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="1_xyttb"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="2_agjpo"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_icu33"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="4_n5hqh"]
@@ -334,150 +334,150 @@ num = 37
 type = 6
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[node name="Towns" type="Node"]
+[node name="Towns" type="Node" unique_id=1642167274]
 script = ExtResource("1_agjpo")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 
-[node name="TownCenter_Jarmen" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Jarmen" parent="." unique_id=597522626 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1005, 12.37, 1313.684)
 town = SubResource("Resource_7yi3v")
 
-[node name="TownCenter_Altentreptow-Mühlenhagen" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Altentreptow-Mühlenhagen" parent="." unique_id=1887752807 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 760, 11.782, 2933)
 town = SubResource("Resource_naxkj")
 
-[node name="TownCenter_Friedland" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Friedland" parent="." unique_id=1635174488 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2160.5, 12.0384, 3251.5)
 town = SubResource("Resource_wa0ur")
 
-[node name="TownCenter_Zastrow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Zastrow" parent="." unique_id=1825233280 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 616.6228, 22.617773, 522.90295)
 town = SubResource("Resource_my4h6")
 
-[node name="TownCenter_Ramelow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Ramelow" parent="." unique_id=1797454370 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1859.2, 17.4914, 2832)
 town = SubResource("Resource_rlgyo")
 
-[node name="TownCenter_Sarnow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Sarnow" parent="." unique_id=1244179669 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2568.5, 13.3314, 2656.5)
 town = SubResource("Resource_lh2pu")
 
-[node name="TownCenter_Stolpe" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Stolpe" parent="." unique_id=468126383 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2147.22, 11.79, 1605.03)
 town = SubResource("Resource_74w14")
 
-[node name="TownCenter_Burow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Burow" parent="." unique_id=1447750504 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829.8, 21.0748, 2542.1)
 town = SubResource("Resource_ls53n")
 
-[node name="Town3D_Daberkow-Bartow" parent="." instance=ExtResource("1_xyttb")]
+[node name="Town3D_Daberkow-Bartow" parent="." unique_id=1540339309 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 918.8167, 20.703087, 2137.5574)
 town = SubResource("Resource_d52qy")
 
-[node name="TownCenter_Gützkow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Gützkow" parent="." unique_id=1872868984 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1386.5, 14.0996, 1148.7)
 town = SubResource("Resource_ln5b8")
 
-[node name="TownCenter_Wegezin-Dennin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Wegezin-Dennin" parent="." unique_id=455053244 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1693.1, 13.3, 2305.9)
 town = SubResource("Resource_t40ec")
 
-[node name="TownCenter_Krien" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Krien" parent="." unique_id=1655713175 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1674.3, 11.6269, 1979.4)
 town = SubResource("Resource_iicsu")
 
-[node name="TownCenter_Neetzow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Neetzow" parent="." unique_id=888255604 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1352.9, 12.4481, 1597.5)
 town = SubResource("Resource_x6ynq")
 
-[node name="TownCenter_Ziethen-Relzow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Ziethen-Relzow" parent="." unique_id=1187928275 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2835.2832, 12.810767, 1409.9482)
 town = SubResource("Resource_hmqbw")
 
-[node name="TownCenter_Schmarsow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Schmarsow" parent="." unique_id=222214342 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 376, 14.3446, 1746.5)
 town = SubResource("Resource_etys5")
 
-[node name="TownCenter_Bentzin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Bentzin" parent="." unique_id=428280302 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540.9, 12.194, 1186.4)
 town = SubResource("Resource_due5e")
 
-[node name="TownCenter_Blesewitz" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Blesewitz" parent="." unique_id=861730801 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2439.6, 12.5734, 2051.6)
 town = SubResource("Resource_nrdma")
 
-[node name="TownCenter_Züssow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Züssow" parent="." unique_id=2053221505 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2068, 20.3429, 761.3)
 town = SubResource("Resource_dnrjp")
 
-[node name="TownCenter_Karlsburg" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Karlsburg" parent="." unique_id=1445526326 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2432, 20.3247, 757.8)
 town = SubResource("Resource_ybrkc")
 
-[node name="TownCenter_Buddenhagen" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Buddenhagen" parent="." unique_id=154310339 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2796.8, 20.4792, 442.8)
 town = SubResource("Resource_eakb4")
 
-[node name="TownCenter_Beseritz" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Beseritz" parent="." unique_id=1396305749 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1704.2155, 15.903505, 3042.8225)
 town = SubResource("Resource_ek2el")
 
-[node name="TownCenter_Medow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Medow" parent="." unique_id=837576293 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2057.6, 13.041, 1919.5)
 town = SubResource("Resource_nnahk")
 
-[node name="TownCenter_Rossin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Rossin" parent="." unique_id=215248308 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2969.9219, 12.812617, 2461.3628)
 town = SubResource("Resource_u03sw")
 
-[node name="TownCenter_Rebelow-Japenzin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Rebelow-Japenzin" parent="." unique_id=1126606732 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1589.1, 15.1677, 2576.1)
 town = SubResource("Resource_fa4dg")
 
-[node name="TownCenter_Iven-Janow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Iven-Janow" parent="." unique_id=357791640 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1256.2, 14.3053, 2312.9)
 town = SubResource("Resource_gj2ut")
 
-[node name="TownCenter_Völschow-Jagetzow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Völschow-Jagetzow" parent="." unique_id=946570588 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 863.1, 15.3, 1753.5)
 town = SubResource("Resource_agjpo")
 
-[node name="TownCenter_Spantekow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Spantekow" parent="." unique_id=67271779 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2072.3, 14.827, 2490.4)
 town = SubResource("Resource_icu33")
 
-[node name="TownCenter_Putzar" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Putzar" parent="." unique_id=1536438424 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2889.6, 12.9, 2863.1)
 town = SubResource("Resource_xyttb")
 
-[node name="TownCenter_Dargezin-Bandelin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Dargezin-Bandelin" parent="." unique_id=1879591715 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1459.2, 15.1, 822)
 town = SubResource("Resource_n5hqh")
 
-[node name="TownCenter_Dargelin-Behrenhoff" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Dargelin-Behrenhoff" parent="." unique_id=1799410181 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1063.2, 23.1, 469.4)
 town = SubResource("Resource_03w28")
 
-[node name="TownCenter_Anklam" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Anklam" parent="." unique_id=1773166527 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2781, 10.8925, 1735)
 town = SubResource("Resource_2yqys")
 
-[node name="TownCenter_Müggenburg" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Müggenburg" parent="." unique_id=881768821 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2417.6, 13.4, 2366.1)
 town = SubResource("Resource_6bq2n")
 
-[node name="TownCenter_Boldekow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Boldekow" parent="." unique_id=831410269 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2411.4893, 16.062994, 2903.8215)
 town = SubResource("Resource_u3yc0")
 
-[node name="TownCenter_Schmatzin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Schmatzin" parent="." unique_id=1218337392 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2208.0547, 17.800982, 1134.2361)
 town = SubResource("Resource_2llhm")
 
-[node name="TownCenter_Siedenbollentin" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Siedenbollentin" parent="." unique_id=1608045708 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1307.8353, 19.16925, 2875.4863)
 town = SubResource("Resource_jsqfv")
 
-[node name="TownCenter_Kartlow" parent="." instance=ExtResource("1_xyttb")]
+[node name="TownCenter_Kartlow" parent="." unique_id=928854267 instance=ExtResource("1_xyttb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 584.621, 13.897997, 1522.6177)
 town = SubResource("Resource_ybg6y")

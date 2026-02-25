@@ -25,5 +25,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.552
 shape = SubResource("BoxShape3D_c0lan")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1326880125]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6461384, 1.3841435, 0.7651844)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.47307062, 2.1317174, 2.3736129)
 metadata/cam_name = &"CAM_VEHICLE"

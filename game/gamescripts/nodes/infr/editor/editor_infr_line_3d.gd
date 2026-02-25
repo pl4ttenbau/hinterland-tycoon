@@ -26,6 +26,12 @@ static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") 
 	inst.name = inst._get_node_name()
 	return inst
 	
+static func ofRoad(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
+	return EditorInfrLine3D.of(Enums.InfrDomain.ROAD, _num, _name)
+	
+static func ofRail(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
+	return EditorInfrLine3D.of(Enums.InfrDomain.RAIL, _num, _name)
+	
 func _enter_tree():
 	super()
 	self.material.set("shader_parameter/line_width", LINE_WIDTH)
