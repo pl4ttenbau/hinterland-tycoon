@@ -5,6 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
 [ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="3_4u520"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u520"]
+bg_color = Color(0.15476868, 0.26705974, 0.55177903, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="RailStation3DSign" type="PanelContainer" unique_id=351898367]
 anchors_preset = 8
 anchor_left = 0.5
@@ -12,13 +19,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -147.5
-offset_top = -43.75
-offset_right = 147.5
+offset_top = -25.25
+offset_right = 124.5
 offset_bottom = 43.75
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4u520")
 script = ExtResource("1_xsmea")
 metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
 
@@ -26,10 +34,10 @@ metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 7
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=697961583]
 layout_mode = 2
@@ -66,6 +74,7 @@ theme_override_constants/margin_right = 7
 
 [node name="ResourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=665423765]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_hcpwm")
 stretch_mode = 4

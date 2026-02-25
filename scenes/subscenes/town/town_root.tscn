@@ -14,10 +14,10 @@ script = ExtResource("1_ehcfa")
 script = ExtResource("2_8tnac")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=520043729]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 65.04584, -5.059752)
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+visibility_range_end = 500.0
+visibility_range_end_margin = 50.0
+pixel_size = 0.06
 billboard = 1
 texture = SubResource("ViewportTexture_ehcfa")
 
