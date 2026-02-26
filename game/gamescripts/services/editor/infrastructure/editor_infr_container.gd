@@ -41,3 +41,11 @@ func do_generate_road_ways():
 	generator.spawn_road_paths()
 	generator.queue_free()
 #endregion
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var err_msg_arr: PackedStringArray = []
+	if !$EditorRails:
+		err_msg_arr.append("EditorRails (GeneratedRailLines) child node missing")
+	if !$EditorRoads:
+		err_msg_arr.append("EditorRoads (GeneratedRoadWays) child node missing")
+	return err_msg_arr

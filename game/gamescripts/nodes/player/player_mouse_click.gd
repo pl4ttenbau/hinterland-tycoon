@@ -35,6 +35,9 @@ func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if !collider: return
 	var is_click_on_entity: bool = self.entity_click_handler.handle_click(collider)
+	if is_click_on_entity:
+		get_viewport().set_input_as_handled()
+		return
 	if ! is_click_on_entity:
 		if collider is Terrain3D:
 			var click_pos: Vector3 = ray_result.get("position")

@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/icons/icon_industry.png")
 class_name IndustryPlaceholder extends Marker3D
 
 @export var num: int

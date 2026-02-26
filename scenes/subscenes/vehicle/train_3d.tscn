@@ -10,6 +10,7 @@ script = ExtResource("1_x4pir")
 metadata/_custom_type_script = "uid://vu364fy8qnrb"
 
 [node name="TrainPath" type="Path3D" parent="." unique_id=658100243 node_paths=PackedStringArray("vehicle3d")]
+rotation_order = 4
 curve = SubResource("Curve3D_4iei7")
 script = ExtResource("2_ufap8")
 tracks = null
