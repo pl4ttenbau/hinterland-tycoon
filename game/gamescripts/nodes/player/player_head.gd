@@ -3,6 +3,7 @@ class_name PlayerHead extends VisibleObject
 @onready var cam: Camera3D = $Camera3D
 @onready var collider: CollisionShape3D = %Player/PlayerCollisionShape
 @onready var area: Area3D = $"../PlayerArea"
+@onready var player_parent: BasicFpsPlayer = $".."
 
 const SPAWN_OFFSET = Vector3(0, 1, 0)
 
