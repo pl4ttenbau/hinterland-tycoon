@@ -1,18 +1,16 @@
 @icon("res://assets/icons/icon_mouse_white.png")
 class_name PlayerMouseClick extends Node
 
-var entity_click_handler: BaseEntityClickHandler:
-	get():
-		var handler_node: BaseEntityClickHandler = $EntityClickHandler
-		if ! handler_node:
-			Loggie.error("PlayerClickHandler has no EntityClickHandler as child")
-		return handler_node
-
 # Signals
 @warning_ignore("unused_signal")
 signal player_input(event: InputEvent, event_position: Vector3)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
+	# Dialog blocking? dont continue further
+	if UiState.current_diag != null:
+		Loggie.debug("prevented World click with open dialog")
+		return
+	# cast ray into world space
 	if event is InputEventMouseButton:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		# only delegate events at end of click
@@ -34,23 +32,28 @@ func cast_ray(screen_pos: Vector2):
 func handle_ray(ray_result: Dictionary):
 	var collider: Node3D = ray_result.get("collider") as Node3D
 	if !collider: return
-	var is_click_on_entity: bool = self.entity_click_handler.handle_click(collider)
+	var is_click_on_entity: bool = $EntityClickHandler.handle_click(collider)
 	if is_click_on_entity:
 		get_viewport().set_input_as_handled()
 		return
 	if ! is_click_on_entity:
-		if collider is Terrain3D:
-			var click_pos: Vector3 = ray_result.get("position")
-			Loggie.info("Click on terrain at %v" % click_pos)
-			SignalBus.terrain_click.emit(click_pos)
-			get_viewport().set_input_as_handled()
-		else:
-			SignalBus.unhandled_collider_click.emit(collider)
-			var node_path = collider.get_path()
-			Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
+		var is_click_on_terrain: bool = $TerrainClickHandler.handle_click(collider, ray_result)
+		if is_click_on_terrain: return
+	else:
+		SignalBus.unhandled_collider_click.emit(collider)
+		var node_path = collider.get_path()
+		Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
 
 func get_camera() -> Camera3D:
 	var cam: Camera3D = GlobalState.player.cam
 	if ! cam:
 		Loggie.error("Camera not found")
 	return cam
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var err_msgs: PackedStringArray = []
+	if !$EntityClickHandler:
+		err_msgs.append("EntityClickHandler (BaseEntityClickHandler) child node missing")
+	if !$TerrainClickHandler:
+		err_msgs.append("TerrainClickHandler (TerrainClickHandler) child node missing")
+	return []

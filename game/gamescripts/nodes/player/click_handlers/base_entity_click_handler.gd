@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_gears_white.png")
-class_name BaseEntityClickHandler extends Node
+class_name BaseEntityClickHandler extends AbstractClickHandler
 
 static var INDUSTRY_DIAG_PATH = "res://scenes/ui/dialogs/industry_dialog.tscn"
 

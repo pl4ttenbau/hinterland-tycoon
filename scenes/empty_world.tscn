@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/spawners/infr/rail/rail_loader.gd" id="8_pcopj"]
 [ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/player/click_handlers/base_entity_click_handler.gd" id="8_qsvwm"]
 [ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/spawners/infr/rail/rail_fork_loader.gd" id="9_t6nuv"]
+[ext_resource type="Script" uid="uid://dfb5g16bgjuwi" path="res://game/gamescripts/nodes/player/click_handlers/terrain_click_handler.gd" id="9_yvyyf"]
 [ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/spawners/infr/station/stations_holder.gd" id="10_c37kc"]
 [ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/spawners/infr/connectors/station_industries_connector.gd" id="11_5swda"]
 [ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/spawners/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
@@ -90,7 +91,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qsvwm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yvyyf"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -125,6 +126,10 @@ script = ExtResource("7_6wawu")
 [node name="EntityClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1092272095]
 script = ExtResource("8_qsvwm")
 metadata/_custom_type_script = "uid://c3n1pjne8toik"
+
+[node name="TerrainClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1247511969]
+script = ExtResource("9_yvyyf")
+metadata/_custom_type_script = "uid://dfb5g16bgjuwi"
 
 [node name="World" type="Node" parent="." unique_id=1193711136]
 
@@ -299,7 +304,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_qsvwm")
+texture = SubResource("ViewportTexture_yvyyf")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)

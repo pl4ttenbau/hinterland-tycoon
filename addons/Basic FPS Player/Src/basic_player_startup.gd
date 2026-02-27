@@ -1,5 +1,5 @@
 @tool
-extends CharacterBody3D
+class_name BasicFpsPlayer extends CharacterBody3D
 
 var BasicFPSPlayerScene : PackedScene = preload("basic_player_head.tscn")
 var addedHead = false

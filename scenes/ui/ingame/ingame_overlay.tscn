@@ -59,18 +59,7 @@ layout_mode = 1
 offset_top = -48.0
 
 [node name="VehicleControlContainer" parent="." unique_id=1074897106 instance=ExtResource("6_ao8ui")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 356.0
-offset_bottom = 167.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="BuildingModeIcon" type="MarginContainer" parent="." unique_id=981042772]
 unique_name_in_owner = true
