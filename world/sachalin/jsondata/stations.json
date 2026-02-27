@@ -1,0 +1,9 @@
+[
+	{
+		"num": 1,
+		"name": "Passagierski",
+		"townNum": 3,
+		"type": "STATION_PASS",
+		"townName": "Jushno-Sachalinsk",
+	}
+]

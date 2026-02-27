@@ -1,0 +1,9 @@
+{
+	"key": "sachalin",
+	"name": "Sachalin",
+	"loc": "SOVIET_UNION",
+	
+	"startPos": [483, 130],
+	
+	"spawnVehicles": false
+}

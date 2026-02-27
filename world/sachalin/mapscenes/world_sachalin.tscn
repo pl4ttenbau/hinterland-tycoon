@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_nwdjd"]
 [ext_resource type="PackedScene" uid="uid://6xtby8ova6l0" path="res://world/sachalin/mapscenes/terrain/terrain_sachalin.tscn" id="2_vme4m"]
-[ext_resource type="Terrain3DMaterial" uid="uid://ct8jfbcljd3bn" path="res://world/sachalin/mapscenes/terrain/terrain_mat_sachalin.res" id="3_77md3"]
 [ext_resource type="PackedScene" uid="uid://bfvytlmrf77kk" path="res://world/sachalin/mapscenes/towns_sachalin.tscn" id="3_d7nwm"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="4_d4unt"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="5_s8rb4"]
@@ -20,7 +19,6 @@ terrain = NodePath("WorldTerrain")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." unique_id=336419630 instance=ExtResource("2_vme4m")]
-material = ExtResource("3_77md3")
 
 [node name="Towns" parent="." unique_id=880274155 node_paths=PackedStringArray("world_scene") instance=ExtResource("3_d7nwm")]
 world_scene = NodePath("..")
