@@ -4,7 +4,7 @@ class_name VehicleCollider extends ClickableCollider
 	get(): 
 		var par_node: Node3D = self.get_parent_node_3d()
 		if !par_node is Vehicle3D:
-			Loggie.error("parent of \"\" is not Vehicle3D" % self.get_path())
+			Loggie.error("parent of \"%s\" is not Vehicle3D" % self.get_path())
 			return null
 		else:
 			return self.get_parent_node_3d() as Vehicle3D

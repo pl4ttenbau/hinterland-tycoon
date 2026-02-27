@@ -1,19 +1,25 @@
-class_name SelectVehicleDialog extends Control
+class_name SelectVehicleDialog extends GameDialog
 
 const DEPOT_BOX_SCENE_PATH = "res://scenes/ui/ingame/entity_items/depot_selection_box.tscn" 
 
 @export var selected_vehicle_type: String
 
-@export var selected_depot_num: int = -1
+@export var selected_depot_num: int = -1:
+	set(value):
+		Loggie.info("Depot selected: %d" % value)
+		selected_depot_num = value
 
 signal vehicle_spawn_triggered(spawn_dto: VehicleSpawnDto)
 
 #region Initialization
+func _init():
+	super("SelectVehicleDialog")
+
 func _ready() -> void:
 	# unlock mouse
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	# bind signals
-	%SpawnButton.pressed.connect(Callable(self, "_on_spawn_button_click"))
+	%SpawnButton.button_down.connect(Callable(self, "_on_spawn_button_click"))
 	SignalBus.dialog_vehicle_selection.connect(Callable(self, "_on_vehicle_selection_changed"))
 	# initialize depot list
 	self.add_depot_btns()
@@ -34,14 +40,13 @@ func add_depot_btn(_depot: RailDepotData) -> DepotSelectionBox:
 #region Actions
 func close():
 	Loggie.info("Closing...")
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# disconnect signals
 	if %SpawnButton.pressed.is_connected(_on_spawn_button_click):
 		%SpawnButton.pressed.disconnect(_on_spawn_button_click)
 	if SignalBus.dialog_vehicle_selection.is_connected(_on_vehicle_selection_changed):
 		SignalBus.dialog_vehicle_selection.disconnect(_on_vehicle_selection_changed)
 	# remove
-	self.queue_free()
+	super.close()
 #endregion
 
 #region Callbacks
@@ -57,6 +62,5 @@ func _on_vehicle_selection_changed(veh_type_key: String):
 	self.selected_vehicle_type = veh_type_key
 	
 func _on_depot_selection_changed(depot: RailDepotData):
-	Loggie.info("Selected Depot: %d" % depot.num)
 	self.selected_depot_num = depot.num
 #endregion
