@@ -22,7 +22,8 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 [node name="WorldTerrain" parent="." unique_id=336419630 instance=ExtResource("2_vme4m")]
 material = ExtResource("3_77md3")
 
-[node name="Towns" parent="." unique_id=880274155 instance=ExtResource("3_d7nwm")]
+[node name="Towns" parent="." unique_id=880274155 node_paths=PackedStringArray("world_scene") instance=ExtResource("3_d7nwm")]
+world_scene = NodePath("..")
 
 [node name="Deco" type="Node" parent="." unique_id=498883942]
 script = ExtResource("4_d4unt")
@@ -53,3 +54,6 @@ script = ExtResource("10_m7gyt")
 metadata/_custom_type_script = "uid://g6bsjtyavuig"
 
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("12_a4xbj")]
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1224826629]
+transform = Transform3D(0.24501927, 0, 9.996998, 0, 10, 0, -9.996998, 0, 0.24501927, 822.07874, 31.26975, -1734.55)
