@@ -36,6 +36,11 @@ Written in the Godot Engine
 * [ ] make ways for player to enter and exit vehicle
   * [ ] with click at it
 	* [ ] new VehicleClickHandler manager
+	
+#### New Maps
+
+* [ ] Sachalin 50ies
+* [ ] Gdanksk 70ies
 
 ### Special Thanks 
 

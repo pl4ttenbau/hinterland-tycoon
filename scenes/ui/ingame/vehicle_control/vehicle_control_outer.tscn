@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://j2h5rs86mkrj"]
+[gd_scene format=3 uid="uid://j2h5rs86mkrj"]
 
 [ext_resource type="Script" uid="uid://ngpi2r0442vj" path="res://addons/tnowe_extra_controls/elements/scale_container.gd" id="1_80d06"]
 [ext_resource type="Script" uid="uid://6wsxgx7vl3pq" path="res://game/gamescripts/ui/vehicle_control/vehicle_control_container.gd" id="1_c3mfk"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="2_c3mfk"]
 [ext_resource type="PackedScene" uid="uid://dt7lvw02e3c8r" path="res://scenes/ui/ingame/vehicle_control/speed_control.tscn" id="3_544v3"]
 
-[node name="VehicleControlOuter" type="MarginContainer"]
-visible = false
+[node name="VehicleControlOuter" type="MarginContainer" unique_id=913124142]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -23,28 +22,28 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_c3mfk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=812188558]
 layout_mode = 2
 
-[node name="Control" type="Container" parent="HBoxContainer"]
+[node name="Control" type="Container" parent="HBoxContainer" unique_id=53878704]
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 size_flags_horizontal = 0
 script = ExtResource("1_80d06")
 metadata/_custom_type_script = "uid://ngpi2r0442vj"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control" unique_id=1452660315]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_c3mfk")
 expand_mode = 2
 
-[node name="SpeedLine" type="Line2D" parent="HBoxContainer/Control/TextureRect"]
+[node name="SpeedLine" type="Line2D" parent="HBoxContainer/Control/TextureRect" unique_id=1762477285]
 position = Vector2(45, 70)
 rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)
 width = 1.0
 default_color = Color(0.87, 0.0783, 0.0783, 1)
 
-[node name="SpeedControl" parent="HBoxContainer" instance=ExtResource("3_544v3")]
+[node name="SpeedControl" parent="HBoxContainer" unique_id=163985117 instance=ExtResource("3_544v3")]
 layout_mode = 2

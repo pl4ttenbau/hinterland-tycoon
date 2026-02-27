@@ -1,6 +1,6 @@
 ## 
 @tool
-@icon("res://assets/icons/icon_terrain_white.png")
+@icon("res://assets/icons/icon_terrain.png")
 class_name WorldMapScene extends Node
 
 @export var map_key: String
@@ -9,6 +9,7 @@ class_name WorldMapScene extends Node
 @warning_ignore("unused_signal")
 signal world_update()
 
+#region Initialization
 func _enter_tree() -> void:
 	if Engine.is_editor_hint(): return
 	# self-register in GlobalState
@@ -18,7 +19,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	self.terrain = $WorldTerrain
 	SignalBus.terrain_initialized.emit(self)
+#endregion
 
+#region Terrain Getters
 func get_height_at(abs_pos: Vector3) -> float:
 	return self.terrain.data.get_height(abs_pos)
 
@@ -31,3 +34,16 @@ func get_terrain() -> Terrain3D:
 func raycast_xz(world_xz: Vector2) -> TerrainRaycastResult:
 	var result: TerrainRaycastResult = $TerrainRaycaster.shoot_ray(world_xz)
 	return result
+#endregion
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var child_err_msgs: PackedStringArray = []
+	if !$WorldTerrain:
+		child_err_msgs.append("WorldTerrain (Terrain3D) child node missing")
+	if !$Towns:
+		child_err_msgs.append("Towns (WorldTowns) child node missing")
+	if !$Industries:
+		child_err_msgs.append("Industries (WorldIndustries) child node missing")
+	if !$InEditor:
+		child_err_msgs.append("InEditor (EditorObjectContainer) child node missing")
+	return child_err_msgs

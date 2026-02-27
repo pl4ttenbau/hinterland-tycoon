@@ -21,7 +21,8 @@ func _editor_ready():
 func _ingame_ready():
 	self.visible = false
 #endregion
-	
-#region Add Infr Paths
 
-#endregion
+func _get_configuration_warnings() -> PackedStringArray:
+	if !$EditorInfr:
+		return ["EditorInfr (GeneratedInfrContainer) child node missing"]
+	return []

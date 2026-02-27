@@ -23,4 +23,11 @@ func enter_train():
 func exit_train():
 	SignalBus.train_exited.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# position player by vehicle
+	var player: BasicFpsPlayer = GlobalState.player.player_parent
+	var veh_pos: Vector3 = GlobalState.active_cam.global_position
+	var pos_by_vehicle: Vector3 = veh_pos + Vector3(12, -1, 0)
+	player.global_position = pos_by_vehicle
+	
+	# activate player cam again
 	self.activate_cam(GlobalState.player.cam)
