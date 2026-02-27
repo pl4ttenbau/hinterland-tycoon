@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bfvytlmrf77kk"]
+
+[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/collections/world_towns.gd" id="1_dcs0n"]
+
+[node name="TownsSachalin" type="Node" unique_id=880274155]
+script = ExtResource("1_dcs0n")
+metadata/_custom_type_script = "uid://xsl6bgbfr5xs"

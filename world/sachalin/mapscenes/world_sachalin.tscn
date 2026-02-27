@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bho5cme5qjdpg"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_nwdjd"]
+[ext_resource type="PackedScene" uid="uid://6xtby8ova6l0" path="res://world/sachalin/mapscenes/terrain/terrain_sachalin.tscn" id="2_vme4m"]
+[ext_resource type="Terrain3DMaterial" uid="uid://ct8jfbcljd3bn" path="res://world/sachalin/mapscenes/terrain/terrain_mat_sachalin.res" id="3_77md3"]
+[ext_resource type="PackedScene" uid="uid://bfvytlmrf77kk" path="res://world/sachalin/mapscenes/towns_sachalin.tscn" id="3_d7nwm"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="4_d4unt"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="5_s8rb4"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_d4unt"]
+[ext_resource type="Script" uid="uid://bbivri4py26we" path="res://game/gamescripts/services/editor/infrastructure/editor_infr_container.gd" id="7_qdmsj"]
+[ext_resource type="Script" uid="uid://dvf4vwgtk252x" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="8_77md3"]
+[ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="9_a4xbj"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="10_m7gyt"]
+[ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="12_a4xbj"]
+
+[node name="WorldMapScene" type="Node" unique_id=1795391836 node_paths=PackedStringArray("terrain")]
+script = ExtResource("1_nwdjd")
+map_key = "sachalin"
+terrain = NodePath("WorldTerrain")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." unique_id=336419630 instance=ExtResource("2_vme4m")]
+material = ExtResource("3_77md3")
+
+[node name="Towns" parent="." unique_id=880274155 instance=ExtResource("3_d7nwm")]
+
+[node name="Deco" type="Node" parent="." unique_id=498883942]
+script = ExtResource("4_d4unt")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="Houses" type="Node" parent="." unique_id=1451456311]
+script = ExtResource("5_s8rb4")
+metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
+
+[node name="InEditor" type="Node3D" parent="." unique_id=1908410241]
+script = ExtResource("6_d4unt")
+metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
+
+[node name="EditorInfr" type="Node3D" parent="InEditor" unique_id=820952879]
+script = ExtResource("7_qdmsj")
+metadata/_custom_type_script = "uid://bbivri4py26we"
+
+[node name="EditorRails" type="Node3D" parent="InEditor/EditorInfr" unique_id=693930160]
+script = ExtResource("8_77md3")
+metadata/_custom_type_script = "uid://dvf4vwgtk252x"
+
+[node name="EditorRoads" type="Node3D" parent="InEditor/EditorInfr" unique_id=1145644080]
+script = ExtResource("9_a4xbj")
+metadata/_custom_type_script = "uid://b157dhgx7ojrw"
+
+[node name="Industries" type="Node" parent="." unique_id=509282798]
+script = ExtResource("10_m7gyt")
+metadata/_custom_type_script = "uid://g6bsjtyavuig"
+
+[node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("12_a4xbj")]
