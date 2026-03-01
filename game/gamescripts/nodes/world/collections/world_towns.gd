@@ -21,7 +21,8 @@ func get_town_objs() -> Array[TownData]:
 #endregion
 
 #region Editor Methods
-@export_tool_button("Add Town")
+@export_group("Editor Actions")
+@export_tool_button("Add Town", "ToolAddNode")
 var add_town = Callable(self, "do_add_new_town")
 
 func do_add_new_town():
