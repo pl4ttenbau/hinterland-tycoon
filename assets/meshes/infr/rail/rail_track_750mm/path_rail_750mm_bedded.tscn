@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://gd83frdshap4"]
+[gd_scene format=3 uid="uid://gd83frdshap4"]
 
 [ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/rail_track/rail_track_3d.gd" id="1_1bs3w"]
 [ext_resource type="ArrayMesh" uid="uid://vphafb1c2c38" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_tracks.obj" id="2_yowo4"]
@@ -32,14 +32,14 @@ ao_enabled = true
 ao_texture = ExtResource("6_xkmyj")
 heightmap_scale = 2.2
 
-[node name="OuterRailTrack" type="Node3D"]
+[node name="OuterRailTrack" type="Node3D" unique_id=1314534933]
 script = ExtResource("1_1bs3w")
 
-[node name="TrackPath" type="Path3D" parent="."]
+[node name="TrackPath" type="Path3D" parent="." unique_id=2120985066]
 rotation_edit_mode = 1
 curve = SubResource("Curve3D_rd07l")
 
-[node name="TrackPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+[node name="TrackPathMesh" type="PathMesh3D" parent="." unique_id=2135788679 node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
 mesh = ExtResource("2_yowo4")
 surface_0/tile_rotation = Vector3(0, 0, 0)
@@ -65,7 +65,7 @@ material_override = SubResource("StandardMaterial3D_yowo4")
 visibility_range_end = 330.0
 visibility_range_end_margin = 33.0
 
-[node name="BedPathMesh" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+[node name="BedPathMesh" type="PathMesh3D" parent="." unique_id=1831260941 node_paths=PackedStringArray("path_3d")]
 path_3d = NodePath("../TrackPath")
 mesh = ExtResource("4_vtcfp")
 surface_0/tile_rotation = Vector3(0, 0, 0)

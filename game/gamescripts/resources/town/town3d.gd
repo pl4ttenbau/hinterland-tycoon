@@ -17,7 +17,7 @@ signal town_changed(_town: TownData)
 var position_action = do_position
 	
 func set_label_text(new_name: String):
-	if new_name:
+	if new_name && $SubViewport/Town3DSign:
 		self.name = "Town3D_%s" % new_name
 		$SubViewport/Town3DSign.town_name = new_name
 

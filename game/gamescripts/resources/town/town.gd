@@ -46,6 +46,11 @@ static func of(_name: String, _pos2: Vector2, pops = null, _minor: bool = false,
 		instance.peasantPops = pops.get(0)
 		instance.bourgiePops = pops.get(1)
 	return instance
+	
+static func with_num(_town_num: int) -> TownData:
+	var instance := TownData.new()
+	instance.num = _town_num
+	return instance
 #endregion
 
 #region Buildings
