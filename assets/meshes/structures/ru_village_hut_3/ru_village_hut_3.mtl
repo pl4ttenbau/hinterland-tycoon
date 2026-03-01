@@ -1,0 +1,13 @@
+# Blender 4.4.1 MTL File: 'ru_village_hut_3.blend'
+# www.blender.org
+
+newmtl mat_main
+Ns 214.257248
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_ru_village_hut_3_d.jpg
+map_Bump -bm 1.000000 tex_ru_village_hut_3_n.jpg

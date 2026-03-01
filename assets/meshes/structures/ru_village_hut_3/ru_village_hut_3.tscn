@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bdkoiu1b1k0hq"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_lhsjw"]
+[ext_resource type="ArrayMesh" uid="uid://e46m8cjnu7ld" path="res://assets/meshes/structures/ru_village_hut_3/ru_village_hut_3.obj" id="2_x5fm5"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_53cde"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahh74"]
+size = Vector3(7.094757, 5.813751, 7.0050354)
+
+[node name="RuVillageHut3" type="Node3D" unique_id=1046117816]
+script = ExtResource("1_lhsjw")
+placed_res_bld_type = "ru_village_hut_3"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
+mesh = ExtResource("2_x5fm5")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
+script = ExtResource("3_53cde")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=1573024691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7936752, 0)
+shape = SubResource("BoxShape3D_ahh74")
