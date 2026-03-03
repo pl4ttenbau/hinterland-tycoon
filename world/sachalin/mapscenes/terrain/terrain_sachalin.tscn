@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://6xtby8ova6l0"]
+
+[ext_resource type="Terrain3DMaterial" uid="uid://ct8jfbcljd3bn" path="res://world/sachalin/mapscenes/terrain/terrain_mat_sachalin.res" id="1_l7y8j"]
+[ext_resource type="Terrain3DAssets" uid="uid://b05e5wan5pgj2" path="res://world/sachalin/mapscenes/terrain/terrain_assets_sachalin.res" id="2_vq54b"]
+[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_jba3c"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="4_5s2du"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
+size = Vector2(4096, 4096)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
+shape = 0
+section_length = 0.18
+section_segments = 1
+
+[node name="WorldTerrain" type="Terrain3D" unique_id=336419630]
+data_directory = "res://world/sachalin/heightdata"
+material = ExtResource("1_l7y8j")
+assets = ExtResource("2_vq54b")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="WaterMain" type="MeshInstance3D" parent="." unique_id=847731422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5, 0)
+material_override = ExtResource("3_jba3c")
+mesh = SubResource("PlaneMesh_2pcia")
+skeleton = NodePath("")
+
+[node name="CustomTerrain3DParticles" parent="." unique_id=1992740137 node_paths=PackedStringArray("terrain") instance=ExtResource("4_5s2du")]
+terrain = NodePath("..")
+instance_spacing = 0.296875
+cell_width = 14.0
+rows = 47
+amount = 2209
+mesh = SubResource("RibbonTrailMesh_d52qy")
+min_draw_distance = 35.0
+particle_count = 55225

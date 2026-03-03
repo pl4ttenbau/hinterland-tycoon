@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://csqwck7gor0ui"
+path="res://.godot/imported/ru_kruschovka_1.obj-a71f256b9e8558822167675c66410705.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ru_kruschovka_1.obj-a71f256b9e8558822167675c66410705.mesh"]
+
+source_file="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.obj"
+dest_files=["res://.godot/imported/ru_kruschovka_1.obj-a71f256b9e8558822167675c66410705.mesh", "res://.godot/imported/ru_kruschovka_1.obj-a71f256b9e8558822167675c66410705.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=true
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

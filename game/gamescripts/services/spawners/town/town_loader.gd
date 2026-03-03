@@ -23,10 +23,10 @@ func _on_map_spawned(_container: WorldMapScene) -> void:
 func index_map_towns():
 	Loggie.info("Loading towns from map")
 	var map_towns_node: WorldTowns = GlobalState.world_container.find_child("Towns")
-	for town_center: Town3D in map_towns_node.town_centers:
+	for town_center: Town3D in map_towns_node.get_town3ds():
 		self.storage.add_outter(town_center)
 		self.storage.add(town_center.town)
-	self.towns_registered.emit(map_towns_node.towns)
+	self.towns_registered.emit(map_towns_node.get_town_objs())
 #endregion
 
 #region Getters

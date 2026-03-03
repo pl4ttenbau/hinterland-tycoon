@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://bfvytlmrf77kk"]
+
+[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/collections/world_towns.gd" id="1_dcs0n"]
+[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="2_ecdmu"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="3_mgq5a"]
+[ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_s7upt"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="5_oco75"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_mgq5a"]
+
+[sub_resource type="Resource" id="Resource_mgq5a"]
+script = ExtResource("4_s7upt")
+town_name = "Korsakov"
+pos_xz = Vector2(703.854, 1508.152)
+num = 1
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ecdmu"]
+script = ExtResource("4_s7upt")
+town_name = "Aniva"
+pos_xz = Vector2(-84.693, 1173.442)
+num = 2
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_s7upt"]
+script = ExtResource("4_s7upt")
+town_name = "Jushno-Sachalinsk"
+pos_xz = Vector2(483.845, 129.824)
+num = 3
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_oco75"]
+script = ExtResource("4_s7upt")
+town_name = "Dachnoe"
+pos_xz = Vector2(625.348, 902.878)
+num = 4
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_hccvp"]
+script = ExtResource("4_s7upt")
+town_name = "Holmsk"
+pos_xz = Vector2(-1368.027, -225.98)
+num = 5
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_yeyps"]
+script = ExtResource("4_s7upt")
+town_name = "Ozorskoje"
+pos_xz = Vector2(1672.248, 1611.055)
+num = 6
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_bhsov"]
+script = ExtResource("4_s7upt")
+town_name = "Nevelsk"
+pos_xz = Vector2(-1937.501, 1290.058)
+num = 7
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_xa7rc"]
+script = ExtResource("4_s7upt")
+town_name = "Pravda"
+pos_xz = Vector2(-1505.669, 174.287)
+is_minor = true
+num = 8
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_aehws"]
+script = ExtResource("4_s7upt")
+town_name = "Kostromskoje"
+pos_xz = Vector2(-1459.313, -1410.688)
+is_minor = true
+num = 9
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ardxe"]
+script = ExtResource("4_s7upt")
+town_name = "Dolinsk"
+pos_xz = Vector2(721.201, -1242.356)
+num = 10
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_e0tfr"]
+script = ExtResource("4_s7upt")
+town_name = "Sokol"
+pos_xz = Vector2(611.596, -619.556)
+num = 11
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_0avkg"]
+script = ExtResource("4_s7upt")
+town_name = "Novoalexandrovsk"
+pos_xz = Vector2(589.065, -104.318)
+num = 12
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_etgwj"]
+script = ExtResource("4_s7upt")
+town_name = "Sinegorsk"
+pos_xz = Vector2(54.546, -671.053)
+is_minor = true
+num = 13
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_ujwbb"]
+script = ExtResource("4_s7upt")
+town_name = "Ugledarovsk"
+pos_xz = Vector2(238.078, -1359.529)
+is_minor = true
+num = 14
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_h8uhb"]
+script = ExtResource("4_s7upt")
+town_name = "Starodubskoje"
+pos_xz = Vector2(822.079, -1734.55)
+is_minor = true
+num = 15
+type = 7
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_sqcbi"]
+script = ExtResource("4_s7upt")
+town_name = "Petropavlovskoje"
+pos_xz = Vector2(-78.714, 888.584)
+num = 14
+type = 7
+
+[node name="TownsSachalin" type="Node" unique_id=880274155]
+script = ExtResource("1_dcs0n")
+metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
+
+[node name="Town3D_Korsakov" parent="." unique_id=379283880 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 703.8536, 32, 1508.1516)
+town = SubResource("Resource_mgq5a")
+
+[node name="Town3D_Aniva" parent="." unique_id=539577569 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.69349, 32, 1173.4424)
+town = SubResource("Resource_ecdmu")
+
+[node name="Town3D_Jushno-Sachalinsk" parent="." unique_id=345711781 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483.84454, 31.392548, 129.82375)
+town = SubResource("Resource_s7upt")
+
+[node name="Town3D_Dachnoe" parent="." unique_id=2129264522 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 625.3481, 31.807842, 902.87775)
+town = SubResource("Resource_oco75")
+
+[node name="Town3D_Holmsk" parent="." unique_id=460281909 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368.0269, 33.67553, -225.98018)
+town = SubResource("Resource_hccvp")
+
+[node name="Town3D_Ozorskoje" parent="." unique_id=497353696 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1672.2476, 31.525856, 1611.0548)
+town = SubResource("Resource_yeyps")
+
+[node name="Town3D_Nevelsk" parent="." unique_id=953417905 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1937.5006, 32.497963, 1290.0582)
+town = SubResource("Resource_bhsov")
+
+[node name="Town3D_Pravda" parent="." unique_id=1653557528 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1505.6686, 32.664257, 174.28737)
+town = SubResource("Resource_xa7rc")
+
+[node name="Town3D_Kostromskoje" parent="." unique_id=1100824805 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1459.3134, 31.62267, -1410.6879)
+town = SubResource("Resource_aehws")
+
+[node name="Town3D_Dolinsk" parent="." unique_id=832698954 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 721.2006, 31.464405, -1242.356)
+town = SubResource("Resource_ardxe")
+
+[node name="Town3D_Sokol" parent="." unique_id=986893049 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 611.596, 31.374676, -619.5557)
+town = SubResource("Resource_e0tfr")
+
+[node name="Town3D_Novoalexandrovsk" parent="." unique_id=2077741684 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.065, 31.438133, -104.31754)
+town = SubResource("Resource_0avkg")
+
+[node name="Town3D_Sinegorsk" parent="." unique_id=790133637 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.546265, 33.62816, -671.0533)
+town = SubResource("Resource_etgwj")
+
+[node name="Town3D_Ugledarovsk" parent="." unique_id=2067817106 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.07782, 31.412292, -1359.5292)
+town = SubResource("Resource_ujwbb")
+
+[node name="Town3D_Starodubskoje" parent="." unique_id=964424609 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.07874, 31.26975, -1734.55)
+town = SubResource("Resource_h8uhb")
+
+[node name="Town3D_Petropavlovskoje" type="Node3D" parent="." unique_id=1346154099 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.71411, 31.098396, 888.5837)
+script = ExtResource("6_mgq5a")
+town = SubResource("Resource_sqcbi")

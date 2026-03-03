@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://bho5cme5qjdpg"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_nwdjd"]
+[ext_resource type="PackedScene" uid="uid://6xtby8ova6l0" path="res://world/sachalin/mapscenes/terrain/terrain_sachalin.tscn" id="2_vme4m"]
+[ext_resource type="PackedScene" uid="uid://bfvytlmrf77kk" path="res://world/sachalin/mapscenes/towns_sachalin.tscn" id="3_d7nwm"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="4_d4unt"]
+[ext_resource type="PackedScene" uid="uid://dxriyek0lwp86" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.tscn" id="5_m4w4l"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="5_s8rb4"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_d4unt"]
+[ext_resource type="PackedScene" uid="uid://b8h72pkfa1sq6" path="res://assets/meshes/structures/ru_stalinka_1/ru_stalinka_1.tscn" id="6_ounbw"]
+[ext_resource type="Script" uid="uid://bbivri4py26we" path="res://game/gamescripts/services/editor/infrastructure/editor_infr_container.gd" id="7_qdmsj"]
+[ext_resource type="Script" uid="uid://dvf4vwgtk252x" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="8_77md3"]
+[ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="9_a4xbj"]
+[ext_resource type="Script" uid="uid://c3s2otuv0xj5t" path="res://game/gamescripts/nodes/infr/editor/editor_infr_line_3d.gd" id="9_m7gyt"]
+[ext_resource type="Shader" uid="uid://c30na0obdky88" path="res://addons/godot-polyliner/shaders/line_pbr.tres" id="10_j37fg"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="10_m7gyt"]
+[ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="12_a4xbj"]
+
+[sub_resource type="Curve3D" id="Curve3D_m7gyt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.08574153, 0, 1.9981612, 0.08574153, 0, -1.9981612, 2.2999878, 0, -53.600006, -0.18238701, 0, 1.9916664, 0.18238701, 0, -1.9916664, 4.799988, 0, -80.90001, -0.40544006, 0, 1.9584736, 0.40544006, 0, -1.9584736, 10.700012, 0, -109.40001),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j37fg"]
+render_priority = 0
+shader = ExtResource("10_j37fg")
+shader_parameter/line_width = 0.5
+shader_parameter/tangent_facing = false
+shader_parameter/rounded = false
+shader_parameter/tube_normal = true
+shader_parameter/uv_matches_width = true
+shader_parameter/tex_scale = Vector2(1, 1)
+shader_parameter/tex_stretch = true
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.5
+shader_parameter/roughness = 0.5
+
+[node name="WorldMapScene" type="Node" unique_id=1795391836 node_paths=PackedStringArray("terrain")]
+script = ExtResource("1_nwdjd")
+map_key = "sachalin"
+terrain = NodePath("WorldTerrain")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." unique_id=336419630 instance=ExtResource("2_vme4m")]
+
+[node name="Towns" parent="." unique_id=880274155 node_paths=PackedStringArray("world_scene") instance=ExtResource("3_d7nwm")]
+world_scene = NodePath("..")
+
+[node name="Deco" type="Node" parent="." unique_id=498883942]
+script = ExtResource("4_d4unt")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="RuKurschovka1" parent="Deco" unique_id=1046117816 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(0.03643441, 0, 0.99933606, 0, 1, 0, -0.99933606, 0, 0.03643441, 510.55426, 31.142826, 95.92603)
+placed_town_num = 1
+
+[node name="RuKurschovka2" parent="Deco" unique_id=786865148 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(0.03643441, 0, 0.99933606, 0, 1, 0, -0.99933606, 0, 0.03643441, 508.99347, 31.133118, 120.287834)
+placed_town_num = 1
+
+[node name="RuStalinka1" parent="Deco" unique_id=1691940505 instance=ExtResource("6_ounbw")]
+transform = Transform3D(0.9999957, 0, -0.002932149, 0, 1, 0, 0.002932149, 0, 0.9999957, 533.89667, 31.52541, 98.04188)
+placed_town_num = 1
+
+[node name="RuStalinka2" parent="Deco" unique_id=1410180656 instance=ExtResource("6_ounbw")]
+transform = Transform3D(0.9999957, 0, -0.002932149, 0, 1, 0, 0.002932149, 0, 0.9999957, 564.83417, 31.52541, 97.9801)
+placed_town_num = 1
+
+[node name="RuStalinka3" parent="Deco" unique_id=1701630971 instance=ExtResource("6_ounbw")]
+transform = Transform3D(-0.99999976, 0, -0.0006631445, 0, 1, 0, 0.0006631445, 0, -0.99999976, 585.4806, 31.52541, 99.27218)
+placed_town_num = 1
+
+[node name="Houses" type="Node" parent="." unique_id=1451456311]
+script = ExtResource("5_s8rb4")
+metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
+
+[node name="InEditor" type="Node3D" parent="." unique_id=1908410241]
+script = ExtResource("6_d4unt")
+metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
+
+[node name="EditorInfr" type="Node3D" parent="InEditor" unique_id=820952879]
+script = ExtResource("7_qdmsj")
+metadata/_custom_type_script = "uid://bbivri4py26we"
+
+[node name="EditorRails" type="Node3D" parent="InEditor/EditorInfr" unique_id=693930160]
+script = ExtResource("8_77md3")
+metadata/_custom_type_script = "uid://dvf4vwgtk252x"
+
+[node name="RailTrack_1" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1594253660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 478, 31.5, 181.6)
+curve = SubResource("Curve3D_m7gyt")
+script = ExtResource("9_m7gyt")
+num = 1
+infr_name = "JSach Main Station"
+abs_aabb = AABB(478, 31.5, 72.2, 10.700012, 0, 109.40001)
+material = SubResource("ShaderMaterial_j37fg")
+
+[node name="EditorRoads" type="Node3D" parent="InEditor/EditorInfr" unique_id=1145644080]
+script = ExtResource("9_a4xbj")
+metadata/_custom_type_script = "uid://b157dhgx7ojrw"
+
+[node name="Industries" type="Node" parent="." unique_id=509282798]
+script = ExtResource("10_m7gyt")
+metadata/_custom_type_script = "uid://g6bsjtyavuig"
+
+[node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("12_a4xbj")]
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1224826629]
+transform = Transform3D(0.24501927, 0, 9.996998, 0, 10, 0, -9.996998, 0, 0.24501927, -78.71411, 31.098396, 888.5837)

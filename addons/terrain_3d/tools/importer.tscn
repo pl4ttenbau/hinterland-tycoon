@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blaieaqp413k7"]
+[gd_scene format=3 uid="uid://blaieaqp413k7"]
 
 [ext_resource type="Script" uid="uid://cib2rig7vup10" path="res://addons/terrain_3d/tools/importer.gd" id="1_60b8f"]
 
@@ -19,9 +19,9 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kcdxh"]
-seamless = true
-color_ramp = SubResource("Gradient_555ul")
 noise = SubResource("FastNoiseLite_ij0dh")
+color_ramp = SubResource("Gradient_555ul")
+seamless = true
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_34j6c"]
 _shader_parameters = {
@@ -66,15 +66,15 @@ lod0_range = 128.0
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_42p8u"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ce8yv")])
 
-[node name="Importer" type="Terrain3D"]
+[node name="Importer" type="Terrain3D" unique_id=837117013]
 material = SubResource("Terrain3DMaterial_34j6c")
 assets = SubResource("Terrain3DAssets_42p8u")
-mesh_lods = 8
 show_checkered = true
 top_level = true
 script = ExtResource("1_60b8f")
-height_file_name = "/home/cornelinux/.godotproj/hinterland-tycoon/world/default/source/heightmap_default.png"
-import_scale = 30.0
-r16_range = Vector2(0, 500)
-destination_directory = "res://world/default/heightdata"
+height_file_name = "/home/cornelinux/.godotproj/hinterland-tycoon/world/sachalin/source/heightmap.exr"
+import_position = Vector2i(-2048, -2048)
+import_scale = 80.0
+height_offset = 30.0
+destination_directory = "res://world/sachalin/heightmap"
 metadata/_edit_lock_ = true

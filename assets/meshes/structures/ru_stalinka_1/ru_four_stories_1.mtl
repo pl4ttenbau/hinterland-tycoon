@@ -1,0 +1,23 @@
+# Blender 4.4.1 MTL File: 'ru_four_stories_1.blend'
+# www.blender.org
+
+newmtl mat_details
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 1
+map_Kd tex_ru_four_stories_1_details_d.jpg
+map_d tex_ru_four_stories_1_details_d.jpg
+
+newmtl mat_main_iron
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_ru_four_stories_1_main_d.jpg
+map_Bump -bm 1.000000 tex_ru_four_stories_1_main_n.jpg

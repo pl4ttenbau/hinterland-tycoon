@@ -23,6 +23,9 @@ func load_static_deco():
 #region Deco Splines
 func load_deco_splines():
 	var json_path = DECO_FILEPATH_FORMAT % GlobalState.selected_map_name
+	if ! FileAccess.file_exists(json_path):
+		Loggie.warn("Deco.Json doesnt exist at \"%s\"" % json_path)
+		return
 	var json_str: String = FileAccess.get_file_as_string(json_path)
 	# load splines
 	for spline_dict in JSON.parse_string(json_str).splines:
