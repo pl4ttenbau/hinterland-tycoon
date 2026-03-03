@@ -1,25 +1,54 @@
 [
 	{
 		"num": 1,
-		"name": "JSach Main Station",
+		"name": "JS Main Station",
 		"type": "NORMAL_GAUGE",
-		"offset": [0, 0, 0],
 		"points": [
 			{
-				"pos": [428.0, 31.5, 181.6],
+				"pos": [478.0, 31.5, 181.6],
 			},
 			{
-				"pos": [430.3, 31.5, 128.0],
+				"pos": [480.3, 31.5, 128.0],
 				"station": {
 					"num": 1
 				}
 			},
 			{
-				"pos": [432.8, 31.5, 100.7]
+				"pos": [482.8, 31.5, 100.7]
 			},
 			{
-				"pos": [438.7, 31.5, 72.2]
+				"pos": [488.7, 31.5, 72.2],
+				"fork": {
+					"connectiveTracks": [2, 3],
+					"setTo": 3
+				}
 			}
+		]
+	},
+	{
+		"num": 2,
+		"name": "JS Dalee Branch",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [488.7, 31.5, 72.2]
+			},
+			{
+				"pos": [488.7, 31.5, 72.2]
+			},
+		]
+	},
+	{
+		"num": 3,
+		"name": "JS Nothern Mainline",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [488.7, 31.5, 72.2]
+			},
+			{
+				"pos": [488.7, 31.5, 72.2]
+			},
 		]
 	}
 ]

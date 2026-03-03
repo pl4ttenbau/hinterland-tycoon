@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="3_mgq5a"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_s7upt"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="5_oco75"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_mgq5a"]
 
 [sub_resource type="Resource" id="Resource_mgq5a"]
 script = ExtResource("4_s7upt")
@@ -131,6 +132,13 @@ num = 15
 type = 7
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
+[sub_resource type="Resource" id="Resource_sqcbi"]
+script = ExtResource("4_s7upt")
+town_name = "Petropavlovskoje"
+pos_xz = Vector2(-78.714, 888.584)
+num = 14
+type = 7
+
 [node name="TownsSachalin" type="Node" unique_id=880274155]
 script = ExtResource("1_dcs0n")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -194,3 +202,8 @@ town = SubResource("Resource_ujwbb")
 [node name="Town3D_Starodubskoje" parent="." unique_id=964424609 instance=ExtResource("2_ecdmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.07874, 31.26975, -1734.55)
 town = SubResource("Resource_h8uhb")
+
+[node name="Town3D_Petropavlovskoje" type="Node3D" parent="." unique_id=1346154099 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.71411, 31.098396, 888.5837)
+script = ExtResource("6_mgq5a")
+town = SubResource("Resource_sqcbi")
