@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bkcga6762i70"]
+
+[ext_resource type="ArrayMesh" uid="uid://bo5cc1on5tgus" path="res://assets/meshes/deco/lenin/lenin.obj" id="1_nng5w"]
+
+[node name="Lenin" type="Node3D" unique_id=1698638112]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1968508956]
+layers = 32
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+mesh = ExtResource("1_nng5w")
