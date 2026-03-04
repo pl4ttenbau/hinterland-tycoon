@@ -26,8 +26,9 @@ static func get_bld_types() -> Array[ResBldType]:
 		ResBldType.new("ru_village_hut_2", "Isba", 6),
 		ResBldType.new("ru_village_hut_3", "Isba", 4),
 		ResBldType.new("ru_small_house_1", "Barracks", 15),
-		ResBldType.new("ru_kruschovka_1", "Kruschovka", 21),
-		ResBldType.new("ru_stalinka_1", "Stalinka", 35)
+		ResBldType.new("ru_small_house_2", "Barracks", 20),
+		ResBldType.new("ru_kruschovka_1", "Kruschovka", 40),
+		ResBldType.new("ru_stalinka_1", "Stalinka", 55)
 	]
 	
 func load_types() -> void:
