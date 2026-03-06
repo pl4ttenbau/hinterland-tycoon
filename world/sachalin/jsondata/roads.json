@@ -1,3 +1,863 @@
 [
-
+	{
+		"num": 1,
+		"name": "JS Prospekt Mira Southern",
+		"points": [
+			{
+				"pos": [549.2, 31.4, 237.4]
+			},
+			{
+				"pos": [549.0, 31.4, 211.9]
+			},
+			{
+				"pos": [548.9, 31.4, 195.1],
+				"cross": {
+					"connectiveRoads": [2, 16, 17]
+				}
+			}
+		]
+	},
+	{
+		"num": 2,
+		"name": "JS Prospekt Mira Mid-Southern",
+		"points": [
+			{
+				"pos": [548.9, 31.4, 195.1],
+				"cross": {
+					"connectiveRoads": [1, 16, 17]
+				}
+			},
+			{
+				"pos": [549.0, 31.4, 182.3]
+			},
+			{
+				"pos": [548.0, 31.5, 167.5],
+				"cross": {
+					"connectiveRoads": [3, 10]
+				}
+			}
+		]
+	},
+	{
+		"num": 3,
+		"name": "JS Prospekt Mira Mid-Northern",
+		"points": [
+			{
+				"pos": [548.0, 31.5, 167.5],
+				"cross": {
+					"connectiveRoads": [2, 10]
+				}
+			},
+			{
+				"pos": [548.5, 31.5, 153.5]
+			},
+			{
+				"pos": [548.1, 31.5, 139.6],
+				"cross": {
+					"connectiveRoads": [4, 11, 12]
+				}
+			}
+		]
+	},
+	{
+		"num": 4,
+		"name": "JS Prospekt Mira Northern",
+		"points": [
+			{
+				"pos": [548.1, 31.5, 139.6],
+				"cross": {
+					"connectiveRoads": [3, 11, 12]
+				}
+			},
+			{
+				"pos": [549.0, 31.5, 121.1]
+			},
+			{
+				"pos": [548.7, 31.5, 97.2]
+			},
+			{
+				"pos": [549.8, 31.5, 80.7],
+				"cross": {
+					"connectiveRoads": [5, 18, 19]
+				}
+			}
+		]
+	},
+	{
+		"num": 5,
+		"name": "JS Prospekt Mira Northernmost",
+		"points": [
+			{
+				"pos": [549.8, 31.5, 80.7],
+				"cross": {
+					"connectiveRoads": [4, 18, 19]
+				}
+			},
+			{
+				"pos": [553.3, 31.5, 66.7]
+			},
+			{
+				"pos": [559.3, 31.5, 55.3]
+			},
+			{
+				"pos": [567.3, 31.5, 46.5]
+			},
+			{
+				"pos": [577.7, 31.6, 39.2]
+			},
+			{
+				"pos": [606.9, 31.7, 22.1]
+			},
+			{
+				"pos": [617.1, 31.8, 13.3]
+			},
+			{
+				"pos": [624.4, 31.9, 5.0]
+			},
+			{
+				"pos": [632.2, 31.9, -6.5]
+			},
+			{
+				"pos": [636.5, 32.0, -19.5]
+			},
+			{
+				"pos": [638.7, 32.2, -34.0],
+				"cross": {
+					"connectiveRoads": [20]
+				}
+			}
+		]
+	},
+	{
+		"num": 6,
+		"name": "JS Lenin Street S",
+		"points": [
+			{
+				"pos": [493.0, 31.4, 195.6],
+				"cross": {
+					"connectiveRoads": [16]
+				}
+			},
+			{
+				"pos": [493.6, 31.4, 178.5]
+			},
+			{
+				"pos": [493.5, 31.4, 166.5],
+				"cross": {
+					"connectiveRoads": [7, 10]
+				}
+			}
+		]
+	},
+	{
+		"num": 7,
+		"name": "JS Lenin Street M",
+		"points": [
+			{
+				"pos": [493.5, 31.4, 166.5],
+				"cross": {
+					"connectiveRoads": [6, 10]
+				}
+			},
+			{
+				"pos": [494.4, 31.4, 150.2]
+			},
+			{
+				"pos": [494.8, 31.4, 139.6],
+				"cross": {
+					"connectiveRoads": [8, 11]
+				}
+			}
+		]
+	},
+	{
+		"num": 8,
+		"name": "JS Lenin Street N",
+		"points": [
+			{
+				"pos": [494.8, 31.4, 139.6],
+				"cross": {
+					"connectiveRoads": [7]
+				}
+			},
+			{
+				"pos": [495.7, 31.5, 118.2]
+			},
+			{
+				"pos": [496.9, 31.5, 97.3]
+			},
+			{
+				"pos": [497.4, 31.5, 80.4],
+				"cross": {
+					"connectiveRoads": [9, 18]
+				}
+			}
+		]
+	},
+	{
+		"num": 9,
+		"name": "JS Railway Street",
+		"points": [
+			{
+				"pos": [497.4, 31.5, 80.4],
+				"cross": {
+					"connectiveRoads": [8, 18]
+				}
+			},
+			{
+				"pos": [487.5, 31.5, 80.5]
+			},
+			{
+				"pos": [471.4, 31.5, 79.7]
+			},
+			{
+				"pos": [458.6, 31.5, 79.8]
+			},
+			{
+				"pos": [449.6, 31.5, 80.6]
+			}
+		]
+	},
+	{
+		"num": 10,
+		"name": "JS Cosmonaut Popovich Str. S",
+		"points": [
+			{
+				"pos": [493.5, 31.4, 166.5],
+				"cross": {
+					"connectiveRoads": [6, 7]
+				}
+			},
+			{
+				"pos": [513.7, 31.4, 167.3]
+			},
+			{
+				"pos": [531.1, 31.4, 167.6]
+			},
+			{
+				"pos": [548.0, 31.5, 167.5],
+				"cross": {
+					"connectiveRoads": [2, 3]
+				}
+			}
+		]
+	},
+	{
+		"num": 11,
+		"name": "JS Communist Alley W",
+		"points": [
+			{
+				"pos": [494.8, 31.4, 139.6],
+				"cross": {
+					"connectiveRoads": [8, 11]
+				}
+			},
+			{
+				"pos": [524.8, 31.4, 139.6]
+			},
+			{
+				"pos": [548.1, 31.5, 139.6],
+				"cross": {
+					"connectiveRoads": [3, 4]
+				}
+			}
+		]
+	},
+	{
+		"num": 12,
+		"name": "JS Communist Alley M",
+		"points": [
+			{
+				"pos": [548.1, 31.5, 139.6],
+				"cross": {
+					"connectiveRoads": [3, 4, 11]
+				}
+			},
+			{
+				"pos": [570.1, 31.5, 139.9]
+			},
+			{
+				"pos": [583.9, 31.6, 140.3]
+			},
+			{
+				"pos": [598.6, 31.6, 139.7],
+				"cross": {
+					"connectiveRoads": [13, 14, 15]
+				}
+			}
+		]
+	},
+	{
+		"num": 13,
+		"name": "JS Communist Alley E",
+		"points": [
+			{
+				"pos": [598.6, 31.6, 139.7],
+				"cross": {
+					"connectiveRoads": [12, 14, 15]
+				}
+			},
+			{
+				"pos": [619.4, 31.7, 140.1]
+			},
+			{
+				"pos": [631.2, 31.7, 140.4]
+			},
+			{
+				"pos": [643.9, 31.8, 140.4]
+			}
+		]
+	},
+	{
+		"num": 14,
+		"name": "JS Komsomolsk Str. S",
+		"points": [
+			{
+				"pos": [597.6, 31.5, 195.9],
+				"cross": {
+					"connectiveRoads": [17]
+				}
+			},
+			{
+				"pos": [598.3, 31.6, 174.5]
+			},
+			{
+				"pos": [598.3, 31.6, 160.4]
+			},
+			{
+				"pos": [598.6, 31.6, 139.7],
+				"cross": {
+					"connectiveRoads": [12, 13, 15]
+				}
+			}
+		]
+	},
+	{
+		"num": 15,
+		"name": "JS Komsomolsk Str. N",
+		"points": [
+			{
+				"pos": [598.6, 31.6, 139.7],
+				"cross": {
+					"connectiveRoads": [12, 13, 14]
+				}
+			},
+			{
+				"pos": [599.0, 31.7, 119.0]
+			},
+			{
+				"pos": [600.0, 31.7, 104.2]
+			},
+			{
+				"pos": [599.8, 31.6, 81.2],
+				"cross": {
+					"connectiveRoads": [19]
+				}
+			}
+		]
+	},
+	{
+		"num": 16,
+		"name": "JS Victory Alley W",
+		"points": [
+			{
+				"pos": [493.0, 31.4, 195.6],
+				"cross": {
+					"connectiveRoads": [6]
+				}
+			},
+			{
+				"pos": [519.5, 31.4, 195.1]
+			},
+			{
+				"pos": [548.9, 31.4, 195.1],
+				"cross": {
+					"connectiveRoads": [1, 2, 17]
+				}
+			},
+		]
+	},
+	{
+		"num": 17,
+		"name": "JS Victory Alley E",
+		"points": [
+			{
+				"pos": [548.9, 31.4, 195.1],
+				"cross": {
+					"connectiveRoads": [1, 2, 16]
+				}
+			},
+			{
+				"pos": [577.5, 31.5, 195.8]
+			},
+			{
+				"pos": [597.6, 31.5, 195.9],
+				"cross": {
+					"connectiveRoads": [14]
+				}
+			}
+		]
+	},
+	{
+		"num": 18,
+		"name": "JS Bumachnaja Str.",
+		"points": [
+			{
+				"pos": [497.4, 31.5, 80.4],
+				"cross": {
+					"connectiveRoads": [8, 9]
+				}
+			},
+			{
+				"pos": [520.2, 31.5, 80.4]
+			},
+			{
+				"pos": [549.8, 31.5, 80.7],
+				"cross": {
+					"connectiveRoads": [4, 5, 19]
+				}
+			}
+		]
+	},
+	{
+		"num": 19,
+		"name": "JS Mountain Str. W",
+		"points": [
+			{
+				"pos": [549.8, 31.5, 80.7],
+				"cross": {
+					"connectiveRoads": [4, 5, 18]
+				}
+			},
+			{
+				"pos": [570.2, 31.5, 80.4]
+			},
+			{
+				"pos": [599.8, 31.6, 81.2],
+				"cross": {
+					"connectiveRoads": [15]
+				}
+			}
+		]
+	},
+	{
+		"num": 20,
+		"name": "JS-Ocha Main Street 1",
+		"points": [
+			{
+				"pos": [638.7, 32.2, -34.0],
+				"cross": {
+					"connectiveRoads": [5]
+				}
+			},
+			{
+				"pos": [639.4, 32.2, -53.3]
+			},
+			{
+				"pos": [639.1, 32.2, -87.2]
+			},
+			{
+				"pos": [637.9, 32.1, -114.9]
+			},
+			{
+				"pos": [637.8, 32.0, -130.1]
+			},
+			{
+				"pos": [636.0, 31.9, -143.9]
+			},
+			{
+				"pos": [631.1, 31.9, -157.0],
+				"cross": {
+					"connectiveRoads": [21]
+				}
+			}
+		]
+	},
+	{
+		"num": 21,
+		"name": "JS-Ocha Main Street 2",
+		"points": [
+			{
+				"pos": [631.1, 31.9, -157.0],
+				"cross": {
+					"connectiveRoads": [20]
+				}
+			},
+			{
+				"pos": [626.8, 31.8, -168.2]
+			},
+			{
+				"pos": [623.2, 31.8, -177.4]
+			},
+			{
+				"pos": [620.0, 31.8, -191.4],
+				"cross": {
+					"connectiveRoads": [22]
+				}
+			}
+		]
+	},
+	{
+		"num": 22,
+		"name": "JS-Ocha Main Street 3",
+		"points": [
+			{
+				"pos": [620.0, 31.8, -191.4],
+				"cross": {
+					"connectiveRoads": [21]
+				}
+			},
+			{
+				"pos": [620.0, 31.7, -209.9]
+			},
+			{
+				"pos": [619.5, 31.7, -232.5]
+			},
+			{
+				"pos": [619.5, 31.7, -252.8]
+			},
+			{
+				"pos": [621.3, 31.8, -264.2]
+			},
+			{
+				"pos": [629.0, 31.8, -277.5]
+			},
+			{
+				"pos": [639.0, 31.9, -294.6]
+			},
+			{
+				"pos": [641.9, 31.9, -309.8]
+			},
+			{
+				"pos": [641.7, 32.0, -320.9],
+				"cross": {
+					"connectiveRoads": [23]
+				}
+			}
+		]
+	},
+	{
+		"num": 23,
+		"name": "JS-Ocha Main Street 4",
+		"points": [
+			{
+				"pos": [641.7, 32.0, -320.9]
+			},
+			{
+				"pos": [639.9, 32.0, -332.0]
+			},
+			{
+				"pos": [635.2, 32.0, -342.5]
+			},
+			{
+				"pos": [629.3, 31.9, -349.9]
+			},
+			{
+				"pos": [626.5, 31.9, -361.0]
+			},
+			{
+				"pos": [626.6, 31.9, -387.1]
+			},
+			{
+				"pos": [628.0, 31.9, -424.0],
+				"cross": {
+					"connectiveRoads": [24]
+				}
+			}
+		]
+	},
+	{
+		"num": 24,
+		"name": "JS-Ocha Main Street 8",
+		"points": [
+			{
+				"pos": [628.0, 31.9, -424.0],
+				"cross": {
+					"connectiveRoads": [23]
+				}
+			},
+			{
+				"pos": [627.7, 31.8, -451.5]
+			},
+			{
+				"pos": [627.5, 31.7, -481.6]
+			},
+			{
+				"pos": [627.8, 31.7, -505.9]
+			},
+			{
+				"pos": [630.8, 31.7, -526.3]
+			},
+			{
+				"pos": [633.0, 31.7, -541.1]
+			},
+			{
+				"pos": [633.3, 31.7, -556.0],
+				"cross": {
+					"connectiveRoads": [25]
+				}
+			}
+		]
+	},
+	{
+		"num": 25,
+		"name": "Sokol Main Str. S",
+		"points": [
+			{
+				"pos": [633.3, 31.7, -556.0],
+				"cross": {
+					"connectiveRoads": [24]
+				}
+			},
+			{
+				"pos": [632.4, 31.7, -573.3]
+			},
+			{
+				"pos": [629.4, 31.7, -594.8]
+			},
+			{
+				"pos": [628.2, 31.7, -611.1],
+				"cross": {
+					"connectiveRoads": [26]
+				}
+			}
+		 ]
+	},
+	{
+		"num": 26,
+		"name": "Sokol Main Str. N",
+		"points": [
+			{
+				"pos": [628.2, 31.7, -611.1],
+				"cross": {
+					"connectiveRoads": [25]
+				}
+			},
+			{
+				"pos": [626.1, 31.7, -630.4]
+			},
+			{
+				"pos": [624.6, 31.6, -650.6]
+			},
+			{
+				"pos": [624.8, 31.6, -665.8],
+				"cross": {
+					"connectiveRoads": [27]
+				}
+			}
+		]
+	},
+	{
+		"num": 27,
+		"name": "JS-Ocha Main Street 9",
+		"points": [
+			{
+				"pos": [624.8, 31.6, -665.8],
+				"cross": {
+					"connectiveRoads": [26]
+				}
+			},
+			{
+				"pos": [624.9, 31.6, -689.2]
+			},
+			{
+				"pos": [624.9, 31.6, -704.9],
+				"cross": {
+					"connectiveRoads": [28]
+				}
+			}
+		]
+	},
+	{
+		"num": 28,
+		"name": "JS-Ocha Main Street 10: Bridge",
+		"points": [
+			{
+				"pos": [624.9, 31.6, -704.9],
+				"cross": {
+					"connectiveRoads": [27]
+				}
+			},
+			{
+				"pos": [624.8, 31.6, -727.3],
+				"cross": {
+					"connectiveRoads": [29]
+				}
+			}
+		]
+	},
+	{
+		"num": 29,
+		"name": "JS-Ocha Main Street 11",
+		"points": [
+			{
+				"pos": [624.8, 31.6, -727.3],
+				"cross": {
+					"connectiveRoads": [28]
+				}
+			},
+			{
+				"pos": [625.4, 31.5, -743.3]
+			},
+			{
+				"pos": [625.1, 31.5, -761.9]
+			},
+			{
+				"pos": [629.6, 31.5, -784.9]
+			},
+			{
+				"pos": [636.6, 31.5, -805.5]
+			},
+			{
+				"pos": [644.5, 31.5, -829.1]
+			},
+			{
+				"pos": [650.2, 31.5, -849.5]
+			},
+			{
+				"pos": [654.1, 31.5, -868.5]
+			},
+			{
+				"pos": [656.6, 31.5, -890.6]
+			},
+			{
+				"pos": [659.1, 31.5, -924.3]
+			},
+			{
+				"pos": [658.9, 31.6, -968.7],
+				"cross": {
+					"connectiveRoads": [30]
+				}
+			}
+		]
+	},
+	{
+		"num": 30,
+		"name": "JS-Ocha Main Street 12",
+		"points": [
+			{
+				"pos": [658.9, 31.6, -968.7],
+				"cross": {
+					"connectiveRoads": [29]
+				}
+			},
+			{
+				"pos": [658.1, 31.6, -991.0]
+			},
+			{
+				"pos": [660.0, 31.6, -1009.0]
+			},
+			{
+				"pos": [663.4, 31.6, -1026.3]
+			},
+			{
+				"pos": [668.1, 31.6, -1045.7]
+			},
+			{
+				"pos": [675.2, 31.6, -1065.3]
+			},
+			{
+				"pos": [681.6, 31.5, -1081.9]
+			},
+			{
+				"pos": [693.5, 31.6, -1103.8]
+			},
+			{
+				"pos": [708.2, 31.6, -1126.9]
+			},
+			{
+				"pos": [716.3, 31.6, -1145.2]
+			},
+			{
+				"pos": [719.9, 31.6, -1157.2]
+			},
+			{
+				"pos": [722.9, 31.6, -1173.3],
+				"cross": {
+					"connectiveRoads": [31]
+				}
+			}
+		]
+	},
+	{
+		"num": 31,
+		"name": "Dolinsk Chabarovskaja Street S",
+		"points": [
+			{
+				"pos": [722.9, 31.6, -1173.3],
+				"cross": {
+					"connectiveRoads": [30]
+				}
+			},
+			{
+				"pos": [733.8, 31.7, -1185.6]
+			},
+			{
+				"pos": [743.3, 31.7, -1194.9]
+			},
+			{
+				"pos": [749.2, 31.8, -1204.5]
+			},
+			{
+				"pos": [752.7, 31.7, -1214.0]
+			},
+			{
+				"pos": [753.4, 31.8, -1220.0]
+			},
+			{
+				"pos": [755.3, 31.8, -1231.4],
+				"cross": {
+					"connectiveRoads": [32]
+				}
+			}
+		]
+	},
+	{
+		"num": 32,
+		"name": "Dolinsk Chabarovskaja Street N",
+		"points": [
+			{
+				"pos": [755.3, 31.8, -1231.4],
+				"cross": {
+					"connectiveRoads": [31]
+				}
+			},
+			{
+				"pos": [754.9, 31.8, -1241.1]
+			},
+			{
+				"pos": [752.4, 31.7, -1249.7]
+			},
+			{
+				"pos": [750.0, 31.7, -1256.5]
+			},
+			{
+				"pos": [745.9, 31.6, -1266.8],
+				"cross": {
+					"connectiveRoads": [33]
+				}
+			}
+		]
+	},
+	{
+		"num": 33,
+		"name": "Dolinsk Red Army Street",
+		"points": [
+			{
+				"pos": [745.9, 31.6, -1266.8],
+				"cross": {
+					"connectiveRoads": [32]
+				}
+			},
+			{
+				"pos": [737.5, 31.6, -1276.7]
+			},
+			{
+				"pos": [731.6, 31.5, -1281.2]
+			},
+			{
+				"pos": [724.1, 31.5, -1289.1]
+			}
+		]
+	}
 ]

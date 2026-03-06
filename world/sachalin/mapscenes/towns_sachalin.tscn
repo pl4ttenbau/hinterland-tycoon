@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="3_mgq5a"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_s7upt"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="5_oco75"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_mgq5a"]
 
 [sub_resource type="Resource" id="Resource_mgq5a"]
 script = ExtResource("4_s7upt")
@@ -125,7 +126,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_h8uhb"]
 script = ExtResource("4_s7upt")
 town_name = "Starodubskoje"
-pos_xz = Vector2(822.079, -1734.55)
+pos_xz = Vector2(822.079, -1800)
 is_minor = true
 num = 15
 type = 7
@@ -135,7 +136,46 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("4_s7upt")
 town_name = "Petropavlovskoje"
 pos_xz = Vector2(-78.714, 888.584)
-num = 14
+num = 16
+type = 7
+
+[sub_resource type="Resource" id="Resource_ykk5d"]
+script = ExtResource("4_s7upt")
+town_name = "Taranay"
+pos_xz = Vector2(-352.877, 1547.822)
+is_minor = true
+num = 17
+type = 7
+
+[sub_resource type="Resource" id="Resource_eg3lv"]
+script = ExtResource("4_s7upt")
+town_name = "Chaplanovo"
+pos_xz = Vector2(-730.751, 326.916)
+num = 18
+type = 7
+
+[sub_resource type="Resource" id="Resource_b5rgk"]
+script = ExtResource("4_s7upt")
+town_name = "Pjatirechnje"
+pos_xz = Vector2(-782.528, -93.273)
+is_minor = true
+num = 19
+type = 7
+
+[sub_resource type="Resource" id="Resource_6d8ba"]
+script = ExtResource("4_s7upt")
+town_name = "Okhotskoje"
+pos_xz = Vector2(1786.076, 573.282)
+is_minor = true
+num = 20
+type = 7
+
+[sub_resource type="Resource" id="Resource_ktk53"]
+script = ExtResource("4_s7upt")
+town_name = "Chapaevo"
+pos_xz = Vector2(1115.45, 857.582)
+is_minor = true
+num = 21
 type = 7
 
 [node name="TownsSachalin" type="Node" unique_id=880274155]
@@ -199,9 +239,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.07782, 31.412292, -1359.5
 town = SubResource("Resource_ujwbb")
 
 [node name="Town3D_Starodubskoje" parent="." unique_id=964424609 instance=ExtResource("2_ecdmu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.07874, 31.26975, -1734.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.079, 31.27, -1800)
 town = SubResource("Resource_h8uhb")
 
 [node name="Town3D_Petropavlovskoje" parent="." unique_id=1346154099 instance=ExtResource("2_ecdmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.71411, 31.098396, 888.5837)
 town = SubResource("Resource_sqcbi")
+
+[node name="Town3D_Taranay" parent="." unique_id=1146563602 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352.8767, 31.114197, 1547.8223)
+town = SubResource("Resource_ykk5d")
+
+[node name="Town3D_Chaplanovo" parent="." unique_id=321847957 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -730.751, 31.8316, 326.91595)
+town = SubResource("Resource_eg3lv")
+
+[node name="Town3D_Pjatirechnje" parent="." unique_id=1538267709 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -782.52765, 33.275932, -93.27316)
+town = SubResource("Resource_b5rgk")
+
+[node name="Town3D_Okhotskoje" parent="." unique_id=1063669017 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1786.076, 31.353312, 573.28174)
+town = SubResource("Resource_6d8ba")
+
+[node name="Town3D_Chapaevo" type="Node3D" parent="." unique_id=243782128 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1115.4502, 32.854736, 857.58154)
+script = ExtResource("6_mgq5a")
+town = SubResource("Resource_ktk53")
