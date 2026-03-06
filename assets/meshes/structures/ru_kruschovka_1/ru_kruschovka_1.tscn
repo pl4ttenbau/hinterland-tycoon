@@ -26,6 +26,9 @@ placed_res_bld_type = "ru_kruschovka_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
+layers = 8
+visibility_range_end = 240.0
+visibility_range_end_margin = 24.0
 mesh = ExtResource("2_ajc0i")
 surface_material_override/0 = SubResource("StandardMaterial3D_5a43k")
 

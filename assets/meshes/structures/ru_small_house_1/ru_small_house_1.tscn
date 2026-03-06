@@ -13,6 +13,9 @@ placed_res_bld_type = "ru_small_house_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
+layers = 8
+visibility_range_end = 240.0
+visibility_range_end_margin = 24.0
 mesh = ExtResource("2_vey7f")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
