@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="3_mgq5a"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_s7upt"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="5_oco75"]
-[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_mgq5a"]
 
 [sub_resource type="Resource" id="Resource_mgq5a"]
 script = ExtResource("4_s7upt")
@@ -41,7 +40,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_hccvp"]
 script = ExtResource("4_s7upt")
-town_name = "Holmsk"
+town_name = "Cholmsk"
 pos_xz = Vector2(-1368.027, -225.98)
 num = 5
 type = 7
@@ -198,7 +197,7 @@ town = SubResource("Resource_s7upt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 625.3481, 31.807842, 902.87775)
 town = SubResource("Resource_oco75")
 
-[node name="Town3D_Holmsk" parent="." unique_id=460281909 instance=ExtResource("2_ecdmu")]
+[node name="Town3D_Cholmsk" parent="." unique_id=460281909 instance=ExtResource("2_ecdmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1368.0269, 33.67553, -225.98018)
 town = SubResource("Resource_hccvp")
 
@@ -262,7 +261,6 @@ town = SubResource("Resource_b5rgk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1786.076, 31.353312, 573.28174)
 town = SubResource("Resource_6d8ba")
 
-[node name="Town3D_Chapaevo" type="Node3D" parent="." unique_id=243782128 instance=ExtResource("2_ecdmu")]
+[node name="Town3D_Chapaevo" parent="." unique_id=243782128 instance=ExtResource("2_ecdmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1115.4502, 32.854736, 857.58154)
-script = ExtResource("6_mgq5a")
 town = SubResource("Resource_ktk53")

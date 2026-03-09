@@ -32,6 +32,8 @@
 [ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="28_wklbt"]
 [ext_resource type="Material" uid="uid://drhyjn8jb0c4k" path="res://assets/packed/materials/line3d_roadway_mat.tres" id="29_yhr3p"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="31_yhr3p"]
+[ext_resource type="PackedScene" uid="uid://dcjhqdrq4bm8n" path="res://assets/meshes/structures/ru_village_hut_4/ru_village_hut_4.tscn" id="33_x4lm8"]
+[ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="34_ou1n5"]
 
 [sub_resource type="Curve3D" id="Curve3D_yhr3p"]
 _data = {
@@ -501,6 +503,11 @@ transform = Transform3D(-0.02348993, 0, -0.9997241, 0, 1, 0, 0.9997241, 0, -0.02
 [node name="Substation" parent="Deco/Dolinsk" unique_id=1505476545 instance=ExtResource("31_yhr3p")]
 transform = Transform3D(0.25141054, 0, 0.96788055, 0, 1, 0, -0.96788055, 0, 0.25141054, 699.6858, 31.148418, -1295.2305)
 
+[node name="Cholmsk" type="Node" parent="Deco" unique_id=1468026601]
+
+[node name="Substation" parent="Deco/Cholmsk" unique_id=737456707 instance=ExtResource("31_yhr3p")]
+transform = Transform3D(0.4232667, 0, 0.90600514, 0, 1, 0, -0.90600514, 0, 0.4232667, -1352.1908, 32.438057, -167.2147)
+
 [node name="Houses" type="Node" parent="." unique_id=1451456311 node_paths=PackedStringArray("world_scene")]
 script = ExtResource("5_s8rb4")
 world_scene = NodePath("..")
@@ -710,7 +717,7 @@ placed_town_num = 10
 transform = Transform3D(-0.21458195, 0, -0.97670597, 0, 1, 0, 0.97670597, 0, -0.21458195, 735.84033, 30.9132, -1297.9368)
 placed_town_num = 10
 
-[node name="RuKurschovka7" parent="Houses" unique_id=1046117816 instance=ExtResource("5_m4w4l")]
+[node name="RuKurschovka7" parent="Houses" unique_id=1097231020 instance=ExtResource("5_m4w4l")]
 transform = Transform3D(0.01614365, 0, 0.9998697, 0, 1, 0, -0.9998697, 0, 0.01614365, 254.91574, 31.55048, -1448.6553)
 placed_town_num = 14
 
@@ -741,6 +748,73 @@ placed_town_num = 20
 [node name="RuVillageHut27" parent="Houses" unique_id=1805629475 instance=ExtResource("17_kmxch")]
 transform = Transform3D(0.82330483, 0, 0.5675995, 0, 1, 0, -0.5675995, 0, 0.82330483, 1780.9645, 31.37179, 589.9491)
 placed_town_num = 20
+
+[node name="RuKurschovka8" parent="Houses" unique_id=1942873345 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(0.25716656, 0, 0.96636707, 0, 1, 0, -0.96636707, 0, 0.25716656, -1360.3041, 32.441994, -221.68646)
+placed_town_num = 5
+
+[node name="RuKurschovka9" parent="Houses" unique_id=1573996890 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(-0.8006895, 0, 0.59907955, 0, 1, 0, -0.59907955, 0, -0.8006895, -1348.4374, 32.36558, -202.22244)
+placed_town_num = 5
+
+[node name="RuSmallHouse15" parent="Houses" unique_id=1700117233 instance=ExtResource("16_top74")]
+transform = Transform3D(0.93567836, 0, -0.35285443, 0, 1, 0, 0.35285443, 0, 0.93567836, -1388.355, 32.57509, -201.79662)
+placed_town_num = 5
+
+[node name="RuSmallHouse16" parent="Houses" unique_id=1040827144 instance=ExtResource("21_1o26b")]
+transform = Transform3D(-0.25952703, 0, -0.9657358, 0, 1, 0, 0.9657358, 0, -0.25952703, -1338.2471, 32.595596, -219.62634)
+
+[node name="RuVillageHut28" parent="Houses" unique_id=1661197498 instance=ExtResource("18_5urta")]
+transform = Transform3D(-0.89748174, 0, 0.44105163, 0, 1, 0, -0.44105163, 0, -0.89748174, -1368.3768, 32.62797, -182.39091)
+placed_town_num = 5
+
+[node name="RuVillageHut29" parent="Houses" unique_id=927026416 instance=ExtResource("33_x4lm8")]
+transform = Transform3D(0.88066757, 0, -0.47373474, 0, 1, 0, 0.47373474, 0, 0.88066757, -1353.9014, 32.389645, -180.01299)
+placed_town_num = 5
+
+[node name="RuVillageHut30" parent="Houses" unique_id=921411067 instance=ExtResource("19_kmxch")]
+transform = Transform3D(0.33278662, 0, 0.94300216, 0, 1, 0, -0.94300216, 0, 0.33278662, -1385.5809, 32.725266, -218.11081)
+placed_town_num = 5
+
+[node name="RuVillageHut31" parent="Houses" unique_id=286868027 instance=ExtResource("17_kmxch")]
+transform = Transform3D(-0.9814201, 0, 0.1918712, 0, 1, 0, -0.1918712, 0, -0.9814201, -1370.0426, 32.525047, -165.13057)
+placed_town_num = 5
+
+[node name="RuSmallHouse17" parent="Houses" unique_id=1046117816 instance=ExtResource("21_1o26b")]
+transform = Transform3D(-0.021256559, 0, 0.99977404, 0, 1, 0, -0.99977404, 0, -0.021256559, -710.01117, 31.711397, 273.05106)
+placed_town_num = 18
+
+[node name="PolishHouse5" parent="Houses" unique_id=90622462 instance=ExtResource("14_of7j5")]
+transform = Transform3D(-0.9992139, 0, 0.03964346, 0, 1, 0, -0.03964346, 0, -0.9992139, -734.9093, 31.715767, 308.82327)
+placed_town_num = 18
+
+[node name="RuVillageHut32" parent="Houses" unique_id=1813422085 instance=ExtResource("17_kmxch")]
+transform = Transform3D(0.040306214, 0, 0.99918735, 0, 1, 0, -0.99918735, 0, 0.040306214, -714.62274, 31.781034, 303.9184)
+placed_town_num = 18
+
+[node name="RuVillageHut33" parent="Houses" unique_id=1501822062 instance=ExtResource("19_kmxch")]
+transform = Transform3D(0.9798376, 0, -0.19979548, 0, 1, 0, 0.19979548, 0, 0.9798376, -701.4317, 31.723892, 304.22092)
+placed_town_num = 18
+
+[node name="RuSmallHouse18" parent="Houses" unique_id=1030604776 instance=ExtResource("16_top74")]
+transform = Transform3D(-0.10093479, 0, -0.9948931, 0, 1, 0, 0.9948931, 0, -0.10093479, -787.9884, 33.05094, -139.99539)
+placed_town_num = 19
+
+[node name="RuVillageHut34" parent="Houses" unique_id=789926699 instance=ExtResource("33_x4lm8")]
+transform = Transform3D(0.99851775, 0, -0.054427367, 0, 1, 0, 0.054427367, 0, 0.99851775, -790.84955, 32.774937, -116.14176)
+placed_town_num = 19
+
+[node name="RuVillageHut35" parent="Houses" unique_id=1917469799 instance=ExtResource("17_kmxch")]
+transform = Transform3D(-0.9990889, 0, 0.0426777, 0, 1, 0, -0.0426777, 0, -0.9990889, -766.651, 33.146645, -134.10774)
+placed_town_num = 19
+
+[node name="PolishHouse6" parent="Houses" unique_id=1014634539 instance=ExtResource("34_ou1n5")]
+transform = Transform3D(-0.03524829, 0, -0.99937856, 0, 1, 0, 0.99937856, 0, -0.03524829, -775.53613, 32.965458, -116.43058)
+placed_town_num = 19
+
+[node name="RuVillageHut36" parent="Houses" unique_id=692823904 instance=ExtResource("19_kmxch")]
+transform = Transform3D(-0.0026354005, 0, 0.99999654, 0, 1, 0, -0.99999654, 0, -0.0026354005, -795.4863, 32.781338, -103.9586)
+placed_town_num = 19
 
 [node name="InEditor" type="Node3D" parent="." unique_id=1908410241]
 script = ExtResource("6_d4unt")
