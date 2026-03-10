@@ -108,7 +108,11 @@
 		"type": "NORMAL_GAUGE",
 		"points": [
 			{
-				"pos": [533.4, 31.5, 23.4]
+				"pos": [533.4, 31.5, 23.4],
+				"fork": {
+					"connectiveTracks": [3],
+					"setTo": 3
+				}
 			},
 			{
 				"pos": [546.3, 31.5, 16.0]
@@ -131,6 +135,361 @@
 			{
 				"pos": [614.5, 31.8, -35.0]
 			},
+		]
+	},
+	{
+		"num": 5,
+		"name": "Cholmsk Zentralnij Platform 1",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1388.4, 32.9, -245.2],
+				"fork": {
+					"connectiveTracks": [15],
+					"setTo": 15
+				}
+			},
+			{
+				"pos": [-1394.6, 32.9, -229.0]
+			},
+			{
+				"pos": [-1400.2, 32.9, -213.1]
+			},
+			{
+				"pos": [-1405.8, 32.9, -197.1],
+				"station": {
+					"num": 2
+				}
+			},
+			{
+				"pos": [-1411.7, 32.9, -180.5]
+			},
+			{
+				"pos": [-1416.6, 32.9, -172.9]
+			},
+			{
+				"pos": [-1422.5, 32.9, -164.8],
+				"fork": {
+					"connectiveTracks": [5, 10],
+					"setTo": 10
+				}
+			}
+		]
+	},
+	{
+		"num": 6,
+		"name": "Cholmsk Mountain Curve",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1422.5, 32.9, -164.8],
+				"fork": {
+					"connectiveTracks": [5, 8],
+					"setTo": 5
+				}
+			},
+			{
+				"pos": [-1424.6, 33.1, -157.4]
+			},
+			{
+				"pos": [-1421.7, 33.0, -146.9]
+			},
+			{
+				"pos": [-1416.0, 33.0, -138.7]
+			},
+			{
+				"pos": [-1407.5, 33.0, -134.1]
+			},
+			{
+				"pos": [-1398.4, 33.3, -133.0]
+			},
+			{
+				"pos": [-1386.0, 33.4, -134.4]
+			},
+			{
+				"pos": [-1373.7, 33.1, -137.1]
+			},
+			{
+				"pos": [-1363.6, 32.6, -138.3]
+			}
+		]
+	},
+	{
+		"num": 7,
+		"name": "Cholmsk Zentralnij Platform 2",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1388.4, 32.9, -245.2]
+			},
+			{
+				"pos": [-1398.8, 32.9, -234.4]
+			},
+			{
+				"pos": [-1405.1, 32.9, -219.4]
+			},
+			{
+				"pos": [-1410.8, 32.9, -205.3]
+			},
+			{
+				"pos": [-1416.1, 32.9, -190.7]
+			},
+			{
+				"pos": [-1419.0, 32.9, -182.0],
+				"fork": {
+					"connectiveTracks": [8, 9],
+					"setTo": 9
+				}
+			},
+		]
+	},
+	{
+		"num": 8,
+		"name": "Cholmsk Zentralnij Platform 2: Mountain Fork",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1419.0, 32.9, -182.0],
+				"fork": {
+					"connectiveTracks": [7],
+					"setTo": 7
+				}
+			},
+			{
+				"pos": [-1422.5, 32.9, -164.8],
+				"fork": {
+					"connectiveTracks": [6],
+					"setTo": 6
+				}
+			},
+		]
+	},
+	{
+		"num": 9,
+		"name": "Cholmsk Zentralnij Platform 2: Straight",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1419.0, 32.9, -182.0],
+				"fork": {
+					"connectiveTracks": [7],
+					"setTo": 7
+				}
+			},
+			{
+				"pos": [-1426.8, 33.0, -162.7]
+			},
+			{
+				"pos": [-1430.0, 33.0, -154.8],
+				"fork": {
+					"connectiveTracks": [10],
+					"setTo": 10
+				}
+			},
+		]
+	},
+	{
+		"num": 10,
+		"name": "Cholmsk Zentralnij Platform 1: Straight",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1422.5, 32.9, -164.8],
+				"fork": {
+					"connectiveTracks": [5],
+					"setTo": 5
+				}
+			},
+			{
+				"pos": [-1430.0, 33.0, -154.8],
+				"fork": {
+					"connectiveTracks": [11],
+					"setTo": 11
+				}
+			}
+		]
+	},
+	{
+		"num": 11,
+		"name": "Cholmsk Zentralnij Bridge Crossing",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1430.0, 33.0, -154.8],
+				"fork": {
+					"connectiveTracks": [9, 10],
+					"setTo": 9
+				}
+			},
+			{
+				"pos": [-1435.9, 33.0, -141.4]
+			},
+			{
+				"pos": [-1438.4, 32.7, -131.6]
+			},
+			{
+				"pos": [-1439.7, 32.3, -120.5],
+				"fork": {
+					"connectiveTracks": [12],
+					"setTo": 12
+				}
+			}
+		]
+	},
+	{
+		"num": 12,
+		"name": "Cholmsk Zentralnij Bridge",
+		"type": "NORMAL_GAUGE",
+		"hideBed": true,
+		"points": [
+			{
+				"pos": [-1439.7, 32.3, -120.5],
+				"fork": {
+					"connectiveTracks": [11],
+					"setTo": 11
+				}
+			},
+			{
+				"pos": [-1439.1, 32.3, -104.4],
+				"fork": {
+					"connectiveTracks": [13],
+					"setTo": 13
+				}
+			}
+		]
+	},
+	{
+		"num": 13,
+		"name": "Cholmsk Jushni Stretch",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1439.1, 32.3, -104.4],
+				"fork": {
+					"connectiveTracks": [12],
+					"setTo": 12
+				}
+			},
+			{
+				"pos": [-1441.0, 32.3, -94.1]
+			},
+			{
+				"pos": [-1446.6, 32.0, -82.5]
+			},
+			{
+				"pos": [-1453.7, 31.9, -68.6],
+				"station": {
+					"num": 3
+				}
+			},
+			{
+				"pos": [-1458.8, 31.9, -54.8]
+			},
+			{
+				"pos": [-1464.2, 31.9, -39.4]
+			},
+			{
+				"pos": [-1471.4, 31.9, -19.1]
+			},
+			{
+				"pos": [-1473.9, 31.9, -9.3]
+			},
+			{
+				"pos": [-1476.0, 31.8, 5.5]
+			},
+			{
+				"pos": [-1480.1, 32.1, 25.5]
+			},
+			{
+				"pos": [-1481.4, 32.2, 36.8]
+			},
+			{
+				"pos": [-1486.2, 32.2, 58.2]
+			},
+			{
+				"pos": [-1493.1, 32.3, 72.0],
+				"fork": {
+					"connectiveTracks": [14],
+					"setTo": 14
+				}
+			},
+		]
+	},
+	{
+		"num": 14,
+		"name": "Pravda Magistral",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1493.1, 32.3, 72.0],
+				"fork": {
+					"connectiveTracks": [13],
+					"setTo": 13
+				}
+			},
+			{
+				"pos": [-1501.1, 32.3, 84.4]
+			},
+			{
+				"pos": [-1506.9, 32.4, 96.9]
+			},
+			{
+				"pos": [-1509.9, 32.2, 112.6]
+			},
+			{
+				"pos": [-1509.5, 32.3, 128.4]
+			},
+			{
+				"pos": [-1509.8, 32.3, 145.1]
+			},
+			{
+				"pos": [-1510.6, 32.3, 158.9],
+				"station": {
+					"num": 4,
+					"hideBuilding": true
+				}
+			},
+			{
+				"pos": [-1511.0, 32.4, 172.9]
+			},
+			{
+				"pos": [-1512.1, 32.6, 182.7]
+			},
+			{
+				"pos": [-1513.5, 32.6, 190.7]
+			},
+			{
+				"pos": [-1516.0, 32.6, 198.2]
+			}
+		]
+	},
+	{
+		"num": 15,
+		"name": "Cholmsk Northern Exit",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [-1377.2, 32.1, -307.0]
+			},
+			{
+				"pos": [-1377.9, 32.2, -288.0]
+			},
+			{
+				"pos": [-1378.3, 32.2, -278.2]
+			},
+			{
+				"pos": [-1379.9, 32.5, -267.5]
+			},
+			{
+				"pos": [-1383.9, 32.7, -253.2]
+			},
+			{
+				"pos": [-1388.4, 32.9, -245.2],
+				"fork": {
+					"connectiveTracks": [5],
+					"setTo": 5
+				}
+			}
 		]
 	}
 ]
