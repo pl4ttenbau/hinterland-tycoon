@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="3_mgq5a"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="4_s7upt"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/rail_node_station.gd" id="5_oco75"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_mgq5a"]
 
 [sub_resource type="Resource" id="Resource_mgq5a"]
 script = ExtResource("4_s7upt")
@@ -185,6 +186,14 @@ is_minor = true
 num = 22
 type = 7
 
+[sub_resource type="Resource" id="Resource_2nvjb"]
+script = ExtResource("4_s7upt")
+town_name = "Dalnee-Elochku"
+pos_xz = Vector2(236.561, -72.816)
+is_minor = true
+num = 23
+type = 7
+
 [node name="TownsSachalin" type="Node" unique_id=880274155]
 script = ExtResource("1_dcs0n")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -276,3 +285,8 @@ town = SubResource("Resource_ktk53")
 [node name="Town3D_Jablochnoe" parent="." unique_id=599309093 instance=ExtResource("2_ecdmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1340.5209, 31.220253, -752.41235)
 town = SubResource("Resource_2b146")
+
+[node name="Town3D_Dalnee-Elochku" type="Node3D" parent="." unique_id=1953432344 instance=ExtResource("2_ecdmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 236.56143, 32.37312, -72.81628)
+script = ExtResource("6_mgq5a")
+town = SubResource("Resource_2nvjb")

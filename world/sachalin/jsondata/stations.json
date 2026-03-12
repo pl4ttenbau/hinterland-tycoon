@@ -26,5 +26,33 @@
 		"townNum": 8,
 		"type": "STATION_PASS",
 		"townName": "Pravda",
+	},
+	{
+		"num": 5,
+		"name": "78 KM",
+		"townNum": 5,
+		"type": "STATION_PASS",
+		"townName": "Cholmsk",
+	},
+	{
+		"num": 6,
+		"name": "Town",
+		"townNum": 18,
+		"type": "STATION_PASS",
+		"townName": "Chaplanovo",
+	},
+	{
+		"num": 7,
+		"name": "Forest",
+		"townNum": 18,
+		"type": "STATION_GOODS",
+		"townName": "Chaplanovo",
+	},
+	{
+		"num": 8,
+		"name": "Village",
+		"townNum": 19,
+		"type": "STATION_GOODS",
+		"townName": "Pjatrechnje",
 	}
 ]
