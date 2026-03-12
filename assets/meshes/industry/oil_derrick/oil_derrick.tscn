@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bxcw882o8dlvl"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_nsrit"]
+[ext_resource type="ArrayMesh" uid="uid://bl8dkt8ihgdfc" path="res://assets/meshes/industry/oil_derrick/oil_derrick_merged.obj" id="2_nl8nk"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_nl8nk"]
+[ext_resource type="Texture2D" uid="uid://bbvogsl4r6b12" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_darker_planks.jpg" id="3_xk2wg"]
+[ext_resource type="Texture2D" uid="uid://dh40d8wsen3g5" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_darker_planks_n.jpg" id="4_ra3ar"]
+[ext_resource type="Texture2D" uid="uid://bx52htn4x4cp5" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks.jpg" id="5_bc2f1"]
+[ext_resource type="Texture2D" uid="uid://c4gulibn6ntyl" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks_n.jpg" id="6_h806u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dubqm"]
+cull_mode = 2
+albedo_texture = ExtResource("3_xk2wg")
+normal_enabled = true
+normal_texture = ExtResource("4_ra3ar")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xw50g"]
+cull_mode = 2
+albedo_texture = ExtResource("5_bc2f1")
+normal_enabled = true
+normal_texture = ExtResource("6_h806u")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nl8nk"]
+size = Vector3(5.8168488, 13.283134, 19.354837)
+
+[node name="OilDerrick" type="Node3D" unique_id=403551129]
+script = ExtResource("1_nsrit")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=768973336]
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
+mesh = ExtResource("2_nl8nk")
+surface_material_override/5 = SubResource("StandardMaterial3D_dubqm")
+surface_material_override/6 = SubResource("StandardMaterial3D_xw50g")
+
+[node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=1072919445]
+script = ExtResource("3_nl8nk")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="IndustryCollider" unique_id=1782588548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4702072, 6.520047, 0.52784634)
+shape = SubResource("BoxShape3D_nl8nk")
