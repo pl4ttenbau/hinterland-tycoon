@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bvvodn0fw7ixw"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_8j8m7"]
+[ext_resource type="ArrayMesh" uid="uid://dt8urb5skfqnc" path="res://assets/meshes/vehicles/rail/loco_tu6a/locomotive_tu6a.obj" id="2_oaosp"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_oaosp"]
+[ext_resource type="Texture2D" uid="uid://if5bsi6yoa5d" path="res://assets/meshes/vehicles/rail/loco_tu6a/tex_tu6_bottom_d.png" id="3_sqfei"]
+[ext_resource type="Texture2D" uid="uid://b5nqmr7lr2kmc" path="res://assets/meshes/vehicles/rail/loco_tu6a/tex_tu6_body_d.png" id="4_436q0"]
+[ext_resource type="Texture2D" uid="uid://cegedb6bkbr14" path="res://assets/meshes/vehicles/rail/loco_tu6a/tex_tu6_body_n.png" id="5_kp72a"]
+[ext_resource type="Texture2D" uid="uid://717msuaxe1th" path="res://assets/meshes/vehicles/rail/loco_tu6a/tex_tu6_bottom_n.png" id="6_gx6xb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00ipa"]
+albedo_texture = ExtResource("3_sqfei")
+metallic = 0.3
+normal_enabled = true
+normal_texture = ExtResource("6_gx6xb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxobf"]
+albedo_texture = ExtResource("4_436q0")
+metallic = 0.5
+metallic_specular = 0.44
+roughness = 0.76
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_kp72a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0nfm"]
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o11k1"]
+albedo_texture = ExtResource("3_sqfei")
+metallic = 0.3
+metallic_specular = 0.3
+normal_enabled = true
+normal_texture = ExtResource("6_gx6xb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_piimn"]
+albedo_texture = ExtResource("3_sqfei")
+metallic = 0.3
+metallic_specular = 0.3
+normal_enabled = true
+normal_texture = ExtResource("6_gx6xb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrq6g"]
+size = Vector3(2.522522, 3.7690887, 9.2144165)
+
+[node name="ModelLocoTu6a" type="Node3D" unique_id=806383008]
+script = ExtResource("1_8j8m7")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2049120413]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_oaosp")
+surface_material_override/0 = SubResource("StandardMaterial3D_00ipa")
+surface_material_override/1 = SubResource("StandardMaterial3D_fxobf")
+surface_material_override/2 = SubResource("StandardMaterial3D_d0nfm")
+surface_material_override/3 = SubResource("StandardMaterial3D_o11k1")
+surface_material_override/4 = SubResource("StandardMaterial3D_piimn")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=979397880]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_oaosp")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1053361260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.962, 0.37676832)
+shape = SubResource("BoxShape3D_lrq6g")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=715273922]
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -1.0602027, 1.4512663, 3.1766763)
+metadata/cam_name = &"CAM_VEHICLE"
