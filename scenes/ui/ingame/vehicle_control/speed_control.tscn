@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt7lvw02e3c8r"]
+[gd_scene format=3 uid="uid://dt7lvw02e3c8r"]
 
 [ext_resource type="Texture2D" uid="uid://b4bwmpimhp71c" path="res://assets/ui/fuehrerstand/speed_control_bar.svg" id="1_0bq6n"]
 [ext_resource type="Texture2D" uid="uid://mi8kcpksruly" path="res://assets/ui/fuehrerstand/speed_control_handle.svg" id="2_fvn33"]
 [ext_resource type="Script" uid="uid://c5u2rk4ocnihp" path="res://game/gamescripts/ui/vehicle_control/speed_control.gd" id="2_gtp7w"]
 
-[node name="SpeedControl" type="CenterContainer"]
+[node name="SpeedControl" type="CenterContainer" unique_id=233507245]
 custom_minimum_size = Vector2(80, 130)
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +14,11 @@ offset_bottom = -497.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=451447628]
 layout_mode = 2
 texture = ExtResource("1_0bq6n")
 
-[node name="Control" type="Control" parent="Background"]
+[node name="Control" type="Control" parent="Background" unique_id=1740846033]
 anchors_preset = 0
 offset_left = 18.0
 offset_top = 20.0
@@ -26,7 +26,7 @@ offset_right = 58.0
 offset_bottom = 131.0
 script = ExtResource("2_gtp7w")
 
-[node name="ControlHandle" type="TextureRect" parent="Background/Control"]
+[node name="ControlHandle" type="TextureRect" parent="Background/Control" unique_id=1968404786]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 100.0

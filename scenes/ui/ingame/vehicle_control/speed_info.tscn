@@ -1,42 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://dikkbqk3y15rq"]
+[gd_scene format=3 uid="uid://dikkbqk3y15rq"]
 
 [ext_resource type="Script" uid="uid://bxwysa4d5x7uc" path="res://game/gamescripts/ui/vehicle_control/speed_info_panel.gd" id="1_mhucp"]
 
-[node name="SpeedInfo" type="CenterContainer"]
+[node name="SpeedInfo" type="CenterContainer" unique_id=61871293]
 custom_minimum_size = Vector2(80, 130)
 offset_right = 80.0
 offset_bottom = 130.0
 script = ExtResource("1_mhucp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=488440141]
 layout_mode = 2
 
-[node name="BrakeMargin" type="MarginContainer" parent="VBoxContainer"]
+[node name="BrakeMargin" type="MarginContainer" parent="VBoxContainer" unique_id=909209669]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="BrakeButton" type="Button" parent="VBoxContainer/BrakeMargin"]
+[node name="BrakeButton" type="Button" parent="VBoxContainer/BrakeMargin" unique_id=1404828087]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 text = "B"
 
-[node name="ReverseMargin" type="MarginContainer" parent="VBoxContainer"]
+[node name="ReverseMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1062098989]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ReverseButton" type="Button" parent="VBoxContainer/ReverseMargin"]
+[node name="ReverseButton" type="Button" parent="VBoxContainer/ReverseMargin" unique_id=1070205404]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 text = "R"
 
-[node name="AbsSpeedLabel" type="Label" parent="VBoxContainer"]
+[node name="AbsSpeedLabel" type="Label" parent="VBoxContainer" unique_id=1499510304]
 layout_mode = 2
 text = "20 km/h"
