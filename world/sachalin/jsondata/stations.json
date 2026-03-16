@@ -54,5 +54,26 @@
 		"townNum": 19,
 		"type": "STATION_GOODS",
 		"townName": "Pjatrechnje",
+	},
+	{
+		"num": 9,
+		"name": "Station",
+		"townNum": 12,
+		"type": "STATION_MIXED",
+		"townName": "Novoalexandrovsk",
+	},
+	{
+		"num": 10,
+		"name": "Station",
+		"townNum": 11,
+		"type": "STATION_MIXED",
+		"townName": "Sokol",
+	},
+	{
+		"num": 11,
+		"name": "Zentralnij",
+		"townNum": 10,
+		"type": "STATION_MIXED",
+		"townName": "Dolinsk",
 	}
 ]

@@ -7,6 +7,9 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
 size = Vector2(4096, 4096)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_rsr3t"]
+size = Vector2(250, 500)
+
 [node name="WorldTerrain" type="Terrain3D" unique_id=336419630]
 data_directory = "res://world/sachalin/heightdata"
 material = ExtResource("1_l7y8j")
@@ -20,3 +23,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5, 0)
 material_override = ExtResource("3_jba3c")
 mesh = SubResource("PlaneMesh_2pcia")
 skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1383536513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2172.6409, 30.5, 1794.787)
+mesh = SubResource("PlaneMesh_rsr3t")
+surface_material_override/0 = ExtResource("3_jba3c")
