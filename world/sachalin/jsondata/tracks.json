@@ -1886,7 +1886,58 @@
 				"pos": [705.2, 31.3, -1388.0]
 			},
 			{
-				"pos": [695.6, 31.3, -1396.7]
+				"pos": [695.6, 31.3, -1396.7],
+				"fork": {
+					"connectiveTracks": [46],
+					"setTo": 46
+				}
+			}
+		]
+	},
+	{
+		"num": 46,
+		"name": "Dolinsk Fork-Bridge",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [695.6, 31.3, -1396.7],
+				"fork": {
+					"connectiveTracks": [45],
+					"setTo": 45
+				}
+			},
+			{
+				"pos": [687.1, 31.3, -1404.7]
+			},
+			{
+				"pos": [675.8, 31.3, -1416.5]
+			},
+			{
+				"pos": [669.7, 31.3, -1423.8]
+			},
+			{
+				"pos": [664.6, 31.3, -1429.6]
+			}
+		]
+	},
+	{
+		"num": 47,
+		"name": "Dolinsk Bridge",
+		"type": "NORMAL_GAUGE",
+		"hideBed": true,
+		"points": [
+			{
+				"pos": [664.6, 31.3, -1429.6],
+				"fork": {
+					"connectiveTracks": [46],
+					"setTo": 46
+				}
+			},
+			{
+				"pos": [656.4, 31.3, -1439.9]
+			},
+			{
+				"pos": [648.4, 31.3, -1451.8]
 			}
 		]
 	}
