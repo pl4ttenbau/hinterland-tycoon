@@ -2,6 +2,9 @@
 class_name Train3D extends VisibleObject
 
 const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"
+const VEH_SPEED_MODIFIER: float = 50.0
+
+signal on_vehicle_added(veh3d: Vehicle3D)
 
 static var _last_train_num: int = 0
 
@@ -13,7 +16,6 @@ static var _last_train_num: int = 0
 		self.entity = value
 
 @export var vehicles: Array[Vehicle3D] = []
-
 @export var locomotive: Vehicle3D
 
 @export var motor: TrainMotor
@@ -63,10 +65,13 @@ func spawn_wagon(veh_data: VehicleData):
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
 
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
+	var num_in_train: int = self.vehicles.size()
+	veh3d.num_in_train = num_in_train
 	self.vehicles.append(veh3d)
 	if is_locomotive: 
 		self.locomotive = veh3d
 	$TrainVehicles.add_child(veh3d)
+	self.on_vehicle_added.emit(veh3d)
 #endregion
 
 #region Size Getters
@@ -84,13 +89,15 @@ func length_in_m() -> float:
 #region Moving
 func move_forwards(delta_seconds: float):
 	# calculate movement since last tick
-	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * 33
+	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
 	self.increase_m_passed(tick_dist)
 	var train_curve: Curve3D = self.get_train_path_curve()
-	var move_transf := train_curve.sample_baked_with_rotation(self.m_passed_since_start)
-	self.train_head_pos = move_transf.origin
 	for veh3d: Vehicle3D in self.vehicles:
-		veh3d.global_transform = move_transf
+		var m_passed: float = self.m_passed_since_start - veh3d.calc_offset_to_last()
+		if m_passed < 0: m_passed = 0
+		var veh_transform := train_curve.sample_baked_with_rotation(m_passed, true)
+		# self.train_head_pos = move_transf.origin
+		veh3d.global_transform = veh_transform
 		veh3d.global_rotation.x = 0
 		veh3d.global_rotation.z = 0
 
