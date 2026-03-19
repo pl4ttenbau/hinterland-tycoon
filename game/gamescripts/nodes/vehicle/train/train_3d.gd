@@ -20,6 +20,7 @@ static var _last_train_num: int = 0
 
 @export var m_passed_since_start: float = 0.0
 @export var m_passed_on_track: float = 0.0
+@export var train_head_pos: Vector3
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -86,11 +87,20 @@ func length_in_m() -> float:
 #endregion
 
 #region Moving
-func move_forwards(delta_seconds: float): 
+func move_forwards(delta_seconds: float):
+	# calculate movement since last tick
+	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * 33
+	self.m_passed_since_start += tick_dist
+	var train_curve: Curve3D = self.get_train_path().curve
+	var move_transf: Transform3D = train_curve.sample_baked_with_rotation(self.m_passed_since_start)
+	self.train_head_pos = move_transf.origin
+	var rot: Vector3 = move_transf.basis.z
+	# move on track
 	for path_child in $TrainPath.get_children():
 		if path_child is PathFollow3D:
-			var tick_dist: float = self.motor.get_current_speed() * delta_seconds * 33
 			path_child.progress += tick_dist
+	# for veh3d: Vehicle3D in self.vehicles:
+	# 	veh3d.position = path_pos
 #endregion
 
 #region Node Children Getters
@@ -106,6 +116,9 @@ func get_cam() -> Camera3D:
 func get_path_follow(num_in_train: int) -> PathFollow3D:
 	var node_name: String = "PathFollow_Vehicle%d" % num_in_train
 	return $TrainPath.get_node(node_name)
+	
+func get_train_path() -> VehiclePath:
+	return $TrainPath as VehiclePath
 #endregion
 
 #region Callbacks
@@ -117,5 +130,6 @@ func _on_world_ready():
 	self.motor.start()
 	
 func _physics_process(_delta: float) -> void:
-	if self.motor.is_started: self.move_forwards(_delta)
+	if self.motor.is_started: 
+		self.move_forwards(_delta)
 #endregion
