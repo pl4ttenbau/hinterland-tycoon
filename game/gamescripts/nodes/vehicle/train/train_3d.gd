@@ -63,15 +63,10 @@ func spawn_wagon(veh_data: VehicleData):
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
 
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
-	# add to lists
 	self.vehicles.append(veh3d)
-	if is_locomotive: self.locomotive = veh3d
-	# create pathfollow node: move so far that it appears before the vehicle beyond
-	var veh_path_follow := VehiclePathFollow.of_train_vehicle(self.count(), veh3d)
-	# move train forwards by 1x its length before the new vehicle
-	# TODO: works now?
-	veh_path_follow.progress += self.length_in_m()
-	$TrainPath.add_child(veh_path_follow)
+	if is_locomotive: 
+		self.locomotive = veh3d
+	$TrainVehicles.add_child(veh3d)
 #endregion
 
 #region Size Getters
@@ -90,17 +85,18 @@ func length_in_m() -> float:
 func move_forwards(delta_seconds: float):
 	# calculate movement since last tick
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * 33
-	self.m_passed_since_start += tick_dist
-	var train_curve: Curve3D = self.get_train_path().curve
-	var move_transf: Transform3D = train_curve.sample_baked_with_rotation(self.m_passed_since_start)
+	self.increase_m_passed(tick_dist)
+	var train_curve: Curve3D = self.get_train_path_curve()
+	var move_transf := train_curve.sample_baked_with_rotation(self.m_passed_since_start)
 	self.train_head_pos = move_transf.origin
-	var rot: Vector3 = move_transf.basis.z
-	# move on track
-	for path_child in $TrainPath.get_children():
-		if path_child is PathFollow3D:
-			path_child.progress += tick_dist
-	# for veh3d: Vehicle3D in self.vehicles:
-	# 	veh3d.position = path_pos
+	for veh3d: Vehicle3D in self.vehicles:
+		veh3d.global_transform = move_transf
+		veh3d.global_rotation.x = 0
+		veh3d.global_rotation.z = 0
+
+func increase_m_passed(delta_m: float):
+	self.m_passed_on_track += delta_m
+	self.m_passed_since_start += delta_m
 #endregion
 
 #region Node Children Getters
@@ -112,13 +108,9 @@ func get_cam() -> Camera3D:
 	var model_cam: Camera3D = self.locomotive.find_child("Camera3D", true)
 	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.locomotive.name)
 	return model_cam
-	
-func get_path_follow(num_in_train: int) -> PathFollow3D:
-	var node_name: String = "PathFollow_Vehicle%d" % num_in_train
-	return $TrainPath.get_node(node_name)
-	
-func get_train_path() -> VehiclePath:
-	return $TrainPath as VehiclePath
+
+func get_train_path_curve() -> Curve3D:
+	return $TrainPath.curve as Curve3D
 #endregion
 
 #region Callbacks

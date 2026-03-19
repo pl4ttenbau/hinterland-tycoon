@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/train/train_3d.gd" id="1_x4pir"]
 [ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_path.gd" id="2_ufap8"]
+[ext_resource type="Script" uid="uid://cd14s12pa8x8k" path="res://game/gamescripts/nodes/vehicle/train/train_vehicles.gd" id="3_ufap8"]
 
 [sub_resource type="Curve3D" id="Curve3D_4iei7"]
 
@@ -16,3 +17,7 @@ script = ExtResource("2_ufap8")
 tracks = null
 vehicle3d = NodePath("..")
 metadata/_custom_type_script = "uid://c0t1y6s3qpq27"
+
+[node name="TrainVehicles" type="Node" parent="." unique_id=1927014911]
+script = ExtResource("3_ufap8")
+metadata/_custom_type_script = "uid://cd14s12pa8x8k"
