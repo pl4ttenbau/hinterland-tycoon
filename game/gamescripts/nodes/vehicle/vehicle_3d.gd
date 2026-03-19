@@ -5,6 +5,8 @@ class_name Vehicle3D extends VisibleObject
 
 @export var train3d: Train3D
 
+@export var offset_in_m: int
+
 #region Initialization
 
 #endregion

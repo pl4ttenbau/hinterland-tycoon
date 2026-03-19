@@ -1,7 +1,7 @@
 @icon("icon_infr_node_white")
 class_name RailNodeData extends BasicInfrNodeData
 
-@export var parent_track: RailTrackData:
+@export var parent_track: AbstractTrack:
 	set(value): 
 		parent_track = value
 	get(): return parent_track
@@ -36,7 +36,8 @@ func add_node_station(_station: RailNodeStationData):
 func as_ref() -> RailNodeRef:
 	var track_num: int = self.parent_track.num
 	return RailNodeRef.new(track_num, self.index)
-	
+
+#region Getters
 func get_previous() -> RailNodeData:
 	if self.index >= 0:
 		return self.parent_track.get_rail_node(self.index -1)
@@ -53,3 +54,4 @@ func is_first() -> bool:
 	
 func is_last() -> bool:
 	return self.index == (self.parent_track.nodes.size() -1)
+#endregion

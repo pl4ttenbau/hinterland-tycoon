@@ -33,8 +33,8 @@ static func of(_dir: Enums.PathDirection) -> TrainMotor:
 	_inst.speed = VehicleSpeed.new()
 	return _inst
 	
-func _physics_process(_delta: float) -> void:
-	Time.get_ticks_msec()
+#func _physics_process(_delta: float) -> void:
+#	Time.get_ticks_msec()
 
 func start() -> bool:
 	self.is_started = true

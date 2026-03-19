@@ -18,6 +18,9 @@ static var _last_train_num: int = 0
 
 @export var motor: TrainMotor
 
+@export var m_passed_since_start: float = 0.0
+@export var m_passed_on_track: float = 0.0
+
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
@@ -82,6 +85,14 @@ func length_in_m() -> float:
 	return total_length
 #endregion
 
+#region Moving
+func move_forwards(delta_seconds: float): 
+	for path_child in $TrainPath.get_children():
+		if path_child is PathFollow3D:
+			var tick_dist: float = self.motor.get_current_speed() * delta_seconds * 33
+			path_child.progress += tick_dist
+#endregion
+
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
 
@@ -106,8 +117,5 @@ func _on_world_ready():
 	self.motor.start()
 	
 func _physics_process(_delta: float) -> void:
-	if self.motor.is_started:
-		for path_child in $TrainPath.get_children():
-			if path_child is PathFollow3D:
-				path_child.progress += self.motor.get_current_speed()
+	if self.motor.is_started: self.move_forwards(_delta)
 #endregion
