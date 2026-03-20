@@ -1,4 +1,5 @@
-class_name SpeedInfoPanel extends CenterContainer
+@icon("res://assets/icons/icon_speedometer_ui.png")
+class_name BrakeReversePanel extends CenterContainer
 
 @export var curr_train: Train3D
 

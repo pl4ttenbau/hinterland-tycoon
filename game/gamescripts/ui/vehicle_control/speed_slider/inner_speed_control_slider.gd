@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_speedometer_ui.png")
 class_name SpeedControl extends Control
 
 @export var curr_train: Train3D:

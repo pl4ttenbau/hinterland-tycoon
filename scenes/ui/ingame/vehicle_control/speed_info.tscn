@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dikkbqk3y15rq"]
 
-[ext_resource type="Script" uid="uid://bxwysa4d5x7uc" path="res://game/gamescripts/ui/vehicle_control/speed_info_panel.gd" id="1_mhucp"]
+[ext_resource type="Script" uid="uid://bxwysa4d5x7uc" path="res://game/gamescripts/ui/vehicle_control/brake_reverse_panel.gd" id="1_mhucp"]
 
 [node name="SpeedInfo" type="CenterContainer" unique_id=61871293]
 custom_minimum_size = Vector2(80, 130)

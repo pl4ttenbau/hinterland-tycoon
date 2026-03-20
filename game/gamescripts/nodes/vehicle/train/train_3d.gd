@@ -22,7 +22,6 @@ static var _last_train_num: int = 0
 
 @export var m_passed_since_start: float = 0.0
 @export var m_passed_on_track: float = 0.0
-@export var train_head_pos: Vector3
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -95,9 +94,9 @@ func move_forwards(delta_seconds: float):
 	for veh3d: Vehicle3D in self.vehicles:
 		var m_passed: float = self.m_passed_since_start - veh3d.calc_offset_to_last()
 		if m_passed < 0: m_passed = 0
-		var veh_transform := train_curve.sample_baked_with_rotation(m_passed, true)
-		# self.train_head_pos = move_transf.origin
-		veh3d.global_transform = veh_transform
+		var curr_transf := veh3d.global_transform
+		var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
+		veh3d.global_transform = target_transf
 		veh3d.global_rotation.x = 0
 		veh3d.global_rotation.z = 0
 
