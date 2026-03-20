@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_good_white.png")
 class_name BaseGoodsType extends Resource
 
-enum ResourceCategory {PASSENGER, MAIL, FREIGHT}
+enum ResourceCategory {PASSENGER, MAIL, FREIGHT, LIQUID}
 
 @export var key: StringName
 @export var res_cat: ResourceCategory

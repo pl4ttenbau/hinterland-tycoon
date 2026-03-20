@@ -1,0 +1,55 @@
+# Blender 4.4.1 MTL File: 'oil_derrick_merged.blend'
+# www.blender.org
+
+newmtl mat_door
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_oil_derrick_door.png
+
+newmtl mat_rusty_roof
+Ns 95.537231
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_oil_derrick_rusty_roof.jpg
+map_Bump -bm 1.000000 tex_oil_derrick_rusty_roof_n.jpg
+
+newmtl mat_tower_metal
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_oil_derrick_metal.jpeg
+
+newmtl mat_wood_darker
+Ns 38.202477
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.200000
+d 1.000000
+illum 2
+map_Kd tex_oil_derrick_darker_planks.jpg
+map_Bump -bm 1.000000 tex_oil_derrick_darker_planks_n.jpg
+
+newmtl mat_wood_lighter
+Ns 53.739677
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_oil_derrick_lighter_planks.jpg
+map_Bump -bm 1.000000 tex_oil_derrick_lighter_planks_n.jpg

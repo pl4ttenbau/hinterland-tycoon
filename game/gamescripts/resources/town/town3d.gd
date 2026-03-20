@@ -6,6 +6,8 @@ signal town_changed(_town: TownData)
 
 @export var town: TownData:
 	set(value):
+		if ! value:
+			return
 		town = value
 		self.name = value.to_string()
 		set_label_text(value.town_name)

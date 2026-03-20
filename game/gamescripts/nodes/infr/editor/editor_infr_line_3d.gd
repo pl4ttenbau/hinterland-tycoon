@@ -3,7 +3,9 @@
 class_name EditorInfrLine3D extends LinePath3D
 
 const RAIL_COLOR = Color.BLACK
+const RAIL_MAT_PATH = "res://assets/packed/materials/line3d_rail_track_mat.tres"
 const ROAD_COLOR = Color.DARK_ORANGE
+const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
 
 const LINE_WIDTH = .5
 
@@ -34,8 +36,7 @@ static func ofRail(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
 	
 func _enter_tree():
 	super()
-	self.material.set("shader_parameter/line_width", LINE_WIDTH)
-	self.material.set("shader_parameter/color", self.color)
+	self.material = self._get_material(self.infr_domain)
 #endregion
 
 #region Curve
@@ -60,6 +61,13 @@ func _get_color() -> Color:
 	elif self.infr_domain == Enums.InfrDomain.ROAD:
 		return ROAD_COLOR
 	return Color.MAGENTA
+	
+func _get_material(_domain: Enums.InfrDomain) -> ShaderMaterial:
+	if _domain == Enums.InfrDomain.RAIL:
+		return preload(RAIL_MAT_PATH) as ShaderMaterial
+	elif _domain == Enums.InfrDomain.ROAD:
+		return preload(ROAD_MAT_PATH) as ShaderMaterial
+	return null
 	
 func _get_node_name() -> String:
 	var name_prefix: String = "RailTrack"

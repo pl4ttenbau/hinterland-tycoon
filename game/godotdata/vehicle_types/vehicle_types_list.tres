@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleTypesList" format=3 uid="uid://dvg2baoqt25dh"]
 
-[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_ojcly"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_ojcly"]
 [ext_resource type="Resource" uid="uid://cnnga7ui47iix" path="res://game/godotdata/vehicle_types/singular/loco_faur.tres" id="2_ojcly"]
 [ext_resource type="Resource" uid="uid://ci67bydr7bpay" path="res://game/godotdata/vehicle_types/singular/wismar_railbus.tres" id="3_bevio"]
 [ext_resource type="Resource" uid="uid://bnjk8mpcdv6yb" path="res://game/godotdata/vehicle_types/singular/sachs_wagon_kb4.tres" id="4_msx6d"]

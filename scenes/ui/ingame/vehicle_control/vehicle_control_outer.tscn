@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6wsxgx7vl3pq" path="res://game/gamescripts/ui/vehicle_control/vehicle_control_container.gd" id="1_c3mfk"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="2_c3mfk"]
 [ext_resource type="PackedScene" uid="uid://dt7lvw02e3c8r" path="res://scenes/ui/ingame/vehicle_control/speed_control.tscn" id="3_544v3"]
+[ext_resource type="PackedScene" uid="uid://dikkbqk3y15rq" path="res://scenes/ui/ingame/vehicle_control/speed_info.tscn" id="5_544v3"]
 
 [node name="VehicleControlOuter" type="MarginContainer" unique_id=913124142]
 anchors_preset = 7
@@ -22,28 +23,41 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_c3mfk")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=812188558]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=156958578]
 layout_mode = 2
 
-[node name="Control" type="Container" parent="HBoxContainer" unique_id=53878704]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=795897612]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=812188558]
+layout_mode = 2
+
+[node name="Control" type="Container" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=53878704]
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 size_flags_horizontal = 0
 script = ExtResource("1_80d06")
 metadata/_custom_type_script = "uid://ngpi2r0442vj"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control" unique_id=1452660315]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1452660315]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_c3mfk")
 expand_mode = 2
 
-[node name="SpeedLine" type="Line2D" parent="HBoxContainer/Control/TextureRect" unique_id=1762477285]
+[node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/HBoxContainer/Control/TextureRect" unique_id=1762477285]
 position = Vector2(45, 70)
 rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)
 width = 1.0
 default_color = Color(0.87, 0.0783, 0.0783, 1)
 
-[node name="SpeedControl" parent="HBoxContainer" unique_id=163985117 instance=ExtResource("3_544v3")]
+[node name="SpeedControl" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=163985117 instance=ExtResource("3_544v3")]
+layout_mode = 2
+
+[node name="SpeedInfo" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1176669112 instance=ExtResource("5_544v3")]
 layout_mode = 2

@@ -1,3 +1,4 @@
+@abstract
 class_name BasicInfrNodeData extends Resource
 
 @export var index: int

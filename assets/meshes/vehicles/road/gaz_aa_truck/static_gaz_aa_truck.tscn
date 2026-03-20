@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://po7alkcqti68"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8lyp4qsnfdqk" path="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz_aa_truck.obj" id="1_hmv1a"]
+
+[node name="StaticGazAaTruck" type="Node3D" unique_id=828094291]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=212451219]
+layers = 64
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+mesh = ExtResource("1_hmv1a")

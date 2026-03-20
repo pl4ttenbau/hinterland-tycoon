@@ -1,5 +1,10 @@
 {
 	"depots": [
-		
+		{
+			"num": 1,
+			"name": "Cholmsk Depot",
+			"trackNum": 32,
+			"trackPos": "END"
+		},
 	]
 }

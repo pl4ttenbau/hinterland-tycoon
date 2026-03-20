@@ -14,8 +14,8 @@ func rebuild_path_on_current_track():
 	var next_track = self.vehicle3d.last_node.parent_track
 	var next_direction = self.motor.direction
 	while continues && iterations <= 20:
-		var segment_end := self.add_track_nodes(next_track, next_direction)
-		# track goes on
+		var segment_end := self.add_track_nodes_until_end(next_track, next_direction)
+		# rail doesnt end after current segment
 		if segment_end && segment_end.fork && segment_end.fork.set_to:
 			var next_track_num = segment_end.fork.set_to
 			next_track = RailTrackData.get_by_num(next_track_num)
@@ -26,30 +26,25 @@ func rebuild_path_on_current_track():
 			return
 		iterations += 1
 	InfrUtils.smooth_curve3d(self.curve)
-		
+
+## at every new track, the track position may change
 func get_next_dir_from_fork(track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
 	var track_obj: RailTrackData = RailTrackData.get_by_num(track_num)
 	for rail_node: RailNodeData in track_obj.nodes:
 		if rail_node.position == fork_pos:
 			if rail_node.is_last(): return Enums.PathDirection.TRACK_NODES_DECREASE
 	return Enums.PathDirection.TRACK_NODES_INCREASE
-	
+
 ## returns last node on current track
-func add_track_nodes(track: RailTrackData, dir: Enums.PathDirection) -> RailNodeData:
-	if dir == Enums.PathDirection.TRACK_NODES_DECREASE:
-		for i in track.nodes.size():
-			var node: RailNodeData = track.nodes[-i-1]
-			self.curve.add_point(node.position)
-		return track.nodes[0]
-	else:
-		for node: RailNodeData in track.nodes:
-			self.curve.add_point(node.position)
-		return track.nodes[track.nodes.size() -1]
-	
+func add_track_nodes_until_end(track: RailTrackData, dir: Enums.PathDirection) -> RailNodeData:
+	for track_node: RailNodeData in track.get_nodes_directionally(dir):
+		self.curve.add_point(track_node.position)
+	return track.get_last_node_directionally(dir)
+
 #region Callbacks
 func _enter_tree() -> void:
 	SignalBus.fork_changed.connect(Callable(self, "_on_fork_changed"))
-	
+
 func _ready() -> void:
 	self.rebuild_path_on_current_track()
 

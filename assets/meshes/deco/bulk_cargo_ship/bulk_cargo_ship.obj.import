@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bgxpy480s5p6q"
+path="res://.godot/imported/bulk_cargo_ship.obj-8aa064543a79ff5869759292a7bc22fa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bulk_cargo_ship.obj-8aa064543a79ff5869759292a7bc22fa.mesh"]
+
+source_file="res://assets/meshes/deco/bulk_cargo_ship/bulk_cargo_ship.obj"
+dest_files=["res://.godot/imported/bulk_cargo_ship.obj-8aa064543a79ff5869759292a7bc22fa.mesh", "res://.godot/imported/bulk_cargo_ship.obj-8aa064543a79ff5869759292a7bc22fa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

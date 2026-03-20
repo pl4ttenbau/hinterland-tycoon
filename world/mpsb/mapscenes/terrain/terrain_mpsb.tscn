@@ -3,7 +3,6 @@
 [ext_resource type="Terrain3DMaterial" uid="uid://e7xqm4l7b5dq" path="res://world/mpsb/mapscenes/terrain/terrain_mat_mpsb.res" id="1_b6nfv"]
 [ext_resource type="Terrain3DAssets" uid="uid://bm1sl0reyqaud" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.res" id="2_b6nfv"]
 [ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_b6nfv"]
-[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="5_4t3nh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
 size = Vector2(2400, 2400)
@@ -15,15 +14,12 @@ size = Vector2(200, 100)
 [sub_resource type="PlaneMesh" id="PlaneMesh_b6nfv"]
 size = Vector2(700, 240)
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d52qy"]
-shape = 0
-section_length = 0.18
-section_segments = 1
-
 [node name="WorldTerrain" type="Terrain3D" unique_id=336419630]
 data_directory = "res://world/mpsb/heightdata"
 material = ExtResource("1_b6nfv")
 assets = ExtResource("2_b6nfv")
+displacement_sharpness = 0.5
+show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -43,13 +39,3 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2158.813, 10.024422, 3207.9233)
 material_override = ExtResource("3_b6nfv")
 mesh = SubResource("PlaneMesh_b6nfv")
-
-[node name="CustomTerrain3DParticles" parent="." unique_id=1992740137 node_paths=PackedStringArray("terrain") instance=ExtResource("5_4t3nh")]
-terrain = NodePath("..")
-instance_spacing = 0.296875
-cell_width = 14.0
-rows = 47
-amount = 2209
-mesh = SubResource("RibbonTrailMesh_d52qy")
-min_draw_distance = 35.0
-particle_count = 55225

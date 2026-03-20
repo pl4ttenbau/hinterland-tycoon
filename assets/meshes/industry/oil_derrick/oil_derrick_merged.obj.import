@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bl8dkt8ihgdfc"
+path="res://.godot/imported/oil_derrick_merged.obj-e2c331112dac3a9abce4ffd40da7b301.mesh"
+
+[deps]
+
+files=["res://.godot/imported/oil_derrick_merged.obj-e2c331112dac3a9abce4ffd40da7b301.mesh"]
+
+source_file="res://assets/meshes/industry/oil_derrick/oil_derrick_merged.obj"
+dest_files=["res://.godot/imported/oil_derrick_merged.obj-e2c331112dac3a9abce4ffd40da7b301.mesh", "res://.godot/imported/oil_derrick_merged.obj-e2c331112dac3a9abce4ffd40da7b301.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=true
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1.1, 1.1, 1.1)
+offset_mesh=Vector3(0, -0.2, 0)
+force_disable_mesh_compression=false

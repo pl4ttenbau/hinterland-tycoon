@@ -2,6 +2,12 @@
 @tool
 class_name AbstractTrack extends GameObject
 
+@warning_ignore("unused_signal")
+signal track_changed()
+
+@warning_ignore("unused_signal")
+signal curve_built(curve3d: Curve3D)
+
 ## z.B. "Rübeländer Landstr." oder "MPSB Friedland Kurve"
 @export_storage var track_name: String
 
@@ -30,4 +36,11 @@ func _get_center() -> Vector3:
 	var left_top: Vector3 = self.vertices[0]
 	var right_bottom: Vector3 = self.vertices[self.vertices.size() -1]
 	return left_top.lerp(right_bottom, .5)
+	
+func get_start_pos() -> Vector3:
+	return self.vertices[0]
+
+func get_end_pos() -> Vector3:
+	var last_i: int = self.vertices.size() -1
+	return self.vertices[last_i]
 #endregion

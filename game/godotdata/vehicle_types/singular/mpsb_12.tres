@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://8i6ww7xod4q8"]
 
-[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/common/vehicle_type.gd" id="1_odcj1"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_odcj1"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_85cei"]
 
 [sub_resource type="Resource" id="Resource_msx6d"]
@@ -16,5 +16,5 @@ model_scene_path = "res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn
 max_speed_kmh = 38
 usable_infr = SubResource("Resource_msx6d")
 has_motor = true
-length_metres = 6.8
+length_metres = 7.367
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

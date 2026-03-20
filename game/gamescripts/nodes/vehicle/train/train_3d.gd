@@ -2,6 +2,9 @@
 class_name Train3D extends VisibleObject
 
 const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"
+const VEH_SPEED_MODIFIER: float = 50.0
+
+signal on_vehicle_added(veh3d: Vehicle3D)
 
 static var _last_train_num: int = 0
 
@@ -13,10 +16,12 @@ static var _last_train_num: int = 0
 		self.entity = value
 
 @export var vehicles: Array[Vehicle3D] = []
-
 @export var locomotive: Vehicle3D
 
 @export var motor: TrainMotor
+
+@export var m_passed_since_start: float = 0.0
+@export var m_passed_on_track: float = 0.0
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -59,15 +64,13 @@ func spawn_wagon(veh_data: VehicleData):
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
 
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
-	# add to lists
+	var num_in_train: int = self.vehicles.size()
+	veh3d.num_in_train = num_in_train
 	self.vehicles.append(veh3d)
-	if is_locomotive: self.locomotive = veh3d
-	# create pathfollow node: move so far that it appears before the vehicle beyond
-	var veh_path_follow := VehiclePathFollow.of_train_vehicle(self.count(), veh3d)
-	# move train forwards by 1x its length before the new vehicle
-	# TODO: works now?
-	veh_path_follow.progress += self.length_in_m()
-	$TrainPath.add_child(veh_path_follow)
+	if is_locomotive: 
+		self.locomotive = veh3d
+	$TrainVehicles.add_child(veh3d)
+	self.on_vehicle_added.emit(veh3d)
 #endregion
 
 #region Size Getters
@@ -82,6 +85,32 @@ func length_in_m() -> float:
 	return total_length
 #endregion
 
+#region Moving
+func move_forwards(delta_seconds: float):
+	# calculate movement since last tick
+	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
+	self.increase_m_passed(tick_dist)
+	for veh3d: Vehicle3D in self.vehicles:
+		var m_passed: float = self.m_passed_since_start - veh3d.calc_offset_to_last()
+		if m_passed < 0: m_passed = 0
+		# var curr_transf := veh3d.global_transform
+		var target_transf := self._get_target_transf_at_m_passed(m_passed)
+		var transf_tween = veh3d.create_tween()
+		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
+		# veh3d.global_transform = target_transf
+
+func increase_m_passed(delta_m: float):
+	self.m_passed_on_track += delta_m
+	self.m_passed_since_start += delta_m
+	
+func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
+	var train_curve: Curve3D = self.get_train_path_curve()
+	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
+	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
+	target_transf = target_transf.rotated_local(Vector3(0, 0, 1), 0)
+	return target_transf
+#endregion
+
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
 
@@ -91,10 +120,9 @@ func get_cam() -> Camera3D:
 	var model_cam: Camera3D = self.locomotive.find_child("Camera3D", true)
 	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.locomotive.name)
 	return model_cam
-	
-func get_path_follow(num_in_train: int) -> PathFollow3D:
-	var node_name: String = "PathFollow_Vehicle%d" % num_in_train
-	return $TrainPath.get_node(node_name)
+
+func get_train_path_curve() -> Curve3D:
+	return $TrainPath.curve as Curve3D
 #endregion
 
 #region Callbacks
@@ -106,8 +134,6 @@ func _on_world_ready():
 	self.motor.start()
 	
 func _physics_process(_delta: float) -> void:
-	if self.motor.is_started:
-		for path_child in $TrainPath.get_children():
-			if path_child is PathFollow3D:
-				path_child.progress += self.motor.get_current_speed()
+	if self.motor.is_started: 
+		self.move_forwards(_delta)
 #endregion

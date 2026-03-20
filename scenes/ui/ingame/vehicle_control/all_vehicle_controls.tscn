@@ -1,34 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://btkns7pbr5wa7"]
+[gd_scene format=3 uid="uid://btkns7pbr5wa7"]
 
 [ext_resource type="Script" uid="uid://ngpi2r0442vj" path="res://addons/tnowe_extra_controls/elements/scale_container.gd" id="1_c7w07"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="2_fq22p"]
 [ext_resource type="PackedScene" uid="uid://dt7lvw02e3c8r" path="res://scenes/ui/ingame/vehicle_control/speed_control.tscn" id="3_jdnvi"]
 [ext_resource type="PackedScene" uid="uid://dikkbqk3y15rq" path="res://scenes/ui/ingame/vehicle_control/speed_info.tscn" id="4_xqslf"]
 
-[node name="HBoxContainer" type="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" unique_id=1065400060]
 
-[node name="Control" type="Container" parent="."]
+[node name="Speedometer" type="Container" parent="." unique_id=847428229]
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 size_flags_horizontal = 0
 script = ExtResource("1_c7w07")
 metadata/_custom_type_script = "uid://ngpi2r0442vj"
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="Speedometer" unique_id=501299937]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_fq22p")
 expand_mode = 2
 
-[node name="SpeedLine" type="Line2D" parent="Control/TextureRect"]
+[node name="SpeedLine" type="Line2D" parent="Speedometer/TextureRect" unique_id=624868853]
 position = Vector2(45, 70)
 rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)
 width = 1.0
 default_color = Color(0.87, 0.0783, 0.0783, 1)
 
-[node name="SpeedControl" parent="." instance=ExtResource("3_jdnvi")]
+[node name="SpeedControlSlider" parent="." unique_id=322558902 instance=ExtResource("3_jdnvi")]
 layout_mode = 2
 
-[node name="SpeedInfo" parent="." instance=ExtResource("4_xqslf")]
+[node name="BrakeReversePanel" parent="." unique_id=1416688977 instance=ExtResource("4_xqslf")]
 layout_mode = 2
+
+[node name="DebugTransformLabel" type="Label" parent="." unique_id=815038175]
+layout_mode = 2
+text = "Test
+Test
+Test"

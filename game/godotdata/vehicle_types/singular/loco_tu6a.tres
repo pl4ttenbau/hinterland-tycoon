@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://koayje1llvtf"]
+
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_08j7m"]
+[ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_4gs0b"]
+
+[sub_resource type="Resource" id="Resource_20yvh"]
+script = ExtResource("2_4gs0b")
+subtype = "750_MM"
+metadata/_custom_type_script = "uid://dp38h2f55xv7v"
+
+[resource]
+script = ExtResource("1_08j7m")
+key = "loco_tu6a"
+display_name = "TU6A"
+model_scene_path = "res://assets/meshes/vehicles/rail/loco_tu6a/model_loco_tu6a.tscn"
+max_speed_kmh = 40
+usable_infr = SubResource("Resource_20yvh")
+has_motor = true
+length_metres = 9.29
+metadata/_custom_type_script = "uid://dwf507ds3dbh3"
