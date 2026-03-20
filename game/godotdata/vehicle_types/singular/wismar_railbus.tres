@@ -23,5 +23,5 @@ max_speed_kmh = 60
 usable_infr = SubResource("Resource_rnkef")
 has_motor = true
 capacity = SubResource("Resource_t6nuv")
-length_metres = 11.668
+length_metres = 13.107
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

@@ -12,7 +12,7 @@ roughness_texture = ExtResource("3_s7tre")
 distance_fade_max_distance = 300.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5r4t"]
-size = Vector3(2.062317, 2.7189312, 12.898317)
+size = Vector3(2.062317, 2.7189312, 13.107484)
 
 [node name="MpsbWismarWagon" type="Node3D" unique_id=1880112983]
 script = ExtResource("1_ns6kf")
