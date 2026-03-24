@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cei55pixohws2"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_jucua"]
+[ext_resource type="Texture2D" uid="uid://clao1xt7nl737" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/tex_dr_umbauwagen_d.png" id="1_yadvg"]
+[ext_resource type="Texture2D" uid="uid://bq2k5nkveclk6" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/tex_dr_umbauwagen_n.png" id="2_666p3"]
+[ext_resource type="ArrayMesh" uid="uid://dwtx2xmwbp2sy" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/dr_umbauwagen.obj" id="3_jucua"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="5_dtcmn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtcmn"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_yadvg")
+metallic = 0.65
+normal_enabled = true
+normal_texture = ExtResource("2_666p3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m223f"]
+size = Vector3(3.0429688, 4.128418, 13.169067)
+
+[node name="DrUmbauwagen" type="Node3D" unique_id=1840232543]
+script = ExtResource("1_jucua")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1906789728]
+material_override = SubResource("StandardMaterial3D_dtcmn")
+mesh = ExtResource("3_jucua")
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=837485976]
+script = ExtResource("5_dtcmn")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1024784962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.089, 0)
+shape = SubResource("BoxShape3D_m223f")

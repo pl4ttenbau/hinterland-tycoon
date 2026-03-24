@@ -23,29 +23,20 @@
 [ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/spawners/vehicles/vehicle_placer.gd" id="15_g3fbs"]
 [ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/spawners/industry_spawner.gd" id="16_6wawu"]
 [ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/spawners/infr/depot_spawner.gd" id="17_qsvwm"]
-[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="18_5swda"]
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/spawners/map/map_spawner.gd" id="18_yvyyf"]
-[ext_resource type="Resource" uid="uid://cnnga7ui47iix" path="res://game/godotdata/vehicle_types/singular/loco_faur.tres" id="19_7yd2d"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_waht2"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="20_20yvh"]
-[ext_resource type="Resource" uid="uid://ci67bydr7bpay" path="res://game/godotdata/vehicle_types/singular/wismar_railbus.tres" id="20_o2h5t"]
-[ext_resource type="Resource" uid="uid://bnjk8mpcdv6yb" path="res://game/godotdata/vehicle_types/singular/sachs_wagon_kb4.tres" id="21_0dtnv"]
 [ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="21_sc7tx"]
-[ext_resource type="Resource" uid="uid://c70jc2ui74i2k" path="res://game/godotdata/vehicle_types/singular/mpsb_wismar_wagon.tres" id="22_g3fbs"]
 [ext_resource type="PackedScene" uid="uid://4vshk56t46ml" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="22_mwjue"]
 [ext_resource type="Script" uid="uid://xrq8d2iqxk0u" path="res://game/gamescripts/nodes/common/feature_mock_container.gd" id="23_0fk02"]
-[ext_resource type="Resource" uid="uid://yu8infp73xip" path="res://game/godotdata/vehicle_types/singular/soviet_torp_wagon.tres" id="23_6wawu"]
+[ext_resource type="Resource" uid="uid://dvg2baoqt25dh" path="res://game/godotdata/vehicle_types/vehicle_types_list.tres" id="23_5swda"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="24_5fpmr"]
-[ext_resource type="Resource" uid="uid://8i6ww7xod4q8" path="res://game/godotdata/vehicle_types/singular/mpsb_12.tres" id="24_o2h5t"]
-[ext_resource type="Script" uid="uid://dt7yf5qlkl5ln" path="res://game/gamescripts/collections/typed_lists/vehicle_types_list.gd" id="24_qsvwm"]
 [ext_resource type="ArrayMesh" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="25_x7ydu"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="26_fx0ak"]
 [ext_resource type="PackedScene" uid="uid://btlbj6a17ylar" path="res://assets/meshes/nature/tree3/Tree3.tscn" id="27_x7krn"]
 [ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/rail_track/rail_track_3d.gd" id="28_gd460"]
 [ext_resource type="ArrayMesh" uid="uid://vphafb1c2c38" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_tracks.obj" id="29_bdr0o"]
 [ext_resource type="Texture2D" uid="uid://do0eodfbabq40" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_d.png" id="30_4l87q"]
-[ext_resource type="Resource" uid="uid://koayje1llvtf" path="res://game/godotdata/vehicle_types/singular/loco_tu6a.tres" id="30_waht2"]
-[ext_resource type="Resource" uid="uid://dccyvv2lmxuw6" path="res://game/godotdata/vehicle_types/singular/pv40_soviet_wagon.tres" id="31_20yvh"]
 [ext_resource type="Texture2D" uid="uid://dwsr7pp2doaky" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_n.png" id="31_o3twt"]
 [ext_resource type="Texture2D" uid="uid://0yxx8lqgtmom" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_r.png" id="32_cygkk"]
 [ext_resource type="ArrayMesh" uid="uid://dxlt24spn86wr" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_ground.obj" id="33_xpq3x"]
@@ -60,12 +51,6 @@
 [ext_resource type="PackedScene" uid="uid://bb5bylj7g1h04" path="res://scenes/subscenes/industry/industry3d_sign_scene.tscn" id="42_oj3vo"]
 [ext_resource type="Script" uid="uid://j838sj2jcrb7" path="res://game/gamescripts/services/spawners/vehicles/vehicle_types_loader.gd" id="44_oo77m"]
 [ext_resource type="Script" uid="uid://cr3yk242noau8" path="res://addons/monitor_overlay/monitor_overlay.gd" id="52_7yd2d"]
-
-[sub_resource type="Resource" id="Resource_yvyyf"]
-resource_local_to_scene = true
-script = ExtResource("24_qsvwm")
-list = Array[ExtResource("18_5swda")]([ExtResource("19_7yd2d"), ExtResource("20_o2h5t"), ExtResource("21_0dtnv"), ExtResource("22_g3fbs"), ExtResource("23_6wawu"), ExtResource("24_o2h5t"), ExtResource("30_waht2"), ExtResource("31_20yvh")])
-metadata/_custom_type_script = "uid://dt7yf5qlkl5ln"
 
 [sub_resource type="MultiMesh" id="MultiMesh_usal5"]
 transform_format = 1
@@ -93,7 +78,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_20yvh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sc7tx"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -194,7 +179,7 @@ script = ExtResource("15_g3fbs")
 
 [node name="VehicleTypesLoader" type="Node" parent="World/Generated/Vehicles" unique_id=1503344282]
 script = ExtResource("44_oo77m")
-types_list = SubResource("Resource_yvyyf")
+types_list = ExtResource("23_5swda")
 metadata/_custom_type_script = "uid://j838sj2jcrb7"
 
 [node name="Industries" type="Node" parent="World/Generated" unique_id=1333823754]
@@ -307,7 +292,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_20yvh")
+texture = SubResource("ViewportTexture_sc7tx")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)

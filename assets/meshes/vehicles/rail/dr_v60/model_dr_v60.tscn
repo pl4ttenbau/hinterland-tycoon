@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cuinevrpdx56j"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_gybrh"]
+[ext_resource type="PackedScene" uid="uid://cvh4tnxbfceoj" path="res://assets/meshes/vehicles/rail/dr_v60/gltf/mesh_dr_v_60.tscn" id="2_uf4gk"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_koiiq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xe1w2"]
+size = Vector3(3.0107422, 4.1079407, 10.802788)
+
+[node name="ModelV60" type="Node3D" unique_id=367549188]
+script = ExtResource("1_gybrh")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="Mesh_V60" parent="." unique_id=1123501609 instance=ExtResource("2_uf4gk")]
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1978240708]
+visible = false
+script = ExtResource("3_koiiq")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=24710337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.055, 0)
+shape = SubResource("BoxShape3D_xe1w2")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=30919705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59250736, 3.692471, -1.9085181)

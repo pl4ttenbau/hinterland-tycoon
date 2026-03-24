@@ -4,23 +4,23 @@
 [ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="2_g0ers"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="3_pouho"]
 
-[sub_resource type="Resource" id="Resource_g3fbs"]
+[sub_resource type="Resource" id="Resource_0fk02"]
 script = ExtResource("1_nayb8")
-amount = 80
+amount = 55
 metadata/_custom_type_script = "uid://6smqhu1k4x5"
 
-[sub_resource type="Resource" id="Resource_0dtnv"]
+[sub_resource type="Resource" id="Resource_nayb8"]
 script = ExtResource("3_pouho")
 subtype = "NORMAL_GAUGE"
 metadata/_custom_type_script = "uid://dp38h2f55xv7v"
 
 [resource]
 script = ExtResource("2_g0ers")
-key = "landerbahn_wagon"
+key = "laenderbahn_wagon"
 display_name = "Länderbahn Wagon"
-model_scene_path = "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/model_mpsb_wismar_wagon.tscn"
-max_speed_kmh = 65
-usable_infr = SubResource("Resource_0dtnv")
-capacity = SubResource("Resource_g3fbs")
+model_scene_path = "res://assets/meshes/vehicles/rail/laenderbahn_wagon/model_laenderbahn_wagon.tscn"
+max_speed_kmh = 50
+usable_infr = SubResource("Resource_nayb8")
+capacity = SubResource("Resource_0fk02")
 length_metres = 10.84
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

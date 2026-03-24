@@ -1,9 +1,16 @@
 [gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://btoxp8048n2ij"]
 
 [ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_0pebp"]
+[ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/goods/goods_capacity.gd" id="1_nvwvs"]
 [ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_44wnt"]
 
-[sub_resource type="Resource" id="Resource_msx6d"]
+[sub_resource type="Resource" id="Resource_q2q8y"]
+script = ExtResource("1_nvwvs")
+goods_cat = 2
+amount = 50
+metadata/_custom_type_script = "uid://6smqhu1k4x5"
+
+[sub_resource type="Resource" id="Resource_v12ew"]
 script = ExtResource("2_44wnt")
 subtype = "NORMAL_GAUGE"
 metadata/_custom_type_script = "uid://dp38h2f55xv7v"
@@ -13,7 +20,8 @@ script = ExtResource("1_0pebp")
 key = "boxcar_german"
 display_name = "German Boxcar"
 model_scene_path = "res://assets/meshes/vehicles/rail/boxcar_german/model_boxcar_german.tscn"
-max_speed_kmh = 85
-usable_infr = SubResource("Resource_msx6d")
+max_speed_kmh = 65
+usable_infr = SubResource("Resource_v12ew")
+capacity = SubResource("Resource_q2q8y")
 length_metres = 8.985
 metadata/_custom_type_script = "uid://dwf507ds3dbh3"

@@ -26,7 +26,6 @@ visibility_range_end_margin = 25.0
 mesh = ExtResource("2_y3cg3")
 
 [node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1116706351]
-visible = false
 script = ExtResource("3_wv2we")
 metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 
