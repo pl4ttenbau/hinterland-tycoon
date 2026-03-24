@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cvh4tnxbfceoj"]
+
+[ext_resource type="PackedScene" uid="uid://b6lmaxe35jjpp" path="res://assets/meshes/vehicles/rail/dr_v60/gltf/orig/dr_v60.gltf" id="1_s3lcj"]
+[ext_resource type="Texture2D" uid="uid://c2supykhw7exf" path="res://assets/meshes/vehicles/rail/dr_v60/mat/tex_dr_v60_d.png" id="2_jt4dv"]
+[ext_resource type="Texture2D" uid="uid://tvpi1n8b77ec" path="res://assets/meshes/vehicles/rail/dr_v60/mat/tex_dr_v60_n.png" id="3_fa0cm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su8eh"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_jt4dv")
+normal_enabled = true
+normal_texture = ExtResource("3_fa0cm")
+bent_normal_enabled = true
+bent_normal_texture = ExtResource("3_fa0cm")
+
+[node name="dr_v60" unique_id=1123501609 instance=ExtResource("1_s3lcj")]
+
+[node name="v60" parent="." index="0" unique_id=459747383]
+material_override = SubResource("StandardMaterial3D_su8eh")

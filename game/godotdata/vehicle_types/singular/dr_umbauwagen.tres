@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://bxesdimpqvvth"]
+
+[ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/goods/goods_capacity.gd" id="1_b86rl"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="2_x88g3"]
+[ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="3_ejvvs"]
+
+[sub_resource type="Resource" id="Resource_0fk02"]
+script = ExtResource("1_b86rl")
+amount = 48
+metadata/_custom_type_script = "uid://6smqhu1k4x5"
+
+[sub_resource type="Resource" id="Resource_mwjue"]
+script = ExtResource("3_ejvvs")
+subtype = "NORMAL_GAUGE"
+metadata/_custom_type_script = "uid://dp38h2f55xv7v"
+
+[resource]
+script = ExtResource("2_x88g3")
+key = "dr_umbauwagen"
+display_name = "DR Umbauwagen"
+model_scene_path = "res://assets/meshes/vehicles/rail/dr_umbauwagen/model_dr_umbauwagen.tscn"
+max_speed_kmh = 90
+usable_infr = SubResource("Resource_mwjue")
+capacity = SubResource("Resource_0fk02")
+length_metres = 13.169
+metadata/_custom_type_script = "uid://dwf507ds3dbh3"

@@ -12,14 +12,16 @@ script = ExtResource("1_hqffb")
 metadata/_custom_type_script = "uid://bo44os5px2kcj"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=175121978]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("1_s7pse")
 skeleton = NodePath("")
 
 [node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1573322528 node_paths=PackedStringArray("vehicle3d")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("3_met7w")
 vehicle3d = NodePath("..")
 metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=2048937443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005645752, 1.6073685, 0.0019836426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.607, 0)
 shape = SubResource("BoxShape3D_jst0f")
