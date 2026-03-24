@@ -42,16 +42,31 @@ func _enter_tree():
 #region Curve
 func create_curve_from_dict(infr_dict: Dictionary, smooth: bool = false):
 	self.curve = Curve3D.new()
-	var abs_points: Array[Vector3] = []
-	for point in infr_dict.points:
-		abs_points.append(WorldUtils.vec3_from_float_arr(point.pos))
+	var abs_points: PackedVector3Array = []
+	var point_handle_in: PackedVector3Array = []
+	# build abs pos & handle in vector array
+	for point_json in infr_dict.points:
+		abs_points.append(WorldUtils.vec3_from_float_arr(point_json.pos))
+		point_handle_in.append(self._get_handle_in_from_point_json(point_json))
+	# make relative positions from absolute ones & set to curve
+	var point_i: int = 0
 	for abs_pos in abs_points:
 		var rel_pos: Vector3 = abs_pos - self.position
-		self.curve.add_point(rel_pos)
+		var handle_in: Vector3 = point_handle_in[point_i]
+		# add point pos with handles to curve
+		self.curve.add_point(rel_pos, handle_in, -1 * handle_in)
+		point_i += 1
 	# generate aabb
 	self.abs_aabb = InfrUtils.get_aabb(abs_points)
 	if smooth:
 		InfrUtils.smooth_curve3d(self.curve)
+
+func _get_handle_in_from_point_json(point_json: Dictionary) -> Vector3:
+	if point_json.has("handleIn"):
+		var handle_in_arr: Array = point_json.get("handleIn")
+		var point_in_vec3: Vector3 = WorldUtils.vec3_from_float_arr(handle_in_arr)
+		return point_in_vec3
+	else: return Vector3.ZERO
 #endregion
 
 #region Helper-Methods

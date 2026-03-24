@@ -28,7 +28,7 @@ func _create_indexes(node_station: RailNodeStationData):
 	# index by track num
 	var track_num: int = node_station.parent_node.parent_track.num
 	if self._by_track.has(track_num):
-		var by_track_list: Array[RailNodeStationData] = self._by_track.get(track_num) as Array
+		var by_track_list: Array = self._by_track.get(track_num)
 		by_track_list.append(node_station)
 		self._by_track.set(track_num, by_track_list)
 	else:

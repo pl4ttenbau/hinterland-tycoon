@@ -18,6 +18,10 @@ static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeDat
 	return instance
 
 func parse_and_add_special(rail_node_dict: Dictionary):
+	if rail_node_dict.has("handleIn"):
+		self.handle_in = WorldUtils.vec3_from_float_arr(rail_node_dict.get("handleIn"))
+		# handle_out is always the same as in, but negative
+		self.handle_out = -1 * self.handle_in
 	if rail_node_dict.has("end") && rail_node_dict.get("end") == true:
 		self.is_end = true
 	if rail_node_dict.has("fork"):
