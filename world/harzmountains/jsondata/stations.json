@@ -2,7 +2,7 @@
 	{
 		"num": 1,
 		"name": "HBF",
-		"townNum": 0,
+		"townNum": 31,
 		"type": "STATION_PASS",
 		"townName": "Wernigerode",
 		"hideBuilding": true
@@ -10,7 +10,7 @@
 	{
 		"num": 2,
 		"name": "Neustadt",
-		"townNum": 0,
+		"townNum": 31,
 		"type": "STATION_PASS",
 		"townName": "Wernigerode"
 	},
@@ -119,5 +119,12 @@
 		"townNum": 1,
 		"type": "STATION_PASS",
 		"townName": "Brocken",
+	},
+	{
+		"num": 18,
+		"name": "Knaupsholz",
+		"townNum": 9,
+		"type": "STATION_GOODS",
+		"townName": "Schierke",
 	},
 ]

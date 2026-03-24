@@ -1,38 +1,28 @@
 [gd_scene format=3 uid="uid://dcdx38gwigayp"]
 
+[ext_resource type="Terrain3DMaterial" uid="uid://bpandgw7lrhcn" path="res://world/harzmountains/mapscenes/terrain/terrain_mat_harzmountains.res" id="1_kd810"]
 [ext_resource type="Terrain3DAssets" uid="uid://dlgrceogt4x2e" path="res://world/harzmountains/mapscenes/terrain/terrain_assets_harzmountains.res" id="1_l3qu8"]
-[ext_resource type="ArrayOccluder3D" uid="uid://cjwcqpntkgovi" path="res://world/harzmountains/mapscenes/terrain_harzmountains_objects.occ" id="34_fuhxg"]
+[ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="4_jxf6l"]
 [ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="38_w7ts7"]
-[ext_resource type="PackedScene" uid="uid://du7j51h025uyf" path="res://assets/meshes/deco/statue_1/statue_1.tscn" id="40_5bvj4"]
-[ext_resource type="PackedScene" uid="uid://vmtodxubdw7" path="res://assets/meshes/industry/windmill_2/windmill_2_static.tscn" id="51_61rod"]
-
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0uh3x"]
-_shader_parameters = {
-&"bias_distance": 512.0,
-&"blend_sharpness": 0.0,
-&"depth_blur": 0.0,
-&"flat_terrain_normals": false,
-&"mipmap_bias": 1.0,
-&"shader_uniforms": null,
-&"shader_uniforms::general": null,
-&"shader_uniforms::mipmaps": null
-}
-world_background = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3qu8"]
+albedo_texture = ExtResource("4_jxf6l")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.517632
+
+[sub_resource type="BoxMesh" id="BoxMesh_kd810"]
+size = Vector3(6, 20, 50)
+
 [node name="WorldTerrain" type="Terrain3D" unique_id=1285850563]
 data_directory = "res://world/harzmountains/heightdata"
-material = SubResource("Terrain3DMaterial_0uh3x")
+material = ExtResource("1_kd810")
 assets = ExtResource("1_l3qu8")
-mesh_size = 24
 displacement_sharpness = 0.5
-render_layers = 2147483652
 top_level = true
 metadata/_edit_lock_ = true
-
-[node name="TerrainOccluder" type="OccluderInstance3D" parent="." unique_id=1488195305]
-occluder = ExtResource("34_fuhxg")
 
 [node name="Water" type="Node" parent="." unique_id=655026043]
 
@@ -91,8 +81,7 @@ transform = Transform3D(29.6962, 0, 123.287, 0, 0.5, 0, -177.533, 0, 20.6224, 29
 material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
 
-[node name="Statue1" parent="." unique_id=1727806552 instance=ExtResource("40_5bvj4")]
-transform = Transform3D(0.840784, 0, 0.54137075, 0, 1, 0, -0.54137075, 0, 0.840784, 2431.3977, 2.4393878, 94.74443)
-
-[node name="Windmill2Static" parent="." unique_id=2133541150 instance=ExtResource("51_61rod")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2367.3667, 2.8125849, 188.96194)
+[node name="Eckertalsperre" type="MeshInstance3D" parent="Water" unique_id=242901872]
+transform = Transform3D(-0.842565, 0, 0.538594, 0, 1, 0, -0.538594, 0, -0.842565, 470.015, 48.7693, 1395.03)
+material_override = SubResource("StandardMaterial3D_l3qu8")
+mesh = SubResource("BoxMesh_kd810")
