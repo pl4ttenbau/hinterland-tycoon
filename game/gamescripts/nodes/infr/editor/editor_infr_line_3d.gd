@@ -18,6 +18,10 @@ const LINE_WIDTH = .5
 	
 @export var abs_aabb: AABB
 
+@export_group("Actions")
+@export_tool_button("Auto-Smooth Y")
+var empty_infr = Callable(self, "do_smooth_y")
+
 #region Initialization
 static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") -> EditorInfrLine3D:
 	var inst := EditorInfrLine3D.new()
@@ -67,6 +71,9 @@ func _get_handle_in_from_point_json(point_json: Dictionary) -> Vector3:
 		var point_in_vec3: Vector3 = WorldUtils.vec3_from_float_arr(handle_in_arr)
 		return point_in_vec3
 	else: return Vector3.ZERO
+	
+func do_smooth_y():
+	InfrUtils.smooth_curve3d_y(self.curve)
 #endregion
 
 #region Helper-Methods

@@ -15,6 +15,18 @@ static func smooth_curve3d(curve: Curve3D):
 			curve.set_point_in(idx, -normalized)
 			curve.set_point_out(idx, +normalized)
 			
+static func smooth_curve3d_y(curve: Curve3D):
+	var corner_speed: float = 2
+	for idx in range(curve.point_count):
+		if idx > 0:
+			var handle_in: Vector3 = curve.get_point_in(idx)
+			var handle_out: Vector3 = curve.get_point_out(idx)
+			var delta = curve.get_point_position(idx) - curve.get_point_position(idx-1)
+			delta /= corner_speed
+			var normalized = delta.normalized() *2
+			curve.set_point_in(idx, Vector3(handle_in.x, -normalized.y, handle_in.z))
+			curve.set_point_out(idx, Vector3(handle_out.x, normalized.y, handle_out.z))
+			
 static func get_aabb(vec_3_arr: Array[Vector3]) -> AABB:
 	var min_pos: Vector3
 	var max_pos: Vector3
