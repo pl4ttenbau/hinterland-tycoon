@@ -564,6 +564,10 @@
 			},
 			{
 				"pos": [2723, 8.5, 1744.2],
+				"fork": {
+					"connectiveTracks": [74, 76],
+					"setTo": 74
+				}
 			}
 		]
 	},
@@ -3115,6 +3119,10 @@
 			},
 			{
 				"pos": [2633.9, 9.3, 1780.2],
+				"fork": {
+					"connectiveTracks": [74, 75],
+					"setTo": 74
+				}
 			}
 		]
 	},
@@ -3125,6 +3133,10 @@
 		"points": [
 			{
 				"pos": [2633.9, 9.3, 1780.2],
+				"fork": {
+					"connectiveTracks": [73],
+					"setTo": 73
+				}
 			},
 			{
 				"pos": [2646.3, 9.1, 1775.0],
@@ -3140,6 +3152,98 @@
 			},
 			{
 				"pos": [2723, 8.5, 1744.2],
+				"fork": {
+					"connectiveTracks": [12],
+					"setTo": 12
+				}
+			}
+		]
+	},
+	{
+		"num": 75,
+		"name": "HSB Hasserode Track 1 (Outwards)",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [2633.9, 9.3, 1780.2],
+				"fork": {
+					"connectiveTracks": [73],
+					"setTo": 73
+				}
+			},
+			{
+				"pos": [2649.9, 9.1, 1778.4],
+				"handleIn": [-4.626, 0.025, 0.68]
+			},
+			{
+				"pos": [2660.7, 9.0, 1774.9],
+				"handleIn": [-4.237, 0.018, 1.603]
+			},
+			{
+				"pos": [2672.6, 8.9, 1770.5],
+				"handleIn": [-2.639, 0.016, 1.052]
+			},
+			{
+				"pos": [2685.4, 8.9, 1766.1],
+				"fork": {
+					"connectiveTracks": [76],
+					"setTo": 76
+				}
+			},
+		]
+	},
+	{
+		"num": 76,
+		"name": "HSB Hasserode Track 1 (Townwards)",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [2685.4, 8.9, 1766.1],
+				"fork": {
+					"connectiveTracks": [75, 77],
+					"setTo": 75
+				}
+			},
+			{
+				"pos": [2693.5, 8.8, 1762.5],
+				"handleIn": [-4.363, 0.023, 1.889]
+			},
+			{
+				"pos": [2709.2, 8.7, 1754.7],
+				"handleIn": [-4.782, 0.011, 2.835]
+			},
+			{
+				"pos": [2723, 8.5, 1744.2],
+				"fork": {
+					"connectiveTracks": [12],
+					"setTo": 12
+				}
+			}
+		]
+	},
+	{
+		"num": 77,
+		"name": "HSB Hasserode Track 3 (Sawmill)",
+		"type": "750_MM",
+		"points": [
+			{
+				"pos": [2685.4, 8.9, 1766.1],
+				"fork": {
+					"connectiveTracks": [76],
+					"setTo": 76
+				}
+			},
+			{
+				"pos": [2659.3, 9.2, 1785.5],
+				"handleIn": [10.921, -0.018, -8.268]
+			},
+			{
+				"pos": [2632.1, 9.9, 1809.4],
+				"handleIn": [5.795, -0.039, -5.481]
+			},
+			{
+				"pos": [2623.4, 10.0, 1819.0],
+				"end": true
 			}
 		]
 	}
