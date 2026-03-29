@@ -3,5 +3,7 @@
 	"name": "Harz Mountains",
 	"loc": "SOUTHERN_GERMANY",
 	
-	"startPos": [2945.5, 1266.1]
+	"defaultYear": 1958,
+	
+	"startPos": [3167.3, 1251.6]
 }

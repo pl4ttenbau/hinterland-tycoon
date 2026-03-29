@@ -783,13 +783,12 @@
 	},
 	{
 		"num": 25,
-		"name": "Wernigerode Bahnhofstr Ost",
-		"offset": [0, 0, 0],
+		"name": "Wernigerode Halberstädter Str. E",
 		"points": [
 			{
 				"pos": [3048.7, 5.4, 1314.8],
 				"cross": {
-					"connectiveRoads": [121, 122]
+					"connectiveRoads": [121, 122, 135]
 				}
 			},
 			{
@@ -801,7 +800,7 @@
 			{
 				"pos": [3120.6, 5.5, 1316.0],
 				"cross": {
-					"connectiveRoads": [29, 30]
+					"connectiveRoads": [29, 30, 134]
 				}
 			}
 		]
@@ -821,12 +820,9 @@
 				"pos": [3148.2, 6.0, 1422.4]
 			},
 			{
-				"pos": [3113.9, 5.9, 1411.4]
-			},
-			{
 				"pos": [3113.9, 5.9, 1411.4],
 				"cross": {
-					"connectiveRoads": [31, 30]
+					"connectiveRoads": [31, 33, 140]
 				}
 			}
 		]
@@ -882,32 +878,33 @@
 	},
 	{
 		"num": 29,
-		"name": "Wernigerode Bahnhofstr West",
-		"offset": [0, 0, 0],
+		"name": "Wernigerode Halberstädter Str. M",
 		"points": [
 			{
 				"pos": [3120.6, 5.5, 1316.0],
 				"cross": {
-					"connectiveRoads": [25, 30]
+					"connectiveRoads": [25, 30, 134]
 				}
 			},
 			{
 				"pos": [3159.7, 5.5, 1323.9]
 			},
 			{
-				"pos": [3188.4, 5.6, 1326.7]
+				"pos": [3188.4, 5.6, 1326.7],
+				"cross": {
+					"connectiveRoads": [138]
+				}
 			}
 		]
 	},
 	{
 		"num": 30,
-		"name": "Wernigerode Querstr",
-		"offset": [0, 0, 0],
+		"name": "Wernigerode Große Bergstr.",
 		"points": [
 			{
 				"pos": [3120.6, 5.5, 1316.0],
 				"cross": {
-					"connectiveRoads": [25, 30]
+					"connectiveRoads": [25, 30, 134]
 				}
 			},
 			{
@@ -915,12 +912,6 @@
 			},
 			{
 				"pos": [3126.4, 5.7, 1367.6]
-			},
-			{
-				"pos": [3113.9, 5.9, 1411.4],
-				"cross": {
-					"connectiveRoads": [26, 30, 33]
-				}
 			}
 		]
 	},
@@ -932,7 +923,7 @@
 			{
 				"pos": [3113.9, 5.9, 1411.4],
 				"cross": {
-					"connectiveRoads": [26, 30, 33]
+					"connectiveRoads": [26, 140, 33]
 				}
 			},
 			{
@@ -975,7 +966,7 @@
 			{
 				"pos": [3113.9, 5.9, 1411.4],
 				"cross": {
-					"connectiveRoads": [26, 30, 31]
+					"connectiveRoads": [26, 140, 31]
 				}
 			}
 		]
@@ -3643,7 +3634,7 @@
 			{
 				"pos": [3048.7, 5.4, 1314.8],
 				"cross": {
-					"connectiveRoads": [25, 121]
+					"connectiveRoads": [25, 121, 135]
 				}
 			},
 			{
@@ -3883,7 +3874,7 @@
 		]
 	},
 	{
-		"num": 129,
+		"num": 131,
 		"name": "Wernigerode Dornbergweg Townwards",
 		"points": [
 			{
@@ -3902,43 +3893,244 @@
 				"pos": [2981.5, 5.5, 1250.2]
 			},
 			{
-				"pos": [2982.5, 5.5, 1237.1]
+				"pos": [2982.5, 5.5, 1237.1],
+				"cross": {
+					"connectiveRoads": [132, 133]
+				}
+			}
+		]
+	},
+	{
+		"num": 132,
+		"name": "Wernigerode Dornbergweg Outwards",
+		"points": [
+			{
+				"pos": [2982.5, 5.5, 1237.1],
+				"cross": {
+					"connectiveRoads": [131, 133]
+				}
 			},
 			{
-				"pos": [2983.7, 5.5, 1225.3]
+				"pos": [2983.7, 5.5, 1224.5],
 			},
 			{
-				"pos": [2983.5, 5.5, 1206.9]
+				"pos": [2984.2, 5.5, 1204.9],
 			},
 			{
-				"pos": [2986.3, 5.5, 1194.5]
+				"pos": [2985.2, 5.6, 1187.5],
+			}
+		]
+	},
+	{
+		"num": 133,
+		"name": "Wernigerode Ochsenteichstr. Outwards",
+		"points": [
+			{
+				"pos": [2982.5, 5.5, 1237.1],
+				"cross": {
+					"connectiveRoads": [131, 132]
+				}
 			},
 			{
-				"pos": [2992.7, 5.6, 1189.1]
+				"pos": [2998.2, 5.4, 1241.2],
 			},
 			{
-				"pos": [3004.1, 5.5, 1186.3]
+				"pos": [3017.0, 5.4, 1246.2],
 			},
 			{
-				"pos": [3018.3, 5.5, 1187.5]
+				"pos": [3036.7, 5.3, 1248.7],
 			},
 			{
-				"pos": [3034.5, 5.4, 1193.8]
+				"pos": [3048.7, 5.3, 1249.6],
+				"cross": {
+					"connectiveRoads": [134, 135, 136]
+				}
+			}
+		]
+	},
+	{
+		"num": 134,
+		"name": "Wernigerode Pfarrstr.",
+		"points": [
+			{
+				"pos": [3048.7, 5.3, 1249.6],
+				"cross": {
+					"connectiveRoads": [133, 135, 136]
+				}
 			},
 			{
-				"pos": [3050.2, 5.3, 1199.0]
+				"pos": [3067.8, 5.3, 1255.0],
 			},
 			{
-				"pos": [3066.3, 5.3, 1200.6]
+				"pos": [3080.5, 5.6, 1260.9],
 			},
 			{
-				"pos": [3078.3, 5.1, 1198.8]
+				"pos": [3096.9, 5.6, 1270.5],
 			},
 			{
-				"pos": [3086.4, 5.1, 1194.5]
+				"pos": [3109.3, 5.6, 1285.3],
 			},
 			{
-				"pos": [3093.1, 5.1, 1189.2]
+				"pos": [3117.5, 5.6, 1300.1],
+			},
+			{
+				"pos": [3120.6, 5.5, 1316.0],
+				"cross": {
+					"connectiveRoads": [25, 29, 30]
+				}
+			}
+		]
+	},
+	{
+		"num": 135,
+		"name": "Wernigerode A.-Bartels-Str.",
+		"points": [
+			{
+				"pos": [3048.7, 5.3, 1249.6],
+				"cross": {
+					"connectiveRoads": [133, 134, 136]
+				}
+			},
+			{
+				"pos": [3042.7, 5.3, 1271.8],
+			},
+			{
+				"pos": [3041.2, 5.6, 1282.8],
+			},
+			{
+				"pos": [3046.9, 5.78, 1300.1],
+			},
+			{
+				"pos": [3048.7, 5.4, 1314.8],
+				"cross": {
+					"connectiveRoads": [25, 121, 122]
+				}
+			}
+		]
+	},
+	{
+		"num": 136,
+		"name": "Wernigerode Bahnhofsstr.",
+		"points": [
+			{
+				"pos": [3048.7, 5.3, 1249.6],
+				"cross": {
+					"connectiveRoads": [133, 134, 135]
+				}
+			},
+			{
+				"pos": [3072.3, 5.3, 1249.2],
+			},
+			{
+				"pos": [3095.1, 5.6, 1249.5],
+			},
+			{
+				"pos": [3123.3, 5.6, 1249.9],
+			},
+			{
+				"pos": [3141.3, 5.6, 1249.9],
+			},
+			{
+				"pos": [3155.6, 5.3, 1250.4],
+			},
+			{
+				"pos": [3167.3, 5.3, 1251.6],
+				"cross": {
+					"connectiveRoads": [137]
+				}
+			}
+		]
+	},
+	{
+		"num": 137,
+		"name": "Wernigerode Wallgasse",
+		"points": [
+			{
+				"pos": [3167.3, 5.3, 1251.6],
+				"cross": {
+					"connectiveRoads": [136]
+				}
+			},
+			{
+				"pos": [3174.8, 5.3, 1265.2],
+			},
+			{
+				"pos": [3186.5, 5.3, 1277.3],
+			},
+			{
+				"pos": [3195.6, 5.3, 1286.2],
+				"cross": {
+					"connectiveRoads": [138]
+				}
+			}
+		]
+	},
+	{
+		"num": 138,
+		"name": "Wernigerode R.-Breitscheid-Str.",
+		"points": [
+			{
+				"pos": [3195.6, 5.3, 1286.2],
+				"cross": {
+					"connectiveRoads": [137]
+				}
+			},
+			{
+				"pos": [3191.7, 5.4, 1299.2],
+			},
+			{
+				"pos": [3188.4, 5.6, 1326.7],
+				"cross": {
+					"connectiveRoads": [29, 139]
+				}
+			}
+		]
+	},
+	{
+		"num": 139,
+		"name": "Wernigerode R.-Breitscheid-Str.",
+		"points": [
+			{
+				"pos": [3188.4, 5.6, 1326.7],
+				"cross": {
+					"connectiveRoads": [29, 138]
+				}
+			},
+			{
+				"pos": [3186.3, 5.7, 1341.0],
+			},
+			{
+				"pos": [3182.7, 5.8, 1369.0],
+			},
+			{
+				"pos": [3172.9, 5.8, 1373.6],
+			},
+			{
+				"pos": [3158.7, 5.8, 1371.5],
+			},
+			{
+				"pos": [3126.4, 5.7, 1367.6],
+				"cross": {
+					"connectiveRoads": [30, 140]
+				}
+			},
+		]
+	},
+	{
+		"num": 140,
+		"name": "Wernigerode Vorwerkstr.",
+		"points": [
+			{
+				"pos": [3126.4, 5.7, 1367.6],
+				"cross": {
+					"connectiveRoads": [30, 139]
+				}
+			},
+			{
+				"pos": [3113.9, 5.9, 1411.4],
+				"cross": {
+					"connectiveRoads": [26, 31, 33]
+				}
 			}
 		]
 	}

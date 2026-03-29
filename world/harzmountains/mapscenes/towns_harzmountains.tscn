@@ -105,7 +105,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_y8iud"]
 script = ExtResource("3_4bctd")
-town_name = "Heudeber"
+town_name = "Minsleben"
 pos_xz = Vector2(3840, 476)
 num = 11
 type = 5
@@ -296,8 +296,8 @@ town = SubResource("Resource_arug0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1001, 340.449, 2244)
 town = SubResource("Resource_mmmvw")
 
-[node name="TownCenter_Heudeber" parent="." unique_id=569969437 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3840, 3.18355, 476)
+[node name="TownCenter_Minsleben" parent="." unique_id=569969437 instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3948.2437, 2.900487, 873.54095)
 town = SubResource("Resource_y8iud")
 
 [node name="TownCenter_Stapelburg" parent="." unique_id=28499269 instance=ExtResource("1_tj431")]
