@@ -12,10 +12,8 @@ func _ready() -> void:
 	
 #region Button Action
 func do_empty_infr() -> void:
-	for child in $EditorRails.get_children():
-		if child is Path3D: child.queue_free()
-	for child in $EditorRoads.get_children():
-		if child is Path3D: child.queue_free()
+	$EditorRails.clear()
+	$EditorRoads.clear()
 #endregion
 
 func _get_configuration_warnings() -> PackedStringArray:
