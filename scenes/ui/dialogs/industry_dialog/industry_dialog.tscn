@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://caj48q47flyok"]
+
+[ext_resource type="Script" uid="uid://b7c7otc1f063h" path="res://game/gamescripts/ui/dialogs/industry_info/industry_info_dialog.gd" id="1_2ybhg"]
+[ext_resource type="PackedScene" uid="uid://baixkg71tsah1" path="res://scenes/ui/dialogs/industry_dialog/industry_connected_station.tscn" id="2_87jv8"]
+[ext_resource type="PackedScene" uid="uid://c1xyxexxyfgtr" path="res://scenes/ui/dialogs/industry_dialog/industry_nameandtype.tscn" id="2_ordv3"]
+[ext_resource type="PackedScene" uid="uid://cqjv5lao6foak" path="res://scenes/ui/dialogs/industry_dialog/industry_consumption.tscn" id="3_ordv3"]
+[ext_resource type="PackedScene" uid="uid://c6ju8sst242fn" path="res://scenes/ui/dialogs/industry_dialog/industry_production.tscn" id="4_lpq0g"]
+
+[node name="IndustryDialog" type="Control" unique_id=1375859080]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_right = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_2ybhg")
+metadata/_custom_type_script = "uid://b7c7otc1f063h"
+metadata/_edit_use_anchors_ = true
+
+[node name="OuterPanel" type="PanelContainer" parent="." unique_id=816795701]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -258.5
+offset_right = 352.0
+offset_bottom = 258.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1299342225]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=316416679]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=952405002]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Industry"
+horizontal_alignment = 1
+
+[node name="NameAndTypeBox" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=652769063 instance=ExtResource("2_ordv3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StationAndProductionMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1381284847]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="StationAndProductionVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin" unique_id=657883997]
+layout_mode = 2
+
+[node name="IndustryStationList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=721542442 instance=ExtResource("2_87jv8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="IndustryConsumption" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=1708451097 instance=ExtResource("3_ordv3")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="IndustryProduction" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=967139609 instance=ExtResource("4_lpq0g")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1148532739]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Close
+"

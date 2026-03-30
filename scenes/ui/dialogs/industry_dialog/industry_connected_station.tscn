@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://baixkg71tsah1"]
+
+[ext_resource type="Script" uid="uid://djxj1r6xghvxn" path="res://game/gamescripts/ui/dialogs/industry_info/industry_station_list.gd" id="1_nolqs"]
+
+[node name="IndustryStationList" type="MarginContainer" unique_id=567668818]
+offset_right = 231.0
+offset_bottom = 89.0
+theme_override_constants/margin_bottom = 14
+script = ExtResource("1_nolqs")
+metadata/_custom_type_script = "uid://djxj1r6xghvxn"
+
+[node name="StationLayout" type="VBoxContainer" parent="." unique_id=799523607]
+layout_mode = 2
+
+[node name="StationHeading" type="Label" parent="StationLayout" unique_id=1476060468]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Connected Station"
+
+[node name="StationsTable" type="ItemList" parent="StationLayout" unique_id=1476653353]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+item_count = 1
+item_0/text = "Station A"

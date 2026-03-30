@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c1xyxexxyfgtr"]
+
+[ext_resource type="Script" uid="uid://x3exn3ngufrq" path="res://game/gamescripts/ui/dialogs/industry_info/industry_nametype.gd" id="1_5k0vh"]
+
+[node name="NameAndTypeMargin" type="MarginContainer" unique_id=267018671]
+offset_right = 249.0
+offset_bottom = 125.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_5k0vh")
+metadata/_custom_type_script = "uid://x3exn3ngufrq"
+
+[node name="NameAndTypeVLayout" type="VBoxContainer" parent="." unique_id=1714402718]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="NameAndTypeVLayout" unique_id=797024562]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "unbekannt"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="NameAndTypeVLayout" unique_id=752978815]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+theme_override_font_sizes/font_size = 26
+text = "Coal Mine"
+horizontal_alignment = 1

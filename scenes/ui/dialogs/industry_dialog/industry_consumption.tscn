@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cqjv5lao6foak"]
+
+[ext_resource type="Script" uid="uid://y7pb8kryd7r8" path="res://game/gamescripts/ui/dialogs/industry_info/industry_consumption.gd" id="1_wi2xp"]
+
+[node name="IndustryConsumption" type="MarginContainer" unique_id=1671046018]
+physics_interpolation_mode = 0
+script = ExtResource("1_wi2xp")
+metadata/_custom_type_script = "uid://y7pb8kryd7r8"
+
+[node name="InputsLayout" type="VBoxContainer" parent="." unique_id=125061242]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="InputsLayout" unique_id=1017299330]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Consumption"
+
+[node name="GoodsTable" type="ItemList" parent="InputsLayout" unique_id=572631499]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+item_count = 1
+item_0/text = "1 Wood"

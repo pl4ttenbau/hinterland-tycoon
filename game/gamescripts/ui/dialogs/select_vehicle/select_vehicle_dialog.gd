@@ -13,7 +13,8 @@ signal vehicle_spawn_triggered(spawn_dto: VehicleSpawnDto)
 
 #region Initialization
 func _init():
-	super("SelectVehicleDialog")
+	super()
+	self.dialog_key = "SelectVehicleDialog"
 
 func _ready() -> void:
 	# unlock mouse
