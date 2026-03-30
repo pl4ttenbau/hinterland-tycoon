@@ -36,5 +36,5 @@ func _ready() -> void:
 
 #region Callbacks
 func _on_close_button_click():
-	super.close()
+	super.close_all()
 #endregion

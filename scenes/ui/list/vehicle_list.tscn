@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c260ksylv54r6"]
 
-[ext_resource type="Script" uid="uid://b57silj6wixmw" path="res://game/gamescripts/ui/lists/vehicle_list.gd" id="1_21jf3"]
+[ext_resource type="Script" uid="uid://b57silj6wixmw" path="res://game/gamescripts/ui/dialogs/select_vehicle/vehicle_list.gd" id="1_21jf3"]
 [ext_resource type="PackedScene" uid="uid://beff5g4mv3wc6" path="res://scenes/ui/list/items/vehicle_list_item.tscn" id="2_ogo2b"]
 
 [sub_resource type="Theme" id="Theme_ogo2b"]

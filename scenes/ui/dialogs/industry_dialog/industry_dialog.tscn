@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqjv5lao6foak" path="res://scenes/ui/dialogs/industry_dialog/industry_consumption.tscn" id="3_ordv3"]
 [ext_resource type="PackedScene" uid="uid://c6ju8sst242fn" path="res://scenes/ui/dialogs/industry_dialog/industry_production.tscn" id="4_lpq0g"]
 
-[node name="IndustryDialog" type="Control" unique_id=1375859080]
+[node name="IndustryInfoDialog" type="Control" unique_id=1375859080]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

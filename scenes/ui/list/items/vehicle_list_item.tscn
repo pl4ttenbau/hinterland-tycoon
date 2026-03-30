@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beff5g4mv3wc6"]
 
 [ext_resource type="Texture2D" uid="uid://bjgav1hxh7ij6" path="res://assets/meshes/vehicles/rail/wismar_railbus/preview.png" id="1_1y4ey"]
-[ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/lists/vehicle_list_item.gd" id="1_7ud4v"]
+[ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/dialogs/select_vehicle/vehicle_list_item.gd" id="1_7ud4v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
 content_margin_left = 0.0

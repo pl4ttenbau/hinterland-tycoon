@@ -1,23 +1,32 @@
 class_name SpawnAction extends Node
 
-const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle_dialog.tscn"
+const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
+const COMPOSE_TRAIN_DIAG_SCENE = "res://scenes/ui/dialogs/train_composition/train_composition_dialog.tscn"
 
 func on_trigger():
-	var diag_scene: PackedScene = load(VEHICLE_SELECT_DIAG_SCENE)
-	var instance: SelectVehicleDialog = diag_scene.instantiate()
-	# connect to signal
-	instance.vehicle_spawn_triggered.connect(Callable(self, "_on_vehicle_spawn_pressed"))
-	# show dialog
-	$/root.add_child(instance)
-		
-func spawn_train(spawn_dto: VehicleSpawnDto):
+	var diag_instance: TrainCompositionDialog = self.show_compose_train_diag()
+	diag_instance.before_closed.connect(Callable(self, "_on_before_diag_closed"))
+
+func show_compose_train_diag() -> TrainCompositionDialog:
+	var diag_scene: PackedScene = load(COMPOSE_TRAIN_DIAG_SCENE)
+	var diag_instance: TrainCompositionDialog = diag_scene.instantiate()
+	$/root.add_child(diag_instance)
+	diag_instance.show_dialog()
+	return diag_instance
+
+func spawn_train(spawn_dto: TrainVehicleList):
 	var depot_obj := self.get_depot_by_num(spawn_dto.depot_num)
 	if depot_obj:
+		var loco_type_key: String = spawn_dto.rows[0].veh_type_key
 		var start_pos := self.build_start_pos_dto(depot_obj)
-		var train3d := Managers.vehicles.spawn_train(spawn_dto.vehicle_type_key, start_pos)
-		# temporary: spawn with wagon
-		var wagon_veh_data := VehicleData.of("mpsb_wismar_wagon")
-		train3d.spawn_wagon(wagon_veh_data)
+		var train3d := Managers.vehicles.spawn_train(loco_type_key, start_pos)
+		var veh_index: int = 0
+		for train_veh: TrainVehicleDto in spawn_dto.rows:
+			if ! veh_index == 0:
+				# temporary: spawn with wagon
+				var wagon_veh_data := VehicleData.of(train_veh.veh_type_key)
+				train3d.spawn_wagon(wagon_veh_data)
+			veh_index += 1
 		Loggie.info("Spawned new vehicle in direction: %s" % start_pos.dir)
 		# start
 		train3d.motor.start()
@@ -38,7 +47,16 @@ func get_depot_by_num(depot_num: int) -> RailDepotData:
 	return null
 	
 #region Callbacks
-func _on_vehicle_spawn_pressed(spawn_dto: VehicleSpawnDto) -> void:
-	Loggie.info("Vehicle spawning btn pressed: %s in depot %s" % [spawn_dto.vehicle_type_key, spawn_dto.depot_num])
+func _on_vehicle_spawn_pressed(train_vehicles: TrainVehicleList, depot_num: int) -> void:
+	# var loco_type_key: String = train_vehicles.rows[0].veh_type_key
+	# Loggie.info("Vehicle spawning btn pressed: %s in depot %s" % [loco_type_key, depot_num])
+	# self.spawn_train(train_vehicles)
+	pass
+
+func _on_before_diag_closed(diag_result):
+	if !diag_result is TrainVehicleList:
+		Loggie.error("Wrong Diag result when closing ComposeTrainDialog")
+		return
+	var spawn_dto: TrainVehicleList = diag_result as TrainVehicleList
 	self.spawn_train(spawn_dto)
 #endregion

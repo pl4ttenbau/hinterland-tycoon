@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://ba1dpp40uptv5"]
+
+[ext_resource type="Script" uid="uid://bf8iq3mq8pwjy" path="res://game/gamescripts/ui/dialogs/train_composition/train_composition_dialog.gd" id="1_575db"]
+[ext_resource type="PackedScene" uid="uid://d0o5wngc4hsop" path="res://scenes/ui/dialogs/train_composition/vehicle_row.tscn" id="2_h31ey"]
+
+[node name="TrainCompositionDialog" type="Control" unique_id=2010647289]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -374.0
+offset_top = -250.0
+offset_right = 374.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_575db")
+metadata/_custom_type_script = "uid://bf8iq3mq8pwjy"
+
+[node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
+layout_mode = 0
+offset_right = 748.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1264418081]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=1966774023]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1318486676]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Compose Train"
+horizontal_alignment = 1
+
+[node name="VehiclesListLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1740692714]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/VehiclesListLayout" unique_id=680193934]
+layout_mode = 2
+text = "Vehicles:"
+
+[node name="VehicleRow" parent="OuterPanel/OuterMargin/OuterVLayout/VehiclesListLayout" unique_id=160420411 instance=ExtResource("2_h31ey")]
+layout_mode = 2
+
+[node name="AddVehicleBtn" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1842522378]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 2
+text = "Add Vehicle"
+
+[node name="OkButton" type="Button" parent="OuterPanel" unique_id=1348525671]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 33
+text = "OK"
