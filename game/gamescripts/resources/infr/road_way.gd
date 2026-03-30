@@ -34,11 +34,14 @@ func spawn() -> RoadWay3D:
 	
 func build_curve() -> void:
 	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = true
-	for road_node: RoadNode in self.nodes:
-		self.curve.add_point(road_node.rel_position)
+	self.curve.up_vector_enabled = false
+	# add points to curve (optionally with curve handles)
+	for node: RoadNode in self.nodes:
+		self.curve.add_point(node.rel_position, node.handle_in, node.handle_out)
+	self.curve_built.emit(self.curve)
 	# generate AABB
 	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
+	InfrUtils.smooth_curve3d(self.curve)
 	
 func add_node(_road_node: RoadNode):
 	self.nodes.append(_road_node) 

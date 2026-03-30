@@ -1,16 +1,10 @@
 {
 	"depots": [
 		{
-			"num": 1,
-			"name": "HSB Depot Wernigerode",
+			"num": 2,
+			"name": "Wernigerode Depot HSB",
 			"trackNum": 23,
 			"trackPos": "END"
-		},
-		{
-			"num": 2,
-			"name": "DR Depot Wernigerode",
-			"trackNum": 32,
-			"trackPos": "START"
 		},
 		{
 			"num": 3,

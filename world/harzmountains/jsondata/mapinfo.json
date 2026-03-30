@@ -3,7 +3,7 @@
 	"name": "Harz Mountains",
 	"loc": "SOUTHERN_GERMANY",
 	
-	"startPos": [2470.0, 2056.0],
+	"defaultYear": 1958,
 	
-	"spawnVehicles": false
+	"startPos": [2662.1, 2542.4]
 }
