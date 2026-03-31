@@ -18,3 +18,4 @@ metadata/_custom_type_script = "uid://dsdlhc30dwqbm"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+value = 100.0

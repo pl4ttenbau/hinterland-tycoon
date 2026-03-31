@@ -37,7 +37,7 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 
 [node name="Control" type="Container" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=53878704]
-custom_minimum_size = Vector2(150, 130)
+custom_minimum_size = Vector2(130, 130)
 layout_mode = 2
 size_flags_horizontal = 0
 script = ExtResource("1_80d06")
@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://ngpi2r0442vj"
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_c3mfk")
-expand_mode = 2
+expand_mode = 3
 
 [node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/HBoxContainer/Control/TextureRect" unique_id=1762477285]
 position = Vector2(45, 70)
