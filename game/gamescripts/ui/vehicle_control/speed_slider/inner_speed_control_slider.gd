@@ -23,7 +23,6 @@ func set_vehicle_speed(speed_percent: float):
 	var speed_float := self._clamp_speed(1 - (speed_percent / 100))
 	Loggie.info("Setting vehicle speed perc: %f" % speed_float)
 	self.curr_speed.target = speed_float
-	# self._set_handle_position(speed_float)
 	
 func _set_handle_position(speed_float: float):
 	# set handle pos

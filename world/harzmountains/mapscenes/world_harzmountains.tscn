@@ -3700,7 +3700,7 @@ material = ExtResource("50_ksq05")
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3948.2437, 2.900487, 873.54095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3003.972, 5.58315, 1275.4042)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
