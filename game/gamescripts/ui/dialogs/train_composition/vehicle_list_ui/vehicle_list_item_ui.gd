@@ -1,7 +1,8 @@
-class_name VehicleListItem extends PanelContainer
+class_name VehicleListItemUi extends PanelContainer
 
 signal clicked()
 
+@export_storage var parent_list: VehicleListUi
 @export_storage var is_ready: bool = false
 @export var is_highlighted: bool = false
 
@@ -34,7 +35,7 @@ func set_vehicle_image():
 func highlight():
 	self.is_highlighted = true
 	%SelectedHighlighting.visible = true
-	
+
 func unhighlight():
 	%SelectedHighlighting.visible = false
 #endregion

@@ -3,6 +3,11 @@ class_name SpawnAction extends Node
 const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
 const COMPOSE_TRAIN_DIAG_SCENE = "res://scenes/ui/dialogs/train_composition/train_composition_dialog.tscn"
 
+@export var last_clicked_depot_num: int = -1
+
+func _enter_tree() -> void:
+	SignalBus.request_spawn_action.connect(Callable(self, "_on_spawn_action_request"))
+
 func on_trigger():
 	var diag_instance: TrainCompositionDialog = self.show_compose_train_diag()
 	diag_instance.before_closed.connect(Callable(self, "_on_before_diag_closed"))
@@ -14,8 +19,8 @@ func show_compose_train_diag() -> TrainCompositionDialog:
 	diag_instance.show_dialog()
 	return diag_instance
 
-func spawn_train(spawn_dto: TrainVehicleList):
-	var depot_obj := self.get_depot_by_num(spawn_dto.depot_num)
+func spawn_train(spawn_dto: TrainVehicleListDto):
+	var depot_obj := RailDepotData.get_by_num(self.last_clicked_depot_num)
 	if depot_obj:
 		var loco_type_key: String = spawn_dto.rows[0].veh_type_key
 		var start_pos := self.build_start_pos_dto(depot_obj)
@@ -39,24 +44,17 @@ func build_start_pos_dto(depot_obj: RailDepotData) -> VehicleStartPos:
 func get_veh_dir_from_depot_pos(depot_pos: String) -> Enums.PathDirection:
 	if depot_pos == "START": return Enums.PathDirection.TRACK_NODES_INCREASE
 	return Enums.PathDirection.TRACK_NODES_DECREASE
-
-func get_depot_by_num(depot_num: int) -> RailDepotData:
-	for depot: RailDepotData in GlobalState.depots:
-		if depot.num == depot_num: return depot
-	Loggie.warn("Cannot find Depot with num %d" % depot_num)
-	return null
 	
 #region Callbacks
-func _on_vehicle_spawn_pressed(train_vehicles: TrainVehicleList, depot_num: int) -> void:
-	# var loco_type_key: String = train_vehicles.rows[0].veh_type_key
-	# Loggie.info("Vehicle spawning btn pressed: %s in depot %s" % [loco_type_key, depot_num])
-	# self.spawn_train(train_vehicles)
-	pass
+func _on_spawn_action_request(depot_num: int):
+	Loggie.info("Vehicle Spawning requested at depot %d" % depot_num)
+	self.last_clicked_depot_num = depot_num
+	self.on_trigger()
 
 func _on_before_diag_closed(diag_result):
-	if !diag_result is TrainVehicleList:
+	if !diag_result is TrainVehicleListDto:
 		Loggie.error("Wrong Diag result when closing ComposeTrainDialog")
 		return
-	var spawn_dto: TrainVehicleList = diag_result as TrainVehicleList
+	var spawn_dto: TrainVehicleListDto = diag_result as TrainVehicleListDto
 	self.spawn_train(spawn_dto)
 #endregion

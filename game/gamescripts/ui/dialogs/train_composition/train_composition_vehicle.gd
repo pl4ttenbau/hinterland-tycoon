@@ -6,7 +6,7 @@ class_name TrainCompositionVehicleRow extends Control
 		train_veh = value
 		%VehicleTypeText.text = value.veh_type_obj.display_name
 		
-@export var parent_list: TrainVehicleList
+@export var parent_list: TrainVehicleListDto
 
 func _ready() -> void:
 	%BtnUp.pressed.connect(Callable(self, "_on_btn_up_pressed"))

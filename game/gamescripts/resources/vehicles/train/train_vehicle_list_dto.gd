@@ -1,10 +1,8 @@
-class_name TrainVehicleList extends Resource
+class_name TrainVehicleListDto extends Resource
 
 signal updated()
 
 @export var rows: Array[TrainVehicleDto] = []
-
-@export var depot_num = 1
 
 func append(train_veh: TrainVehicleDto):
 	self.rows.append(train_veh)

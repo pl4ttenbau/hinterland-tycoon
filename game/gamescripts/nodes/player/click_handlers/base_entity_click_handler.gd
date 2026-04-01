@@ -12,6 +12,8 @@ func handle_click(entity_collider: Node3D) -> bool:
 		return self._on_vehicle_clicked(entity_collider)
 	if entity_collider is RailForkCollider:
 		return _on_rail_fork_click(entity_collider)
+	if entity_collider is DepotCollider:
+		return self._on_depot_clicked(entity_collider)
 	if entity_collider is IndustryCollider:
 		return self._on_industry_click(entity_collider)
 	if entity_collider is ClickableCollider:
@@ -43,7 +45,14 @@ func _on_vehicle_clicked(veh_collider: VehicleCollider) -> bool:
 	var veh3d: Vehicle3D = veh_collider.vehicle3d
 	Managers.vehicles.enter_vehicle(veh3d)
 	return true
-	
+
+func _on_depot_clicked(depot_collider: DepotCollider) -> bool:
+	if depot_collider.depot_obj:
+		var depot_num: int = depot_collider.depot_obj.num
+		SignalBus.request_spawn_action.emit(depot_num)
+		return true
+	return false
+
 func _on_other_clickable_collider_click(clickable_collider: ClickableCollider) -> bool:
 	var c_ref: ClickRef = clickable_collider.get_click_ref()
 	SignalBus.collider_click.emit(c_ref)

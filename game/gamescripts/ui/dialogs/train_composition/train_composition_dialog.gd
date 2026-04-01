@@ -4,10 +4,12 @@ class_name TrainCompositionDialog extends GameDialog
 const VEHICLE_ROW_SCENE_PATH = "res://scenes/ui/dialogs/train_composition/vehicle_row.tscn"
 const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
 
-signal rows_updated(vehicle_row_dtos: TrainVehicleList)
+signal rows_updated(vehicle_row_dtos: TrainVehicleListDto)
 
 @export var depot_num: int = 1
-@export var vehicle_rows: TrainVehicleList = TrainVehicleList.new()
+@export var vehicle_rows: TrainVehicleListDto = TrainVehicleListDto.new()
+
+@export var last_selected_veh_type: String
 
 #region Initialization
 func _init():
@@ -20,24 +22,15 @@ func _ready() -> void:
 	# clear pladeholder vehicle
 	self.clear_list()
 	# connect signals
-	%AddVehicleBtn.pressed.connect(Callable(self, "_on_add_vehicle_btn_click"))
+	%AddVehicleButton.pressed.connect(Callable(self, "_on_add_vehicle_btn_click"))
 	self.vehicle_rows.updated.connect(Callable(self, "_on_vehicle_list_updated"))
-	%OkButton.pressed.connect(Callable(self, "_on_spawn_btn_pressed"))
+	%SpawnTrainButton.pressed.connect(Callable(self, "_on_spawn_btn_pressed"))
+	%AddableVehiclesList.selection_changed.connect(Callable(self, "_on_selected_vehicle_changed"))
 #endregion
-
-func show_add_vehicle_diag():
-	var diag_scene: PackedScene = load(VEHICLE_SELECT_DIAG_SCENE)
-	var diag_instance: SelectVehicleDialog = diag_scene.instantiate()
-	diag_instance.spawn_train = false
-	diag_instance.hide_wagons = false
-	# show dialog
-	$/root.add_child(diag_instance)
-	# connect to signal
-	diag_instance.before_closed.connect(Callable(self, "_on_veh_selection_diag_closed"))
 
 #region Add Vehicle
 func clear_list():
-	for child: Node in %VehiclesListLayout.get_children():
+	for child: Node in %TrainVehicleList.get_children():
 		if ! child is Label:
 			child.queue_free()
 
@@ -48,7 +41,7 @@ func rebuild_list_items():
 		var veh_row: TrainCompositionVehicleRow = load(VEHICLE_ROW_SCENE_PATH).instantiate()
 		veh_row.train_veh = train_veh
 		veh_row.parent_list = self.vehicle_rows
-		%VehiclesListLayout.add_child(veh_row)
+		%TrainVehicleList.add_child(veh_row)
 
 func add_vehicle_row(veh_type_key: String):
 	Loggie.info("check")
@@ -70,7 +63,10 @@ func close():
 
 #region Callbacks
 func _on_add_vehicle_btn_click():
-	self.show_add_vehicle_diag()
+	if self.last_selected_veh_type:
+		self.add_vehicle_row(self.last_selected_veh_type)
+	else:
+		Loggie.warn("")
 
 func _on_veh_selection_diag_closed(_diag_result):
 	if _diag_result is String:
@@ -85,4 +81,7 @@ func _on_vehicle_list_updated():
 func _on_spawn_btn_pressed():
 	self.diag_result = self.vehicle_rows
 	self.close_all()
+
+func _on_selected_vehicle_changed(veh_type_key: String):
+	self.last_selected_veh_type = veh_type_key
 #endregion

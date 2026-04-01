@@ -9,6 +9,11 @@ signal map_list_loaded(map_list: Array[MapData])
 @warning_ignore("unused_signal")
 signal map_selected(map_obj: MapData)
 
+#region Actions
+@warning_ignore("unused_signal")
+signal request_spawn_action(depot_num: int)
+#endregion
+
 #region UI
 @warning_ignore("unused_signal")
 signal dialog_vehicle_selection(veh_type_key: String)

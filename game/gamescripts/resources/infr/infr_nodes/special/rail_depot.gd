@@ -37,6 +37,12 @@ func spawn() -> RailDepot3D:
 	return RailDepot3D.of(self)
 
 #region Getters
+static func get_by_num(depot_num: int) -> RailDepotData:
+	for depot: RailDepotData in GlobalState.depots:
+		if depot.num == depot_num: return depot
+	Loggie.warn("Cannot find Depot with num %d" % depot_num)
+	return null
+	
 func get_depot_rail_node() -> RailNodeData:
 	if self.track_pos == "START":
 		return self.track.nodes[0]
