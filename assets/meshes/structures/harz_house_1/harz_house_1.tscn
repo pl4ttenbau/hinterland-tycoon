@@ -1,15 +1,8 @@
 [gd_scene format=3 uid="uid://dm2b0nf4qts0d"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_4tq4q"]
-[ext_resource type="Texture2D" uid="uid://b562cljall5o8" path="res://assets/meshes/structures/harz_house_1/tex_harz_house_1_full_d.png" id="1_o050h"]
-[ext_resource type="Texture2D" uid="uid://dquvojjykt4m5" path="res://assets/meshes/structures/harz_house_1/tex_harz_house_1_full_n.png" id="2_mcd8h"]
-[ext_resource type="ArrayMesh" uid="uid://dvp140b1x6cow" path="res://assets/meshes/structures/harz_house_1/harz_house_1.obj" id="3_4tq4q"]
+[ext_resource type="PackedScene" uid="uid://cuylfp82rixdh" path="res://assets/meshes/structures/harz_house_1/model/model_harz_house_1.tscn" id="2_o050h"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="5_u206a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u206a"]
-albedo_texture = ExtResource("1_o050h")
-normal_enabled = true
-normal_texture = ExtResource("2_mcd8h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7dan"]
 size = Vector3(7.651306, 8.648804, 10.517151)
@@ -19,12 +12,7 @@ script = ExtResource("1_4tq4q")
 placed_res_bld_type = "harz_house_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=575291439]
-layers = 8
-material_override = SubResource("StandardMaterial3D_u206a")
-visibility_range_end = 200.0
-visibility_range_end_margin = 20.0
-mesh = ExtResource("3_4tq4q")
+[node name="ModelHarzHouse1" parent="." unique_id=1777021222 instance=ExtResource("2_o050h")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1701391049]
 script = ExtResource("5_u206a")

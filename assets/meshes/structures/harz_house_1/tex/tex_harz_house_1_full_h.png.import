@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfhhiiatfb1bf"
-path="res://.godot/imported/tex_harz_house_1_full_h.png-16db7129cb0a17e0b61eea5404117910.ctex"
+path="res://.godot/imported/tex_harz_house_1_full_h.png-a62bcd5073e12add18e8965649f33c10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meshes/structures/harz_house_1/tex_harz_house_1_full_h.png"
-dest_files=["res://.godot/imported/tex_harz_house_1_full_h.png-16db7129cb0a17e0b61eea5404117910.ctex"]
+source_file="res://assets/meshes/structures/harz_house_1/tex/tex_harz_house_1_full_h.png"
+dest_files=["res://.godot/imported/tex_harz_house_1_full_h.png-a62bcd5073e12add18e8965649f33c10.ctex"]
 
 [params]
 

@@ -17,3 +17,5 @@ normal_texture = ExtResource("3_w2tw0")
 layers = 8
 material_override = SubResource("StandardMaterial3D_v5chd")
 lod_bias = 0.5
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

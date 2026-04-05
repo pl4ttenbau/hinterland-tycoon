@@ -18,3 +18,5 @@ normal_texture = ExtResource("4_xw380")
 
 [node name="building_main_0" parent="." index="0" unique_id=617922396]
 material_override = SubResource("StandardMaterial3D_vh3u1")
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

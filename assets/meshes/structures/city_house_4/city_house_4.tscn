@@ -12,6 +12,8 @@ script = ExtResource("1_5p2yn")
 placed_res_bld_type = "city_house_4"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
+[node name="ModelCityHouse4" parent="." unique_id=1219922688 instance=ExtResource("3_f0scu")]
+
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1856381245]
 script = ExtResource("6_rxvvh")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
@@ -19,5 +21,3 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=834193160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054351807, 6.2601852, 0.9779358)
 shape = SubResource("BoxShape3D_5p2yn")
-
-[node name="ModelCityHouse4" parent="." unique_id=1219922688 instance=ExtResource("3_f0scu")]
