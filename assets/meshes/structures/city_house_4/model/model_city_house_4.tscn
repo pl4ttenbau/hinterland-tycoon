@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cgxkkemchb3l0"]
+
+[ext_resource type="PackedScene" uid="uid://b2on6ig0a2lsm" path="res://assets/meshes/structures/city_house_4/city_house_4.obj" id="1_yaaat"]
+[ext_resource type="Texture2D" uid="uid://kw1dx675h2v7" path="res://assets/meshes/structures/city_house_4/model/tex_city_house_4_d.png" id="2_ejhqc"]
+[ext_resource type="Texture2D" uid="uid://djnf7ipv20cvp" path="res://assets/meshes/structures/city_house_4/model/tex_city_house_4_n.png" id="3_w2tw0"]
+[ext_resource type="Texture2D" uid="uid://dir28wq8rhixf" path="res://assets/meshes/structures/city_house_4/model/tex_city_house_4_r.png" id="4_8p3cb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5chd"]
+albedo_texture = ExtResource("2_ejhqc")
+roughness_texture = ExtResource("4_8p3cb")
+normal_enabled = true
+normal_texture = ExtResource("3_w2tw0")
+
+[node name="ModelCityHouse4" unique_id=1219922688 instance=ExtResource("1_yaaat")]
+
+[node name="3_3_0" parent="." index="0" unique_id=2057111867]
+layers = 8
+material_override = SubResource("StandardMaterial3D_v5chd")
+lod_bias = 0.5
