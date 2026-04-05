@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://d0o5wngc4hsop"]
+
+[ext_resource type="Script" uid="uid://3rag7so3v58k" path="res://game/gamescripts/ui/dialogs/train_composition/train_composition_vehicle.gd" id="1_ftwnd"]
+
+[node name="VehicleRow" type="Control" unique_id=160420411]
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 41.0
+grow_horizontal = 2
+script = ExtResource("1_ftwnd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1349530814]
+custom_minimum_size = Vector2(0, 41)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="BtnUp" type="Button" parent="HBoxContainer" unique_id=773500722]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Up"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1256244772]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VehicleTypeText" type="Label" parent="HBoxContainer/PanelContainer" unique_id=1338814796]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Vehicle Type"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnDown" type="Button" parent="HBoxContainer" unique_id=549313868]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Down"
+
+[node name="BtnRemove" type="Button" parent="HBoxContainer" unique_id=494022944]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Rm"

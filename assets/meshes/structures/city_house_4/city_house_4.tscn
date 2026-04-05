@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b85dl5xfc44on"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_5p2yn"]
+[ext_resource type="PackedScene" uid="uid://cgxkkemchb3l0" path="res://assets/meshes/structures/city_house_4/model/model_city_house_4.tscn" id="3_f0scu"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="6_rxvvh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5p2yn"]
+size = Vector3(8.117615, 12.485458, 12.157166)
+
+[node name="CityHouse4" type="Node3D" unique_id=1351870418]
+script = ExtResource("1_5p2yn")
+placed_res_bld_type = "city_house_4"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="ModelCityHouse4" parent="." unique_id=1219922688 instance=ExtResource("3_f0scu")]
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1856381245]
+script = ExtResource("6_rxvvh")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=834193160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054351807, 6.2601852, 0.9779358)
+shape = SubResource("BoxShape3D_5p2yn")

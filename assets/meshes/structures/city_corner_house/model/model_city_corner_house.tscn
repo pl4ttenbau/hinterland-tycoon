@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bp3p3oxnqjcrj"]
+
+[ext_resource type="PackedScene" uid="uid://b5qq4wbj6nav0" path="res://assets/meshes/structures/city_corner_house/model/city_corner_house.obj" id="1_ktpu6"]
+[ext_resource type="Texture2D" uid="uid://d0v82plmiwsoq" path="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_d.png" id="2_mscq2"]
+[ext_resource type="Texture2D" uid="uid://827tcltgtlpq" path="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_s.png" id="3_cuxln"]
+[ext_resource type="Texture2D" uid="uid://dwsgauqrcyd5u" path="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_n.png" id="4_xw380"]
+[ext_resource type="Texture2D" uid="uid://cujfcul8jorqh" path="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_r.png" id="5_cuxln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh3u1"]
+albedo_texture = ExtResource("2_mscq2")
+metallic = 1.0
+metallic_texture = ExtResource("3_cuxln")
+roughness_texture = ExtResource("5_cuxln")
+normal_enabled = true
+normal_texture = ExtResource("4_xw380")
+
+[node name="city_corner_house" unique_id=775605327 instance=ExtResource("1_ktpu6")]
+
+[node name="building_main_0" parent="." index="0" unique_id=617922396]
+material_override = SubResource("StandardMaterial3D_vh3u1")
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

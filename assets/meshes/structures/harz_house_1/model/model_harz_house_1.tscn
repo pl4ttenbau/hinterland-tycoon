@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cuylfp82rixdh"]
+
+[ext_resource type="PackedScene" uid="uid://dvp140b1x6cow" path="res://assets/meshes/structures/harz_house_1/model/raw_harz_house_1.obj" id="1_e5gvf"]
+[ext_resource type="Texture2D" uid="uid://b562cljall5o8" path="res://assets/meshes/structures/harz_house_1/tex/tex_harz_house_1_full_d.png" id="2_as484"]
+[ext_resource type="Texture2D" uid="uid://ldqnuqi1wach" path="res://assets/meshes/structures/harz_house_1/tex/tex_harz_house_1_full_n.png" id="3_8or2y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyaqe"]
+albedo_texture = ExtResource("2_as484")
+normal_enabled = true
+normal_scale = 0.2
+normal_texture = ExtResource("3_8or2y")
+
+[node name="ModelHarzHouse1" unique_id=1777021222 instance=ExtResource("1_e5gvf")]
+
+[node name="HarzHouse1" parent="." index="0" unique_id=869087605]
+layers = 8
+material_override = SubResource("StandardMaterial3D_iyaqe")
+lod_bias = 0.7
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

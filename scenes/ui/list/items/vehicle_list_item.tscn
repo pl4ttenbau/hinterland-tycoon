@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beff5g4mv3wc6"]
 
 [ext_resource type="Texture2D" uid="uid://bjgav1hxh7ij6" path="res://assets/meshes/vehicles/rail/wismar_railbus/preview.png" id="1_1y4ey"]
-[ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/lists/vehicle_list_item.gd" id="1_7ud4v"]
+[ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/dialogs/train_composition/vehicle_list_ui/vehicle_list_item_ui.gd" id="1_7ud4v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
 content_margin_left = 0.0
@@ -11,7 +11,7 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 1
 
-[node name="VehicleListItem" type="PanelContainer" unique_id=227950610]
+[node name="VehicleListItem" type="PanelContainer" unique_id=762948329]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 99.0

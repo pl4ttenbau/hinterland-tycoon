@@ -91,7 +91,7 @@ func move_forwards(delta_seconds: float):
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
 	self.increase_m_passed(tick_dist)
 	for veh3d: Vehicle3D in self.vehicles:
-		var m_passed: float = self.m_passed_since_start - veh3d.calc_offset_to_last()
+		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
 		# var curr_transf := veh3d.global_transform
 		var target_transf := self._get_target_transf_at_m_passed(m_passed)

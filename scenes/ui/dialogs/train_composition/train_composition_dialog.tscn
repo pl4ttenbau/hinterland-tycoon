@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://ba1dpp40uptv5"]
+
+[ext_resource type="Script" uid="uid://bf8iq3mq8pwjy" path="res://game/gamescripts/ui/dialogs/train_composition/train_composition_dialog.gd" id="1_575db"]
+[ext_resource type="PackedScene" uid="uid://d0o5wngc4hsop" path="res://scenes/ui/dialogs/train_composition/vehicle_row.tscn" id="2_h31ey"]
+[ext_resource type="PackedScene" uid="uid://c260ksylv54r6" path="res://scenes/ui/list/vehicle_list.tscn" id="3_ujivd"]
+
+[node name="TrainCompositionDialog" type="Control" unique_id=2010647289]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -426.5
+offset_top = -250.0
+offset_right = 426.5
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_575db")
+metadata/_custom_type_script = "uid://bf8iq3mq8pwjy"
+
+[node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
+layout_mode = 0
+offset_right = 748.0
+offset_bottom = 500.0
+
+[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1264418081]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=366670503]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer" unique_id=1852321499]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer" unique_id=1966774023]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=1318486676]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Compose Train"
+horizontal_alignment = 1
+
+[node name="TrainVehicleList" type="VBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=1740692714]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout/TrainVehicleList" unique_id=680193934]
+layout_mode = 2
+text = "Vehicles:"
+
+[node name="VehicleRow" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout/TrainVehicleList" unique_id=160420411 instance=ExtResource("2_h31ey")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=419968429]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpawnTrainButton" type="Button" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=1348525671]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 33
+text = "Spawn"
+
+[node name="OuterVLayout2" type="VBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer" unique_id=1926178752]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=2076789139]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Add Vehicle"
+horizontal_alignment = 1
+
+[node name="AddableVehiclesList" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=692177351 instance=ExtResource("3_ujivd")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AddVehicleButton" type="Button" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=2122196153]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Add"

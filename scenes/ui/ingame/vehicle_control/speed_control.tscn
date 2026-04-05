@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://dt7lvw02e3c8r"]
 
-[ext_resource type="Texture2D" uid="uid://b4bwmpimhp71c" path="res://assets/ui/fuehrerstand/speed_control_bar.svg" id="1_0bq6n"]
 [ext_resource type="Script" uid="uid://dsdlhc30dwqbm" path="res://game/gamescripts/ui/vehicle_control/speed_slider/outer_speed_control_slider.gd" id="1_gtp7w"]
-[ext_resource type="Texture2D" uid="uid://mi8kcpksruly" path="res://assets/ui/fuehrerstand/speed_control_handle.svg" id="2_fvn33"]
-[ext_resource type="Script" uid="uid://c5u2rk4ocnihp" path="res://game/gamescripts/ui/vehicle_control/speed_slider/inner_speed_control_slider.gd" id="2_gtp7w"]
 
 [node name="OuterSlider" type="CenterContainer" unique_id=1918136250]
 custom_minimum_size = Vector2(80, 130)
@@ -17,22 +14,8 @@ grow_vertical = 2
 script = ExtResource("1_gtp7w")
 metadata/_custom_type_script = "uid://dsdlhc30dwqbm"
 
-[node name="Background" type="TextureRect" parent="." unique_id=451447628]
+[node name="VSlider" type="VSlider" parent="." unique_id=298494700]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-texture = ExtResource("1_0bq6n")
-
-[node name="InnerSlider" type="Control" parent="Background" unique_id=1740846033]
-anchors_preset = 0
-offset_left = 18.0
-offset_top = 20.0
-offset_right = 58.0
-offset_bottom = 131.0
-script = ExtResource("2_gtp7w")
-
-[node name="ControlHandle" type="TextureRect" parent="Background/InnerSlider" unique_id=1968404786]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 100.0
-offset_right = 39.0
-offset_bottom = 119.0
-texture = ExtResource("2_fvn33")
+value = 100.0
