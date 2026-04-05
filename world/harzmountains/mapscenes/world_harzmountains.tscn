@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_1ass2"]
 [ext_resource type="PackedScene" uid="uid://dcdx38gwigayp" path="res://world/harzmountains/mapscenes/terrain/terrain_harzmountains.tscn" id="2_6duku"]
 [ext_resource type="PackedScene" uid="uid://dbegcmeyngyia" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge_wide.tscn" id="3_4subv"]
+[ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="3_7a4o1"]
 [ext_resource type="PackedScene" uid="uid://316sldx8eq36" path="res://assets/meshes/deco/castle_tower/castle_tower.tscn" id="3_kw45s"]
 [ext_resource type="PackedScene" uid="uid://dn7pc6dlp7jl8" path="res://assets/meshes/deco/city_gate/city_gate.tscn" id="3_vuti8"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="4_vuti8"]
@@ -40,12 +41,16 @@
 [ext_resource type="Script" uid="uid://bbivri4py26we" path="res://game/gamescripts/services/editor/infrastructure/editor_infr_container.gd" id="52_ksq05"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="52_vuti8"]
 [ext_resource type="Script" uid="uid://dvf4vwgtk252x" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="53_4subv"]
+[ext_resource type="PackedScene" uid="uid://dm2b0nf4qts0d" path="res://assets/meshes/structures/harz_house_1/harz_house_1.tscn" id="53_ksq05"]
 [ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="53_nynls"]
+[ext_resource type="PackedScene" uid="uid://cwlcfsgeh3x0l" path="res://assets/meshes/structures/city_corner_house/city_corner_house.tscn" id="55_c72m3"]
+[ext_resource type="PackedScene" uid="uid://b85dl5xfc44on" path="res://assets/meshes/structures/city_house_4/city_house_4.tscn" id="56_4subv"]
 [ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="56_c72m3"]
 [ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="56_l1cl3"]
 [ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="56_x1dpf"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="56_x5l52"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="57_0y8xh"]
+[ext_resource type="PackedScene" uid="uid://b4nbqlopy8205" path="res://assets/meshes/structures/old_city_house_1/old_city_house_1.tscn" id="57_4subv"]
 [ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="57_uh36v"]
 [ext_resource type="PackedScene" uid="uid://po7alkcqti68" path="res://assets/meshes/vehicles/road/gaz_aa_truck/static_gaz_aa_truck.tscn" id="58_l1cl3"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="63_76csh"]
@@ -1143,11 +1148,7 @@ transform = Transform3D(0.51432, 0, -0.857599, 0, 1, 0, 0.857599, 0, 0.51432, 27
 placed_town_num = 14
 
 [node name="CityHouse7" parent="Houses" unique_id=1411742044 instance=ExtResource("77_r10ie")]
-transform = Transform3D(0.976537, 0, 0.215349, 0, 1, 0, -0.215349, 0, 0.976537, 2761.47, 8.28865, 1740.03)
-placed_town_num = 14
-
-[node name="CityHouse8" parent="Houses" unique_id=604315800 instance=ExtResource("45_r10ie")]
-transform = Transform3D(0.73812556, 0, -0.6746633, 0, 1, 0, 0.6746633, 0, 0.73812556, 2737.3635, 8.214369, 1773.2826)
+transform = Transform3D(0.731532, 0, 0.68180674, 0, 1, 0, -0.68180674, 0, 0.731532, 2726.4539, 8.3698015, 1755.3026)
 placed_town_num = 14
 
 [node name="VillageHouse6" parent="Houses" unique_id=548919141 instance=ExtResource("42_nfbri")]
@@ -1538,6 +1539,186 @@ placed_town_num = 31
 transform = Transform3D(0.90918535, 0, 0.41639185, 0, 1, 0, -0.41639185, 0, 0.90918535, 3096.2031, 4.918289, 1151.9745)
 placed_town_num = 31
 
+[node name="HarzHouse1" parent="Houses" unique_id=1839210383 instance=ExtResource("53_ksq05")]
+transform = Transform3D(-0.66732574, 0, 0.744766, 0, 1, 0, -0.744766, 0, -0.66732574, 2737.7288, 8.876133, 1772.7089)
+placed_town_num = 14
+
+[node name="CityHouse1" parent="Houses" unique_id=58465312 instance=ExtResource("53_nynls")]
+transform = Transform3D(0.12105502, 0, 0.9926459, 0, 1, 0, -0.9926459, 0, 0.12105502, 3175.7925, 4.8233147, 1312.7114)
+placed_town_num = 31
+
+[node name="CityHouse2" parent="Houses" unique_id=1714892358 instance=ExtResource("53_nynls")]
+transform = Transform3D(0.12105502, 0, 0.9926459, 0, 1, 0, -0.9926459, 0, 0.12105502, 3166.8474, 4.8233147, 1311.6442)
+placed_town_num = 31
+
+[node name="CityHouse55" parent="Houses" unique_id=36434781 instance=ExtResource("53_nynls")]
+transform = Transform3D(0.99103004, 0, -0.13364018, 0, 1, 0, 0.13364018, 0, 0.99103004, 3203.1675, 4.8233147, 1312.3003)
+placed_town_num = 31
+
+[node name="CityHouse56" parent="Houses" unique_id=912629585 instance=ExtResource("53_nynls")]
+transform = Transform3D(0.99103004, 0, -0.13364018, 0, 1, 0, 0.13364018, 0, 0.99103004, 3204.3481, 4.8233147, 1303.3694)
+placed_town_num = 31
+
+[node name="CityHouse53" parent="Houses" unique_id=141950250 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.99290764, 0, 0.118889086, 0, 1, 0, -0.118889086, 0, -0.99290764, 3174.8286, 4.8233147, 1338.3589)
+placed_town_num = 31
+
+[node name="CityHouse54" parent="Houses" unique_id=2046977657 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.99290764, 0, 0.118889086, 0, 1, 0, -0.118889086, 0, -0.99290764, 3173.7808, 4.8233147, 1347.3062)
+placed_town_num = 31
+
+[node name="CityHouse3" parent="Houses" unique_id=1613306660 instance=ExtResource("53_nynls")]
+transform = Transform3D(0.12105502, 0, 0.9926459, 0, 1, 0, -0.9926459, 0, 0.12105502, 3157.9812, 4.8233147, 1310.5535)
+placed_town_num = 31
+
+[node name="CityHouse41" parent="Houses" unique_id=336141763 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.37897167, 0, -0.9254083, 0, 1, 0, 0.9254083, 0, -0.37897167, 3061.6448, 5.05754, 1265.3555)
+placed_town_num = 31
+
+[node name="CityHouse42" parent="Houses" unique_id=2007621603 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.37897167, 0, -0.9254083, 0, 1, 0, 0.9254083, 0, -0.37897167, 3069.908, 5.1350126, 1268.7496)
+placed_town_num = 31
+
+[node name="CityHouse4" parent="Houses" unique_id=1294368723 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.9787317, 0, 0.20514508, 0, 1, 0, -0.20514508, 0, -0.9787317, 3033.7395, 4.950795, 1261.1715)
+placed_town_num = 31
+
+[node name="CityHouse5" parent="Houses" unique_id=965257179 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.9787317, 0, 0.20514508, 0, 1, 0, -0.20514508, 0, -0.9787317, 3031.9146, 5.0251493, 1269.9933)
+placed_town_num = 31
+
+[node name="CityHouse11" parent="Houses" unique_id=363445031 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.185049, 0, -0.98272943, 0, 1, 0, 0.98272943, 0, -0.185049, 3049.1191, 5.534086, 1411.7438)
+placed_town_num = 31
+
+[node name="CityHouse43" parent="Houses" unique_id=538785435 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.185049, 0, -0.98272943, 0, 1, 0, 0.98272943, 0, -0.185049, 3057.9766, 5.6084404, 1413.3876)
+placed_town_num = 31
+
+[node name="CityHouse6" parent="Houses" unique_id=1705902020 instance=ExtResource("53_nynls")]
+transform = Transform3D(-0.99990165, 0, 0.014031827, 0, 1, 0, -0.014031827, 0, -0.99990165, 3031.2778, 5.3416853, 1278.0178)
+placed_town_num = 31
+
+[node name="CityCornerHouse" parent="Houses" unique_id=1973099191 instance=ExtResource("55_c72m3")]
+transform = Transform3D(-0.54357004, 0, -0.83936375, 0, 1, 0, 0.83936375, 0, -0.54357004, 3010.5264, 5.0123386, 1306.7394)
+placed_town_num = 31
+
+[node name="CityHouse8" parent="Houses" unique_id=1351870418 instance=ExtResource("56_4subv")]
+transform = Transform3D(0.86564124, 0, -0.50066495, 0, 1, 0, 0.50066495, 0, 0.86564124, 3017.0193, 5.2343426, 1310.6394)
+placed_town_num = 31
+
+[node name="CityHouse44" parent="Houses" unique_id=1492592923 instance=ExtResource("77_r10ie")]
+transform = Transform3D(0.8911016, 0, -0.4538039, 0, 1, 0, 0.4538039, 0, 0.8911016, 3023.7388, 5.4271536, 1321.2015)
+placed_town_num = 31
+
+[node name="CityHouse45" parent="Houses" unique_id=1045381415 instance=ExtResource("45_r10ie")]
+transform = Transform3D(0.9623985, 0, 0.27164197, 0, 1, 0, -0.27164197, 0, 0.9623985, 3054.532, 5.112906, 1288.4691)
+placed_town_num = 31
+
+[node name="OldCityHouse1" parent="Houses" unique_id=611779837 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.9993847, 0, 0.035073865, 0, 1, 0, -0.035073865, 0, -0.9993847, 3096.8174, 5.241482, 1326.5347)
+placed_town_num = 31
+
+[node name="CityCornerHouse2" parent="Houses" unique_id=1462030865 instance=ExtResource("55_c72m3")]
+transform = Transform3D(-0.99993414, 0, 0.011466518, 0, 1, 0, -0.011466518, 0, -0.99993414, 3085.0378, 5.2481346, 1324.5703)
+placed_town_num = 31
+
+[node name="CityHouse46" parent="Houses" unique_id=769078325 instance=ExtResource("56_4subv")]
+transform = Transform3D(-0.9999961, 0, -0.0027751012, 0, 1, 0, 0.0027751012, 0, -0.9999961, 3104.9072, 5.1058245, 1329.0088)
+placed_town_num = 31
+
+[node name="CityHouse47" parent="Houses" unique_id=2024928070 instance=ExtResource("56_4subv")]
+transform = Transform3D(0.71550995, 0, -0.6986026, 0, 1, 0, 0.6986026, 0, 0.71550995, 3090.3633, 6.6953993, 1373.0917)
+placed_town_num = 31
+
+[node name="CityHouse52" parent="Houses" unique_id=1038955655 instance=ExtResource("56_4subv")]
+transform = Transform3D(0.049860686, 0, 0.9987563, 0, 1, 0, -0.9987563, 0, 0.049860686, 3049.0662, 6.5035343, 1358.5375)
+placed_town_num = 31
+
+[node name="OldCityHouse4" parent="Houses" unique_id=1049499691 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.24161714, 0, 0.9703716, 0, 1, 0, -0.9703716, 0, -0.24161714, 3110.1907, 5.5233173, 1357.1055)
+placed_town_num = 31
+
+[node name="CityCornerHouse4" parent="Houses" unique_id=1641113624 instance=ExtResource("55_c72m3")]
+transform = Transform3D(-0.26446226, 0, 0.96439576, 0, 1, 0, -0.96439576, 0, -0.26446226, 3108.8335, 5.52997, 1345.2407)
+placed_town_num = 31
+
+[node name="CityHouse48" parent="Houses" unique_id=39993798 instance=ExtResource("56_4subv")]
+transform = Transform3D(-0.2781698, 0, 0.96053195, 0, 1, 0, -0.96053195, 0, -0.2781698, 3110.0408, 5.38766, 1365.564)
+placed_town_num = 31
+
+[node name="OldCityHouse7" parent="Houses" unique_id=1201521416 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.54472697, 0, 0.8386135, 0, 1, 0, -0.8386135, 0, -0.54472697, 3101.6672, 5.5233173, 1296.0922)
+placed_town_num = 31
+
+[node name="CityCornerHouse7" parent="Houses" unique_id=1065277901 instance=ExtResource("55_c72m3")]
+transform = Transform3D(-0.618381, 0, 0.78587824, 0, 1, 0, -0.78587824, 0, -0.618381, 3096.218, 5.52997, 1285.6145)
+placed_town_num = 31
+
+[node name="OldCityHouse9" parent="Houses" unique_id=269706002 instance=ExtResource("57_4subv")]
+transform = Transform3D(0.9944945, 0, -0.10478897, 0, 1, 0, 0.10478897, 0, 0.9944945, 3154.2876, 5.5233173, 1359.2499)
+placed_town_num = 31
+
+[node name="CityCornerHouse8" parent="Houses" unique_id=997365487 instance=ExtResource("55_c72m3")]
+transform = Transform3D(0.9940297, 0, -0.10910976, 0, 1, 0, 0.10910976, 0, 0.9940297, 3166.0625, 5.52997, 1362.3112)
+placed_town_num = 31
+
+[node name="CityHouse51" parent="Houses" unique_id=135136276 instance=ExtResource("56_4subv")]
+transform = Transform3D(-0.39954916, 0, 0.9167118, 0, 1, 0, -0.9167118, 0, -0.39954916, 3103.1865, 5.38766, 1303.2816)
+placed_town_num = 31
+
+[node name="OldCityHouse2" parent="Houses" unique_id=1791921379 instance=ExtResource("57_4subv")]
+transform = Transform3D(0.011187514, 0, -0.99993736, 0, 1, 0, 0.99993736, 0, 0.011187514, 3080.9255, 5.4789124, 1346.802)
+placed_town_num = 31
+
+[node name="CityCornerHouse3" parent="Houses" unique_id=1473852181 instance=ExtResource("55_c72m3")]
+transform = Transform3D(0.034795012, 0, -0.9993945, 0, 1, 0, 0.9993945, 0, 0.034795012, 3079.508, 5.859208, 1358.6598)
+placed_town_num = 31
+
+[node name="OldCityHouse5" parent="Houses" unique_id=1629479147 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.99995697, 0, 0.009267404, 0, 1, 0, -0.009267404, 0, -0.99995697, 3042.9856, 5.8692675, 1345.9177)
+placed_town_num = 31
+
+[node name="OldCityHouse8" parent="Houses" unique_id=1709277791 instance=ExtResource("57_4subv")]
+transform = Transform3D(0.48467207, 0, 0.87469584, 0, 1, 0, -0.87469584, 0, 0.48467207, 3036.4607, 6.89017, 1366.9071)
+placed_town_num = 31
+
+[node name="CityCornerHouse5" parent="Houses" unique_id=1104781814 instance=ExtResource("55_c72m3")]
+transform = Transform3D(-0.99989706, 0, -0.014346259, 0, 1, 0, 0.014346259, 0, -0.99989706, 3031.1592, 6.249563, 1344.258)
+placed_town_num = 31
+
+[node name="OldCityHouse6" parent="Houses" unique_id=1677163998 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.017591871, 0, -0.99984527, 0, 1, 0, 0.99984527, 0, -0.017591871, 3024.7847, 5.777646, 1357.656)
+placed_town_num = 31
+
+[node name="CityCornerHouse6" parent="Houses" unique_id=1411397300 instance=ExtResource("55_c72m3")]
+transform = Transform3D(0.0060214773, 0, -0.9999819, 0, 1, 0, 0.9999819, 0, 0.0060214773, 3023.0264, 6.157942, 1369.468)
+placed_town_num = 31
+
+[node name="CityHouse49" parent="Houses" unique_id=1103652329 instance=ExtResource("56_4subv")]
+transform = Transform3D(0.049024254, 0, -0.99879766, 0, 1, 0, 0.99879766, 0, 0.049024254, 3083.023, 5.2936926, 1338.6064)
+placed_town_num = 31
+
+[node name="OldCityHouse3" parent="Houses" unique_id=1496879560 instance=ExtResource("57_4subv")]
+transform = Transform3D(-0.03516095, 0, -0.9993816, 0, 1, 0, 0.9993816, 0, -0.03516095, 3131.757, 5.3007565, 1337.9061)
+placed_town_num = 31
+
+[node name="CityHouse50" parent="Houses" unique_id=1652254888 instance=ExtResource("56_4subv")]
+transform = Transform3D(0.0026879683, 0, -0.9999964, 0, 1, 0, 0.9999964, 0, 0.0026879683, 3134.232, 5.1155367, 1329.8165)
+placed_town_num = 31
+
+[node name="PolishHouse8" parent="Houses" unique_id=1674270754 instance=ExtResource("35_iof1f")]
+transform = Transform3D(0.64146304, 0, 0.767154, 0, 1, 0, -0.767154, 0, 0.64146304, 3004.2654, 5.7000947, 1333.7439)
+placed_town_num = 31
+
+[node name="PolishHouse17" parent="Houses" unique_id=211212028 instance=ExtResource("48_kkdmv")]
+transform = Transform3D(-0.96532243, 0, 0.26106054, 0, 1, 0, -0.26106054, 0, -0.96532243, 3003.9143, 5.763616, 1348.9948)
+placed_town_num = 31
+
+[node name="PolishHouse40" parent="Houses" unique_id=257300615 instance=ExtResource("48_kkdmv")]
+transform = Transform3D(-0.96364903, 0, -0.26717114, 0, 1, 0, 0.26717114, 0, -0.96364903, 3060.7908, 7.511577, 1373.2717)
+placed_town_num = 31
+
 [node name="Deco" type="Node" parent="." unique_id=865592181]
 script = ExtResource("5_o4w5w")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
@@ -1571,6 +1752,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3018.367, 5.1670113, 1403.044
 
 [node name="NikolaiPlatzStatue" parent="Deco/Wernigerode" unique_id=1514314040 instance=ExtResource("46_o6yo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3062.259, 5.278861, 1327.5171)
+
+[node name="StJohannisChurch" parent="Deco/Wernigerode" unique_id=1158463457 instance=ExtResource("39_xiocb")]
+transform = Transform3D(0.6084705, 0, -0.7935765, 0, 1, 0, 0.7935765, 0, 0.6084705, 3128.7114, 5.1693497, 1281.975)
+
+[node name="StSylvestriChurch" parent="Deco/Wernigerode" unique_id=1839201665 instance=ExtResource("3_7a4o1")]
+transform = Transform3D(0.6442546, 0, 0.4742741, 0, 0.8, 0, -0.4742741, 0, 0.6442546, 3087.8923, 6.345376, 1431.7477)
 
 [node name="Noeschenrode" type="Node" parent="Deco" unique_id=1460874592]
 
@@ -2063,6 +2250,33 @@ script = ExtResource("48_76jr6")
 num = 25
 type_key = "FOREST"
 ind_name = "Elend Forester"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="SmallStore_Wernigerode" type="Marker3D" parent="Industries" unique_id=1873004684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3010.933, 5.4692025, 1280.283)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 26
+type_key = "SMALL_STORE"
+ind_name = "Wernigerode Konsum"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Restaurant_Wernigerode" type="Marker3D" parent="Industries" unique_id=292989062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3082.1604, 5.3554454, 1300.9796)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 27
+type_key = "RESTAURANT"
+ind_name = "Hotel Wernigerode"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="FertilizerFactory_Wernigerode" type="Marker3D" parent="Industries" unique_id=1354486094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2942.928, 5.438751, 1170.5048)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 28
+type_key = "FERTILIZER_FACTORY"
+ind_name = "Wernigerode Agra"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="InEditor" type="Node3D" parent="." unique_id=1667388157]
@@ -3700,7 +3914,10 @@ material = ExtResource("50_ksq05")
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3003.972, 5.58315, 1275.4042)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2942.928, 5.438751, 1170.5048)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
+
+[node name="VillageHouse2" parent="." unique_id=1858525799 instance=ExtResource("42_nfbri")]
+transform = Transform3D(-0.1924534, 0, -0.98130614, 0, 1, 0, 0.98130614, 0, -0.1924534, 3052.0225, 5.6835413, 1388.9237)
