@@ -27,7 +27,7 @@ func make_types() -> Array[IndustryType]:
 		IndustryType.new("SAWMILL", "Sawmill", "warehouse_1", 12, ["9xlumber"], ["3xboards"]),
 		IndustryType.new("BRICKWORKS", "Brickworks", "generic_small", 12, ["5xgravel"], ["2xbricks"]),
 		IndustryType.new("PAPER_MILL", "Paper Mill", "warehouse_1", 12, ["6xlumber", "2xchemicals"], ["2xpaper"]),
-		IndustryType.new("FERTILIZER_FACTORY", "Fertilizer Factory", "oil_derrick", 12, ["3xgrains", "5xbeets"], ["2xfertilizer"]),
+		IndustryType.new("FERTILIZER_FACTORY", "Fertilizer Factory", "oil_derrick", 12, ["2xchemicals", "5xbeets"], ["2xfertilizer"]),
 		# transformers: smithing
 		IndustryType.new("SMITHY", "Smithy", "generic_small", 12, ["2xingots", "1xcoal", "2xlumber"], ["2xtools", "1xrail_tracks"]),
 		IndustryType.new("WORKSHOP", "Workshop", "generic_small", 12, ["3xingots", "2xcoal"], ["1xweapons", "1xmachines"]),
