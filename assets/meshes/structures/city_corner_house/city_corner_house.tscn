@@ -1,40 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwlcfsgeh3x0l"]
+[gd_scene format=3 uid="uid://cwlcfsgeh3x0l"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_f4xky"]
-[ext_resource type="ArrayMesh" uid="uid://b5qq4wbj6nav0" path="res://assets/meshes/structures/city_corner_house/city_corner_house.obj" id="1_revu7"]
-[ext_resource type="Texture2D" uid="uid://d0v82plmiwsoq" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_d.png" id="2_ju1nm"]
-[ext_resource type="Texture2D" uid="uid://827tcltgtlpq" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_s.png" id="3_f4xky"]
-[ext_resource type="Texture2D" uid="uid://dwsgauqrcyd5u" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_n.png" id="4_inp1o"]
-[ext_resource type="Texture2D" uid="uid://cujfcul8jorqh" path="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_r.png" id="5_wdhfk"]
+[ext_resource type="PackedScene" uid="uid://bp3p3oxnqjcrj" path="res://assets/meshes/structures/city_corner_house/model/model_city_corner_house.tscn" id="2_fxeq2"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="7_inp1o"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lwrv"]
-albedo_texture = ExtResource("2_ju1nm")
-metallic = 1.0
-metallic_texture = ExtResource("3_f4xky")
-roughness_texture = ExtResource("5_wdhfk")
-normal_enabled = true
-normal_texture = ExtResource("4_inp1o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wdhfk"]
 size = Vector3(15.272675, 10.919983, 7.2703857)
 
-[node name="CityCornerHouse" type="Node3D"]
+[node name="CityCornerHouse" type="Node3D" unique_id=1570801908]
 script = ExtResource("1_f4xky")
 placed_res_bld_type = "city_corner_house"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021686554, -9.536743e-07, 0.034422398)
-visibility_range_end = 350.0
-visibility_range_end_margin = 35.0
-mesh = ExtResource("1_revu7")
-surface_material_override/0 = SubResource("StandardMaterial3D_5lwrv")
+[node name="city_corner_house" parent="." unique_id=775605327 instance=ExtResource("2_fxeq2")]
 
-[node name="ResBldCollider" type="StaticBody3D" parent="."]
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=2003053194]
 script = ExtResource("7_inp1o")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=2123746650]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5153656, 5.4082947, -0.5741577)
 shape = SubResource("BoxShape3D_wdhfk")

@@ -1719,6 +1719,18 @@ placed_town_num = 31
 transform = Transform3D(-0.96364903, 0, -0.26717114, 0, 1, 0, 0.26717114, 0, -0.96364903, 3060.7908, 7.511577, 1373.2717)
 placed_town_num = 31
 
+[node name="PolishHouse41" parent="Houses" unique_id=188158675 instance=ExtResource("35_iof1f")]
+transform = Transform3D(-0.3039001, 0, -0.9527039, 0, 1, 0, 0.9527039, 0, -0.3039001, 3133.0217, 5.5742617, 1406.2528)
+placed_town_num = 31
+
+[node name="VillageHouse4" parent="Houses" unique_id=235107708 instance=ExtResource("71_gf88f")]
+transform = Transform3D(0.3219518, 0, 0.94675606, 0, 1, 0, -0.94675606, 0, 0.3219518, 3130.3108, 5.587716, 1430.4011)
+placed_town_num = 31
+
+[node name="WoodenShack4" parent="Houses" unique_id=1494604264 instance=ExtResource("45_ihmag")]
+transform = Transform3D(-0.16597696, 0, -0.98612964, 0, 1, 0, 0.98612964, 0, -0.16597696, 3131.7566, 5.4052124, 1388.3785)
+placed_town_num = 31
+
 [node name="Deco" type="Node" parent="." unique_id=865592181]
 script = ExtResource("5_o4w5w")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
@@ -3921,3 +3933,4 @@ metadata/_custom_type_script = "uid://byq8dj7pajain"
 
 [node name="VillageHouse2" parent="." unique_id=1858525799 instance=ExtResource("42_nfbri")]
 transform = Transform3D(-0.1924534, 0, -0.98130614, 0, 1, 0, 0.98130614, 0, -0.1924534, 3052.0225, 5.6835413, 1388.9237)
+placed_town_num = 31

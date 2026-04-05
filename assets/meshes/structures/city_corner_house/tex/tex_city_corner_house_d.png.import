@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwsgauqrcyd5u"
-path.s3tc="res://.godot/imported/tex_city_corner_house_n.png-58d9d1fde4817a821bdae803dd305e0a.s3tc.ctex"
+uid="uid://d0v82plmiwsoq"
+path.s3tc="res://.godot/imported/tex_city_corner_house_d.png-90dcc615a1ade69bb4fe61074545be28.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_n.png"
-dest_files=["res://.godot/imported/tex_city_corner_house_n.png-58d9d1fde4817a821bdae803dd305e0a.s3tc.ctex"]
+source_file="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_d.png"
+dest_files=["res://.godot/imported/tex_city_corner_house_d.png-90dcc615a1ade69bb4fe61074545be28.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

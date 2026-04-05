@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://827tcltgtlpq"
-path.s3tc="res://.godot/imported/tex_city_corner_house_s.png-d868167f29d2b871414ffdcdb0747552.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_city_corner_house_s.png-3ce33790942049f00e68250f27cc81e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/city_corner_house/tex_city_corner_house_s.png"
-dest_files=["res://.godot/imported/tex_city_corner_house_s.png-d868167f29d2b871414ffdcdb0747552.s3tc.ctex"]
+source_file="res://assets/meshes/structures/city_corner_house/tex/tex_city_corner_house_s.png"
+dest_files=["res://.godot/imported/tex_city_corner_house_s.png-3ce33790942049f00e68250f27cc81e9.s3tc.ctex"]
 
 [params]
 
