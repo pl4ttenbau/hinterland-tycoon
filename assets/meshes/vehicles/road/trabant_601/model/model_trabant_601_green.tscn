@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bd5moia5feqpk"]
+
+[ext_resource type="PackedScene" uid="uid://bdt1dfcqh0o3v" path="res://assets/meshes/vehicles/road/trabant_601/orig/trabant_601.gltf" id="1_ri0ea"]
+[ext_resource type="Material" uid="uid://dhubnyg0pqq3s" path="res://assets/meshes/vehicles/road/trabant_601/model/mat_trabant_601_green.tres" id="2_ri0ea"]
+
+[node name="ModelTrabant601Green" unique_id=2013987722 instance=ExtResource("1_ri0ea")]
+
+[node name="back_door" parent="." index="0" unique_id=822607110]
+material_override = ExtResource("2_ri0ea")
+
+[node name="back_wheels" parent="." index="1" unique_id=1442403517]
+material_override = ExtResource("2_ri0ea")
+
+[node name="body" parent="." index="2" unique_id=1929777827]
+material_override = ExtResource("2_ri0ea")
+
+[node name="front_wheels" parent="." index="3" unique_id=1647428784]
+material_override = ExtResource("2_ri0ea")
+
+[node name="left_door" parent="." index="4" unique_id=171377663]
+material_override = ExtResource("2_ri0ea")
+
+[node name="right_door" parent="." index="5" unique_id=848174055]
+material_override = ExtResource("2_ri0ea")

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dhubnyg0pqq3s"]
+
+[ext_resource type="Texture2D" uid="uid://c3w2icukisfic" path="res://assets/meshes/vehicles/road/trabant_601/orig/trabant_601_green_d.png" id="1_16kke"]
+[ext_resource type="Texture2D" uid="uid://dl3pty2j7bnih" path="res://assets/meshes/vehicles/road/trabant_601/orig/trabant_601_s.png" id="2_7dsq1"]
+[ext_resource type="Texture2D" uid="uid://cxs5y4ss45wxv" path="res://assets/meshes/vehicles/road/trabant_601/orig/trabant_601_n.png" id="3_5tsqg"]
+[ext_resource type="Texture2D" uid="uid://byijvmn50hha8" path="res://assets/meshes/vehicles/road/trabant_601/orig/trabant_601_r.png" id="4_r3xlu"]
+
+[resource]
+albedo_texture = ExtResource("1_16kke")
+metallic = 0.69
+metallic_specular = 0.76
+metallic_texture = ExtResource("2_7dsq1")
+roughness_texture = ExtResource("4_r3xlu")
+normal_enabled = true
+normal_texture = ExtResource("3_5tsqg")
