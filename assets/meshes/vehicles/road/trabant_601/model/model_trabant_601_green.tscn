@@ -6,19 +6,37 @@
 [node name="ModelTrabant601Green" unique_id=2013987722 instance=ExtResource("1_ri0ea")]
 
 [node name="back_door" parent="." index="0" unique_id=822607110]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
 
 [node name="back_wheels" parent="." index="1" unique_id=1442403517]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
 
 [node name="body" parent="." index="2" unique_id=1929777827]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
 
 [node name="front_wheels" parent="." index="3" unique_id=1647428784]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
 
 [node name="left_door" parent="." index="4" unique_id=171377663]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
 
 [node name="right_door" parent="." index="5" unique_id=848174055]
+layers = 32
 material_override = ExtResource("2_ri0ea")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0

@@ -13,7 +13,7 @@ func spawn_road_paths():
 		
 func spawn_road_line_3d(road_data_dict: Dictionary) -> LinePath3D:
 	var line3d := RoadMapper.editor_line_from_data(road_data_dict)
-	line3d.create_curve_from_dict(road_data_dict, false)
+	line3d.create_curve_from_dict(road_data_dict)
 	# add as child & assign to editor scene
 	self.get_roads_container().add_road(line3d)
 	return line3d

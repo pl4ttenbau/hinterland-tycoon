@@ -4,8 +4,13 @@ class_name Residence3D extends HideableObject
 static var last_bld_num: int = 0
 
 @export_storage var num: int:
-	get: return self.entity.num
-	set(value): self.entity.num = value
+	get(): 
+		if self.entity:
+			return self.entity.num
+		return -1
+	set(value): 
+		if self.entity:
+			self.entity.num = value
 
 @export_storage var res_bld_obj: ResidenceBuildingData:
 	get: return self.entity as ResidenceBuildingData

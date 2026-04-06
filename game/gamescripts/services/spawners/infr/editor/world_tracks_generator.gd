@@ -13,7 +13,7 @@ func spawn_track_paths():
 	
 func spawn_single_track_line(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var line3d := RailMapper.editor_line_from_data(track_data_dict)
-	line3d.create_curve_from_dict(track_data_dict, true)
+	line3d.create_curve_from_dict(track_data_dict)
 	# add as child & assign to editor scene
 	self.get_rail_container().add_rail(line3d)
 	return line3d

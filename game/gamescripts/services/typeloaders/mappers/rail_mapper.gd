@@ -30,18 +30,6 @@ static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData
 		node_index += 1
 
 #region Path3D or Line3D
-static func path3d_from_data(track_data_dict: Dictionary) -> Path3D:
-	var track_num: int = track_data_dict.get("num")
-	var track_path := Path3D.new()
-	track_path.name = "Editor_Track%d" % track_num
-	# position
-	track_path.position = WorldUtils.vec3_from_float_arr(track_data_dict.points[0].pos)
-	# set metadata
-	track_path.set_meta("track_num", track_num)
-	track_path.set_meta("name", track_data_dict.get("name", null))
-	track_path.debug_custom_color = Color(0, 0.01, 0)
-	return track_path
-	
 static func editor_line_from_data(track_data_dict: Dictionary) -> EditorInfrLine3D:
 	var track_num: int = track_data_dict.get("num")
 	var editor_line3d := EditorInfrLine3D.ofRail(track_num, track_data_dict.get("name", null))
