@@ -11,7 +11,8 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	if _road_dict.has("tag"):
 		road_instance.tag = _road_dict.get("tag", null)
 	if _road_dict.has("autosmooth"):
-		road_instance.autosmooth = _road_dict.get("autosmooth", false)
+		# autosmooth for roads is now opt-out
+		road_instance.autosmooth = _road_dict.get("autosmooth", true)
 	# start pos
 	var start_pos_arr =  _road_dict.points[0].pos
 	road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
@@ -50,9 +51,9 @@ static func cross_from_dict_and_data(parent_node: RoadNode, road_data: Dictionar
 	
 static func editor_line_from_data(road_data_dict: Dictionary) -> EditorInfrLine3D:
 	var road_num: int = road_data_dict.get("num")
-	var do_autosmooth: bool = false
-	if road_data_dict.has("autosmooth") && road_data_dict.get("autosmooth") == true:
-		do_autosmooth = true
+	var do_autosmooth: bool = true
+	if road_data_dict.has("autosmooth") && road_data_dict.get("autosmooth") == false:
+		do_autosmooth = false
 	var editor_line3d := EditorInfrLine3D.ofRoad(road_num, road_data_dict.get("name"), do_autosmooth)
 	editor_line3d.position = WorldUtils.vec3_from_float_arr(road_data_dict.points[0].pos)
 	return editor_line3d
