@@ -977,7 +977,7 @@ point_count = 12
 
 [sub_resource type="Curve3D" id="Curve3D_htgty"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.58589834, 0.0064385715, 1.9122453, 0.58589834, -0.0064385715, -1.9122453, 9.0998535, -0.10000038, -29.699951, -0.20720688, 0.013813779, 1.9891894, 0.20720688, -0.013813779, -1.9891894, 12.0998535, -0.3000002, -58.5, 0.16213068, 0.052302692, 1.9927313, -0.16213068, -0.052302692, -1.9927313, 9, -1.3000002, -96.599976),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.58589834, 0.0064385715, 1.9122453, 0.58589834, -0.0064385715, -1.9122453, 9.0998535, -0.10000038, -29.699951, -0.20720688, 0.013813779, 1.9891894, 0.20720688, -0.013813779, -1.9891894, 12.0998535, -0.3000002, -58.5, 0.17724405, 0, 1.9921306, -0.17724405, 0, -1.9921306, 7.5, -0.3000002, -110.19995),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -1149,6 +1149,104 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_nwov6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.6313232, -0.16188526, 1.1456779, -1.6313232, 0.16188526, -1.1456779, -13.100098, 1.2999954, -9.200195, 1.736007, -0.071483105, 0.9905402, -1.736007, 0.071483105, -0.9905402, -30.100098, 2, -18.900146, 1.6886531, -0.041186277, 1.0708662, -1.6886531, 0.041186277, -1.0708662, -42.400024, 2.2999954, -26.700195),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_mfmh1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5945216, -0.02235331, 1.2070628, -1.5945216, 0.02235331, -1.2070628, -21.400024, 0.30000305, -16.199951, 1.4612781, -0.048306994, 1.3646733, -1.4612781, 0.048306994, -1.3646733, -33.5, 0.7000046, -27.5, 1.2885203, 0.008313542, 1.5295902, -1.2885203, -0.008313542, -1.5295902, -49, 0.5999985, -45.899902),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_igwmn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.2231835, -0.17473982, 1.5726689, -1.2231835, 0.17473982, -1.5726689, -9.800049, 1.4000015, -12.600098, 1.2250557, -0.09800445, 1.5778574, -1.2250557, 0.09800445, -1.5778574, -22.300049, 2.4000015, -28.699951, 1.1872599, -0.08219506, 1.6073762, -1.1872599, 0.08219506, -1.6073762, -35.30005, 3.300003, -46.30005, 1.3104517, -0.119131915, 1.5061619, -1.3104517, 0.119131915, -1.5061619, -50.700073, 4.7000046, -64, 1.5736316, -0.11064679, 1.2294067, -1.5736316, 0.11064679, -1.2294067, -63.5, 5.600006, -74, 1.784317, -0.09710465, 0.8982113, -1.784317, 0.09710465, -0.8982113, -78.20007, 6.4000015, -81.3999, 1.9443492, -0.097218096, 0.45831767, -1.9443492, 0.097218096, -0.45831767, -92.20007, 7.100006, -84.69995, 1.992576, -0.097995274, 0.141555, -1.992576, 0.097995274, -0.141555, -110.5, 8, -86, 1.9979943, -0.08686896, -0.021738365, -1.9979943, 0.08686896, 0.021738365, -119.70007, 8.400002, -85.8999, 1.9963616, -0.094168216, -0.07531618, -1.9963616, 0.094168216, 0.07531618, -130.30005, 8.900002, -85.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Curve3D" id="Curve3D_2vseb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9944094, -0.10566465, 0.1056707, -1.9944094, 0.10566465, -0.1056707, -15.099976, 0.80000305, -0.8000488, 1.9912413, -0.107220225, 0.15317242, -1.9912413, 0.107220225, -0.15317242, -28.099976, 1.5, -1.8000488),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_jin0v"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.2298657, 0.16314405, -1.5686983, -1.2298657, -0.16314405, 1.5686983, -9.800049, -1.2999954, 12.5, 1.9610205, 0.25448474, -0.299393, -1.9610205, -0.25448474, 0.299393, -22.900024, -3, 14.5, 1.4631616, -0.10358661, 1.3595691, -1.4631616, 0.10358661, -1.3595691, -34.200073, -2.199997, 4, 1.2712579, -0.104691364, 1.5404361, -1.2712579, 0.104691364, -1.5404361, -42.700073, -1.5, -6.2998047, 0.9825982, -0.09295031, 1.7395003, -0.9825982, 0.09295031, -1.7395003, -50.099976, -0.7999954, -19.399902, 0.7317054, -0.10243831, 1.8585246, -0.7317054, 0.10243831, -1.8585246, -55.099976, -0.099998474, -32.099854, -0.8077117, -0.092688195, 1.827296, 0.8077117, 0.092688195, -1.827296, -49, 0.5999985, -45.899902),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_eq76i"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.2844368, 0.058919646, -1.5319109, 1.2844368, -0.058919646, 1.5319109, 10.899902, -0.5, 13, -1.2352067, 0.08822905, -1.570503, 1.2352067, -0.08822905, 1.570503, 17.899902, -1, 21.900146, -0.23434687, 0.049332097, -1.9856102, 0.23434687, -0.049332097, 1.9856102, 19.800049, -1.3999977, 38, 0.14737931, -0.009825137, -1.9945382, -0.14737931, 0.009825137, 1.9945382, 18.300049, -1.2999992, 58.30005, 0.86128634, 0.041012686, -1.8045785, -0.86128634, -0.041012686, 1.8045785, 9.899902, -1.699997, 75.90015, 1.1894598, -0.10099301, -1.6046761, -1.1894598, 0.10099301, 1.6046761, -0.6999512, -0.79999924, 90.200195, 1.5185212, 0, -1.3015736, -1.5185212, 0, 1.3015736, -14, -0.79999924, 101.6001, 1.7431545, -0.061164074, -0.9786065, -1.7431545, 0.061164074, 0.9786065, -25.399902, -0.3999977, 108, 1.7937406, -0.025263702, -0.8842262, -1.7937406, 0.025263702, 0.8842262, -39.600098, -0.19999695, 115, 1.9161345, 0, -0.57308716, -1.9161345, 0, 0.57308716, -50.30005, -0.19999695, 118.200195, 1.8996227, -0.024045415, -0.6251845, -1.8996227, 0.024045415, 0.6251845, -66.1001, 0, 123.40015),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_bnjqa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.10981941, 0, -1.9969826, -0.10981941, 0, 1.9969826, -1.0998535, 0, 20, 0.094677344, -0.07890099, -1.996199, -0.094677344, 0.07890099, 1.996199, -2.2998047, 1, 45.30005, 0.20508386, -0.11872386, -1.9859117, -0.20508386, 0.11872386, 1.9859117, -4.199951, 2.1000023, 63.69995, 0.5670195, -0.12757906, -1.9136908, -0.5670195, 0.12757906, 1.9136908, -8.199951, 3, 77.19995, 0.73612124, -0.0817907, -1.857804, -0.73612124, 0.0817907, 1.857804, -14.5, 3.7000008, 93.09985, 0.6190399, -0.071984656, -1.900423, -0.6190399, 0.071984656, 1.900423, -18.799805, 4.200001, 106.30005, 0.54560214, 0.028715642, -1.9239266, -0.54560214, -0.028715642, 1.9239266, -22.599854, 4, 119.69995, 0.40613458, 0.029008664, -1.9581147, -0.40613458, -0.029008664, 1.9581147, -25.399902, 3.800003, 133.19995, -0.047878053, 0.0119727105, -1.999391, 0.047878053, -0.0119727105, 1.999391, -25, 3.7000008, 149.8999, -0.25466236, 0.0268046, -1.9835393, 0.25466236, -0.0268046, 1.9835393, -23.099854, 3.5, 164.69995, 0.23217393, 0.025796011, -1.9863106, -0.23217393, -0.025796011, 1.9863106, -24.899902, 3.300003, 180.09985, 0.39372832, 0.061246693, -1.9599048, -0.39372832, -0.061246693, 1.9599048, -29.399902, 2.6000023, 202.5, 0.436257, 0.14542256, -1.9464152, -0.436257, -0.14542256, 1.9464152, -33.299805, 1.300003, 219.8999, 0.6625801, 0.12205279, -1.8831067, -0.6625801, -0.12205279, 1.8831067, -37.099854, 0.6000023, 230.69995, 0.7441625, 0.14687228, -1.8505813, -0.7441625, -0.14687228, 1.8505813, -44.69995, -0.8999977, 249.59985, 1.0911835, 0.1785576, -1.6665639, -1.0911835, -0.1785576, 1.6665639, -50.19995, -1.7999992, 258, 1.554207, 0.19632101, -1.2433416, -1.554207, -0.19632101, 1.2433416, -59.69995, -3, 265.59985, 1.808571, 0.2070906, -0.8283624, -1.808571, -0.2070906, 0.8283624, -72.799805, -4.5, 271.59985),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 19
+
+[sub_resource type="Curve3D" id="Curve3D_kour2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9411626, 0.13965051, -0.46085352, -1.9411626, -0.13965051, 0.46085352, -13.9001465, -1, 3.3000488, 1.9796525, 0.089984305, -0.26996094, -1.9796525, -0.089984305, 0.26996094, -27.100098, -1.5999985, 5.1000977, 1.9905317, 0.111469895, 0.15924253, -1.9905317, -0.111469895, -0.15924253, -39.600098, -2.2999992, 4.1000977, 1.8359218, 0.08980077, 0.7882435, -1.8359218, -0.08980077, -0.7882435, -58, -3.199997, -3.7998047, 1.9884462, 0.054627057, 0.20759882, -1.9884462, -0.054627057, -0.20759882, -76.200195, -3.699997, -5.699951, 1.9986885, 0.072417274, 0, -1.9986885, -0.072417274, 0, -90, -4.199997, -5.699951, 1.9930254, 0.06993058, -0.15152138, -1.9930254, -0.06993058, 0.15152138, -107.1001, -4.799999, -4.3999023, 1.9277387, 0.11734074, -0.5196677, -1.9277387, -0.11734074, 0.5196677, -118.6001, -5.5, -1.2998047, 1.7793167, 0.089606114, -0.9088472, -1.7793167, -0.089606114, 0.9088472, -132.5, -6.199997, 5.800049, 1.7558331, 0.07187588, -0.9549263, -1.7558331, -0.07187588, 0.9549263, -149.6001, -6.8999977, 15.100098, 1.6441818, 0.07253719, -1.1363999, -1.6441818, -0.07253719, 1.1363999, -163.2002, -7.5, 24.5, 1.6538146, 0.073831044, -1.1222506, -1.6538146, -0.073831044, 1.1222506, -174.40015, -7.999998, 32.100098, 1.7336174, 0.0642077, -0.9952125, -1.7336174, -0.0642077, 0.9952125, -185.2002, -8.399998, 38.30005),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[sub_resource type="Curve3D" id="Curve3D_txrcm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.9168712, 0.01141007, -0.570504, 1.9168712, -0.01141007, 0.570504, 16.799805, -0.099999905, 5, -1.9145788, 0.006424744, -0.5782275, 1.9145788, -0.006424744, 0.5782275, 46.599854, -0.19999981, 14, -1.9106177, 0.016191632, -0.59099764, 1.9106177, -0.016191632, 0.59099764, 70.19995, -0.4000001, 21.300049, -1.9172567, 0.0065435213, -0.5692837, 1.9172567, -0.0065435213, 0.5692837, 99.5, -0.5, 30, -1.8908327, -0.01068269, -0.6516421, 1.8908327, 0.01068269, 0.6516421, 117.19995, -0.4000001, 36.099976, -1.8541164, 0, -0.7498346, 1.8541164, 0, 0.7498346, 130.7998, -0.4000001, 41.599976, -1.5504693, 0, -1.2633467, 1.5504693, 0, 1.2633467, 141.59985, -0.4000001, 50.400024, -1.3469756, 0, -1.4783967, 1.3469756, 0, 1.4783967, 149.7998, -0.4000001, 59.400024, -1.0976799, 0, -1.671855, 1.0976799, 0, 1.671855, 156.2998, -0.4000001, 69.30005, -0.95103574, 0, -1.7594122, 0.95103574, 0, 1.7594122, 162.2998, -0.4000001, 80.400024, -0.7288046, 0, -1.8624834, 0.7288046, 0, 1.8624834, 168.59985, -0.4000001, 96.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_spm1h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.9056876, 0.010646202, 0.6068289, 1.9056876, -0.010646202, -0.6068289, 17.900146, -0.099999905, -5.699951, -1.9105366, 0.011372363, 0.5913718, 1.9105366, -0.011372363, -0.5913718, 34.69995, -0.19999981, -10.900024, -1.897371, 0, 0.6324424, 1.897371, 0, -0.6324424, 50.600098, -0.19999981, -16.199951, -1.9184552, 0, 0.56526995, 1.9184552, 0, -0.56526995, 61.80005, -0.19999981, -19.5, -1.8576517, 0, 0.74103343, 1.8576517, 0, -0.74103343, 80.1001, -0.19999981, -26.800049, -1.3620125, 0.034050364, 1.4641594, 1.3620125, -0.034050364, -1.4641594, 88.1001, -0.4000001, -35.400024, -1.014884, 0, 1.723372, 1.014884, 0, -1.723372, 93.40015, -0.4000001, -44.400024, -1.219287, 0.030482149, 1.5850583, 1.219287, -0.030482149, -1.5850583, 97.40015, -0.5, -49.599976, -1.6918086, 0.012259644, 1.0665991, 1.6918086, -0.012259644, -1.0665991, 111.19995, -0.5999999, -58.30005, -1.7675439, 0.01299654, 0.9357455, 1.7675439, -0.01299654, -0.9357455, 124.80005, -0.6999998, -65.5, -1.8165141, 0, 0.8368253, 1.8165141, 0, -0.8368253, 133.69995, -0.6999998, -69.599976, -1.9938763, 0, 0.15638901, 1.9938763, 0, -0.15638901, 143.90015, -0.6999998, -70.400024, -1.8865415, -0.026021237, -0.663539, 1.8865415, 0.026021237, 0.663539, 158.40015, -0.5, -65.30005),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[sub_resource type="Curve3D" id="Curve3D_sxlym"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -11.579, -0.012, 5.098, 11.579, 0.012, -5.098, 16.899902, 0.099999905, -2.7999268, -1.8021419, 0, 0.86734325, 1.8021419, 0, -0.86734325, 35.599854, 0.099999905, -11.799927, -1.8236828, 0, 0.8210856, 1.8236828, 0, -0.8210856, 56.69995, 0.099999905, -21.299927, -1.689248, 0.011896143, 1.0706538, 1.689248, -0.011896143, -1.0706538, 70.8999, 0, -30.299927, -1.5109365, 0, 1.3103706, 1.5109365, 0, -1.3103706, 82.19995, 0, -40.099976, -1.2709147, 0.013665664, 1.5442115, 1.2709147, -0.013665664, -1.5442115, 91.5, -0.099999905, -51.399902, -1.190775, 0, 1.6068773, 1.190775, 0, -1.6068773, 99.799805, -0.099999905, -62.599976, -1.0758505, 0, 1.6859852, 1.0758505, 0, -1.6859852, 106.5, -0.099999905, -73.099976, -1.128837, 0.01411045, 1.6509173, 1.128837, -0.01411045, -1.6509173, 114.5, -0.19999981, -84.79993),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_qlu27"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7319189, 0.034871213, 0.99962056, -1.7319189, -0.034871213, -0.99962056, -14.899902, -0.30000114, -8.5998535, 1.0562118, 0.020709718, 1.6982307, -1.0562118, -0.020709718, -1.6982307, -20, -0.40000153, -16.800049, 0.26700938, -0.10994832, 1.9790447, -0.26700938, 0.10994832, -1.9790447, -21.699951, 0.29999924, -29.399902, 0.42529023, -0.063007034, 1.9532431, -0.42529023, 0.063007034, -1.9532431, -24.399902, 0.69999886, -41.80005, 1.6524576, 0, 1.1266694, -1.6524576, 0, -1.1266694, -33.19995, 0.69999886, -47.80005, 1.9595107, 0.019994983, -0.39989814, -1.9595107, -0.019994983, 0.39989814, -43, 0.5999985, -45.80005, 1.8826593, 0.016660715, -0.67477095, -1.8826593, -0.016660715, 0.67477095, -65.59985, 0.39999962, -37.69995, 1.8854692, -0.012826413, -0.66696465, -1.8854692, 0.012826413, 0.66696465, -80.299805, 0.5, -32.5, 1.9882956, -0.07137479, 0.20392776, -1.9882956, 0.07137479, -0.20392776, -99.799805, 1.2000008, -34.5, 1.9973615, -0.045914628, -0.09186428, -1.9973615, 0.045914628, 0.09186428, -108.5, 1.3999977, -34.099854, 1.9909968, 0.01716372, -0.18877867, -1.9909968, -0.01716372, 0.18877867, -120.09985, 1.2999992, -33, 3.682, -0.035, -2.035, -3.682, 0.035, 2.035, -130.8999, 1.5, -29.099854, 6.135, -0.08, -2.356, -6.135, 0.08, 2.356, -147.19995, 2.2999992, -17.599854, 4.372, -0.151, -0.36, -4.372, 0.151, 0.36, -165.5, 3.7000008, -15.399902, 1.9330716, -0.12157758, -0.49845028, -1.9330716, 0.12157758, 0.49845028, -181.3999, 4.700001, -11.300049, 1.9359671, -0.12175968, -0.48703873, -1.9359671, 0.12175968, 0.48703873, -197.2998, 5.700001, -7.300049, 1.914212, -0.13354781, -0.5638772, -1.914212, 0.13354781, 0.5638772, -210.19995, 6.5999985, -3.5, 1.8995098, 0.0021586013, -0.62598526, -1.8995098, -0.0021586013, 0.62598526, -227.7998, 6.579998, 2.3000488),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 19
+
+[sub_resource type="Curve3D" id="Curve3D_8p4wa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.8517139, 0.03235995, -0.7550554, -1.8517139, -0.03235995, 0.7550554, -10.300049, -0.1800003, 4.199951, 1.8822501, 0.024130892, -0.6756871, -1.8822501, -0.024130892, 0.6756871, -18.100098, -0.27999878, 7, 1.9956391, 0.011949787, -0.13146134, -1.9956391, -0.011949787, 0.13146134, -34.80005, -0.37999725, 8.100098, 1.997329, 0, 0.10332607, -1.997329, 0, -0.10332607, -46.400146, -0.37999725, 7.5, 1.9767402, 0, -0.3041353, -1.9767402, 0, 0.3041353, -56.80005, -0.37999725, 9.100098, 1.8172349, -0.06309779, -0.83287233, -1.8172349, 0.06309779, 0.83287233, -71.200195, 0.12000275, 15.699951, 1.5489767, 0.008110073, -1.2651503, -1.5489767, -0.008110073, 1.2651503, -90.30005, 0.020000458, 31.300049, 1.3639573, 0, -1.4627444, -1.3639573, 0, 1.4627444, -97.200195, 0.020000458, 38.69995, 1.2044246, -0.014005496, -1.5966105, -1.2044246, 0.014005496, 1.5966105, -105.80005, 0.12000275, 50.100098, 1.1929873, -0.021690348, -1.6050891, -1.1929873, 0.021690348, 1.6050891, -116.80005, 0.3199997, 64.8999, 0.96945345, -0.02107511, -1.7492044, -0.96945345, 0.02107511, 1.7492044, -121.40015, 0.42000198, 73.19995, 0.7825582, -0.014491859, -1.8404871, -0.7825582, 0.014491859, 1.8404871, -126.80005, 0.52000046, 85.8999, 1.0243425, 0, -1.7177666, -1.0243425, 0, 1.7177666, -133.30005, 0.52000046, 96.80005, 1.7405331, 0.06446353, -0.9830509, -1.7405331, -0.06446353, 0.9830509, -144.1001, 0.12000275, 102.8999, 1.9962554, 0.121723615, 0.012154531, -1.9962554, -0.121723615, -0.012154531, -160.5, -0.87999725, 102.80005, 1.9682108, 0.115777105, 0.33577058, -1.9682108, -0.115777105, -0.33577058, -177.5, -1.8799973, 99.8999, 1.9580551, 0.04854692, -0.40455356, -1.9580551, -0.04854692, 0.40455356, -189.6001, -2.1800003, 102.3999, 1.8084927, 0, -0.8540224, -1.8084927, 0, 0.8540224, -204, -2.1800003, 109.19995, 1.926285, 0, -0.5379837, -1.926285, 0, 0.5379837, -215.1001, -2.1800003, 112.30005, 1.8445492, 0, -0.77307093, -1.8445492, 0, 0.77307093, -228.7002, -2.1800003, 118, 1.9987762, -0.019219255, 0.06726245, -1.9987762, 0.019219255, -0.06726245, -249.5, -1.9799995, 117.30005, 1.9995712, -0.015381376, 0.038453292, -1.9995712, 0.015381376, -0.038453292, -275.5, -1.7799988, 116.80005),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 23
+
+[sub_resource type="Curve3D" id="Curve3D_7qatw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9998477, -0.017465873, 0.017461542, -1.9998477, 0.017465873, -0.017461542, -22.900146, 0.20000076, -0.19995117, 1.9984885, -0.018853782, 0.07541944, -1.9984885, 0.018853782, -0.07541944, -44.100098, 0.40000153, -1, 1.9937141, -0.014343149, 0.15779105, -1.9937141, 0.014343149, -0.15779105, -58, 0.5, -2.1000977, 1.9913679, -0.023021618, -0.18418348, -1.9913679, 0.023021618, 0.18418348, -75.30005, 0.70000076, -0.5, 1.9020073, -0.015850121, -0.61815625, -1.9020073, 0.015850121, 0.61815625, -99.30005, 0.9000015, 7.300049, 1.9988966, 0.010923154, -0.06552142, -1.9988966, -0.010923154, 0.06552142, -117.6001, 0.79999924, 7.8999023, 1.9997054, -0.028567147, 0.019040164, -1.9997054, 0.028567147, -0.019040164, -138.6001, 1.0999985, 7.699951, 1.9975948, -0.023780912, 0.095129095, -1.9975948, 0.023780912, -0.095129095, -155.40015, 1.2999992, 6.8999023, 1.9989965, -0.032592423, 0.054320842, -1.9989965, 0.032592423, -0.054320842, -173.80005, 1.5999985, 6.3999023, 1.9785144, -0.016217768, -0.29192105, -1.9785144, 0.016217768, 0.29192105, -186, 1.7000008, 8.199951, 1.9511732, -0.02827788, -0.4383193, -1.9511732, 0.02827788, 0.4383193, -199.80005, 1.9000015, 11.300049, 2, 0, 0, -2, 0, 0, -221, 1.9000015, 11.300049, 1.9904089, -0.05147553, -0.1887399, -1.9904089, 0.05147553, 0.1887399, -244.2002, 2.5, 13.5, 1.9973984, -0.018241232, 0.1003353, -1.9973984, 0.018241232, -0.1003353, -266.1001, 2.7000008, 12.399902, 1.9968028, -0.050551526, 0.1011098, -1.9968028, 0.050551526, -0.1011098, -281.90015, 3.0999985, 11.5998535, 1.9998184, -0.012047392, 0.024088351, -1.9998184, 0.012047392, -0.024088351, -298.50012, 3.2000008, 11.399902, 1.991161, -0.03264203, -0.18496667, -1.991161, 0.03264203, 0.18496667, -316.80005, 3.5, 13.0998535, 1.999347, -0.022849767, -0.045716092, -1.999347, 0.022849767, 0.045716092, -334.30005, 3.7000008, 13.5, 1.7080983, -0.037132416, 1.0397218, -1.7080983, 0.037132416, -1.0397218, -343.50012, 3.9000015, 7.8999023, 1.3385929, -0.1513191, 1.4782665, -1.3385929, 0.1513191, -1.4782665, -355.00012, 5.200001, -4.800049),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 21
 
 [node name="WorldContainer" type="Node" unique_id=1408180421 node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_1ass2")
@@ -2646,7 +2744,7 @@ metadata/_custom_type_script = "uid://dvf4vwgtk252x"
 script = ExtResource("56_l1cl3")
 metadata/_custom_type_script = "uid://b157dhgx7ojrw"
 
-[node name="RoadWay_1" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=425550794]
+[node name="RoadWay_1" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1996744178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3406, 35.3, 2828.5)
 curve = SubResource("Curve3D_7yvfe")
 script = ExtResource("49_vuti8")
@@ -2658,7 +2756,7 @@ abs_aabb = AABB(3406, 35.3, 2794.3, 19.800049, 0, 34.19995)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_2" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=603796035]
+[node name="RoadWay_2" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1464000279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3425.8, 35.7, 2794.3)
 curve = SubResource("Curve3D_7neeg")
 script = ExtResource("49_vuti8")
@@ -2670,7 +2768,7 @@ abs_aabb = AABB(3425.8, 35.7, 2724.1, 19.399902, 0, 70.19995)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_3" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1907762048]
+[node name="RoadWay_3" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1989738735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3425.8, 35.7, 2794.3)
 curve = SubResource("Curve3D_xwmdd")
 script = ExtResource("49_vuti8")
@@ -2682,7 +2780,7 @@ abs_aabb = AABB(3373.5, 35.7, 2794.3, 52.30005, 1.5, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_4" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1904632811]
+[node name="RoadWay_4" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1694861382]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3387.9, 8.1, 1670.1)
 curve = SubResource("Curve3D_mxweq")
 script = ExtResource("49_vuti8")
@@ -2694,7 +2792,7 @@ abs_aabb = AABB(3199.2, 8.1, 1670.1, 188.69995, 0.09999943, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_5" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=18391510]
+[node name="RoadWay_5" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=65763158]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3387.9, 8.1, 1670.1)
 curve = SubResource("Curve3D_tmg1i")
 script = ExtResource("49_vuti8")
@@ -2706,7 +2804,7 @@ abs_aabb = AABB(3387.9, 8.1, 1670.1, 162.7002, 3, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_6" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=370528063]
+[node name="RoadWay_6" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=549298013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2599.9, 30.3, 2456.9)
 curve = SubResource("Curve3D_vbllm")
 script = ExtResource("49_vuti8")
@@ -2718,7 +2816,7 @@ abs_aabb = AABB(2589.8, 30.3, 2456.9, 72.30005, 7.4000015, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_7" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1707911242]
+[node name="RoadWay_7" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=593113451]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2662.1, 45, 2542.4)
 curve = SubResource("Curve3D_fdfkd")
 script = ExtResource("49_vuti8")
@@ -2730,7 +2828,7 @@ abs_aabb = AABB(2595.5, 43.3, 2542.4, 66.6001, 2.6000023, 170.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_8" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1084941448]
+[node name="RoadWay_8" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=37903108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2662.1, 45, 2542.4)
 curve = SubResource("Curve3D_w2g7f")
 script = ExtResource("49_vuti8")
@@ -2742,7 +2840,7 @@ abs_aabb = AABB(2662.1, 39.8, 2506.9, 138.59985, 5.200001, 35.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_9" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=928800462]
+[node name="RoadWay_9" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=630528545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2380.4, 8.3, 1173.4)
 curve = SubResource("Curve3D_vwmdv")
 script = ExtResource("49_vuti8")
@@ -2754,7 +2852,7 @@ abs_aabb = AABB(2279.3, 8.3, 1173.4, 101.09985, 1.3999996, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_10" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=509663707]
+[node name="RoadWay_10" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=418025518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2279.3, 8.7, 1122.6)
 curve = SubResource("Curve3D_hbe8x")
 script = ExtResource("49_vuti8")
@@ -2766,7 +2864,7 @@ abs_aabb = AABB(2149.9, 8.7, 1122.6, 129.40015, 0.5, 44.400024)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_11" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1075308928]
+[node name="RoadWay_11" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1938128903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2279.3, 8.7, 1122.6)
 curve = SubResource("Curve3D_fxe4d")
 script = ExtResource("49_vuti8")
@@ -2778,7 +2876,7 @@ abs_aabb = AABB(2212.2, 8.7, 1122.6, 67.1001, 5.5, 252.70007)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_12" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=93754570]
+[node name="RoadWay_12" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=84516121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2256.6, 11.1, 1375.3)
 curve = SubResource("Curve3D_a5ucr")
 script = ExtResource("49_vuti8")
@@ -2790,7 +2888,7 @@ abs_aabb = AABB(2193.8, 11.1, 1375.3, 62.80005, 2.5999994, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_13" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1519310996]
+[node name="RoadWay_13" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1673971310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2201, 13.7, 1463.6)
 curve = SubResource("Curve3D_kmvqv")
 script = ExtResource("49_vuti8")
@@ -2802,7 +2900,7 @@ abs_aabb = AABB(2133.3, 13.7, 1463.6, 95.3999, 11.000001, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_14" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1915550193]
+[node name="RoadWay_14" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=555488929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2133.3, 24.7, 1692)
 curve = SubResource("Curve3D_pe8e6")
 script = ExtResource("49_vuti8")
@@ -2814,7 +2912,7 @@ abs_aabb = AABB(1842.4, 24.7, 1692, 290.90002, 21.5, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_15" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1677157285]
+[node name="RoadWay_15" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1878484686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2133.3, 24.6, 1692)
 curve = SubResource("Curve3D_o0yhj")
 script = ExtResource("49_vuti8")
@@ -2826,7 +2924,7 @@ abs_aabb = AABB(2133.3, 24.6, 1692, 39.899902, 16.699999, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_16" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=38152580]
+[node name="RoadWay_16" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=368242172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1726.2, 7.8, 951.1)
 curve = SubResource("Curve3D_35mpc")
 script = ExtResource("49_vuti8")
@@ -2838,7 +2936,7 @@ abs_aabb = AABB(1702.9, 7.8, 951.1, 23.299927, 0.8999996, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_17" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2024487323]
+[node name="RoadWay_17" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=741505508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1706.7, 8.7, 1022.3)
 curve = SubResource("Curve3D_ykk5i")
 script = ExtResource("49_vuti8")
@@ -2850,7 +2948,7 @@ abs_aabb = AABB(1601.7, 8.7, 1022.3, 105, 3.6000004, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_18" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1241029550]
+[node name="RoadWay_18" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1531925665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1601.7, 12.3, 1176.4)
 curve = SubResource("Curve3D_6qelq")
 script = ExtResource("49_vuti8")
@@ -2862,7 +2960,7 @@ abs_aabb = AABB(1473.2, 12.3, 1176.4, 128.5, 5.499999, 120.599976)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_19" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=956725900]
+[node name="RoadWay_19" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=550839346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1726.2, 7.8, 951.1)
 curve = SubResource("Curve3D_gh1rj")
 script = ExtResource("49_vuti8")
@@ -2874,7 +2972,7 @@ abs_aabb = AABB(1726.2, 6.7, 951.1, 60.100098, 1.1000004, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_20" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=777113746]
+[node name="RoadWay_20" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1195218199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1786.3, 6.7, 870.9)
 curve = SubResource("Curve3D_4sn2g")
 script = ExtResource("49_vuti8")
@@ -2886,7 +2984,7 @@ abs_aabb = AABB(1786.3, 6.1, 791.6, 122.599976, 0.5999999, 79.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="@Path3D@57654" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2078847094]
+[node name="@Path3D@31413" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=589828739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1908.9, 6.6, 795)
 curve = SubResource("Curve3D_lkle3")
 script = ExtResource("49_vuti8")
@@ -2898,7 +2996,7 @@ abs_aabb = AABB(1908.9, 5.3, 795, 156.40002, 1.2999997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_21" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1500919791]
+[node name="RoadWay_21" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2121994399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2065.3, 5.3, 681)
 curve = SubResource("Curve3D_tey3n")
 script = ExtResource("49_vuti8")
@@ -2910,7 +3008,7 @@ abs_aabb = AABB(2065.3, 4.3, 681, 73.69995, 1, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_22" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1551431187]
+[node name="RoadWay_22" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=544939876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2139, 4.3, 465.9)
 curve = SubResource("Curve3D_5xl37")
 script = ExtResource("49_vuti8")
@@ -2922,7 +3020,7 @@ abs_aabb = AABB(2139, 3.7, 318.7, 36.600098, 0.60000014, 147.19998)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_23" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1448368887]
+[node name="RoadWay_23" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1443067726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2380.4, 8.3, 1173.4)
 curve = SubResource("Curve3D_1f2ka")
 script = ExtResource("49_vuti8")
@@ -2934,7 +3032,7 @@ abs_aabb = AABB(2380.4, 8, 1173.4, 181.6001, 0.3000002, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_24" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1316585887]
+[node name="RoadWay_24" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1537439174]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2562, 9.2, 1291.5)
 curve = SubResource("Curve3D_pan3u")
 script = ExtResource("49_vuti8")
@@ -2946,7 +3044,7 @@ abs_aabb = AABB(2562, 6.6, 1291.5, 161.3999, 2.6, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_25" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1062123482]
+[node name="RoadWay_25" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1938644268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.4, 1314.8)
 curve = SubResource("Curve3D_koncf")
 script = ExtResource("49_vuti8")
@@ -2958,7 +3056,7 @@ abs_aabb = AABB(3048.7, 5.4, 1314.5, 71.90015, 0, 0.30004883)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_26" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2070137610]
+[node name="RoadWay_26" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1071574751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3192.3, 6, 1421.8)
 curve = SubResource("Curve3D_ft1os")
 script = ExtResource("49_vuti8")
@@ -2970,7 +3068,7 @@ abs_aabb = AABB(3113.9, 6, 1421.8, 78.40015, 0, 0.5999756)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_27" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1309338234]
+[node name="RoadWay_27" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1079600853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2380.4, 8.3, 1173.4)
 curve = SubResource("Curve3D_h1nac")
 script = ExtResource("49_vuti8")
@@ -2982,7 +3080,7 @@ abs_aabb = AABB(2380.4, 7.2, 1074.1, 22.400146, 1.1000004, 99.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_28" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1646410678]
+[node name="RoadWay_28" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1243934582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2279.3, 8.7, 1122.6)
 curve = SubResource("Curve3D_nsw6c")
 script = ExtResource("49_vuti8")
@@ -2994,7 +3092,7 @@ abs_aabb = AABB(2277.4, 8.7, 1122.6, 1.9001465, 2, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_29" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=380398872]
+[node name="RoadWay_29" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=654896792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3120.6, 5.5, 1316)
 curve = SubResource("Curve3D_1x7tk")
 script = ExtResource("49_vuti8")
@@ -3006,7 +3104,7 @@ abs_aabb = AABB(3120.6, 5.5, 1316, 67.799805, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_30" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=706024717]
+[node name="RoadWay_30" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1248658506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3120.6, 5.5, 1316)
 curve = SubResource("Curve3D_00r41")
 script = ExtResource("49_vuti8")
@@ -3018,7 +3116,7 @@ abs_aabb = AABB(3119.2, 5.5, 1316, 7.199951, 0.19999981, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_31" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1473500689]
+[node name="RoadWay_31" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1956909752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3113.9, 5.9, 1411.4)
 curve = SubResource("Curve3D_ctmg6")
 script = ExtResource("49_vuti8")
@@ -3030,7 +3128,7 @@ abs_aabb = AABB(3032.4, 5.9, 1411.4, 81.5, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_33" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1025027987]
+[node name="RoadWay_33" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=558801818]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3049, 5.8, 1332.9)
 curve = SubResource("Curve3D_dp0hf")
 script = ExtResource("49_vuti8")
@@ -3042,7 +3140,7 @@ abs_aabb = AABB(3049, 5.8, 1332.9, 64.8999, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_34" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=310547365]
+[node name="RoadWay_34" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=889713196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2717.2, 9.1, 1782.9)
 curve = SubResource("Curve3D_lssdl")
 script = ExtResource("49_vuti8")
@@ -3054,7 +3152,7 @@ abs_aabb = AABB(2550.8, 9.1, 1782.9, 166.3999, 1.7999992, 62)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_35" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=461065755]
+[node name="RoadWay_35" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=207437069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2799.7, 9.3, 1737.7)
 curve = SubResource("Curve3D_0o0dq")
 script = ExtResource("49_vuti8")
@@ -3066,7 +3164,7 @@ abs_aabb = AABB(2717.2, 9.3, 1737.7, 82.5, 0, 45.200073)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_36" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1144391999]
+[node name="RoadWay_36" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1403048950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2935.7, 6.9, 1621.3)
 curve = SubResource("Curve3D_p2dqx")
 script = ExtResource("49_vuti8")
@@ -3078,7 +3176,7 @@ abs_aabb = AABB(2799.7, 6.9, 1621.3, 136, 2.7000003, 116.3999)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_37" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=543880515]
+[node name="RoadWay_37" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=804947278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3028.5, 6.6, 1576.5)
 curve = SubResource("Curve3D_eoxov")
 script = ExtResource("49_vuti8")
@@ -3090,7 +3188,7 @@ abs_aabb = AABB(2935.7, 6.6, 1576.5, 92.80005, 0.3000002, 44.80005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_38" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=248733453]
+[node name="RoadWay_38" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1808114085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2799.7, 9.3, 1737.7)
 curve = SubResource("Curve3D_a1hyb")
 script = ExtResource("49_vuti8")
@@ -3102,7 +3200,7 @@ abs_aabb = AABB(2799.7, 9.3, 1737.7, 13, 0.8000002, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_39" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1571041746]
+[node name="RoadWay_39" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=356154796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3032.4, 5.9, 1396.5)
 curve = SubResource("Curve3D_df7sp")
 script = ExtResource("49_vuti8")
@@ -3114,7 +3212,7 @@ abs_aabb = AABB(3011.9, 5.9, 1396.5, 20.5, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_40" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1075714691]
+[node name="RoadWay_40" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1498474777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3032.4, 5.9, 1396.5)
 curve = SubResource("Curve3D_vno43")
 script = ExtResource("49_vuti8")
@@ -3126,7 +3224,7 @@ abs_aabb = AABB(3028.4, 5.9, 1396.5, 39.200195, 0, 18.199951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_41" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=383216784]
+[node name="RoadWay_41" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=554897328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3067.6, 6.1, 1496.4)
 curve = SubResource("Curve3D_nca10")
 script = ExtResource("49_vuti8")
@@ -3138,7 +3236,7 @@ abs_aabb = AABB(3028.5, 6.1, 1496.4, 39.100098, 0.5, 59.299927)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_42" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1249256652]
+[node name="RoadWay_42" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1038073967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3192.3, 6, 1421.8)
 curve = SubResource("Curve3D_2kwpp")
 script = ExtResource("49_vuti8")
@@ -3150,7 +3248,7 @@ abs_aabb = AABB(3192.3, 6, 1421.8, 17.599854, 0.6999998, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_43" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=602799418]
+[node name="RoadWay_43" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1535427948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3735.7, 46.2, 2419.6)
 curve = SubResource("Curve3D_pqle2")
 script = ExtResource("49_vuti8")
@@ -3162,7 +3260,7 @@ abs_aabb = AABB(3735.7, 45.4, 2419.6, 16.900146, 0.79999924, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_44" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=268395118]
+[node name="RoadWay_44" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=156763452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3724.3, 46.1, 2357.6)
 curve = SubResource("Curve3D_d3g57")
 script = ExtResource("49_vuti8")
@@ -3174,7 +3272,7 @@ abs_aabb = AABB(3721, 46.1, 2357.6, 14.699951, 0.10000229, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_45" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1272019637]
+[node name="RoadWay_45" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=270796403]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3735.7, 46.2, 2419.6)
 curve = SubResource("Curve3D_6wf6t")
 script = ExtResource("49_vuti8")
@@ -3186,7 +3284,7 @@ abs_aabb = AABB(3647.3, 46.2, 2419.6, 88.3999, 1, 13.0998535)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_46" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2146860807]
+[node name="RoadWay_46" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1777440956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3619.5, 35.4, 2291.7)
 curve = SubResource("Curve3D_q5gqg")
 script = ExtResource("49_vuti8")
@@ -3198,7 +3296,7 @@ abs_aabb = AABB(3619.5, 35.4, 2271, 37.80005, 0, 20.699951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_47" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1287560259]
+[node name="RoadWay_47" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1355147331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3657.3, 40.4, 2271)
 curve = SubResource("Curve3D_tqsdp")
 script = ExtResource("49_vuti8")
@@ -3210,7 +3308,7 @@ abs_aabb = AABB(3657.3, 40.4, 2271, 70.69995, 5.699997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_48" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1409829216]
+[node name="RoadWay_48" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=793551445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3448.9, 24.9, 2246.5)
 curve = SubResource("Curve3D_2yvek")
 script = ExtResource("49_vuti8")
@@ -3222,7 +3320,7 @@ abs_aabb = AABB(3446.4, 24.9, 2246.5, 173.1001, 1.2000008, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_49" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1773766184]
+[node name="RoadWay_49" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1072231492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3451.2, 15.7, 2076.1)
 curve = SubResource("Curve3D_32esw")
 script = ExtResource("49_vuti8")
@@ -3234,7 +3332,7 @@ abs_aabb = AABB(3448.9, 15.7, 2076.1, 21.100098, 9.2, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_50" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1973588796]
+[node name="RoadWay_50" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1177147250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3548.2, 11.1, 1892.4)
 curve = SubResource("Curve3D_t8w25")
 script = ExtResource("49_vuti8")
@@ -3246,7 +3344,7 @@ abs_aabb = AABB(3451.2, 11.1, 1892.4, 97.19995, 4.5999994, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_51" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1226469416]
+[node name="RoadWay_51" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1788057032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 939.9, 58.6, 3743.9)
 curve = SubResource("Curve3D_am0bk")
 script = ExtResource("49_vuti8")
@@ -3258,7 +3356,7 @@ abs_aabb = AABB(939.9, 57.7, 3743.9, 59.69995, 0.8999977, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_52" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=577677748]
+[node name="RoadWay_52" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1889461931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 941.8, 59.6, 3718.9)
 curve = SubResource("Curve3D_6xcio")
 script = ExtResource("49_vuti8")
@@ -3270,7 +3368,7 @@ abs_aabb = AABB(927.1, 59.6, 3718.9, 14.700012, 2.1000023, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_53" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=493322103]
+[node name="RoadWay_53" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=802156681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 953.7, 56.7, 3923.5)
 curve = SubResource("Curve3D_cjifb")
 script = ExtResource("49_vuti8")
@@ -3282,7 +3380,7 @@ abs_aabb = AABB(953.7, 56.7, 3835.4, 5.8999634, 0.20000076, 88.1001)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_54" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=223118179]
+[node name="RoadWay_54" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=688542117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 953.7, 56.7, 3923.5)
 curve = SubResource("Curve3D_vw3v4")
 script = ExtResource("49_vuti8")
@@ -3294,7 +3392,7 @@ abs_aabb = AABB(953.7, 56.7, 3923.5, 52.700012, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_55" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1783878064]
+[node name="RoadWay_55" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2052669288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 959.6, 57, 3835.4)
 curve = SubResource("Curve3D_gt4va")
 script = ExtResource("49_vuti8")
@@ -3306,7 +3404,7 @@ abs_aabb = AABB(886.7, 57, 3835.4, 72.89996, 10, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_56" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=911533313]
+[node name="RoadWay_56" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=327227694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 959.6, 57, 3835.4)
 curve = SubResource("Curve3D_w6mt6")
 script = ExtResource("49_vuti8")
@@ -3318,7 +3416,7 @@ abs_aabb = AABB(917.4, 57, 3835.4, 42.19995, 3.4000015, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_57" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=282404518]
+[node name="RoadWay_57" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1198829531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 917.4, 60.4, 3780.2)
 curve = SubResource("Curve3D_sh75l")
 script = ExtResource("49_vuti8")
@@ -3330,7 +3428,7 @@ abs_aabb = AABB(917.4, 58.6, 3780.2, 22.5, 1.800003, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_58" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=327988387]
+[node name="RoadWay_58" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=526381350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 917.4, 60.4, 3780.2)
 curve = SubResource("Curve3D_vhno2")
 script = ExtResource("49_vuti8")
@@ -3342,7 +3440,7 @@ abs_aabb = AABB(885, 60.4, 3780.2, 32.400024, 2.2999992, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_59" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1151264538]
+[node name="RoadWay_59" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=286190215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 885, 62.7, 3786.7)
 curve = SubResource("Curve3D_g8e1f")
 script = ExtResource("49_vuti8")
@@ -3354,7 +3452,7 @@ abs_aabb = AABB(805.2, 62.7, 3786.7, 79.79999, 9.499996, 7.199951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_60" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2015706848]
+[node name="RoadWay_60" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1748496968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 939.9, 58.6, 3743.9)
 curve = SubResource("Curve3D_2yfcf")
 script = ExtResource("49_vuti8")
@@ -3366,7 +3464,7 @@ abs_aabb = AABB(937.7, 58.6, 3718.9, 4.0999756, 1.1000023, 25)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_61" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1541934910]
+[node name="RoadWay_61" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=20728344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 885, 62.7, 3786.7)
 curve = SubResource("Curve3D_ug1vl")
 script = ExtResource("49_vuti8")
@@ -3378,7 +3476,7 @@ abs_aabb = AABB(882.3, 62.7, 3750.4, 2.7000122, 2.7000008, 36.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_62" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1792606254]
+[node name="RoadWay_62" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1415871594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 882.3, 65.4, 3750.4)
 curve = SubResource("Curve3D_jvw6t")
 script = ExtResource("49_vuti8")
@@ -3390,7 +3488,7 @@ abs_aabb = AABB(882.3, 64, 3735.7, 21.400024, 1.4000015, 14.699951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_63" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1747734359]
+[node name="RoadWay_63" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1832681187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 903.7, 64, 3725.9)
 curve = SubResource("Curve3D_nx6gq")
 script = ExtResource("49_vuti8")
@@ -3402,7 +3500,7 @@ abs_aabb = AABB(903.7, 59.6, 3725.9, 38.099976, 4.4000015, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_64" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1597709367]
+[node name="RoadWay_64" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1568060350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 999.6, 61.5, 3753.9)
 curve = SubResource("Curve3D_jqwyl")
 script = ExtResource("49_vuti8")
@@ -3414,7 +3512,7 @@ abs_aabb = AABB(999.6, 61.5, 3725.9, 69.099976, 0, 28)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_65" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=69984556]
+[node name="RoadWay_65" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1306473744]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1068.7, 69.7, 3725.9)
 curve = SubResource("Curve3D_puimq")
 script = ExtResource("49_vuti8")
@@ -3426,7 +3524,7 @@ abs_aabb = AABB(1068.7, 66, 3725.9, 119.5, 3.699997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_66" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1283304166]
+[node name="RoadWay_66" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=575159963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1188.2, 66, 3656.8)
 curve = SubResource("Curve3D_f6jko")
 script = ExtResource("49_vuti8")
@@ -3438,7 +3536,7 @@ abs_aabb = AABB(1188.2, 59.7, 3609.3, 82.20007, 6.299999, 47.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_67" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1500127304]
+[node name="RoadWay_67" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1277704899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 927.1, 61.7, 3659.2)
 curve = SubResource("Curve3D_t4w37")
 script = ExtResource("49_vuti8")
@@ -3450,7 +3548,7 @@ abs_aabb = AABB(886.2, 61.7, 3659.2, 40.899963, 5.6000023, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_68" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=838509063]
+[node name="RoadWay_68" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=175266772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 886.2, 67.3, 3626.6)
 curve = SubResource("Curve3D_cyytg")
 script = ExtResource("49_vuti8")
@@ -3462,7 +3560,7 @@ abs_aabb = AABB(829.9, 67.3, 3626.6, 56.299988, 9.699997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_69" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1108412141]
+[node name="RoadWay_69" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1529433895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829.9, 77, 3584.1)
 curve = SubResource("Curve3D_ftto3")
 script = ExtResource("49_vuti8")
@@ -3474,7 +3572,7 @@ abs_aabb = AABB(771.2, 77, 3584.1, 58.700012, 9, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_70" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1480775418]
+[node name="RoadWay_70" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1925240763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 771.2, 86, 3516.7)
 curve = SubResource("Curve3D_msyup")
 script = ExtResource("49_vuti8")
@@ -3486,7 +3584,7 @@ abs_aabb = AABB(621, 86, 3516.7, 150.20001, 17.900002, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_71" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=884257308]
+[node name="RoadWay_71" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=76840326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 621, 103.9, 3500.9)
 curve = SubResource("Curve3D_52aci")
 script = ExtResource("49_vuti8")
@@ -3498,7 +3596,7 @@ abs_aabb = AABB(536.4, 103.9, 3500.9, 84.599976, 17.599998, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_72" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1959171452]
+[node name="RoadWay_72" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1085991710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 536.4, 121.5, 3397.3)
 curve = SubResource("Curve3D_553xo")
 script = ExtResource("49_vuti8")
@@ -3510,7 +3608,7 @@ abs_aabb = AABB(420.6, 121.5, 3397.3, 115.80002, 6, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_73" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=652526277]
+[node name="RoadWay_73" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1089330227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 420.6, 127.5, 3354.5)
 curve = SubResource("Curve3D_wldbr")
 script = ExtResource("49_vuti8")
@@ -3522,7 +3620,7 @@ abs_aabb = AABB(263.4, 127.5, 3354.5, 157.20001, 2.399994, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_74" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1049364715]
+[node name="RoadWay_74" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1351097075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 263.4, 129.9, 3291.7)
 curve = SubResource("Curve3D_qw538")
 script = ExtResource("49_vuti8")
@@ -3534,7 +3632,7 @@ abs_aabb = AABB(141.8, 129.9, 3291.7, 121.59999, 0.40000916, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_75" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2099849566]
+[node name="RoadWay_75" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=93314510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.8, 126.4, 3134.5)
 curve = SubResource("Curve3D_5aj5i")
 script = ExtResource("49_vuti8")
@@ -3546,7 +3644,7 @@ abs_aabb = AABB(67.5, 126.4, 3134.5, 74.3, 2.5999985, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_76" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=498183693]
+[node name="RoadWay_76" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=563496967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.5, 129, 2949.4)
 curve = SubResource("Curve3D_on41v")
 script = ExtResource("49_vuti8")
@@ -3558,7 +3656,7 @@ abs_aabb = AABB(67.3, 127.8, 2817.5, 57.799995, 1.199997, 131.8999)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_77" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1243655352]
+[node name="RoadWay_77" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=434404165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.1, 139.4, 2817.5)
 curve = SubResource("Curve3D_nyt0o")
 script = ExtResource("49_vuti8")
@@ -3570,7 +3668,7 @@ abs_aabb = AABB(125.1, 139.4, 2720.1, 23.700005, 3.800003, 97.3999)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_78" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1071072247]
+[node name="RoadWay_78" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=511065299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.7, 143.2, 2720.1)
 curve = SubResource("Curve3D_fcwdx")
 script = ExtResource("49_vuti8")
@@ -3582,7 +3680,7 @@ abs_aabb = AABB(102.4, 143.2, 2661.1, 35.299995, 11, 59)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_79" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1894354458]
+[node name="RoadWay_79" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1609811958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.4, 154.2, 2569.2)
 curve = SubResource("Curve3D_dpbpm")
 script = ExtResource("49_vuti8")
@@ -3594,7 +3692,7 @@ abs_aabb = AABB(67, 154.2, 2569.2, 35.4, 0.5, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_80" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=650884278]
+[node name="RoadWay_80" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=725799805]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 150.7, 2464)
 curve = SubResource("Curve3D_ei6kn")
 script = ExtResource("49_vuti8")
@@ -3606,7 +3704,7 @@ abs_aabb = AABB(67, 146.8, 2374.5, 97.399994, 3.899994, 89.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_81" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=457625988]
+[node name="RoadWay_81" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1316809272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.4, 146.8, 2340.5)
 curve = SubResource("Curve3D_0cwvs")
 script = ExtResource("49_vuti8")
@@ -3618,7 +3716,7 @@ abs_aabb = AABB(164.4, 124.2, 2340.5, 42.5, 22.600006, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_82" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1216496370]
+[node name="RoadWay_82" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=287317487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.9, 124.2, 2155)
 curve = SubResource("Curve3D_trwrk")
 script = ExtResource("49_vuti8")
@@ -3630,7 +3728,7 @@ abs_aabb = AABB(206.9, 114.5, 2029.7, 88.70001, 9.699997, 125.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_83" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=338235001]
+[node name="RoadWay_83" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1591396840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267.4, 117.6, 2029.7)
 curve = SubResource("Curve3D_8e1hl")
 script = ExtResource("49_vuti8")
@@ -3642,7 +3740,7 @@ abs_aabb = AABB(215.7, 117.6, 2029.7, 51.699997, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_84" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1620457341]
+[node name="RoadWay_84" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=909190959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.7, 108.8, 2003.2)
 curve = SubResource("Curve3D_tdy87")
 script = ExtResource("49_vuti8")
@@ -3654,7 +3752,7 @@ abs_aabb = AABB(180.2, 97.4, 2003.2, 35.5, 11.400002, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_85" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1632717084]
+[node name="RoadWay_85" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=792993153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.2, 73.4, 1760.5)
 curve = SubResource("Curve3D_j03sc")
 script = ExtResource("49_vuti8")
@@ -3666,7 +3764,7 @@ abs_aabb = AABB(110.9, 50.4, 1760.5, 69.299995, 23, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_86" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=667884029]
+[node name="RoadWay_86" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=138546834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.3, 50.4, 1473.8)
 curve = SubResource("Curve3D_qu8fa")
 script = ExtResource("49_vuti8")
@@ -3678,7 +3776,7 @@ abs_aabb = AABB(111.3, 46.7, 1306.8, 73.2, 3.7000008, 167)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_87" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1826181938]
+[node name="RoadWay_87" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1066358387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.1, 47.1, 1306.8)
 curve = SubResource("Curve3D_5dgky")
 script = ExtResource("49_vuti8")
@@ -3690,7 +3788,7 @@ abs_aabb = AABB(114, 47.1, 1306.8, 70.100006, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_88" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=946766440]
+[node name="RoadWay_88" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=918906325]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114, 30.4, 1227)
 curve = SubResource("Curve3D_f40h0")
 script = ExtResource("49_vuti8")
@@ -3702,7 +3800,7 @@ abs_aabb = AABB(43.4, 19.2, 1227, 83.4, 11.199999, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_89" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1638754550]
+[node name="RoadWay_89" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2017668070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.8, 19.2, 1054.2)
 curve = SubResource("Curve3D_e0dhb")
 script = ExtResource("49_vuti8")
@@ -3714,7 +3812,7 @@ abs_aabb = AABB(126.8, 11.1, 1054.2, 68.5, 8.1, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_90" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=200738941]
+[node name="RoadWay_90" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=979696608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 195.3, 11.1, 774.1)
 curve = SubResource("Curve3D_80ril")
 script = ExtResource("49_vuti8")
@@ -3726,7 +3824,7 @@ abs_aabb = AABB(187.8, 8.9, 622.6, 78.999985, 2.2000008, 151.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_91" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1455518763]
+[node name="RoadWay_91" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=250518248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.8, 8.9, 606.6)
 curve = SubResource("Curve3D_jftmf")
 script = ExtResource("49_vuti8")
@@ -3738,7 +3836,7 @@ abs_aabb = AABB(264.7, 8, 594.5, 9.5, 0.8999996, 12.099976)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_92" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1114827820]
+[node name="RoadWay_92" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=161843893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.7, 7.8, 534.2)
 curve = SubResource("Curve3D_tq6lp")
 script = ExtResource("49_vuti8")
@@ -3750,7 +3848,7 @@ abs_aabb = AABB(258.9, 7.8, 534.2, 5.8000183, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_93" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=989734521]
+[node name="RoadWay_93" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1654433786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.9, 7.4, 520.1)
 curve = SubResource("Curve3D_ya8kt")
 script = ExtResource("49_vuti8")
@@ -3762,7 +3860,7 @@ abs_aabb = AABB(238.1, 7.4, 520.1, 20.799988, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_94" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=20637352]
+[node name="RoadWay_94" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=549988143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.9, 7.4, 520.1)
 curve = SubResource("Curve3D_leipl")
 script = ExtResource("49_vuti8")
@@ -3774,7 +3872,7 @@ abs_aabb = AABB(258.9, 7.4, 518.5, 62.899994, 0, 1.5999756)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_95" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1932228937]
+[node name="RoadWay_95" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=829264091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 321.8, 8.5, 519)
 curve = SubResource("Curve3D_nm4v1")
 script = ExtResource("49_vuti8")
@@ -3786,7 +3884,7 @@ abs_aabb = AABB(321.8, 8.5, 519, 80.900024, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_96" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1939764062]
+[node name="RoadWay_96" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=846166597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 402.7, 10.1, 520)
 curve = SubResource("Curve3D_ro1ij")
 script = ExtResource("49_vuti8")
@@ -3798,7 +3896,7 @@ abs_aabb = AABB(402.7, 10.1, 518.3, 67.19998, 0, 1.7000122)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_97" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2060659546]
+[node name="RoadWay_97" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1995128302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 469.9, 11.4, 531.1)
 curve = SubResource("Curve3D_fw70l")
 script = ExtResource("49_vuti8")
@@ -3810,7 +3908,7 @@ abs_aabb = AABB(469.9, 11.4, 505.1, 176.4, 0, 25.99997)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_98" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1118952267]
+[node name="RoadWay_98" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=639377220]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 646.3, 15.5, 505.1)
 curve = SubResource("Curve3D_5e5pf")
 script = ExtResource("49_vuti8")
@@ -3822,7 +3920,7 @@ abs_aabb = AABB(646.3, 12.4, 367.9, 80.900024, 3.1000004, 137.20001)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_99" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=975639125]
+[node name="RoadWay_99" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1556886011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 727.2, 12.5, 367.9)
 curve = SubResource("Curve3D_knmx4")
 script = ExtResource("49_vuti8")
@@ -3834,7 +3932,7 @@ abs_aabb = AABB(727.2, 10.1, 236.3, 223.59998, 2.3999996, 131.59999)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_100" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=778009931]
+[node name="RoadWay_100" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=981053390]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 950.8, 10.2, 236.6)
 curve = SubResource("Curve3D_g8gyj")
 script = ExtResource("49_vuti8")
@@ -3846,7 +3944,7 @@ abs_aabb = AABB(950.8, 7.5, 227, 285.10004, 2.6999998, 9.600006)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_101" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1052796578]
+[node name="RoadWay_101" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1436565621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1235.9, 7.5, 314.5)
 curve = SubResource("Curve3D_62q0l")
 script = ExtResource("49_vuti8")
@@ -3858,7 +3956,7 @@ abs_aabb = AABB(1235.9, 6.8, 314.5, 109.5, 0.6999998, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_102" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=154103867]
+[node name="RoadWay_102" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1770176964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1345.4, 7.3, 437.8)
 curve = SubResource("Curve3D_cs011")
 script = ExtResource("49_vuti8")
@@ -3870,7 +3968,7 @@ abs_aabb = AABB(1345.4, 7.3, 437.8, 13.099976, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_103" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2042922154]
+[node name="RoadWay_103" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1951823242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1358.5, 7.6, 472)
 curve = SubResource("Curve3D_5liue")
 script = ExtResource("49_vuti8")
@@ -3882,7 +3980,7 @@ abs_aabb = AABB(1349.7, 7.6, 472, 8.800049, 1.2000003, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_104" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1263534036]
+[node name="RoadWay_104" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1224404084]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1349.7, 8.8, 516)
 curve = SubResource("Curve3D_rqudx")
 script = ExtResource("49_vuti8")
@@ -3894,7 +3992,7 @@ abs_aabb = AABB(1325.4, 8.8, 516, 24.299927, 0, 16.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_105" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=245627186]
+[node name="RoadWay_105" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1496720724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3425.8, 35.7, 2794.3)
 curve = SubResource("Curve3D_ssidu")
 script = ExtResource("49_vuti8")
@@ -3906,7 +4004,7 @@ abs_aabb = AABB(3425.8, 34, 2794.3, 58.5, 1.7000008, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_106" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1232966278]
+[node name="RoadWay_106" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=806638365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3484.3, 34, 2829.3)
 curve = SubResource("Curve3D_442lu")
 script = ExtResource("49_vuti8")
@@ -3918,7 +4016,7 @@ abs_aabb = AABB(3484.3, 30.5, 2829.3, 153.5, 3.5, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_107" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1590860113]
+[node name="RoadWay_107" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1306833647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3373.5, 37.2, 2760.6)
 curve = SubResource("Curve3D_q1t14")
 script = ExtResource("49_vuti8")
@@ -3930,7 +4028,7 @@ abs_aabb = AABB(3170, 37.2, 2760.6, 203.5, 6.8999977, 86)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_108" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1957178604]
+[node name="RoadWay_108" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=735383955]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3406, 35.3, 2828.5)
 curve = SubResource("Curve3D_qo71l")
 script = ExtResource("49_vuti8")
@@ -3942,7 +4040,7 @@ abs_aabb = AABB(3404.8, 35.3, 2828.5, 1.1999512, 4, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_109" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=753616176]
+[node name="RoadWay_109" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1210970872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3404.8, 39.3, 2879.2)
 curve = SubResource("Curve3D_tlgkx")
 script = ExtResource("49_vuti8")
@@ -3954,7 +4052,7 @@ abs_aabb = AABB(3404.8, 38, 2879.2, 39.30005, 5.5999985, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_110" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=768515034]
+[node name="RoadWay_110" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=982431252]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3443.3, 43.6, 3040.4)
 curve = SubResource("Curve3D_b26vu")
 script = ExtResource("49_vuti8")
@@ -3966,7 +4064,7 @@ abs_aabb = AABB(3443.3, 36, 3040.4, 223.8999, 7.5999985, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_111" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1356616669]
+[node name="RoadWay_111" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1510641594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2845.9, 31.2, 3285.2)
 curve = SubResource("Curve3D_81mtg")
 script = ExtResource("49_vuti8")
@@ -3978,7 +4076,7 @@ abs_aabb = AABB(2837.3, 30.4, 3285.2, 8.5998535, 0.80000114, 41.600098)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_112" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1767811253]
+[node name="RoadWay_112" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=912840346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2840.7, 30.4, 3326.8)
 curve = SubResource("Curve3D_jxw4x")
 script = ExtResource("49_vuti8")
@@ -3990,7 +4088,7 @@ abs_aabb = AABB(2840.7, 29.7, 3326.8, 104.80005, 0.69999886, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_113" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1001352953]
+[node name="RoadWay_113" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=495723127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2945.5, 29.9, 3440)
 curve = SubResource("Curve3D_5ow01")
 script = ExtResource("49_vuti8")
@@ -4002,7 +4100,7 @@ abs_aabb = AABB(2909.1, 29.9, 3440, 36.399902, 0.10000038, 50.30005)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_114" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=404599697]
+[node name="RoadWay_114" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1259040556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2909.1, 30, 3508.1)
 curve = SubResource("Curve3D_fxtt5")
 script = ExtResource("49_vuti8")
@@ -4014,7 +4112,7 @@ abs_aabb = AABB(2907.7, 29.2, 3508.1, 18.300049, 0.8999996, 122.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_115" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=768713642]
+[node name="RoadWay_115" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1252576536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2924.6, 29.6, 3630.6)
 curve = SubResource("Curve3D_114o1")
 script = ExtResource("49_vuti8")
@@ -4026,7 +4124,7 @@ abs_aabb = AABB(2924.6, 29.6, 3630.6, 47.69995, 1.5, 198.5)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_116" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=801747597]
+[node name="RoadWay_116" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1718173942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3067.6, 6.1, 1496.4)
 curve = SubResource("Curve3D_pd11b")
 script = ExtResource("49_vuti8")
@@ -4038,7 +4136,7 @@ abs_aabb = AABB(3067.6, 6.1, 1496.4, 21.699951, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_117" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1808115441]
+[node name="RoadWay_117" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1739553570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3089.3, 7, 1562.7)
 curve = SubResource("Curve3D_vmsam")
 script = ExtResource("49_vuti8")
@@ -4050,7 +4148,7 @@ abs_aabb = AABB(3089.3, 6.5, 1532, 109.8999, 0.5, 30.699951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_118" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1126936098]
+[node name="RoadWay_118" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=896422512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2984.3, 5.8, 1379.9)
 curve = SubResource("Curve3D_yy43i")
 script = ExtResource("49_vuti8")
@@ -4062,7 +4160,7 @@ abs_aabb = AABB(2723.4, 5.8, 1379.9, 260.90015, 0.7999997, 0.29992676)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_119" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=680460878]
+[node name="RoadWay_119" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1517896915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2723.4, 6.6, 1273.2)
 curve = SubResource("Curve3D_xse6m")
 script = ExtResource("49_vuti8")
@@ -4074,7 +4172,7 @@ abs_aabb = AABB(2723.4, 6.3, 1248.8, 85.700195, 0.2999997, 24.399902)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_120" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2107014984]
+[node name="RoadWay_120" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1081357686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3011.9, 5.8, 1380.6)
 curve = SubResource("Curve3D_r8y4d")
 script = ExtResource("49_vuti8")
@@ -4086,7 +4184,7 @@ abs_aabb = AABB(2984.3, 5.8, 1380.6, 27.599854, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_121" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=110818073]
+[node name="RoadWay_121" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2044303724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.4, 1314.8)
 curve = SubResource("Curve3D_pvdyj")
 script = ExtResource("49_vuti8")
@@ -4098,7 +4196,7 @@ abs_aabb = AABB(3048.7, 5.4, 1314.8, 0.30004883, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_122" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=558421827]
+[node name="RoadWay_122" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=855914704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.4, 1314.8)
 curve = SubResource("Curve3D_dshw8")
 script = ExtResource("49_vuti8")
@@ -4110,7 +4208,7 @@ abs_aabb = AABB(2996.4, 5.4, 1314.8, 52.30005, 0.2999997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_123" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=801881873]
+[node name="RoadWay_123" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1395855156]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2996.4, 5.7, 1314)
 curve = SubResource("Curve3D_wj6fs")
 script = ExtResource("49_vuti8")
@@ -4122,7 +4220,7 @@ abs_aabb = AABB(2976.4, 5.7, 1314, 20, 0, 7.199951)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_124" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=569056393]
+[node name="RoadWay_124" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1075809003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2996.4, 5.7, 1314)
 curve = SubResource("Curve3D_uu6y8")
 script = ExtResource("49_vuti8")
@@ -4134,7 +4232,7 @@ abs_aabb = AABB(2996.4, 5.7, 1314, 27, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_125" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=624239537]
+[node name="RoadWay_125" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1598509517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3023.4, 6.3, 1333.9)
 curve = SubResource("Curve3D_0l7vi")
 script = ExtResource("49_vuti8")
@@ -4146,7 +4244,7 @@ abs_aabb = AABB(3023.4, 5.8, 1333.9, 25.600098, 0.5, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_126" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=613519635]
+[node name="RoadWay_126" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=338216903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3023.4, 6.3, 1333.9)
 curve = SubResource("Curve3D_270ol")
 script = ExtResource("49_vuti8")
@@ -4158,7 +4256,7 @@ abs_aabb = AABB(3011.4, 5.8, 1333.9, 12, 0.5, 46.69995)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_127" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1483871015]
+[node name="RoadWay_127" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=541938588]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2984.3, 5.8, 1379.9)
 curve = SubResource("Curve3D_nwd2k")
 script = ExtResource("49_vuti8")
@@ -4170,7 +4268,7 @@ abs_aabb = AABB(2971.6, 5.6, 1321.2, 12.699951, 0.20000029, 58.700073)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_128" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=686974886]
+[node name="RoadWay_128" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=752937383]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2976.4, 5.6, 1321.2)
 curve = SubResource("Curve3D_56w4i")
 script = ExtResource("49_vuti8")
@@ -4182,7 +4280,7 @@ abs_aabb = AABB(2945.5, 5.6, 1321.2, 30.899902, 0.099999905, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_129" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=857836083]
+[node name="RoadWay_129" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1795723910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2945.5, 5.7, 1266.1)
 curve = SubResource("Curve3D_3lbs0")
 script = ExtResource("49_vuti8")
@@ -4194,7 +4292,7 @@ abs_aabb = AABB(2809.1, 5.7, 1266.1, 136.3999, 0.6000004, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_130" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=778541007]
+[node name="RoadWay_130" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1397080712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2809.1, 6.3, 1201.2)
 curve = SubResource("Curve3D_htgty")
 script = ExtResource("49_vuti8")
@@ -4202,11 +4300,11 @@ num = 130
 infr_name = "Wernigerode Gießerweg"
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
-abs_aabb = AABB(2809.1, 5, 1201.2, 12.0998535, 1.3000002, 0)
+abs_aabb = AABB(2809.1, 6, 1091, 12.0998535, 0.3000002, 110.19995)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_131" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1084053592]
+[node name="RoadWay_131" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1404440172]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2945.5, 5.7, 1266.1)
 curve = SubResource("Curve3D_irkfx")
 script = ExtResource("49_vuti8")
@@ -4218,7 +4316,7 @@ abs_aabb = AABB(2945.5, 5.5, 1237.1, 37, 0.19999981, 29)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_132" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=412669066]
+[node name="RoadWay_132" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1131601735]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2982.5, 5.5, 1237.1)
 curve = SubResource("Curve3D_wjjum")
 script = ExtResource("49_vuti8")
@@ -4230,7 +4328,7 @@ abs_aabb = AABB(2982.5, 5.5, 1187.5, 2.6999512, 0, 49.599976)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_133" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1355297185]
+[node name="RoadWay_133" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1049346590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2982.5, 5.5, 1237.1)
 curve = SubResource("Curve3D_yh8u5")
 script = ExtResource("49_vuti8")
@@ -4242,7 +4340,7 @@ abs_aabb = AABB(2982.5, 5.3, 1237.1, 66.19995, 0.19999981, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_134" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=294032344]
+[node name="RoadWay_134" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=421978928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.3, 1249.6)
 curve = SubResource("Curve3D_rvkil")
 script = ExtResource("49_vuti8")
@@ -4254,7 +4352,7 @@ abs_aabb = AABB(3048.7, 5.3, 1249.6, 71.90015, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_135" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1691278742]
+[node name="RoadWay_135" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=969635772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.3, 1249.6)
 curve = SubResource("Curve3D_re8la")
 script = ExtResource("49_vuti8")
@@ -4266,7 +4364,7 @@ abs_aabb = AABB(3041.2, 5.3, 1249.6, 7.5, 0.48000002, 65.20007)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_136" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=710101179]
+[node name="RoadWay_136" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=855420865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3048.7, 5.3, 1249.6)
 curve = SubResource("Curve3D_fotlt")
 script = ExtResource("49_vuti8")
@@ -4278,7 +4376,7 @@ abs_aabb = AABB(3048.7, 5.3, 1249.2, 118.6001, 0, 0.4000244)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_137" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1974813383]
+[node name="RoadWay_137" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1037695782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3167.3, 5.3, 1251.6)
 curve = SubResource("Curve3D_d2tju")
 script = ExtResource("49_vuti8")
@@ -4290,7 +4388,7 @@ abs_aabb = AABB(3167.3, 5.3, 1251.6, 28.300049, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_138" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=959488564]
+[node name="RoadWay_138" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=629180207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3195.6, 5.3, 1286.2)
 curve = SubResource("Curve3D_1ae12")
 script = ExtResource("49_vuti8")
@@ -4302,7 +4400,7 @@ abs_aabb = AABB(3188.4, 5.3, 1286.2, 7.2001953, 0.2999997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_139" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1226783504]
+[node name="RoadWay_139" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2050287015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3188.4, 5.6, 1326.7)
 curve = SubResource("Curve3D_sw1we")
 script = ExtResource("49_vuti8")
@@ -4314,7 +4412,7 @@ abs_aabb = AABB(3126.4, 5.6, 1326.7, 62, 0.20000029, 46.900024)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_140" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1016735046]
+[node name="RoadWay_140" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=345677760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3126.4, 5.7, 1367.6)
 curve = SubResource("Curve3D_qlxma")
 script = ExtResource("49_vuti8")
@@ -4326,7 +4424,7 @@ abs_aabb = AABB(3113.9, 5.7, 1367.6, 12.5, 0.20000029, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_141" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1954759238]
+[node name="RoadWay_141" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2145598137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3167.3, 5.3, 1251.6)
 curve = SubResource("Curve3D_88mj0")
 script = ExtResource("49_vuti8")
@@ -4338,7 +4436,7 @@ abs_aabb = AABB(3167.3, 5, 1231.3, 90.59985, 0.3000002, 20.299927)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_142" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=97111180]
+[node name="RoadWay_142" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1238646145]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3257.9, 5, 1223.1)
 curve = SubResource("Curve3D_tki8a")
 script = ExtResource("49_vuti8")
@@ -4350,7 +4448,7 @@ abs_aabb = AABB(3257.9, 4.7, 1104.5, 43.200195, 0.3000002, 118.599976)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_143" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1968257830]
+[node name="RoadWay_143" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2082793785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2810.2, 10.1, 1772.5)
 curve = SubResource("Curve3D_v4pj4")
 script = ExtResource("49_vuti8")
@@ -4362,7 +4460,7 @@ abs_aabb = AABB(2806.4, 10.1, 1772.5, 72.30005, 0.39999962, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_144" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1538475464]
+[node name="RoadWay_144" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=471376740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2810.2, 10.1, 1772.5)
 curve = SubResource("Curve3D_5e7dq")
 script = ExtResource("49_vuti8")
@@ -4374,7 +4472,7 @@ abs_aabb = AABB(2717.2, 10.1, 1772.5, 93, 0, 25.900024)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_145" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=877270632]
+[node name="RoadWay_145" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=147344682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2550.8, 10.9, 1880.6)
 curve = SubResource("Curve3D_cyleh")
 script = ExtResource("49_vuti8")
@@ -4386,7 +4484,7 @@ abs_aabb = AABB(2483.9, 10.9, 1880.6, 66.90015, 3.6000004, 144.59998)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_146" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1983421902]
+[node name="RoadWay_146" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1049750673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2483.9, 14.5, 2050.8)
 curve = SubResource("Curve3D_xkuhp")
 script = ExtResource("49_vuti8")
@@ -4398,7 +4496,7 @@ abs_aabb = AABB(2474.9, 14.5, 2050.8, 21.300049, 2.2999992, 39)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_147" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=191273941]
+[node name="RoadWay_147" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1408338239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2496.2, 17.9, 2183.9)
 curve = SubResource("Curve3D_arcfy")
 script = ExtResource("49_vuti8")
@@ -4410,7 +4508,7 @@ abs_aabb = AABB(2496.2, 17.9, 2183.9, 103.69995, 9.300001, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_148" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=29865225]
+[node name="RoadWay_148" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1073108230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2596.1, 45.9, 2712.7)
 curve = SubResource("Curve3D_lr0mh")
 script = ExtResource("49_vuti8")
@@ -4422,7 +4520,7 @@ abs_aabb = AABB(2483.4, 45.9, 2712.7, 112.700195, 6.5999985, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_149" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=706862592]
+[node name="RoadWay_149" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=858132106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2483.4, 52.5, 2752.3)
 curve = SubResource("Curve3D_r4hyo")
 script = ExtResource("49_vuti8")
@@ -4434,7 +4532,7 @@ abs_aabb = AABB(2284.1, 52.5, 2752.3, 199.2998, 20.699997, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_150" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1233739586]
+[node name="RoadWay_150" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=395578879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2483.4, 52.5, 2752.3)
 curve = SubResource("Curve3D_0328i")
 script = ExtResource("49_vuti8")
@@ -4446,7 +4544,7 @@ abs_aabb = AABB(2302.7, 52.5, 2752.3, 180.69995, 6.200001, 302.09985)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_151" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1884889838]
+[node name="RoadWay_151" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=73058799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2302.7, 51.3, 3054.4)
 curve = SubResource("Curve3D_isfbg")
 script = ExtResource("49_vuti8")
@@ -4458,7 +4556,7 @@ abs_aabb = AABB(2047.4, 51.3, 3054.4, 255.29993, 9.5, 71.6001)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_152" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1674890719]
+[node name="RoadWay_152" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1241137628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2047.4, 60.8, 3111.8)
 curve = SubResource("Curve3D_j1v6w")
 script = ExtResource("49_vuti8")
@@ -4470,7 +4568,7 @@ abs_aabb = AABB(1727.5, 60.8, 3111.8, 319.90002, 17.500004, 0.19995117)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_153" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1462087145]
+[node name="RoadWay_153" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1556395762]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1727.5, 73.7, 3000.5)
 curve = SubResource("Curve3D_v6cpw")
 script = ExtResource("49_vuti8")
@@ -4482,7 +4580,7 @@ abs_aabb = AABB(1602.8, 73.7, 3000.5, 124.69995, 0, 0)
 autosmooth = true
 material = ExtResource("50_ksq05")
 
-[node name="RoadWay_154" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1596549639]
+[node name="RoadWay_154" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1855056341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1602.8, 73.7, 2979.9)
 curve = SubResource("Curve3D_2l4xg")
 script = ExtResource("49_vuti8")
@@ -4491,6 +4589,174 @@ infr_name = "Schierke Hagenstr. Rathaus"
 infr_domain = 1
 color = Color(1, 0.54901963, 0, 1)
 abs_aabb = AABB(1556.3, 73.7, 2979.9, 46.5, 0.9000015, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_155" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1265725231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1556.3, 74.3, 2970.1)
+curve = SubResource("Curve3D_nwov6")
+script = ExtResource("49_vuti8")
+num = 155
+infr_name = "Schierke Brockenstr. Fürstenhöhe"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1513.9, 74.3, 2970.1, 42.400024, 2.2999954, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_156" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=907520952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1513.9, 76.6, 2943.4)
+curve = SubResource("Curve3D_mfmh1")
+script = ExtResource("49_vuti8")
+num = 156
+infr_name = "Schierke Brockenstr. Kesselklippe"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1464.9, 76.6, 2943.4, 49, 0.7000046, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_157" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=177348333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1464.9, 77.2, 2897.5)
+curve = SubResource("Curve3D_igwmn")
+script = ExtResource("49_vuti8")
+num = 157
+infr_name = "Schierke Brockenstr. Feuerwehr"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1334.6, 77.2, 2897.5, 130.30005, 8.900002, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_158" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1083492671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1334.6, 86.1, 2812)
+curve = SubResource("Curve3D_2vseb")
+script = ExtResource("49_vuti8")
+num = 158
+infr_name = "Schierke Brockenstr. Outwards"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1306.5, 86.1, 2812, 28.099976, 1.5, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_159" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2083054752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1513.9, 76.6, 2943.4)
+curve = SubResource("Curve3D_jin0v")
+script = ExtResource("49_vuti8")
+num = 159
+infr_name = "Schierke Bodeweg"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1458.8, 76.6, 2897.5, 55.099976, 0.5999985, 60.399902)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_160" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=167977002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3170, 44.1, 2851.9)
+curve = SubResource("Curve3D_eq76i")
+script = ExtResource("49_vuti8")
+num = 160
+infr_name = "Landstr. Elbingerode-Königshütte N"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(3103.9, 42.4, 2851.9, 85.90015, 1.699997, 123.40015)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_161" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=527431488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3103.9, 44.1, 2975.3)
+curve = SubResource("Curve3D_bnjqa")
+script = ExtResource("49_vuti8")
+num = 161
+infr_name = "Landstr. Elbingerode-Königshütte N"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(3031.1, 44.1, 2975.3, 72.799805, 4.200001, 271.59985)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_162" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1622550318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3031.1, 39.6, 3246.9)
+curve = SubResource("Curve3D_kour2")
+script = ExtResource("49_vuti8")
+num = 162
+infr_name = "Landstr. Elbingerode-Königshütte SW"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(2845.9, 39.6, 3246.9, 185.2002, 0, 38.30005)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_163" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1215841265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2816.6, 6, 1091)
+curve = SubResource("Curve3D_txrcm")
+script = ExtResource("49_vuti8")
+num = 163
+infr_name = "Wernigerode Im Altenröder Felde"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(2816.6, 5.5, 1091, 168.59985, 0.5, 0)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_164" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=275921275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2985.2, 5.6, 1187.5)
+curve = SubResource("Curve3D_spm1h")
+script = ExtResource("49_vuti8")
+num = 164
+infr_name = "Wernigerode Feldstr. E"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(2985.2, 4.9, 1117.1, 158.40015, 0.6999998, 70.400024)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_165" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=1482899451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3143.6, 5.1, 1122.2)
+curve = SubResource("Curve3D_sxlym")
+script = ExtResource("49_vuti8")
+num = 165
+infr_name = "Wernigerode Feldstr. W"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(3143.6, 4.9, 1049.1, 114.5, 0.19999981, 73.099976)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_166" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=101279669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2845.9, 31.2, 3285.2)
+curve = SubResource("Curve3D_qlu27")
+script = ExtResource("49_vuti8")
+num = 166
+infr_name = "Königshütte Neue Hütte"
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(2618.1, 31.2, 3285.2, 227.7998, 6.5999985, 2.3000488)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_167" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=80549699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2618.1, 37.78, 3287.5)
+curve = SubResource("Curve3D_8p4wa")
+script = ExtResource("49_vuti8")
+num = 167
+infr_name = "Mandelholz Talstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(2342.6, 37.78, 3287.5, 275.5, 0.52000046, 118)
+autosmooth = true
+material = ExtResource("50_ksq05")
+
+[node name="RoadWay_168" type="Path3D" parent="InEditor/EditorInfr/EditorRoads" unique_id=2078400471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2342.6, 36, 3404.3)
+curve = SubResource("Curve3D_7qatw")
+script = ExtResource("49_vuti8")
+num = 168
+infr_name = "Elend Boderandstr."
+infr_domain = 1
+color = Color(1, 0.54901963, 0, 1)
+abs_aabb = AABB(1987.6, 36, 3404.3, 355.00012, 5.200001, 11.300049)
 autosmooth = true
 material = ExtResource("50_ksq05")
 

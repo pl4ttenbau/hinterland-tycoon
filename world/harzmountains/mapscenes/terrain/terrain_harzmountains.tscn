@@ -17,7 +17,7 @@ uv1_triplanar_sharpness = 0.517632
 size = Vector3(6, 20, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jxf6l"]
-size = Vector2(400, 600)
+size = Vector2(500, 600)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l3qu8"]
 size = Vector2(400, 250)
