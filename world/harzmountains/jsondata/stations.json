@@ -59,7 +59,7 @@
 	},
 	{
 		"num": 9,
-		"name": "Hochschule",
+		"name": "Kirchstr.",
 		"townNum": 14,
 		"type": "STATION_PASS",
 		"townName": "Hasserode"
@@ -127,4 +127,32 @@
 		"type": "STATION_GOODS",
 		"townName": "Schierke",
 	},
+	{
+		"num": 19,
+		"name": "Westerntor",
+		"townNum": 31,
+		"type": "STATION_PASS",
+		"townName": "Wernigerode"
+	},
+	{
+		"num": 20,
+		"name": "Hornberg",
+		"townNum": 6,
+		"type": "STATION_GOODS",
+		"townName": "Elbingerode"
+	},
+	{
+		"num": 21,
+		"name": "Bhf.",
+		"townNum": 18,
+		"type": "STATION_PASS",
+		"townName": "Königshütte"
+	},
+	{
+		"num": 22,
+		"name": "Stahlwerk",
+		"townNum": 18,
+		"type": "STATION_GOODS",
+		"townName": "Königshütte"
+	}
 ]

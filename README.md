@@ -24,29 +24,40 @@ Written in the Godot Engine
 
 #### Infrastructure
 
-* [ ] make "connect" working
+* [x] make "connect" working
   * [x] mark nearest track node with pin or circle
 	* [x] find closest infr node method
-  * [ ] extend from said selected node
+  * [x] extend from said selected node
+  * extend from demo status
 
 #### Connectivity
 
 * [ ] refactor vehicle root class so it can accomodate roads vehicles -> AbstractVehicle
   * [ ] make registry for road vehicles too
-* [ ] make ways for player to enter and exit vehicle
-  * [ ] with click at it
+* [x] make ways for player to enter and exit vehicle
+  * [x] with click at it
 	* [ ] new VehicleClickHandler manager
-	
+* [ ] allow inventory spawnning between train & station
+  *  [ ] duck typing for inventory-havers?
+  * [ ] train-wide goods capacity
+  * [ ] signal when train enters & leaves station
+	* [ ] auto-spawning timer in train?
+* [ ] PossibleIndustryConnection class for where you could deliver between
+
 #### New Maps
 
-* [ ] Sachalin 50ies
+* [x] Sachalin 50ies
 * [ ] Gdanksk 70ies
 
 ### Special Thanks 
 
+* the one and only [Pitagoras991](https://steamcommunity.com/profiles/76561198141027079/myworkshopfiles/) for:
+	* Wismar Railbus Asset
+	* Umbauwagen Asset
+	* Laenderwagen Asset
+	* UV mapping and mental support :P
 * Reiner Prokein - reinerstilesets.de
-* emzetgie for his excellent polish houses models
-* the one and only Pitagoras991 for his Wismar Railbus meshes
+* emzetgie (on Steam) for his excellent polish houses models
 * Konrad for his village life enhancements
 
 ### Used Addons
