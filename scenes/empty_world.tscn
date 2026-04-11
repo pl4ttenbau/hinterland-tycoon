@@ -127,91 +127,86 @@ metadata/_custom_type_script = "uid://c3n1pjne8toik"
 script = ExtResource("9_yvyyf")
 metadata/_custom_type_script = "uid://dfb5g16bgjuwi"
 
-[node name="World" type="Node" parent="." unique_id=1193711136]
+[node name="EntityManagers" type="Node" parent="." unique_id=102886502]
 
-[node name="Generated" type="Node" parent="World" unique_id=102886502]
-
-[node name="Towns" type="Node" parent="World/Generated" unique_id=1274981919]
+[node name="Towns" type="Node" parent="EntityManagers" unique_id=1274981919]
 unique_name_in_owner = true
 editor_description = "Town-Centers with Label3D above will be spawned under this node"
 script = ExtResource("6_nc0f4")
 
-[node name="WorldTownBldPlacer" type="Node" parent="World/Generated/Towns" unique_id=2122613813]
+[node name="WorldTownBldPlacer" type="Node" parent="EntityManagers/Towns" unique_id=2122613813]
 script = ExtResource("7_rnkef")
 has_map_spawned = null
 has_res_bld_types_loaded = null
 metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 
-[node name="Infr" type="Node" parent="World/Generated" unique_id=502016574]
+[node name="Infr" type="Node" parent="EntityManagers" unique_id=502016574]
 
-[node name="Rails" type="Node" parent="World/Generated/Infr" unique_id=755805219]
+[node name="Rails" type="Node" parent="EntityManagers/Infr" unique_id=755805219]
 unique_name_in_owner = true
 script = ExtResource("8_pcopj")
 
-[node name="RailForkLoader" type="Node" parent="World/Generated/Infr/Rails" unique_id=968754972]
+[node name="RailForkLoader" type="Node" parent="EntityManagers/Infr/Rails" unique_id=968754972]
 script = ExtResource("9_t6nuv")
 metadata/_custom_type_script = "uid://bpdu211yk5uj2"
 
-[node name="NewRailBuilder" type="Node" parent="World/Generated/Infr/Rails" unique_id=2032657844]
+[node name="NewRailBuilder" type="Node" parent="EntityManagers/Infr/Rails" unique_id=2032657844]
 script = ExtResource("13_qsvwm")
 metadata/_custom_type_script = "uid://qqx8i6ggh8v7"
 
-[node name="Stations" type="Node" parent="World/Generated/Infr" unique_id=1725096012]
+[node name="Stations" type="Node" parent="EntityManagers/Infr" unique_id=1725096012]
 unique_name_in_owner = true
 script = ExtResource("10_c37kc")
 
-[node name="StationIndustryConnector" type="Node" parent="World/Generated/Infr/Stations" unique_id=1002941828]
+[node name="StationIndustryConnector" type="Node" parent="EntityManagers/Infr/Stations" unique_id=1002941828]
 script = ExtResource("11_5swda")
 metadata/_custom_type_script = "uid://cebmcnxlern8g"
 
-[node name="StationResidenceConnector" type="Node" parent="World/Generated/Infr/Stations" unique_id=674894426]
+[node name="StationResidenceConnector" type="Node" parent="EntityManagers/Infr/Stations" unique_id=674894426]
 script = ExtResource("12_7yd2d")
 metadata/_custom_type_script = "uid://8e0con4047ai"
 
-[node name="StationGoodsSpawner" type="Node" parent="World/Generated/Infr/Stations" unique_id=675711714]
+[node name="StationGoodsSpawner" type="Node" parent="EntityManagers/Infr/Stations" unique_id=675711714]
 script = ExtResource("13_o2h5t")
 
-[node name="SpawnPassengersTimer" type="Timer" parent="World/Generated/Infr/Stations/StationGoodsSpawner" unique_id=700499437]
+[node name="SpawnPassengersTimer" type="Timer" parent="EntityManagers/Infr/Stations/StationGoodsSpawner" unique_id=700499437]
 wait_time = 3.0
 autostart = true
 
-[node name="Roads" type="Node" parent="World/Generated/Infr" unique_id=871922288]
+[node name="Roads" type="Node" parent="EntityManagers/Infr" unique_id=871922288]
 script = ExtResource("14_0dtnv")
 
-[node name="RoadIndustryExitConnector" type="Node" parent="World/Generated/Infr/Roads" unique_id=839585360]
+[node name="RoadIndustryExitConnector" type="Node" parent="EntityManagers/Infr/Roads" unique_id=839585360]
 script = ExtResource("15_11abr")
 metadata/_custom_type_script = "uid://5fhring754pq"
 
-[node name="Vehicles" type="Node" parent="World/Generated" unique_id=1664674465]
+[node name="Vehicles" type="Node" parent="EntityManagers" unique_id=1664674465]
 unique_name_in_owner = true
 script = ExtResource("15_g3fbs")
 
-[node name="VehicleTypesLoader" type="Node" parent="World/Generated/Vehicles" unique_id=1503344282]
+[node name="VehicleTypesLoader" type="Node" parent="EntityManagers/Vehicles" unique_id=1503344282]
 script = ExtResource("44_oo77m")
 types_list = ExtResource("23_5swda")
 metadata/_custom_type_script = "uid://j838sj2jcrb7"
 
-[node name="Industries" type="Node" parent="World/Generated" unique_id=1333823754]
+[node name="Industries" type="Node" parent="EntityManagers" unique_id=1333823754]
 script = ExtResource("16_6wawu")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
-[node name="Depots" type="Node" parent="World/Generated" unique_id=1488410899]
+[node name="Depots" type="Node" parent="EntityManagers" unique_id=1488410899]
 script = ExtResource("17_qsvwm")
 metadata/_custom_type_script = "uid://bcymy2uish8jw"
 
-[node name="MapSpawner" type="Node" parent="World" unique_id=153009305]
+[node name="LoadedMap" type="Node" parent="." unique_id=153009305]
 script = ExtResource("18_yvyyf")
 
-[node name="Terrain" type="Node" parent="World/MapSpawner" unique_id=550950488]
-unique_name_in_owner = true
-
-[node name="WorldUpdateTimer" type="Timer" parent="World/MapSpawner/Terrain" unique_id=889175461]
+[node name="WorldUpdateTimer" type="Timer" parent="LoadedMap" unique_id=889175461]
 process_callback = 0
 wait_time = 3.0
 autostart = true
 script = ExtResource("19_waht2")
 
-[node name="TerrainRaycaster" type="Node" parent="World/MapSpawner/Terrain" unique_id=2050387968]
+[node name="TerrainRaycaster" type="Node" parent="LoadedMap" unique_id=2050387968]
 script = ExtResource("20_20yvh")
 
 [node name="StartmenuMain" parent="." unique_id=1370471896 instance=ExtResource("21_sc7tx")]

@@ -21,6 +21,7 @@ Written in the Godot Engine
 
 * [ ] place player marker on map
 * [ ] create HinterlandEditor tab in bottom bar
+* [ ] Export from InfrRailLine3D back to JSON-Track or -road
 
 #### Infrastructure
 

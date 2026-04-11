@@ -25,6 +25,9 @@ size = Vector2(400, 250)
 [sub_resource type="PlaneMesh" id="PlaneMesh_kd810"]
 size = Vector2(400, 250)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_t3gr1"]
+size = Vector2(400, 300)
+
 [node name="WorldTerrain" type="Terrain3D" unique_id=1285850563]
 data_directory = "res://world/harzmountains/heightdata"
 material = ExtResource("1_kd810")
@@ -109,3 +112,8 @@ mesh = SubResource("PlaneMesh_l3qu8")
 transform = Transform3D(0.8931238, 0.007061489, 0.44975552, -0.007906258, 0.9999687, 2.3283064e-10, -0.44974145, -0.0035558837, 0.8931517, 2649.752, 7.1903996, 1709.967)
 material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_kd810")
+
+[node name="RuebelandRivers" type="MeshInstance3D" parent="Water" unique_id=1737928081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3894.1506, 20.668934, 3096.4866)
+material_override = ExtResource("38_w7ts7")
+mesh = SubResource("PlaneMesh_t3gr1")

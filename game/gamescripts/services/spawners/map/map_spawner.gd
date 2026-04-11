@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_map_white.png")
 class_name MapSpawner extends Node
 
 @export var terrain_container: WorldMapScene
@@ -5,11 +6,6 @@ class_name MapSpawner extends Node
 func _enter_tree() -> void:
 	Managers.map_spawner = self
 	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
-
-func _ready() -> void:
-	# var loaded_map: MapData = GlobalState.loaded_map
-	# self.spawn_map(loaded_map)
-	pass
 
 func spawn_map(map_data: MapData):
 	var tscn_path := map_data.get_scene_file_path()
@@ -19,7 +15,7 @@ func spawn_map(map_data: MapData):
 		self.register_scene(packed_scene.instantiate())
 	
 func place_terrain_scene(_terrain_container: WorldMapScene):
-	$"./Terrain".add_child(_terrain_container)
+	self.add_child(_terrain_container)
 	
 func register_scene(instanciated_scene: WorldMapScene):
 	self.terrain_container = instanciated_scene
