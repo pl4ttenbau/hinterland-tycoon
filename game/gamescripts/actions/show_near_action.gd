@@ -1,8 +1,9 @@
-class_name ShowNearInfrAction extends Node
+class_name ShowNearInfrAction extends BaseAction
 
 const MARKER_SCENE = "res://assets/meshes/markers/infr_end/selected_node.tscn"
 
 func on_trigger():
+	super.on_trigger()
 	var player_pos: Vector3 = GlobalState.player.global_position
 	var near_tracks: Array[RailTrackData] = self.get_tracks_near_pos(player_pos)
 	Loggie.info("Near tracks: " + ", ".join(near_tracks))

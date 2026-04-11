@@ -18,7 +18,7 @@ signal buildings_changed()
 @export var pos_xz: Vector2
 @export var is_minor: bool = false
 
-@export var autogenerate_houses: bool = true
+@export var autogenerate_houses: bool = false
 @export_storage var totalPops: int
 @export_storage var res_bld_containers: Array[Residence3D] = []
 
@@ -62,8 +62,7 @@ func add_res_bld(outer_res_bld: Residence3D):
 func has_bld_around(check_pos: Vector3) -> bool:
 	for outer_res_bld: Residence3D in self.res_bld_containers:
 		var dist_to := outer_res_bld.position.distance_to(check_pos)
-		if dist_to <= BUIDLING_BLOCKAGE_RADIUS: 
-			return true
+		if dist_to <= BUIDLING_BLOCKAGE_RADIUS: return true
 	# Loggie.warn("Pos %v blocked by building in town %s" % [check_pos, self.town_name])
 	return false
 #endregion

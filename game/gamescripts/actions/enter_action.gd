@@ -1,6 +1,7 @@
-class_name EnterAction extends Node
+class_name EnterAction extends BaseAction
 
 func on_trigger():
+	super.on_trigger()
 	if GlobalState.active_cam.get_meta("cam_name") == "CAM_PLAYER":
 		self.enter_train()
 	else:

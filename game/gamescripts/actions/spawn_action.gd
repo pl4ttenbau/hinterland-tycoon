@@ -1,4 +1,4 @@
-class_name SpawnAction extends Node
+class_name SpawnAction extends BaseAction
 
 const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
 const COMPOSE_TRAIN_DIAG_SCENE = "res://scenes/ui/dialogs/train_composition/train_composition_dialog.tscn"
@@ -9,6 +9,7 @@ func _enter_tree() -> void:
 	SignalBus.request_spawn_action.connect(Callable(self, "_on_spawn_action_request"))
 
 func on_trigger():
+	super.on_trigger()
 	var diag_instance: TrainCompositionDialog = self.show_compose_train_diag()
 	diag_instance.before_closed.connect(Callable(self, "_on_before_diag_closed"))
 

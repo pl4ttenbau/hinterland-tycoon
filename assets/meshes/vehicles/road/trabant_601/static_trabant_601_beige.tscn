@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dv5dfp81rx5f6"]
+
+[ext_resource type="PackedScene" uid="uid://cboiswtw5emn8" path="res://assets/meshes/vehicles/road/trabant_601/model/model_trabant_601_beige.tscn" id="1_62ifi"]
+
+[node name="StaticTrabant601Beige" type="Node3D" unique_id=91016198]
+
+[node name="ModelTrabant601Beige" parent="." unique_id=2013987722 instance=ExtResource("1_62ifi")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)

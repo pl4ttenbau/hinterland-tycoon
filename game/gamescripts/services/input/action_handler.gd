@@ -6,7 +6,10 @@ func _enter_tree() -> void:
 	
 func _on_action_triggered(item: ActionMenuItem) -> bool:
 	if !item || !item.get_action_name(): return false
-	Loggie.info("Action Selected: %s" % item.get_action_name())
+	for handler_child: Node in self.get_children():
+		if handler_child is BaseAction:
+			if handler_child.key == item.get_action_name():
+				handler_child.on_trigger()
 	if item.get_action_name() == "Enter":
 		$EnterAction.on_trigger()
 	elif item.get_action_name() == "Spawn":

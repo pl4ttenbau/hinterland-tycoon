@@ -5,11 +5,13 @@ class_name RoadData extends AbstractTrack
 const RURAL_ROAD_SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 const DIRT_PATH_SCENE_PATH = "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn"
 
-@export var nodes: Array[RoadNode] = []
-@export_storage var crosses: Array[RoadCross] = []
-
 @warning_ignore("unused_signal")
 signal created(track: RoadData)
+
+@export var autosmooth: bool
+
+@export var nodes: Array[RoadNode] = []
+@export_storage var crosses: Array[RoadCross] = []
 
 #region Initialization
 func _init():

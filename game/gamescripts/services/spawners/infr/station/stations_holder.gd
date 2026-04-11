@@ -57,7 +57,15 @@ func spawn_station(station_obj: RailNodeStationData) -> RailNodeStation3D:
 	self.add_child(outer_station, true)
 	return outer_station
 #endregion
-	
+
+#region Vehicle At Station
+func get_station_around_pos(vec3: Vector3) -> RailStationData:
+	for station: RailStationData in GlobalState.station_objs:
+		if vec3.distance_squared_to(station.position) < 100:
+			return station
+	return null
+#endregion
+
 #region Callbacks
 func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
 	self.spawn_stations()

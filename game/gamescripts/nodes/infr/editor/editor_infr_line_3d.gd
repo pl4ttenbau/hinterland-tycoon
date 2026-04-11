@@ -17,26 +17,31 @@ const LINE_WIDTH = .5
 	get(): return self._get_color()
 	
 @export var abs_aabb: AABB
+@export var autosmooth: bool = false
 
 @export_group("Actions")
 @export_tool_button("Auto-Smooth Y")
-var empty_infr = Callable(self, "do_smooth_y")
+var smooth_y = Callable(self, "do_smooth_y")
+
+@export_tool_button("Auto-Smooth Full")
+var smooth_full = Callable(self, "do_smooth_full")
 
 #region Initialization
-static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed") -> EditorInfrLine3D:
+static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed", _autosmooth: bool = false) -> EditorInfrLine3D:
 	var inst := EditorInfrLine3D.new()
 	inst.infr_domain = _domain
 	inst.num = _num
 	inst.infr_name = _name
+	inst.autosmooth = _autosmooth
 	# auto-set node name
 	inst.name = inst._get_node_name()
 	return inst
 	
-static func ofRoad(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
-	return EditorInfrLine3D.of(Enums.InfrDomain.ROAD, _num, _name)
-	
+static func ofRoad(_num: int, _name: String = "unnamed", _autosmooth: bool = false) -> EditorInfrLine3D:
+	return EditorInfrLine3D.of(Enums.InfrDomain.ROAD, _num, _name, _autosmooth)
+
 static func ofRail(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
-	return EditorInfrLine3D.of(Enums.InfrDomain.RAIL, _num, _name)
+	return EditorInfrLine3D.of(Enums.InfrDomain.RAIL, _num, _name, true)
 	
 func _enter_tree():
 	super()
@@ -44,7 +49,7 @@ func _enter_tree():
 #endregion
 
 #region Curve
-func create_curve_from_dict(infr_dict: Dictionary, smooth: bool = false):
+func create_curve_from_dict(infr_dict: Dictionary):
 	self.curve = Curve3D.new()
 	var abs_points: PackedVector3Array = []
 	var point_handle_in: PackedVector3Array = []
@@ -62,7 +67,7 @@ func create_curve_from_dict(infr_dict: Dictionary, smooth: bool = false):
 		point_i += 1
 	# generate aabb
 	self.abs_aabb = InfrUtils.get_aabb(abs_points)
-	if smooth:
+	if self.autosmooth:
 		InfrUtils.smooth_curve3d(self.curve)
 
 func _get_handle_in_from_point_json(point_json: Dictionary) -> Vector3:
@@ -74,6 +79,9 @@ func _get_handle_in_from_point_json(point_json: Dictionary) -> Vector3:
 	
 func do_smooth_y():
 	InfrUtils.smooth_curve3d_y(self.curve)
+
+func do_smooth_full():
+	InfrUtils.smooth_curve3d(self.curve)
 #endregion
 
 #region Helper-Methods
