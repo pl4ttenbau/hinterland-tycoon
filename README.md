@@ -57,7 +57,7 @@ Written in the Godot Engine
 	* Laenderwagen Asset
 	* UV mapping and mental support :P
 * Reiner Prokein - reinerstilesets.de
-* emzetgie (on Steam) for his excellent polish houses models
+* [emzetgie](https://steamcommunity.com/profiles/76561198965772146/myworkshopfiles/?appid=784150) for his excellent polish houses models
 * Konrad for his village life enhancements
 
 ### Used Addons
