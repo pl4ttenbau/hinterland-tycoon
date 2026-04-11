@@ -2,7 +2,10 @@
 
 [ext_resource type="ArrayMesh" uid="uid://dsqo6deiroy8r" path="res://assets/meshes/infr/bridge/bridge_pillar_brick/bridge_pillar_brick.obj" id="1_wt7ri"]
 
-[node name="BridgePillarBrick" type="Node3D"]
+[node name="BridgePillarBrick" type="Node3D" unique_id=19377177]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=225243625]
+layers = 32
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
 mesh = ExtResource("1_wt7ri")
