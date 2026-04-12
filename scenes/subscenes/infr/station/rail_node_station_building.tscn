@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvjv4qtbre7n"]
 
 [ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="1_cyx2g"]
+[ext_resource type="Script" uid="uid://fsh6rdvtcgqi" path="res://game/gamescripts/nodes/infr/station/station_building_3d.gd" id="1_pjj2v"]
 [ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="2_pjj2v"]
 [ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="3_0cmdo"]
 [ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="4_013s3"]
@@ -18,7 +19,9 @@ rough = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_65b5o"]
 size = Vector3(16.579529, 1.826587, 6.1153564)
 
-[node name="StationBuilding" type="Node3D" unique_id=200956076]
+[node name="StationBuilding" type="Node3D" unique_id=914846890]
+script = ExtResource("1_pjj2v")
+metadata/_custom_type_script = "uid://fsh6rdvtcgqi"
 
 [node name="RailStationMesh" type="MeshInstance3D" parent="." unique_id=325760095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)

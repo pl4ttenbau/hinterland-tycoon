@@ -31,6 +31,7 @@ func make_types_list() -> Array[BaseGoodsType]:
 		BaseGoodsType.new("oil", BaseGoodsType.ResourceCategory.LIQUID),
 		BaseGoodsType.new("chemicals", BaseGoodsType.ResourceCategory.LIQUID),
 		# aggregate goods
+		BaseGoodsType.new("stone", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("coal", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("ore", BaseGoodsType.ResourceCategory.FREIGHT),
 		BaseGoodsType.new("ingots", BaseGoodsType.ResourceCategory.FREIGHT),

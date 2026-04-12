@@ -1,28 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://datqx0f0mdhmc"]
+[gd_scene format=3 uid="uid://datqx0f0mdhmc"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_5qinm"]
 [ext_resource type="ArrayMesh" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="1_iitmb"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ggyj6"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_08gt4"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_d54y4"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_d54y4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xpss4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08gt4"]
 size = Vector3(15.3044, 7.17401, 34.3833)
 
-[node name="WarehouseWooden" type="Node3D"]
+[sub_resource type="Resource" id="Resource_d54y4"]
+script = ExtResource("5_d54y4")
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="WarehouseWooden" type="Node3D" unique_id=1260281336]
 script = ExtResource("1_5qinm")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=382158768]
 visibility_range_end = 300.0
 visibility_range_end_margin = 20.0
 mesh = ExtResource("1_iitmb")
 
-[node name="ClickableCollider" type="StaticBody3D" parent="."]
+[node name="ClickableCollider" type="StaticBody3D" parent="." unique_id=2060413579]
 physics_material_override = SubResource("PhysicsMaterial_xpss4")
 script = ExtResource("3_ggyj6")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ClickableCollider" unique_id=380504487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95349, 3.56806, 0.200882)
 shape = SubResource("BoxShape3D_08gt4")
+
+[node name="Inventory" type="Node" parent="." unique_id=560971047]
+script = ExtResource("4_08gt4")
+inventory = SubResource("Resource_d54y4")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1793428774 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("6_d54y4")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"

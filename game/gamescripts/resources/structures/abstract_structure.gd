@@ -1,5 +1,5 @@
 @abstract
-class_name AbstractStructure extends GoodsInventory
+class_name AbstractStructure extends GameEntityData
 
 @export var town_num: int
 @export var bld_type: AbstractBldType

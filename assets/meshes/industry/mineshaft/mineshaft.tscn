@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bc8xyiepqrbj1"]
+[gd_scene format=3 uid="uid://bc8xyiepqrbj1"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_rrjv6"]
 [ext_resource type="ArrayMesh" uid="uid://bbi6ilkjisxdv" path="res://assets/meshes/industry/mineshaft/mineshaft.obj" id="2_acou4"]
 [ext_resource type="Texture2D" uid="uid://bjcsyg51ekmvg" path="res://assets/meshes/industry/mineshaft/tex_mineshaft_fence_d.png" id="3_p1ie3"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="4_acou4"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="5_p1ie3"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="6_ud687"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_yvm43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud687"]
 transparency = 2
@@ -16,21 +19,35 @@ albedo_texture = ExtResource("3_p1ie3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1ie3"]
 size = Vector3(15.310032, 29.219421, 15.64447)
 
-[node name="Mineshaft" type="Node3D"]
+[sub_resource type="Resource" id="Resource_yvm43"]
+script = ExtResource("6_ud687")
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="Mineshaft" type="Node3D" unique_id=1528203703]
 script = ExtResource("1_rrjv6")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=363912605]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 visibility_range_end = 400.0
 visibility_range_end_margin = 40.0
 mesh = ExtResource("2_acou4")
 surface_material_override/3 = SubResource("StandardMaterial3D_ud687")
 
-[node name="IndustryCollider" type="StaticBody3D" parent="."]
+[node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=113687436]
 script = ExtResource("4_acou4")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider" unique_id=1528545166]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05539894, 14.514679, 0.020050049)
 shape = SubResource("BoxShape3D_p1ie3")
+
+[node name="Inventory" type="Node" parent="." unique_id=55937783]
+script = ExtResource("5_p1ie3")
+inventory = SubResource("Resource_yvm43")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1025550989 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("7_yvm43")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"

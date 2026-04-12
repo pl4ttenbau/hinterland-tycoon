@@ -1,5 +1,7 @@
 class_name SpawnedGood extends GameEntityData
 
+@export var is_valid: bool = true
+
 @export var res_type: BaseGoodsType
 @export var amount: int = 1
 
@@ -12,8 +14,10 @@ class_name SpawnedGood extends GameEntityData
 func _init(_type: StringName, _amount: int, _target: AbstractStructure = null) -> void:
 	super(Enums.EntityTypes.GOOD)
 	self.res_type = BaseGoodsType.get_by_key(_type)
+	if !self.res_type:
+		Loggie.warn("Cannot find goods type %s" % _type)
+		self.is_valid = false
 	self.target_location = _target
-	
 
 func move_res_to(target_container: GoodsInventory):
 	if self.current_location != null:

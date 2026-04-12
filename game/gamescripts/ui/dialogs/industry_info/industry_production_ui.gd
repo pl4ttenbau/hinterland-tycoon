@@ -1,4 +1,4 @@
-class_name IndustryProduction extends MarginContainer
+class_name IndustryProductionUi extends MarginContainer
 
 @export var industry: IndustryData:
 	get(): return industry

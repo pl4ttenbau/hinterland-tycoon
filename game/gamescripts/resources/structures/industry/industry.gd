@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_industry_white.png")
-class_name IndustryData extends GoodsInventory
+class_name IndustryData extends GameEntityData
 
 @export var pos: Vector3
 @export var ind_type: IndustryType
@@ -55,16 +55,3 @@ static func from_placeholder(placeholder: IndustryPlaceholder) -> IndustryData:
 #region Getters
 static func arr_to_vec3(float_arr: Array) -> Vector3:
 	return Vector3(float_arr[0], float_arr[1], float_arr[2])
-	
-func has_required_goods() -> bool:
-	for required_res: TransformedGood in self.ind_type.requires:
-		@warning_ignore("narrowing_conversion")
-		var spawned_good := SpawnedGood.new(required_res.res_key, required_res.res_modifier)
-		if ! self.has_enough(spawned_good): return false
-	return true
-
-func get_produced_amount(good_type_key: String) -> int:
-	for produced_good: TransformedGood in self.ind_type.produces:
-		if produced_good.res_key == good_type_key:
-			return produced_good.res_modifier as int
-	return 0

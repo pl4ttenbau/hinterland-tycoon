@@ -11,7 +11,9 @@ class_name OuterSpeedControlSlider extends CenterContainer
 		
 @export_storage var curr_speed: VehicleSpeed:
 	get():
-		return self.curr_train.motor.speed
+		if self.curr_train:
+			return self.curr_train.motor.speed
+		return null
 
 func _ready() -> void:
 	%VSlider.drag_ended.connect(Callable(self, "_on_drag_ended"))
