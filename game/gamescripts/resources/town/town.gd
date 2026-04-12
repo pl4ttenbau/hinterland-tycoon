@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_town_white.png")
-class_name TownData extends GameObject
+class_name TownData extends GameEntityData
 
 const BUIDLING_BLOCKAGE_RADIUS = 20.0
 

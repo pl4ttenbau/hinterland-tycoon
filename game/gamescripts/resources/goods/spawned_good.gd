@@ -1,4 +1,4 @@
-class_name SpawnedGood extends GameObject
+class_name SpawnedGood extends GameEntityData
 
 @export var res_type: BaseGoodsType
 @export var amount: int = 1

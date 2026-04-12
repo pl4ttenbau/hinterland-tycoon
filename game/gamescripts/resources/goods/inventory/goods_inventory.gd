@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_good_white.png")
-class_name GoodsInventory extends GameObject
+class_name GoodsInventory extends GameEntityData
 
 signal resource_change()
 

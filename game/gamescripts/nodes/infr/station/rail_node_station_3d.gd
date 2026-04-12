@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_station.png")
-class_name RailNodeStation3D extends HideableObject
+class_name RailNodeStation3D extends GameEntity3D
 
 const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"
 const NINETY_DEG_IN_RAD = 1.57

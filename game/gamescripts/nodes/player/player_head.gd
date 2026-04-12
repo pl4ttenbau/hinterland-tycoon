@@ -1,4 +1,4 @@
-class_name PlayerHead extends VisibleObject
+class_name PlayerHead extends GameEntity3D
 
 @onready var cam: Camera3D = $Camera3D
 @onready var collider: CollisionShape3D = %Player/PlayerCollisionShape

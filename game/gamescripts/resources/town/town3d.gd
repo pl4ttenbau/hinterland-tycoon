@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_town.png")
-class_name Town3D extends VisibleObject
+class_name Town3D extends GameEntity3D
 
 signal town_changed(_town: TownData)
 

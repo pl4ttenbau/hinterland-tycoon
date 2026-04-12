@@ -1,4 +1,4 @@
-class_name TrainData extends GameObject
+class_name TrainData extends GameEntityData
 
 @warning_ignore("unused_signal")
 signal locomotive_changed(loco: VehicleData)

@@ -1,6 +1,6 @@
 class_name StationCollider extends ClickableCollider
 
-@onready var outer_station: RailNodeStation3D = self.get_parent_node_3d()
+@onready var outer_station: RailNodeStation3D = $"../.."
 
 func get_station() -> RailNodeStationData:
 	return outer_station.entity

@@ -1,4 +1,4 @@
-class_name GameObject extends Resource
+class_name GameEntityData extends Resource
 
 @export var num: int
 

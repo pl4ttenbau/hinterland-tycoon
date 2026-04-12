@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_depot_white.png")
-class_name RailDepotData extends GameObject
+class_name RailDepotData extends GameEntityData
 
 #region Properties
 @export var depot_name: StringName

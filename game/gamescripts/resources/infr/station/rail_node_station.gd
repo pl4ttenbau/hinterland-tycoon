@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_station_white.png")
-class_name RailNodeStationData extends GameObject
+class_name RailNodeStationData extends GameEntityData
 
 #region Generated Properties
 @export var parent_node: RailNodeData

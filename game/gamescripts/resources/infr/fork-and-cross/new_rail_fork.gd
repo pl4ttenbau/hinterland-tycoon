@@ -1,4 +1,4 @@
-class_name NewRailForkData extends GameObject
+class_name NewRailForkData extends GameEntityData
 
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 

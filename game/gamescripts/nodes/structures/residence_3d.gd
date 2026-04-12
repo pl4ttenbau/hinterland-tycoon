@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_house.png")
-class_name Residence3D extends HideableObject
+class_name Residence3D extends GameEntity3D
 
 static var last_bld_num: int = 0
 
