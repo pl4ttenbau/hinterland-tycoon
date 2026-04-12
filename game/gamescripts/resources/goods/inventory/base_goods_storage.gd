@@ -1,3 +1,5 @@
+## child of a real iventory
+## contains an amount of goods, but no higher-leven functions to interact with
 class_name BaseGoodsStorage extends Resource
 
 @export var inventory_dict: Dictionary = {}

@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_good_white.png")
 class_name GoodsInventory extends GameObject
 
 signal resource_change()
