@@ -22,14 +22,7 @@ func produce_good(good_type_key: String):
 	self.get_inventory().add_spawned_good(spawned_good)
 
 func has_required_goods() -> bool:
-	if !self.get_ind_obj():
-		Loggie.warn("Cannot get industry obj of %s" % self.name)
-		return false
-	elif !self.get_ind_obj().ind_type:
-		Loggie.warn("Cannot get industry type of %s" % self.name)
-		return false
-	for required_res: TransformedGood in self.get_ind_obj().ind_type.requires:
-		@warning_ignore("narrowing_conversion")
+	for required_res: TransformedGood in self.get_ind_type().requires:
 		var spawned_good := SpawnedGood.new(required_res.res_key, required_res.res_modifier)
 		if ! self.get_inventory().has_enough(spawned_good): return false
 	return true
@@ -44,7 +37,16 @@ func get_produced_amount(good_type_key: String) -> int:
 
 #region Node Getters
 func get_ind_obj() -> IndustryData:
-	return self.industry3d.industry
+	var ind_obj: IndustryData = self.industry3d.industry
+	if !ind_obj:
+		Loggie.warn("Cannot get industry obj of %s" % self.name)
+	return ind_obj
+
+func get_ind_type() -> IndustryType:
+	var ind_type: IndustryType = self.get_ind_obj().ind_type
+	if !ind_type:
+		Loggie.warn("Cannot get industry type of %s" % self.name)
+	return ind_type
 
 func get_inventory() -> GoodsInventory:
 	return self.industry3d.get_inventory()
