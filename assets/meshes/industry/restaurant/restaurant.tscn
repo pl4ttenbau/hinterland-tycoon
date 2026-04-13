@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnjrhq0skfm5u" path="res://assets/meshes/industry/restaurant/tex_restaurant_n.png" id="4_e41w3"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="6_qra3x"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="7_qqtyg"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="8_d7t2n"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="8_qqtyg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qra3x"]
@@ -20,8 +21,14 @@ normal_texture = ExtResource("4_e41w3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljf2g"]
 size = Vector3(11.2487335, 16.403564, 12.422577)
 
-[sub_resource type="Resource" id="Resource_qqtyg"]
+[sub_resource type="Resource" id="Resource_d7t2n"]
+script = ExtResource("8_d7t2n")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_bcvc6"]
 script = ExtResource("7_qqtyg")
+storage = SubResource("Resource_d7t2n")
+amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="Restaurant" type="Node3D" unique_id=590000527]
@@ -44,7 +51,7 @@ shape = SubResource("BoxShape3D_ljf2g")
 
 [node name="Inventory" type="Node" parent="." unique_id=1819216941]
 script = ExtResource("6_qra3x")
-inventory = SubResource("Resource_qqtyg")
+inventory = SubResource("Resource_bcvc6")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="Production" type="Node" parent="." unique_id=1348824680 node_paths=PackedStringArray("industry3d")]

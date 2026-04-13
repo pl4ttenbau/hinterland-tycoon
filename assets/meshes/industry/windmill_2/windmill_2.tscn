@@ -6,12 +6,18 @@
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_3xkum"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_rel8n"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_rel8n"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="7_3jxg6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5nb8"]
 size = Vector3(5.6219482, 12.417358, 4.5319824)
 
-[sub_resource type="Resource" id="Resource_rel8n"]
+[sub_resource type="Resource" id="Resource_xsax0"]
+script = ExtResource("7_3jxg6")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_5lxqb"]
 script = ExtResource("5_rel8n")
+storage = SubResource("Resource_xsax0")
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="Windmill2" type="Node3D" unique_id=252492675]
@@ -35,5 +41,5 @@ metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
 
 [node name="Inventory" type="Node" parent="." unique_id=2025634280]
 script = ExtResource("4_3xkum")
-inventory = SubResource("Resource_rel8n")
+inventory = SubResource("Resource_5lxqb")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"

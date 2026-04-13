@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4gulibn6ntyl" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks_n.jpg" id="6_h806u"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="8_bc2f1"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="9_h806u"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="10_dubqm"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="10_h806u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dubqm"]
@@ -26,8 +27,14 @@ normal_texture = ExtResource("6_h806u")
 [sub_resource type="BoxShape3D" id="BoxShape3D_nl8nk"]
 size = Vector3(5.8168488, 13.283134, 19.354837)
 
-[sub_resource type="Resource" id="Resource_h806u"]
+[sub_resource type="Resource" id="Resource_dubqm"]
+script = ExtResource("10_dubqm")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_xw50g"]
 script = ExtResource("9_h806u")
+storage = SubResource("Resource_dubqm")
+amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="OilDerrick" type="Node3D" unique_id=403551129]
@@ -51,7 +58,7 @@ shape = SubResource("BoxShape3D_nl8nk")
 
 [node name="Inventory" type="Node" parent="." unique_id=2034515526]
 script = ExtResource("8_bc2f1")
-inventory = SubResource("Resource_h806u")
+inventory = SubResource("Resource_xw50g")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="Production" type="Node" parent="." unique_id=946780138 node_paths=PackedStringArray("industry3d")]

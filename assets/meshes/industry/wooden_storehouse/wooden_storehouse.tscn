@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://ddk4jv4q07x08"
 [sub_resource type="Resource" id="Resource_bmij4"]
 script = ExtResource("5_jyp8w")
 storage = SubResource("Resource_chdje")
+amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="WoodenStorehouse" type="Node3D" unique_id=54071972]

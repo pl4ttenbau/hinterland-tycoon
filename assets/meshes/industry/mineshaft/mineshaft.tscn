@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="4_acou4"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="5_p1ie3"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="6_ud687"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="7_q3x8e"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_yvm43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud687"]
@@ -19,8 +20,14 @@ albedo_texture = ExtResource("3_p1ie3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1ie3"]
 size = Vector3(15.310032, 29.219421, 15.64447)
 
-[sub_resource type="Resource" id="Resource_yvm43"]
+[sub_resource type="Resource" id="Resource_q3x8e"]
+script = ExtResource("7_q3x8e")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_phnpl"]
 script = ExtResource("6_ud687")
+storage = SubResource("Resource_q3x8e")
+amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="Mineshaft" type="Node3D" unique_id=1528203703]
@@ -44,7 +51,7 @@ shape = SubResource("BoxShape3D_p1ie3")
 
 [node name="Inventory" type="Node" parent="." unique_id=55937783]
 script = ExtResource("5_p1ie3")
-inventory = SubResource("Resource_yvm43")
+inventory = SubResource("Resource_phnpl")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="Production" type="Node" parent="." unique_id=1025550989 node_paths=PackedStringArray("industry3d")]

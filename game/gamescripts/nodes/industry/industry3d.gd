@@ -13,31 +13,39 @@ static var last_ind_num: int = 0
 		self._set_name(value)
 		
 @export var sign3d: IndustrySign3D
-		
-#region Initialization
+
+#region Static Constructor
 static func of(_industry: IndustryData) -> Industry3D:
 	if ! _industry.ind_type:
 		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
 		return null
 	var scene_path := _industry.ind_type.get_mesh_path()
-	var instanciated: Industry3D = load(scene_path).instantiate()
+	var packed_scene: PackedScene = load(scene_path)
+	var instanciated: Industry3D = packed_scene.instantiate()
 	instanciated.industry = _industry
 	return instanciated
+#endregion
 
+#region Initialization
 func _ready() -> void:
-	super._ready()
 	self.spawn_industry_label()
-	
+	self.spawn_inventory_and_production()
+	super._ready()
+
 func spawn_industry_label() -> IndustrySign3D:
 	return IndustrySign3D.of(self)
-#endregion
 
-#region Production
-
-#endregion
-	
-#region Callbacks
-
+func spawn_inventory_and_production():
+	if !self.has_node("Inventory"):
+		var inventory_container: InventoryContainer = InventoryContainer.new()
+		inventory_container.inventory = GoodsInventory.new()
+		self.add_child(inventory_container)
+		inventory_container.name = "Inventory"
+	if !self.has_node("Production"):
+		var production: IndustryProduction = IndustryProduction.new()
+		production.industry3d = self
+		self.add_child(production)
+		production.name = "Production"
 #endregion
 
 #region Helper-Methods

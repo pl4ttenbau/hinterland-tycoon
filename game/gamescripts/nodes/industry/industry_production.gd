@@ -1,8 +1,6 @@
 @icon("res://assets/icons/icon_gears_white.png")
 class_name IndustryProduction extends Node
 
-const PRODUCTION_TIMER_SECONDS = 5.0
-
 @export var industry3d: Industry3D
 
 func _ready() -> void:
@@ -13,12 +11,9 @@ func _ready() -> void:
 	self.add_production_timer()
 
 func add_production_timer():
-	var production_timer: Timer = Timer.new()
-	production_timer.wait_time = PRODUCTION_TIMER_SECONDS
-	production_timer.one_shot = false
+	var production_timer: IndustryProductionTimer = IndustryProductionTimer.new()
 	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
 	self.add_child(production_timer)
-	production_timer.start(PRODUCTION_TIMER_SECONDS)
 
 #region Inventory
 func produce_good(good_type_key: String):
@@ -62,6 +57,5 @@ func _on_production_timeout():
 		return
 	if self.has_required_goods():
 		for produced_good: TransformedGood in self.get_ind_obj().ind_type.produces:
-			Loggie.info("adding %s to storage %s" % [produced_good.res_key, self.get_inventory().storage])
 			self.produce_good(produced_good.res_key)
 #endregion

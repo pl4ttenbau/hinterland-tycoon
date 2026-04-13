@@ -6,14 +6,22 @@
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_0h862"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_358e6"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_358e6"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_jk2i7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8embk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0h862"]
 size = Vector3(14.406, 4.57373, 10.2098)
 
-[sub_resource type="Resource" id="Resource_358e6"]
+[sub_resource type="Resource" id="Resource_jk2i7"]
+script = ExtResource("6_jk2i7")
+max_storage = 200.0
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_x134c"]
 script = ExtResource("5_358e6")
+storage = SubResource("Resource_jk2i7")
+amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [node name="Warehouse1" type="Node3D" unique_id=598432118]
@@ -36,7 +44,7 @@ shape = SubResource("BoxShape3D_0h862")
 
 [node name="Inventory" type="Node" parent="." unique_id=935204851]
 script = ExtResource("4_0h862")
-inventory = SubResource("Resource_358e6")
+inventory = SubResource("Resource_x134c")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="Production" type="Node" parent="." unique_id=822759210 node_paths=PackedStringArray("industry3d")]
