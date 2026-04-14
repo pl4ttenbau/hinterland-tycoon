@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bpjbrmuupoc4x"]
+
+[ext_resource type="Script" uid="uid://cyq3n7mrovte" path="res://game/gamescripts/nodes/player/player_head.gd" id="1_faoqa"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="2_8qnhu"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="3_6bklq"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="4_y2624"]
+
+[sub_resource type="Resource" id="Resource_faoqa"]
+script = ExtResource("4_y2624")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_8qnhu"]
+script = ExtResource("3_6bklq")
+storage = SubResource("Resource_faoqa")
+amount_max = 3.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="Head" type="Node3D" unique_id=1525288275]
+script = ExtResource("1_faoqa")
+metadata/_custom_type_script = "uid://cyq3n7mrovte"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1956442638]
+current = true
+fov = 55.0
+far = 750.0
+metadata/cam_name = &"CAM_PLAYER"
+
+[node name="Inventory" type="Node" parent="." unique_id=134791975]
+script = ExtResource("2_8qnhu")
+inventory = SubResource("Resource_8qnhu")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"

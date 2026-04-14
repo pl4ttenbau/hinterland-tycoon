@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cvrnhrdb5juy3"]
+
+[ext_resource type="Script" uid="uid://ds0dtxu51v1nt" path="res://game/gamescripts/ui/inventory/transfer_inventory_row.gd" id="1_hgtml"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_detail = 1
+
+[node name="TransferInventoryRow" type="PanelContainer" unique_id=224763508]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -652.0
+offset_bottom = 54.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ud4v")
+script = ExtResource("1_hgtml")
+metadata/_custom_type_script = "uid://ds0dtxu51v1nt"
+
+[node name="HMargin" type="MarginContainer" parent="." unique_id=1272487996]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="MoveLeftContainer" type="CenterContainer" parent="HMargin" unique_id=1394645642]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MoveLeftHLayout" type="HBoxContainer" parent="HMargin/MoveLeftContainer" unique_id=2012586881]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HMargin/MoveLeftContainer/MoveLeftHLayout" unique_id=476615261]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "<"
+
+[node name="Move5Btn_L" type="Button" parent="HMargin/MoveLeftContainer/MoveLeftHLayout" unique_id=1357725944]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "5"
+
+[node name="Move1Btn_L" type="Button" parent="HMargin/MoveLeftContainer/MoveLeftHLayout" unique_id=348357499]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="MoveRightContainer" type="CenterContainer" parent="HMargin" unique_id=716398508]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MoveRightHLayout" type="HBoxContainer" parent="HMargin/MoveRightContainer" unique_id=2015144468]
+layout_mode = 2
+
+[node name="Move1Btn_R" type="Button" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1279046427]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1"
+
+[node name="Move5Btn_R" type="Button" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1297677740]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5"
+
+[node name="Label" type="Label" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1292262692]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = ">"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HMargin" unique_id=367704387]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GoodTypeLabel" type="Label" parent="HMargin/HBoxContainer" unique_id=1973183539]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "Good_Type_Key"
+horizontal_alignment = 1
+
+[node name="EmptySpace" type="Label" parent="HMargin/HBoxContainer" unique_id=621055169]
+layout_mode = 2
+text = ":"
+
+[node name="GoodAmountLabel" type="Label" parent="HMargin/HBoxContainer" unique_id=291481813]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "52.6"

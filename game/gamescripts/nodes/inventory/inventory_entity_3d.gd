@@ -2,7 +2,7 @@ class_name InventoryEntity3D extends GameEntity3D
 
 signal inventory_connected(inv_obj: GoodsInventory)
 
-var cached_inventory: GoodsInventory
+@export var cached_inventory: GoodsInventory
 
 func get_inventory() -> GoodsInventory:
 	if self.cached_inventory:

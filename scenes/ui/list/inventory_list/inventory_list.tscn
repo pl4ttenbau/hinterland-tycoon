@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cf5u4ysk2yu1o"]
+
+[ext_resource type="Script" uid="uid://b3icekma55xe5" path="res://game/gamescripts/ui/inventory/transfer_inventory_list.gd" id="1_2ar6o"]
+[ext_resource type="PackedScene" uid="uid://cvrnhrdb5juy3" path="res://scenes/ui/list/inventory_list/inventory_list_row.tscn" id="2_2ar6o"]
+
+[node name="OuterInventoryList" type="VBoxContainer" unique_id=2029808383]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 375.0
+offset_bottom = 623.0
+script = ExtResource("1_2ar6o")
+metadata/_custom_type_script = "uid://b3icekma55xe5"
+
+[node name="HeadlineContainer" type="Control" parent="." unique_id=922166521]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="EntityNameLabel" type="Label" parent="HeadlineContainer" unique_id=674353156]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Train 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HeadlineContainer" unique_id=665015054]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 109.0
+offset_bottom = 15.5
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Inventory:"
+vertical_alignment = 1
+
+[node name="InventoryList" type="VBoxContainer" parent="." unique_id=407291866]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TransferInventoryRow" parent="InventoryList" unique_id=224763508 instance=ExtResource("2_2ar6o")]
+layout_mode = 2
+is_left = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c260ksylv54r6"]
 
 [ext_resource type="Script" uid="uid://b57silj6wixmw" path="res://game/gamescripts/ui/dialogs/train_composition/vehicle_list_ui/vehicle_list_ui.gd" id="1_ogo2b"]
-[ext_resource type="PackedScene" uid="uid://beff5g4mv3wc6" path="res://scenes/ui/list/items/vehicle_list_item.tscn" id="2_ogo2b"]
+[ext_resource type="PackedScene" uid="uid://beff5g4mv3wc6" path="res://scenes/ui/list/vehicle_list/vehicle_list_item.tscn" id="2_ogo2b"]
 
 [node name="VehicleList" type="MarginContainer" unique_id=1772100841]
 anchors_preset = 15
