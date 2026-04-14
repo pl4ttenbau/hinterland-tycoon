@@ -2,7 +2,10 @@
 class_name TransferInventoryListUi extends VBoxContainer
 
 @warning_ignore("unused_signal")
-signal transfer(spawned_good: SpawnedGood)
+signal transfer_out(spawned_good: SpawnedGood)
+
+@warning_ignore("unused_signal")
+signal transfer_in(spawned_good: SpawnedGood)
 
 @warning_ignore("unused_signal")
 signal side_changed(is_left: bool)
@@ -50,6 +53,11 @@ func fill_inventory_list():
 		for res_key: String in self.inventory.storage.inventory_dict:
 			var res_amount: float = self.inventory.get_amount(res_key)
 			var new_row: TransferInventoryRowUi = build_inventory_row(res_key, res_amount)
+			# connect
+			var outer_transfer_callable := Callable(self, "_on_row_out_transfer")
+			if !new_row.transfer_out.is_connected(outer_transfer_callable):
+				new_row.transfer_out.connect(outer_transfer_callable)
+			# and add as child
 			%InventoryList.add_child(new_row)
 
 func build_inventory_row(res_key: String, res_amount: float) -> TransferInventoryRowUi:
@@ -72,4 +80,9 @@ func get_rows() -> Array[TransferInventoryRowUi]:
 func _on_side_changed(_is_left: bool):
 	for row: TransferInventoryRowUi in self.get_rows():
 		row.is_left = _is_left
+
+func _on_row_out_transfer(_res_key: String, _amount: float):
+	var spawned_good := SpawnedGood.new(_res_key, _amount)
+	spawned_good.current_location = self.inventory
+	self.transfer_out.emit(spawned_good)
 #endregion

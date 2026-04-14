@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_85s3q"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_kvgma"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_fdb1b"]
+[ext_resource type="Script" uid="uid://ljrsi00o1io8" path="res://game/gamescripts/nodes/infr/station/station_area.gd" id="7_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/station/rail_station_3d_sign_ui.tscn" id="7_oyjqf"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
@@ -17,7 +18,11 @@ metadata/_custom_type_script = "uid://ddk4jv4q07x08"
 [sub_resource type="Resource" id="Resource_hiyfb"]
 script = ExtResource("5_kvgma")
 storage = SubResource("Resource_fdb1b")
+amount_max = 50.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fdb1b"]
+radius = 25.0
 
 [node name="RailNodeStation3D" type="Node3D" unique_id=672166883]
 script = ExtResource("1_hiyfb")
@@ -48,3 +53,11 @@ unique_name_in_owner = true
 script = ExtResource("4_85s3q")
 inventory = SubResource("Resource_hiyfb")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1602458585]
+collision_mask = 9
+script = ExtResource("7_hiyfb")
+metadata/_custom_type_script = "uid://ljrsi00o1io8"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=780823936]
+shape = SubResource("SphereShape3D_fdb1b")

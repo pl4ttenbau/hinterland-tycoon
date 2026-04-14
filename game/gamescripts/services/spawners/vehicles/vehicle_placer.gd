@@ -5,6 +5,8 @@ class_name VehiclePlacer extends Node
 @export var trains: Array[Train3D] = []
 @export var start_vehicles_spawned: bool = false
 
+@export var player_train: Train3D
+
 #region Initialization
 func _enter_tree() -> void:
 	Managers.vehicles = self
@@ -40,15 +42,16 @@ func spawn_train(veh_type_key: String, start_pos: VehicleStartPos) -> Train3D:
 
 #region Enter & Exit
 func enter_vehicle(veh3d: Vehicle3D):
-	var veh_train: Train3D = veh3d.train3d
-	self.activate_cam(veh_train.get_cam())
+	self.player_train = veh3d.train3d
+	self.activate_cam(self.player_train.get_cam())
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.train_entered.emit(veh_train)
+	SignalBus.train_entered.emit(self.player_train)
 	
 func exit_train():
 	SignalBus.train_exited.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	self.activate_cam(GlobalState.player.cam)
+	self.player_train = null
 
 func activate_cam(cam: Camera3D):
 	cam.make_current()
