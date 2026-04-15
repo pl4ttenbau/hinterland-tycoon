@@ -45,10 +45,10 @@ func enter_vehicle(veh3d: Vehicle3D):
 	self.player_train = veh3d.train3d
 	self.activate_cam(self.player_train.get_cam())
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.train_entered.emit(self.player_train)
+	SignalBus.player_entered_train.emit(self.player_train)
 	
 func exit_train():
-	SignalBus.train_exited.emit()
+	SignalBus.player_exited_train.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	self.activate_cam(GlobalState.player.cam)
 	self.player_train = null

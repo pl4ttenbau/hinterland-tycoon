@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ccxe40d72tuhc"]
 
-[ext_resource type="Script" uid="uid://c6yrgee51a65a" path="res://game/gamescripts/ui/dialogs/common/game_dialog.gd" id="1_gdo8s"]
+[ext_resource type="Script" uid="uid://csyehw3q3ff80" path="res://game/gamescripts/ui/dialogs/inventory_transfer/inventory_transfer_dialog.gd" id="1_3wb0r"]
 [ext_resource type="PackedScene" uid="uid://ci2w00arrbyl1" path="res://scenes/ui/dialogs/transfer_inventory/transfer_inventory_side.tscn" id="2_3wb0r"]
 
-[node name="DefaultDialog" type="Control" unique_id=1932910627]
+[node name="InventoryTransferDialog" type="Control" unique_id=218678304]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,8 +15,8 @@ offset_right = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
-script = ExtResource("1_gdo8s")
-metadata/_custom_type_script = "uid://c6yrgee51a65a"
+script = ExtResource("1_3wb0r")
+metadata/_custom_type_script = "uid://csyehw3q3ff80"
 
 [node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
 layout_mode = 1
@@ -57,15 +57,17 @@ layout_mode = 2
 [node name="InventorySideL" parent="OuterPanel/OuterMargin/OuterVLayout/Container/HSplitContainer" unique_id=354830197 instance=ExtResource("2_3wb0r")]
 unique_name_in_owner = true
 layout_mode = 2
+dropdown_index = 1
 
 [node name="InventorySideR" parent="OuterPanel/OuterMargin/OuterVLayout/Container/HSplitContainer" unique_id=1481472762 instance=ExtResource("2_3wb0r")]
 unique_name_in_owner = true
 layout_mode = 2
 is_left = false
+dropdown_index = 2
 
-[node name="OkButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1348525671]
+[node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1348525671]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 33
-text = "OK"
+text = "Close"

@@ -30,7 +30,7 @@ func load_stations():
 	# save in global state & inform signal bus
 	GlobalState.station_objs = self.stations_objs
 	SignalBus.stations_loaded.emit(self.stations_objs)
-	
+
 func connect_node_stations_to_parents():
 	for track: RailTrackData in Managers.rails.track_storage.get_all():
 		for rail_node_station: RailNodeStationData in track.node_stations:
@@ -48,7 +48,7 @@ func spawn_stations():
 			var outer_station := self.spawn_station(rail_node_station)
 			outer_station.adjust_rotation_from_track()
 	SignalBus.stations_spawned.emit()
-	
+
 func spawn_station(station_obj: RailNodeStationData) -> RailNodeStation3D:
 	station_obj.num = RailNodeStationData.next_station_num()
 	var outer_station: RailNodeStation3D = station_obj.spawn()

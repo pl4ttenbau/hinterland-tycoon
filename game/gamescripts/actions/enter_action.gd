@@ -19,10 +19,10 @@ func enter_train():
 		return
 	self.activate_cam(veh.get_cam())
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.train_entered.emit(veh)
+	SignalBus.player_entered_train.emit(veh)
 	
 func exit_train():
-	SignalBus.train_exited.emit()
+	SignalBus.player_exited_train.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# position player by vehicle
 	var player: BasicFpsPlayer = GlobalState.player.player_parent

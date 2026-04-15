@@ -3,11 +3,8 @@ class_name RailNodeStationData extends GameEntityData
 
 #region Generated Properties
 @export var parent_node: RailNodeData
-
 @export var station_num: int
-
 @export var position: Vector3
-
 @export var parent_station: RailStationData
 
 @export var track_num: int:

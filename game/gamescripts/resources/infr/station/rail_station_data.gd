@@ -35,6 +35,7 @@ func connect_node_station(node_station: RailNodeStationData):
 	node_station.parent_station = self
 	# set position if none has been set yet (maybe change that later)
 	if ! self.position: self.position = node_station.parent_node.position
+	# connect to trains entering & exiting
 #endregion
 
 static func get_by_num(station_num: int) -> RailStationData:

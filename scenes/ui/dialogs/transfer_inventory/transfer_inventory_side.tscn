@@ -11,6 +11,7 @@ theme_override_constants/margin_left = 12
 theme_override_constants/margin_right = 12
 script = ExtResource("1_dci3x")
 is_left = true
+dropdown_index = -1
 metadata/_custom_type_script = "uid://dd3ni7vdhd3c3"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=175114554]
@@ -21,7 +22,6 @@ size_flags_horizontal = 3
 [node name="EntityDropdown" type="OptionButton" parent="VBoxContainer" unique_id=1955648406]
 unique_name_in_owner = true
 layout_mode = 2
-selected = 0
 allow_reselect = true
 item_count = 4
 popup/item_0/text = "Player"

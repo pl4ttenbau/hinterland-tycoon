@@ -3,12 +3,14 @@ class_name RailNodeStation3D extends InventoryEntity3D
 
 const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"
 
+signal node_station_changed(node_station: RailNodeStationData)
+
 @export var node_station: RailNodeStationData:
 	get(): return self.entity as RailNodeStationData
 	set(value): 
 		self.entity = value
 		self.position = value.position
-		self._update_station_name()
+		self.node_station_changed.emit(value)
 		
 @export var station_obj: RailStationData:
 	get(): return self.node_station.parent_station
@@ -18,6 +20,8 @@ func _enter_tree() -> void:
 	# hide building on flag == true
 	if self.node_station.hide_building == true:
 		$StationBuilding3D.hide_building()
+	# connect to signals
+	self.node_station_changed.connect(Callable(self, "_on_node_station_changed"))
 
 func _ready() -> void:
 	if self.get_inventory():
@@ -47,10 +51,16 @@ func _to_string() -> String:
 
 #region Callbacks & Triggers
 func _on_resource_change():
+	# TODO: fix parent station connection
 	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
 	%StationSignPanel.res_amount = str(passengers_amount)
 
-func _update_station_name():
-	if self.node_station && self.node_station.parent_station:
-		%StationSignPanel.station_name = self.node_station.parent_station.town_name
+func _on_node_station_changed(_node_station: RailNodeStationData):
+	if !_node_station.parent_station:
+		Loggie.error("Cannot find parent station of NodeStation in %s" % _node_station.town_name)
+		return
+	# update node station name
+	%StationSignPanel.station_name = _node_station.parent_station.town_name
+	# connect parent station to trains entering or exiting
+	$Area3D.parent_station = _node_station.parent_station
 #endregion
