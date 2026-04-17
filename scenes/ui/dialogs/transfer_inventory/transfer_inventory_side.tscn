@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dd3ni7vdhd3c3" path="res://game/gamescripts/ui/dialogs/inventory_transfer/inventory_transfer_side.gd" id="1_dci3x"]
 [ext_resource type="PackedScene" uid="uid://cf5u4ysk2yu1o" path="res://scenes/ui/list/inventory_list/inventory_list.tscn" id="1_gpobu"]
+[ext_resource type="Script" uid="uid://bk4lo5jaebtb" path="res://game/gamescripts/ui/dialogs/inventory_transfer/selected_entity_finder.gd" id="3_dci3x"]
 
 [node name="TransferInventorySide" type="MarginContainer" unique_id=698182920]
 offset_right = 412.0
@@ -37,3 +38,7 @@ popup/item_3/id = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="SelectedEntityFinder" type="Node" parent="." unique_id=650343166]
+script = ExtResource("3_dci3x")
+metadata/_custom_type_script = "uid://bk4lo5jaebtb"

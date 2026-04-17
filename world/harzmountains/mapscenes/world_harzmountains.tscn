@@ -3060,7 +3060,6 @@ transform = Transform3D(-0.16468611, 0, 0.986346, 0, 1, 0, -0.986346, 0, -0.1646
 [node name="RuinedHouse5" parent="Deco/Hasserode" unique_id=351896877 instance=ExtResource("40_1wsr2")]
 transform = Transform3D(0.998444, 0.0557692, 0, -0.0557692, 0.998444, 0, 0, 0, 1, 2380.7, 18.9608, 2042.71)
 visible = false
-script = null
 
 [node name="HasserodeBridge" parent="Deco/Hasserode" unique_id=1774063643 instance=ExtResource("63_th5q3")]
 transform = Transform3D(0.9806351, 0, -0.19584346, 0, 1, 0, 0.19584346, 0, 0.9806351, 2581.8074, 9.122862, 1780.9264)
@@ -3178,14 +3177,12 @@ transform = Transform3D(0.387982, 0, 0.921667, 0, 1, 0, -0.921667, 0, 0.387982, 
 
 [node name="DreiAnnenRuin" parent="Deco/DreiAnnenHohne_Schierke" unique_id=153335254 instance=ExtResource("40_1wsr2")]
 transform = Transform3D(-0.746626, 0, -0.665243, 0, 1, 0, 0.665243, 0, -0.746626, 2675.15, 45.0074, 2540.05)
-script = null
 
 [node name="TrussBridge" parent="Deco/DreiAnnenHohne_Schierke" unique_id=736253586 instance=ExtResource("63_th5q3")]
 transform = Transform3D(0.51014, 0.0287459, 0.859611, -0.0759087, 0.997046, 0.0117065, -0.856735, -0.0712239, 0.510816, 1990.48, 86.3492, 2895.21)
 
 [node name="SchierkeOldHotelRuin" parent="Deco/DreiAnnenHohne_Schierke" unique_id=1684700640 instance=ExtResource("40_1wsr2")]
 transform = Transform3D(0.981972, 0, 0.189027, 0, 1, 0, -0.189027, 0, 0.981972, 1446.6447, 81.245964, 2843.0247)
-script = null
 
 [node name="SchierkeCarBridge" parent="Deco/DreiAnnenHohne_Schierke" unique_id=1172939094 instance=ExtResource("3_4subv")]
 transform = Transform3D(0.9672284, -0.042520847, 0.25032237, 0.04116459, 0.9990955, 0.010653551, -0.25054893, 0, 0.9681039, 1620.5048, 79.04403, 2951.2595)
@@ -3257,7 +3254,6 @@ skeleton = NodePath("../..")
 
 [node name="GoethemoorRuin" parent="Deco/BrockenPeak" unique_id=558887149 instance=ExtResource("40_1wsr2")]
 transform = Transform3D(0.954438, 0, 0.298408, 0, 1, 0, -0.298408, 0, 0.954438, 828.771, 252.262, 2395.82)
-script = null
 
 [node name="UazJeep2" parent="Deco/BrockenPeak" unique_id=1900563285 instance=ExtResource("42_p6hwa")]
 transform = Transform3D(0.992056, 0.125801, 0, -0.125801, 0.992056, 0, 0, 0, 1, 971.973, 352.411, 2263.86)
@@ -3389,7 +3385,6 @@ transform = Transform3D(0.246187, 0.0398292, -0.968404, -0.076082, 0.996866, 0.0
 
 [node name="RuinedHouse3" parent="Deco/Elend/Forester" unique_id=982214347 instance=ExtResource("40_1wsr2")]
 transform = Transform3D(0.588914, 0, -0.808195, 0, 1, 0, 0.808195, 0, 0.588914, 1845.79, 53.8234, 3898.98)
-script = null
 
 [node name="TorfhausOderbrueck" type="Node" parent="Deco" unique_id=1210341433]
 
@@ -7024,7 +7019,7 @@ material = ExtResource("50_ksq05")
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2931.8718, 5.560867, 1275.8207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2957.3994, 43.630188, 3027.0994)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"

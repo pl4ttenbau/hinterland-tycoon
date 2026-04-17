@@ -29,18 +29,20 @@ func place_to_map_start():
 		self.get_parent_node_3d().position = spawn_pos + SPAWN_OFFSET
 #endregion
 
-#region Child Getters
+#region Getters
 static func get_cam_pos() -> Vector3:
 	if GlobalState.active_cam != null:
 		return GlobalState.active_cam.global_position
 	return GlobalState.player.global_position
+
+func get_pos() -> Vector3:
+	return self.player_parent.position
 #endregion
 
 #region Callbacks
 func _on_map_spawned(_terrain: WorldMapScene):
 	self.place_to_map_start()
 
-# TODO
 func _on_station_entered(station: RailStationData):
 	Loggie.info("Player entering station %s" % station.station_name)
 	self.in_station = station
@@ -54,3 +56,4 @@ func _on_train_entered(train3d: Train3D):
 
 func _on_train_exited():
 	self.in_train = null
+#endregion

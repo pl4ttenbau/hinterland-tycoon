@@ -1,3 +1,4 @@
+# TODO: needs to be renamed into RailTrackStationLink
 @icon("res://assets/icons/icon_station_white.png")
 class_name RailNodeStationData extends GameEntityData
 
