@@ -14,10 +14,12 @@
 size = Vector3(18.3074, 7.61292, 16.5604)
 
 [sub_resource type="Resource" id="Resource_xenq4"]
+resource_local_to_scene = true
 script = ExtResource("6_xenq4")
 metadata/_custom_type_script = "uid://ddk4jv4q07x08"
 
 [sub_resource type="Resource" id="Resource_hah6j"]
+resource_local_to_scene = true
 script = ExtResource("5_1tqw1")
 storage = SubResource("Resource_xenq4")
 amount_max = 200.0

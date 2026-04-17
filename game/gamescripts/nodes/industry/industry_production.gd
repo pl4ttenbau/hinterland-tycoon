@@ -49,7 +49,17 @@ func get_ind_type() -> IndustryType:
 	return ind_type
 
 func get_inventory() -> GoodsInventory:
+	var station_3d: RailStation3D = self.find_ind_station()
+	if station_3d:
+		return station_3d.get_inventory()
 	return self.industry3d.get_inventory()
+
+func find_ind_station() -> RailStation3D:
+	var ind_obj: IndustryData = self.get_ind_obj()
+	if ind_obj && ind_obj.station_connection:
+		var station_obj = ind_obj.station_connection.station
+		return Managers.stations.get_station_3d_with_num(station_obj.num)
+	return null
 #endregion
 
 #region Callbacks

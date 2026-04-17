@@ -3669,6 +3669,15 @@ type_key = "FERTILIZER_FACTORY"
 ind_name = "Wernigerode Agra"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
+[node name="Quarry_Knaupsholz" type="Marker3D" parent="Industries" unique_id=1007833678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1994.488, 89.35469, 2871.7234)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 29
+type_key = "QUARRY"
+ind_name = "Knaupsholz"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
 [node name="InEditor" type="Node3D" parent="." unique_id=1667388157]
 script = ExtResource("6_3f2cl")
 
@@ -7019,7 +7028,7 @@ material = ExtResource("50_ksq05")
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2957.3994, 43.630188, 3027.0994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2033.7552, 80.981224, 2895.1667)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"

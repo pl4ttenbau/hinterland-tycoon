@@ -2,24 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/node_station_link_3d.gd" id="1_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://dvjv4qtbre7n" path="res://scenes/subscenes/infr/station/rail_node_station_building.tscn" id="2_wlho7"]
-[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_85s3q"]
-[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_kvgma"]
-[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_fdb1b"]
 [ext_resource type="Script" uid="uid://ljrsi00o1io8" path="res://game/gamescripts/nodes/infr/station/station_area.gd" id="7_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/station/rail_station_3d_sign_ui.tscn" id="7_oyjqf"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Resource" id="Resource_fdb1b"]
-script = ExtResource("6_fdb1b")
-metadata/_custom_type_script = "uid://ddk4jv4q07x08"
-
-[sub_resource type="Resource" id="Resource_hiyfb"]
-script = ExtResource("5_kvgma")
-storage = SubResource("Resource_fdb1b")
-amount_max = 50.0
-metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fdb1b"]
 radius = 25.0
@@ -48,11 +35,6 @@ size_2d_override_stretch = true
 
 [node name="StationSignPanel" parent="SubViewport" unique_id=956676054 instance=ExtResource("7_oyjqf")]
 unique_name_in_owner = true
-
-[node name="Inventory" type="Node" parent="." unique_id=1361442223]
-script = ExtResource("4_85s3q")
-inventory = SubResource("Resource_hiyfb")
-metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1602458585]
 collision_mask = 9

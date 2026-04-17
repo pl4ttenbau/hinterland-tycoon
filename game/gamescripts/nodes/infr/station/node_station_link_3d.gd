@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_station.png")
-class_name NodeStationLink3D extends InventoryEntity3D
+class_name NodeStationLink3D extends GameEntity3D
 
 const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"
 
@@ -22,10 +22,6 @@ func _enter_tree() -> void:
 		$StationBuilding3D.hide_building()
 	# connect to signals
 	self.node_station_changed.connect(Callable(self, "_on_node_station_changed"))
-
-func _ready() -> void:
-	if self.get_inventory():
-		self.get_inventory().resource_change.connect(Callable(self, "_on_resource_change"))
 
 static func of(_node_station: NodeStationLinkData) -> NodeStationLink3D:
 	var prefab: PackedScene = preload(STATION_SCENE_PATH)

@@ -22,16 +22,16 @@ func find_selected_entity_by_index(index: int):
 func _find_player() -> PlayerHead:
 	return GlobalState.player
 
-func _find_station() -> NodeStationLink3D:
+func _find_station() -> RailStation3D:
 	if !GlobalState.player.in_station:
 		Loggie.warn("Cannot show current player station: player too far away from any")
 		return null
 	# find nearest to player:
 	var parent_station: RailStationData = GlobalState.player.in_station
-	var closest_node_st_data: NodeStationLinkData = self._find_closest_node_station(parent_station)
-	return closest_node_st_data.station3d
+	var closest_station_3d: RailStation3D = self.find_closest_station_3d(parent_station)
+	return closest_station_3d
 
-func _find_closest_node_station(parent_station_obj: RailStationData) -> NodeStationLinkData:
+func find_closest_station_3d(parent_station_obj: RailStationData) -> RailStation3D:
 	var nearest_to_player_dist: float = 9999.9
 	var nearest_to_player_node_st_obj: NodeStationLinkData
 	for node_station_obj: NodeStationLinkData in parent_station_obj.node_stations:
@@ -39,7 +39,8 @@ func _find_closest_node_station(parent_station_obj: RailStationData) -> NodeStat
 		if dist_to_player_sq < nearest_to_player_dist:
 			nearest_to_player_dist = dist_to_player_sq
 			nearest_to_player_node_st_obj = node_station_obj
-	return nearest_to_player_node_st_obj
+	var station_num: int = nearest_to_player_node_st_obj.parent_station_num
+	return Managers.stations.get_station_3d_with_num(station_num)
 
 func _find_train() -> Train3D:
 	if !GlobalState.player.in_train:

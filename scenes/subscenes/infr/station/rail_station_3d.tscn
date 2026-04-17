@@ -5,13 +5,15 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="3_ygcd4"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="4_pm6ym"]
 
-[sub_resource type="Resource" id="Resource_opqkh"]
+[sub_resource type="Resource" id="Resource_6wnp6"]
+resource_local_to_scene = true
 script = ExtResource("4_pm6ym")
 metadata/_custom_type_script = "uid://ddk4jv4q07x08"
 
-[sub_resource type="Resource" id="Resource_hcj48"]
+[sub_resource type="Resource" id="Resource_ygcd4"]
+resource_local_to_scene = true
 script = ExtResource("3_ygcd4")
-storage = SubResource("Resource_opqkh")
+storage = SubResource("Resource_6wnp6")
 amount_max = 60.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 
@@ -21,5 +23,5 @@ metadata/_custom_type_script = "uid://c5i7i7wtim8vx"
 
 [node name="InventoryContainer" type="Node" parent="." unique_id=224458721]
 script = ExtResource("2_6wnp6")
-inventory = SubResource("Resource_hcj48")
+inventory = SubResource("Resource_ygcd4")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"

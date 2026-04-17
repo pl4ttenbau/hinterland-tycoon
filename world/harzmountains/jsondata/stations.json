@@ -126,6 +126,7 @@
 		"townNum": 9,
 		"type": "STATION_GOODS",
 		"townName": "Schierke",
+		"hideBuilding": true
 	},
 	{
 		"num": 19,
