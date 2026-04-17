@@ -66,13 +66,14 @@ func add_station_link_from_node(node_station_link: NodeStationLinkData):
 
 ## Station objects are created with the rail tracks, but instanciated one by one here
 ## this only happens, after the parents - RailStationData - are loaded & spawned in scene tree
+## after this, station initialization has been completely finished
 func spawn_station_links():
 	Loggie.info("Spawning stations..")
 	for track: RailTrackData in Managers.rails.track_storage.get_all():
 		for node_station_link: NodeStationLinkData in track.node_stations:
 			var outer_station: NodeStationLink3D = self.spawn_station_link(node_station_link)
 			outer_station.adjust_rotation_from_track()
-	SignalBus.stations_spawned.emit()
+	SignalBus.node_station_links_spawned.emit()
 
 func spawn_station_link(node_station_link: NodeStationLinkData) -> NodeStationLink3D:
 	var station_link_3d: NodeStationLink3D = node_station_link.spawn()

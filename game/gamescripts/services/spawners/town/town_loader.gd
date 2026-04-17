@@ -11,7 +11,7 @@ const LOAD_FROM_JSON = false
 signal towns_registered(towns: Array[TownData])
 
 #region Initialization
-func _enter_tree() -> void:
+func _init() -> void:
 	Managers.towns = self
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 

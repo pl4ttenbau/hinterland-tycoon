@@ -71,7 +71,7 @@ signal roads_spawned()
 signal stations_loaded(station_objs: Array[RailStationData])
 
 @warning_ignore("unused_signal")
-signal stations_spawned()
+signal node_station_links_spawned()
 
 @warning_ignore("unused_signal")
 signal train_entered_station(station: RailStationData, train3d: Train3D)

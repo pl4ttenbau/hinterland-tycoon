@@ -36,14 +36,6 @@ func spawn() -> NodeStationLink3D:
 	self.station3d = NodeStationLink3D.of(self)
 	return self.station3d
 
-#region Connections
-func connect_house(outer_res_bld: Residence3D):
-	self.connections.connect_house(outer_res_bld)
-	
-func connect_industry(industry: IndustryData):
-	self.connections.connect_industry(industry)
-#endregion
-
 #region Find By Distance
 static func find_closest_station_to_bld(res_bld: Residence3D) -> NodeStationLinkData:
 	var closest_node_station: NodeStationLinkData
