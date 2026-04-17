@@ -9,9 +9,9 @@ func _enter_tree() -> void:
 func connect_industries():
 	Loggie.info("Connecting industries ..")
 	for industry: IndustryData in GlobalState.industries:
-		var closest_station: RailNodeStationData = null
+		var closest_station: NodeStationLinkData = null
 		var closest_distance: float = 99999
-		for station: RailNodeStationData in GlobalState.node_stations:
+		for station: NodeStationLinkData in GlobalState.node_stations:
 			var sq_dist: float = industry.pos.distance_squared_to(station.position)
 			if sq_dist <= closest_distance:
 				closest_station = station

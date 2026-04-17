@@ -4,7 +4,7 @@ class_name RailTrack3D extends GameEntity3D
 
 const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
 const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn"
-const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_600mm_bedded.tscn"
+const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_600mm/path_rail_600mm_bedded.tscn"
 
 signal track_assigned(track: RailTrackData)
 

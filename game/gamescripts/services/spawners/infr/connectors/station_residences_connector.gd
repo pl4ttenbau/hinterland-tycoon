@@ -28,13 +28,13 @@ func reassign_all_buildings_to_stations():
 func reassign_town_buildings_to_stations(town: TownData) -> int:
 	var connected_town_buildings: int = 0
 	for outer_res_bld: Residence3D in town.res_bld_containers:
-		var closest_node_station := RailNodeStationData.find_closest_station_to_bld(outer_res_bld)
+		var closest_node_station := NodeStationLinkData.find_closest_station_to_bld(outer_res_bld)
 		if closest_node_station:
 			self.connect_residence_to_station(outer_res_bld, closest_node_station, town)
 			connected_town_buildings += 1
 	return connected_town_buildings
 	
-func connect_residence_to_station(outer_res_bld: Residence3D, closest_node_station: RailNodeStationData,
+func connect_residence_to_station(outer_res_bld: Residence3D, closest_node_station: NodeStationLinkData,
 		res_bld_town: TownData):
 	outer_res_bld.res_bld_obj.connected_station = closest_node_station
 	closest_node_station.parent_station.connected_town = res_bld_town

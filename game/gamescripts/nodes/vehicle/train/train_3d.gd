@@ -26,7 +26,7 @@ static var _last_train_num: int = 0
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
-@export var current_station = RailNodeStation3D
+@export var current_station = NodeStationLink3D
 
 static func _next_train_num() -> int:
 	Train3D._last_train_num += 1

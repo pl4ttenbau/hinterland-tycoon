@@ -21,7 +21,7 @@ func _enter_tree() -> void:
 	self.area_connected.emit(self)
 
 func _ready() -> void:
-	var node_station_3d: RailNodeStation3D = self.get_parent_node_3d() as RailNodeStation3D
+	var node_station_3d: NodeStationLink3D = self.get_parent_node_3d() as NodeStationLink3D
 	self.parent_station = node_station_3d.station_obj
 #endregion
 

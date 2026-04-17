@@ -1,12 +1,12 @@
 @icon("res://assets/icons/icon_station.png")
-class_name RailNodeStation3D extends InventoryEntity3D
+class_name NodeStationLink3D extends InventoryEntity3D
 
 const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"
 
-signal node_station_changed(node_station: RailNodeStationData)
+signal node_station_changed(node_station: NodeStationLinkData)
 
-@export var node_station: RailNodeStationData:
-	get(): return self.entity as RailNodeStationData
+@export var node_station: NodeStationLinkData:
+	get(): return self.entity as NodeStationLinkData
 	set(value): 
 		self.entity = value
 		self.position = value.position
@@ -27,9 +27,9 @@ func _ready() -> void:
 	if self.get_inventory():
 		self.get_inventory().resource_change.connect(Callable(self, "_on_resource_change"))
 
-static func of(_node_station: RailNodeStationData) -> RailNodeStation3D:
+static func of(_node_station: NodeStationLinkData) -> NodeStationLink3D:
 	var prefab: PackedScene = preload(STATION_SCENE_PATH)
-	var instanciated_container: RailNodeStation3D = prefab.instantiate()
+	var instanciated_container: NodeStationLink3D = prefab.instantiate()
 	instanciated_container.node_station = _node_station
 	return instanciated_container
 #endregion
@@ -55,7 +55,7 @@ func _on_resource_change():
 	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
 	%StationSignPanel.res_amount = str(passengers_amount)
 
-func _on_node_station_changed(_node_station: RailNodeStationData):
+func _on_node_station_changed(_node_station: NodeStationLinkData):
 	if !_node_station.parent_station:
 		Loggie.error("Cannot find parent station of NodeStation in %s" % _node_station.town_name)
 		return

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfibk5fcr42yy"]
 
-[ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/rail_node_station_3d.gd" id="1_hiyfb"]
+[ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/node_station_link_3d.gd" id="1_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://dvjv4qtbre7n" path="res://scenes/subscenes/infr/station/rail_node_station_building.tscn" id="2_wlho7"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_85s3q"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_kvgma"]

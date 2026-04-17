@@ -6,6 +6,6 @@ class_name AbstractStructure extends GameEntityData
 @export var is_registered: bool = false
 
 #region Connections
-@export_storage var connected_station: RailNodeStationData
+@export_storage var connected_station: NodeStationLinkData
 @export_storage var road_exit: RoadNode
 #endregion

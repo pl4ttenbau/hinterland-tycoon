@@ -16,7 +16,7 @@ static var last_bld_num: int = 0
 	get: return self.entity as ResidenceBuildingData
 	set(value): self.entity = value
 
-@export_storage var connected_station: RailNodeStationData:
+@export_storage var connected_station: NodeStationLinkData:
 	get(): return self.res_bld_obj.connected_station
 
 ## when its spawned from map

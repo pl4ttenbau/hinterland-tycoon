@@ -22,7 +22,7 @@ signal buildings_changed()
 @export_storage var totalPops: int
 @export_storage var res_bld_containers: Array[Residence3D] = []
 
-@export_storage var stations: Array[RailNodeStationData] = []
+@export_storage var stations: Array[NodeStationLinkData] = []
 @export_storage var station_blds_assigned: bool = false
 #endregion
 
