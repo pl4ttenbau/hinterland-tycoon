@@ -1,6 +1,7 @@
 ## search by type, get children recursively, etc 
 class_name NodeTreeUtils extends RefCounted
 
+## returns children of a node recursively
 static func get_all_children(node: Node) -> Array:
 	var all_children : Array = []
 	for direct_child in node.get_children():

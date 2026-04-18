@@ -19,7 +19,7 @@ func find_selected_entity_by_index(index: int):
 		return
 	self.selected_entity_found.emit(found_entity)
 
-func _find_player() -> PlayerHead:
+func _find_player() -> PlayerHead3D:
 	return GlobalState.player
 
 func _find_station() -> RailStation3D:

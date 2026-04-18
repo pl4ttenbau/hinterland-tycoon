@@ -1,4 +1,8 @@
-class_name PlayerHead extends InventoryEntity3D
+class_name PlayerHead3D extends InventoryEntity3D
+
+@export var player_data: PlayerData:
+	set(value): self.entity = value
+	get(): return self.entity as PlayerData
 
 @onready var cam: Camera3D = $Camera3D
 @onready var collider: CollisionShape3D = %Player/PlayerCollisionShape
@@ -20,6 +24,7 @@ func _enter_tree() -> void:
 	SignalBus.player_exited_train.connect(Callable(self, "_on_train_exited"))
 
 func _ready() -> void:
+	self.player_data = PlayerData.new()
 	GlobalState.player = self
 	GlobalState.active_cam = self.cam
 

@@ -10,6 +10,11 @@ func _init(_key: StringName, _cat: BaseGoodsType.ResourceCategory):
 	self.key = _key
 	self.res_cat = _cat
 
+#region Getters
+func get_display_text() -> String:
+	return self.key.capitalize()
+#endregion
+
 #region Static Getters
 static func get_by_key(_key: StringName) -> BaseGoodsType:
 	var found := GameTypes.resource_types.get(_key) as BaseGoodsType

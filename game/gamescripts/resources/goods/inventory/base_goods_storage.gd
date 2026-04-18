@@ -25,6 +25,14 @@ func change_amount(goods_type_key: String, amount_modifier: float) -> float:
 	# update currently stored var
 	self.current_storage += amount_modifier
 	return new_amount
-	
+
+#region Getters & Converters
 func has_any(goods_type_key: String) -> bool:
 	return self.inventory_dict.has(goods_type_key)
+
+func get_res_key_list() -> Array[String]:
+	var res_key_list: Array[String] = []
+	for res_key: String in self.inventory_dict.keys():
+		res_key_list.append(res_key)
+	return res_key_list
+#endregion

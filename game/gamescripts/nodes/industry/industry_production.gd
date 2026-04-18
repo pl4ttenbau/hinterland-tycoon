@@ -18,13 +18,13 @@ func add_production_timer():
 #region Inventory
 func produce_good(good_type_key: String):
 	var amount: int = self.get_produced_amount(good_type_key)
-	var spawned_good: SpawnedGood = SpawnedGood.new(good_type_key, amount)
-	self.get_inventory().add_spawned_good(spawned_good)
+	var spawned_good: GoodsAmount = GoodsAmount.new(good_type_key, amount)
+	self.get_inventory().add_goods_amount(spawned_good)
 
 func has_required_goods() -> bool:
 	for required_res: TransformedGood in self.get_ind_type().requires:
-		var spawned_good := SpawnedGood.new(required_res.res_key, required_res.res_modifier)
-		if ! self.get_inventory().has_enough(spawned_good): return false
+		var goods_amount := GoodsAmount.new(required_res.res_key, required_res.res_modifier)
+		if ! self.get_inventory().has_enough(goods_amount): return false
 	return true
 
 func get_produced_amount(good_type_key: String) -> int:

@@ -7,6 +7,10 @@ signal entity_selected(selected: InventoryEntity3D)
 @warning_ignore("unused_signal")
 signal side_changed(is_left: bool)
 
+signal transfer_out(transfer: GoodsTransfer)
+
+signal transfer_in(transfer: GoodsTransfer)
+
 const INVENTORY_LIST_SCENE = "res://scenes/ui/list/inventory_list/inventory_list.tscn"
 const INVENTORY_LIT_NAME = "OuterInventoryList"
 
@@ -20,8 +24,9 @@ const INVENTORY_LIT_NAME = "OuterInventoryList"
 	get(): return dropdown_index
 	set(value):
 		dropdown_index = value
-		if %EntityDropdown:
-			%EntityDropdown.select(value)
+		if self.has_node("VBoxContainer"):
+			if $VBoxContainer.has_node("EntityDropdown"):
+				%EntityDropdown.select(value)
 
 @export var selected_entity: InventoryEntity3D
 
@@ -35,8 +40,13 @@ func _enter_tree() -> void:
 	var dropdown_selection_callable: Callable = Callable(self, "_on_entity_dropdown_selection")
 	if !%EntityDropdown.item_selected.is_connected(dropdown_selection_callable):
 		%EntityDropdown.item_selected.connect(dropdown_selection_callable)
+	# connect to transfer in
+	var transfer_in_callable: Callable = Callable(self, "_on_transfer_in")
+	if !self.transfer_in.is_connected(transfer_in_callable):
+		self.transfer_in.connect(transfer_in_callable)
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	self.clear_inventory_list()
 	# connect to SelectedEntityFinder
 	var selected_entity_callable = Callable(self, "_on_selected_entity_found")
@@ -55,6 +65,8 @@ func build_inventory_list():
 		inv_list.is_left = self.is_left
 		inv_list.entity = self.selected_entity
 		inv_list.inventory = self.selected_entity.get_inventory()
+		# connect to transfer signal
+		inv_list.transfer_out.connect(Callable(self, "_on_inventory_list_transfer_out"))
 
 func clear_inventory_list():
 	if !Engine.is_editor_hint():
@@ -77,4 +89,17 @@ func _on_entity_dropdown_selection(index: int):
 func _on_selected_entity_found(sel_entity: InventoryEntity3D):
 	self.selected_entity = sel_entity
 	self.build_inventory_list()
+
+func _on_inventory_list_transfer_out(transfer: GoodsTransfer):
+	self.transfer_out.emit(transfer)
+
+func _on_transfer_in(transfer: GoodsTransfer):
+	var amount_dto: GoodsAmount = GoodsAmount.of_transfer(transfer)
+	if self.selected_entity:
+		var target_inventory: GoodsInventory = self.selected_entity.get_inventory()
+		var source_inventory: GoodsInventory = transfer.from.get_inventory()
+		if source_inventory.has_enough(amount_dto):
+			source_inventory.remove_goods_amount(amount_dto)
+			target_inventory.add_goods_amount(amount_dto)
+			Loggie.info("Moved %d of %s" % [amount_dto.amount, amount_dto.res_key])
 #endregion

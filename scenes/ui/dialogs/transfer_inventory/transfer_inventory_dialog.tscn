@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_3wb0r")
+dialog_key = "transfer"
 metadata/_custom_type_script = "uid://csyehw3q3ff80"
 
 [node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]

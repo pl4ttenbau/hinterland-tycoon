@@ -19,9 +19,10 @@ func _init(_res_type: StringName, _amount: float, _target: AbstractStructure = n
 	self.target_location = _target
 
 func move_res_to(target_container: GoodsInventory):
+	var amount_dto: GoodsAmount = GoodsAmount.of_spawned(self)
 	if self.current_location != null:
-		self.current_location.remove_spawned_good(self)
-	target_container.add_spawned_good(self)
+		self.current_location.remove_goods_amount(amount_dto)
+		target_container.add_spawned_good(amount_dto)
 
 func _check_goods_type(_res_type):
 	if !self.res_type:

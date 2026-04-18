@@ -2,7 +2,7 @@
 extends Node
 
 # == PLAYER ==
-@export var player: PlayerHead
+@export var player: PlayerHead3D
 @export var active_cam: Camera3D
 
 # == PRE-WORLD-LOADING ==
