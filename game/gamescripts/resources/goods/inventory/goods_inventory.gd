@@ -54,6 +54,10 @@ func has_enough(amount_dto: GoodsAmount) -> bool:
 	if ! amount_dto.res_key: return false
 	var amount_left: float = self.get_amount(amount_dto.res_key)
 	return amount_left >= amount_dto.amount
+
+func can_take(amount_dto: GoodsAmount):
+	var stored_after_added: float = self.amount_used + amount_dto.amount
+	return stored_after_added <= self.amount_max
 #endregion
 
 #region Callbacks

@@ -1,4 +1,5 @@
 @warning_ignore("missing_tool")
+@icon("res://assets/icons/icon_play_ui.png")
 class_name GameWindow extends Control
 
 func _enter_tree() -> void:

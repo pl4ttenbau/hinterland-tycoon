@@ -1,3 +1,4 @@
+@icon("res://assets/icons/godot_default/icon_character_3d.svg")
 class_name PlayerHead3D extends InventoryEntity3D
 
 @export var player_data: PlayerData:

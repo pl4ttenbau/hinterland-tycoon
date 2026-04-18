@@ -8,7 +8,6 @@ signal entity_selected(selected: InventoryEntity3D)
 signal side_changed(is_left: bool)
 
 signal transfer_out(transfer: GoodsTransfer)
-
 signal transfer_in(transfer: GoodsTransfer)
 
 const INVENTORY_LIST_SCENE = "res://scenes/ui/list/inventory_list/inventory_list.tscn"
@@ -64,7 +63,6 @@ func build_inventory_list():
 		inv_list.name = INVENTORY_LIT_NAME
 		inv_list.is_left = self.is_left
 		inv_list.entity = self.selected_entity
-		inv_list.inventory = self.selected_entity.get_inventory()
 		# connect to transfer signal
 		inv_list.transfer_out.connect(Callable(self, "_on_inventory_list_transfer_out"))
 
@@ -98,8 +96,10 @@ func _on_transfer_in(transfer: GoodsTransfer):
 	if self.selected_entity:
 		var target_inventory: GoodsInventory = self.selected_entity.get_inventory()
 		var source_inventory: GoodsInventory = transfer.from.get_inventory()
-		if source_inventory.has_enough(amount_dto):
+		if source_inventory.has_enough(amount_dto) && target_inventory.can_take(amount_dto):
 			source_inventory.remove_goods_amount(amount_dto)
 			target_inventory.add_goods_amount(amount_dto)
-			Loggie.info("Moved %d of %s" % [amount_dto.amount, amount_dto.res_key])
+			Loggie.info("Moved %.1fx%s" % [amount_dto.amount, amount_dto.res_key])
+		else:
+			Loggie.warn("Aborted: transfer of %.1fx%s invalid" % [amount_dto.amount, amount_dto.res_key])
 #endregion

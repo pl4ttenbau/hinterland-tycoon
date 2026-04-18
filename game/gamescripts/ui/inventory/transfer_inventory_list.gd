@@ -93,8 +93,8 @@ func _on_inventory_resource_changed():
 
 func _on_entity_changed(_entity: InventoryEntity3D):
 	# save inventory & subscribe to changes in it
-	inventory = entity.get_inventory()
-	inventory.resource_change.connect(Callable(self, "_on_inventory_resource_changed"))
+	self.inventory = entity.get_inventory()
+	self.inventory.resource_change.connect(Callable(self, "_on_inventory_resource_changed"))
 	# set entity type label
 	var entity_type: Enums.EntityTypes = _entity.entity.type
 	var entity_type_name: String = EntityUtils.get_entity_type_enum_name(entity_type)
