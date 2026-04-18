@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://j2h5rs86mkrj"]
 
-[ext_resource type="Script" uid="uid://ngpi2r0442vj" path="res://addons/tnowe_extra_controls/elements/scale_container.gd" id="1_80d06"]
 [ext_resource type="Script" uid="uid://6wsxgx7vl3pq" path="res://game/gamescripts/ui/vehicle_control/vehicle_control_container.gd" id="1_c3mfk"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="2_c3mfk"]
 [ext_resource type="PackedScene" uid="uid://dt7lvw02e3c8r" path="res://scenes/ui/ingame/vehicle_control/speed_control.tscn" id="3_544v3"]
@@ -36,20 +35,28 @@ theme_override_constants/margin_bottom = 12
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=812188558]
 layout_mode = 2
 
-[node name="Control" type="Container" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=53878704]
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1249350117]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 2
-size_flags_horizontal = 0
-script = ExtResource("1_80d06")
-metadata/_custom_type_script = "uid://ngpi2r0442vj"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1452660315]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Control2" unique_id=1452660315]
 custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_c3mfk")
 expand_mode = 3
 
-[node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/HBoxContainer/Control/TextureRect" unique_id=1762477285]
+[node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/HBoxContainer/Control2/TextureRect" unique_id=1762477285]
 position = Vector2(45, 70)
 rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)

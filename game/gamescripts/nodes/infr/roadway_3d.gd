@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_road.png")
-class_name RoadWay3D extends VisibleObject
+class_name RoadWay3D extends GameEntity3D
 
 @export var road: RoadData:
 	set(value):

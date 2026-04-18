@@ -15,7 +15,7 @@ const LINE_ROTATION_MAX := 35.0
 func _enter_tree() -> void:
 	self.visible = false
 	# connect to vehicle signals
-	SignalBus.train_entered.connect(Callable(self, "_train_entered"))
+	SignalBus.player_entered_train.connect(Callable(self, "_train_entered"))
 	SignalBus.vehicle_exited.connect(Callable(self, "_vehicle_exited"))
 	
 func adjust_speedometer():

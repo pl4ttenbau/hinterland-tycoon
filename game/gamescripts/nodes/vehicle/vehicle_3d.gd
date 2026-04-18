@@ -1,5 +1,5 @@
 @icon("uid://u0j0akdffkcy")
-class_name Vehicle3D extends VisibleObject
+class_name Vehicle3D extends GameEntity3D
 
 @export var vehicle_obj: VehicleData
 @export var num_in_train: int

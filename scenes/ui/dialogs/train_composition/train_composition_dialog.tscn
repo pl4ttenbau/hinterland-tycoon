@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf8iq3mq8pwjy" path="res://game/gamescripts/ui/dialogs/train_composition/train_composition_dialog.gd" id="1_575db"]
 [ext_resource type="PackedScene" uid="uid://d0o5wngc4hsop" path="res://scenes/ui/dialogs/train_composition/vehicle_row.tscn" id="2_h31ey"]
-[ext_resource type="PackedScene" uid="uid://c260ksylv54r6" path="res://scenes/ui/list/vehicle_list.tscn" id="3_ujivd"]
+[ext_resource type="PackedScene" uid="uid://c260ksylv54r6" path="res://scenes/ui/list/vehicle_list/vehicle_list.tscn" id="3_ujivd"]
 
 [node name="TrainCompositionDialog" type="Control" unique_id=2010647289]
 layout_mode = 3

@@ -1,8 +1,7 @@
 @icon("res://assets/icons/icon_industry.png")
-class_name Industry3D extends VisibleObject
+class_name Industry3D extends InventoryEntity3D
 
 static var last_ind_num: int = 0
-static var PRODUCTION_TIMER_SECONDS = 5.0
 
 @export_storage var bld_num: int
 
@@ -14,46 +13,39 @@ static var PRODUCTION_TIMER_SECONDS = 5.0
 		self._set_name(value)
 		
 @export var sign3d: IndustrySign3D
-		
-#region Initialization
+
+#region Static Constructor
 static func of(_industry: IndustryData) -> Industry3D:
 	if ! _industry.ind_type:
 		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
 		return null
 	var scene_path := _industry.ind_type.get_mesh_path()
-	var instanciated: Industry3D = load(scene_path).instantiate()
+	var packed_scene: PackedScene = load(scene_path)
+	var instanciated: Industry3D = packed_scene.instantiate()
 	instanciated.industry = _industry
 	return instanciated
+#endregion
 
-func _enter_tree() -> void:
-	var production_timer: Timer = Timer.new()
-	production_timer.wait_time = PRODUCTION_TIMER_SECONDS
-	production_timer.one_shot = false
-	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
-	self.add_child(production_timer)
-	production_timer.start(PRODUCTION_TIMER_SECONDS)
-	
+#region Initialization
 func _ready() -> void:
 	self.spawn_industry_label()
-	
+	self.spawn_inventory_and_production()
+	super._ready()
+
 func spawn_industry_label() -> IndustrySign3D:
 	return IndustrySign3D.of(self)
-#endregion
 
-#region Production
-func produce_good(good_type_key: String):
-	var amount: int = self.industry.get_produced_amount(good_type_key)
-	self.industry.storage.change_amount(good_type_key, amount)
-#endregion
-	
-#region Callbacks
-func _on_production_timeout():
-	if ! self.industry || ! self.industry.ind_type:
-		Loggie.warn("Error in %s: industry type not loaded" % self.name)
-		return
-	if self.industry.has_required_goods():
-		for produced_good: TransformedGood in self.industry.ind_type.produces:
-			self.produce_good(produced_good.res_key)
+func spawn_inventory_and_production():
+	if !self.has_node("Inventory"):
+		var inventory_container: InventoryContainer = InventoryContainer.new()
+		inventory_container.inventory = GoodsInventory.new()
+		self.add_child(inventory_container)
+		inventory_container.name = "Inventory"
+	if !self.has_node("Production"):
+		var production: IndustryProduction = IndustryProduction.new()
+		production.industry3d = self
+		self.add_child(production)
+		production.name = "Production"
 #endregion
 
 #region Helper-Methods

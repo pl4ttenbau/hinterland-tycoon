@@ -6,7 +6,7 @@ class_name RailTrackData extends AbstractTrack
 @export var hideFill: bool = false
 
 # child objects
-@export var node_stations: Array[RailNodeStationData] = []
+@export var node_stations: Array[NodeStationLinkData] = []
 @export var forks: Array[RailNodeForkData] = []
 
 const NEAR_DISTANCE_MAX: float = 100.0

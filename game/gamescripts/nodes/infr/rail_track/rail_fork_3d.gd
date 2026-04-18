@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_fork.png")
-class_name RailFork3D extends VisibleObject
+class_name RailFork3D extends GameEntity3D
 
 const NINETY_DEG_IN_RAD = 1.57
 

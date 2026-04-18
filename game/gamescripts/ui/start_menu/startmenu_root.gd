@@ -1,3 +1,4 @@
+@icon("res://assets/icons/icon_menu_ui.png")
 class_name StartmenuRoot extends Control
 
 const INITIAL_SCENE_NAME = "root_buttons"

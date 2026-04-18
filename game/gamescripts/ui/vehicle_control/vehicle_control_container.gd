@@ -2,8 +2,8 @@ extends MarginContainer
 
 func _enter_tree() -> void:
 	# connect to signals
-	SignalBus.train_entered.connect(Callable(self, "_on_train_entered"))
-	SignalBus.train_exited.connect(Callable(self, "_on_train_exited"))
+	SignalBus.player_entered_train.connect(Callable(self, "_on_train_entered"))
+	SignalBus.player_exited_train.connect(Callable(self, "_on_train_exited"))
 	# make initially invisible
 	self._set_enabled(false)
 	

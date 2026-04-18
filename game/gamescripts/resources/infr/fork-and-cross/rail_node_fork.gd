@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_fork_white.png")
-class_name RailNodeForkData extends GameObject
+class_name RailNodeForkData extends GameEntityData
 
 const SCENE_PATH = "res://assets/meshes/infr/rail/fork/rail_fork.tscn"
 static var _last_fork_num = -1

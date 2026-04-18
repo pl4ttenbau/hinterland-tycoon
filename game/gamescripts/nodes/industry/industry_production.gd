@@ -1,0 +1,73 @@
+@icon("res://assets/icons/icon_gears_white.png")
+class_name IndustryProduction extends Node
+
+@export var industry3d: Industry3D
+
+func _ready() -> void:
+	if !self.industry3d:
+		var parent: Node = self.get_parent()
+		if parent is Industry3D:
+			self.industry3d = parent
+	self.add_production_timer()
+
+func add_production_timer():
+	var production_timer: IndustryProductionTimer = IndustryProductionTimer.new()
+	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
+	self.add_child(production_timer)
+
+#region Inventory
+func produce_good(good_type_key: String):
+	var amount: int = self.get_produced_amount(good_type_key)
+	var spawned_good: GoodsAmount = GoodsAmount.new(good_type_key, amount)
+	self.get_inventory().add_goods_amount(spawned_good)
+
+func has_required_goods() -> bool:
+	for required_res: TransformedGood in self.get_ind_type().requires:
+		var goods_amount := GoodsAmount.new(required_res.res_key, required_res.res_modifier)
+		if ! self.get_inventory().has_enough(goods_amount): return false
+	return true
+
+func get_produced_amount(good_type_key: String) -> int:
+	var ind_type: IndustryType = self.get_ind_obj().ind_type
+	for produced_good: TransformedGood in ind_type.produces:
+		if produced_good.res_key == good_type_key:
+			return produced_good.res_modifier as int
+	return 0
+#endregion
+
+#region Node Getters
+func get_ind_obj() -> IndustryData:
+	var ind_obj: IndustryData = self.industry3d.industry
+	if !ind_obj:
+		Loggie.warn("Cannot get industry obj of %s" % self.name)
+	return ind_obj
+
+func get_ind_type() -> IndustryType:
+	var ind_type: IndustryType = self.get_ind_obj().ind_type
+	if !ind_type:
+		Loggie.warn("Cannot get industry type of %s" % self.name)
+	return ind_type
+
+func get_inventory() -> GoodsInventory:
+	var station_3d: RailStation3D = self.find_ind_station()
+	if station_3d:
+		return station_3d.get_inventory()
+	return self.industry3d.get_inventory()
+
+func find_ind_station() -> RailStation3D:
+	var ind_obj: IndustryData = self.get_ind_obj()
+	if ind_obj && ind_obj.station_connection:
+		var station_obj = ind_obj.station_connection.station
+		return Managers.stations.get_station_3d_with_num(station_obj.num)
+	return null
+#endregion
+
+#region Callbacks
+func _on_production_timeout():
+	if ! self.industry3d:
+		Loggie.warn("Error in %s: industry type not loaded" % self.name)
+		return
+	if self.has_required_goods():
+		for produced_good: TransformedGood in self.get_ind_obj().ind_type.produces:
+			self.produce_good(produced_good.res_key)
+#endregion

@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dh40d8wsen3g5" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_darker_planks_n.jpg" id="4_ra3ar"]
 [ext_resource type="Texture2D" uid="uid://bx52htn4x4cp5" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks.jpg" id="5_bc2f1"]
 [ext_resource type="Texture2D" uid="uid://c4gulibn6ntyl" path="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks_n.jpg" id="6_h806u"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="8_bc2f1"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="9_h806u"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="10_dubqm"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="10_h806u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dubqm"]
 cull_mode = 2
@@ -23,6 +27,16 @@ normal_texture = ExtResource("6_h806u")
 [sub_resource type="BoxShape3D" id="BoxShape3D_nl8nk"]
 size = Vector3(5.8168488, 13.283134, 19.354837)
 
+[sub_resource type="Resource" id="Resource_dubqm"]
+script = ExtResource("10_dubqm")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_xw50g"]
+script = ExtResource("9_h806u")
+storage = SubResource("Resource_dubqm")
+amount_max = 200.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
 [node name="OilDerrick" type="Node3D" unique_id=403551129]
 script = ExtResource("1_nsrit")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
@@ -38,6 +52,16 @@ surface_material_override/6 = SubResource("StandardMaterial3D_xw50g")
 script = ExtResource("3_nl8nk")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="IndustryCollider" unique_id=1782588548]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider" unique_id=1782588548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4702072, 6.520047, 0.52784634)
 shape = SubResource("BoxShape3D_nl8nk")
+
+[node name="Inventory" type="Node" parent="." unique_id=2034515526]
+script = ExtResource("8_bc2f1")
+inventory = SubResource("Resource_xw50g")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=946780138 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("10_h806u")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"

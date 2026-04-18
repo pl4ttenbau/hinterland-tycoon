@@ -9,8 +9,8 @@ class_name BrakeReversePanel extends CenterContainer
 #region Initialization
 func _ready() -> void:
 	# connect to vehicle
-	SignalBus.train_entered.connect(Callable(self, "_on_train_entered"))
-	SignalBus.train_exited.connect(Callable(self, "_on_train_exited"))
+	SignalBus.player_entered_train.connect(Callable(self, "_on_train_entered"))
+	SignalBus.player_exited_train.connect(Callable(self, "_on_train_exited"))
 	# connect Brake & Reverse buttons
 	%BrakeButton.toggled.connect(Callable(self, "_on_brake_click"))
 	%ReverseButton.toggled.connect(Callable(self, "_on_reverse_click"))

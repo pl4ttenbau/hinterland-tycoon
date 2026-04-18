@@ -5,9 +5,13 @@ class_name RailStationData extends AbstractStation
 @export var connected_town: TownData
 
 ## rail nodes
-@export var position: Vector3
+@export var position: Vector3:
+	get(): return position
+	set(value):
+		position = value
+		self.positioned.emit(value)
 
-@export var node_stations: Array[RailNodeStationData] = []
+@export var node_stations: Array[NodeStationLinkData] = []
 
 #region Initialization
 func _init(_num: int, _name: String, _town_num: int):
@@ -30,7 +34,7 @@ static func of_dict(_station_data: Dictionary) -> RailStationData:
 		station_obj.town_name = _station_data.get("townName")
 	return station_obj
 
-func connect_node_station(node_station: RailNodeStationData):
+func connect_node_station(node_station: NodeStationLinkData):
 	self.node_stations.append(node_station)
 	node_station.parent_station = self
 	# set position if none has been set yet (maybe change that later)

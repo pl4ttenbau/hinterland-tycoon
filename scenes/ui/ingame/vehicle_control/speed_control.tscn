@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dt7lvw02e3c8r"]
 
-[ext_resource type="Script" uid="uid://dsdlhc30dwqbm" path="res://game/gamescripts/ui/vehicle_control/speed_slider/outer_speed_control_slider.gd" id="1_gtp7w"]
-
 [node name="OuterSlider" type="CenterContainer" unique_id=1918136250]
 custom_minimum_size = Vector2(80, 130)
 anchors_preset = 15
@@ -11,7 +9,6 @@ offset_right = -1072.0
 offset_bottom = -497.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gtp7w")
 metadata/_custom_type_script = "uid://dsdlhc30dwqbm"
 
 [node name="VSlider" type="VSlider" parent="." unique_id=298494700]

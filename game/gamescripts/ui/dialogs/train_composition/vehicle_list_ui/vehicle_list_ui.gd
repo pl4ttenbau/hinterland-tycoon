@@ -1,6 +1,6 @@
 class_name VehicleListUi extends MarginContainer
 
-const ITEMS_SCENE_PATH = "res://scenes/ui/list/items/vehicle_list_item.tscn"
+const ITEMS_SCENE_PATH = "res://scenes/ui/list/vehicle_list/vehicle_list_item.tscn"
 
 signal vehicles_filtered()
 

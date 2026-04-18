@@ -2,7 +2,7 @@
 extends Node
 
 # == PLAYER ==
-@export var player: PlayerHead
+@export var player: PlayerHead3D
 @export var active_cam: Camera3D
 
 # == PRE-WORLD-LOADING ==
@@ -25,7 +25,7 @@ extends Node
 @export var tracks: Array[RailTrackData] = []
 @export var outer_tracks: Array[RailTrack3D] = []
 
-@export var node_stations: Array[RailNodeStationData] = []
+@export var node_stations: Array[NodeStationLinkData] = []
 @export var station_objs: Array[RailStationData] = []
 
 @export var depots: Array[RailDepotData] = []

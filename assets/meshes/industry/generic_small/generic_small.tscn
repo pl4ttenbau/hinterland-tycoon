@@ -1,29 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://stuogce200cl"]
+[gd_scene format=3 uid="uid://stuogce200cl"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_7gmxi"]
 [ext_resource type="ArrayMesh" uid="uid://chsv4cvftd80m" path="res://assets/meshes/industry/generic_small/factory1.obj" id="1_kwqhb"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_mo51j"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_l4yau"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_1tqw1"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_1tqw1"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_xenq4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k6kh0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6kh0"]
 size = Vector3(18.3074, 7.61292, 16.5604)
 
-[node name="GenericIndustrySm" type="Node3D"]
+[sub_resource type="Resource" id="Resource_xenq4"]
+resource_local_to_scene = true
+script = ExtResource("6_xenq4")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_hah6j"]
+resource_local_to_scene = true
+script = ExtResource("5_1tqw1")
+storage = SubResource("Resource_xenq4")
+amount_max = 200.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="GenericIndustrySm" type="Node3D" unique_id=197550425]
 script = ExtResource("1_7gmxi")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=471854787]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visibility_range_end = 400.0
 visibility_range_end_margin = 40.0
 mesh = ExtResource("1_kwqhb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1722893778]
 physics_material_override = SubResource("PhysicsMaterial_k6kh0")
 script = ExtResource("3_mo51j")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=726876091]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146126, 3.77081, 0.0566711)
 shape = SubResource("BoxShape3D_k6kh0")
+
+[node name="Inventory" type="Node" parent="." unique_id=1782243600]
+script = ExtResource("4_l4yau")
+inventory = SubResource("Resource_hah6j")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1468104359 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("6_1tqw1")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"

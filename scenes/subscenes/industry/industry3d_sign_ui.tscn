@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd2uy1o84p7hi"]
 
 [ext_resource type="Texture2D" uid="uid://cvjgedgqronlk" path="res://assets/icons/icon_industry.svg" id="1_h5rr3"]
-[ext_resource type="Script" uid="uid://cynagkuhy887f" path="res://game/gamescripts/nodes/industry/industry_sign_panel.gd" id="1_mbm3r"]
+[ext_resource type="Script" uid="uid://cynagkuhy887f" path="res://game/gamescripts/nodes/industry/sign/industry_sign_panel.gd" id="1_mbm3r"]
 [ext_resource type="Texture2D" uid="uid://dxg2ultkygdvi" path="res://assets/icons/icon_good.svg" id="2_h5rr3"]
 [ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="3_1r08w"]
 

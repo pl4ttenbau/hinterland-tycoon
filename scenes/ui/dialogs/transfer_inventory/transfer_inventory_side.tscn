@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ci2w00arrbyl1"]
+
+[ext_resource type="Script" uid="uid://dd3ni7vdhd3c3" path="res://game/gamescripts/ui/dialogs/inventory_transfer/inventory_transfer_side.gd" id="1_dci3x"]
+[ext_resource type="PackedScene" uid="uid://cf5u4ysk2yu1o" path="res://scenes/ui/list/inventory_list/inventory_list.tscn" id="1_gpobu"]
+[ext_resource type="Script" uid="uid://bk4lo5jaebtb" path="res://game/gamescripts/ui/dialogs/inventory_transfer/selected_entity_finder.gd" id="3_dci3x"]
+
+[node name="TransferInventorySide" type="MarginContainer" unique_id=698182920]
+offset_right = 412.0
+offset_bottom = 471.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+script = ExtResource("1_dci3x")
+is_left = true
+dropdown_index = -1
+metadata/_custom_type_script = "uid://dd3ni7vdhd3c3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=175114554]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EntityDropdown" type="OptionButton" parent="VBoxContainer" unique_id=1955648406]
+unique_name_in_owner = true
+layout_mode = 2
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Player"
+popup/item_0/id = 0
+popup/item_1/text = "Train"
+popup/item_1/id = 1
+popup/item_2/text = "Station"
+popup/item_2/id = 2
+popup/item_3/text = "Industry"
+popup/item_3/id = 3
+
+[node name="OuterInventoryList" parent="VBoxContainer" unique_id=2029808383 instance=ExtResource("1_gpobu")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SelectedEntityFinder" type="Node" parent="." unique_id=650343166]
+script = ExtResource("3_dci3x")
+metadata/_custom_type_script = "uid://bk4lo5jaebtb"

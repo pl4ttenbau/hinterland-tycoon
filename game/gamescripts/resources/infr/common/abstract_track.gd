@@ -1,6 +1,6 @@
 ## every curve based infrastructure pieve should inherit from this
 @tool
-class_name AbstractTrack extends GameObject
+class_name AbstractTrack extends GameEntityData
 
 @warning_ignore("unused_signal")
 signal track_changed()

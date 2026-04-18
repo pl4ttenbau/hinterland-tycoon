@@ -1,6 +1,9 @@
 @abstract 
 @icon("res://assets/icons/icon_station_white.png")
-class_name AbstractStation extends GoodsInventory
+class_name AbstractStation extends GameEntityData
+
+@warning_ignore("unused_signal")
+signal positioned(pos_vec3: Vector3)
 
 @export var station_name: String
 

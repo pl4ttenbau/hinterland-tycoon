@@ -1,5 +1,5 @@
 @icon("uid://dxyodhnxhip0d")
-class_name VehicleData extends GameObject
+class_name VehicleData extends GameEntityData
 
 @export var veh_type: VehicleTypeData
 

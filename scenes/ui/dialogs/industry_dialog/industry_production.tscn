@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6ju8sst242fn"]
 
-[ext_resource type="Script" uid="uid://dpka3itc2mcht" path="res://game/gamescripts/ui/dialogs/industry_info/industry_production.gd" id="1_2m623"]
+[ext_resource type="Script" uid="uid://dpka3itc2mcht" path="res://game/gamescripts/ui/dialogs/industry_info/industry_production_ui.gd" id="1_2m623"]
 
 [node name="IndustryProduction" type="MarginContainer" unique_id=26095157]
 custom_minimum_size = Vector2(300, 0)

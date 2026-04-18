@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_depot.png")
-class_name RailDepot3D extends HideableObject
+class_name RailDepot3D extends GameEntity3D
 
 const SCENE_PATH = "uid://c8f1x2eykmxwk"
 

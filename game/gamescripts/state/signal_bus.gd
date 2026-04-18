@@ -38,10 +38,10 @@ signal map_spawned(container: WorldMapScene)
 
 #region Vehicles
 @warning_ignore("unused_signal")
-signal train_entered(train3d: Train3D)
+signal player_entered_train(train3d: Train3D)
 
 @warning_ignore("unused_signal")
-signal train_exited()
+signal player_exited_train()
 #endregion
 
 #region Rails
@@ -71,7 +71,19 @@ signal roads_spawned()
 signal stations_loaded(station_objs: Array[RailStationData])
 
 @warning_ignore("unused_signal")
-signal stations_spawned()
+signal node_station_links_spawned()
+
+@warning_ignore("unused_signal")
+signal train_entered_station(station: RailStationData, train3d: Train3D)
+
+@warning_ignore("unused_signal")
+signal train_exited_station(station: RailStationData, train3d: Train3D)
+
+@warning_ignore("unused_signal")
+signal player_entered_station(station: RailStationData)
+
+@warning_ignore("unused_signal")
+signal player_exited_station(station: RailStationData)
 #endregion
 
 #region Residential Buildings

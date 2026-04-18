@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_deco_white.png")
-class_name DecoSplineData extends GameObject
+class_name DecoSplineData extends GameEntityData
 
 const SCENE_PATH_TEMPLATE = "res://assets/meshes/deco/%s/%s_spline.tscn"
 

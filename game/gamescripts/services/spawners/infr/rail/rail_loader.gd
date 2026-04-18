@@ -8,7 +8,6 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
 @export var fork_storage: RailNodeForkStore = RailNodeForkStore.new()
-@export var node_stations_storage: NodeStationStore = NodeStationStore.new()
 @export var outer_buffers: Array[RailBuffer3D] = []
 
 @export var builder: NewRailBuilder:

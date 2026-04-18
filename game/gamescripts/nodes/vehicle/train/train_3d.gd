@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_locomotive.png")
-class_name Train3D extends VisibleObject
+class_name Train3D extends InventoryEntity3D
 
 const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"
 const VEH_SPEED_MODIFIER: float = 50.0
@@ -25,6 +25,8 @@ static var _last_train_num: int = 0
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
+
+@export var current_station = NodeStationLink3D
 
 static func _next_train_num() -> int:
 	Train3D._last_train_num += 1
@@ -93,11 +95,9 @@ func move_forwards(delta_seconds: float):
 	for veh3d: Vehicle3D in self.vehicles:
 		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
-		# var curr_transf := veh3d.global_transform
 		var target_transf := self._get_target_transf_at_m_passed(m_passed)
 		var transf_tween = veh3d.create_tween()
 		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
-		# veh3d.global_transform = target_transf
 
 func increase_m_passed(delta_m: float):
 	self.m_passed_on_track += delta_m
