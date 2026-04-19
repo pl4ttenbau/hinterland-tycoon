@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://pqksl6q263v4"]
+
+[ext_resource type="PackedScene" uid="uid://bgxpy480s5p6q" path="res://assets/meshes/deco/bulk_cargo_ship/bulk_cargo_ship.obj" id="1_t2mlk"]
+
+[node name="bulk_cargo_ship" unique_id=64268351 instance=ExtResource("1_t2mlk")]
+
+[node name="bulk_cargo_ship" parent="." index="0" unique_id=962475649]
+layers = 32
+visibility_range_end = 1000.0
+visibility_range_end_margin = 100.0

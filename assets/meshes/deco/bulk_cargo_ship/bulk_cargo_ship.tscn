@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://dhbkf1kc3c8sg"]
 
-[ext_resource type="ArrayMesh" uid="uid://bgxpy480s5p6q" path="res://assets/meshes/deco/bulk_cargo_ship/bulk_cargo_ship.obj" id="1_epqt8"]
+[ext_resource type="PackedScene" uid="uid://pqksl6q263v4" path="res://assets/meshes/deco/bulk_cargo_ship/model_bulk_cargo_ship.tscn" id="1_epqt8"]
 
 [node name="BulkCargoShip" type="Node3D" unique_id=1920641287]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1552745081]
-layers = 32
-visibility_range_end = 800.0
-visibility_range_end_margin = 80.0
-mesh = ExtResource("1_epqt8")
+[node name="bulk_cargo_ship" parent="." unique_id=64268351 instance=ExtResource("1_epqt8")]
