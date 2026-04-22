@@ -17,14 +17,19 @@ const LINE_WIDTH = .5
 	get(): return self._get_color()
 	
 @export var abs_aabb: AABB
+
+@export_group("Smoothing")
 @export var autosmooth: bool = false
 
-@export_group("Actions")
 @export_tool_button("Auto-Smooth Y")
 var smooth_y = Callable(self, "do_smooth_y")
 
 @export_tool_button("Auto-Smooth Full")
 var smooth_full = Callable(self, "do_smooth_full")
+
+@export_group("Export")
+@export_tool_button("Export To Log")
+var export_to_log = Callable(self, "do_export_to_log")
 
 #region Initialization
 static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed", _autosmooth: bool = false) -> EditorInfrLine3D:
@@ -82,6 +87,11 @@ func do_smooth_y():
 
 func do_smooth_full():
 	InfrUtils.smooth_curve3d(self.curve)
+#endregion
+
+#region Export
+func do_export_to_log():
+	pass
 #endregion
 
 #region Helper-Methods
