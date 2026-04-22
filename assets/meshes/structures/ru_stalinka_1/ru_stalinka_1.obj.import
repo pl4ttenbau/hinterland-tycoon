@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cvkq4rdcjpnvh"
-path="res://.godot/imported/ru_small_house_2.obj-ec5312eaf0ddda003da50944f0581d50.scn"
+uid="uid://dkgkao6e0avja"
+path="res://.godot/imported/ru_stalinka_1.obj-68f0972c227a4f6eaad7d2a587e5e81a.scn"
 
 [deps]
 
-source_file="res://assets/meshes/structures/ru_small_house_2/ru_small_house_2.obj"
-dest_files=["res://.godot/imported/ru_small_house_2.obj-ec5312eaf0ddda003da50944f0581d50.scn"]
+source_file="res://assets/meshes/structures/ru_stalinka_1/ru_stalinka_1.obj"
+dest_files=["res://.godot/imported/ru_stalinka_1.obj-68f0972c227a4f6eaad7d2a587e5e81a.scn"]
 
 [params]
 

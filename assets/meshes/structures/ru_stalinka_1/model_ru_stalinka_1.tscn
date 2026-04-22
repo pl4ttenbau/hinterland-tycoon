@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cth54yt65jnfv"]
+
+[ext_resource type="PackedScene" uid="uid://dkgkao6e0avja" path="res://assets/meshes/structures/ru_stalinka_1/ru_stalinka_1.obj" id="1_75ret"]
+
+[node name="ru_stalinka_1" unique_id=1328810627 instance=ExtResource("1_75ret")]
+
+[node name="ru_four_stories_1" parent="." index="0" unique_id=397568104]
+layers = 8
+visibility_range_end = 260.0
+visibility_range_end_margin = 26.0

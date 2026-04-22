@@ -1,27 +1,23 @@
 [gd_scene format=3 uid="uid://h4atj8lcrsxo"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ovrns"]
-[ext_resource type="ArrayMesh" uid="uid://cvkq4rdcjpnvh" path="res://assets/meshes/structures/ru_small_house_2/ru_small_house_2.obj" id="2_ho76w"]
+[ext_resource type="PackedScene" uid="uid://dnlnxskepsilt" path="res://assets/meshes/structures/ru_small_house_2/model_ru_small_house_2.tscn" id="2_ho76w"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_tl4ht"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahh74"]
-size = Vector3(19.153437, 7.532078, 12.596632)
+size = Vector3(17.263212, 7.532078, 10.668629)
 
 [node name="RuSmallHouse2" type="Node3D" unique_id=1046117816]
 script = ExtResource("1_ovrns")
 placed_res_bld_type = "ru_small_house_2"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
-layers = 8
-visibility_range_end = 250.0
-visibility_range_end_margin = 25.0
-mesh = ExtResource("2_ho76w")
+[node name="ru_small_house_2" parent="." unique_id=1362756987 instance=ExtResource("2_ho76w")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
 script = ExtResource("3_tl4ht")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=1573024691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042769432, 3.6527267, -0.12870026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0137319565, 3.6527267, 0.24975395)
 shape = SubResource("BoxShape3D_ahh74")

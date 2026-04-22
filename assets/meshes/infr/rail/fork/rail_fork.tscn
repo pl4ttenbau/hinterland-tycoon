@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmhr52ku3fria"]
+[gd_scene format=3 uid="uid://cmhr52ku3fria"]
 
 [ext_resource type="Script" uid="uid://8glp66w6di6p" path="res://game/gamescripts/nodes/infr/rail_track/rail_fork_3d.gd" id="1_8gdjw"]
 [ext_resource type="ArrayMesh" uid="uid://6h75nq3x8brc" path="res://assets/meshes/infr/rail/fork/switch_signal_1.obj" id="2_fvcwk"]
@@ -17,19 +17,20 @@ normal_texture = ExtResource("3_hkssp")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvgnl"]
 albedo_color = Color(1, 1, 0.28627452, 1)
 
-[node name="RailFork" type="Node3D"]
+[node name="RailFork" type="Node3D" unique_id=683603926]
 script = ExtResource("1_8gdjw")
 metadata/_custom_type_script = "uid://8glp66w6di6p"
 
-[node name="ForkMesh" type="MeshInstance3D" parent="."]
+[node name="ForkMesh" type="MeshInstance3D" parent="." unique_id=250098814]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.869609)
 material_override = SubResource("StandardMaterial3D_7b3yp")
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 mesh = ExtResource("2_fvcwk")
 
-[node name="ForkLabel" type="Label3D" parent="."]
+[node name="ForkLabel" type="Label3D" parent="." unique_id=134161733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+visible = false
 visibility_range_end = 100.0
 visibility_range_end_margin = 10.0
 pixel_size = 0.015
@@ -39,15 +40,15 @@ text = "-1"
 font_size = 80
 outline_size = 24
 
-[node name="RailForkCollider" type="StaticBody3D" parent="."]
+[node name="RailForkCollider" type="StaticBody3D" parent="." unique_id=17325479]
 script = ExtResource("5_hkssp")
 metadata/_custom_type_script = "uid://b0auajfl0t6ji"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RailForkCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailForkCollider" unique_id=1540924191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435951, 2.16024)
 shape = SubResource("SphereShape3D_7b3yp")
 
-[node name="ForkArrow" type="MeshInstance3D" parent="."]
+[node name="ForkArrow" type="MeshInstance3D" parent="." unique_id=1327471979]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.110441804, 0)
 visible = false
 visibility_range_end = 100.0

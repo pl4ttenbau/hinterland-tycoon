@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dnlnxskepsilt"]
+
+[ext_resource type="PackedScene" uid="uid://cvkq4rdcjpnvh" path="res://assets/meshes/structures/ru_small_house_2/ru_small_house_2.obj" id="1_6o5sk"]
+
+[node name="ru_small_house_2" unique_id=1362756987 instance=ExtResource("1_6o5sk")]
+
+[node name="ru_small_house_2" parent="." index="0" unique_id=1429960388]
+layers = 8
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0
