@@ -1,0 +1,32 @@
+# Blender 5.0.1 MTL File: 'old_mig.blend'
+# www.blender.org
+
+newmtl mat_old_mig_body
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_old_mig_main_d.jpg
+
+newmtl mat_old_mig_missile1
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_old_mig_missile1_d.jpg
+
+newmtl mat_old_mig_missile2
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd tex_old_mig_missile2_d.jpg

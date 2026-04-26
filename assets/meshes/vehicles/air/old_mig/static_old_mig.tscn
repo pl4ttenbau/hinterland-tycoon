@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cp883osw2d0mi"]
+
+[ext_resource type="PackedScene" uid="uid://dd50g7sbihps3" path="res://assets/meshes/vehicles/air/old_mig/mesh/model_old_mig.tscn" id="1_rla1i"]
+
+[node name="StaticOldMig" type="Node3D" unique_id=1106255169]
+
+[node name="old_mig" parent="." unique_id=1409884502 instance=ExtResource("1_rla1i")]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dd50g7sbihps3"]
+
+[ext_resource type="PackedScene" uid="uid://bcva24b8em0cc" path="res://assets/meshes/vehicles/air/old_mig/mesh/old_mig.obj" id="1_yjqr2"]
+[ext_resource type="Material" uid="uid://lwk0isdtvse4" path="res://assets/meshes/vehicles/air/old_mig/mesh/mat/mat_old_mig_body.tres" id="2_twgck"]
+[ext_resource type="Texture2D" uid="uid://bmvsjh0ltsxbj" path="res://assets/meshes/vehicles/air/old_mig/mesh/tex_old_mig_missile2_d.jpg" id="3_fr1nm"]
+[ext_resource type="Texture2D" uid="uid://de7qklmvagiwu" path="res://assets/meshes/vehicles/air/old_mig/mesh/tex_old_mig_missile1_d.jpg" id="4_ucr5r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jao1w"]
+cull_mode = 2
+albedo_texture = ExtResource("3_fr1nm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a170n"]
+cull_mode = 2
+albedo_texture = ExtResource("4_ucr5r")
+
+[node name="old_mig" unique_id=1409884502 instance=ExtResource("1_yjqr2")]
+
+[node name="old_mig_body" parent="." index="0" unique_id=902229946]
+layers = 32
+material_override = ExtResource("2_twgck")
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0
+
+[node name="old_mig_glass" parent="." index="1" unique_id=2109812549]
+layers = 32
+material_override = ExtResource("2_twgck")
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0
+
+[node name="old_mig_missile2" parent="." index="2" unique_id=1186186855]
+layers = 32
+material_override = SubResource("StandardMaterial3D_jao1w")
+visibility_range_end = 80.0
+visibility_range_end_margin = 8.0
+
+[node name="old_mig_missile1" parent="." index="3" unique_id=1545243057]
+layers = 32
+visibility_range_end = 80.0
+visibility_range_end_margin = 8.0
+surface_material_override/0 = SubResource("StandardMaterial3D_a170n")

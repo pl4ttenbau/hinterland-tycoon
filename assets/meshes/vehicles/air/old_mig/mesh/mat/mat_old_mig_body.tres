@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://lwk0isdtvse4"]
+
+[ext_resource type="Texture2D" uid="uid://b47mvoh4nmv61" path="res://assets/meshes/vehicles/air/old_mig/mesh/tex_old_mig_main_d.jpg" id="1_i0nfl"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_i0nfl")

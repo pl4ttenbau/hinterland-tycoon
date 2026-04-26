@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="3_l52iu"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge.tscn" id="3_v0uy5"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="4_d4unt"]
+[ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="4_k68gg"]
 [ext_resource type="PackedScene" uid="uid://dxriyek0lwp86" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.tscn" id="5_m4w4l"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="5_s8rb4"]
 [ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="6_d4unt"]
@@ -28,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bdkoiu1b1k0hq" path="res://assets/meshes/structures/ru_village_hut_3/ru_village_hut_3.tscn" id="19_kmxch"]
 [ext_resource type="PackedScene" uid="uid://h4atj8lcrsxo" path="res://assets/meshes/structures/ru_small_house_2/ru_small_house_2.tscn" id="21_1o26b"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="21_ywdjn"]
+[ext_resource type="PackedScene" uid="uid://cp883osw2d0mi" path="res://assets/meshes/vehicles/air/old_mig/static_old_mig.tscn" id="22_v3uwx"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="23_yw1li"]
 [ext_resource type="PackedScene" uid="uid://cwlcfsgeh3x0l" path="res://assets/meshes/structures/city_corner_house/city_corner_house.tscn" id="24_bh1a3"]
 [ext_resource type="PackedScene" uid="uid://dk0ya0g6x485k" path="res://assets/meshes/structures/wooden_shack/wooden_shack.tscn" id="25_uosoh"]
@@ -46,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="42_qa4ji"]
 [ext_resource type="PackedScene" uid="uid://dngwf3sue7eob" path="res://assets/meshes/vehicles/road/belaz_dumper/belaz_dumper_static.tscn" id="43_5ajko"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="44_1oaic"]
+[ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="47_g1iug"]
 
 [sub_resource type="Curve3D" id="Curve3D_283bc"]
 _data = {
@@ -1350,6 +1353,12 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." unique_id=336419630 instance=ExtResource("2_vme4m")]
 
+[node name="RuVillageHut1" parent="WorldTerrain" unique_id=1046117816 instance=ExtResource("17_kmxch")]
+transform = Transform3D(0.9966374, 0, -0.08193851, 0, 1, 0, 0.08193851, 0, 0.9966374, 523.9598, 31.31272, -78.27876)
+
+[node name="VillageWell" parent="WorldTerrain" unique_id=1061262825 instance=ExtResource("4_k68gg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1684.4344, 31.27583, 1590.2338)
+
 [node name="Towns" parent="." unique_id=880274155 node_paths=PackedStringArray("world_scene") instance=ExtResource("3_d7nwm")]
 world_scene = NodePath("..")
 
@@ -1497,6 +1506,15 @@ transform = Transform3D(-0.051516764, 0, -0.99867225, 0, 1, 0, 0.99867225, 0, -0
 [node name="Campfire" parent="Deco/Jushno/Center" unique_id=1722043779 instance=ExtResource("44_1oaic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580.3579, 31.30457, 130.19456)
 
+[node name="StaticUazJeep" parent="Deco/Jushno/Center" unique_id=1219966974 instance=ExtResource("40_oddmo")]
+transform = Transform3D(-0.0044156606, 0, -0.9999902, 0, 1, 0, 0.9999902, 0, -0.0044156606, 501.14886, 31.131966, 210.30498)
+
+[node name="CarBeetle" parent="Deco/Jushno/Center" unique_id=1540109194 instance=ExtResource("47_g1iug")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 513.73065, 31.142162, 210.16771)
+
+[node name="StaticGazAaTruck" parent="Deco/Jushno/Center" unique_id=902227425 instance=ExtResource("39_g1vuc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 507.36996, 31.160183, 209.6859)
+
 [node name="Industrial" type="Node" parent="Deco/Jushno" unique_id=1905232233]
 
 [node name="WarehouseWoodenStatic" parent="Deco/Jushno/Industrial" unique_id=2081448644 instance=ExtResource("42_qa4ji")]
@@ -1518,6 +1536,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 612.2556, 31.320791, 156.6734
 
 [node name="Substation" parent="Deco/Jushno/Airport" unique_id=1476429445 instance=ExtResource("31_yhr3p")]
 transform = Transform3D(-0.05786024, 0, 0.9983247, 0, 1, 0, -0.9983247, 0, -0.05786024, 530.6264, 31.076923, 414.02917)
+
+[node name="StaticOldMig" parent="Deco/Jushno/Airport" unique_id=1106255169 instance=ExtResource("22_v3uwx")]
+transform = Transform3D(-0.9989816, 0, -0.0451189, 0, 1, 0, 0.0451189, 0, -0.9989816, 500.07224, 31.084602, 351.02872)
 
 [node name="JS_StreetBridge_W" type="Node" parent="Deco/Jushno" unique_id=889612619]
 
@@ -1570,6 +1591,11 @@ transform = Transform3D(0.55733943, 0, -0.8302848, 0, 1, 0, 0.8302848, 0, 0.5573
 
 [node name="BridgePillarBrick" parent="Deco/Sokol/NorthernBridge" unique_id=1601907114 instance=ExtResource("28_fsnnl")]
 transform = Transform3D(0.79547346, 0, 0.60598844, 0, 1, 0, -0.60598844, 0, 0.79547346, 656.6352, 25.354008, -1439.8506)
+
+[node name="Airport" type="Node" parent="Deco/Sokol" unique_id=461075433]
+
+[node name="StaticOldMig" parent="Deco/Sokol/Airport" unique_id=1584680811 instance=ExtResource("22_v3uwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708.15826, 31.505836, -895.9084)
 
 [node name="KorsakovDachnoe" type="Node" parent="Deco" unique_id=1123152625]
 
@@ -1644,14 +1670,22 @@ houses = Array[ExtResource("21_ywdjn")]([Object(Node3D,"unique_name_in_owner":fa
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.03643441, 0, 0.99933606, 0, 1, 0, -0.99933606, 0, 0.03643441, 508.99347, 31.133118, 120.287834),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_kruschovka_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9999957, 0, -0.002932149, 0, 1, 0, 0.002932149, 0, 0.9999957, 533.89667, 31.52541, 98.04188),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_stalinka_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9999197, 0, 0.012670692, 0, 1, 0, -0.012670692, 0, -0.9999197, 562.5313, 31.52541, 120.14661),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_stalinka_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99956346, 0, 0.02954422, 0, 1, 0, -0.02954422, 0, 0.99956346, 535.1127, 31.52541, 217.7653),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_stalinka_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.017399998, 0, 0.99984866, 0, 1, 0, -0.99984866, 0, -0.017399998, 567.67896, 31.608253, 95.43779),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_stalinka_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99998015, 0, 0.006300559, 0, 1, 0, -0.006300559, 0, -0.99998015, 561.7818, 31.250614, 149.44963),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_corner_house","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.006928909, 0, 0.999976, 0, 1, 0, -0.999976, 0, -0.006928909, 560.3194, 31.203533, 178.084),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99996, 0, 0.008953365, 0, 1, 0, -0.008953365, 0, -0.99996, 511.11853, 31.03172, 181.58801),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.020959824, 0, -0.9997803, 0, 1, 0, 0.9997803, 0, 0.020959824, 585.60547, 31.098488, 183.41916),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9997804, 0, 0.020959869, 0, 1, 0, -0.020959869, 0, 0.9997804, 535.18646, 31.158218, 180.58833),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.010594007, 0, -0.99994385, 0, 1, 0, 0.99994385, 0, 0.010594007, 583.0805, 31.295689, 120.41054),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.002408496, 0, -0.999997, 0, 1, 0, 0.999997, 0, -0.002408496, 509.6765, 30.992706, 223.67422),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 589.3664, 31.026207, 149.09914),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99994427, 0, 0.010559036, 0, 1, 0, -0.010559036, 0, -0.99994427, 577.993, 31.228096, 161.42856),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.96770036, 0, 0.2521032, 0, 1, 0, -0.2521032, 0, 0.96770036, 537.1442, 31.10905, 257.78827),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99755305, 0, -0.0699132, 0, 1, 0, 0.0699132, 0, -0.99755305, 570.8674, 31.165592, 453.39297),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_5","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 559.6618, 31.157171, 215.0299),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9998387, 0, 0.017958561, 0, 1, 0, -0.017958561, 0, -0.9998387, 517.51263, 31.120825, 247.01273),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.052841447, 0, 0.9986029, 0, 1, 0, -0.9986029, 0, -0.052841447, 557.6415, 31.106579, 230.37144),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_4","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 662.14886, 31.705803, 878.87646),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_1","placed_town_num":4,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9999967, 0, 0.0025480874, 0, 1, 0, -0.0025480874, 0, -0.9999967, 661.6113, 31.309757, 903.54315),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":4,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.03789948, 0, 0.9992815, 0, 1, 0, -0.9992815, 0, 0.03789948, 636.1891, 31.565086, 881.6698),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":4,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -1665,6 +1699,10 @@ houses = Array[ExtResource("21_ywdjn")]([Object(Node3D,"unique_name_in_owner":fa
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.88066757, 0, -0.47373474, 0, 1, 0, 0.47373474, 0, 0.88066757, -1353.9014, 32.389645, -180.01299),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_4","placed_town_num":5,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.33278662, 0, 0.94300216, 0, 1, 0, -0.94300216, 0, 0.33278662, -1385.5809, 32.725266, -218.11081),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":5,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9814201, 0, 0.1918712, 0, 1, 0, -0.1918712, 0, -0.9814201, -1370.0426, 32.525047, -165.13057),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":5,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9175743, 0, 0.39756432, 0, 1, 0, -0.39756432, 0, 0.9175743, 1651.9597, 31.497282, 1625.3014),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":6,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.28456753, 0, -0.958656, 0, 1, 0, 0.958656, 0, 0.28456753, 1668.5055, 31.41257, 1600.3967),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":6,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.81182885, 0, -0.5838955, 0, 1, 0, 0.5838955, 0, -0.81182885, 1675.9015, 30.935629, 1610.0094),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_4","placed_town_num":6,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.51238763, 0, -0.8587543, 0, 1, 0, 0.8587543, 0, -0.51238763, 1668.9904, 31.650406, 1587.4943),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":6,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.048623156, 0, 0.99881727, 0, 1, 0, -0.99881727, 0, 0.048623156, -1485.1759, 34.270348, 163.19717),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_2","placed_town_num":8,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.8071561, 0, -0.59033805, 0, 1, 0, 0.59033805, 0, 0.8071561, -1473.0132, 34.193966, 148.90717),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_4","placed_town_num":8,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9995044, 0, 0.031480514, 0, 1, 0, -0.031480514, 0, -0.9995044, -1485.7119, 32.734936, 184.69519),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_1","placed_town_num":8,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -1682,6 +1720,11 @@ houses = Array[ExtResource("21_ywdjn")]([Object(Node3D,"unique_name_in_owner":fa
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9971523, 0, 0.07541382, 0, 1, 0, -0.07541382, 0, 0.9971523, 641.5711, 31.322174, -597.51904),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_2","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9991199, 0, 0.041945405, 0, 1, 0, -0.041945405, 0, 0.9991199, 671.1163, 31.496815, -580.6573),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_2","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.17474, 31.64272, -600.97174),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_village_hut_3","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9999802, 0, -0.0063006133, 0, 1, 0, 0.0063006133, 0, -0.9999802, 573.37555, 31.10426, -72.90794),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_kruschovka_1","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.042294152, 0, 0.99910533, 0, 1, 0, -0.99910533, 0, 0.042294152, 557.79456, 31.104263, -91.32384),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_kruschovka_1","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 559.1633, 31.273819, -120.1104),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_1","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.0055152653, 0, -0.9999848, 0, 1, 0, 0.9999848, 0, 0.0055152653, 530.70593, 31.289692, -106.2512),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_2","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99798816, 0, 0.06340017, 0, 1, 0, -0.06340017, 0, 0.99798816, 555.05054, 31.399868, -139.32822),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_2","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.020663265, 0, -0.9997865, 0, 1, 0, 0.9997865, 0, -0.020663265, 0.117284775, 37.245323, -653.24475),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_kruschovka_1","placed_town_num":13,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99998975, 0, 0.004520163, 0, 1, 0, -0.004520163, 0, 0.99998975, 11.777927, 37.2146, -627.3978),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"ru_small_house_2","placed_town_num":13,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.83001226, 0, 0.5577451, 0, 1, 0, -0.5577451, 0, -0.83001226, 5.6387973, 37.269493, -671.8099),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("21_ywdjn"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_2","placed_town_num":13,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -1818,6 +1861,10 @@ placed_town_num = 3
 transform = Transform3D(-0.9999197, 0, 0.012670692, 0, 1, 0, -0.012670692, 0, -0.9999197, 562.5313, 31.52541, 120.14661)
 placed_town_num = 3
 
+[node name="RuStalinka4" parent="Houses/3_Jushno-Sachalinsk" unique_id=1232895636 instance=ExtResource("6_ounbw")]
+transform = Transform3D(0.99956346, 0, 0.02954422, 0, 1, 0, -0.02954422, 0, 0.99956346, 535.1127, 31.52541, 217.7653)
+placed_town_num = 3
+
 [node name="RuStalinka3" parent="Houses/3_Jushno-Sachalinsk" unique_id=1701630971 instance=ExtResource("6_ounbw")]
 transform = Transform3D(-0.017399998, 0, 0.99984866, 0, 1, 0, -0.99984866, 0, -0.017399998, 567.67896, 31.608253, 95.43779)
 placed_town_num = 3
@@ -1826,16 +1873,28 @@ placed_town_num = 3
 transform = Transform3D(-0.99998015, 0, 0.006300559, 0, 1, 0, -0.006300559, 0, -0.99998015, 561.7818, 31.250614, 149.44963)
 placed_town_num = 3
 
-[node name="RuSmallHouse23" parent="Houses/3_Jushno-Sachalinsk" unique_id=1046117816 instance=ExtResource("21_1o26b")]
+[node name="RuSmallHouse23" parent="Houses/3_Jushno-Sachalinsk" unique_id=1272445829 instance=ExtResource("21_1o26b")]
 transform = Transform3D(-0.006928909, 0, 0.999976, 0, 1, 0, -0.999976, 0, -0.006928909, 560.3194, 31.203533, 178.084)
+placed_town_num = 3
+
+[node name="RuSmallHouse25" parent="Houses/3_Jushno-Sachalinsk" unique_id=581635192 instance=ExtResource("21_1o26b")]
+transform = Transform3D(-0.99996, 0, 0.008953365, 0, 1, 0, -0.008953365, 0, -0.99996, 511.11853, 31.03172, 181.58801)
 placed_town_num = 3
 
 [node name="RuSmallHouse24" parent="Houses/3_Jushno-Sachalinsk" unique_id=1871711455 instance=ExtResource("16_top74")]
 transform = Transform3D(0.020959824, 0, -0.9997803, 0, 1, 0, 0.9997803, 0, 0.020959824, 585.60547, 31.098488, 183.41916)
 placed_town_num = 3
 
+[node name="RuSmallHouse26" parent="Houses/3_Jushno-Sachalinsk" unique_id=301862748 instance=ExtResource("16_top74")]
+transform = Transform3D(0.9997804, 0, 0.020959869, 0, 1, 0, -0.020959869, 0, 0.9997804, 535.18646, 31.158218, 180.58833)
+placed_town_num = 3
+
 [node name="RuVillageHut40" parent="Houses/3_Jushno-Sachalinsk" unique_id=1750412496 instance=ExtResource("18_5urta")]
 transform = Transform3D(0.010594007, 0, -0.99994385, 0, 1, 0, 0.99994385, 0, 0.010594007, 583.0805, 31.295689, 120.41054)
+placed_town_num = 3
+
+[node name="RuVillageHut43" parent="Houses/3_Jushno-Sachalinsk" unique_id=674072342 instance=ExtResource("18_5urta")]
+transform = Transform3D(-0.002408496, 0, -0.999997, 0, 1, 0, 0.999997, 0, -0.002408496, 509.6765, 30.992706, 223.67422)
 placed_town_num = 3
 
 [node name="RuVillageHut41" parent="Houses/3_Jushno-Sachalinsk" unique_id=180089995 instance=ExtResource("19_kmxch")]
@@ -1846,8 +1905,24 @@ placed_town_num = 3
 transform = Transform3D(-0.99994427, 0, 0.010559036, 0, 1, 0, -0.010559036, 0, -0.99994427, 577.993, 31.228096, 161.42856)
 placed_town_num = 3
 
+[node name="RuVillageHut44" parent="Houses/3_Jushno-Sachalinsk" unique_id=1306515569 instance=ExtResource("17_kmxch")]
+transform = Transform3D(0.96770036, 0, 0.2521032, 0, 1, 0, -0.2521032, 0, 0.96770036, 537.1442, 31.10905, 257.78827)
+placed_town_num = 3
+
 [node name="PolishHouse5" parent="Houses/3_Jushno-Sachalinsk" unique_id=1806060184 instance=ExtResource("3_283bc")]
 transform = Transform3D(-0.99755305, 0, -0.0699132, 0, 1, 0, 0.0699132, 0, -0.99755305, 570.8674, 31.165592, 453.39297)
+placed_town_num = 3
+
+[node name="RuVillageHut3" parent="Houses/3_Jushno-Sachalinsk" unique_id=698665291 instance=ExtResource("19_kmxch")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 559.6618, 31.157171, 215.0299)
+placed_town_num = 3
+
+[node name="RuVillageHut5" parent="Houses/3_Jushno-Sachalinsk" unique_id=785954267 instance=ExtResource("19_kmxch")]
+transform = Transform3D(-0.9998387, 0, 0.017958561, 0, 1, 0, -0.017958561, 0, -0.9998387, 517.51263, 31.120825, 247.01273)
+placed_town_num = 3
+
+[node name="RuVillageHut4" parent="Houses/3_Jushno-Sachalinsk" unique_id=86165943 instance=ExtResource("33_x4lm8")]
+transform = Transform3D(-0.052841447, 0, 0.9986029, 0, 1, 0, -0.9986029, 0, -0.052841447, 557.6415, 31.106579, 230.37144)
 placed_town_num = 3
 
 [node name="4_Dachnoe" type="Node" parent="Houses" unique_id=164218141]
@@ -1907,6 +1982,22 @@ transform = Transform3D(-0.9814201, 0, 0.1918712, 0, 1, 0, -0.1918712, 0, -0.981
 placed_town_num = 5
 
 [node name="6_Ozorskoje" type="Node" parent="Houses" unique_id=818676756]
+
+[node name="RuVillageHut1" parent="Houses/6_Ozorskoje" unique_id=1435439922 instance=ExtResource("17_kmxch")]
+transform = Transform3D(0.9175743, 0, 0.39756432, 0, 1, 0, -0.39756432, 0, 0.9175743, 1651.9597, 31.497282, 1625.3014)
+placed_town_num = 6
+
+[node name="RuVillageHut3" parent="Houses/6_Ozorskoje" unique_id=1727147688 instance=ExtResource("19_kmxch")]
+transform = Transform3D(0.28456753, 0, -0.958656, 0, 1, 0, 0.958656, 0, 0.28456753, 1668.5055, 31.41257, 1600.3967)
+placed_town_num = 6
+
+[node name="RuVillageHut4" parent="Houses/6_Ozorskoje" unique_id=903940669 instance=ExtResource("33_x4lm8")]
+transform = Transform3D(-0.81182885, 0, -0.5838955, 0, 1, 0, 0.5838955, 0, -0.81182885, 1675.9015, 30.935629, 1610.0094)
+placed_town_num = 6
+
+[node name="PolishHouse1" parent="Houses/6_Ozorskoje" unique_id=161927910 instance=ExtResource("23_yw1li")]
+transform = Transform3D(-0.51238763, 0, -0.8587543, 0, 1, 0, 0.8587543, 0, -0.51238763, 1668.9904, 31.650406, 1587.4943)
+placed_town_num = 6
 
 [node name="7_Nevelsk" type="Node" parent="Houses" unique_id=932832283]
 
@@ -1987,6 +2078,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.17474, 31.64272, -600.971
 placed_town_num = 11
 
 [node name="12_Novoalexandrovsk" type="Node" parent="Houses" unique_id=1092246999]
+
+[node name="RuKurschovka3" parent="Houses/12_Novoalexandrovsk" unique_id=1206273535 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(-0.9999802, 0, -0.0063006133, 0, 1, 0, 0.0063006133, 0, -0.9999802, 573.37555, 31.10426, -72.90794)
+placed_town_num = 12
+
+[node name="RuKurschovka4" parent="Houses/12_Novoalexandrovsk" unique_id=1251300035 instance=ExtResource("5_m4w4l")]
+transform = Transform3D(0.042294152, 0, 0.99910533, 0, 1, 0, -0.99910533, 0, 0.042294152, 557.79456, 31.104263, -91.32384)
+placed_town_num = 12
+
+[node name="RuSmallHouse1" parent="Houses/12_Novoalexandrovsk" unique_id=1883977667 instance=ExtResource("16_top74")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 559.1633, 31.273819, -120.1104)
+placed_town_num = 12
+
+[node name="RuSmallHouse2" parent="Houses/12_Novoalexandrovsk" unique_id=41292716 instance=ExtResource("21_1o26b")]
+transform = Transform3D(0.0055152653, 0, -0.9999848, 0, 1, 0, 0.9999848, 0, 0.0055152653, 530.70593, 31.289692, -106.2512)
+placed_town_num = 12
+
+[node name="PolishHouse2" parent="Houses/12_Novoalexandrovsk" unique_id=1304765175 instance=ExtResource("34_ou1n5")]
+transform = Transform3D(0.99798816, 0, 0.06340017, 0, 1, 0, -0.06340017, 0, 0.99798816, 555.05054, 31.399868, -139.32822)
+placed_town_num = 12
 
 [node name="13_Sinegorsk" type="Node" parent="Houses" unique_id=327256396]
 
