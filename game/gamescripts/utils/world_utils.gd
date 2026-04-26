@@ -21,6 +21,13 @@ static func float_arr_from_vec3(vec3: Vector3) -> Array[float]:
 	pos_arr.append(snapped(vec3.z, 0.01)) # z
 	return pos_arr
 
+static func get_rounded_vec_3(unrounded: Vector3) -> Vector3:
+	return Vector3(
+		snapped(unrounded.x, 0.01),
+		snapped(unrounded.y, 0.01),
+		snapped(unrounded.z, 0.01)
+	)
+
 static func pos_on_map(vec2: Vector2) -> Vector3:
 	if GlobalState.world_container:
 		var vec3 := Vector3(vec2.x, 0, vec2.y)

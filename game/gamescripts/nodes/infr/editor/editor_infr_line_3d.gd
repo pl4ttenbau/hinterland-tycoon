@@ -31,6 +31,9 @@ var smooth_full = Callable(self, "do_smooth_full")
 @export_tool_button("Export To Log")
 var export_to_log = Callable(self, "do_export_to_log")
 
+@export_tool_button("Place On Ground")
+var place_on_ground = Callable(self, "do_place_on_ground")
+
 #region Initialization
 static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed", _autosmooth: bool = false) -> EditorInfrLine3D:
 	var inst := EditorInfrLine3D.new()
@@ -92,6 +95,9 @@ func do_smooth_full():
 #region Export
 func do_export_to_log():
 	Infr3DExporter.print_infr3d_to_log(self)
+
+func do_place_on_ground():
+	Infr3DExporter.place_on_ground(self)
 #endregion
 
 #region Helper-Methods
