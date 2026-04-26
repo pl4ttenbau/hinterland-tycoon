@@ -91,7 +91,7 @@ func do_smooth_full():
 
 #region Export
 func do_export_to_log():
-	pass
+	Infr3DExporter.print_infr3d_to_log(self)
 #endregion
 
 #region Helper-Methods
