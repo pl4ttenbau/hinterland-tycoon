@@ -75,5 +75,19 @@
 		"townNum": 10,
 		"type": "STATION_MIXED",
 		"townName": "Dolinsk",
+	},
+	{
+		"num": 12,
+		"name": "Zentralnij",
+		"townNum": 1,
+		"type": "STATION_MIXED",
+		"townName": "Korsakov",
+	},
+	{
+		"num": 13,
+		"name": "Southern",
+		"townNum": 1,
+		"type": "STATION_GOODS",
+		"townName": "Korsakov",
 	}
 ]

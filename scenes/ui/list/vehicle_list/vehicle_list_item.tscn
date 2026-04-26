@@ -11,6 +11,12 @@ content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_detail = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_w2d6x"]
+font_color = Color(1, 1, 1, 0.3529412)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4lo0h"]
+font_color = Color(1, 0.8, 0, 0.827451)
+
 [node name="VehicleListItem" type="PanelContainer" unique_id=762948329]
 anchors_preset = 10
 anchor_right = 1.0
@@ -44,12 +50,53 @@ texture = ExtResource("1_1y4ey")
 expand_mode = 4
 stretch_mode = 4
 
-[node name="VehTypeLabel" type="Label" parent="HMargin" unique_id=1973183539]
+[node name="Spacer" type="Control" parent="HMargin/VehicleListHLayout" unique_id=918692292]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HMargin/VehicleListHLayout" unique_id=1496360226]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VehTypeLabel" type="Label" parent="HMargin/VehicleListHLayout/VBoxContainer" unique_id=1973183539]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "Vehicle_type"
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HMargin/VehicleListHLayout/VBoxContainer" unique_id=1541423803]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VehicleTypeCountryLabel" type="Label" parent="HMargin/VehicleListHLayout/VBoxContainer/Control" unique_id=487658249]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 72.0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "Germany"
+label_settings = SubResource("LabelSettings_w2d6x")
+
+[node name="Label" type="Label" parent="HMargin/VehicleListHLayout/VBoxContainer/Control" unique_id=615311950]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "DM 3.6k"
+label_settings = SubResource("LabelSettings_4lo0h")
 
 [node name="SelectedHighlighting" type="ColorRect" parent="." unique_id=1975556360]
 unique_name_in_owner = true

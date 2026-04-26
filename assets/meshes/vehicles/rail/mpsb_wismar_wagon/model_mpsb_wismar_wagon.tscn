@@ -23,6 +23,7 @@ material_override = SubResource("StandardMaterial3D_gqj3t")
 mesh = ExtResource("4_di1lo")
 
 [node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1116706351]
+visible = false
 script = ExtResource("5_e0tyd")
 metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 
