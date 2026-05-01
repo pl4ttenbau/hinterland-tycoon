@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dt7lvw02e3c8r"]
 
-[node name="OuterSlider" type="CenterContainer" unique_id=1918136250]
+[ext_resource type="Script" uid="uid://ctmgpjkg7e426" path="res://game/gamescripts/ui/vehicle_control/speed_slider.gd" id="1_w4ggk"]
+
+[node name="SpeedSlider" type="CenterContainer" unique_id=384982537]
 custom_minimum_size = Vector2(80, 130)
 anchors_preset = 15
 anchor_right = 1.0
@@ -9,10 +11,10 @@ offset_right = -1072.0
 offset_bottom = -497.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_custom_type_script = "uid://dsdlhc30dwqbm"
+script = ExtResource("1_w4ggk")
+metadata/_custom_type_script = "uid://ctmgpjkg7e426"
 
 [node name="VSlider" type="VSlider" parent="." unique_id=298494700]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 value = 100.0

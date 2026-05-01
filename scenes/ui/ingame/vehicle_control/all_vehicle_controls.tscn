@@ -1,18 +1,15 @@
 [gd_scene format=3 uid="uid://btkns7pbr5wa7"]
 
-[ext_resource type="Script" uid="uid://ngpi2r0442vj" path="res://addons/tnowe_extra_controls/elements/scale_container.gd" id="1_c7w07"]
 [ext_resource type="Texture2D" uid="uid://dortkl4g202yc" path="res://assets/ui/fuehrerstand/speedometer_tu4.png" id="2_fq22p"]
 [ext_resource type="PackedScene" uid="uid://dt7lvw02e3c8r" path="res://scenes/ui/ingame/vehicle_control/speed_control.tscn" id="3_jdnvi"]
 [ext_resource type="PackedScene" uid="uid://dikkbqk3y15rq" path="res://scenes/ui/ingame/vehicle_control/speed_info.tscn" id="4_xqslf"]
 
 [node name="HBoxContainer" type="HBoxContainer" unique_id=1065400060]
 
-[node name="Speedometer" type="Container" parent="." unique_id=847428229]
+[node name="Speedometer" type="CenterContainer" parent="." unique_id=846121827]
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 size_flags_horizontal = 0
-script = ExtResource("1_c7w07")
-metadata/_custom_type_script = "uid://ngpi2r0442vj"
 
 [node name="TextureRect" type="TextureRect" parent="Speedometer" unique_id=501299937]
 custom_minimum_size = Vector2(100, 100)
