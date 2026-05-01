@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckb1phe27rdp7"]
+
+[ext_resource type="PackedScene" uid="uid://dnw57jci8f6ry" path="res://assets/meshes/structures/village_house_3/village_house_3.obj" id="1_3xdjx"]
+
+[node name="VillageHouse3" unique_id=1235082697 instance=ExtResource("1_3xdjx")]
+
+[node name="village_house_3" parent="." index="0" unique_id=434138992]
+layers = 8
+visibility_range_end = 165.0
+visibility_range_end_margin = 16.5

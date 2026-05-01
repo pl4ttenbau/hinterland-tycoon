@@ -1,28 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://baeywcrtv0l1f"]
+[gd_scene format=3 uid="uid://baeywcrtv0l1f"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ufve3"]
-[ext_resource type="ArrayMesh" uid="uid://b0u6vne7qq6rl" path="res://assets/meshes/structures/village_house_2/village_house_2.obj" id="2_6p1i1"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_6p1i1"]
+[ext_resource type="PackedScene" uid="uid://d3cqry3esasy2" path="res://assets/meshes/structures/village_house_2/model_village_house_2.tscn" id="3_t6vkr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6vkr"]
-size = Vector3(8.4, 7.1, 13.2)
+size = Vector3(8.5324955, 7.3594484, 13.021192)
 
-[node name="VillageHouse2" type="Node3D"]
+[node name="VillageHouse2" type="Node3D" unique_id=1760927254]
 script = ExtResource("1_ufve3")
 placed_res_bld_type = "village_house_2"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-layers = 8
-visibility_range_end = 330.0
-visibility_range_end_margin = 33.0
-mesh = ExtResource("2_6p1i1")
+[node name="VillageHouse2" parent="." unique_id=1209474123 instance=ExtResource("3_t6vkr")]
 
-[node name="ResBldCollider" type="StaticBody3D" parent="."]
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1707797753]
 script = ExtResource("3_6p1i1")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 3.55, 0.2)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=440293328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01500237, 3.6797242, -0.016650006)
 shape = SubResource("BoxShape3D_t6vkr")
