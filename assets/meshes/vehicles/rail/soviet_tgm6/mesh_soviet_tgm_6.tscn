@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bwy28munt386i"]
+
+[ext_resource type="PackedScene" uid="uid://f2seg7hwrrcb" path="res://assets/meshes/vehicles/rail/soviet_tgm6/soviet_tgm6.obj" id="1_062uw"]
+[ext_resource type="Texture2D" uid="uid://b3om433uxqat6" path="res://assets/meshes/vehicles/rail/soviet_tgm6/tex_soviet_tgm6_d.jpg" id="2_y3y4h"]
+[ext_resource type="Texture2D" uid="uid://bltfc6rew4hwe" path="res://assets/meshes/vehicles/rail/soviet_tgm6/tex_soviet_tgm6_n.png" id="3_6afby"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3l5y6"]
+albedo_texture = ExtResource("2_y3y4h")
+normal_enabled = true
+normal_texture = ExtResource("3_6afby")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pshpg"]
+albedo_texture = ExtResource("2_y3y4h")
+normal_enabled = true
+normal_texture = ExtResource("3_6afby")
+
+[node name="soviet_tgm6" unique_id=1659211589 instance=ExtResource("1_062uw")]
+
+[node name="bogeys" parent="." index="0" unique_id=2004524993]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3l5y6")
+visibility_range_end = 250.0
+visibility_range_end_margin = 25.0
+
+[node name="body" parent="." index="1" unique_id=407482730]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_pshpg")

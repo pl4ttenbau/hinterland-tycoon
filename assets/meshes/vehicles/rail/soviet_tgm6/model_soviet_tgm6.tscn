@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b2qv6j4ty0h8f"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_oyffr"]
+[ext_resource type="PackedScene" uid="uid://bwy28munt386i" path="res://assets/meshes/vehicles/rail/soviet_tgm6/mesh_soviet_tgm_6.tscn" id="2_xrbda"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_0by4o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uuvvu"]
+size = Vector3(2.8310547, 4.0682373, 13.723389)
+
+[node name="ModelSovietTgm6" type="Node3D" unique_id=711970846]
+script = ExtResource("1_oyffr")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="soviet_tgm6" parent="." unique_id=1659211589 instance=ExtResource("2_xrbda")]
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1617532297]
+script = ExtResource("3_0by4o")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1030750826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.069, 0)
+shape = SubResource("BoxShape3D_uuvvu")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1621786297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0028806, 2.1039748, -6.1301703)
