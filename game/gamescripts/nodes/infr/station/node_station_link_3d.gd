@@ -23,6 +23,9 @@ func _enter_tree() -> void:
 	# connect to signals
 	self.node_station_changed.connect(Callable(self, "_on_node_station_changed"))
 
+func _ready() -> void:
+	self._on_node_station_changed(self.node_station)
+
 static func of(_node_station: NodeStationLinkData) -> NodeStationLink3D:
 	var prefab: PackedScene = preload(STATION_SCENE_PATH)
 	var instanciated_container: NodeStationLink3D = prefab.instantiate()

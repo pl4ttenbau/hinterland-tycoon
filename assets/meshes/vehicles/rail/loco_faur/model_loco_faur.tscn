@@ -22,7 +22,7 @@ script = ExtResource("1_qsyfb")
 metadata/_custom_type_script = "uid://bo44os5px2kcj"
 
 [node name="RailVehicleMesh" type="MeshInstance3D" parent="." unique_id=1026358862]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_era8q")
 custom_aabb = AABB(0, 0, 0, 0, 0, 9)
 ignore_occlusion_culling = true
@@ -32,7 +32,7 @@ mesh = ExtResource("5_jj8rk")
 skeleton = NodePath("../../../..")
 
 [node name="RailVehicleStaticBody" type="StaticBody3D" parent="." unique_id=27310662]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.696, 0)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 1.696, 0)
 script = ExtResource("6_w357n")
 metadata/_custom_type_script = "uid://bjj02tduewuut"
 
@@ -41,5 +41,5 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 shape = SubResource("BoxShape3D_s4m0o")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1151536141]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.19253153, 3.4472213, 3.9923348)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -0.19253093, 3.3347876, -3.2985601)
 metadata/cam_name = &"CAM_VEHICLE"

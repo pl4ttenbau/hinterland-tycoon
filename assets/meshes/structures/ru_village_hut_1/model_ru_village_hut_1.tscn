@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://drc6yawur1dir"]
+
+[ext_resource type="PackedScene" uid="uid://dq8hbsv3eylcj" path="res://assets/meshes/structures/ru_village_hut_1/ru_village_hut_1.obj" id="1_1yptq"]
+
+[node name="ModelRuVillageHut1" unique_id=843893305 instance=ExtResource("1_1yptq")]
+
+[node name="ru_village_hut_1" parent="." index="0" unique_id=1063488027]
+layers = 8
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0

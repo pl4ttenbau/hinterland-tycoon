@@ -42,6 +42,6 @@ func _get_latest_unused_town_number() -> int:
 	# none: return 1
 	if town_data_chilren.is_empty(): return 1
 	# return number of latest one +1
-	return town_data_chilren[-1].num -1
+	return town_data_chilren[-1].num +1
 	
 #endregion

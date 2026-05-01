@@ -18,6 +18,7 @@ metadata/_custom_type_script = "uid://b57silj6wixmw"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1986572626]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="ItemsContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=407291866]
 unique_name_in_owner = true

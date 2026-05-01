@@ -38,12 +38,13 @@ Written in the Godot Engine
 * [x] make ways for player to enter and exit vehicle
   * [x] with click at it
 	* [ ] new VehicleClickHandler manager
-* [ ] allow inventory spawnning between train & station
+* [x] allow inventory spawnning between train & station
   *  [ ] duck typing for inventory-havers?
   * [ ] train-wide goods capacity
-  * [ ] signal when train enters & leaves station
+  * [x] signal when train enters & leaves station
 	* [ ] auto-spawning timer in train?
 * [ ] PossibleIndustryConnection class for where you could deliver between
+* [ ] think of a new inventory for rails or any targeted goods
 
 #### New Maps
 

@@ -20,7 +20,8 @@ func load_preplaced_town_buildings():
 	## abort if res bld types or map isnt loaded yet
 	# if !self.has_res_bld_types_loaded: return
 	Loggie.info("spawning pre-placed ResBlds...")
-	for child: Node in self.get_map_houses_container().get_children():
+	var all_world_houses_children: Array = NodeTreeUtils.get_all_children(self.get_map_houses_container())
+	for child: Node in all_world_houses_children:
 		if child is Residence3D:
 			self.place_preplaced_res_bld(child as Residence3D)
 	SignalBus.town_buildings_spawned.emit()

@@ -1,4 +1,4 @@
-// Copyright © 2025 Cory Petkovsek, Roope Palmroos, and Contributors.
+// Copyright © 2023-2026 Cory Petkovsek, Roope Palmroos, and Contributors.
 // This shader is the minimum needed to allow the terrain to function, without any texturing.
 
 shader_type spatial;
@@ -88,8 +88,9 @@ uniform float noise2_scale : hint_range(0.001, 1.) = 0.076; // Used for macro va
 group_uniforms;
 
 // Varyings & Types
-varying vec3 v_normal;
 varying vec3 v_vertex;
+varying float v_vertex_xz_dist;
+varying vec3 v_normal;
 varying vec3 v_camera_pos;
 varying mat3 TBN;
 
@@ -178,28 +179,28 @@ void vertex() {
 	// Get vertex of flat plane in world coordinates and set world UV
 	v_vertex = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
-	// Camera distance to vertex on flat plane
-	float v_vertex_xz_dist = length(v_vertex.xz - _target_pos.xz);
+	// Distance from target node to vertex on a flat plane
+	v_vertex_xz_dist = length(v_vertex.xz - _target_pos.xz);
 
-	// Geomorph vertex, set end and start for linear height interpolate
+	// Geomorph vertex across clipmap LODs, set end and start for linear height interpolate
 	float scale = MODEL_MATRIX[0][0];
 	float inv_scale = 1.0 / scale;
-	float vertex_distance = max(abs(v_vertex.x - _target_pos.x), abs(v_vertex.z - _target_pos.z));
-	float vertex_lerp = smoothstep(0.0, 1.0, (vertex_distance * inv_scale - _mesh_size - 4.0) / (_mesh_size - 4.0));
-	vec2 v_fract = fract(VERTEX.xz * 0.5) * 2.0;
+	float max_xz = max(abs(v_vertex.x - _target_pos.x), abs(v_vertex.z - _target_pos.z));
+	float vertex_lerp = smoothstep(0.0, 1.0, (max_xz * inv_scale - _mesh_size - 4.0) / (_mesh_size - 4.0));
+	vec2 vertex_fract = fract(VERTEX.xz * 0.5) * 2.0;
 	// For LOD0 morph from a regular grid to an alternating grid to align with LOD1+
 	vec2 shift = (scale < _vertex_spacing / _subdiv + 1e-6) ? // LOD0 or not
 		// Shift from regular to symmetric
-		mix(v_fract, vec2(v_fract.x, -v_fract.y),
+		mix(vertex_fract, vec2(vertex_fract.x, -vertex_fract.y),
 			round(fract(round(mod(v_vertex.z * inv_scale, 4.0)) *
 			round(mod(v_vertex.x * inv_scale, 4.0)) * 0.25))) :
-		// symmetric shift
-		v_fract * round((fract(v_vertex.xz * 0.25 * inv_scale) - 0.5) * 4.0);
+		// Symmetric shift
+		vertex_fract * round((fract(v_vertex.xz * 0.25 * inv_scale) - 0.5) * 4.0);
 	vec2 start_pos = v_vertex.xz * _vertex_density;
 	vec2 end_pos = (v_vertex.xz - shift * scale) * _vertex_density;
 	v_vertex.xz -= shift * scale * vertex_lerp;
 
-	// UV coordinates in world space. Values are 0 to _region_size within regions
+	// UV coordinates in region space. 0-1 covers 1 region, 1-2 is the next region, etc.
 	UV = v_vertex.xz * _vertex_density;
 
 	// UV coordinates in region space + texel offset. Values are 0 to 1 within regions
@@ -379,8 +380,8 @@ void fragment() {
 		uint id_read = 0u; // 1 bit per possible ID
 		// world normal adjustment requires acess to previous id during next iteration
 		vec4 nrm = vec4(0.0, 1.0, 0.0, 1.0);
-		// adjust uv scale to account for vertex spacing
-		uv *= _vertex_spacing;
+
+		vec2 world_uv = v_vertex.xz;
 		for (int i = 0; i < 4; i++) {
 			for (int t = 0; t < 2; t++) {
 				int id = texture_ids[i][t];
@@ -390,7 +391,7 @@ void fragment() {
 					id_read |= mask;
 					float id_w = t_weights[i][t];
 					float id_scale = _texture_uv_scale_array[id] * 0.5;
-					vec2 id_uv = fma(uv, vec2(id_scale), vec2(0.5));
+					vec2 id_uv = fma(world_uv, vec2(id_scale), vec2(0.5));
 					vec4 i_dd = base_dd * id_scale;
 					vec4 alb = textureGrad(_texture_array_albedo, vec3(id_uv, float(id)), i_dd.xy, i_dd.zw);
 					float world_normal = clamp(fma(TBN[0], vec3(nrm.x), fma(TBN[1], vec3(nrm.z), v_normal * vec3(nrm.y))).y, 0., 1.);

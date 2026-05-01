@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://cil8nuuudv562"]
+
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_8erhh"]
+[ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_i7yif"]
+
+[sub_resource type="Resource" id="Resource_q2q8y"]
+script = ExtResource("2_i7yif")
+subtype = "NORMAL_GAUGE"
+metadata/_custom_type_script = "uid://dp38h2f55xv7v"
+
+[resource]
+script = ExtResource("1_8erhh")
+key = "soviet_tgm6"
+display_name = "TGM 6"
+model_scene_path = "res://assets/meshes/vehicles/rail/soviet_tgm6/model_soviet_tgm6.tscn"
+max_speed_kmh = 75
+usable_infr = SubResource("Resource_q2q8y")
+has_motor = true
+length_metres = 13.723
+metadata/_custom_type_script = "uid://dwf507ds3dbh3"

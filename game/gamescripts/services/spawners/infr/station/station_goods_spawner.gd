@@ -15,8 +15,12 @@ func spawn_rnd_passenger():
 	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
 		var start_node_station: NodeStationLinkData = rnd_outer_residence.connected_station
 		if start_node_station:
-			var spawned_res := SpawnedGood.new("passenger", 1, Residence3D.get_random().res_bld_obj)
-			start_node_station.parent_station.add_spawned_good(spawned_res)
+			var parent_station_num: int = start_node_station.parent_station_num
+			var station3d: RailStation3D = Managers.stations.get_station_3d_with_num(parent_station_num)
+			if start_node_station:
+				# TODO: here we use to use targeted goods again
+				# var spawned_res := SpawnedGood.new("passenger", 1, Residence3D.get_random().res_bld_obj)
+				station3d.get_inventory().add_good_of("passenger")
 #endregion
 
 #region Callbacks

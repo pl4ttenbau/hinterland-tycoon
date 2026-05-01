@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfar4sqnxf0ly"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_21t2u"]
-[ext_resource type="ArrayMesh" uid="uid://dq8hbsv3eylcj" path="res://assets/meshes/structures/ru_village_hut_1/ru_village_hut_1.obj" id="2_xjdry"]
+[ext_resource type="PackedScene" uid="uid://drc6yawur1dir" path="res://assets/meshes/structures/ru_village_hut_1/model_ru_village_hut_1.tscn" id="2_hmwcr"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_05i8w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahh74"]
@@ -12,11 +12,7 @@ script = ExtResource("1_21t2u")
 placed_res_bld_type = "ru_village_hut_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
-layers = 8
-visibility_range_end = 220.0
-visibility_range_end_margin = 22.0
-mesh = ExtResource("2_xjdry")
+[node name="ModelRuVillageHut1" parent="." unique_id=843893305 instance=ExtResource("2_hmwcr")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
 script = ExtResource("3_05i8w")

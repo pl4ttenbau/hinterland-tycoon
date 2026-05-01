@@ -1,36 +1,18 @@
 [gd_scene format=3 uid="uid://dxriyek0lwp86"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_gi2di"]
-[ext_resource type="ArrayMesh" uid="uid://csqwck7gor0ui" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.obj" id="2_ajc0i"]
+[ext_resource type="PackedScene" uid="uid://bv32ruhxd8is1" path="res://assets/meshes/structures/ru_kruschovka_1/model_ru_kruschovka_1.tscn" id="2_gi2di"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_glyoy"]
-[ext_resource type="Texture2D" uid="uid://8blylymfym52" path="res://assets/meshes/structures/ru_kruschovka_1/tex_ru_three_stories_1_d.jpg" id="3_mrh33"]
-[ext_resource type="Texture2D" uid="uid://mqknnnrmy3x4" path="res://assets/meshes/structures/ru_kruschovka_1/tex_ru_three_stories_1_s.jpg" id="4_m0m6i"]
-[ext_resource type="Texture2D" uid="uid://dgaj52y3ikw4c" path="res://assets/meshes/structures/ru_kruschovka_1/tex_ru_three_stories_1_n.jpg" id="5_ol4kn"]
-[ext_resource type="Texture2D" uid="uid://dcs2qjsnukciu" path="res://assets/meshes/structures/ru_kruschovka_1/tex_ru_three_stories_1_r.jpg" id="6_hm6t1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a43k"]
-albedo_texture = ExtResource("3_mrh33")
-metallic = 1.0
-metallic_texture = ExtResource("4_m0m6i")
-roughness_texture = ExtResource("6_hm6t1")
-normal_enabled = true
-normal_scale = 1.5
-normal_texture = ExtResource("5_ol4kn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahh74"]
 size = Vector3(17.717865, 10.609024, 11.32515)
 
-[node name="RuKurschovka1" type="Node3D" unique_id=1046117816]
+[node name="RuKruschovka1" type="Node3D" unique_id=1046117816]
 script = ExtResource("1_gi2di")
 placed_res_bld_type = "ru_kruschovka_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
-layers = 8
-visibility_range_end = 240.0
-visibility_range_end_margin = 24.0
-mesh = ExtResource("2_ajc0i")
-surface_material_override/0 = SubResource("StandardMaterial3D_5a43k")
+[node name="ru_kruschovka_1" parent="." unique_id=1235415804 instance=ExtResource("2_gi2di")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
 script = ExtResource("3_glyoy")

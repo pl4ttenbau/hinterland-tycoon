@@ -79,7 +79,7 @@ ao_enabled = true
 ao_texture = ExtResource("35_nyf3i")
 heightmap_scale = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7yd2d"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0dtnv"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ggw8a"]
@@ -296,7 +296,7 @@ mesh = ExtResource("40_r6qy7")
 
 [node name="Sprite3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=2036563179 instance=ExtResource("42_oj3vo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.409458, 15.987442, -38.182552)
-texture = SubResource("ViewportTexture_7yd2d")
+texture = SubResource("ViewportTexture_0dtnv")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="Features/HalfTimberedBarn/MeshInstance3D" unique_id=1637694673]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)

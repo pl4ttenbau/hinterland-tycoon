@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bv32ruhxd8is1"]
+
+[ext_resource type="PackedScene" uid="uid://csqwck7gor0ui" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.obj" id="1_1um4k"]
+
+[node name="ru_kruschovka_1" unique_id=1235415804 instance=ExtResource("1_1um4k")]
+
+[node name="ru_three_stories_1" parent="." index="0" unique_id=966166095]
+layers = 8
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0

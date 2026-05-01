@@ -1,17 +1,8 @@
 [gd_scene format=3 uid="uid://b8h72pkfa1sq6"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_r7k7l"]
-[ext_resource type="ArrayMesh" uid="uid://dkgkao6e0avja" path="res://assets/meshes/structures/ru_stalinka_1/ru_stalika_1.obj" id="2_v4nid"]
-[ext_resource type="Texture2D" uid="uid://b2ie0m44ykhpp" path="res://assets/meshes/structures/ru_stalinka_1/tex_ru_four_stories_1_main_d.jpg" id="3_02boh"]
+[ext_resource type="PackedScene" uid="uid://cth54yt65jnfv" path="res://assets/meshes/structures/ru_stalinka_1/model_ru_stalinka_1.tscn" id="2_u18fx"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_xb4e0"]
-[ext_resource type="Texture2D" uid="uid://bjs220w405q27" path="res://assets/meshes/structures/ru_stalinka_1/tex_ru_four_stories_1_main_s.jpg" id="4_4p7tn"]
-[ext_resource type="Texture2D" uid="uid://co0cwulhubl76" path="res://assets/meshes/structures/ru_stalinka_1/tex_ru_four_stories_1_main_r.jpg" id="5_fwm6p"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnkrw"]
-albedo_texture = ExtResource("3_02boh")
-metallic = 1.0
-metallic_texture = ExtResource("4_4p7tn")
-roughness_texture = ExtResource("5_fwm6p")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahh74"]
 size = Vector3(14.058218, 13.93647, 21.436512)
@@ -21,12 +12,7 @@ script = ExtResource("1_r7k7l")
 placed_res_bld_type = "ru_stalinka_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1757801548]
-layers = 8
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-mesh = ExtResource("2_v4nid")
-surface_material_override/0 = SubResource("StandardMaterial3D_pnkrw")
+[node name="ru_stalinka_1" parent="." unique_id=1328810627 instance=ExtResource("2_u18fx")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=503471992]
 script = ExtResource("3_xb4e0")

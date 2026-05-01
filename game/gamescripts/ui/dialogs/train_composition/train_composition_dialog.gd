@@ -42,9 +42,9 @@ func rebuild_list_items():
 		veh_row.train_veh = train_veh
 		veh_row.parent_list = self.vehicle_rows
 		%TrainVehicleList.add_child(veh_row)
+	self.rows_updated.emit(self.vehicle_rows)
 
 func add_vehicle_row(veh_type_key: String):
-	Loggie.info("check")
 	# update row list
 	var next_index: int = self.vehicle_rows.rows.size()
 	var _train_veh: TrainVehicleDto = TrainVehicleDto.of(next_index, veh_type_key)
@@ -75,7 +75,6 @@ func _on_veh_selection_diag_closed(_diag_result):
 		self.add_vehicle_row(veh_type_key)
 
 func _on_vehicle_list_updated():
-	Loggie.info("Vehicle list updated")
 	self.rebuild_list_items()
 
 func _on_spawn_btn_pressed():
