@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dgpxnj0lc7e0r"]
+
+[ext_resource type="PackedScene" uid="uid://cewfdf4r4k4uq" path="res://assets/meshes/industry/windmill_2/mesh/windmill2.gltf" id="1_siap5"]
+
+[node name="Windmill2Mesh" unique_id=1760703559 instance=ExtResource("1_siap5")]
+
+[node name="Windmill" parent="." index="0" unique_id=271690082]
+layers = 8
+
+[node name="Windmill_wind_001" parent="Windmill" index="0" unique_id=862420089]
+layers = 8
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0

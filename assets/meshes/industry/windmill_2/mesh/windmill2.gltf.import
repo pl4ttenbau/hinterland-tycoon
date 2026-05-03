@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bghlbsssajtmn"
-path="res://.godot/imported/windmill2.gltf-41be2a16bac52d9282fa9791c7285695.scn"
+uid="uid://2qgfyrnjwadq"
+path="res://.godot/imported/windmill2.gltf-cb4991b619c2268129bdb14d8c16da5c.scn"
 
 [deps]
 
-source_file="res://assets/meshes/industry/windmill_2/windmill2.gltf"
-dest_files=["res://.godot/imported/windmill2.gltf-41be2a16bac52d9282fa9791c7285695.scn"]
+source_file="res://assets/meshes/industry/windmill_2/mesh/windmill2.gltf"
+dest_files=["res://.godot/imported/windmill2.gltf-cb4991b619c2268129bdb14d8c16da5c.scn"]
 
 [params]
 
@@ -37,13 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Windmill": {
-"mesh_instance/visibility_range_end": 350.0,
-"mesh_instance/visibility_range_end_margin": 35.0
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
