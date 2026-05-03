@@ -77,22 +77,7 @@ func get_node_forks() -> Array[RailNodeForkData]:
 
 #region Directional Node Getters
 ## iterate through all track nodes forwards or backwards & add them into an array
-func get_nodes_directionally(track_dir: Enums.PathDirection) -> Array[RailNodeData]:
-	var node_list: Array[RailNodeData] = []
-	if track_dir == Enums.PathDirection.TRACK_NODES_DECREASE:
-		for i in self.nodes.size(): # iterate & add backwards
-			node_list.append(self.nodes[-i-1])
-	else:
-		for node: RailNodeData in self.nodes: # iterate & add forwards
-			node_list.append(node)
-	return node_list
 
-## dont get confused here - the last node backwards is 0, the last node forwards is length - 1
-func get_last_node_directionally(track_dir: Enums.PathDirection) -> RailNodeData:
-	if track_dir == Enums.PathDirection.TRACK_NODES_DECREASE:
-		return self.nodes[0]
-	else:
-		return self.nodes[self.nodes.size() -1]
 #endregion
 
 func _to_string() -> String:

@@ -8,38 +8,25 @@ class_name VehiclePath extends Path3D
 	get(): return self.vehicle3d.motor
 
 func rebuild_path_on_current_track():
-	self.curve = Curve3D.new()
-	var continues: bool = true
+	var nodes_til_end: Array[RailNodeData] = []
 	var iterations: int = 0
-	var next_track = self.vehicle3d.last_node.parent_track
-	var next_direction = self.motor.direction
-	while continues && iterations <= 20:
-		var segment_end := self.add_track_nodes_until_end(next_track, next_direction)
-		# rail doesnt end after current segment
-		if segment_end && segment_end.fork && segment_end.fork.set_to:
-			var next_track_num = segment_end.fork.set_to
-			next_track = RailTrackData.get_by_num(next_track_num)
-			next_direction = get_next_dir_from_fork(next_track.num, segment_end.position)
-		else:
-			continues = false
-			self.motor.stop()
-			return
-		iterations += 1
+	var next_segment: VehiclePathSegment = self.get_first_segment()
+	while next_segment && iterations <= 30:
+		nodes_til_end.append_array(next_segment.get_nodes_directionally())
+		next_segment = next_segment.find_next_segment()
+	# build curve from path
+	self.curve = Curve3D.new()
+	self.curve.up_vector_enabled = false
+	for path_node in nodes_til_end:
+		# TODO: we could add handle in & out here
+		self.curve.add_point(path_node.position)
 	InfrUtils.smooth_curve3d(self.curve)
 
-## at every new track, the track position may change
-func get_next_dir_from_fork(track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
-	var track_obj: RailTrackData = RailTrackData.get_by_num(track_num)
-	for rail_node: RailNodeData in track_obj.nodes:
-		if rail_node.position == fork_pos:
-			if rail_node.is_last(): return Enums.PathDirection.TRACK_NODES_DECREASE
-	return Enums.PathDirection.TRACK_NODES_INCREASE
-
-## returns last node on current track
-func add_track_nodes_until_end(track: RailTrackData, dir: Enums.PathDirection) -> RailNodeData:
-	for track_node: RailNodeData in track.get_nodes_directionally(dir):
-		self.curve.add_point(track_node.position)
-	return track.get_last_node_directionally(dir)
+func get_first_segment() -> VehiclePathSegment:
+	var veh_parking_node: RailNodeData = self.vehicle3d.last_node
+	var first_track_num = veh_parking_node.parent_track.num
+	var motor_direction: Enums.PathDirection = self.motor.direction
+	return VehiclePathSegment.of_rail(first_track_num, motor_direction)
 
 #region Callbacks
 func _enter_tree() -> void:
