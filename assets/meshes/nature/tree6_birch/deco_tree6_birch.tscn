@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bt2ir7te2xpwh"]
+
+[ext_resource type="PackedScene" uid="uid://dik20rk8khs8w" path="res://assets/meshes/nature/tree6_birch/model_tree6_birch.tscn" id="1_uc7d3"]
+
+[node name="DecoTree6Birch" type="Node3D" unique_id=622036545]
+
+[node name="tree6_birch" parent="." unique_id=1430144271 instance=ExtResource("1_uc7d3")]

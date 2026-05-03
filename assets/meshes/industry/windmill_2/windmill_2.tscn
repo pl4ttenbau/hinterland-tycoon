@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t3w5105b3jht"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_lak53"]
-[ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/windmill_2_mesh.tscn" id="2_lak53"]
+[ext_resource type="PackedScene" uid="uid://dgpxnj0lc7e0r" path="res://assets/meshes/industry/windmill_2/mesh/mesh_windmill2.tscn" id="2_lak53"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ykqts"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_3xkum"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_rel8n"]
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 script = ExtResource("1_lak53")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="windmill2" parent="." unique_id=2000751025 instance=ExtResource("2_lak53")]
+[node name="Windmill2Mesh" parent="." unique_id=1760703559 instance=ExtResource("2_lak53")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1107932280]
 script = ExtResource("3_ykqts")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://df3yp88iapvnw"]
+
+[ext_resource type="PackedScene" uid="uid://cprvlankihef7" path="res://assets/meshes/nature/tree5_pine/mesh/tree5_pine.obj" id="1_dlktm"]
+
+[node name="DecoTree5Pine" type="Node3D" unique_id=757909751]
+
+[node name="tree5_pine" parent="." unique_id=1539933540 instance=ExtResource("1_dlktm")]

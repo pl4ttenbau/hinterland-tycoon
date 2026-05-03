@@ -1,8 +1,11 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://6txfgg00boom"]
+[gd_resource type="Theme" format=3 uid="uid://6txfgg00boom"]
 
-[ext_resource type="Texture2D" uid="uid://cy0wcmq53hail" path="res://addons/RadialMenu/icons/InterpLinear.svg" id="1"]
+[ext_resource type="Texture2D" uid="uid://dqkt5fqmuuc2a" path="res://addons/RadialMenu/icons/InterpLinear.svg" id="1"]
+[ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="2_4yaje"]
 
 [resource]
+default_font = ExtResource("2_4yaje")
+default_font_size = 13
 RadialMenu/colors/Background = Color(0.12549, 0.12549, 0.12549, 0.901961)
 RadialMenu/colors/CenterBackground = Color(0.0980392, 0.0980392, 0.0980392, 0.827451)
 RadialMenu/colors/CenterStroke = Color(0.188235, 0.556863, 0.776471, 1)

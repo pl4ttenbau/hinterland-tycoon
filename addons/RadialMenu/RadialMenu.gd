@@ -1,5 +1,5 @@
 @tool
-extends Control
+class_name RadialMenu extends Control
 """
 (c) 2021-2024 Pascal Schuppli
 

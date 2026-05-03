@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvpnsstygbd1"
-path="res://.godot/imported/icon_transfer.svg-bd56103a5089b8855ae7aac4d121507c.ctex"
+uid="uid://558o4f10lbnl"
+path="res://.godot/imported/pine_01_bark_n.png-b8f71d7481b7ff7e0f4ff3489e7063c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/icon_transfer.svg"
-dest_files=["res://.godot/imported/icon_transfer.svg-bd56103a5089b8855ae7aac4d121507c.ctex"]
+source_file="res://assets/meshes/nature/tree5_pine/mesh/pine_01_bark_n.png"
+dest_files=["res://.godot/imported/pine_01_bark_n.png-b8f71d7481b7ff7e0f4ff3489e7063c0.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=2.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

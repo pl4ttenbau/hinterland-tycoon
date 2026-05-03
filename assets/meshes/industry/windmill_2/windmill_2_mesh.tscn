@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgpxnj0lc7e0r"]
-
-[ext_resource type="PackedScene" uid="uid://bghlbsssajtmn" path="res://assets/meshes/industry/windmill_2/windmill2.gltf" id="1_siap5"]
-
-[node name="windmill2" instance=ExtResource("1_siap5")]
-
-[node name="Windmill_wind_001" parent="Windmill" index="0"]
-visibility_range_end = 350.0
-visibility_range_end_margin = 35.0
