@@ -1,13 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://iopwhmejcr8b"]
+[gd_scene format=3 uid="uid://iopwhmejcr8b"]
 
-[ext_resource type="Script" path="res://addons/RadialMenu/RadialMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://ctmktgvck1b0v" path="res://addons/RadialMenu/RadialMenu.gd" id="1"]
 
-[node name="RadialMenu" type="Control"]
-custom_minimum_size = Vector2(300, 222.263)
+[node name="RadialMenu" type="Control" unique_id=1785850368]
+visible = false
+custom_minimum_size = Vector2(300, 222.26306)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 300.0
-offset_bottom = 222.263
+offset_bottom = 222.26306
 pivot_offset = Vector2(150, 150)
 size_flags_horizontal = 0
 size_flags_vertical = 0

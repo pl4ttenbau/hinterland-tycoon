@@ -45,7 +45,9 @@ func trigger_train_exited(train3d: Train3D):
 	SignalBus.train_exited_station.emit(self.parent_station, train3d)
 
 func veh3d_is_locomotive(veh3d: Vehicle3D) -> bool:
-	return veh3d.vehicle_obj.veh_type.is_locomotive()
+	if veh3d:
+		return veh3d.vehicle_obj.veh_type.is_locomotive()
+	return false
 #endregion
 
 #region Callbacks

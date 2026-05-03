@@ -138,5 +138,5 @@ signal terrain_click(pos: Vector3)
 signal ui_update_tick()
 
 @warning_ignore("unused_signal")
-signal action_menu_triggered(item: ActionMenuItem)
+signal action_menu_triggered(action_name: String)
 #endregion

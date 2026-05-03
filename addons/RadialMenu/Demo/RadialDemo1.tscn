@@ -1,26 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvk15wv8stgp5"]
+[gd_scene format=3 uid="uid://cvk15wv8stgp5"]
 
-[ext_resource type="Script" path="res://addons/RadialMenu/RadialMenu.gd" id="1"]
-[ext_resource type="Script" path="res://addons/RadialMenu/Demo/RadialDemo1.gd" id="2"]
+[ext_resource type="Script" uid="uid://ctmktgvck1b0v" path="res://addons/RadialMenu/RadialMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://dcoj2hp1mnji" path="res://addons/RadialMenu/Demo/RadialDemo1.gd" id="2"]
 
-[node name="RadialDemo1" type="ColorRect"]
+[node name="RadialDemo1" type="ColorRect" unique_id=1275325517]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.145098, 0.270588, 0.333333, 1)
 script = ExtResource("2")
 
-[node name="RadialMenu" type="Control" parent="."]
-custom_minimum_size = Vector2(300, 222.263)
+[node name="RadialMenu" type="Control" parent="." unique_id=82793916]
+visible = false
+custom_minimum_size = Vector2(300, 222.26306)
 anchors_preset = 0
 offset_right = 300.0
-offset_bottom = 222.263
+offset_bottom = 222.26306
 pivot_offset = Vector2(150, 150)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1")
 
-[node name="Instructions" type="Label" parent="."]
+[node name="Instructions" type="Label" parent="." unique_id=507556341]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
