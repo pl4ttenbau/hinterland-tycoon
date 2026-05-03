@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6s6xljv3lod2"
-path.s3tc="res://.godot/imported/cedar_01_branch_d.png-982208c9b6281e5257d9f35dd3c69b82.s3tc.ctex"
+uid="uid://dalc3edtu0csg"
+path.s3tc="res://.godot/imported/pine_01_bark_d.png-f3aa0f04ccf550689a271a46fd5b812e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree5/cedar_01_branch_d.png"
-dest_files=["res://.godot/imported/cedar_01_branch_d.png-982208c9b6281e5257d9f35dd3c69b82.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree5_pine/mesh/pine_01_bark_d.png"
+dest_files=["res://.godot/imported/pine_01_bark_d.png-f3aa0f04ccf550689a271a46fd5b812e.s3tc.ctex"]
 
 [params]
 

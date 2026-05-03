@@ -112,6 +112,7 @@ ui_enter={
 3d_render/layer_5="Infrs"
 3d_render/layer_6="Deco"
 3d_render/layer_7="Vehicles"
+3d_render/layer_8="Foliage"
 
 [physics]
 

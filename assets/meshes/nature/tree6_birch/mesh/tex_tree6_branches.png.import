@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://041ewijfrfj2"
-path.s3tc="res://.godot/imported/tex_tree6_branches.png-9625e89cc3b9a47b726817940ef2a6ea.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_tree6_branches.png-ed155ed741b3dc4c78d2ec850e24297b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree6/tex_tree6_branches.png"
-dest_files=["res://.godot/imported/tex_tree6_branches.png-9625e89cc3b9a47b726817940ef2a6ea.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree6_birch/mesh/tex_tree6_branches.png"
+dest_files=["res://.godot/imported/tex_tree6_branches.png-ed155ed741b3dc4c78d2ec850e24297b.s3tc.ctex"]
 
 [params]
 
