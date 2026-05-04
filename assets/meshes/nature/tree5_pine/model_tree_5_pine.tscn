@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://bxf8q2aus3lgx"]
 
 [ext_resource type="PackedScene" uid="uid://cprvlankihef7" path="res://assets/meshes/nature/tree5_pine/mesh/tree5_pine.obj" id="1_x6as2"]
+[ext_resource type="Texture2D" uid="uid://dalc3edtu0csg" path="res://assets/meshes/nature/tree5_pine/mesh/pine_01_bark_d.png" id="2_k3u5l"]
 [ext_resource type="Shader" uid="uid://cor4gdqfhisj" path="res://assets/packed/leaves_shader.gdshader" id="2_qu7yn"]
 [ext_resource type="Texture2D" uid="uid://b6s6xljv3lod2" path="res://assets/meshes/nature/tree5_pine/mesh/pine_01_branch_d.png" id="2_x6mh1"]
+[ext_resource type="Texture2D" uid="uid://558o4f10lbnl" path="res://assets/meshes/nature/tree5_pine/mesh/pine_01_bark_n.png" id="3_hxpj3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oysdg"]
+albedo_texture = ExtResource("2_k3u5l")
+normal_enabled = true
+normal_texture = ExtResource("3_hxpj3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myccw"]
 render_priority = 0
@@ -29,6 +36,7 @@ shader_parameter/sway_phase_len = 8.0
 
 [node name="tree5_pine" unique_id=1539933540 instance=ExtResource("1_x6as2")]
 
-[node name="tree5" parent="." index="0" unique_id=372029477]
+[node name="tree5" parent="." index="0" unique_id=327124045]
 layers = 128
-material_override = SubResource("ShaderMaterial_myccw")
+surface_material_override/0 = SubResource("StandardMaterial3D_oysdg")
+surface_material_override/1 = SubResource("ShaderMaterial_myccw")

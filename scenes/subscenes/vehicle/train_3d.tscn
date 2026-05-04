@@ -18,6 +18,7 @@ storage = SubResource("Resource_gwvd7")
 amount_max = 10.0
 
 [node name="Train3D" type="Node3D" unique_id=2132247974]
+top_level = true
 script = ExtResource("1_x4pir")
 metadata/_custom_type_script = "uid://vu364fy8qnrb"
 
