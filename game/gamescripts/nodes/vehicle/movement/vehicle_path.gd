@@ -10,10 +10,10 @@ class_name VehiclePath extends Path3D
 func rebuild_path_on_current_track():
 	var nodes_til_end: Array[RailNodeData] = []
 	var iterations: int = 0
-	var next_segment: VehiclePathSegment = self.get_first_segment()
-	while next_segment && iterations <= 30:
-		nodes_til_end.append_array(next_segment.get_nodes_directionally())
-		next_segment = next_segment.find_next_segment()
+	var current_segment: VehiclePathSegment = self.get_first_segment()
+	while current_segment && iterations <= 30:
+		nodes_til_end.append_array(current_segment.get_nodes_directionally())
+		current_segment = current_segment.find_next_segment()
 	# build curve from path
 	self.curve = Curve3D.new()
 	self.curve.up_vector_enabled = false
