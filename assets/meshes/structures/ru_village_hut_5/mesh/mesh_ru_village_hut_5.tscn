@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://coat3p27p7sar"]
+
+[ext_resource type="PackedScene" uid="uid://cm6g5mj35rhe5" path="res://assets/meshes/structures/ru_village_hut_5/mesh/ru_village_hut_5.obj" id="1_m7u2i"]
+[ext_resource type="Texture2D" uid="uid://c4to5ieu6w0d3" path="res://assets/meshes/structures/ru_village_hut_5/mesh/tex_ru_village_hut_5_body_d.jpg" id="2_63wrt"]
+[ext_resource type="Texture2D" uid="uid://b63v0ldfi3xxk" path="res://assets/meshes/structures/ru_village_hut_5/mesh/tex_ru_village_hut_5_body_n.jpg" id="3_1gs3e"]
+[ext_resource type="Texture2D" uid="uid://f17wffyc55ln" path="res://assets/meshes/structures/ru_village_hut_5/mesh/tex_ru_village_hut_5_roof_d.jpg" id="4_br41h"]
+[ext_resource type="Texture2D" uid="uid://bh7bun2j3k1ib" path="res://assets/meshes/structures/ru_village_hut_5/mesh/tex_ru_village_hut_5_roof_n.jpg" id="5_xt5lb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fen8b"]
+cull_mode = 2
+albedo_texture = ExtResource("2_63wrt")
+normal_enabled = true
+normal_texture = ExtResource("3_1gs3e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qolj0"]
+cull_mode = 2
+albedo_texture = ExtResource("4_br41h")
+normal_enabled = true
+normal_texture = ExtResource("5_xt5lb")
+
+[node name="MeshRuVillageHut5" unique_id=27661633 instance=ExtResource("1_m7u2i")]
+
+[node name="ru_village_hut_5" parent="." index="0" unique_id=550481408]
+layers = 8
+visibility_range_end = 140.0
+visibility_range_end_margin = 14.0
+surface_material_override/0 = SubResource("StandardMaterial3D_fen8b")
+surface_material_override/1 = SubResource("StandardMaterial3D_qolj0")
