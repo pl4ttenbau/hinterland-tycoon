@@ -3,7 +3,7 @@
 	"name": "Sachalin",
 	"loc": "SOVIET_UNION",
 	
-	"startPos": [759.8, 1549.8],
+	"defaultYear": 1970,
 	
-	"spawnVehicles": false
+	"startPos": [-62.6, 888.6],
 }
