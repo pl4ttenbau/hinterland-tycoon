@@ -21,7 +21,7 @@ static var _last_train_num: int = 0
 @export var motor: TrainMotor
 
 @export var m_passed_since_start: float = 0.0
-@export var m_passed_on_track: float = 0.0
+@export var m_passed_on_segment: float = 0.0
 
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
@@ -100,12 +100,13 @@ func move_forwards(delta_seconds: float):
 		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
 
 func increase_m_passed(delta_m: float):
-	self.m_passed_on_track += delta_m
+	self.m_passed_on_segment += delta_m
 	self.m_passed_since_start += delta_m
 	
 func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
 	var train_curve: Curve3D = self.get_train_path_curve()
 	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
+	# only turn vertically
 	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
 	target_transf = target_transf.rotated_local(Vector3(0, 0, 1), 0)
 	return target_transf

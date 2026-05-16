@@ -36,11 +36,11 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	return segment_end.fork.set_to
 
 static func get_next_dir_at_fork(next_track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
-	if next_track_num < 0:
-		return Enums.PathDirection.STOP
+	if next_track_num < 0: return Enums.PathDirection.STOP
 	var next_track: RailTrackData = RailTrackData.get_by_num(next_track_num)
-	for rail_node: RailNodeData in next_track.nodes:
-		if rail_node.position == fork_pos:
-			if rail_node.is_last(): return Enums.PathDirection.TRACK_NODES_DECREASE
+	# could maybe also gotten out of the ForkData object
+	var next_rail_node: RailNodeData = next_track.get_node_at_pos(fork_pos)
+	if next_rail_node.is_last(): 
+		return Enums.PathDirection.TRACK_NODES_DECREASE
 	return Enums.PathDirection.TRACK_NODES_INCREASE
 #endregion

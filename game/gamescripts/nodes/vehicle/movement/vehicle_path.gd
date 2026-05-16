@@ -1,6 +1,6 @@
 class_name VehiclePath extends Path3D
 
-@export var tracks: Array[RailTrackData] = []
+@export var curr_segment: Array[RailTrackData] = []
 
 @export var train3d: Train3D
 
