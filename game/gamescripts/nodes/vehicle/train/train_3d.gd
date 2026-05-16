@@ -78,15 +78,15 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	self.on_vehicle_added.emit(veh3d)
 #endregion
 
-#region Initialize Path
+#region Vehicle Path
 func init_segment_path():
 	self.current_segment = VehiclePathSegmentBuilder.get_first_segment(self)
 	var segment_path: ActiveRailVehiclePath = ActiveRailVehiclePath.of_segment(self.current_segment)
 	self.add_child(segment_path)
 	segment_path.name = "SegmentPath"
 
+## after locomotive reaches end of current segment, 
 func add_next_segment():
-	# self.m_passed_on_segment = 0.0
 	# update next segment
 	var previous_segment: VehiclePathSegment = self.current_segment
 	self.current_segment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
@@ -114,11 +114,11 @@ func move_forwards(delta_seconds: float):
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
 	if !self.get_segment_path_curve(): return
 	self.increase_m_passed(tick_dist)
-	if self.m_passed_on_segment > self.get_segment_path_curve().get_baked_length():
-		Loggie.info("end of segment!!")
+	if self.m_passed_since_start > self.get_segment_path_curve().get_baked_length():
+		Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
 		self.add_next_segment()
 	for veh3d: Vehicle3D in self.vehicles:
-		var m_passed: float = self.m_passed_on_segment - veh3d.offset_to_first
+		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
 		var target_transf := self._get_target_transf_at_m_passed(m_passed)
 		var transf_tween = veh3d.create_tween()

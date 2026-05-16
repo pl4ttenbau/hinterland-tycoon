@@ -16,8 +16,3 @@ static func of_segment(_segment: VehiclePathSegment) -> ActiveRailVehiclePath:
 		path.curve.add_point(path_node.position)
 	InfrUtils.smooth_curve3d(path.curve)
 	return path
-
-#region Callbacks
-func _enter_tree() -> void:
-	SignalBus.fork_changed.connect(Callable(self, "_on_fork_changed"))
-#endregion

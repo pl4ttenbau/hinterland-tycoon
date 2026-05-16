@@ -17,9 +17,6 @@ amount_max = 10.0
 [node name="Train3D" type="Node3D" unique_id=2132247974]
 top_level = true
 script = ExtResource("1_x4pir")
-num = null
-m_passed_since_start = null
-m_passed_on_segment = null
 metadata/_custom_type_script = "uid://vu364fy8qnrb"
 
 [node name="TrainVehicles" type="Node" parent="." unique_id=1927014911]
