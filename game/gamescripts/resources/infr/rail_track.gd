@@ -73,26 +73,13 @@ func get_node_forks() -> Array[RailNodeForkData]:
 	if self.get_end_node().fork:
 		node_forks.append(self.get_end_node().fork)
 	return node_forks
-#endregion
 
-#region Directional Node Getters
-## iterate through all track nodes forwards or backwards & add them into an array
-func get_nodes_directionally(track_dir: Enums.PathDirection) -> Array[RailNodeData]:
-	var node_list: Array[RailNodeData] = []
-	if track_dir == Enums.PathDirection.TRACK_NODES_DECREASE:
-		for i in self.nodes.size(): # iterate & add backwards
-			node_list.append(self.nodes[-i-1])
-	else:
-		for node: RailNodeData in self.nodes: # iterate & add forwards
-			node_list.append(node)
-	return node_list
-
-## dont get confused here - the last node backwards is 0, the last node forwards is length - 1
-func get_last_node_directionally(track_dir: Enums.PathDirection) -> RailNodeData:
-	if track_dir == Enums.PathDirection.TRACK_NODES_DECREASE:
-		return self.nodes[0]
-	else:
-		return self.nodes[self.nodes.size() -1]
+func get_node_at_pos(abs_pos: Vector3) -> RailNodeData:
+	for any_node: RailNodeData in self.nodes:
+		if any_node.position.is_equal_approx(abs_pos):
+			return any_node
+	Loggie.warn("Cannot find RailNode at %v on track %d" % [abs_pos, self.num])
+	return null
 #endregion
 
 func _to_string() -> String:

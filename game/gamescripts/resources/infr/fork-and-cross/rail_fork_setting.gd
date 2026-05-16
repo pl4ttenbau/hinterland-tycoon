@@ -8,24 +8,19 @@ class_name RailForkSetting extends Resource
 
 @export var all_set_to: Array[int] = []
 
-@export var is_changeable: bool = true
-
 func _init(_parent: NewRailForkData):
 	self.parent = _parent
 	
 func init_current_setting():
 	# not connected to anything, rly only track end
 	if self.parent.connected_tracks.size() <= 1: 
-		self.is_changeable = false
 		return
 	# straightly connected but no third rail
 	if parent.connected_tracks.size() == 2:
-		self.is_changeable = false
 		self.current = CurrentForkSetting.new(self.parent.connected_tracks[0], 
 			self.parent.connected_tracks[1])
 	# connected with at least 2 switchable settings
 	else:
-		self.is_changeable = true
 		self.current = CurrentForkSetting.new(self.parent.connected_tracks[0], 
 			self.parent.connected_tracks[1])
 		self._set_changeable_tracks()
@@ -62,4 +57,9 @@ func get_connected_next_node() -> RailNodeData:
 	if ! node_is_first:
 		next_node_i = conn_fork_node.index -1
 	return conn_fork_node.parent_track.nodes[next_node_i]
-	
+
+## returns whether there's even thr possibility of changing for setting: at least 3 connected tracks
+func is_changable() -> bool:
+	if self.parent.connected_tracks.size() <= 2: 
+		return false
+	return true

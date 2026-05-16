@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ol6xbf6x3bvl"]
+
+[ext_resource type="PackedScene" uid="uid://b2n382bfesv0e" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/bus_laz_695.obj" id="1_2bu53"]
+[ext_resource type="Texture2D" uid="uid://dav3nlj08ng8v" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_roof.jpg" id="2_62s33"]
+[ext_resource type="Texture2D" uid="uid://d0pb0ckuu02ft" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_bottom.jpg" id="3_gwok2"]
+[ext_resource type="Texture2D" uid="uid://bejc5q2wgl178" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_orange_lights.jpg" id="4_aslh5"]
+[ext_resource type="Texture2D" uid="uid://dgbkv3jlic302" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_back_window.jpg" id="5_fn2kp"]
+[ext_resource type="Texture2D" uid="uid://b1t86ngjhaj7h" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_sides.jpg" id="6_ulp86"]
+[ext_resource type="Texture2D" uid="uid://c4n8008jfyl58" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/tex_bus_laz_695_frontback.jpg" id="7_hp4uo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1n8p"]
+cull_mode = 2
+albedo_texture = ExtResource("2_62s33")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeqf6"]
+cull_mode = 2
+albedo_texture = ExtResource("3_gwok2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwx5n"]
+albedo_texture = ExtResource("4_aslh5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnmxb"]
+albedo_texture = ExtResource("5_fn2kp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t28vf"]
+cull_mode = 2
+albedo_texture = ExtResource("6_ulp86")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo2lp"]
+cull_mode = 2
+albedo_texture = ExtResource("7_hp4uo")
+
+[node name="BusLAZ695Mesh" unique_id=327845051 instance=ExtResource("1_2bu53")]
+
+[node name="bus_laz_695_n" parent="." index="0" unique_id=2079635871]
+visibility_range_end = 180.0
+visibility_range_end_margin = 18.0
+surface_material_override/0 = SubResource("StandardMaterial3D_h1n8p")
+surface_material_override/1 = SubResource("StandardMaterial3D_eeqf6")
+surface_material_override/2 = SubResource("StandardMaterial3D_xwx5n")
+surface_material_override/3 = SubResource("StandardMaterial3D_cnmxb")
+surface_material_override/4 = SubResource("StandardMaterial3D_t28vf")
+surface_material_override/5 = SubResource("StandardMaterial3D_lo2lp")

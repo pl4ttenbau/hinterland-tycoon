@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjujd0ypwds3l"]
+[gd_scene format=3 uid="uid://cjujd0ypwds3l"]
 
 [ext_resource type="Texture2D" uid="uid://pxo4idf5p38q" path="res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/tex_mpsb_pasenger_wagon_d.png" id="1_mlb3j"]
 [ext_resource type="Texture2D" uid="uid://db3nf55refaol" path="res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/tex_mpsb_pasenger_wagon_r.png" id="2_jcxdg"]
@@ -12,16 +12,16 @@ distance_fade_max_distance = 300.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5r4t"]
 size = Vector3(1.692627, 2.5043793, 11.310944)
 
-[node name="MpsbWismarWagon" type="Node3D"]
+[node name="MpsbWismarWagon" type="Node3D" unique_id=570016247]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1546089985]
 material_override = SubResource("StandardMaterial3D_gqj3t")
 visibility_range_end = 300.0
 visibility_range_end_margin = 30.0
 mesh = ExtResource("3_tf8e3")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2013239339]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1033827465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009887695, 1.2524033, -0.020492554)
 shape = SubResource("BoxShape3D_r5r4t")

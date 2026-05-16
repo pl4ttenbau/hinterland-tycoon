@@ -2,5 +2,8 @@
 	"key": "mpsb",
 	"name": "MPSB",
 	"loc": "NORTHERN_GERMAN",
-	"startPos": [1986.7, 2000.6]
+	
+	"defaultYear": 1929,
+	
+	"startPos": [2802.305, 1867.741]
 }

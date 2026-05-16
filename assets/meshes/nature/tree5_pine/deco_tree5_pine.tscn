@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://df3yp88iapvnw"]
 
-[ext_resource type="PackedScene" uid="uid://cprvlankihef7" path="res://assets/meshes/nature/tree5_pine/mesh/tree5_pine.obj" id="1_dlktm"]
+[ext_resource type="PackedScene" uid="uid://bxf8q2aus3lgx" path="res://assets/meshes/nature/tree5_pine/model_tree_5_pine.tscn" id="1_dlktm"]
 
 [node name="DecoTree5Pine" type="Node3D" unique_id=757909751]
 

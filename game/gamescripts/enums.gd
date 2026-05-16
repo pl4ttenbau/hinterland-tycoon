@@ -37,7 +37,8 @@ enum TownSize {
 
 enum PathDirection {
 	TRACK_NODES_INCREASE, 
-	TRACK_NODES_DECREASE
+	TRACK_NODES_DECREASE,
+	STOP
 }
 
 enum UiMode {

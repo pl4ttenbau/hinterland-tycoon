@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dy4dkpmarxa52"]
+
+[ext_resource type="PackedScene" uid="uid://ol6xbf6x3bvl" path="res://assets/meshes/vehicles/road/bus_laz_695/mesh/mesh_bus_laz_695.tscn" id="1_8wpwd"]
+
+[node name="StaticBusLaz695" type="Node3D" unique_id=262511595]
+
+[node name="BusLAZ695Mesh" parent="." unique_id=327845051 instance=ExtResource("1_8wpwd")]
