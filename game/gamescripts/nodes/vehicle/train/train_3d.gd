@@ -26,6 +26,8 @@ static var _last_train_num: int = 0
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
+@export var current_segment: VehiclePathSegment
+
 @export var current_station = NodeStationLink3D
 
 static func _next_train_num() -> int:
@@ -47,6 +49,7 @@ func _ready() -> void:
 static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	var inst: Train3D = load(EMPTY_SCENE_PATH).instantiate()
 	inst.spawn_locomotive(VehicleData.of(_veh_type_key), _start_pos)
+	inst.init_segment_path()
 	return inst
 	
 func _create_motor(_dir: Enums.PathDirection):
@@ -75,6 +78,24 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	self.on_vehicle_added.emit(veh3d)
 #endregion
 
+#region Initialize Path
+func init_segment_path():
+	self.current_segment = VehiclePathSegmentBuilder.get_first_segment(self)
+	var segment_path: ActiveRailVehiclePath = ActiveRailVehiclePath.of_segment(self.current_segment)
+	self.add_child(segment_path)
+	segment_path.name = "SegmentPath"
+
+func add_next_segment():
+	# self.m_passed_on_segment = 0.0
+	# update next segment
+	var previous_segment: VehiclePathSegment = self.current_segment
+	self.current_segment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
+	self.current_segment.previous = previous_segment
+	# extend rail path
+	for next_segment_nodes: RailNodeData in self.current_segment.get_nodes_directionally():
+		self.get_segment_path_curve().add_point(next_segment_nodes.position)
+#endregion
+
 #region Size Getters
 func count() -> int:
 	return self.vehicles.size()
@@ -91,9 +112,13 @@ func length_in_m() -> float:
 func move_forwards(delta_seconds: float):
 	# calculate movement since last tick
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
+	if !self.get_segment_path_curve(): return
 	self.increase_m_passed(tick_dist)
+	if self.m_passed_on_segment > self.get_segment_path_curve().get_baked_length():
+		Loggie.info("end of segment!!")
+		self.add_next_segment()
 	for veh3d: Vehicle3D in self.vehicles:
-		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
+		var m_passed: float = self.m_passed_on_segment - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
 		var target_transf := self._get_target_transf_at_m_passed(m_passed)
 		var transf_tween = veh3d.create_tween()
@@ -104,7 +129,7 @@ func increase_m_passed(delta_m: float):
 	self.m_passed_since_start += delta_m
 	
 func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
-	var train_curve: Curve3D = self.get_train_path_curve()
+	var train_curve: Curve3D = self.get_segment_path_curve()
 	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
 	# only turn vertically
 	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
@@ -122,8 +147,10 @@ func get_cam() -> Camera3D:
 	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.locomotive.name)
 	return model_cam
 
-func get_train_path_curve() -> Curve3D:
-	return $TrainPath.curve as Curve3D
+func get_segment_path_curve() -> Curve3D:
+	if self.has_node("SegmentPath"):
+		return $SegmentPath.curve as Curve3D
+	return null
 #endregion
 
 #region Callbacks

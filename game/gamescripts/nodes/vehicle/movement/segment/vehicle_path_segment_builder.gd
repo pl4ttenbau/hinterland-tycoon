@@ -24,6 +24,12 @@ static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePat
 		return next_linked_segment
 	return null
 
+static func get_first_segment(train3d: Train3D) -> VehiclePathSegment:
+	var veh_parking_node: RailNodeData = train3d.last_node
+	var first_track_num = veh_parking_node.parent_track.num
+	var motor_direction: Enums.PathDirection = train3d.motor.direction
+	return VehiclePathSegment.of_rail(first_track_num, motor_direction)
+
 #region Find Next
 ## if given node has a fork with a setting, returns track num that said fork is set to
 static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:

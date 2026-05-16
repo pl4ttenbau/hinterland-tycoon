@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://dtvxtmrro2uq6"]
 
 [ext_resource type="Script" uid="uid://vu364fy8qnrb" path="res://game/gamescripts/nodes/vehicle/train/train_3d.gd" id="1_x4pir"]
-[ext_resource type="Script" uid="uid://c0t1y6s3qpq27" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_path.gd" id="2_ufap8"]
 [ext_resource type="Script" uid="uid://cd14s12pa8x8k" path="res://game/gamescripts/nodes/vehicle/train/train_vehicles.gd" id="3_ufap8"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_rmda2"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_gwvd7"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_5404p"]
-
-[sub_resource type="Curve3D" id="Curve3D_4iei7"]
 
 [sub_resource type="Resource" id="Resource_gwvd7"]
 script = ExtResource("6_5404p")
@@ -20,14 +17,10 @@ amount_max = 10.0
 [node name="Train3D" type="Node3D" unique_id=2132247974]
 top_level = true
 script = ExtResource("1_x4pir")
+num = null
+m_passed_since_start = null
+m_passed_on_segment = null
 metadata/_custom_type_script = "uid://vu364fy8qnrb"
-
-[node name="TrainPath" type="Path3D" parent="." unique_id=658100243 node_paths=PackedStringArray("train3d")]
-rotation_order = 4
-curve = SubResource("Curve3D_4iei7")
-script = ExtResource("2_ufap8")
-train3d = NodePath("..")
-metadata/_custom_type_script = "uid://c0t1y6s3qpq27"
 
 [node name="TrainVehicles" type="Node" parent="." unique_id=1927014911]
 script = ExtResource("3_ufap8")

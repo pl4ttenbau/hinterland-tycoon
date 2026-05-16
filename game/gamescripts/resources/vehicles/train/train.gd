@@ -12,8 +12,6 @@ signal vehicles_changed(veh_arr: Array[VehicleData])
 	get(): return locomotive
 	set(value): self._set_locomotive(value)
 
-@export_storage var curr_path: VehiclePath
-
 #region Initialization
 func _init():
 	super(Enums.EntityTypes.TRAIN)
