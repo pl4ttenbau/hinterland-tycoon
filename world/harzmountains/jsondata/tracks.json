@@ -406,7 +406,6 @@
 		"num": 10,
 		"name": "HSB Drängetal Oben",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [2526.8, 36.0, 2372.9],
@@ -489,7 +488,6 @@
 		"num": 11,
 		"name": "HSB Drängetal Unten",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [2438.1, 25.3, 2099.3],
@@ -669,7 +667,6 @@
 		"num": 14,
 		"name": "HSB Elend Bhf",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1966.2, 43.2, 3459.5],
@@ -724,7 +721,6 @@
 		"num": 15,
 		"name": "HSB Wormketal",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [2129.7, 49.6, 3155.2],
@@ -742,7 +738,6 @@
 		"num": 16,
 		"name": "HSB Schwarzesteine Curve",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [2129.7, 49.6, 3155.2],
@@ -797,7 +792,6 @@
 		"num": 17,
 		"name": "HSB Elend Südbahn",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1796.2, 53.1, 3700.3],
@@ -855,7 +849,6 @@
 		"num": 18,
 		"name": "HSB Elender Ende",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1832.7, 54.8, 4070.1],
@@ -901,7 +894,6 @@
 		"num": 19,
 		"name": "HSB Schierke Track 1",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1814.3, 96.7, 2971.0],
@@ -1013,7 +1005,6 @@
 		"num": 21,
 		"name": "HSB DAH Kirchsteig",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [2335.7, 56.8, 2926.5],
@@ -1233,7 +1224,6 @@
 		"num": 25,
 		"name": "HSB Brockenstieg Mitte",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [829.0, 250.2, 2382.3],
@@ -1306,7 +1296,6 @@
 		"num": 26,
 		"name": "HSB Brockenstieg Oben",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1004.2, 270.3, 2386.9],
@@ -1349,7 +1338,6 @@
 		"num": 27,
 		"name": "HSB Brockebahn Ganz Oben",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [891.8, 320.6, 2254.4],
@@ -1416,7 +1404,6 @@
 		"num": 28,
 		"name": "HSB Brockebahn Spitze",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [989.2, 341.6, 2236.0],
@@ -1459,7 +1446,6 @@
 		"num": 29,
 		"name": "HSB Brockebahn Goethemoor",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [1057.6, 296.5, 2224.1],
@@ -1812,7 +1798,6 @@
 		"num": 37,
 		"name": "Brocken Spitze Runter",
 		"type": "750_MM",
-		"offset": [0, 0, 0],
 		"points": [
 			{
 				"pos": [964.5, 334.9, 2301.2],
