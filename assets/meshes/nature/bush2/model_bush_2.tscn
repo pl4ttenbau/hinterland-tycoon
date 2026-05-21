@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bt0ap2cowu4a1"]
+
+[ext_resource type="PackedScene" uid="uid://dc2kighsxhgdq" path="res://assets/meshes/nature/bush2/bush2.obj" id="1_ekei8"]
+[ext_resource type="Texture2D" uid="uid://bhisrbejimpvt" path="res://assets/meshes/nature/bush2/tex_bush2_bark_d.bmp" id="2_7vbbo"]
+[ext_resource type="Texture2D" uid="uid://e20h3f2i0gmk" path="res://assets/meshes/nature/bush2/tex_bush2_leaves_d.tga" id="3_ayd2v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hgd5"]
+albedo_texture = ExtResource("2_7vbbo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfm0i"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("3_ayd2v")
+backlight_enabled = true
+backlight = Color(0.7539839, 0.75398386, 0.75398386, 1)
+
+[node name="ModelBush2" unique_id=150473138 instance=ExtResource("1_ekei8")]
+
+[node name="bush2" parent="." index="0" unique_id=111981761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08425367, 0)
+layers = 128
+surface_material_override/0 = SubResource("StandardMaterial3D_4hgd5")
+surface_material_override/1 = SubResource("StandardMaterial3D_vfm0i")

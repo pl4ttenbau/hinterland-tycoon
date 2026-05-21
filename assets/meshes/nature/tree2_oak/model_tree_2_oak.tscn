@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://boibh0s34qhpb"]
+
+[ext_resource type="PackedScene" uid="uid://dh52172lchmre" path="res://assets/meshes/nature/tree2_oak/tree2_oak.obj" id="1_gscph"]
+[ext_resource type="Texture2D" uid="uid://0d1cn2gmxjce" path="res://assets/meshes/nature/tree2_oak/tree2_bark_d.png" id="2_hayg2"]
+[ext_resource type="Shader" uid="uid://cor4gdqfhisj" path="res://assets/packed/leaves_shader.gdshader" id="3_7tnv0"]
+[ext_resource type="Texture2D" uid="uid://c4ulwwhj6jdwg" path="res://assets/meshes/nature/tree2_oak/tree2_branch-1-01.png" id="4_4nxq0"]
+[ext_resource type="Texture2D" uid="uid://d3i7j1ijkffcy" path="res://assets/meshes/nature/tree2_oak/tree2_branch-1-02.png" id="5_las8c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjsi4"]
+cull_mode = 2
+albedo_texture = ExtResource("2_hayg2")
+backlight_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glcc5"]
+render_priority = 0
+shader = ExtResource("3_7tnv0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/transmission = Color(0, 0, 0, 1)
+shader_parameter/texture_albedo = ExtResource("4_4nxq0")
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(0.737193, 0.7371929, 0.7371929, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.05
+shader_parameter/sway_phase_len = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i224l"]
+render_priority = 0
+shader = ExtResource("3_7tnv0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/transmission = Color(0, 0, 0, 1)
+shader_parameter/texture_albedo = ExtResource("5_las8c")
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(0.78352344, 0.7835234, 0.7835234, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.05
+shader_parameter/sway_phase_len = 8.0
+
+[node name="ModelTree2Oak" unique_id=1788312301 instance=ExtResource("1_gscph")]
+
+[node name="tree2" parent="." index="0" unique_id=1683841755]
+layers = 128
+surface_material_override/0 = SubResource("StandardMaterial3D_mjsi4")
+surface_material_override/1 = SubResource("ShaderMaterial_glcc5")
+surface_material_override/2 = SubResource("ShaderMaterial_i224l")

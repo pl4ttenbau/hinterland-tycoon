@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dc2kighsxhgdq"
-path="res://.godot/imported/bush2.obj-8f7d834c144182996744c4018f5c87f9.scn"
+uid="uid://dh52172lchmre"
+path="res://.godot/imported/tree2_oak.obj-207b94d9882dea30deaf926114c2f7d5.scn"
 
 [deps]
 
-source_file="res://assets/meshes/nature/bush2/bush2.obj"
-dest_files=["res://.godot/imported/bush2.obj-8f7d834c144182996744c4018f5c87f9.scn"]
+source_file="res://assets/meshes/nature/tree2_oak/tree2_oak.obj"
+dest_files=["res://.godot/imported/tree2_oak.obj-207b94d9882dea30deaf926114c2f7d5.scn"]
 
 [params]
 

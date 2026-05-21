@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0lwwp1x02vul"
-path.s3tc="res://.godot/imported/tree3_bark_n.png-88c8616a46e935ce9a79beb5131cc0a8.s3tc.ctex"
+uid="uid://frgxfejegdio"
+path.s3tc="res://.godot/imported/tree3_bark_d.png-3e3179681f5861fc8d24ebc43153e457.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree3/tree3_bark_n.png"
-dest_files=["res://.godot/imported/tree3_bark_n.png-88c8616a46e935ce9a79beb5131cc0a8.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree3_kastanie/tree3_bark_d.png"
+dest_files=["res://.godot/imported/tree3_bark_d.png-3e3179681f5861fc8d24ebc43153e457.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/meshes/nature/tree3/tree3_bark_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

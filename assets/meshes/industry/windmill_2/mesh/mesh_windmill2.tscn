@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://dgpxnj0lc7e0r"]
 
-[ext_resource type="PackedScene" uid="uid://cewfdf4r4k4uq" path="res://assets/meshes/industry/windmill_2/mesh/windmill2.gltf" id="1_siap5"]
+[ext_resource type="PackedScene" uid="uid://2qgfyrnjwadq" path="res://assets/meshes/industry/windmill_2/mesh/windmill2.gltf" id="1_siap5"]
 
 [node name="Windmill2Mesh" unique_id=1760703559 instance=ExtResource("1_siap5")]
 
-[node name="Windmill" parent="." index="0" unique_id=271690082]
+[node name="Windmill" parent="." index="0" unique_id=1194225555]
 layers = 8
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
 
-[node name="Windmill_wind_001" parent="Windmill" index="0" unique_id=862420089]
+[node name="Windmill_wind_001" parent="Windmill" index="0" unique_id=1483268814]
+transform = Transform3D(-0.021476405, 0.10884024, -0.10670036, 0.021476395, 0.108840264, 0.106700346, 0.15089709, 4.6756905e-09, -0.030372217, 0.024974342, 9.387552, 0.54259014)
 layers = 8
 visibility_range_end = 350.0
 visibility_range_end_margin = 35.0

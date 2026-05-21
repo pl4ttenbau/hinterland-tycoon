@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw18jy5qltfg7"
-path.s3tc="res://.godot/imported/tree2_bark_n.png-1ade3d6002bd1fb232c1582be8649f11.s3tc.ctex"
+uid="uid://d3i7j1ijkffcy"
+path.s3tc="res://.godot/imported/tree2_branch-1-02.png-d88c02957f3b49947e9b5debc274d47d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "ccd3d05545ed26193f90c314419533ad"
+}
 
 [deps]
 
-source_file="res://assets/meshes/nature/tree2/tree2_bark_n.png"
-dest_files=["res://.godot/imported/tree2_bark_n.png-1ade3d6002bd1fb232c1582be8649f11.s3tc.ctex"]
+source_file="res://assets/meshes/nature/tree2_oak/tree2_branch-1-02.png"
+dest_files=["res://.godot/imported/tree2_branch-1-02.png-d88c02957f3b49947e9b5debc274d47d.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/meshes/nature/tree2/tree2_bark_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

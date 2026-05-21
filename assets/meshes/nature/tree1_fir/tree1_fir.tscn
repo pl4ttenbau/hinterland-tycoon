@@ -1,34 +1,7 @@
 [gd_scene format=3 uid="uid://torsr2w2g5rn"]
 
-[ext_resource type="ArrayMesh" uid="uid://xotko48m2hph" path="res://assets/meshes/nature/tree1_fir/tree1.obj" id="1_n5i75"]
-[ext_resource type="Texture2D" uid="uid://dib0lf7s7sn1s" path="res://assets/meshes/nature/tree1_fir/tex_tree1_needles_d.tga" id="2_p3hrk"]
-[ext_resource type="Shader" uid="uid://cor4gdqfhisj" path="res://assets/packed/leaves_shader.gdshader" id="2_wg2g5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7vyi"]
-render_priority = 0
-shader = ExtResource("2_wg2g5")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/transmission = Color(0, 0, 0, 1)
-shader_parameter/texture_albedo = ExtResource("2_p3hrk")
-shader_parameter/alpha_scissor_threshold = 0.30000001425
-shader_parameter/alpha_antialiasing_edge = 0.0
-shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/backlight = Color(0.66656864, 0.6665687, 0.6665685, 1)
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/sway_speed = 1.0
-shader_parameter/sway_strength = 0.05
-shader_parameter/sway_phase_len = 8.0
+[ext_resource type="PackedScene" uid="uid://pmfcxsgrtwu4" path="res://assets/meshes/nature/tree1_fir/model_tree_1.tscn" id="1_fjfnp"]
 
 [node name="Tree1Fir" type="Node3D" unique_id=2064083557]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1724401107]
-mesh = ExtResource("1_n5i75")
-surface_material_override/0 = SubResource("ShaderMaterial_p7vyi")
+[node name="ModelTree1Fir" parent="." unique_id=1853158894 instance=ExtResource("1_fjfnp")]

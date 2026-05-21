@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://0c6ty6eohueu"]
+
+[ext_resource type="PackedScene" uid="uid://cmgxi58jg6pvl" path="res://assets/meshes/nature/tree4_apple/tree4_apple.obj" id="1_1e313"]
+[ext_resource type="Texture2D" uid="uid://dyfde53jxfwe4" path="res://assets/meshes/nature/tree4_apple/tex_tree4_twigs_d.png" id="2_bje8r"]
+[ext_resource type="Shader" uid="uid://cor4gdqfhisj" path="res://assets/packed/leaves_shader.gdshader" id="2_yjoeq"]
+[ext_resource type="Texture2D" uid="uid://dm7htromy40tw" path="res://assets/meshes/nature/tree4_apple/tex_tree4_bark_d.png" id="3_yjoeq"]
+[ext_resource type="Texture2D" uid="uid://bi3htyq1a8yd4" path="res://assets/meshes/nature/tree4_apple/tex_tree4_bark_n.png" id="4_y3sad"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3sad"]
+render_priority = 0
+shader = ExtResource("2_yjoeq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/transmission = Color(0, 0, 0, 1)
+shader_parameter/texture_albedo = ExtResource("2_bje8r")
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/albedo_texture_size = Vector2i(512, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(0.67481464, 0.67481464, 0.6748146, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.05
+shader_parameter/sway_phase_len = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj23q"]
+albedo_texture = ExtResource("3_yjoeq")
+normal_enabled = true
+normal_texture = ExtResource("4_y3sad")
+
+[node name="Tree4Apple" unique_id=397374277 instance=ExtResource("1_1e313")]
+
+[node name="tree4_apple" parent="." index="0" unique_id=585223079]
+layers = 128
+surface_material_override/0 = SubResource("ShaderMaterial_y3sad")
+surface_material_override/1 = SubResource("StandardMaterial3D_pj23q")

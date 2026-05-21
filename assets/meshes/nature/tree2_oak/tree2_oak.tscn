@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://mttu5cyxem5i"]
+
+[ext_resource type="PackedScene" uid="uid://boibh0s34qhpb" path="res://assets/meshes/nature/tree2_oak/model_tree_2_oak.tscn" id="1_mw33q"]
+
+[node name="Tree2" type="Node3D" unique_id=1365929184]
+
+[node name="tree2_oak" parent="." unique_id=1788312301 instance=ExtResource("1_mw33q")]

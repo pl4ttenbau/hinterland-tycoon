@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cb4ue2pxotkme"]
+
+[ext_resource type="PackedScene" uid="uid://dqebq4vfi4ekh" path="res://assets/meshes/nature/tree3_kastanie/model_tree_3_kastanie.tscn" id="1_dkydx"]
+
+[node name="Tree3" type="Node3D" unique_id=1915614709]
+
+[node name="ModelTree3Kastanie" parent="." unique_id=1167810574 instance=ExtResource("1_dkydx")]
