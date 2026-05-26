@@ -5,12 +5,12 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="2_ftij8"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_4bctd"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/node_link/node_station_link.gd" id="4_16jbh"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_4bctd"]
 
 [sub_resource type="Resource" id="Resource_sdbyp"]
 script = ExtResource("3_4bctd")
 town_name = "Wernigerode"
 pos_xz = Vector2(3107, 1353)
-autogenerate_houses = false
 num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -19,7 +19,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Braunlage"
 pos_xz = Vector2(938.7, 3749.4)
-autogenerate_houses = false
 num = 1
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -62,7 +61,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Elbingerode"
 pos_xz = Vector2(3434, 2739)
-autogenerate_houses = false
 num = 6
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -71,7 +69,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Rübeland"
 pos_xz = Vector2(3971, 3129)
-autogenerate_houses = false
 num = 7
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -98,7 +95,6 @@ script = ExtResource("3_4bctd")
 town_name = "Brocken"
 pos_xz = Vector2(1001, 2244)
 is_minor = true
-autogenerate_houses = false
 num = 10
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -124,7 +120,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Bad Harzburg"
 pos_xz = Vector2(198, 610)
-autogenerate_houses = false
 num = 13
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -133,7 +128,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Hasserode"
 pos_xz = Vector2(2695, 1702)
-autogenerate_houses = false
 num = 14
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -152,7 +146,6 @@ script = ExtResource("3_4bctd")
 town_name = "Darlingerode"
 pos_xz = Vector2(2348, 1221)
 is_minor = true
-autogenerate_houses = false
 num = 16
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -170,7 +163,6 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Könighshütte"
 pos_xz = Vector2(2953, 3404)
-autogenerate_houses = false
 num = 18
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -180,7 +172,6 @@ script = ExtResource("3_4bctd")
 town_name = "Plessenburg"
 pos_xz = Vector2(1688, 1611)
 is_minor = true
-autogenerate_houses = false
 num = 19
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -199,7 +190,6 @@ script = ExtResource("3_4bctd")
 town_name = "Hartenberg"
 pos_xz = Vector2(3736, 2388)
 is_minor = true
-autogenerate_houses = false
 num = 21
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
@@ -217,14 +207,13 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 script = ExtResource("3_4bctd")
 town_name = "Nöschenrode"
 pos_xz = Vector2(3368, 1636)
-autogenerate_houses = false
 num = 23
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
 [sub_resource type="Resource" id="Resource_xbdss"]
 script = ExtResource("3_4bctd")
-town_name = "Veckenstedt"
+town_name = "Wasserleben"
 pos_xz = Vector2(2231, 336)
 num = 24
 type = 5
@@ -243,10 +232,16 @@ script = ExtResource("3_4bctd")
 town_name = "Oderbrück"
 pos_xz = Vector2(191.1, 2799.9)
 is_minor = true
-autogenerate_houses = false
 num = 26
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
+[sub_resource type="Resource" id="Resource_16jbh"]
+script = ExtResource("3_4bctd")
+town_name = "Veckenstedt"
+pos_xz = Vector2(2073.563, 579.047)
+num = 27
+type = 8
 
 [node name="Towns" type="Node" unique_id=254810491]
 script = ExtResource("1_ftij8")
@@ -348,7 +343,7 @@ town = SubResource("Resource_rbwgv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 7.67, 1636)
 town = SubResource("Resource_k8dum")
 
-[node name="TownCenter_Veckenstedt" parent="." unique_id=1046864876 instance=ExtResource("1_tj431")]
+[node name="Town3D_Wasserleben" parent="." unique_id=1046864876 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2443.5278, 2.179844, 85.58118)
 town = SubResource("Resource_xbdss")
 
@@ -359,3 +354,8 @@ town = SubResource("Resource_iwpts")
 [node name="TownCenter_Oderbrück" parent="." unique_id=1887726468 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.1, 143, 2799.9)
 town = SubResource("Resource_tj431")
+
+[node name="Town3D_Veckenstedt" type="Node3D" parent="." unique_id=379283880 instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.5632, 4.594621, 579.04706)
+script = ExtResource("6_4bctd")
+town = SubResource("Resource_16jbh")
