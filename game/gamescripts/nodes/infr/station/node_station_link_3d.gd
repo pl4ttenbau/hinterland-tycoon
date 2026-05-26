@@ -49,7 +49,7 @@ func _to_string() -> String:
 #endregion
 
 #region Callbacks & Triggers
-func _on_resource_change():
+func _on_goods_changed():
 	# TODO: fix parent station connection
 	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
 	%StationSignPanel.res_amount = str(passengers_amount)

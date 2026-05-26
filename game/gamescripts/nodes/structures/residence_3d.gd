@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_house.png")
+@icon("res://assets/icons/icon_house_3d.png")
 class_name Residence3D extends GameEntity3D
 
 static var last_bld_num: int = 0

@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_good_white.png")
 class_name GoodsInventory extends Resource
 
-signal resource_change()
+signal goods_change()
 
 @export var storage: BaseGoodsStorage
 
@@ -17,7 +17,7 @@ func _init() -> void:
 		if self.amount_max && self.amount_max > 0:
 			self.storage.max_storage = amount_max
 	# connect to change signal
-	self.resource_change.connect(Callable(self, "_on_resource_changed"))
+	self.goods_change.connect(Callable(self, "_on_goods_changed"))
 
 #region Add Or Remove
 func add_good_of(res_type_key: StringName):
@@ -26,12 +26,12 @@ func add_good_of(res_type_key: StringName):
 
 func add_goods_amount(goods_amount: GoodsAmount):
 	self.storage.change_amount(goods_amount.res_key, goods_amount.amount)
-	self.resource_change.emit()
+	self.goods_change.emit()
 
 func remove_goods_amount(goods_amount: GoodsAmount):
 	var change_amount: float = -1 * goods_amount.amount
 	self.storage.change_amount(goods_amount.res_key, change_amount)
-	self.resource_change.emit()
+	self.goods_change.emit()
 #endregion
 
 #region Getters
@@ -61,7 +61,7 @@ func can_take(amount_dto: GoodsAmount):
 #endregion
 
 #region Callbacks
-func _on_resource_changed():
+func _on_goods_changed():
 	if !self.storage:
 		Loggie.error("BaseResourceStorage not added as a child!")
 		return

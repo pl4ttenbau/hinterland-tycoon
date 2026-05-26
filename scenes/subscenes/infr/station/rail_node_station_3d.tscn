@@ -11,10 +11,11 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="SphereShape3D" id="SphereShape3D_fdb1b"]
 radius = 25.0
 
-[node name="RailNodeStation3D" type="Node3D" unique_id=672166883]
+[node name="NodeStationLink3D" type="Node3D" unique_id=672166883]
 script = ExtResource("1_hiyfb")
 
-[node name="StationBuilding3D" parent="." unique_id=200956076 instance=ExtResource("2_wlho7")]
+[node name="StationBuilding3D" parent="." unique_id=200956076 node_paths=PackedStringArray("node_link_3d") instance=ExtResource("2_wlho7")]
+node_link_3d = NodePath("..")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=887868598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -5.059752)
