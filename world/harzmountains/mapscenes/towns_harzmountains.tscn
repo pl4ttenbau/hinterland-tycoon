@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="2_ftij8"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_4bctd"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/node_link/node_station_link.gd" id="4_16jbh"]
-[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_4bctd"]
 
 [sub_resource type="Resource" id="Resource_sdbyp"]
 script = ExtResource("3_4bctd")
@@ -144,7 +143,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_1f86c"]
 script = ExtResource("3_4bctd")
 town_name = "Darlingerode"
-pos_xz = Vector2(2348, 1221)
+pos_xz = Vector2(2330.6, 1168.9)
 is_minor = true
 num = 16
 type = 5
@@ -312,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 117.122, 2073)
 town = SubResource("Resource_c76fc")
 
 [node name="TownCenter_Darlingerode" parent="." unique_id=396049817 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2348, 8.72424, 1221)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2330.559, 9.8198595, 1168.9222)
 town = SubResource("Resource_1f86c")
 
 [node name="TownCenter_Wurmberg" parent="." unique_id=1741162498 instance=ExtResource("1_tj431")]
@@ -355,7 +354,6 @@ town = SubResource("Resource_iwpts")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.1, 143, 2799.9)
 town = SubResource("Resource_tj431")
 
-[node name="Town3D_Veckenstedt" type="Node3D" parent="." unique_id=379283880 instance=ExtResource("1_tj431")]
+[node name="Town3D_Veckenstedt" parent="." unique_id=379283880 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.5632, 4.594621, 579.04706)
-script = ExtResource("6_4bctd")
 town = SubResource("Resource_16jbh")
