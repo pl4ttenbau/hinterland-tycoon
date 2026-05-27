@@ -37,6 +37,7 @@ func reassign_town_buildings_to_stations(town: TownData) -> int:
 func connect_residence_to_station(outer_res_bld: Residence3D, closest_node_station: NodeStationLinkData,
 		res_bld_town: TownData):
 	outer_res_bld.res_bld_obj.connected_station = closest_node_station
+	closest_node_station.parent_station.connections.connect_house(outer_res_bld)
 	closest_node_station.parent_station.connected_town = res_bld_town
 
 #region Callbacks
