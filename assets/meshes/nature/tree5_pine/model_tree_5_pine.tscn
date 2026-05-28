@@ -17,7 +17,7 @@ shader = ExtResource("2_qu7yn")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/transmission = Color(0, 0, 0, 1)
 shader_parameter/texture_albedo = ExtResource("2_x6mh1")
-shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_scissor_threshold = 0.49200002337
 shader_parameter/alpha_antialiasing_edge = 0.0
 shader_parameter/albedo_texture_size = Vector2i(512, 512)
 shader_parameter/point_size = 1.0
@@ -25,7 +25,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/backlight = Color(0.69965345, 0.69965345, 0.69965345, 1)
+shader_parameter/backlight = Color(0.8776157, 0.8776158, 0.87761563, 1)
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
@@ -38,5 +38,6 @@ shader_parameter/sway_phase_len = 8.0
 
 [node name="tree5" parent="." index="0" unique_id=327124045]
 layers = 128
+lod_bias = 0.1
 surface_material_override/0 = SubResource("StandardMaterial3D_oysdg")
 surface_material_override/1 = SubResource("ShaderMaterial_myccw")

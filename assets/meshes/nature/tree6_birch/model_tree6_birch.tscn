@@ -33,7 +33,8 @@ shader_parameter/sway_phase_len = 8.0
 
 [node name="tree6_birch" unique_id=1430144271 instance=ExtResource("1_djrky")]
 
-[node name="tree6" parent="." index="0" unique_id=2071337867]
+[node name="tree6" parent="." index="0" unique_id=836996817]
 layers = 128
+lod_bias = 0.1
 surface_material_override/0 = SubResource("StandardMaterial3D_xoab4")
 surface_material_override/1 = SubResource("ShaderMaterial_e6s1g")

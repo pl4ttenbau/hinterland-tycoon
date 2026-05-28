@@ -1,17 +1,32 @@
 [gd_scene format=3 uid="uid://pmfcxsgrtwu4"]
 
 [ext_resource type="PackedScene" uid="uid://xotko48m2hph" path="res://assets/meshes/nature/tree1_fir/tree1.obj" id="1_2h0ov"]
+[ext_resource type="Shader" uid="uid://cor4gdqfhisj" path="res://assets/packed/leaves_shader.gdshader" id="2_m8im5"]
 [ext_resource type="Texture2D" uid="uid://dib0lf7s7sn1s" path="res://assets/meshes/nature/tree1_fir/tex_tree1_needles_d.tga" id="2_qjui2"]
 [ext_resource type="Texture2D" uid="uid://cb35gx8fl4dyy" path="res://assets/meshes/nature/tree1_fir/tex_tree1_bark_d.bmp" id="3_m8im5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjesc"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 1
-albedo_texture = ExtResource("2_qjui2")
-backlight_enabled = true
-backlight = Color(0.8089983, 0.8089983, 0.8089982, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tjesc"]
+render_priority = 0
+shader = ExtResource("2_m8im5")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/transmission = Color(0, 0, 0, 1)
+shader_parameter/texture_albedo = ExtResource("2_qjui2")
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/albedo_texture_size = Vector2i(512, 512)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/backlight = Color(0.8089983, 0.8089983, 0.8089982, 1)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.05
+shader_parameter/sway_phase_len = 8.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j556q"]
 albedo_texture = ExtResource("3_m8im5")
@@ -19,5 +34,6 @@ albedo_texture = ExtResource("3_m8im5")
 [node name="ModelTree1Fir" unique_id=1853158894 instance=ExtResource("1_2h0ov")]
 
 [node name="tree1_fir" parent="." index="0" unique_id=1772844373]
-surface_material_override/0 = SubResource("StandardMaterial3D_tjesc")
+lod_bias = 0.1
+surface_material_override/0 = SubResource("ShaderMaterial_tjesc")
 surface_material_override/1 = SubResource("StandardMaterial3D_j556q")

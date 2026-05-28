@@ -61,6 +61,7 @@ shader_parameter/sway_phase_len = 8.0
 
 [node name="tree2" parent="." index="0" unique_id=1683841755]
 layers = 128
+lod_bias = 0.1
 surface_material_override/0 = SubResource("StandardMaterial3D_mjsi4")
 surface_material_override/1 = SubResource("ShaderMaterial_glcc5")
 surface_material_override/2 = SubResource("ShaderMaterial_i224l")

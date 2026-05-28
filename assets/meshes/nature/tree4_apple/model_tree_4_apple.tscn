@@ -31,12 +31,15 @@ shader_parameter/sway_phase_len = 8.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj23q"]
 albedo_texture = ExtResource("3_yjoeq")
+roughness = 0.89
 normal_enabled = true
+normal_scale = 4.61
 normal_texture = ExtResource("4_y3sad")
 
 [node name="Tree4Apple" unique_id=397374277 instance=ExtResource("1_1e313")]
 
 [node name="tree4_apple" parent="." index="0" unique_id=585223079]
 layers = 128
+lod_bias = 0.1
 surface_material_override/0 = SubResource("ShaderMaterial_y3sad")
 surface_material_override/1 = SubResource("StandardMaterial3D_pj23q")
