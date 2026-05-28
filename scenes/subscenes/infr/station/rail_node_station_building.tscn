@@ -6,8 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="3_0cmdo"]
 [ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="4_013s3"]
 [ext_resource type="Script" uid="uid://3luml11nug4p" path="res://game/gamescripts/nodes/infr/station/station_collider.gd" id="5_tqp2s"]
-[ext_resource type="Script" uid="uid://b1nlr066px1bg" path="res://game/gamescripts/nodes/infr/station/station_platform_surface.gd" id="7_0cmdo"]
-[ext_resource type="Script" uid="uid://ba3ooxme07tum" path="res://addons/multimesh_scatter/multimesh_scatter.gd" id="8_013s3"]
+[ext_resource type="Script" uid="uid://b1nlr066px1bg" path="res://game/gamescripts/nodes/infr/station/platform/station_platform_surface.gd" id="7_0cmdo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
 albedo_texture = ExtResource("1_cyx2g")
@@ -24,13 +23,7 @@ size = Vector3(16.579529, 1.826587, 6.1153564)
 [sub_resource type="PlaneMesh" id="PlaneMesh_pjj2v"]
 size = Vector2(15.5, 5)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tqp2s"]
-
-[sub_resource type="MultiMesh" id="MultiMesh_d35wr"]
-transform_format = 1
-instance_count = 6
-mesh = SubResource("CapsuleMesh_tqp2s")
-buffer = PackedFloat32Array(1, 0, 0, -4.7636504, 0, 1, 0, 0.0397681, 0, 0, 1, -1.8732028, 1, 0, 0, -6.724044, 0, 1, 0, 0.0397681, 0, 0, 1, -1.3406329, 1, 0, 0, -4.7804747, 0, 1, 0, 0.0397681, 0, 0, 1, 0.4911461, 1, 0, 0, -6.7940764, 0, 1, 0, 0.0397681, 0, 0, 1, -1.8335748, 1, 0, 0, 6.6411963, 0, 1, 0, 0.0397681, 0, 0, 1, 0.02621603, 1, 0, 0, 1.4340811, 0, 1, 0, 0.0397681, 0, 0, 1, -0.946846)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0cmdo"]
 
 [node name="StationBuilding" type="Node3D" unique_id=914846890]
 script = ExtResource("1_pjj2v")
@@ -61,14 +54,7 @@ script = ExtResource("7_0cmdo")
 station_building = NodePath("..")
 metadata/_custom_type_script = "uid://b1nlr066px1bg"
 
-[node name="MultiMeshScatter" type="MultiMeshInstance3D" parent="PlatformSurface" unique_id=1334041032]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9930525, 0)
-multimesh = SubResource("MultiMesh_d35wr")
-script = ExtResource("8_013s3")
-count = 6
-placement_size = Vector3(16, 2, 5)
-offset_position = Vector3(0, 1, 0)
-min_random_size = Vector3(1, 1, 1)
-max_random_size = Vector3(1, 1, 1)
-show_debug_area = false
-metadata/_custom_type_script = "uid://ba3ooxme07tum"
+[node name="PassengerMesh" type="MeshInstance3D" parent="PlatformSurface" unique_id=1571086922]
+mesh = SubResource("CapsuleMesh_0cmdo")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="PlatformSurface" unique_id=1994940228]

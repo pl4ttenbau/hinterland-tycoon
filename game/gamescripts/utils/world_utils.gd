@@ -33,3 +33,10 @@ static func pos_on_map(vec2: Vector2) -> Vector3:
 		var vec3 := Vector3(vec2.x, 0, vec2.y)
 		return GlobalState.world_container.get_pos_at_height(vec3)
 	return Vector3.ZERO
+
+static func create_transform(pos: Vector3, rot: Vector3, scale: Vector3) -> Transform3D:
+	var base: Basis = Basis.from_euler(rot)
+	base.x *= scale.x
+	base.y *= scale.y
+	base.z *= scale.z
+	return Transform3D(base, pos)
