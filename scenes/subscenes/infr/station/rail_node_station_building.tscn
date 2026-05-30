@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="4_013s3"]
 [ext_resource type="Script" uid="uid://3luml11nug4p" path="res://game/gamescripts/nodes/infr/station/station_collider.gd" id="5_tqp2s"]
 [ext_resource type="Script" uid="uid://b1nlr066px1bg" path="res://game/gamescripts/nodes/infr/station/platform/station_platform_surface.gd" id="7_0cmdo"]
+[ext_resource type="PackedScene" uid="uid://bl6q0ko1pyurs" path="res://assets/meshes/goods/platform/passenger/passenger3.tscn" id="8_013s3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
 albedo_texture = ExtResource("1_cyx2g")
@@ -20,10 +21,10 @@ rough = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_65b5o"]
 size = Vector3(16.579529, 1.826587, 6.1153564)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_013s3"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_pjj2v"]
 size = Vector2(15.5, 5)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0cmdo"]
 
 [node name="StationBuilding" type="Node3D" unique_id=914846890]
 script = ExtResource("1_pjj2v")
@@ -49,12 +50,14 @@ shape = SubResource("BoxShape3D_65b5o")
 
 [node name="PlatformSurface" type="MeshInstance3D" parent="." unique_id=169949895 node_paths=PackedStringArray("station_building")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04036808, 0.6766765, -6.434172)
+material_override = SubResource("StandardMaterial3D_013s3")
+transparency = 1.0
 mesh = SubResource("PlaneMesh_pjj2v")
 script = ExtResource("7_0cmdo")
 station_building = NodePath("..")
 metadata/_custom_type_script = "uid://b1nlr066px1bg"
 
-[node name="PassengerMesh" type="MeshInstance3D" parent="PlatformSurface" unique_id=1571086922]
-mesh = SubResource("CapsuleMesh_0cmdo")
-
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="PlatformSurface" unique_id=1994940228]
+
+[node name="PassengerMesh" parent="PlatformSurface" unique_id=2105015521 instance=ExtResource("8_013s3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)

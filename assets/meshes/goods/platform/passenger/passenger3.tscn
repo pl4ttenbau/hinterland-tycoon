@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bl6q0ko1pyurs"]
+
+[ext_resource type="PackedScene" uid="uid://bi15dscvcpfg0" path="res://assets/meshes/goods/platform/passenger/mesh_passenger_3.tscn" id="1_lalds"]
+
+[node name="Passenger3" type="Node3D" unique_id=2105015521]
+
+[node name="Passenger3Mesh" parent="." unique_id=916996279 instance=ExtResource("1_lalds")]

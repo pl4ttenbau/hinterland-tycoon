@@ -1,0 +1,32 @@
+# Blender 5.0.1 MTL File: 'passenger_3.blend'
+# www.blender.org
+
+newmtl mat_0-SK_Oldman_Head_D.jpg
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd SK_Oldman_Head_D.jpg
+
+newmtl mat_1-SK_Oldman_Coat_D.jpg
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd SK_Oldman_Coat_D.jpg
+
+newmtl mat_2-default-grey.jpg
+Ns 9.849158
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd default-grey.jpg

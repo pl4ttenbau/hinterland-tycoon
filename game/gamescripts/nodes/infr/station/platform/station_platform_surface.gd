@@ -1,5 +1,7 @@
 class_name StationPlatformSurface extends MeshInstance3D
 
+const NINETY_DEG_IN_RAD: float = 1.57079
+
 signal passengers_changed(passenger_count: int)
 
 @export var station_building: StationBuilding3D
@@ -37,17 +39,18 @@ func create_multimesh():
 	multimesh.use_colors = false
 	multimesh.use_custom_data = false
 	multimesh.instance_count = 5
-	multimesh.mesh = $PassengerMesh.mesh
+	multimesh.mesh = self.get_passenger_mesh()
 
 func reset_buffers():
+	var pos_on_platform: Vector3 = self.get_random_pos_on_platform()
 	self.multimesh.instance_count = self.station_passengers
 	for i: int in range(self.multimesh.instance_count):
 		self.multimesh.set_instance_transform(i, WorldUtils.create_transform(
-			self.get_random_pos_on_platform(),
-			Vector3(0, 0, 0),
+			pos_on_platform,
+			Vector3(0, NINETY_DEG_IN_RAD, 0),
 			Vector3(1, 1, 1)
 		))
-	$MultiMeshInstance3D.material_override = $PassengerMesh.mesh.material
+		# self.multimesh.custom_aabb = AABB(pos_on_platform, Vector3(10, 10, 10))
 	$MultiMeshInstance3D.multimesh = self.multimesh
 #endregion
 
@@ -62,14 +65,21 @@ func get_inventory() -> GoodsInventory:
 	return null
 
 func get_random_pos_on_platform() -> Vector3:
-	var plane: PlaneMesh = self.mesh as PlaneMesh
-	var width: float = plane.size.x
-	var depth: float = plane.size.y
+	var platf_size: Vector2 = self.get_platform_size()
 	return Vector3(
-		randf_range(-width /2, width /2),
-		1,
-		randf_range(-depth /2, depth /2)
+		randf_range(-platf_size.x /2, platf_size.x /2),
+		0,
+		randf_range(-platf_size.y /2, platf_size.y /2)
 	)
+
+func get_passenger_mesh() -> ArrayMesh:
+	return $PassengerMesh/Passenger3Mesh/passenger3.mesh
+
+func get_platform_size() -> Vector2:
+	var plane: PlaneMesh = self.mesh as PlaneMesh
+	if plane:
+		return Vector2( plane.size.x, plane.size.y)
+	return Vector2.ZERO
 #endregion
 
 #region Callbacks
