@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dvjv4qtbre7n"]
 
 [ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/station/tex_platform_1_d.png" id="1_cyx2g"]
-[ext_resource type="Script" uid="uid://fsh6rdvtcgqi" path="res://game/gamescripts/nodes/infr/station/station_building_3d.gd" id="1_pjj2v"]
+[ext_resource type="Script" uid="uid://fsh6rdvtcgqi" path="res://game/gamescripts/nodes/infr/station/building/station_building_3d.gd" id="1_pjj2v"]
 [ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/station/tex_platform_1_n.png" id="2_pjj2v"]
 [ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/station/tex_platform_1_r.png" id="3_0cmdo"]
 [ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/station/platform_1.obj" id="4_013s3"]
 [ext_resource type="Script" uid="uid://3luml11nug4p" path="res://game/gamescripts/nodes/infr/station/station_collider.gd" id="5_tqp2s"]
-[ext_resource type="Script" uid="uid://b1nlr066px1bg" path="res://game/gamescripts/nodes/infr/station/platform/station_platform_surface.gd" id="7_0cmdo"]
+[ext_resource type="Script" uid="uid://b1nlr066px1bg" path="res://game/gamescripts/nodes/infr/station/building/station_platform_surface.gd" id="7_0cmdo"]
 [ext_resource type="PackedScene" uid="uid://bl6q0ko1pyurs" path="res://assets/meshes/goods/platform/passenger/passenger3.tscn" id="8_013s3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]

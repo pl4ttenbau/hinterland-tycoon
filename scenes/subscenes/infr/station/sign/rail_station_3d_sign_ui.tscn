@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nx0xye5kd2gv"]
 
 [ext_resource type="Texture2D" uid="uid://n5ylbic5bdgi" path="res://assets/icons/icon_station.svg" id="1_62j3t"]
-[ext_resource type="Script" uid="uid://dtnqsrt4d6dv2" path="res://game/gamescripts/nodes/infr/station/station_sign_panel.gd" id="1_xsmea"]
+[ext_resource type="Script" uid="uid://dtnqsrt4d6dv2" path="res://game/gamescripts/nodes/infr/station/sign/station_sign_panel.gd" id="1_xsmea"]
 [ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
 [ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="3_4u520"]
 
@@ -34,10 +34,10 @@ metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=697961583]
 layout_mode = 2

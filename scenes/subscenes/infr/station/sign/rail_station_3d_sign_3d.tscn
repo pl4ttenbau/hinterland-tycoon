@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://3f5quual3ygu"]
+
+[ext_resource type="Script" uid="uid://cfv2khmybf5f" path="res://game/gamescripts/nodes/infr/station/sign/station_sign_3d.gd" id="1_3skeu"]
+[ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/station/sign/rail_station_3d_sign_ui.tscn" id="2_0kyfr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
+viewport_path = NodePath("SubViewport")
+
+[node name="StationSign3D" type="Sprite3D" unique_id=703079687]
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
+pixel_size = 0.02
+billboard = 1
+texture = SubResource("ViewportTexture_ytynf")
+script = ExtResource("1_3skeu")
+metadata/_custom_type_script = "uid://cfv2khmybf5f"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=131443579]
+transparent_bg = true
+scaling_3d_scale = 2.0
+fsr_sharpness = 0.1
+gui_disable_input = true
+sdf_scale = 0
+size = Vector2i(600, 100)
+size_2d_override_stretch = true
+
+[node name="StationSignPanel" parent="SubViewport" unique_id=351898367 instance=ExtResource("2_0kyfr")]
+unique_name_in_owner = true

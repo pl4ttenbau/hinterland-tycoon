@@ -37,7 +37,7 @@ static func _next_train_num() -> int:
 #region Initialization
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
-	
+
 func _ready() -> void:
 	# create speed timer
 	var speed_timer := Timer.new()
@@ -51,7 +51,7 @@ static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	inst.spawn_locomotive(VehicleData.of(_veh_type_key), _start_pos)
 	inst.init_segment_path()
 	return inst
-	
+
 func _create_motor(_dir: Enums.PathDirection):
 	self.motor = TrainMotor.of(_dir)
 	self.add_child(self.motor)
@@ -99,7 +99,7 @@ func add_next_segment():
 #region Size Getters
 func count() -> int:
 	return self.vehicles.size()
-	
+
 func length_in_m() -> float:
 	var total_length: float = 0.0
 	for attached_veh: Vehicle3D in self.vehicles:
@@ -127,7 +127,7 @@ func move_forwards(delta_seconds: float):
 func increase_m_passed(delta_m: float):
 	self.m_passed_on_segment += delta_m
 	self.m_passed_since_start += delta_m
-	
+
 func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
 	var train_curve: Curve3D = self.get_segment_path_curve()
 	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
@@ -157,10 +157,10 @@ func get_segment_path_curve() -> Curve3D:
 func _on_speed_timer_tick():
 	if self.motor && self.motor.is_started:
 		self.motor.on_motor_tick()
-	
+
 func _on_world_ready():
 	self.motor.start()
-	
+
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started: 
 		self.move_forwards(_delta)

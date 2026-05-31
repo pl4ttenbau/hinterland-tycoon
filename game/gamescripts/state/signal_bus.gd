@@ -74,16 +74,16 @@ signal stations_loaded(station_objs: Array[RailStationData])
 signal node_station_links_spawned()
 
 @warning_ignore("unused_signal")
-signal train_entered_station(station: RailStationData, train3d: Train3D)
+signal train_entered_station(station: RailStation3D, train3d: Train3D)
 
 @warning_ignore("unused_signal")
-signal train_exited_station(station: RailStationData, train3d: Train3D)
+signal train_exited_station(station: RailStation3D, train3d: Train3D)
 
 @warning_ignore("unused_signal")
-signal player_entered_station(station: RailStationData)
+signal player_entered_station(station: RailStation3D)
 
 @warning_ignore("unused_signal")
-signal player_exited_station(station: RailStationData)
+signal player_exited_station(station: RailStation3D)
 #endregion
 
 #region Residential Buildings
