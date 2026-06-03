@@ -221,7 +221,7 @@ metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 [sub_resource type="Resource" id="Resource_iwpts"]
 script = ExtResource("3_4bctd")
 town_name = "Reddeber"
-pos_xz = Vector2(3290.639, 884.145)
+pos_xz = Vector2(3391.049, 817.579)
 is_minor = true
 num = 25
 type = 5
@@ -241,6 +241,14 @@ script = ExtResource("3_4bctd")
 town_name = "Veckenstedt"
 pos_xz = Vector2(2073.563, 579.047)
 num = 27
+type = 8
+
+[sub_resource type="Resource" id="Resource_v18bd"]
+script = ExtResource("3_4bctd")
+town_name = "Silstedt"
+pos_xz = Vector2(3646.947, 756.091)
+is_minor = true
+num = 28
 type = 8
 
 [node name="Towns" type="Node" unique_id=254810491]
@@ -348,7 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2443.5278, 2.179844, 85.58118
 town = SubResource("Resource_xbdss")
 
 [node name="Town3D_Reddeber" parent="." unique_id=1879306270 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3290.6387, 4.294163, 884.1453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3391.0486, 3.7801437, 817.5793)
 town = SubResource("Resource_iwpts")
 
 [node name="TownCenter_Oderbrück" parent="." unique_id=1887726468 instance=ExtResource("1_tj431")]
@@ -358,3 +366,7 @@ town = SubResource("Resource_tj431")
 [node name="Town3D_Veckenstedt" parent="." unique_id=379283880 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.5632, 4.594621, 579.04706)
 town = SubResource("Resource_16jbh")
+
+[node name="Town3D_Silstedt" parent="." unique_id=58909277 instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3646.9465, 3.7317276, 756.0909)
+town = SubResource("Resource_v18bd")

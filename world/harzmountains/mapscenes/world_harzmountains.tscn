@@ -2494,6 +2494,13 @@ houses = Array[ExtResource("5_uau4w")]([Object(Node3D,"unique_name_in_owner":fal
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.3794562, 0, -0.9252097, 0, 1, 0, 0.9252097, 0, -0.3794562, 1753.1024, 96.80055, 2948.6875),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_2","placed_town_num":9,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.835568, 0, -0.549387, 0, 1, 0, 0.549387, 0, -0.835568, 986.286, 349.026, 2263.68),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":10,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.603639, 0, 0.797257, 0, 1, 0, -0.797257, 0, 0.603639, 961.602, 351.635, 2257.55),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_2","placed_town_num":10,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.2584987, 0, 0.9660117, 0, 1, 0, -0.9660117, 0, 0.2584987, 3947.764, 2.910512, 887.1617),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.37772772, 0, 0.92591673, 0, 1, 0, -0.92591673, 0, 0.37772772, 3919.5579, 2.5926824, 877.6612),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_3","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.0299801, 0, -0.9995506, 0, 1, 0, 0.9995506, 0, 0.0299801, 3921.8142, 2.5245247, 849.5581),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_1","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9066026, 0, 0.4219855, 0, 1, 0, -0.4219855, 0, 0.9066026, 3945.0583, 2.6772585, 864.0787),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_barn","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99094117, 0, 0.13429752, 0, 1, 0, -0.13429752, 0, 0.99094117, 3874.8557, 2.555269, 814.8484),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.7836284, 0, 0.6212298, 0, 1, 0, -0.6212298, 0, 0.7836284, 3852.0935, 2.8598561, 811.77783),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.43427235, 0, 0.90078163, 0, 1, 0, -0.90078163, 0, 0.43427235, 3860.0603, 3.6822186, 831.2835),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_2","placed_town_num":11,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.024310058, 0, 0.9997045, 0, 1, 0, -0.9997045, 0, 0.024310058, 1370.4402, 8.118911, 505.10416),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_3","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.81808954, 0, -0.5750909, 0, 1, 0, 0.5750909, 0, -0.81808954, 1333.3384, 6.7803717, 461.2813),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_barn","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.628927, 0, 0.77746445, 0, 1, 0, -0.77746445, 0, 0.628927, 1336.937, 8.013672, 505.98856),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("5_uau4w"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_1","placed_town_num":12,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -2869,7 +2876,7 @@ transform = Transform3D(0.9762809, 0, 0.21650778, 0, 1, 0, -0.21650778, 0, 0.976
 [node name="VillageHouse4" parent="Houses/2_Ilsenburg" unique_id=974761557 instance=ExtResource("71_gf88f")]
 transform = Transform3D(0.9827422, 0, 0.18498057, 0, 1, 0, -0.18498057, 0, 0.9827422, 1679.6401, 7.891098, 987.54266)
 
-[node name="VillageHouse2" parent="Houses/2_Ilsenburg" unique_id=1760927254 instance=ExtResource("42_nfbri")]
+[node name="VillageHouse2" parent="Houses/2_Ilsenburg" unique_id=370142067 instance=ExtResource("42_nfbri")]
 transform = Transform3D(0.45467466, 0, -0.8906576, 0, 1, 0, 0.8906576, 0, 0.45467466, 1693.2775, 8.042991, 1010.20166)
 
 [node name="PolishHouse4" parent="Houses/2_Ilsenburg" unique_id=1106240286 instance=ExtResource("35_iof1f")]
@@ -3028,6 +3035,34 @@ transform = Transform3D(0.603639, 0, 0.797257, 0, 1, 0, -0.797257, 0, 0.603639, 
 placed_town_num = 10
 
 [node name="11_Minsleben" type="Node" parent="Houses" unique_id=14605295]
+
+[node name="VillageHouse2" parent="Houses/11_Minsleben" unique_id=1760927254 instance=ExtResource("42_nfbri")]
+transform = Transform3D(0.2584987, 0, 0.9660117, 0, 1, 0, -0.9660117, 0, 0.2584987, 3947.764, 2.910512, 887.1617)
+placed_town_num = 11
+
+[node name="CityHouse3" parent="Houses/11_Minsleben" unique_id=928953788 instance=ExtResource("45_r10ie")]
+transform = Transform3D(0.37772772, 0, 0.92591673, 0, 1, 0, -0.92591673, 0, 0.37772772, 3919.5579, 2.5926824, 877.6612)
+placed_town_num = 11
+
+[node name="HalfTimbered1" parent="Houses/11_Minsleben" unique_id=350260905 instance=ExtResource("45_u0uu3")]
+transform = Transform3D(0.0299801, 0, -0.9995506, 0, 1, 0, 0.9995506, 0, 0.0299801, 3921.8142, 2.5245247, 849.5581)
+placed_town_num = 11
+
+[node name="HalfTimberedBarn" parent="Houses/11_Minsleben" unique_id=1730766284 instance=ExtResource("56_x1dpf")]
+transform = Transform3D(0.9066026, 0, 0.4219855, 0, 1, 0, -0.4219855, 0, 0.9066026, 3945.0583, 2.6772585, 864.0787)
+placed_town_num = 11
+
+[node name="VillageHouse3" parent="Houses/11_Minsleben" unique_id=867165201 instance=ExtResource("71_gf88f")]
+transform = Transform3D(0.99094117, 0, 0.13429752, 0, 1, 0, -0.13429752, 0, 0.99094117, 3874.8557, 2.555269, 814.8484)
+placed_town_num = 11
+
+[node name="PolishHouse1" parent="Houses/11_Minsleben" unique_id=1320407367 instance=ExtResource("40_kfgxf")]
+transform = Transform3D(0.7836284, 0, 0.6212298, 0, 1, 0, -0.6212298, 0, 0.7836284, 3852.0935, 2.8598561, 811.77783)
+placed_town_num = 11
+
+[node name="PolishHouse2" parent="Houses/11_Minsleben" unique_id=1738316152 instance=ExtResource("48_kkdmv")]
+transform = Transform3D(0.43427235, 0, 0.90078163, 0, 1, 0, -0.90078163, 0, 0.43427235, 3860.0603, 3.6822186, 831.2835)
+placed_town_num = 11
 
 [node name="12_Stapelburg" type="Node" parent="Houses" unique_id=1602321912]
 
@@ -4098,6 +4133,15 @@ script = ExtResource("48_76jr6")
 num = 29
 type_key = "QUARRY"
 ind_name = "Knaupsholz"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="CoalStorage_Silstedt" type="Marker3D" parent="Industries" unique_id=1228675975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3695.0774, 3.626175, 734.574)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 30
+type_key = "COAL_PLANT"
+ind_name = "Silstedt Kohlenlager"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="InEditor" type="Node3D" parent="." unique_id=1667388157]
@@ -7852,7 +7896,7 @@ material = ExtResource("62_xwmdd")
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3290.6387, 4.294163, 884.1453)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3391.0486, 3.7801437, 817.5793)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
