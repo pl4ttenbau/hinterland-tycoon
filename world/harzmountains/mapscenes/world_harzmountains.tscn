@@ -63,6 +63,7 @@
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge.tscn" id="63_th5q3"]
 [ext_resource type="PackedScene" uid="uid://c4thpjvo2ao0n" path="res://assets/meshes/vehicles/road/trabant_601/static_trabant_601_green.tscn" id="63_xwmdd"]
 [ext_resource type="PackedScene" uid="uid://dib4on5rgw5g4" path="res://assets/meshes/infr/bridge/bridge_pillar_brick/bridge_pillar_brick.tscn" id="64_xwmdd"]
+[ext_resource type="PackedScene" uid="uid://b1frhg0v53aq3" path="res://assets/meshes/deco/rail_crossing/andreaskreuz/andreaskreuz.tscn" id="66_tmg1i"]
 [ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="71_gf88f"]
 [ext_resource type="PackedScene" uid="uid://dcb46mio1xry1" path="res://assets/meshes/structures/city_house_2/city_house_2.tscn" id="77_r10ie"]
 
@@ -3400,6 +3401,12 @@ transform = Transform3D(0.9806351, 0, -0.19584346, 0, 1, 0, 0.19584346, 0, 0.980
 
 [node name="HBF" type="Node" parent="Deco/Wernigerode" unique_id=819050522]
 
+[node name="Andreaskreuz2" parent="Deco/Wernigerode/HBF" unique_id=252053977 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.48225856, 0, 0.8760296, 0, 1, 0, -0.8760296, 0, -0.48225856, 3275.681, 4.6176553, 1087.5515)
+
+[node name="Andreaskreuz" parent="Deco/Wernigerode/HBF" unique_id=1355732608 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.4742265, 0, -0.88040286, 0, 1, 0, 0.88040286, 0, 0.4742265, 3289.581, 4.444863, 1089.8854)
+
 [node name="IndustrialAreaUmladebhf" type="Node" parent="Deco/Wernigerode" unique_id=1195522279]
 
 [node name="WarehouseWoodenStatic" parent="Deco/Wernigerode/IndustrialAreaUmladebhf" unique_id=2081448644 instance=ExtResource("32_0ryhu")]
@@ -3419,6 +3426,29 @@ transform = Transform3D(-0.095810965, 0, -0.99539953, 0, 1, 0, 0.99539953, 0, -0
 
 [node name="Warehouse1Static3" parent="Deco/Wernigerode/IndustrialAreaUmladebhf" unique_id=1279849856 instance=ExtResource("45_kwx56")]
 transform = Transform3D(-0.03662623, 0, -0.9993291, 0, 1, 0, 0.9993291, 0, -0.03662623, 2970.9773, 5.437052, 1239.9224)
+
+[node name="Bahnuebergang" type="Node" parent="Deco/Wernigerode/IndustrialAreaUmladebhf" unique_id=1672818916]
+
+[node name="Andreaskreuz3" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=452006455 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.012775511, 0, 0.9999185, 0, 1, 0, -0.9999185, 0, -0.012775511, 2989.9885, 5.255695, 1197.775)
+
+[node name="Andreaskreuz" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=251029171 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.9418993, 0, -0.33589545, 0, 1, 0, 0.33589545, 0, 0.9418993, 2996.9067, 5.1788263, 1235.226)
+
+[node name="Andreaskreuz2" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=453687582 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.1674571, 0, -0.9858795, 0, 1, 0, 0.9858795, 0, -0.1674571, 2977.1055, 5.2939954, 1235.3333)
+
+[node name="Andreaskreuz4" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=406007643 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.11191994, 0, 0.99371725, 0, 1, 0, -0.99371725, 0, 0.11191994, 2815.1658, 5.799408, 1156.0994)
+
+[node name="Andreaskreuz5" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=1792505429 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.29162055, 0, -0.9565341, 0, 1, 0, 0.9565341, 0, -0.29162055, 2823.3735, 5.919502, 1174.6078)
+
+[node name="Andreaskreuz6" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=499982008 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.0939172, 0, 0.99558, 0, 1, 0, -0.99558, 0, -0.0939172, 2422.8862, 7.8879128, 1200.1377)
+
+[node name="Andreaskreuz7" parent="Deco/Wernigerode/IndustrialAreaUmladebhf/Bahnuebergang" unique_id=960140880 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.022617482, 0, -0.9997442, 0, 1, 0, 0.9997442, 0, -0.022617482, 2441.723, 7.755868, 1207.4429)
 
 [node name="Westerntor2" type="Node" parent="Deco/Wernigerode" unique_id=1471336433]
 
@@ -3518,6 +3548,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2316.49, 10.2073, 1190.53)
 [node name="VillageWell" parent="Deco/Darlingerode" unique_id=960748850 instance=ExtResource("57_uh36v")]
 transform = Transform3D(0.36373904, 0, 0.9315009, 0, 1, 0, -0.9315009, 0, 0.36373904, 2335.921, 8.353072, 1148.9119)
 
+[node name="Andreaskreuz" parent="Deco/Darlingerode" unique_id=1432559799 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.55109257, 0, -0.8344441, 0, 1, 0, 0.8344441, 0, -0.55109257, 2260.6323, 9.542299, 1146.759)
+
+[node name="Andreaskreuz2" parent="Deco/Darlingerode" unique_id=755363910 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.5306591, 0, 0.8475854, 0, 1, 0, -0.8475854, 0, 0.5306591, 2258.7683, 9.06828, 1133.9471)
+
 [node name="DreiAnnenHohne_Schierke" type="Node" parent="Deco" unique_id=424457317]
 
 [node name="WarehouseWoodenStatic2" parent="Deco/DreiAnnenHohne_Schierke" unique_id=173109755 instance=ExtResource("32_0ryhu")]
@@ -3554,6 +3590,12 @@ transform = Transform3D(0.46406928, 0, -0.885799, 0, 1, 0, 0.885799, 0, 0.464069
 
 [node name="OldtimerCarStatic2" parent="Deco/DreiAnnenHohne_Schierke/DAH_Parkplatz" unique_id=320321785 instance=ExtResource("34_7m67e")]
 transform = Transform3D(0.85026956, 0, 0.52634746, 0, 1, 0, -0.52634746, 0, 0.85026956, 2448.4138, 53.611282, 2789.3254)
+
+[node name="Andreaskreuz" parent="Deco/DreiAnnenHohne_Schierke" unique_id=527359428 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.89611495, 0, -0.44382206, 0, 1, 0, 0.44382206, 0, 0.89611495, 2516.8267, 50.38454, 2758.1243)
+
+[node name="Andreaskreuz2" parent="Deco/DreiAnnenHohne_Schierke" unique_id=2048947182 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.93269575, 0, 0.36066425, 0, 1, 0, -0.36066425, 0, -0.93269575, 2507.3618, 50.982452, 2763.3428)
 
 [node name="Elbingerode_Hartenberg" type="Node" parent="Deco" unique_id=1121983472]
 
@@ -3794,6 +3836,12 @@ transform = Transform3D(-0.98244387, 0, 0.18655828, 0, 1, 0, -0.18655828, 0, -0.
 
 [node name="Church1" parent="Deco/Minsleben" unique_id=1605214025 instance=ExtResource("39_xiocb")]
 transform = Transform3D(-0.95051026, 0, -0.310693, 0, 1, 0, 0.310693, 0, -0.95051026, 3892.018, 2.7731729, 852.25214)
+
+[node name="Andreaskreuz" parent="Deco/Minsleben" unique_id=1512744565 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(0.8094886, 0, -0.58713555, 0, 1, 0, 0.58713555, 0, 0.8094886, 3620.193, 3.8417714, 754.1989)
+
+[node name="Andreaskreuz2" parent="Deco/Minsleben" unique_id=29436786 instance=ExtResource("66_tmg1i")]
+transform = Transform3D(-0.96774, 0, 0.25195104, 0, 1, 0, -0.25195104, 0, -0.96774, 3610.7813, 3.795806, 759.37756)
 
 [node name="Industries" type="Node" parent="." unique_id=1891145259 node_paths=PackedStringArray("world_scene")]
 script = ExtResource("47_wmk8x")

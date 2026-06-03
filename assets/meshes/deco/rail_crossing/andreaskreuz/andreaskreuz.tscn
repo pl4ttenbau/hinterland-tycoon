@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b1frhg0v53aq3"]
+
+[ext_resource type="PackedScene" uid="uid://kuwtr6hmebwm" path="res://assets/meshes/deco/rail_crossing/andreaskreuz/mesh/mesh_andreaskreuz.tscn" id="1_im4wr"]
+
+[node name="Andreaskreuz" type="Node3D" unique_id=252053977]
+
+[node name="MeshAndreaskreuz" parent="." unique_id=867358099 instance=ExtResource("1_im4wr")]
