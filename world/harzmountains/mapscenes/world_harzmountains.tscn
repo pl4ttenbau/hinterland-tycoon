@@ -2450,7 +2450,6 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." unique_id=300247302 instance=ExtResource("2_6duku")]
 cast_shadows = 0
-show_contours = true
 
 [node name="Towns" parent="." unique_id=1174892013 instance=ExtResource("44_tey3n")]
 
@@ -4006,7 +4005,7 @@ ind_name = "Rübeland Quarry"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
 [node name="Farm_Minsleben" type="Marker3D" parent="Industries" unique_id=731578774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3818.8, 3.75, 1035.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3785.824, 3.3605504, 1021.8408)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")
 num = 3
