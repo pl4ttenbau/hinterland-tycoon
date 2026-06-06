@@ -52,12 +52,6 @@ func _to_string() -> String:
 #endregion
 
 #region Callbacks & Triggers
-func _on_goods_changed():
-	# TODO: fix parent station connection
-	var parent_inventory: GoodsInventory = self.get_parent_station_3d().get_inventory()
-	var passengers_amount: float = parent_inventory.get_amount("PASSENGERS")
-	%StationSignPanel.res_amount = str(roundi(passengers_amount))
-
 func _on_node_station_changed(_node_station: NodeStationLinkData):
 	if !_node_station.parent_station:
 		Loggie.error("Cannot find parent station of NodeStation in %s" % _node_station.town_name)

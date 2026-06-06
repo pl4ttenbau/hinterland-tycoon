@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dtnqsrt4d6dv2" path="res://game/gamescripts/nodes/infr/station/sign/station_sign_panel.gd" id="1_xsmea"]
 [ext_resource type="Texture2D" uid="uid://dnefnyvbnoyoo" path="res://assets/icons/icon_passenger.svg" id="2_hcpwm"]
 [ext_resource type="FontFile" uid="uid://3uwyug806m1g" path="res://assets/ui/fonts/TGL_0-1451Eng.ttf" id="3_4u520"]
+[ext_resource type="Texture2D" uid="uid://dxg2ultkygdvi" path="res://assets/icons/icon_good.svg" id="5_b2wcr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4u520"]
 bg_color = Color(0.15476868, 0.26705974, 0.55177903, 1)
@@ -12,7 +13,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="RailStation3DSign" type="PanelContainer" unique_id=351898367]
+[node name="RailStation3DSign" type="PanelContainer" unique_id=351898367 node_paths=PackedStringArray("cargo_label", "passenger_label")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,6 +29,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_4u520")
 script = ExtResource("1_xsmea")
+cargo_label = NodePath("MarginContainer/HBoxContainer/CargoHBoxContainer/CargoAmountLabel")
+passenger_label = NodePath("MarginContainer/HBoxContainer/PassengerHBoxContainer/PassengerAmountLabel")
 metadata/_custom_type_script = "uid://dtnqsrt4d6dv2"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1668365335]
@@ -67,20 +70,42 @@ theme_override_fonts/font = ExtResource("3_4u520")
 theme_override_font_sizes/font_size = 60
 text = ":"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=752203986]
+[node name="PassengerHBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1026724629]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PassengerHBoxContainer" unique_id=752203986]
 layout_mode = 2
 theme_override_constants/margin_left = 7
-theme_override_constants/margin_right = 7
 
-[node name="ResourceIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=665423765]
+[node name="PassengerGoodsIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/PassengerHBoxContainer/MarginContainer" unique_id=665423765]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_hcpwm")
+
+[node name="PassengerAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/PassengerHBoxContainer" unique_id=1026922840]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4u520")
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="CargoHBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1647680667]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CargoHBoxContainer" unique_id=1025822918]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+
+[node name="CargoGoodsIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/CargoHBoxContainer/MarginContainer" unique_id=1496874677]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_b2wcr")
 stretch_mode = 4
 
-[node name="ResourceAmountLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1026922840]
-unique_name_in_owner = true
+[node name="CargoAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/CargoHBoxContainer" unique_id=2108478982]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4u520")
 theme_override_font_sizes/font_size = 60

@@ -13,6 +13,12 @@ func _init(_key: StringName, _cat: BaseGoodsType.ResourceCategory):
 #region Getters
 func get_display_text() -> String:
 	return self.key.capitalize()
+
+func is_passenger() -> bool:
+	return self.res_cat == ResourceCategory.PASSENGER
+
+func is_cargo() -> bool:
+	return self.res_cat != ResourceCategory.PASSENGER
 #endregion
 
 #region Static Getters

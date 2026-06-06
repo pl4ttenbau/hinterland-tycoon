@@ -6,7 +6,6 @@ signal goods_change()
 @export var storage: BaseGoodsStorage
 
 @export var amount_used: float
-
 @export var amount_max: float
 
 func _init() -> void:

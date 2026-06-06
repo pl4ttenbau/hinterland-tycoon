@@ -6,13 +6,14 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StationSign3D" type="Sprite3D" unique_id=703079687]
+[node name="StationSign3D" type="Sprite3D" unique_id=703079687 node_paths=PackedStringArray("station_sign_ui")]
 visibility_range_end = 300.0
 visibility_range_end_margin = 30.0
 pixel_size = 0.02
 billboard = 1
 texture = SubResource("ViewportTexture_ytynf")
 script = ExtResource("1_3skeu")
+station_sign_ui = NodePath("SubViewport/StationSignPanel")
 metadata/_custom_type_script = "uid://cfv2khmybf5f"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=131443579]
