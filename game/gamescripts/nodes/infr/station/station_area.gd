@@ -8,7 +8,7 @@ signal train_exited(train3d: Train3D)
 signal player_entered()
 signal player_exited()
 
-@export var parent_station: RailStationData
+@export var parent_station_3d: RailStation3D
 
 @export var trains_inside: Array[Train3D] = []
 @export var vehicles_inside: Array[Vehicle3D] = []
@@ -22,7 +22,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	var node_station_3d: NodeStationLink3D = self.get_parent_node_3d() as NodeStationLink3D
-	self.parent_station = node_station_3d.station_obj
+	self.parent_station_3d = node_station_3d.get_parent_station_3d()
 #endregion
 
 #region Helper-Methods
@@ -33,7 +33,7 @@ func trigger_train_entered(train3d: Train3D):
 	train3d.current_station = self
 	# call local & global signal
 	self.train_entered.emit(train3d)
-	SignalBus.train_entered_station.emit(self.parent_station, train3d)
+	SignalBus.train_entered_station.emit(self.parent_station_3d, train3d)
 
 func trigger_train_exited(train3d: Train3D):
 	Loggie.info("Train leaving station area")
@@ -42,7 +42,7 @@ func trigger_train_exited(train3d: Train3D):
 	train3d.current_station = null
 	# call local & global signal
 	self.train_exited.emit(train3d)
-	SignalBus.train_exited_station.emit(self.parent_station, train3d)
+	SignalBus.train_exited_station.emit(self.parent_station_3d, train3d)
 
 func veh3d_is_locomotive(veh3d: Vehicle3D) -> bool:
 	if veh3d:
@@ -55,7 +55,7 @@ func _on_body_entered(body: Node3D):
 	if body is CharacterBody3D:
 		self.player_inside = true
 		self.player_entered.emit()
-		SignalBus.player_entered_station.emit(self.parent_station)
+		SignalBus.player_entered_station.emit(self.parent_station_3d)
 	elif body is VehicleCollider:
 		self.vehicles_inside.append(body.vehicle3d)
 		if self.veh3d_is_locomotive(body.vehicle3d):
@@ -65,7 +65,7 @@ func _on_body_exited(body: Node3D):
 	if body is CharacterBody3D:
 		self.player_inside = false
 		self.player_exited.emit()
-		SignalBus.player_exited_station.emit(self.parent_station)
+		SignalBus.player_exited_station.emit(self.parent_station_3d)
 	elif body is VehicleCollider:
 		self.vehicles_inside.erase(body.vehicle3d)
 		if self.veh3d_is_locomotive(body.vehicle3d):

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://kuwtr6hmebwm"]
+
+[ext_resource type="PackedScene" uid="uid://b70l4yo3503n0" path="res://assets/meshes/deco/rail_crossing/andreaskreuz/mesh/andreaskreuz.obj" id="1_qqkfx"]
+[ext_resource type="Texture2D" uid="uid://f0jkhxl6q0td" path="res://assets/meshes/deco/rail_crossing/andreaskreuz/mesh/tex_andreaskreuz_main_d.jpg" id="2_ya1xe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxr73"]
+cull_mode = 2
+albedo_texture = ExtResource("2_ya1xe")
+
+[node name="MeshAndreaskreuz" unique_id=867358099 instance=ExtResource("1_qqkfx")]
+
+[node name="andreaskreuz" parent="." index="0" unique_id=551838890]
+layers = 32
+lod_bias = 0.1
+visibility_range_end = 80.0
+visibility_range_end_margin = 8.0
+surface_material_override/0 = SubResource("StandardMaterial3D_lxr73")

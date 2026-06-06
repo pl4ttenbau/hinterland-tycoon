@@ -27,8 +27,7 @@ func _find_station() -> RailStation3D:
 		Loggie.warn("Cannot show current player station: player too far away from any")
 		return null
 	# find nearest to player:
-	var parent_station: RailStationData = GlobalState.player.in_station
-	var closest_station_3d: RailStation3D = self.find_closest_station_3d(parent_station)
+	var closest_station_3d: RailStation3D = GlobalState.player.in_station
 	return closest_station_3d
 
 func find_closest_station_3d(parent_station_obj: RailStationData) -> RailStation3D:

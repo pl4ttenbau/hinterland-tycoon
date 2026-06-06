@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bi15dscvcpfg0"]
+
+[ext_resource type="PackedScene" uid="uid://bsyfbq1k3maog" path="res://assets/meshes/goods/platform/passenger/mesh/passenger_3_standing.obj" id="1_21ygx"]
+
+[node name="Passenger3Mesh" unique_id=916996279 instance=ExtResource("1_21ygx")]
+
+[node name="passenger3" parent="." index="0" unique_id=157772950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025820851, 0)
+lod_bias = 0.25
+visibility_range_end = 60.0
+visibility_range_end_margin = 6.0

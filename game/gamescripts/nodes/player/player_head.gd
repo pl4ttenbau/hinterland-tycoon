@@ -9,7 +9,7 @@ class_name PlayerHead3D extends InventoryEntity3D
 @onready var collider: CollisionShape3D = %Player/PlayerCollisionShape
 @onready var player_parent: BasicFpsPlayer = $".."
 
-@export var in_station: RailStationData
+@export var in_station: RailStation3D
 @export var in_train: Train3D
 
 const SPAWN_OFFSET = Vector3(0, 1, 0)
@@ -49,12 +49,12 @@ func get_pos() -> Vector3:
 func _on_map_spawned(_terrain: WorldMapScene):
 	self.place_to_map_start()
 
-func _on_station_entered(station: RailStationData):
-	Loggie.info("Player entering station %s" % station.station_name)
-	self.in_station = station
+func _on_station_entered(station3d: RailStation3D):
+	Loggie.info("Player entering station %s" % station3d.station.station_name)
+	self.in_station = station3d
 
-func _on_station_exited(station: RailStationData):
-	Loggie.info("Player leaving station %s" % station.station_name)
+func _on_station_exited(station3d: RailStation3D):
+	Loggie.info("Player leaving station %s" % station3d.station.station_name)
 	self.in_station = null
 
 func _on_train_entered(train3d: Train3D):

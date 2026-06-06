@@ -11,9 +11,6 @@ signal node_station_changed(node_station: NodeStationLinkData)
 		self.entity = value
 		self.position = value.position
 		self.node_station_changed.emit(value)
-		
-@export var station_obj: RailStationData:
-	get(): return self.node_station.parent_station
 
 #region Initialization
 func _enter_tree() -> void:
@@ -33,6 +30,12 @@ static func of(_node_station: NodeStationLinkData) -> NodeStationLink3D:
 	return instanciated_container
 #endregion
 
+#region Getters
+func get_parent_station_3d() -> RailStation3D:
+	var parent_station_num = self.node_station.parent_station_num
+	return Managers.stations.get_station_3d_with_num(parent_station_num)
+#endregion
+
 #region Helper-Methods
 func adjust_rotation_from_track():
 	var track_node: RailNodeData = self.node_station.parent_node
@@ -49,17 +52,12 @@ func _to_string() -> String:
 #endregion
 
 #region Callbacks & Triggers
-func _on_resource_change():
-	# TODO: fix parent station connection
-	var passengers_amount: int = self.station_obj.storage.get_amount("PASSENGERS")
-	%StationSignPanel.res_amount = str(passengers_amount)
-
 func _on_node_station_changed(_node_station: NodeStationLinkData):
 	if !_node_station.parent_station:
 		Loggie.error("Cannot find parent station of NodeStation in %s" % _node_station.town_name)
 		return
-	# update node station name
-	%StationSignPanel.station_name = _node_station.parent_station.town_name
+	# find parent Station3D
+	var parent_station_3d: RailStation3D = self.get_parent_station_3d()
 	# connect parent station to trains entering or exiting
-	$Area3D.parent_station = _node_station.parent_station
+	$Area3D.parent_station_3d = parent_station_3d
 #endregion

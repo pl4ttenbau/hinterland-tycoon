@@ -2,39 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/node_station_link_3d.gd" id="1_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://dvjv4qtbre7n" path="res://scenes/subscenes/infr/station/rail_node_station_building.tscn" id="2_wlho7"]
+[ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn" id="3_85s3q"]
 [ext_resource type="Script" uid="uid://ljrsi00o1io8" path="res://game/gamescripts/nodes/infr/station/station_area.gd" id="7_hiyfb"]
-[ext_resource type="PackedScene" uid="uid://nx0xye5kd2gv" path="res://scenes/subscenes/infr/station/rail_station_3d_sign_ui.tscn" id="7_oyjqf"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ytynf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_85s3q"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fdb1b"]
 radius = 25.0
 
-[node name="RailNodeStation3D" type="Node3D" unique_id=672166883]
+[node name="NodeStationLink3D" type="Node3D" unique_id=672166883]
 script = ExtResource("1_hiyfb")
 
-[node name="StationBuilding3D" parent="." unique_id=200956076 instance=ExtResource("2_wlho7")]
+[node name="StationBuilding3D" parent="." unique_id=200956076 node_paths=PackedStringArray("node_link_3d") instance=ExtResource("2_wlho7")]
+node_link_3d = NodePath("..")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=887868598]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -5.059752)
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
-texture = SubResource("ViewportTexture_ytynf")
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1702272887]
-transparent_bg = true
-scaling_3d_scale = 2.0
-fsr_sharpness = 0.1
-gui_disable_input = true
-sdf_scale = 0
-size = Vector2i(600, 100)
-size_2d_override_stretch = true
-
-[node name="StationSignPanel" parent="SubViewport" unique_id=956676054 instance=ExtResource("7_oyjqf")]
-unique_name_in_owner = true
+[node name="StationSign3D" parent="." unique_id=703079687 node_paths=PackedStringArray("node_station_link_3d") instance=ExtResource("3_85s3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.617422, -5.3658075)
+texture = SubResource("ViewportTexture_85s3q")
+node_station_link_3d = NodePath("..")
+station_name = null
+station_res_amount = null
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1602458585]
 collision_mask = 9
