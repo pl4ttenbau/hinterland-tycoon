@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy7pxstn52let" path="res://game/gamescripts/nodes/infr/station/node_station_link_3d.gd" id="1_hiyfb"]
 [ext_resource type="PackedScene" uid="uid://dvjv4qtbre7n" path="res://scenes/subscenes/infr/station/rail_node_station_building.tscn" id="2_wlho7"]
-[ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/rail_station_3d_sign_3d.tscn" id="3_85s3q"]
+[ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn" id="3_85s3q"]
 [ext_resource type="Script" uid="uid://ljrsi00o1io8" path="res://game/gamescripts/nodes/infr/station/station_area.gd" id="7_hiyfb"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_85s3q"]
