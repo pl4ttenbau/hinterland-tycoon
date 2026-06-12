@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dhmhtln2j7806"]
+
+[ext_resource type="PackedScene" uid="uid://ca6u6fbi3ypqy" path="res://assets/meshes/industry/factory_small/mesh/mesh_factory_small.tscn" id="1_try2b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k6kh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6kh0"]
+size = Vector3(18.3074, 7.61292, 16.5604)
+
+[node name="StaticFactorySmall" type="Node3D" unique_id=944100613]
+
+[node name="MeshFactorySmall" parent="." unique_id=1832172983 instance=ExtResource("1_try2b")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=441243578]
+physics_material_override = SubResource("PhysicsMaterial_k6kh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1773081172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146126, 3.77081, 0.0566711)
+shape = SubResource("BoxShape3D_k6kh0")

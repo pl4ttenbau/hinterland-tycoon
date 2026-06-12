@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ca6u6fbi3ypqy"]
+
+[ext_resource type="PackedScene" uid="uid://cw0eh6cl4558i" path="res://assets/meshes/industry/factory_small/mesh/factory_small.obj" id="1_rs0xx"]
+
+[node name="MeshFactorySmall" unique_id=1832172983 instance=ExtResource("1_rs0xx")]
+
+[node name="small_factory" parent="." index="0" unique_id=921145745]
+layers = 8
+visibility_range_end = 220.0
+visibility_range_end_margin = 22.0

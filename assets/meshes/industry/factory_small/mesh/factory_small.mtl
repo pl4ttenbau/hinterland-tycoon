@@ -1,7 +1,7 @@
-# Blender 4.0.2 MTL File: 'None'
+# Blender 5.0.1 MTL File: 'factory_small.blend'
 # www.blender.org
 
-newmtl mat_0-factory_tex.jpg
+newmtl mat_factory_small
 Ns 9.849158
 Ka 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
@@ -9,4 +9,5 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 0.996078
 illum 1
-map_Kd tex_factory1.jpg
+map_Kd tex_small_factory_d.jpg
+map_Bump -bm 1.000000 tex_small_factory_n.jpg
