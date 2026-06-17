@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://eaxgnv16gl3x"
-path="res://.godot/imported/high_grass.obj-57f8222ef4cd9b4d2d9ac2d4a1e0052d.scn"
+uid="uid://1dfcpr7udtas"
+path="res://.godot/imported/campfire.obj-604c5bd017001c9768f63a8824c22eec.scn"
 
 [deps]
 
-source_file="res://assets/meshes/nature/high_grass/high_grass.obj"
-dest_files=["res://.godot/imported/high_grass.obj-57f8222ef4cd9b4d2d9ac2d4a1e0052d.scn"]
+source_file="res://assets/meshes/deco/campfire/mesh/campfire.obj"
+dest_files=["res://.godot/imported/campfire.obj-604c5bd017001c9768f63a8824c22eec.scn"]
 
 [params]
 

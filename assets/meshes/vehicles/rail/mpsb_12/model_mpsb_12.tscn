@@ -3,9 +3,68 @@
 [ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_sp4jc"]
 [ext_resource type="PackedScene" uid="uid://b66awn81lssav" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mesh_mpsb_12.tscn" id="2_qwih4"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_igccd"]
+[ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="4_igccd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0lan"]
 size = Vector3(1.8076195, 2.8278077, 7.3666596)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0lan"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_igccd")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[sub_resource type="Curve" id="Curve_r524g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.71008396, 0.6629214), -1.5781916, -1.5781916, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2g1eo"]
+curve = SubResource("Curve_r524g")
+
+[sub_resource type="Gradient" id="Gradient_ibs5u"]
+colors = PackedColorArray(0.4045111, 0.40451115, 0.4045111, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8atry"]
+gradient = SubResource("Gradient_ibs5u")
+
+[sub_resource type="Curve" id="Curve_dw06j"]
+_data = [Vector2(0, 0.42696637), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ore0"]
+curve = SubResource("Curve_dw06j")
+
+[sub_resource type="Curve" id="Curve_32hap"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.43820238), 0.0, 0.0, 0, 0, Vector2(1, 2.4269664), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cr0ss"]
+curve = SubResource("Curve_32hap")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pbulp"]
+lifetime_randomness = 0.38
+emission_shape_scale = Vector3(0.2, 0, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 1, 0)
+scale_min = 0.79999995
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_4ore0")
+scale_over_velocity_min = 0.79999995
+scale_over_velocity_max = 3.0
+scale_over_velocity_curve = SubResource("CurveTexture_cr0ss")
+color_ramp = SubResource("GradientTexture1D_8atry")
+alpha_curve = SubResource("CurveTexture_2g1eo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_25ypk"]
+size = Vector2(0.6, 0.6)
 
 [node name="ModelMpsb12" type="Node3D" unique_id=1194085553]
 script = ExtResource("1_sp4jc")
@@ -26,3 +85,19 @@ shape = SubResource("BoxShape3D_c0lan")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1326880125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38366556, 2.1317174, -2.1656075)
 metadata/cam_name = &"CAM_VEHICLE"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1914574847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -2.4536629)
+material_override = SubResource("StandardMaterial3D_c0lan")
+visibility_range_end = 66.0
+visibility_range_end_margin = 6.6
+amount = 200
+lifetime = 4.0
+randomness = 0.6
+process_material = SubResource("ParticleProcessMaterial_pbulp")
+draw_pass_1 = SubResource("QuadMesh_25ypk")
+
+[node name="Attractor" type="GPUParticlesAttractorSphere3D" parent="GPUParticles3D" unique_id=133201862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.124614, 8.66564, 6.198073)
+attenuation = 0.0
+radius = 10.0

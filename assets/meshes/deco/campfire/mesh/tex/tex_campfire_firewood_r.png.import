@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boo7hugeeng6u"
-path.s3tc="res://.godot/imported/smoke3.png-e5636e39fe870b98a835f6a294bb7280.s3tc.ctex"
+uid="uid://b0v1o1tfvuop0"
+path.s3tc="res://.godot/imported/tex_campfire_firewood_r.png-582b0a92e19129dba3898babd6007136.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/particles/smoke/smoke3.png"
-dest_files=["res://.godot/imported/smoke3.png-e5636e39fe870b98a835f6a294bb7280.s3tc.ctex"]
+source_file="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_r.png"
+dest_files=["res://.godot/imported/tex_campfire_firewood_r.png-582b0a92e19129dba3898babd6007136.s3tc.ctex"]
 
 [params]
 

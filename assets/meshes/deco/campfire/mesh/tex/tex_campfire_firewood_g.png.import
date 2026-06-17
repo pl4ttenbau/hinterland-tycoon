@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg6ugnuvjxsik"
-path.s3tc="res://.godot/imported/tex_campfire_cookingpot_r.png-344dec14bba13b2b890b422a5e2895ad.s3tc.ctex"
+uid="uid://cjrvmgi2e8ykh"
+path.s3tc="res://.godot/imported/tex_campfire_firewood_g.png-225033b06d81e648d9f9cf3929f575f0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_r.png"
-dest_files=["res://.godot/imported/tex_campfire_cookingpot_r.png-344dec14bba13b2b890b422a5e2895ad.s3tc.ctex"]
+source_file="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_g.png"
+dest_files=["res://.godot/imported/tex_campfire_firewood_g.png-225033b06d81e648d9f9cf3929f575f0.s3tc.ctex"]
 
 [params]
 
