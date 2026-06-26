@@ -86,14 +86,17 @@ func init_segment_path():
 	segment_path.name = "SegmentPath"
 
 ## after locomotive reaches end of current segment, 
-func add_next_segment():
+func add_next_segment_or_stop():
 	# update next segment
 	var previous_segment: VehiclePathSegment = self.current_segment
 	self.current_segment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
-	self.current_segment.previous = previous_segment
-	# extend rail path
-	for next_segment_nodes: RailNodeData in self.current_segment.get_nodes_directionally():
-		self.get_segment_path_curve().add_point(next_segment_nodes.position)
+	if self.current_segment.previous:
+		self.current_segment.previous = previous_segment
+		# extend rail path
+		for next_segment_nodes: RailNodeData in self.current_segment.get_nodes_directionally():
+			self.get_segment_path_curve().add_point(next_segment_nodes.position)
+	else:
+		self.motor.stop()
 #endregion
 
 #region Size Getters
@@ -116,7 +119,7 @@ func move_forwards(delta_seconds: float):
 	self.increase_m_passed(tick_dist)
 	if self.m_passed_since_start > self.get_segment_path_curve().get_baked_length():
 		Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
-		self.add_next_segment()
+		self.add_next_segment_or_stop()
 	for veh3d: Vehicle3D in self.vehicles:
 		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
