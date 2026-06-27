@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bh3a8xst70kd"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_6kfyr"]
+[ext_resource type="PackedScene" uid="uid://bid5risgqfnq7" path="res://assets/meshes/structures/half_timbered_2/mesh/mesh_half_timbered_2.tscn" id="2_6kfyr"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_g32fm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q143g"]
+size = Vector3(10.84819, 11.90647, 8.086594)
+
+[node name="HalfTimbered2" type="Node3D" unique_id=730314978]
+script = ExtResource("1_6kfyr")
+placed_res_bld_type = "half_timbered_2"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshHalfTimbered2" parent="." unique_id=1001265911 instance=ExtResource("2_6kfyr")]
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1000209623]
+visible = false
+script = ExtResource("3_g32fm")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=163753755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032951355, 5.970691, 0.06537628)
+shape = SubResource("BoxShape3D_q143g")

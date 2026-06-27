@@ -21,6 +21,7 @@ static func get_bld_types() -> Array[ResBldType]:
 		ResBldType.new("city_corner_house", "City House", 8),
 		ResBldType.new("old_city_house_1", "City House", 6),
 		ResBldType.new("half_timbered_1", "Tudor House", 6),
+		ResBldType.new("half_timbered_2", "Tudor House", 8),
 		ResBldType.new("half_timbered_barn", "Tudor Barn", 5),
 		ResBldType.new("harz_house_1", "Harz House", 8),
 		ResBldType.new("northern_german_house", "Tudor Cottage", 12),

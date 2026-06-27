@@ -1,0 +1,24 @@
+# Blender 5.0.1 MTL File: 'half_timbered_2.blend'
+# www.blender.org
+
+newmtl mat_main
+Ns 43.718998
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd tex_half_timbered_2_main.jpg
+map_Bump -bm 1.000000 tex_half_timbered_2_main_n.jpg
+
+newmtl mat_roof
+Ns 79.421471
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd tex_half_timbered_2_roof_d.jpg
+map_Bump -bm 1.000000 tex_half_timbered_2_roof_n.jpg

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bid5risgqfnq7"]
+
+[ext_resource type="PackedScene" uid="uid://rsd85bcsim6d" path="res://assets/meshes/structures/half_timbered_2/mesh/half_timbered_2.obj" id="1_2l5rw"]
+[ext_resource type="Texture2D" uid="uid://blpfvgpgcwj2n" path="res://assets/meshes/structures/half_timbered_2/mesh/tex_half_timbered_2_main_d.jpg" id="2_0ce14"]
+[ext_resource type="Texture2D" uid="uid://cqohoeccqktsy" path="res://assets/meshes/structures/half_timbered_2/mesh/tex_half_timbered_2_main_n.jpg" id="3_6g6np"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kwi8"]
+cull_mode = 2
+albedo_texture = ExtResource("2_0ce14")
+normal_enabled = true
+normal_texture = ExtResource("3_6g6np")
+
+[node name="MeshHalfTimbered2" unique_id=1001265911 instance=ExtResource("1_2l5rw")]
+
+[node name="HalfTimbered2" parent="." index="0" unique_id=787483233]
+layers = 8
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+surface_material_override/0 = SubResource("StandardMaterial3D_2kwi8")
