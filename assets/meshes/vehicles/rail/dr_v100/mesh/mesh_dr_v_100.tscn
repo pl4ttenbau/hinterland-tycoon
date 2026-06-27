@@ -10,6 +10,6 @@ albedo_texture = ExtResource("2_6citq")
 [node name="MeshDRV100" unique_id=1328031689 instance=ExtResource("1_6q55t")]
 
 [node name="DR_V100" parent="." index="0" unique_id=958150315]
-visibility_range_end = 120.0
-visibility_range_end_margin = 12.0
+visibility_range_end = 300.0
+visibility_range_end_margin = 30.0
 surface_material_override/0 = SubResource("StandardMaterial3D_1cnve")

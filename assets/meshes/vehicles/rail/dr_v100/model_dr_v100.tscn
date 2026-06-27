@@ -52,7 +52,7 @@ locomotive = NodePath("..")
 metadata/_custom_type_script = "uid://ikgxu2g2bmw6"
 
 [node name="TopSteamParticles3D" type="GPUParticles3D" parent="Steam" unique_id=1617050262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -1.3484457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1878276, -1.0531739)
 layers = 64
 material_override = SubResource("StandardMaterial3D_mjgsn")
 visibility_range_end = 90.0
@@ -65,7 +65,7 @@ process_material = ExtResource("6_mv2wk")
 draw_pass_1 = SubResource("QuadMesh_isapn")
 
 [node name="TopSteamParticles3D2" type="GPUParticles3D" parent="Steam" unique_id=1976734909]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -4.1211824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1850815, -3.775246)
 layers = 64
 material_override = SubResource("StandardMaterial3D_mjgsn")
 visibility_range_end = 90.0
