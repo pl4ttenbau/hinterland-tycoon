@@ -3,6 +3,8 @@ class_name MapLoader extends Node
 
 const MAP_FOLDER_PATH = "res://world/"
 
+const EMPTY_DICT: Dictionary = {}
+
 @export var map_list: Array[MapData] = []
 @export var selected_map: MapData
 
@@ -19,9 +21,12 @@ func load_map_data():
 		var full_folder_path := MAP_FOLDER_PATH + "/" + map_folder_name + \
 			"/jsondata/"
 		var map_info_file_path = full_folder_path + "mapinfo.json"
-		var map_obj := MapData.of_dict(self.get_map_info_dict(map_info_file_path))
-		# add to lists & trigger signals
-		self.add_map_to_lists(map_obj)
+		var map_dict: Dictionary = get_map_info_dict(map_info_file_path)
+		if !map_dict:
+			continue
+		var map_obj := MapData.of_dict(map_dict)
+		if map_obj:
+			self.add_map_to_lists(map_obj)
 	Loggie.info("Map List loaded")
 	# trigger signals & mock map selection
 	GlobalState.game_maps = self.map_list
@@ -30,6 +35,7 @@ func load_map_data():
 		
 func get_map_info_dict(file_path: String) -> Dictionary:
 	var file = FileAccess.open(file_path, FileAccess.READ)
+	if !file: return EMPTY_DICT
 	var content_str: String = file.get_as_text()
 	return JSON.parse_string(content_str)
 

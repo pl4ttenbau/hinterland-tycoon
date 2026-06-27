@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bsg6y6g5rtjmm"]
+
+[ext_resource type="PackedScene" uid="uid://bstf0dwxtkvr5" path="res://assets/meshes/vehicles/rail/dr_v100/mesh/dr_v100.obj" id="1_6q55t"]
+[ext_resource type="Texture2D" uid="uid://ily1g3bjn1n1" path="res://assets/meshes/vehicles/rail/dr_v100/mesh/tex_dr_v100_d.png" id="2_6citq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cnve"]
+cull_mode = 2
+albedo_texture = ExtResource("2_6citq")
+
+[node name="MeshDRV100" unique_id=1328031689 instance=ExtResource("1_6q55t")]
+
+[node name="DR_V100" parent="." index="0" unique_id=958150315]
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0
+surface_material_override/0 = SubResource("StandardMaterial3D_1cnve")

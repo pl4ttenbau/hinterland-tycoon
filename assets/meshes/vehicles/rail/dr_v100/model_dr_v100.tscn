@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cg6s5k1nftwhv"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_8c531"]
+[ext_resource type="PackedScene" uid="uid://bsg6y6g5rtjmm" path="res://assets/meshes/vehicles/rail/dr_v100/mesh/mesh_dr_v_100.tscn" id="2_jmn73"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_0autw"]
+[ext_resource type="Script" uid="uid://ikgxu2g2bmw6" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_driving_particles.gd" id="4_ytcbj"]
+[ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="5_d1qo3"]
+[ext_resource type="Material" uid="uid://cutbk7c2igem7" path="res://assets/packed/particles/small_diesel_smoke_particle_mat.tres" id="6_mv2wk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmn73"]
+size = Vector3(2.9552002, 4.1379395, 14.331787)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjgsn"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_d1qo3")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[sub_resource type="QuadMesh" id="QuadMesh_isapn"]
+size = Vector2(0.6, 0.6)
+
+[node name="ModelV60" type="Node3D" unique_id=367549188]
+script = ExtResource("1_8c531")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshDRV100" parent="." unique_id=1328031689 instance=ExtResource("2_jmn73")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.28547764)
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1978240708]
+visible = false
+script = ExtResource("3_0autw")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=24710337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.973, 0)
+shape = SubResource("BoxShape3D_jmn73")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=30919705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71362615, 3.551982, -1.1871294)
+
+[node name="Steam" type="Node3D" parent="." unique_id=1679223783 node_paths=PackedStringArray("child_particles", "locomotive")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1722908, 2.4485376)
+script = ExtResource("4_ytcbj")
+effect_strength = 0.575
+child_particles = [NodePath("TopSteamParticles3D")]
+locomotive = NodePath("..")
+metadata/_custom_type_script = "uid://ikgxu2g2bmw6"
+
+[node name="TopSteamParticles3D" type="GPUParticles3D" parent="Steam" unique_id=1617050262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -1.3484457)
+layers = 64
+material_override = SubResource("StandardMaterial3D_mjgsn")
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+amount = 100
+amount_ratio = 0.4408
+lifetime = 1.5
+randomness = 0.29
+process_material = ExtResource("6_mv2wk")
+draw_pass_1 = SubResource("QuadMesh_isapn")
+
+[node name="TopSteamParticles3D2" type="GPUParticles3D" parent="Steam" unique_id=1976734909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -4.1211824)
+layers = 64
+material_override = SubResource("StandardMaterial3D_mjgsn")
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+amount = 100
+amount_ratio = 0.4408
+lifetime = 1.5
+randomness = 0.29
+process_material = ExtResource("6_mv2wk")
+draw_pass_1 = SubResource("QuadMesh_isapn")
