@@ -20,12 +20,12 @@ signal positioned(pos_vec3: Vector3)
 
 @export var hide_building: bool = false
 
-@export var connections: StationConnections
+@export var connections: StationConnections = StationConnections.new(self)
 
 func _init():
 	super(Enums.EntityTypes.STATION)
-	self.connections = StationConnections.new(self)
 
+## fetches TownData via given town num & saves reference in connected_town
 func connect_to_town(_town_num):
 	# set town name if not manually done
 	if ! self.town_name:
