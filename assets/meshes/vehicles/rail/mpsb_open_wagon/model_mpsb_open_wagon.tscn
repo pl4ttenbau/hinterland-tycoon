@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cbtkgidakqje5"]
+
+[ext_resource type="PackedScene" uid="uid://cxpy7d2icm4nx" path="res://assets/meshes/vehicles/rail/mpsb_open_wagon/mesh/mesh_mpsb_open_wagon.tscn" id="1_mc5ob"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_v2elm"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_akb1p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rx4p"]
+size = Vector3(1.7177734, 1.498992, 6.453369)
+
+[node name="ModelMpsbOpenWagon" type="Node3D" unique_id=446992437]
+script = ExtResource("1_v2elm")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshMpsbOpenWagon" parent="." unique_id=756396751 instance=ExtResource("1_mc5ob")]
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=638374182 node_paths=PackedStringArray("vehicle3d")]
+visible = false
+script = ExtResource("3_akb1p")
+vehicle3d = NodePath("..")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1731317756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.74903035, 0)
+shape = SubResource("BoxShape3D_5rx4p")
