@@ -17,6 +17,9 @@ signal town_changed(_town: TownData)
 	
 @export_tool_button("Position", "Callable")
 var position_action = do_position
+
+@export_tool_button("From WorldCursor", "Callable")
+var copy_pos_from_cursor_action = do_copy_cursor_pos
 	
 func set_label_text(new_name: String):
 	if new_name && $SubViewport/Town3DSign:
@@ -30,7 +33,10 @@ func _on_town_name_changed(town_name: String):
 func do_position() -> void:
 	var pos_xz = self.town.pos_xz
 	self.global_position = self.get_pos_on_terrain(pos_xz)
-	
+
+func do_copy_cursor_pos() -> void:
+	pass
+
 func get_pos_on_terrain(pos_xz: Vector2) -> Vector3:
 	var xz_vec3 = Vector3(pos_xz.x, 0, pos_xz.y)
 	var terrain_y = self.get_editor_terrain().data.get_height(xz_vec3)

@@ -93,8 +93,7 @@ func add_next_segment_or_stop():
 	if self.current_segment.previous:
 		self.current_segment.previous = previous_segment
 		# extend rail path
-		for next_segment_nodes: RailNodeData in self.current_segment.get_nodes_directionally():
-			self.get_segment_path_curve().add_point(next_segment_nodes.position)
+		self.get_active_path().add_segment(self.current_segment)
 	else:
 		self.motor.stop()
 #endregion
@@ -115,15 +114,19 @@ func length_in_m() -> float:
 func move_forwards(delta_seconds: float):
 	# calculate movement since last tick
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
-	if !self.get_segment_path_curve(): return
+	if !self.get_active_path() || !self.get_active_path().curve: return
 	self.increase_m_passed(tick_dist)
-	if self.m_passed_since_start > self.get_segment_path_curve().get_baked_length():
+	# reached end of path? add next segmenr or stop
+	var active_path_len: float = self.get_active_path().curve.get_baked_length()
+	if self.m_passed_since_start > active_path_len:
 		Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
 		self.add_next_segment_or_stop()
+	# move every vehicle in train forwards on path
 	for veh3d: Vehicle3D in self.vehicles:
 		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
 		if m_passed < 0: m_passed = 0
 		var target_transf := self._get_target_transf_at_m_passed(m_passed)
+		# tween towards target transform
 		var transf_tween = veh3d.create_tween()
 		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
 
@@ -132,7 +135,7 @@ func increase_m_passed(delta_m: float):
 	self.m_passed_since_start += delta_m
 
 func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
-	var train_curve: Curve3D = self.get_segment_path_curve()
+	var train_curve: Curve3D = self.get_active_path().curve
 	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
 	# only turn vertically
 	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
@@ -150,9 +153,9 @@ func get_cam() -> Camera3D:
 	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.locomotive.name)
 	return model_cam
 
-func get_segment_path_curve() -> Curve3D:
+func get_active_path() -> ActiveRailVehiclePath:
 	if self.has_node("SegmentPath"):
-		return $SegmentPath.curve as Curve3D
+		return $SegmentPath as ActiveRailVehiclePath
 	return null
 #endregion
 
