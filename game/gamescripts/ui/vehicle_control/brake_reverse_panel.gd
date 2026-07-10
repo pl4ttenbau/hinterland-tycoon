@@ -20,14 +20,16 @@ func _on_brake_change(new_brake: bool):
 	Loggie.info("Brake mode: %s" % new_brake)
 	if new_brake:
 		self.curr_train.motor.speed.target = 0.0
+
 func _on_reverse_change(new_reverse: bool):
 	Loggie.info("Reverse mode: %s" % new_reverse)
-	
+	self.curr_train.reverse_from_current_spot()
+
 #region Callables
 func _on_brake_click(_state: bool):
 	self.brake = !self.brake
 	self._on_brake_change(self.brake)
-	
+
 func _on_reverse_click(_state: bool):
 	self.reverse = !self.reverse
 	self._on_reverse_change(self.reverse)

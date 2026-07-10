@@ -23,6 +23,8 @@ static var _last_train_num: int = 0
 @export var m_passed_since_start: float = 0.0
 @export var m_passed_on_segment: float = 0.0
 
+@export var is_reversed: bool = false
+
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
@@ -54,6 +56,7 @@ static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 
 func _create_motor(_dir: Enums.PathDirection):
 	self.motor = TrainMotor.of(_dir)
+	self.motor.reversing.connect(Callable(self, "_on_motor_reversing"))
 	self.add_child(self.motor)
 #endregion
 
@@ -81,18 +84,17 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 #region Vehicle Path
 func init_segment_path():
 	self.current_segment = VehiclePathSegmentBuilder.get_first_segment(self)
-	var segment_path: ActiveRailVehiclePath = ActiveRailVehiclePath.of_segment(self.current_segment)
+	var segment_path: ActiveRailVehiclePath = ActiveRailVehiclePath.of_segment(self, self.current_segment)
 	self.add_child(segment_path)
 	segment_path.name = "SegmentPath"
 
 ## after locomotive reaches end of current segment, 
 func add_next_segment_or_stop():
+	var cached_previous_segment: VehiclePathSegment = self.current_segment
 	# update next segment
-	var previous_segment: VehiclePathSegment = self.current_segment
 	self.current_segment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
 	if self.current_segment.previous:
-		self.current_segment.previous = previous_segment
-		# extend rail path
+		self.current_segment.previous = cached_previous_segment
 		self.get_active_path().add_segment(self.current_segment)
 	else:
 		self.motor.stop()
@@ -143,6 +145,20 @@ func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
 	return target_transf
 #endregion
 
+#region Reverse
+func reverse_from_current_spot():
+	self.motor.stop()
+	self.motor.direction = PathCurveUtils.get_reversed_direction(self.motor.direction)
+	# self.motor.is_reversed = !self.motor.is_reversed
+	# split curve and reverse passed part of it
+	self.get_active_path().curve = self.get_active_path().build_curve_from_pos_to_track_end()
+	# build segment
+	var curr_rail_track = self.get_active_path().segments[0]
+	# start again
+	self.m_passed_on_segment = 0
+	self.m_passed_since_start = 0
+	self.motor.start()
+
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
 
@@ -166,6 +182,9 @@ func _on_speed_timer_tick():
 
 func _on_world_ready():
 	self.motor.start()
+
+func _on_motor_reversing():
+	self.reverse_from_current_spot()
 
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started: 
