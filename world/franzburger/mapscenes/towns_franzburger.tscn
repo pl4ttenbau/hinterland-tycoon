@@ -1,0 +1,336 @@
+[gd_scene format=3 uid="uid://cunbmcqmoxv0j"]
+
+[ext_resource type="Script" uid="uid://xsl6bgbfr5xs" path="res://game/gamescripts/nodes/world/collections/world_towns.gd" id="1_suhj4"]
+[ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="2_w5vf4"]
+[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="3_gbyj8"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="4_1a4lw"]
+[ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="5_st74w"]
+[ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/node_link/node_station_link.gd" id="6_xkd5p"]
+
+[sub_resource type="Resource" id="Resource_inj7p"]
+script = ExtResource("5_st74w")
+town_name = "Barth"
+pos_xz = Vector2(-570.569, -596.679)
+num = 1
+type = 8
+
+[sub_resource type="Resource" id="Resource_w5vf4"]
+script = ExtResource("5_st74w")
+town_name = "Stralsund"
+pos_xz = Vector2(815.254, -304.691)
+num = 2
+type = 8
+
+[sub_resource type="Resource" id="Resource_gbyj8"]
+script = ExtResource("5_st74w")
+town_name = "Saal"
+pos_xz = Vector2(-1459.644, -235.698)
+num = 3
+type = 8
+
+[sub_resource type="Resource" id="Resource_1a4lw"]
+script = ExtResource("5_st74w")
+town_name = "Ribnitz"
+pos_xz = Vector2(-1741.538, 312.013)
+num = 4
+type = 8
+
+[sub_resource type="Resource" id="Resource_st74w"]
+script = ExtResource("5_st74w")
+town_name = "Damgarten"
+pos_xz = Vector2(-1524.823, 130.878)
+num = 5
+type = 8
+
+[sub_resource type="Resource" id="Resource_xkd5p"]
+script = ExtResource("5_st74w")
+town_name = "Klausdorf"
+pos_xz = Vector2(479.54, -966.766)
+num = 6
+type = 8
+
+[sub_resource type="Resource" id="Resource_ko0cd"]
+script = ExtResource("5_st74w")
+town_name = "Prohn"
+pos_xz = Vector2(555.328, -732.184)
+num = 7
+type = 8
+
+[sub_resource type="Resource" id="Resource_ptnri"]
+script = ExtResource("5_st74w")
+town_name = "Altefähr"
+pos_xz = Vector2(983.918, -530.1)
+num = 8
+type = 8
+
+[sub_resource type="Resource" id="Resource_3o1g4"]
+script = ExtResource("5_st74w")
+town_name = "Altenpleen"
+pos_xz = Vector2(320.494, -607.034)
+num = 9
+type = 8
+
+[sub_resource type="Resource" id="Resource_ivgh8"]
+script = ExtResource("5_st74w")
+town_name = "Gr. Kordshagen"
+pos_xz = Vector2(-137.102, -473.387)
+num = 10
+type = 8
+
+[sub_resource type="Resource" id="Resource_1m0s0"]
+script = ExtResource("5_st74w")
+town_name = "Dettmansdorf"
+pos_xz = Vector2(-1257.421, 1084.553)
+num = 11
+type = 8
+
+[sub_resource type="Resource" id="Resource_ae5ul"]
+script = ExtResource("5_st74w")
+town_name = "Ahrendshagen"
+pos_xz = Vector2(-1014.589, 290.71)
+num = 12
+type = 8
+
+[sub_resource type="Resource" id="Resource_icojg"]
+script = ExtResource("5_st74w")
+town_name = "Wustrow"
+pos_xz = Vector2(-1813.228, -457.388)
+num = 13
+type = 8
+
+[sub_resource type="Resource" id="Resource_3rlt4"]
+script = ExtResource("5_st74w")
+town_name = "Prerow"
+pos_xz = Vector2(-1248.962, -1082.56)
+num = 14
+type = 8
+
+[sub_resource type="Resource" id="Resource_p3jyo"]
+script = ExtResource("5_st74w")
+town_name = "Zingst"
+pos_xz = Vector2(-680.56, -1099.857)
+num = 15
+type = 8
+
+[sub_resource type="Resource" id="Resource_f8obo"]
+script = ExtResource("5_st74w")
+town_name = "Pramort"
+pos_xz = Vector2(115.693, -1091.933)
+is_minor = true
+num = 16
+type = 8
+
+[sub_resource type="Resource" id="Resource_oiy6k"]
+script = ExtResource("5_st74w")
+town_name = "Barhöft"
+pos_xz = Vector2(559.331, -1120.975)
+is_minor = true
+num = 17
+type = 8
+
+[sub_resource type="Resource" id="Resource_anda3"]
+script = ExtResource("5_st74w")
+town_name = "Brandshagen"
+pos_xz = Vector2(1189.514, 69.379)
+num = 18
+type = 8
+
+[sub_resource type="Resource" id="Resource_blqov"]
+script = ExtResource("5_st74w")
+town_name = "Rambin"
+pos_xz = Vector2(1259.388, -669.984)
+num = 19
+type = 8
+
+[sub_resource type="Resource" id="Resource_nhekg"]
+script = ExtResource("5_st74w")
+town_name = "Samtens"
+pos_xz = Vector2(1612.894, -702.347)
+num = 20
+type = 8
+
+[sub_resource type="Resource" id="Resource_uu2ge"]
+script = ExtResource("5_st74w")
+town_name = "Gustow"
+pos_xz = Vector2(1326.221, -313.527)
+num = 21
+type = 8
+
+[sub_resource type="Resource" id="Resource_weblp"]
+script = ExtResource("5_st74w")
+town_name = "Poseritz"
+pos_xz = Vector2(1627.105, -351.491)
+num = 22
+type = 8
+
+[sub_resource type="Resource" id="Resource_7syrm"]
+script = ExtResource("5_st74w")
+town_name = "Franzburg-Richtenberg"
+pos_xz = Vector2(143.352, 480.363)
+num = 23
+type = 8
+
+[sub_resource type="Resource" id="Resource_52i44"]
+script = ExtResource("5_st74w")
+town_name = "Tribsees"
+pos_xz = Vector2(-174.875, 1145.151)
+num = 24
+type = 8
+
+[sub_resource type="Resource" id="Resource_g1mpu"]
+script = ExtResource("5_st74w")
+town_name = "Grimmen"
+pos_xz = Vector2(762.163, 1006.774)
+num = 25
+type = 8
+
+[sub_resource type="Resource" id="Resource_tlcpm"]
+script = ExtResource("5_st74w")
+town_name = "Mesekenhagen"
+pos_xz = Vector2(1754.082, 431.283)
+num = 26
+type = 8
+
+[sub_resource type="Resource" id="Resource_kqxb7"]
+script = ExtResource("5_st74w")
+town_name = "Niepars"
+pos_xz = Vector2(193.121, -339.705)
+num = 27
+type = 8
+
+[sub_resource type="Resource" id="Resource_rri3s"]
+script = ExtResource("5_st74w")
+town_name = "Velgast"
+pos_xz = Vector2(-182.497, -0.42)
+num = 28
+type = 8
+
+[sub_resource type="Resource" id="Resource_o4m82"]
+script = ExtResource("5_st74w")
+town_name = "Fuhlendorf"
+pos_xz = Vector2(-1042.766, -516.266)
+num = 29
+type = 8
+
+[node name="Towns" type="Node" unique_id=1994240704]
+script = ExtResource("1_suhj4")
+metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
+
+[node name="Town3D_Barth" parent="." unique_id=379283880 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -570.569, 23.252, -596.679)
+town = SubResource("Resource_inj7p")
+
+[node name="Town3D_Stralsund" parent="." unique_id=1592171317 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.25385, 23.626184, -304.69144)
+town = SubResource("Resource_w5vf4")
+
+[node name="Town3D_Saal" parent="." unique_id=410900492 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1459.6439, 23.361668, -235.69814)
+town = SubResource("Resource_gbyj8")
+
+[node name="Town3D_Ribnitz" parent="." unique_id=1770288738 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1741.5378, 25.382265, 312.01288)
+town = SubResource("Resource_1a4lw")
+
+[node name="Town3D_Damgarten" parent="." unique_id=1489982248 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1524.8229, 23.894619, 130.8781)
+town = SubResource("Resource_st74w")
+
+[node name="Town3D_Klausdorf" parent="." unique_id=684685840 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479.54037, 23.598305, -966.7655)
+town = SubResource("Resource_xkd5p")
+
+[node name="Town3D_Prohn" parent="." unique_id=896304775 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 555.32825, 23.316212, -732.18414)
+town = SubResource("Resource_ko0cd")
+
+[node name="Town3D_Altefähr" parent="." unique_id=1989628060 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 983.9181, 24.187656, -530.09955)
+town = SubResource("Resource_ptnri")
+
+[node name="Town3D_Altenpleen" parent="." unique_id=1959904627 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.4936, 23.426826, -607.03375)
+town = SubResource("Resource_3o1g4")
+
+[node name="Town3D_Gr_ Kordshagen" parent="." unique_id=66058308 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.1016, 23.252234, -473.38745)
+town = SubResource("Resource_ivgh8")
+
+[node name="Town3D_Dettmansdorf" parent="." unique_id=235904311 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1257.4205, 30.723713, 1084.5531)
+town = SubResource("Resource_1m0s0")
+
+[node name="Town3D_Ahrendshagen" parent="." unique_id=1389338451 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1014.5893, 26.1035, 290.7101)
+town = SubResource("Resource_ae5ul")
+
+[node name="Town3D_Wustrow" parent="." unique_id=1940911307 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1813.2275, 23.331898, -457.38806)
+town = SubResource("Resource_icojg")
+
+[node name="Town3D_Prerow" parent="." unique_id=1033349687 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1248.9619, 23.253696, -1082.5604)
+town = SubResource("Resource_3rlt4")
+
+[node name="Town3D_Zingst" parent="." unique_id=901456244 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -680.55994, 23.166206, -1099.8566)
+town = SubResource("Resource_p3jyo")
+
+[node name="Town3D_Pramort" parent="." unique_id=1290199381 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.69299, 23.164473, -1091.9333)
+town = SubResource("Resource_f8obo")
+
+[node name="Town3D_Barhöft" parent="." unique_id=365861862 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 559.3307, 23.166206, -1120.9747)
+town = SubResource("Resource_oiy6k")
+
+[node name="Town3D_Brandshagen" parent="." unique_id=690995825 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1189.5144, 25.03696, 69.379196)
+town = SubResource("Resource_anda3")
+
+[node name="Town3D_Rambin" parent="." unique_id=452855803 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1259.3877, 23.666733, -669.9842)
+town = SubResource("Resource_blqov")
+
+[node name="Town3D_Samtens" parent="." unique_id=440273518 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1612.8938, 24.153028, -702.34705)
+town = SubResource("Resource_nhekg")
+
+[node name="Town3D_Gustow" parent="." unique_id=1601824142 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1326.2212, 23.898396, -313.5269)
+town = SubResource("Resource_uu2ge")
+
+[node name="Town3D_Poseritz" parent="." unique_id=1314329498 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1627.1046, 23.609894, -351.49127)
+town = SubResource("Resource_weblp")
+
+[node name="Town3D_Franzburg-Richtenberg" parent="." unique_id=627166844 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.3523, 24.583061, 480.3633)
+town = SubResource("Resource_7syrm")
+
+[node name="Town3D_Tribsees" parent="." unique_id=591656965 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174.87488, 24.187656, 1145.1508)
+town = SubResource("Resource_52i44")
+
+[node name="Town3D_Grimmen" parent="." unique_id=1015569477 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 762.163, 23.989504, 1006.7739)
+town = SubResource("Resource_g1mpu")
+
+[node name="Town3D_Mesekenhagen" parent="." unique_id=1954981054 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1754.0815, 23.428343, 431.28284)
+town = SubResource("Resource_tlcpm")
+
+[node name="Town3D_Niepars" type="Node3D" parent="." unique_id=1918683242 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.12085, 26.748194, -339.7051)
+script = ExtResource("3_gbyj8")
+town = SubResource("Resource_kqxb7")
+
+[node name="Town3D_Velgast" type="Node3D" parent="." unique_id=1788858281 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.49655, 24.517448, -0.4203186)
+script = ExtResource("3_gbyj8")
+town = SubResource("Resource_rri3s")
+
+[node name="Town3D_Fuhlendorf" type="Node3D" parent="." unique_id=996489334 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1042.7656, 23.428343, -516.2656)
+script = ExtResource("3_gbyj8")
+town = SubResource("Resource_o4m82")

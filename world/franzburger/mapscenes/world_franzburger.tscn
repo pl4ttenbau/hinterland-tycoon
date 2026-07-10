@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dh43yo7k3d286"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_hp62h"]
+[ext_resource type="PackedScene" uid="uid://b8mqhxvhnuum1" path="res://world/franzburger/mapscenes/terrain/terrain_franzburger.tscn" id="2_e1tfh"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="3_ldr64"]
+[ext_resource type="PackedScene" uid="uid://cunbmcqmoxv0j" path="res://world/franzburger/mapscenes/towns_franzburger.tscn" id="4_2qmku"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="5_73pql"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="6_x8wwi"]
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="7_ly1a3"]
+[ext_resource type="Script" uid="uid://bbivri4py26we" path="res://game/gamescripts/services/editor/infrastructure/editor_infr_container.gd" id="8_xms7c"]
+[ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="9_4dkm6"]
+[ext_resource type="Script" uid="uid://dvf4vwgtk252x" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="10_hchtc"]
+[ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="11_2qmku"]
+[ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="12_73pql"]
+[ext_resource type="PackedScene" uid="uid://ccsdn65orkxqs" path="res://assets/meshes/deco/church1/church1.tscn" id="13_73pql"]
+
+[node name="WorldContainer" type="Node" unique_id=1670658413 node_paths=PackedStringArray("terrain")]
+script = ExtResource("1_hp62h")
+map_key = "franzburger"
+terrain = NodePath("WorldTerrain")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." unique_id=1285850563 instance=ExtResource("2_e1tfh")]
+
+[node name="Houses" type="Node" parent="." unique_id=1777359037]
+script = ExtResource("3_ldr64")
+metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
+
+[node name="Towns" parent="." unique_id=1994240704 instance=ExtResource("4_2qmku")]
+
+[node name="Industries" type="Node" parent="." unique_id=501493541]
+script = ExtResource("5_73pql")
+metadata/_custom_type_script = "uid://g6bsjtyavuig"
+
+[node name="Deco" type="Node" parent="." unique_id=1156687577]
+script = ExtResource("6_x8wwi")
+metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
+
+[node name="Barth" type="Node" parent="Deco" unique_id=877642557]
+
+[node name="Church1" parent="Deco/Barth" unique_id=1158463457 instance=ExtResource("13_73pql")]
+transform = Transform3D(0.2480813, 0, -0.9687392, 0, 1, 0, 0.9687392, 0, 0.2480813, -586.99866, 22.88836, -636.5014)
+
+[node name="InEditor" type="Node3D" parent="." unique_id=1700965927]
+script = ExtResource("7_ly1a3")
+metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
+
+[node name="EditorInfr" type="Node3D" parent="InEditor" unique_id=1361662986]
+script = ExtResource("8_xms7c")
+metadata/_custom_type_script = "uid://bbivri4py26we"
+
+[node name="EditorRoads" type="Node3D" parent="InEditor/EditorInfr" unique_id=1205118344]
+script = ExtResource("9_4dkm6")
+metadata/_custom_type_script = "uid://b157dhgx7ojrw"
+
+[node name="EditorRails" type="Node3D" parent="InEditor/EditorInfr" unique_id=734870054]
+script = ExtResource("10_hchtc")
+metadata/_custom_type_script = "uid://dvf4vwgtk252x"
+
+[node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("11_2qmku")]
+
+[node name="WorldCursor3D" type="Marker3D" parent="." unique_id=1933713359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1042.7656, 23.428343, -516.2656)
+gizmo_extents = 10.0
+script = ExtResource("12_73pql")
+metadata/_custom_type_script = "uid://byq8dj7pajain"
