@@ -96,6 +96,7 @@ func add_next_segment_or_stop():
 	if self.current_segment.previous:
 		self.current_segment.previous = cached_previous_segment
 		self.get_active_path().add_segment(self.current_segment)
+		self.m_passed_on_segment = 0
 	else:
 		self.motor.stop()
 #endregion
@@ -149,11 +150,8 @@ func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
 func reverse_from_current_spot():
 	self.motor.stop()
 	self.motor.direction = PathCurveUtils.get_reversed_direction(self.motor.direction)
-	# self.motor.is_reversed = !self.motor.is_reversed
 	# split curve and reverse passed part of it
 	self.get_active_path().curve = self.get_active_path().build_curve_from_pos_to_track_end()
-	# build segment
-	var curr_rail_track = self.get_active_path().segments[0]
 	# start again
 	self.m_passed_on_segment = 0
 	self.m_passed_since_start = 0
@@ -184,6 +182,7 @@ func _on_world_ready():
 	self.motor.start()
 
 func _on_motor_reversing():
+	
 	self.reverse_from_current_spot()
 
 func _physics_process(_delta: float) -> void:

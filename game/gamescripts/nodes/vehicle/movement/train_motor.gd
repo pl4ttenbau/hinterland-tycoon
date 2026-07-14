@@ -19,8 +19,11 @@ signal reversing()
 @export var is_reversed: bool = false:
 	get(): return is_reversed
 	set(value):
-		is_reversed = value
-		self.reversing.emit()
+		if self.speed.current < .05:
+			is_reversed = value
+			self.reversing.emit()
+		else:
+			Loggie.warn("Reverse train: aborted. Train not stopped")
 
 @export var running_time: int:
 	get():

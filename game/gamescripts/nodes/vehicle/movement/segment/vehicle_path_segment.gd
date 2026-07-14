@@ -44,8 +44,7 @@ func get_nodes_directionally() -> Array[RailNodeData]:
 		for i in self.as_rail_track().nodes.size():
 			sorted_node_list.append(rail_nodes[-i-1])
 	else:
-		# add forwards
-		return rail_nodes 
+		return rail_nodes # add forwards
 	return sorted_node_list
 
 ## dont get confused here - the last node backwards is 0, the last node forwards is length - 1

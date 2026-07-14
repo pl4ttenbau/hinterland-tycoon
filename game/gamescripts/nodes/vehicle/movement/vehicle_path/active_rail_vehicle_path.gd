@@ -36,37 +36,70 @@ func add_segment(added_segment: VehiclePathSegment) -> Curve3D:
 	# fire extended signal & return full curve
 	self.extended.emit(added_segment)
 	return self.curve
+
+func get_current_segment() -> VehiclePathSegment:
+	if self.segments == null || self.segments.size() <= 0:
+		Loggie.error("Cannot return current segment; Segment list is empty")
+		return null
+	return self.segments[self.segments.size() -1]
 #endregion
 
 #region Reversing
 func build_curve_from_pos_to_track_end() -> Curve3D:
 	var curr_segment: VehiclePathSegment = self.segments[self.segments.size() -1]
-	# first passed Node if the current rail track
-	var new_curve: Curve3D = Curve3D.new()
-	new_curve.up_vector_enabled = false
-	# add points: current train pos and start of current segment
-	var curr_locomotive_pos: Vector3 = self.train3d.locomotive.global_position
-	new_curve.add_point(curr_locomotive_pos)
-	Loggie.info("Node Added: current %v" % curr_locomotive_pos)
-	var segment_start: Vector3 = curr_segment.start_node.position
-	new_curve.add_point(segment_start)
-	Loggie.info("Node Added: current %v" % segment_start)
-	# revert segment order
+	# get closest passed rail node
+	var segment_start_node_i: int = self.get_curve_i_from_segment_start_to_closest_node(curr_segment)[0]
+	var closest_node_i: int = self.get_curve_i_from_segment_start_to_closest_node(curr_segment)[1]
+	# re-create empty curve
+	var curve_to_train_pos = self.get_curve_part_between_points(self.curve, segment_start_node_i, closest_node_i)
+	var curve_to_segment_start = PathCurveUtils.reverse_curve3d(curve_to_train_pos)
+	# revert segment order & remove all segments but current one
 	curr_segment.reverse()
 	self.segments = [curr_segment]
 	# return new Curve3D
-	return new_curve
+	return curve_to_segment_start
+#endregion
 
-func get_closest_passed_rail_node_index() -> int:
-	var closest_rail_node_i: int = -1
-	var closest_node_dist: float = -1
-	for point_i: int in range(self.curve.point_count):
-		var point_pos: Vector3 = self.curve.get_point_position(point_i)
-		var point_dist: float = point_pos.distance_squared_to(self.train3d.global_position)
-		if point_dist > closest_node_dist:
-			closest_rail_node_i = point_i
+#region Get Last Passed Node
+func get_closest_passed_rail_node() -> RailNodeData:
+	var closest_rail_node: RailNodeData = null
+	var closest_node_dist: float = 9999
+	for segment_node: RailNodeData in self.get_current_segment().as_rail_track().nodes:
+		var point_pos: Vector3 = segment_node.position
+		var point_dist: float = point_pos.distance_squared_to(self.train3d.locomotive.global_position)
+		if point_dist < closest_node_dist:
+			closest_rail_node = segment_node
 			closest_node_dist = point_dist
-	return closest_rail_node_i 
+	return closest_rail_node
+
+## returns indexes of points on this path's full Curve3D
+## between start of the current segment to closest RailNode of train locomotive position
+func get_curve_i_from_segment_start_to_closest_node(curr_segment: VehiclePathSegment) -> Array[int]:
+	# get closest passed rail node
+	var last_passed_node: RailNodeData = self.get_closest_passed_rail_node()
+	var last_passed_node_curve_i: int = self.get_rail_node_i_in_full_curve(last_passed_node)
+	# get node at start of current segment
+	var segment_start_node: RailNodeData = curr_segment.start_node
+	var segment_start_node_i: int = self.get_rail_node_i_in_full_curve(segment_start_node)
+	return [segment_start_node_i, last_passed_node_curve_i]
+
+func get_curve_part_between_points(curve3d: Curve3D, start_index: int, end_index: int) -> Curve3D:
+	var cut_curve: Curve3D = Curve3D.new()
+	cut_curve.up_vector_enabled = curve3d.up_vector_enabled
+	for curve_i: int in range(curve3d.point_count):
+		if curve_i >= start_index && curve_i <= end_index:
+			cut_curve.add_point(curve.get_point_position(curve_i))
+	return cut_curve
+
+## if a RailNode is part of this ActiveVehiclePath, returns index of said RailNode in path's curve
+## if not, returns -1 and shows a warning
+func get_rail_node_i_in_full_curve(rail_node: RailNodeData) -> int:
+	for curve_i: int in range(self.curve.point_count):
+		var node_pos: Vector3 = curve.get_point_position(curve_i)
+		if node_pos.is_equal_approx(rail_node.position):
+			return curve_i
+	Loggie.warn("Cannot find RailNode(track %d, index %d) in own curve" % [rail_node.parent_track.num, rail_node.index])
+	return -1
 #endregion
 
 #region Debug Markers
