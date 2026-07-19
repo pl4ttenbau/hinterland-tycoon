@@ -7,6 +7,7 @@ extends EditorPlugin
 # Includes
 const Terrain3DUI: Script = preload("res://addons/terrain_3d/src/ui.gd")
 const ASSET_DOCK: String = "res://addons/terrain_3d/src/asset_dock.tscn"
+const ASSET_DOCK_45: String = "res://addons/terrain_3d/src/asset_dock_45.tscn"
 
 # Editor Plugin
 var debug: int = 0 # Set in _edit()
@@ -58,7 +59,11 @@ func _enter_tree() -> void:
 
 	scene_changed.connect(_on_scene_changed)
 
-	asset_dock = load(ASSET_DOCK).instantiate()
+	# Load Godot 4.6+ asset dock or pre-4.6
+	if Engine.get_version_info().hex >= 0x040600:
+		asset_dock = load(ASSET_DOCK).instantiate()
+	else:
+		asset_dock = load(ASSET_DOCK_45).instantiate()
 	asset_dock.initialize(self)
 
 
@@ -306,8 +311,7 @@ func _read_input(p_event: InputEvent = null) -> AfterGUIInput:
 	if p_event is InputEventKey and \
 			current_mods == 0 and \
 			p_event.is_pressed() and \
-			not p_event.is_echo() and \
-			consume_hotkey(p_event.keycode):
+			consume_hotkey(p_event):
 		# Hotkey found, consume event, and stop input processing
 		EditorInterface.get_editor_viewport_3d().set_input_as_handled()
 		return AFTER_GUI_INPUT_STOP
@@ -326,8 +330,27 @@ func _read_input(p_event: InputEvent = null) -> AfterGUIInput:
 
 
 # Returns true if hotkey matches and operation triggered
-func consume_hotkey(keycode: int) -> bool:
-	match keycode:
+func consume_hotkey(p_event: InputEventKey) -> bool:
+	# Handle repeatable keys
+	match p_event.keycode:
+		KEY_BRACKETLEFT:
+			ui.tool_settings.set_setting("size", ui.tool_settings.get_setting("size") - 1)
+			return true
+		KEY_BRACKETRIGHT:
+			ui.tool_settings.set_setting("size", ui.tool_settings.get_setting("size") + 1)
+			return true
+		KEY_MINUS:
+			ui.tool_settings.set_setting("strength", ui.tool_settings.get_setting("strength") - 1)
+			return true
+		KEY_EQUAL:
+			ui.tool_settings.set_setting("strength", ui.tool_settings.get_setting("strength") + 1)
+			return true
+		
+	if p_event.is_echo():
+		return false
+		
+	# Handle non-repeatable keys
+	match p_event.keycode:
 		KEY_1, KEY_KP_1:
 			terrain.material.set_show_region_grid(!terrain.material.get_show_region_grid())
 		KEY_2, KEY_KP_2:
