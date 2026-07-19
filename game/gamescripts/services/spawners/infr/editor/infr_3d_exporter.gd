@@ -53,12 +53,12 @@ static func infr3d_curve_index_to_node_json(start_pos: Vector3, infr3d_curve: Cu
 	# add position
 	var rel_pos: Vector3 = infr3d_curve.get_point_position(curve_i)
 	var abs_pos: Vector3 = start_pos + rel_pos
-	node_dict.set("pos", WorldUtils.get_rounded_vec_3(abs_pos))
+	node_dict.set("pos", abs_pos.snappedf(0.01))
 	# add handle
 	var is_first_or_last = curve_i == 0 || curve_i == infr3d_curve.point_count -1
 	if !is_first_or_last:
 		var rel_handle_in: Vector3 = infr3d_curve.get_point_in(curve_i)
-		node_dict.set("handleIn", WorldUtils.get_rounded_vec_3(rel_handle_in))
+		node_dict.set("handleIn", rel_handle_in.snappedf(0.01))
 	return node_dict
 
 static func place_on_ground(infr3d: EditorInfrLine3D):
