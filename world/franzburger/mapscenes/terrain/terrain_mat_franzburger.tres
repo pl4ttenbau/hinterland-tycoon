@@ -5,10 +5,12 @@ _shader_parameters = {
 &"bias_distance": 512.0,
 &"blend_sharpness": 0.0,
 &"depth_blur": 0.0,
+&"distant_normal_scale": null,
 &"flat_terrain_normals": false,
+&"general_uniforms": null,
 &"mipmap_bias": 1.0,
-&"shader_uniforms": null,
-&"shader_uniforms::general": null,
-&"shader_uniforms::mipmaps": null
+&"mipmaps": null,
+&"private": null
 }
 world_background = 0
+projection_enabled = true
