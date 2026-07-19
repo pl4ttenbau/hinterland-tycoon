@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8mqhxvhnuum1"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://bdtxotl8myxft" path="res://world/franzburger/mapscenes/terrain/terrain_mat_franzburger.tres" id="1_r1bh6"]
-[ext_resource type="Terrain3DAssets" uid="uid://c3vca8nx3b3fv" path="res://world/franzburger/mapscenes/terrain/terrain_assets_franzburger.tres" id="2_akin0"]
+[ext_resource type="Terrain3DAssets" uid="uid://cb1kin0sj8htb" path="res://world/franzburger/mapscenes/terrain/terrain_assets_franzburger.res" id="2_cpcyg"]
 [ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_3hcqu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
@@ -10,7 +10,7 @@ size = Vector2(3800, 2600)
 [node name="WorldTerrain" type="Terrain3D" unique_id=1285850563]
 data_directory = "res://world/franzburger/heightdata"
 material = ExtResource("1_r1bh6")
-assets = ExtResource("2_akin0")
+assets = ExtResource("2_cpcyg")
 displacement_sharpness = 0.5
 top_level = true
 metadata/_edit_lock_ = true

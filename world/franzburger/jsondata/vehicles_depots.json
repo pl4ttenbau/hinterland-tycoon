@@ -1,5 +1,16 @@
 {
 	"depots": [
-	
+		{
+			"num": 1,
+			"name": "Klausdorf Depot FKB-N",
+			"trackNum": 16,
+			"trackPos": "END"
+		},
+		{
+			"num": 2,
+			"name": "Damgarten Depot FKB-N",
+			"trackNum": 19,
+			"trackPos": "END"
+		}
 	]
 }
