@@ -25,3 +25,4 @@ shadow_opacity = 0.89
 directional_shadow_mode = 1
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="." unique_id=1386134091]
+intensity = 0.6

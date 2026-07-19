@@ -2804,7 +2804,6 @@ metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
 [node name="WorldTerrain" parent="." unique_id=1969216949 instance=ExtResource("2_jynyo")]
 cast_shadows = 0
-show_contours = false
 
 [node name="Towns" parent="." unique_id=917386385 node_paths=PackedStringArray("world_scene") instance=ExtResource("38_d7utl")]
 world_scene = NodePath("..")
