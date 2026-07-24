@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="2_w5vf4"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="4_1a4lw"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="5_st74w"]
-[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_w5vf4"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/node_link/node_station_link.gd" id="6_xkd5p"]
 
 [sub_resource type="Resource" id="Resource_inj7p"]
@@ -86,7 +85,7 @@ type = 8
 
 [sub_resource type="Resource" id="Resource_ae5ul"]
 script = ExtResource("5_st74w")
-town_name = "Ahrendshagen"
+town_name = "Trinwillershagen"
 pos_xz = Vector2(-1014.589, 290.71)
 num = 12
 type = 8
@@ -226,6 +225,53 @@ pos_xz = Vector2(-1110.942, -305.562)
 num = 31
 type = 8
 
+[sub_resource type="Resource" id="Resource_iuiyv"]
+script = ExtResource("5_st74w")
+town_name = "Abtshagen-Wittenhagen"
+pos_xz = Vector2(731.297, 514.234)
+is_minor = true
+num = 32
+type = 8
+
+[sub_resource type="Resource" id="Resource_1md5c"]
+script = ExtResource("5_st74w")
+town_name = "Negast"
+pos_xz = Vector2(639.82, 25.114)
+num = 33
+type = 8
+
+[sub_resource type="Resource" id="Resource_ukbep"]
+script = ExtResource("5_st74w")
+town_name = "Zarrendorf"
+pos_xz = Vector2(885.196, 89.571)
+is_minor = true
+num = 34
+type = 8
+
+[sub_resource type="Resource" id="Resource_e5d20"]
+script = ExtResource("5_st74w")
+town_name = "Dreschwitz"
+pos_xz = Vector2(1646.876, -1019.652)
+is_minor = true
+num = 35
+type = 8
+
+[sub_resource type="Resource" id="Resource_mbimm"]
+script = ExtResource("5_st74w")
+town_name = "Spoldershagen-Martensdorf"
+pos_xz = Vector2(-704.481, -252.126)
+is_minor = true
+num = 36
+type = 8
+
+[sub_resource type="Resource" id="Resource_8wdqj"]
+script = ExtResource("5_st74w")
+town_name = "Gresenhorst"
+pos_xz = Vector2(-1632.614, 845.25)
+is_minor = true
+num = 37
+type = 8
+
 [node name="Towns" type="Node" unique_id=1994240704]
 script = ExtResource("1_suhj4")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -274,8 +320,8 @@ town = SubResource("Resource_ivgh8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1257.4205, 30.723713, 1084.5531)
 town = SubResource("Resource_1m0s0")
 
-[node name="Town3D_Ahrendshagen" parent="." unique_id=1389338451 instance=ExtResource("2_w5vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1014.5893, 26.1035, 290.7101)
+[node name="Town3D_Trinwillershagen" parent="." unique_id=1389338451 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -961.6282, 26.1035, 160.943)
 town = SubResource("Resource_ae5ul")
 
 [node name="Town3D_Wustrow" parent="." unique_id=1940911307 instance=ExtResource("2_w5vf4")]
@@ -350,7 +396,30 @@ town = SubResource("Resource_o4m82")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1223.8815, 34.33461, 881.4565)
 town = SubResource("Resource_du3kt")
 
-[node name="Town3D_Herrmannshagen" type="Node3D" parent="." unique_id=34577742 instance=ExtResource("2_w5vf4")]
+[node name="Town3D_Herrmannshagen" parent="." unique_id=34577742 instance=ExtResource("2_w5vf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1110.9423, 23.989504, -305.56155)
-script = ExtResource("6_w5vf4")
 town = SubResource("Resource_yrmw2")
+
+[node name="Town3D_Abtshagen-Wittenhagen" parent="." unique_id=181888813 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 731.29663, 26.842083, 514.2344)
+town = SubResource("Resource_iuiyv")
+
+[node name="Town3D_Negast" parent="." unique_id=1305356188 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 639.82043, 25.113836, 26.83192)
+town = SubResource("Resource_1md5c")
+
+[node name="Town3D_Zarrendorf" parent="." unique_id=1217282888 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 885.19635, 25.711143, 89.570755)
+town = SubResource("Resource_ukbep")
+
+[node name="Town3D_Dreschwitz" parent="." unique_id=911197457 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1646.8763, 24.229498, -1019.6521)
+town = SubResource("Resource_e5d20")
+
+[node name="Town3D_Spoldershagen-Martensdorf" parent="." unique_id=1008396328 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -704.48096, 24.187656, -252.12616)
+town = SubResource("Resource_mbimm")
+
+[node name="Town3D_Gresenhorst" parent="." unique_id=1489181103 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1632.6139, 34.54145, 845.2503)
+town = SubResource("Resource_8wdqj")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://brjdhg3iqv24q"]
+
+[ext_resource type="PackedScene" uid="uid://cvbtj5iuwumkl" path="res://assets/meshes/deco/strandkorb/mesh/strandkorb.obj" id="1_iyrtl"]
+[ext_resource type="Texture2D" uid="uid://ccbkq12c68a6e" path="res://assets/meshes/deco/strandkorb/mesh/tex_strandkorb_d.png" id="2_ub8q4"]
+[ext_resource type="Texture2D" uid="uid://ctihtb36ub807" path="res://assets/meshes/deco/strandkorb/mesh/tex_strandkorb_n.png" id="3_ta3gb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7sd3"]
+cull_mode = 2
+albedo_texture = ExtResource("2_ub8q4")
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("3_ta3gb")
+
+[node name="MeshStrandkorb" unique_id=1268067896 instance=ExtResource("1_iyrtl")]
+
+[node name="Strandkorb" parent="." index="0" unique_id=889184475]
+layers = 32
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+surface_material_override/0 = SubResource("StandardMaterial3D_u7sd3")
