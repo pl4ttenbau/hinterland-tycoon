@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="56_x1dpf"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="56_x5l52"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="57_0y8xh"]
-[ext_resource type="PackedScene" uid="uid://b4nbqlopy8205" path="res://assets/meshes/structures/old_city_house_1/old_city_house_1.tscn" id="57_4subv"]
+[ext_resource type="PackedScene" uid="uid://b4nbqlopy8205" path="res://assets/meshes/structures/old_city_row_house_1/old_city_house_1.tscn" id="57_4subv"]
 [ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="57_uh36v"]
 [ext_resource type="PackedScene" uid="uid://po7alkcqti68" path="res://assets/meshes/vehicles/road/gaz_aa_truck/static_gaz_aa_truck.tscn" id="58_l1cl3"]
 [ext_resource type="Material" uid="uid://dhht3vcp2qam5" path="res://assets/packed/materials/line3d_rail_track_mat.tres" id="59_7neeg"]
