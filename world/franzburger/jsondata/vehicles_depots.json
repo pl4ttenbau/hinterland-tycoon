@@ -11,6 +11,18 @@
 			"name": "Damgarten Depot FKB-N",
 			"trackNum": 19,
 			"trackPos": "END"
+		},
+		{
+			"num": 3,
+			"name": "Altefähr Depot RüKB",
+			"trackNum": 83,
+			"trackPos": "END"
+		},
+		{
+			"num": 4,
+			"name": "Stralsund Depot FKB-N",
+			"trackNum": 84,
+			"trackPos": "END"
 		}
 	]
 }

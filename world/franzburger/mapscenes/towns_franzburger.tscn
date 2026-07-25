@@ -15,8 +15,8 @@ type = 8
 
 [sub_resource type="Resource" id="Resource_w5vf4"]
 script = ExtResource("5_st74w")
-town_name = "Stralsund"
-pos_xz = Vector2(815.254, -304.691)
+town_name = "Stralsund-Altstadt"
+pos_xz = Vector2(860.835, -312.46)
 num = 2
 type = 8
 
@@ -272,6 +272,20 @@ is_minor = true
 num = 37
 type = 8
 
+[sub_resource type="Resource" id="Resource_uvh44"]
+script = ExtResource("5_st74w")
+town_name = "Stralsund-Triebseer"
+pos_xz = Vector2(721.963, -259.63)
+num = 38
+type = 8
+
+[sub_resource type="Resource" id="Resource_hdrxp"]
+script = ExtResource("5_st74w")
+town_name = "Stralsund-Knieper"
+pos_xz = Vector2(726.486, -469.045)
+num = 39
+type = 8
+
 [node name="Towns" type="Node" unique_id=1994240704]
 script = ExtResource("1_suhj4")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -280,8 +294,8 @@ metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -570.569, 23.252, -596.679)
 town = SubResource("Resource_inj7p")
 
-[node name="Town3D_Stralsund" parent="." unique_id=1592171317 instance=ExtResource("2_w5vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.25385, 23.626184, -304.69144)
+[node name="Town3D_Stralsund-Altstadt" parent="." unique_id=1592171317 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 860.83514, 23.30278, -312.45996)
 town = SubResource("Resource_w5vf4")
 
 [node name="Town3D_Saal" parent="." unique_id=410900492 instance=ExtResource("2_w5vf4")]
@@ -423,3 +437,11 @@ town = SubResource("Resource_mbimm")
 [node name="Town3D_Gresenhorst" parent="." unique_id=1489181103 instance=ExtResource("2_w5vf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1632.6139, 34.54145, 845.2503)
 town = SubResource("Resource_8wdqj")
+
+[node name="Town3D_Stralsund-Triebseer" parent="." unique_id=1706273807 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 721.96295, 24.328604, -259.62958)
+town = SubResource("Resource_uvh44")
+
+[node name="Town3D_Stralsund-Knieper" parent="." unique_id=616118024 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.4863, 24.81356, -469.0446)
+town = SubResource("Resource_hdrxp")

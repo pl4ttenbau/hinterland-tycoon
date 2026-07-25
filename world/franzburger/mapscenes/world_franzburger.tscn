@@ -5,6 +5,8 @@
 [ext_resource type="Material" uid="uid://cgk4glwmc4vk2" path="res://addons/terrain_3d/extras/shaders/M_ocean.tres" id="3_4dkm6"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="3_ldr64"]
 [ext_resource type="PackedScene" uid="uid://cunbmcqmoxv0j" path="res://world/franzburger/mapscenes/towns_franzburger.tscn" id="4_2qmku"]
+[ext_resource type="PackedScene" uid="uid://po7alkcqti68" path="res://assets/meshes/vehicles/road/gaz_aa_truck/static_gaz_aa_truck.tscn" id="4_vuf61"]
+[ext_resource type="PackedScene" uid="uid://b4nbqlopy8205" path="res://assets/meshes/structures/old_city_row_house_1/old_city_house_1.tscn" id="5_7dcng"]
 [ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="5_73pql"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="6_6nekr"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/spawners/deco_loader.gd" id="6_x8wwi"]
@@ -617,6 +619,20 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="Curve3D" id="Curve3D_i4w0u"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1.59, 0.01, -3.02, -1.59, -0.01, 3.02, -5.919922, -0.0700016, 8.22998, -0.25, -0.08, -3.65, 0.25, 0.08, 3.65, -7.579956, 0.27999878, 16.380005, -1.41, -0.08, -2.97, 1.41, 0.08, 2.97, -5.619995, 0.6399994, 25.199982, -1.1595874, -0.033384815, -1.6291848, 1.1595874, 0.033384815, 1.6291848, -0.4099121, 0.789999, 32.51999),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_awepc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, -0.000104904175, 0, -3.090454, 0.0002632141, -2.113617, 3.090454, -0.0002632141, 2.113617, 5.267761, -0.000104904175, 4.3025513, -3.4342651, -0.0747509, -0.64382935, 3.4342651, 0.0747509, 0.64382935, 13.307922, 0.33024406, 8.104584, -1.9987613, 0.06624722, 0.023763595, 1.9987613, -0.06624722, -0.023763595, 23.274963, -0.000104904175, 7.986084),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="WorldContainer" type="Node" unique_id=1670658413 node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_hp62h")
 map_key = "franzburger"
@@ -628,7 +644,28 @@ ocean_material = ExtResource("3_4dkm6")
 
 [node name="Houses" type="Node" parent="." unique_id=1777359037]
 script = ExtResource("3_ldr64")
-houses = Array[ExtResource("6_6nekr")]([Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.5983665, 0, 0.8012225, 0, 1, 0, -0.8012225, 0, 0.5983665, -1455.8435, 22.854277, -205.3884),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+houses = Array[ExtResource("6_6nekr")]([Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9336181, 0, 0.35827008, 0, 1, 0, -0.35827008, 0, -0.9336181, 753.84814, 23.323832, -355.44434),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.873271, 0, 0.4872348, 0, 1, 0, -0.4872348, 0, -0.873271, 757.4976, 23.323832, -363.1365),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.97056973, 0, 0.24082085, 0, 1, 0, -0.24082085, 0, -0.97056973, 751.2538, 23.323832, -347.38022),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.97595847, 0, 0.2179558, 0, 1, 0, -0.2179558, 0, 0.97595847, 856.4469, 22.466558, -355.96515),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.5058229, 0, 0.8626371, 0, 1, 0, -0.8626371, 0, -0.5058229, 880.5058, 22.466558, -331.459),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.5235696, 0, 0.85198283, 0, 1, 0, -0.85198283, 0, -0.5235696, 886.8965, 23.031528, -326.02505),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.85872734, 0, 0.5124325, 0, 1, 0, -0.5124325, 0, 0.85872734, 879.59576, 22.852755, -316.4521),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.86448544, 0, 0.50265795, 0, 1, 0, -0.50265795, 0, 0.86448544, 874.0855, 23.417725, -310.28857),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.8254781, 0, -0.56443393, 0, 1, 0, 0.56443393, 0, 0.8254781, 865.7826, 22.852755, -314.423),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.819022, 0, -0.57376224, 0, 1, 0, 0.57376224, 0, 0.819022, 858.0277, 23.417725, -316.87057),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.8946928, 0, 0.44668207, 0, 1, 0, -0.44668207, 0, -0.8946928, 852.70685, 23.410433, -291.6695),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9422272, 0, 0.3349747, 0, 1, 0, -0.3349747, 0, -0.9422272, 861.43634, 23.291937, -290.40967),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.5460286, 0, -0.8377663, 0, 1, 0, 0.8377663, 0, 0.5460286, 802.78827, 23.531742, -362.24237),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.5840087, 0, -0.8117473, 0, 1, 0, 0.8117473, 0, 0.5840087, 806.76245, 23.36733, -355.43863),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.5840087, 0, -0.8117473, 0, 1, 0, 0.8117473, 0, 0.5840087, 811.0805, 23.36733, -349.2709),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.8762394, 0, 0.48187602, 0, 1, 0, -0.48187602, 0, 0.8762394, 888.8039, 23.10802, -318.3154),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_corner_house","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.938143, 0, -0.34624803, 0, 1, 0, 0.34624803, 0, -0.938143, 781.3372, 22.852747, -332.5419),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9788282, 0, -0.20468402, 0, 1, 0, 0.20468402, 0, -0.9788282, 787.5304, 23.417717, -336.73926),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"old_city_house_1","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.86529154, 0, -0.50126916, 0, 1, 0, 0.50126916, 0, -0.86529154, 772.70154, 23.108013, -331.9116),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_corner_house","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.96628624, 0, 0.2574701, 0, 1, 0, -0.2574701, 0, 0.96628624, 865.4461, 23.10802, -354.35828),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_corner_house","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.18816994, 0, -0.9821365, 0, 1, 0, -0.9821365, 0, 0.18816994, 852.4495, 22.632307, -328.5962),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_corner_house","placed_town_num":2,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.5983665, 0, 0.8012225, 0, 1, 0, -0.8012225, 0, 0.5983665, -1455.8435, 22.854277, -205.3884),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.607958, 0, -0.79396915, 0, 1, 0, 0.79396915, 0, -0.607958, -1433.6382, 23.29986, -225.8481),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.48285455, 0, -0.8757006, 0, 1, 0, 0.8757006, 0, 0.48285455, -1433.5842, 22.949265, -199.71584),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.5583824, 0, -0.82958376, 0, 1, 0, 0.82958376, 0, -0.5583824, -1452.2157, 23.16332, -247.72568),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -683,6 +720,10 @@ houses = Array[ExtResource("6_6nekr")]([Object(Node3D,"unique_name_in_owner":fal
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9999913, 0, -0.004171325, 0, 1, 0, 0.004171325, 0, 0.9999913, 185.37733, 26.297531, -304.71988),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.8421702, 0, -0.53921175, 0, 1, 0, 0.53921175, 0, 0.8421702, 211.10765, 26.990915, -319.62534),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.69109696, 0, 0.72276205, 0, 1, 0, -0.72276205, 0, -0.69109696, 181.286, 24.253353, -367.89404),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9996495, 0, -0.02647355, 0, 1, 0, 0.02647355, 0, 0.9996495, 167.57082, 26.221401, -274.3282),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.4439628, 0, -0.89604515, 0, 1, 0, 0.89604515, 0, -0.4439628, 185.1089, 26.481293, -280.65964),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.4439628, 0, -0.89604515, 0, 1, 0, 0.89604515, 0, -0.4439628, 177.12233, 26.481293, -284.61673),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.0168242, 0, 0.99985844, 0, 1, 0, -0.99985844, 0, -0.0168242, 207.24622, 26.685873, -287.13754),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_barn","placed_town_num":27,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9348691, 0, -0.35499302, 0, 1, 0, 0.35499302, 0, 0.9348691, -218.06662, 24.49962, -4.8547535),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9348691, 0, -0.35499302, 0, 1, 0, 0.35499302, 0, 0.9348691, -214.87216, 25.008339, -13.267353),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9802263, 0, 0.19787976, 0, 1, 0, -0.19787976, 0, 0.9802263, -168.853, 23.84636, 31.30791),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"half_timbered_barn","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -691,6 +732,11 @@ houses = Array[ExtResource("6_6nekr")]([Object(Node3D,"unique_name_in_owner":fal
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9544645, 0, 0.29832456, 0, 1, 0, -0.29832456, 0, -0.9544645, -197.67247, 24.096916, 31.645094),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_4","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.998563, 0, 0.05359083, 0, 1, 0, -0.05359083, 0, 0.998563, -228.65306, 24.344538, 25.204529),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.34138045, 0, 0.9399252, 0, 1, 0, -0.9399252, 0, 0.34138045, -195.19585, 25.21187, -9.724497),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":28,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1.0000001, 0, 8.72612e-05, 0, 1, 0, -8.72612e-05, 0, 1.0000001, 680.68915, 24.555069, -3.1884623),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":33,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 654.7989, 24.567696, 31.724724),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_3","placed_town_num":33,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 635.55035, 24.460167, 32.270706),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":33,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.87609637, 0, -0.48213598, 0, 1, 0, 0.48213598, 0, 0.87609637, 641.16437, 24.839434, -33.23055),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"thatched_house_1","placed_town_num":33,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 635.426, 24.73966, -2.8812578),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":33,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.1711898, 0, -0.98523813, 0, 1, 0, 0.98523813, 0, 0.1711898, 885.93506, 25.491663, 94.42866),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":34,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9998799, 0, 0.015497903, 0, 1, 0, -0.015497903, 0, 0.9998799, 874.2501, 24.826544, 82.96428),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":34,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9345465, 0, 0.35584107, 0, 1, 0, -0.35584107, 0, 0.9345465, 918.06714, 25.615332, 86.03297),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":34,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -701,6 +747,16 @@ houses = Array[ExtResource("6_6nekr")]([Object(Node3D,"unique_name_in_owner":fal
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.89250726, 0, 0.45103335, 0, 1, 0, -0.45103335, 0, 0.89250726, -708.69257, 24.56421, -216.5485),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_3","placed_town_num":36,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.94248486, 0, 0.3342511, 0, 1, 0, -0.3342511, 0, 0.94248486, -795.0489, 23.48469, -291.8495),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":36,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.98389137, 0, 0.17876792, 0, 1, 0, -0.17876792, 0, 0.98389137, -776.12225, 23.667624, -282.57303),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":36,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 731.2795, 24.420109, -281.05597),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":38,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 735.46857, 24.420109, -273.1328),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":38,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 739.6475, 24.420109, -265.2288),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":38,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.14224887, 0, -0.98983103, 0, 1, 0, 0.98983103, 0, 0.14224887, 697.244, 23.54256, -361.12167),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.14224887, 0, -0.98983103, 0, 1, 0, 0.98983103, 0, 0.14224887, 706.1153, 23.54256, -362.39655),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.25125852, 0, -0.96792006, 0, 1, 0, 0.96792006, 0, 0.25125852, 714.48236, 23.54256, -364.0445),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 721.0728, 23.80803, -454.01135),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 722.15186, 23.80803, -445.11414),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 723.2283, 23.80803, -436.2384),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.37748522, 0, -0.9260156, 0, 1, 0, 0.9260156, 0, 0.37748522, 722.9475, 23.54256, -366.85043),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("6_6nekr"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":39,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 ])
 metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
 
@@ -708,9 +764,93 @@ metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
 
 [node name="2_Stralsund" type="Node" parent="Houses" unique_id=1531342170]
 
+[node name="CityHouse5" parent="Houses/2_Stralsund" unique_id=1531787072 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.9336181, 0, 0.35827008, 0, 1, 0, -0.35827008, 0, -0.9336181, 753.84814, 23.323832, -355.44434)
+placed_town_num = 2
+
+[node name="CityHouse7" parent="Houses/2_Stralsund" unique_id=2085701823 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.873271, 0, 0.4872348, 0, 1, 0, -0.4872348, 0, -0.873271, 757.4976, 23.323832, -363.1365)
+placed_town_num = 2
+
+[node name="CityHouse6" parent="Houses/2_Stralsund" unique_id=431740384 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.97056973, 0, 0.24082085, 0, 1, 0, -0.24082085, 0, -0.97056973, 751.2538, 23.323832, -347.38022)
+placed_town_num = 2
+
+[node name="CityHouse14" parent="Houses/2_Stralsund" unique_id=1351870418 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(0.97595847, 0, 0.2179558, 0, 1, 0, -0.2179558, 0, 0.97595847, 856.4469, 22.466558, -355.96515)
+placed_town_num = 2
+
+[node name="CityHouse15" parent="Houses/2_Stralsund" unique_id=1596277897 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(-0.5058229, 0, 0.8626371, 0, 1, 0, -0.8626371, 0, -0.5058229, 880.5058, 22.466558, -331.459)
+placed_town_num = 2
+
+[node name="OldCityHouse3" parent="Houses/2_Stralsund" unique_id=1203570989 instance=ExtResource("5_7dcng")]
+transform = Transform3D(-0.5235696, 0, 0.85198283, 0, 1, 0, -0.85198283, 0, -0.5235696, 886.8965, 23.031528, -326.02505)
+placed_town_num = 2
+
+[node name="CityHouse16" parent="Houses/2_Stralsund" unique_id=1130285462 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(0.85872734, 0, 0.5124325, 0, 1, 0, -0.5124325, 0, 0.85872734, 879.59576, 22.852755, -316.4521)
+placed_town_num = 2
+
+[node name="OldCityHouse5" parent="Houses/2_Stralsund" unique_id=583134391 instance=ExtResource("5_7dcng")]
+transform = Transform3D(0.86448544, 0, 0.50265795, 0, 1, 0, -0.50265795, 0, 0.86448544, 874.0855, 23.417725, -310.28857)
+placed_town_num = 2
+
+[node name="CityHouse19" parent="Houses/2_Stralsund" unique_id=1977937007 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(0.8254781, 0, -0.56443393, 0, 1, 0, 0.56443393, 0, 0.8254781, 865.7826, 22.852755, -314.423)
+placed_town_num = 2
+
+[node name="OldCityHouse9" parent="Houses/2_Stralsund" unique_id=611779837 instance=ExtResource("5_7dcng")]
+transform = Transform3D(0.819022, 0, -0.57376224, 0, 1, 0, 0.57376224, 0, 0.819022, 858.0277, 23.417725, -316.87057)
+placed_town_num = 2
+
+[node name="CityHouse17" parent="Houses/2_Stralsund" unique_id=1664778261 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(-0.8946928, 0, 0.44668207, 0, 1, 0, -0.44668207, 0, -0.8946928, 852.70685, 23.410433, -291.6695)
+placed_town_num = 2
+
+[node name="OldCityHouse6" parent="Houses/2_Stralsund" unique_id=148800347 instance=ExtResource("5_7dcng")]
+transform = Transform3D(-0.9422272, 0, 0.3349747, 0, 1, 0, -0.3349747, 0, -0.9422272, 861.43634, 23.291937, -290.40967)
+placed_town_num = 2
+
+[node name="CityHouse18" parent="Houses/2_Stralsund" unique_id=2137331331 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(0.5460286, 0, -0.8377663, 0, 1, 0, 0.8377663, 0, 0.5460286, 802.78827, 23.531742, -362.24237)
+placed_town_num = 2
+
+[node name="OldCityHouse7" parent="Houses/2_Stralsund" unique_id=649157544 instance=ExtResource("5_7dcng")]
+transform = Transform3D(0.5840087, 0, -0.8117473, 0, 1, 0, 0.8117473, 0, 0.5840087, 806.76245, 23.36733, -355.43863)
+placed_town_num = 2
+
+[node name="OldCityHouse8" parent="Houses/2_Stralsund" unique_id=210423041 instance=ExtResource("5_7dcng")]
+transform = Transform3D(0.5840087, 0, -0.8117473, 0, 1, 0, 0.8117473, 0, 0.5840087, 811.0805, 23.36733, -349.2709)
+placed_town_num = 2
+
+[node name="CityCornerHouse" parent="Houses/2_Stralsund" unique_id=409345752 instance=ExtResource("33_s3rfb")]
+transform = Transform3D(0.8762394, 0, 0.48187602, 0, 1, 0, -0.48187602, 0, 0.8762394, 888.8039, 23.10802, -318.3154)
+placed_town_num = 2
+
+[node name="CityHouse20" parent="Houses/2_Stralsund" unique_id=1632104002 instance=ExtResource("15_0h4wj")]
+transform = Transform3D(-0.938143, 0, -0.34624803, 0, 1, 0, 0.34624803, 0, -0.938143, 781.3372, 22.852747, -332.5419)
+placed_town_num = 2
+
+[node name="OldCityHouse10" parent="Houses/2_Stralsund" unique_id=1303312 instance=ExtResource("5_7dcng")]
+transform = Transform3D(-0.9788282, 0, -0.20468402, 0, 1, 0, 0.20468402, 0, -0.9788282, 787.5304, 23.417717, -336.73926)
+placed_town_num = 2
+
+[node name="CityCornerHouse4" parent="Houses/2_Stralsund" unique_id=1570801908 instance=ExtResource("33_s3rfb")]
+transform = Transform3D(-0.86529154, 0, -0.50126916, 0, 1, 0, 0.50126916, 0, -0.86529154, 772.70154, 23.108013, -331.9116)
+placed_town_num = 2
+
+[node name="CityCornerHouse2" parent="Houses/2_Stralsund" unique_id=1374875648 instance=ExtResource("33_s3rfb")]
+transform = Transform3D(0.96628624, 0, 0.2574701, 0, 1, 0, -0.2574701, 0, 0.96628624, 865.4461, 23.10802, -354.35828)
+placed_town_num = 2
+
+[node name="CityCornerHouse3" parent="Houses/2_Stralsund" unique_id=832910657 instance=ExtResource("33_s3rfb")]
+transform = Transform3D(-0.18816994, 0, -0.9821365, 0, 1, 0, -0.9821365, 0, 0.18816994, 852.4495, 22.632307, -328.5962)
+placed_town_num = 2
+
 [node name="3_Saal" type="Node" parent="Houses" unique_id=614103243]
 
-[node name="VillageHouse3" parent="Houses/3_Saal" unique_id=1939350128 instance=ExtResource("8_pf8m4")]
+[node name="VillageHouse3" parent="Houses/3_Saal" unique_id=1554163754 instance=ExtResource("8_pf8m4")]
 transform = Transform3D(0.5983665, 0, 0.8012225, 0, 1, 0, -0.8012225, 0, 0.5983665, -1455.8435, 22.854277, -205.3884)
 placed_town_num = 3
 
@@ -758,13 +898,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1537.9474, 23.43877, 96.0330
 [node name="VillageHouse4" parent="Houses/5_Damgarten" unique_id=652258110 instance=ExtResource("8_pf8m4")]
 transform = Transform3D(0.98983586, 0, -0.14221433, 0, 1, 0, 0.14221433, 0, 0.98983586, -1537.548, 23.044048, 140.75536)
 
-[node name="CityCornerHouse" parent="Houses/5_Damgarten" unique_id=1570801908 instance=ExtResource("33_s3rfb")]
+[node name="CityCornerHouse" parent="Houses/5_Damgarten" unique_id=668193339 instance=ExtResource("33_s3rfb")]
 transform = Transform3D(-0.038126357, 0, 0.9992729, 0, 1, 0, -0.9992729, 0, -0.038126357, -1555.1594, 23.078814, 124.53964)
 
 [node name="PolishHouse2" parent="Houses/5_Damgarten" unique_id=848130298 instance=ExtResource("34_egst4")]
 transform = Transform3D(-0.9830859, 0, 0.18314488, 0, 1, 0, -0.18314488, 0, -0.9830859, -1526.5505, 24.331806, 90.94834)
 
-[node name="CityHouse4" parent="Houses/5_Damgarten" unique_id=1351870418 instance=ExtResource("15_0h4wj")]
+[node name="CityHouse4" parent="Houses/5_Damgarten" unique_id=589596856 instance=ExtResource("15_0h4wj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1535.425, 23.348635, 55.133854)
 placed_town_num = 5
 
@@ -972,6 +1112,22 @@ placed_town_num = 27
 transform = Transform3D(-0.69109696, 0, 0.72276205, 0, 1, 0, -0.72276205, 0, -0.69109696, 181.286, 24.253353, -367.89404)
 placed_town_num = 27
 
+[node name="PolishHouse2" parent="Houses/27_Niepars" unique_id=2101184668 instance=ExtResource("39_s3rfb")]
+transform = Transform3D(0.9996495, 0, -0.02647355, 0, 1, 0, 0.02647355, 0, 0.9996495, 167.57082, 26.221401, -274.3282)
+placed_town_num = 27
+
+[node name="CityHouse1" parent="Houses/27_Niepars" unique_id=1752149398 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.4439628, 0, -0.89604515, 0, 1, 0, 0.89604515, 0, -0.4439628, 185.1089, 26.481293, -280.65964)
+placed_town_num = 27
+
+[node name="CityHouse2" parent="Houses/27_Niepars" unique_id=612238220 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.4439628, 0, -0.89604515, 0, 1, 0, 0.89604515, 0, -0.4439628, 177.12233, 26.481293, -284.61673)
+placed_town_num = 27
+
+[node name="HalfTimberedBarn" parent="Houses/27_Niepars" unique_id=1792575387 instance=ExtResource("31_0h4wj")]
+transform = Transform3D(-0.0168242, 0, 0.99985844, 0, 1, 0, -0.99985844, 0, -0.0168242, 207.24622, 26.685873, -287.13754)
+placed_town_num = 27
+
 [node name="28_Velgast" type="Node" parent="Houses" unique_id=286636449]
 
 [node name="CityHouse1" parent="Houses/28_Velgast" unique_id=151811317 instance=ExtResource("30_ieus2")]
@@ -1015,6 +1171,26 @@ placed_town_num = 28
 [node name="32_Abtshagen-Wittenhagen" type="Node" parent="Houses" unique_id=1254311119]
 
 [node name="33_Negast" type="Node" parent="Houses" unique_id=1835239391]
+
+[node name="VillageHouse3" parent="Houses/33_Negast" unique_id=1939350128 instance=ExtResource("8_pf8m4")]
+transform = Transform3D(1.0000001, 0, 8.72612e-05, 0, 1, 0, -8.72612e-05, 0, 1.0000001, 680.68915, 24.555069, -3.1884623)
+placed_town_num = 33
+
+[node name="CityHouse3" parent="Houses/33_Negast" unique_id=573061549 instance=ExtResource("8_jmxgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 654.7989, 24.567696, 31.724724)
+placed_town_num = 33
+
+[node name="VillageHouse2" parent="Houses/33_Negast" unique_id=850845502 instance=ExtResource("9_18yoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 635.55035, 24.460167, 32.270706)
+placed_town_num = 33
+
+[node name="ThatchedHouse1" parent="Houses/33_Negast" unique_id=281592174 instance=ExtResource("32_ldvym")]
+transform = Transform3D(0.87609637, 0, -0.48213598, 0, 1, 0, 0.48213598, 0, 0.87609637, 641.16437, 24.839434, -33.23055)
+placed_town_num = 33
+
+[node name="PolishHouse3" parent="Houses/33_Negast" unique_id=107492322 instance=ExtResource("15_ta3th")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 635.426, 24.73966, -2.8812578)
+placed_town_num = 33
 
 [node name="34_Zarrendorf" type="Node" parent="Houses" unique_id=1498905737]
 
@@ -1061,6 +1237,52 @@ placed_town_num = 36
 [node name="PolishHouse1" parent="Houses/36_Spoldershagen-Martensdorf" unique_id=1551349175 instance=ExtResource("39_s3rfb")]
 transform = Transform3D(0.98389137, 0, 0.17876792, 0, 1, 0, -0.17876792, 0, 0.98389137, -776.12225, 23.667624, -282.57303)
 placed_town_num = 36
+
+[node name="37_Gresenhorst" type="Node" parent="Houses" unique_id=2089760245]
+
+[node name="38_Stralsund-Tribseer" type="Node" parent="Houses" unique_id=1192353598]
+
+[node name="CityHouse8" parent="Houses/38_Stralsund-Tribseer" unique_id=1313090550 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 731.2795, 24.420109, -281.05597)
+placed_town_num = 38
+
+[node name="CityHouse9" parent="Houses/38_Stralsund-Tribseer" unique_id=227637586 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 735.46857, 24.420109, -273.1328)
+placed_town_num = 38
+
+[node name="CityHouse10" parent="Houses/38_Stralsund-Tribseer" unique_id=1785967830 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.88404334, 0, -0.46740526, 0, 1, 0, 0.46740526, 0, -0.88404334, 739.6475, 24.420109, -265.2288)
+placed_town_num = 38
+
+[node name="39_Stralsund-Knieper" type="Node" parent="Houses" unique_id=420195608]
+
+[node name="CityHouse1" parent="Houses/39_Stralsund-Knieper" unique_id=841384700 instance=ExtResource("30_ieus2")]
+transform = Transform3D(0.14224887, 0, -0.98983103, 0, 1, 0, 0.98983103, 0, 0.14224887, 697.244, 23.54256, -361.12167)
+placed_town_num = 39
+
+[node name="CityHouse2" parent="Houses/39_Stralsund-Knieper" unique_id=844303402 instance=ExtResource("30_ieus2")]
+transform = Transform3D(0.14224887, 0, -0.98983103, 0, 1, 0, 0.98983103, 0, 0.14224887, 706.1153, 23.54256, -362.39655)
+placed_town_num = 39
+
+[node name="CityHouse3" parent="Houses/39_Stralsund-Knieper" unique_id=802125339 instance=ExtResource("30_ieus2")]
+transform = Transform3D(0.25125852, 0, -0.96792006, 0, 1, 0, 0.96792006, 0, 0.25125852, 714.48236, 23.54256, -364.0445)
+placed_town_num = 39
+
+[node name="CityHouse11" parent="Houses/39_Stralsund-Knieper" unique_id=1448550930 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 721.0728, 23.80803, -454.01135)
+placed_town_num = 39
+
+[node name="CityHouse12" parent="Houses/39_Stralsund-Knieper" unique_id=2063287271 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 722.15186, 23.80803, -445.11414)
+placed_town_num = 39
+
+[node name="CityHouse13" parent="Houses/39_Stralsund-Knieper" unique_id=799002665 instance=ExtResource("30_ieus2")]
+transform = Transform3D(-0.99272597, 0, -0.120396644, 0, 1, 0, 0.120396644, 0, -0.99272597, 723.2283, 23.80803, -436.2384)
+placed_town_num = 39
+
+[node name="CityHouse4" parent="Houses/39_Stralsund-Knieper" unique_id=527957446 instance=ExtResource("30_ieus2")]
+transform = Transform3D(0.37748522, 0, -0.9260156, 0, 1, 0, 0.9260156, 0, 0.37748522, 722.9475, 23.54256, -366.85043)
+placed_town_num = 39
 
 [node name="Towns" parent="." unique_id=1994240704 instance=ExtResource("4_2qmku")]
 
@@ -1167,6 +1389,78 @@ type_key = "FARM"
 ind_name = "Jarkwitz Manor"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
+[node name="Barth_VEB_Landmaschinenbau" type="Marker3D" parent="Industries" unique_id=184924518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -495.16104, 23.339834, -621.997)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 12
+type_key = "WORKSHOP"
+ind_name = "VEB Landmaschinen"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Barth_Konsum" type="Marker3D" parent="Industries" unique_id=901961061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -539.44885, 23.609894, -574.52246)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 13
+type_key = "SMALL_STORE"
+ind_name = "Barth Konsum"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Franzburg_SawMill" type="Marker3D" parent="Industries" unique_id=1014997867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.33593, 28.286125, 656.78656)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 14
+type_key = "SAWMILL"
+ind_name = "VEB Säge Franzburg"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Niepars_FertilizerFactory" type="Marker3D" parent="Industries" unique_id=1782140747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 220.55014, 27.39499, -226.74243)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 15
+type_key = "FERTILIZER_FACTORY"
+ind_name = "Niepars Agro-Factory"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Negast_Barracks" type="Marker3D" parent="Industries" unique_id=1122193820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 754.54474, 24.635834, 42.11288)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 16
+type_key = "BARRACKS"
+ind_name = "NVA Negast"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Stralsund_Volkswerft" type="Marker3D" parent="Industries" unique_id=1321421835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 869.7224, 23.19992, -386.28052)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 17
+type_key = "SMITHY"
+ind_name = "Volkswerft"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Stralsund_Brewery" type="Marker3D" parent="Industries" unique_id=1735480099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 913.9673, 23.266506, -277.5238)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 18
+type_key = "BREWERY"
+ind_name = "Stralsunder Brewery"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
+[node name="Stralsund_Mall" type="Marker3D" parent="Industries" unique_id=334872424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 851.5313, 24.11245, -261.76675)
+gizmo_extents = 10.0
+script = ExtResource("6_xms7c")
+num = 19
+type_key = "BIG_STORE"
+ind_name = "Stralsund Kaufhaus"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
 [node name="Deco" type="Node" parent="." unique_id=1156687577]
 script = ExtResource("6_x8wwi")
 metadata/_custom_type_script = "uid://bg2vjcvo5b3ar"
@@ -1207,6 +1501,19 @@ transform = Transform3D(0.7179684, 0, 0.69607574, 0, 1, 0, -0.69607574, 0, 0.717
 
 [node name="TrussBridgeWide8" parent="Deco/2_Stralsund/Ruegendamm/RuegendammW" unique_id=1214159422 instance=ExtResource("42_py302")]
 transform = Transform3D(0.7179684, 0, 0.69607574, 0, 1, 0, -0.69607574, 0, 0.7179684, 934.74194, 23.650532, -334.27487)
+
+[node name="Altstadt" type="Node" parent="Deco/2_Stralsund" unique_id=1744041314]
+
+[node name="Statue1" parent="Deco/2_Stralsund/Altstadt" unique_id=744715670 instance=ExtResource("38_ldvym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 773.58044, 23.37674, -353.6741)
+
+[node name="Harbour" type="Node" parent="Deco/2_Stralsund" unique_id=1487378388]
+
+[node name="StaticGazAaTruck" parent="Deco/2_Stralsund/Harbour" unique_id=828094291 instance=ExtResource("4_vuf61")]
+transform = Transform3D(0.73352903, 0.0014737456, 0.67965657, -0.00070682925, 0.99999875, -0.0014055136, -0.6796578, 0.0005505909, 0.73352915, 880.5132, 23.201057, -370.52905)
+
+[node name="StaticGazAaTruck2" parent="Deco/2_Stralsund/Harbour" unique_id=514915073 instance=ExtResource("4_vuf61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 886.65063, 23.160217, -362.5376)
 
 [node name="3_Saal" type="Node" parent="Deco" unique_id=1023920349]
 
@@ -1268,6 +1575,11 @@ transform = Transform3D(0.2739256, 0, 0.9617509, 0, 1, 0, -0.9617509, 0, 0.27392
 [node name="Church1" parent="Deco/27_Niepars" unique_id=1265937472 instance=ExtResource("13_73pql")]
 transform = Transform3D(-0.9528576, 0, -0.3034178, 0, 1, 0, 0.3034178, 0, -0.9528576, 185.31781, 25.68731, -336.7228)
 
+[node name="33_Negast" type="Node" parent="Deco" unique_id=1432618462]
+
+[node name="Church1" parent="Deco/33_Negast" unique_id=1235236803 instance=ExtResource("13_73pql")]
+transform = Transform3D(0.8342902, 0, -0.55132556, 0, 1, 0, 0.55132556, 0, 0.8342902, 656.16187, 24.51658, 0.8786807)
+
 [node name="34_Zarrendorf" type="Node" parent="Deco" unique_id=1281260794]
 
 [node name="ZarrendorfRailBridge" parent="Deco/34_Zarrendorf" unique_id=649174317 instance=ExtResource("42_py302")]
@@ -1275,6 +1587,12 @@ transform = Transform3D(1.1143978, 0, -0.22648133, 0, 1, 0, 0.25912347, 0, 0.974
 
 [node name="ZarrendorfRailBridge2" parent="Deco/34_Zarrendorf" unique_id=224484215 instance=ExtResource("42_py302")]
 transform = Transform3D(1.1143978, 0, -0.22648133, 0, 1, 0, 0.25912347, 0, 0.97401553, 974.9115, 29.836075, 26.15827)
+
+[node name="37_Gresenhorst" type="Node" parent="Deco" unique_id=1102547169]
+
+[node name="38_Stralsund-Tribseer" type="Node" parent="Deco" unique_id=154605725]
+
+[node name="39_Stralsund-Knieper" type="Node" parent="Deco" unique_id=1771297677]
 
 [node name="InEditor" type="Node3D" parent="." unique_id=1700965927]
 script = ExtResource("7_ly1a3")
@@ -1292,7 +1610,7 @@ metadata/_custom_type_script = "uid://b157dhgx7ojrw"
 script = ExtResource("10_hchtc")
 metadata/_custom_type_script = "uid://dvf4vwgtk252x"
 
-[node name="RailTrack_1" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1405624030]
+[node name="RailTrack_1" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=397952110]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 838.2, 23.81, -285.1)
 curve = SubResource("Curve3D_py302")
 script = ExtResource("12_ly1a3")
@@ -1302,7 +1620,7 @@ abs_aabb = AABB(808.08, 23.81, -285.1, 30.119995, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_2" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2129866694]
+[node name="RailTrack_2" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=814786191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 838.2, 23.81, -285.1)
 curve = SubResource("Curve3D_7dcng")
 script = ExtResource("12_ly1a3")
@@ -1312,7 +1630,7 @@ abs_aabb = AABB(808.08, 23.81, -285.1, 30.119995, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_3" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1187968037]
+[node name="RailTrack_3" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=984764072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 808.08, 23.7, -332.94)
 curve = SubResource("Curve3D_vuf61")
 script = ExtResource("12_ly1a3")
@@ -1322,7 +1640,7 @@ abs_aabb = AABB(610.3, 23.7, -332.94, 197.78003, 0.6099987, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_4" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=715873852]
+[node name="RailTrack_4" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=408950459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 610.3, 24.29, -384.44)
 curve = SubResource("Curve3D_8s0no")
 script = ExtResource("12_ly1a3")
@@ -1332,7 +1650,7 @@ abs_aabb = AABB(440.4, 24.29, -384.44, 169.9, 0.40999985, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_5" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=61105966]
+[node name="RailTrack_5" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=76875563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 440.4, 24, -477.83)
 curve = SubResource("Curve3D_0cbdl")
 script = ExtResource("12_ly1a3")
@@ -1342,7 +1660,7 @@ abs_aabb = AABB(344.8, 24, -477.83, 95.600006, 0.1800003, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_6" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1977042018]
+[node name="RailTrack_6" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1246508957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 344.8, 23.3, -582.68)
 curve = SubResource("Curve3D_pdt47")
 script = ExtResource("12_ly1a3")
@@ -1352,7 +1670,7 @@ abs_aabb = AABB(266.21, 23.3, -582.68, 78.59, 0.12000084, 4.659973)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_7" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1565120168]
+[node name="RailTrack_7" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=328971283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 344.8, 23.3, -582.68)
 curve = SubResource("Curve3D_0r5pq")
 script = ExtResource("12_ly1a3")
@@ -1362,7 +1680,7 @@ abs_aabb = AABB(266.21, 23.3, -582.68, 78.59, 0.35000038, 7.049988)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_8" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=593379458]
+[node name="RailTrack_8" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1158427538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.21, 23.28, -578.02)
 curve = SubResource("Curve3D_kwchi")
 script = ExtResource("12_ly1a3")
@@ -1372,7 +1690,7 @@ abs_aabb = AABB(233.75, 23.28, -578.02, 32.45999, 0.17000008, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_9" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2066104240]
+[node name="RailTrack_9" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1247161071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.75, 23.45, -580.1)
 curve = SubResource("Curve3D_3fhe3")
 script = ExtResource("12_ly1a3")
@@ -1382,7 +1700,7 @@ abs_aabb = AABB(190.13, 23.45, -713.11, 43.619995, 0.6399994, 133.01001)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_10" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1849904599]
+[node name="RailTrack_10" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1095608265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.75, 23.45, -580.1)
 curve = SubResource("Curve3D_a8or2")
 script = ExtResource("12_ly1a3")
@@ -1392,7 +1710,7 @@ abs_aabb = AABB(101.05, 23.45, -580.1, 132.7, 0.54999924, 96.94998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_11" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1985567357]
+[node name="RailTrack_11" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1830532483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.43, 24, -713.11)
 curve = SubResource("Curve3D_8u5ck")
 script = ExtResource("12_ly1a3")
@@ -1402,7 +1720,7 @@ abs_aabb = AABB(204.43, 23.75, -798.95, 134.89001, 0.25, 85.84003)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_12" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1859538483]
+[node name="RailTrack_12" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=216684602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 339.32, 24.16, -798.95)
 curve = SubResource("Curve3D_iur6n")
 script = ExtResource("12_ly1a3")
@@ -1412,7 +1730,7 @@ abs_aabb = AABB(339.32, 23.54, -871.41, 143.91998, 0.61999893, 72.45996)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_13" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=611900661]
+[node name="RailTrack_13" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2035280752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483.24, 23.54, -895.29)
 curve = SubResource("Curve3D_rd4nn")
 script = ExtResource("12_ly1a3")
@@ -1422,7 +1740,7 @@ abs_aabb = AABB(483.24, 23.45, -919.73, 11.52002, 0.09000015, 24.440002)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_14" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=715808059]
+[node name="RailTrack_14" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=761557856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 494.76, 23.76, -919.73)
 curve = SubResource("Curve3D_pe6wt")
 script = ExtResource("12_ly1a3")
@@ -1432,7 +1750,7 @@ abs_aabb = AABB(494.74, 23.57, -941.49, 2.230011, 0.19000053, 21.76001)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_15" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1964864609]
+[node name="RailTrack_15" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2047252703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 494.76, 23.76, -919.73)
 curve = SubResource("Curve3D_dmvyx")
 script = ExtResource("12_ly1a3")
@@ -1442,7 +1760,7 @@ abs_aabb = AABB(487.82, 23.76, -919.73, 6.9400024, 0.049999237, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_16" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=145577688]
+[node name="RailTrack_16" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=595394518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 483.24, 23.54, -895.29)
 curve = SubResource("Curve3D_xndjc")
 script = ExtResource("12_ly1a3")
@@ -1452,7 +1770,7 @@ abs_aabb = AABB(476.83, 23.54, -932.85, 10.300018, 0.55999947, 37.559998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_17" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=780799038]
+[node name="RailTrack_17" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1341411238]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1382.57, 24.24, 116.66)
 curve = SubResource("Curve3D_1n2u2")
 script = ExtResource("12_ly1a3")
@@ -1462,7 +1780,7 @@ abs_aabb = AABB(-1450.61, 24.24, 116.66, 68.04004, 0.3199997, 20.800003)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_18" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2146553764]
+[node name="RailTrack_18" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=550863109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1382.57, 24.24, 116.66)
 curve = SubResource("Curve3D_lqwhp")
 script = ExtResource("12_ly1a3")
@@ -1472,7 +1790,7 @@ abs_aabb = AABB(-1450.61, 24.24, 116.66, 68.04004, 0.25, 20.800003)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_19" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1085449394]
+[node name="RailTrack_19" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1797021008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1382.57, 24.24, 116.66)
 curve = SubResource("Curve3D_r3dv8")
 script = ExtResource("12_ly1a3")
@@ -1482,7 +1800,7 @@ abs_aabb = AABB(-1382.57, 24.11, 116.08, 23.299927, 0.12999916, 0.58000183)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_20" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1453817379]
+[node name="RailTrack_20" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=636331334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1450.61, 24.29, 137.46)
 curve = SubResource("Curve3D_kqk70")
 script = ExtResource("12_ly1a3")
@@ -1492,7 +1810,7 @@ abs_aabb = AABB(-1575.49, 23.72, 125.61, 124.880005, 0.94000053, 62.14)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_21" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=353325675]
+[node name="RailTrack_21" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=909119066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1567.97, 23.9, 125.61)
 curve = SubResource("Curve3D_03nvo")
 script = ExtResource("12_ly1a3")
@@ -1502,7 +1820,7 @@ abs_aabb = AABB(-1567.97, 23.54, -68.97, 60.03003, 0.3599987, 194.58)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_22" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1209282363]
+[node name="RailTrack_22" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1395100568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1507.94, 23.54, -68.97)
 curve = SubResource("Curve3D_5b1ni")
 script = ExtResource("12_ly1a3")
@@ -1512,7 +1830,7 @@ abs_aabb = AABB(-1507.94, 23.33, -191.74, 114.29993, 0.21000099, 122.770004)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_23" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1848436518]
+[node name="RailTrack_23" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=176557554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1393.64, 23.35, -191.74)
 curve = SubResource("Curve3D_n8te6")
 script = ExtResource("12_ly1a3")
@@ -1522,7 +1840,7 @@ abs_aabb = AABB(-1393.64, 23.35, -236.47, 37.829956, 0, 44.729996)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_24" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=363454277]
+[node name="RailTrack_24" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=594600993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1393.64, 23.35, -191.74)
 curve = SubResource("Curve3D_jnpg7")
 script = ExtResource("12_ly1a3")
@@ -1532,7 +1850,7 @@ abs_aabb = AABB(-1393.64, 23.35, -236.47, 37.829956, 0, 44.729996)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_25" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2083893533]
+[node name="RailTrack_25" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1499933962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1355.81, 24, -236.47)
 curve = SubResource("Curve3D_denxn")
 script = ExtResource("12_ly1a3")
@@ -1542,7 +1860,7 @@ abs_aabb = AABB(-1355.81, 24, -250.47, 232.2201, 0, 14)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_26" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=15015697]
+[node name="RailTrack_26" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=269471374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1123.59, 25.02, -217.38)
 curve = SubResource("Curve3D_h3x0v")
 script = ExtResource("12_ly1a3")
@@ -1552,7 +1870,7 @@ abs_aabb = AABB(-1123.59, 25.02, -217.38, 220.58997, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_27" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=978032844]
+[node name="RailTrack_27" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2113516775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -903, 25.02, -210.55)
 curve = SubResource("Curve3D_vjwbj")
 script = ExtResource("12_ly1a3")
@@ -1562,7 +1880,7 @@ abs_aabb = AABB(-903, 23.9, -285.36, 169.45001, 1.1200008, 74.80998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_28" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1041398233]
+[node name="RailTrack_28" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=240777774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -733.55, 23.9, -285.36)
 curve = SubResource("Curve3D_kotri")
 script = ExtResource("12_ly1a3")
@@ -1572,7 +1890,7 @@ abs_aabb = AABB(-733.55, 23.63, -316.6, 30.309998, 0.27000046, 31.24002)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_29" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=670741345]
+[node name="RailTrack_29" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=174275244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -733.55, 23.9, -285.36)
 curve = SubResource("Curve3D_p0s3h")
 script = ExtResource("12_ly1a3")
@@ -1582,7 +1900,7 @@ abs_aabb = AABB(-733.55, 23.63, -317.11, 30.309998, 0.27000046, 31.75)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_30" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=929531905]
+[node name="RailTrack_30" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=113302323]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -703.24, 23.63, -331.9)
 curve = SubResource("Curve3D_kknp6")
 script = ExtResource("12_ly1a3")
@@ -1592,7 +1910,7 @@ abs_aabb = AABB(-703.24, 23.28, -398.85, 144.16998, 0.34999847, 66.95001)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_31" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1470385121]
+[node name="RailTrack_31" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=335502777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -559.07, 24.1, -398.85)
 curve = SubResource("Curve3D_h1xrh")
 script = ExtResource("12_ly1a3")
@@ -1602,7 +1920,7 @@ abs_aabb = AABB(-559.07, 24.1, -484.83, 34.350037, 2.5699997, 85.97998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_32" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=928104409]
+[node name="RailTrack_32" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2009007632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -537.11, 25.73, -484.83)
 curve = SubResource("Curve3D_8jmq7")
 script = ExtResource("12_ly1a3")
@@ -1612,7 +1930,7 @@ abs_aabb = AABB(-541.16, 25.73, -484.83, 4.049988, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_33" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=638650020]
+[node name="RailTrack_33" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1635155334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -537.11, 25.73, -484.83)
 curve = SubResource("Curve3D_nhb1r")
 script = ExtResource("12_ly1a3")
@@ -1622,7 +1940,7 @@ abs_aabb = AABB(-537.11, 25.35, -484.83, 0.20996094, 0.37999916, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_34" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1098963232]
+[node name="RailTrack_34" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=948207327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -541.16, 25.29, -496.18)
 curve = SubResource("Curve3D_hxqki")
 script = ExtResource("12_ly1a3")
@@ -1632,7 +1950,7 @@ abs_aabb = AABB(-554.04, 25.29, -496.18, 12.880005, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_35" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1558312220]
+[node name="RailTrack_35" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1420856086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -536.9, 25.35, -497.38)
 curve = SubResource("Curve3D_2vgju")
 script = ExtResource("12_ly1a3")
@@ -1642,7 +1960,7 @@ abs_aabb = AABB(-549.15, 25.35, -497.38, 12.25, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_36" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2037076990]
+[node name="RailTrack_36" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1890878656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -536.9, 25.35, -497.38)
 curve = SubResource("Curve3D_w0grg")
 script = ExtResource("12_ly1a3")
@@ -1652,7 +1970,7 @@ abs_aabb = AABB(-536.9, 25.35, -497.38, 7.950012, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_37" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1637771163]
+[node name="RailTrack_37" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1766945515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -541.16, 25.29, -496.18)
 curve = SubResource("Curve3D_vxh5g")
 script = ExtResource("12_ly1a3")
@@ -1662,7 +1980,7 @@ abs_aabb = AABB(-541.16, 25.29, -496.18, 12.209961, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_38" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=279778681]
+[node name="RailTrack_38" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1825629454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -528.95, 26.39, -479.97)
 curve = SubResource("Curve3D_veslk")
 script = ExtResource("12_ly1a3")
@@ -1672,7 +1990,7 @@ abs_aabb = AABB(-528.95, 26.39, -479.97, 40.29001, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_39" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1723710053]
+[node name="RailTrack_39" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1177101206]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -488.66, 27.17, -474.28)
 curve = SubResource("Curve3D_b1jdg")
 script = ExtResource("12_ly1a3")
@@ -1682,7 +2000,7 @@ abs_aabb = AABB(-488.66, 23.28, -520.73, 224.6, 3.8899994, 46.44998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_40" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1581380436]
+[node name="RailTrack_40" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1889695760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -264.06, 23.28, -476.59)
 curve = SubResource("Curve3D_jofea")
 script = ExtResource("12_ly1a3")
@@ -1692,7 +2010,7 @@ abs_aabb = AABB(-264.06, 23.28, -485.57, 157.95, 0, 8.980011)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_41" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=721696021]
+[node name="RailTrack_41" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1354190364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.11, 23.63, -458.26)
 curve = SubResource("Curve3D_xcuhy")
 script = ExtResource("12_ly1a3")
@@ -1702,7 +2020,7 @@ abs_aabb = AABB(-106.11, 23.63, -461.12, 53.34, 0, 2.8599854)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_42" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=650140085]
+[node name="RailTrack_42" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1852504058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.11, 23.63, -458.26)
 curve = SubResource("Curve3D_gfjqh")
 script = ExtResource("12_ly1a3")
@@ -1712,7 +2030,7 @@ abs_aabb = AABB(-106.11, 23.63, -458.26, 53.34, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_43" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=895419884]
+[node name="RailTrack_43" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=855552089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.77, 23.63, -454.38)
 curve = SubResource("Curve3D_oyllt")
 script = ExtResource("12_ly1a3")
@@ -1722,7 +2040,7 @@ abs_aabb = AABB(-52.77, 23.54, -489.3, 153.82, 0.089998245, 34.919983)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_44" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=954893100]
+[node name="RailTrack_44" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=415743130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828.73, 24.35, -228.85)
 curve = SubResource("Curve3D_j00ee")
 script = ExtResource("12_ly1a3")
@@ -1732,7 +2050,7 @@ abs_aabb = AABB(781.24, 24.35, -228.85, 47.48999, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_45" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1839154447]
+[node name="RailTrack_45" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=585125529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 825.08, 24.34, -227.28)
 curve = SubResource("Curve3D_gifl3")
 script = ExtResource("12_ly1a3")
@@ -1742,7 +2060,7 @@ abs_aabb = AABB(779.23, 24.34, -227.28, 45.850037, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_46" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=499867003]
+[node name="RailTrack_46" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1239467217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 828.73, 24.35, -228.85)
 curve = SubResource("Curve3D_20t0n")
 script = ExtResource("12_ly1a3")
@@ -1752,7 +2070,7 @@ abs_aabb = AABB(781.24, 24.35, -228.85, 47.48999, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_47" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1488602954]
+[node name="RailTrack_47" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=98651696]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 781.24, 24.01, -308.01)
 curve = SubResource("Curve3D_4vioj")
 script = ExtResource("12_ly1a3")
@@ -1762,7 +2080,7 @@ abs_aabb = AABB(762.66, 24.01, -308.01, 18.580017, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_48" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1779611467]
+[node name="RailTrack_48" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1103015077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 779.23, 24.01, -302.88)
 curve = SubResource("Curve3D_xp471")
 script = ExtResource("12_ly1a3")
@@ -1772,7 +2090,7 @@ abs_aabb = AABB(761.4, 24.01, -302.88, 17.829956, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_49" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=542093365]
+[node name="RailTrack_49" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1119021230]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 781.24, 24.01, -308.01)
 curve = SubResource("Curve3D_d8dk7")
 script = ExtResource("12_ly1a3")
@@ -1782,7 +2100,7 @@ abs_aabb = AABB(761.4, 24.01, -308.01, 19.839966, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_50" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1995826023]
+[node name="RailTrack_50" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2017360981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 779.23, 24.01, -302.88)
 curve = SubResource("Curve3D_qmxr3")
 script = ExtResource("12_ly1a3")
@@ -1792,7 +2110,7 @@ abs_aabb = AABB(762.66, 24.01, -302.88, 16.570007, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_51" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=843651850]
+[node name="RailTrack_51" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=167210581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 762.66, 23.75, -321.39)
 curve = SubResource("Curve3D_6sef7")
 script = ExtResource("12_ly1a3")
@@ -1802,7 +2120,7 @@ abs_aabb = AABB(590.27, 23.75, -321.39, 172.38995, 2.5200005, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_52" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=621783242]
+[node name="RailTrack_52" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=242313898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 761.4, 23.81, -318.1)
 curve = SubResource("Curve3D_n1rua")
 script = ExtResource("12_ly1a3")
@@ -1812,7 +2130,7 @@ abs_aabb = AABB(590.76, 23.81, -318.1, 170.64001, 2.5200005, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_53" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=386883344]
+[node name="RailTrack_53" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=236739025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 590.27, 26.27, -306.01)
 curve = SubResource("Curve3D_3b6dd")
 script = ExtResource("12_ly1a3")
@@ -1822,7 +2140,7 @@ abs_aabb = AABB(404.54, 26.27, -306.01, 185.73001, 0.789999, 26.390015)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_54" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1228131939]
+[node name="RailTrack_54" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1809990271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 590.76, 26.33, -301.9)
 curve = SubResource("Curve3D_80jqe")
 script = ExtResource("12_ly1a3")
@@ -1832,7 +2150,7 @@ abs_aabb = AABB(405.37, 26.33, -301.9, 185.39001, 0.62999916, 26.279999)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_55" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=678496913]
+[node name="RailTrack_55" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1620881855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.54, 26.32, -279.62)
 curve = SubResource("Curve3D_e041q")
 script = ExtResource("12_ly1a3")
@@ -1842,7 +2160,7 @@ abs_aabb = AABB(275.96, 26.32, -279.62, 128.58002, 0.5, 20.199982)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_56" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1192770817]
+[node name="RailTrack_56" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=580160292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 405.37, 26.32, -275.62)
 curve = SubResource("Curve3D_o8lpa")
 script = ExtResource("12_ly1a3")
@@ -1852,7 +2170,7 @@ abs_aabb = AABB(276.04, 26.32, -275.62, 129.32999, 0.47999954, 20.369995)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_57" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1102555768]
+[node name="RailTrack_57" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1897167813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.96, 26.82, -258.97)
 curve = SubResource("Curve3D_3yxsf")
 script = ExtResource("12_ly1a3")
@@ -1862,7 +2180,7 @@ abs_aabb = AABB(258.04, 26.82, -258.97, 17.919983, 0.55000114, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_58" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1655835814]
+[node name="RailTrack_58" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1122203754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 276.04, 26.8, -255)
 curve = SubResource("Curve3D_jfr5d")
 script = ExtResource("12_ly1a3")
@@ -1872,7 +2190,7 @@ abs_aabb = AABB(257.7, 26.8, -255, 18.339996, 0.55000114, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_59" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1517337533]
+[node name="RailTrack_59" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2073515193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.7, 27.35, -254.24)
 curve = SubResource("Curve3D_kg517")
 script = ExtResource("12_ly1a3")
@@ -1882,7 +2200,7 @@ abs_aabb = AABB(257.7, 26.82, -254.24, 18.25998, 0.5300007, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_60" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1710250187]
+[node name="RailTrack_60" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1307023404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.04, 27.37, -258.21)
 curve = SubResource("Curve3D_4tel5")
 script = ExtResource("12_ly1a3")
@@ -1892,7 +2210,7 @@ abs_aabb = AABB(258.04, 26.8, -258.21, 18, 0.5700016, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_61" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1127060072]
+[node name="RailTrack_61" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=59822180]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.04, 27.37, -258.21)
 curve = SubResource("Curve3D_kiqbg")
 script = ExtResource("12_ly1a3")
@@ -1902,7 +2220,7 @@ abs_aabb = AABB(197.66, 27.37, -258.21, 60.380005, 0.19999886, 6.399994)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_62" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1549478479]
+[node name="RailTrack_62" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=803886278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 257.7, 27.35, -254.24)
 curve = SubResource("Curve3D_m22eh")
 script = ExtResource("12_ly1a3")
@@ -1912,7 +2230,7 @@ abs_aabb = AABB(197.66, 27.35, -254.24, 60.04001, 0.19000053, 2.430008)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_63" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1466285950]
+[node name="RailTrack_63" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1049404932]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 197.66, 26.61, -251.81)
 curve = SubResource("Curve3D_rgj6y")
 script = ExtResource("12_ly1a3")
@@ -1922,7 +2240,7 @@ abs_aabb = AABB(-45.04, 26.61, -251.81, 242.70001, 0, 70.94)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_64" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1881573856]
+[node name="RailTrack_64" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=105666753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.04, 24.7, -180.87)
 curve = SubResource("Curve3D_hckat")
 script = ExtResource("12_ly1a3")
@@ -1932,7 +2250,7 @@ abs_aabb = AABB(-233.71, 24.7, -180.87, 188.67001, 0.13999939, 96.24999)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_65" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1168696872]
+[node name="RailTrack_65" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=726419358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -233.71, 24.84, -71.69)
 curve = SubResource("Curve3D_nibb0")
 script = ExtResource("12_ly1a3")
@@ -1942,7 +2260,7 @@ abs_aabb = AABB(-288.14, 24.84, -71.69, 54.430008, 0.25, 12.880001)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_66" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1894953742]
+[node name="RailTrack_66" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1214620889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -233.71, 24.84, -71.69)
 curve = SubResource("Curve3D_ixrcm")
 script = ExtResource("12_ly1a3")
@@ -1952,7 +2270,7 @@ abs_aabb = AABB(-293.92, 24.84, -71.69, 60.210007, 0.27000046, 18.900002)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_67" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1132774475]
+[node name="RailTrack_67" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1638136966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -288.14, 24.98, -58.81)
 curve = SubResource("Curve3D_0vxoj")
 script = ExtResource("12_ly1a3")
@@ -1962,7 +2280,7 @@ abs_aabb = AABB(-313.73, 24.98, -58.81, 25.589996, 0.26000023, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_68" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1068260111]
+[node name="RailTrack_68" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=684189060]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -293.92, 25.02, -52.79)
 curve = SubResource("Curve3D_h2nur")
 script = ExtResource("12_ly1a3")
@@ -1972,7 +2290,7 @@ abs_aabb = AABB(-313.73, 25.02, -52.79, 19.809998, 0.21999931, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_69" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1865136803]
+[node name="RailTrack_69" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=770263527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -313.73, 25.24, -53.1)
 curve = SubResource("Curve3D_mu4qe")
 script = ExtResource("12_ly1a3")
@@ -1982,7 +2300,7 @@ abs_aabb = AABB(-584.45, 25.24, -53.1, 270.72, 2.1100006, 63.43)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_70" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1676133315]
+[node name="RailTrack_70" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1376382959]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -584.45, 24.49, 10.33)
 curve = SubResource("Curve3D_hs4qb")
 script = ExtResource("12_ly1a3")
@@ -1992,7 +2310,7 @@ abs_aabb = AABB(-652.28, 24.49, 10.33, 67.83002, 0.40999985, 5.25)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_71" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=339259214]
+[node name="RailTrack_71" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=653378067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -584.45, 24.49, 10.33)
 curve = SubResource("Curve3D_ufo6x")
 script = ExtResource("12_ly1a3")
@@ -2002,7 +2320,7 @@ abs_aabb = AABB(-652.28, 24.49, 10.33, 67.83002, 0.40999985, 7.8999996)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_72" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=2022955832]
+[node name="RailTrack_72" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=635642631]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -652.28, 24.9, 21.32)
 curve = SubResource("Curve3D_u6unu")
 script = ExtResource("12_ly1a3")
@@ -2012,7 +2330,7 @@ abs_aabb = AABB(-886.67, 24.9, 21.32, 234.38995, 0.040000916, 38.03)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_73" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=787746463]
+[node name="RailTrack_73" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1024272116]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1058.3, 24.07, -443.64)
 curve = SubResource("Curve3D_mjt1a")
 script = ExtResource("12_ly1a3")
@@ -2022,7 +2340,7 @@ abs_aabb = AABB(1058.3, 23.43, -463.9, 29.639893, 0.6399994, 20.25998)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_74" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1892898154]
+[node name="RailTrack_74" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1504996411]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1061.5, 24.06, -440.9)
 curve = SubResource("Curve3D_i07ac")
 script = ExtResource("12_ly1a3")
@@ -2032,7 +2350,7 @@ abs_aabb = AABB(1061.5, 23.47, -463.9, 26.439941, 0.59000015, 23)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_75" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1041787539]
+[node name="RailTrack_75" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=579540454]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1087.94, 23.53, -463.9)
 curve = SubResource("Curve3D_qvkml")
 script = ExtResource("12_ly1a3")
@@ -2042,7 +2360,7 @@ abs_aabb = AABB(1087.94, 23.53, -463.9, 171.65002, 0.03999901, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_76" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=419004755]
+[node name="RailTrack_76" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1140059272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1259.11, 23.57, -341.27)
 curve = SubResource("Curve3D_0e3rn")
 script = ExtResource("12_ly1a3")
@@ -2052,7 +2370,7 @@ abs_aabb = AABB(1259.11, 23.28, -341.27, 29.690063, 0.289999, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_77" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=904923456]
+[node name="RailTrack_77" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1999213160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1259.11, 23.57, -341.27)
 curve = SubResource("Curve3D_p2ggx")
 script = ExtResource("12_ly1a3")
@@ -2062,7 +2380,7 @@ abs_aabb = AABB(1259.11, 23.28, -341.27, 29.690063, 0.289999, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_78" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1831164823]
+[node name="RailTrack_78" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=254458783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1288.8, 23.31, -308.71)
 curve = SubResource("Curve3D_nguer")
 script = ExtResource("12_ly1a3")
@@ -2072,7 +2390,7 @@ abs_aabb = AABB(1288.8, 23.31, -308.71, 182.8999, 0, 0)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_79" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=353131231]
+[node name="RailTrack_79" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=687119121]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1471.7, 23.88, -170.11)
 curve = SubResource("Curve3D_ghvt8")
 script = ExtResource("12_ly1a3")
@@ -2082,7 +2400,7 @@ abs_aabb = AABB(1471.7, 23.36, -214.81, 116.34009, 0.51999855, 44.699997)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_80" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=261797108]
+[node name="RailTrack_80" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1611080187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1588.04, 24.29, -214.81)
 curve = SubResource("Curve3D_n26m1")
 script = ExtResource("12_ly1a3")
@@ -2092,7 +2410,7 @@ abs_aabb = AABB(1588.04, 24.29, -262.23, 19.46997, 0, 47.420013)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_81" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=75412860]
+[node name="RailTrack_81" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1834565652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1588.04, 24.29, -214.81)
 curve = SubResource("Curve3D_cs44h")
 script = ExtResource("12_ly1a3")
@@ -2102,7 +2420,7 @@ abs_aabb = AABB(1588.04, 24.29, -262.23, 19.46997, 0, 47.420013)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
-[node name="RailTrack_82" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=725158263]
+[node name="RailTrack_82" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=714043956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1607.51, 24.78, -262.23)
 curve = SubResource("Curve3D_o2x8p")
 script = ExtResource("12_ly1a3")
@@ -2112,10 +2430,31 @@ abs_aabb = AABB(1607.51, 24.29, -299.87, 181.54004, 0.48999977, 37.639984)
 autosmooth = true
 material = ExtResource("13_xms7c")
 
+[node name="RailTrack_83" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1594437784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1087.94, 23.53, -463.9)
+curve = SubResource("Curve3D_i4w0u")
+script = ExtResource("12_ly1a3")
+num = 83
+infr_name = "Altefähr RüKB Depot"
+abs_aabb = AABB(1080.36, 23.53, -463.9, 7.579956, 0.789999, 8.22998)
+autosmooth = true
+material = ExtResource("13_xms7c")
+
+[node name="RailTrack_84" type="Path3D" parent="InEditor/EditorInfr/EditorRails" unique_id=1347244855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 838.2, 23.81, -285.1)
+curve = SubResource("Curve3D_awepc")
+script = ExtResource("12_ly1a3")
+num = 84
+infr_name = "Stralsund FKB-N Depot"
+abs_aabb = AABB(838.2, 23.81, -285.1, 0, 0, 0)
+autosmooth = true
+material = ExtResource("13_xms7c")
+
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("11_2qmku")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=1933713359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1058.2958, 23.869158, -443.6428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.4863, 24.81356, -469.0446)
 gizmo_extents = 10.0
 script = ExtResource("12_73pql")
+gps_coords = null
 metadata/_custom_type_script = "uid://byq8dj7pajain"
