@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://5tucoc6kscya"
-path="res://.godot/imported/thatched_house_1.obj-722e16c9e53dd978e9f9d547d81fbdd7.scn"
+uid="uid://cswgj3ybjpu48"
+path="res://.godot/imported/old_city_house_1.obj-eec23526101c2bd0c66718558500baa4.scn"
 
 [deps]
 
-source_file="res://assets/meshes/structures/thatched_house_1/thatched_house_1.obj"
-dest_files=["res://.godot/imported/thatched_house_1.obj-722e16c9e53dd978e9f9d547d81fbdd7.scn"]
+source_file="res://assets/meshes/structures/old_city_row_house_1/mesh/old_city_house_1.obj"
+dest_files=["res://.godot/imported/old_city_house_1.obj-eec23526101c2bd0c66718558500baa4.scn"]
 
 [params]
 

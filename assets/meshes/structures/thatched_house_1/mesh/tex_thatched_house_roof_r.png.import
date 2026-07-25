@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0be0w1ge2b13"
-path.s3tc="res://.godot/imported/tex_thatched_house_roof_d.png-52bafa63d492c629cb159e6d484daa36.s3tc.ctex"
+uid="uid://dg184bqyc1eor"
+path.s3tc="res://.godot/imported/tex_thatched_house_roof_r.png-1a23433a81b6b3349ca454180af4474a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/thatched_house_1/tex_thatched_house_roof_d.png"
-dest_files=["res://.godot/imported/tex_thatched_house_roof_d.png-52bafa63d492c629cb159e6d484daa36.s3tc.ctex"]
+source_file="res://assets/meshes/structures/thatched_house_1/mesh/tex_thatched_house_roof_r.png"
+dest_files=["res://.godot/imported/tex_thatched_house_roof_r.png-1a23433a81b6b3349ca454180af4474a.s3tc.ctex"]
 
 [params]
 

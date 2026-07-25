@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbt2dnjt4kwke"
-path.s3tc="res://.godot/imported/tex_old_city_house_1_n.png-9db41c6320faa4f66c3c879dc406a2ab.s3tc.ctex"
+uid="uid://cxj4ubpfmkyq"
+path.s3tc="res://.godot/imported/tex_thatched_house_roof_n.png-3524d791ef1d59807a9b0dfee20778e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/old_city_house_1/tex_old_city_house_1_n.png"
-dest_files=["res://.godot/imported/tex_old_city_house_1_n.png-9db41c6320faa4f66c3c879dc406a2ab.s3tc.ctex"]
+source_file="res://assets/meshes/structures/thatched_house_1/mesh/tex_thatched_house_roof_n.png"
+dest_files=["res://.godot/imported/tex_thatched_house_roof_n.png-3524d791ef1d59807a9b0dfee20778e2.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/meshes/structures/old_city_house_1/tex_old_city_house_1_n.png"
+roughness/src_normal="res://assets/meshes/structures/thatched_house_1/tex_thatched_house_roof_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

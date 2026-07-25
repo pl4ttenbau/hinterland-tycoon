@@ -8,7 +8,7 @@ func make_types() -> Array[IndustryType]:
 		# producers: food
 		IndustryType.new("FARM", "Farm", "windmill_2", 8, [], ["4xgrains", "2xbeets"]),
 		IndustryType.new("RANCH", "Ranch", "windmill_2", 8, [], ["3xmeat"]),
-		IndustryType.new("FISHERY", "Fishery", "wooden_storehouse",  9, [], ["5xfish"]),
+		IndustryType.new("FISHERY", "Fishery", "wooden_storehouse",  9, ["2xlumber", "1xgrains"], ["5xfish"]),
 		# producers: aggregates
 		IndustryType.new("COAL_MINE", "Coal Mine", "mineshaft", 20, [], ["4xcoal"]),
 		IndustryType.new("IRON_MINE","Iron Mine", "mineshaft", 30, [], ["6xore"]),
@@ -36,7 +36,7 @@ func make_types() -> Array[IndustryType]:
 		# consumers
 		IndustryType.new("COAL_PLANT", "Coal Plant", "factory_small", 25, ["4xcoal"], []),
 		IndustryType.new("SMALL_STORE", "Small Store", "wooden_storehouse", 10, ["2xbread", "2xmeat", "1xalcohol"], []),
-		IndustryType.new("BIG_STORE", "Big Store", "warehouse_1", 20, ["4xcoal"], []),
+		IndustryType.new("BIG_STORE", "Big Store", "warehouse_1", 20, ["2xcoal", "3xbread", "3xmeat", "2xalcohol", "1xmachines"], []),
 		IndustryType.new("RESTAURANT", "Restaurant", "restaurant", 12, ["2xalcohol", "1xbread", "2xfish"], []),
 		IndustryType.new("BARRACKS", "Barracks", "warehouse_1", 25, ["3xalcohol", "2xmeat", "1xweapons"], ["2xsoldier"])
 	]

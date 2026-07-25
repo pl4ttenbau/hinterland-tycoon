@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbwnexyxm4bah"
-path.s3tc="res://.godot/imported/tex_old_city_house_1_d.png-84a768203d8a8ac8f7184e7ab1a70ce4.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_old_city_house_1_d.png-9dde7f81d1ba9a49f2b579abc85e0520.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/structures/old_city_house_1/tex_old_city_house_1_d.png"
-dest_files=["res://.godot/imported/tex_old_city_house_1_d.png-84a768203d8a8ac8f7184e7ab1a70ce4.s3tc.ctex"]
+source_file="res://assets/meshes/structures/old_city_row_house_1/mesh/tex_old_city_house_1_d.png"
+dest_files=["res://.godot/imported/tex_old_city_house_1_d.png-9dde7f81d1ba9a49f2b579abc85e0520.s3tc.ctex"]
 
 [params]
 
