@@ -5,6 +5,7 @@ const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"
 const VEH_SPEED_MODIFIER: float = 50.0
 
 signal on_vehicle_added(veh3d: Vehicle3D)
+signal active_path_end_reached()
 
 static var _last_train_num: int = 0
 
@@ -37,6 +38,9 @@ static func _next_train_num() -> int:
 	return Train3D._last_train_num
 
 #region Initialization
+func _init() -> void:
+	self.active_path_end_reached.connect(Callable(self, "_on_active_path_end_reached"))
+	
 func _enter_tree() -> void:
 	SignalBus.scene_root_ready.connect(Callable(self, "_on_world_ready"))
 
@@ -115,20 +119,19 @@ func length_in_m() -> float:
 
 #region Moving
 func move_forwards(delta_seconds: float):
+	if !self.get_active_path() || !self.get_active_path().curve: return
 	# calculate movement since last tick
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
-	if !self.get_active_path() || !self.get_active_path().curve: return
 	self.increase_m_passed(tick_dist)
 	# reached end of path? add next segmenr or stop
 	var active_path_len: float = self.get_active_path().curve.get_baked_length()
 	if self.m_passed_since_start > active_path_len:
-		Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
-		self.add_next_segment_or_stop()
+		self.active_path_end_reached.emit()
 	# move every vehicle in train forwards on path
 	for veh3d: Vehicle3D in self.vehicles:
-		var m_passed: float = self.m_passed_since_start - veh3d.offset_to_first
-		if m_passed < 0: m_passed = 0
-		var target_transf := self._get_target_transf_at_m_passed(m_passed)
+		# figure out transformation (rotation only) at next rail node
+		var m_passed: float = clamp(self.m_passed_since_start - veh3d.offset_to_first, 0, 99999)
+		var target_transf := self.get_active_path().get_transf_at_m_passed(m_passed)
 		# tween towards target transform
 		var transf_tween = veh3d.create_tween()
 		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
@@ -136,14 +139,6 @@ func move_forwards(delta_seconds: float):
 func increase_m_passed(delta_m: float):
 	self.m_passed_on_segment += delta_m
 	self.m_passed_since_start += delta_m
-
-func _get_target_transf_at_m_passed(m_passed: float) -> Transform3D:
-	var train_curve: Curve3D = self.get_active_path().curve
-	var target_transf := train_curve.sample_baked_with_rotation(m_passed, true)
-	# only turn vertically
-	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
-	target_transf = target_transf.rotated_local(Vector3(0, 0, 1), 0)
-	return target_transf
 #endregion
 
 #region Reverse
@@ -182,10 +177,14 @@ func _on_world_ready():
 	self.motor.start()
 
 func _on_motor_reversing():
-	
 	self.reverse_from_current_spot()
 
 func _physics_process(_delta: float) -> void:
 	if self.motor.is_started: 
 		self.move_forwards(_delta)
+
+func _on_active_path_end_reached():
+	Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
+	self.add_next_segment_or_stop()
+
 #endregion

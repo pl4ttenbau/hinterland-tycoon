@@ -31,8 +31,7 @@ func add_segment(added_segment: VehiclePathSegment) -> Curve3D:
 		self.curve.add_point(path_node.position)
 	InfrUtils.smooth_curve3d(self.curve)
 	# show markers in debug mode
-	if SHOW_DEBUG:
-		self.add_debug_markers(added_segment)
+	if SHOW_DEBUG: self.add_debug_markers(added_segment)
 	# fire extended signal & return full curve
 	self.extended.emit(added_segment)
 	return self.curve
@@ -46,7 +45,7 @@ func get_current_segment() -> VehiclePathSegment:
 
 #region Reversing
 func build_curve_from_pos_to_track_end() -> Curve3D:
-	var curr_segment: VehiclePathSegment = self.segments[self.segments.size() -1]
+	var curr_segment: VehiclePathSegment = self.get_current_segment()
 	# get closest passed rail node
 	var segment_start_node_i: int = self.get_curve_i_from_segment_start_to_closest_node(curr_segment)[0]
 	var closest_node_i: int = self.get_curve_i_from_segment_start_to_closest_node(curr_segment)[1]
@@ -100,6 +99,13 @@ func get_rail_node_i_in_full_curve(rail_node: RailNodeData) -> int:
 			return curve_i
 	Loggie.warn("Cannot find RailNode(track %d, index %d) in own curve" % [rail_node.parent_track.num, rail_node.index])
 	return -1
+
+func get_transf_at_m_passed(m_passed: float) -> Transform3D:
+	var target_transf := self.curve.sample_baked_with_rotation(m_passed, true)
+	# only turn vertically
+	target_transf = target_transf.rotated_local(Vector3(1, 0, 0), 0)
+	target_transf = target_transf.rotated_local(Vector3(0, 0, 1), 0)
+	return target_transf
 #endregion
 
 #region Debug Markers

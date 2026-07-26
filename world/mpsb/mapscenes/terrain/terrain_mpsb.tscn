@@ -19,7 +19,6 @@ data_directory = "res://world/mpsb/heightdata"
 material = ExtResource("1_b6nfv")
 assets = ExtResource("2_b6nfv")
 displacement_sharpness = 0.5
-show_contours = true
 top_level = true
 metadata/_edit_lock_ = true
 
