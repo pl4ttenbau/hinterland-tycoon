@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ck6t5hx5n8rva" path="res://assets/meshes/structures/city_house_3/city_house_3.tscn" id="6_ac0fl"]
 [ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="7_emjn5"]
 [ext_resource type="PackedScene" uid="uid://br01p22j70jhf" path="res://assets/meshes/deco/water_tower_big/water_tower_big.tscn" id="7_jynyo"]
-[ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="12_cb211"]
+[ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_row_house_1/city_row_house_1.tscn" id="12_cb211"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="12_emjn5"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge.tscn" id="21_ugno1"]

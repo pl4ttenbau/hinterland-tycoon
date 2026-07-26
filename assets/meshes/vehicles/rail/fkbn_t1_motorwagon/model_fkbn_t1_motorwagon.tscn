@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ca80trv4jstfo"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_3nanf"]
+[ext_resource type="PackedScene" uid="uid://2vc5uog2hahm" path="res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/mesh/mesh_fkbn_t1_motorwagon.tscn" id="2_08ii7"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_hu0nr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ryoe"]
+size = Vector3(3.2509766, 3.6016846, 12.461426)
+
+[node name="FkbnT1Motorwagon" type="Node3D" unique_id=867260648]
+script = ExtResource("1_3nanf")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshFkbnT1Motorwagon" parent="." unique_id=422600937 instance=ExtResource("2_08ii7")]
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1097949037]
+visible = false
+script = ExtResource("3_hu0nr")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=748253471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.809, 0)
+shape = SubResource("BoxShape3D_7ryoe")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=171942143]
+transform = Transform3D(0.99999994, -8.311243e-09, -1.9353672e-07, 0, 0.99907917, -0.04290445, 1.937151e-07, 0.042904466, 0.9990791, -0.7121638, 2.348449, -5.3356085)
+metadata/cam_name = &"CAM_VEHICLE"

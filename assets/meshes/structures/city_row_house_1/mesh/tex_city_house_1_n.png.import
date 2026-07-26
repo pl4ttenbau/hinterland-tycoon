@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfc7sx1bn8bhv"
-path.s3tc="res://.godot/imported/tex_church_house_r.png-62fdef3761b9e358358cea8f79a465f7.s3tc.ctex"
+uid="uid://ciay14keyrw1p"
+path.s3tc="res://.godot/imported/tex_city_house_1_n.png-e6a3a7d438ae99d3abe95c0bacdd062f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/deco/church1/tex_church_house_r.png"
-dest_files=["res://.godot/imported/tex_church_house_r.png-62fdef3761b9e358358cea8f79a465f7.s3tc.ctex"]
+source_file="res://assets/meshes/structures/city_row_house_1/mesh/tex_city_house_1_n.png"
+dest_files=["res://.godot/imported/tex_city_house_1_n.png-e6a3a7d438ae99d3abe95c0bacdd062f.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/meshes/structures/city_house_1/tex_city_house_1_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -47,7 +47,7 @@
 [ext_resource type="Script" uid="uid://dvf4vwgtk252x" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="53_4subv"]
 [ext_resource type="PackedScene" uid="uid://dm2b0nf4qts0d" path="res://assets/meshes/structures/harz_house_1/harz_house_1.tscn" id="53_ksq05"]
 [ext_resource type="PackedScene" uid="uid://ce7uwh35i56pf" path="res://assets/meshes/deco/wooden_pier/wooden_pier.tscn" id="53_mxweq"]
-[ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_house_1/city_house_1.tscn" id="53_nynls"]
+[ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_row_house_1/city_row_house_1.tscn" id="53_nynls"]
 [ext_resource type="PackedScene" uid="uid://cwlcfsgeh3x0l" path="res://assets/meshes/structures/city_corner_house/city_corner_house.tscn" id="55_c72m3"]
 [ext_resource type="PackedScene" uid="uid://b85dl5xfc44on" path="res://assets/meshes/structures/city_house_4/city_house_4.tscn" id="56_4subv"]
 [ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="56_c72m3"]

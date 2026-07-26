@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg3rtijgttrf0"
-path.s3tc="res://.godot/imported/tex_church_ivy_d.png-f5a32330d14afbecc4f574f6e7110551.s3tc.ctex"
+uid="uid://dwphwtlwywmuw"
+path.s3tc="res://.godot/imported/tex_fkbn_t1_motorwagon_d.png-8c58aac189ef991d3159b1956a2f278e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/deco/church1/tex_church_ivy_d.png"
-dest_files=["res://.godot/imported/tex_church_ivy_d.png-f5a32330d14afbecc4f574f6e7110551.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/mesh/tex_fkbn_t1_motorwagon_d.png"
+dest_files=["res://.godot/imported/tex_fkbn_t1_motorwagon_d.png-8c58aac189ef991d3159b1956a2f278e.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm7yhqn5jjaqs"
-path.s3tc="res://.godot/imported/tex_church_ivy_n.png-3a68333e798892958ff7ff1d242b7354.s3tc.ctex"
+uid="uid://cqqmktodmpjtx"
+path.s3tc="res://.godot/imported/tex_church_window.png-a7d3b11d3871561aa83c4abf30b964fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/deco/church1/tex_church_ivy_n.png"
-dest_files=["res://.godot/imported/tex_church_ivy_n.png-3a68333e798892958ff7ff1d242b7354.s3tc.ctex"]
+source_file="res://assets/meshes/deco/church1/mesh/tex_church_window.png"
+dest_files=["res://.godot/imported/tex_church_window.png-a7d3b11d3871561aa83c4abf30b964fa.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/meshes/deco/church1/tex_church_ivy_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
