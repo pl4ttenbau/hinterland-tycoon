@@ -23,6 +23,12 @@
 			"name": "Stralsund Depot FKB-N",
 			"trackNum": 84,
 			"trackPos": "END"
+		},
+		{
+			"num": 5,
+			"name": "Stralsund Depot DR",
+			"trackNum": 109,
+			"trackPos": "END"
 		}
 	]
 }

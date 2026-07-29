@@ -1888,7 +1888,11 @@
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [828.73, 24.35, -228.85]
+				"pos": [828.73, 24.35, -228.85],
+				"fork": {
+					"connectiveTracks": [100, 102],
+					"setTo": 100
+				}
 			},
 			{
 				"pos": [820.98, 24.22, -239.86],
@@ -1922,7 +1926,11 @@
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [825.08, 24.34, -227.28]
+				"pos": [825.08, 24.34, -227.28],
+				"fork": {
+					"connectiveTracks": [101, 103],
+					"setTo": 101
+				}
 			},
 			{
 				"pos": [818.15, 24.22, -235.07],
@@ -3962,13 +3970,552 @@
 			{
 				"pos": [-1679.45, 24.02, 267.21],
 				"handleIn": [3.72, 0.0, 0.25]
-		},
+			},
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
 					"connectiveTracks": [97],
 					"setTo": 97
 				}
+			}
+		]
+	},
+	{
+		"num": 97,
+		"name": "Ribnitz Station <> Fork",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-1688.55, 24.14, 266.08],
+				"fork": {
+					"connectiveTracks": [96],
+					"setTo": 96
+				}
+			},
+			{
+				"pos": [-1695.79, 24.21, 267.21],
+				"handleIn": [2.45, -0.02, -0.52]
+			},
+			{
+				"pos": [-1703.92, 24.36, 269.05],
+				"handleIn": [2.21, -0.03, -0.54]
+			},
+			{
+				"pos": [-1711.78, 24.67, 271.23],
+				"fork": {
+					"connectiveTracks": [98, 99],
+					"setTo": 99
+				}
+			}
+		]
+	},
+	{
+		"num": 98,
+		"name": "Ribnitz Fork <> Exit",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-1711.78, 24.67, 271.23],
+				"fork": {
+					"connectiveTracks": [97],
+					"setTo": 97
+				}
+			},
+			{
+				"pos": [-1727.82, 24.82, 275.92],
+				"handleIn": [1.92, -0.02, -0.55]
+			},
+			{
+				"pos": [-1744.71, 24.75, 280.61],
+				"handleIn": [4.46, 0.01, -1.24]
+			},
+			{
+				"pos": [-1758.81, 24.39, 285.64],
+				"handleIn": [4.4, 0.05, -1.64]
+			},
+			{
+				"pos": [-1773.28, 24.32, 291.41],
+				"handleIn": [3.74, 0.01, -1.48]
+			},
+			{
+				"pos": [-1791.23, 24.19, 298.8],
+				"exit": true
+			}
+		]
+	},
+	{
+		"num": 99,
+		"name": "Ribnitz Fork <> Industry",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-1711.78, 24.67, 271.23],
+				"fork": {
+					"connectiveTracks": [97],
+					"setTo": 97
+				}
+			},
+			{
+				"pos": [-1727.68, 24.92, 272.97],
+				"handleIn": [4.29, -0.03, 0.14]
+			},
+			{
+				"pos": [-1739.65, 25.13, 269.07],
+				"handleIn": [3.38, -0.03, 1.99]
+			},
+			{
+				"pos": [-1747.39, 25.36, 261.28],
+				"handleIn": [1.52, -0.04, 2.03]
+			},
+			{
+				"pos": [-1753.74, 24.71, 252.26],
+				"handleIn": [1.67, 0.11, 2.44]
+			},
+			{
+				"pos": [-1760.67, 24.25, 241.46],
+				"handleIn": [1.1, 0.07, 1.67]
+			},
+			{
+				"pos": [-1769.45, 23.7, 227.5],
+				"end": true
+			}
+		]
+	},
+	{
+		"num": 100,
+		"name": "Stralsund Station Exit 1&2",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [828.73, 24.35, -228.85],
+				"fork": {
+					"connectiveTracks": [43, 44],
+					"setTo": 44
+				}
+			},
+			{
+				"pos": [835.24, 24.55, -218.58],
+				"handleIn": [0.0, 0.0, 0.0]
+			},
+			{
+				"pos": [841.12, 24.72, -209.36]
+			}
+		]
+	},
+	{
+		"num": 101,
+		"name": "Stralsund Station Exit 3",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [825.08, 24.34, -227.28],
+				"fork": {
+					"connectiveTracks": [45],
+					"setTo": 45
+				}
+			},
+			{
+				"pos": [830.82, 24.52, -217.97],
+				"handleIn": [0.0, 0.0, 0.0]
+			},
+			{
+				"pos": [837.73, 24.72, -207.31]
+			}
+		]
+	},
+	{
+		"num": 102,
+		"name": "Stralsund Station Cross 1&2",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [828.73, 24.35, -228.85],
+				"fork": {
+					"connectiveTracks": [43, 44],
+					"setTo": 44
+				}
+			},
+			{
+				"pos": [837.73, 24.72, -207.31],
+				"fork": {
+					"connectiveTracks": [105],
+					"setTo": 105
+				}
+			}
+		]
+	},
+	{
+		"num": 103,
+		"name": "Stralsund Station Cross 1&2",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [825.08, 24.34, -227.28],
+				"fork": {
+					"connectiveTracks": [45],
+					"setTo": 45
+				}
+			},
+			{
+				"pos": [841.12, 24.72, -209.36],
+				"fork": {
+					"connectiveTracks": [104],
+					"setTo": 104
+				}
+			}
+		]
+	},
+	{
+		"num": 104,
+		"name": "Stralsund Triangle Mainline F",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [841.12, 24.72, -209.36],
+				"fork": {
+					"connectiveTracks": [100, 103],
+					"setTo": 100
+				}
+			},
+			{
+				"pos": [848.8, 24.96, -197.46],
+				"handleIn": [-2.17, -0.03, -3.19]
+			},
+			{
+				"pos": [855.82, 25.18, -187.36],
+				"fork": {
+					"connectiveTracks": [106],
+					"setTo": 106
+				}
+			}
+		]
+	},
+	{
+		"num": 105,
+		"name": "Stralsund Triangle Mainline B",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [837.73, 24.72, -207.31],
+				"fork": {
+					"connectiveTracks": [101, 102],
+					"setTo": 101
+				}
+			},
+			{
+				"pos": [845.65, 24.95, -195.51],
+				"handleIn": [-1.98, -0.03, -2.82]
+			},
+			{
+				"pos": [851.71, 25.18, -187.08],
+				"handleIn": [-1.84, -0.04, -2.65]
+			},
+			{
+				"pos": [859.32, 25.12, -176.61],
+				"fork": {
+					"connectiveTracks": [107],
+					"setTo": 107
+				}
+			}
+		]
+	},
+	{
+		"num": 106,
+		"name": "Stralsund Triangle <> Depot F",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [855.82, 25.18, -187.36],
+				"fork": {
+					"connectiveTracks": [104],
+					"setTo": 104
+				}
+			},
+			{
+				"pos": [866.94, 25.06, -172.0],
+				"handleIn": [-2.14, 0.01, -3.04]
+			},
+			{
+				"pos": [877.91, 24.95, -156.55],
+				"handleIn": [-2.92, 0.01, -4.15]
+			},
+			{
+				"pos": [888.09, 24.81, -141.65],
+				"handleIn": [-2.59, 0.02, -3.62]
+			},
+			{
+				"pos": [895.88, 24.82, -128.89],
+				"handleIn": [-2.53, 0.0, -4.82]
+			},
+			{
+				"pos": [901.92, 25.06, -115.31],
+				"handleIn": [-1.43, -0.03, -3.53]
+			},
+			{
+				"pos": [908.08, 25.0, -100.43],
+				"fork": {
+					"connectiveTracks": [108],
+					"setTo": 108
+				}
+			}
+		]
+	},
+	{
+		"num": 107,
+		"name": "Stralsund Triangle <> Depot B",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [859.32, 25.12, -176.61],
+				"fork": {
+					"connectiveTracks": [105],
+					"setTo": 105
+				}
+			},
+			{
+				"pos": [867.95, 25.02, -164.03],
+				"handleIn": [-1.13, 0.01, -1.65]
+			},
+			{
+				"pos": [877.95, 24.92, -149.91],
+				"handleIn": [-1.16, 0.01, -1.63]
+			},
+			{
+				"pos": [886.9, 24.82, -136.82],
+				"handleIn": [-2.59, 0.01, -4.22]
+			},
+			{
+				"pos": [894.78, 24.89, -122.62],
+				"handleIn": [-1.93, -0.01, -4.29]
+			},
+			{
+				"pos": [900.67, 25.05, -108.48],
+				"handleIn": [-1.47, -0.02, -3.42]
+			},
+			{
+				"pos": [905.11, 24.99, -98.00999],
+				"handleIn": [-1.21, 0.01, -2.82]
+			},
+			{
+				"pos": [909.64, 24.93, -86.66],
+				"fork": {
+					"connectiveTracks": [109],
+					"setTo": 109
+				}
+			}
+		]
+	},
+	{
+		"num": 108,
+		"name": "Stralsund DR Depot Fork",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [908.08, 25.0, -100.43],
+				"fork": {
+					"connectiveTracks": [106],
+					"setTo": 106
+				}
+			},
+			{
+				"pos": [909.37, 24.96, -94.47],
+				"handleIn": [-0.16, 0.01, -2.47]
+			},
+			{
+				"pos": [909.64, 24.93, -86.66],
+				"fork": {
+					"connectiveTracks": [109],
+					"setTo": 109
+				}
+			}
+		]
+	},
+	{
+		"num": 109,
+		"name": "Stralsund DR Depot",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [909.64, 24.93, -86.66],
+				"fork": {
+					"connectiveTracks": [107, 108],
+					"setTo": 108
+				}
+			},
+			{
+				"pos": [910.49, 24.9, -79.85],
+				"handleIn": [-0.19, 0.01, -3.13]
+			},
+			{
+				"pos": [910.66, 25.24, -68.97],
+				"handleIn": [0.13, -0.06, -3.68]
+			},
+			{
+				"pos": [909.14, 25.02, -56.24],
+				"handleIn": [1.34, 0.03, -5.99]
+			},
+			{
+				"pos": [902.44, 25.35, -42.61]
+			}
+		]
+	},
+	{
+		"num": 110,
+		"name": "Feldbahn Spoldershagen Loading",
+		"type": "600_MM",
+		"tag": "FR",
+		"points": [
+			{
+				"pos": [-716.4, 24.97, -316.61],
+				"end": true
+			},
+			{
+				"pos": [-723.11, 25.04, -306.88],
+				"handleIn": [2.97, 0.02, -3.52]
+			},
+			{
+				"pos": [-733.6, 24.03, -295.62],
+				"handleIn": [2.26, 0.13, -2.53]
+			},
+			{
+				"pos": [-737.37, 23.86, -285.93],
+				"handleIn": [-0.87, 0.03, -4.61]
+			},
+			{
+				"pos": [-731.15, 23.96, -272.93],
+				"handleIn": [-1.97, -0.01, -3.73]
+			},
+			{
+				"pos": [-722.31, 24.28, -255.3],
+				"handleIn": [-4.9, -0.03, -10.08]
+			},
+			{
+				"pos": [-724.13, 24.48, -236.78],
+				"handleIn": [1.362, -0.021, -1.91],
+				"fork": {
+					"connectiveTracks": [111],
+					"setTo": 111
+				}
+			}
+		]
+	},
+	{
+		"num": 111,
+		"name": "Feldbahn Spoldershagen <> Martenshagen",
+		"type": "600_MM",
+		"tag": "FR",
+		"points": [
+			{
+				"pos": [-724.13, 24.48, -236.78],
+				"fork": {
+					"connectiveTracks": [110],
+					"setTo": 110
+				}
+			},
+			{
+				"pos": [-733.61, 24.61, -224.39],
+				"handleIn": [2.63, -0.02, -3.45]
+			},
+			{
+				"pos": [-740.59, 24.69, -211.52],
+				"handleIn": [0.98, -0.01, -4.03]
+			},
+			{
+				"pos": [-740.71, 25.29, -195.97],
+				"handleIn": [-0.93, -0.08, -6.69]
+			},
+			{
+				"pos": [-738.25, 25.63, -181.11],
+				"handleIn": [-0.6, -0.05, -3.63]
+			},
+			{
+				"pos": [-736.54, 25.89, -171.98],
+				"handleIn": [-0.52, -0.06, -2.72]
+			},
+			{
+				"pos": [-734.66, 25.51, -161.96],
+				"fork": {
+					"connectiveTracks": [112, 113],
+					"setTo": 112
+				}
+			}
+		]
+	 },
+	{
+		"num": 112,
+		"name": "Feldbahn Martenshagen Fork <> Farm",
+		"type": "600_MM",
+		"tag": "FR",
+		"points": [
+			{
+				"pos": [-734.66, 25.51, -161.96],
+				"fork": {
+					"connectiveTracks": [111],
+					"setTo": 111
+				}
+			},
+			{
+				"pos": [-730.79, 24.94, -150.25],
+				"handleIn": [-3.06, 0.09, -4.98]
+			},
+			{
+				"pos": [-720.97, 24.28, -141.66],
+				"handleIn": [-3.34, 0.1, -1.29]
+			},
+			{
+				"pos": [-709.23, 24.19, -139.3],
+				"handleIn": [-3.87, 0.02, -0.07]
+			},
+			{
+				"pos": [-697.23, 24.02, -139.48],
+				"end": true
+			}
+		]
+	},
+	{
+		"num": 113,
+		"name": "Feldbahn Martenshagen Fork <> Depot" ,
+		"type": "600_MM",
+		"tag": "FR",
+		"points": [
+			{
+				"pos": [-734.66, 25.51, -161.96],
+				"fork": {
+					"connectiveTracks": [111],
+					"setTo": 111
+				}
+			},
+			{
+				"pos": [-735.13, 25.02, -150.25],
+				"handleIn": [0.14, 0.08, -3.36]
+			},
+			{
+				"pos": [-733.01, 23.98, -133.83],
+				"handleIn": [-2.11, 0.12, -5.73]
+			},
+			{
+				"pos": [-725.05, 23.81, -120.96],
+				"handleIn": [-2.1, 0.02, -2.78]
+			},
+			{
+				"pos": [-717.72, 23.74, -114.53],
+				"handleIn": [-2.24, 0.01, -1.3]
+			},
+			{
+				"pos": [-709.61, 23.87, -109.49]
 			}
 		]
 	}
