@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cm827nled7vmh"]
+
+[ext_resource type="PackedScene" uid="uid://bhfe22e2xvetc" path="res://assets/meshes/structures/old_city_giebelhaus_1/mesh/old_city_giebelhaus1.obj" id="1_hagoh"]
+
+[node name="MeshOldCityGiebelhaus1" unique_id=252961434 instance=ExtResource("1_hagoh")]
+
+[node name="old_city_giebelhaus_1" parent="." index="0" unique_id=1097096611]
+layers = 8
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0

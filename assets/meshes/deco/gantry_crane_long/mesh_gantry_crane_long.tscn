@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bnesc5m3g58w8"]
+
+[ext_resource type="PackedScene" uid="uid://kkryuorp4nom" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj" id="1_8l1ss"]
+
+[node name="MeshGantryCraneLong" unique_id=899392521 instance=ExtResource("1_8l1ss")]
+
+[node name="GantryCraneLongStatic" parent="." index="0" unique_id=613975230]
+layers = 32
+lod_bias = 0.5
+
+[node name="GantryCraneLongMovable" parent="." index="1" unique_id=246802843]
+layers = 32
+lod_bias = 0.5
+visibility_range_end = 160.0
+visibility_range_end_margin = 16.0

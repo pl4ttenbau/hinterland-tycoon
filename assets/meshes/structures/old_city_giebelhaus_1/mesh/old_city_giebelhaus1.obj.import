@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkryuorp4nom"
-path="res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"
+uid="uid://bhfe22e2xvetc"
+path="res://.godot/imported/old_city_giebelhaus1.obj-54e9445c2d0519ca64b70804c9f825e8.scn"
 
 [deps]
 
-source_file="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj"
-dest_files=["res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"]
+source_file="res://assets/meshes/structures/old_city_giebelhaus_1/mesh/old_city_giebelhaus1.obj"
+dest_files=["res://.godot/imported/old_city_giebelhaus1.obj-54e9445c2d0519ca64b70804c9f825e8.scn"]
 
 [params]
 
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=1.2
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true

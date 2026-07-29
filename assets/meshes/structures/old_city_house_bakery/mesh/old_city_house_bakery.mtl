@@ -1,0 +1,22 @@
+# Blender 5.0.1 MTL File: 'old_city_house_bakery.blend'
+# www.blender.org
+
+newmtl mat_old_house_bakery
+Ns 186.274536
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tex_old_city_house_bakery_d.png
+
+newmtl mat_roof
+Ns 186.274536
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd dachpbuxl.png

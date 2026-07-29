@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ct8g7drb5fdjs"]
+
+[ext_resource type="PackedScene" uid="uid://cbkuf48y5fn03" path="res://assets/meshes/structures/old_city_house_bakery/mesh/old_city_house_bakery.obj" id="1_u8wut"]
+
+[node name="MeshOldCityHouseBakery" unique_id=1330646070 instance=ExtResource("1_u8wut")]
+
+[node name="old_house_bakery" parent="." index="0" unique_id=1962359906]
+layers = 8
+visibility_range_end = 110.0
+visibility_range_end_margin = 10.0

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ggbl42mkj0d"
-path.s3tc="res://.godot/imported/gaz-aa box detail.jpg-5daaefb90bfe02a7430d8842b0ce7213.s3tc.ctex"
+uid="uid://deftvyj8ce2e4"
+path.s3tc="res://.godot/imported/gaz-aa box.jpg-b7880f44508836f53ca401bc66b29ca8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box detail.jpg"
-dest_files=["res://.godot/imported/gaz-aa box detail.jpg-5daaefb90bfe02a7430d8842b0ce7213.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/gaz-aa box.jpg"
+dest_files=["res://.godot/imported/gaz-aa box.jpg-b7880f44508836f53ca401bc66b29ca8.s3tc.ctex"]
 
 [params]
 

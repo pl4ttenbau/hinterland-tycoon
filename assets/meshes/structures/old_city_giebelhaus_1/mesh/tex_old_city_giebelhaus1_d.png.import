@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhqpet86jl5yx"
-path.s3tc="res://.godot/imported/gaz-aa box wheel.jpg-0bbe589255b8cd18907b0646b64ef0a3.s3tc.ctex"
+uid="uid://dfvadwjlviwyj"
+path.s3tc="res://.godot/imported/tex_old_city_giebelhaus1_d.png-5a5ede944fd337c9be0df1bb58986f71.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box wheel.jpg"
-dest_files=["res://.godot/imported/gaz-aa box wheel.jpg-0bbe589255b8cd18907b0646b64ef0a3.s3tc.ctex"]
+source_file="res://assets/meshes/structures/old_city_giebelhaus_1/mesh/tex_old_city_giebelhaus1_d.png"
+dest_files=["res://.godot/imported/tex_old_city_giebelhaus1_d.png-5a5ede944fd337c9be0df1bb58986f71.s3tc.ctex"]
 
 [params]
 

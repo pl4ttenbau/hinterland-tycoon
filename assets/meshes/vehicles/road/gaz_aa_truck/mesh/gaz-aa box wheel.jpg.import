@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc02kgh8h68d4"
-path.s3tc="res://.godot/imported/gaz-aa box frame.jpg-23e46d6c67ddfe23861d2e87665aefdd.s3tc.ctex"
+uid="uid://dhqpet86jl5yx"
+path.s3tc="res://.godot/imported/gaz-aa box wheel.jpg-07ed6218db220b3996462efc0ef4608c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box frame.jpg"
-dest_files=["res://.godot/imported/gaz-aa box frame.jpg-23e46d6c67ddfe23861d2e87665aefdd.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/gaz-aa box wheel.jpg"
+dest_files=["res://.godot/imported/gaz-aa box wheel.jpg-07ed6218db220b3996462efc0ef4608c.s3tc.ctex"]
 
 [params]
 

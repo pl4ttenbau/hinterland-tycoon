@@ -6,6 +6,6 @@
 
 [node name="apartmenthouseE" parent="." index="0" unique_id=1138245167]
 layers = 8
-lod_bias = 0.5
+lod_bias = 0.1
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0

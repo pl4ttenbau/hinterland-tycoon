@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkryuorp4nom"
-path="res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"
+uid="uid://dcbeawh1gpbfl"
+path="res://.godot/imported/barkasse.obj-8c13ae3a7f54e121b410d77985555517.scn"
 
 [deps]
 
-source_file="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj"
-dest_files=["res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"]
+source_file="res://assets/meshes/vehicles/water/barkasse/mesh/barkasse.obj"
+dest_files=["res://.godot/imported/barkasse.obj-8c13ae3a7f54e121b410d77985555517.scn"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc3y3xhpx4f6n"
-path.s3tc="res://.godot/imported/gaz-aa box wing.jpg-73838430f02ffce26358cf0ef22784ee.s3tc.ctex"
+uid="uid://d0ggbl42mkj0d"
+path.s3tc="res://.godot/imported/gaz-aa box detail.jpg-38e2c2f809743d20fe39d7229c5b78e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box wing.jpg"
-dest_files=["res://.godot/imported/gaz-aa box wing.jpg-73838430f02ffce26358cf0ef22784ee.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/gaz-aa box detail.jpg"
+dest_files=["res://.godot/imported/gaz-aa box detail.jpg-38e2c2f809743d20fe39d7229c5b78e5.s3tc.ctex"]
 
 [params]
 

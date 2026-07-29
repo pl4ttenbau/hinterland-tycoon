@@ -1,11 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://5o2b4ldtehhv"]
+[gd_scene format=3 uid="uid://5o2b4ldtehhv"]
 
-[ext_resource type="ArrayMesh" uid="uid://c8lyp4qsnfdqk" path="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz_aa_truck.obj" id="1_lgy1w"]
+[ext_resource type="PackedScene" uid="uid://cm2ijd3q0hjxa" path="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/mesh_gaz_aa_truck.tscn" id="1_lgy1w"]
 
-[node name="GazAaTruck" type="Node3D"]
+[node name="GazAaTruck" type="Node3D" unique_id=1121675533]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 64
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-mesh = ExtResource("1_lgy1w")
+[node name="MeshGazAaTruck" parent="." unique_id=314079992 instance=ExtResource("1_lgy1w")]

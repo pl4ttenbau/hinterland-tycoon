@@ -13,9 +13,9 @@ normal_texture = ExtResource("3_w2tw0")
 
 [node name="ModelCityHouse4" unique_id=1219922688 instance=ExtResource("1_yaaat")]
 
-[node name="3_3_0" parent="." index="0" unique_id=308750571]
+[node name="3_3_0" parent="." index="0" unique_id=1000604775]
 layers = 8
 material_override = SubResource("StandardMaterial3D_v5chd")
-lod_bias = 0.5
+lod_bias = 0.15
 visibility_range_end = 140.0
 visibility_range_end_margin = 14.0

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkryuorp4nom"
-path="res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"
+uid="uid://c8lyp4qsnfdqk"
+path="res://.godot/imported/gaz_aa_truck.obj-a54c1918f1cbf50cb9c5e16abcf87f7f.scn"
 
 [deps]
 
-source_file="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj"
-dest_files=["res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"]
+source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/gaz_aa_truck.obj"
+dest_files=["res://.godot/imported/gaz_aa_truck.obj-a54c1918f1cbf50cb9c5e16abcf87f7f.scn"]
 
 [params]
 

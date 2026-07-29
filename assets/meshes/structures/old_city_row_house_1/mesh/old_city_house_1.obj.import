@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/old_city_house_1.obj-eec23526101c2bd0c6671855
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="Node3D"
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true

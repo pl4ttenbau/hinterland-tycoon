@@ -3,3 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://rsd85bcsim6d" path="res://assets/meshes/structures/half_timbered_2/mesh/half_timbered_2.obj" id="1_2l5rw"]
 
 [node name="MeshHalfTimbered2" unique_id=1001265911 instance=ExtResource("1_2l5rw")]
+
+[node name="House" parent="." index="0" unique_id=1684591011]
+layers = 8
+visibility_range_end = 130.0
+visibility_range_end_margin = 13.0
+
+[node name="Windows" parent="." index="1" unique_id=1309632085]
+layers = 8
+visibility_range_end = 130.0
+visibility_range_end_margin = 13.0
+
+[node name="WoodenFrame" parent="." index="2" unique_id=1072947770]
+layers = 8
+visibility_range_end = 60.0
+visibility_range_end_margin = 6.0

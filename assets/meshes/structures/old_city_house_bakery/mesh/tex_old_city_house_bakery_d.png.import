@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deftvyj8ce2e4"
-path.s3tc="res://.godot/imported/gaz-aa box.jpg-1d9d0b0f7b643c7cb18ba7a4953fc6db.s3tc.ctex"
+uid="uid://cvt1rnp7h86h0"
+path.s3tc="res://.godot/imported/tex_old_city_house_bakery_d.png-cd11b601808eaca9dd9434f6f813a4c2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box.jpg"
-dest_files=["res://.godot/imported/gaz-aa box.jpg-1d9d0b0f7b643c7cb18ba7a4953fc6db.s3tc.ctex"]
+source_file="res://assets/meshes/structures/old_city_house_bakery/mesh/tex_old_city_house_bakery_d.png"
+dest_files=["res://.godot/imported/tex_old_city_house_bakery_d.png-cd11b601808eaca9dd9434f6f813a4c2.s3tc.ctex"]
 
 [params]
 

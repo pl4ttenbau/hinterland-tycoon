@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dsy7m1s0jjoby"]
+
+[ext_resource type="PackedScene" uid="uid://dcbeawh1gpbfl" path="res://assets/meshes/vehicles/water/barkasse/mesh/barkasse.obj" id="1_cnokw"]
+
+[node name="MeshBarkasse" unique_id=1012285651 instance=ExtResource("1_cnokw")]
+
+[node name="barkasse" parent="." index="0" unique_id=649240957]
+layers = 64
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0

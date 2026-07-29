@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8u5q7pcvmawx"
-path.s3tc="res://.godot/imported/gaz-aa box cabin.jpg-8d0c72bd681b325bc720cca598b0bcdd.s3tc.ctex"
+uid="uid://tixjo8mjtud1"
+path.s3tc="res://.godot/imported/haus21k5rnk.png-40b4d47fc6f34308747134ee41ec8982.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/road/gaz_aa_truck/gaz-aa box cabin.jpg"
-dest_files=["res://.godot/imported/gaz-aa box cabin.jpg-8d0c72bd681b325bc720cca598b0bcdd.s3tc.ctex"]
+source_file="res://assets/meshes/structures/old_city_house_speicher/mesh/haus21k5rnk.png"
+dest_files=["res://.godot/imported/haus21k5rnk.png-40b4d47fc6f34308747134ee41ec8982.s3tc.ctex"]
 
 [params]
 

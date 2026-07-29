@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kkryuorp4nom"
-path="res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"
+uid="uid://cbkuf48y5fn03"
+path="res://.godot/imported/old_city_house_bakery.obj-4466e7841f1da8ff47bf0c1d2da768d3.scn"
 
 [deps]
 
-source_file="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj"
-dest_files=["res://.godot/imported/gantry_crane_long.obj-cd78ad208d901c63393ba4333a301145.scn"]
+source_file="res://assets/meshes/structures/old_city_house_bakery/mesh/old_city_house_bakery.obj"
+dest_files=["res://.godot/imported/old_city_house_bakery.obj-4466e7841f1da8ff47bf0c1d2da768d3.scn"]
 
 [params]
 

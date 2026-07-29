@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://jtoqho0a2g4w"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ngfhg"]
+[ext_resource type="PackedScene" uid="uid://cm827nled7vmh" path="res://assets/meshes/structures/old_city_giebelhaus_1/mesh/mesh_old_city_giebelhaus_1.tscn" id="2_ngfhg"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_w77yr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngfhg"]
+size = Vector3(5.404297, 8.987427, 5.3598633)
+
+[node name="OldCityGiebelhaus1" type="Node3D" unique_id=2019527658]
+script = ExtResource("1_ngfhg")
+placed_res_bld_type = "old_city_giebelhaus_1"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshOldCityGiebelhaus1" parent="." unique_id=252961434 instance=ExtResource("2_ngfhg")]
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=429474164]
+script = ExtResource("3_w77yr")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=2108993778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14208984, 4.3541, 0.19848633)
+shape = SubResource("BoxShape3D_ngfhg")

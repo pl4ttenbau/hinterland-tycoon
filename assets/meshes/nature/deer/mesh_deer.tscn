@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bp7jilyj8fga6"]
+
+[ext_resource type="PackedScene" uid="uid://de1ypwko1kbke" path="res://assets/meshes/nature/deer/deer.obj" id="1_lw1w0"]
+
+[node name="MeshDeer" unique_id=2060310034 instance=ExtResource("1_lw1w0")]
+
+[node name="deer" parent="." index="0" unique_id=908438401]
+layers = 32
+lod_bias = 0.4
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0

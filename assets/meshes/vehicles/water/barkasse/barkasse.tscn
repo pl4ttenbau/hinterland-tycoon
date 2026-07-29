@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cqx4jcfjwyxgw"]
+
+[ext_resource type="PackedScene" uid="uid://dsy7m1s0jjoby" path="res://assets/meshes/vehicles/water/barkasse/mesh/mesh_barkasse.tscn" id="1_kwh8a"]
+
+[node name="Barkasse" type="Node3D" unique_id=124944274]
+
+[node name="MeshBarkasse" parent="." unique_id=1012285651 instance=ExtResource("1_kwh8a")]

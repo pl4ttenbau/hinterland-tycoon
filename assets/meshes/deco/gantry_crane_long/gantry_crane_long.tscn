@@ -1,21 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bek8pierb4jsv"]
+[gd_scene format=3 uid="uid://bek8pierb4jsv"]
 
-[ext_resource type="Texture2D" uid="uid://0jney20eu5ep" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long_d.png" id="1_jvpwn"]
-[ext_resource type="Texture2D" uid="uid://bljnvhsms0bc" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long_n.png" id="2_6ukpd"]
-[ext_resource type="Texture2D" uid="uid://dfhh2e1h5uevp" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long_r.png" id="3_8e8k5"]
-[ext_resource type="ArrayMesh" uid="uid://kkryuorp4nom" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.obj" id="4_u048o"]
+[ext_resource type="PackedScene" uid="uid://bnesc5m3g58w8" path="res://assets/meshes/deco/gantry_crane_long/mesh_gantry_crane_long.tscn" id="1_o3bef"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2xah"]
-albedo_color = Color(0.851769, 0.851769, 0.851769, 1)
-albedo_texture = ExtResource("1_jvpwn")
-roughness_texture = ExtResource("3_8e8k5")
-normal_enabled = true
-normal_texture = ExtResource("2_6ukpd")
+[node name="GantryCraneLong" type="Node3D" unique_id=300716461]
 
-[node name="GantryCraneLong" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_p2xah")
-visibility_range_end = 400.0
-visibility_range_end_margin = 40.0
-mesh = ExtResource("4_u048o")
+[node name="MeshGantryCraneLong" parent="." unique_id=899392521 instance=ExtResource("1_o3bef")]
