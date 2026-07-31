@@ -13,15 +13,17 @@ static func activate_cam(cam: Camera3D):
 	GlobalState.world_container.terrain.set_camera(cam)
 	
 func enter_train():
-	var veh := GlobalState.trains.get(0) as Train3D
-	if ! veh:
+	Loggie.info("Entering train..")
+	var train3d := GlobalState.trains.get(0) as Train3D
+	if ! train3d:
 		Loggie.error("Cannot get into vehicle: none found on map")
 		return
-	self.activate_cam(veh.get_cam())
+	self.activate_cam(train3d.get_cam())
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.player_entered_train.emit(veh)
+	SignalBus.player_entered_train.emit(train3d)
 	
 func exit_train():
+	Loggie.info("Leaving train..")
 	SignalBus.player_exited_train.emit()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# position player by vehicle

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cp6y2lb7gujs3"]
+
+[ext_resource type="PackedScene" uid="uid://bsrdw11d1b0ku" path="res://assets/meshes/structures/wooden_shack/mesh/wooden_shack.obj" id="1_u0vsi"]
+[ext_resource type="Material" uid="uid://r0oiw3wi034n" path="res://assets/meshes/structures/wooden_shack/mesh/mat_wooden_shack.tres" id="2_jbt00"]
+
+[node name="MeshWoodenShack" unique_id=719820576 instance=ExtResource("1_u0vsi")]
+
+[node name="House_02_Door_01" parent="." index="0" unique_id=2074802906]
+layers = 8
+material_override = ExtResource("2_jbt00")
+lod_bias = 0.1
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+
+[node name="village_house_4" parent="." index="1" unique_id=1312229942]
+layers = 8
+material_override = ExtResource("2_jbt00")
+lod_bias = 0.1
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0

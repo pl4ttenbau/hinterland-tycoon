@@ -7,7 +7,7 @@ size = Vector3(9.3006, 17.6881, 16.6858)
 
 [node name="Church1" type="Node3D" unique_id=1158463457]
 
-[node name="church1" parent="." unique_id=369851761 instance=ExtResource("1_qwf7s")]
+[node name="MeshChurch1" parent="." unique_id=369851761 instance=ExtResource("1_qwf7s")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=837600817]
 visible = false

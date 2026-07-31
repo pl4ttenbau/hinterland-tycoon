@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://knfsvgxxy0ds"]
+
+[ext_resource type="PackedScene" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="1_t0vpd"]
+
+[node name="MeshWarehouseWooden" unique_id=541485670 instance=ExtResource("1_t0vpd")]
+
+[node name="warehouse_wooden" parent="." index="0" unique_id=1066500143]
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0

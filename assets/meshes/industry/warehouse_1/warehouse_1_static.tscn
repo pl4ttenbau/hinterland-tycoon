@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hpd8av52bwn"]
 
-[ext_resource type="ArrayMesh" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="2_idq8n"]
+[ext_resource type="PackedScene" uid="uid://cufatwmnpnv5m" path="res://assets/meshes/industry/warehouse_1/mesh_warehouse_1.tscn" id="1_g26tm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8embk"]
 
@@ -9,12 +9,10 @@ size = Vector3(14.406, 4.57373, 10.2098)
 
 [node name="Warehouse1Static" type="Node3D" unique_id=1416822858]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=330848797]
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-mesh = ExtResource("2_idq8n")
+[node name="MeshWarehouse1" parent="." unique_id=1579095605 instance=ExtResource("1_g26tm")]
 
 [node name="StaticBody" type="StaticBody3D" parent="." unique_id=203742309]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_8embk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody" unique_id=1354044767]

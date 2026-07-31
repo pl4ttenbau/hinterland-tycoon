@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://datqx0f0mdhmc"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_5qinm"]
-[ext_resource type="ArrayMesh" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="1_iitmb"]
+[ext_resource type="PackedScene" uid="uid://knfsvgxxy0ds" path="res://assets/meshes/industry/warehouse_wooden/mesh_warehouse_wooden.tscn" id="2_8pr3a"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ggyj6"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_08gt4"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_d54y4"]
@@ -27,12 +27,10 @@ metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 script = ExtResource("1_5qinm")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=382158768]
-visibility_range_end = 300.0
-visibility_range_end_margin = 20.0
-mesh = ExtResource("1_iitmb")
+[node name="MeshWarehouseWooden" parent="." unique_id=541485670 instance=ExtResource("2_8pr3a")]
 
 [node name="ClickableCollider" type="StaticBody3D" parent="." unique_id=2060413579]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_xpss4")
 script = ExtResource("3_ggyj6")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"

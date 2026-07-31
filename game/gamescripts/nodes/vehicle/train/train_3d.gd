@@ -92,7 +92,7 @@ func init_segment_path():
 	self.add_child(segment_path)
 	segment_path.name = "SegmentPath"
 
-## after locomotive reaches end of current segment, 
+## after locomotive reaches end of current segmessssssnt, 
 func add_next_segment_or_stop():
 	var cached_previous_segment: VehiclePathSegment = self.current_segment
 	# update next segment

@@ -284,7 +284,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.845093, 9.050041, 30.95818
 [node name="TestTerrain" type="Node3D" parent="Features" unique_id=816951878]
 
 [node name="Terrain3D" parent="Features/TestTerrain" unique_id=10044793 instance=ExtResource("39_mk0on")]
-displacement_sharpness = 0.5
 
 [node name="HalfTimberedBarn" type="Node3D" parent="Features" unique_id=186996508]
 

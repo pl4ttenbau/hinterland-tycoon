@@ -16,11 +16,11 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_5fcgv")
 
-[node name="church1" unique_id=369851761 instance=ExtResource("1_vgcnu")]
+[node name="MeshChurch1" unique_id=369851761 instance=ExtResource("1_vgcnu")]
 
 [node name="church" parent="." index="0" unique_id=1203511877]
 layers = 32
-lod_bias = 0.5
+lod_bias = 0.1
 visibility_range_end = 250.0
 visibility_range_end_margin = 25.0
 
@@ -33,6 +33,6 @@ visibility_range_end_margin = 10.0
 [node name="windows" parent="." index="2" unique_id=1885328320]
 layers = 32
 material_override = SubResource("StandardMaterial3D_26au8")
-lod_bias = 0.5
+lod_bias = 0.1
 visibility_range_end = 80.0
 visibility_range_end_margin = 8.0

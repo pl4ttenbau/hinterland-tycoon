@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm6eywo16382d"]
+[gd_scene format=3 uid="uid://bm6eywo16382d"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_2sr6e"]
-[ext_resource type="ArrayMesh" uid="uid://dcylhi1qovm4a" path="res://assets/meshes/structures/polish_house_1/polish_house_1.obj" id="1_bh2hy"]
+[ext_resource type="PackedScene" uid="uid://iwqtjbddmnfg" path="res://assets/meshes/structures/polish_house_1/mesh/mesh_polish_house_1.tscn" id="2_pg7lu"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_pg7lu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pg7lu"]
@@ -9,22 +9,19 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_285rs"]
 size = Vector3(10.8595, 5.1365, 7.35693)
 
-[node name="PolishHouse1" type="Node3D"]
+[node name="PolishHouse1" type="Node3D" unique_id=2005346308]
 script = ExtResource("1_2sr6e")
 placed_res_bld_type = "polish_house_1"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 8
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-mesh = ExtResource("1_bh2hy")
+[node name="MeshPolishHouse1" parent="." unique_id=1404371459 instance=ExtResource("2_pg7lu")]
 
-[node name="ResBldCollider" type="StaticBody3D" parent="."]
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1095117639]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_pg7lu")
 script = ExtResource("3_pg7lu")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=1770497160]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35103, 2.425, 0.472439)
 shape = SubResource("BoxShape3D_285rs")

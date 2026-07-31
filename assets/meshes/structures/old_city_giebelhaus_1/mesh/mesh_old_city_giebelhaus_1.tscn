@@ -4,7 +4,8 @@
 
 [node name="MeshOldCityGiebelhaus1" unique_id=252961434 instance=ExtResource("1_hagoh")]
 
-[node name="old_city_giebelhaus_1" parent="." index="0" unique_id=1097096611]
+[node name="old_city_giebelhaus_1" parent="." index="0" unique_id=23439057]
 layers = 8
+lod_bias = 0.1
 visibility_range_end = 120.0
 visibility_range_end_margin = 12.0

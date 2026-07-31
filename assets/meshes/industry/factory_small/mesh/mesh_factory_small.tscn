@@ -4,7 +4,8 @@
 
 [node name="MeshFactorySmall" unique_id=1832172983 instance=ExtResource("1_rs0xx")]
 
-[node name="small_factory" parent="." index="0" unique_id=921145745]
+[node name="small_factory" parent="." index="0" unique_id=1249821863]
 layers = 8
+lod_bias = 0.1
 visibility_range_end = 220.0
 visibility_range_end_margin = 22.0

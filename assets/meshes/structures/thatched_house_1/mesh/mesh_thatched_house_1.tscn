@@ -22,8 +22,10 @@ normal_texture = ExtResource("5_jxwuk")
 
 [node name="MeshThatchedHouse1" unique_id=777005685 instance=ExtResource("1_avgrv")]
 
-[node name="thatched_house_1" parent="." index="0" unique_id=365238247]
-visibility_range_end = 200.0
-visibility_range_end_margin = 20.0
+[node name="thatched_house_1" parent="." index="0" unique_id=364179572]
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
 surface_material_override/0 = SubResource("StandardMaterial3D_4rmiq")
 surface_material_override/1 = SubResource("StandardMaterial3D_3q6sf")

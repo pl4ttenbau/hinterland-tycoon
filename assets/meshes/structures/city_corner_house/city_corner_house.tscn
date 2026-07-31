@@ -12,7 +12,7 @@ script = ExtResource("1_f4xky")
 placed_res_bld_type = "city_corner_house"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="city_corner_house" parent="." unique_id=775605327 instance=ExtResource("2_fxeq2")]
+[node name="MeshCityCornerHouse" parent="." unique_id=775605327 instance=ExtResource("2_fxeq2")]
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=2003053194]
 script = ExtResource("7_inp1o")

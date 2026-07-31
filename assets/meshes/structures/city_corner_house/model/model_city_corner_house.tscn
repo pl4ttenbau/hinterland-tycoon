@@ -14,7 +14,7 @@ roughness_texture = ExtResource("5_cuxln")
 normal_enabled = true
 normal_texture = ExtResource("4_xw380")
 
-[node name="city_corner_house" unique_id=775605327 instance=ExtResource("1_ktpu6")]
+[node name="MeshCityCornerHouse" unique_id=775605327 instance=ExtResource("1_ktpu6")]
 
 [node name="building_main_0" parent="." index="0" unique_id=226902065]
 layers = 8
