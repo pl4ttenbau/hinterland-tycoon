@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://hhjgs2re11p6"]
+
+[ext_resource type="PackedScene" uid="uid://b7y5lc0fn2c1u" path="res://assets/meshes/structures/old_city_house_speicher/mesh/old_city_house_speicher.obj" id="1_ngwbi"]
+
+[node name="MeshOldCityHouseSpeicher" unique_id=302163569 instance=ExtResource("1_ngwbi")]
+
+[node name="old_city_house_speicher" parent="." index="0" unique_id=539495559]
+layers = 8
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0

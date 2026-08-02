@@ -15,7 +15,7 @@ static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePat
 	var next_track_num: int = get_next_track_num_from_node(segment_end)
 	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, segment_end.position)
 	if next_track_num >= 0 && next_dir != Enums.PathDirection.STOP:
-		Loggie.info("Continuing %s on track %d" % [current_segment.get_dir_enum_name(next_dir), next_track_num])
+		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		var next_linked_segment: VehiclePathSegment = VehiclePathSegment.of_rail(next_track_num, next_dir)
 		next_linked_segment.previous = current_segment
 		# connect to previous
@@ -42,7 +42,7 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	return segment_end.fork.set_to
 
 static func get_next_dir_at_fork(next_track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
-	if next_track_num < 0: return Enums.PathDirection.STOP
+	if next_track_num <= -1: return Enums.PathDirection.STOP
 	var next_track: RailTrackData = RailTrackData.get_by_num(next_track_num)
 	# could maybe also gotten out of the ForkData object
 	var next_rail_node: RailNodeData = next_track.get_node_at_pos(fork_pos)

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://stuogce200cl"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_5wlw8"]
+[ext_resource type="PackedScene" uid="uid://ca6u6fbi3ypqy" path="res://assets/meshes/industry/factory_small/mesh/mesh_factory_small.tscn" id="2_r524g"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_2g1eo"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_ibs5u"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_8atry"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_dw06j"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_4ore0"]
+[ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="8_r524g"]
+[ext_resource type="Material" uid="uid://dcwy0mbqvh1cl" path="res://assets/packed/particles/smoke_particle_mat.tres" id="9_2g1eo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k6kh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6kh0"]
+size = Vector3(18.3074, 7.61292, 16.5604)
+
+[sub_resource type="Resource" id="Resource_xenq4"]
+resource_local_to_scene = true
+script = ExtResource("6_dw06j")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_hah6j"]
+resource_local_to_scene = true
+script = ExtResource("5_8atry")
+storage = SubResource("Resource_xenq4")
+amount_max = 200.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r524g"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_r524g")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[sub_resource type="QuadMesh" id="QuadMesh_8atry"]
+
+[node name="FactorySmall" type="Node3D" unique_id=197550425]
+script = ExtResource("1_5wlw8")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshFactorySmall" parent="." unique_id=1832172983 instance=ExtResource("2_r524g")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1722893778]
+physics_material_override = SubResource("PhysicsMaterial_k6kh0")
+script = ExtResource("3_2g1eo")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=726876091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146126, 3.77081, 0.0566711)
+shape = SubResource("BoxShape3D_k6kh0")
+
+[node name="Inventory" type="Node" parent="." unique_id=1782243600]
+script = ExtResource("4_ibs5u")
+inventory = SubResource("Resource_hah6j")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1468104359 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("7_4ore0")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=99053390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.957691, 14.627424, -0.38007778)
+material_override = SubResource("StandardMaterial3D_r524g")
+visibility_range_end = 80.0
+visibility_range_end_margin = 8.0
+amount = 200
+lifetime = 4.0
+randomness = 0.6
+process_material = ExtResource("9_2g1eo")
+draw_pass_1 = SubResource("QuadMesh_8atry")
+
+[node name="Attractor" type="GPUParticlesAttractorSphere3D" parent="GPUParticles3D" unique_id=1945124882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.124614, 8.66564, 6.198073)
+attenuation = 0.0
+radius = 10.0

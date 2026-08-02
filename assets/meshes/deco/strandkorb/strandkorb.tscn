@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dcc5sc7t4yla2"]
+
+[ext_resource type="PackedScene" uid="uid://brjdhg3iqv24q" path="res://assets/meshes/deco/strandkorb/mesh/mesh_strandkorb.tscn" id="1_h5lvy"]
+
+[node name="Strandkorb" type="Node3D" unique_id=1397091968]
+
+[node name="MeshStrandkorb" parent="." unique_id=1268067896 instance=ExtResource("1_h5lvy")]

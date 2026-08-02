@@ -1,6 +1,6 @@
 class_name VehicleSpeed extends RefCounted
 
-const SPEED_CHANGE: float = .005
+const SPEED_CHANGE_PER_TICK: float = .005
 
 signal changed(value: float)
 signal target_changed(value: float)
@@ -21,6 +21,6 @@ signal target_changed(value: float)
 func adjust_to_target_speed():
 	var speed_diff := self.target - self.current
 	if speed_diff > 0:
-		self.current += SPEED_CHANGE
+		self.current += SPEED_CHANGE_PER_TICK
 	elif speed_diff < 0:
-		self.current -= SPEED_CHANGE
+		self.current -= SPEED_CHANGE_PER_TICK

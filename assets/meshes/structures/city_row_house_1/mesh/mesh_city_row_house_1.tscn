@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cfqkhut5xpamk"]
+
+[ext_resource type="PackedScene" uid="uid://gqe67rvf2737" path="res://assets/meshes/structures/city_row_house_1/mesh/city_house_1.obj" id="1_8uv13"]
+
+[node name="MeshCityRowHouse1" unique_id=750194717 instance=ExtResource("1_8uv13")]
+
+[node name="apartmenthouseE" parent="." index="0" unique_id=1138245167]
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0

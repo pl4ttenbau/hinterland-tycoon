@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://vn61dt5xt45f"]
+
+[ext_resource type="Texture2D" uid="uid://dwphwtlwywmuw" path="res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/mesh/tex_fkbn_t1_motorwagon_d.png" id="1_sjijj"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_sjijj")

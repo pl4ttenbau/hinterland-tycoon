@@ -9,6 +9,8 @@ var empty_infr = Callable(self, "do_empty_infr")
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		self.owner = EditorInterface.get_edited_scene_root()
+	else:
+		self.visible = false
 	
 #region Button Action
 func do_empty_infr() -> void:

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://deii7l06l8ph5"]
+
+[ext_resource type="PackedScene" uid="uid://cxgjyiqjlqv17" path="res://assets/meshes/structures/polish_house_2/mesh/polish_house_2.obj" id="1_27cbv"]
+
+[node name="MeshPolishHouse2" unique_id=80273922 instance=ExtResource("1_27cbv")]
+
+[node name="polish_house_2" parent="." index="0" unique_id=83072155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1565721, 0)
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0

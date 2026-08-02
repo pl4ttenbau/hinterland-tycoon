@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0qd5mbcli2hc"]
+
+[ext_resource type="PackedScene" uid="uid://eaxgnv16gl3x" path="res://assets/meshes/nature/high_grass/high_grass.obj" id="1_12k8m"]
+[ext_resource type="Texture2D" uid="uid://dydus3w4f40gx" path="res://assets/meshes/nature/high_grass/tex_high_grass_d.png" id="2_tb0hq"]
+[ext_resource type="Texture2D" uid="uid://b6g06i2v645l1" path="res://assets/meshes/nature/high_grass/tex_high_grass_n.jpg" id="3_2dtid"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5lqj"]
+transparency = 2
+alpha_scissor_threshold = 0.265
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_tb0hq")
+normal_enabled = true
+normal_texture = ExtResource("3_2dtid")
+backlight_enabled = true
+backlight = Color(0.641934, 0.641934, 0.641934, 1)
+
+[node name="MeshHighGrass" unique_id=1650781555 instance=ExtResource("1_12k8m")]
+
+[node name="high_grass" parent="." index="0" unique_id=2024510353]
+lod_bias = 0.1
+visibility_range_end = 40.0
+visibility_range_end_margin = 4.0
+surface_material_override/0 = SubResource("StandardMaterial3D_q5lqj")

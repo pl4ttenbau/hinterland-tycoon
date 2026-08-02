@@ -13,7 +13,7 @@ func _ready() -> void:
 func _on_speed_slider_change(scaled_speed: float):
 	if self.current_train:
 		var current_speed: VehicleSpeed = self.current_train.motor.speed
-		current_speed.target = scaled_speed
+		current_speed.target = (scaled_speed /100.0)
 		Loggie.info("Set target speed to %.1f" % scaled_speed)
 	else:
 		Loggie.warn("Cannot change vehicle speed: no player train registered")

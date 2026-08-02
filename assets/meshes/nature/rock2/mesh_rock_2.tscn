@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ch8p58wug4x2c"]
+
+[ext_resource type="PackedScene" uid="uid://d3rsyihgq2be3" path="res://assets/meshes/nature/rock2/rock2.obj" id="1_lq7wy"]
+
+[node name="MeshRock2" unique_id=1879524243 instance=ExtResource("1_lq7wy")]
+
+[node name="rock" parent="." index="0" unique_id=335437312]
+layers = 32
+lod_bias = 0.3

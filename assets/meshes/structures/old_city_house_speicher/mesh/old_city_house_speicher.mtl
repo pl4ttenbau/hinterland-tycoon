@@ -1,0 +1,22 @@
+# Blender 5.0.1 MTL File: 'old_city_house_speicher.blend'
+# www.blender.org
+
+newmtl dachpbuxl.png-1.001
+Ns 186.274536
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd dachpbuxl.png
+
+newmtl haus21k5rnk.png-0
+Ns 186.274536
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd haus21k5rnk.png

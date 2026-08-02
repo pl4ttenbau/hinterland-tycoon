@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cm2ijd3q0hjxa"]
+
+[ext_resource type="PackedScene" uid="uid://c8lyp4qsnfdqk" path="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/gaz_aa_truck.obj" id="1_q5fyp"]
+
+[node name="MeshGazAaTruck" unique_id=314079992 instance=ExtResource("1_q5fyp")]
+
+[node name="gaz_aa_truck" parent="." index="0" unique_id=1843428630]
+layers = 32
+lod_bias = 0.5
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+
+[node name="gaz_aa_wheels" parent="." index="1" unique_id=1370713519]
+layers = 32
+lod_bias = 0.5
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0

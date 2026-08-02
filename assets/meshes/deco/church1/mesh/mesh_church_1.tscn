@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dddgxdc0m6vy0"]
+
+[ext_resource type="PackedScene" uid="uid://c74c4fk274j48" path="res://assets/meshes/deco/church1/mesh/church1.obj" id="1_vgcnu"]
+[ext_resource type="Texture2D" uid="uid://cg3rtijgttrf0" path="res://assets/meshes/deco/church1/mesh/tex_church_ivy_d.png" id="2_o8y0w"]
+[ext_resource type="Texture2D" uid="uid://cqqmktodmpjtx" path="res://assets/meshes/deco/church1/mesh/tex_church_window.png" id="3_5fcgv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbotk"]
+transparency = 2
+alpha_scissor_threshold = 0.254
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_o8y0w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26au8"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3_5fcgv")
+
+[node name="MeshChurch1" unique_id=369851761 instance=ExtResource("1_vgcnu")]
+
+[node name="church" parent="." index="0" unique_id=1203511877]
+layers = 32
+lod_bias = 0.1
+visibility_range_end = 250.0
+visibility_range_end_margin = 25.0
+
+[node name="ivy" parent="." index="1" unique_id=465815693]
+material_override = SubResource("StandardMaterial3D_jbotk")
+lod_bias = 0.5
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+
+[node name="windows" parent="." index="2" unique_id=1885328320]
+layers = 32
+material_override = SubResource("StandardMaterial3D_26au8")
+lod_bias = 0.1
+visibility_range_end = 80.0
+visibility_range_end_margin = 8.0

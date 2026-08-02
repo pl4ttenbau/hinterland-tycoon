@@ -24,9 +24,9 @@ shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
+shader_parameter/specular = 0.75999998301248
 shader_parameter/metallic = 0.0
-shader_parameter/backlight = Color(0.7750634, 0.7750634, 0.7750634, 1)
+shader_parameter/backlight = Color(0.8732984, 0.8732984, 0.8732984, 1)
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
@@ -41,13 +41,13 @@ shader = ExtResource("4_fdn2p")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/transmission = Color(0, 0, 0, 1)
 shader_parameter/texture_albedo = ExtResource("5_hgtxw")
-shader_parameter/alpha_scissor_threshold = 0.5
-shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/alpha_scissor_threshold = 0.3810000180975
+shader_parameter/alpha_antialiasing_edge = 0.43999999016512
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.5
+shader_parameter/specular = 0.75999998301248
 shader_parameter/metallic = 0.0
 shader_parameter/backlight = Color(0.7792914, 0.7792914, 0.7792913, 1)
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
@@ -60,9 +60,9 @@ shader_parameter/sway_phase_len = 8.0
 
 [node name="ModelTree3Kastanie" unique_id=1200315857 instance=ExtResource("1_arxuh")]
 
-[node name="tree3" parent="." index="0" unique_id=1886947983]
+[node name="tree3" parent="." index="0" unique_id=1779611782]
 layers = 128
-lod_bias = 0.1
+lod_bias = 0.2
 surface_material_override/0 = SubResource("StandardMaterial3D_3moan")
 surface_material_override/1 = SubResource("ShaderMaterial_fq5b8")
 surface_material_override/2 = SubResource("ShaderMaterial_hgtxw")

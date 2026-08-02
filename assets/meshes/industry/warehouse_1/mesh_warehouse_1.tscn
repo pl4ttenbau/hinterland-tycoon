@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cufatwmnpnv5m"]
+
+[ext_resource type="PackedScene" uid="uid://dhstwvtpf8rf5" path="res://assets/meshes/industry/warehouse_1/warehouse_1.obj" id="1_oxgb1"]
+
+[node name="MeshWarehouse1" unique_id=1579095605 instance=ExtResource("1_oxgb1")]
+
+[node name="warehouse_1" parent="." index="0" unique_id=1494255096]
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 160.0
+visibility_range_end_margin = 16.0

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cxpy7d2icm4nx"]
+
+[ext_resource type="PackedScene" uid="uid://dfk3aocx2e8xn" path="res://assets/meshes/vehicles/rail/mpsb_open_wagon/mesh/mpsb_open_wagon.obj" id="1_7r1ln"]
+[ext_resource type="Texture2D" uid="uid://bab65vigd8yfa" path="res://assets/meshes/vehicles/rail/mpsb_open_wagon/mesh/tex_mpsb_open_wagon_d.png" id="2_kt4dp"]
+[ext_resource type="Texture2D" uid="uid://dmbt8ll1m7uym" path="res://assets/meshes/vehicles/rail/mpsb_open_wagon/mesh/tex_mpsb_open_wagon_n.png" id="3_oapb8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p57mj"]
+cull_mode = 2
+albedo_texture = ExtResource("2_kt4dp")
+normal_enabled = true
+normal_texture = ExtResource("3_oapb8")
+
+[node name="MeshMpsbOpenWagon" unique_id=756396751 instance=ExtResource("1_7r1ln")]
+
+[node name="Bogeys" parent="." index="0" unique_id=762528051]
+layers = 64
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+surface_material_override/0 = SubResource("StandardMaterial3D_p57mj")
+
+[node name="Bottom" parent="." index="1" unique_id=1747780222]
+layers = 64
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
+surface_material_override/0 = SubResource("StandardMaterial3D_p57mj")

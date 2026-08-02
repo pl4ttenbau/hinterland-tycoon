@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bijjccja3y731"]
 
-[ext_resource type="ArrayMesh" uid="uid://d3g4d7eutrjs" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.obj" id="2_td8bj"]
+[ext_resource type="PackedScene" uid="uid://knfsvgxxy0ds" path="res://assets/meshes/industry/warehouse_wooden/mesh_warehouse_wooden.tscn" id="1_g1w78"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_td8bj"]
 
@@ -9,10 +9,7 @@ size = Vector3(15.3044, 7.17401, 34.3833)
 
 [node name="WarehouseWoodenStatic" type="Node3D" unique_id=2081448644]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=72673834]
-visibility_range_end = 300.0
-visibility_range_end_margin = 30.0
-mesh = ExtResource("2_td8bj")
+[node name="MeshWarehouseWooden" parent="." unique_id=541485670 instance=ExtResource("1_g1w78")]
 
 [node name="StaticBody" type="StaticBody3D" parent="." unique_id=1344416914]
 physics_material_override = SubResource("PhysicsMaterial_td8bj")

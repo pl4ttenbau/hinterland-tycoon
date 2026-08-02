@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhe6vkw50dc4g"]
+
+[ext_resource type="PackedScene" uid="uid://drupjwf2dpw4x" path="res://assets/meshes/structures/polish_house_3/mesh/polish_house_3.obj" id="1_7wi42"]
+
+[node name="MeshPolishHouse3" unique_id=1900309489 instance=ExtResource("1_7wi42")]
+
+[node name="polish_house_3" parent="." index="0" unique_id=2021956638]
+layers = 8
+lod_bias = 0.1
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://3lemibhuulhc"]
+
+[ext_resource type="PackedScene" uid="uid://1dfcpr7udtas" path="res://assets/meshes/deco/campfire/mesh/campfire.obj" id="1_gs0di"]
+[ext_resource type="Texture2D" uid="uid://cpm3nx6mbra7o" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_d.png" id="2_i7oel"]
+[ext_resource type="Texture2D" uid="uid://2dkrttra1qag" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_rocks_d.png" id="3_kdotu"]
+[ext_resource type="Texture2D" uid="uid://cjrvmgi2e8ykh" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_g.png" id="3_udo2q"]
+[ext_resource type="Texture2D" uid="uid://deejyvbao3gy1" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_cookingpot_d.png" id="4_41i7s"]
+[ext_resource type="Texture2D" uid="uid://ccjf6b6hhk5y5" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_n.png" id="4_fk4wx"]
+[ext_resource type="Texture2D" uid="uid://b0v1o1tfvuop0" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_firewood_r.png" id="5_ypdar"]
+[ext_resource type="Texture2D" uid="uid://bp8ohtal8ks1" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_rocks_n.png" id="7_eg6kh"]
+[ext_resource type="Texture2D" uid="uid://cf6y5wtx4m6uf" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_rocks_r.png" id="8_c41ys"]
+[ext_resource type="Texture2D" uid="uid://btsg1cuuaw6ym" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_cookingpot_n.png" id="10_5rvrc"]
+[ext_resource type="Texture2D" uid="uid://dg6ugnuvjxsik" path="res://assets/meshes/deco/campfire/mesh/tex/tex_campfire_cookingpot_r.png" id="11_5h6kk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udo2q"]
+resource_name = "MatWood"
+albedo_texture = ExtResource("2_i7oel")
+metallic_texture = ExtResource("3_udo2q")
+roughness_texture = ExtResource("5_ypdar")
+normal_enabled = true
+normal_texture = ExtResource("4_fk4wx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fk4wx"]
+resource_name = "MatRocks"
+albedo_texture = ExtResource("3_kdotu")
+roughness_texture = ExtResource("8_c41ys")
+normal_enabled = true
+normal_texture = ExtResource("7_eg6kh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypdar"]
+resource_name = "MatCookingPot"
+albedo_texture = ExtResource("4_41i7s")
+roughness_texture = ExtResource("11_5h6kk")
+normal_enabled = true
+normal_texture = ExtResource("10_5rvrc")
+
+[node name="MeshCampfire" unique_id=32361581 instance=ExtResource("1_gs0di")]
+
+[node name="campfire" parent="." index="0" unique_id=1591663417]
+layers = 32
+lod_bias = 0.15
+visibility_range_end = 75.0
+visibility_range_end_margin = 7.5
+surface_material_override/0 = SubResource("StandardMaterial3D_udo2q")
+surface_material_override/1 = SubResource("StandardMaterial3D_fk4wx")
+surface_material_override/2 = SubResource("StandardMaterial3D_ypdar")

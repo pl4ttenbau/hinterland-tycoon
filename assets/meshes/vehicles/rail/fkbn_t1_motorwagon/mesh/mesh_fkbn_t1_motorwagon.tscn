@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://2vc5uog2hahm"]
+
+[ext_resource type="PackedScene" uid="uid://xc6tc48b4h1e" path="res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/mesh/fkbn_t1_motorwagon.obj" id="1_y0wxm"]
+[ext_resource type="Material" uid="uid://vn61dt5xt45f" path="res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/mesh/mat_fkbn_t1_motorwagon.tres" id="2_kvjvh"]
+
+[node name="MeshFkbnT1Motorwagon" unique_id=422600937 instance=ExtResource("1_y0wxm")]
+
+[node name="body" parent="." index="0" unique_id=1267030662]
+layers = 32
+surface_material_override/0 = ExtResource("2_kvjvh")
+
+[node name="deco" parent="." index="1" unique_id=1943860722]
+layers = 32
+surface_material_override/0 = ExtResource("2_kvjvh")
+
+[node name="bogeys" parent="." index="2" unique_id=1863470887]
+layers = 32
+surface_material_override/0 = ExtResource("2_kvjvh")

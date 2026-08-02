@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://dd1j886e5nhtv"]
+
+[ext_resource type="Script" uid="uid://6smqhu1k4x5" path="res://game/gamescripts/resources/goods/goods_capacity.gd" id="1_1yb48"]
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="2_ldobc"]
+[ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="3_slid2"]
+
+[sub_resource type="Resource" id="Resource_2u41c"]
+script = ExtResource("1_1yb48")
+amount = 48
+metadata/_custom_type_script = "uid://6smqhu1k4x5"
+
+[sub_resource type="Resource" id="Resource_pwhox"]
+script = ExtResource("3_slid2")
+subtype = "750_MM"
+metadata/_custom_type_script = "uid://dp38h2f55xv7v"
+
+[resource]
+script = ExtResource("2_ldobc")
+key = "fkbn_t1_motorwagon"
+display_name = "FKB T1 Motorwagon"
+model_scene_path = "res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/model_fkbn_t1_motorwagon.tscn"
+max_speed_kmh = 60
+usable_infr = SubResource("Resource_pwhox")
+has_motor = true
+capacity = SubResource("Resource_2u41c")
+length_metres = 12.461
+metadata/_custom_type_script = "uid://dwf507ds3dbh3"

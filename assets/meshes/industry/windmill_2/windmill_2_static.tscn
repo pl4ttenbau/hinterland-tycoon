@@ -8,8 +8,10 @@ size = Vector3(5.6219482, 12.417358, 4.5319824)
 [node name="Windmill2Static" type="Node3D" unique_id=935057951]
 
 [node name="Windmill2Mesh" parent="." unique_id=1760703559 instance=ExtResource("1_c5nb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062331915, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=675496338]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=695948808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18060303, 6.0460815, 0.17468262)

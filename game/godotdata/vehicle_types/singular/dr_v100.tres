@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="VehicleTypeData" format=3 uid="uid://4acd6su6x8sf"]
+
+[ext_resource type="Script" uid="uid://dwf507ds3dbh3" path="res://game/gamescripts/resources/vehicles/type/vehicle_type.gd" id="1_pf3m3"]
+[ext_resource type="Script" uid="uid://dp38h2f55xv7v" path="res://game/gamescripts/resources/vehicles/common/usable_infr_type.gd" id="2_rmr57"]
+
+[sub_resource type="Resource" id="Resource_0fk02"]
+script = ExtResource("2_rmr57")
+subtype = "NORMAL_GAUGE"
+metadata/_custom_type_script = "uid://dp38h2f55xv7v"
+
+[resource]
+script = ExtResource("1_pf3m3")
+key = "dr_v100"
+display_name = "DR V100"
+model_scene_path = "res://assets/meshes/vehicles/rail/dr_v100/model_dr_v100.tscn"
+max_speed_kmh = 80
+usable_infr = SubResource("Resource_0fk02")
+has_motor = true
+length_metres = 14.332
+metadata/_custom_type_script = "uid://dwf507ds3dbh3"

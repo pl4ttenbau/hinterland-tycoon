@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ds2hvc6jfnbrq"]
+
+[ext_resource type="PackedScene" uid="uid://cswgj3ybjpu48" path="res://assets/meshes/structures/old_city_row_house_1/mesh/old_city_house_1.obj" id="1_bv1mm"]
+
+[node name="MeshOldCityRowHouse" unique_id=1956176938 instance=ExtResource("1_bv1mm")]
+
+[node name="2_2_0_2_2_0_0" parent="." index="0" unique_id=1450844037]
+layers = 8
+lod_bias = 0.6
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0

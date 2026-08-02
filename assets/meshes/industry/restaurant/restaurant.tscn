@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="7_qqtyg"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="8_d7t2n"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="8_qqtyg"]
+[ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="10_y8q64"]
+[ext_resource type="Material" uid="uid://bxne5dwv3k3ic" path="res://assets/packed/particles/minor_smoke_particle_mat.tres" id="11_tyf5i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qra3x"]
 transparency = 2
@@ -30,6 +32,19 @@ script = ExtResource("7_qqtyg")
 storage = SubResource("Resource_d7t2n")
 amount_max = 200.0
 metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyg8t"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_y8q64")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[sub_resource type="QuadMesh" id="QuadMesh_2kav7"]
 
 [node name="Restaurant" type="Node3D" unique_id=590000527]
 script = ExtResource("1_jfdgb")
@@ -58,3 +73,14 @@ metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 script = ExtResource("8_qqtyg")
 industry3d = NodePath("..")
 metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=722709237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.810311, 15.292941, 3.3264868)
+material_override = SubResource("StandardMaterial3D_oyg8t")
+visibility_range_end = 55.0
+visibility_range_end_margin = 5.5
+amount = 40
+lifetime = 4.0
+randomness = 0.6
+process_material = ExtResource("11_tyf5i")
+draw_pass_1 = SubResource("QuadMesh_2kav7")

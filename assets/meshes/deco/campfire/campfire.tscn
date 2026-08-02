@@ -1,51 +1,97 @@
-[gd_scene load_steps=15 format=3 uid="uid://cym4f2u6i3kjx"]
+[gd_scene format=3 uid="uid://cym4f2u6i3kjx"]
 
-[ext_resource type="ArrayMesh" uid="uid://1dfcpr7udtas" path="res://assets/meshes/deco/campfire/campfire.obj" id="1_jli70"]
-[ext_resource type="Texture2D" uid="uid://cpm3nx6mbra7o" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_d.png" id="2_eushf"]
-[ext_resource type="Texture2D" uid="uid://cjrvmgi2e8ykh" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_g.png" id="3_il04e"]
-[ext_resource type="Texture2D" uid="uid://2dkrttra1qag" path="res://assets/meshes/deco/campfire/tex_campfire_rocks_d.png" id="3_kamm1"]
-[ext_resource type="Texture2D" uid="uid://deejyvbao3gy1" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_d.png" id="4_5cbku"]
-[ext_resource type="Texture2D" uid="uid://bp8ohtal8ks1" path="res://assets/meshes/deco/campfire/tex_campfire_rocks_n.png" id="4_kamm1"]
-[ext_resource type="Texture2D" uid="uid://ccjf6b6hhk5y5" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_n.png" id="4_rwrt2"]
-[ext_resource type="Texture2D" uid="uid://b0v1o1tfvuop0" path="res://assets/meshes/deco/campfire/tex_campfire_firewood_r.png" id="5_rwrt2"]
-[ext_resource type="Texture2D" uid="uid://btsg1cuuaw6ym" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_n.png" id="9_b4au2"]
-[ext_resource type="Texture2D" uid="uid://dg6ugnuvjxsik" path="res://assets/meshes/deco/campfire/tex_campfire_cookingpot_r.png" id="10_y0lpw"]
+[ext_resource type="PackedScene" uid="uid://3lemibhuulhc" path="res://assets/meshes/deco/campfire/mesh/mesh_campfire.tscn" id="1_jli70"]
+[ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="2_gav68"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il04e"]
-albedo_texture = ExtResource("2_eushf")
-roughness_texture = ExtResource("5_rwrt2")
-emission_enabled = true
-emission_texture = ExtResource("3_il04e")
-normal_enabled = true
-normal_texture = ExtResource("4_rwrt2")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fgs"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_gav68")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwrt2"]
-albedo_texture = ExtResource("3_kamm1")
-normal_enabled = true
-normal_texture = ExtResource("4_kamm1")
+[sub_resource type="Curve" id="Curve_eushf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.71008396, 0.6629214), -1.5781916, -1.5781916, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fhhk"]
-albedo_texture = ExtResource("4_5cbku")
-roughness_texture = ExtResource("10_y0lpw")
-normal_enabled = true
-normal_texture = ExtResource("9_b4au2")
+[sub_resource type="CurveTexture" id="CurveTexture_2g1eo"]
+curve = SubResource("Curve_eushf")
+
+[sub_resource type="Gradient" id="Gradient_kamm1"]
+colors = PackedColorArray(0.4045111, 0.40451115, 0.4045111, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8atry"]
+gradient = SubResource("Gradient_kamm1")
+
+[sub_resource type="Curve" id="Curve_5cbku"]
+_data = [Vector2(0.0042016804, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_il04e"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.8651686), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pbulp"]
+curve_y = SubResource("Curve_5cbku")
+curve_z = SubResource("Curve_il04e")
+
+[sub_resource type="Curve" id="Curve_rwrt2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0hjvt"]
+curve = SubResource("Curve_rwrt2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0fhhk"]
+emission_shape_scale = Vector3(0.2, 0, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -4.9999895
+angle_max = 5.000011
+direction = Vector3(0, 0, 1)
+spread = 22.0
+directional_velocity_min = -1.6093254e-05
+directional_velocity_max = 0.9999839
+directional_velocity_curve = SubResource("CurveXYZTexture_pbulp")
+gravity = Vector3(0, 0.25, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 0.99999774
+scale_min = 98.829994
+scale_max = 269.12
+scale_curve = SubResource("CurveTexture_0hjvt")
+color_ramp = SubResource("GradientTexture1D_8atry")
+alpha_curve = SubResource("CurveTexture_2g1eo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b4au2"]
+size = Vector2(0.6, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b4au2"]
 size = Vector3(2.23694, 2.63739, 2.16064)
 
-[node name="Campfire" type="Node3D"]
+[node name="Campfire" type="Node3D" unique_id=1265694802]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 32
-visibility_range_end = 200.0
-visibility_range_end_margin = 20.0
-mesh = ExtResource("1_jli70")
-surface_material_override/0 = SubResource("StandardMaterial3D_il04e")
-surface_material_override/1 = SubResource("StandardMaterial3D_rwrt2")
-surface_material_override/2 = SubResource("StandardMaterial3D_0fhhk")
+[node name="MeshCampfire" parent="." unique_id=32361581 instance=ExtResource("1_jli70")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="TopSteamParticles3D" type="GPUParticles3D" parent="MeshCampfire" unique_id=1590907458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14284992, 0.008003235)
+layers = 64
+material_override = SubResource("StandardMaterial3D_c0fgs")
+visibility_range_end = 90.0
+visibility_range_end_margin = 9.0
+amount = 200
+amount_ratio = 0.575
+lifetime = 4.0
+randomness = 0.29
+process_material = SubResource("ParticleProcessMaterial_0fhhk")
+draw_pass_1 = SubResource("QuadMesh_b4au2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=651997356]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=485569963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100708, 1.33597, -0.029541)
 shape = SubResource("BoxShape3D_b4au2")

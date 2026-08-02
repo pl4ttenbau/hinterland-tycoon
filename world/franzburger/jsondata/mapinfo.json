@@ -1,0 +1,19 @@
+{
+	"key": "franzburger",
+	"name": "Franzburger Kreisbahn",
+	"loc": "NORTHERN_GERMAN",
+	
+	"defaultYear": 1955,
+	
+	"startPos": [810.1, -288.65],
+	
+	"sizeAndPos": {
+		"longLat": {
+		  "topLeft": [54.46057, 12.39480],
+		  "bottomRight": [54.07109, 13.32771]
+		},
+		
+		"rasterSize": [3800, 2386],
+		"rasterOffset": [-1900, -1193]
+	}
+}
