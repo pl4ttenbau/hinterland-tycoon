@@ -3932,3 +3932,33 @@ metadata/_custom_type_script = "uid://byq8dj7pajain"
 
 [node name="VillageWell" parent="." unique_id=4867612 instance=ExtResource("14_jmxgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1051.4528, 23.262594, -534.66205)
+
+[node name="Church1" parent="." unique_id=151449310 instance=ExtResource("13_73pql")]
+transform = Transform3D(-0.86011946, 0, -0.5100927, 0, 1, 0, 0.5100927, 0, -0.86011946, 638.69275, 26.4318, 477.32755)
+
+[node name="NorthernGermanHouse" parent="." unique_id=55975266 instance=ExtResource("7_816kf")]
+transform = Transform3D(0.77772766, 0, 0.6286013, 0, 1, 0, -0.6286013, 0, 0.77772766, 808.5196, 25.755533, 533.1877)
+
+[node name="VillageHouse2" parent="." unique_id=187733979 instance=ExtResource("9_18yoq")]
+transform = Transform3D(-0.08837277, 0, 0.9960876, 0, 1, 0, -0.9960876, 0, -0.08837277, 840.20166, 26.932869, 512.4974)
+
+[node name="VillageHouse3" parent="." unique_id=1700837819 instance=ExtResource("8_pf8m4")]
+transform = Transform3D(0.9997306, 0, 0.023210796, 0, 1, 0, -0.023210796, 0, 0.9997306, 652.9584, 26.419325, 471.82626)
+
+[node name="PolishHouse1" parent="." unique_id=496675489 instance=ExtResource("39_s3rfb")]
+transform = Transform3D(-0.05184786, 0, 0.99865496, 0, 1, 0, -0.99865496, 0, -0.05184786, 652.7328, 26.801298, 507.8095)
+
+[node name="PolishHouse2" parent="." unique_id=94167043 instance=ExtResource("34_egst4")]
+transform = Transform3D(0.13168547, 0, -0.9912915, 0, 1, 0, 0.9912915, 0, 0.13168547, 617.7647, 26.317394, 460.6349)
+
+[node name="PolishHouse3" parent="." unique_id=283407247 instance=ExtResource("15_ta3th")]
+transform = Transform3D(0.48906276, 0, 0.8722486, 0, 1, 0, -0.8722486, 0, 0.48906276, 678.5625, 26.728855, 508.95355)
+
+[node name="VillageHouse4" parent="." unique_id=1235402554 instance=ExtResource("9_18yoq")]
+transform = Transform3D(0.27503332, 0, 0.96143466, 0, 1, 0, -0.96143466, 0, 0.27503332, 675.8516, 26.446922, 485.30457)
+
+[node name="HalfTimberedBarn" parent="." unique_id=846167740 instance=ExtResource("31_0h4wj")]
+transform = Transform3D(0.3286524, 0, 0.944451, 0, 0.99999994, 0, -0.944451, 0, 0.3286524, 783.27466, 26.49569, 479.19507)
+
+[node name="PolishHouse4" parent="." unique_id=1224043658 instance=ExtResource("39_s3rfb")]
+transform = Transform3D(0.99922764, 0, 0.039294697, 0, 1, 0, -0.039294697, 0, 0.99922764, 820.14825, 26.939405, 495.9182)
