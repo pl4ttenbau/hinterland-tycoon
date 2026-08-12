@@ -33,7 +33,7 @@ func _set_changeable_tracks():
 		self.settable_tracks.append(connected_track_num)
 			
 func switch() -> CurrentForkSetting:
-	if ! self.is_changeable: return
+	if ! self.is_changable(): return
 	var old_connected: int = self.current.connected
 	var settable_i: int = self.settable_tracks.find(self.current.connected)
 	var future_i = settable_i + 1
@@ -49,7 +49,8 @@ func connect_to_track(track_num: int, _previous_track_num) -> CurrentForkSetting
 func get_connected_next_node() -> RailNodeData:
 	var conn_fork_node: RailNodeData = null
 	var node_is_first: bool = true
-	for fork_node: RailNodeData in self.parent.rail_nodes:
+	for connected_node_fork: RailNodeForkData in self.parent.node_forks:
+		var fork_node: RailNodeData = connected_node_fork.railNode
 		if fork_node.parent_track.num == self.current.connected:
 			conn_fork_node = fork_node
 			if fork_node.index != 0: node_is_first = false

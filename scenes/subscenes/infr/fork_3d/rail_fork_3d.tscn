@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cmhr52ku3fria"]
+
+[ext_resource type="Script" uid="uid://8glp66w6di6p" path="res://game/gamescripts/nodes/infr/rail_track/rail_fork_3d.gd" id="1_1egvd"]
+[ext_resource type="Texture2D" uid="uid://2dlxunf0rosp" path="res://assets/meshes/infr/rail/fork/tex_switch_signal_1_d.jpg" id="2_3yhdj"]
+[ext_resource type="Texture2D" uid="uid://cjild68culii4" path="res://assets/meshes/infr/rail/fork/tex_switch_signal_1_n.png" id="3_b3l4r"]
+[ext_resource type="ArrayMesh" uid="uid://6h75nq3x8brc" path="res://assets/meshes/infr/rail/fork/switch_signal_1.obj" id="4_4fs07"]
+[ext_resource type="Script" uid="uid://b0auajfl0t6ji" path="res://game/gamescripts/nodes/infr/rail_track/rail_fork_collider.gd" id="5_e868m"]
+[ext_resource type="ArrayMesh" uid="uid://xgf6275jo6f8" path="res://assets/meshes/markers/arrow/fork_arrow.obj" id="6_1ruhq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b3yp"]
+albedo_texture = ExtResource("2_3yhdj")
+normal_enabled = true
+normal_texture = ExtResource("3_b3l4r")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7b3yp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvgnl"]
+albedo_color = Color(1, 1, 0.28627452, 1)
+
+[node name="RailFork" type="Node3D" unique_id=683603926]
+script = ExtResource("1_1egvd")
+metadata/_custom_type_script = "uid://8glp66w6di6p"
+
+[node name="ForkMesh" type="MeshInstance3D" parent="." unique_id=250098814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.869609)
+material_override = SubResource("StandardMaterial3D_7b3yp")
+visibility_range_end = 150.0
+visibility_range_end_margin = 15.0
+mesh = ExtResource("4_4fs07")
+
+[node name="ForkLabel" type="Label3D" parent="." unique_id=134161733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+visible = false
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+pixel_size = 0.015
+billboard = 2
+double_sided = false
+text = "-1"
+font_size = 80
+outline_size = 24
+
+[node name="RailForkCollider" type="StaticBody3D" parent="." unique_id=17325479]
+script = ExtResource("5_e868m")
+metadata/_custom_type_script = "uid://b0auajfl0t6ji"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RailForkCollider" unique_id=1540924191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435951, 2.16024)
+shape = SubResource("SphereShape3D_7b3yp")
+
+[node name="ForkArrow" type="MeshInstance3D" parent="." unique_id=1327471979]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.110441804, 0)
+visible = false
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0
+mesh = ExtResource("6_1ruhq")
+surface_material_override/0 = SubResource("StandardMaterial3D_pvgnl")

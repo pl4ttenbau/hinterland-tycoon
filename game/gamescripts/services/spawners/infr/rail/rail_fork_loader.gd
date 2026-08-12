@@ -18,13 +18,13 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 		# create new NewRailFork
 		var new_fork := NewRailForkData.new(fork_pos)
 		new_fork.setting.all_set_to.append(node_fork.set_to)
-		new_fork.add_node(node_fork.railNode)
+		new_fork.connect_rail_node_fork(node_fork)
 		self.forks_by_pos.set(fork_pos, new_fork)
 	else:
 		# add connected_to
 		var existing: NewRailForkData = self.forks_by_pos.get(fork_pos)
 		existing.setting.all_set_to.append(node_fork.set_to)
-		existing.add_node(node_fork.railNode)
+		existing.connect_rail_node_fork(node_fork)
 
 # TODO: use
 func _get_or_create_fork(_fork_pos: Vector3) -> NewRailForkData:

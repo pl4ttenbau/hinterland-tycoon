@@ -2,19 +2,20 @@
 class_name RailFork3D extends GameEntity3D
 
 const NINETY_DEG_IN_RAD = 1.57
-
 @export var fork_obj: NewRailForkData:
 	get(): return self.entity as NewRailForkData
 	set(value): self.entity = value
 
 static func of(_fork: NewRailForkData) -> RailFork3D:
-	var inst := RailFork3D.new()
-	inst.entity = _fork
-	return inst
-	
+	var fork3d_inst := RailFork3D.new()
+	fork3d_inst.entity = _fork
+	# dont forget to name it
+	fork3d_inst.name = "Fork3D_%d_%d" % [_fork.num, _fork.connected_tracks[0]]
+	return fork3d_inst
+
 func _enter_tree() -> void:
 	self.fork_obj.switched.connect(Callable(self, "_on_set_to_changed"))
-	
+
 func _ready() -> void:
 	# self._on_set_to_changed(self.fork_obj.setting.current)
 	pass
