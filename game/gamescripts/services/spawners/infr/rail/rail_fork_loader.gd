@@ -36,9 +36,12 @@ func get_fork_at_pos(fork_pos: Vector3) -> NewRailForkData:
 	return self.forks_by_pos.get(fork_pos)
 		
 func spawn_rail_forks():
+	var fork_counter: int = 0
 	for fork: NewRailForkData in self.forks_by_pos.values():
-		var container = fork.spawn()
-		container.adjust_rotation()
+		var fork3d = fork.spawn()
+		fork3d.adjust_rotation()
+		fork_counter += 1
+	Loggie.info("%d forks spawned" % fork_counter)
 	self.forks_spawned.emit()
 
 #region Callbacks

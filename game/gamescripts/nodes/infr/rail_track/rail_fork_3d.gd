@@ -2,23 +2,26 @@
 class_name RailFork3D extends GameEntity3D
 
 const NINETY_DEG_IN_RAD = 1.57
+
+signal fork_obj_set(set_fork_obj: NewRailForkData)
+
 @export var fork_obj: NewRailForkData:
 	get(): return self.entity as NewRailForkData
-	set(value): self.entity = value
+	set(value): 
+		self.entity = value
+		fork_obj_set.emit(value)
 
-static func of(_fork: NewRailForkData) -> RailFork3D:
-	var fork3d_inst := RailFork3D.new()
-	fork3d_inst.entity = _fork
-	# dont forget to name it
-	fork3d_inst.name = "Fork3D_%d_%d" % [_fork.num, _fork.connected_tracks[0]]
-	return fork3d_inst
+@export var fork_mesh: MeshInstance3D
+@export var fork_arrow_mesh: MeshInstance3D
 
-func _enter_tree() -> void:
-	self.fork_obj.switched.connect(Callable(self, "_on_set_to_changed"))
+#region Initializations
+func _init() -> void:
+	self.fork_obj_set.connect(Callable(self, "_on_fork_obj_set"))
 
 func _ready() -> void:
 	# self._on_set_to_changed(self.fork_obj.setting.current)
 	pass
+#endregion
 
 func adjust_rotation() -> void:
 	pass
@@ -27,12 +30,21 @@ func adjust_rotation() -> void:
 	#else: rot_target_node = self.entity.railNode.get_next()
 	#if rot_target_node && rot_target_node.position:
 		#self.look_at(rot_target_node.position)
-		#self.rotate_y(NINETY_DEG_IN_RAD)
+		#self.rotate_y(NINETY_DEG_IN_RAD)ss
 
 #region Callbacks
-func _on_set_to_changed(new_setting: CurrentForkSetting):
+func _on_fork_obj_set(set_fork_obj: NewRailForkData):
+	self.name = "Fork3D_%d_%d" % [set_fork_obj.num, set_fork_obj.connected_tracks[0]]
+	set_fork_obj.switched.connect(Callable(self, "_on_fork_switched"))
+	set_fork_obj.setting_initialized.connect(Callable(self, "_on_setting_initialized"))
+
+func _on_setting_initialized(_fork_setting: RailForkSetting):
+	if self.fork_obj.connected_tracks.size() <= 2:
+		self.fork_mesh.visible = false
+		self.fork_arrow_mesh.visible = false
+
+func _on_fork_switched(new_setting: CurrentForkSetting):
 	if !new_setting || !new_setting.connected: return
-	$ForkLabel.text = str(new_setting.connected)
 	#show arrow
 	var target: Vector3 = self.fork_obj.setting.get_connected_next_node().position
 	$ForkArrow.look_at(target)
@@ -46,5 +58,6 @@ func is_at_end() -> bool:
 	var last_node_pos: Vector3 = first_connected_track.get_end_node().position
 	return self.fork_obj.pos == last_node_pos
 
-func is_at_start() -> bool: return ! self.is_at_end()
+func is_at_start() -> bool: 
+	return ! self.is_at_end()
 #endregion

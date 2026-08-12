@@ -4,8 +4,10 @@ signal setting_changed()
 
 signal setting_initialized()
 
+## static part of the fork, which is always connected
 @export var root: int
 
+## changeable part of the fork, which can be changed
 @export var connected: int:
 	get(): return connected
 	set(value):

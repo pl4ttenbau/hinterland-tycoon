@@ -36,10 +36,13 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	if !segment_end || !segment_end.fork:
 		Loggie.error("Cannot continue from node %d at track %d: no fork found" % [segment_end.parent_track.num, segment_end.index])
 		return -1
-	if !segment_end.fork.set_to:
+	var fork_pos: Vector3 = segment_end.fork.position
+	var fork_parent: NewRailForkData = Managers.forks.get_fork_at_pos(fork_pos)
+	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_track.num)
+	if !next_track_num || next_track_num < 0:
 		Loggie.error("Cannot continue from node %d at track %d: fork hasnt any setting" % [segment_end.parent_track.num, segment_end.index])
 		return -1
-	return segment_end.fork.set_to
+	return next_track_num
 
 static func get_next_dir_at_fork(next_track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
 	if next_track_num <= -1: return Enums.PathDirection.STOP

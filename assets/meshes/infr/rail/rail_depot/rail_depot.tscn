@@ -1,24 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8f1x2eykmxwk"]
+[gd_scene format=3 uid="uid://c8f1x2eykmxwk"]
 
-[ext_resource type="ArrayMesh" uid="uid://bai2feaxmnr4q" path="res://assets/meshes/infr/rail/rail_depot/rail_depot.obj" id="1_0leoj"]
 [ext_resource type="Script" uid="uid://dqw3uvri4i6ex" path="res://game/gamescripts/nodes/infr/rail_depot_3d.gd" id="1_q7jsm"]
+[ext_resource type="PackedScene" uid="uid://ba1s1o8o7ue74" path="res://assets/meshes/infr/rail/rail_depot/mesh_rail_depot.tscn" id="2_pv8n6"]
 [ext_resource type="Script" uid="uid://dr4x4fb34ie3u" path="res://game/gamescripts/resources/infr/infr_nodes/special/depot_collider.gd" id="3_pv8n6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehqfj"]
 size = Vector3(9.595596, 5.140503, 21.91742)
 
-[node name="RailDepot" type="Node3D"]
+[node name="RailDepot" type="Node3D" unique_id=991948021]
 script = ExtResource("1_q7jsm")
 metadata/_custom_type_script = "uid://dqw3uvri4i6ex"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("1_0leoj")
+[node name="rail_depot" parent="." unique_id=1557561529 instance=ExtResource("2_pv8n6")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="DepotCollider" type="StaticBody3D" parent="."]
+[node name="DepotCollider" type="StaticBody3D" parent="." unique_id=1729534411]
 script = ExtResource("3_pv8n6")
 metadata/_custom_type_script = "uid://dr4x4fb34ie3u"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DepotCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DepotCollider" unique_id=352220563]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14791107, 2.4711304, 0.029449463)
 shape = SubResource("BoxShape3D_ehqfj")

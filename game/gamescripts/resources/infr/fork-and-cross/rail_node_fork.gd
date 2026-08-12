@@ -34,20 +34,17 @@ static var _last_fork_num = -1
 
 signal set_to_changed(track_num: int)
 
+#region Initialization
 func _init():
 	super(Enums.EntityTypes.FORK)
 	self.num = RailNodeForkData._next_fork_num()
 
-static func get_by_num(fork_num: int) -> RailNodeForkData:
-	return Managers.rails.fork_storage.get_by_num(fork_num)
-
-func set_to_next_track():
-	var current_index: int = self.all_connective_tracks.find(self.set_to)
-	var future_index = current_index + 1
-	if future_index == self.all_connective_tracks.size():
-		future_index = 0
-	self.set_to = self.all_connective_tracks[future_index]
-
 static func _next_fork_num() -> int:
 	RailNodeForkData._last_fork_num += 1
 	return RailNodeForkData._last_fork_num
+#endregion
+
+#region Getters
+static func get_by_num(fork_num: int) -> RailNodeForkData:
+	return Managers.rails.fork_storage.get_by_num(fork_num)
+#endregion

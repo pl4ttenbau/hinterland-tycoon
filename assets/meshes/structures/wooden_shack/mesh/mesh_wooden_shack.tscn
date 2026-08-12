@@ -9,12 +9,12 @@
 layers = 8
 material_override = ExtResource("2_jbt00")
 lod_bias = 0.1
-visibility_range_end = 90.0
-visibility_range_end_margin = 9.0
+visibility_range_end = 110.0
+visibility_range_end_margin = 11.0
 
 [node name="village_house_4" parent="." index="1" unique_id=1312229942]
 layers = 8
 material_override = ExtResource("2_jbt00")
 lod_bias = 0.1
-visibility_range_end = 90.0
-visibility_range_end_margin = 9.0
+visibility_range_end = 110.0
+visibility_range_end_margin = 11.0
