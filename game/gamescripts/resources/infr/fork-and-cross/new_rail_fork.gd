@@ -1,7 +1,5 @@
 class_name NewRailForkData extends GameEntityData
 
-const SCENE_PATH = "res://scenes/subscenes/infr/fork_3d/rail_fork_3d.tscn"
-
 signal node_fork_connected(node: RailNodeForkData)
 signal switched(curr_setting: CurrentForkSetting)
 signal setting_initialized(fork_setting: RailForkSetting)
@@ -33,6 +31,7 @@ func connect_rail_node_fork(rail_node_fork: RailNodeForkData):
 	self.node_fork_connected.emit(rail_node_fork)
 #endregion
 
+#region Getters
 # Static & Switchable Track Getters
 func get_static_track_num() -> int:
 	if self.static_tracks.is_empty():
@@ -48,18 +47,16 @@ func get_switchable_track_nums() -> Array[int]:
 			switchable_track_nums.append(connected_track_num)
 	return switchable_track_nums
 
-#region Spawning
-func spawn() -> RailFork3D:
-	var spawned_fork3d: RailFork3D = preload(SCENE_PATH).instantiate()
-	spawned_fork3d.fork_obj = self
-	# connect signals
-	self.setting_initialized.connect(Callable(spawned_fork3d, "_on_setting_initialized"))
-	# set pos
-	spawned_fork3d.position = self.pos
-	self.fork3d = spawned_fork3d
-	# add as rail fork3d child
-	Managers.forks.add_child(spawned_fork3d)
-	return spawned_fork3d
+## returns INCREASE if fork is at the start (node index 0) of track with given num
+## and DECREASE if not
+func get_track_dir_from_fork(track_num: int) -> Enums.PathDirection:
+	for any_node_fork: RailNodeForkData in self.node_forks:
+		if any_node_fork.track.num == track_num:
+			if any_node_fork.railNode.is_first():
+				return Enums.PathDirection.TRACK_NODES_INCREASE
+			else:
+				return Enums.PathDirection.TRACK_NODES_DECREASE
+	return Enums.PathDirection.STOP
 #endregion
 
 #region Switching

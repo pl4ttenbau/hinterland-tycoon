@@ -1,4 +1,4 @@
-@icon("icon_infr_node_white")
+@icon("res://assets/icons/icon_infr_node_white.png")
 class_name RailNodeData extends BasicInfrNodeData
 
 @export var parent_track: AbstractTrack:
