@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7pfsoyrf5c0t"
-path.s3tc="res://.godot/imported/tex_saechskb4_body2x_d.png-cf2740e1acab630248b90ceb755a2713.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_saechskb4_body2x_d.png-fb09d3852f19a9f873909b21a2bbec29.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/tex_saechskb4_body2x_d.png"
-dest_files=["res://.godot/imported/tex_saechskb4_body2x_d.png-cf2740e1acab630248b90ceb755a2713.s3tc.ctex"]
+source_file="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/mesh/tex_saechskb4_body2x_d.png"
+dest_files=["res://.godot/imported/tex_saechskb4_body2x_d.png-fb09d3852f19a9f873909b21a2bbec29.s3tc.ctex"]
 
 [params]
 

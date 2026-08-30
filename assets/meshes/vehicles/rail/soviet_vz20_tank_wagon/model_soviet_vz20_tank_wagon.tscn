@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjo4wuopya1md"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_s48gw"]
+[ext_resource type="PackedScene" uid="uid://sg6sdkx27cwx" path="res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/mesh/mesh_soviet_vc_20_wagon.tscn" id="2_s48gw"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_p7uso"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdm3x"]
+size = Vector3(2.056, 3.447, 12.2)
+
+[node name="SovietVz20TankWagon" type="Node3D" unique_id=1736149142]
+script = ExtResource("1_s48gw")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="mesh_soviet_vc_20_wagon" parent="." unique_id=1464396171 instance=ExtResource("2_s48gw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.14541078)
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=783327353]
+script = ExtResource("3_p7uso")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1287407673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.759, 0)
+shape = SubResource("BoxShape3D_hdm3x")

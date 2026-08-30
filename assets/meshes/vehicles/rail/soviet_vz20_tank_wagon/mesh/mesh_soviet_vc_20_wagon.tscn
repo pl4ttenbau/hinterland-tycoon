@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://sg6sdkx27cwx"]
+
+[ext_resource type="PackedScene" uid="uid://b3lkjo23c7k1m" path="res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/mesh/soviet_vc20_wagon.obj" id="1_8m1vu"]
+[ext_resource type="Texture2D" uid="uid://b6ibasm2jr4m" path="res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/mesh/tex_uzd_wagon_bogeys_d.dds" id="2_dq1tg"]
+[ext_resource type="Texture2D" uid="uid://bg4vktd7002y1" path="res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/mesh/tex_soviet_vc20_wagon_d.dds" id="3_xts1f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i44aw"]
+albedo_texture = ExtResource("2_dq1tg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81mpg"]
+albedo_texture = ExtResource("3_xts1f")
+
+[node name="mesh_soviet_vc_20_wagon" unique_id=1464396171 instance=ExtResource("1_8m1vu")]
+
+[node name="vz20" parent="." index="0" unique_id=91544614]
+surface_material_override/0 = SubResource("StandardMaterial3D_i44aw")
+surface_material_override/1 = SubResource("StandardMaterial3D_81mpg")
