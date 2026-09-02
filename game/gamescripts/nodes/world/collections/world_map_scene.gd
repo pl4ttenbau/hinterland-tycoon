@@ -63,6 +63,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		child_err_msgs.append("Towns (WorldTowns) child node missing")
 	if !$Industries:
 		child_err_msgs.append("Industries (WorldIndustries) child node missing")
-	if !$InEditor:
-		child_err_msgs.append("InEditor (EditorObjectContainer) child node missing")
+	if !$EditorObjects:
+		child_err_msgs.append("EditorObjects (EditorObjectContainer) child node missing")
 	return child_err_msgs

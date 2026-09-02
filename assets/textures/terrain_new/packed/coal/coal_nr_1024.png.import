@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du0f8jsxnwfng"
-path.s3tc="res://.godot/imported/grass_default_dh.png-73b8b553dae1ad520ad5d8643ca6d645.s3tc.ctex"
+uid="uid://db5pwph3jmvts"
+path.s3tc="res://.godot/imported/coal_nr_1024.png-e80ee6f22c1c263db31ea6b794e1f710.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/terrain_new/packed/grass_default/grass_default_dh.png"
-dest_files=["res://.godot/imported/grass_default_dh.png-73b8b553dae1ad520ad5d8643ca6d645.s3tc.ctex"]
+source_file="res://assets/textures/terrain_new/packed/coal/coal_nr_1024.png"
+dest_files=["res://.godot/imported/coal_nr_1024.png-e80ee6f22c1c263db31ea6b794e1f710.s3tc.ctex"]
 
 [params]
 

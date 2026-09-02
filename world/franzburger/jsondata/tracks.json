@@ -361,7 +361,6 @@
 				"pos": [233.75, 23.45, -580.1],
 				"fork": {
 					"connectiveTracks": [9, 10],
-					"static": true,
 					"setTo": 10
 				}
 			}
@@ -416,6 +415,7 @@
 				"pos": [204.43, 24.0, -713.11],
 				"fork": {
 					"connectiveTracks": [11],
+					"static": true,
 					"setTo": 11
 				}
 			}
@@ -431,6 +431,7 @@
 				"pos": [233.75, 23.45, -580.1],
 				"fork": {
 					"connectiveTracks": [8],
+					"static": true,
 					"setTo": 8
 				}
 			},
@@ -470,6 +471,7 @@
 				"pos": [101.05, 24.0, -484.24],
 				"fork": {
 					"connectiveTracks": [43],
+					"static": true,
 					"setTo": 43
 				}
 			}
@@ -485,6 +487,7 @@
 				"pos": [204.43, 24.0, -713.11],
 				"fork": {
 					"connectiveTracks": [9],
+					"static": true,
 					"setTo": 9
 				}
 			},
@@ -516,6 +519,7 @@
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
 					"connectiveTracks": [12],
+					"static": true,
 					"setTo": 12
 				}
 			}
@@ -531,6 +535,7 @@
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
 					"connectiveTracks": [11],
+					"static": true,
 					"setTo": 11
 				}
 			},

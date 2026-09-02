@@ -64,6 +64,4 @@ func get_connected_next_node() -> RailNodeData:
 
 ## returns whether there's even the possibility of changing for setting: at least 3 connected tracks
 func is_changable() -> bool:
-	if self.parent.connected_tracks.size() <= 2: 
-		return false
-	return true
+	return self.parent.is_changable()

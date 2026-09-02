@@ -31,12 +31,18 @@ func connect_rail_node_fork(rail_node_fork: RailNodeForkData):
 	self.node_fork_connected.emit(rail_node_fork)
 #endregion
 
+func is_changable() -> bool:
+	if self.connected_tracks.size() <= 2: 
+		return false
+	return true
+
 #region Getters
 # Static & Switchable Track Getters
 func get_static_track_num() -> int:
 	if self.static_tracks.is_empty():
-		var forks_tracks_arr_str: String = ", ".join(self.connected_tracks)
-		Loggie.warn("Fork (tracks %s): cannot find any static track connection; returning first" % [forks_tracks_arr_str])
+		if self.is_changable():
+			var forks_tracks_arr_str: String = ", ".join(self.connected_tracks)
+			Loggie.warn("Fork (tracks %s): cannot find any static track connection; returning first" % [forks_tracks_arr_str])
 		return self.connected_tracks[0]
 	return self.static_tracks[0]
 
