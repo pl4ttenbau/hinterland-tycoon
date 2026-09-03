@@ -78,7 +78,7 @@ size = Vector3(2.23694, 2.63739, 2.16064)
 [node name="MeshCampfire" parent="." unique_id=32361581 instance=ExtResource("1_jli70")]
 
 [node name="TopSteamParticles3D" type="GPUParticles3D" parent="MeshCampfire" unique_id=1590907458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14284992, 0.008003235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03750074, 0.7965839, 0.008003235)
 layers = 64
 material_override = SubResource("StandardMaterial3D_c0fgs")
 visibility_range_end = 90.0

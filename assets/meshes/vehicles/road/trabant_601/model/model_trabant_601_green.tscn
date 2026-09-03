@@ -5,38 +5,44 @@
 
 [node name="ModelTrabant601Green" unique_id=2013987722 instance=ExtResource("1_ri0ea")]
 
-[node name="back_door" parent="." index="0" unique_id=822607110]
+[node name="back_door" parent="." index="0" unique_id=1841373355]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 
-[node name="back_wheels" parent="." index="1" unique_id=1442403517]
+[node name="back_wheels" parent="." index="1" unique_id=1921425730]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 
-[node name="body" parent="." index="2" unique_id=1929777827]
+[node name="body" parent="." index="2" unique_id=311908271]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 
-[node name="front_wheels" parent="." index="3" unique_id=1647428784]
+[node name="front_wheels" parent="." index="3" unique_id=1445054977]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 
-[node name="left_door" parent="." index="4" unique_id=171377663]
+[node name="left_door" parent="." index="4" unique_id=322812525]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0
 
-[node name="right_door" parent="." index="5" unique_id=848174055]
+[node name="right_door" parent="." index="5" unique_id=790496374]
 layers = 32
 material_override = ExtResource("2_ri0ea")
+lod_bias = 0.15
 visibility_range_end = 150.0
 visibility_range_end_margin = 15.0

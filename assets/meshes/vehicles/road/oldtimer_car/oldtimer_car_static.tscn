@@ -25,6 +25,10 @@ size = Vector3(1.7795258, 1.982666, 5.187744)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=52528644]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
+layers = 64
+lod_bias = 0.15
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0
 mesh = ExtResource("1_qb4h3")
 surface_material_override/0 = SubResource("StandardMaterial3D_uepph")
 surface_material_override/1 = SubResource("StandardMaterial3D_6qyke")

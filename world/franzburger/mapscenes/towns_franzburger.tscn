@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="2_w5vf4"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="4_1a4lw"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="5_st74w"]
-[ext_resource type="Script" uid="uid://bdlo6ybmb7dwt" path="res://game/gamescripts/resources/town/town3d.gd" id="6_w5vf4"]
 [ext_resource type="Script" uid="uid://lmtn2kkggr3i" path="res://game/gamescripts/resources/infr/station/node_link/node_station_link.gd" id="6_xkd5p"]
 
 [sub_resource type="Resource" id="Resource_inj7p"]
@@ -352,7 +351,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1813.2275, 23.331898, -457.3
 town = SubResource("Resource_icojg")
 
 [node name="Town3D_Prerow" parent="." unique_id=1033349687 instance=ExtResource("2_w5vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1248.9619, 23.253696, -1082.5604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1156.2496, 23.16303, -1085.8497)
 town = SubResource("Resource_3rlt4")
 
 [node name="Town3D_Zingst" parent="." unique_id=901456244 instance=ExtResource("2_w5vf4")]
@@ -455,7 +454,6 @@ town = SubResource("Resource_uvh44")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.4863, 24.81356, -469.0446)
 town = SubResource("Resource_hdrxp")
 
-[node name="Town3D_Sundhagen-Miltzow" type="Node3D" parent="." unique_id=1738319230 instance=ExtResource("2_w5vf4")]
+[node name="Town3D_Sundhagen-Miltzow" parent="." unique_id=1738319230 instance=ExtResource("2_w5vf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1268.1581, 26.707817, 383.6366)
-script = ExtResource("6_w5vf4")
 town = SubResource("Resource_6kx2f")

@@ -2,18 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://cin00t5s6gsl6" path="res://assets/meshes/vehicles/road/uaz_jeep/mesh/uaz_jeep.obj" id="1_feuj8"]
 [ext_resource type="Texture2D" uid="uid://bfy6futrs3kx" path="res://assets/meshes/vehicles/road/uaz_jeep/mesh/uaz_jeep_body_d.png" id="2_sn8w1"]
-[ext_resource type="Texture2D" uid="uid://b1b64dq6si87g" path="res://assets/meshes/vehicles/road/uaz_jeep/mesh/uaz_jeep_glass_d.png" id="3_4a8a2"]
+[ext_resource type="Shader" uid="uid://gfg2iq6g7n0w" path="res://assets/packed/shaders/glass.gdshader" id="3_feuj8"]
 [ext_resource type="Texture2D" uid="uid://bfldvstcfabv0" path="res://assets/meshes/vehicles/road/uaz_jeep/mesh/uaz_jeep_interiour_d.png" id="4_kgi3b"]
 [ext_resource type="Texture2D" uid="uid://dcspx6ge12wq8" path="res://assets/meshes/vehicles/road/uaz_jeep/mesh/uaz_jeep_tire_d.png" id="5_v1aal"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ifcj"]
 albedo_texture = ExtResource("2_sn8w1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41u47"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("3_4a8a2")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sn8w1"]
+render_priority = 0
+shader = ExtResource("3_feuj8")
+shader_parameter/albedo = Color(1, 1, 1, 0)
+shader_parameter/roughness = 0.15
+shader_parameter/normal_strength = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y66el"]
 albedo_texture = ExtResource("4_kgi3b")
@@ -29,6 +31,6 @@ lod_bias = 0.15
 visibility_range_end = 90.0
 visibility_range_end_margin = 9.0
 surface_material_override/0 = SubResource("StandardMaterial3D_7ifcj")
-surface_material_override/1 = SubResource("StandardMaterial3D_41u47")
+surface_material_override/1 = SubResource("ShaderMaterial_sn8w1")
 surface_material_override/2 = SubResource("StandardMaterial3D_y66el")
 surface_material_override/3 = SubResource("StandardMaterial3D_hgbvu")
