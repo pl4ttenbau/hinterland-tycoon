@@ -11,9 +11,8 @@ static func of(_train: Train3D, _train_dir: Enums.PathDirection) -> VehiclePathS
 	return builder
 
 static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePathSegment:
-	var segment_end: RailNodeData = current_segment.get_last_node_directionally(current_segment.movement_dir)
-	var next_track_num: int = get_next_track_num_from_node(segment_end)
-	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, segment_end.position)
+	var next_track_num: int = get_next_track_num_from_node(current_segment.end_node)
+	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, current_segment.end_node.position)
 	if next_track_num >= 0 && next_dir != Enums.PathDirection.STOP:
 		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		var next_linked_segment: VehiclePathSegment = VehiclePathSegment.of_rail(next_track_num, next_dir)
