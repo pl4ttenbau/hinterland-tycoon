@@ -1,0 +1,23 @@
+# Blender 5.0.1 MTL File: 'soviet_vc20_wagon_merged.blend'
+# www.blender.org
+
+newmtl mat_soviet_vc20_wagon
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tex_soviet_vc20_wagon_d.png
+
+newmtl mat_uzd_wagon_bogeys
+Ns 95.537193
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tex_uzd_wagon_bogeys_d.png
+map_Bump -bm 1.000000 tex_uzd_wagon_bogeys_n.png

@@ -286,6 +286,14 @@ pos_xz = Vector2(726.486, -469.045)
 num = 39
 type = 8
 
+[sub_resource type="Resource" id="Resource_6kx2f"]
+script = ExtResource("5_st74w")
+town_name = "Sundhagen-Miltzow"
+pos_xz = Vector2(1268.158, 383.637)
+is_minor = true
+num = 40
+type = 8
+
 [node name="Towns" type="Node" unique_id=1994240704]
 script = ExtResource("1_suhj4")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
@@ -343,7 +351,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1813.2275, 23.331898, -457.3
 town = SubResource("Resource_icojg")
 
 [node name="Town3D_Prerow" parent="." unique_id=1033349687 instance=ExtResource("2_w5vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1248.9619, 23.253696, -1082.5604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1156.2496, 23.16303, -1085.8497)
 town = SubResource("Resource_3rlt4")
 
 [node name="Town3D_Zingst" parent="." unique_id=901456244 instance=ExtResource("2_w5vf4")]
@@ -445,3 +453,7 @@ town = SubResource("Resource_uvh44")
 [node name="Town3D_Stralsund-Knieper" parent="." unique_id=616118024 instance=ExtResource("2_w5vf4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.4863, 24.81356, -469.0446)
 town = SubResource("Resource_hdrxp")
+
+[node name="Town3D_Sundhagen-Miltzow" parent="." unique_id=1738319230 instance=ExtResource("2_w5vf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1268.1581, 26.707817, 383.6366)
+town = SubResource("Resource_6kx2f")

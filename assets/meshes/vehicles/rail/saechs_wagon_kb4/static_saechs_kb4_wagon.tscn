@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://c5ffnhld2qfy2"]
 
-[ext_resource type="ArrayMesh" uid="uid://bjbi21akhni15" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/saechskb4.obj" id="2_wgabv"]
+[ext_resource type="PackedScene" uid="uid://cgrag8h0ovuv4" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/mesh/mesh_saechs_kb_4_wagon.tscn" id="1_ehib4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6tnkd"]
 size = Vector3(2.3565063, 3.2348633, 12.256088)
 
 [node name="SaechsKb4Wagon" type="Node3D" unique_id=1726426317]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=306864341]
-mesh = ExtResource("2_wgabv")
-skeleton = NodePath("")
+[node name="MeshSaechsKb4Wagon" parent="." unique_id=1309617177 instance=ExtResource("1_ehib4")]
 
-[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1008392798]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1442159447]
+visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=279632270]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=279632270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093688965, 1.6340332, -0.009498596)
 shape = SubResource("BoxShape3D_6tnkd")

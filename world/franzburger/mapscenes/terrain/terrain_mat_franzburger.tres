@@ -14,3 +14,4 @@ _shader_parameters = {
 }
 world_background = 0
 projection_enabled = true
+show_region_grid = true

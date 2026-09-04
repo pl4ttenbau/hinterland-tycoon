@@ -1,4 +1,4 @@
-@icon("icon_infr_node_white")
+@icon("res://assets/icons/icon_infr_node_white.png")
 class_name RailNodeData extends BasicInfrNodeData
 
 @export var parent_track: AbstractTrack:
@@ -25,8 +25,11 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 	if rail_node_dict.has("end") && rail_node_dict.get("end") == true:
 		self.is_end = true
 	if rail_node_dict.has("fork"):
-		var fork_dict: Dictionary = rail_node_dict.get("fork")
-		self.fork = RailNodeForkData.of_dict(fork_dict, self)
+		var inst: RailNodeForkData = ForkMapper.node_fork_from_dict(rail_node_dict.get("fork"), self)
+		# register in fork store
+		Managers.rails.fork_storage.add(inst)
+		# add to node
+		self.fork = inst
 	if rail_node_dict.has("station"):
 		var station_dict: Dictionary = rail_node_dict.get("station")
 		var node_station_link: NodeStationLinkData = NodeStationLinkData.of_station_dict(station_dict, self)

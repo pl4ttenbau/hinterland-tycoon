@@ -18,8 +18,9 @@
 [ext_resource type="Resource" uid="uid://4acd6su6x8sf" path="res://game/godotdata/vehicle_types/singular/dr_v100.tres" id="15_q2q8y"]
 [ext_resource type="Resource" uid="uid://vhqxveggu8ha" path="res://game/godotdata/vehicle_types/singular/mpsb_open_wagon.tres" id="16_v12ew"]
 [ext_resource type="Resource" uid="uid://dd1j886e5nhtv" path="res://game/godotdata/vehicle_types/singular/fkbn_t1_motorwagon.tres" id="17_dkvk3"]
+[ext_resource type="Resource" uid="uid://blkm8xuq07v4y" path="res://game/godotdata/vehicle_types/singular/soviet_vz20_tank_wagon.tres" id="18_pwhox"]
 
 [resource]
 script = ExtResource("7_go33c")
-list = Array[ExtResource("1_ojcly")]([ExtResource("2_ojcly"), ExtResource("3_bevio"), ExtResource("4_msx6d"), ExtResource("5_p8gr1"), ExtResource("6_ofegq"), ExtResource("8_bevio"), ExtResource("8_go33c"), ExtResource("9_73he8"), ExtResource("10_3ddfg"), ExtResource("11_q2q8y"), ExtResource("9_msx6d"), ExtResource("7_ojcly"), ExtResource("14_3ddfg"), ExtResource("15_q2q8y"), ExtResource("16_v12ew"), ExtResource("17_dkvk3")])
+list = Array[ExtResource("1_ojcly")]([ExtResource("2_ojcly"), ExtResource("3_bevio"), ExtResource("4_msx6d"), ExtResource("5_p8gr1"), ExtResource("6_ofegq"), ExtResource("8_bevio"), ExtResource("8_go33c"), ExtResource("9_73he8"), ExtResource("10_3ddfg"), ExtResource("11_q2q8y"), ExtResource("9_msx6d"), ExtResource("7_ojcly"), ExtResource("14_3ddfg"), ExtResource("15_q2q8y"), ExtResource("16_v12ew"), ExtResource("17_dkvk3"), ExtResource("18_pwhox")])
 metadata/_custom_type_script = "uid://dt7yf5qlkl5ln"

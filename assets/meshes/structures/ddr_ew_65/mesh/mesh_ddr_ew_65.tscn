@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dscojh5jxua0u"]
+
+[ext_resource type="PackedScene" uid="uid://dcldkktwuhgw" path="res://assets/meshes/structures/ddr_ew_65/mesh/ddr_ew_65.obj" id="1_jb3wm"]
+
+[node name="MeshDdrEw65" unique_id=1492721111 instance=ExtResource("1_jb3wm")]
+
+[node name="Main" parent="." index="0" unique_id=1675790772]
+layers = 8
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0

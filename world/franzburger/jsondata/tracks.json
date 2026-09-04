@@ -85,6 +85,7 @@
 				"pos": [808.08, 23.7, -332.94],
 				"fork": {
 					"connectiveTracks": [2, 3],
+					"static": true,
 					"setTo": 2
 				}
 			},
@@ -128,6 +129,7 @@
 				"pos": [610.3, 24.29, -384.44],
 				"fork": {
 					"connectiveTracks": [4],
+					"static": true,
 					"setTo": 4
 				}
 			}
@@ -143,6 +145,7 @@
 				"pos": [610.3, 24.29, -384.44],
 				"fork": {
 					"connectiveTracks": [3],
+					"static": true,
 					"setTo": 3
 				}
 			},
@@ -186,6 +189,7 @@
 				"pos": [440.4, 24.0, -477.83],
 				"fork": {
 					"connectiveTracks": [5],
+					"static": true,
 					"setTo": 5
 				}
 			}
@@ -201,6 +205,7 @@
 				"pos": [440.4, 24.0, -477.83],
 				"fork": {
 					"connectiveTracks": [4],
+					"static": true,
 					"setTo": 4
 				}
 			},
@@ -236,6 +241,7 @@
 				"pos": [344.8, 23.3, -582.68],
 				"fork": {
 					"connectiveTracks": [6, 7],
+					"static": true,
 					"setTo": 6
 				}
 			}
@@ -339,6 +345,7 @@
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
 					"connectiveTracks": [6, 7],
+					"static": true,
 					"setTo": 7
 				}
 			},
@@ -408,6 +415,7 @@
 				"pos": [204.43, 24.0, -713.11],
 				"fork": {
 					"connectiveTracks": [11],
+					"static": true,
 					"setTo": 11
 				}
 			}
@@ -423,6 +431,7 @@
 				"pos": [233.75, 23.45, -580.1],
 				"fork": {
 					"connectiveTracks": [8],
+					"static": true,
 					"setTo": 8
 				}
 			},
@@ -462,6 +471,7 @@
 				"pos": [101.05, 24.0, -484.24],
 				"fork": {
 					"connectiveTracks": [43],
+					"static": true,
 					"setTo": 43
 				}
 			}
@@ -477,6 +487,7 @@
 				"pos": [204.43, 24.0, -713.11],
 				"fork": {
 					"connectiveTracks": [9],
+					"static": true,
 					"setTo": 9
 				}
 			},
@@ -508,6 +519,7 @@
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
 					"connectiveTracks": [12],
+					"static": true,
 					"setTo": 12
 				}
 			}
@@ -523,6 +535,7 @@
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
 					"connectiveTracks": [11],
+					"static": true,
 					"setTo": 11
 				}
 			},
@@ -562,6 +575,7 @@
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
 					"connectiveTracks": [13, 16],
+					"static": true,
 					"setTo": 13
 				}
 			}
@@ -592,6 +606,7 @@
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
 					"connectiveTracks": [14, 15],
+					"static": true,
 					"setTo": 14
 				}
 			}
@@ -791,6 +806,7 @@
 				"pos": [-1382.57,24.24,116.66],
 				"fork": {
 					"connectiveTracks": [17, 18],
+					"static": true,
 					"setTo": 17
 				}
 			},
@@ -813,6 +829,7 @@
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
 					"connectiveTracks": [17, 18],
+					"static": true,
 					"setTo": 18
 				}
 			},
@@ -968,6 +985,7 @@
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
 					"connectiveTracks": [23, 24],
+					"static": true,
 					"setTo": 23
 				}
 			}
@@ -1058,7 +1076,8 @@
 			{
 				"pos": [-1355.81, 24.0, -236.47],
 				"fork": {
-					"connectiveTracks": [24],
+					"connectiveTracks": [23, 24],
+					"static": true,
 					"setTo": 24
 				}
 			},
@@ -1165,7 +1184,11 @@
 				"handleIn": [-9.429999, 0.01, 0.12]
 			},
 			{
-				"pos": [-903.0, 25.02, -210.55]
+				"pos": [-903.0, 25.02, -210.55],
+				"fork": {
+					"connectiveTracks": [27],
+					"setTo": 27
+				}
 			}
 		]
 	},
@@ -1222,6 +1245,7 @@
 				"pos": [-733.55, 23.9, -285.36],
 				"fork": {
 					"connectiveTracks": [28, 29],
+					"static": true,
 					"setTo": 28
 				}
 			}
@@ -1325,6 +1349,7 @@
 				"pos": [-703.24, 23.63, -331.9],
 				"fork": {
 					"connectiveTracks": [28, 29],
+					"static": true,
 					"setTo": 29
 				}
 			},
@@ -1414,6 +1439,7 @@
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
 					"connectiveTracks": [32, 33],
+					"static": true,
 					"setTo": 32
 				}
 			}
@@ -1473,6 +1499,7 @@
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
 					"connectiveTracks": [31, 37],
+					"static": true,
 					"setTo": 31
 				}
 			},
@@ -1500,6 +1527,7 @@
 				"pos": [-536.9, 25.35, -497.38],
 				"fork": {
 					"connectiveTracks": [33, 36],
+					"static": true,
 					"setTo": 33
 				}
 			},
@@ -1583,6 +1611,7 @@
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
 					"connectiveTracks": [36, 37],
+					"static": true,
 					"setTo": 37
 				}
 			},
@@ -1746,6 +1775,7 @@
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
 					"connectiveTracks": [41, 42],
+					"static": true,
 					"setTo": 41
 				}
 			}
@@ -1837,6 +1867,7 @@
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
 					"connectiveTracks": [41, 42],
+					"static": true,
 					"setTo": 42
 				}
 			},
@@ -1890,7 +1921,8 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [100, 102],
+					"connectiveTracks": [100, 115],
+					"static": true,
 					"setTo": 100
 				}
 			},
@@ -1914,6 +1946,7 @@
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
 					"connectiveTracks": [46, 47, 49],
+					"static": true,
 					"setTo": 47
 				}
 			}
@@ -1929,6 +1962,7 @@
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
 					"connectiveTracks": [101, 103, 114],
+					"static": true,
 					"setTo": 101
 				}
 			},
@@ -1952,6 +1986,7 @@
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
 					"connectiveTracks": [48, 50],
+					"static": true,
 					"setTo": 50
 				}
 			}
@@ -1964,15 +1999,9 @@
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [828.73, 24.35, -228.85],
-				"fork": {
-					"connectiveTracks": [100, 102, 115],
-					"setTo": 100
-				}
-			},
-			{
-				"pos": [824.04, 24.22, -244.34],
-				"handleIn": [1.81, 0.02, 4.99]
+				"pos": [824.55, 24.21, -244.99],
+				"handleIn": [1.81, 0.02, 4.99],
+				"end": true
 			},
 			{
 				"pos": [815.16, 24.13, -263.05],
@@ -1989,7 +2018,7 @@
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [47, 49],
+					"connectiveTracks": [47],
 					"setTo": 47
 				}
 			}
@@ -2005,18 +2034,20 @@
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
 					"connectiveTracks": [44, 46],
+					"static": true,
 					"setTo": 44
 				}
 			},
 			{
-				"pos": [774.95, 23.94, -314.81],
-				"handleIn": [4.12, 0.01, 3.25]
+				"pos": [778.4, 23.98, -311.5],
+				"handleIn": [1.09, 0.0, 1.25]
 			},
 			{
-				"pos": [762.66, 23.75, -321.39],
+				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [49, 106],
+					"static": true,
+					"setTo": 49
 				}
 			}
 		]
@@ -2050,26 +2081,26 @@
 	},
 	{
 		"num": 49,
-		"name": "Stralsund HBF Rostock Exit Cross F",
+		"name": "Stralsund HBF Rostock Exit Cross B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [781.24, 24.01, -308.01],
+				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [44, 46],
-					"setTo": 46
+					"connectiveTracks": [47],
+					"setTo": 47
 				}
 			},
 			{
-				"pos": [772.29, 23.92, -313.96],
-				"handleIn": [3.93, 0.02, 2.13]
+				"pos": [768.88, 23.77, -318.5],
+				"handleIn": [1.92, 0.0, 0.98]
 			},
 			{
-				"pos": [761.4, 23.81, -318.1],
+				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [52],
-					"setTo": 52
+					"connectiveTracks": [51],
+					"setTo": 51
 				}
 			}
 		]
@@ -2084,7 +2115,7 @@
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
 					"connectiveTracks": [45],
-					"setTo": 46
+					"setTo": 45
 				}
 			},
 			{
@@ -2109,8 +2140,9 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [47, 50],
-					"setTo": 47
+					"connectiveTracks": [49, 50],
+					"static": true,
+					"setTo": 49
 				}
 			},
 			{
@@ -2159,7 +2191,8 @@
 			{
 				"pos": [761.4, 23.81, -318.1],
 				"fork": {
-					"connectiveTracks": [48, 49],
+					"connectiveTracks": [48, 106],
+					"static": true,
 					"setTo": 48
 				}
 			},
@@ -2333,6 +2366,7 @@
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
 					"connectiveTracks": [57, 59],
+					"static": true,
 					"setTo": 59
 				}
 			}
@@ -2375,6 +2409,7 @@
 				"pos": [276.04, 26.8, -255.0],
 				"fork": {
 					"connectiveTracks": [58, 60],
+					"static": true,
 					"setTo": 58
 				}
 			}
@@ -2479,6 +2514,7 @@
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
 					"connectiveTracks": [57, 60],
+					"static": true,
 					"setTo": 57
 				}
 			},
@@ -2517,6 +2553,7 @@
 				"pos": [257.7, 27.35, -254.24],
 				"fork": {
 					"connectiveTracks": [58, 59],
+					"static": true,
 					"setTo": 58
 				}
 			},
@@ -2551,6 +2588,7 @@
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
 					"connectiveTracks": [61, 62],
+					"static": true,
 					"setTo": 62
 				}
 			},
@@ -2652,6 +2690,7 @@
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
 					"connectiveTracks": [65, 66],
+					"static": true,
 					"setTo": 66
 				}
 			}
@@ -2689,7 +2728,8 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [67],
+					"connectiveTracks": [67, 132],
+					"static": true,
 					"setTo": 67
 				}
 			}
@@ -2727,7 +2767,8 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [68],
+					"connectiveTracks": [68, 131],
+					"static": true,
 					"setTo": 68
 				}
 			}
@@ -2795,6 +2836,7 @@
 				"pos": [-313.73, 25.24, -53.1],
 				"fork": {
 					"connectiveTracks": [67, 68],
+					"static": true,
 					"setTo": 67
 				}
 			},
@@ -2854,6 +2896,7 @@
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
 					"connectiveTracks": [70, 71],
+					"static": true,
 					"setTo": 70
 				}
 			}
@@ -2953,6 +2996,7 @@
 				"pos": [-652.28, 24.9, 21.32],
 				"fork": {
 					"connectiveTracks": [70, 71],
+					"static": true,
 					"setTo": 71
 				}
 			},
@@ -3065,6 +3109,7 @@
 				"pos": [1087.94, 23.53, -463.9],
 				"fork": {
 					"connectiveTracks": [73, 74, 83],
+					"static": true,
 					"setTo": 74
 				}
 			},
@@ -3116,6 +3161,7 @@
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
 					"connectiveTracks": [76, 77],
+					"static": true,
 					"setTo": 76
 				}
 			}
@@ -3203,6 +3249,7 @@
 				"pos": [1288.8, 23.31, -308.71],
 				"fork": {
 					"connectiveTracks": [76, 77],
+					"static": true,
 					"setTo": 77
 				}
 			},
@@ -3296,6 +3343,7 @@
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
 					"connectiveTracks": [80, 81],
+					"static": true,
 					"setTo": 81
 				}
 			}
@@ -3383,6 +3431,7 @@
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
 					"connectiveTracks": [80, 81],
+					"static": true,
 					"setTo": 81
 				}
 			},
@@ -3427,7 +3476,8 @@
 				"handleIn": [-5.42, -0.01, -0.11]
 			},
 			{
-				"pos": [1789.05, 25.3, -297.62]
+				"pos": [1789.05, 25.3, -297.62],
+				"exit": true
 			}
 		]
 	},
@@ -3471,6 +3521,7 @@
 				"pos": [838.2, 23.81, -285.1],
 				"fork": {
 					"connectiveTracks": [1, 2],
+					"static": true,
 					"setTo": 1
 				}
 			},
@@ -3528,6 +3579,7 @@
 				"pos": [-1056.5, 24.8, 88.72],
 				"fork": {
 					"connectiveTracks": [86, 87],
+					"static": true,
 					"setTo": 86
 				}
 			}
@@ -3619,6 +3671,7 @@
 				"pos": [-1119.01, 25.1, 96.77],
 				"fork": {
 					"connectiveTracks": [86, 87],
+					"static": true,
 					"setTo": 87
 				}
 			},
@@ -3666,6 +3719,7 @@
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
 					"connectiveTracks": [89, 90],
+					"static": true,
 					"setTo": 89
 				}
 			}
@@ -3769,6 +3823,7 @@
 				"pos": [-1435.33, 24.54, 163.3],
 				"fork": {
 					"connectiveTracks": [89, 90],
+					"static": true,
 					"setTo": 90
 				}
 			},
@@ -3865,6 +3920,7 @@
 				"pos": [-1618.77, 23.96, 251.8],
 				"fork": {
 					"connectiveTracks": [94, 95, 96],
+					"static": true,
 					"setTo": 95
 				}
 			}
@@ -3993,7 +4049,8 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [96],
+					"connectiveTracks": [94, 95, 96],
+					"static": true,
 					"setTo": 96
 				}
 			},
@@ -4009,6 +4066,7 @@
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
 					"connectiveTracks": [98, 99],
+					"static": true,
 					"setTo": 99
 				}
 			}
@@ -4097,7 +4155,7 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [43, 44],
+					"connectiveTracks": [44, 46],
 					"setTo": 44
 				}
 			},
@@ -4106,7 +4164,11 @@
 				"handleIn": [0.0, 0.0, 0.0]
 			},
 			{
-				"pos": [841.12, 24.72, -209.36]
+				"pos": [841.12, 24.72, -209.36],
+				"fork": {
+					"connectiveTracks": [104],
+					"setTo": 104
+				}
 			}
 		]
 	},
@@ -4128,43 +4190,60 @@
 				"handleIn": [0.0, 0.0, 0.0]
 			},
 			{
-				"pos": [837.73, 24.72, -207.31]
-			}
-		]
-	},
-	{
-		"num": 102,
-		"name": "Stralsund Station Cross 1&2",
-		"type": "NORMAL_GAUGE",
-		"tag": "DR",
-		"points": [
-			{
-				"pos": [828.73, 24.35, -228.85],
-				"fork": {
-					"connectiveTracks": [43, 44],
-					"setTo": 44
-				}
-			},
-			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
 					"connectiveTracks": [105],
+					"static": true,
 					"setTo": 105
 				}
 			}
 		]
 	},
 	{
+		"num": 102,
+		"name": "Stralsund South <> Harbour Fork",
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [855.82, 25.18, -187.36],
+				"fork": {
+					"connectiveTracks": [108],
+					"setTo": 108
+				}
+			},
+			{
+				"pos": [853.97, 25.02, -199.07],
+				"handleIn": [0.1, 0.03, 5.08]
+			},
+			{
+				"pos": [855.71, 24.77, -214.88],
+				"handleIn": [-1.69, 0.03, 5.76]
+			},
+			{
+				"pos": [860.06, 24.65, -227.09],
+				"handleIn": [-1.24, 0.02, 1.9]
+			},
+			{
+				"pos": [864.95, 24.26, -234.64],
+				"fork": {
+					"connectiveTracks": [117],
+					"setTo": 117
+				}
+			}
+		]
+	},
+	{
 		"num": 103,
-		"name": "Stralsund Station Cross 1&2",
+		"name": "Stralsund HBF Southern Diagonale",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [101],
+					"setTo": 101
 				}
 			},
 			{
@@ -4176,6 +4255,7 @@
 			}
 		]
 	},
+	
 	{
 		"num": 104,
 		"name": "Stralsund Triangle Mainline F",
@@ -4186,6 +4266,7 @@
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
 					"connectiveTracks": [100, 103],
+					"static": true,
 					"setTo": 100
 				}
 			},
@@ -4196,8 +4277,8 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [106],
-					"setTo": 106
+					"connectiveTracks": [108],
+					"setTo": 108
 				}
 			}
 		]
@@ -4211,7 +4292,8 @@
 			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
-					"connectiveTracks": [101, 102],
+					"connectiveTracks": [101],
+					"static": true,
 					"setTo": 101
 				}
 			},
@@ -4227,6 +4309,7 @@
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
 					"connectiveTracks": [107],
+					"static": true,
 					"setTo": 107
 				}
 			}
@@ -4234,42 +4317,26 @@
 	},
 	{
 		"num": 106,
-		"name": "Stralsund Triangle <> Depot F",
+		"name": "Stralsund Triangle Mainline B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [855.82, 25.18, -187.36],
+				"pos": [761.4, 23.81, -318.1],
 				"fork": {
-					"connectiveTracks": [104],
-					"setTo": 104
+					"connectiveTracks": [52],
+					"setTo": 52
 				}
 			},
 			{
-				"pos": [866.94, 25.06, -172.0],
-				"handleIn": [-2.14, 0.01, -3.04]
+				"pos": [769.06, 23.69, -317.28],
+				"handleIn": [-2.92, 0.03, -0.77]
 			},
 			{
-				"pos": [877.91, 24.95, -156.55],
-				"handleIn": [-2.92, 0.01, -4.15]
-			},
-			{
-				"pos": [888.09, 24.81, -141.65],
-				"handleIn": [-2.59, 0.02, -3.62]
-			},
-			{
-				"pos": [895.88, 24.82, -128.89],
-				"handleIn": [-2.53, 0.0, -4.82]
-			},
-			{
-				"pos": [901.92, 25.06, -115.31],
-				"handleIn": [-1.43, -0.03, -3.53]
-			},
-			{
-				"pos": [908.08, 25.0, -100.43],
+				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [108],
-					"setTo": 108
+					"connectiveTracks": [47],
+					"setTo": 47
 				}
 			}
 		]
@@ -4284,6 +4351,7 @@
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
 					"connectiveTracks": [105],
+					"static": true,
 					"setTo": 105
 				}
 			},
@@ -4293,57 +4361,42 @@
 			},
 			{
 				"pos": [877.95, 24.92, -149.91],
-				"handleIn": [-1.16, 0.01, -1.63]
-			},
-			{
-				"pos": [886.9, 24.82, -136.82],
-				"handleIn": [-2.59, 0.01, -4.22]
-			},
-			{
-				"pos": [894.78, 24.89, -122.62],
-				"handleIn": [-1.93, -0.01, -4.29]
-			},
-			{
-				"pos": [900.67, 25.05, -108.48],
-				"handleIn": [-1.47, -0.02, -3.42]
-			},
-			{
-				"pos": [905.11, 24.99, -98.00999],
-				"handleIn": [-1.21, 0.01, -2.82]
-			},
-			{
-				"pos": [909.64, 24.93, -86.66],
 				"fork": {
-					"connectiveTracks": [109],
-					"setTo": 109
+					"connectiveTracks": [127],
+					"setTo": 127
 				}
 			}
 		]
 	},
 	{
 		"num": 108,
-		"name": "Stralsund DR Depot Fork",
+		"name": "Stralsund South F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [908.08, 25.0, -100.43],
+				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [106],
-					"setTo": 106
+					"connectiveTracks": [127],
+					"setTo": 127
 				}
 			},
 			{
-				"pos": [909.37, 24.96, -94.47],
-				"handleIn": [-0.16, 0.01, -2.47]
+				"pos": [872.21, 25.0, -162.71],
+				"handleIn": [1.92, -0.01, 3.82]
 			},
 			{
-				"pos": [909.64, 24.93, -86.66],
+				"pos": [865.83, 25.08, -173.31],
+				"handleIn": [1.66, -0.01, 2.36]
+			},
+			{
+				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [109],
-					"setTo": 109
+					"connectiveTracks": [104, 102],
+					"static": true,
+					"setTo": 104
 				}
-			}
+			},
 		]
 	},
 	{
@@ -4353,26 +4406,30 @@
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [909.64, 24.93, -86.66],
+				"pos": [892.07, 25.14, -94.85],
 				"fork": {
-					"connectiveTracks": [107, 108],
-					"setTo": 108
+					"connectiveTracks": [128],
+					"setTo": 128
 				}
 			},
 			{
-				"pos": [910.49, 24.9, -79.85],
-				"handleIn": [-0.19, 0.01, -3.13]
+				"pos": [891.04, 25.02, -82.03],
+				"handleIn": [0.1, 0.02, -3.6]
 			},
 			{
-				"pos": [910.66, 25.24, -68.97],
-				"handleIn": [0.13, -0.06, -3.68]
+				"pos": [891.0, 24.9, -68.7],
+				"handleIn": [-0.38, 0.02, -4.68]
 			},
 			{
-				"pos": [909.14, 25.02, -56.24],
-				"handleIn": [1.34, 0.03, -5.99]
+				"pos": [894.14, 25.18, -56.21],
+				"handleIn": [-1.11, -0.04, -3.18]
 			},
 			{
-				"pos": [902.44, 25.35, -42.61]
+				"pos": [898.12, 25.35, -46.1],
+				"handleIn": [-1.25, -0.03, -2.74]
+			},
+			{
+				"pos": [902.62, 25.42, -38.56]
 			}
 		]
 	},
@@ -4453,6 +4510,7 @@
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
 					"connectiveTracks": [112, 113],
+					"static": true,
 					"setTo": 112
 				}
 			}
@@ -4533,7 +4591,7 @@
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
 					"connectiveTracks": [45],
-					"setTo": 101
+					"setTo": 45
 				}
 			},
 			{
@@ -4541,7 +4599,11 @@
 				"handleIn": [-5.44, -0.03, -0.7]
 			},
 			{
-				"pos": [843.83, 24.6, -223.55]
+				"pos": [843.83, 24.6, -223.55],
+				"fork": {
+					"connectiveTracks": [116],
+					"setTo": 116
+				}
 			}
 		]
 	},
@@ -4555,6 +4617,7 @@
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
 					"connectiveTracks": [44, 46],
+					"static": true,
 					"setTo": 46
 				}
 			},
@@ -4580,7 +4643,8 @@
 			{
 				"pos": [843.83, 24.6, -223.55],
 				"fork": {
-					"connectiveTracks": [115],
+					"connectiveTracks": [114, 115],
+					"static": true,
 					"setTo": 115
 				}
 			},
@@ -4595,22 +4659,23 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [117, 118],
-					"setTo": 118
+					"connectiveTracks": [117],
+					"setTo": 117
 				}
 			}
 		]
 	},
 	{
 		"num": 117,
-		"name": "Stralsund City Stretch" ,
+		"name": "Stralsund City Stretch",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [116],
+					"connectiveTracks": [102, 116],
+					"static": true,
 					"setTo": 116
 				}
 			},
@@ -4642,6 +4707,7 @@
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
 					"connectiveTracks": [118, 119],
+					"static": true,
 					"setTo": 119
 				}
 			}
@@ -4811,6 +4877,7 @@
 				"pos": [1022.28, 23.6, -425.12],
 				"fork": {
 					"connectiveTracks": [123, 124],
+					"static": true,
 					"setTo": 123
 				}
 			}
@@ -4918,6 +4985,7 @@
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
 					"connectiveTracks": [123, 124],
+					"static": true,
 					"setTo": 124
 				}
 			},
@@ -5005,6 +5073,526 @@
 			},
 			{
 				"pos": [1331.71, 23.7, -665.77]
+			}
+		]
+	},
+	{
+		"num": 127,
+		"name": "Stralsund South Thing" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [877.95, 24.92, -149.91],
+				"fork": {
+					"connectiveTracks": [107, 108],
+					"static": true,
+					"setTo": 107
+				}
+			},
+			{
+				"pos": [882.77, 24.87, -143.33],
+				"handleIn": [-1.18, 0.0, -1.61]
+			},
+			{
+				"pos": [888.52, 24.82, -134.88],
+				"fork": {
+					"connectiveTracks": [128, 129],
+					"static": true,
+					"setTo": 128
+				}
+			}
+		]
+	},
+	{
+		"num": 128,
+		"name": "Stralsund South Thing" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [888.52, 24.82, -134.88],
+				"fork": {
+					"connectiveTracks": [127],
+					"setTo": 127
+				}
+			},
+			{
+				"pos": [891.66, 24.99, -126.97],
+				"handleIn": [-1.19, -0.03, -4.51]
+			},
+			{
+				"pos": [893.3, 25.12, -114.11],
+				"handleIn": [-0.01, -0.03, -2.8]
+			},
+			{
+				"pos": [893.08, 25.14, -104.63],
+				"handleIn": [0.12, 0.0, -3.02]
+			},
+			{
+				"pos": [892.07, 25.14, -94.85],
+				"static": true,
+				"fork": {
+					"connectiveTracks": [109, 130],
+					"static": true,
+					"setTo": 130
+				}
+			}
+		]
+	},
+	{
+		"num": 129,
+		"name": "Stralsund South Thing" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [888.52, 24.82, -134.88],
+				"fork": {
+					"connectiveTracks": [127],
+					"setTo": 127
+				}
+			},
+			{
+				"pos": [896.02, 24.97, -119.97],
+				"handleIn": [-1.84, -0.02, -4.21]
+			},
+			{
+				"pos": [903.07, 25.02, -103.38],
+				"handleIn": [-2.28, -0.01, -5.72]
+			},
+			{
+				"pos": [908.54, 24.95, -89.21],
+				"handleIn": [0.0, 0.01, 0.0]
+			},
+			{
+				"pos": [915.33, 24.85, -73.11],
+				"handleIn": [-1.42, 0.01, -3.21]
+			},
+			{
+				"pos": [924.16, 24.76, -51.62],
+				"handleIn": [-3.02, 0.01, -6.89]
+			},
+			{
+				"pos": [936.32, 25.08, -25.85],
+				"handleIn": [-3.44, -0.02, -6.33]
+			},
+			{
+				"pos": [951.43, 25.03, 0.12],
+				"handleIn": [-2.63, 0.0, -4.45]
+			},
+			{
+				"pos": [964.54, 25.3, 21.58],
+				"handleIn": [-3.49, -0.02, -5.94]
+			},
+			{
+				"pos": [976.62, 25.57, 41.09]
+			}
+		]
+	},
+	{
+		"num": 130,
+		"name": "Stralsund <> Voigdehagen" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [892.07, 25.14, -94.85],
+				"fork": {
+					"connectiveTracks": [128],
+					"setTo": 128
+				}
+			},
+			{
+				"pos": [885.8, 25.04, -73.75],
+				"handleIn": [1.94, 0.01, -5.75]
+			},
+			{
+				"pos": [877.83, 24.98, -56.43],
+				"handleIn": [3.65, 0.01, -5.17]
+			},
+			{
+				"pos": [866.31, 24.73, -41.42],
+				"handleIn": [3.18, 0.03, -3.95]
+			},
+			{
+				"pos": [855.5, 24.73, -26.41],
+				"handleIn": [3.4, 0.0, -4.94]
+			},
+			{
+				"pos": [845.88, 24.99, -9.71],
+				"handleIn": [1.99, -0.03, -3.39]
+			},
+			{
+				"pos": [839.45, 25.24, 5.75],
+				"handleIn": [1.58, -0.03, -5.28]
+			},
+			{
+				"pos": [834.6, 25.5, 25.16]
+			}
+		]
+	},
+	{
+		"num": 131,
+		"name": "Velgast Sternhagen Curve" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-293.92, 25.02, -52.79],
+				"fork": {
+					"connectiveTracks": [66],
+					"setTo": 66
+				}
+			},
+			{
+				"pos": [-304.77, 25.32, -47.11],
+				"handleIn": [4.33, -0.05, -3.5]
+			},
+			{
+				"pos": [-313.91, 26.04, -34.5],
+				"handleIn": [2.49, -0.09, -5.33]
+			},
+			{
+				"pos": [-315.56, 26.4, -17.95],
+				"handleIn": [-0.73, -0.04, -6.19]
+			},
+			{
+				"pos": [-311.2, 26.26, -2.81],
+				"handleIn": [-2.8, 0.02, -6.26]
+			},
+			{
+				"pos": [-303.44, 25.57, 12.87],
+				"handleIn": [-1.9, 0.08, -4.07]
+			},
+			{
+				"pos": [-295.28, 24.77, 28.55],
+				"handleIn": [-4.26, 0.09, -5.81]
+			},
+			{
+				"pos": [-279.84, 24.34, 46.43],
+				"handleIn": [-3.73, 0.04, -4.23]
+			},
+			{
+				"pos": [-270.5, 24.28, 58.78],
+				"handleIn": [-3.04, 0.01, -5.46]
+			},
+			{
+				"pos": [-264.53, 24.4, 75.27],
+				"handleIn": [-1.52, -0.01, -5.64]
+			},
+			{
+				"pos": [-266.59, 24.29, 92.46],
+				"handleIn": [1.45, 0.01, -4.58]
+			},
+			{
+				"pos": [-269.93, 24.15, 107.47],
+				"handleIn": [0.48, 0.02, -6.26]
+			},
+			{
+				"pos": [-270.33, 24.08, 119.69]
+			}
+		]
+	},
+	{
+		"num": 132,
+		"name": "Velgast <> Saatel Curve" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-288.14, 24.98, -58.81],
+				"fork": {
+					"connectiveTracks": [65],
+					"setTo": 65
+				}
+			},
+			{
+				"pos": [-301.53, 24.88, -61.9],
+				"handleIn": [5.03, 0.01, 1.76]
+			},
+			{
+				"pos": [-312.43, 24.83, -72.58],
+				"handleIn": [2.41, 0.01, 4.01]
+			},
+			{
+				"pos": [-316.47, 24.57, -86.62],
+				"handleIn": [0.26, 0.04, 4.09]
+			},
+			{
+				"pos": [-317.0, 24.37, -102.0],
+				"handleIn": [0.84, 0.03, 5.41]
+			},
+			{
+				"pos": [-321.61, 24.15, -121.95],
+				"handleIn": [2.15, 0.02, 6.34]
+			},
+			{
+				"pos": [-330.23, 23.94, -142.1],
+				"handleIn": [2.55, 0.02, 4.6]
+			},
+			{
+				"pos": [-339.28, 23.83, -158.66],
+				"handleIn": [3.29, 0.01, 4.47]
+			},
+			{
+				"pos": [-350.07, 23.83, -177.15],
+				"handleIn": [3.17, 0.0, 5.65]
+			},
+			{
+				"pos": [-357.14, 23.79, -194.27],
+				"handleIn": [1.98, 0.0, 4.53]
+			},
+			{
+				"pos": [-362.67, 23.7, -210.54],
+				"handleIn": [2.05, 0.01, 6.2]
+			},
+			{
+				"pos": [-370.64, 23.63, -227.36],
+				"fork": {
+					"connectiveTracks": [133],
+					"static": true,
+					"setTo": 133
+				}
+			}
+		]
+	},
+	{
+		"num": 133,
+		"name": "Saatel <> Kenz" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-370.64, 23.63, -227.36],
+				"fork": {
+					"connectiveTracks": [132],
+					"static": true,
+					"setTo": 132
+				}
+			},
+			{
+				"pos": [-381.62, 23.57, -247.33],
+				"handleIn": [4.4, 0.01, 7.3]
+			},
+			{
+				"pos": [-393.34, 23.55, -265.9],
+				"handleIn": [3.14, 0.0, 5.04]
+			},
+			{
+				"pos": [-407.23, 23.55, -280.73],
+				"handleIn": [4.43, 0.0, 3.71]
+			},
+			{
+				"pos": [-422.66, 23.53, -293.86],
+				"handleIn": [4.02, 0.0, 3.91]
+			},
+			{
+				"pos": [-441.42, 23.5, -312.19],
+				"handleIn": [4.51, 0.0, 3.82]
+			},
+			{
+				"pos": [-459.89, 23.83, -327.52],
+				"handleIn": [4.15, -0.03, 4.05]
+			},
+			{
+				"pos": [-476.46, 24.25, -342.11],
+				"handleIn": [4.41, -0.04, 3.54]
+			},
+			{
+				"pos": [-493.05, 24.81, -357.6],
+				"fork": {
+					"connectiveTracks": [134],
+					"static": true,
+					"setTo": 134
+				}
+			}
+		]
+	},
+	{
+		"num": 134,
+		"name": "Kenz <> Barth Stationm Fork" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-493.05, 24.81, -357.6],
+				"fork": {
+					"connectiveTracks": [134],
+					"static": true,
+					"setTo": 134
+				}
+			},
+			{
+				"pos": [-501.47, 25.43, -368.0],
+				"handleIn": [3.4, -0.09, 4.12]
+			},
+			{
+				"pos": [-508.33, 26.02, -378.05],
+				"handleIn": [2.35, -0.1, 3.9]
+			},
+			{
+				"pos": [-516.02, 25.86, -392.44],
+				"handleIn": [2.1, 0.02, 4.34]
+			},
+			{
+				"pos": [-524.73, 25.42, -410.43],
+				"handleIn": [2.24, 0.04, 4.78]
+			},
+			{
+				"pos": [-529.85, 25.38, -422.05],
+				"handleIn": [1.29, 0.01, 3.1]
+			},
+			{
+				"pos": [-533.85, 25.74, -431.9],
+				"handleIn": [1.02, -0.07, 3.03]
+			},
+			{
+				"pos": [-539.41, 25.14, -444.6],
+				"fork": {
+					"connectiveTracks": [135, 136],
+					"static": true,
+					"setTo": 135
+				}
+			}
+		]
+	},
+	{
+		"num": 135,
+		"name": "Barth DR Station Track 1" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-539.41, 25.14, -444.6],
+				"fork": {
+					"connectiveTracks": [134],
+					"setTo": 134
+				}
+			},
+			{
+				"pos": [-546.63, 25.11, -457.19],
+				"handleIn": [2.05, 0.0, 4.06]
+			},
+			{
+				"pos": [-552.27, 25.09, -471.36],
+				"handleIn": [2.18, 0.0, 5.71]
+			},
+			{
+				"pos": [-561.68, 24.71, -496.43],
+				"handleIn": [1.92, 0.03, 5.31]
+			},
+			{
+				"pos": [-567.98, 24.36, -514.25],
+				"handleIn": [1.4, 0.03, 3.91]
+			},
+			{
+				"pos": [-573.02, 24.05, -529.85],
+				"handleIn": [1.33, 0.04, 5.19]
+			},
+			{
+				"pos": [-577.56, 23.91, -541.01],
+				"fork": {
+					"connectiveTracks": [137],
+					"setTo": 137
+				}
+			}
+		]
+	},
+	{
+		"num": 136,
+		"name": "Barth DR Station Track 2" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-539.41, 25.14, -444.6],
+				"fork": {
+					"connectiveTracks": [134],
+					"setTo": 134
+				}
+			},
+			{
+				"pos": [-542.47, 25.11, -454.92],
+				"handleIn": [0.57, 0.01, 1.92]
+			},
+			{
+				"pos": [-545.48, 25.14, -469.84],
+				"handleIn": [1.16, 0.0, 5.44]
+			},
+			{
+				"pos": [-551.58, 25.07, -487.95],
+				"handleIn": [1.63, 0.01, 4.2]
+			},
+			{
+				"pos": [-558.4, 24.67, -506.47],
+				"handleIn": [1.47, 0.04, 3.92]
+			},
+			{
+				"pos": [-563.85, 24.33, -521.25],
+				"handleIn": [1.35, 0.04, 3.44]
+			},
+			{
+				"pos": [-569.33, 24.08, -530.99],
+				"handleIn": [2.4, 0.04, 3.07]
+			},
+			{
+				"pos": [-577.56, 23.91, -541.01],
+				"fork": {
+					"connectiveTracks": [137],
+					"setTo": 137
+				}
+			}
+		]
+	},
+	{
+		"num": 137,
+		"name": "Barth Station <> Settlement" ,
+		"type": "NORMAL_GAUGE",
+		"tag": "DR",
+		"points": [
+			{
+				"pos": [-577.56, 23.91, -541.01],
+				"fork": {
+					"connectiveTracks": [135, 136],
+					"static": true,
+					"setTo": 136
+				}
+			},
+			{
+				"pos": [-582.36, 24.07, -547.13],
+				"handleIn": [1.7, -0.04, 1.62]
+			},
+			{
+				"pos": [-588.84, 23.82, -552.92],
+				"handleIn": [2.35, 0.06, 1.92]
+			},
+			{
+				"pos": [-601.97, 23.54, -562.46],
+				"handleIn": [4.98, 0.03, 2.66]
+			},
+			{
+				"pos": [-620.88, 23.54, -568.59],
+				"handleIn": [3.81, 0.0, 0.99]
+			},
+			{
+				"pos": [-642.41, 23.37, -573.81],
+				"handleIn": [4.47, 0.02, 1.02]
+			},
+			{
+				"pos": [-665.23, 23.37, -578.48],
+				"handleIn": [4.91, 0.0, 0.9]
+			},
+			{
+				"pos": [-690.39, 23.37, -582.96],
+				"handleIn": [5.25, 0.0, 0.93]
+			},
+			{
+				"pos": [-711.17, 23.28, -585.22],
+				"handleIn": [1.99, 0.01, 0.22]
+			},
+			{
+				"pos": [-730.59, 23.32, -586.15]
 			}
 		]
 	}

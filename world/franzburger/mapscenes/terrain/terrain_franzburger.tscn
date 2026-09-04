@@ -2,16 +2,20 @@
 
 [ext_resource type="Terrain3DMaterial" uid="uid://bdtxotl8myxft" path="res://world/franzburger/mapscenes/terrain/terrain_mat_franzburger.tres" id="1_r1bh6"]
 [ext_resource type="Terrain3DAssets" uid="uid://cb1kin0sj8htb" path="res://world/franzburger/mapscenes/terrain/terrain_assets_franzburger.res" id="2_cpcyg"]
-[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="3_3hcqu"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 size = Vector2(3800, 2600)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx50x"]
+albedo_color = Color(0.15327933, 0.21631768, 0.24348894, 1)
 
 [node name="WorldTerrain" type="Terrain3D" unique_id=1285850563]
 data_directory = "res://world/franzburger/heightdata"
 material = ExtResource("1_r1bh6")
 assets = ExtResource("2_cpcyg")
+show_grid = true
 displacement_sharpness = 0.5
+show_region_grid = true
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -19,5 +23,5 @@ metadata/_edit_lock_ = true
 
 [node name="Ostsee" type="MeshInstance3D" parent="Water" unique_id=66271528]
 transform = Transform3D(1, 0, 0, 0, 12.5, 0, 0, 0, 1, 0, 22, -102.33)
-material_override = ExtResource("3_3hcqu")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = SubResource("StandardMaterial3D_fx50x")

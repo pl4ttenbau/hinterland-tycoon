@@ -8,5 +8,5 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.105339766, 0)
 layers = 8
 lod_bias = 0.1
-visibility_range_end = 90.0
-visibility_range_end_margin = 9.0
+visibility_range_end = 120.0
+visibility_range_end_margin = 12.0

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cxoekwkqss8fs"]
+
+[ext_resource type="PackedScene" uid="uid://dscojh5jxua0u" path="res://assets/meshes/structures/ddr_ew_65/mesh/mesh_ddr_ew_65.tscn" id="1_cs6j5"]
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_w6hj4"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_l5wyl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a77lt"]
+size = Vector3(10.199768, 10.600357, 8.772881)
+
+[node name="DdrEw65" type="Node3D" unique_id=823260075]
+script = ExtResource("1_w6hj4")
+placed_res_bld_type = "ddr_ew_65"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshDdrEw65" parent="." unique_id=1492721111 instance=ExtResource("1_cs6j5")]
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1307132957]
+visible = false
+script = ExtResource("3_l5wyl")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=407619038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73617554, 5.111992, -0.0753212)
+shape = SubResource("BoxShape3D_a77lt")

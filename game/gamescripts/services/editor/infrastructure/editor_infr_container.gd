@@ -7,9 +7,9 @@ class_name GeneratedInfrContainer extends Node3D
 var empty_infr = Callable(self, "do_empty_infr")
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		self.owner = EditorInterface.get_edited_scene_root()
-	else:
+	#if Engine.is_editor_hint():
+	#	self.owner = EditorInterface.get_edited_scene_root()
+	if !Engine.is_editor_hint():
 		self.visible = false
 	
 #region Button Action

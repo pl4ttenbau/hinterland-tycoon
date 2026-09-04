@@ -5,7 +5,7 @@ const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"
 const VEH_SPEED_MODIFIER: float = 50.0
 
 signal on_vehicle_added(veh3d: Vehicle3D)
-signal active_path_end_reached()
+signal active_path_end_reached(reached_node: RailNodeData)
 
 static var _last_train_num: int = 0
 
@@ -92,12 +92,13 @@ func init_segment_path():
 	self.add_child(segment_path)
 	segment_path.name = "SegmentPath"
 
-## after locomotive reaches end of current segmessssssnt, 
-func add_next_segment_or_stop():
+## after locomotive reaches end of current segment, 
+func add_next_segment_or_stop(reached_node: RailNodeData):
 	var cached_previous_segment: VehiclePathSegment = self.current_segment
 	# update next segment
-	self.current_segment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
-	if self.current_segment.previous:
+	var next_segment: VehiclePathSegment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
+	if next_segment:
+		self.current_segment = next_segment
 		self.current_segment.previous = cached_previous_segment
 		self.get_active_path().add_segment(self.current_segment)
 		self.m_passed_on_segment = 0
@@ -126,7 +127,8 @@ func move_forwards(delta_seconds: float):
 	# reached end of path? add next segmenr or stop
 	var active_path_len: float = self.get_active_path().curve.get_baked_length()
 	if self.m_passed_since_start > active_path_len:
-		self.active_path_end_reached.emit()
+		var reached_node: RailNodeData = self.current_segment.end_node
+		self.active_path_end_reached.emit(reached_node)
 	# move every vehicle in train forwards on path
 	for veh3d: Vehicle3D in self.vehicles:
 		# figure out transformation (rotation only) at next rail node
@@ -183,8 +185,9 @@ func _physics_process(_delta: float) -> void:
 	if self.motor.is_started: 
 		self.move_forwards(_delta)
 
-func _on_active_path_end_reached():
+func _on_active_path_end_reached(reached_node: RailNodeData):
 	Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
-	self.add_next_segment_or_stop()
+	Loggie.info("Reached node: %d at %v" % [reached_node.index, reached_node.position])
+	self.add_next_segment_or_stop(reached_node)
 
 #endregion

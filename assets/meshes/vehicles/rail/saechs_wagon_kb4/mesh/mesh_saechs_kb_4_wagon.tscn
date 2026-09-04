@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cgrag8h0ovuv4"]
+
+[ext_resource type="PackedScene" uid="uid://bjbi21akhni15" path="res://assets/meshes/vehicles/rail/saechs_wagon_kb4/mesh/saechskb4.obj" id="1_kffpq"]
+
+[node name="MeshSaechsKb4Wagon" unique_id=1309617177 instance=ExtResource("1_kffpq")]
+
+[node name="saechskb4" parent="." index="0" unique_id=738869076]
+layers = 64
+lod_bias = 0.15
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0
