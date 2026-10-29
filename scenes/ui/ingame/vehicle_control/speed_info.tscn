@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxwysa4d5x7uc" path="res://game/gamescripts/ui/vehicle_control/brake_reverse_panel.gd" id="1_mhucp"]
 
 [node name="SpeedInfo" type="CenterContainer" unique_id=61871293]
-custom_minimum_size = Vector2(80, 130)
+custom_minimum_size = Vector2(160, 130)
 offset_right = 80.0
 offset_bottom = 130.0
 script = ExtResource("1_mhucp")
@@ -21,8 +21,16 @@ theme_override_constants/margin_bottom = 10
 [node name="BrakeButton" type="Button" parent="VBoxContainer/BrakeMargin" unique_id=1404828087]
 unique_name_in_owner = true
 layout_mode = 2
+custom_minimum_size = Vector2(140, 36)
 toggle_mode = true
-text = "B"
+text = "Apply brake"
+
+[node name="BrakeStatus" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Brake released"
+horizontal_alignment = 1
 
 [node name="ReverseMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1062098989]
 layout_mode = 2
@@ -35,7 +43,8 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-text = "R"
+text = "Reverse"
+tooltip_text = "Reverse the train direction"
 
 [node name="AbsSpeedLabel" type="Label" parent="VBoxContainer" unique_id=1499510304]
 layout_mode = 2
