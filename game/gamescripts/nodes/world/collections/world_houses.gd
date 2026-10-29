@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/icon_house_white.png")
-class_name WorldHouses extends Node
+class_name WorldResidences extends Node
 
 @export var world_scene: WorldMapScene
 
@@ -18,14 +18,18 @@ var gen_folders = Callable(self, "do_generate_town_folders")
 @export_tool_button("Sort Houses To Towns")
 var sort_houses = Callable(self, "do_sort_to_towns")
 
+@export_group("Export")
+
+@export_tool_button("Export To JSON")
+var export_residences = Callable(self, "do_export_residences_to_json")
+
 #region Tool Actions
 func do_generate_town_folders():
 	var world_towns: WorldTowns = self._get_town_container()
 	for town_obj: TownData in world_towns.get_town_objs():
-		var node_name: String = "%d_%s" % [town_obj.num, town_obj.town_name]
 		# create child node
 		var town_folder: Node = Node.new()
-		town_folder.name = node_name
+		town_folder.name = "%d_%s" % [town_obj.num, town_obj.town_name]
 		self.add_child(town_folder)
 		town_folder.owner = EditorInterface.get_edited_scene_root()
 
@@ -35,6 +39,9 @@ func do_sort_to_towns():
 			var town_folder: Node = self.find_town_folder(direct_child.placed_town_num)
 			if town_folder:
 				direct_child.reparent(town_folder)
+
+func do_export_residences_to_json():
+	pass
 #endregion
 
 #region Helper-Methods
