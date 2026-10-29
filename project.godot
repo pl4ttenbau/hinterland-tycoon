@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+MCPRuntime="*res://addons/godot_mcp/runtime/mcp_runtime.gd"
 Loggie="*res://addons/loggie/loggie.gd"
 Enums="*res://game/gamescripts/enums.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
@@ -45,7 +46,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/button_feedback/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/godot-polyliner/plugin.cfg", "res://addons/godotresourcecleaner/plugin.cfg", "res://addons/hinterland_tools/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/mesh_inspector/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg", "res://addons/reference_finder/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/button_feedback/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/godot-polyliner/plugin.cfg", "res://addons/godotresourcecleaner/plugin.cfg", "res://addons/hinterland_tools/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/mesh_inspector/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg", "res://addons/reference_finder/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
 
 [file_customization]
 
