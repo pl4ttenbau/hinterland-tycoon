@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dbfi1mnklrb7"]
+
+[ext_resource type="PackedScene" uid="uid://dr33ju0ubiqeq" path="res://assets/meshes/structures/vitt_fischerhaus/mesh/vitt_fischerhaus.gltf" id="1_ipuew"]
+
+[node name="MeshVitteFischerhaus" unique_id=1927274642 instance=ExtResource("1_ipuew")]
+
+[node name="Fischerhaus" parent="." index="0" unique_id=1302542202]
+layers = 8
+visibility_range_end = 100.0
+visibility_range_end_margin = 10.0

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://gmyuya8risus"]
+
+[ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_oshx2"]
+[ext_resource type="PackedScene" uid="uid://dr33ju0ubiqeq" path="res://assets/meshes/structures/vitt_fischerhaus/mesh/vitt_fischerhaus.gltf" id="2_1cklf"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_kphxj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(13.87059, 7.607727, 8.900299)
+
+[node name="VittFischerhaus" type="Node3D" unique_id=1859777134]
+script = ExtResource("1_oshx2")
+placed_res_bld_type = "vitt_fischerhaus"
+metadata/_custom_type_script = "uid://0dm7tfhu5lup"
+
+[node name="MeshVittFischerhaus" parent="." unique_id=1927274642 instance=ExtResource("2_1cklf")]
+
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=1399946818]
+script = ExtResource("3_kphxj")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=1846376187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018539429, 3.8344421, 0.12110901)
+shape = SubResource("BoxShape3D_qwrwv")
