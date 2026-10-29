@@ -3,32 +3,37 @@
 [ext_resource type="Script" uid="uid://yt1h813m0ct7" path="res://game/gamescripts/ui/start_menu/other_controls/map_selection_button.gd" id="1_31t4v"]
 [ext_resource type="Texture2D" uid="uid://4b2eylqkv3hn" path="res://world/default/preview.png" id="2_bufug"]
 
-[node name="MapSelectionButton" type="Container"]
-custom_minimum_size = Vector2(0, 128)
+[node name="MapSelectionButton" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 88)
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 128.0
+offset_bottom = 88.0
 grow_horizontal = 2
 mouse_filter = 0
+theme_type_variation = &"ListRowPanel"
 script = ExtResource("1_31t4v")
 metadata/_custom_type_script = "uid://yt1h813m0ct7"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PreviewImg" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_bufug")
 expand_mode = 4
 
 [node name="Filler" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(18, 0)
+custom_minimum_size = Vector2(8, 0)
+mouse_filter = 2
 layout_mode = 2
 
 [node name="MapNameLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+mouse_filter = 2
+theme_override_font_sizes/font_size = 22
 text = "Map Name"

@@ -36,7 +36,7 @@ layout_mode = 2
 theme_type_variation = &"RoundButton"
 toggle_mode = true
 text = "B"
-tooltip_text = "Apply or release the brake"
+tooltip_text = "Service brake: slows and holds the train. Release to resume the selected target speed."
 
 [node name="StatusCenter" type="CenterContainer" parent="VBoxContainer/Switches/BrakeControl"]
 layout_mode = 2
