@@ -1,42 +1,108 @@
 [gd_scene format=3 uid="uid://dikkbqk3y15rq"]
 
 [ext_resource type="Script" uid="uid://bxwysa4d5x7uc" path="res://game/gamescripts/ui/vehicle_control/brake_reverse_panel.gd" id="1_mhucp"]
+[ext_resource type="Texture2D" path="res://assets/ui/theme/textures/lamp_off.svg" id="2_lamp"]
 
-[node name="SpeedInfo" type="CenterContainer" unique_id=61871293]
-custom_minimum_size = Vector2(80, 130)
-offset_right = 80.0
-offset_bottom = 130.0
+[node name="SpeedInfo" type="CenterContainer"]
+custom_minimum_size = Vector2(208, 170)
 script = ExtResource("1_mhucp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=488440141]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Switches" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BrakeControl" type="VBoxContainer" parent="VBoxContainer/Switches"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Nameplate" type="Label" parent="VBoxContainer/Switches/BrakeControl"]
+layout_mode = 2
+theme_type_variation = &"NameplateLabel"
+text = "Brake"
+horizontal_alignment = 1
+
+[node name="ButtonCenter" type="CenterContainer" parent="VBoxContainer/Switches/BrakeControl"]
 layout_mode = 2
 
-[node name="BrakeMargin" type="MarginContainer" parent="VBoxContainer" unique_id=909209669]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="BrakeButton" type="Button" parent="VBoxContainer/BrakeMargin" unique_id=1404828087]
+[node name="BrakeButton" type="Button" parent="VBoxContainer/Switches/BrakeControl/ButtonCenter"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+theme_type_variation = &"RoundButton"
 toggle_mode = true
 text = "B"
+tooltip_text = "Apply or release the brake"
 
-[node name="ReverseMargin" type="MarginContainer" parent="VBoxContainer" unique_id=1062098989]
+[node name="StatusCenter" type="CenterContainer" parent="VBoxContainer/Switches/BrakeControl"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="ReverseButton" type="Button" parent="VBoxContainer/ReverseMargin" unique_id=1070205404]
+[node name="StatusRow" type="HBoxContainer" parent="VBoxContainer/Switches/BrakeControl/StatusCenter"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BrakeLamp" type="TextureRect" parent="VBoxContainer/Switches/BrakeControl/StatusCenter/StatusRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_lamp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BrakeStatus" type="Label" parent="VBoxContainer/Switches/BrakeControl/StatusCenter/StatusRow"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"CabStatusLabel"
+text = "Released"
+
+[node name="ReverseControl" type="VBoxContainer" parent="VBoxContainer/Switches"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Nameplate" type="Label" parent="VBoxContainer/Switches/ReverseControl"]
+layout_mode = 2
+theme_type_variation = &"NameplateLabel"
+text = "Direction"
+horizontal_alignment = 1
+
+[node name="ButtonCenter" type="CenterContainer" parent="VBoxContainer/Switches/ReverseControl"]
+layout_mode = 2
+
+[node name="ReverseButton" type="Button" parent="VBoxContainer/Switches/ReverseControl/ButtonCenter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_type_variation = &"RoundButton"
 toggle_mode = true
 text = "R"
+tooltip_text = "Change driving direction"
 
-[node name="AbsSpeedLabel" type="Label" parent="VBoxContainer" unique_id=1499510304]
+[node name="StatusCenter" type="CenterContainer" parent="VBoxContainer/Switches/ReverseControl"]
 layout_mode = 2
-text = "20 km/h"
+
+[node name="StatusRow" type="HBoxContainer" parent="VBoxContainer/Switches/ReverseControl/StatusCenter"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ReverseLamp" type="TextureRect" parent="VBoxContainer/Switches/ReverseControl/StatusCenter/StatusRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_lamp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReverseStatus" type="Label" parent="VBoxContainer/Switches/ReverseControl/StatusCenter/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"CabStatusLabel"
+text = "Forward"

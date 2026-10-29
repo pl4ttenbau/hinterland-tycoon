@@ -7,7 +7,7 @@ func _enter_tree() -> void:
 	SignalBus.player_exited_train.connect(Callable(self, "_on_player_exited_train"))
 
 func _ready() -> void:
-	$VSlider.value_changed.connect(Callable(self, "_on_speed_slider_change"))
+	%VSlider.value_changed.connect(Callable(self, "_on_speed_slider_change"))
 	
 #region Callbacks
 func _on_speed_slider_change(scaled_speed: float):

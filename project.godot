@@ -70,6 +70,10 @@ Towns=""
 Stations=""
 RoadWays=""
 
+[gui]
+
+theme/custom="res://assets/ui/theme/hinterland_theme.tres"
+
 [input]
 
 move_forward={

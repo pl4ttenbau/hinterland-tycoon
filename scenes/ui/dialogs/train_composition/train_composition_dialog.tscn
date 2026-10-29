@@ -48,9 +48,9 @@ layout_mode = 2
 [node name="Headline" type="Label" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=1318486676]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_type_variation = &"HeadlineLabel"
 text = "Compose Train"
-horizontal_alignment = 1
+horizontal_alignment = 0
 
 [node name="TrainVehicleList" type="VBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout" unique_id=1740692714]
 unique_name_in_owner = true
@@ -71,8 +71,8 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 33
-text = "Spawn"
+theme_type_variation = &"PrimaryButton"
+text = "Spawn train"
 
 [node name="OuterVLayout2" type="VBoxContainer" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer" unique_id=1926178752]
 custom_minimum_size = Vector2(400, 0)
@@ -80,9 +80,9 @@ layout_mode = 2
 
 [node name="Headline" type="Label" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=2076789139]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_type_variation = &"HeadlineLabel"
 text = "Add Vehicle"
-horizontal_alignment = 1
+horizontal_alignment = 0
 
 [node name="AddableVehiclesList" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=692177351 instance=ExtResource("3_ujivd")]
 unique_name_in_owner = true
@@ -92,5 +92,5 @@ size_flags_vertical = 3
 [node name="AddVehicleButton" type="Button" parent="OuterPanel/OuterMargin/VBoxContainer/HBoxContainer/OuterVLayout2" unique_id=2122196153]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Add"
+theme_type_variation = &"ManagementButton"
+text = "Add vehicle"

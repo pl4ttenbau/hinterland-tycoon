@@ -32,14 +32,23 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=812188558]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Headline" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeadlineLabel"
+text = "Driving controls"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=812188558]
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1249350117]
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1249350117]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Control2" unique_id=1452660315]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control2" unique_id=1452660315]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -56,15 +65,15 @@ grow_vertical = 2
 texture = ExtResource("2_c3mfk")
 expand_mode = 3
 
-[node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/HBoxContainer/Control2/TextureRect" unique_id=1762477285]
+[node name="SpeedLine" type="Line2D" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control2/TextureRect" unique_id=1762477285]
 position = Vector2(45, 70)
 rotation = -0.610865
 points = PackedVector2Array(0, 0, 0, -45)
 width = 1.0
 default_color = Color(0.87, 0.0783, 0.0783, 1)
 
-[node name="SpeedControl" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=163985117 instance=ExtResource("3_544v3")]
+[node name="SpeedControl" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=163985117 instance=ExtResource("3_544v3")]
 layout_mode = 2
 
-[node name="SpeedInfo" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1176669112 instance=ExtResource("5_544v3")]
+[node name="SpeedInfo" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1176669112 instance=ExtResource("5_544v3")]
 layout_mode = 2
