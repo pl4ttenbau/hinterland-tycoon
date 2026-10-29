@@ -1,34 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv3nyf0fe6py0"]
+[gd_scene format=3 uid="uid://dv3nyf0fe6py0"]
 
 [ext_resource type="Script" uid="uid://d3ccnd777ajsg" path="res://game/gamescripts/ui/start_menu/subscenes/startmenu_map_selection.gd" id="1_vw5qn"]
 
-[node name="MapSelection" type="MarginContainer"]
+[node name="MapSelection" type="MarginContainer" unique_id=476334661]
 offset_right = 568.0
 offset_bottom = 500.0
 script = ExtResource("1_vw5qn")
 key = "map_selection"
 metadata/_custom_type_script = "uid://d3ccnd777ajsg"
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1409067944]
 layout_mode = 2
 
-[node name="Padding" type="MarginContainer" parent="Panel"]
+[node name="Padding" type="MarginContainer" parent="Panel" unique_id=79868895]
 layout_mode = 2
 theme_override_constants/margin_left = 14
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 16
 
-[node name="Content" type="VBoxContainer" parent="Panel/Padding"]
+[node name="Content" type="VBoxContainer" parent="Panel/Padding" unique_id=698900527]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Headline" type="Label" parent="Panel/Padding/Content"]
+[node name="Headline" type="Label" parent="Panel/Padding/Content" unique_id=2144824474]
 layout_mode = 2
 theme_type_variation = &"HeadlineLabel"
 text = "Choose a railway"
 
-[node name="VLayout" type="VBoxContainer" parent="Panel/Padding/Content"]
+[node name="VLayout" type="VBoxContainer" parent="Panel/Padding/Content" unique_id=1097297155]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(480, 0)
 layout_mode = 2

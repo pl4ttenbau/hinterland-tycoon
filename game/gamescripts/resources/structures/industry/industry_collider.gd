@@ -6,4 +6,4 @@ func get_industry() -> NodeStationLinkData:
 	return outer_industry.entity
 
 func get_click_ref() -> ClickRef:
-	return ClickRef.new(Enums.EntityTypes.STATION, self.get_industry().num)
+	return ClickRef.new(Enums.EntityTypes.INDUSTRY, self.get_industry().num)
