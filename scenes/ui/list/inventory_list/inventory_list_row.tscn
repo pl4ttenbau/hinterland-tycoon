@@ -2,14 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ds0dtxu51v1nt" path="res://game/gamescripts/ui/inventory/transfer_inventory_row.gd" id="1_hgtml"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_detail = 1
-
 [node name="TransferInventoryRow" type="PanelContainer" unique_id=224763508]
 anchors_preset = 10
 anchor_right = 1.0
@@ -17,7 +9,7 @@ offset_right = -652.0
 offset_bottom = 54.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ud4v")
+theme_type_variation = &"ListRowPanel"
 script = ExtResource("1_hgtml")
 metadata/_custom_type_script = "uid://ds0dtxu51v1nt"
 
@@ -46,12 +38,14 @@ text = "<"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 size_flags_horizontal = 4
 text = "5"
 
 [node name="Move1Btn_L" type="Button" parent="HMargin/MoveLeftContainer/MoveLeftHLayout" unique_id=348357499]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 text = "1"
 
 [node name="MoveRightContainer" type="CenterContainer" parent="HMargin" unique_id=716398508]
@@ -66,12 +60,14 @@ layout_mode = 2
 [node name="Move1Btn_R" type="Button" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1279046427]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 size_flags_horizontal = 4
 text = "1"
 
 [node name="Move5Btn_R" type="Button" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1297677740]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 text = "5"
 
 [node name="Label" type="Label" parent="HMargin/MoveRightContainer/MoveRightHLayout" unique_id=1292262692]

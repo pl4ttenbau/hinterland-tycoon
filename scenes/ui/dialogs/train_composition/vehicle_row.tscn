@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://3rag7so3v58k" path="res://game/gamescripts/ui/dialogs/train_composition/train_composition_vehicle.gd" id="1_ftwnd"]
 
 [node name="VehicleRow" type="Control" unique_id=160420411]
-custom_minimum_size = Vector2(0, 41)
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 script = ExtResource("1_ftwnd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1349530814]
-custom_minimum_size = Vector2(0, 41)
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -23,9 +23,11 @@ grow_horizontal = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 text = "Up"
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1256244772]
+theme_type_variation = &"ListRowPanel"
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -40,10 +42,12 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_type_variation = &"ManagementButton"
 text = "Down"
 
 [node name="BtnRemove" type="Button" parent="HBoxContainer" unique_id=494022944]
+theme_type_variation = &"DangerButton"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Rm"
+text = "Remove"

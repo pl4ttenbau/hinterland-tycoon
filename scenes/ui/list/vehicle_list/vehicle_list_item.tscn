@@ -3,27 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://bjgav1hxh7ij6" path="res://assets/meshes/vehicles/rail/wismar_railbus/preview.png" id="1_1y4ey"]
 [ext_resource type="Script" uid="uid://x2wvtbn1k2jg" path="res://game/gamescripts/ui/dialogs/train_composition/vehicle_list_ui/vehicle_list_item_ui.gd" id="1_7ud4v"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ud4v"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_detail = 1
-
-[sub_resource type="LabelSettings" id="LabelSettings_w2d6x"]
-font_color = Color(1, 1, 1, 0.3529412)
-
-[sub_resource type="LabelSettings" id="LabelSettings_4lo0h"]
-font_color = Color(1, 0.8, 0, 0.827451)
-
 [node name="VehicleListItem" type="PanelContainer" unique_id=762948329]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 99.0
 grow_horizontal = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ud4v")
+theme_type_variation = &"ListRowPanel"
 script = ExtResource("1_7ud4v")
 metadata/_custom_type_script = "uid://x2wvtbn1k2jg"
 
@@ -66,7 +52,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 25
 text = "Vehicle_type"
-horizontal_alignment = 1
+horizontal_alignment = 0
 
 [node name="Control" type="Control" parent="HMargin/VehicleListHLayout/VBoxContainer" unique_id=1541423803]
 layout_mode = 2
@@ -82,7 +68,7 @@ offset_right = 72.0
 grow_vertical = 0
 size_flags_horizontal = 0
 text = "Germany"
-label_settings = SubResource("LabelSettings_w2d6x")
+theme_type_variation = &"MutedLabel"
 
 [node name="Label" type="Label" parent="HMargin/VehicleListHLayout/VBoxContainer/Control" unique_id=615311950]
 layout_mode = 1
@@ -96,7 +82,7 @@ offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "DM 3.6k"
-label_settings = SubResource("LabelSettings_4lo0h")
+theme_type_variation = &"AccentLabel"
 
 [node name="SelectedHighlighting" type="ColorRect" parent="." unique_id=1975556360]
 unique_name_in_owner = true
