@@ -1,4 +1,4 @@
-## loads buildings from map "Houses" node, registers them and places them below OuterTown
+## loads buildings from map "Houses" node, registers them and places them below Town3D
 @icon("res://assets/icons/icon_house_white.png")
 class_name TownBuildingHolder extends Node
 
@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
 	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
 	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
-	
+
 func load_preplaced_town_buildings():
 	## abort if res bld types or map isnt loaded yet
 	# if !self.has_res_bld_types_loaded: return
@@ -25,7 +25,7 @@ func load_preplaced_town_buildings():
 		if child is Residence3D:
 			self.place_preplaced_res_bld(child as Residence3D)
 	SignalBus.town_buildings_spawned.emit()
-			
+
 func place_preplaced_res_bld(outer_bld: Residence3D):
 	var res_bld_type := ResBldType.get_by_key(outer_bld.placed_res_bld_type)
 	outer_bld.res_bld_obj = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
@@ -48,24 +48,24 @@ func get_map_houses_container() -> Node:
 	if ! map_container:
 		Loggie.error("Cannot collect town buildings: Terrain data not loaded")
 		return null
-	return map_container.find_child("Houses")
-	
+	return map_container.find_child("Residences")
+
 func get_res_bld_town_obj(outer_bld: Residence3D) -> TownData:
 	var town := TownData.get_town_by_num(outer_bld.placed_town_num)
 	if ! town:
 		Loggie.error("Cannot spawn pre-placed building %s in Town %s: not found" % [outer_bld.name, outer_bld.placed_town_num])
 	return town
 #endregion
-	
+
 #region Signal Callbacks
 func _on_map_spawned(_terrain_container: WorldMapScene):
 	self.has_map_spawned = true
 	self.load_preplaced_town_buildings()
-	
+
 func _on_res_bld_types_loaded():
 	self.has_res_bld_types_loaded = true
 	self.load_preplaced_town_buildings()
-	
+
 func _on_map_towns_loaded(_towns: Array[TownData]):
 	self.load_preplaced_town_buildings()
 #endregion
