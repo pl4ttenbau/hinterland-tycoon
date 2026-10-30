@@ -31,7 +31,8 @@ func calc_offset_to_first() -> float:
 func calc_offset_to_previous(i_in_train: int)-> float:
 	if i_in_train == 0: return 0.0
 	var veh_before: Vehicle3D = self.train3d.vehicles[i_in_train -1]
-	var half_own_length: float = self.vehicle_obj.veh_type.length_metres /2
+	## Use this pair's following vehicle, not the final wagon for every pair.
+	var half_own_length: float = self.train3d.vehicles[i_in_train].vehicle_obj.veh_type.length_metres /2
 	var half_other_length: float = veh_before.vehicle_obj.veh_type.length_metres /2
 	return half_own_length + half_other_length
 #endregion

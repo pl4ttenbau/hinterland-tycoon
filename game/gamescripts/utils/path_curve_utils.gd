@@ -30,8 +30,9 @@ static func split_curve(original_curve: Curve3D, cut_ratio: float) -> Array[Curv
 	return [curve1, curve2]
 
 static func get_reversed_direction(curr_dir: Enums.PathDirection) -> Enums.PathDirection:
+	## Reversing swaps increasing and decreasing node order.
 	if curr_dir == Enums.PathDirection.TRACK_NODES_INCREASE:
-		return Enums.PathDirection.TRACK_NODES_INCREASE
+		return Enums.PathDirection.TRACK_NODES_DECREASE
 	elif curr_dir == Enums.PathDirection.TRACK_NODES_DECREASE:
 		return Enums.PathDirection.TRACK_NODES_INCREASE
 	else: return Enums.PathDirection.STOP

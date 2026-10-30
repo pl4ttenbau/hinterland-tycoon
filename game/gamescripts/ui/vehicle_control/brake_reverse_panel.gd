@@ -24,6 +24,8 @@ func _update_controls() -> void:
 	%BrakeButton.disabled = not has_train
 	%ReverseButton.disabled = not has_train
 	brake = curr_train.motor.speed.brake_applied if has_train else false
+	## Read the train state so rejected reversals and train changes display correctly.
+	self.reverse = self.curr_train.is_reversed if has_train else false
 	%BrakeButton.set_pressed_no_signal(brake)
 	%ReverseButton.set_pressed_no_signal(reverse)
 	%BrakeLamp.texture = LAMP_AMBER if brake else LAMP_OFF

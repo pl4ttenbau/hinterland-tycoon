@@ -32,13 +32,15 @@ static func get_first_segment(train3d: Train3D) -> VehiclePathSegment:
 #region Find Next
 ## if given node has a fork with a setting, returns track num that said fork is set to
 static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
-	if !segment_end || !segment_end.fork:
-		Loggie.error("Cannot continue from node %d at track %d: no fork found" % [segment_end.parent_track.num, segment_end.index])
+	## A buffer or unconnected endpoint is a normal end of route.
+	if segment_end == null or segment_end.fork == null:
 		return -1
 	var fork_pos: Vector3 = segment_end.fork.position
 	var fork_parent: NewRailForkData = Managers.forks.get_fork_at_pos(fork_pos)
+	if fork_parent == null or fork_parent.setting.current == null:
+		return -1
 	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_track.num)
-	if !next_track_num || next_track_num < 0:
+	if next_track_num < 0:
 		Loggie.error("Cannot continue from node %d at track %d: fork hasnt any setting" % [segment_end.parent_track.num, segment_end.index])
 		return -1
 	return next_track_num
@@ -48,6 +50,8 @@ static func get_next_dir_at_fork(next_track_num: int, fork_pos: Vector3) -> Enum
 	var next_track: RailTrackData = RailTrackData.get_by_num(next_track_num)
 	# could maybe also gotten out of the ForkData object
 	var next_rail_node: RailNodeData = next_track.get_node_at_pos(fork_pos)
+	if next_rail_node == null:
+		return Enums.PathDirection.STOP
 	if next_rail_node.is_last(): 
 		return Enums.PathDirection.TRACK_NODES_DECREASE
 	return Enums.PathDirection.TRACK_NODES_INCREASE

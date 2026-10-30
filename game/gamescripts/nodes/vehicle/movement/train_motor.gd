@@ -47,6 +47,9 @@ static func of(_dir: Enums.PathDirection) -> TrainMotor:
 
 #region Start & Stop
 func start() -> bool:
+	## Derailed trains cannot restart through another UI or signal handler.
+	if self.get_parent() is Train3D and self.get_parent().derailed:
+		return false
 	self.is_started = true
 	self.started.emit()
 	self.speed.target = 1.0

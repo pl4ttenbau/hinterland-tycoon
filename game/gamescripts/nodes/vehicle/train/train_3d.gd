@@ -26,6 +26,9 @@ static var _last_train_num: int = 0
 
 @export var is_reversed: bool = false
 
+## A derailed train stays stopped until a future recovery action resets this flag.
+@export var derailed: bool = false
+
 ## latest touched RailTrackNode
 @export var last_node: RailNodeData
 
@@ -51,6 +54,7 @@ func _ready() -> void:
 	speed_timer.timeout.connect(Callable(self, "_on_speed_timer_tick"))
 	self.add_child(speed_timer)
 	speed_timer.start()
+	self._place_vehicles()
 
 static func of(_veh_type_key: String, _start_pos: VehicleStartPos) -> Train3D:
 	var inst: Train3D = load(EMPTY_SCENE_PATH).instantiate()
@@ -82,6 +86,9 @@ func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
 	if is_locomotive: 
 		self.locomotive = veh3d
 	$TrainVehicles.add_child(veh3d)
+	## Vehicles added before entering the scene tree still need their carriage spacing.
+	for attached_vehicle: Vehicle3D in self.vehicles:
+		attached_vehicle.offset_to_first = attached_vehicle.calc_offset_to_first()
 	self.on_vehicle_added.emit(veh3d)
 #endregion
 
@@ -91,19 +98,13 @@ func init_segment_path():
 	var segment_path: ActiveRailVehiclePath = ActiveRailVehiclePath.of_segment(self, self.current_segment)
 	self.add_child(segment_path)
 	segment_path.name = "SegmentPath"
+	## Honour the selected parking node instead of always starting at the track endpoint.
+	self.m_passed_since_start = segment_path.curve.get_closest_offset(self.last_node.position)
+	segment_path.ensure_lookahead(self.get_front_distance())
+	self._update_segment_progress()
+	if self.is_inside_tree():
+		self._place_vehicles()
 
-## after locomotive reaches end of current segment, 
-func add_next_segment_or_stop(reached_node: RailNodeData):
-	var cached_previous_segment: VehiclePathSegment = self.current_segment
-	# update next segment
-	var next_segment: VehiclePathSegment = VehiclePathSegmentBuilder.find_next_segment(self.current_segment)
-	if next_segment:
-		self.current_segment = next_segment
-		self.current_segment.previous = cached_previous_segment
-		self.get_active_path().add_segment(self.current_segment)
-		self.m_passed_on_segment = 0
-	else:
-		self.motor.stop()
 #endregion
 
 #region Size Getters
@@ -119,24 +120,68 @@ func length_in_m() -> float:
 #endregion
 
 #region Moving
+## Advance by distance and sample the path directly, without overlapping half-second tweens.
 func move_forwards(delta_seconds: float):
-	if !self.get_active_path() || !self.get_active_path().curve: return
-	# calculate movement since last tick
+	if self.derailed or self.get_active_path() == null:
+		return
+	## Speed is converted to world metres for this physics step.
 	var tick_dist: float = self.motor.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
-	self.increase_m_passed(tick_dist)
-	# reached end of path? add next segmenr or stop
-	var active_path_len: float = self.get_active_path().curve.get_baked_length()
-	if self.m_passed_since_start > active_path_len:
-		var reached_node: RailNodeData = self.current_segment.end_node
-		self.active_path_end_reached.emit(reached_node)
-	# move every vehicle in train forwards on path
+	self.get_active_path().ensure_lookahead(self.get_front_distance() + tick_dist)
+	## In reverse, wagons lead the locomotive and must reach buffers first.
+	var available: float = maxf(0.0, self.get_active_path().curve.get_baked_length() - self.get_front_distance())
+	self.increase_m_passed(minf(tick_dist, available))
+	self._update_segment_progress()
+	self._place_vehicles()
+	if tick_dist >= available:
+		self.active_path_end_reached.emit(self.current_segment.end_node)
+
+## Carriages keep their physical order when the train travels backwards.
+func get_vehicle_distance(veh3d: Vehicle3D) -> float:
+	return self.m_passed_since_start + veh3d.offset_to_first * (1.0 if self.is_reversed else -1.0)
+
+## The leading vehicle centre determines how much path must be available ahead.
+func get_front_distance() -> float:
+	## The locomotive leads normally; the last wagon leads after reversing.
+	var front_distance: float = self.m_passed_since_start
 	for veh3d: Vehicle3D in self.vehicles:
-		# figure out transformation (rotation only) at next rail node
-		var m_passed: float = clamp(self.m_passed_since_start - veh3d.offset_to_first, 0, 99999)
-		var target_transf := self.get_active_path().get_transf_at_m_passed(m_passed)
-		# tween towards target transform
-		var transf_tween = veh3d.create_tween()
-		transf_tween.tween_property(veh3d, "global_transform", target_transf, .5)
+		front_distance = maxf(front_distance, self.get_vehicle_distance(veh3d))
+	return front_distance
+
+## A fork under the body of any vehicle is occupied, including a stopped wagon.
+func occupies_path_distance(distance: float) -> bool:
+	for veh3d: Vehicle3D in self.vehicles:
+		## Include half the body length on either side of the vehicle centre.
+		var half_length: float = veh3d.vehicle_obj.veh_type.length_metres * 0.5
+		if absf(self.get_vehicle_distance(veh3d) - distance) <= half_length + 0.01:
+			return true
+	return false
+
+## Derailment freezes the current transforms and prevents movement or reversal.
+func derail() -> void:
+	self.derailed = true
+	self.motor.stop()
+
+## Place every vehicle at its own curve sample, so rotation changes along each bend.
+func _place_vehicles() -> void:
+	if self.get_active_path() == null or self.get_active_path().curve.point_count < 2:
+		return
+	for veh3d: Vehicle3D in self.vehicles:
+		## Sample in world space because the curve stores the rail network coordinates.
+		var target_transf: Transform3D = self.get_active_path().get_transf_at_m_passed(self.get_vehicle_distance(veh3d))
+		if self.is_reversed:
+			## Reversing travel does not physically turn the locomotive or wagons around.
+			target_transf = target_transf.rotated_local(Vector3.UP, PI)
+		veh3d.global_transform = target_transf
+
+## Keep the locomotive's current track separate from the provisional route ahead.
+func _update_segment_progress() -> void:
+	## Segment distances are measured on the assembled curve, not on track node counts.
+	var segment_i: int = self.get_active_path().get_segment_index(self.m_passed_since_start)
+	self.current_segment = self.get_active_path().segments[segment_i]
+	self.m_passed_on_segment = self.m_passed_since_start
+	if segment_i > 0:
+		self.m_passed_on_segment -= self.get_active_path().segment_end_distances[segment_i - 1]
+	self.motor.direction = self.current_segment.movement_dir
 
 func increase_m_passed(delta_m: float):
 	self.m_passed_on_segment += delta_m
@@ -144,15 +189,21 @@ func increase_m_passed(delta_m: float):
 #endregion
 
 #region Reverse
+## Reverse the retained curve at the exact distance, keeping all vehicles in place.
 func reverse_from_current_spot():
+	if self.derailed or self.get_active_path() == null:
+		return
 	self.motor.stop()
-	self.motor.direction = PathCurveUtils.get_reversed_direction(self.motor.direction)
-	# split curve and reverse passed part of it
-	self.get_active_path().curve = self.get_active_path().build_curve_from_pos_to_track_end()
-	# start again
-	self.m_passed_on_segment = 0
-	self.m_passed_since_start = 0
+	## Mirroring the distance preserves the same physical point on a reversed curve.
+	var reversed_distance: float = self.get_active_path().curve.get_baked_length() - self.m_passed_since_start
+	self.get_active_path().reverse_route()
+	self.is_reversed = not self.is_reversed
+	self.m_passed_since_start = reversed_distance
+	self._update_segment_progress()
+	self.get_active_path().ensure_lookahead(self.get_front_distance())
+	self._place_vehicles()
 	self.motor.start()
+#endregion
 
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
@@ -182,12 +233,16 @@ func _on_motor_reversing():
 	self.reverse_from_current_spot()
 
 func _physics_process(_delta: float) -> void:
-	if self.motor.is_started: 
+	if self.derailed:
+		if self.motor.is_started:
+			self.motor.stop()
+		return
+	if self.motor.is_started:
 		self.move_forwards(_delta)
 
 func _on_active_path_end_reached(reached_node: RailNodeData):
 	Loggie.info("Train %d reaches end of track %d" % [self.num, self.current_segment.track_num])
 	Loggie.info("Reached node: %d at %v" % [reached_node.index, reached_node.position])
-	self.add_next_segment_or_stop(reached_node)
+	self.motor.stop()
 
 #endregion
