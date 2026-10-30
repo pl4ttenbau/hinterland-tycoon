@@ -70,6 +70,7 @@ func _create_motor(_dir: Enums.PathDirection):
 
 #region Vehicle Spawning
 func spawn_locomotive(veh_data: VehicleData, start_pos: VehicleStartPos):
+	self.train_obj = TrainData.of(veh_data)
 	self._create_motor(start_pos.dir)
 	# load vehicle 
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), true)
@@ -77,6 +78,7 @@ func spawn_locomotive(veh_data: VehicleData, start_pos: VehicleStartPos):
 	self.last_node = start_pos.track_obj.get_rail_node(start_pos.node_index)
 
 func spawn_wagon(veh_data: VehicleData):
+	self.train_obj.append_vehicle(veh_data)
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
 
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):

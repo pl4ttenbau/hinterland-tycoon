@@ -19,9 +19,12 @@ func _input(event: InputEvent) -> void:
 			SignalBus.mouse_click.emit(mouse_event)
 			
 func cast_ray(screen_pos: Vector2):
-	var cam_pos: Vector3 = self.get_camera().project_ray_origin(screen_pos)
-	var to = cam_pos + get_camera().project_ray_normal(screen_pos) * 300
-	var space = get_camera().get_world_3d().direct_space_state
+	var cam: Camera3D = self.get_camera()
+	if not cam:
+		return
+	var cam_pos: Vector3 = cam.project_ray_origin(screen_pos)
+	var to = cam_pos + cam.project_ray_normal(screen_pos) * 300
+	var space = cam.get_world_3d().direct_space_state
 	# create ray
 	var ray_query = PhysicsRayQueryParameters3D.create(cam_pos, to)
 	ray_query.collide_with_areas = false
@@ -45,7 +48,7 @@ func handle_ray(ray_result: Dictionary):
 		Loggie.info("Unhandled Click: %s at %s" %[collider.name, node_path])
 
 func get_camera() -> Camera3D:
-	var cam: Camera3D = GlobalState.player.cam
+	var cam: Camera3D = get_viewport().get_camera_3d()
 	if ! cam:
 		Loggie.error("Camera not found")
 	return cam

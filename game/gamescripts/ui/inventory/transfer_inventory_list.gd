@@ -42,12 +42,14 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		self.clean()
 		self.is_ready = true
+		self.rebuild_inventory_list()
 
 func hide_left_right():
 	Loggie.info("rows: %s" % self.get_rows())
 
 func clean():
 	for row: TransferInventoryRowUi in self.get_rows():
+		row.get_parent().remove_child(row)
 		row.queue_free()
 #endregion
 
@@ -93,12 +95,23 @@ func _on_inventory_resource_changed():
 
 func _on_entity_changed(_entity: InventoryEntity3D):
 	# save inventory & subscribe to changes in it
-	self.inventory = entity.get_inventory()
-	self.inventory.resource_change.connect(Callable(self, "_on_inventory_resource_changed"))
+	if self.inventory and self.inventory.goods_change.is_connected(_on_inventory_resource_changed):
+		self.inventory.goods_change.disconnect(_on_inventory_resource_changed)
+	self.inventory = _entity.get_inventory() if _entity else null
+	if self.inventory:
+		self.inventory.goods_change.connect(_on_inventory_resource_changed)
+	if not _entity:
+		%EntityNameLabel.text = ""
+		self.clean()
+		return
 	# set entity type label
 	var entity_type: Enums.EntityTypes = _entity.entity.type
 	var entity_type_name: String = EntityUtils.get_entity_type_enum_name(entity_type)
 	%EntityNameLabel.text = entity_type_name
 	# rebuild list
 	self.rebuild_inventory_list()
+
+func _exit_tree() -> void:
+	if self.inventory and self.inventory.goods_change.is_connected(_on_inventory_resource_changed):
+		self.inventory.goods_change.disconnect(_on_inventory_resource_changed)
 #endregion
