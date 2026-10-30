@@ -11,10 +11,6 @@ const BEDDING_OFFSET: Vector3 = Vector3(0, .2, 0)
 		return null
 
 #region Initialization
-func _enter_tree() -> void:
-	SignalBus.ui_mode_switched.connect(Callable(self, "_on_ui_mode_changed"))
-	SignalBus.terrain_click.connect(Callable(self, "_on_terrain_click"))
-	
 func _get_next_track_num() -> int:
 	return Managers.rails.track_storage._max_num +1
 #endregion

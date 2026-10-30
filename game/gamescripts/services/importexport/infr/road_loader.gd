@@ -10,11 +10,6 @@ const MAX_VISIBLE_DIST := 200
 signal roads_loaded(_roads: Array[RoadData])
 signal roads_spawned(_roads: Array[RoadWay3D])
 
-func _enter_tree() -> void:
-	Managers.roads = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_world_spawned"))
-	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
-
 #region Road Loading
 func load_roads() -> void:
 	var full_json_path := JSON_PATH_FORMAT % GlobalState.selected_map_name

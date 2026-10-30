@@ -5,13 +5,6 @@ class_name StationIndustriesConnector extends Node
 
 static var MAX_INDUSTRY_DIST = 200
 
-func _init() -> void:
-	SignalBus.node_station_links_spawned.connect(Callable(self, "_on_node_station_links_spawned"))
-	SignalBus.industries_spawned.connect(Callable(self, "_on_industries_spawned"))
-	
-func _ready() -> void:
-	self.connect_industries()
-
 func connect_industries():
 	if self.has_connected: return
 	if GlobalState.industries.is_empty(): return

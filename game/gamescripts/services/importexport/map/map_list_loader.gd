@@ -28,6 +28,9 @@ func add_map_to_lists(map_obj: MapData):
 	GlobalState.game_maps.append(map_obj)
 
 func select_map():
+	if not GameTypes.is_initialized or not Managers.are_world_services_initialized():
+		Loggie.error("Cannot start a map before types and world services are initialized")
+		return
 	GlobalState.loaded_map = self.get_map_data(GlobalState.selected_map_name)
 	SignalBus.map_selected.emit(GlobalState.loaded_map)
 

@@ -31,6 +31,9 @@ func add_map_button(map_data: MapData):
 #endregion
 	
 func start_selected_map(map_key: String):
+	if not GameTypes.is_initialized or not Managers.are_world_services_initialized():
+		Loggie.error("Cannot start a map before types and world services are initialized")
+		return
 	GlobalState.selected_map_name = map_key
 	GlobalState.loaded_map = self._get_map_obj_by_key(map_key)
 	# close menu

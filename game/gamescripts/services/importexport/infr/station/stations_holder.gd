@@ -9,11 +9,6 @@ const STATION_3D_SCENE_PATH = "res://scenes/subscenes/infr/station/rail_station_
 @export var stations_objs: Array[RailStationData] = []
 @export var stations_by_num: Dictionary = {}
 
-func _enter_tree() -> void:
-	Managers.stations = self
-	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
-	SignalBus.stations_loaded.connect(Callable(self, "_on_stations_loaded"))
-	
 #region RailStationData & RailStation3D
 ## here the station parents, RailStationData & RailStation3D are created
 func load_stations():

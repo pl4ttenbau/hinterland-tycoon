@@ -3,6 +3,13 @@ class_name Signals extends Node
 @warning_ignore("unused_signal")
 signal all_types_initialized()
 
+## One category has loaded; the complete catalog may still be initializing.
+@warning_ignore("unused_signal")
+signal type_catalog_loaded(type_name: StringName)
+
+@warning_ignore("unused_signal")
+signal types_initialization_failed(error: int)
+
 @warning_ignore("unused_signal")
 signal map_list_loaded(map_list: Array[MapData])
 
@@ -31,6 +38,9 @@ signal world_update()
 
 @warning_ignore("unused_signal")
 signal scene_root_ready()
+
+@warning_ignore("unused_signal")
+signal services_initialized()
 
 @warning_ignore("unused_signal")
 signal map_spawned(container: WorldMapScene)

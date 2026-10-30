@@ -1,8 +1,5 @@
 class_name ResidentialBldTypeLoader extends AbstractGameTypeLoader
 
-func _init():
-	self.load_types()
-
 static func get_bld_types() -> Array[ResBldType]:
 	return [
 		ResBldType.new("wooden_shack", "Shack", 3),
@@ -45,14 +42,16 @@ static func get_bld_types() -> Array[ResBldType]:
 		ResBldType.new("ru_stalinka_1", "Stalinka", 55)
 	]
 	
-func load_types() -> void:
-	if GameTypes.res_bld_type_store.is_empty():
-		for res_bld_type: ResBldType in self.get_bld_types():
-			GameTypes.res_bld_type_store.add(res_bld_type)
-		SignalBus.res_bld_types_loaded.emit()
-		Loggie.info("Loading ResBldTypes... finished.")
+func load_types() -> Error:
+	var definitions: Array[ResBldType] = self.get_bld_types()
+	var error: Error = validate_keys(definitions)
+	if error != OK:
+		return error
+	GameTypes.res_bld_type_store = ResBldTypeStore.new()
+	for definition: ResBldType in definitions:
+		GameTypes.res_bld_type_store.add(definition)
+	self.loading_finished.emit()
+	return OK
 
 func get_rnd() -> ResBldType:
-	var bld_types: Array[ResBldType] = GameTypes.res_bld_types
-	randomize()
-	return bld_types.get(randi_range(0, bld_types.size() -1))
+	return GameTypes.res_bld_type_store.get_random()

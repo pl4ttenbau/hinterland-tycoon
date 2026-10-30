@@ -2,6 +2,9 @@
 extends EditorPlugin
 
 const STATE_AUTOLOAD_NAME = "EditorState"
+const EDITOR_SIGNALS_SCRIPT = preload("res://addons/hinterland_tools/editor_signals.gd")
+
+var editor_signals: Node
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
@@ -17,6 +20,9 @@ func _disable_plugin() -> void:
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	print("HinterlandTycoon plugin activated!")
+	self.editor_signals = EDITOR_SIGNALS_SCRIPT.new()
+	self.editor_signals.name = "EditorSignals"
+	self.add_child(self.editor_signals)
 	self.enable_editor_state()
 
 func _exit_tree() -> void:

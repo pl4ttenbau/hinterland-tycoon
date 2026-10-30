@@ -1,0 +1,95 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/nodes/world/world_services_coordinator.gd" id="1_coordinator"]
+[ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/importexport/town/town_loader.gd" id="6_nc0f4"]
+[ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/importexport/town/town_building_holder.gd" id="7_rnkef"]
+[ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/importexport/infr/rail/rail_loader.gd" id="8_pcopj"]
+[ext_resource type="Script" uid="uid://bpdu211yk5uj2" path="res://game/gamescripts/services/importexport/infr/rail/rail_fork_loader.gd" id="9_t6nuv"]
+[ext_resource type="Script" uid="uid://u5ahy5hcpmbo" path="res://game/gamescripts/services/importexport/infr/station/stations_holder.gd" id="10_c37kc"]
+[ext_resource type="Script" uid="uid://cebmcnxlern8g" path="res://game/gamescripts/services/importexport/infr/connectors/station_industries_connector.gd" id="11_5swda"]
+[ext_resource type="Script" uid="uid://8e0con4047ai" path="res://game/gamescripts/services/importexport/infr/connectors/station_residences_connector.gd" id="12_7yd2d"]
+[ext_resource type="Script" uid="uid://c2m2e8o027sgu" path="res://game/gamescripts/services/importexport/infr/station/station_goods_spawner.gd" id="13_o2h5t"]
+[ext_resource type="Script" uid="uid://qqx8i6ggh8v7" path="res://game/gamescripts/services/importexport/infr/rail/new_rail_builder.gd" id="13_qsvwm"]
+[ext_resource type="Script" uid="uid://b3m0rqikwycfr" path="res://game/gamescripts/services/importexport/infr/road_loader.gd" id="14_0dtnv"]
+[ext_resource type="Script" uid="uid://5fhring754pq" path="res://game/gamescripts/services/importexport/infr/connectors/road_industry_exit_connector.gd" id="15_11abr"]
+[ext_resource type="Script" uid="uid://cawuxg68afvj6" path="res://game/gamescripts/services/importexport/vehicles/vehicle_placer.gd" id="15_g3fbs"]
+[ext_resource type="Script" uid="uid://dn4l5gfmxqkiv" path="res://game/gamescripts/services/importexport/industry_spawner.gd" id="16_6wawu"]
+[ext_resource type="Script" uid="uid://bcymy2uish8jw" path="res://game/gamescripts/services/importexport/infr/depot_spawner.gd" id="17_qsvwm"]
+[ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/importexport/map/map_spawner.gd" id="18_yvyyf"]
+[ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_waht2"]
+[ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="20_20yvh"]
+
+[node name="WorldServices" type="Node" unique_id=102886502]
+script = ExtResource("1_coordinator")
+
+[node name="Towns" type="Node" parent="." unique_id=1274981919]
+unique_name_in_owner = true
+editor_description = "Town-Centers with Label3D above will be spawned under this node"
+script = ExtResource("6_nc0f4")
+
+[node name="WorldTownBldPlacer" type="Node" parent="Towns" unique_id=2122613813]
+script = ExtResource("7_rnkef")
+metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
+
+[node name="Infr" type="Node" parent="." unique_id=502016574]
+
+[node name="Rails" type="Node" parent="Infr" unique_id=755805219]
+unique_name_in_owner = true
+script = ExtResource("8_pcopj")
+
+[node name="RailForkLoader" type="Node" parent="Infr/Rails" unique_id=968754972]
+script = ExtResource("9_t6nuv")
+metadata/_custom_type_script = "uid://bpdu211yk5uj2"
+
+[node name="NewRailBuilder" type="Node" parent="Infr/Rails" unique_id=2032657844]
+script = ExtResource("13_qsvwm")
+metadata/_custom_type_script = "uid://qqx8i6ggh8v7"
+
+[node name="Stations" type="Node" parent="Infr" unique_id=1725096012]
+unique_name_in_owner = true
+script = ExtResource("10_c37kc")
+
+[node name="StationIndustryConnector" type="Node" parent="Infr/Stations" unique_id=1002941828]
+script = ExtResource("11_5swda")
+metadata/_custom_type_script = "uid://cebmcnxlern8g"
+
+[node name="StationResidenceConnector" type="Node" parent="Infr/Stations" unique_id=674894426]
+script = ExtResource("12_7yd2d")
+metadata/_custom_type_script = "uid://8e0con4047ai"
+
+[node name="StationGoodsSpawner" type="Node" parent="Infr/Stations" unique_id=675711714]
+script = ExtResource("13_o2h5t")
+
+[node name="SpawnPassengersTimer" type="Timer" parent="Infr/Stations/StationGoodsSpawner" unique_id=700499437]
+wait_time = 3.0
+
+[node name="Roads" type="Node" parent="Infr" unique_id=871922288]
+script = ExtResource("14_0dtnv")
+
+[node name="RoadIndustryExitConnector" type="Node" parent="Infr/Roads" unique_id=839585360]
+script = ExtResource("15_11abr")
+metadata/_custom_type_script = "uid://5fhring754pq"
+
+[node name="Vehicles" type="Node" parent="." unique_id=1664674465]
+unique_name_in_owner = true
+script = ExtResource("15_g3fbs")
+
+[node name="Industries" type="Node" parent="." unique_id=1333823754]
+script = ExtResource("16_6wawu")
+metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
+
+[node name="Depots" type="Node" parent="." unique_id=1488410899]
+script = ExtResource("17_qsvwm")
+metadata/_custom_type_script = "uid://bcymy2uish8jw"
+
+[node name="LoadedMap" type="Node" parent="." unique_id=153009305]
+script = ExtResource("18_yvyyf")
+
+[node name="WorldUpdateTimer" type="Timer" parent="LoadedMap" unique_id=889175461]
+process_callback = 0
+wait_time = 3.0
+script = ExtResource("19_waht2")
+
+[node name="TerrainRaycaster" type="Node" parent="LoadedMap" unique_id=2050387968]
+script = ExtResource("20_20yvh")
+

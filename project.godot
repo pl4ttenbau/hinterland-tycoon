@@ -26,14 +26,12 @@ Loggie="*res://addons/loggie/loggie.gd"
 Enums="*res://game/gamescripts/enums.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
 GameTypes="*res://game/gamescripts/state/types.gd"
-TypesInitializer="*res://game/gamescripts/services/typeloaders/types_initializer.gd"
 GlobalState="*res://game/gamescripts/state/game_state.gd"
 UiState="*res://game/gamescripts/state/ui_state.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*uid://14cjvmakycc"
 ButtonFeedback="*res://addons/button_feedback/button_feedback.gd"
 EditorState="*uid://0ergxaw8n5vf"
-EditorSignals="*uid://c5hs1epbs1eua"
 
 [debug_draw_3d]
 

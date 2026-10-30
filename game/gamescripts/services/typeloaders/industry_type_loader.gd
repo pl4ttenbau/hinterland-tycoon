@@ -1,7 +1,13 @@
 class_name IndustryTypeLoader extends AbstractGameTypeLoader
 
-func _init() -> void:
-	self.make_types()
+func load_types() -> Error:
+	var definitions: Array[IndustryType] = self.make_types()
+	var error: Error = validate_keys(definitions)
+	if error != OK:
+		return error
+	GameTypes.industry_types = definitions
+	self.loading_finished.emit()
+	return OK
 	
 func make_types() -> Array[IndustryType]:
 	var industry_types: Array[IndustryType] = [
@@ -40,5 +46,4 @@ func make_types() -> Array[IndustryType]:
 		IndustryType.new("RESTAURANT", "Restaurant", "restaurant", 12, ["2xalcohol", "1xbread", "2xfish"], []),
 		IndustryType.new("BARRACKS", "Barracks", "warehouse_1", 25, ["3xalcohol", "2xmeat", "1xweapons"], ["2xsoldier"])
 	]
-	GameTypes.industry_types = industry_types
 	return industry_types

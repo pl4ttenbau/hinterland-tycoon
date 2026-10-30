@@ -7,7 +7,6 @@ const LOG_SPAWNING: bool = true
 
 func _ready() -> void:
 	$SpawnPassengersTimer.timeout.connect(Callable(self, "_on_passenger_spawn_tick"))
-	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
 	
 #region Passengers
 func spawn_rnd_passenger():

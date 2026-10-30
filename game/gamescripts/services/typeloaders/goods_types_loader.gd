@@ -3,8 +3,14 @@ class_name GoodsTypesLoader extends AbstractGameTypeLoader
 
 @export var types_by_key: Dictionary
 
-func _init():
-	GameTypes.resource_types = self.make_types()
+func load_types() -> Error:
+	var definitions: Array[BaseGoodsType] = self.make_types_list()
+	var error: Error = validate_keys(definitions)
+	if error != OK:
+		return error
+	GameTypes.resource_types = self.sort_types_by_key(definitions)
+	self.loading_finished.emit()
+	return OK
 	
 func make_types_list() -> Array[BaseGoodsType]:
 	return [

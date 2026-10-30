@@ -37,7 +37,7 @@ func create_num_groups_towards(max_num: int):
 		var group_min: int = group_index * 50
 		var group_max: int = group_min + 49
 		Loggie.info("%d__%d" % [group_min, group_max])
-		var group_node: Node = Node.new()
+		var group_node: Node3D = Node3D.new()
 		self.add_child(group_node)
 		group_node.owner = EditorInterface.get_edited_scene_root()
 		group_node.name = "%d__%d" % [group_min, group_max]

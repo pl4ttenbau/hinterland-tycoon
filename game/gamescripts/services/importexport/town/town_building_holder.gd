@@ -10,12 +10,6 @@ const MOVE_UNDER_TOWN_NODE = true
 @export var has_map_spawned: bool = true
 @export var has_res_bld_types_loaded: bool = false
 
-func _enter_tree() -> void:
-	Managers.town_buildings = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
-	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
-
 func load_preplaced_town_buildings():
 	## abort if res bld types or map isnt loaded yet
 	# if !self.has_res_bld_types_loaded: return
@@ -64,7 +58,6 @@ func _on_map_spawned(_terrain_container: WorldMapScene):
 
 func _on_res_bld_types_loaded():
 	self.has_res_bld_types_loaded = true
-	self.load_preplaced_town_buildings()
 
 func _on_map_towns_loaded(_towns: Array[TownData]):
 	self.load_preplaced_town_buildings()
