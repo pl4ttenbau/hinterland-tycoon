@@ -28,6 +28,6 @@ if you do not want the bridge in exported games.
 
 Verified with Godot 4.7.2: the server initialized over MCP, exposed the configured
 toolsets, connected to this project's headless editor with matching addon/server
-versions, and successfully read `res://scenes/empty_world.tscn` at depth 1.
+versions, and successfully read `res://scenes/game_session.tscn` at depth 1.
 The temporary test server and editor were closed after verification.
 This validates the bridge connection and scene inspection, not the full game.

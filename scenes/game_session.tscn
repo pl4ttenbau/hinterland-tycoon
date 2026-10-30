@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://s6qceyvtti6k"]
 
-[ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/world/world_bootstrap.gd" id="1_eorrk"]
+[ext_resource type="Script" uid="uid://h7tx357yujbi" path="res://game/gamescripts/nodes/world/game_session.gd" id="1_eorrk"]
 [ext_resource type="PackedScene" uid="uid://coliyiexqbd0o" path="res://scenes/subscenes/player.tscn" id="2_11abr"]
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="3_oj3vo"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
@@ -85,7 +85,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bb2cl"]
 size = Vector3(25.3006, 11.7227, 9.16028)
 
-[node name="WorldBootstrap" type="Node3D" unique_id=2103121247]
+[node name="GameSession" type="Node3D" unique_id=2103121247]
 script = ExtResource("1_eorrk")
 
 [node name="OuterPlayer" parent="." unique_id=1457588995 instance=ExtResource("2_11abr")]
