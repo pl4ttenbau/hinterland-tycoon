@@ -1,31 +1,71 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 class_name InfrUtils extends RefCounted
 
-static func smooth_curve3d(curve: Curve3D):
-	var corner_speed: float = 2
-	for idx in range(curve.point_count):
-		if idx > 0:
-			if curve.get_point_in(idx) != Vector3.ZERO:
-				continue
-			# TODO: hier wird die Richtung zum vorigen Node genommen & normalisiert
-			# besser wäre es, den Durchscnitt aus dieser und dem folgenden Node zu nehmen
-			var delta = curve.get_point_position(idx) - curve.get_point_position(idx-1)
-			delta /= corner_speed
-			var normalized = delta.normalized() *2
-			curve.set_point_in(idx, -normalized)
-			curve.set_point_out(idx, +normalized)
-			
-static func smooth_curve3d_y(curve: Curve3D):
-	var corner_speed: float = 2
-	for idx in range(curve.point_count):
-		if idx > 0:
-			var handle_in: Vector3 = curve.get_point_in(idx)
-			var handle_out: Vector3 = curve.get_point_out(idx)
-			var delta = curve.get_point_position(idx) - curve.get_point_position(idx-1)
-			delta /= corner_speed
-			var normalized = delta.normalized() *2
-			curve.set_point_in(idx, Vector3(handle_in.x, -normalized.y, handle_in.z))
-			curve.set_point_out(idx, Vector3(handle_out.x, normalized.y, handle_out.z))
+const MIN_SMOOTH_POINT_DISTANCE: float = 0.0001
+
+## Interpolate the existing points with centripetal Catmull-Rom, expressed as
+## Curve3D's relative Bezier handles. Point positions (including snapped ends)
+## never move. Recompute by default so moving/adding points can update a preview.
+## Loaders opt into preserving authored handles; an explicit smoothing action does not.
+static func smooth_curve3d(curve: Curve3D, preserve_existing_handles: bool = false) -> void:
+	for idx: int in range(curve.point_count):
+		if preserve_existing_handles and (curve.get_point_in(idx) != Vector3.ZERO or curve.get_point_out(idx) != Vector3.ZERO):
+			continue
+		var handles: PackedVector3Array = _catmull_rom_handles(curve, idx)
+		curve.set_point_in(idx, handles[0])
+		curve.set_point_out(idx, handles[1])
+
+static func _catmull_rom_handles(curve: Curve3D, idx: int) -> PackedVector3Array:
+	var last_idx: int = curve.point_count - 1
+	if last_idx < 1:
+		return PackedVector3Array([Vector3.ZERO, Vector3.ZERO])
+	var point: Vector3 = curve.get_point_position(idx)
+	# Reflect the neighboring point at each open end. Unlike repeating the end
+	# point, this supplies a nonzero knot interval and a chord-aligned end tangent.
+	if idx == 0:
+		return PackedVector3Array([Vector3.ZERO, (curve.get_point_position(1) - point) / 3.0])
+	if idx == last_idx:
+		return PackedVector3Array([(curve.get_point_position(idx - 1) - point) / 3.0, Vector3.ZERO])
+	var previous: Vector3 = curve.get_point_position(idx - 1)
+	var following: Vector3 = curve.get_point_position(idx + 1)
+	var previous_distance: float = previous.distance_to(point)
+	var next_distance: float = point.distance_to(following)
+	# Catmull-Rom is undefined at coincident consecutive points (zero knot span).
+	# Use zero handles there, retaining every point without divisions by zero or loops.
+	if previous_distance <= MIN_SMOOTH_POINT_DISTANCE or next_distance <= MIN_SMOOTH_POINT_DISTANCE:
+		return PackedVector3Array([Vector3.ZERO, Vector3.ZERO])
+	# Centripetal knots use distance^alpha, alpha = 1/2. These unequal spans
+	# prevent a short segment from inheriting a long neighbor's handle length.
+	var before: float = sqrt(previous_distance)
+	var after: float = sqrt(next_distance)
+	# Derivative with respect to the nonuniform knot parameter, using BOTH neighbors.
+	# See https://www.cemyuksel.com/research/catmullrom_param/ for the construction.
+	var tangent: Vector3 = (point - previous) / before \
+		- (following - previous) / (before + after) + (following - point) / after
+	# A cubic Bezier's endpoint derivative is three times its handle. Rescale
+	# separately for each segment's [0, 1] parameter: in/out are collinear but
+	# generally have different lengths when the point spacing is uneven.
+	return PackedVector3Array([-tangent * before / 3.0, tangent * after / 3.0])
+
+## Keep the horizontal road shape and apply the Catmull-Rom tangent's grade.
+static func smooth_curve3d_y(curve: Curve3D) -> void:
+	for idx: int in range(curve.point_count):
+		var handles: PackedVector3Array = _catmull_rom_handles(curve, idx)
+		curve.set_point_in(idx, _handle_with_grade(curve.get_point_in(idx), handles[0]))
+		curve.set_point_out(idx, _handle_with_grade(curve.get_point_out(idx), handles[1]))
+
+static func _handle_with_grade(handle: Vector3, reference: Vector3) -> Vector3:
+	if handle == Vector3.ZERO:
+		return handle
+	var horizontal_length: float = Vector2(handle.x, handle.z).length()
+	var reference_length: float = Vector2(reference.x, reference.z).length()
+	# Copy the slope, not just the Y offset: the existing horizontal handle may
+	# be much longer/shorter than the generated one. A collapsed handle stays zero.
+	if reference_length > MIN_SMOOTH_POINT_DISTANCE:
+		handle.y = reference.y * horizontal_length / reference_length
+	else:
+		handle.y = reference.y
+	return handle
 			
 static func get_aabb(vec_3_arr: Array[Vector3]) -> AABB:
 	var min_pos: Vector3

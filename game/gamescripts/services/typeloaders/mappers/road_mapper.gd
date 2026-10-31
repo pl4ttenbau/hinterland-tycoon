@@ -36,6 +36,9 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 		if road_node_dict.has("handleIn"):
 			road_node.handle_in = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleIn"))
 			road_node.handle_out = -1 * road_node.handle_in
+		# Catmull-Rom needs independent lengths; retain mirrored legacy handles.
+		if road_node_dict.has("handleOut"):
+			road_node.handle_out = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleOut"))
 		_road.add_node(road_node)
 		node_index += 1
 

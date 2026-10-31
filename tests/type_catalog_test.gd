@@ -6,6 +6,7 @@ var failed_loader_completions: int = 0
 var completion_count: int = 0
 var session_ready_count: int = 0
 var completion_had_all_types: bool = false
+var residence_loader_completions: int = 0
 
 func _ready() -> void:
 	self._run.call_deferred()
@@ -34,6 +35,8 @@ func _on_session_ready() -> void:
 func _run() -> void:
 	self.check(self.test_catalog_lifecycle(), "Catalog lifecycle test finished")
 	self.check(self.test_invalid_catalogs(), "Invalid catalog test finished")
+	self.check(self.test_residence_catalogs(), "Residence catalog test finished")
+	self.check(self.test_map_locations(), "Map location test finished")
 	print("Type catalog tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
 
@@ -65,6 +68,11 @@ func test_catalog_lifecycle() -> bool:
 	var first_vehicle: VehicleTypeData = GameTypes.vehicle_types[0]
 	self.check(GameTypes.get_veh_type(first_vehicle.key) == first_vehicle, "Vehicle array and lookup share definitions")
 	self.check(GameTypes.get_res_bld_type("wooden_shack") != null, "Residential lookup works")
+	self.check(GameTypes.res_bld_type_store.get_all().size() == 35, "All migrated residence types load")
+	self.check(GameTypes.get_res_bld_type("ru_stalinka_1").pops == [55, 18], "Residence population values survive migration")
+	self.check(GameTypes.get_res_bld_type("village_house_3").pops == [4, 1], "Residence population division keeps its original rounding")
+	self.check(GameTypes.get_res_bld_type("city_manor").block_auto_placement, "Manual-only residence flag survives migration")
+	var first_residence: ResBldType = GameTypes.get_res_bld_type("wooden_shack")
 	self.check(GameTypes.get_rnd_placable_res_bld() != null, "Random residential lookup works")
 	first_session.free()
 	var later_session := GameSession.new()
@@ -75,6 +83,7 @@ func test_catalog_lifecycle() -> bool:
 	self.check(self.completion_count == 1 and self.categories.size() == 5, "Scene changes do not reload or repeat completion events")
 	self.check(self.session_ready_count == 2, "Late session starts using persistent readiness")
 	self.check(GameTypes.get_veh_type(first_vehicle.key) == first_vehicle, "Scene changes preserve definition identity")
+	self.check(GameTypes.get_res_bld_type(first_residence.key) == first_residence, "Scene changes preserve residence definition identity")
 	later_session.free()
 	return true
 
@@ -122,4 +131,99 @@ func test_invalid_catalogs() -> bool:
 		self.check(GameTypes.vehicle_types.size() == existing_count, "Rejected catalogs do not partially register definitions")
 	self.check(self.failed_loader_completions == 0, "Failed loaders never announce completion")
 	DirAccess.remove_absolute(path)
+	return true
+
+func _on_residence_loader_finished() -> void:
+	self.residence_loader_completions += 1
+
+func test_residence_catalogs() -> bool:
+	var path: String = "/tmp/hinterland-residence-catalog-%d.json" % OS.get_process_id()
+	var original_store: ResBldTypeStore = GameTypes.res_bld_type_store
+	var source: Array = JSON.parse_string(FileAccess.get_file_as_string(ResidentialBldTypeLoader.CATALOG_PATH))
+	for entry: Dictionary in source:
+		var definition: ResBldType = original_store.get_by_key(entry["key"])
+		self.check(definition != null, "Every residence catalog key is registered")
+		if definition == null:
+			continue
+		self.check(definition.name == entry["name"] and definition.pops[0] == int(entry["pops"][0]) \
+			and definition.pops[1] == int(entry["pops"][1]), "Residence name and both population counts load from JSON")
+		self.check(definition.get_scene_path() == entry["scene_path"] and definition.block_auto_placement == entry["block_auto_placement"], "Residence scene and placement flag load from JSON")
+		self.check(definition.themes.size() == entry["themes"].size(), "All residence themes are loaded")
+		for theme_name: String in entry["themes"]:
+			self.check(definition.themes.has(Enums.Location[theme_name]), "Residence theme names map to shared location enum values")
+	var loader := ResidentialBldTypeLoader.new()
+	loader.catalog_path = path + ".missing"
+	loader.loading_finished.connect(self._on_residence_loader_finished)
+	self.check(loader.load_types() != OK, "Missing residence catalog is rejected")
+	self.check(GameTypes.res_bld_type_store == original_store, "Missing residence catalog preserves the existing store")
+	loader.catalog_path = path
+	var fixture_contents: Array[String] = [
+		"{broken json", "{}", "[]", "[null]", "[42]", "[{}]",
+		JSON.stringify([source[0], source[0]])
+	]
+	var invalid_fields: Array[Dictionary] = [
+		{"key": ""}, {"name": " "}, {"scene_path": "house.tscn"},
+		{"scene_path": 123}, {"scene_path": "res://house.obj"},
+		{"pops": null}, {"pops": [3]}, {"pops": [3, 1, 0]},
+		{"pops": [-1, 0]}, {"pops": [3, 1.5]}, {"pops": [true, 1]},
+		{"pops": ["3", 1]}, {"block_auto_placement": "false"},
+		{"themes": null}, {"themes": "POLAND"}, {"themes": [2]},
+		{"themes": ["poland"]}, {"themes": ["UNKNOWN"]},
+		{"themes": ["POLAND", "POLAND"]}
+	]
+	for fields: Dictionary in invalid_fields:
+		var invalid: Dictionary = source[0].duplicate(true)
+		invalid.merge(fields, true)
+		# A valid first entry must not be registered before a later invalid one.
+		fixture_contents.append(JSON.stringify([source[1], invalid]))
+	print("Checking invalid residence catalogs; the following validation errors are expected.")
+	for contents: String in fixture_contents:
+		var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
+		if file == null:
+			return false
+		file.store_string(contents)
+		file.close()
+		self.check(loader.load_types() != OK, "Invalid residence catalog is rejected")
+		self.check(GameTypes.res_bld_type_store == original_store, "Rejected residence catalog does not replace or partially modify the store")
+		self.check(original_store.get_all().size() == source.size(), "Rejected residence catalog preserves all definitions")
+	self.check(self.residence_loader_completions == 0, "Failed residence loads never announce completion")
+	# An explicit scene may differ from the key, and both counts are authored data.
+	var custom: Dictionary = source[0].duplicate(true)
+	custom["key"] = "custom_residence"
+	custom["pops"] = [7, 5]
+	custom["themes"] = ["NORTHERN_GERMANY", "POLAND"]
+	custom.erase("block_auto_placement")
+	var unclassified: Dictionary = custom.duplicate(true)
+	unclassified["key"] = "unclassified_residence"
+	unclassified.erase("themes")
+	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return false
+	file.store_string(JSON.stringify([custom, unclassified]))
+	file.close()
+	self.check(loader.load_types() == OK, "Valid alternate residence catalog loads")
+	var mapped: ResBldType = GameTypes.get_res_bld_type("custom_residence")
+	self.check(mapped != null and mapped.pops == [7, 5], "Both residence population counts are preserved without recalculation")
+	self.check(mapped != null and mapped.get_scene_path() == source[0]["scene_path"], "Scene lookup honors the catalog path independently of the key")
+	self.check(mapped != null and not mapped.block_auto_placement, "Residence auto placement defaults to enabled")
+	self.check(mapped != null and mapped.themes == [Enums.Location.NORTHERN_GERMANY, Enums.Location.POLAND], "A residence can belong to multiple enum themes")
+	self.check(GameTypes.get_res_bld_type("unclassified_residence").themes.is_empty(), "Missing themes leave a residence unclassified")
+	self.check(self.residence_loader_completions == 1, "Successful residence loading announces completion once")
+	GameTypes.res_bld_type_store = original_store
+	DirAccess.remove_absolute(path)
+	return true
+
+func test_map_locations() -> bool:
+	var expected: Dictionary = {
+		"franzburger": Enums.Location.NORTHERN_GERMANY,
+		"mpsb": Enums.Location.NORTHERN_GERMANY,
+		"harzmountains": Enums.Location.SOUTHERN_GERMANY,
+		"sachalin": Enums.Location.SOVIET_UNION
+	}
+	for map_key: String in expected:
+		var map: MapData = MapData.parse(map_key)
+		self.check(map != null and map.loc == expected[map_key], "Map location uses the shared enum: %s" % map_key)
+	print("Checking invalid map locations; the following validation errors are expected.")
+	for invalid: Variant in ["poland", "UNKNOWN", 2, null]:
+		self.check(MapData.of_dict({"key": "invalid", "loc": invalid}) == null, "Map rejects unknown or non-string locations")
 	return true

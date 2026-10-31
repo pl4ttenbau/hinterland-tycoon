@@ -4,6 +4,8 @@ class_name ResBldType extends AbstractBldType
 @export var res_bld_cat: String
 @export var pops: Array[int]
 @export var block_auto_placement: bool = false
+## Empty means unclassified. A model can belong to several regional themes.
+@export var themes: Array[Enums.Location] = []
 
 const STRUCTURES_FOLDER = "res://assets/meshes/structures/"
 
@@ -16,8 +18,10 @@ func _init(_key: String, _name: String, _popsInt: int, _block_auto_creation = fa
 		self.block_auto_placement = _block_auto_creation
 
 #region Getters
-## <folder>/house_name/house_name.tscn
+## Catalogs can specify a scene independently of the residence key.
 func get_scene_path() -> String:
+	if not self.scene_path.is_empty():
+		return self.scene_path
 	return STRUCTURES_FOLDER + self.key + "/" + self.key + ".tscn"
 	
 static func get_by_key(_key: String) -> ResBldType:

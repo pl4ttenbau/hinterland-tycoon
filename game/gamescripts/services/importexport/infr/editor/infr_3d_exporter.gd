@@ -35,6 +35,7 @@ static func infr3d_to_road_dict(infr3d: EditorInfrLine3D) -> Dictionary:
 	var rail_dict: Dictionary = {}
 	rail_dict.set("name", "Generated Roadway Track")
 	rail_dict.set("num", -1)
+	rail_dict.set("autosmooth", infr3d.autosmooth)
 	var start_pos: Vector3 = infr3d.global_position
 	# add nodes
 	var nodes_arr: Array = infr3d_curve_to_node_json_arr(start_pos, infr3d.curve)
@@ -54,11 +55,13 @@ static func infr3d_curve_index_to_node_json(start_pos: Vector3, infr3d_curve: Cu
 	var rel_pos: Vector3 = infr3d_curve.get_point_position(curve_i)
 	var abs_pos: Vector3 = start_pos + rel_pos
 	node_dict.set("pos", abs_pos.snappedf(0.01))
-	# add handle
-	var is_first_or_last = curve_i == 0 || curve_i == infr3d_curve.point_count -1
-	if !is_first_or_last:
-		var rel_handle_in: Vector3 = infr3d_curve.get_point_in(curve_i)
-		node_dict.set("handleIn", rel_handle_in.snappedf(0.01))
+	# Preserve both handles, including the open ends. Unevenly spaced Catmull-Rom
+	# points have unequal in/out lengths; mirroring handleIn changes the curve.
+	var handle_in: Vector3 = infr3d_curve.get_point_in(curve_i)
+	var handle_out: Vector3 = infr3d_curve.get_point_out(curve_i)
+	# Arrays serialize numerically without rounding through Vector3's display text.
+	node_dict.set("handleIn", [handle_in.x, handle_in.y, handle_in.z])
+	node_dict.set("handleOut", [handle_out.x, handle_out.y, handle_out.z])
 	return node_dict
 
 static func place_on_ground(infr3d: EditorInfrLine3D):

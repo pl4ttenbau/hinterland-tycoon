@@ -61,22 +61,29 @@ func create_curve_from_dict(infr_dict: Dictionary):
 	self.curve = Curve3D.new()
 	var abs_points: PackedVector3Array = []
 	var point_handle_in: PackedVector3Array = []
+	var point_handle_out: PackedVector3Array = []
 	# build abs pos & handle in vector array
 	for point_json in infr_dict.points:
 		abs_points.append(WorldUtils.vec3_from_float_arr(point_json.pos))
-		point_handle_in.append(self._get_handle_in_from_point_json(point_json))
+		var handle_in: Vector3 = self._get_handle_in_from_point_json(point_json)
+		point_handle_in.append(handle_in)
+		# Older maps stored only handleIn and assumed mirrored handles.
+		var handle_out: Vector3 = -handle_in
+		if point_json.has("handleOut"):
+			handle_out = WorldUtils.vec3_from_float_arr(point_json.get("handleOut"))
+		point_handle_out.append(handle_out)
 	# make relative positions from absolute ones & set to curve
 	var point_i: int = 0
 	for abs_pos in abs_points:
 		var rel_pos: Vector3 = abs_pos - self.position
 		var handle_in: Vector3 = point_handle_in[point_i]
 		# add point pos with handles to curve
-		self.curve.add_point(rel_pos, handle_in, -1 * handle_in)
+		self.curve.add_point(rel_pos, handle_in, point_handle_out[point_i])
 		point_i += 1
 	# generate aabb
 	self.abs_aabb = InfrUtils.get_aabb(abs_points)
 	if self.autosmooth:
-		InfrUtils.smooth_curve3d(self.curve)
+		InfrUtils.smooth_curve3d(self.curve, true)
 
 func _get_handle_in_from_point_json(point_json: Dictionary) -> Vector3:
 	if point_json.has("handleIn"):
