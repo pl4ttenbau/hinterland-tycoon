@@ -95,10 +95,8 @@ func test_residence_conversion() -> bool:
 	editor.transform = Transform3D(Basis(Vector3.UP, 0.8).scaled(Vector3(2, 2, 2)), Vector3(3, 2, 1))
 	houses.add_child(editor)
 	var expected_transform: Transform3D = editor.global_transform
-	var door := Marker3D.new()
-	door.name = "Door"
+	var door: Marker3D = editor.get_node("Door")
 	door.position = Vector3(1, 0, -2)
-	editor.add_child(door)
 	var door_position: Vector3 = door.global_position
 	var legacy := Residence3D.new()
 	legacy.placed_res_bld_type = "wooden_shack"
@@ -146,7 +144,10 @@ func test_all_residence_variants() -> bool:
 		var placement: Node3D = packed.instantiate()
 		self.check(placement.get_script() == editor_script, "House uses the editor script: %s" % entry["key"])
 		self.check(placement.placed_res_bld_type == entry["key"], "House resolves its catalog type: %s" % entry["key"])
+		var door: Node3D = placement.get_node_or_null("Door")
+		self.check(door != null and door.get_script() == load("res://game/gamescripts/nodes/structures/residence_door.gd"), "House has a typed door marker: %s" % entry["key"])
 		container.add_child(placement)
+		self.check(door != null and door.get_child_count() == 0, "Direction preview is absent at runtime: %s" % entry["key"])
 		var children: Array[Node] = placement.get_children()
 		var converted: Residence3D = placement.create_runtime()
 		self.check(converted != null and converted.get_children() == children, "All authored children survive: %s" % entry["key"])

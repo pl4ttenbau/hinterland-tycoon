@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://de1384lyaej3j"]
 
-[ext_resource type="PackedScene" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.tscn" id="1"]
-[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/editor_residence_3d.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dxriyek0lwp86" path="res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dpur36fmhpxlt" path="res://game/gamescripts/nodes/structures/editor_residence_3d.gd" id="2"]
 
-[node name="RuKruschovka1" instance=ExtResource("1")]
+[node name="RuKruschovka1" unique_id=1114385619 instance=ExtResource("1")]
 script = ExtResource("2")
-placed_res_bld_type = "ru_kruschovka_1"
+
+[node name="Door" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.733254, 0.13152045, -5.6730943)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_3wd6s"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="2_3wd6s"]
 [ext_resource type="PackedScene" uid="uid://cfqkhut5xpamk" path="res://assets/meshes/structures/city_row_house_1/mesh/mesh_city_row_house_1.tscn" id="2_muhwq"]
+[ext_resource type="Script" uid="uid://dbn62d6fvquef" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_phg10"]
 
@@ -24,3 +25,7 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=1317534695]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159103, 5.50342, -0.0315399)
 shape = SubResource("BoxShape3D_3wd6s")
+
+[node name="Door" type="Marker3D" parent="." unique_id=1278087679]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2470946, 0.20552385, 0)
+script = ExtResource("door_marker")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cken0m3w5f5m7"]
+[gd_scene load_steps=9 format=3 uid="uid://cken0m3w5f5m7"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_coaek"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 [ext_resource type="ArrayMesh" uid="uid://b3ge76kdem3m2" path="res://assets/meshes/structures/city_manor/city_manor.obj" id="1_kr5bw"]
 [ext_resource type="Texture2D" uid="uid://mdk1kvvl6fpx" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A_alfa.jpg" id="2_coaek"]
 [ext_resource type="Texture2D" uid="uid://itb3eqd3wuv7" path="res://assets/meshes/structures/city_manor/city_manor_Volhonka6A.jpg" id="3_w2jui"]
@@ -31,3 +32,6 @@ visibility_range_end_margin = 50.0
 mesh = ExtResource("1_kr5bw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vhsy")
 surface_material_override/1 = SubResource("StandardMaterial3D_0i1eh")
+
+[node name="Door" type="Marker3D" parent="."]
+script = ExtResource("door_marker")

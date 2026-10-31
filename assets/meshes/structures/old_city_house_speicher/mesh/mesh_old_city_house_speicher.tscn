@@ -4,7 +4,8 @@
 
 [node name="MeshOldCityHouseSpeicher" unique_id=302163569 instance=ExtResource("1_ngwbi")]
 
-[node name="old_city_house_speicher" parent="." index="0" unique_id=539495559]
+[node name="old_city_house_speicher" parent="." index="0" unique_id=727656204]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
 layers = 8
 visibility_range_end = 120.0
 visibility_range_end_margin = 12.0

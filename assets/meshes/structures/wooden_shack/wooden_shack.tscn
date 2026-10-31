@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dk0ya0g6x485k"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_t8m3y"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 [ext_resource type="PackedScene" uid="uid://cp6y2lb7gujs3" path="res://assets/meshes/structures/wooden_shack/mesh/mesh_wooden_shack.tscn" id="2_4oglp"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="6_1wnca"]
 
@@ -25,3 +26,6 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=345337633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1612091, 2.2568817, -0.118652344)
 shape = SubResource("BoxShape3D_t8m3y")
+
+[node name="Door" type="Marker3D" parent="."]
+script = ExtResource("door_marker")

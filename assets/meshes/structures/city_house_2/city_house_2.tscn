@@ -1,30 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcb46mio1xry1"]
+[gd_scene format=3 uid="uid://dcb46mio1xry1"]
 
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ej4o3"]
 [ext_resource type="ArrayMesh" uid="uid://bpvox0cmvj8df" path="res://assets/meshes/structures/city_house_2/city_house_2.obj" id="2_i4yxx"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_p4h6d"]
+[ext_resource type="Script" uid="uid://dbn62d6fvquef" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p4h6d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_slvg6"]
 size = Vector3(7.48216, 13.2784, 9.39987)
 
-[node name="CityHouse2" type="Node3D"]
+[node name="CityHouse2" type="Node3D" unique_id=1508005701]
 script = ExtResource("1_ej4o3")
 placed_res_bld_type = "city_house_2"
 metadata/_custom_type_script = "uid://0dm7tfhu5lup"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1393273520]
 layers = 8
 visibility_range_end = 330.0
 visibility_range_end_margin = 33.0
 mesh = ExtResource("2_i4yxx")
 
-[node name="ResBldCollider" type="StaticBody3D" parent="."]
+[node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=712770315]
 physics_material_override = SubResource("PhysicsMaterial_p4h6d")
 script = ExtResource("3_p4h6d")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=595866892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0932999, 6.67155, 0.0157623)
 shape = SubResource("BoxShape3D_slvg6")
+
+[node name="Door" type="Marker3D" parent="." unique_id=549682078]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.2449677, 4.0271864)
+script = ExtResource("door_marker")
