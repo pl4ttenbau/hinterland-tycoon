@@ -2,13 +2,6 @@
 @icon("res://assets/icons/icon_gears_white.png")
 class_name Infr3DExporter extends RefCounted
 
-static func print_infr3d_to_log(infr3d: EditorInfrLine3D):
-	var rail_dict: Dictionary = infr3d_to_dict(infr3d)
-	var rail_dict_str: String = JSON.stringify(rail_dict, "\t", false)
-	var final_json: String = replace_vec3_tuples_with_float_arr(rail_dict_str)
-	DisplayServer.clipboard_set(final_json)
-	print(final_json)
-
 ## Vectror 3s are printed as string and float arrays are having newlines inbetween x y & z
 ## so instead, we replace the "( & )" after formatting the dict to a string
 static func replace_vec3_tuples_with_float_arr(rail_dict_str: String) -> String:

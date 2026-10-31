@@ -40,7 +40,7 @@ Infrastructure drawing checks:
 godot --headless --path . --log-file /tmp/infr-drawing-tests.log --script res://tests/infr_drawing_test.gd -- --no-mcp
 ```
 
-These exercise endpoint filtering and exact-height snapping, preview versus accepted points, duplicate-click rejection, cancellation, unique road/rail IDs, scene ownership, and commit/undo/redo operations using an isolated history adapter. In the editor, select Create Road or Create Rail: click to add points, Enter to finish, Backspace to remove the last point, Escape to cancel the draft. A green sphere indicates endpoint snapping. Scene changes and tool switches discard the draft. New lines are saved in the existing infrastructure containers; JSON export remains explicit. Viewport interaction still needs a visual editor check.
+These exercise endpoint filtering and exact-height snapping, preview versus accepted points, duplicate-click rejection, cancellation, unique road/rail IDs, scene ownership, and commit/undo/redo operations using an isolated history adapter. In the editor, select Create Road or Create Rail: click to add points, Enter to finish, Backspace to remove the last point, Escape to cancel the draft. A green sphere indicates endpoint snapping. Scene changes and tool switches discard the draft. New lines enter the map-owned EditorCache; JSON saving remains explicit. Viewport interaction still needs a visual editor check.
 
 Infrastructure JSON persistence checks:
 
@@ -48,12 +48,39 @@ Infrastructure JSON persistence checks:
 godot --headless --path . --log-file /tmp/infr-json-tests.log --script res://tests/infr_json_test.gd -- --no-mcp
 ```
 
-The editor panel has separate **Save/Load Roads JSON** and **Save/Load Rails JSON** buttons. They use the active world's `map_key` and `world/<map>/jsondata/roads.json` or `tracks.json`. Saving a scene does not save JSON. Finish or cancel a draft before saving/loading.
+Select the **EditorCache** node in the open world to use its **Save Roads JSON** and **Save Rails JSON** Inspector buttons. These emit `EditorSignals.infrastructure_save_requested(cache, domain)`; the plugin validates the active map, then performs backup, write and flush. Saving a scene does not save JSON. Finish or cancel a draft before saving. To load saved geometry, open `editorobjects_<map>.tscn` separately, select its WorldEditorObjects root, and use its **Load Roads JSON** / **Load Rails JSON** Inspector buttons. They use that root's `map_key` and `world/<map>/jsondata/roads.json` or `tracks.json`. Ctrl+S saves the generated view into the EditorObjects subscene.
 
 Each overwrite retains a separate, byte-for-byte backup beside the original (`roads.json.bak-<timestamp>-<unique suffix>`, likewise for tracks). The complete replacement is written to a temporary file before backup and rename; if backup fails, the original stays unchanged. A first save creates the file without a backup because no previous file exists.
 
-Save preserves types/gauges, tags, crossings, stations, and unknown metadata. Existing records absent from a partially generated editor scene are retained. After explicit Load, removing a loaded record and saving deletes that record. Load replaces the matching editor container and can be undone/redone; saving JSON itself is not undone by scene undo. Changing the point count of a record carrying crossing/station metadata is rejected to avoid assigning it to the wrong anchor. New roads default to `rural_road`, and new rails to `NORMAL_GAUGE`; existing types remain unchanged. The renderer is unchanged.
+The two editor representations have separate roles:
 
-Editor infrastructure lives directly under the map-owned `EditorCache`, outside the instanced `EditorObjects` scene. This cache has its own script and does not use legacy GeneratedRoadWays/GeneratedRailLines containers or number groups. Old grouped cache layouts flatten automatically on opening/use, preserving world transforms and map ownership. Drawing and JSON load/save target the cache; runtime spawning removes it.
+- **EditorObjects:** saved geometry loaded explicitly through the standalone scene root's Inspector. Generated nodes belong to that edited root, so they are selectable and persist with Ctrl+S. Loads use the plugin's undo history when available. World activation and world JSON saving never regenerate this scene automatically.
+- **EditorCache:** map-owned, unsaved new/edited lines directly under the cache, without number groups. It can be saved with the map scene to preserve unfinished authoring work across restarts. Runtime spawning removes both editor representations.
 
-After a successful Save Roads/Rails JSON, that domain's visible cache is cleared. The other domain remains untouched. Load JSON restores saved geometry, and scene Undo can also restore the cleared cache. Undo history may retain detached nodes until the map closes. Failed saves leave the cache visible. Repeating Save on a flushed cache preserves the JSON records rather than treating the empty cache as deletions.
+For a line inside a world map, use **Edit In Cache** in its Inspector to create an independent working copy with the same ID and world transform. Repeated clicks select the existing copy. The corresponding source line is temporarily hidden. Staging is undoable; removing/undoing a working copy restores the saved reference without deleting the JSON record. The old Export To Log control has been removed.
+
+**Save Roads/Rails JSON** merges only that domain's cached work into JSON, preserving existing types/gauges, tags, crossings, stations and unknown metadata. Reference geometry is never written back over newer JSON. Removing a cached edit discards the edit; delete saved records in JSON and reload references when a permanent deletion is intended. Changing point count while a record carries crossing/station metadata is rejected rather than reassigning it to another anchor. New roads default to `rural_road`; new rails default to `NORMAL_GAUGE`.
+
+After writing JSON with a backup, Save clears that domain's cache without reloading geometry. The other domain's unsaved cache remains untouched. Failed writes retain cached work. Loading into EditorObjects is a separate, explicit Inspector action. The cache clear can be undone, and history may retain detached nodes until the map closes. Repeating Save with an empty cache preserves JSON records. Saving JSON itself is not undone by scene undo. The renderer is unchanged.
+
+Road endpoint connection checks:
+
+```sh
+godot --headless --path . --log-file /tmp/road-connection-tests.log --script res://tests/road_connections_test.gd -- --no-mcp
+```
+
+Visible road endpoints in EditorCache and EditorObjects connect when their full XYZ positions are within 0.02 units. Intermediate points, rail endpoints, hidden roads, and self-connections are excluded. EditorInfrLine3D exposes read-only start/end connection arrays (road ID and endpoint 0=start, 1=end) in the Inspector. A cyan sphere marks each connected junction; green pointer snapping remains separate. Curve edits, transforms, visibility changes and adding/removing roads schedule a shared, deferred refresh. Markers and the lookup service are editor-only and not stored in the scene.
+
+Save Roads JSON applies the same endpoint rule to the merged road records, including saved records not currently rendered. It writes reciprocal `cross.connectiveRoads` and records generated additions separately in `autoConnectiveRoads`. Subsequent saves remove stale generated links while preserving manual links and other metadata. Existing backup-before-replacement and flush-after-success behavior is unchanged. No JSON-only snap targets, road splitting, junction meshes, or rail fork generation are added. Source-scene roads remain visible unless a cached copy of the same ID temporarily supersedes them; flushing restores only those automatically suppressed copies.
+
+JSON formatting: point `pos` coordinates use normal rounding to two decimal places, including trailing zeros (e.g. `2.40`). Curve handles retain their precision. Numeric arrays stay inline when they fit within 120 columns (tabs count as four); longer arrays use one value per line. Serialization walks the data structure so strings containing JSON-like text stay intact. Crossing matching uses the same rounded positions as the file.
+
+Object selection and cache save signal checks:
+
+```sh
+godot --headless --path . --log-file /tmp/editor-selection-tests.log --script res://tests/editor_selection_test.gd -- --no-mcp
+```
+
+**Select Object** is a mutually exclusive toolbar tool. Initially it picks visible EditorInfrLine3D roads/rails in the cache and EditorObjects, using projected baked curve segments with a ten-pixel tolerance. It handles perspective/orthographic cameras, near/far clipping, transformed parents, overlapping depth and terrain-hit occlusion. It runs on clicks, not every frame. Inspector-only inspection bypasses locked scene selection without enabling Editable Children or moving the object; map-owned objects also receive native scene selection. **Free Tool** and Escape clear the active tool only. Towns, industries and other shapes can later register pickers returning the same target/world-position/depth/screen-distance contract. They are not implemented yet.
+
+The old JSON save row is removed from HinterlandTools. Cache Inspector buttons only emit requests through the plugin-owned EditorSignals bus; file I/O remains in InfrJsonStore and cache clearing happens only after successful saving. Requests for inactive maps are rejected, and unfinished drawing drafts must be finished/cancelled first.

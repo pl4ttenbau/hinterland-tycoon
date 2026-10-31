@@ -1,11 +1,10 @@
 @tool
 extends RefCounted
 
-# Track the records this editor session actually loaded/saved. A partially
-# generated editor scene must not silently delete unseen roads from the file.
-var managed_ids: Dictionary = {}
+# JSON is the saved source of truth. Only unsaved cached lines are merged into it;
+# removing an edit from the cache discards that edit, not the saved road.
 
-static func path_for(world: WorldMapScene, domain: Enums.InfrDomain) -> String:
+static func path_for(world: Node, domain: Enums.InfrDomain) -> String:
 	if world.map_key.is_empty() or world.map_key.get_file() != world.map_key or world.map_key in [".", ".."]:
 		return ""
 	return "res://world/%s/jsondata/%s.json" % [world.map_key, "roads" if domain == Enums.InfrDomain.ROAD else "tracks"]
@@ -52,6 +51,16 @@ static func validate_records(records: Variant) -> String:
 		for point: Variant in record.points:
 			if not point is Dictionary or not valid_vector(point.get("pos")):
 				return "Record %d has an invalid point position." % int(num)
+			if point.has("cross"):
+				if not point.cross is Dictionary:
+					return "Record %d has invalid crossing metadata." % int(num)
+				for key: String in ["connectiveRoads", "autoConnectiveRoads"]:
+					if point.cross.has(key):
+						if not point.cross[key] is Array:
+							return "Record %d has an invalid %s list." % [int(num), key]
+						for id: Variant in point.cross[key]:
+							if not (id is float or id is int) or not is_finite(float(id)) or float(id) < 0 or float(id) != floor(float(id)):
+								return "Record %d has an invalid crossing road ID." % int(num)
 			for key: String in ["handleIn", "handleOut"]:
 				if point.has(key) and not valid_vector(point[key]):
 					return "Record %d has an invalid %s." % [int(num), key]
@@ -86,7 +95,9 @@ func save_world(world: WorldMapScene, domain: Enums.InfrDomain) -> Dictionary:
 	if container == null:
 		return failure("The open world has no matching infrastructure container.")
 	var lines: Array[EditorInfrLine3D] = []
-	for node: Node in container.find_children("*", "", true, false):
+	# Save every cached edit, including hidden ones. Reference geometry under
+	# EditorObjects is never written back over newer JSON or external deletions.
+	for node: Node in container.get_children():
 		if node is EditorInfrLine3D and node.infr_domain == domain:
 			lines.append(node)
 	return save_lines(path_for(world, domain), lines, domain)
@@ -128,9 +139,10 @@ func save_lines(path: String, lines: Array[EditorInfrLine3D], domain: Enums.Infr
 			points.append(point)
 		record["points"] = points
 		records[line.num] = record
-	for num: int in managed_ids.get(path, {}):
-		if not seen.has(num):
-			records.erase(num)
+	# Resolve crossings against the same rounded positions that will be stored.
+	round_positions(records.values())
+	if domain == Enums.InfrDomain.ROAD:
+		preload("res://addons/hinterland_tools/road_endpoint_connections.gd").update_json(records)
 	var ids: Array = records.keys()
 	ids.sort()
 	var output: Array = []
@@ -138,21 +150,74 @@ func save_lines(path: String, lines: Array[EditorInfrLine3D], domain: Enums.Infr
 		output.append(records[num])
 	var result: Dictionary = write_with_backup(path, output)
 	if result.ok:
-		managed_ids[path] = seen
 		result["count"] = output.size()
 	return result
+
+const JSON_LINE_WIDTH: int = 120
+
+static func position_text(value: float) -> String:
+	# Avoid "-0.00" for tiny negative coordinates. Formatting supplies normal
+	# rounding AND trailing zeros; snapping alone cannot retain those zeros in JSON.
+	var rounded: float = roundf(value * 100.0) / 100.0
+	return "%.2f" % (0.0 if rounded == 0.0 else rounded)
+
+static func round_positions(records: Array) -> void:
+	for record: Dictionary in records:
+		for point: Dictionary in record.points:
+			for axis: int in range(3):
+				point.pos[axis] = float(position_text(point.pos[axis]))
+
+static func format_json(value: Variant, depth: int = 0, prefix_width: int = 0, position: bool = false) -> String:
+	# Serialize structure, not text replacements: names or metadata containing
+	# JSON-looking strings must remain untouched. Only numeric arrays are compacted.
+	var indent: String = "\t".repeat(depth)
+	var child_indent: String = indent + "\t"
+	if value is Dictionary:
+		if value.is_empty():
+			return "{}"
+		var fields: PackedStringArray = []
+		for key: Variant in value:
+			var label: String = JSON.stringify(str(key)) + ": "
+			var width: int = (depth + 1) * 4 + label.length()
+			fields.append(child_indent + label + format_json(value[key], depth + 1, width, str(key) == "pos"))
+		return "{\n" + ",\n".join(fields) + "\n" + indent + "}"
+	if value is Array:
+		if value.is_empty():
+			return "[]"
+		var numeric: bool = true
+		for element: Variant in value:
+			if not (element is int or element is float):
+				numeric = false
+				break
+		var elements: PackedStringArray = []
+		for element: Variant in value:
+			if numeric:
+				elements.append(position_text(float(element)) if position and value.size() == 3 else JSON.stringify(element, "", false, true))
+			else:
+				elements.append(format_json(element, depth + 1, (depth + 1) * 4))
+		if numeric:
+			var inline: String = "[" + ", ".join(elements) + "]"
+			# Count tabs as four columns and reserve a column for a trailing comma.
+			# Long numeric arrays fall back to the normal one-value-per-line layout.
+			if prefix_width + inline.length() + 1 <= JSON_LINE_WIDTH:
+				return inline
+		return "[\n" + child_indent + (",\n" + child_indent).join(elements) + "\n" + indent + "]"
+	return JSON.stringify(value, "", false, true)
 
 static func write_with_backup(path: String, records: Array) -> Dictionary:
 	var problem: String = validate_records(records)
 	if not problem.is_empty():
 		return failure(problem)
+	# Work on a copy so serialization does not modify live curves/caller data.
+	records = records.duplicate(true)
+	round_positions(records)
 	var absolute: String = ProjectSettings.globalize_path(path)
 	var suffix: String = "%s-%d" % [Time.get_datetime_string_from_system().replace(":", "-"), Time.get_ticks_usec()]
 	var temporary: String = absolute + ".tmp-" + suffix
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
 		return failure("Cannot write temporary JSON: " + error_string(FileAccess.get_open_error()))
-	file.store_string(JSON.stringify(records, "\t", false, true) + "\n")
+	file.store_string(format_json(records) + "\n")
 	file.flush()
 	var error: Error = file.get_error()
 	file.close()
@@ -174,22 +239,27 @@ static func write_with_backup(path: String, records: Array) -> Dictionary:
 		return failure("Could not replace JSON; original retained: " + error_string(error))
 	return {"ok": true, "backup": backup}
 
-func load_world(world: WorldMapScene, domain: Enums.InfrDomain, history: Object) -> Dictionary:
-	var path: String = path_for(world, domain)
-	var source: Dictionary = read_records(path)
+static func reference_container_for(world: Node, domain: Enums.InfrDomain) -> Node3D:
+	var cache: Node = world.get_node_or_null("EditorCache")
+	for node: Node in world.find_children("*", "", true, false):
+		if cache != null and cache.is_ancestor_of(node):
+			continue
+		if (domain == Enums.InfrDomain.ROAD and node is GeneratedRoadWays) or (domain == Enums.InfrDomain.RAIL and node is GeneratedRailLines):
+			return node as Node3D
+	return null
+
+func load_world(world: Node, domain: Enums.InfrDomain, history: Object = null) -> Dictionary:
+	var source: Dictionary = read_records(path_for(world, domain))
 	if not source.ok:
 		return source
 	if not source.exists:
-		return failure("No JSON file exists at " + path)
-	var container: Node3D = container_for(world, domain)
+		return failure("No JSON file exists at " + path_for(world, domain))
+	var container: Node3D = reference_container_for(world, domain)
 	if container == null:
-		return failure("The open world has no matching infrastructure container.")
+		return failure("The open world has no matching EditorObjects infrastructure container.")
 	var roots: Array[Node] = []
-	var ids: Dictionary = {}
 	for record: Dictionary in source.records:
-		var num: int = int(record.num)
-		ids[num] = true
-		var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, num, record.get("name", "unnamed"), record.get("autosmooth", true))
+		var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, int(record.num), record.get("name", "unnamed"), record.get("autosmooth", true))
 		line.create_curve_from_dict(record)
 		var inverse: Transform3D = container.global_transform.affine_inverse()
 		line.position = inverse * WorldUtils.vec3_from_float_arr(record.points[0].pos)
@@ -198,30 +268,43 @@ func load_world(world: WorldMapScene, domain: Enums.InfrDomain, history: Object)
 			line.curve.set_point_in(idx, inverse.basis * line.curve.get_point_in(idx))
 			line.curve.set_point_out(idx, inverse.basis * line.curve.get_point_out(idx))
 		roots.append(line)
-	var old_roots: Array[Node] = domain_roots(container, domain)
+	var old_roots: Array[Node] = container.get_children()
 	var old_owners: Dictionary = {}
 	for node: Node in container.find_children("*", "", true, false):
-		old_owners[node] = node.owner
-	var new_owners: Dictionary = {}
-	for root: Node in roots:
-		new_owners[root] = world
-		for node: Node in root.find_children("*", "", true, false):
-			if node is EditorInfrLine3D:
-				new_owners[node] = world
-	history.create_action("Load roads JSON" if domain == Enums.InfrDomain.ROAD else "Load rails JSON", UndoRedo.MERGE_DISABLE, world)
-	history.add_do_method(self, "replace_domain", container, {"roots": roots, "owners": new_owners, "domain": domain})
-	history.add_undo_method(self, "replace_domain", container, {"roots": old_roots, "owners": old_owners, "domain": domain})
-	history.add_do_method(self, "set_managed", path, ids)
-	history.add_undo_method(self, "set_managed", path, managed_ids.get(path, {}).duplicate())
+		if node.owner != null:
+			old_owners[node] = node.owner
+	var owners: Dictionary = {}
 	for node: Node in roots:
-		history.add_do_reference(node)
-	for node: Node in old_roots:
-		history.add_undo_reference(node)
-	history.commit_action()
-	return {"ok": true, "count": source.records.size()}
+		# In the standalone EditorObjects tab, the edited scene root owns every
+		# generated line. They are selectable and Ctrl+S persists them in that scene.
+		owners[node] = world if world is WorldEditorObjects else container.owner
+	var state: Dictionary = {"roots": roots, "owners": owners, "world": world, "domain": domain}
+	if history != null:
+		history.create_action("Load infrastructure JSON into EditorObjects", UndoRedo.MERGE_DISABLE, world)
+		history.add_do_method(self, "replace_references", container, state)
+		history.add_undo_method(self, "replace_references", container, {"roots": old_roots, "owners": old_owners, "world": world, "domain": domain})
+		for node: Node in roots:
+			history.add_do_reference(node)
+		for node: Node in old_roots:
+			history.add_undo_reference(node)
+		history.commit_action()
+	else:
+		replace_references(container, state)
+		for node: Node in old_roots:
+			node.queue_free()
+	return {"ok": true, "count": roots.size()}
 
-func set_managed(path: String, ids: Dictionary) -> void:
-	managed_ids[path] = ids
+func replace_references(container: Node3D, state: Dictionary) -> void:
+	for node: Node in container.get_children():
+		container.remove_child(node)
+	for node: Node in state.roots:
+		container.add_child(node)
+	for node: Variant in state.owners:
+		# Re-entering a LinePath3D rebuilds its transient mesh children. Restore
+		# authored ownership only on nodes that survived that rebuild.
+		if is_instance_valid(node) and not node.is_queued_for_deletion() and state.owners[node] != null:
+			node.owner = state.owners[node]
+	preload("res://addons/hinterland_tools/editor_cache.gd").refresh_source_visibility(state.world, state.domain)
 
 static func domain_roots(cache: Node3D, domain: Enums.InfrDomain) -> Array[Node]:
 	var roots: Array[Node] = []
@@ -239,21 +322,19 @@ func replace_domain(cache: Node3D, state: Dictionary) -> void:
 		if is_instance_valid(node) and node.is_inside_tree() and state.owners[node] != null:
 			node.owner = state.owners[node]
 
+	preload("res://addons/hinterland_tools/editor_cache.gd").refresh_source_visibility(cache.get_parent(), state.domain)
+
 func flush_saved(world: WorldMapScene, domain: Enums.InfrDomain, history: Object) -> void:
 	var cache: Node3D = container_for(world, domain)
 	var roots: Array[Node] = domain_roots(cache, domain)
 	var owners: Dictionary = {}
 	for node: Node in roots:
 		owners[node] = world
-	var path: String = path_for(world, domain)
 	# Keep the flush undoable. A detached node remains in history until the map
 	# closes, avoiding invalidating earlier creation/edit actions by freeing it.
 	history.create_action("Clear saved infrastructure cache", UndoRedo.MERGE_DISABLE, world)
 	history.add_do_method(self, "replace_domain", cache, {"roots": [], "owners": {}, "domain": domain})
 	history.add_undo_method(self, "replace_domain", cache, {"roots": roots, "owners": owners, "domain": domain})
-	# An empty flushed cache must not mean "delete all saved roads" on next Save.
-	history.add_do_method(self, "set_managed", path, {})
-	history.add_undo_method(self, "set_managed", path, managed_ids.get(path, {}).duplicate())
 	for node: Node in roots:
 		history.add_undo_reference(node)
 	history.commit_action()

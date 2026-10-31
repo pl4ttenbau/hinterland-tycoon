@@ -3,6 +3,27 @@ extends Node3D
 
 ## Local map-owned authoring lines. JSON saving/loading is handled by InfrJsonStore.
 ## This deliberately does not use the legacy EditorObjects container classes.
+@export_group("Save JSON")
+@export_tool_button("Save Roads JSON")
+var save_roads_json = Callable(self, "do_save_roads_json")
+@export_tool_button("Save Rails JSON")
+var save_rails_json = Callable(self, "do_save_rails_json")
+
+func do_save_roads_json() -> void:
+	request_save(Enums.InfrDomain.ROAD)
+
+func do_save_rails_json() -> void:
+	request_save(Enums.InfrDomain.RAIL)
+
+func request_save(domain: Enums.InfrDomain) -> void:
+	# No file-writing code in this node. Include the requesting cache so the
+	# receiver can reject requests from an inactive map instead of saving another.
+	var bus: Node = preload("res://addons/hinterland_tools/editor_signals.gd").instance
+	if not is_instance_valid(bus):
+		push_warning("Enable HinterlandTools to save infrastructure JSON.")
+		return
+	bus.infrastructure_save_requested.emit(self, domain)
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		visible = false
@@ -47,12 +68,9 @@ static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.I
 	for node: Node in cache.find_children("*", "", true, false):
 		if node is EditorInfrLine3D and node.infr_domain == domain:
 			cached_lines.append(node)
-	# Existing cached geometry wins over legacy scene copies when upgrading the
-	# old grouped layout. Otherwise adopt legacy lines once, preserving position.
-	if not cache.has_meta(key) and cached_lines.is_empty() and legacy != null:
-		for node: Node in legacy.find_children("*", "", true, false):
-			if node is EditorInfrLine3D and node.infr_domain == domain:
-				cached_lines.append(node)
+	# EditorObjects roads stay where they are. Only flatten geometry already in
+	# the local cache; source-scene objects remain valid visible snap targets.
+	var was_initialized: bool = cache.has_meta(key)
 	for line: Node3D in cached_lines:
 		if line.get_parent() != cache:
 			line.reparent(cache, true)
@@ -65,5 +83,31 @@ static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.I
 		if node.get_parent() != null and node.get_child_count() == 0 and (node is GeneratedRoadWays or node is GeneratedRailLines or (node.get_script() == null and node.name.contains("__"))):
 			node.get_parent().remove_child(node)
 			node.queue_free()
-	if legacy != null:
-		legacy.visible = false
+	# Older cache versions hid the entire source container. Undo that once on
+	# upgrade; subsequent user visibility changes are left alone.
+	var visibility_key: String = key + "_visible_sources"
+	if legacy != null and was_initialized and not cache.has_meta(visibility_key):
+		legacy.show()
+	cache.set_meta(visibility_key, true)
+	refresh_source_visibility(world, domain)
+
+static func refresh_source_visibility(world: Node, domain: Enums.InfrDomain) -> void:
+	var cache: Node = world.get_node_or_null("EditorCache")
+	if cache == null:
+		return
+	var ids: Dictionary = {}
+	for line: Node in cache.get_children():
+		if line is EditorInfrLine3D and line.infr_domain == domain:
+			ids[line.num] = true
+	for line: Node in world.find_children("*", "", true, false):
+		if not line is EditorInfrLine3D or cache.is_ancestor_of(line) or line.infr_domain != domain:
+			continue
+		# Hide only duplicate source IDs while their editable cached copy exists.
+		# Remember our own hides, so flushing restores them without unhiding roads
+		# the user deliberately hid. Other source roads remain visible throughout.
+		if ids.has(line.num) and line.visible:
+			line.set_meta("_cache_hidden_duplicate", true)
+			line.hide()
+		elif not ids.has(line.num) and line.get_meta("_cache_hidden_duplicate", false):
+			line.remove_meta("_cache_hidden_duplicate")
+			line.show()

@@ -85,14 +85,14 @@ func update_pointer(camera: Camera3D, mouse: Vector2, terrain_point: Vector3, te
 	var selected: EditorInfrLine3D = null
 	var selected_index: int = -1
 	# Keep the previous endpoint slightly longer to avoid flicker between targets.
-	if is_instance_valid(candidate) and candidate.is_inside_tree() and candidate.curve and candidate_index < candidate.curve.point_count:
+	if is_instance_valid(candidate) and candidate.is_inside_tree() and candidate.is_visible_in_tree() and candidate.curve and candidate_index < candidate.curve.point_count:
 		var held: Vector3 = candidate.to_global(candidate.curve.get_point_position(candidate_index))
 		if eligible(camera, mouse, held, terrain_point, terrain_valid, RELEASE_PIXELS):
 			selected = candidate
 			selected_index = candidate_index
 	if selected == null:
 		for line: EditorInfrLine3D in endpoints:
-			if not is_instance_valid(line) or not line.is_inside_tree() or not line.curve or line.curve.point_count == 0:
+			if not is_instance_valid(line) or not line.is_inside_tree() or not line.is_visible_in_tree() or not line.curve or line.curve.point_count == 0:
 				continue
 			for idx: int in [0, line.curve.point_count - 1]:
 				var position: Vector3 = line.to_global(line.curve.get_point_position(idx))

@@ -8,6 +8,74 @@ const ROAD_COLOR = Color.DARK_ORANGE
 const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
 
 const LINE_WIDTH = .5
+const CONNECTIONS = preload("res://addons/hinterland_tools/road_endpoint_connections.gd")
+var _connection_service: Node
+var _junction_markers: Array[MeshInstance3D] = []
+
+func _validate_property(property: Dictionary) -> void:
+	if property.name in ["start_connections", "end_connections"]:
+		property.usage = PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY
+
+func _register_connections() -> void:
+	if not is_inside_tree():
+		return
+	var world: Node = get_parent()
+	while world != null and not (world is WorldMapScene or world is WorldEditorObjects):
+		world = world.get_parent()
+	if world != null:
+		set_notify_transform(true)
+		if not curve_changed.is_connected(_connections_changed):
+			curve_changed.connect(_connections_changed)
+		_connection_service = CONNECTIONS.ensure(world)
+		_connection_service.register(self)
+
+func _exit_tree() -> void:
+	if is_instance_valid(_connection_service):
+		_connection_service.unregister(self)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSFORM_CHANGED or what == NOTIFICATION_VISIBILITY_CHANGED:
+		_connections_changed()
+
+func _connections_changed() -> void:
+	if is_instance_valid(_connection_service):
+		_connection_service.request_update()
+
+func apply_endpoint_connections(start: Array, end: Array, show_start: bool, show_end: bool) -> void:
+	var changed: bool = start_connections != start or end_connections != end
+	start_connections.assign(start)
+	end_connections.assign(end)
+	if changed:
+		notify_property_list_changed()
+	# Markers are derived editor visuals: no owner, no saved geometry or collider.
+	while _junction_markers.size() < 2:
+		_junction_markers.append(null)
+	for endpoint: int in [0, 1]:
+		var show_marker: bool = show_start if endpoint == 0 else show_end
+		var marker: MeshInstance3D = _junction_markers[endpoint]
+		if is_instance_valid(marker) and marker.is_queued_for_deletion():
+			marker = null
+		if show_marker and not is_instance_valid(marker):
+			marker = MeshInstance3D.new()
+			marker.name = "EndpointConnection"
+			var sphere := SphereMesh.new()
+			sphere.radius = 0.3
+			sphere.height = 0.6
+			marker.mesh = sphere
+			var material := StandardMaterial3D.new()
+			material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			material.albedo_color = Color.CYAN
+			marker.material_override = material
+			marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			add_child(marker)
+			_junction_markers[endpoint] = marker
+		if is_instance_valid(marker):
+			marker.visible = show_marker
+			if show_marker and curve and curve.point_count >= 2:
+				var idx: int = 0 if endpoint == 0 else curve.point_count - 1
+				# Lift only the indicator so it is readable above the road surface.
+				marker.position = curve.get_point_position(idx) + Vector3.UP * 0.3
+
 
 @export var num: int = -1
 @export var infr_name: String
@@ -27,12 +95,19 @@ var smooth_y = Callable(self, "do_smooth_y")
 @export_tool_button("Auto-Smooth Full")
 var smooth_full = Callable(self, "do_smooth_full")
 
-@export_group("Export")
-@export_tool_button("Export To Log")
-var export_to_log = Callable(self, "do_export_to_log")
+@export_group("Editing")
+## For lines inside a world map. The standalone EditorObjects scene is directly editable.
+@export_tool_button("Edit In Cache")
+var edit_in_cache = Callable(self, "do_edit_in_cache")
 
 @export_tool_button("Place On Ground")
 var place_on_ground = Callable(self, "do_place_on_ground")
+
+@export_group("Road Connections")
+## Derived editor information; endpoint 0 is the start, 1 is the end.
+@export var start_connections: Array[Dictionary] = []
+@export var end_connections: Array[Dictionary] = []
+@export_group("")
 
 #region Initialization
 static func of(_domain: Enums.InfrDomain, _num: int, _name: String = "unnamed", _autosmooth: bool = false) -> EditorInfrLine3D:
@@ -54,6 +129,8 @@ static func ofRail(_num: int, _name: String = "unnamed") -> EditorInfrLine3D:
 func _enter_tree():
 	super()
 	self.material = self._get_material(self.infr_domain)
+	if Engine.is_editor_hint():
+		_register_connections.call_deferred()
 #endregion
 
 #region Curve
@@ -99,9 +176,15 @@ func do_smooth_full():
 	InfrUtils.smooth_curve3d(self.curve)
 #endregion
 
-#region Export
-func do_export_to_log():
-	Infr3DExporter.print_infr3d_to_log(self)
+#region Editing
+func do_edit_in_cache() -> void:
+	_register_connections()
+	if not is_instance_valid(_connection_service):
+		return
+	var copy: Node3D = _connection_service.edit_in_cache(self)
+	if copy != null and Engine.is_editor_hint():
+		EditorInterface.get_selection().clear()
+		EditorInterface.get_selection().add_node(copy)
 
 func do_place_on_ground():
 	Infr3DExporter.place_on_ground(self)

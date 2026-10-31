@@ -16,7 +16,7 @@ func write_text(path: String, text: String) -> void:
 	file.close()
 
 func run(tree: SceneTree) -> int:
-	for test: String in ["test_save", "test_load", "test_cache_upgrade", "test_runtime_cache", "test_project_json"]:
+	for test: String in ["test_save", "test_formatting", "test_load", "test_standalone_editorobjects", "test_cache_upgrade", "test_runtime_cache", "test_project_json"]:
 		check(call(test, tree) == true, test + " completed")
 	print("Infrastructure JSON tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures else 0
@@ -82,78 +82,155 @@ func test_save(tree: SceneTree) -> bool:
 	DirAccess.remove_absolute(directory)
 	return true
 
+func test_formatting(_tree: SceneTree) -> bool:
+	var data: Array = [{"num": 1, "points": [
+		{"pos": [2.3934324, 2.4, -0.001], "handleOut": [1.234567890123, 0, 3]},
+		{"pos": [-1.236, 100, 3.999]}, {"pos": [-655.125, 1.125, 0.005]}
+	], "short": [1, 2, 3], "long": range(60), "note": "literal [1, 2, 3]"}]
+	var text: String = Store.format_json(data)
+	check(text.contains('"pos": [2.39, 2.40, 0.00]'), "Positions round normally with exactly two decimals")
+	check(text.contains('"pos": [-1.24, 100.00, 4.00]'), "Negative values and trailing zeros are formatted correctly")
+	check(text.contains('"pos": [-655.13, 1.13, 0.01]'), "Halfway values use normal rounding away from zero")
+	check(text.contains('"short": [1, 2, 3]'), "Short numeric arrays stay on one line")
+	check(text.contains('"long": [\n'), "Arrays exceeding line width put each value on its own line")
+	var parsed: Array = JSON.parse_string(text)
+	check(is_equal_approx(parsed[0].points[0].handleOut[0], 1.234567890123), "Handle precision is not reduced to position precision")
+	check(parsed[0].note == "literal [1, 2, 3]", "Formatting preserves strings containing array-like text")
+	for line: String in text.split("\n"):
+		check(line.replace("\t", "    ").length() <= Store.JSON_LINE_WIDTH, "Numeric array layout respects the line width")
+	Store.round_positions(data)
+	check(is_equal_approx(data[0].points[0].pos[0], 2.39), "Crossing generation uses the rounded saved coordinates")
+	return true
+
 func test_load(tree: SceneTree) -> bool:
 	var world := WorldMapScene.new()
 	world.map_key = "__infr_json_test_%d" % OS.get_process_id()
 	var directory: String = "res://world/%s/jsondata" % world.map_key
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(directory))
-	var path: String = directory.path_join("tracks.json")
-	write_text(path, JSON.stringify(fixture()))
+	var rail_path: String = directory.path_join("tracks.json")
+	var road_path: String = directory.path_join("roads.json")
+	write_text(rail_path, JSON.stringify(fixture()))
+	write_text(road_path, JSON.stringify([{"num": 51, "name": "Road", "type": "dirt_path", "points": [{"pos": [0, 1, 0]}, {"pos": [7, 2, 3]}]}]))
 	tree.root.add_child(world)
-	var rails: Node3D = GeneratedRailLines.new()
-	world.add_child(rails)
+	var references := Node3D.new()
+	references.name = "EditorObjects"
+	world.add_child(references)
+	references.owner = world
+	var roads := GeneratedRoadWays.new()
+	references.add_child(roads)
+	roads.owner = references
+	var rails := GeneratedRailLines.new()
+	references.add_child(rails)
+	rails.owner = references
 	rails.position = Vector3(10, 5, -3)
 	rails.scale = Vector3(2, 3, 4)
-	var old: EditorInfrLine3D = EditorInfrLine3D.ofRail(99)
-	old.curve = Curve3D.new()
-	old.curve.add_point(Vector3.ZERO)
-	old.curve.add_point(Vector3.ONE)
-	rails.add_child(old)
-	old.owner = world
-	var roads: Node3D = GeneratedRoadWays.new()
-	world.add_child(roads)
-	var road_path: String = directory.path_join("roads.json")
-	var road_data: Array = [{"num": 51, "name": "Road", "type": "dirt_path", "points": [{"pos": [0, 1, 0]}, {"pos": [7, 2, 3]}]}]
-	write_text(road_path, JSON.stringify(road_data))
+	var cache: Node3D = Store.container_for(world, Enums.InfrDomain.ROAD)
+	cache.show()
+	var unsaved: EditorInfrLine3D = EditorInfrLine3D.ofRoad(70, "Unsaved")
+	unsaved.curve = Curve3D.new()
+	unsaved.curve.add_point(Vector3(100, 1, 0))
+	unsaved.curve.add_point(Vector3(110, 2, 3))
+	cache.add_child(unsaved)
+	unsaved.owner = world
 	var store := Store.new()
 	var history := History.new()
-	check(store.load_world(world, Enums.InfrDomain.ROAD, history).ok, "Road load creates cache")
-	roads = world.get_node("EditorCache")
-	check(roads.has_node("RoadWay_51"), "Road load places lines directly under cache")
-	check(roads.owner == world and roads.get_node("RoadWay_51").owner == world, "Cache and line belong to map")
+	var service: Node = preload("res://addons/hinterland_tools/road_endpoint_connections.gd").ensure(world)
+	service.edit_history = history
+	check(store.load_world(world, Enums.InfrDomain.ROAD).ok, "Load generates saved reference roads")
+	check(roads.has_node("RoadWay_51") and not cache.has_node("RoadWay_51"), "Load puts saved roads in EditorObjects, not cache")
+	check(unsaved.get_parent() == cache, "Loading preserves unsaved cache contents")
+	var source: EditorInfrLine3D = roads.get_node("RoadWay_51")
+	check(source.owner == references, "Generated reference geometry belongs to the source subscene")
+	var copy: EditorInfrLine3D = service.edit_in_cache(source)
+	check(copy.get_parent() == cache and copy.owner == world and copy.num == source.num, "Edit In Cache creates a map-owned copy with the same ID")
+	check(copy.curve != source.curve and not source.visible, "Working copy has its own curve and suppresses the reference")
+	copy.curve.set_point_position(1, Vector3(8, 2, 4))
+	check(source.curve.get_point_position(1) == Vector3(7, 1, 3), "Editing the working copy does not mutate saved reference geometry")
+	check(service.edit_in_cache(source) == copy, "Repeated Edit In Cache selects the existing working copy")
 	history.undo.undo()
-	check(Store.domain_roots(roads, Enums.InfrDomain.ROAD).is_empty(), "Undo removes loaded roads")
+	check(copy.get_parent() == null and source.visible, "Undo discards the edit copy and restores the reference")
 	history.undo.redo()
-	check(store.save_world(world, Enums.InfrDomain.ROAD).ok, "Loaded roads save back to JSON")
-	check(Store.read_records(road_path).records[0].type == "dirt_path", "Road types survive load and save")
-	check(store.load_world(world, Enums.InfrDomain.RAIL, history).ok, "Load builds rails from JSON")
-	rails = world.get_node("EditorCache")
-	check(Store.domain_roots(rails, Enums.InfrDomain.RAIL).size() == 2 and old.get_parent() == null, "Load replaces existing children without duplicates")
-	var loaded: EditorInfrLine3D = rails.get_node("RailTrack_7")
-	check(loaded.owner == world and loaded.to_global(loaded.curve.get_point_position(0)).is_equal_approx(Vector3(1, 2, 3)), "Load preserves ownership and world position under transformed containers")
-	history.undo.undo()
-	check(old.get_parent() == rails and old.owner == world, "Undo restores old content and its scene ownership")
-	history.undo.redo()
-	check(Store.domain_roots(rails, Enums.InfrDomain.RAIL).size() == 2 and loaded.get_parent() == rails, "Redo restores loaded content")
-	check(store.load_world(world, Enums.InfrDomain.RAIL, history).ok and Store.domain_roots(rails, Enums.InfrDomain.RAIL).size() == 2, "Repeated loading does not duplicate rails")
-	# Remove a previously loaded record: saving now intentionally deletes it.
-	var removed: Node = rails.get_node("RailTrack_8")
-	rails.remove_child(removed)
-	var saved: Dictionary = store.save_world(world, Enums.InfrDomain.RAIL)
-	check(saved.ok and Store.read_records(path).records.size() == 1, "Save reflects deletion of a record that was explicitly loaded")
-	var managed: EditorInfrLine3D = rails.get_node("RailTrack_7")
-	check(Store.next_number(world, Enums.InfrDomain.RAIL) == 8, "New IDs account for JSON records")
-	check(Store.read_records(path).records[0].type == "750_MM", "Load/save retains rail gauge")
-	# Restore before clearing history, whose node references own detached records.
-	rails.add_child(removed)
-	store.flush_saved(world, Enums.InfrDomain.RAIL, history)
-	check(Store.domain_roots(rails, Enums.InfrDomain.RAIL).is_empty(), "Successful save can flush visible rails")
-	check(roads.has_node("RoadWay_51"), "Flushing rails preserves road cache")
-	check(store.save_world(world, Enums.InfrDomain.RAIL).ok and Store.read_records(path).records.size() == 1, "Repeated Save after flushing cannot erase saved records")
-	history.undo.undo()
-	check(managed.get_parent() == rails and managed.owner == world, "Undo restores flushed cache with map ownership")
-	history.undo.redo()
-	check(Store.domain_roots(rails, Enums.InfrDomain.RAIL).is_empty(), "Redo flushes the saved domain again")
-	check(store.load_world(world, Enums.InfrDomain.RAIL, history).ok and rails.has_node("RailTrack_7"), "Load restores the saved geometry after flushing")
-	managed = rails.get_node("RailTrack_7")
-	write_text(path, "{}")
-	check(not store.load_world(world, Enums.InfrDomain.RAIL, history).ok and managed.get_parent() == rails, "Malformed load leaves editor objects untouched")
-	check(not store.save_world(world, Enums.InfrDomain.RAIL).ok and managed.get_parent() == rails, "Failed Save retains visible unsaved cache")
+	check(copy.get_parent() == cache and not source.visible, "Redo restores the working copy")
+	check(store.load_world(world, Enums.InfrDomain.ROAD).ok and copy.get_parent() == cache, "Reloading references leaves edited copies untouched")
+	check(roads.get_child_count() == 1, "Repeated Load does not duplicate references")
+	copy.hide()
+	var saved: Dictionary = store.save_world(world, Enums.InfrDomain.ROAD)
+	check(saved.ok and saved.count == 2, "Save merges hidden cached edits and new roads")
+	var data: Array = Store.read_records(road_path).records
+	check(data[0].type == "dirt_path", "Editing an existing road preserves its saved type")
+	check(WorldUtils.vec3_from_float_arr(data[0].points[1].pos) == Vector3(8, 3, 4), "Saved JSON contains working-copy geometry")
+	check(store.load_world(world, Enums.InfrDomain.ROAD).ok, "Successful Save can refresh the reference view")
+	store.flush_saved(world, Enums.InfrDomain.ROAD, history)
+	check(Store.domain_roots(cache, Enums.InfrDomain.ROAD).is_empty(), "Only unsaved working copies are flushed")
+	check(roads.get_child_count() == 2 and roads.get_node("RoadWay_51").visible, "Saved roads remain visible in EditorObjects after flushing")
+	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and Store.read_records(road_path).records.size() == 2, "Saving an empty cache preserves saved roads")
+	# An external JSON deletion must not be resurrected from stale reference nodes.
+	write_text(road_path, JSON.stringify([data[0]]))
+	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and Store.read_records(road_path).records.size() == 1, "Reference geometry cannot write back an externally deleted road")
+	check(store.load_world(world, Enums.InfrDomain.ROAD).ok and roads.get_child_count() == 1, "Load reflects external deletions in EditorObjects")
+	check(store.load_world(world, Enums.InfrDomain.RAIL).ok and rails.get_child_count() == 2, "Rail JSON also loads into EditorObjects")
+	var rail: EditorInfrLine3D = rails.get_node("RailTrack_7")
+	var expected: Vector3 = rail.to_global(rail.curve.get_point_position(0))
+	check(expected.is_equal_approx(Vector3(1, 2, 3)), "Reference load respects transformed containers")
+	var rail_edit: EditorInfrLine3D = service.edit_in_cache(rail)
+	check(rail_edit.to_global(rail_edit.curve.get_point_position(0)).is_equal_approx(expected), "Rail editing copy preserves world geometry under nonuniform transforms")
+	check(rail_edit.to_global(rail_edit.curve.get_point_position(1)).is_equal_approx(rail.to_global(rail.curve.get_point_position(1))), "Editing copy also preserves the far endpoint under scale")
+	check((rail_edit.global_basis * rail_edit.curve.get_point_out(0)).is_equal_approx(rail.global_basis * rail.curve.get_point_out(0)), "Editing copy preserves world-space curve handles")
+	write_text(rail_path, "{}")
+	check(not store.load_world(world, Enums.InfrDomain.RAIL).ok and rail_edit.get_parent() == cache and rail.get_parent() == rails, "Malformed Load preserves both references and unsaved edits")
+	check(not store.save_world(world, Enums.InfrDomain.RAIL).ok and rail_edit.get_parent() == cache, "Failed Save retains unsaved cache")
 	history.undo.clear_history()
 	history.undo.free()
 	world.free()
 	for name: String in DirAccess.get_files_at(directory):
 		DirAccess.remove_absolute(directory.path_join(name))
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(directory))
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(directory.get_base_dir()))
+	return true
+
+func test_standalone_editorobjects(tree: SceneTree) -> bool:
+	var source := WorldEditorObjects.new()
+	source.name = "EditorObjects"
+	source.map_key = "__editorobjects_json_%d" % OS.get_process_id()
+	var directory: String = "res://world/%s/jsondata" % source.map_key
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(directory))
+	var path: String = directory.path_join("roads.json")
+	write_text(path, JSON.stringify([{"num": 15, "points": [{"pos": [1, 2, 3]}, {"pos": [4, 5, 6]}]}]))
+	tree.root.add_child(source)
+	var infr := Node3D.new()
+	infr.name = "EditorInfr"
+	source.add_child(infr)
+	infr.owner = source
+	var roads := GeneratedRoadWays.new()
+	roads.name = "EditorRoads"
+	infr.add_child(roads)
+	roads.owner = source
+	var old := Node3D.new()
+	old.name = "OldView"
+	roads.add_child(old)
+	old.owner = source
+	var store := Store.new()
+	var history := History.new()
+	check(store.load_world(source, Enums.InfrDomain.ROAD, history).ok, "JSON loads with EditorObjects as the edited scene root")
+	var loaded: EditorInfrLine3D = roads.get_node("RoadWay_15")
+	check(loaded.owner == source and not source.has_node("EditorCache"), "Standalone load creates source-owned selectable nodes and no cache")
+	var packed := PackedScene.new()
+	check(packed.pack(source) == OK, "Generated source view can be saved as a scene")
+	var paths: Array[String] = []
+	for idx: int in range(packed.get_state().get_node_count()):
+		paths.append(str(packed.get_state().get_node_path(idx)).trim_prefix("./"))
+	check("EditorInfr/EditorRoads/RoadWay_15" in paths, "Ctrl+S persists the generated line in EditorObjects")
+	history.undo.undo()
+	check(old.get_parent() == roads and old.owner == source and loaded.get_parent() == null, "Undo restores the previous source view with its ownership")
+	history.undo.redo()
+	check(loaded.get_parent() == roads and loaded.owner == source, "Redo restores source-owned JSON lines")
+	check(store.load_world(source, Enums.InfrDomain.ROAD, history).ok and roads.get_child_count() == 1, "Repeated Inspector loading replaces source lines without duplicates")
+	history.undo.undo()
+	check(loaded.get_parent() == roads and loaded.owner == source, "Undo of repeated load restores lines after their renderer children rebuild")
+	history.undo.clear_history()
+	history.undo.free()
+	source.free()
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(directory))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(directory.get_base_dir()))
 	return true
@@ -208,10 +285,10 @@ class History extends RefCounted:
 	var undo := UndoRedo.new()
 	func create_action(title: String, merge: int, _context: Object) -> void:
 		undo.create_action(title, merge)
-	func add_do_method(object: Object, method: String, first: Variant, second: Variant, third: Variant = null) -> void:
-		undo.add_do_method(Callable(object, method).bind(first, second) if third == null else Callable(object, method).bind(first, second, third))
-	func add_undo_method(object: Object, method: String, first: Variant, second: Variant, third: Variant = null) -> void:
-		undo.add_undo_method(Callable(object, method).bind(first, second) if third == null else Callable(object, method).bind(first, second, third))
+	func add_do_method(object: Object, method: String, first: Variant, second: Variant = null, third: Variant = null) -> void:
+		undo.add_do_method(Callable(object, method).bind(first) if second == null else (Callable(object, method).bind(first, second) if third == null else Callable(object, method).bind(first, second, third)))
+	func add_undo_method(object: Object, method: String, first: Variant, second: Variant = null, third: Variant = null) -> void:
+		undo.add_undo_method(Callable(object, method).bind(first) if second == null else (Callable(object, method).bind(first, second) if third == null else Callable(object, method).bind(first, second, third)))
 	func add_do_property(object: Object, property: String, value: Variant) -> void:
 		undo.add_do_property(object, property, value)
 	func add_undo_property(object: Object, property: String, value: Variant) -> void:

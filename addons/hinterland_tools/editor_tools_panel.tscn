@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/hinterland_tools/ui/editor_tool_button.tscn" id="1_tool_button"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_tools"]
 resource_local_to_scene = true
@@ -12,7 +14,7 @@ size_flags_horizontal = 3
 [node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="BuildTown" type="Button" parent="Buttons"]
+[node name="BuildTown" parent="Buttons" instance=ExtResource("1_tool_button")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Select terrain-click mode for town placement."
@@ -20,7 +22,7 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_tools")
 text = "Build Town"
 
-[node name="CreateRoad" type="Button" parent="Buttons"]
+[node name="CreateRoad" parent="Buttons" instance=ExtResource("1_tool_button")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Click: add point · Enter: finish · Backspace: remove last · Escape: cancel"
@@ -28,13 +30,21 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_tools")
 text = "Create Road"
 
-[node name="CreateRail" type="Button" parent="Buttons"]
+[node name="CreateRail" parent="Buttons" instance=ExtResource("1_tool_button")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Click: add point · Enter: finish · Backspace: remove last · Escape: cancel"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_tools")
 text = "Create Rail"
+
+[node name="SelectObject" parent="Buttons" instance=ExtResource("1_tool_button")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tools")
+text = "Select Object"
+tooltip_text = "Click a visible road or rail to inspect it. Free Tool clears this mode."
 
 [node name="FreeTool" type="Button" parent="Buttons"]
 unique_name_in_owner = true
@@ -49,36 +59,9 @@ size_flags_horizontal = 3
 text = "No tool selected · Select Create Road or Create Rail to start drawing."
 autowrap_mode = 3
 
-[node name="JsonButtons" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="SaveRoads" type="Button" parent="JsonButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Save Roads JSON"
-tooltip_text = "Save roads.json with a timestamped backup, then clear visible cached roads. Load Roads JSON restores them."
-
-[node name="LoadRoads" type="Button" parent="JsonButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Load Roads JSON"
-tooltip_text = "Replace editor roads from roads.json. Undo restores the previous editor roads."
-
-[node name="SaveRails" type="Button" parent="JsonButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Save Rails JSON"
-tooltip_text = "Save tracks.json with a timestamped backup, then clear visible cached rails. Load Rails JSON restores them."
-
-[node name="LoadRails" type="Button" parent="JsonButtons"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Load Rails JSON"
-tooltip_text = "Replace editor rails from tracks.json. Undo restores the previous editor rails."
-
 [node name="FileStatus" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 autowrap_mode = 3
-text = "Save JSON keeps a backup and clears the saved cache. Load JSON restores it."
+text = "Save JSON from the EditorCache Inspector. Load JSON from the EditorObjects Inspector."
