@@ -1,6 +1,17 @@
 [gd_resource type="Terrain3DMaterial" format=3 uid="uid://bdtxotl8myxft"]
 
 [resource]
+_shader_parameters = {
+&"bias_distance": null,
+&"blend_sharpness": 0.0,
+&"depth_blur": null,
+&"distant_normal_scale": null,
+&"flat_terrain_normals": null,
+&"general_uniforms": null,
+&"mipmap_bias": null,
+&"mipmaps": null,
+&"private": null
+}
 world_background = 0
 projection_enabled = true
 show_region_grid = true
