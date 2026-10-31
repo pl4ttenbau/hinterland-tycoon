@@ -6,11 +6,6 @@ const INDUSTRIES_PATH_TEMPLATE = "res://world/%s/jsondata/industries.json"
 @export_storage var ind_placeholder_parent: WorldIndustries
 @export var storage: IndustryStore = IndustryStore.new()
 
-func _enter_tree() -> void:
-	Managers.industries = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_terrain_loaded"))
-	SignalBus.all_types_initialized.connect(Callable(self, "_on_all_types_loaded"))
-	
 func load_industries_from_json():
 	var industry_json_path := INDUSTRIES_PATH_TEMPLATE % GlobalState.selected_map_name
 	var json_str: String = FileAccess.get_file_as_string(industry_json_path)
@@ -48,7 +43,4 @@ func get_map_industry_container() -> WorldIndustries:
 func _on_terrain_loaded(_terrain_container: WorldMapScene):
 	self.spawn_industries()
 	
-func _on_all_types_loaded():
-	pass
-	# self.load_industries_from_map()
 #endregion

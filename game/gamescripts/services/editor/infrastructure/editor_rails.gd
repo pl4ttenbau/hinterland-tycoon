@@ -1,4 +1,4 @@
-@icon("uid://c1dv0p5hgw68n")
+@icon("res://assets/icons/nodes_3d/icon_rail_track.svg")
 @tool
 class_name GeneratedRailLines extends Node3D
 

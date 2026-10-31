@@ -8,10 +8,6 @@ class_name VehiclePlacer extends Node
 @export var player_train: Train3D
 
 #region Initialization
-func _enter_tree() -> void:
-	Managers.vehicles = self
-	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_rails_spawned"))
-	
 func _check_rails_and_terrain() -> bool:
 	if !GlobalState:
 		push_warning("Cannot save vehicle in scene: Globals not found")

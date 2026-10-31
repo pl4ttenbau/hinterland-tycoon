@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_house_3d.png")
+@icon("res://assets/icons/nodes_3d/icon_house.svg")
 class_name Residence3D extends GameEntity3D
 
 static var last_bld_num: int = 0
@@ -17,7 +17,7 @@ static var last_bld_num: int = 0
 	set(value): self.entity = value
 
 @export_storage var connected_station: NodeStationLinkData:
-	get(): return self.res_bld_obj.connected_station
+	get(): return self.res_bld_obj.connected_station if self.res_bld_obj != null else null
 
 ## when its spawned from map
 @export var placed_res_bld_type: String

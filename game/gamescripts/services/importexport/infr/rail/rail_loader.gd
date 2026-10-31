@@ -14,11 +14,6 @@ const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer
 	get(): return $NewRailBuilder as NewRailBuilder
 
 #region Initialization
-func _enter_tree() -> void:
-	Managers.rails = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-	SignalBus.map_selected.connect(Callable(self, "_on_map_selected"))
-
 func load_rail_tracks() -> void:
 	Loggie.info("Loading rail track from json..")
 	var rail_file_path := MAP_RAILS_FILEPATH_FORMAT % GlobalState.selected_map_name

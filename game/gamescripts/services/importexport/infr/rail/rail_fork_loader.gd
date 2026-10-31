@@ -8,12 +8,6 @@ const SCENE_PATH = "res://scenes/subscenes/infr/fork_3d/rail_fork_3d.tscn"
 
 signal forks_spawned()
 
-func _enter_tree() -> void:
-	Managers.forks = self
-	# listen to loaded tracks
-	Managers.rails.track_storage.track_added.connect(Callable(self, "_on_track_loaded"))
-	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_spawned"))
-	
 func add_new_or_connection(node_fork: RailNodeForkData):
 	var fork_pos: Vector3 = node_fork.railNode.position
 	if ! forks_by_pos.has(fork_pos):

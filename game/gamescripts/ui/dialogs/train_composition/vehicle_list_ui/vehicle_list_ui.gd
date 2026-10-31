@@ -22,12 +22,16 @@ func _enter_tree() -> void:
 	SignalBus.dialog_vehicle_selection.connect(Callable(self, "_on_vehicle_selected"))
 
 func _ready() -> void:
-	self.load_vehicles()
+	if GameTypes.is_initialized:
+		self.load_vehicles()
+	else:
+		SignalBus.all_types_initialized.connect(self.load_vehicles, CONNECT_ONE_SHOT)
 	
 func load_vehicles():
 	self.all_vehicle_types = []
 	for veh_type: VehicleTypeData in GameTypes.vehicle_types_dict.values():
-		self.all_vehicle_types.append(veh_type)
+		if veh_type is RailVehicleTypeData:
+			self.all_vehicle_types.append(veh_type)
 	if ! self.all_vehicle_types || self.all_vehicle_types.size() == 0:
 		Loggie.error("Cannot load vehicle type list")
 		return

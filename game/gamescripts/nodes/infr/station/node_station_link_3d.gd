@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_station.png")
+@icon("res://assets/icons/nodes_3d/icon_station.svg")
 class_name NodeStationLink3D extends GameEntity3D
 
 const STATION_SCENE_PATH = "uid://bfibk5fcr42yy"

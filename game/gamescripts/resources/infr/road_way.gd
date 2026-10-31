@@ -8,7 +8,7 @@ const DIRT_PATH_SCENE_PATH = "res://assets/meshes/infr/road/dirt_path/path_dirt_
 @warning_ignore("unused_signal")
 signal created(track: RoadData)
 
-@export var autosmooth: bool
+@export var autosmooth: bool = true
 
 @export var nodes: Array[RoadNode] = []
 @export_storage var crosses: Array[RoadCross] = []
@@ -40,10 +40,12 @@ func build_curve() -> void:
 	# add points to curve (optionally with curve handles)
 	for node: RoadNode in self.nodes:
 		self.curve.add_point(node.rel_position, node.handle_in, node.handle_out)
-	self.curve_built.emit(self.curve)
 	# generate AABB
 	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	InfrUtils.smooth_curve3d(self.curve)
+	if self.autosmooth:
+		InfrUtils.smooth_curve3d(self.curve, true)
+	# Consumers must receive the finished curve, including its generated handles.
+	self.curve_built.emit(self.curve)
 	
 func add_node(_road_node: RoadNode):
 	self.nodes.append(_road_node) 

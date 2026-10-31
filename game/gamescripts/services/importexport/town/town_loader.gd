@@ -6,15 +6,10 @@ const TOWN_ROOT_SCENE_PATH = "res://scenes/subscenes/town_root.tscn"
 const LOAD_FROM_JSON = false
 
 @export var storage: TownStore = TownStore.new()
-@export_storage var res_bld_loader: ResidentialBldTypeLoader
 
 signal towns_registered(towns: Array[TownData])
 
 #region Initialization
-func _init() -> void:
-	Managers.towns = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-
 func _on_map_spawned(_container: WorldMapScene) -> void:
 	self.index_map_towns()
 #endregion	

@@ -2117,7 +2117,7 @@ script = ExtResource("6_gkr5v")
 curr_max_road_num = 136
 metadata/_custom_type_script = "uid://b157dhgx7ojrw"
 
-[node name="0__49" type="Node" parent="EditorInfr/EditorRoads" unique_id=615207252]
+[node name="0__49" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=615207252]
 
 [node name="RoadWay_1" type="Path3D" parent="EditorInfr/EditorRoads/0__49" unique_id=272301187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 549.2, 31.4, 237.4)
@@ -2707,7 +2707,7 @@ abs_aabb = AABB(139.4, 32.3, -40.2, 115.600006, 2.7000008, 0)
 autosmooth = true
 material = ExtResource("7_w6jj8")
 
-[node name="50__99" type="Node" parent="EditorInfr/EditorRoads" unique_id=1905229131]
+[node name="50__99" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=1905229131]
 
 [node name="RoadWay_50" type="Path3D" parent="EditorInfr/EditorRoads/50__99" unique_id=1853539466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.4, 34.6, -186.3)
@@ -3309,7 +3309,7 @@ abs_aabb = AABB(645.3, 31.4, 750.1, 17.5, 0.39999962, 106.5)
 autosmooth = true
 material = ExtResource("7_w6jj8")
 
-[node name="100__149" type="Node" parent="EditorInfr/EditorRoads" unique_id=1159956585]
+[node name="100__149" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=1159956585]
 
 [node name="RoadWay_100" type="Path3D" parent="EditorInfr/EditorRoads/100__149" unique_id=672503529]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 646.6, 31.8, 893.1)

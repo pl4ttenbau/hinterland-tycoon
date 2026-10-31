@@ -7,8 +7,8 @@ const WORLDS_FOLDER = "res://world/"
 
 @export var name: String
 
-## NORTHERN_GERMANY | SOUTHERN_GERMANY | POLAND | RUSSIA
-@export var loc: String
+## Serialized as an Enums.Location name in mapinfo.json's "loc" field.
+@export var loc: Enums.Location
 
 @export var start_pos_xz: Vector2
 
@@ -18,10 +18,14 @@ const WORLDS_FOLDER = "res://world/"
 @export var spawn_vehicles: bool
 
 static func of_dict(_dict: Dictionary) -> MapData:
+	var location: Variant = _dict.get("loc")
+	if not location is String or not Enums.Location.has(location):
+		push_error("Map %s has an unknown location: %s" % [_dict.get("key", ""), location])
+		return null
 	var inst: MapData = MapData.new()
 	inst.key = _dict.get("key")
 	inst.name = _dict.get("name")
-	inst.loc = _dict.get("loc")
+	inst.loc = Enums.Location[location]
 	# optional: start pos
 	if _dict.has("startPos") && _dict.get("startPos") != null:
 		var pos_xz_arr: Array = _dict.get("startPos")

@@ -5,11 +5,6 @@ class_name StationResidencesConnector extends Node
 @export var has_buildings_placed: bool = false
 @export var has_made_initial_connections: bool = false
 
-func _enter_tree() -> void:
-	SignalBus.stations_loaded.connect(Callable(self, "_on_stations_loaded"))
-	SignalBus.town_buildings_spawned.connect(Callable(self, "_on_residences_placed"))
-	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_spawned"))
-	
 func connect_stations_to_residences():
 	if !self.has_buildings_placed || !self.has_stations_loaded: return
 	if self.has_made_initial_connections: return

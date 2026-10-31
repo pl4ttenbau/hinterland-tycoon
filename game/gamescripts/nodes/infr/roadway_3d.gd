@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_road.png")
+@icon("res://assets/icons/nodes_3d/icon_road.svg")
 class_name RoadWay3D extends GameEntity3D
 
 @export var road: RoadData:

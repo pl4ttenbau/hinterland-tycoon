@@ -15,6 +15,7 @@ const MAX_PLACING_TRIES: int = 6
 
 #region Initialization
 func _enter_tree() -> void:
+	self.has_bld_types_loaded = GameTypes.is_initialized
 	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
 func _ready() -> void:
 	self.town = (self.get_parent() as Town3D).town

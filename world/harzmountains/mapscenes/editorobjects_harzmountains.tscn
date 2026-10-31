@@ -3547,7 +3547,7 @@ script = ExtResource("6_2gwxi")
 curr_max_road_num = 255
 metadata/_custom_type_script = "uid://b157dhgx7ojrw"
 
-[node name="0__49" type="Node" parent="EditorInfr/EditorRoads" unique_id=440868944]
+[node name="0__49" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=440868944]
 
 [node name="RoadWay_1" type="Path3D" parent="EditorInfr/EditorRoads/0__49" unique_id=1942544080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3406, 35.3, 2828.5)
@@ -4113,7 +4113,7 @@ abs_aabb = AABB(3448.9, 15.7, 2076.1, 21.100098, 9.2, 0)
 autosmooth = true
 material = ExtResource("7_j2dcm")
 
-[node name="50__99" type="Node" parent="EditorInfr/EditorRoads" unique_id=598577807]
+[node name="50__99" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=598577807]
 
 [node name="RoadWay_50" type="Path3D" parent="EditorInfr/EditorRoads/50__99" unique_id=315865406]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3548.2, 11.1, 1892.4)
@@ -4715,7 +4715,7 @@ abs_aabb = AABB(727.2, 10.1, 236.3, 223.59998, 2.3999996, 131.59999)
 autosmooth = true
 material = ExtResource("7_j2dcm")
 
-[node name="100__149" type="Node" parent="EditorInfr/EditorRoads" unique_id=877769201]
+[node name="100__149" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=877769201]
 
 [node name="RoadWay_100" type="Path3D" parent="EditorInfr/EditorRoads/100__149" unique_id=1871333207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 950.8, 10.2, 236.6)
@@ -5317,7 +5317,7 @@ abs_aabb = AABB(2284.1, 52.5, 2752.3, 199.2998, 20.699997, 0)
 autosmooth = true
 material = ExtResource("7_j2dcm")
 
-[node name="150__199" type="Node" parent="EditorInfr/EditorRoads" unique_id=1043345726]
+[node name="150__199" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=1043345726]
 
 [node name="RoadWay_150" type="Path3D" parent="EditorInfr/EditorRoads/150__199" unique_id=1620122396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2483.4, 52.5, 2752.3)
@@ -5919,7 +5919,7 @@ abs_aabb = AABB(2955.9, 44.1, 2975.3, 148, 0.5, 90.69995)
 autosmooth = true
 material = ExtResource("7_j2dcm")
 
-[node name="200__249" type="Node" parent="EditorInfr/EditorRoads" unique_id=1384097391]
+[node name="200__249" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=1384097391]
 
 [node name="RoadWay_200" type="Path3D" parent="EditorInfr/EditorRoads/200__249" unique_id=224012991]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2955.9, 44.4, 3066)
@@ -6521,7 +6521,7 @@ abs_aabb = AABB(1725.69, 45.72, 1620.31, 135.49011, 0.4699974, 0)
 autosmooth = true
 material = ExtResource("7_j2dcm")
 
-[node name="250__299" type="Node" parent="EditorInfr/EditorRoads" unique_id=511179915]
+[node name="250__299" type="Node3D" parent="EditorInfr/EditorRoads" unique_id=511179915]
 
 [node name="RoadWay_250" type="Path3D" parent="EditorInfr/EditorRoads/250__299" unique_id=348616762]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3051.3, 6.4, 1555.7)

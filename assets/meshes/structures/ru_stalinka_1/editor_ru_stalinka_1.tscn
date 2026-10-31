@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/ru_stalinka_1/ru_stalinka_1.tscn" id="1"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/editor_residence_3d.gd" id="2"]
+
+[node name="RuStalinka1" instance=ExtResource("1")]
+script = ExtResource("2")
+placed_res_bld_type = "ru_stalinka_1"

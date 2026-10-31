@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_6w6pc"]
 [ext_resource type="PackedScene" uid="uid://7cwc6ja1jrn2" path="res://world/mpsb/mapscenes/terrain/terrain_mpsb.tscn" id="2_jynyo"]
 [ext_resource type="PackedScene" uid="uid://316sldx8eq36" path="res://assets/meshes/deco/castle_tower/castle_tower.tscn" id="3_1ktam"]
-[ext_resource type="PackedScene" uid="uid://cxr0m833vfemd" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.tscn" id="3_7yuns"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/half_timbered_1/editor_half_timbered_1.tscn" id="3_7yuns"]
 [ext_resource type="PackedScene" uid="uid://bek8pierb4jsv" path="res://assets/meshes/deco/gantry_crane_long/gantry_crane_long.tscn" id="3_o0hqk"]
-[ext_resource type="PackedScene" uid="uid://cken0m3w5f5m7" path="res://assets/meshes/structures/city_manor/city_manor.tscn" id="3_vwabj"]
-[ext_resource type="PackedScene" uid="uid://cwlcfsgeh3x0l" path="res://assets/meshes/structures/city_corner_house/city_corner_house.tscn" id="3_xmflw"]
-[ext_resource type="PackedScene" uid="uid://ck6t5hx5n8rva" path="res://assets/meshes/structures/city_house_3/city_house_3.tscn" id="6_ac0fl"]
-[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="7_emjn5"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/city_manor/editor_city_manor.tscn" id="3_vwabj"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/city_corner_house/editor_city_corner_house.tscn" id="3_xmflw"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/city_house_3/editor_city_house_3.tscn" id="6_ac0fl"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/polish_house_1/editor_polish_house_1.tscn" id="7_emjn5"]
 [ext_resource type="PackedScene" uid="uid://br01p22j70jhf" path="res://assets/meshes/deco/water_tower_big/water_tower_big.tscn" id="7_jynyo"]
-[ext_resource type="PackedScene" uid="uid://ck1dycgwdj1sd" path="res://assets/meshes/structures/city_row_house_1/city_row_house_1.tscn" id="12_cb211"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/city_row_house_1/editor_city_row_house_1.tscn" id="12_cb211"]
 [ext_resource type="PackedScene" uid="uid://b82twlvcceu4x" path="res://assets/meshes/deco/substation/substation.tscn" id="12_emjn5"]
 [ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="21_iyo02"]
 [ext_resource type="PackedScene" uid="uid://im3qmv7naoyb" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge.tscn" id="21_ugno1"]
@@ -18,14 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://dib4on5rgw5g4" path="res://assets/meshes/infr/bridge/bridge_pillar_brick/bridge_pillar_brick.tscn" id="26_d7utl"]
 [ext_resource type="PackedScene" uid="uid://by8p3lehwrg8a" path="res://assets/meshes/deco/castle_wall/castle_wall.tscn" id="27_ssk1k"]
 [ext_resource type="PackedScene" uid="uid://dy0372eidhhtw" path="res://assets/meshes/deco/cathedral/cathedral.tscn" id="28_6w6pc"]
-[ext_resource type="PackedScene" uid="uid://cn62ofb5bmhr2" path="res://assets/meshes/structures/polish_house_5/polish_house_5.tscn" id="29_jynyo"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/polish_house_5/editor_polish_house_5.tscn" id="29_jynyo"]
 [ext_resource type="PackedScene" uid="uid://dbegcmeyngyia" path="res://assets/meshes/infr/bridge/truss_bridge/truss_bridge_wide.tscn" id="29_vybcg"]
 [ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="30_xx03p"]
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://dwuixifho5nx6" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon_static.tscn" id="32_speqn"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
 [ext_resource type="PackedScene" uid="uid://bxmb5ddkk54u8" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car_static.tscn" id="35_0o4a4"]
-[ext_resource type="PackedScene" uid="uid://bcsvjcncllnxi" path="res://assets/meshes/structures/northern_german_house/northern_german_house.tscn" id="35_ac0fl"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/northern_german_house/editor_northern_german_house.tscn" id="35_ac0fl"]
 [ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="35_emjn5"]
 [ext_resource type="PackedScene" uid="uid://ce7uwh35i56pf" path="res://assets/meshes/deco/wooden_pier/wooden_pier.tscn" id="36_emjn5"]
 [ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="36_pfqmd"]
@@ -33,21 +33,20 @@
 [ext_resource type="PackedScene" uid="uid://huj60dribkuj" path="res://assets/meshes/vehicles/water/rowing_boat/rowing_boat_static.tscn" id="38_wtafe"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="39_c4uv5"]
 [ext_resource type="PackedScene" uid="uid://du7j51h025uyf" path="res://assets/meshes/deco/statue_1/statue_1.tscn" id="39_mlv4m"]
-[ext_resource type="PackedScene" uid="uid://dwqg67pnls6nh" path="res://assets/meshes/structures/merchant_house_1/merchant_house_1.tscn" id="40_q805a"]
 [ext_resource type="PackedScene" uid="uid://d0xb4aat57wrt" path="res://assets/meshes/deco/village_well/village_well.tscn" id="40_rrrix"]
 [ext_resource type="PackedScene" uid="uid://icjp48xb261d" path="res://assets/meshes/deco/ruined_house_2/ruined_house_2.tscn" id="40_v0v3v"]
-[ext_resource type="PackedScene" uid="uid://dk0ya0g6x485k" path="res://assets/meshes/structures/wooden_shack/wooden_shack.tscn" id="41_nawyd"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/wooden_shack/editor_wooden_shack.tscn" id="41_nawyd"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/importexport/deco_loader.gd" id="42_sdc0u"]
 [ext_resource type="PackedScene" uid="uid://vmtodxubdw7" path="res://assets/meshes/industry/windmill_2/windmill_2_static.tscn" id="42_vqub3"]
 [ext_resource type="PackedScene" uid="uid://dn7pc6dlp7jl8" path="res://assets/meshes/deco/city_gate/city_gate.tscn" id="43_bn6oj"]
-[ext_resource type="PackedScene" uid="uid://dcb46mio1xry1" path="res://assets/meshes/structures/city_house_2/city_house_2.tscn" id="45_hw0ba"]
-[ext_resource type="PackedScene" uid="uid://dcu2pbepp6rxt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn" id="45_onop4"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/city_house_2/editor_city_house_2.tscn" id="45_hw0ba"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/half_timbered_barn/editor_half_timbered_barn.tscn" id="45_onop4"]
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="47_g483g"]
-[ext_resource type="PackedScene" uid="uid://c5sdpr8l2ei8d" path="res://assets/meshes/structures/polish_house_2/polish_house_2.tscn" id="48_rrrix"]
-[ext_resource type="PackedScene" uid="uid://07c8q4cga63q" path="res://assets/meshes/structures/village_house_3/village_house_3.tscn" id="49_v0v3v"]
-[ext_resource type="PackedScene" uid="uid://baeywcrtv0l1f" path="res://assets/meshes/structures/village_house_2/village_house_2.tscn" id="50_1ktam"]
-[ext_resource type="PackedScene" uid="uid://bkw15rso2gb44" path="res://assets/meshes/structures/thatched_house_1/thatched_house_1.tscn" id="51_hw0ba"]
-[ext_resource type="PackedScene" uid="uid://bvytqhl4vno6y" path="res://assets/meshes/structures/polish_house_3/polish_house_3.tscn" id="51_o3cyl"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/polish_house_2/editor_polish_house_2.tscn" id="48_rrrix"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/village_house_3/editor_village_house_3.tscn" id="49_v0v3v"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/village_house_2/editor_village_house_2.tscn" id="50_1ktam"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/thatched_house_1/editor_thatched_house_1.tscn" id="51_hw0ba"]
+[ext_resource type="PackedScene" path="res://assets/meshes/structures/polish_house_3/editor_polish_house_3.tscn" id="51_o3cyl"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="51_rrrix"]
 [ext_resource type="PackedScene" uid="uid://dca25osoc0e48" path="res://world/mpsb/mapscenes/editorobjects_mpsb.tscn" id="55_51ymi"]
 [ext_resource type="PackedScene" uid="uid://6r7as6v5u5xq" path="res://assets/meshes/deco/tractor/tractor.tscn" id="58_c4uv5"]
@@ -562,7 +561,6 @@ houses = Array[ExtResource("39_c4uv5")]([Object(Node3D,"unique_name_in_owner":fa
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.41385132, 0, -0.9103445, 0, 1, 0, 0.9103445, 0, -0.41385132, 989.51575, 12.46394, 1303.8075),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":1,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9993987, 0, 0.03467274, 0, 1, 0, -0.03467274, 0, 0.9993987, 952.9974, 13.630334, 1329.0841),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"polish_house_1","placed_town_num":1,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.38783735, 0, 0.92172784, 0, 1, 0, -0.92172784, 0, 0.38783735, 1012.4955, 12.096186, 1288.6249),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_3","placed_town_num":1,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9255735, 0, -0.37856784, 0, 1, 0, 0.37856784, 0, 0.9255735, 1027.3856, 12.230018, 1296.39),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"merchant_house_1","placed_town_num":1,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.61633515, 0, -0.787484, 0, 1, 0, 0.787484, 0, 0.61633515, 995.221, 12.196455, 1277.3103),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_3","placed_town_num":1,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.35582474, 0, 0.9345527, 0, 1, 0, -0.9345527, 0, 0.35582474, 2143.686, 11.890436, 3201.954),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_3","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2086.5872, 11.92244, 3149.0728),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":3,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -710,7 +708,6 @@ houses = Array[ExtResource("39_c4uv5")]([Object(Node3D,"unique_name_in_owner":fa
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9839691, 0, -0.17833877, 0, 1, 0, 0.17833877, 0, 0.9839691, 2835.5115, 12.650078, 1798.1996),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.98519015, 0, -0.17146474, 0, 1, 0, 0.17146474, 0, -0.98519015, 2815.547, 10.932272, 1742.944),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.98519015, 0, -0.17146474, 0, 1, 0, 0.17146474, 0, -0.98519015, 2817.0955, 10.932268, 1751.7216),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_1","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.16181046, 0, 0.98682183, 0, 1, 0, -0.98682183, 0, 0.16181046, 2763.636, 12.919838, 1777.0819),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"merchant_house_1","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.70668703, 0, -0.7075264, 0, 1, 0, 0.7075264, 0, -0.70668703, 2749.841, 10.7724495, 1745.6016),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"city_house_2","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.98517525, 0, -0.17155083, 0, 1, 0, 0.17155083, 0, 0.98517525, 2838.3137, 12.18008, 1783.3127),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.38348946, 0, 0.92354524, 0, 1, 0, -0.92354524, 0, 0.38348946, 2781.95, 12.5710945, 1836.6688),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("39_c4uv5"),"num":0,"res_bld_obj":null,"connected_station":null,"placed_res_bld_type":"village_house_2","placed_town_num":32,"entity":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -798,10 +795,6 @@ placed_town_num = 1
 
 [node name="CityHouse17" parent="Residences/1_Jarmen" unique_id=876809334 instance=ExtResource("6_ac0fl")]
 transform = Transform3D(0.38783735, 0, 0.92172784, 0, 1, 0, -0.92172784, 0, 0.38783735, 1012.4955, 12.096186, 1288.6249)
-placed_town_num = 1
-
-[node name="MerchantHouse1" parent="Residences/1_Jarmen" unique_id=1965726979 instance=ExtResource("40_q805a")]
-transform = Transform3D(0.9255735, 0, -0.37856784, 0, 1, 0, 0.37856784, 0, 0.9255735, 1027.3856, 12.230018, 1296.39)
 placed_town_num = 1
 
 [node name="VillageHouse28" parent="Residences/1_Jarmen" unique_id=2090745087 instance=ExtResource("49_v0v3v")]
@@ -1451,10 +1444,6 @@ placed_town_num = 32
 
 [node name="CityHouse27" parent="Residences/32_Anklam" unique_id=1874459352 instance=ExtResource("12_cb211")]
 transform = Transform3D(-0.98519015, 0, -0.17146474, 0, 1, 0, 0.17146474, 0, -0.98519015, 2817.0955, 10.932268, 1751.7216)
-placed_town_num = 32
-
-[node name="MerchantHouse2" parent="Residences/32_Anklam" unique_id=1972123232 instance=ExtResource("40_q805a")]
-transform = Transform3D(0.16181046, 0, 0.98682183, 0, 1, 0, -0.98682183, 0, 0.16181046, 2763.636, 12.919838, 1777.0819)
 placed_town_num = 32
 
 [node name="CityHouse20" parent="Residences/32_Anklam" unique_id=1481381383 instance=ExtResource("45_hw0ba")]

@@ -36,10 +36,10 @@ func build_curve() -> void:
 	# add points to curve (optionally with curve handles)
 	for node: RailNodeData in self.nodes:
 		self.curve.add_point(node.position, node.handle_in, node.handle_out)
-	self.curve_built.emit(self.curve)
 	# generate AABB & smoothe
 	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	InfrUtils.smooth_curve3d(self.curve)
+	InfrUtils.smooth_curve3d(self.curve, true)
+	self.curve_built.emit(self.curve)
 
 #region Distance Check
 func is_near(pos: Vector3) -> bool:

@@ -2,6 +2,8 @@
 @icon("res://assets/icons/icon_house_white.png")
 class_name TownBuildingHolder extends Node
 
+const EDITOR_RESIDENCE = preload("res://game/gamescripts/nodes/structures/editor_residence_3d.gd")
+
 @export var placed_buildings: Array[Residence3D] = []
 
 const MOVE_UNDER_TOWN_NODE = true
@@ -10,34 +12,42 @@ const MOVE_UNDER_TOWN_NODE = true
 @export var has_map_spawned: bool = true
 @export var has_res_bld_types_loaded: bool = false
 
-func _enter_tree() -> void:
-	Managers.town_buildings = self
-	SignalBus.map_spawned.connect(Callable(self, "_on_map_spawned"))
-	SignalBus.res_bld_types_loaded.connect(Callable(self, "_on_res_bld_types_loaded"))
-	Managers.towns.towns_registered.connect(Callable(self, "_on_map_towns_loaded"))
-
 func load_preplaced_town_buildings():
 	## abort if res bld types or map isnt loaded yet
 	# if !self.has_res_bld_types_loaded: return
 	Loggie.info("spawning pre-placed ResBlds...")
-	var all_world_houses_children: Array = NodeTreeUtils.get_all_children(self.get_map_houses_container())
+	var container: Node = self.get_map_houses_container()
+	if container == null:
+		return
+	var all_world_houses_children: Array = NodeTreeUtils.get_all_children(container)
 	for child: Node in all_world_houses_children:
-		if child is Residence3D:
+		if child is EDITOR_RESIDENCE:
+			# Validate authoring data before replacing the placement node.
+			if GameTypes.get_res_bld_type(child.placed_res_bld_type) == null \
+					or Managers.towns.storage.get_by_num(child.placed_town_num) == null:
+				push_warning("Cannot load residence placement: %s" % child.name)
+				continue
+			var residence: Residence3D = child.create_runtime()
+			if residence != null:
+				self.place_preplaced_res_bld(residence)
+		elif child is Residence3D:
 			self.place_preplaced_res_bld(child as Residence3D)
 	SignalBus.town_buildings_spawned.emit()
 
 func place_preplaced_res_bld(outer_bld: Residence3D):
+	if self.placed_buildings.has(outer_bld):
+		return
 	var res_bld_type := ResBldType.get_by_key(outer_bld.placed_res_bld_type)
-	outer_bld.res_bld_obj = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
-	outer_bld.res_bld_obj.num = Residence3D.next_num()
 	# assign to town
 	var town := get_res_bld_town_obj(outer_bld)
-	if town: 
+	if town and res_bld_type:
+		outer_bld.res_bld_obj = ResidenceBuildingData.new(outer_bld.placed_town_num, res_bld_type)
 		self.register_res_bld(outer_bld, town)
 
 func register_res_bld(outer_bld: Residence3D, parent_town: TownData):
 	self.placed_buildings.append(outer_bld) # save here as well
 	parent_town.add_res_bld(outer_bld)
+	outer_bld.res_bld_obj.is_registered = true
 	if MOVE_UNDER_TOWN_NODE:
 		pass
 
@@ -64,7 +74,6 @@ func _on_map_spawned(_terrain_container: WorldMapScene):
 
 func _on_res_bld_types_loaded():
 	self.has_res_bld_types_loaded = true
-	self.load_preplaced_town_buildings()
 
 func _on_map_towns_loaded(_towns: Array[TownData]):
 	self.load_preplaced_town_buildings()

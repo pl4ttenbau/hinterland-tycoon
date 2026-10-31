@@ -1,5 +1,5 @@
 @tool
-@icon("res://assets/icons/icon_town.png")
+@icon("res://assets/icons/nodes_3d/icon_town.svg")
 class_name Town3D extends GameEntity3D
 
 signal town_changed(_town: TownData)

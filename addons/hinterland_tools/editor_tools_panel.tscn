@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/hinterland_tools/ui/editor_tool_button.tscn" id="1_tool_button"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tools"]
+resource_local_to_scene = true
+allow_unpress = true
+
+[node name="EditorToolsPanel" type="VBoxContainer"]
+offset_right = 720.0
+offset_bottom = 90.0
+size_flags_horizontal = 3
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BuildTown" parent="Buttons" instance=ExtResource("1_tool_button")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Select terrain-click mode for town placement."
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tools")
+text = "Build Town"
+
+[node name="CreateRoad" parent="Buttons" instance=ExtResource("1_tool_button")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Click: add point · Enter: finish · Backspace: remove last · Escape: cancel"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tools")
+text = "Create Road"
+
+[node name="CreateRail" parent="Buttons" instance=ExtResource("1_tool_button")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Click: add point · Enter: finish · Backspace: remove last · Escape: cancel"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tools")
+text = "Create Rail"
+
+[node name="SelectObject" parent="Buttons" instance=ExtResource("1_tool_button")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tools")
+text = "Select Object"
+tooltip_text = "Click a visible road or rail to inspect it. Free Tool clears this mode."
+
+[node name="FreeTool" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Deselect the active tool and cancel any unfinished draft. Finished roads and rails are kept."
+text = "Free Tool"
+
+[node name="ToolStatus" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No tool selected · Select Create Road or Create Rail to start drawing."
+autowrap_mode = 3
+
+[node name="FileStatus" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+text = "Save JSON from the EditorCache Inspector. Load JSON from the EditorObjects Inspector."

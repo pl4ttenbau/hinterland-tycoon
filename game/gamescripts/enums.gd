@@ -1,5 +1,12 @@
 extends Node
 
+enum Location {
+	NORTHERN_GERMANY,
+	SOUTHERN_GERMANY,
+	POLAND,
+	SOVIET_UNION
+}
+
 enum EntityTypes {
 	PLAYER,
 	VEHICLE,

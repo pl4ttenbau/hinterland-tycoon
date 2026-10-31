@@ -11,9 +11,6 @@ const LOG_EXIT_FINDING = false
 @export var has_industries_loaded: bool = false
 
 #region Initialization
-func _enter_tree() -> void:
-	SignalBus.roads_spawned.connect(Callable(self, "_on_roads_spawned"))
-	SignalBus.industries_spawned.connect(Callable(self, "_on_industries_spawned"))
 #endregion
 
 func try_industry_exit_finding():

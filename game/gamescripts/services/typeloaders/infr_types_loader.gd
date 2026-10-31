@@ -1,7 +1,13 @@
 class_name InfrTypesLoader extends AbstractGameTypeLoader
 
-func _init() -> void:
-	self.make_types()
+func load_types() -> Error:
+	var definitions: Array[InfrType] = self.make_types()
+	var error: Error = validate_keys(definitions)
+	if error != OK:
+		return error
+	GameTypes.infr_types = definitions
+	self.loading_finished.emit()
+	return OK
 
 static func make_types() -> Array[InfrType]:
 	var infr_types: Array[InfrType] = []
@@ -10,8 +16,4 @@ static func make_types() -> Array[InfrType]:
 	infr_types.append(InfrType.new(1, "NORMAL_GAUGE", true, "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"))
 	infr_types.append(InfrType.new(2, "RURAL_ROAD", false, "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"))
 	
-	if GameTypes.infr_types != null:
-		Loggie.warn("Overwriting already generated infrastructure types")
-	GameTypes.infr_types = infr_types
-	# all done
 	return infr_types

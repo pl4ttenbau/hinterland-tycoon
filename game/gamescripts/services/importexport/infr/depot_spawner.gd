@@ -6,11 +6,6 @@ const MAP_DEPOTS_FILEPATH_FORMAT := "res://world/%s/jsondata/vehicles_depots.jso
 @export var depots: Array[RailDepotData] = []
 @export var containers: Array[RailDepot3D] = []
 
-func _enter_tree() -> void:
-	Managers.depots = self
-	SignalBus.rails_loaded.connect(Callable(self, "_on_rails_loaded"))
-	SignalBus.rails_spawned.connect(Callable(self, "_on_rails_spawned"))
-	
 #region Loading
 func load_depots():
 	Loggie.info("Loading depots..")

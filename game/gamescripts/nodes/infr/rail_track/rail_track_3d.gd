@@ -1,5 +1,5 @@
 ## This one will be instanciated out of a scene
-@icon("res://assets/icons/icon_rail_track.png")
+@icon("res://assets/icons/nodes_3d/icon_rail_track.svg")
 class_name RailTrack3D extends GameEntity3D
 
 const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"

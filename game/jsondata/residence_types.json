@@ -1,0 +1,421 @@
+[
+	{
+		"key": "wooden_shack",
+		"name": "Shack",
+		"scene_path": "res://assets/meshes/structures/wooden_shack/wooden_shack.tscn",
+		"pops": [
+			3,
+			1
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "SOVIET_UNION", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "village_house_2",
+		"name": "Village House",
+		"scene_path": "res://assets/meshes/structures/village_house_2/village_house_2.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "village_house_3",
+		"name": "Village House",
+		"scene_path": "res://assets/meshes/structures/village_house_3/village_house_3.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "city_house_1",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/city_row_house_1/city_row_house_1.tscn",
+		"pops": [
+			16,
+			5
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": true
+	},
+	{
+		"key": "city_house_2",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/city_house_2/city_house_2.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "city_house_3",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/city_house_3/city_house_3.tscn",
+		"pops": [
+			10,
+			3
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "city_house_4",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/city_house_4/city_house_4.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "city_corner_house",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/city_corner_house/city_corner_house.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY", "POLAND"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "old_city_house_1",
+		"name": "City House",
+		"scene_path": "res://assets/meshes/structures/old_city_row_house_1/old_city_house_1.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "old_city_giebelhaus_1",
+		"name": "Giebelhaus",
+		"scene_path": "res://assets/meshes/structures/old_city_giebelhaus_1/old_city_giebelhaus_1.tscn",
+		"pops": [
+			9,
+			3
+		],
+		"themes": ["NORTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "old_city_house_speicher",
+		"name": "Speicher",
+		"scene_path": "res://assets/meshes/structures/old_city_house_speicher/old_city_house_speicher.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "old_city_house_bakery",
+		"name": "Speicher",
+		"scene_path": "res://assets/meshes/structures/old_city_house_bakery/old_city_house_bakery.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "half_timbered_1",
+		"name": "Tudor House",
+		"scene_path": "res://assets/meshes/structures/half_timbered_1/half_timbered_1.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": ["SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "half_timbered_2",
+		"name": "Tudor House",
+		"scene_path": "res://assets/meshes/structures/half_timbered_2/half_timbered_2.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "half_timbered_barn",
+		"name": "Tudor Barn",
+		"scene_path": "res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.tscn",
+		"pops": [
+			5,
+			1
+		],
+		"themes": ["NORTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "harz_house_1",
+		"name": "Harz House",
+		"scene_path": "res://assets/meshes/structures/harz_house_1/harz_house_1.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ddr_ew_65",
+		"name": "Village House",
+		"scene_path": "res://assets/meshes/structures/ddr_ew_65/ddr_ew_65.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY"],
+		"block_auto_placement": false
+	},
+	{
+		"key": "city_manor",
+		"name": "City Manor",
+		"scene_path": "res://assets/meshes/structures/city_manor/city_manor.tscn",
+		"pops": [
+			15,
+			5
+		],
+		"themes": ["NORTHERN_GERMANY", "SOVIET_UNION"],
+		"block_auto_placement": true
+	},
+	{
+		"key": "northern_german_house",
+		"name": "Tudor Cottage",
+		"scene_path": "res://assets/meshes/structures/northern_german_house/northern_german_house.tscn",
+		"pops": [
+			12,
+			4
+		],
+		"themes": [
+			"NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "vitte_fischerhaus",
+		"name": "Fishing House",
+		"scene_path": "res://assets/meshes/structures/vitt_fischerhaus/vitt_fischerhaus.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": [
+			"NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "thatched_house_1",
+		"name": "Fishing House",
+		"scene_path": "res://assets/meshes/structures/thatched_house_1/thatched_house_1.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": [
+			"NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "polish_house_1",
+		"name": "Polish House",
+		"scene_path": "res://assets/meshes/structures/polish_house_1/polish_house_1.tscn",
+		"pops": [
+			3,
+			1
+		],
+		"themes": [
+			"POLAND", "NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "polish_house_2",
+		"name": "Polish House",
+		"scene_path": "res://assets/meshes/structures/polish_house_2/polish_house_2.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": [
+			"POLAND", "NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "polish_house_3",
+		"name": "Polish House",
+		"scene_path": "res://assets/meshes/structures/polish_house_3/polish_house_3.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": [
+			"POLAND", "NORTHERN_GERMANY"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "polish_house_4",
+		"name": "Polish House",
+		"scene_path": "res://assets/meshes/structures/polish_house_4/polish_house_4.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": [
+			"POLAND"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "polish_house_5",
+		"name": "Polish House",
+		"scene_path": "res://assets/meshes/structures/polish_house_5/polish_house_5.tscn",
+		"pops": [
+			12,
+			4
+		],
+		"themes": [
+			"POLAND"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_village_hut_1",
+		"name": "Isba",
+		"scene_path": "res://assets/meshes/structures/ru_village_hut_1/ru_village_hut_1.tscn",
+		"pops": [
+			5,
+			1
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_village_hut_2",
+		"name": "Isba",
+		"scene_path": "res://assets/meshes/structures/ru_village_hut_2/ru_village_hut_2.tscn",
+		"pops": [
+			6,
+			2
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_village_hut_3",
+		"name": "Isba",
+		"scene_path": "res://assets/meshes/structures/ru_village_hut_3/ru_village_hut_3.tscn",
+		"pops": [
+			3,
+			1
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_village_hut_4",
+		"name": "Isba",
+		"scene_path": "res://assets/meshes/structures/ru_village_hut_4/ru_village_hut_4.tscn",
+		"pops": [
+			4,
+			1
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_village_hut_5",
+		"name": "Isba",
+		"scene_path": "res://assets/meshes/structures/ru_village_hut_5/ru_village_hut_5.tscn",
+		"pops": [
+			5,
+			1
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_small_house_1",
+		"name": "Barracks",
+		"scene_path": "res://assets/meshes/structures/ru_small_house_1/ru_small_house_1.tscn",
+		"pops": [
+			15,
+			5
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_small_house_2",
+		"name": "Barracks",
+		"scene_path": "res://assets/meshes/structures/ru_small_house_2/ru_small_house_2.tscn",
+		"pops": [
+			20,
+			6
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_kruschovka_1",
+		"name": "Kruschovka",
+		"scene_path": "res://assets/meshes/structures/ru_kruschovka_1/ru_kruschovka_1.tscn",
+		"pops": [
+			40,
+			13
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	},
+	{
+		"key": "ru_stalinka_1",
+		"name": "Stalinka",
+		"scene_path": "res://assets/meshes/structures/ru_stalinka_1/ru_stalinka_1.tscn",
+		"pops": [
+			55,
+			18
+		],
+		"themes": [
+			"SOVIET_UNION"
+		],
+		"block_auto_placement": false
+	}
+]

@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="4_igccd"]
 [ext_resource type="Texture2D" uid="uid://boo7hugeeng6u" path="res://assets/textures/particles/smoke/smoke3.png" id="6_pbulp"]
 
+[ext_resource type="PackedScene" path="res://addons/steam_exhaust/steam_exhaust.tscn" id="7_main_exhaust"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/vehicle/movement/mpsb_12_chimney_exhaust.gd" id="8_main_exhaust_driver"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0lan"]
 size = Vector3(1.8076195, 2.8278077, 7.3666596)
 
@@ -143,22 +146,22 @@ metadata/cam_name = &"CAM_VEHICLE"
 [node name="Steam" type="Node3D" parent="." unique_id=434487089 node_paths=PackedStringArray("child_particles", "locomotive")]
 script = ExtResource("4_c0lan")
 effect_strength = 0.575
-child_particles = [NodePath("TopSteamParticles3D"), NodePath("SideSteamParticles3D_R"), NodePath("SideSteamParticles3D_L")]
+child_particles = [NodePath("SideSteamParticles3D_R"), NodePath("SideSteamParticles3D_L")]
 locomotive = NodePath("..")
 metadata/_custom_type_script = "uid://ikgxu2g2bmw6"
 
-[node name="TopSteamParticles3D" type="GPUParticles3D" parent="Steam" unique_id=1914574847]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0724711, -2.4536629)
-layers = 64
-material_override = SubResource("StandardMaterial3D_c0lan")
-visibility_range_end = 90.0
-visibility_range_end_margin = 9.0
-amount = 200
-amount_ratio = 0.575
-lifetime = 4.0
-randomness = 0.29
-process_material = SubResource("ParticleProcessMaterial_pbulp")
-draw_pass_1 = SubResource("QuadMesh_25ypk")
+[node name="ChimneyExhaust" parent="Steam" node_paths=PackedStringArray("locomotive") instance=ExtResource("7_main_exhaust")]
+position = Vector3(-0.002134, 2.925, -2.461572)
+script = ExtResource("8_main_exhaust_driver")
+locomotive = NodePath("../..")
+driving_wheel_diameter = 0.7
+outlet_radius = 0.12
+initial_size = 0.34
+final_size = 2.8
+particle_lifetime = 4.0
+opacity = 0.48
+lod_start_distance = 45.0
+cull_distance = 120.0
 
 [node name="SideSteamParticles3D_R" type="GPUParticles3D" parent="Steam" unique_id=1942219132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6157528, 0.5291842, -1.8913789)

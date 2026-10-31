@@ -1,0 +1,267 @@
+[
+	{
+		"key": "loco_faur",
+		"display_name": "FAUR 750mm",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_faur/model_loco_faur.tscn",
+		"max_speed_kmh": 45,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": true,
+		"length_metres": 9.5,
+		"motor_power_kw": 436.5,
+		"mass_tonnes": 34.0
+	},
+	{
+		"key": "wismar_railbus",
+		"display_name": "Wismar Railbus",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/wismar_railbus/model_wismar_railbus.tscn",
+		"max_speed_kmh": 60,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": true,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 65
+		},
+		"length_metres": 13.107,
+		"motor_power_kw": 74,
+		"mass_tonnes": 6.2
+	},
+	{
+		"key": "saechs_wagon_kb4",
+		"display_name": "S\u00e4chs. Schmalspurwagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/saechs_wagon_kb4/model_saechs_kb4_wagon.tscn",
+		"max_speed_kmh": 40,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 70
+		},
+		"length_metres": 12.256,
+		"motor_power_kw": null,
+		"mass_tonnes": 11.4
+	},
+	{
+		"key": "mpsb_wismar_wagon",
+		"display_name": "MPSB Passenger Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/model_mpsb_wismar_wagon.tscn",
+		"max_speed_kmh": 35,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 45
+		},
+		"length_metres": 11.764,
+		"motor_power_kw": null,
+		"mass_tonnes": 10.0
+	},
+	{
+		"key": "soviet_torp_wagon",
+		"display_name": "Soviet Kipper Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_torp_wagon/model_soviet_torp_wagon.tscn",
+		"max_speed_kmh": 60,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 80
+		},
+		"length_metres": 7.241,
+		"motor_power_kw": null,
+		"mass_tonnes": 5.3
+	},
+	{
+		"key": "mpsb_12",
+		"display_name": "MPSB No 12",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn",
+		"max_speed_kmh": 38,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": true,
+		"length_metres": 7.367,
+		"motor_power_kw": 147,
+		"mass_tonnes": 16.5
+	},
+	{
+		"key": "loco_tu6a",
+		"display_name": "TU6A",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_tu6a/model_loco_tu6a.tscn",
+		"max_speed_kmh": 40,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": true,
+		"length_metres": 9.29,
+		"motor_power_kw": 147.1,
+		"mass_tonnes": 1.4
+	},
+	{
+		"key": "pv40_soviet_wagon",
+		"display_name": "PV40 Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/pv40_soviet_wagon/model_pv40_soviet_wagon.tscn",
+		"max_speed_kmh": 40,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 55
+		},
+		"length_metres": 10.762,
+		"motor_power_kw": null,
+		"mass_tonnes": 9.5
+	},
+	{
+		"key": "dr_umbauwagen",
+		"display_name": "DR Umbauwagen",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_umbauwagen/model_dr_umbauwagen.tscn",
+		"max_speed_kmh": 90,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 48
+		},
+		"length_metres": 13.169,
+		"motor_power_kw": null,
+		"mass_tonnes": 16.4
+	},
+	{
+		"key": "dr_v60",
+		"display_name": "DR V60",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v60/model_dr_v60.tscn",
+		"max_speed_kmh": 50,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": true,
+		"length_metres": 10.803,
+		"motor_power_kw": 478,
+		"mass_tonnes": 6.5
+	},
+	{
+		"key": "laenderbahn_wagon",
+		"display_name": "L\u00e4nderbahn Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/laenderbahn_wagon/model_laenderbahn_wagon.tscn",
+		"max_speed_kmh": 50,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 55
+		},
+		"length_metres": 10.84,
+		"motor_power_kw": null,
+		"mass_tonnes": 29.0
+	},
+	{
+		"key": "boxcar_german",
+		"display_name": "German Boxcar",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/boxcar_german/model_boxcar_german.tscn",
+		"max_speed_kmh": 65,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 50
+		},
+		"length_metres": 8.985,
+		"motor_power_kw": null,
+		"mass_tonnes": 12.2
+	},
+	{
+		"key": "soviet_tgm6",
+		"display_name": "TGM 6",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_tgm6/model_soviet_tgm6.tscn",
+		"max_speed_kmh": 75,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": true,
+		"length_metres": 13.723,
+		"motor_power_kw": 136,
+		"mass_tonnes": 82.0
+	},
+	{
+		"key": "dr_v100",
+		"display_name": "DR V100",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v100/model_dr_v100.tscn",
+		"max_speed_kmh": 80,
+		"usable_infr": {
+			"subtype": "NORMAL_GAUGE"
+		},
+		"has_motor": true,
+		"length_metres": 14.332,
+		"motor_power_kw": 736,
+		"mass_tonnes": 64.0
+	},
+	{
+		"key": "mpsb_open_wagon",
+		"display_name": "MPSB Open Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_open_wagon/model_mpsb_open_wagon.tscn",
+		"max_speed_kmh": 35,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "AGGREGATE",
+			"amount": 28
+		},
+		"length_metres": 6.453,
+		"motor_power_kw": null,
+		"mass_tonnes": 3.0
+	},
+	{
+		"key": "fkbn_t1_motorwagon",
+		"display_name": "FKB T1 Motorwagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/model_fkbn_t1_motorwagon.tscn",
+		"max_speed_kmh": 60,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": true,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 48
+		},
+		"length_metres": 12.461,
+		"motor_power_kw": 70,
+		"mass_tonnes": 18.0
+	},
+	{
+		"key": "soviet_vz20_tank_wagon",
+		"display_name": "VZ20 Tank Wagon",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/model_soviet_vz20_tank_wagon.tscn",
+		"max_speed_kmh": 45,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": false,
+		"capacity": {
+			"cat": "LIQUID",
+			"amount": 15
+		},
+		"length_metres": 12.2,
+		"motor_power_kw": null,
+		"mass_tonnes": 16.0
+	}
+]

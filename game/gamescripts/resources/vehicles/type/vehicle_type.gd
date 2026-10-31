@@ -1,9 +1,6 @@
 @icon("uid://dxyodhnxhip0d")
 class_name VehicleTypeData extends Resource
 
-const SCENE_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/vehicle_%s.tscn"
-const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
-
 @export var key: String
 
 @export var display_name: String
@@ -20,6 +17,11 @@ const PREVIEW_PATH_FORMAT = "res://assets/meshes/vehicles/rail/%s/preview.png"
 
 @export var length_metres: float
 
+## Empty vehicle mass in metric tonnes and motor output in kilowatts. Variant preserves unknown (null) values;
+## typed floats would turn unknown values into zero.
+var mass_tonnes: Variant = null
+var motor_power_kw: Variant = null
+
 #region Initialization
 static func of_key(_key: String) -> VehicleTypeData:
 	var inst: VehicleTypeData = VehicleTypeData.new()
@@ -32,10 +34,10 @@ static func of_dict(_dict: Dictionary) -> VehicleTypeData:
 
 #region Getters
 func get_mesh_path() -> String:
-	return SCENE_PATH_FORMAT % [self.key, self.key]
+	return self.model_scene_path
 	
 func get_preview_img_path() -> String:
-	return PREVIEW_PATH_FORMAT % self.key
+	return self.model_scene_path.get_base_dir().path_join("preview.png")
 	
 func is_locomotive(): return self.has_motor
 
