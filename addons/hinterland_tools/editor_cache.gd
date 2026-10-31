@@ -1,4 +1,5 @@
 @tool
+@icon("res://assets/icons/nodes_3d/icon_editor_cache.svg")
 extends Node3D
 
 ## Local map-owned authoring lines. JSON saving/loading is handled by InfrJsonStore.

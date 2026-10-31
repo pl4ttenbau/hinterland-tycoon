@@ -4,21 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cuottkr0x0n74" path="res://assets/textures/terrain_new/packed/grass_default/grass_default_dh_1024.png" id="2_1swi7"]
 [ext_resource type="Texture2D" uid="uid://djbvpfkytryib" path="res://assets/textures/terrain_new/packed/dirt/dirt_dh_1024.png" id="4_qswbg"]
 [ext_resource type="Texture2D" uid="uid://bliho70le672s" path="res://assets/textures/terrain_new/packed/pavement/pavement_dh_1024.png" id="5_2561v"]
+[ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="6_2561v"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="6_eddt3"]
-[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="6_qswbg"]
 [ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="7_2561v"]
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jlqps"]
-_shader_parameters = {
-&"bias_distance": 512.0,
-&"blend_sharpness": 0.5,
-&"depth_blur": 0.0,
-&"flat_terrain_normals": false,
-&"mipmap_bias": 1.0,
-&"shader_uniforms": null,
-&"shader_uniforms::general": null,
-&"shader_uniforms::mipmaps": null
-}
 world_background = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gvba"]
@@ -121,16 +111,15 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="CustomTerrain3DParticles" parent="." unique_id=1790827538 node_paths=PackedStringArray("terrain") instance=ExtResource("6_eddt3")]
-terrain = NodePath("..")
-instance_spacing = 0.296875
 rows = 80
 amount = 6400
+terrain = NodePath("..")
+instance_spacing = 0.296875
 mesh = SubResource("RibbonTrailMesh_c2xmk")
-particle_count = 160000
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=689973240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.102036, 3.222314, 45.46585)
+[node name="LittlePondWater" type="MeshInstance3D" parent="." unique_id=689973240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.94775, 4.521064, 45.46585)
 mesh = SubResource("PlaneMesh_ecp7s")
-surface_material_override/0 = ExtResource("6_qswbg")
+surface_material_override/0 = ExtResource("6_2561v")
 
 [node name="DayEnvironment" parent="." unique_id=490904955 instance=ExtResource("7_2561v")]

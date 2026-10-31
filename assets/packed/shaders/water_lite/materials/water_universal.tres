@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" uid="uid://bdn35m53paere" path="res://assets/packed/shaders/water_lite/water_lite.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://byuurf6hi56af" path="res://assets/packed/shaders/water_lite/textures/water_surface_rg_normal_b_roughness.png" id="2"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/surface_data = ExtResource("2")
+shader_parameter/water_color = Color(0.04, 0.095, 0.095, 1)
+shader_parameter/tile_meters = 14.0
+shader_parameter/normal_strength = 0.85
+shader_parameter/roughness_offset = 0.0
+shader_parameter/drift_a = Vector2(0.045, 0.021)
+shader_parameter/drift_b = Vector2(-0.027, 0.038)

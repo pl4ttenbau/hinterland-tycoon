@@ -1839,3 +1839,5 @@ metadata/_custom_type_script = "uid://byq8dj7pajain"
 script = ExtResource("59_03nvo")
 metadata/initialized_roads = true
 metadata/initialized_roads_visible_sources = true
+metadata/initialized_rails = true
+metadata/initialized_rails_visible_sources = true

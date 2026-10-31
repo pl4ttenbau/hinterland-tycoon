@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" uid="uid://8jtbxfkjn5u7" path="res://assets/packed/shaders/water_lite/textures/water_normal_opengl.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d38eym1uo03lf" path="res://assets/packed/shaders/water_lite/textures/water_roughness.png" id="2"]
+
+[resource]
+albedo_color = Color(0.04, 0.095, 0.095, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 1.0
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 0
+normal_enabled = true
+normal_scale = 0.85
+normal_texture = ExtResource("1")
+uv1_scale = Vector3(8, 8, 8)
+texture_filter = 5
