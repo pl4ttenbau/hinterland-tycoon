@@ -31,3 +31,11 @@ These cover initialization order, persistent definitions between sessions, and a
 Residence definitions live in `game/jsondata/residence_types.json`. Each entry requires a unique `key`, a nonempty `name`, a `res://` scene path in `scene_path`, and `pops` containing two nonnegative integer counts. `block_auto_placement` is optional and defaults to `false`. The two population counts are explicit data; the loader does not derive the second count from the first. Scene paths are independent of residence keys. Existing model paths are retained by this migration; catalog validation does not load or check the scene assets.
 
 Residence `themes` is an optional array of uppercase `Enums.Location` names: `NORTHERN_GERMANY`, `SOUTHERN_GERMANY`, `POLAND`, and `SOVIET_UNION`. Omitted or empty themes mean unclassified; duplicates and unknown names are rejected. The loader converts names into the typed `ResBldType.themes` enum array. Theme assignments are maintained in the JSON catalog. Map metadata keeps the JSON field `loc`, using the same uppercase names; `MapData.loc` holds the corresponding enum value. These fields are metadata for future house placement; this change does not filter house generation.
+
+Infrastructure drawing checks:
+
+```sh
+godot --headless --path . --log-file /tmp/infr-drawing-tests.log --script res://tests/infr_drawing_test.gd -- --no-mcp
+```
+
+These exercise endpoint filtering and exact-height snapping, preview versus accepted points, duplicate-click rejection, cancellation, unique road/rail IDs, scene ownership, and commit/undo/redo operations using an isolated history adapter. In the editor, select Create Road or Create Rail: click to add points, Enter to finish, Backspace to remove the last point, Escape to cancel the draft. A green sphere indicates endpoint snapping. Scene changes and tool switches discard the draft. New lines are saved in the existing infrastructure containers; JSON export remains explicit. Viewport interaction still needs a visual editor check.
