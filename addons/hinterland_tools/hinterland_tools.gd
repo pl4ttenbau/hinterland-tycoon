@@ -16,6 +16,7 @@ var json_store = preload("res://addons/hinterland_tools/infr_json_store.gd").new
 var select_button: Button
 var object_selection = preload("res://addons/hinterland_tools/object_selection_tool.gd").new()
 var file_status: Label
+var residence_road_preview: Node
 
 var drawing = preload("res://addons/hinterland_tools/infr_drawing_tool.gd").new()
 
@@ -37,6 +38,8 @@ func _enter_tree() -> void:
 	self.editor_signals = EDITOR_SIGNALS_SCRIPT.new()
 	self.editor_signals.name = "EditorSignals"
 	self.add_child(self.editor_signals)
+	self.residence_road_preview = preload("res://addons/hinterland_tools/residence_road_preview.gd").new()
+	self.add_child(self.residence_road_preview)
 	self.map_panel = TOOLS_PANEL_SCENE.instantiate()
 	# Unique scene names keep the plugin independent of the panel's container layout.
 	self.build_town_button = self.map_panel.get_node("%BuildTown")
@@ -65,6 +68,8 @@ func _enter_tree() -> void:
 func _exit_tree() -> void:
 	print("Deactivating HinterlandTycoon plugin")
 	self._disconnect_world()
+	if is_instance_valid(self.residence_road_preview):
+		self.residence_road_preview.queue_free()
 	self.scene_changed.disconnect(self._on_scene_changed)
 	self.get_undo_redo().version_changed.disconnect(self._on_history_version_changed)
 	self.remove_control_from_bottom_panel(self.map_panel)

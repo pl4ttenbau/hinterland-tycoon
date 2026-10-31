@@ -58,6 +58,7 @@ func test_service_lifecycle() -> bool:
 	self.check(SignalBus.map_selected.get_connections().size() == connection_count, "Repeated initialization does not duplicate listeners")
 	self.check(self.local_completions == 1 and self.global_completions == 1, "Completion signals fire once per coordinator")
 	self.check(coordinator.rails.track_storage.track_added.is_connected(coordinator.forks._on_track_loaded), "Fork loader is wired to track storage")
+	self.check(SignalBus.roads_spawned.is_connected(coordinator.town_buildings._on_roads_spawned), "House connections wait for roads to spawn")
 	var replacement: WorldServicesCoordinator = SERVICES.instantiate()
 	self.add_child(replacement)
 	self.check(replacement.initialize() == ERR_ALREADY_IN_USE, "A second active session cannot replace service registrations")
@@ -116,6 +117,25 @@ func test_residence_conversion() -> bool:
 	self.check(runtime.get_node_or_null("StaticBody3D") != null, "Shared model collider survives conversion")
 	self.check(runtime.res_bld_obj.is_registered and runtime.res_bld_obj.town_num == town.num, "Converted house has registered runtime data and town assignment")
 	self.check(runtime.num != legacy.num, "Runtime houses receive distinct IDs")
+	var roads := RoadsLoader.new()
+	Managers.roads = roads
+	var road := RoadData.of(77, "rural_road")
+	var door_script: Script = load("res://game/gamescripts/nodes/structures/residence_door.gd")
+	self.check(door.get_script() == door_script, "Runtime door retains the exit helper")
+	road.start_pos = door.get_exit_position() - Vector3(20, 0, 0)
+	road.curve = Curve3D.new()
+	road.curve.add_point(Vector3.ZERO)
+	road.curve.add_point(Vector3(100, 0, 0))
+	roads.storage.add(road)
+	holder._on_roads_spawned()
+	self.check(runtime.res_bld_obj.road_connection != null and is_equal_approx(runtime.res_bld_obj.road_connection.dist_from_zero, 20), "Runtime loading connects using the door tail")
+	self.check(legacy.res_bld_obj.road_connection != null, "Legacy houses without doors use their origins")
+	road.start_pos.y += 100
+	holder.refresh_road_connections()
+	self.check(runtime.res_bld_obj.road_connection == null, "Runtime refresh clears a connection outside the cutoff")
+	GlobalState.roads.erase(road)
+	Managers.roads = null
+	roads.free()
 	for residence: Residence3D in holder.placed_buildings:
 		GlobalState.res_blds.erase(residence.res_bld_obj)
 		GlobalState.res_bld_containers.erase(residence)

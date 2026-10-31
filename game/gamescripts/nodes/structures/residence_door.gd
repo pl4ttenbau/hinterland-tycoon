@@ -27,6 +27,7 @@ func _enter_tree() -> void:
 	arrow.mesh = ARROW_MESH
 	arrow.transform = get_arrow_transform()
 	arrow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	arrow.visibility_range_end = 50.0
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color("fc7f7f")
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED

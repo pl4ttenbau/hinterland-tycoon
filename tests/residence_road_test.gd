@@ -15,6 +15,7 @@ func _ready() -> void:
 func _run() -> void:
 	check(test_connections(), "Connection checks complete")
 	check(test_door(), "Door checks complete")
+	check(test_editor_batch(), "Editor batch checks complete")
 	print("Residence road tests: %d failures" % failures)
 	get_tree().quit(1 if failures > 0 else 0)
 
@@ -80,4 +81,47 @@ func test_door() -> bool:
 	check(not door.get_exit_position().is_equal_approx(expected), "Rotating the door updates the exit")
 	check(door.get_child_count() == 0, "Runtime exit calculation needs no preview mesh")
 	house.free()
+	return true
+
+func test_editor_batch() -> bool:
+	var world := Node3D.new()
+	add_child(world)
+	var collector: Node = load("res://game/gamescripts/nodes/world/collections/world_houses.gd").new()
+	world.add_child(collector)
+	var house: Node3D = load("res://game/gamescripts/nodes/structures/editor_residence_3d.gd").new()
+	collector.add_child(house)
+	var door := DOOR.new()
+	house.add_child(door)
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(100, 0, 0))
+	var source := EditorInfrLine3D.ofRoad(7)
+	source.curve = curve
+	world.add_child(source)
+	var cache := Node3D.new()
+	cache.name = "EditorCache"
+	world.add_child(cache)
+	var edited := EditorInfrLine3D.ofRoad(7)
+	edited.curve = curve
+	cache.add_child(edited)
+	edited.position.z = 100
+	collector.do_refresh_road_connections()
+	check(house.road_connection == null, "Cached road overrides a nearer, stale source with the same ID")
+	edited.position.z = 0
+	collector.do_refresh_road_connections()
+	check(house.road_connection != null and house.road_connection.road_num == 7, "Batch refresh stores a connection on the editor residence")
+	var saved_connection: Resource = house.road_connection
+	var preview: Node = load("res://addons/hinterland_tools/residence_road_preview.gd").new()
+	add_child(preview)
+	preview.update_for_house(house, world)
+	var visual: MeshInstance3D = world.get_node_or_null("_ResidenceRoadPreview")
+	check(visual != null and visual.owner == null and visual.mesh.get_surface_count() == 1, "Connection preview renders without being saved into the map")
+	check(house.road_connection == saved_connection, "Preview does not modify saved connection data")
+	edited.position.z = 100
+	preview.update_for_house(house, world)
+	check(world.get_node_or_null("_ResidenceRoadPreview") == null, "Preview disappears when the road moves beyond 50 metres")
+	preview.free()
+	collector.do_refresh_road_connections()
+	check(house.road_connection == null, "Batch refresh clears stale out-of-range connections")
+	world.free()
 	return true

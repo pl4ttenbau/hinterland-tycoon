@@ -87,6 +87,7 @@ func _wire_services() -> void:
 	self._listen(SignalBus.map_spawned, self.roads._on_world_spawned)
 	self._listen(SignalBus.map_selected, self.roads._on_map_selected)
 	self._listen(SignalBus.roads_spawned, self.road_exit_connector._on_roads_spawned)
+	self._listen(SignalBus.roads_spawned, self.town_buildings._on_roads_spawned)
 	self._listen(SignalBus.industries_spawned, self.road_exit_connector._on_industries_spawned)
 	self._listen(SignalBus.rails_spawned, self.vehicles._on_rails_rails_spawned)
 	self._listen(SignalBus.map_spawned, self.industries._on_terrain_loaded)

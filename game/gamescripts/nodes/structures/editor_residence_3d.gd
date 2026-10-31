@@ -5,6 +5,7 @@ class_name EditorResidence3D extends Node3D
 ## Authoring data only. Children contain the shared model and optional Door marker.
 @export var placed_res_bld_type: String
 @export var placed_town_num: int
+@export var road_connection: RoadConnection
 
 ## Replace only the runtime instance; preserve authored children and their overrides.
 func create_runtime() -> Residence3D:
