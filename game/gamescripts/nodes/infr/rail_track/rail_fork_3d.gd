@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_fork.png")
+@icon("res://assets/icons/nodes_3d/icon_fork.svg")
 class_name RailFork3D extends GameEntity3D
 
 signal fork_obj_set(set_fork_obj: NewRailForkData)

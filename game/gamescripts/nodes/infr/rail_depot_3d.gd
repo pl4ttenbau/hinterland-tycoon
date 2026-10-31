@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_depot.png")
+@icon("res://assets/icons/nodes_3d/icon_depot.svg")
 class_name RailDepot3D extends GameEntity3D
 
 const SCENE_PATH = "uid://c8f1x2eykmxwk"

@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_industry.png")
+@icon("res://assets/icons/nodes_3d/icon_industry.svg")
 class_name Industry3D extends InventoryEntity3D
 
 static var last_ind_num: int = 0

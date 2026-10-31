@@ -1,5 +1,5 @@
 @tool
-@icon("res://assets/icons/icon_data.png")
+@icon("res://assets/icons/nodes_3d/icon_data.svg")
 class_name GeneratedInfrContainer extends Node3D
 
 @export_group("Infr. Actions")

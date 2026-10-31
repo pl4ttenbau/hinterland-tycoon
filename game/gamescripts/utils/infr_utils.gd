@@ -2,6 +2,7 @@
 class_name InfrUtils extends RefCounted
 
 const MIN_SMOOTH_POINT_DISTANCE: float = 0.0001
+const GROUND_CLEARANCE: float = 0.2
 
 ## Interpolate the existing points with centripetal Catmull-Rom, expressed as
 ## Curve3D's relative Bezier handles. Point positions (including snapped ends)

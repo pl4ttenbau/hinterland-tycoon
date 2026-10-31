@@ -18,9 +18,10 @@ func place_terrain_scene(_terrain_container: WorldMapScene):
 	
 func register_scene(instanciated_scene: WorldMapScene):
 	# This is a runtime instance; the saved editor scene remains untouched.
-	var editor_objects: Node = instanciated_scene.get_node_or_null("EditorObjects")
-	if editor_objects:
-		editor_objects.free()
+	for editor_node_name: String in ["EditorObjects", "EditorCache"]:
+		var editor_node: Node = instanciated_scene.get_node_or_null(editor_node_name)
+		if editor_node:
+			editor_node.free()
 	self.terrain_container = instanciated_scene
 	self.place_terrain_scene(instanciated_scene)
 	# finished

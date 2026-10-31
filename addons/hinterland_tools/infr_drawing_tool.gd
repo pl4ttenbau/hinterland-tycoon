@@ -22,6 +22,7 @@ func begin(map: WorldMapScene, infr_domain: Enums.InfrDomain) -> void:
 	clear()
 	world = map
 	domain = infr_domain
+	preload("res://addons/hinterland_tools/editor_cache.gd").ensure_container(world, domain)
 	# No owner: these editor-only visuals never enter the saved scene.
 	overlay = Node3D.new()
 	overlay.name = "InfrastructureDrawingPreview"
@@ -63,7 +64,7 @@ func refresh_endpoints() -> void:
 	if not is_instance_valid(world):
 		return
 	for node: Node in world.find_children("*", "", true, false):
-		if node is EditorInfrLine3D and node.infr_domain == domain:
+		if node is EditorInfrLine3D and node.infr_domain == domain and node.is_visible_in_tree():
 			endpoints.append(node)
 
 func hide_pointer() -> void:
@@ -76,6 +77,10 @@ func hide_pointer() -> void:
 func update_pointer(camera: Camera3D, mouse: Vector2, terrain_point: Vector3, terrain_valid: bool) -> void:
 	placement_valid = terrain_valid
 	placement = terrain_point
+	# Lift terrain placements once, before preview/commit. Snapping below replaces
+	# this with the exact endpoint position, so adjoining lines stay coincident.
+	if terrain_valid:
+		placement.y += InfrUtils.GROUND_CLEARANCE
 	var best: float = SNAP_PIXELS
 	var selected: EditorInfrLine3D = null
 	var selected_index: int = -1
@@ -150,31 +155,23 @@ func redraw() -> void:
 func finish(history: Object) -> bool:
 	if points.size() < 2 or not is_instance_valid(world):
 		return false
-	var container: Node3D
-	var next_num: int = 1
+	var container: Node3D = preload("res://addons/hinterland_tools/editor_cache.gd").ensure_container(world, domain)
+	# Include IDs that exist only in JSON, before they are generated in the editor.
+	var next_num: int = preload("res://addons/hinterland_tools/infr_json_store.gd").next_number(world, domain)
+	if next_num < 0:
+		return false
 	# Re-scan on commit: undo/redo and manual scene edits can change the ID range.
 	for node: Node in world.find_children("*", "", true, false):
-		if (domain == Enums.InfrDomain.ROAD and node is GeneratedRoadWays) or (domain == Enums.InfrDomain.RAIL and node is GeneratedRailLines):
-			container = node as Node3D
 		if node is EditorInfrLine3D and node.infr_domain == domain:
 			next_num = maxi(next_num, node.num + 1)
 	if container == null:
 		push_warning("Cannot draw infrastructure: this map has no matching EditorRoads/EditorRails container.")
 		return false
 	var parent: Node3D = container
-	var new_group: Node3D
-	if domain == Enums.InfrDomain.ROAD:
-		var group_min: int = (next_num / 50) * 50
-		var group_name: String = "%d__%d" % [group_min, group_min + 49]
-		parent = container.get_node_or_null(group_name) as Node3D
-		if parent == null:
-			new_group = Node3D.new()
-			new_group.name = group_name
-			parent = new_group
 	var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, next_num, "Drawn road" if domain == Enums.InfrDomain.ROAD else "Drawn rail", true)
 	# The overlay uses world coordinates. Store the saved curve in its parent's
 	# local coordinates, so translated infrastructure containers work correctly.
-	var parent_transform: Transform3D = container.global_transform if new_group != null else parent.global_transform
+	var parent_transform: Transform3D = parent.global_transform
 	line.position = parent_transform.affine_inverse() * points[0]
 	line.curve = Curve3D.new()
 	var world_curve: Curve3D = make_curve(false)
@@ -185,18 +182,9 @@ func finish(history: Object) -> bool:
 		line.curve.add_point(inverse * points[idx] - line.position,
 			inverse.basis * world_curve.get_point_in(idx), inverse.basis * world_curve.get_point_out(idx))
 	history.create_action("Create road" if domain == Enums.InfrDomain.ROAD else "Create rail", UndoRedo.MERGE_DISABLE, world)
-	if new_group != null:
-		history.add_do_method(container, "add_child", new_group, true)
-		history.add_do_method(new_group, "set_owner", world)
 	history.add_do_method(parent, "add_child", line, true)
 	history.add_do_method(line, "set_owner", world)
-	if domain == Enums.InfrDomain.ROAD:
-		history.add_do_property(container, "curr_max_road_num", next_num)
-		history.add_undo_property(container, "curr_max_road_num", container.curr_max_road_num)
 	history.add_undo_method(parent, "remove_child", line)
-	if new_group != null:
-		history.add_undo_method(container, "remove_child", new_group)
-		history.add_do_reference(new_group)
 	history.add_do_reference(line)
 	history.commit_action()
 	points.clear()

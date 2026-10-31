@@ -73,7 +73,7 @@ static func place_on_ground(infr3d: EditorInfrLine3D):
 		if global_terr_h <= 0 || global_terr_h == NAN:
 			Loggie.error("error while getting terrain height")
 			continue
-		var global_infr_h: float = global_terr_h + .2
+		var global_infr_h: float = global_terr_h + InfrUtils.GROUND_CLEARANCE
 		var new_global_pos: Vector3 = Vector3(old_point_global_pos.x, global_infr_h, old_point_global_pos.z)
 		var new_local_pos: Vector3 = infr3d.to_local(new_global_pos)
 		infr3d.curve.set_point_position(curve_i, new_local_pos)

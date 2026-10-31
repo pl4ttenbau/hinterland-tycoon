@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_locomotive.png")
+@icon("res://assets/icons/nodes_3d/icon_locomotive.svg")
 class_name Train3D extends InventoryEntity3D
 
 const EMPTY_SCENE_PATH = "res://scenes/subscenes/vehicle/train_3d.tscn"

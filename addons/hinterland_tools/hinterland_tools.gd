@@ -12,6 +12,10 @@ var build_town_button: Button
 var active_world: WorldMapScene
 var road_button: Button
 var rail_button: Button
+var json_store = preload("res://addons/hinterland_tools/infr_json_store.gd").new()
+var file_buttons: Array[Button] = []
+var file_status: Label
+
 var drawing = preload("res://addons/hinterland_tools/infr_drawing_tool.gd").new()
 
 func _enable_plugin() -> void:
@@ -38,6 +42,14 @@ func _enter_tree() -> void:
 	self.road_button = self.map_panel.get_node("%CreateRoad")
 	self.rail_button = self.map_panel.get_node("%CreateRail")
 	self.tool_status = self.map_panel.get_node("%ToolStatus")
+	self.file_status = self.map_panel.get_node("%FileStatus")
+	self.map_panel.get_node("%FreeTool").pressed.connect(self._on_free_tool_pressed)
+	for domain: Enums.InfrDomain in [Enums.InfrDomain.ROAD, Enums.InfrDomain.RAIL]:
+		var suffix: String = "Roads" if domain == Enums.InfrDomain.ROAD else "Rails"
+		for operation: String in ["Save", "Load"]:
+			var button: Button = self.map_panel.get_node("%" + operation + suffix)
+			button.pressed.connect(self._on_json_action.bind(operation == "Save", domain))
+			self.file_buttons.append(button)
 	self.road_button.toggled.connect(self._on_draw_toggled.bind(Enums.InfrDomain.ROAD))
 	self.rail_button.toggled.connect(self._on_draw_toggled.bind(Enums.InfrDomain.RAIL))
 	# Defer until ButtonGroup has finished unpressing the previous tool.
@@ -46,6 +58,7 @@ func _enter_tree() -> void:
 	self.editor_signals.terrain_clicked.connect(self.drawing.add_point)
 	self.add_control_to_bottom_panel(self.map_panel, "HinterlandTycoon")
 	self.scene_changed.connect(self._on_scene_changed)
+	self.get_undo_redo().version_changed.connect(self._on_history_version_changed, CONNECT_DEFERRED)
 	# Receive viewport input even when no node handled by this plugin is selected.
 	self.set_input_event_forwarding_always_enabled()
 	# The plugin may be enabled after a map is already open.
@@ -56,6 +69,7 @@ func _exit_tree() -> void:
 	print("Deactivating HinterlandTycoon plugin")
 	self._disconnect_world()
 	self.scene_changed.disconnect(self._on_scene_changed)
+	self.get_undo_redo().version_changed.disconnect(self._on_history_version_changed)
 	self.remove_control_from_bottom_panel(self.map_panel)
 	self.map_panel.queue_free()
 	self.remove_editor_state()
@@ -124,6 +138,10 @@ func _on_scene_changed(root: Node) -> void:
 	self.road_button.disabled = self.active_world == null
 	self.rail_button.disabled = self.active_world == null
 	self._update_tool_status()
+	self.json_store.managed_ids.clear()
+	self.file_status.text = "Save JSON keeps a backup and clears the saved cache. Load JSON restores it."
+	for button: Button in self.file_buttons:
+		button.disabled = self.active_world == null
 	if self.active_world:
 		self.editor_signals.terrain_clicked.connect(self._on_terrain_clicked)
 
@@ -149,6 +167,12 @@ func _on_draw_toggled(enabled: bool, domain: Enums.InfrDomain) -> void:
 	elif self.drawing.domain == domain:
 		self.drawing.clear()
 
+func _on_free_tool_pressed() -> void:
+	for button: Button in [self.build_town_button, self.road_button, self.rail_button]:
+		button.set_pressed_no_signal(false)
+	self.drawing.clear()
+	self._update_tool_status()
+
 func _update_tool_status() -> void:
 	if not is_instance_valid(self.active_world):
 		self.tool_status.text = "No tool selected · Open a world map to use the editor tools."
@@ -159,3 +183,32 @@ func _update_tool_status() -> void:
 		self.tool_status.text = "Build Town · Click terrain to pick a position (placement is not implemented yet) · Click Build Town again to leave the tool."
 	else:
 		self.tool_status.text = "No tool selected · Select Create Road or Create Rail to start drawing."
+
+func _on_json_action(save: bool, domain: Enums.InfrDomain) -> void:
+	if not is_instance_valid(self.active_world):
+		return
+	if not self.drawing.points.is_empty():
+		self.file_status.text = "Finish the current draft with Enter or cancel it with Esc before saving/loading."
+		return
+	var result: Dictionary = self.json_store.save_world(self.active_world, domain) if save else self.json_store.load_world(self.active_world, domain, self.get_undo_redo())
+	if not result.ok:
+		self.file_status.text = result.error
+		push_warning(result.error)
+		return
+	var kind: String = "roads" if domain == Enums.InfrDomain.ROAD else "rails"
+	self.file_status.text = "%s %d %s." % ["Saved" if save else "Loaded", result.count, kind]
+	if save:
+		self.json_store.flush_saved(self.active_world, domain, self.get_undo_redo())
+		self.file_status.text += " Visible cache cleared; Load JSON restores it."
+		self.file_status.text += " Backup: " + result.backup if not result.backup.is_empty() else " New JSON file created."
+		EditorInterface.get_resource_filesystem().scan()
+	if is_instance_valid(self.drawing.world):
+		self.drawing.refresh_endpoints()
+		self.drawing.hide_pointer()
+
+func _on_history_version_changed() -> void:
+	# Loading replaces whole subtrees. Undo can bring back older endpoint nodes,
+	# so rebuild snap targets instead of retaining references to detached lines.
+	if is_instance_valid(self.drawing.world):
+		self.drawing.refresh_endpoints()
+		self.drawing.hide_pointer()

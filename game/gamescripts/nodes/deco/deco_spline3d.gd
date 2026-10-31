@@ -1,6 +1,6 @@
 ## Scenes for Deco Splines must be in a subfolder of the "meshes/deco"-folder and
 ## named <spline_key>_spline.tscn
-@icon("res://assets/icons/icon_deco.png")
+@icon("res://assets/icons/nodes_3d/icon_deco.svg")
 class_name DecoSpline3D extends GameEntity3D
 
 @export var spline: DecoSplineData:

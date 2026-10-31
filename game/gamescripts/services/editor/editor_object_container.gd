@@ -1,5 +1,5 @@
 @tool
-@icon("res://assets/icons/icon_editor.png")
+@icon("res://assets/icons/nodes_3d/icon_editor.svg")
 class_name WorldEditorObjects extends Node3D
 
 @export var map_key: String

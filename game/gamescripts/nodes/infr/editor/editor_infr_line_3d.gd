@@ -1,5 +1,5 @@
 @tool
-@icon("res://assets/icons/icon_infr_node.png")
+@icon("res://assets/icons/nodes_3d/icon_infr_node.svg")
 class_name EditorInfrLine3D extends LinePath3D
 
 const RAIL_COLOR = Color.BLACK

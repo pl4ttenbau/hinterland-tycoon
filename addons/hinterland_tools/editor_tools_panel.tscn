@@ -36,9 +36,49 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_tools")
 text = "Create Rail"
 
+[node name="FreeTool" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Deselect the active tool and cancel any unfinished draft. Finished roads and rails are kept."
+text = "Free Tool"
+
 [node name="ToolStatus" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "No tool selected · Select Create Road or Create Rail to start drawing."
 autowrap_mode = 3
+
+[node name="JsonButtons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SaveRoads" type="Button" parent="JsonButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Roads JSON"
+tooltip_text = "Save roads.json with a timestamped backup, then clear visible cached roads. Load Roads JSON restores them."
+
+[node name="LoadRoads" type="Button" parent="JsonButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Roads JSON"
+tooltip_text = "Replace editor roads from roads.json. Undo restores the previous editor roads."
+
+[node name="SaveRails" type="Button" parent="JsonButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Rails JSON"
+tooltip_text = "Save tracks.json with a timestamped backup, then clear visible cached rails. Load Rails JSON restores them."
+
+[node name="LoadRails" type="Button" parent="JsonButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Rails JSON"
+tooltip_text = "Replace editor rails from tracks.json. Undo restores the previous editor rails."
+
+[node name="FileStatus" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+text = "Save JSON keeps a backup and clears the saved cache. Load JSON restores it."

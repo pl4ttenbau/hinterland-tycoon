@@ -1,4 +1,4 @@
-@icon("uid://u0j0akdffkcy")
+@icon("res://assets/icons/nodes_3d/icon_locomotive.svg")
 class_name Vehicle3D extends GameEntity3D
 
 @export var vehicle_obj: VehicleData

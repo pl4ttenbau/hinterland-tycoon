@@ -1,4 +1,4 @@
-@icon("res://assets/icons/icon_house_3d.png")
+@icon("res://assets/icons/nodes_3d/icon_house.svg")
 class_name StationBuilding3D extends Node3D
 
 @export var node_link_3d: NodeStationLink3D

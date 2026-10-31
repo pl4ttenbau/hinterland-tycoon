@@ -1,5 +1,5 @@
 @tool
-@icon("res://assets/icons/icon_mouse_3d.png")
+@icon("res://assets/icons/nodes_3d/icon_mouse.svg")
 class_name WorldCursor3D extends Marker3D
 
 @export_tool_button("Put On Ground")

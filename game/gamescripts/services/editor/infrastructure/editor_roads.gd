@@ -1,4 +1,4 @@
-@icon("uid://dyg1oiarkflpi")
+@icon("res://assets/icons/nodes_3d/icon_road.svg")
 @tool
 class_name GeneratedRoadWays extends Node3D
 

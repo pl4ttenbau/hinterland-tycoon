@@ -35,7 +35,7 @@
 	{
 		"key": "city_house_1",
 		"name": "City House",
-		"scene_path": "res://assets/meshes/structures/city_house_1/city_house_1.tscn",
+		"scene_path": "res://assets/meshes/structures/city_row_house_1/city_row_house_1.tscn",
 		"pops": [
 			16,
 			5
@@ -90,7 +90,7 @@
 	{
 		"key": "old_city_house_1",
 		"name": "City House",
-		"scene_path": "res://assets/meshes/structures/old_city_house_1/old_city_house_1.tscn",
+		"scene_path": "res://assets/meshes/structures/old_city_row_house_1/old_city_house_1.tscn",
 		"pops": [
 			6,
 			2
@@ -213,7 +213,7 @@
 	{
 		"key": "vitte_fischerhaus",
 		"name": "Fishing House",
-		"scene_path": "res://assets/meshes/structures/vitte_fischerhaus/vitte_fischerhaus.tscn",
+		"scene_path": "res://assets/meshes/structures/vitt_fischerhaus/vitt_fischerhaus.tscn",
 		"pops": [
 			6,
 			2
