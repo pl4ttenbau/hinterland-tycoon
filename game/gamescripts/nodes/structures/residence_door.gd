@@ -4,10 +4,20 @@ class_name ResidenceDoor extends Marker3D
 
 ## Place at foot level, with local -Z pointing out of the doorway.
 ## The arrow's flat tail (non-pointed end) marks the actual door exit.
-## Future road connections must use that tail, not the marker origin, mesh center,
+## Road connections must use that tail, not the marker origin, mesh center,
 ## or arrow tip. The tip only indicates the outward direction.
 
 const ARROW_MESH: Mesh = preload("res://assets/meshes/markers/arrow/fork_arrow.obj")
+
+func get_arrow_transform() -> Transform3D:
+	var bottom: float = ARROW_MESH.get_aabb().position.y
+	return Transform3D(Basis.IDENTITY.scaled(Vector3.ONE * 0.8), Vector3(0, 0.08 - bottom * 0.8, 0))
+
+## World-space center of the flat tail face, matching the editor preview exactly.
+func get_exit_position() -> Vector3:
+	var bounds: AABB = ARROW_MESH.get_aabb()
+	var tail: Vector3 = bounds.position + Vector3(bounds.size.x * 0.5, bounds.size.y * 0.5, bounds.size.z)
+	return to_global(get_arrow_transform() * tail)
 
 func _enter_tree() -> void:
 	if not Engine.is_editor_hint() or has_node("_DirectionArrow"):
@@ -15,9 +25,7 @@ func _enter_tree() -> void:
 	var arrow := MeshInstance3D.new()
 	arrow.name = "_DirectionArrow"
 	arrow.mesh = ARROW_MESH
-	arrow.scale = Vector3.ONE * 0.8
-	# The switch mesh sits above its origin; place its underside just above feet.
-	arrow.position.y = 0.08 - ARROW_MESH.get_aabb().position.y * 0.8
+	arrow.transform = get_arrow_transform()
 	arrow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color("fc7f7f")
