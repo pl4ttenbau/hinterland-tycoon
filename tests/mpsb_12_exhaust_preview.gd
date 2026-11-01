@@ -40,20 +40,17 @@ func _ready() -> void:
 	ground.material_override = ground_material
 	add_child(ground)
 	_train = load(Train3D.EMPTY_SCENE_PATH).instantiate() as Train3D
-	_train._create_motor(Enums.PathDirection.TRACK_NODES_INCREASE)
+	_train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
 	_locomotive = load("res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn").instantiate() as Vehicle3D
 	_locomotive.vehicle_obj = VehicleData.new()
 	_locomotive.train3d = _train
 	_train.add_vehicle(_locomotive, true)
 	add_child(_train)
-	_train.set_physics_process(false)
-	# Freeze the speed ramp; this preview moves the vehicle directly at 4 m/s.
-	for child: Node in _train.get_children():
-		if child is Timer:
-			child.stop()
-	_train.motor.start()
-	_train.motor.speed.current = 0.6
-	_train.motor.speed.target = 0.6
+	_train.movement.set_physics_process(false)
+	## Request a constant speed; this preview positions the locomotive directly at 4 m/s.
+	_train.movement.start()
+	_train.movement.speed.current = 0.6
+	_train.movement.speed.target = 0.6
 	_exhaust = _locomotive.get_node("Steam/ChimneyExhaust") as Node3D
 	_exhaust.chuff_rate_hz = 1.4
 	_camera = Camera3D.new()

@@ -1,7 +1,7 @@
 @tool
 extends "res://addons/steam_exhaust/steam_exhaust.gd"
-## MPSB 12 bridge: sample world motion on the same physics tick as Train3D.
-## The motor currently exposes target speed and brake state, not boiler pressure;
+## MPSB 12 bridge: sample world motion on the same physics tick as TrainMovement.
+## The movement controller exposes target speed and brake state, not boiler pressure;
 ## these are used as an artistic estimate of exhaust effort.
 
 @export var locomotive: Vehicle3D
@@ -40,9 +40,9 @@ func _update_motor_effort() -> void:
 	engine_load = 0.0
 	if is_instance_valid(locomotive) and is_instance_valid(locomotive.train3d):
 		var train: Train3D = locomotive.train3d
-		var train_motor: TrainMotor = train.motor
-		if is_instance_valid(train_motor) and train_motor.is_started and not train.derailed:
-			var speed: VehicleSpeed = train_motor.speed
+		var train_movement: TrainMovement = train.movement
+		if is_instance_valid(train_movement) and train_movement.is_started and not train.movement.derailed:
+			var speed: VehicleSpeed = train_movement.speed
 			if speed != null:
 				if speed.brake_applied or speed.target < speed.current - 0.005:
 					engine_load = 0.05

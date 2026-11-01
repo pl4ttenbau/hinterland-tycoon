@@ -17,6 +17,7 @@ var select_button: Button
 var object_selection = preload("res://addons/hinterland_tools/object_selection_tool.gd").new()
 var file_status: Label
 var residence_road_preview: Node
+var line_node_markers: InfrLineNodeMarkers
 
 var drawing = preload("res://addons/hinterland_tools/infr_drawing_tool.gd").new()
 
@@ -40,6 +41,8 @@ func _enter_tree() -> void:
 	self.add_child(self.editor_signals)
 	self.residence_road_preview = preload("res://addons/hinterland_tools/residence_road_preview.gd").new()
 	self.add_child(self.residence_road_preview)
+	self.line_node_markers = InfrLineNodeMarkers.new()
+	self.add_child(self.line_node_markers)
 	self.map_panel = TOOLS_PANEL_SCENE.instantiate()
 	# Unique scene names keep the plugin independent of the panel's container layout.
 	self.build_town_button = self.map_panel.get_node("%BuildTown")
@@ -70,6 +73,9 @@ func _exit_tree() -> void:
 	self._disconnect_world()
 	if is_instance_valid(self.residence_road_preview):
 		self.residence_road_preview.queue_free()
+	if is_instance_valid(self.line_node_markers):
+		self.line_node_markers.clear()
+		self.line_node_markers.queue_free()
 	self.scene_changed.disconnect(self._on_scene_changed)
 	self.get_undo_redo().version_changed.disconnect(self._on_history_version_changed)
 	self.remove_control_from_bottom_panel(self.map_panel)
@@ -87,7 +93,17 @@ func remove_editor_state():
 #endregion
 
 #region Callables
+func _handles(object: Object) -> bool:
+	return object is EditorInfrLine3D
+
+func _edit(object: Object) -> void:
+	if is_instance_valid(self.line_node_markers):
+		self.line_node_markers.show_line(object as EditorInfrLine3D)
+
 func _forward_3d_gui_input(camera: Camera3D, event: InputEvent) -> AfterGUIInput:
+	if is_instance_valid(self.line_node_markers):
+		self.line_node_markers.set_process(true)
+		self.line_node_markers.update_view(camera)
 	# Leave selection and camera navigation to Godot when the tool is inactive.
 	if not is_instance_valid(self.active_world) or not (self.build_town_button.button_pressed or self.road_button.button_pressed or self.rail_button.button_pressed or self._selection_active()):
 		return AFTER_GUI_INPUT_PASS
@@ -157,6 +173,8 @@ func _on_scene_changed(root: Node) -> void:
 
 func _disconnect_world() -> void:
 	self.drawing.clear()
+	if is_instance_valid(self.line_node_markers):
+		self.line_node_markers.clear()
 	if self.editor_signals.terrain_clicked.is_connected(self._on_terrain_clicked):
 		self.editor_signals.terrain_clicked.disconnect(self._on_terrain_clicked)
 	self.active_world = null

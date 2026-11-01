@@ -35,7 +35,7 @@ func spawn_train(spawn_dto: TrainVehicleListDto):
 			veh_index += 1
 		Loggie.info("Spawned new vehicle in direction: %s" % start_pos.dir)
 		# start
-		train3d.motor.start()
+		train3d.movement.start()
 		
 func build_start_pos_dto(depot_obj: RailDepotData) -> VehicleStartPos:
 	var depot_node_index := depot_obj.get_depot_rail_node().index

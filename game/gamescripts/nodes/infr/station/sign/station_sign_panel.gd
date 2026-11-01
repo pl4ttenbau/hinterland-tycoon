@@ -1,3 +1,4 @@
+@tool
 class_name StationSignPanel extends PanelContainer
 
 const HIDE_EMPTY_GOOD_TYPES: bool = false
@@ -9,7 +10,9 @@ signal cargo_amount_changed(cargo_amount: int)
 	get(): return station_name
 	set(value):
 		station_name = value
-		%StationNameLabel.text = value
+		var label := self.get_node_or_null("%StationNameLabel") as Label
+		if label != null:
+			label.text = value
 
 @export var passengers_amount: int:
 	get(): return passengers_amount
@@ -28,11 +31,11 @@ signal cargo_amount_changed(cargo_amount: int)
 
 #region Initialization
 func _ready() -> void:
-	self.passengers_amount_changed.connect(Callable(self, "_on_passengers_amount_changed"))
-	self.cargo_amount_changed.connect(Callable(self, "_on_cargo_amount_changed"))
-	# initialize to hide both
-	self.passengers_amount = 0
-	self.cargo_amount = 0
+	self.passengers_amount_changed.connect(self._on_passengers_amount_changed)
+	self.cargo_amount_changed.connect(self._on_cargo_amount_changed)
+	self.station_name = self.station_name
+	self._on_passengers_amount_changed(self.passengers_amount)
+	self._on_cargo_amount_changed(self.cargo_amount)
 #endregion
 
 #region Callbacks

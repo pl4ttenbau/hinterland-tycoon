@@ -1,0 +1,309 @@
+[
+	{
+		"num": 1,
+		"name": "HBF",
+		"townNum": 31,
+		"townName": "Wernigerode",
+		"stops": [
+			{
+				"num": 1,
+				"domain": "RAIL",
+				"trackNum": 31,
+				"nodeIndex": 3,
+				"type": "STATION_PASS",
+				"hideBuilding": true
+			},
+			{
+				"num": 24,
+				"domain": "RAIL",
+				"trackNum": 78,
+				"nodeIndex": 3,
+				"type": "STATION_PASS",
+				"hideBuilding": true
+			},
+			{
+				"num": 25,
+				"domain": "RAIL",
+				"trackNum": 80,
+				"nodeIndex": 4,
+				"type": "STATION_PASS",
+				"hideBuilding": true
+			}
+		]
+	},
+	{
+		"num": 2,
+		"name": "Neustadt",
+		"townNum": 31,
+		"townName": "Wernigerode",
+		"stops": []
+	},
+	{
+		"num": 3,
+		"name": "Bhf",
+		"townNum": 16,
+		"townName": "Darlingerode",
+		"stops": []
+	},
+	{
+		"num": 4,
+		"name": "HBF",
+		"townNum": 2,
+		"townName": "Ilsenburg",
+		"stops": []
+	},
+	{
+		"num": 5,
+		"name": "Bhf",
+		"townNum": 7,
+		"townName": "Rübeland",
+		"stops": []
+	},
+	{
+		"num": 6,
+		"name": "Kleiner Stein",
+		"townNum": 7,
+		"townName": "Rübeland",
+		"stops": [
+			{
+				"num": 6,
+				"domain": "RAIL",
+				"trackNum": 6,
+				"nodeIndex": 8,
+				"type": "STATION_GOODS",
+				"hideBuilding": true
+			}
+		]
+	},
+	{
+		"num": 7,
+		"name": "Bhf",
+		"townNum": 8,
+		"townName": "Drei-Annen-Hohne",
+		"stops": [
+			{
+				"num": 7,
+				"domain": "RAIL",
+				"trackNum": 56,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 23,
+				"domain": "RAIL",
+				"trackNum": 57,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 8,
+		"name": "Bhf",
+		"townNum": 14,
+		"townName": "Hasserode",
+		"stops": [
+			{
+				"num": 8,
+				"domain": "RAIL",
+				"trackNum": 74,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 9,
+		"name": "Kirchstr.",
+		"townNum": 14,
+		"townName": "Hasserode",
+		"stops": []
+	},
+	{
+		"num": 10,
+		"name": "Ort",
+		"townNum": 4,
+		"townName": "Elend",
+		"stops": [
+			{
+				"num": 10,
+				"domain": "RAIL",
+				"trackNum": 14,
+				"nodeIndex": 8,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 11,
+		"name": "Ort",
+		"townNum": 9,
+		"townName": "Schierke",
+		"stops": [
+			{
+				"num": 11,
+				"domain": "RAIL",
+				"trackNum": 19,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 12,
+		"name": "Brewery",
+		"townNum": 14,
+		"townName": "Hasserode",
+		"stops": []
+	},
+	{
+		"num": 13,
+		"name": "Bhf",
+		"townNum": 6,
+		"townName": "Elbingerode",
+		"stops": [
+			{
+				"num": 13,
+				"domain": "RAIL",
+				"trackNum": 92,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 26,
+				"domain": "RAIL",
+				"trackNum": 93,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 14,
+		"name": "Bhf",
+		"townNum": 11,
+		"townName": "Heudeber",
+		"stops": []
+	},
+	{
+		"num": 15,
+		"name": "HBF",
+		"townNum": 1,
+		"townName": "Braunlage",
+		"stops": [
+			{
+				"num": 15,
+				"domain": "RAIL",
+				"trackNum": 39,
+				"nodeIndex": 1,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 16,
+		"name": "Wurmberg",
+		"townNum": 1,
+		"townName": "Braunlage",
+		"stops": [
+			{
+				"num": 16,
+				"domain": "RAIL",
+				"trackNum": 47,
+				"nodeIndex": 6,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 17,
+		"name": "Peak",
+		"townNum": 1,
+		"townName": "Brocken",
+		"stops": [
+			{
+				"num": 17,
+				"domain": "RAIL",
+				"trackNum": 28,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 18,
+		"name": "Knaupsholz",
+		"townNum": 9,
+		"townName": "Schierke",
+		"stops": [
+			{
+				"num": 18,
+				"domain": "RAIL",
+				"trackNum": 63,
+				"nodeIndex": 12,
+				"type": "STATION_GOODS",
+				"hideBuilding": true
+			}
+		]
+	},
+	{
+		"num": 19,
+		"name": "Westerntor",
+		"townNum": 31,
+		"townName": "Wernigerode",
+		"stops": [
+			{
+				"num": 19,
+				"domain": "RAIL",
+				"trackNum": 13,
+				"nodeIndex": 8,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 20,
+		"name": "Hornberg",
+		"townNum": 6,
+		"townName": "Elbingerode",
+		"stops": [
+			{
+				"num": 20,
+				"domain": "RAIL",
+				"trackNum": 53,
+				"nodeIndex": 3,
+				"type": "STATION_GOODS"
+			}
+		]
+	},
+	{
+		"num": 21,
+		"name": "Bhf.",
+		"townNum": 18,
+		"townName": "Königshütte",
+		"stops": [
+			{
+				"num": 21,
+				"domain": "RAIL",
+				"trackNum": 96,
+				"nodeIndex": 12,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 22,
+		"name": "Stahlwerk",
+		"townNum": 18,
+		"townName": "Königshütte",
+		"stops": [
+			{
+				"num": 22,
+				"domain": "RAIL",
+				"trackNum": 97,
+				"nodeIndex": 4,
+				"type": "STATION_GOODS"
+			}
+		]
+	}
+]

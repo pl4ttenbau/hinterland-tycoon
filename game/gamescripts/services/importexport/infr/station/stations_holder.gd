@@ -1,28 +1,56 @@
 @icon("res://assets/icons/icon_station_white.png")
 class_name StationsHolder extends Node
 
-const MAP_STATIONS_FILEPATH_FORMAT := "res://world/%s/jsondata/stations.json"
 const STATION_3D_SCENE_PATH = "res://scenes/subscenes/infr/station/rail_station_3d.tscn"
 
 @export var node_stations_storage: NodeStationLinkStore = NodeStationLinkStore.new()
 
 @export var stations_objs: Array[RailStationData] = []
 @export var stations_by_num: Dictionary = {}
+var is_loaded: bool = false
 
 #region RailStationData & RailStation3D
 ## here the station parents, RailStationData & RailStation3D are created
-func load_stations():
-	Loggie.info("Loading stations..")
-	var full_json_path := MAP_STATIONS_FILEPATH_FORMAT % GlobalState.selected_map_name
-	var stations_arr_string: String = FileAccess.get_file_as_string(full_json_path)
-	for station_dict in JSON.parse_string(stations_arr_string):
-		var station_obj: RailStationData = RailStationData.of_dict(station_dict)
+func load_stations(catalog: InterchangesLoader = null) -> Error:
+	if self.is_loaded:
+		return OK
+	if catalog == null:
+		catalog = Managers.interchanges
+	if catalog == null or not catalog.is_loaded or Managers.rails == null:
+		return ERR_UNCONFIGURED
+	# Check every rail anchor first, including node zero. No station is published
+	# until the complete rail portion can be attached without replacing a link.
+	for definition: Dictionary in catalog.stop_definitions:
+		if definition["domain"] != "RAIL":
+			continue
+		var track: RailTrackData = Managers.rails.track_storage._by_id.get(int(definition["trackNum"]))
+		if track == null or not track.has_node_index(int(definition["nodeIndex"])) \
+				or track.nodes[int(definition["nodeIndex"])].station != null:
+			return ERR_INVALID_DATA
+	for definition: Dictionary in catalog.stop_definitions:
+		if definition["domain"] != "RAIL":
+			continue
+		var station_obj: RailStationData = RailStationData.of_dict(definition)
+		if station_obj == null:
+			return ERR_INVALID_DATA
+		var error: Error = catalog.register_stop(station_obj, int(definition["interchangeNum"]))
+		if error != OK:
+			return error
 		self.stations_objs.append(station_obj)
-		stations_by_num.set(station_obj.num, station_obj)
-	# connect RailNodeStations to parents
-	self.connect_node_stations_to_parents()
-	# save in global state & inform signal bus
+		self.stations_by_num[station_obj.num] = station_obj
+		var track: RailTrackData = Managers.rails.track_storage._by_id[station_obj.track_num]
+		var node: RailNodeData = track.nodes[station_obj.node_index]
+		# Retain the node-link adapter used by rail catchments/signs. Its number is
+		# now the authored stop ID, not a new auto-generated identity on each load.
+		var link := NodeStationLinkData.of(node, station_obj.num)
+		link.num = station_obj.num
+		link.hide_building = station_obj.hide_building
+		node.station = link
+		station_obj.connect_node_station(link)
+		self.add_station_link_from_node(link)
 	GlobalState.station_objs = self.stations_objs
+	self.is_loaded = true
+	return OK
 
 ## spawns new RailStation3D instances
 func create_3d_stations():
@@ -92,7 +120,27 @@ func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
 	self.spawn_station_links()
 
 func _on_map_towns_loaded(_map_towns: Array[TownData]):
-	self.load_stations()
+	# Data and interchange membership were resolved before terrain/town spawning.
+	if not self.is_loaded:
+		return
 	self.create_3d_stations()
 	SignalBus.stations_loaded.emit(self.stations_objs)
 #endregion
+
+func _exit_tree() -> void:
+	# Rail resources can outlive their scene through global/editor references.
+	# Detach our session-owned adapters instead of leaving stale station links.
+	for link: NodeStationLinkData in self.node_stations_storage.get_all():
+		if link.parent_node != null:
+			if link.parent_node.station == link:
+				link.parent_node.station = null
+			var track := link.parent_node.parent_track as RailTrackData
+			if track != null:
+				track.node_stations.erase(link)
+		link.parent_station = null
+		link.parent_node = null
+		link.station3d = null
+	for station: RailStationData in self.stations_objs:
+		station.node_stations.clear()
+	self.stations_objs.clear()
+	self.stations_by_num.clear()

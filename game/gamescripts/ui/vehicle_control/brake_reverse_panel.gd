@@ -20,12 +20,12 @@ func _ready() -> void:
 #endregion
 
 func _update_controls() -> void:
-	var has_train := is_instance_valid(curr_train) and is_instance_valid(curr_train.motor)
+	var has_train := is_instance_valid(curr_train) and is_instance_valid(curr_train.movement)
 	%BrakeButton.disabled = not has_train
 	%ReverseButton.disabled = not has_train
-	brake = curr_train.motor.speed.brake_applied if has_train else false
+	brake = curr_train.movement.speed.brake_applied if has_train else false
 	## Read the train state so rejected reversals and train changes display correctly.
-	self.reverse = self.curr_train.is_reversed if has_train else false
+	self.reverse = self.curr_train.movement.is_reversed if has_train else false
 	%BrakeButton.set_pressed_no_signal(brake)
 	%ReverseButton.set_pressed_no_signal(reverse)
 	%BrakeLamp.texture = LAMP_AMBER if brake else LAMP_OFF
@@ -36,32 +36,32 @@ func _update_controls() -> void:
 	%BrakeButton.tooltip_text = "Service brake: slows and holds the train. Release to resume the selected target speed."
 
 func _on_brake_click(applied: bool) -> void:
-	if not is_instance_valid(curr_train) or not is_instance_valid(curr_train.motor):
+	if not is_instance_valid(curr_train) or not is_instance_valid(curr_train.movement):
 		_update_controls()
 		return
-	curr_train.motor.speed.brake_applied = applied
+	curr_train.movement.speed.brake_applied = applied
 
 func _on_brake_changed(_applied: bool) -> void:
 	_update_controls()
 
 func _on_reverse_click(state: bool) -> void:
-	if not is_instance_valid(curr_train) or not is_instance_valid(curr_train.motor):
+	if not is_instance_valid(curr_train) or not is_instance_valid(curr_train.movement):
 		_update_controls()
 		return
 	reverse = state
-	curr_train.reverse_from_current_spot()
+	curr_train.movement.reverse_from_current_spot()
 	_update_controls()
 
 func _disconnect_train() -> void:
-	if is_instance_valid(curr_train) and is_instance_valid(curr_train.motor):
-		var train_speed: VehicleSpeed = curr_train.motor.speed
+	if is_instance_valid(curr_train) and is_instance_valid(curr_train.movement):
+		var train_speed: VehicleSpeed = curr_train.movement.speed
 		if train_speed.brake_changed.is_connected(_on_brake_changed):
 			train_speed.brake_changed.disconnect(_on_brake_changed)
 
 func _on_train_entered(train3d: Train3D) -> void:
 	_disconnect_train()
 	curr_train = train3d
-	curr_train.motor.speed.brake_changed.connect(_on_brake_changed)
+	curr_train.movement.speed.brake_changed.connect(_on_brake_changed)
 	_update_controls()
 
 func _on_train_exited() -> void:

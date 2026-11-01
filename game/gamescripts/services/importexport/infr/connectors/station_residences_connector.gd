@@ -5,45 +5,59 @@ class_name StationResidencesConnector extends Node
 @export var has_buildings_placed: bool = false
 @export var has_made_initial_connections: bool = false
 
-func connect_stations_to_residences():
-	if !self.has_buildings_placed || !self.has_stations_loaded: return
-	if self.has_made_initial_connections: return
-	self.reassign_all_buildings_to_stations()
-	self.has_made_initial_connections = true
-	
-func reassign_all_buildings_to_stations():
-	Loggie.info("Connecting stations to residences..")
-	var connected_total_buildings: int = 0
-	for town: TownData in GlobalState.towns:
-		var connected_new = self.reassign_town_buildings_to_stations(town)
-		connected_total_buildings += connected_new
-	self.has_made_initial_connections = true
-	Loggie.info("Connected %d town buildings with stations" % connected_total_buildings)
-	
-func reassign_town_buildings_to_stations(town: TownData) -> int:
-	var connected_town_buildings: int = 0
-	for outer_res_bld: Residence3D in town.res_bld_containers:
-		var closest_node_station := NodeStationLinkData.find_closest_station_to_bld(outer_res_bld)
-		if closest_node_station:
-			self.connect_residence_to_station(outer_res_bld, closest_node_station, town)
-			connected_town_buildings += 1
-	return connected_town_buildings
-	
-func connect_residence_to_station(outer_res_bld: Residence3D, closest_node_station: NodeStationLinkData,
-		res_bld_town: TownData):
-	outer_res_bld.res_bld_obj.connected_station = closest_node_station
-	closest_node_station.parent_station.connections.connect_house(outer_res_bld)
-	closest_node_station.parent_station.connected_town = res_bld_town
+func connect_stations_to_residences() -> void:
+	if has_buildings_placed and has_stations_loaded and not has_made_initial_connections:
+		reassign_all_buildings_to_stations()
 
-#region Callbacks
-func _on_stations_loaded(_stations: Array[RailStationData]):
-	self.has_stations_loaded = true
-	# self.connect_stations_to_residences()
-	
-func _on_residences_placed():
-	self.has_buildings_placed = true
-	# self.connect_stations_to_residences()
-	
-func _on_rails_spawned(_containers: Array[RailTrack3D]):
-	self.connect_stations_to_residences()
-#endregion
+func reassign_all_buildings_to_stations() -> void:
+	if not is_instance_valid(Managers.interchanges):
+		return
+	for interchange: InterchangeData in Managers.interchanges.interchanges:
+		interchange.connections.clear_houses()
+	for town: TownData in GlobalState.towns:
+		reassign_town_buildings_to_stations(town)
+	has_made_initial_connections = true
+
+func reassign_town_buildings_to_stations(town: TownData) -> int:
+	var count: int = 0
+	for house: Residence3D in town.res_bld_containers:
+		if house.res_bld_obj == null:
+			continue
+		# Remove any former membership before reassignment, including lost coverage.
+		var data: ResidenceBuildingData = house.res_bld_obj
+		if data.connected_interchange != null:
+			var old: StationConnections = data.connected_interchange.connections
+			for index: int in range(old.houses.size() - 1, -1, -1):
+				if old.houses[index].house == house:
+					old.houses.remove_at(index)
+		data.connected_interchange = null
+		data.reachable_stops.clear()
+		data.connected_station = null
+		var access: Dictionary = Managers.interchanges.find_access(house.global_position)
+		if access.is_empty():
+			continue
+		data.connected_interchange = access.interchange
+		data.reachable_stops.assign(access.stops)
+		access.interchange.connections.connect_house(house, data.reachable_stops)
+		# Compatibility for consumers of the old rail-node reference. Passenger
+		# spawning uses reachable_stops, including road-only interchanges.
+		for stop: AbstractStation in data.reachable_stops:
+			if stop is RailStationData and not stop.node_stations.is_empty():
+				data.connected_station = stop.node_stations[0]
+				break
+		count += 1
+	return count
+
+func _on_stops_linked() -> void:
+	has_stations_loaded = true
+	connect_stations_to_residences()
+
+func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
+	_on_stops_linked()
+
+func _on_residences_placed() -> void:
+	has_buildings_placed = true
+	connect_stations_to_residences()
+
+func _on_rails_spawned(_containers: Array[RailTrack3D]) -> void:
+	connect_stations_to_residences()

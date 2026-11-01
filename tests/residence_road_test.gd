@@ -16,6 +16,7 @@ func _run() -> void:
 	check(test_connections(), "Connection checks complete")
 	check(test_door(), "Door checks complete")
 	check(test_editor_batch(), "Editor batch checks complete")
+	check(test_town_center(), "Town center checks complete")
 	print("Residence road tests: %d failures" % failures)
 	get_tree().quit(1 if failures > 0 else 0)
 
@@ -81,6 +82,33 @@ func test_door() -> bool:
 	check(not door.get_exit_position().is_equal_approx(expected), "Rotating the door updates the exit")
 	check(door.get_child_count() == 0, "Runtime exit calculation needs no preview mesh")
 	house.free()
+	return true
+
+func test_town_center() -> bool:
+	var town := TownData.new()
+	var road := RoadData.of(23, "rural_road")
+	var crossing := RoadNode.new()
+	crossing.position = Vector3(100, 7, 200)
+	crossing.cross = RoadCross.new()
+	crossing.cross.connecting_roads = [24]
+	road.nodes = [crossing]
+	var roads: Array[RoadData] = [road]
+	check(town.get_center_node(roads) == null, "Existing towns have no implicit center")
+	town.center_road_num = 23
+	town.center_node_index = 0
+	check(town.get_center_node(roads) == crossing, "Road point zero can be the town center at road elevation")
+	var path: String = "/tmp/town-center-%d.tres" % OS.get_process_id()
+	check(ResourceSaver.save(town, path) == OK, "Town center reference serializes")
+	var restored: TownData = ResourceLoader.load(path, "", ResourceLoader.CACHE_MODE_IGNORE)
+	check(restored != null and restored.get_center_node(roads) == crossing, "Town center reference survives saving and loading")
+	DirAccess.remove_absolute(path)
+	town.center_node_index = 1
+	check(town.get_center_node(roads) == null, "Removed crossing nodes do not resolve")
+	town.center_node_index = 0
+	crossing.cross = null
+	check(town.get_center_node(roads) == null, "A road point without a crossing cannot be the center")
+	town.center_road_num = 999
+	check(town.get_center_node(roads) == null, "Missing center roads do not resolve")
 	return true
 
 func test_editor_batch() -> bool:

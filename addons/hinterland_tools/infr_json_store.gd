@@ -1,5 +1,5 @@
 @tool
-extends RefCounted
+class_name InfrJsonStore extends RefCounted
 
 # JSON is the saved source of truth. Only unsaved cached lines are merged into it;
 # removing an edit from the cache discards that edit, not the saved road.

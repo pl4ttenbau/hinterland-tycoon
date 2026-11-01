@@ -14,7 +14,7 @@ func check(value: bool, message: String) -> void:
 		push_error(message)
 
 func run(tree: SceneTree) -> int:
-	for test: String in ["test_selection", "test_save_requests"]:
+	for test: String in ["test_selection", "test_node_markers", "test_save_requests"]:
 		check(call(test, tree) == true, test + " completed")
 	print("Editor selection tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures else 0
@@ -96,6 +96,69 @@ func test_selection(tree: SceneTree) -> bool:
 	selector.register_picker(picker)
 	check(selector.pickers.size() == 2 and selector.pick(world, camera, mouse).target == town, "Additional picker types can register once and return their own semantic targets")
 	viewport.free()
+	return true
+
+func test_node_markers(tree: SceneTree) -> bool:
+	var world := Node3D.new()
+	tree.root.add_child(world)
+	var road: EditorInfrLine3D = line(world, Enums.InfrDomain.ROAD, 1, [Vector3.ZERO, Vector3(5, 0, 0), Vector3(10, 1, 0)])
+	var rail: EditorInfrLine3D = line(world, Enums.InfrDomain.RAIL, 2, [Vector3.ZERO, Vector3(0, 0, 5)])
+	var markers := InfrLineNodeMarkers.new()
+	tree.root.add_child(markers)
+	markers.show_line(road)
+	var visual: Node3D = markers._visual
+	check(visual.get_child_count() == 3, "Only the selected line's actual curve nodes receive markers")
+	check(visual.get_child(0).mesh is BoxMesh and visual.get_child(1).mesh is SphereMesh, "Index zero is a cube; subsequent nodes are round")
+	check(visual.owner == null and visual.get_child(0).owner == null, "Selection markers are never owned by the saved scene")
+	check(road.get_children().find(visual) == -1, "Internal markers stay out of ordinary authoring child traversal")
+	var overlay_material: StandardMaterial3D = visual.get_child(1).material_override
+	check(overlay_material.no_depth_test and overlay_material.transparency == BaseMaterial3D.TRANSPARENCY_ALPHA and overlay_material.depth_draw_mode == BaseMaterial3D.DEPTH_DRAW_DISABLED and overlay_material.render_priority == Material.RENDER_PRIORITY_MAX, "Markers render as a foreground overlay after opaque and transparent geometry")
+	world.position = Vector3(4, 2, 3)
+	world.rotation.y = 0.5
+	world.scale = Vector3(2, 1, 0.5)
+	check(visual.get_child(2).global_position.is_equal_approx(road.to_global(road.curve.get_point_position(2))), "Markers follow translated, rotated and scaled infrastructure")
+	var camera := Camera3D.new()
+	world.add_child(camera)
+	camera.global_transform = Transform3D(Basis.IDENTITY, Vector3(0, 0, 100))
+	for projection: int in [Camera3D.PROJECTION_PERSPECTIVE, Camera3D.PROJECTION_ORTHOGONAL]:
+		camera.projection = projection
+		for distance: float in [100.0, 1000.0]:
+			camera.global_position.z = distance
+			markers.update_view(camera)
+			var marker: MeshInstance3D = visual.get_child(1)
+			var projected_size: float = camera.unproject_position(marker.global_position).distance_to(camera.unproject_position(marker.global_position + camera.global_basis.y * marker.global_basis.y.length()))
+			check(absf(projected_size - 14.0) < 0.1, "Round markers retain a 14-pixel diameter across camera distance/projection and parent scale")
+	road.curve.set_point_position(1, Vector3(6, 2, 1))
+	check(not visual.visible and markers._visual.get_child(1).position == Vector3(6, 2, 1), "Curve edits replace the preview immediately")
+	var replacement := Curve3D.new()
+	replacement.add_point(Vector3.ZERO)
+	replacement.add_point(Vector3.ONE)
+	road.curve = replacement
+	check(markers._visual.get_child_count() == 2, "Replacing the curve refreshes marker count")
+	visual = markers._visual
+	markers.show_line(rail)
+	check(not visual.visible and markers._visual.get_parent() == rail, "Selecting another line removes the previous markers")
+	visual = markers._visual
+	markers.clear()
+	check(not visual.visible and markers._visual == null, "Deselecting clears the overlay")
+	markers.update_selection([], road)
+	check(markers._visual != null, "Inspector-only selection of a locked line restores its markers")
+	markers._visual.free()
+	markers.update_selection([], road)
+	check(is_instance_valid(markers._visual), "Repeated selection repairs a removed overlay on the same line")
+	markers.update_selection([rail], rail.curve)
+	check(markers._visual.get_parent() == rail, "Inspecting the curve resource keeps its selected line's markers")
+	markers.update_selection([], world)
+	check(markers._visual == null, "Selecting another object clears inspector-only markers")
+	markers.show_line(road)
+	world.remove_child(road)
+	check(markers._visual == null, "Undo/removing the selected line clears its overlay")
+	road.free()
+	markers.show_line(rail)
+	visual = markers._visual
+	markers.free()
+	check(not visual.visible, "Unloading the plugin clears its selected-line overlay")
+	world.free()
 	return true
 
 func test_save_requests(tree: SceneTree) -> bool:

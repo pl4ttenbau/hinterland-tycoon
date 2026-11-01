@@ -32,11 +32,8 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		Managers.rails.fork_storage.add(inst)
 		# add to node
 		self.fork = inst
-	if rail_node_dict.has("station"):
-		var station_dict: Dictionary = rail_node_dict.get("station")
-		var node_station_link: NodeStationLinkData = NodeStationLinkData.of_station_dict(station_dict, self)
-		self.station = node_station_link
-		Managers.stations.add_station_link_from_node(node_station_link)
+	# Stops are attached in the interchange-loading phase, after both networks
+	# exist. Track geometry no longer creates stations as a parsing side effect.
 
 func as_ref() -> RailNodeRef:
 	var track_num: int = self.parent_track.num

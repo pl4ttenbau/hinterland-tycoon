@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ch7sv6kjy6a0g"]
+
+[ext_resource type="PackedScene" uid="uid://b4gf4jqaxlbqy" path="res://assets/meshes/infr/road/bus_stop_1/mesh/bus_stop_1.obj" id="1_qcy8j"]
+
+[node name="MeshBusTop1" type="Node3D" unique_id=1484963525]
+
+[node name="bus_stop_1" parent="." unique_id=509502484 instance=ExtResource("1_qcy8j")]

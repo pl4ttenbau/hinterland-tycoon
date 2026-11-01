@@ -24,6 +24,7 @@ func _on_local_initialized(coordinator: WorldServicesCoordinator) -> void:
 	self.check(Managers.towns == coordinator.towns and Managers.town_buildings == coordinator.town_buildings, "Town services are registered")
 	self.check(Managers.rails == coordinator.rails and Managers.forks == coordinator.forks and Managers.roads == coordinator.roads, "Infrastructure services are registered")
 	self.check(Managers.stations == coordinator.stations and Managers.depots == coordinator.depots, "Stations and depots are registered")
+	self.check(Managers.interchanges == coordinator.interchanges and Managers.road_stops == coordinator.road_stops, "Interchange and road stop services are registered before loading")
 	self.check(Managers.vehicles == coordinator.vehicles and Managers.industries == coordinator.industries and Managers.map_spawner == coordinator.map_spawner, "Remaining world services are registered")
 	self.check(coordinator.town_buildings.has_res_bld_types_loaded, "Late subscribers use persistent type readiness")
 	self.check(not coordinator.world_timer.is_stopped() and not coordinator.passenger_timer.is_stopped(), "Timers start after wiring")

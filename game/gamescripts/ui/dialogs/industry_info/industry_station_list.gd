@@ -8,11 +8,11 @@ class_name IndustryStationList extends MarginContainer
 
 func build_table():
 	# get rid of default item
-	%StationsTable.remove_item(0)
+	%StationsTable.clear()
 	# and add correct one (railway only now)
 	var station_conn: StationIndustryConnection = self.industry.station_connection
 	if station_conn:
-		var station_name = station_conn.station.station_name
+		var station_name: String = station_conn.interchange.interchange_name if station_conn.interchange != null else station_conn.station.station_name
 		%StationsTable.add_item(station_name, null, false)
 	else:
 		%StationsTable.add_item("none", null, false)

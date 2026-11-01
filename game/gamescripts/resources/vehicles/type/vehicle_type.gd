@@ -7,7 +7,9 @@ class_name VehicleTypeData extends Resource
 
 @export var model_scene_path: String
 
-@export var max_speed_kmh: int
+## Road models may be catalogued before their operating specifications are known.
+## Loaded rail definitions still require a positive integer speed.
+var max_speed_kmh: Variant = null
 
 @export var usable_infr: UsableInfrType
 

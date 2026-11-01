@@ -48,7 +48,18 @@ func test_visible_connections(tree: SceneTree) -> bool:
 	check(a.get_parent() == source and source.visible, "Visible EditorObjects roads are not adopted or hidden by cache")
 	check(a.end_connections.size() == 2 and b.start_connections.size() == 2 and c.start_connections.size() == 2, "Three roads connect reciprocally across cache and source")
 	check(a.start_connections.is_empty(), "Open endpoint remains unconnected")
-	check(a.end_connections[0].endpoint == 0, "Inspector identifies the neighboring endpoint")
+	check(a.end_connections[0].endpoint == Enums.EnumStartOrEnd.START, "Inspector identifies the neighboring start")
+	check(b.start_connections[0].endpoint == Enums.EnumStartOrEnd.END, "Inspector identifies the neighboring end")
+	var target: Resource = a.end_connections[0]
+	var endpoint_property: Dictionary = {}
+	for property: Dictionary in target.get_property_list():
+		if property.name == "endpoint":
+			endpoint_property = property
+	var enum_labels: String = str(endpoint_property.get("hint_string", "")).to_upper()
+	check(endpoint_property.get("hint") == PROPERTY_HINT_ENUM and "START" in enum_labels and "END" in enum_labels, "Inspector shows named endpoint enum values")
+	check(bool(endpoint_property.get("usage", 0) & PROPERTY_USAGE_READ_ONLY) and not bool(endpoint_property.get("usage", 0) & PROPERTY_USAGE_STORAGE), "Derived endpoint is read-only and not saved")
+	service.rebuild()
+	check(a.end_connections[0] == target, "Unchanged rebuilds preserve inspected connection entries")
 	var markers: int = 0
 	for road: Node3D in Connections.visible_roads(world):
 		for marker: MeshInstance3D in road._junction_markers:

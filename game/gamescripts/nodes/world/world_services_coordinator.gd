@@ -3,6 +3,7 @@ class_name WorldServicesCoordinator extends Node
 
 signal services_initialized()
 signal initialization_failed(error: int)
+signal map_loading_failed(error: int)
 
 var is_initialized: bool = false
 var _registered_services: Dictionary = {}
@@ -14,6 +15,8 @@ var _connections: Array[Dictionary] = []
 @onready var forks: RailForkLoader = $Infr/Rails/RailForkLoader
 @onready var rail_builder: NewRailBuilder = $Infr/Rails/NewRailBuilder
 @onready var stations: StationsHolder = $Infr/Stations
+@onready var interchanges: InterchangesLoader = $Infr/Interchanges
+@onready var road_stops: RoadStopsLoader = $Infr/RoadStops
 @onready var industry_connector: StationIndustriesConnector = $Infr/Stations/StationIndustryConnector
 @onready var residence_connector: StationResidencesConnector = $Infr/Stations/StationResidenceConnector
 @onready var passenger_spawner: StationGoodsSpawner = $Infr/Stations/StationGoodsSpawner
@@ -38,6 +41,7 @@ func initialize() -> Error:
 	self._registered_services = {
 		&"towns": self.towns, &"town_buildings": self.town_buildings,
 		&"rails": self.rails, &"forks": self.forks, &"stations": self.stations,
+		&"interchanges": self.interchanges, &"road_stops": self.road_stops,
 		&"roads": self.roads, &"vehicles": self.vehicles,
 		&"industries": self.industries, &"depots": self.depots,
 		&"map_spawner": self.map_spawner
@@ -71,21 +75,23 @@ func _wire_services() -> void:
 	self._listen(SignalBus.res_bld_types_loaded, self.town_buildings._on_res_bld_types_loaded)
 	self._listen(self.towns.towns_registered, self.town_buildings._on_map_towns_loaded)
 	self._listen(SignalBus.map_spawned, self.rails._on_map_spawned)
-	self._listen(SignalBus.map_selected, self.rails._on_map_selected)
 	self._listen(self.rails.track_storage.track_added, self.forks._on_track_loaded)
 	self._listen(SignalBus.rails_spawned, self.forks._on_rails_spawned)
 	self._listen(SignalBus.ui_mode_switched, self.rail_builder._on_ui_mode_changed)
 	self._listen(SignalBus.terrain_click, self.rail_builder._on_terrain_click)
+	self._listen(self.towns.towns_registered, self.interchanges._on_map_towns_loaded)
 	self._listen(self.towns.towns_registered, self.stations._on_map_towns_loaded)
+	self._listen(self.towns.towns_registered, self.road_stops._on_map_towns_loaded)
 	self._listen(SignalBus.stations_loaded, self.stations._on_stations_loaded)
 	self._listen(SignalBus.node_station_links_spawned, self.industry_connector._on_node_station_links_spawned)
 	self._listen(SignalBus.industries_spawned, self.industry_connector._on_industries_spawned)
 	self._listen(SignalBus.stations_loaded, self.residence_connector._on_stations_loaded)
+	self._listen(self.interchanges.stops_linked, self.residence_connector._on_stops_linked)
+	self._listen(self.interchanges.stops_linked, self.industry_connector._on_stops_linked)
 	self._listen(SignalBus.town_buildings_spawned, self.residence_connector._on_residences_placed)
 	self._listen(SignalBus.rails_spawned, self.residence_connector._on_rails_spawned)
 	self._listen(SignalBus.map_selected, self.passenger_spawner._on_map_selected)
 	self._listen(SignalBus.map_spawned, self.roads._on_world_spawned)
-	self._listen(SignalBus.map_selected, self.roads._on_map_selected)
 	self._listen(SignalBus.roads_spawned, self.road_exit_connector._on_roads_spawned)
 	self._listen(SignalBus.roads_spawned, self.town_buildings._on_roads_spawned)
 	self._listen(SignalBus.industries_spawned, self.road_exit_connector._on_industries_spawned)
@@ -93,8 +99,40 @@ func _wire_services() -> void:
 	self._listen(SignalBus.map_spawned, self.industries._on_terrain_loaded)
 	self._listen(SignalBus.rails_loaded, self.depots._on_rails_loaded)
 	self._listen(SignalBus.rails_spawned, self.depots._on_rails_spawned)
-	# Terrain spawning is last: all data loaders have received map_selected first.
-	self._listen(SignalBus.map_selected, self.map_spawner._on_map_selected)
+	# This callback explicitly orders parent data, infrastructure, stop data and
+	# terrain spawning. Listener insertion order no longer controls those stages.
+	self._listen(SignalBus.map_selected, self._on_map_selected)
+
+func load_map_data(map_key: String) -> Error:
+	if not self.is_initialized:
+		return ERR_UNCONFIGURED
+	if self.stations.is_loaded or self.road_stops.is_loaded:
+		return ERR_ALREADY_IN_USE
+	GlobalState.selected_map_name = map_key
+	var error: Error = self.interchanges.load_interchanges(map_key)
+	if error != OK:
+		return error
+	self.rails.load_rail_tracks()
+	self.roads.load_roads()
+	error = self.interchanges.validate_anchors(self.rails.track_storage, self.roads.storage)
+	if error != OK:
+		return error
+	error = self.stations.load_stations(self.interchanges)
+	if error != OK:
+		return error
+	error = self.road_stops.load_stops(self.interchanges)
+	if error != OK:
+		return error
+	self.interchanges.stops_linked.emit()
+	return OK
+
+func _on_map_selected(map_data: MapData) -> void:
+	var error: Error = self.load_map_data(map_data.key)
+	if error != OK:
+		push_error("Map loading stopped before spawning: %s" % error_string(error))
+		self.map_loading_failed.emit(error)
+		return
+	self.map_spawner.spawn_map(map_data)
 
 func _listen(source: Signal, callback: Callable) -> void:
 	source.connect(callback)

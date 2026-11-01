@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="32_pgcnb"]
 [ext_resource type="PackedScene" uid="uid://dwuixifho5nx6" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon_static.tscn" id="32_speqn"]
 [ext_resource type="PackedScene" uid="uid://db2tpqxnrr7uk" path="res://assets/meshes/vehicles/air/messerschmitt_bf109/messerschmitt_bf109.tscn" id="33_cb211"]
-[ext_resource type="PackedScene" uid="uid://bxmb5ddkk54u8" path="res://assets/meshes/vehicles/road/oldtimer_car/oldtimer_car_static.tscn" id="35_0o4a4"]
+[ext_resource type="PackedScene" uid="uid://bxmb5ddkk54u8" path="res://assets/meshes/vehicles/road/oldtimer_car/static_oldtimer_car.tscn" id="35_0o4a4"]
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/northern_german_house/editor_northern_german_house.tscn" id="35_ac0fl"]
 [ext_resource type="Script" uid="uid://cwdk4vg6bs21l" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="35_emjn5"]
 [ext_resource type="PackedScene" uid="uid://ce7uwh35i56pf" path="res://assets/meshes/deco/wooden_pier/wooden_pier.tscn" id="36_emjn5"]
@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bijjccja3y731" path="res://assets/meshes/industry/warehouse_wooden/warehouse_wooden_static.tscn" id="63_ea3s5"]
 [ext_resource type="PackedScene" uid="uid://b0rih8aralchx" path="res://assets/meshes/deco/hangar/hangar.tscn" id="63_speqn"]
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="64_7r2i1"]
-[ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/car_beetle.tscn" id="65_c4uv5"]
+[ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/static_car_beetle.tscn" id="65_c4uv5"]
 [ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="67_ovu55"]
 
 [node name="WorldMapScene" type="Node" unique_id=864843967 node_paths=PackedStringArray("terrain")]

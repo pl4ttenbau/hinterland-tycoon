@@ -22,7 +22,8 @@ enum EntityTypes {
 	FORK,
 	GOOD,
 	DECO_STATIC,
-	DECO_SPLINE
+	DECO_SPLINE,
+	INTERCHANGE # Append new entity kinds to preserve existing serialized enum values.
 }
 
 enum InfrDomain {
@@ -31,6 +32,11 @@ enum InfrDomain {
 	WATER,
 	AIR,
 	STATIONARY
+}
+
+enum EnumStartOrEnd {
+	START = 0,
+	END = 1
 }
 
 enum TownSize {
@@ -46,6 +52,13 @@ enum PathDirection {
 	TRACK_NODES_INCREASE, 
 	TRACK_NODES_DECREASE,
 	STOP
+}
+
+## Physical side when facing along increasing road node indices.
+enum RoadSide {
+	LEFT,
+	RIGHT,
+	BOTH
 }
 
 enum UiMode {

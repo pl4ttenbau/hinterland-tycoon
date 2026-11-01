@@ -9,6 +9,7 @@ const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
 
 const LINE_WIDTH = .5
 const CONNECTIONS = preload("res://addons/hinterland_tools/road_endpoint_connections.gd")
+const EndpointConnection = preload("res://game/gamescripts/nodes/infr/editor/editor_endpoint_connection.gd")
 var _connection_service: Node
 var _junction_markers: Array[MeshInstance3D] = []
 
@@ -41,10 +42,26 @@ func _connections_changed() -> void:
 	if is_instance_valid(_connection_service):
 		_connection_service.request_update()
 
+func _connection_entries(entries: Array, previous: Array[EndpointConnection]) -> Array[EndpointConnection]:
+	var result: Array[EndpointConnection] = []
+	for index: int in range(entries.size()):
+		var entry: Dictionary = entries[index]
+		# Keep unchanged resources so a rebuild doesn't collapse Inspector entries.
+		if index < previous.size() and previous[index].road == entry.road and previous[index].endpoint == entry.endpoint:
+			result.append(previous[index])
+		else:
+			var connection := EndpointConnection.new()
+			connection.road = entry.road
+			connection.endpoint = entry.endpoint
+			result.append(connection)
+	return result
+
 func apply_endpoint_connections(start: Array, end: Array, show_start: bool, show_end: bool) -> void:
-	var changed: bool = start_connections != start or end_connections != end
-	start_connections.assign(start)
-	end_connections.assign(end)
+	var start_entries: Array[EndpointConnection] = _connection_entries(start, start_connections)
+	var end_entries: Array[EndpointConnection] = _connection_entries(end, end_connections)
+	var changed: bool = start_connections != start_entries or end_connections != end_entries
+	start_connections.assign(start_entries)
+	end_connections.assign(end_entries)
 	if changed:
 		notify_property_list_changed()
 	# Markers are derived editor visuals: no owner, no saved geometry or collider.
@@ -104,9 +121,9 @@ var edit_in_cache = Callable(self, "do_edit_in_cache")
 var place_on_ground = Callable(self, "do_place_on_ground")
 
 @export_group("Road Connections")
-## Derived editor information; endpoint 0 is the start, 1 is the end.
-@export var start_connections: Array[Dictionary] = []
-@export var end_connections: Array[Dictionary] = []
+## Derived editor information; each entry identifies the other road and its end.
+@export var start_connections: Array[EndpointConnection] = []
+@export var end_connections: Array[EndpointConnection] = []
 @export_group("")
 
 #region Initialization

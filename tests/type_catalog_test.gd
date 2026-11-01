@@ -35,6 +35,7 @@ func _on_session_ready() -> void:
 func _run() -> void:
 	self.check(self.test_catalog_lifecycle(), "Catalog lifecycle test finished")
 	self.check(self.test_invalid_catalogs(), "Invalid catalog test finished")
+	self.check(self.test_road_catalogs(), "Road catalog test finished")
 	self.check(self.test_residence_catalogs(), "Residence catalog test finished")
 	self.check(self.test_map_locations(), "Map location test finished")
 	print("Type catalog tests: %d failures" % self.failures)
@@ -52,11 +53,12 @@ func test_catalog_lifecycle() -> bool:
 	first_session.scene_root_ready.connect(self._on_session_ready)
 	self.add_child(first_session)
 	self.check(self.completion_had_all_types, "Completion includes vehicles and every other catalog")
-	self.check(self.categories == [&"goods", &"infrastructure", &"industries", &"residences", &"rail_vehicles"], "All categories load in dependency order")
+	self.check(self.categories == [&"goods", &"infrastructure", &"industries", &"residences", &"rail_vehicles", &"road_vehicles"], "All categories load in dependency order")
 	self.check(self.session_ready_count == 1, "First session starts after loading")
-	self.check(GameTypes.vehicle_types.size() == 17, "All migrated rail types load")
 	var source_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RailVehicleTypesLoader.CATALOG_PATH))
-	for index: int in range(GameTypes.vehicle_types.size()):
+	var road_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
+	self.check(source_catalog.size() == 17 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
+	for index: int in range(source_catalog.size()):
 		var vehicle: VehicleTypeData = GameTypes.vehicle_types[index]
 		self.check(vehicle is RailVehicleTypeData, "Rail catalog creates rail definitions")
 		self.check(vehicle.mass_tonnes == source_catalog[index].get("mass_tonnes") and vehicle.motor_power_kw == source_catalog[index].get("motor_power_kw"), "Catalog mass and power values are preserved")
@@ -80,7 +82,7 @@ func test_catalog_lifecycle() -> bool:
 	later_session.scene_root_ready.connect(self._on_session_ready)
 	self.add_child(later_session)
 	self.check(GameTypes.ensure_initialized() == OK, "Repeated initialization succeeds")
-	self.check(self.completion_count == 1 and self.categories.size() == 5, "Scene changes do not reload or repeat completion events")
+	self.check(self.completion_count == 1 and self.categories.size() == 6, "Scene changes do not reload or repeat completion events")
 	self.check(self.session_ready_count == 2, "Late session starts using persistent readiness")
 	self.check(GameTypes.get_veh_type(first_vehicle.key) == first_vehicle, "Scene changes preserve definition identity")
 	self.check(GameTypes.get_res_bld_type(first_residence.key) == first_residence, "Scene changes preserve residence definition identity")
@@ -130,6 +132,76 @@ func test_invalid_catalogs() -> bool:
 		self.check(loader.load_types() != OK, "Invalid catalogs are rejected")
 		self.check(GameTypes.vehicle_types.size() == existing_count, "Rejected catalogs do not partially register definitions")
 	self.check(self.failed_loader_completions == 0, "Failed loaders never announce completion")
+	DirAccess.remove_absolute(path)
+	return true
+
+func test_road_catalogs() -> bool:
+	var source: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
+	self.check(source.size() == 3 and GameTypes.get_veh_type("trabant_601_green") is RoadVehicleTypeData, "Road catalog includes the oldtimer, GAZ truck and green Trabant")
+	for entry: Dictionary in source:
+		var definition: VehicleTypeData = GameTypes.get_veh_type(entry["key"])
+		self.check(definition is RoadVehicleTypeData, "Road catalog creates road definitions")
+		if not definition is RoadVehicleTypeData:
+			continue
+		self.check(definition.usable_infr.domain == Enums.InfrDomain.ROAD, "Road domain is supplied by its catalog")
+		self.check(definition.max_speed_kmh == entry.get("max_speed_kmh") \
+			and definition.mass_tonnes == entry.get("mass_tonnes") \
+			and definition.motor_power_kw == entry.get("motor_power_kw"), "Known specifications load and unknown specifications remain null")
+		if entry.get("capacity") == null:
+			self.check(definition.capacity == null, "Unknown road capacity remains null")
+		else:
+			self.check(definition.capacity != null and definition.capacity.amount == int(entry["capacity"]["amount"]) \
+				and definition.capacity.goods_cat == BaseGoodsType.ResourceCategory[entry["capacity"]["cat"]], "Road capacity loads its amount and shared goods category")
+		self.check(definition.payload_tonnes == entry.get("payload_tonnes"), "Physical payload loads independently of game cargo counts")
+		self.check(definition.get_mesh_path() == entry["model_scene_path"] \
+			and FileAccess.file_exists(definition.get_mesh_path()), "Road model path is explicit and exists")
+		self.check(definition.width_metres == entry["width_metres"] \
+			and definition.height_metres == entry["height_metres"], "Model dimensions load from JSON")
+	# Complete specifications can be authored later without changing the mapper.
+	var populated: Dictionary = source[0].duplicate(true)
+	populated["max_speed_kmh"] = 40
+	populated["capacity"] = {"cat": "PASSENGER", "amount": 4}
+	populated["payload_tonnes"] = 0
+	var mapped: RoadVehicleTypeData = VehicleMapper.road_type_dict_to_class(populated)
+	self.check(mapped != null and mapped.max_speed_kmh == 40 and mapped.capacity.amount == 4, "Road specifications load when supplied")
+	self.check(mapped != null and mapped.payload_tonnes == 0, "Explicit zero payload is distinct from unknown payload")
+	self.check(not populated["usable_infr"].has("domain"), "Road mapping leaves source data unchanged")
+	var existing_count: int = GameTypes.vehicle_types.size()
+	var path: String = "/tmp/hinterland-road-catalog-%d.json" % OS.get_process_id()
+	var invalid_fields: Array[Dictionary] = [
+		{"usable_infr": {"domain": "RAIL"}}, {"max_speed_kmh": "fast"},
+		{"max_speed_kmh": 0}, {"max_speed_kmh": 1.5}, {"length_metres": -1},
+		{"width_metres": 0}, {"height_metres": -1},
+		{"payload_tonnes": -1}, {"payload_tonnes": "1.5"}, {"payload_tonnes": true},
+		{"capacity": {"cat": "PASSENGER", "amount": -1}}
+	]
+	var contents: Array[String] = ["{broken", "{}", "[]", "[null]", JSON.stringify(source)]
+	for fields: Dictionary in invalid_fields:
+		var invalid: Dictionary = populated.duplicate(true)
+		invalid.merge(fields, true)
+		invalid["key"] = "invalid_road_fixture"
+		var valid: Dictionary = populated.duplicate(true)
+		valid["key"] = "valid_road_fixture"
+		contents.append(JSON.stringify([valid, invalid]))
+	var duplicate: Dictionary = populated.duplicate(true)
+	duplicate["key"] = "duplicate_road_fixture"
+	contents.append(JSON.stringify([duplicate, duplicate]))
+	duplicate["key"] = "loco_faur"
+	contents.append(JSON.stringify([duplicate]))
+	print("Checking invalid road catalogs; the following validation errors are expected.")
+	for fixture: String in contents:
+		var file := FileAccess.open(path, FileAccess.WRITE)
+		if file == null:
+			return false
+		file.store_string(fixture)
+		file.close()
+		var loader := RoadVehicleTypesLoader.new()
+		loader.catalog_path = path
+		loader.loading_finished.connect(self._on_failed_loader_finished)
+		self.check(loader.load_types() != OK, "Invalid road catalogs are rejected")
+		self.check(GameTypes.vehicle_types.size() == existing_count \
+			and not GameTypes.vehicle_types_dict.has("valid_road_fixture"), "Rejected road catalogs register no partial batch")
+	self.check(self.failed_loader_completions == 0, "Failed road loaders never announce completion")
 	DirAccess.remove_absolute(path)
 	return true
 

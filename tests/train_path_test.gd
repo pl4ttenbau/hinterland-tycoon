@@ -55,8 +55,8 @@ func make_fork(root_track: RailTrackData, branches: Array[RailTrackData]) -> New
 func make_train(track: RailTrackData, distance: float, lengths: Array[float]) -> Train3D:
 	## Instantiate the real train scene to keep its child hierarchy intact.
 	var train: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate()
-	train._create_motor(Enums.PathDirection.TRACK_NODES_INCREASE)
-	train.last_node = track.nodes[0]
+	train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
+	train.movement.last_node = track.nodes[0]
 	for length: float in lengths:
 		## Only length affects path following and fork occupancy.
 		var vehicle := Vehicle3D.new()
@@ -65,12 +65,12 @@ func make_train(track: RailTrackData, distance: float, lengths: Array[float]) ->
 		vehicle.vehicle_obj.veh_type = VehicleTypeData.new()
 		vehicle.vehicle_obj.veh_type.length_metres = length
 		train.add_vehicle(vehicle, train.vehicles.is_empty())
-	train.init_segment_path()
-	train.m_passed_since_start = distance
-	train.get_active_path().ensure_lookahead(train.get_front_distance())
+	train.movement.init_segment_path()
+	train.movement.m_passed_since_start = distance
+	train.movement.get_active_path().ensure_lookahead(train.movement.get_front_distance())
 	self.get_tree().root.add_child(train)
-	train._update_segment_progress()
-	train._place_vehicles()
+	train.movement.update_segment_progress()
+	train.movement.place_vehicles()
 	return train
 
 func _run() -> void:
@@ -84,7 +84,7 @@ func _run() -> void:
 	var branch := self.make_track(2, [Vector3(0, 0, -20), Vector3(10, 0, -30), Vector3(40, 0, -40)])
 	var fork := self.make_fork(approach, [straight, branch])
 	var train := self.make_train(approach, 17.9, [4.0, 6.0, 8.0])
-	var path: ActiveRailVehiclePath = train.get_active_path()
+	var path: ActiveRailVehiclePath = train.movement.get_active_path()
 	self.check(path.segments.size() == 2, "A route is available before entering the fork")
 	self.check(path.curve.point_count == 5, "The junction appears only once in the joined curve")
 	self.check_markers(path, "Initial route markers")
@@ -92,10 +92,10 @@ func _run() -> void:
 	## Save the train pose to prove switching ahead leaves the occupied geometry alone.
 	var before: Transform3D = train.locomotive.global_transform
 	fork.setting.current.connected = 2
-	self.check(not train.derailed, "Switching ahead does not derail the train")
+	self.check(not train.movement.derailed, "Switching ahead does not derail the train")
 	self.check(path.segments.back().track_num == 2, "Switching ahead rebuilds the planned branch")
 	self.check_markers(path, "Switched route markers")
-	train._place_vehicles()
+	train.movement.place_vehicles()
 	self.check(train.locomotive.global_transform.is_equal_approx(before), "Switching ahead preserves the train pose")
 	## A small movement on either side of the joined point should keep the same heading.
 	var boundary: float = path.segment_end_distances[0]
@@ -108,62 +108,66 @@ func _run() -> void:
 	self.check(heading_a.dot(heading_b) < 0.999, "Rotation changes along the bend between rail nodes")
 	## Crossing a boundary advances onto the already planned segment with no transform tween.
 	var moving_train := self.make_train(approach, 19.0, [4.0])
-	moving_train.motor.start()
-	moving_train.motor.speed.current = 1.0
-	moving_train.move_forwards(0.5)
-	self.check(moving_train.current_segment.track_num == 2, "Movement crosses onto the selected branch")
-	self.check(is_equal_approx(moving_train.m_passed_since_start, 22.0), "Movement advances by this physics step's exact distance")
+	moving_train.movement.start()
+	moving_train.movement.speed.current = 1.0
+	moving_train.movement.move_forwards(0.5)
+	self.check(moving_train.movement.current_segment.track_num == 2, "Movement crosses onto the selected branch")
+	self.check(is_equal_approx(moving_train.movement.m_passed_since_start, 22.0), "Movement advances by this physics step's exact distance")
 	moving_train.free()
 	## Both reversals preserve locomotive and wagon poses, including their facing direction.
-	train.m_passed_since_start = 16.0
-	train._place_vehicles()
+	train.movement.m_passed_since_start = 16.0
+	train.movement.place_vehicles()
 	var poses: Array[Transform3D] = []
 	for vehicle: Vehicle3D in train.vehicles:
 		poses.append(vehicle.global_transform)
-	train.reverse_from_current_spot()
+	train.movement.start()
+	## Reversal must cancel the previous speed ramp before constructing its return route.
+	var forward_tween: Tween = train.movement._speed_tween
+	train.movement.reverse_from_current_spot()
+	self.check(not forward_tween.is_valid(), "Reversing cancels the previous speed tween")
 	self.check_markers(path, "Reversed route markers")
 	for vehicle_i: int in range(train.vehicles.size()):
 		self.check(train.vehicles[vehicle_i].global_position.distance_to(poses[vehicle_i].origin) < 0.03, "Reversing preserves every vehicle position")
 		self.check(train.vehicles[vehicle_i].global_basis.z.dot(poses[vehicle_i].basis.z) > 0.999, "Reversing preserves vehicle facing")
-	train.reverse_from_current_spot()
-	self.check(not train.is_reversed, "Two reversals restore forward travel")
+	train.movement.reverse_from_current_spot()
+	self.check(not train.movement.is_reversed, "Two reversals restore forward travel")
 	## Switch beneath a wagon while the locomotive has already cleared the fork.
-	train.m_passed_since_start = 26.0
-	train._place_vehicles()
-	train.motor.start()
+	train.movement.m_passed_since_start = 26.0
+	train.movement.place_vehicles()
+	train.movement.start()
 	before = train.vehicles[1].global_transform
 	fork.setting.current.connected = 1
-	self.check(train.derailed and not train.motor.is_started, "Switching beneath a wagon derails and stops the train")
+	self.check(train.movement.derailed and not train.movement.is_started, "Switching beneath a wagon derails and stops the train")
 	self.check_markers(path, "Derailed route markers")
-	self.check(not train.motor.start(), "A derailed train cannot restart")
-	train.move_forwards(1.0)
-	train.reverse_from_current_spot()
+	self.check(not train.movement.start(), "A derailed train cannot restart")
+	train.movement.move_forwards(1.0)
+	train.movement.reverse_from_current_spot()
 	self.check(train.vehicles[1].global_transform.is_equal_approx(before), "Derailed vehicles stay frozen")
 	## Buffer handling must clamp distance even when one frame overshoots the track end.
 	var buffer_train := self.make_train(straight, 39.0, [4.0])
-	buffer_train.motor.start()
-	buffer_train.motor.speed.current = 1.0
-	buffer_train.move_forwards(10.0)
-	self.check(not buffer_train.motor.is_started, "Buffer stops the train")
-	self.check(is_equal_approx(buffer_train.m_passed_since_start, 40.0), "Buffer overshoot is clamped")
+	buffer_train.movement.start()
+	buffer_train.movement.speed.current = 1.0
+	buffer_train.movement.move_forwards(10.0)
+	self.check(not buffer_train.movement.is_started, "Buffer stops the train")
+	self.check(is_equal_approx(buffer_train.movement.m_passed_since_start, 40.0), "Buffer overshoot is clamped")
 	self.check(PathCurveUtils.get_reversed_direction(Enums.PathDirection.TRACK_NODES_INCREASE) == Enums.PathDirection.TRACK_NODES_DECREASE, "Increasing direction reverses correctly")
 	self.check(PathCurveUtils.get_reversed_direction(Enums.PathDirection.TRACK_NODES_DECREASE) == Enums.PathDirection.TRACK_NODES_INCREASE, "Decreasing direction reverses correctly")
 	## A stationary locomotive occupying the switch must also derail immediately.
 	var occupied_train := self.make_train(approach, 19.0, [4.0])
 	fork.setting.current.connected = 2
-	self.check(occupied_train.derailed, "Switching beneath a stationary locomotive derails it")
+	self.check(occupied_train.movement.derailed, "Switching beneath a stationary locomotive derails it")
 	## A switch already cleared by the whole train cannot reroute or derail it.
 	var cleared_train := self.make_train(approach, 35.0, [4.0, 6.0])
-	var cleared_curve: Curve3D = cleared_train.get_active_path().curve
+	var cleared_curve: Curve3D = cleared_train.movement.get_active_path().curve
 	fork.setting.current.connected = 1
-	self.check(not cleared_train.derailed, "Switching behind a cleared train is harmless")
-	self.check(cleared_train.get_active_path().curve == cleared_curve, "Switching behind preserves the travelled route")
+	self.check(not cleared_train.movement.derailed, "Switching behind a cleared train is harmless")
+	self.check(cleared_train.movement.get_active_path().curve == cleared_curve, "Switching behind preserves the travelled route")
 	## Entering the root track from a branch exercises track zero and decreasing direction.
 	var return_train := self.make_train(branch, 25.0, [4.0])
-	return_train.reverse_from_current_spot()
-	return_train.get_active_path().ensure_lookahead(return_train.get_front_distance() + 20.0)
-	self.check(return_train.get_active_path().segments.back().track_num == 0, "Reverse route can connect to track zero")
-	self.check(return_train.get_active_path().segments.back().movement_dir == Enums.PathDirection.TRACK_NODES_DECREASE, "A reversed connection uses decreasing track nodes")
+	return_train.movement.reverse_from_current_spot()
+	return_train.movement.get_active_path().ensure_lookahead(return_train.movement.get_front_distance() + 20.0)
+	self.check(return_train.movement.get_active_path().segments.back().track_num == 0, "Reverse route can connect to track zero")
+	self.check(return_train.movement.get_active_path().segments.back().movement_dir == Enums.PathDirection.TRACK_NODES_DECREASE, "A reversed connection uses decreasing track nodes")
 	## Releasing trains must disconnect Resource listeners that outlive their scene nodes.
 	train.free()
 	buffer_train.free()

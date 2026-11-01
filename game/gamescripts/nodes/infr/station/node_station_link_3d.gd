@@ -39,8 +39,19 @@ func get_parent_station_3d() -> RailStation3D:
 #region Helper-Methods
 func adjust_rotation_from_track():
 	var track_node: RailNodeData = self.node_station.parent_node
-	var prev_node = self.get_parent_track_node_by_index(track_node.index -1)
-	self.look_at(prev_node.position)
+	var prev_node: RailNodeData = self.get_parent_track_node_by_index(track_node.index -1)
+	var next_node: RailNodeData = self.get_parent_track_node_by_index(track_node.index +1)
+	# Node zero has no previous node. Extrapolate the approach from its next
+	# neighbour instead of dereferencing null when a JSON stop starts a track.
+	var approach: Vector3 = Vector3.ZERO
+	if prev_node != null:
+		approach = prev_node.position - track_node.position
+	elif next_node != null:
+		approach = track_node.position - next_node.position
+	approach.y = 0.0
+	if approach.is_zero_approx():
+		return
+	self.look_at(self.global_position + approach)
 	self.rotate_y(WorldUtils.NINETY_DEG_IN_RAD)
 
 func get_parent_track_node_by_index(_i: int) -> RailNodeData:

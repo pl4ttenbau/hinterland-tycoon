@@ -7,7 +7,8 @@ const DEBUG_MARKERS_PARENT_NAME = "DebugMarkers"
 
 signal extended(added_segment)
 
-@export var train3d: Train3D
+## The controller supplies distance, occupancy and derailment without depending on node parents.
+@export var movement: TrainMovement
 @export var segments: Array[VehiclePathSegment] = []
 ## Each segment ends at this curve point; joined endpoints share one point.
 var segment_end_points: Array[int] = []
@@ -18,10 +19,10 @@ var watched_forks: Dictionary = {}
 ## Plan at least this far ahead, without committing the fork settings.
 const LOOKAHEAD_METRES: float = 20.0
 
-static func of_segment(_train: Train3D, _segment: VehiclePathSegment) -> ActiveRailVehiclePath:
+static func of_segment(_movement: TrainMovement, _segment: VehiclePathSegment) -> ActiveRailVehiclePath:
 	## The active curve keeps travelled history as well as a provisional route ahead.
 	var active_path := ActiveRailVehiclePath.new()
-	active_path.train3d = _train
+	active_path.movement = _movement
 	active_path.curve = Curve3D.new()
 	active_path.curve.up_vector_enabled = true
 	active_path.add_segment(_segment)
@@ -106,7 +107,7 @@ func get_segment_index(distance: float) -> int:
 	return self.segments.size() - 1
 
 func get_current_segment() -> VehiclePathSegment:
-	return self.segments[self.get_segment_index(self.train3d.m_passed_since_start)]
+	return self.segments[self.get_segment_index(self.movement.m_passed_since_start)]
 
 ## Both ends can be switched, including the starting fork beneath a parked train.
 func _watch_segment_forks(segment: VehiclePathSegment) -> void:
@@ -146,7 +147,7 @@ func _on_fork_changed(fork: NewRailForkData) -> void:
 	## A loop may visit the same fork more than once; each visit has its own boundary.
 	var boundaries: Array[int] = self._get_fork_boundaries(fork)
 	if self._is_fork_occupied(fork, boundaries):
-		self.train3d.derail()
+		self.movement.derail()
 		return
 	self._rebuild_ahead_of_fork(boundaries)
 
@@ -161,19 +162,19 @@ func _get_fork_boundaries(fork: NewRailForkData) -> Array[int]:
 
 ## Include the route's starting fork as well as every segment-end crossing.
 func _is_fork_occupied(fork: NewRailForkData, boundaries: Array[int]) -> bool:
-	if self.segments[0].start_node.position.is_equal_approx(fork.pos) and self.train3d.occupies_path_distance(0.0):
+	if self.segments[0].start_node.position.is_equal_approx(fork.pos) and self.movement.occupies_path_distance(0.0):
 		return true
 	for segment_i: int in boundaries:
-		if self.train3d.occupies_path_distance(self.segment_end_distances[segment_i]):
+		if self.movement.occupies_path_distance(self.segment_end_distances[segment_i]):
 			return true
 	return false
 
 ## Only the first unoccupied crossing ahead invalidates the provisional suffix.
 func _rebuild_ahead_of_fork(boundaries: Array[int]) -> void:
 	for segment_i: int in boundaries:
-		if self.segment_end_distances[segment_i] > self.train3d.get_front_distance():
+		if self.segment_end_distances[segment_i] > self.movement.get_front_distance():
 			self._truncate_after_segment(segment_i)
-			self.ensure_lookahead(self.train3d.get_front_distance())
+			self.ensure_lookahead(self.movement.get_front_distance())
 			return
 
 ## Preserve the route through this segment and discard only the provisional suffix.

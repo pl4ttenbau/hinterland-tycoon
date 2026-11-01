@@ -26,15 +26,15 @@ func adjust_speedometer():
 func _train_entered(vehicle: Train3D):
 	# set current vehicle & speed
 	self.current_vehicle = vehicle
-	self.current_speed = self.current_vehicle.motor.current_speed_percentage
+	self.current_speed = self.current_vehicle.movement.current_speed_percentage
 	# connect to motor speed sifnal
-	vehicle.motor.speed.changed.connect(Callable(self, "_on_motor_speed_changed"))
+	vehicle.movement.speed.changed.connect(Callable(self, "_on_motor_speed_changed"))
 	# and show control
 	self.visible = true
 	
 func _vehicle_exited():
 	# disconnect signals
-	self.current_vehicle.motor.speed.changed.disconnect(Callable(self, "_on_motor_speed_changed"))
+	self.current_vehicle.movement.speed.changed.disconnect(Callable(self, "_on_motor_speed_changed"))
 	# clear current speed & vehicle & hide
 	self.current_vehicle = null
 	self.current_speed = 0.0

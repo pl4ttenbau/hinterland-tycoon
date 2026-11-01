@@ -12,22 +12,18 @@ func _ready() -> void:
 func spawn_rnd_passenger():
 	if ! self.has_map_selected: return
 	if ! GlobalState.loaded_map: return
-	var rnd_outer_residence = Residence3D.get_random()
-	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
-		var start_node_station: NodeStationLinkData = rnd_outer_residence.connected_station
-		if start_node_station:
-			var parent_station_num: int = start_node_station.parent_station_num
-			var station3d: RailStation3D = Managers.stations.get_station_3d_with_num(parent_station_num)
-			if start_node_station && station3d:
-				# TODO: here we need to use targeted goods again
-				# var spawned_res := SpawnedGood.new("passenger", 1, Residence3D.get_random().res_bld_obj)
-				station3d.get_inventory().add_good_of("passenger")
-				if LOG_SPAWNING:
-					var town_name: String = station3d.station.connected_town.town_name
-					var station_name: String = station3d.station.station_name
-					Loggie.debug("Spawned passenger in station %s-%s" % [town_name, station_name])
-			else:
-				Loggie.error("Cannot find Station3D with Num %d" % parent_station_num)
+	if GlobalState.res_bld_containers.is_empty(): return
+	var residence: Residence3D = Residence3D.get_random()
+	if residence == null or residence.res_bld_obj == null: return
+	var data: ResidenceBuildingData = residence.res_bld_obj
+	if data.connected_interchange == null: return
+	# One passenger per spawn, using the closest reachable physical stop that
+	# already has a view. Interchange membership never multiplies the spawn.
+	for stop: AbstractStation in data.reachable_stops:
+		var view: InventoryEntity3D = stop.get_inventory_view()
+		if view != null and view.get_inventory() != null:
+			view.get_inventory().add_good_of("passenger")
+			return
 #endregion
 
 #region Callbacks
