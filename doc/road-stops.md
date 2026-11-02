@@ -131,10 +131,12 @@ with platform/node views under their station. Bus stops spawn under
 has its own 60-unit inventory, matching the existing rail station scene.
 
 `RoadStopsLoader` positions stops at their authored road nodes and samples the
-road curve's horizontal tangent to arrange the shelters. Its adjustable
+road curve's horizontal tangent to arrange the shelters. Each shelter's long edge
+is parallel to the road and its open side faces inward, including both shelters
+of a BOTH stop. Its adjustable
 `roadside_offset_metres` defaults to 4 m because road widths are not currently
-part of the authored infrastructure definition. Shelter-facing/offset placement
-still merits an editor review for each road width and the authored mesh's front.
+part of the authored infrastructure definition. The offset may need adjusting
+for individual road widths.
 
 `BOTH` creates two visual shelters under **one** logical stop, stop ID and
 inventory. Boarding direction, clicking, automatic bus

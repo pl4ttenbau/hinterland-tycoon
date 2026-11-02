@@ -9,9 +9,9 @@ Train selection continues to use `RailVehicleTypeData` only.
 
 The initial length, width and height are bounding dimensions of the existing OBJ
 meshes at unit scale, not historical specifications. The oldtimer's longitudinal
-axis is Z; the GAZ truck's is X. Its future visual wrapper must account for this
-different orientation. Model paths currently identify the existing scenes; these
-definitions do not instantiate or make them drivable.
+axis is Z; the GAZ truck's is X. The physical vehicle's visual wrapper accounts for this
+different orientation. `RoadVehicle3D` wraps these catalog scenes in a physical
+vehicle at runtime; see the driving prototype below.
 
 The oldtimer's original OBJ/MTL and texture files contain no manufacturer or
 model identification. Following visual comparison and the user's choice, its
@@ -45,9 +45,9 @@ use metres, mass uses tonnes, and power uses kW. A supplied capacity uses the ex
 while amount zero means explicitly no capacity.
 
 Wheelbase, minimum turning radius, acceleration and braking deceleration are not
-model definition fields. Future movement can use motor power and loaded mass as
-inputs to an acceleration model, with shared assumptions for traction and
-resistance. Braking and junction motion remain movement-system decisions.
+model definition fields. The prototype estimates wheel placement from model
+dimensions and uses empty mass and motor power with shared handling assumptions.
+Model-specific wheel positions and suspension tuning remain necessary.
 
 The GAZ-AA now has a 70 km/h maximum speed, 1.81-tonne unladen mass,
 1.5-tonne physical payload, and 30.89 kW engine output (42 metric hp converted
@@ -88,3 +88,95 @@ networks, and then both stop domains before spawning their views. See the
 [interchange and stop contract](road-stops.md) for the schema, migration details
 and startup sequence. Vehicle routing, passenger catchments, destination-aware
 inventories and intermodal transfers remain separate work.
+
+## Driving prototype
+
+The planned node-to-node routing, route dialog and ordered goods actions
+are described in [the road transport concept](road-transport-concept.md). Those
+systems remain conceptual; the code below executes a supplied driving path only.
+
+### Depot spawning
+
+Click a road depot to open its vehicle selector, choose one of the road catalog
+models and press **Spawn vehicle**. The existing `SpawnAction` handles both rail
+and road requests, with separate signals/dialogs so depot IDs can overlap safely.
+
+Cars spawn parked **10 world metres along the connected road from the depot's
+endpoint**, facing away from the depot. A START depot faces increasing road order;
+an END depot faces decreasing order. The distance follows bends and parent scale,
+rather than a straight offset. Suspension settles the initial body onto the road.
+No automatic driving path is assigned. Click the spawned car to drive it.
+
+Roads shorter than 10 metres and occupied spawn points are rejected with a message
+in the dialog. Successful spawning and cancellation restore the previous walking
+controls and mouse mode. The same operation is available through
+`Managers.vehicles.spawn_road_vehicle_at_depot(type_key, depot)`.
+
+The selector loads an optional `preview.png` alongside each catalog model scene:
+
+| Vehicle | Preview path |
+| --- | --- |
+| Škoda oldtimer | `assets/meshes/vehicles/road/oldtimer_car/preview.png` |
+| GAZ-AA | `assets/meshes/vehicles/road/gaz_aa_truck/preview.png` |
+| Trabant | `assets/meshes/vehicles/road/trabant_601/preview.png` |
+
+Missing pictures leave a placeholder; names and selection remain available.
+
+### Driving and collision
+
+Roads enable PathMesh3D's `COLLISION_MODE_TRIMESH` before their mesh child enters
+the tree. Rail infrastructure enables collision only for visible bedding; rails
+and sleepers remain visual so their edges do not obstruct walking. Collision is generated
+from the warped geometry, with the mesh/path transforms already applied, and
+rebuilds on curve edits. `hideFill` removes both the bedding visual and its
+collision. These bodies use the default physics layer 1; the walking player's
+existing mask 7 already includes it. Render layers are independent of physics
+layers. The player uses `CharacterBody3D.move_and_slide()`, not direct terrain
+height placement.
+
+Run `tests/road_vehicle_preview.tscn` with F6 for a road, raised rail bed, walking
+player and automatically driven Trabant. **E** takes control or leaves; **R**
+restarts. Drive with **W/S** or **Up/Down**, steer with **A/D** or **Left/Right**,
+and brake with **Space**. On foot, use the arrow keys and mouse. Escape releases
+the mouse. Close the running scene when finished.
+
+`RoadVehicle3D` uses `VehicleBody3D` and four `VehicleWheel3D` children. The catalog
+model becomes a visual child, with its old static collider and train-specific root
+script removed. It has a low, explicit centre of mass, a chassis collider and a
+chase camera. Forward is Godot's vehicle convention, +Z. Existing model wheels
+remain part of the static visual mesh; individual wheel animation is not yet
+available. Dimensions and handling are approximations, not a validated simulator.
+See [Godot's VehicleBody3D documentation](https://docs.godotengine.org/en/stable/classes/class_vehiclebody3d.html).
+
+Spawn in a loaded map through the existing service:
+
+```gdscript
+var road_numbers: Array[int] = [101, 102]
+var vehicle: RoadVehicle3D = Managers.vehicles.spawn_road_vehicle(
+	"trabant_601_green", road_numbers
+)
+```
+
+The IDs are an ordered, continuous route. `backwards=true` reverses the first
+road; subsequent roads orient to the preceding endpoint. Disconnected sequences
+are rejected without replacing an existing route. Route samples use world metres,
+including parent transforms and scale. This is route execution; choosing paths
+through the road network is a separate layer.
+
+Without a player, the route supplies speed and steering requests to the same
+physical vehicle. It slows for bends and brakes before the final endpoint.
+`route_finished` emits once when stopped. Vehicles without a valid route brake.
+Clicking a road vehicle in the game calls `VehiclePlacer.enter_road_vehicle()`;
+the existing radial **Enter** action leaves it. Taking control preserves position
+and momentum and lets the player drive freely. The walking body is suspended and
+its original collision settings restored on exit or deletion of an occupied car.
+On release the route driver resumes near its saved progress. A vehicle more than
+six metres off-route, or facing away from its next target, brakes instead of
+teleporting. Drive back near the route and face along it before leaving.
+
+This first pass does not choose routes, serve stops, account for loaded cargo
+mass, or avoid other traffic. It follows the centreline, so lane offsets and
+junction rules are still needed for two-way traffic. Full mesh collision adds
+physics geometry; large-map performance still needs profiling. PathMesh3D must
+successfully render a segment before it can collide: its existing minimum tile
+length limitation still applies to very short curves.

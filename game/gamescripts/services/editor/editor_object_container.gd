@@ -5,7 +5,7 @@ class_name WorldEditorObjects extends Node3D
 @export var map_key: String
 
 var json_history: Object
-var _json_store: RefCounted
+var _json_store: InfrJsonStore
 var _stop_labels_store: EditorStopLabelsStore
 
 @export_group("Infrastructure JSON")
@@ -28,7 +28,7 @@ func do_load_stop_labels_json() -> void:
 		return
 	if _stop_labels_store == null:
 		_stop_labels_store = EditorStopLabelsStore.new()
-	var result: Dictionary = _stop_labels_store.load_world(self, json_history)
+	var result: EditorActionResult = _stop_labels_store.load_world(self, json_history)
 	if not result.ok:
 		push_warning(result.error)
 		return
@@ -42,8 +42,8 @@ func _load_json(domain: Enums.InfrDomain) -> void:
 		push_warning("Open the EditorObjects scene separately and select its root to load infrastructure JSON.")
 		return
 	if _json_store == null:
-		_json_store = load("res://addons/hinterland_tools/infr_json_store.gd").new()
-	var result: Dictionary = _json_store.load_world(self, domain, json_history)
+		_json_store = InfrJsonStore.new()
+	var result: EditorActionResult = _json_store.load_world(self, domain, json_history)
 	if not result.ok:
 		push_warning(result.error)
 		return

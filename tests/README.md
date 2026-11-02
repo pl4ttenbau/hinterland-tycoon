@@ -1,3 +1,38 @@
+Rail and road vehicle pricing checks:
+
+```sh
+godot --headless --path . --script res://tests/rail_vehicle_pricing_test.gd -- --no-mcp
+godot --headless --path . --script res://tests/road_vehicle_pricing_test.gd -- --no-mcp
+```
+
+These check price incentives, rounding, unknown specifications, authored versus
+estimated tractive effort, catalog prices, and picker labels. See
+`doc/vehicle-pricing.md` for the formula and balance resource.
+
+Road/rail collision and road driving checks:
+
+```sh
+godot --headless --path . --fixed-fps 60 --script res://tests/infrastructure_collision_test.gd -- --no-mcp
+godot --headless --path . --fixed-fps 60 --script res://tests/road_vehicle_test.gd -- --no-mcp
+```
+
+Collision tests exercise both road materials on curved, sloped, transformed paths,
+curve edits, all three rail gauges, hidden/restored bedding, and a drop test using
+the actual walking player above a road with no terrain. Driving tests exercise all
+three catalog model wrappers, transformed/reversed connected routes, invalid route
+rejection, physical wheel contact and acceleration, a complete bend/end-stop run,
+free player steering, control/camera/collision handoff, route resumption, off-road
+braking and deletion of an occupied vehicle. The suites return nonzero on failed
+or aborted tests. Run `tests/road_vehicle_preview.tscn` with F6 for an interactive
+playground; E enters/leaves, R restarts. See `doc/road-vehicles.md` for the API and
+current prototype limitations.
+
+The road suite also checks depot spawning at exactly 10 world metres for START
+and END anchors under a scaled/rotated road parent, outward heading, parked state,
+occupied/short-road rejection, and the shared SpawnAction's road-selection dialog.
+Dialog checks exercise its real spawn button, road-only catalog, error/cancel flow
+and input-state restoration. New test phases have comments and blank-line grouping.
+
 Train movement and speed tween checks:
 
 ```sh

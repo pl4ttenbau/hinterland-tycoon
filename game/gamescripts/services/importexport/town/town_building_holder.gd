@@ -3,7 +3,6 @@
 class_name TownBuildingHolder extends Node
 
 const EDITOR_RESIDENCE = preload("res://game/gamescripts/nodes/structures/editor_residence_3d.gd")
-const ROAD_CONNECTOR = preload("res://game/gamescripts/services/importexport/infr/connectors/residence_road_connector.gd")
 var _roads_ready: bool = false
 var _warned_missing_doors: Dictionary = {}
 
@@ -14,12 +13,12 @@ func _on_roads_spawned() -> void:
 func refresh_road_connections() -> void:
 	if not _roads_ready or not is_instance_valid(Managers.roads):
 		return
-	var roads: Array[Dictionary] = ROAD_CONNECTOR.prepare_roads(Managers.roads.storage.get_all())
+	var roads: Array[RoadCurveCandidate] = ResidenceRoadConnector.prepare_roads(Managers.roads.storage.get_all())
 	var missing: PackedStringArray = []
 	for house: Residence3D in placed_buildings:
-		house.res_bld_obj.road_connection = ROAD_CONNECTOR.find_prepared(ROAD_CONNECTOR.exit_for(house), roads)
+		house.res_bld_obj.road_connection = ResidenceRoadConnector.find_prepared(ResidenceRoadConnector.exit_for(house), roads)
 		var key: String = house.placed_res_bld_type
-		if ROAD_CONNECTOR.door_for(house) == null and not _warned_missing_doors.has(key):
+		if ResidenceRoadConnector.door_for(house) == null and not _warned_missing_doors.has(key):
 			_warned_missing_doors[key] = true
 			missing.append(key)
 	if not missing.is_empty():

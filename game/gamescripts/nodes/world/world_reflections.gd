@@ -68,7 +68,7 @@ func _refresh_probes() -> void:
 func _collect_candidates() -> Array[Vector3]:
 	var candidates: Array[Vector3] = []
 	if is_instance_valid(Managers.depots):
-		for depot: RailDepot3D in Managers.depots.containers:
+		for depot: RailDepot3D in Managers.depots.rail_containers:
 			if is_instance_valid(depot):
 				# Look out into the yard, rather than capture from inside the shed.
 				candidates.append(depot.global_position - depot.global_basis.z * 12.0)

@@ -17,8 +17,9 @@ func load_roads() -> void:
 	for json_road in JSON.parse_string(roads_arr_str):
 		self.storage.add(RoadMapper.road_from_data_json(json_road))
 	self.roads_loaded.emit(self.storage.get_all())
+	SignalBus.roads_loaded.emit(self.storage.get_all())
 #endregion
-	
+
 #region Road Spawning
 func spawn_roads():
 	for road in self.storage.get_all():
@@ -26,7 +27,7 @@ func spawn_roads():
 	# emit signals
 	self.roads_spawned.emit(self.storage.get_containers())
 	SignalBus.roads_spawned.emit()
-	
+
 func spawn_road(road: RoadData):
 	var instanciated: RoadWay3D = road.spawn()
 	add_child(instanciated, true)

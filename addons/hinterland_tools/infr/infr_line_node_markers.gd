@@ -73,33 +73,46 @@ func _redraw() -> void:
 	# Unowned children follow the line's transform/visibility but never enter
 	# the saved scene or change the infrastructure's JSON node indices.
 	_line.add_child(_visual, false, Node.INTERNAL_MODE_BACK)
+	var material: StandardMaterial3D = _create_marker_material(Color("65e6c4"))
+	var start_material: StandardMaterial3D = _create_marker_material(Color.LIGHT_GRAY)
+	var cube: PrimitiveMesh = _create_marker_mesh(true)
+	var sphere: PrimitiveMesh = _create_marker_mesh(false)
+	for index: int in range(_line.curve.point_count):
+		_add_node_marker(index, cube if index == 0 else sphere, start_material if index == 0 else material)
+
+func _create_marker_material(color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.albedo_color = Color("65e6c4")
+	material.albedo_color = color
 	material.no_depth_test = true
-	# The overlay must render after opaque roads/terrain and transparent water;
-	# disabling depth tests alone does not guarantee that drawing order.
+	# Draw after roads/terrain and transparent water; depth testing alone does
+	# not control ordering between opaque and transparent render queues.
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_DISABLED
 	material.render_priority = Material.RENDER_PRIORITY_MAX
-	var start_material: StandardMaterial3D = material.duplicate()
-	start_material.albedo_color = Color.LIGHT_GRAY
-	var cube := BoxMesh.new()
-	cube.size = Vector3.ONE * 1.2
+	return material
+
+func _create_marker_mesh(is_start: bool) -> PrimitiveMesh:
+	if is_start:
+		var cube := BoxMesh.new()
+		cube.size = Vector3.ONE * 1.2
+		return cube
 	var sphere := SphereMesh.new()
 	sphere.radius = 0.5
 	sphere.height = 1.0
 	sphere.radial_segments = 12
 	sphere.rings = 6
-	for index: int in range(_line.curve.point_count):
-		var marker := MeshInstance3D.new()
-		marker.name = "Node%d" % index
-		marker.mesh = cube if index == 0 else sphere
-		marker.material_override = start_material if index == 0 else material
-		marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		marker.gi_mode = GeometryInstance3D.GI_MODE_DISABLED
-		_visual.add_child(marker)
-		marker.position = _line.curve.get_point_position(index)
+	return sphere
+
+func _add_node_marker(index: int, mesh: Mesh, material: Material) -> void:
+	var marker := MeshInstance3D.new()
+	marker.name = "Node%d" % index
+	marker.mesh = mesh
+	marker.material_override = material
+	marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	marker.gi_mode = GeometryInstance3D.GI_MODE_DISABLED
+	_visual.add_child(marker)
+	marker.position = _line.curve.get_point_position(index)
 
 func _exit_tree() -> void:
 	clear()

@@ -1,4 +1,5 @@
-extends Node
+## Shared game and editor enums; the Enums autoload exposes these definitions.
+class_name GameEnums extends Node
 
 enum Location {
 	NORTHERN_GERMANY,
@@ -12,8 +13,9 @@ enum EntityTypes {
 	VEHICLE,
 	TRAIN,
 	RAIL,
+	RAIL_DEPOT,
 	ROAD,
-	DEPOT,
+	ROAD_DEPOT,
 	NODE_STATION,
 	STATION,
 	TOWN,
@@ -67,3 +69,7 @@ enum UiMode {
 	BUILD_STRUCTURE,
 	DRIVING
 }
+
+## IDs for the editor toolbar's enum-keyed Button lookup.
+## Tool behavior stays in the plugin until tools become individual classes.
+enum EnumEditorTool { NONE, BUILD_TOWN, CREATE_ROAD, CREATE_RAIL, SELECT_OBJECT }

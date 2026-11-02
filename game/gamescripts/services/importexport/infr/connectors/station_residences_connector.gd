@@ -21,32 +21,38 @@ func reassign_all_buildings_to_stations() -> void:
 func reassign_town_buildings_to_stations(town: TownData) -> int:
 	var count: int = 0
 	for house: Residence3D in town.res_bld_containers:
-		if house.res_bld_obj == null:
-			continue
-		# Remove any former membership before reassignment, including lost coverage.
-		var data: ResidenceBuildingData = house.res_bld_obj
-		if data.connected_interchange != null:
-			var old: StationConnections = data.connected_interchange.connections
-			for index: int in range(old.houses.size() - 1, -1, -1):
-				if old.houses[index].house == house:
-					old.houses.remove_at(index)
-		data.connected_interchange = null
-		data.reachable_stops.clear()
-		data.connected_station = null
-		var access: Dictionary = Managers.interchanges.find_access(house.global_position)
-		if access.is_empty():
-			continue
-		data.connected_interchange = access.interchange
-		data.reachable_stops.assign(access.stops)
-		access.interchange.connections.connect_house(house, data.reachable_stops)
-		# Compatibility for consumers of the old rail-node reference. Passenger
-		# spawning uses reachable_stops, including road-only interchanges.
-		for stop: AbstractStation in data.reachable_stops:
-			if stop is RailStationData and not stop.node_stations.is_empty():
-				data.connected_station = stop.node_stations[0]
-				break
-		count += 1
+		if _connect_residence(house):
+			count += 1
 	return count
+
+func _connect_residence(house: Residence3D) -> bool:
+	if house.res_bld_obj == null:
+		return false
+	var data: ResidenceBuildingData = house.res_bld_obj
+	_clear_residence_connection(house, data)
+	var access: Dictionary = Managers.interchanges.find_access(house.global_position)
+	if access.is_empty():
+		return false
+	data.connected_interchange = access.interchange
+	data.reachable_stops.assign(access.stops)
+	access.interchange.connections.connect_house(house, data.reachable_stops)
+	# Compatibility only: passenger spawning uses reachable_stops for both modes.
+	for stop: AbstractStation in data.reachable_stops:
+		if stop is RailStationData and not stop.node_stations.is_empty():
+			data.connected_station = stop.node_stations[0]
+			break
+	return true
+
+func _clear_residence_connection(house: Residence3D, data: ResidenceBuildingData) -> void:
+	# Remove former membership even when the building has lost all coverage.
+	if data.connected_interchange != null:
+		var old: StationConnections = data.connected_interchange.connections
+		for index: int in range(old.houses.size() - 1, -1, -1):
+			if old.houses[index].house == house:
+				old.houses.remove_at(index)
+	data.connected_interchange = null
+	data.reachable_stops.clear()
+	data.connected_station = null
 
 func _on_stops_linked() -> void:
 	has_stations_loaded = true

@@ -8,8 +8,6 @@ const ROAD_COLOR = Color.DARK_ORANGE
 const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
 
 const LINE_WIDTH = .5
-const CONNECTIONS = preload("res://addons/hinterland_tools/road_endpoint_connections.gd")
-const EndpointConnection = preload("res://game/gamescripts/nodes/infr/editor/editor_endpoint_connection.gd")
 var _connection_service: Node
 var _junction_markers: Array[MeshInstance3D] = []
 
@@ -27,7 +25,7 @@ func _register_connections() -> void:
 		set_notify_transform(true)
 		if not curve_changed.is_connected(_connections_changed):
 			curve_changed.connect(_connections_changed)
-		_connection_service = CONNECTIONS.ensure(world)
+		_connection_service = RoadEndpointConnection.ensure(world)
 		_connection_service.register(self)
 
 func _exit_tree() -> void:
@@ -42,23 +40,20 @@ func _connections_changed() -> void:
 	if is_instance_valid(_connection_service):
 		_connection_service.request_update()
 
-func _connection_entries(entries: Array, previous: Array[EndpointConnection]) -> Array[EndpointConnection]:
-	var result: Array[EndpointConnection] = []
+func _connection_entries(entries: Array[EditorEndpointConnection], previous: Array[EditorEndpointConnection]) -> Array[EditorEndpointConnection]:
+	var result: Array[EditorEndpointConnection] = []
 	for index: int in range(entries.size()):
-		var entry: Dictionary = entries[index]
+		var entry: EditorEndpointConnection = entries[index]
 		# Keep unchanged resources so a rebuild doesn't collapse Inspector entries.
 		if index < previous.size() and previous[index].road == entry.road and previous[index].endpoint == entry.endpoint:
 			result.append(previous[index])
 		else:
-			var connection := EndpointConnection.new()
-			connection.road = entry.road
-			connection.endpoint = entry.endpoint
-			result.append(connection)
+			result.append(entry)
 	return result
 
-func apply_endpoint_connections(start: Array, end: Array, show_start: bool, show_end: bool) -> void:
-	var start_entries: Array[EndpointConnection] = _connection_entries(start, start_connections)
-	var end_entries: Array[EndpointConnection] = _connection_entries(end, end_connections)
+func apply_endpoint_connections(start: Array[EditorEndpointConnection], end: Array[EditorEndpointConnection], show_start: bool, show_end: bool) -> void:
+	var start_entries: Array[EditorEndpointConnection] = _connection_entries(start, start_connections)
+	var end_entries: Array[EditorEndpointConnection] = _connection_entries(end, end_connections)
 	var changed: bool = start_connections != start_entries or end_connections != end_entries
 	start_connections.assign(start_entries)
 	end_connections.assign(end_entries)
@@ -68,30 +63,36 @@ func apply_endpoint_connections(start: Array, end: Array, show_start: bool, show
 	while _junction_markers.size() < 2:
 		_junction_markers.append(null)
 	for endpoint: int in [0, 1]:
-		var show_marker: bool = show_start if endpoint == 0 else show_end
-		var marker: MeshInstance3D = _junction_markers[endpoint]
-		if is_instance_valid(marker) and marker.is_queued_for_deletion():
-			marker = null
-		if show_marker and not is_instance_valid(marker):
-			marker = MeshInstance3D.new()
-			marker.name = "EndpointConnection"
-			var sphere := SphereMesh.new()
-			sphere.radius = 0.3
-			sphere.height = 0.6
-			marker.mesh = sphere
-			var material := StandardMaterial3D.new()
-			material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-			material.albedo_color = Color.CYAN
-			marker.material_override = material
-			marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			add_child(marker)
-			_junction_markers[endpoint] = marker
-		if is_instance_valid(marker):
-			marker.visible = show_marker
-			if show_marker and curve and curve.point_count >= 2:
-				var idx: int = 0 if endpoint == 0 else curve.point_count - 1
-				# Lift only the indicator so it is readable above the road surface.
-				marker.position = curve.get_point_position(idx) + Vector3.UP * 0.3
+		_update_junction_marker(endpoint, show_start if endpoint == 0 else show_end)
+
+func _update_junction_marker(endpoint: int, show_marker: bool) -> void:
+	var marker: MeshInstance3D = _junction_markers[endpoint]
+	if is_instance_valid(marker) and marker.is_queued_for_deletion():
+		marker = null
+	if show_marker and not is_instance_valid(marker):
+		marker = _create_junction_marker()
+		_junction_markers[endpoint] = marker
+	if is_instance_valid(marker):
+		marker.visible = show_marker
+		if show_marker and curve and curve.point_count >= 2:
+			var idx: int = 0 if endpoint == 0 else curve.point_count - 1
+			# Lift only the indicator so it is readable above the road surface.
+			marker.position = curve.get_point_position(idx) + Vector3.UP * 0.3
+
+func _create_junction_marker() -> MeshInstance3D:
+	var marker := MeshInstance3D.new()
+	marker.name = "EditorEndpointConnection"
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.3
+	sphere.height = 0.6
+	marker.mesh = sphere
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = Color.CYAN
+	marker.material_override = material
+	marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(marker)
+	return marker
 
 
 @export var num: int = -1
@@ -122,8 +123,8 @@ var place_on_ground = Callable(self, "do_place_on_ground")
 
 @export_group("Road Connections")
 ## Derived editor information; each entry identifies the other road and its end.
-@export var start_connections: Array[EndpointConnection] = []
-@export var end_connections: Array[EndpointConnection] = []
+@export var start_connections: Array[EditorEndpointConnection] = []
+@export var end_connections: Array[EditorEndpointConnection] = []
 @export_group("")
 
 #region Initialization

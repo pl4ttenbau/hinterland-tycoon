@@ -11,6 +11,13 @@
 				"roadNum": 34,
 				"nodeIndex": 3,
 				"roadSide": "BOTH"
+			},
+			{
+				"num": 7,
+				"domain": "RAIL",
+				"trackNum": 118,
+				"nodeIndex": 5,
+				"type": "STATION_CARGO"
 			}
 		]
 	},
@@ -62,7 +69,66 @@
 				"roadNum": 357,
 				"nodeIndex": 1,
 				"roadSide": "BOTH"
-			},
+			}
 		]
-	}
+	},
+	{
+		"num": 4,
+		"name": "Knieper",
+		"townNum": 39,
+		"townName": "Stralsund-Knieper",
+		"stops": [
+			{
+				"num": 8,
+				"domain": "ROAD",
+				"roadNum": 355,
+				"nodeIndex": 3,
+				"roadSide": "RIGHT"
+			}
+		]
+	},
+	{
+		"num": 5,
+		"name": "Bahnhof",
+		"townNum": 8,
+		"townName": "Altefähr",
+		"stops": [
+			{
+				"num": 9,
+				"domain": "RAIL",
+				"trackNum": 124,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 10,
+				"domain": "RAIL",
+				"trackNum": 73,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 11,
+				"domain": "ROAD",
+				"roadNum": 211,
+				"nodeIndex": 5,
+				"roadSide": "BOTH"
+			}
+		]
+	},
+	{
+		"num": 6,
+		"name": "Ort",
+		"townNum": 8,
+		"townName": "Altefähr",
+		"stops": [
+			{
+				"num": 12,
+				"domain": "ROAD",
+				"roadNum": 44,
+				"nodeIndex": 1,
+				"roadSide": "RIGHT"
+			}
+		]
+	},
 ]

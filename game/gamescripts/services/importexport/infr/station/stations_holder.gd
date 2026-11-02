@@ -18,38 +18,47 @@ func load_stations(catalog: InterchangesLoader = null) -> Error:
 		catalog = Managers.interchanges
 	if catalog == null or not catalog.is_loaded or Managers.rails == null:
 		return ERR_UNCONFIGURED
-	# Check every rail anchor first, including node zero. No station is published
-	# until the complete rail portion can be attached without replacing a link.
+	# Validate all anchors before any stop can replace an existing node link.
+	var error: Error = _validate_rail_anchors(catalog.stop_definitions)
+	if error != OK:
+		return error
 	for definition: Dictionary in catalog.stop_definitions:
+		if definition["domain"] == "RAIL":
+			error = _load_rail_stop(definition, catalog)
+			if error != OK:
+				return error
+	GlobalState.station_objs = self.stations_objs
+	self.is_loaded = true
+	return OK
+
+func _validate_rail_anchors(definitions: Array[Dictionary]) -> Error:
+	for definition: Dictionary in definitions:
 		if definition["domain"] != "RAIL":
 			continue
 		var track: RailTrackData = Managers.rails.track_storage._by_id.get(int(definition["trackNum"]))
 		if track == null or not track.has_node_index(int(definition["nodeIndex"])) \
 				or track.nodes[int(definition["nodeIndex"])].station != null:
 			return ERR_INVALID_DATA
-	for definition: Dictionary in catalog.stop_definitions:
-		if definition["domain"] != "RAIL":
-			continue
-		var station_obj: RailStationData = RailStationData.of_dict(definition)
-		if station_obj == null:
-			return ERR_INVALID_DATA
-		var error: Error = catalog.register_stop(station_obj, int(definition["interchangeNum"]))
-		if error != OK:
-			return error
-		self.stations_objs.append(station_obj)
-		self.stations_by_num[station_obj.num] = station_obj
-		var track: RailTrackData = Managers.rails.track_storage._by_id[station_obj.track_num]
-		var node: RailNodeData = track.nodes[station_obj.node_index]
-		# Retain the node-link adapter used by rail catchments/signs. Its number is
-		# now the authored stop ID, not a new auto-generated identity on each load.
-		var link := NodeStationLinkData.of(node, station_obj.num)
-		link.num = station_obj.num
-		link.hide_building = station_obj.hide_building
-		node.station = link
-		station_obj.connect_node_station(link)
-		self.add_station_link_from_node(link)
-	GlobalState.station_objs = self.stations_objs
-	self.is_loaded = true
+	return OK
+
+func _load_rail_stop(definition: Dictionary, catalog: InterchangesLoader) -> Error:
+	var station: RailStationData = RailStationData.of_dict(definition)
+	if station == null:
+		return ERR_INVALID_DATA
+	var error: Error = catalog.register_stop(station, int(definition["interchangeNum"]))
+	if error != OK:
+		return error
+	self.stations_objs.append(station)
+	self.stations_by_num[station.num] = station
+	var track: RailTrackData = Managers.rails.track_storage._by_id[station.track_num]
+	var node: RailNodeData = track.nodes[station.node_index]
+	# Preserve the authored stop ID on the adapter used by rail signs/catchments.
+	var link := NodeStationLinkData.of(node, station.num)
+	link.num = station.num
+	link.hide_building = station.hide_building
+	node.station = link
+	station.connect_node_station(link)
+	self.add_station_link_from_node(link)
 	return OK
 
 ## spawns new RailStation3D instances

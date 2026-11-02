@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RoadVehiclePricing" format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/type/road_vehicle_pricing.gd" id="1_pricing"]
+
+[resource]
+script = ExtResource("1_pricing")
+vehicle_base = 3000.0
+price_per_kw = 100.0
+price_per_capacity_unit = 500.0
+speed_base_multiplier = 0.75
+speed_reference_kmh = 160.0
+rounding_step = 100

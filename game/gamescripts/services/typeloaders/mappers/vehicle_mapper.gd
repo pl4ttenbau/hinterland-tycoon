@@ -60,6 +60,7 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	definition.length_metres = float(data["length_metres"])
 	definition.mass_tonnes = float(data["mass_tonnes"]) if data.get("mass_tonnes") != null else null
 	definition.motor_power_kw = float(data["motor_power_kw"]) if data.get("motor_power_kw") != null else null
+	definition.tractive_effort_kn = float(data["tractive_effort_kn"]) if data.get("tractive_effort_kn") != null else null
 	definition.usable_infr = UsableInfrType.of_dict(data["usable_infr"])
 	if data.has("capacity"):
 		definition.capacity = GoodsCapacity.of_json(data["capacity"])
@@ -77,10 +78,10 @@ static func _is_valid(data: Dictionary, allow_unknown_speed: bool = false) -> bo
 	if not _is_number(data.get("length_metres")) or data["length_metres"] <= 0:
 		push_error("Vehicle %s requires a positive length" % data["key"])
 		return false
-	for field: String in ["mass_tonnes", "motor_power_kw"]:
+	for field: String in ["mass_tonnes", "motor_power_kw", "tractive_effort_kn"]:
 		var value: Variant = data.get(field)
 		if value != null and (not _is_number(value) or not is_finite(float(value)) \
-				or value < 0 or (field == "mass_tonnes" and value == 0)):
+				or value < 0 or (field != "motor_power_kw" and value == 0)):
 			push_error("Vehicle %s has an invalid %s" % [data["key"], field])
 			return false
 	if not data.get("has_motor") is bool:

@@ -31,10 +31,39 @@ func _on_local_initialized(coordinator: WorldServicesCoordinator) -> void:
 
 func _run() -> void:
 	self.check(self.test_service_lifecycle(), "Service lifecycle test finished")
+	self.check(self.test_road_depot(), "Road depot integration test finished")
 	self.check(self.test_residence_conversion(), "Residence conversion test finished")
 	self.check(self.test_all_residence_variants(), "All residence variants test finished")
 	print("World services tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
+
+## Exercise the real road-loaded/spawned signal chain without terrain or rail views.
+func test_road_depot() -> bool:
+	var previous_map: String = GlobalState.selected_map_name
+	var previous_roads: Array[RoadData] = GlobalState.roads.duplicate()
+	var previous_depots: Array[RoadDepotData] = GlobalState.road_depots.duplicate()
+	var coordinator: WorldServicesCoordinator = SERVICES.instantiate()
+	self.add_child(coordinator)
+	self.check(coordinator.initialize() == OK, "Depot fixture initializes its services")
+	GlobalState.selected_map_name = "franzburger"
+	coordinator.roads.load_roads()
+	self.check(coordinator.depots.road_depots.size() == 1, "Road-loaded signal loads the authored road depot")
+	self.check(coordinator.depots.rail_depots.is_empty(), "Road loading does not reload rail depots")
+	var depot: RoadDepotData = coordinator.depots.road_depots[0]
+	self.check(depot.road_num == 363 and depot.road_pos == "END", "Road depot JSON uses road anchor fields")
+	depot.num = 73
+	SignalBus.roads_spawned.emit()
+	self.check(coordinator.depots.road_containers.size() == 1, "Zero-argument road-spawned signal creates a depot view")
+	var view: RoadDepot3D = coordinator.depots.road_containers[0]
+	self.check(view.depot == depot and depot.num == 73, "Spawning preserves the authored depot identity")
+	self.check(RoadDepotData.get_by_num(73) == depot, "Road depot lookup uses the road collection")
+	self.check(view.position.is_equal_approx(depot.get_depot_road_node().position), "Depot view uses its road endpoint")
+	self.check((view.get_node("RoadDepotCollider") as RoadDepotCollider).get_click_ref().entity_num == 73, "Collider reports the road depot ID")
+	coordinator.free()
+	GlobalState.selected_map_name = previous_map
+	GlobalState.roads = previous_roads
+	GlobalState.road_depots = previous_depots
+	return true
 
 func test_service_lifecycle() -> bool:
 	var map_list_loader: MapLoader = Managers.map_list_loader

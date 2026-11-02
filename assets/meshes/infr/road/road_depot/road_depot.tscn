@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dgluh21b1xnjh"]
+
+[ext_resource type="Script" uid="uid://ch38ek1gm5uvb" path="res://game/gamescripts/nodes/infr/depot/road_depot_3d.gd" id="1_28cfa"]
+[ext_resource type="PackedScene" uid="uid://bexgdye55jr3d" path="res://assets/meshes/infr/road/road_depot/mesh/mesh_road_depot.tscn" id="1_cxs2n"]
+[ext_resource type="Script" uid="uid://thdijkv400b2" path="res://game/gamescripts/resources/infr/infr_nodes/depot/road_depot_collider.gd" id="3_u6e1p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(10.003113, 2.6350098, 7.0565186)
+
+[node name="RoadDepot" type="Node3D" unique_id=27654977]
+script = ExtResource("1_28cfa")
+metadata/_custom_type_script = "uid://ch38ek1gm5uvb"
+
+[node name="MeshRoadDepot" parent="." unique_id=1852082005 instance=ExtResource("1_cxs2n")]
+
+[node name="RoadDepotCollider" type="StaticBody3D" parent="." unique_id=614034493]
+script = ExtResource("3_u6e1p")
+metadata/_custom_type_script = "uid://thdijkv400b2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoadDepotCollider" unique_id=1473721194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023162842, 1.2974854, -0.0869751)
+shape = SubResource("BoxShape3D_qwrwv")

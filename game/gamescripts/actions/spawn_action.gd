@@ -2,11 +2,20 @@ class_name SpawnAction extends BaseAction
 
 const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
 const COMPOSE_TRAIN_DIAG_SCENE = "res://scenes/ui/dialogs/train_composition/train_composition_dialog.tscn"
+const ROAD_SPAWN_DIALOG = preload("res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_spawn_dialog.gd")
 
 @export var last_clicked_depot_num: int = -1
 
 func _enter_tree() -> void:
 	SignalBus.request_spawn_action.connect(Callable(self, "_on_spawn_action_request"))
+	SignalBus.request_road_vehicle_spawn.connect(_on_road_vehicle_spawn_requested)
+
+## Road depots use a separate request so rail and road IDs may safely overlap.
+func _on_road_vehicle_spawn_requested(depot: RoadDepotData) -> void:
+	if UiState.current_diag != null:
+		return
+	var dialog: GameDialog = ROAD_SPAWN_DIALOG.create(depot)
+	get_tree().root.add_child(dialog)
 
 func on_trigger():
 	super.on_trigger()

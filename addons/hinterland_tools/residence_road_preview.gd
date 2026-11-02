@@ -1,8 +1,6 @@
 @tool
-extends Node
+class_name EditorResidenceRoadPreview extends Node
 
-const HOUSE = preload("res://game/gamescripts/nodes/structures/editor_residence_3d.gd")
-const CONNECTOR = preload("res://game/gamescripts/services/importexport/infr/connectors/residence_road_connector.gd")
 var _visual: MeshInstance3D
 var _elapsed: float = 0.0
 
@@ -19,7 +17,7 @@ func _process(delta: float) -> void:
 	for selected: Node in EditorInterface.get_selection().get_selected_nodes():
 		var candidate: Node = selected
 		while candidate != null and candidate != world:
-			if candidate is HOUSE:
+			if candidate is EditorResidence3D:
 				house = candidate
 				break
 			candidate = candidate.get_parent()
@@ -32,17 +30,21 @@ func _process(delta: float) -> void:
 
 ## Live debug only: does not modify the saved house connection or mark a scene dirty.
 func update_for_house(house: Node3D, world: Node) -> void:
-	var roads: Array[Dictionary] = CONNECTOR.prepare_editor_roads(CONNECTOR.editor_roads(world))
-	var origin: Vector3 = CONNECTOR.exit_for(house)
-	var connection = CONNECTOR.find_prepared(origin, roads)
+	var roads: Array[RoadCurveCandidate] = ResidenceRoadConnector.prepare_editor_roads(ResidenceRoadConnector.editor_roads(world))
+	var origin: Vector3 = ResidenceRoadConnector.exit_for(house)
+	var connection = ResidenceRoadConnector.find_prepared(origin, roads)
 	if connection == null:
 		clear_preview()
 		return
 	var endpoint: Vector3
-	for road: Dictionary in roads:
+	for road: RoadCurveCandidate in roads:
 		if road.num == connection.road_num:
 			endpoint = road.curve.sample_baked(connection.dist_from_zero)
 			break
+	_ensure_preview_visual(world)
+	_visual.mesh = _create_connection_mesh(origin, endpoint)
+
+func _ensure_preview_visual(world: Node) -> void:
 	if is_instance_valid(_visual) and _visual.get_parent() != world:
 		clear_preview()
 	if not is_instance_valid(_visual):
@@ -56,6 +58,8 @@ func update_for_house(house: Node3D, world: Node) -> void:
 		world.add_child(_visual) # No owner: never saved into the map.
 		_visual.top_level = true
 		_visual.global_transform = Transform3D.IDENTITY
+
+func _create_connection_mesh(origin: Vector3, endpoint: Vector3) -> ImmediateMesh:
 	var mesh := ImmediateMesh.new()
 	mesh.surface_begin(Mesh.PRIMITIVE_LINES)
 	mesh.surface_add_vertex(origin)
@@ -65,7 +69,8 @@ func update_for_house(house: Node3D, world: Node) -> void:
 			mesh.surface_add_vertex(point - axis * 0.2)
 			mesh.surface_add_vertex(point + axis * 0.2)
 	mesh.surface_end()
-	_visual.mesh = mesh
+	return mesh
+
 
 func clear_preview() -> void:
 	if is_instance_valid(_visual):

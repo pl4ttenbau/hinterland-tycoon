@@ -1,5 +1,5 @@
 @tool
-extends RefCounted
+class_name InfrDrawingTool extends RefCounted
 
 const SNAP_PIXELS: float = 16.0
 const RELEASE_PIXELS: float = 22.0
@@ -22,7 +22,12 @@ func begin(map: WorldMapScene, infr_domain: Enums.InfrDomain) -> void:
 	clear()
 	world = map
 	domain = infr_domain
-	preload("res://addons/hinterland_tools/editor_cache.gd").ensure_container(world, domain)
+	EditorCache.ensure_container(world, domain)
+	_create_drawing_overlay()
+	_create_snap_marker()
+	refresh_endpoints()
+
+func _create_drawing_overlay() -> void:
 	# No owner: these editor-only visuals never enter the saved scene.
 	overlay = Node3D.new()
 	overlay.name = "InfrastructureDrawingPreview"
@@ -35,6 +40,8 @@ func begin(map: WorldMapScene, infr_domain: Enums.InfrDomain) -> void:
 	preview = MeshInstance3D.new()
 	preview.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	overlay.add_child(preview)
+
+func _create_snap_marker() -> void:
 	marker = MeshInstance3D.new()
 	var sphere := SphereMesh.new()
 	sphere.radius = 1.0
@@ -47,7 +54,6 @@ func begin(map: WorldMapScene, infr_domain: Enums.InfrDomain) -> void:
 	marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	overlay.add_child(marker)
 	marker.hide()
-	refresh_endpoints()
 
 func clear() -> void:
 	if is_instance_valid(overlay):
@@ -77,41 +83,46 @@ func hide_pointer() -> void:
 func update_pointer(camera: Camera3D, mouse: Vector2, terrain_point: Vector3, terrain_valid: bool) -> void:
 	placement_valid = terrain_valid
 	placement = terrain_point
-	# Lift terrain placements once, before preview/commit. Snapping below replaces
-	# this with the exact endpoint position, so adjoining lines stay coincident.
+	# Lift free placement once; snapped placement keeps the endpoint's exact XYZ.
 	if terrain_valid:
 		placement.y += InfrUtils.GROUND_CLEARANCE
-	var best: float = SNAP_PIXELS
-	var selected: EditorInfrLine3D = null
-	var selected_index: int = -1
-	# Keep the previous endpoint slightly longer to avoid flicker between targets.
-	if is_instance_valid(candidate) and candidate.is_inside_tree() and candidate.is_visible_in_tree() and candidate.curve and candidate_index < candidate.curve.point_count:
-		var held: Vector3 = candidate.to_global(candidate.curve.get_point_position(candidate_index))
-		if eligible(camera, mouse, held, terrain_point, terrain_valid, RELEASE_PIXELS):
-			selected = candidate
-			selected_index = candidate_index
-	if selected == null:
-		for line: EditorInfrLine3D in endpoints:
-			if not is_instance_valid(line) or not line.is_inside_tree() or not line.is_visible_in_tree() or not line.curve or line.curve.point_count == 0:
-				continue
-			for idx: int in [0, line.curve.point_count - 1]:
-				var position: Vector3 = line.to_global(line.curve.get_point_position(idx))
-				if eligible(camera, mouse, position, terrain_point, terrain_valid, best):
-					best = camera.unproject_position(position).distance_to(mouse)
-					selected = line
-					selected_index = idx
-	candidate = selected
-	candidate_index = selected_index
-	marker.visible = candidate != null
-	if candidate != null:
-		# Copy the full world position, including elevation; no connection is created.
-		placement = candidate.to_global(candidate.curve.get_point_position(candidate_index))
-		placement_valid = true
-		marker.global_position = placement
-		var viewport_height: float = maxf(camera.get_viewport().get_visible_rect().size.y, 1.0)
-		var visible_height: float = camera.size if camera.projection == Camera3D.PROJECTION_ORTHOGONAL else 2.0 * camera.global_position.distance_to(placement) * tan(deg_to_rad(camera.fov) * 0.5)
-		marker.scale = Vector3.ONE * maxf(visible_height / viewport_height * 6.0, 0.02)
+	if not _retain_snap_candidate(camera, mouse, terrain_point, terrain_valid):
+		_find_snap_candidate(camera, mouse, terrain_point, terrain_valid)
+	_update_snap_marker(camera)
 	redraw()
+
+func _retain_snap_candidate(camera: Camera3D, mouse: Vector2, terrain_point: Vector3, terrain_valid: bool) -> bool:
+	# Hysteresis keeps a previous endpoint slightly longer, avoiding flicker.
+	if not (is_instance_valid(candidate) and candidate.is_inside_tree() and candidate.is_visible_in_tree() and candidate.curve and candidate_index < candidate.curve.point_count):
+		return false
+	var held: Vector3 = candidate.to_global(candidate.curve.get_point_position(candidate_index))
+	return eligible(camera, mouse, held, terrain_point, terrain_valid, RELEASE_PIXELS)
+
+func _find_snap_candidate(camera: Camera3D, mouse: Vector2, terrain_point: Vector3, terrain_valid: bool) -> void:
+	candidate = null
+	candidate_index = -1
+	var best: float = SNAP_PIXELS
+	for line: EditorInfrLine3D in endpoints:
+		if not is_instance_valid(line) or not line.is_inside_tree() or not line.is_visible_in_tree() or not line.curve or line.curve.point_count == 0:
+			continue
+		for index: int in [0, line.curve.point_count - 1]:
+			var position: Vector3 = line.to_global(line.curve.get_point_position(index))
+			if eligible(camera, mouse, position, terrain_point, terrain_valid, best):
+				best = camera.unproject_position(position).distance_to(mouse)
+				candidate = line
+				candidate_index = index
+
+func _update_snap_marker(camera: Camera3D) -> void:
+	marker.visible = candidate != null
+	if candidate == null:
+		return
+	# Copy the full world position, including elevation; no connection is created.
+	placement = candidate.to_global(candidate.curve.get_point_position(candidate_index))
+	placement_valid = true
+	marker.global_position = placement
+	var viewport_height: float = maxf(camera.get_viewport().get_visible_rect().size.y, 1.0)
+	var visible_height: float = camera.size if camera.projection == Camera3D.PROJECTION_ORTHOGONAL else 2.0 * camera.global_position.distance_to(placement) * tan(deg_to_rad(camera.fov) * 0.5)
+	marker.scale = Vector3.ONE * maxf(visible_height / viewport_height * 6.0, 0.02)
 
 func eligible(camera: Camera3D, mouse: Vector2, position: Vector3, terrain_point: Vector3, terrain_valid: bool, radius: float) -> bool:
 	return not camera.is_position_behind(position) \
@@ -155,39 +166,49 @@ func redraw() -> void:
 func finish(history: Object) -> bool:
 	if points.size() < 2 or not is_instance_valid(world):
 		return false
-	var container: Node3D = preload("res://addons/hinterland_tools/editor_cache.gd").ensure_container(world, domain)
-	# Include IDs that exist only in JSON, before they are generated in the editor.
-	var next_num: int = preload("res://addons/hinterland_tools/infr_json_store.gd").next_number(world, domain)
+	var parent: Node3D = EditorCache.ensure_container(world, domain)
+	var next_num: int = _next_line_number()
 	if next_num < 0:
 		return false
-	# Re-scan on commit: undo/redo and manual scene edits can change the ID range.
+	if parent == null:
+		push_warning("Cannot draw infrastructure: this map has no matching EditorRoads/EditorRails container.")
+		return false
+	var line: EditorInfrLine3D = _create_drawn_line(parent, next_num)
+	_commit_drawn_line(parent, line, history)
+	points.clear()
+	refresh_endpoints()
+	hide_pointer()
+	return true
+
+func _next_line_number() -> int:
+	# Include JSON-only IDs, then rescan scene IDs changed by undo/manual edits.
+	var next_num: int = InfrJsonStore.next_number(world, domain)
+	if next_num < 0:
+		return -1
 	for node: Node in world.find_children("*", "", true, false):
 		if node is EditorInfrLine3D and node.infr_domain == domain:
 			next_num = maxi(next_num, node.num + 1)
-	if container == null:
-		push_warning("Cannot draw infrastructure: this map has no matching EditorRoads/EditorRails container.")
-		return false
-	var parent: Node3D = container
-	var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, next_num, "Drawn road" if domain == Enums.InfrDomain.ROAD else "Drawn rail", true)
-	# The overlay uses world coordinates. Store the saved curve in its parent's
-	# local coordinates, so translated infrastructure containers work correctly.
-	var parent_transform: Transform3D = parent.global_transform
-	line.position = parent_transform.affine_inverse() * points[0]
+	return next_num
+
+func _create_drawn_line(parent: Node3D, number: int) -> EditorInfrLine3D:
+	var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, number, "Drawn road" if domain == Enums.InfrDomain.ROAD else "Drawn rail", true)
+	# Convert the world-space preview to its parent's local coordinates.
+	var inverse: Transform3D = parent.global_transform.affine_inverse()
+	line.position = inverse * points[0]
 	line.curve = Curve3D.new()
 	var world_curve: Curve3D = make_curve(false)
-	var inverse: Transform3D = parent_transform.affine_inverse()
-	# Convert the already smoothed handles as vectors, rather than smoothing
-	# again in local space (nonuniform parent scale would change the preview).
-	for idx: int in range(points.size()):
-		line.curve.add_point(inverse * points[idx] - line.position,
-			inverse.basis * world_curve.get_point_in(idx), inverse.basis * world_curve.get_point_out(idx))
+	# Transform already-smoothed handles as vectors: smoothing again under
+	# nonuniform parent scale would change the accepted curve from the preview.
+	for index: int in range(points.size()):
+		line.curve.add_point(inverse * points[index] - line.position,
+			inverse.basis * world_curve.get_point_in(index), inverse.basis * world_curve.get_point_out(index))
+	return line
+
+func _commit_drawn_line(parent: Node3D, line: EditorInfrLine3D, history: Object) -> void:
 	history.create_action("Create road" if domain == Enums.InfrDomain.ROAD else "Create rail", UndoRedo.MERGE_DISABLE, world)
 	history.add_do_method(parent, "add_child", line, true)
 	history.add_do_method(line, "set_owner", world)
 	history.add_undo_method(parent, "remove_child", line)
 	history.add_do_reference(line)
 	history.commit_action()
-	points.clear()
-	refresh_endpoints()
-	hide_pointer()
-	return true
+

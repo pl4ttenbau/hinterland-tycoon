@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://drhyjn8jb0c4k" path="res://assets/packed/materials/line3d_roadway_mat.tres" id="5_t1wor"]
 [ext_resource type="Material" uid="uid://dhht3vcp2qam5" path="res://assets/packed/materials/line3d_rail_track_mat.tres" id="6_t1wor"]
 [ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn" id="8_sfi3o"]
-[ext_resource type="Script" uid="uid://cfv2khmybf5f" path="res://game/gamescripts/nodes/infr/station/sign/station_sign_3d.gd" id="9_nt5iv"]
 
 [sub_resource type="Curve3D" id="Curve3D_rph8o"]
 _data = {
@@ -10147,91 +10146,55 @@ material = ExtResource("6_t1wor")
 
 [node name="EditorStops" type="Node3D" parent="." unique_id=247676361]
 
-[node name="RoadStop_1" type="Sprite3D" parent="EditorStops" unique_id=703079687 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RoadStop_1" parent="EditorStops" unique_id=703079687 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 873.01, 38.760002, -347.27)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_7kf6w")
-script = ExtResource("9_nt5iv")
 station_name = "Hafen"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 1
 metadata/interchange_num = 1
 metadata/domain = "ROAD"
 metadata/node_index = 3
 
-[node name="RailStop_2" type="Sprite3D" parent="EditorStops" unique_id=1596559202 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RailStop_2" parent="EditorStops" unique_id=1596559202 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.71, 38.45, -301.96)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_l762k")
-script = ExtResource("9_nt5iv")
 station_name = "HBF"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 2
 metadata/interchange_num = 2
 metadata/domain = "RAIL"
 metadata/node_index = 2
 
-[node name="RoadStop_3" type="Sprite3D" parent="EditorStops" unique_id=94387239 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RoadStop_3" parent="EditorStops" unique_id=94387239 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 817.12, 38.92, -297.81)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_xumf5")
-script = ExtResource("9_nt5iv")
 station_name = "HBF"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 3
 metadata/interchange_num = 2
 metadata/domain = "ROAD"
 metadata/node_index = 4
 
-[node name="RailStop_4" type="Sprite3D" parent="EditorStops" unique_id=202055274 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RailStop_4" parent="EditorStops" unique_id=202055274 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 802.39, 39.09, -273.86)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_niftr")
-script = ExtResource("9_nt5iv")
 station_name = "HBF"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 4
 metadata/interchange_num = 2
 metadata/domain = "RAIL"
 metadata/node_index = 3
 
-[node name="RailStop_5" type="Sprite3D" parent="EditorStops" unique_id=1834796545 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RailStop_5" parent="EditorStops" unique_id=1834796545 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 809.13, 39.14, -249.51)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_jkgqr")
-script = ExtResource("9_nt5iv")
 station_name = "HBF"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 5
 metadata/interchange_num = 2
 metadata/domain = "RAIL"
 metadata/node_index = 2
 
-[node name="RoadStop_6" type="Sprite3D" parent="EditorStops" unique_id=1649113944 node_paths=PackedStringArray("station_sign_ui") instance=ExtResource("8_sfi3o")]
+[node name="RoadStop_6" parent="EditorStops" unique_id=1649113944 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708.03, 40.379997, -237.02)
-visibility_range_end_margin = 30.0
-pixel_size = 0.02
-billboard = 1
 texture = SubResource("ViewportTexture_p7ms7")
-script = ExtResource("9_nt5iv")
 station_name = "Tribseer"
-station_sign_ui = NodePath("SubViewport/StationSignPanel")
-metadata/_custom_type_script = "uid://cfv2khmybf5f"
 metadata/stop_num = 6
 metadata/interchange_num = 3
 metadata/domain = "ROAD"

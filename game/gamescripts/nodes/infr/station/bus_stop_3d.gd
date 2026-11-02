@@ -82,15 +82,18 @@ func _layout_shelters() -> void:
 	elif self.station.road_side != Enums.RoadSide.BOTH and opposite != null:
 		opposite.free()
 		opposite = null
-	var right: Vector3 = self._road_heading.cross(Vector3.UP).normalized()
 	var sign: float = -1.0 if self.station.road_side == Enums.RoadSide.LEFT else 1.0
-	shelter.global_position = self.station.position + right * self._roadside_offset * sign
-	if self._roadside_offset > 0.0:
-		shelter.look_at(self.station.position)
+	self._place_shelter(shelter, sign)
 	if opposite != null:
-		opposite.global_position = self.station.position - right * self._roadside_offset
-		if self._roadside_offset > 0.0:
-			opposite.look_at(self.station.position)
+		self._place_shelter(opposite, -1.0)
+
+## The authored shelter runs along Z and opens toward -X. Align its long edge
+## with the road, reversing the opposite side so both entrances face the road.
+func _place_shelter(shelter: Node3D, side_sign: float) -> void:
+	var right: Vector3 = self._road_heading.cross(Vector3.UP).normalized()
+	shelter.global_position = self.station.position + right * self._roadside_offset * side_sign
+	if not self._road_heading.is_zero_approx():
+		shelter.look_at(shelter.global_position + self._road_heading * side_sign)
 
 func _exit_tree() -> void:
 	self._disconnect_station()

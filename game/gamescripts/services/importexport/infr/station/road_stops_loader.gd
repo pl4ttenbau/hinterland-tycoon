@@ -21,24 +21,35 @@ func load_stops(catalog: InterchangesLoader = null) -> Error:
 		catalog = Managers.interchanges
 	if catalog == null or not catalog.is_loaded or Managers.roads == null:
 		return ERR_UNCONFIGURED
+	var error: Error = _validate_road_anchors(catalog.stop_definitions)
+	if error != OK:
+		return error
 	for definition: Dictionary in catalog.stop_definitions:
+		if definition["domain"] == "ROAD":
+			error = _load_road_stop(definition, catalog)
+			if error != OK:
+				return error
+	self.is_loaded = true
+	return OK
+
+func _validate_road_anchors(definitions: Array[Dictionary]) -> Error:
+	for definition: Dictionary in definitions:
 		if definition["domain"] != "ROAD":
 			continue
 		var road: RoadData = Managers.roads.storage._by_id.get(int(definition["roadNum"]))
 		if road == null or int(definition["nodeIndex"]) >= road.nodes.size():
 			return ERR_INVALID_DATA
-	for definition: Dictionary in catalog.stop_definitions:
-		if definition["domain"] != "ROAD":
-			continue
-		var stop: RoadStationData = RoadStationData.of_dict(definition)
-		var error: Error = catalog.register_stop(stop, int(definition["interchangeNum"]))
-		if error != OK:
-			return error
-		var road: RoadData = Managers.roads.storage._by_id[stop.road_num]
-		stop.position = road.nodes[stop.node_index].position
-		self.stops.append(stop)
-		self.by_num[stop.num] = stop
-	self.is_loaded = true
+	return OK
+
+func _load_road_stop(definition: Dictionary, catalog: InterchangesLoader) -> Error:
+	var stop: RoadStationData = RoadStationData.of_dict(definition)
+	var error: Error = catalog.register_stop(stop, int(definition["interchangeNum"]))
+	if error != OK:
+		return error
+	var road: RoadData = Managers.roads.storage._by_id[stop.road_num]
+	stop.position = road.nodes[stop.node_index].position
+	self.stops.append(stop)
+	self.by_num[stop.num] = stop
 	return OK
 
 func spawn_stops() -> void:

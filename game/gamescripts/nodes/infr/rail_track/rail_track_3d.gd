@@ -9,8 +9,8 @@ const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_600mm/path_ra
 signal track_assigned(track: RailTrackData)
 
 @export var curve: Curve3D:
-	get(): return $TrackPath.curve
-	set(value): $TrackPath.curve = value
+	get(): return (get_child(0) as Path3D).curve
+	set(value): (get_child(0) as Path3D).curve = value
 
 @export var track: RailTrackData:
 	set(value):
@@ -23,18 +23,27 @@ signal track_assigned(track: RailTrackData)
 		
 #region Initialization
 func _enter_tree() -> void:
-	self.track_assigned.connect(Callable(self, "_on_track_set"))
+	if not track_assigned.is_connected(_on_track_set):
+		track_assigned.connect(_on_track_set)
+	var bedding: PathMesh3D = get_bed_mesh()
+	for child: Node in get_children():
+		if child is PathMesh3D:
+			# Only the bedding supports walking. Rails and sleepers stay visual
+			# so their individual edges cannot obstruct the player's collider.
+			var solid_bedding: bool = child == bedding and child.visible
+			child.collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH if solid_bedding else PathMesh3D.COLLISION_MODE_NONE
 	
 func assign_node_names():
 	self.name = "RailTrack_%d_Container" % self.entity.num
-	$TrackPath.name = "RailTrack_%d_Path" % self.entity.num
-	$BedPathMesh.name = "RailTrack_%d_BeddingMesh" % self.entity.num
-	$TrackPathMesh.name = "RailTrack_%d_TracksMesh" % self.entity.num
+	get_child(0).name = "RailTrack_%d_Path" % self.entity.num
+	get_bed_mesh().name = "RailTrack_%d_BeddingMesh" % self.entity.num
+	get_child(1).name = "RailTrack_%d_TracksMesh" % self.entity.num
 	
 func _hide_bed_when_required(track_obj: RailTrackData):
-	if track_obj.hideFill == true:
-		var bedding: PathMesh3D = self.get_bed_mesh()
-		if bedding: bedding.visible = false
+	var bedding: PathMesh3D = self.get_bed_mesh()
+	if bedding:
+		bedding.visible = not track_obj.hideFill
+		bedding.collision_mode = PathMesh3D.COLLISION_MODE_NONE if track_obj.hideFill else PathMesh3D.COLLISION_MODE_TRIMESH
 #endregion
 		
 static func get_scene_path(track_obj: RailTrackData) -> String:

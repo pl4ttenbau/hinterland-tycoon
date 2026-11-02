@@ -1,4 +1,4 @@
-class_name DepotCollider extends ClickableCollider
+class_name RailDepotCollider extends ClickableCollider
 
 var depot_obj: RailDepotData:
 	get():
@@ -6,4 +6,4 @@ var depot_obj: RailDepotData:
 		return depot3d.depot
 
 func get_click_ref() -> ClickRef:
-	return ClickRef.new(Enums.EntityTypes.DEPOT, self.depot_obj.num)
+	return ClickRef.new(Enums.EntityTypes.RAIL_DEPOT, self.depot_obj.num)

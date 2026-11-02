@@ -1,13 +1,11 @@
 @tool
 class_name ResidenceRoadConnector extends RefCounted
 
-const CONNECTION = preload("res://game/gamescripts/resources/structures/residential/road_connection.gd")
 const MAX_DISTANCE: float = 50.0
-const DOOR = preload("res://game/gamescripts/nodes/structures/residence_door.gd")
 
 static func door_for(house: Node3D) -> Node3D:
 	for child: Node in house.find_children("*", "", true, false):
-		if child is DOOR:
+		if child is ResidenceDoor:
 			return child
 	return null
 
@@ -28,47 +26,43 @@ static func editor_roads(world: Node) -> Array[EditorInfrLine3D]:
 	return result
 
 ## Callers supply the active editor roads, avoiding a dependency on editor caches.
-static func find_on_editor_roads(exit_position: Vector3, roads: Array[EditorInfrLine3D], max_distance: float = MAX_DISTANCE) -> CONNECTION:
+static func find_on_editor_roads(exit_position: Vector3, roads: Array[EditorInfrLine3D], max_distance: float = MAX_DISTANCE) -> RoadConnection:
 	return find_prepared(exit_position, prepare_editor_roads(roads), max_distance)
 
 ## Prepare once per batch, rather than rebuilding every road for every house.
-static func prepare_editor_roads(roads: Array[EditorInfrLine3D]) -> Array[Dictionary]:
-	var candidates: Array[Dictionary] = []
+static func prepare_editor_roads(roads: Array[EditorInfrLine3D]) -> Array[RoadCurveCandidate]:
+	var candidates: Array[RoadCurveCandidate] = []
 	for road: EditorInfrLine3D in roads:
 		if is_instance_valid(road) and road.infr_domain == Enums.InfrDomain.ROAD and road.curve != null:
-			candidates.append({"num": road.num, "curve": world_curve(road.curve, road.global_transform)})
+			candidates.append(RoadCurveCandidate.from_curve(road.num, road.curve, road.global_transform))
 	return candidates
 
-static func find_on_roads(exit_position: Vector3, roads: Array[RoadData], max_distance: float = MAX_DISTANCE) -> CONNECTION:
+static func find_on_roads(exit_position: Vector3, roads: Array[RoadData], max_distance: float = MAX_DISTANCE) -> RoadConnection:
 	return find_prepared(exit_position, prepare_roads(roads), max_distance)
 
-static func prepare_roads(roads: Array[RoadData]) -> Array[Dictionary]:
-	var candidates: Array[Dictionary] = []
+static func prepare_roads(roads: Array[RoadData]) -> Array[RoadCurveCandidate]:
+	var candidates: Array[RoadCurveCandidate] = []
 	for road: RoadData in roads:
 		if road == null:
 			continue
 		if road.curve == null:
 			road.build_curve()
-		candidates.append({"num": road.num, "curve": world_curve(road.curve, Transform3D(Basis.IDENTITY, road.start_pos))})
+		candidates.append(RoadCurveCandidate.from_curve(road.num, road.curve, Transform3D(Basis.IDENTITY, road.start_pos)))
 	return candidates
 
 ## Transform control points AND handles before measuring, so offsets remain metres
 ## even for rotated/scaled editor lines. Baked, linear sampling matches projection.
 static func world_curve(curve: Curve3D, transform: Transform3D) -> Curve3D:
-	var result := Curve3D.new()
-	for index: int in range(curve.point_count):
-		result.add_point(transform * curve.get_point_position(index),
-			transform.basis * curve.get_point_in(index), transform.basis * curve.get_point_out(index))
-	return result
+	return RoadCurveCandidate.from_curve(0, curve, transform).curve
 
-static func find_prepared(exit_position: Vector3, candidates: Array[Dictionary], max_distance: float = MAX_DISTANCE) -> CONNECTION:
+static func find_prepared(exit_position: Vector3, candidates: Array[RoadCurveCandidate], max_distance: float = MAX_DISTANCE) -> RoadConnection:
 	if not exit_position.is_finite() or not is_finite(max_distance) or max_distance < 0:
 		return null
-	var nearest: CONNECTION
+	var nearest: RoadConnection = null
 	var best_distance: float = max_distance * max_distance
-	for candidate: Dictionary in candidates:
+	for candidate: RoadCurveCandidate in candidates:
 		var curve: Curve3D = candidate.curve
-		if candidate.num < 0 or curve == null or curve.point_count < 2:
+		if not candidate.is_valid():
 			continue
 		var projected_curve: Curve3D = curve
 		if projected_curve.get_baked_length() <= 0:
@@ -78,7 +72,7 @@ static func find_prepared(exit_position: Vector3, candidates: Array[Dictionary],
 		if distance > best_distance or (nearest != null and is_equal_approx(distance, best_distance) and candidate.num >= nearest.road_num):
 			continue
 		best_distance = distance
-		nearest = CONNECTION.new()
+		nearest = RoadConnection.new()
 		nearest.road_num = candidate.num
 		nearest.dist_from_zero = projected_curve.get_closest_offset(exit_position)
 	return nearest

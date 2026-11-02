@@ -1,4 +1,5 @@
-extends Node
+## Regression checks for road stops, runtime signs and editor label persistence.
+class_name BusStopTest extends Node
 
 var failures: int = 0
 var stations: Array[RoadStationData] = []
@@ -14,6 +15,7 @@ func check(condition: bool, message: String) -> void:
 func _run() -> void:
 	self.check(self.test_json(), "Road stop JSON checks completed")
 	self.check(self.test_scene(), "Bus stop scene checks completed")
+	self.check(self.test_shelter_orientation(), "Shelter orientation checks completed")
 	self.check(self.test_editor_labels(), "Editor stop label checks completed")
 	# Existing station connections hold a back-reference to their parent Resource.
 	for station: RoadStationData in self.stations:
@@ -115,6 +117,34 @@ func test_scene() -> bool:
 	self.check(second.positioned.get_connections().is_empty(), "Deleting the view leaves no signal listeners")
 	return true
 
+## Verify the model's long axis follows the road and its entrance faces inward.
+func test_shelter_orientation() -> bool:
+	# Use a diagonal road under a rotated parent to exercise world-space placement.
+	var parent := Node3D.new()
+	self.add_child(parent)
+	parent.position = Vector3(40, 3, 20)
+	parent.rotation.y = 0.6
+	var heading := Vector3(1, 0, -1).normalized()
+	var packed: PackedScene = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn")
+
+	# BOTH adds a second shelter but shares the same physical stop and inventory.
+	for side: String in ["LEFT", "RIGHT", "BOTH"]:
+		var stop: BusStop3D = packed.instantiate()
+		stop.station = self.make_station({"num": 50, "roadNum": 4, "nodeIndex": 0, "roadSide": side})
+		stop.station.position = Vector3(8, 2, 6)
+		parent.add_child(stop)
+		stop.configure_road_layout(heading, 4.0)
+		for shelter: Node3D in stop.get_node("Model").get_children():
+			var toward_road: Vector3 = (stop.station.position - shelter.global_position).normalized()
+			self.check(absf(shelter.global_basis.z.normalized().dot(heading)) > 0.999, "Shelter long edge is parallel to the road on %s" % side)
+			self.check((-shelter.global_basis.x.normalized()).dot(toward_road) > 0.999, "Shelter entrance faces the road on %s" % side)
+			self.check(is_equal_approx(shelter.global_position.distance_to(stop.station.position), 4.0), "Orientation preserves the roadside offset")
+		stop.free()
+
+	# Free views before the shared station-resource cleanup in the runner.
+	parent.free()
+	return true
+
 func test_editor_labels() -> bool:
 	var key: String = "__stop_labels_test_%d" % OS.get_process_id()
 	var folder: String = "res://world/%s/jsondata" % key
@@ -138,7 +168,7 @@ func test_editor_labels() -> bool:
 	var store := EditorStopLabelsStore.new()
 	var history_suite: GDScript = load("res://tests/infr_json_suite.gd")
 	var history: RefCounted = history_suite.History.new()
-	var result: Dictionary = store.load_world(world, history)
+	var result: EditorActionResult = store.load_world(world, history)
 	self.check(result.ok and result.count == 2, "Editor JSON action creates both rail and road labels")
 	var container: Node3D = world.get_node("EditorStops")
 	var rail: StationSign3D = container.get_node("RailStop_12")

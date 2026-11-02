@@ -11,6 +11,7 @@ class_name PlayerHead3D extends InventoryEntity3D
 
 @export var in_station: RailStation3D
 @export var in_train: Train3D
+var in_road_vehicle: RoadVehicle3D
 
 const SPAWN_OFFSET = Vector3(0, 1, 0)
 
@@ -23,6 +24,8 @@ func _enter_tree() -> void:
 	# player entering & leaving train
 	SignalBus.player_entered_train.connect(Callable(self, "_on_train_entered"))
 	SignalBus.player_exited_train.connect(Callable(self, "_on_train_exited"))
+	SignalBus.player_entered_road_vehicle.connect(_on_road_vehicle_entered)
+	SignalBus.player_exited_road_vehicle.connect(_on_road_vehicle_exited)
 
 func _ready() -> void:
 	self.player_data = PlayerData.new()
@@ -62,4 +65,10 @@ func _on_train_entered(train3d: Train3D):
 
 func _on_train_exited():
 	self.in_train = null
+
+func _on_road_vehicle_entered(vehicle: RoadVehicle3D) -> void:
+	in_road_vehicle = vehicle
+
+func _on_road_vehicle_exited() -> void:
+	in_road_vehicle = null
 #endregion

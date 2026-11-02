@@ -1,6 +1,6 @@
-extends RefCounted
+## Regression checks for infrastructure JSON persistence, scene ownership and undo.
+class_name InfrJsonSuite extends RefCounted
 
-const Store = preload("res://addons/hinterland_tools/infr_json_store.gd")
 var failures: int = 0
 var checks: int = 0
 
@@ -44,20 +44,20 @@ func test_save(tree: SceneTree) -> bool:
 	var path: String = directory.path_join("tracks.json")
 	var original: String = JSON.stringify(fixture()) + "\n"
 	write_text(path, original)
-	var store := Store.new()
+	var store: InfrJsonStore = InfrJsonStore.new()
 	var line: EditorInfrLine3D = make_line(tree)
 	var lines: Array[EditorInfrLine3D] = [line]
-	var saved: Dictionary = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
+	var saved: EditorActionResult = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
 	check(saved.ok, "Save succeeds")
 	check(FileAccess.get_file_as_string(saved.backup) == original, "Backup preserves the exact original bytes")
-	var data: Array = Store.read_records(path).records
+	var data: Array = InfrJsonStore.read_records(path).records
 	check(data.size() == 2 and data[1].num == 8, "Saving a partial editor scene retains unseen JSON records")
 	check(data[0].type == "750_MM" and data[0].tag == "keep" and data[0].hideBed and data[0].extension.keep == 4, "Top-level metadata and actual type survive")
 	check(data[0].name == "Edited" and data[0].num == 7, "Actual ID and edited name are saved")
 	check(int(data[0].points[0].fork.connectiveTracks[0]) == 8 and data[0].points[1].station.name == "keep", "Fork/station metadata survives")
 	check(WorldUtils.vec3_from_float_arr(data[0].points[1].pos) == Vector3(18, 8, -3), "Positions are saved in world coordinates")
 	check(WorldUtils.vec3_from_float_arr(data[0].points[0].handleOut) == Vector3(2, 6, 12), "Handle offsets include parent scale without translation")
-	var again: Dictionary = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
+	var again: EditorActionResult = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
 	check(again.ok and again.backup != saved.backup and FileAccess.file_exists(saved.backup), "Every save retains a separate backup")
 	var before: String = FileAccess.get_file_as_string(path)
 	line.curve.add_point(Vector3(9, 0, 0))
@@ -73,7 +73,7 @@ func test_save(tree: SceneTree) -> bool:
 	# A directory at the destination forces replacement failure, without touching it.
 	var blocked: String = directory.path_join("blocked")
 	DirAccess.make_dir_absolute(blocked)
-	check(not Store.write_with_backup(blocked, fixture()).ok and DirAccess.dir_exists_absolute(blocked), "Failed replacement leaves the original destination intact")
+	check(not InfrJsonStore.write_with_backup(blocked, fixture()).ok and DirAccess.dir_exists_absolute(blocked), "Failed replacement leaves the original destination intact")
 	DirAccess.remove_absolute(blocked)
 	check(not store.save_lines(directory.path_join("missing/roads.json"), lines, Enums.InfrDomain.ROAD).ok, "A failed temporary write does not report success")
 	line.free()
@@ -87,7 +87,7 @@ func test_formatting(_tree: SceneTree) -> bool:
 		{"pos": [2.3934324, 2.4, -0.001], "handleOut": [1.234567890123, 0, 3]},
 		{"pos": [-1.236, 100, 3.999]}, {"pos": [-655.125, 1.125, 0.005]}
 	], "short": [1, 2, 3], "long": range(60), "note": "literal [1, 2, 3]"}]
-	var text: String = Store.format_json(data)
+	var text: String = InfrJsonStore.format_json(data)
 	check(text.contains('"pos": [2.39, 2.40, 0.00]'), "Positions round normally with exactly two decimals")
 	check(text.contains('"pos": [-1.24, 100.00, 4.00]'), "Negative values and trailing zeros are formatted correctly")
 	check(text.contains('"pos": [-655.13, 1.13, 0.01]'), "Halfway values use normal rounding away from zero")
@@ -97,8 +97,8 @@ func test_formatting(_tree: SceneTree) -> bool:
 	check(is_equal_approx(parsed[0].points[0].handleOut[0], 1.234567890123), "Handle precision is not reduced to position precision")
 	check(parsed[0].note == "literal [1, 2, 3]", "Formatting preserves strings containing array-like text")
 	for line: String in text.split("\n"):
-		check(line.replace("\t", "    ").length() <= Store.JSON_LINE_WIDTH, "Numeric array layout respects the line width")
-	Store.round_positions(data)
+		check(line.replace("\t", "    ").length() <= InfrJsonStore.JSON_LINE_WIDTH, "Numeric array layout respects the line width")
+	InfrJsonStore.round_positions(data)
 	check(is_equal_approx(data[0].points[0].pos[0], 2.39), "Crossing generation uses the rounded saved coordinates")
 	return true
 
@@ -124,7 +124,7 @@ func test_load(tree: SceneTree) -> bool:
 	rails.owner = references
 	rails.position = Vector3(10, 5, -3)
 	rails.scale = Vector3(2, 3, 4)
-	var cache: Node3D = Store.container_for(world, Enums.InfrDomain.ROAD)
+	var cache: Node3D = InfrJsonStore.container_for(world, Enums.InfrDomain.ROAD)
 	cache.show()
 	var unsaved: EditorInfrLine3D = EditorInfrLine3D.ofRoad(70, "Unsaved")
 	unsaved.curve = Curve3D.new()
@@ -132,9 +132,9 @@ func test_load(tree: SceneTree) -> bool:
 	unsaved.curve.add_point(Vector3(110, 2, 3))
 	cache.add_child(unsaved)
 	unsaved.owner = world
-	var store := Store.new()
+	var store := InfrJsonStore.new()
 	var history := History.new()
-	var service: Node = preload("res://addons/hinterland_tools/road_endpoint_connections.gd").ensure(world)
+	var service: Node = RoadEndpointConnection.ensure(world)
 	service.edit_history = history
 	check(store.load_world(world, Enums.InfrDomain.ROAD).ok, "Load generates saved reference roads")
 	check(roads.has_node("RoadWay_51") and not cache.has_node("RoadWay_51"), "Load puts saved roads in EditorObjects, not cache")
@@ -154,19 +154,19 @@ func test_load(tree: SceneTree) -> bool:
 	check(store.load_world(world, Enums.InfrDomain.ROAD).ok and copy.get_parent() == cache, "Reloading references leaves edited copies untouched")
 	check(roads.get_child_count() == 1, "Repeated Load does not duplicate references")
 	copy.hide()
-	var saved: Dictionary = store.save_world(world, Enums.InfrDomain.ROAD)
+	var saved: EditorActionResult = store.save_world(world, Enums.InfrDomain.ROAD)
 	check(saved.ok and saved.count == 2, "Save merges hidden cached edits and new roads")
-	var data: Array = Store.read_records(road_path).records
+	var data: Array = InfrJsonStore.read_records(road_path).records
 	check(data[0].type == "dirt_path", "Editing an existing road preserves its saved type")
 	check(WorldUtils.vec3_from_float_arr(data[0].points[1].pos) == Vector3(8, 3, 4), "Saved JSON contains working-copy geometry")
 	check(store.load_world(world, Enums.InfrDomain.ROAD).ok, "Successful Save can refresh the reference view")
 	store.flush_saved(world, Enums.InfrDomain.ROAD, history)
-	check(Store.domain_roots(cache, Enums.InfrDomain.ROAD).is_empty(), "Only unsaved working copies are flushed")
+	check(InfrJsonStore.domain_roots(cache, Enums.InfrDomain.ROAD).is_empty(), "Only unsaved working copies are flushed")
 	check(roads.get_child_count() == 2 and roads.get_node("RoadWay_51").visible, "Saved roads remain visible in EditorObjects after flushing")
-	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and Store.read_records(road_path).records.size() == 2, "Saving an empty cache preserves saved roads")
+	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and InfrJsonStore.read_records(road_path).records.size() == 2, "Saving an empty cache preserves saved roads")
 	# An external JSON deletion must not be resurrected from stale reference nodes.
 	write_text(road_path, JSON.stringify([data[0]]))
-	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and Store.read_records(road_path).records.size() == 1, "Reference geometry cannot write back an externally deleted road")
+	check(store.save_world(world, Enums.InfrDomain.ROAD).ok and InfrJsonStore.read_records(road_path).records.size() == 1, "Reference geometry cannot write back an externally deleted road")
 	check(store.load_world(world, Enums.InfrDomain.ROAD).ok and roads.get_child_count() == 1, "Load reflects external deletions in EditorObjects")
 	check(store.load_world(world, Enums.InfrDomain.RAIL).ok and rails.get_child_count() == 2, "Rail JSON also loads into EditorObjects")
 	var rail: EditorInfrLine3D = rails.get_node("RailTrack_7")
@@ -209,7 +209,7 @@ func test_standalone_editorobjects(tree: SceneTree) -> bool:
 	old.name = "OldView"
 	roads.add_child(old)
 	old.owner = source
-	var store := Store.new()
+	var store := InfrJsonStore.new()
 	var history := History.new()
 	check(store.load_world(source, Enums.InfrDomain.ROAD, history).ok, "JSON loads with EditorObjects as the edited scene root")
 	var loaded: EditorInfrLine3D = roads.get_node("RoadWay_15")
@@ -238,7 +238,7 @@ func test_standalone_editorobjects(tree: SceneTree) -> bool:
 func test_cache_upgrade(tree: SceneTree) -> bool:
 	var world := WorldMapScene.new()
 	tree.root.add_child(world)
-	var cache: Node3D = Store.container_for(world, Enums.InfrDomain.ROAD)
+	var cache: Node3D = InfrJsonStore.container_for(world, Enums.InfrDomain.ROAD)
 	var wrapper := GeneratedRoadWays.new()
 	wrapper.name = "EditorRoads"
 	cache.add_child(wrapper)
@@ -252,7 +252,7 @@ func test_cache_upgrade(tree: SceneTree) -> bool:
 	line.curve.add_point(Vector3.ONE)
 	group.add_child(line)
 	var before: Vector3 = line.global_position
-	Store.container_for(world, Enums.InfrDomain.ROAD)
+	InfrJsonStore.container_for(world, Enums.InfrDomain.ROAD)
 	check(line.get_parent() == cache and line.owner == world, "Old grouped caches upgrade to flat map-owned lines")
 	check(line.global_position.is_equal_approx(before), "Flattening preserves world transforms")
 	check(not cache.has_node("EditorRoads"), "Legacy wrapper and number groups are removed from cache")
@@ -277,8 +277,8 @@ func test_runtime_cache(tree: SceneTree) -> bool:
 func test_project_json(_tree: SceneTree) -> bool:
 	for map: String in ["franzburger", "mpsb", "sachalin", "harzmountains"]:
 		for filename: String in ["roads.json", "tracks.json"]:
-			var source: Dictionary = Store.read_records("res://world/%s/jsondata/%s" % [map, filename])
-			check(source.ok, "Existing %s/%s validates: %s" % [map, filename, source.get("error", "")])
+			var source: InfrCatalogReadResult = InfrJsonStore.read_records("res://world/%s/jsondata/%s" % [map, filename])
+			check(source.ok, "Existing %s/%s validates: %s" % [map, filename, source.error])
 	return true
 
 class History extends RefCounted:

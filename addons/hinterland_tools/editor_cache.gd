@@ -1,6 +1,6 @@
 @tool
 @icon("res://assets/icons/nodes_3d/icon_editor_cache.svg")
-extends Node3D
+class_name EditorCache extends Node3D
 
 ## Local map-owned authoring lines. JSON saving/loading is handled by InfrJsonStore.
 ## This deliberately does not use the legacy EditorObjects container classes.
@@ -19,7 +19,7 @@ func do_save_rails_json() -> void:
 func request_save(domain: Enums.InfrDomain) -> void:
 	# No file-writing code in this node. Include the requesting cache so the
 	# receiver can reject requests from an inactive map instead of saving another.
-	var bus: Node = preload("res://addons/hinterland_tools/editor_signals.gd").instance
+	var bus: Node = HinterlandEditorSignals.instance
 	if not is_instance_valid(bus):
 		push_warning("Enable HinterlandTools to save infrastructure JSON.")
 		return
@@ -48,9 +48,8 @@ static func _domain_key(domain: Enums.InfrDomain) -> String:
 static func ensure_container(world: WorldMapScene, domain: Enums.InfrDomain) -> Node3D:
 	var cache: Node3D = world.get_node_or_null("EditorCache") as Node3D
 	if cache == null:
-		cache = Node3D.new()
+		cache = EditorCache.new()
 		cache.name = "EditorCache"
-		cache.set_script(load("res://addons/hinterland_tools/editor_cache.gd"))
 		world.add_child(cache)
 		cache.owner = world
 	_prepare_domain(world, cache, domain)
@@ -65,25 +64,10 @@ static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.I
 			legacy = node as Node3D
 			break
 	var key: String = _domain_key(domain)
-	var cached_lines: Array[Node] = []
-	for node: Node in cache.find_children("*", "", true, false):
-		if node is EditorInfrLine3D and node.infr_domain == domain:
-			cached_lines.append(node)
-	# EditorObjects roads stay where they are. Only flatten geometry already in
-	# the local cache; source-scene objects remain valid visible snap targets.
 	var was_initialized: bool = cache.has_meta(key)
-	for line: Node3D in cached_lines:
-		if line.get_parent() != cache:
-			line.reparent(cache, true)
-		line.owner = world
+	_flatten_cached_lines(world, cache, domain)
 	cache.set_meta(key, true)
-	# Clear obsolete wrappers in the CACHE only. The original subscene is kept.
-	var wrappers: Array[Node] = cache.find_children("*", "", true, false)
-	wrappers.reverse()
-	for node: Node in wrappers:
-		if node.get_parent() != null and node.get_child_count() == 0 and (node is GeneratedRoadWays or node is GeneratedRailLines or (node.get_script() == null and node.name.contains("__"))):
-			node.get_parent().remove_child(node)
-			node.queue_free()
+	_remove_empty_wrappers(cache)
 	# Older cache versions hid the entire source container. Undo that once on
 	# upgrade; subsequent user visibility changes are left alone.
 	var visibility_key: String = key + "_visible_sources"
@@ -91,6 +75,25 @@ static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.I
 		legacy.show()
 	cache.set_meta(visibility_key, true)
 	refresh_source_visibility(world, domain)
+
+static func _flatten_cached_lines(world: WorldMapScene, cache: Node3D, domain: Enums.InfrDomain) -> void:
+	# Only cache geometry is flattened; source-scene objects stay in place.
+	var cached_lines: Array[Node] = []
+	for node: Node in cache.find_children("*", "", true, false):
+		if node is EditorInfrLine3D and node.infr_domain == domain:
+			cached_lines.append(node)
+	for line: Node3D in cached_lines:
+		if line.get_parent() != cache:
+			line.reparent(cache, true)
+		line.owner = world
+
+static func _remove_empty_wrappers(cache: Node3D) -> void:
+	var wrappers: Array[Node] = cache.find_children("*", "", true, false)
+	wrappers.reverse()
+	for node: Node in wrappers:
+		if node.get_parent() != null and node.get_child_count() == 0 and (node is GeneratedRoadWays or node is GeneratedRailLines or (node.get_script() == null and node.name.contains("__"))):
+			node.get_parent().remove_child(node)
+			node.queue_free()
 
 static func refresh_source_visibility(world: Node, domain: Enums.InfrDomain) -> void:
 	var cache: Node = world.get_node_or_null("EditorCache")

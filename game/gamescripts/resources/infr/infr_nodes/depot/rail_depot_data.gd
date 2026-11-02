@@ -18,7 +18,7 @@ static var _last_num: int = 0
 
 #region Constructor
 func _init():
-	super(Enums.EntityTypes.DEPOT)
+	super(Enums.EntityTypes.RAIL_DEPOT)
 	
 static func of_json(_dict: Dictionary) -> RailDepotData:
 	var inst = RailDepotData.new()
@@ -38,7 +38,7 @@ func spawn() -> RailDepot3D:
 
 #region Getters
 static func get_by_num(depot_num: int) -> RailDepotData:
-	for depot: RailDepotData in GlobalState.depots:
+	for depot: RailDepotData in GlobalState.rail_depots:
 		if depot.num == depot_num: return depot
 	Loggie.warn("Cannot find Depot with num %d" % depot_num)
 	return null

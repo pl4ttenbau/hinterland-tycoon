@@ -1,6 +1,11 @@
 ## Shared definition for a road vehicle model, separate from its future movement state.
 class_name RoadVehicleTypeData extends VehicleTypeData
 
+const PRICING = preload("res://game/jsondata/road_vehicle_pricing.tres")
+
+func get_purchase_price() -> Variant:
+	return PRICING.price_for(self)
+
 ## Unspecified physical values stay null, rather than becoming zero.
 ## Dimensions in the initial catalog describe the model's geometry in world metres.
 var width_metres: Variant = null
