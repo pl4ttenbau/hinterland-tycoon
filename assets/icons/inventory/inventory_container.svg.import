@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oorx1ow57aye"
-path="res://.godot/imported/passenger_storage.png-5291f757eb32a286e861c9314ee74eb0.ctex"
+uid="uid://cewdagio4uvdm"
+path="res://.godot/imported/inventory_container.svg-d770eb5139abf0f10be216a70673fc88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/images/goods_type/passenger_storage.png"
-dest_files=["res://.godot/imported/passenger_storage.png-5291f757eb32a286e861c9314ee74eb0.ctex"]
+source_file="res://assets/icons/inventory/inventory_container.svg"
+dest_files=["res://.godot/imported/inventory_container.svg-d770eb5139abf0f10be216a70673fc88.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

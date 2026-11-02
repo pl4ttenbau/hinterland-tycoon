@@ -20,14 +20,8 @@ func _ready() -> void:
 		self._find_inventory()
 
 func _find_inventory() -> GoodsInventory:
-	var named_child = self.find_child("Inventory")
-	if named_child && named_child is InventoryContainer:
-		return named_child.inventory
-	## look for any children of GoodsInventory type
-	for any_child in self.get_children():
-		if any_child is InventoryContainer:
-			return any_child.inventory
-	return null
+	var component: InventoryContainer = InventoryContainer.find_on(self)
+	return component.get_inventory() if component != null else null
 #endregion
 
 func _exit_tree() -> void:

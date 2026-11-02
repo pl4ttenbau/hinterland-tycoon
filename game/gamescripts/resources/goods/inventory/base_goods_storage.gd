@@ -16,8 +16,7 @@ func _init() -> void:
 	self.max_storage = DEFAULT_MAX_STORAGE
 
 func get_amount(goods_type_key: String) -> float:
-	if ! self.has_any(goods_type_key): return 0
-	return self.inventory_dict.get(goods_type_key)
+	return float(self.inventory_dict.get(goods_type_key, 0))
 		
 func change_amount(goods_type_key: String, amount_modifier: float) -> float:
 	var new_amount: float = self.get_amount(goods_type_key) + amount_modifier
@@ -30,7 +29,7 @@ func change_amount(goods_type_key: String, amount_modifier: float) -> float:
 ## update total amount of passengers & cargo
 func _change_amount_passengers_cargo(goods_type_key: String, amount_modifier: float):
 	var goods_type: BaseGoodsType = BaseGoodsType.get_by_key(goods_type_key)
-	if goods_type_key:
+	if goods_type != null:
 		if goods_type.is_passenger():
 			self.total_passengers += amount_modifier
 		elif goods_type.is_cargo():

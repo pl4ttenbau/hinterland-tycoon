@@ -17,6 +17,7 @@ signal route_finished()
 @export var route_recovery_distance: float = 6.0
 
 var vehicle_obj: VehicleData
+var inventory_component: InventoryContainer
 ## Editable itinerary data, separate from the currently executed driving geometry.
 @export var route_plan: RoadRoutePlan = RoadRoutePlan.new()
 var plan_execution := preload("res://game/gamescripts/services/routing/road_plan_executor.gd").new()
@@ -74,6 +75,21 @@ func _build_vehicle(type: RoadVehicleTypeData) -> void:
 	_add_wheels(width, radius)
 	_add_model(type, ride_height)
 	_add_camera(length, height)
+	_add_inventory(type)
+
+## A regular component supplies stock/capacity without changing the physics body's base class.
+func _add_inventory(type: RoadVehicleTypeData) -> void:
+	inventory_component = InventoryContainer.new()
+	inventory_component.name = "Inventory"
+	inventory_component.display_name = "%s #%d" % [type.display_name, vehicle_obj.num]
+	inventory_component.capacity_override = float(type.capacity.amount) if type.capacity != null else 0.0
+	if type.capacity != null:
+		inventory_component.accepted_categories.append(type.capacity.goods_cat)
+	add_child(inventory_component)
+	inventory_component.get_inventory()
+
+func get_inventory() -> GoodsInventory:
+	return inventory_component.get_inventory() if is_instance_valid(inventory_component) else null
 
 ## Dimensions are width/height/length in metres; the body origin stays low.
 func _add_chassis(dimensions: Vector3, ride_height: float) -> void:

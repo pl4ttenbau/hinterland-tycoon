@@ -46,7 +46,7 @@ static func res_cat_str_to_enum(res_cat_str: String) -> ResourceCategory:
 	else: return ResourceCategory.FREIGHT
 
 static func get_cat_image_path(res_cat_str: String) -> String:
-	if res_cat_str == "PASSENGER": return "res://assets/ui/images/goods_type/passenger_storage.png"
+	if res_cat_str == "PASSENGER": return "res://assets/icons/goods/generated/48/passenger.png"
 	elif res_cat_str == "MAIL": return "res://assets/ui/images/goods_type/luggage_storage.png"
 	elif res_cat_str == "AGGREGATE": return "res://assets/ui/images/goods_type/aggregate_storage.png"
 	elif res_cat_str == "LIQUID": return "res://assets/ui/images/goods_type/liquid_storage.png"
