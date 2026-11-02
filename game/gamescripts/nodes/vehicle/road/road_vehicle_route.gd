@@ -13,6 +13,42 @@ var curve: Curve3D
 var progress: float = 0.0
 var _paths: Array[Path3D] = []
 
+## Build partial-road legs in either direction, retaining live infrastructure references.
+## Depot arrivals trim the end in world metres to stay outside the building.
+func assign_segments(segments: Array[Dictionary], end_trim: float = 0.0) -> bool:
+	var candidate := Curve3D.new()
+	var paths: Array[Path3D] = []
+	for segment: Dictionary in segments:
+		var path: Path3D = segment.path
+		if not _is_usable_path(path):
+			return false
+		var length: float = absf(float(segment.to) - float(segment.from))
+		var count: int = maxi(1, ceili(length / SAMPLE_SPACING))
+		for index: int in range(count + 1):
+			var offset: float = lerpf(float(segment.from), float(segment.to), float(index) / count)
+			var point: Vector3 = path.to_global(path.curve.sample_baked(offset))
+			if candidate.point_count == 0 or candidate.get_point_position(candidate.point_count - 1).distance_to(point) > 0.001:
+				candidate.add_point(point)
+		paths.append(path)
+	if candidate.point_count < 2 or candidate.get_baked_length() <= end_trim:
+		return false
+	if end_trim > 0.0:
+		candidate = _trim_end(candidate, end_trim)
+	curve = candidate
+	_paths = paths
+	progress = 0.0
+	return true
+
+func _trim_end(source: Curve3D, distance: float) -> Curve3D:
+	var result := Curve3D.new()
+	var length: float = source.get_baked_length() - distance
+	var offset: float = 0.0
+	while offset < length:
+		result.add_point(source.sample_baked(offset))
+		offset += SAMPLE_SPACING
+	result.add_point(source.sample_baked(length))
+	return result
+
 ## Validate into a temporary curve, committing only after every join succeeds.
 func assign(paths: Array[Path3D], backwards: bool = false) -> bool:
 	if paths.is_empty():

@@ -17,6 +17,9 @@ signal route_finished()
 @export var route_recovery_distance: float = 6.0
 
 var vehicle_obj: VehicleData
+## Editable itinerary data, separate from the currently executed driving geometry.
+@export var route_plan: RoadRoutePlan = RoadRoutePlan.new()
+var plan_execution := preload("res://game/gamescripts/services/routing/road_plan_executor.gd").new()
 ## Temporary driving geometry and progress, not a service itinerary or pathfinder.
 var route := RoadVehicleRoute.new()
 var player_driving: bool = false
@@ -154,6 +157,8 @@ func clear_route() -> void:
 ## Change only the input source; retain pose, velocity and automatic path progress.
 func set_player_driving(enabled: bool) -> void:
 	player_driving = enabled
+	if enabled:
+		_arrived = false
 	# Clear the previous driver's force immediately, preserving physical motion.
 	engine_force = 0.0
 	brake = 0.0
@@ -168,6 +173,7 @@ func _physics_process(delta: float) -> void:
 	if player_driving:
 		_drive_player(delta)
 	else:
+		plan_execution.tick(self)
 		_drive_route(delta)
 
 func _drive_player(delta: float) -> void:
@@ -208,6 +214,8 @@ func _drive_route(delta: float) -> void:
 		return
 	route.update_progress(global_position)
 	if not _is_near_route():
+		if plan_execution.running:
+			plan_execution.status = "Off route: drive back near the assigned path to resume."
 		apply_driver_input(0.0, 0.0, 1.0, delta)
 		return
 	var speed: float = signed_speed_mps()
@@ -217,8 +225,12 @@ func _drive_route(delta: float) -> void:
 	var stop_margin: float = vehicle_obj.veh_type.length_metres * 0.55
 	var distance_left: float = maxf(0.0, route.remaining() - stop_margin)
 	if absf(angle) > PI * 0.65 and distance_left > 1.0:
+		if plan_execution.running:
+			plan_execution.status = "Turn the vehicle toward the route manually to resume."
 		apply_driver_input(0.0, 0.0, 1.0, delta)
 		return
+	if plan_execution.running:
+		plan_execution.status = "Driving to point %d" % (plan_execution.current_point + 1)
 	var turn: float = atan2(2.0 * wheelbase * sin(angle), lookahead) / steering_limit
 	_apply_route_speed(turn, _desired_route_speed(angle, distance_left), speed, delta)
 

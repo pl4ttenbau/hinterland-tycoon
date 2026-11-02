@@ -1,73 +1,68 @@
-# Road transport: future routing and actions
+# Road transport: route setting and next steps
 
-This is a concept, not an implemented API. The existing driving prototype remains
-responsible for moving a physical vehicle along supplied geometry or accepting
-free player input. Its `RoadVehicleRoute` is temporary driving geometry/progress;
-it does not yet represent the service routes described here.
+## Implemented: route-plan editing
 
-## Separate responsibilities
+Enter a road vehicle and press **R** to open its route editor. The first tab adds,
+removes and reorders route points. The second tab edits the selected point's
+ordered **Load** and **Unload** instructions, with one or more selected goods.
 
-- **Route/itinerary class:** owns an ordered sequence of transport actions. This is
-  the player's persistent plan for a bus, truck or other road vehicle.
-- **Road network and pathfinder:** find a connected path from any road node to any
-  other reachable road node. The result describes directed road segments, including
-  partial roads when the origin or destination is an intermediate node.
-- **Action executor:** runs the next action, requests a path for a driving action,
-  waits for arrival or goods transfer, and then advances to the following action.
-- **Vehicle driving controller:** follows the supplied path using steering and
-  pedals. Player takeover suspends automatic execution; returning control needs a
-  valid road position before the current driving action can resume.
+Point kinds are **road node**, **physical road stop**, and **road depot**. Nodes
+use road ID/node index; stops and depots use their own IDs. References resolve
+against current data when saving. Node zero and intermediate nodes are valid.
+Depots resolve to their authored START/END road anchor.
 
-These names describe responsibilities; exact class names and serialization are
-still to be chosen. Pathfinding and inventory transfer should remain independent
-of the rendered vehicle/depot model and of the dialog that edits a route.
+Transfer instructions currently require a stop, because ordinary nodes and depots
+have no station inventory. Passenger instructions require one or more **specific
+physical destination stops**, never an interchange ID. Different passenger goods
+(such as passenger, tourist and soldier) retain this same destination filter.
+Vehicle cargo-category compatibility is checked when adding/saving instructions.
 
-## Addressing and pathfinding
+The editor works on a deep copy. **Save plan** validates all anchors, road-leg
+connectivity and action selectors before assigning the plan to the vehicle.
+**Cancel** retains the previous plan. Saving only stores a plan on this session's
+vehicle. **Start plan** begins execution; leave the vehicle to give control to the
+automatic driver. Transfers remain inactive. ResourceSaver round trips
+are supported, but game-save integration is not implemented.
 
-A road node is addressed by its road ID and node index. Consecutive nodes on the
-same road supply edges; authored road connections supply edges between roads.
-Visual mesh intersections alone must not imply connectivity, particularly where
-roads cross at different heights. An unreachable destination should produce an
-explicit failure instead of selecting an arbitrary branch.
+## Pathfinding
 
-Bus stops already identify a road/node through `RoadStationData.road_num` and
-`node_index`, with side and direction metadata. The planner must respect those
-constraints when approaching a stop. Loading stations and depot exits also need
-road access anchors so they can serve as origins or destinations. Routing must
-support every road node, rather than only road endpoints or whole-road sequences.
+`RoadPathfinder` builds a bidirectional graph of every road node. Consecutive
+nodes connect with curve arc-length costs. Authored road crossings connect matching
+XYZ nodes within 0.1 metres. Visual intersections and height-separated roads do
+not create connections on their own. Partial-road paths, reverse travel and
+intermediate junctions are supported. A vehicle's infrastructure subtype restricts
+which roads enter its graph. Unreachable legs prevent saving.
 
-## Ordered actions
+The graph checks connectivity, not traffic lanes or safe arrival poses. The executor stops before node/stop anchors and uses a 10-metre stand-off for
+depot arrivals. Traffic-side/stop approach rules and automatic U-turns still need
+work. If the target lies behind the car, turn manually before resuming.
 
-The initial concepts are:
+## Separation of responsibilities
 
-- **Drive to:** a road node or a stop/loading-station destination resolved to its
-  road access anchor. Pathfinding supplies the intermediate road nodes.
-- **Load goods:** load one or more specifically selected goods at the current
-  station, respecting available stock and vehicle capacity.
-- **Unload goods:** unload one or more specifically selected goods from the
-  vehicle into the current station's inventory.
+- `RoadRoutePlan` owns ordered `RoadRoutePoint` visits and their `RoadRouteAction`
+  instructions. It does not hold physical driving progress.
+- `RoadPathfinder` chooses connected road-node paths between visit anchors.
+- The existing `RoadVehicleRoute` holds currently executed driving geometry and
+  progress; it remains separate from the editable plan.
+- `RoadPlanExecutor` connects the current road offset to the graph, generates
+  partial-road driving geometry and advances visits after stopping. It pauses at
+  any point with transfer instructions, without executing or skipping them. Manual
+  takeover preserves progress; leaving the vehicle resumes the same leg.
 
-For example, a truck plan can be: drive to loading station A → load selected goods
-→ drive to station B → unload selected goods. A bus can similarly travel between
-bus stops, with passenger transfer policy to be decided separately.
+Example: stop A — load passengers destined for stop B — stop B — unload those
+passengers. Truck routes use the same visit/action structure with selected goods.
 
-Goods actions need a selection of specific goods rather than only a broad vehicle
-cargo category. Quantities, completion/wait conditions, insufficient stock or
-capacity, and repeat/loop behavior remain design decisions. No goods actions or
-automatic inventory transfers are implemented in this pass.
+## Next stages
 
-## Dialog and car depot
+1. Refine junction steering, traffic-side approaches and U-turn handling. Current
+   execution uses the existing physical driver and brakes when recovery is unsafe.
+2. Add destination-aware passenger batches. Current inventories/spawning still
+   store passenger totals; target metadata must survive boarding and alighting.
+3. Execute validated load/unload instructions with capacity/stock checks and
+   atomic inventory changes. Quantities, waiting/completion rules and route looping
+   remain design decisions.
+4. Passenger spawning frequency, waiting limits and expiry remain separate work.
+   The discussed values are suggestions, not enabled behavior.
 
-A new route dialog will let the player choose destinations, add/reorder driving
-and transfer actions, and select one or more goods for each transfer action. It
-will show invalid or unreachable destinations using the planner's result.
-
-A road-vehicle depot now provides a basic spawning workflow: choose a vehicle type
-in its selector and spawn it parked 10 metres along its connected road, facing away
-from the depot. START/END road anchors determine the direction. This uses the
-existing SpawnAction with a road-specific signal and dialog. Itinerary assignment
-remains a future extension independent of the depot's model.
-
-The route dialog, node-to-node pathfinder and action executor remain future work.
-Depot spawning does not execute the conceptual goods actions or assign a service
-itinerary automatically.
+Road depots already spawn the selected vehicle parked 10 metres along the road,
+facing away from the depot. Route editing does not change that workflow.

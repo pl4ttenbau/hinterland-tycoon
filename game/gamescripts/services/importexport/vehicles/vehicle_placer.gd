@@ -1,6 +1,8 @@
 @icon("res://assets/icons/icon_locomotive_white.png")
 class_name VehiclePlacer extends Node
 
+const ROUTE_DIALOG = preload("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
+
 @export var rail_containers: Array[RailTrack3D]
 @export var trains: Array[Train3D] = []
 @export var start_vehicles_spawned: bool = false
@@ -17,6 +19,13 @@ var _walking_collision_layer: int
 var _walking_collision_mask: int
 
 #region Initialization
+## R edits the occupied road vehicle's plan; walking and other dialogs keep their inputs.
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
+		if is_instance_valid(player_road_vehicle) and UiState.current_diag == null:
+			get_tree().root.add_child(ROUTE_DIALOG.create(player_road_vehicle))
+			get_viewport().set_input_as_handled()
+
 func _check_rails_and_terrain() -> bool:
 	if !GlobalState:
 		push_warning("Cannot save vehicle in scene: Globals not found")

@@ -9,6 +9,19 @@ These check price incentives, rounding, unknown specifications, authored versus
 estimated tractive effort, catalog prices, and picker labels. See
 `doc/vehicle-pricing.md` for the formula and balance resource.
 
+Route planning checks (graph, resources, passenger destination filters and dialog):
+
+```sh
+godot --headless --path . --fixed-fps 60 --script res://tests/road_routing_test.gd -- --no-mcp
+```
+
+The commented suite covers intermediate/reversed road travel, explicit crossings,
+height separation, arc-length costs, missing anchors, physical passenger targets,
+resource round trips, independent drafts, action ordering and save/cancel behavior.
+It does not execute passenger or goods transfers.
+Execution checks drive a real vehicle through three visits, preserve progress
+during manual takeover, pause at transfer instructions and reject off-road starts.
+
 Road/rail collision and road driving checks:
 
 ```sh

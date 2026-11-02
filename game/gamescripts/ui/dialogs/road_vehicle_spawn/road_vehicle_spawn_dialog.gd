@@ -1,5 +1,5 @@
 ## Road-only selection using the shared dialog frame/theme. No itinerary is assigned.
-class_name RoadVehicleSpawnDialog extends GameDialog
+class_name RoadVehicleSpawnDialog extends ModalGameDialog
 
 const BASE_SCENE: String = "res://scenes/ui/dialogs/default_dialog.tscn"
 const SCRIPT_PATH: String = "res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_spawn_dialog.gd"
@@ -12,11 +12,6 @@ var _preview_placeholder: Label
 var _details: Label
 var _error: Label
 var _spawn_button: Button
-var _previous_mouse_mode: Input.MouseMode
-var _previous_movement_blocked: bool
-var _walking_player: BasicFpsPlayer
-var _walking_process_mode: Node.ProcessMode
-var _closing: bool = false
 
 ## Reuse the existing scene's unique heading/button nodes and visual styling.
 static func create(source_depot: RoadDepotData) -> RoadVehicleSpawnDialog:
@@ -137,30 +132,4 @@ func _show_error(message: String) -> void:
 	_error.text = message
 	_error.show()
 
-## Restore the exact input state on cancellation, success or external removal.
-func _suspend_world_input() -> void:
-	_previous_mouse_mode = Input.mouse_mode
-	_previous_movement_blocked = UiState.movement_blocked
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	UiState.movement_blocked = true
-	if is_instance_valid(GlobalState.player):
-		_walking_player = GlobalState.player.player_parent
-		_walking_process_mode = _walking_player.process_mode
-		_walking_player.process_mode = Node.PROCESS_MODE_DISABLED
-
-func close_all() -> void:
-	if _closing:
-		return
-	_closing = true
-	before_closed.emit(diag_result)
-	closed.emit(diag_result)
-	queue_free()
-
-func _exit_tree() -> void:
-	if is_instance_valid(_walking_player):
-		_walking_player.process_mode = _walking_process_mode
-	UiState.movement_blocked = _previous_movement_blocked
-	Input.mouse_mode = _previous_mouse_mode
-	if UiState.current_diag == self:
-		UiState.current_diag = null
 #endregion

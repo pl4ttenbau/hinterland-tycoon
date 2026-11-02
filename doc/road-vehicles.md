@@ -91,9 +91,13 @@ inventories and intermodal transfers remain separate work.
 
 ## Driving prototype
 
-The planned node-to-node routing, route dialog and ordered goods actions
-are described in [the road transport concept](road-transport-concept.md). Those
-systems remain conceptual; the code below executes a supplied driving path only.
+The route-plan editor, node-to-node pathfinder and planned execution stages are
+described in [road transport routing](road-transport-concept.md). Press **R** while
+driving a road vehicle to edit its plan. Saving validates the plan without starting
+automatic driving or executing goods transfers.
+Use **Start plan**, then leave the car, to execute its visits once automatically.
+Execution parks at the final visit or pauses at a visit containing transfer
+instructions; load/unload does not run yet. U-turns require manual steering.
 
 ### Depot spawning
 
@@ -136,7 +140,8 @@ height placement.
 
 Run `tests/road_vehicle_preview.tscn` with F6 for a road, raised rail bed, walking
 player and automatically driven Trabant. **E** takes control or leaves; **R**
-restarts. Drive with **W/S** or **Up/Down**, steer with **A/D** or **Left/Right**,
+opens route setting while driving, or restarts when on foot. Drive with **W/S**
+or **Up/Down**, steer with **A/D** or **Left/Right**,
 and brake with **Space**. On foot, use the arrow keys and mouse. Escape releases
 the mouse. Close the running scene when finished.
 

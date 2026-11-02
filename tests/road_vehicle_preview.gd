@@ -64,6 +64,12 @@ func _add_road(roads: RoadsLoader) -> void:
 	data.curve.add_point(Vector3(0, 0, -70), Vector3(0, 0, 15), Vector3(0, 0, -15))
 	data.curve.add_point(Vector3(15, 0, -100), Vector3(-15, 0, 0), Vector3(15, 0, 0))
 	data.curve.add_point(Vector3(45, 0, -100))
+	# The route editor needs authored node data as well as rendered curve geometry.
+	for index: int in range(data.curve.point_count):
+		var node := RoadNode.of(index, data.curve.get_point_position(index), data)
+		node.rel_position = node.position
+		data.add_node(node)
+	roads.storage.add(data)
 	var road: RoadWay3D = load(RoadData.RURAL_ROAD_SCENE_PATH).instantiate()
 	road.road = data
 	roads.add_child(road)
@@ -116,7 +122,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			manager.exit_road_vehicle()
 		else:
 			manager.enter_road_vehicle(vehicle)
-	elif event.physical_keycode == KEY_R:
+	elif event.physical_keycode == KEY_R and manager.player_road_vehicle == null:
 		_restart()
 	elif event.physical_keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -124,4 +130,4 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if not is_instance_valid(vehicle):
 		return
-	status.text = "Road vehicle playground  ·  %s  ·  %.0f km/h\nE: take control / leave   R: restart\nDrive: W/S or ↑/↓   Steer: A/D or ←/→   Brake: Space\nOn foot: arrow keys + mouse   Esc: release mouse" % ["PLAYER" if vehicle.player_driving else "ROUTE", absf(vehicle.signed_speed_mps()) * 3.6]
+	status.text = "Road vehicle playground  ·  %s  ·  %.0f km/h\nE: take control / leave   R: route editor (driving) / restart (on foot)\nDrive: W/S or ↑/↓   Steer: A/D or ←/→   Brake: Space\nOn foot: arrow keys + mouse   Esc: release mouse" % ["PLAYER" if vehicle.player_driving else "ROUTE", absf(vehicle.signed_speed_mps()) * 3.6]
