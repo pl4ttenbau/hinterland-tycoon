@@ -4,7 +4,7 @@ class_name RoadVehicleTypeData extends VehicleTypeData
 const PRICING = preload("res://game/jsondata/road_vehicle_pricing.tres")
 
 func get_purchase_price() -> Variant:
-	return PRICING.price_for(self)
+	return purchase_price if purchase_price != null else PRICING.price_for(self)
 
 ## Unspecified physical values stay null, rather than becoming zero.
 ## Dimensions in the initial catalog describe the model's geometry in world metres.

@@ -61,11 +61,17 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	definition.mass_tonnes = float(data["mass_tonnes"]) if data.get("mass_tonnes") != null else null
 	definition.motor_power_kw = float(data["motor_power_kw"]) if data.get("motor_power_kw") != null else null
 	definition.tractive_effort_kn = float(data["tractive_effort_kn"]) if data.get("tractive_effort_kn") != null else null
+	definition.purchase_price = int(data["purchase_price"]) if data.get("purchase_price") != null else null
 	definition.usable_infr = UsableInfrType.of_dict(data["usable_infr"])
 	if data.has("capacity"):
 		definition.capacity = GoodsCapacity.of_json(data["capacity"])
 
 static func _is_valid(data: Dictionary, allow_unknown_speed: bool = false) -> bool:
+	var price: Variant = data.get("purchase_price")
+	if price != null and (not _is_number(price) or not is_finite(float(price)) \
+			or price <= 0 or int(price) != price):
+		push_error("Vehicle %s requires a positive integer purchase price or null" % data.get("key", ""))
+		return false
 	for field: String in ["key", "display_name", "model_scene_path"]:
 		if not data.get(field) is String or data[field].is_empty():
 			push_error("Vehicle definition requires a nonempty %s" % field)

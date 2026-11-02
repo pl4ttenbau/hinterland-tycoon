@@ -138,7 +138,7 @@ static func _strip_model_physics(node: Node) -> void:
 
 #region Driver handoff
 ## Atomically replace the prototype driving path; route planning happens outside
-## this controller. A future itinerary/pathfinder can supply its resulting legs.
+## this controller. A future itinerary/pathfinder can supply its resulting segments.
 func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 	if not route.assign(paths, backwards):
 		return false

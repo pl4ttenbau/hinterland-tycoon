@@ -99,6 +99,7 @@ func test_catalog_and_ui() -> bool:
 		if not definition is RailVehicleTypeData:
 			continue
 		var price: Variant = definition.get_purchase_price()
+		check(definition.purchase_price == RailVehicleTypeData.PRICING.price_for(definition), "Stored rail price matches the generator")
 		check(price is int and price > 0 and price % 100 == 0, "%s has a positive rounded price" % definition.key)
 		var item: VehicleListItemUi = item_scene.instantiate()
 		item.veh_type_key = definition.key

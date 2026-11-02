@@ -3,10 +3,21 @@
 Prices are fictional game DM. This first step displays purchase prices in the
 vehicle picker; it does not yet introduce a wallet, payments, upkeep or income.
 
+Each entry in `game/jsondata/rail_vehicle_types.json` and
+`game/jsondata/road_vehicle_types.json` now has a `purchase_price` field. The
+initial 17 rail and 3 road prices were generated with the balance resources below.
+A stored price is a positive integer in whole game DM and takes precedence over
+the formula, allowing individual balancing. Unknown prices use `null`. Missing
+or null prices fall back to the formula if sufficient specifications exist.
+Changing the formula does not overwrite stored prices; regenerate them explicitly
+when applying a new balance. Initial locomotive values include the mass-based
+strength estimate described below.
+
 The shared balance resource is `game/jsondata/rail_vehicle_pricing.tres`. Edit it
 in the Inspector to tune all rail prices without editing individual vehicles.
-`RailVehicleTypeData.get_purchase_price()` calculates a price from current stats
-and returns integer DM, or `null` if required specifications are unknown.
+`RailVehicleTypeData.get_purchase_price()` returns the stored price or calculates
+a fallback from current stats, returning integer DM or `null` if both the stored
+price and required specifications are unknown.
 
 Initial formulas, before rounding up to the next 100 DM:
 

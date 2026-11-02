@@ -48,8 +48,9 @@ func _build_content() -> void:
 
 func _build_points_tab(content: VBoxContainer) -> void:
 	_kind = OptionButton.new()
-	for label: String in ["Road node", "Physical stop", "Road depot"]:
-		_kind.add_item(label)
+	_kind.add_item("Road marker", RoadRoutePoint.Kind.MARKER)
+	_kind.add_item("Physical stop", RoadRoutePoint.Kind.STOP)
+	_kind.add_item("Road depot", RoadRoutePoint.Kind.DEPOT)
 	_kind.item_selected.connect(func(_index: int): _fill_point_choices())
 	content.add_child(_kind)
 	_targets = OptionButton.new()
@@ -141,14 +142,12 @@ func _all_stops() -> Dictionary:
 func _fill_point_choices() -> void:
 	_targets.clear()
 	_choices.clear()
-	match _kind.selected:
-		RoadRoutePoint.Kind.NODE:
-			for road: RoadData in Managers.roads.storage.get_all():
-				for node: RoadNode in road.nodes:
-					var point := RoadRoutePoint.new()
-					point.road_num = road.num
-					point.node_index = node.index
-					_offer_point(point, point.describe())
+	match _kind.get_selected_id():
+		RoadRoutePoint.Kind.MARKER:
+			for marker: RoadMarkerData in Managers.roads.markers.markers:
+				_offer_reference(RoadRoutePoint.Kind.MARKER, marker.num, "%s · %d" % [marker.marker_name, marker.num])
+			if _choices.is_empty():
+				_status.text = "No markers yet. On foot, press M while standing on a road."
 		RoadRoutePoint.Kind.STOP:
 			for id: int in _all_stops():
 				var stop: RoadStationData = _all_stops()[id] as RoadStationData
@@ -188,16 +187,21 @@ func _move_point(direction: int) -> void:
 
 func _remove_point() -> void:
 	var index: int = _selected_point()
-	_action_context.text = "Select a route point on the first tab. Transfers require a physical stop."
 	if index >= 0:
-		_action_context.text = "Actions at point %d: %s" % [index + 1, plan.points[index].describe()]
 		plan.points.remove_at(index)
 		_refresh_points(mini(index, plan.points.size() - 1))
+
+func _point_label(point: RoadRoutePoint) -> String:
+	if point.kind == RoadRoutePoint.Kind.MARKER:
+		var marker: RoadMarkerData = Managers.roads.markers.get_by_num(point.target_num)
+		if marker != null:
+			return "%s · marker %d" % [marker.marker_name, marker.num]
+	return point.describe()
 
 func _refresh_points(selected: int = 0) -> void:
 	_points.clear()
 	for index: int in range(plan.points.size()):
-		_points.add_item("%d. %s" % [index + 1, plan.points[index].describe()])
+		_points.add_item("%d. %s" % [index + 1, _point_label(plan.points[index])])
 	if selected >= 0 and selected < plan.points.size():
 		_points.select(selected)
 	_refresh_actions()
@@ -207,7 +211,9 @@ func _refresh_points(selected: int = 0) -> void:
 func _refresh_actions() -> void:
 	_actions.clear()
 	var index: int = _selected_point()
+	_action_context.text = "Select a route point on the first tab. Transfers require a physical stop."
 	if index >= 0:
+		_action_context.text = "Actions at point %d: %s" % [index + 1, _point_label(plan.points[index])]
 		for action: RoadRouteAction in plan.points[index].actions:
 			_actions.add_item(action.describe())
 
@@ -255,7 +261,7 @@ func _save() -> void:
 	if not is_instance_valid(vehicle):
 		_status.text = "This vehicle is no longer available."
 		return
-	_status.text = plan.validate(network, Managers.roads.storage, _all_stops(), GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity)
+	_status.text = plan.validate(network, Managers.roads.storage, _all_stops(), GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity, Managers.roads.markers)
 	if _status.text.is_empty():
 		vehicle.plan_execution.stop(vehicle)
 		vehicle.route_plan = plan

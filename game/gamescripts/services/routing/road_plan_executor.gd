@@ -9,14 +9,14 @@ var _plan: RoadRoutePlan
 var _network := RoadPathfinder.new()
 
 #region Execution lifecycle
-## Freeze a validated plan so editing cannot change a leg that is already being driven.
+## Freeze a validated plan so editing cannot change a segment that is already being driven.
 func start(vehicle: RoadVehicle3D) -> bool:
 	if not is_instance_valid(Managers.roads):
 		status = "Road network is unavailable."
 		return false
 	_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
 	var stops: Dictionary = _stops()
-	status = vehicle.route_plan.validate(_network, Managers.roads.storage, stops, GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity)
+	status = vehicle.route_plan.validate(_network, Managers.roads.storage, stops, GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity, Managers.roads.markers)
 	if not status.is_empty():
 		return false
 	_plan = vehicle.route_plan.duplicate(true)
@@ -56,19 +56,29 @@ func _finish_visit(vehicle: RoadVehicle3D) -> bool:
 func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 	while running:
 		var point: RoadRoutePoint = _plan.points[current_point]
-		var node: RoadNode = point.resolve(Managers.roads.storage, _stops(), GlobalState.road_depots)
+		var node: RoadNode = point.resolve(Managers.roads.storage, _stops(), GlobalState.road_depots, Managers.roads.markers)
 		if node == null:
 			stop(vehicle, "Route point no longer exists.")
 			return false
 		# A starting depot is usually ten metres behind its parked vehicle.
 		var radius: float = 12.5 if point.kind == RoadRoutePoint.Kind.DEPOT else 3.0
-		if vehicle.global_position.distance_to(node.position) <= radius:
+		if _at_visit(vehicle, node, radius):
 			if not _finish_visit(vehicle):
 				return status == "Plan complete"
 			continue
 		return _assign_visit_path(vehicle, point, node)
 
 	return false
+
+## A single-side marker is served only when facing its permitted approach direction.
+func _at_visit(vehicle: RoadVehicle3D, node: RoadNode, radius: float) -> bool:
+	if vehicle.global_position.distance_to(node.position) > radius:
+		return false
+	if node is RoadRouteAnchor and node.arrival_direction != 0:
+		var curve: Curve3D = node.parent_track.curve
+		var tangent: Vector3 = curve.sample_baked(minf(node.curve_offset + 0.1, curve.get_baked_length())) - curve.sample_baked(maxf(0, node.curve_offset - 0.1))
+		return vehicle.global_basis.z.dot(tangent.normalized()) * node.arrival_direction > 0.5
+	return true
 
 ## The physical driver stops before the end of its curve. Compensate for that
 ## stop margin so depot arrivals still remain ten metres from the building.
@@ -91,17 +101,8 @@ func _segments_to(vehicle: RoadVehicle3D, destination: RoadNode) -> Array[Dictio
 	if nearest == null or float(start.distance) > vehicle.route_recovery_distance:
 		return []
 	var offset: float = start.offset
-	var best: Array[RoadNode] = []
-	var best_cost: float = INF
-	for node: RoadNode in nearest.road.nodes:
-		var path: Array[RoadNode] = _network.find_path(node, destination)
-		if path.is_empty():
-			continue
-		var cost: float = absf(_offset(node) - offset) + _network.path_length(path)
-		if cost < best_cost:
-			best_cost = cost
-			best = path
-	return _make_segments(nearest.get_path_3d(), offset, best)
+	var anchor: RoadRouteAnchor = RoadRouteAnchor.at(nearest.road, offset)
+	return _make_segments(nearest.get_path_3d(), offset, _network.find_path(anchor, destination))
 
 ## Project onto rendered road curves; do not teleport or attach a far-off car.
 func _nearest_road_position(vehicle: RoadVehicle3D) -> Dictionary:
@@ -135,7 +136,7 @@ func _make_segments(start: Path3D, offset: float, nodes: Array[RoadNode]) -> Arr
 	return result
 
 func _offset(node: RoadNode) -> float:
-	return node.parent_track.curve.get_closest_offset(node.rel_position)
+	return RoadRouteAnchor.offset_of(node)
 
 func _stops() -> Dictionary:
 	return Managers.interchanges.stops_by_num if is_instance_valid(Managers.interchanges) else {}

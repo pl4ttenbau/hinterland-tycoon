@@ -13,7 +13,7 @@ var curve: Curve3D
 var progress: float = 0.0
 var _paths: Array[Path3D] = []
 
-## Build partial-road legs in either direction, retaining live infrastructure references.
+## Build partial-road segments in either direction, retaining live infrastructure references.
 ## Depot arrivals trim the end in world metres to stay outside the building.
 func assign_segments(segments: Array[Dictionary], end_trim: float = 0.0) -> bool:
 	var candidate := Curve3D.new()
@@ -96,7 +96,7 @@ func is_valid() -> bool:
 			return false
 	return true
 
-## Search near the saved progress, so intersecting routes cannot skip to a later leg.
+## Search near the saved progress, so intersecting routes cannot skip to a later segment.
 func update_progress(world_position: Vector3, search_distance: float = 15.0) -> void:
 	if not is_valid():
 		return

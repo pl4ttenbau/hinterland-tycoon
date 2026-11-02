@@ -6,6 +6,12 @@ const NODES_GROUP = "Roads"
 const MAX_VISIBLE_DIST := 200
 
 @export var storage: RoadStore = RoadStore.new()
+@export var markers: RoadMarkerStore = RoadMarkerStore.new()
+
+func _ready() -> void:
+	var tool: Node = load("res://game/gamescripts/nodes/marker/road_marker_tool.gd").new()
+	tool.roads = self
+	add_child(tool)
 
 signal roads_loaded(_roads: Array[RoadData])
 signal roads_spawned(_roads: Array[RoadWay3D])

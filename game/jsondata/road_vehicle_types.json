@@ -1,6 +1,7 @@
 [
 	{
 		"key": "oldtimer_car",
+		"purchase_price": 12300,
 		"display_name": "Škoda 645 Limousine (c. 1930)",
 		"model_scene_path": "res://assets/meshes/vehicles/road/oldtimer_car/model_oldtimer_car.tscn",
 		"usable_infr": {},
@@ -19,6 +20,7 @@
 	},
 	{
 		"key": "gaz_aa_truck",
+		"purchase_price": 9700,
 		"display_name": "GAZ-AA Truck",
 		"model_scene_path": "res://assets/meshes/vehicles/road/gaz_aa_truck/gaz_aa_truck.tscn",
 		"usable_infr": {},
@@ -37,6 +39,7 @@
 	},
 	{
 		"key": "trabant_601_green",
+		"purchase_price": 9600,
 		"display_name": "Trabant 601 Universal (Green)",
 		"model_scene_path": "res://assets/meshes/vehicles/road/trabant_601/trabant_601_green.tscn",
 		"usable_infr": {},

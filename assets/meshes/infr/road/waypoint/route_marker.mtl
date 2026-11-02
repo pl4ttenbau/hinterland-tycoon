@@ -1,0 +1,15 @@
+# One material / one atlas. PBR MTL extensions vary by importer.
+newmtl RouteMarker
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.3 0.3 0.3
+Ns 80.0
+Ni 1.45
+d 1.0
+illum 2
+Pr 0.55
+Pm 0.0
+map_Kd route_marker_albedo.png
+map_Pr route_marker_roughness.png
+norm route_marker_normal.png
+map_Bump -bm 1.0 route_marker_normal.png

@@ -4,7 +4,7 @@ class_name RoadRoutePlan extends Resource
 @export var points: Array[RoadRoutePoint] = []
 
 ## Return a reviewable error without modifying either the plan or its inventories.
-func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], goods: Dictionary, capacity: GoodsCapacity) -> String:
+func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], goods: Dictionary, capacity: GoodsCapacity, markers: RoadMarkerStore = null) -> String:
 	if points.size() < 2:
 		return "Add at least two route points."
 	var previous: RoadNode
@@ -12,7 +12,7 @@ func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depo
 		var point: RoadRoutePoint = points[index]
 		if point == null:
 			return "Point %d is missing." % (index + 1)
-		var node: RoadNode = point.resolve(roads, stops, depots)
+		var node: RoadNode = point.resolve(roads, stops, depots, markers)
 		if node == null:
 			return "Point %d has an invalid road anchor." % (index + 1)
 		if previous != null and network.find_path(previous, node).is_empty():

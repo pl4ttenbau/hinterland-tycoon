@@ -1,6 +1,8 @@
 ## Focused graph, route-data and dialog checks; no terrain or full map is required.
 extends RefCounted
 
+const MARKER_TOOL = preload("res://game/gamescripts/nodes/marker/road_marker_tool.gd")
+
 var failed: int = 0
 var passed: int = 0
 var tree: SceneTree
@@ -20,7 +22,7 @@ func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
 	GameTypes.ensure_initialized()
 	_setup_network()
-	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_route_data", &"test_dialog", &"test_execution"]:
+	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	_cleanup()
@@ -240,6 +242,9 @@ func test_execution() -> bool:
 	check(body.plan_execution.start(body), "Plan with a later transfer visit starts")
 	await _check_transfer_pause_and_offroad_start(body)
 
+	body.free()
+	body = await _check_marker_execution(manager, loader, depot)
+
 	# Restore globals and release data back-references.
 	body.free()
 	manager.free()
@@ -280,6 +285,114 @@ func _check_transfer_pause_and_offroad_start(body: RoadVehicle3D) -> void:
 	body.global_position += Vector3(100, 0, 0)
 	check(not body.plan_execution.start(body) and not body.plan_execution.running, "Starting far from a road rejects execution safely")
 
+
+
+## Real physics follows named marker offsets without adding authored road nodes.
+func _check_marker_execution(manager: VehiclePlacer, loader: RoadsLoader, depot: RoadDepotData) -> RoadVehicle3D:
+	# Marker execution must stop at arbitrary offsets, not snap to authored road nodes.
+	var body: RoadVehicle3D = manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
+	var marker_points: Array[RoadRoutePoint] = []
+	for offset: float in [37.0, 73.0]:
+		var marker := RoadMarkerData.new()
+		marker.num = loader.markers.next_num()
+		marker.road_num = 100
+		marker.offset = offset
+		marker.side = Enums.RoadSide.RIGHT
+		loader.markers.markers.append(marker)
+		var target := RoadRoutePoint.new()
+		target.kind = RoadRoutePoint.Kind.MARKER
+		target.target_num = marker.num
+		marker_points.append(target)
+	body.route_plan.points = marker_points
+	check(body.plan_execution.start(body), "A marker-only plan starts on the current road")
+	for frame: int in range(1900):
+		await tree.physics_frame
+	check(body.plan_execution.status == "Plan complete", "Automatic execution visits marker offsets")
+	check(body.global_position.z < -69 and body.global_position.z > -74, "Vehicle stops at the final marker rather than the next road node")
+
+	return body
+
+## M captures the road under the actual player; Shift+M creates one two-sided target.
+func test_markers() -> bool:
+	# Arrange a physical road with an intermediate shape node, plus the real player.
+	var old_roads: RoadsLoader = Managers.roads
+	var old_player: PlayerHead3D = GlobalState.player
+	var old_camera: Camera3D = GlobalState.active_cam
+	var loader := RoadsLoader.new()
+	Managers.roads = loader
+	tree.root.add_child(loader)
+	var road: RoadData = RoadMapper.road_from_data_json({"num": 110, "type": "rural_road", "autosmooth": false, "points": [{"pos": [0,0,0]}, {"pos": [0,0,-20]}, {"pos": [0,0,-40]}]})
+	road.build_curve()
+	loader.storage._list.append(road)
+	loader.storage._by_id[110] = road
+	var view: RoadWay3D = road.spawn()
+	loader.add_child(view)
+	loader.storage.add_container(view)
+	for frame: int in range(4):
+		await tree.process_frame
+	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	tree.root.add_child(player)
+	(player.get_node("Player") as Node3D).global_position = Vector3(1, 0.3, -17.3)
+	var tool: MARKER_TOOL = loader.get_child(0) as MARKER_TOOL
+	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
+	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")
+
+	# Use the same key handler and confirmation control as gameplay.
+	var key := InputEventKey.new()
+	key.physical_keycode = KEY_M
+	key.pressed = true
+	tool._unhandled_key_input(key)
+	var dialog: GameDialog = UiState.current_diag
+	check(dialog != null and dialog.dialog_key == "RoadMarkerDialog", "M opens the marker naming dialog")
+	(dialog.get("_name") as LineEdit).text = "My marker"
+	(dialog.get_node("%OkButton") as Button).pressed.emit()
+	await tree.process_frame
+	check(loader.markers.markers.size() == 1 and loader.markers.markers[0].marker_name == "My marker", "Confirmation stores the chosen marker name")
+	check(absf(loader.markers.markers[0].offset - 17.3) < 0.02, "Marker stores the exact road offset, not a nearby shape node")
+	key.shift_pressed = true
+	tool._unhandled_key_input(key)
+	dialog = UiState.current_diag
+	(dialog.get_node("%OkButton") as Button).pressed.emit()
+	await tree.process_frame
+	check(loader.markers.markers.size() == 2 and loader.markers.markers[1].side == Enums.RoadSide.BOTH, "Shift+M creates one BOTH marker")
+	check(loader.markers.markers[1].marker_name == "Marker 2", "Unedited marker names use unique numbers")
+	check(tool._views[2].get_child_count() == 4, "One BOTH marker has two visual signs")
+	check(tool._views[2].get_child(0).scene_file_path == MARKER_TOOL.MARKER_SCENE, "Placed markers use the authored waypoint mesh")
+	_check_marker_routing(loader, road)
+
+	# Restore the surrounding session and break fixture resource back-references.
+	player.free()
+	loader.free()
+	for node: RoadNode in road.nodes:
+		node.parent_track = null
+	Managers.roads = old_roads
+	GlobalState.player = old_player
+	GlobalState.active_cam = old_camera
+	return true
+
+## The graph stays endpoint-only, including after temporary partial-road queries.
+func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
+	var graph := RoadPathfinder.new()
+	graph.build(loader.storage.get_all())
+	check(graph.graph_node_count() == 2, "A road contributes endpoints, not intermediate shape nodes")
+	var source: RoadRouteAnchor = RoadRouteAnchor.at(road, 35)
+	var right: RoadRouteAnchor = loader.markers.markers[0].anchor(loader.storage)
+	check(is_equal_approx(graph.path_length(graph.find_path(source, right)), 52.3), "RIGHT marker requires an increasing-order approach")
+	var both: RoadRouteAnchor = loader.markers.markers[1].anchor(loader.storage)
+	check(absf(graph.path_length(graph.find_path(source, both)) - 17.7) < 0.02, "BOTH marker uses the shorter available approach")
+	check(graph.graph_node_count() == 2, "Temporary query anchors do not grow the permanent graph")
+
+	# Route picker exposes named markers, stops and depots, never raw nodes.
+	var vehicle := RoadVehicle3D.of("oldtimer_car")
+	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
+	var dialog: GameDialog = script.create(vehicle)
+	tree.root.add_child(dialog)
+	var kinds: OptionButton = dialog.get("_kind")
+	check(kinds.get_item_id(0) == RoadRoutePoint.Kind.MARKER and dialog.get("_choices").size() == 2, "Route picker defaults to the two named markers")
+	for index: int in range(kinds.item_count):
+		check(kinds.get_item_id(index) != RoadRoutePoint.Kind.NODE, "Raw nodes cannot be selected as route targets")
+	dialog.free()
+	vehicle.free()
 
 ## Break the fixture's existing road/node/crossing back-reference cycles.
 func _cleanup() -> void:

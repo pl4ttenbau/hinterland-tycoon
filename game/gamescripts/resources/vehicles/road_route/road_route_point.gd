@@ -1,7 +1,8 @@
 ## Stable map references, independent of rendered nodes and current scene paths.
 class_name RoadRoutePoint extends Resource
 
-enum Kind { NODE, STOP, DEPOT }
+## Keep old numeric kinds stable for existing plans; NODE is no longer offered by the UI.
+enum Kind { NODE, STOP, DEPOT, MARKER }
 @export var kind: Kind = Kind.NODE
 @export var road_num: int = -1
 @export var node_index: int = -1
@@ -9,7 +10,10 @@ enum Kind { NODE, STOP, DEPOT }
 @export var actions: Array[RoadRouteAction] = []
 
 ## Resolve fresh when validating; deleted or changed anchors must not silently retarget.
-func resolve(roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData]) -> RoadNode:
+func resolve(roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], markers: RoadMarkerStore = null) -> RoadNode:
+	if kind == Kind.MARKER:
+		var marker: RoadMarkerData = markers.get_by_num(target_num) if markers != null else null
+		return marker.anchor(roads) if marker != null else null
 	var road_id: int = road_num
 	var index: int = node_index
 	if kind == Kind.STOP:
@@ -42,4 +46,5 @@ func describe() -> String:
 	match kind:
 		Kind.STOP: return "Stop %d" % target_num
 		Kind.DEPOT: return "Depot %d" % target_num
+		Kind.MARKER: return "Marker %d" % target_num
 	return "Road %d / node %d" % [road_num, node_index]
