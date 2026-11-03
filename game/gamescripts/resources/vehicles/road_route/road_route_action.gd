@@ -29,6 +29,6 @@ func describe() -> String:
 		description += " (passenger targets: %s)" % str(passenger_targets)
 	return description
 
-## Future transfers can select destination-specific batches without merging targets.
+## Select destination-specific batches without merging passenger targets.
 func matches(good: BaseGoodsType, passenger_target: int = -1) -> bool:
 	return good != null and good.key in goods and (not good.is_passenger() or passenger_target in passenger_targets)

@@ -1,5 +1,6 @@
 ## One physical vehicle: the player supplies free steering, otherwise the route
-## supplies steering and speed requests. Neither driver teleports the body.
+## supplies steering and speed requests. Automatic endpoint U-turns temporarily
+## use a collision-checked curve; manual driving always retains wheel physics.
 class_name RoadVehicle3D extends VehicleBody3D
 
 ## Emitted once per assigned driving path after its terminal stop.
@@ -15,6 +16,10 @@ signal route_finished()
 @export var braking_deceleration: float = 3.0
 ## Maximum horizontal distance in metres from which automatic driving may resume.
 @export var route_recovery_distance: float = 6.0
+## Gameplay radius in metres, deliberately independent of physical steering limits.
+@export_range(0.25, 5.0, 0.05) var automatic_uturn_radius: float = 1.25
+## Scripted U-turn speed in metres per second.
+@export_range(0.25, 4.0, 0.05) var automatic_uturn_speed: float = 1.5
 
 var vehicle_obj: VehicleData
 var inventory_component: InventoryContainer
@@ -29,6 +34,10 @@ var wheelbase: float = 2.5
 var maximum_speed_kmh: float = 50.0
 var motor_power_watts: float = 25000.0
 var _arrived: bool = false
+var _uturn := RoadVehicleUTurn.new()
+var _turn_previous_freeze: bool
+var _turn_previous_freeze_mode: RigidBody3D.FreezeMode
+var _turn_velocity: Vector3
 
 #region Construction
 ## Construct before tree insertion so callers can assign a path and spawn pose.
@@ -153,11 +162,12 @@ static func _strip_model_physics(node: Node) -> void:
 #endregion
 
 #region Driver handoff
-## Atomically replace the prototype driving path; route planning happens outside
-## this controller. A future itinerary/pathfinder can supply its resulting segments.
+## Atomically replace a driving path; itinerary/pathfinding decisions stay outside
+## this movement controller. This legacy whole-road API also supports previews.
 func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 	if not route.assign(paths, backwards):
 		return false
+	_end_automatic_uturn(true)
 	if is_inside_tree():
 		route.progress = route.curve.get_closest_offset(global_position)
 	_arrived = false
@@ -165,6 +175,7 @@ func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 
 ## Remove automatic driving requests without changing the body's physical state.
 func clear_route() -> void:
+	_end_automatic_uturn(false)
 	route = RoadVehicleRoute.new()
 	_arrived = false
 	engine_force = 0.0
@@ -174,6 +185,7 @@ func clear_route() -> void:
 func set_player_driving(enabled: bool) -> void:
 	player_driving = enabled
 	if enabled:
+		_end_automatic_uturn(true)
 		_arrived = false
 	# Clear the previous driver's force immediately, preserving physical motion.
 	engine_force = 0.0
@@ -186,11 +198,19 @@ func signed_speed_mps() -> float:
 
 #region Shared driving inputs
 func _physics_process(delta: float) -> void:
+	# One driver owns movement per tick: manual input, an active turn, or normal
+	# route physics. The executor can enter a turn, so check again after its tick.
 	if player_driving:
 		_drive_player(delta)
 	else:
+		if is_automatic_uturning():
+			_drive_automatic_uturn(delta)
+			return
 		plan_execution.tick(self)
-		_drive_route(delta)
+		if is_automatic_uturning():
+			_drive_automatic_uturn(delta)
+		else:
+			_drive_route(delta)
 
 func _drive_player(delta: float) -> void:
 	if UiState.current_diag != null or UiState.movement_blocked:
@@ -222,7 +242,94 @@ func _available_engine_force(speed: float) -> float:
 	return minf(mass * 1.5, motor_power_watts / maxf(absf(speed), 2.0) * 0.5)
 #endregion
 
+#region Automatic endpoint U-turns
+func is_automatic_uturning() -> bool:
+	return _uturn.active
+
+## Only the automatic route executor requests this, after braking at a road end.
+## Kinematic freeze prevents the wheel solver from fighting the scripted curve.
+func begin_automatic_uturn(path: Path3D, endpoint: float) -> bool:
+	if _uturn.active or player_driving or linear_velocity.length() > 0.2 or not is_finite(automatic_uturn_speed) or automatic_uturn_speed <= 0:
+		return false
+	if not is_instance_valid(path) or not path.is_inside_tree() or path.curve == null:
+		return false
+	var end: Vector3 = path.to_global(path.curve.sample_baked(endpoint))
+	if global_position.distance_to(end) > vehicle_obj.veh_type.length_metres * 0.55 + 1.5:
+		return false
+	if not _uturn.build(global_transform, path, endpoint, automatic_uturn_radius):
+		return false
+	_turn_previous_freeze = freeze
+	_turn_previous_freeze_mode = freeze_mode
+	_turn_velocity = Vector3.ZERO
+	freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
+	freeze = true
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	engine_force = 0
+	brake = 0
+	steering = 0
+	_arrived = false
+	return true
+
+func _drive_automatic_uturn(delta: float) -> void:
+	if not _uturn.is_valid():
+		plan_execution.stop(self, "U-turn road is no longer available.")
+		return
+	var next: float = minf(_uturn.progress + automatic_uturn_speed * delta, _uturn.curve.get_baked_length())
+	var pose: Transform3D = _uturn.sample(next)
+	if not _uturn_motion_is_clear(pose):
+		_turn_velocity = Vector3.ZERO
+		plan_execution.status = "U-turn blocked: waiting for clearance."
+		return
+	_turn_velocity = (pose.origin - global_position) / maxf(delta, 0.001)
+	global_transform = pose
+	_uturn.progress = next
+	plan_execution.status = "Turning at road end"
+	if next >= _uturn.curve.get_baked_length():
+		_end_automatic_uturn(true)
+
+## Sweep using the next orientation too, so a wide body cannot rotate through
+## nearby obstacles. Collisions stay enabled throughout the assisted manoeuvre.
+func _uturn_motion_is_clear(pose: Transform3D) -> bool:
+	# Explicit space queries still work while wheel/body simulation is frozen.
+	# Check the next rotated footprint, then sweep its translation; ignore self.
+	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	for child: Node in get_children():
+		if not child is CollisionShape3D or child.disabled or child.shape == null:
+			continue
+		var query := PhysicsShapeQueryParameters3D.new()
+		query.shape = child.shape
+		query.exclude = [get_rid()]
+		query.collision_mask = collision_mask
+		query.margin = 0.02
+		query.transform = pose * child.transform
+		if not space.intersect_shape(query, 1).is_empty():
+			return false
+		query.transform = Transform3D(pose.basis, global_position) * child.transform
+		query.motion = pose.origin - global_position
+		if space.cast_motion(query)[0] < 1.0:
+			return false
+	return true
+
+## Manual takeover keeps the current pose and tangent velocity. Stops discard
+## turn velocity. Both restore exactly the body's previous freeze configuration.
+func _end_automatic_uturn(keep_velocity: bool) -> void:
+	if not _uturn.active:
+		return
+	_uturn.active = false
+	_uturn.source = null
+	_uturn.curve = null
+	_uturn.progress = 0
+	freeze = _turn_previous_freeze
+	freeze_mode = _turn_previous_freeze_mode
+	linear_velocity = _turn_velocity if keep_velocity and not freeze else Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	sleeping = false
+
+#endregion
+
 #region Automatic driving
+
 ## Execute geometry supplied by a planner; do not choose destinations or transfer goods.
 func _drive_route(delta: float) -> void:
 	if not route.is_valid():
@@ -246,7 +353,7 @@ func _drive_route(delta: float) -> void:
 		apply_driver_input(0.0, 0.0, 1.0, delta)
 		return
 	if plan_execution.running:
-		plan_execution.status = "Driving to point %d" % (plan_execution.current_point + 1)
+		plan_execution.status = plan_execution.driving_status()
 	var turn: float = atan2(2.0 * wheelbase * sin(angle), lookahead) / steering_limit
 	_apply_route_speed(turn, _desired_route_speed(angle, distance_left), speed, delta)
 

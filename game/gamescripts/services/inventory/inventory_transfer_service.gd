@@ -1,9 +1,24 @@
-## Manual transfers are validated centrally; widgets never mutate inventory directly.
+## Shared transactions for manual transfers and automatic route actions.
 class_name InventoryTransferService extends RefCounted
 
 const REACH_METRES: float = 20.0
 
 static func validate(source: InventoryEndpoint, target: InventoryEndpoint, stack: InventoryStack, amount: float) -> String:
+	var error: String = validate_access(source, target)
+	if not error.is_empty():
+		return error
+	error = _validate_stock(source, stack, amount)
+	if not error.is_empty():
+		return error
+	if not target.component().accepts(stack.good_key):
+		return "The destination cannot carry this resource category."
+	if target.component().free_capacity() + 0.00001 < amount:
+		return "There is not enough free capacity."
+	return ""
+
+## Physical access is also required for disembarking passengers, even though
+## their completed trip does not consume any destination inventory capacity.
+static func validate_access(source: InventoryEndpoint, target: InventoryEndpoint) -> String:
 	if source == null or target == null or not source.available() or not target.available():
 		return "Choose two available inventories."
 	if source.inventory() == target.inventory():
@@ -12,6 +27,9 @@ static func validate(source: InventoryEndpoint, target: InventoryEndpoint, stack
 		return "An inventory access point is no longer available."
 	if source.position().distance_to(target.position()) > REACH_METRES:
 		return "Inventories are too far apart (maximum 20 m)."
+	return ""
+
+static func _validate_stock(source: InventoryEndpoint, stack: InventoryStack, amount: float) -> String:
 	if stack == null or not is_finite(amount) or amount <= 0:
 		return "Choose a resource and a positive quantity."
 	var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
@@ -21,11 +39,22 @@ static func validate(source: InventoryEndpoint, target: InventoryEndpoint, stack
 		return "Passengers must be transferred in whole numbers."
 	if source.inventory().stack_amount(stack.good_key, stack.destination_stop) < amount:
 		return "There is not enough stock in that group."
-	if not target.component().accepts(stack.good_key):
-		return "The destination cannot carry this resource category."
-	if target.component().free_capacity() + 0.00001 < amount:
-		return "There is not enough free capacity."
 	return ""
+
+## Completing a trip removes exactly the chosen destination batch from the
+## vehicle. Passengers never re-enter the waiting stock at their own destination.
+static func complete_passenger_trip(source: InventoryEndpoint, target: InventoryEndpoint,
+		stack: InventoryStack, amount: float, arrival_stop: int) -> String:
+	var error: String = validate_access(source, target)
+	if not error.is_empty():
+		return error
+	error = _validate_stock(source, stack, amount)
+	if not error.is_empty():
+		return error
+	var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
+	if not good.is_passenger() or arrival_stop < 0 or stack.destination_stop != arrival_stop:
+		return "Passengers can only finish their trip at their own destination stop."
+	return "" if source.inventory().change_stack(stack.good_key, stack.destination_stop, -amount) else "Passenger stock changed before arrival."
 
 static func maximum(source: InventoryEndpoint, target: InventoryEndpoint, stack: InventoryStack) -> float:
 	if source == null or target == null or stack == null or not source.available() or not target.available():

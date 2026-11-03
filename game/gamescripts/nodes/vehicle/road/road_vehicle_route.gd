@@ -1,6 +1,6 @@
 ## Temporary driving geometry in world metres, independent of vehicle physics.
-## This executes an already chosen road sequence. Future node-to-node pathfinding,
-## station destinations and itineraries with goods actions belong to other classes.
+## Stores an already chosen road sequence. Pathfinding, stop actions and endpoint
+## U-turn decisions belong to the itinerary executor and its planning helpers.
 ## Reverse the first road with backwards=true; subsequent roads orient to its exit.
 class_name RoadVehicleRoute extends RefCounted
 

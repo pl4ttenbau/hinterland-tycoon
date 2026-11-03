@@ -1,4 +1,4 @@
-## Execute visits only. Transfer instructions deliberately pause execution without touching stock.
+## Drive visits and execute their ordered stop actions once after coming to rest.
 class_name RoadPlanExecutor extends RefCounted
 
 ## Lifecycle state is separate from the vehicle's manual/automatic input source.
@@ -7,8 +7,18 @@ var current_point: int = 0
 var status: String = "Not started"
 var _plan: RoadRoutePlan
 var _network := RoadPathfinder.new()
+var _servicing_visit: bool = false
+## Temporary navigation substep, never a visit: current_point stays unchanged.
+## Keeping the approach until completion also lets manual interruption replan.
+var _turn_approach: RoadUTurnPlanner.Approach
+var _turn_started: bool = false
 
 #region Execution lifecycle
+## Keep the endpoint detour visible instead of reporting the pending stop as the
+## immediate driving target. The movement controller need not inspect plan state.
+func driving_status() -> String:
+	return "Driving to road end for a U-turn" if _turn_approach != null else "Driving to point %d" % (current_point + 1)
+
 ## Freeze a validated plan so editing cannot change a segment that is already being driven.
 func start(vehicle: RoadVehicle3D) -> bool:
 	if not is_instance_valid(Managers.roads):
@@ -20,33 +30,52 @@ func start(vehicle: RoadVehicle3D) -> bool:
 	if not status.is_empty():
 		return false
 	_plan = vehicle.route_plan.duplicate(true)
+	vehicle.clear_route()
+	_turn_approach = null
+	_turn_started = false
 	current_point = 0
+	_servicing_visit = false
 	running = true
 	return _begin_visit(vehicle)
 
 func stop(vehicle: RoadVehicle3D, message: String = "Stopped") -> void:
 	running = false
+	_servicing_visit = false
+	_turn_approach = null
+	_turn_started = false
 	status = message
 	vehicle.clear_route()
 
 ## Called only while the automatic driver owns control. Manual takeover preserves progress.
 func tick(vehicle: RoadVehicle3D) -> void:
-	if not running:
+	if not running or vehicle.player_driving:
 		return
-	if not vehicle.route.is_valid():
+	if _tick_uturn(vehicle):
+		return
+	if _servicing_visit:
+		if vehicle.linear_velocity.length() <= RoadRouteTransferService.MAX_SERVICE_SPEED:
+			if _finish_visit(vehicle):
+				_begin_visit(vehicle)
+	elif not vehicle.route.is_valid():
 		stop(vehicle, "Driving path is no longer available.")
 	elif vehicle._arrived:
-		if _finish_visit(vehicle):
+		if not _plan.points[current_point].actions.is_empty():
+			_hold_for_actions(vehicle)
+		elif _finish_visit(vehicle):
 			_begin_visit(vehicle)
 
 #endregion
 
 #region Visit advancement
-## Transfer instructions form an explicit boundary until inventory execution exists.
+## Actions run in authored order. A failed action holds the vehicle at this visit;
+## prior successful actions stay applied and are never retried automatically.
 func _finish_visit(vehicle: RoadVehicle3D) -> bool:
-	if not _plan.points[current_point].actions.is_empty():
-		stop(vehicle, "Paused at point %d: load/unload is not implemented yet." % (current_point + 1))
-		return false
+	var point: RoadRoutePoint = _plan.points[current_point]
+	for index: int in range(point.actions.size()):
+		var result: RoadRouteTransferResult = RoadRouteTransferService.execute(vehicle, point, point.actions[index], _stops())
+		if not result.error.is_empty():
+			stop(vehicle, "Point %d, action %d: %s" % [current_point + 1, index + 1, result.error])
+			return false
 	current_point += 1
 	if current_point >= _plan.points.size():
 		stop(vehicle, "Plan complete")
@@ -54,6 +83,7 @@ func _finish_visit(vehicle: RoadVehicle3D) -> bool:
 	return true
 
 func _begin_visit(vehicle: RoadVehicle3D) -> bool:
+	_servicing_visit = false
 	while running:
 		var point: RoadRoutePoint = _plan.points[current_point]
 		var node: RoadNode = point.resolve(Managers.roads.storage, _stops(), GlobalState.road_depots, Managers.roads.markers)
@@ -63,12 +93,22 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 		# A starting depot is usually ten metres behind its parked vehicle.
 		var radius: float = 12.5 if point.kind == RoadRoutePoint.Kind.DEPOT else 3.0
 		if _at_visit(vehicle, node, radius):
+			if not point.actions.is_empty():
+				_hold_for_actions(vehicle)
+				return true
 			if not _finish_visit(vehicle):
 				return status == "Plan complete"
 			continue
 		return _assign_visit_path(vehicle, point, node)
 
 	return false
+
+## Starting a plan near its first stop must still wait for automatic control and
+## a stationary vehicle. Clearing the driving curve applies the parking brake.
+func _hold_for_actions(vehicle: RoadVehicle3D) -> void:
+	_servicing_visit = true
+	vehicle.clear_route()
+	status = "Servicing point %d of %d" % [current_point + 1, _plan.points.size()]
 
 ## A single-side marker is served only when facing its permitted approach direction.
 func _at_visit(vehicle: RoadVehicle3D, node: RoadNode, radius: float) -> bool:
@@ -84,12 +124,57 @@ func _at_visit(vehicle: RoadVehicle3D, node: RoadNode, radius: float) -> bool:
 ## stop margin so depot arrivals still remain ten metres from the building.
 func _assign_visit_path(vehicle: RoadVehicle3D, point: RoadRoutePoint, node: RoadNode) -> bool:
 	var segments: Array[Dictionary] = _segments_to(vehicle, node)
+	var turn: RoadUTurnPlanner.Approach = RoadUTurnPlanner.prepare(segments, vehicle.global_basis.z)
+	if turn != null:
+		return _assign_turn_approach(vehicle, turn)
 	var trim: float = maxf(0.0, 10.0 - vehicle.vehicle_obj.veh_type.length_metres * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
 	if segments.is_empty() or not vehicle.route.assign_segments(segments, trim):
 		stop(vehicle, "No drivable path from the current position. Move back onto a connected road.")
 		return false
 	vehicle._arrived = false
 	status = "Driving to point %d of %d" % [current_point + 1, _plan.points.size()]
+	return true
+
+## A reversal first follows ordinary wheel physics to the road end. Only the
+## short turnaround is scripted; the target visit and its actions remain pending.
+func _assign_turn_approach(vehicle: RoadVehicle3D, turn: RoadUTurnPlanner.Approach) -> bool:
+	_turn_approach = turn
+	_turn_started = false
+	var margin: float = vehicle.vehicle_obj.veh_type.length_metres * 0.55
+	var assigned: bool = vehicle.route.assign_segments(turn.segments)
+	var endpoint: Vector3 = turn.path.to_global(turn.path.curve.sample_baked(turn.offset))
+	if (assigned and vehicle.route.remaining() <= margin + 0.4) or (not assigned and vehicle.global_position.distance_to(endpoint) <= margin + 1):
+		vehicle.clear_route()
+		vehicle._arrived = true
+	elif not assigned:
+		stop(vehicle, "No drivable approach to the road end for a U-turn.")
+		return false
+	else:
+		vehicle._arrived = false
+	status = "Driving to road end for a U-turn"
+	return true
+
+## The movement controller owns curve advancement. Replan from the actual exit
+## pose after completion or manual interruption, without advancing the visit.
+func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
+	if _turn_approach == null:
+		return false
+	if _turn_started:
+		# Active curves are advanced by RoadVehicle3D before this executor ticks.
+		# Inactive here means completed or manually interrupted: resolve afresh.
+		if not vehicle.is_automatic_uturning():
+			_turn_approach = null
+			_turn_started = false
+			_begin_visit(vehicle)
+		return true
+	if not vehicle._arrived:
+		return false
+	if vehicle.linear_velocity.length() > 0.2:
+		return true
+	if vehicle.begin_automatic_uturn(_turn_approach.path, _turn_approach.offset):
+		_turn_started = true
+	else:
+		stop(vehicle, "Could not create the automatic road-end U-turn.")
 	return true
 #endregion
 

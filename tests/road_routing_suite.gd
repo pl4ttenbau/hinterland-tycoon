@@ -225,7 +225,7 @@ func test_execution() -> bool:
 
 	body.free()
 
-	# Transfer metadata must stop the car at its visit, never silently skip or execute it.
+	# A removed inventory must stop the car at its visit, never silently skip it.
 	var stop := RoadStationData.new(401, "Transfer stop")
 	stop.road_num = 100
 	stop.node_index = 2
@@ -273,11 +273,11 @@ func _check_manual_execution_and_completion(body: RoadVehicle3D) -> void:
 	check(body.plan_execution.status == "Plan complete", "Automatic physics visits all points and completes the plan")
 	check(body.global_position.z < -95 and body.global_position.y > 0, "Vehicle reaches the final point on the physical road")
 
-## Unimplemented transfers and invalid starts both hold the car instead of skipping visits.
+## Missing stop inventories and invalid starts hold the car instead of skipping visits.
 func _check_transfer_pause_and_offroad_start(body: RoadVehicle3D) -> void:
 	for frame: int in range(1500):
 		await tree.physics_frame
-	check(not body.plan_execution.running and "load/unload" in body.plan_execution.status, "Execution pauses explicitly at unimplemented transfers")
+	check(not body.plan_execution.running and "inventories" in body.plan_execution.status, "Execution reports a missing stop inventory and holds the visit")
 	check(body.plan_execution.current_point == 1 and body.global_position.z > -65, "Transfer visit is not skipped")
 
 	# An off-road start fails safely rather than teleporting onto the network.

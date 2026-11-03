@@ -109,7 +109,8 @@ func stacks(passengers: bool) -> Array[InventoryStack]:
 		if unassigned > 0:
 			result.append(InventoryStack.new(key, unassigned))
 	result.sort_custom(func(a: InventoryStack, b: InventoryStack):
-		return a.good_key < b.good_key if a.good_key != b.good_key else a.destination_stop < b.destination_stop)
+		# Sort the resource names, rather than StringName's interned identifiers.
+		return str(a.good_key) < str(b.good_key) if a.good_key != b.good_key else a.destination_stop < b.destination_stop)
 	return result
 
 #region Callbacks

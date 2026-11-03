@@ -74,6 +74,11 @@ func _build_actions_tab(content: VBoxContainer) -> void:
 	help.text = "Select a route point on the first tab. Transfers require a physical stop."
 	help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	content.add_child(help)
+	var policy := Label.new()
+	policy.text = "Actions run once, in order, moving as much as stock and capacity allow. Passengers unloaded at their destination finish their trip."
+	policy.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	policy.theme_type_variation = &"MutedLabel"
+	content.add_child(policy)
 	_actions = ItemList.new()
 	_actions.custom_minimum_size.y = 75
 	content.add_child(_actions)
