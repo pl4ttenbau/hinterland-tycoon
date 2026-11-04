@@ -4,6 +4,9 @@
 [ext_resource type="Terrain3DAssets" uid="uid://b4pvntplaot65" path="res://world/gdansk/mapscenes/terrain/terrain_assets_gdansk.res" id="2_5ul1g"]
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_5ul1g"]
 
+[ext_resource type="PackedScene" path="res://assets/packed/TerrainWheat.tscn" id="22_wheat"]
+[ext_resource type="Resource" path="res://world/gdansk/vegetation/wheat_areas.tres" id="23_wheat_areas"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_qwrwv"]
 size = Vector2(5000, 5000)
 
@@ -24,3 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.647888, 0)
 material_override = ExtResource("3_5ul1g")
 mesh = SubResource("PlaneMesh_qwrwv")
 surface_material_override/0 = SubResource("ShaderMaterial_qwrwv")
+
+[node name="TerrainWheat" parent="." instance=ExtResource("22_wheat")]
+grass_areas = ExtResource("23_wheat_areas")

@@ -162,3 +162,11 @@ godot --headless --path . --log-file /tmp/editor-selection-tests.log --script re
 Selecting an infrastructure line (through Select Object or the scene tree) shows a light grey cube at curve node 0 and mint spheres at every subsequent node. Round markers maintain a 14-pixel diameter as the camera zooms, with a slightly larger start cube. Materials disable depth testing/writes and use the transparent queue at maximum render priority, so roads, terrain and water do not cover the markers. Selection tracking also handles repeated Inspector-only picks of locked lines and keeps the overlay when editing a selected line's Curve3D. Only the selected/inspected line receives markers. They follow curve edits and transforms, disappear on deselection/removal or scene changes, and are internal, unowned editor visuals that never enter scene files or JSON. Tests cover selection recovery, foreground material settings, perspective/orthographic zoom, transforms, curve replacement and cleanup. Reload HinterlandTools after first installing the helper.
 
 The old JSON save row is removed from HinterlandTools. Cache Inspector buttons only emit requests through the plugin-owned EditorSignals bus; file I/O remains in InfrJsonStore and cache clearing happens only after successful saving. Requests for inactive maps are rejected, and unfinished drawing drafts must be finished/cancelled first.
+
+Circular menu action, context, animation and input checks:
+
+```sh
+godot --headless --path . --script res://tests/radial_actions_test.gd -- --no-mcp
+```
+
+See `doc/circular-menu.md` for the supported actions and owned control.

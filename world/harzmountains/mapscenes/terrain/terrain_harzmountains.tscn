@@ -8,6 +8,9 @@
 
 [ext_resource type="Resource" path="res://world/harzmountains/vegetation/grass_areas.tres" id="21_grass_areas"]
 
+[ext_resource type="PackedScene" path="res://assets/packed/TerrainWheat.tscn" id="22_wheat"]
+[ext_resource type="Resource" path="res://world/harzmountains/vegetation/wheat_areas.tres" id="23_wheat_areas"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3qu8"]
@@ -130,3 +133,6 @@ surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="TerrainGrass" parent="." unique_id=760034455 instance=ExtResource("20_grass")]
 grass_areas = ExtResource("21_grass_areas")
+
+[node name="TerrainWheat" parent="." instance=ExtResource("22_wheat")]
+grass_areas = ExtResource("23_wheat_areas")

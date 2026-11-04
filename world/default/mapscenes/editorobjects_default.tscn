@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cke1ahhdqyxxj"]
+
+[ext_resource type="Script" uid="uid://cr2oyr6h3rrlr" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="1_akjpd"]
+[ext_resource type="Script" uid="uid://cpdgqt5cmjayq" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="2_a24p2"]
+
+[node name="EditorobjectsDefault" type="Node3D" unique_id=373374799]
+script = ExtResource("1_akjpd")
+map_key = "default"
+metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
+
+[node name="EditorVegetation" type="Node3D" parent="." unique_id=2108793427]
+script = ExtResource("2_a24p2")
+metadata/_custom_type_script = "uid://cpdgqt5cmjayq"

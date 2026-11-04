@@ -1,6 +1,7 @@
 ## Near-camera grass using Terrain3D's GPU particle placement technique.
 ## Tiles are recycled only at cell boundaries; world-coordinate randomness stays fixed.
-## Runtime only: no grass population is created by the editor.
+## Editor previews use the same bounded population without saving generated tiles.
+@tool
 extends Node3D
 
 const PLACEMENT: Shader = preload("res://assets/packed/grass_particles.gdshader")
@@ -38,17 +39,67 @@ var _draw_material: ShaderMaterial
 var _mesh: Mesh
 var _rows: int
 var _cell: Vector2i = Vector2i(2147483647, 2147483647)
+var _editor_preview_enabled: bool = true
+var _editor_refresh_delay: float = 0.0
+var _editor_data: Terrain3DData
 
 func _ready() -> void:
 	if not terrain:
 		terrain = get_parent() as Terrain3D
+	add_to_group(&"_terrain_vegetation")
 	rebuild()
+
+func get_vegetation_layer() -> StringName:
+	return &"grass"
+
+## Preview state is transient; never changes the saved runtime enabled flag.
+func set_editor_preview_enabled(value: bool) -> void:
+	if not Engine.is_editor_hint() or _editor_preview_enabled == value:
+		return
+	_editor_preview_enabled = value
+	if is_node_ready():
+		rebuild()
+
+func _can_draw() -> bool:
+	return enabled and (not Engine.is_editor_hint() or _editor_preview_enabled) \
+		and grass_areas != null and grass_areas.get_texture_mask() != 0 and not grass_areas.coverage_is_empty
+
+func _bind_editor_data() -> void:
+	if not Engine.is_editor_hint() or not is_instance_valid(terrain) or terrain.data == _editor_data:
+		return
+	_disconnect_editor_data()
+	_editor_data = terrain.data
+	if is_instance_valid(_editor_data):
+		_editor_data.maps_changed.connect(_queue_editor_rebuild)
+		_editor_data.maps_edited.connect(_on_editor_terrain_edited)
+
+func _disconnect_editor_data() -> void:
+	if is_instance_valid(_editor_data):
+		_editor_data.maps_changed.disconnect(_queue_editor_rebuild)
+		_editor_data.maps_edited.disconnect(_on_editor_terrain_edited)
+	_editor_data = null
+
+func _queue_editor_rebuild() -> void:
+	# Debounce brush strokes and map uploads instead of rebuilding every frame.
+	_editor_refresh_delay = 0.25
+
+func _on_editor_terrain_edited(_area: AABB) -> void:
+	_queue_editor_rebuild()
+
+func _exit_tree() -> void:
+	_disconnect_editor_data()
 
 ## Recreates the bounded population and refreshes terrain maps, masks and water planes.
 func rebuild() -> void:
 	_clear_tiles()
-	set_process(enabled and is_instance_valid(terrain))
-	if not enabled or not is_instance_valid(terrain) or not terrain.data:
+	_process_material = null
+	_draw_material = null
+	_mesh = null
+	_bind_editor_data()
+	set_process(_can_draw() and is_instance_valid(terrain))
+	if not _can_draw() or not is_instance_valid(terrain) or not terrain.data:
+		return
+	if Engine.is_editor_hint() and terrain.data.get_region_locations().is_empty():
 		return
 	_rows = maxi(1, int(CELL_SIZE / clampf(instance_spacing, 0.75, 2.0)))
 	# Divide exactly into the cell so adjacent tiles never leave seams or overlap.
@@ -117,10 +168,27 @@ func _make_crossed_cards() -> ArrayMesh:
 			builder.add_vertex(rotation * corners[index])
 	return builder.commit()
 
-func _process(_delta: float) -> void:
-	if not is_instance_valid(terrain) or not _process_material:
+func _process(delta: float) -> void:
+	if not is_instance_valid(terrain) or not terrain.data:
 		return
-	var camera: Camera3D = terrain.get_camera()
+	if Engine.is_editor_hint():
+		var scene: Node = EditorInterface.get_edited_scene_root()
+		if not is_instance_valid(scene) or (scene != self and not scene.is_ancestor_of(self)):
+			for tile: GPUParticles3D in _tiles.values():
+				tile.visible = false
+			return
+		if _editor_refresh_delay > 0.0:
+			_editor_refresh_delay -= delta
+			if _editor_refresh_delay <= 0.0:
+				rebuild()
+		if not _process_material:
+			if _editor_refresh_delay <= 0.0:
+				_queue_editor_rebuild()
+			return
+	if not _process_material:
+		return
+	var camera: Camera3D = EditorInterface.get_editor_viewport_3d(0).get_camera_3d() \
+		if Engine.is_editor_hint() else terrain.get_camera()
 	if not is_instance_valid(camera):
 		return
 	var pos: Vector3 = camera.global_position

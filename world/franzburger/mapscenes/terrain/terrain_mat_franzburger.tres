@@ -3,7 +3,7 @@
 [resource]
 _shader_parameters = {
 &"bias_distance": null,
-&"blend_sharpness": null,
+&"blend_sharpness": 0.0,
 &"depth_blur": null,
 &"distant_normal_scale": null,
 &"flat_terrain_normals": null,

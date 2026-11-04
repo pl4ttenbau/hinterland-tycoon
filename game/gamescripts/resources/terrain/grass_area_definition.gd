@@ -1,5 +1,5 @@
-## Describes where meadow grass may grow, independently of infrastructure types.
-## Crop/field vegetation has its own terrain textures and is not part of this layer.
+## Per-layer terrain eligibility and coverage. Grass and crops use separate resources.
+@tool
 class_name GrassAreaDefinition
 extends Resource
 
@@ -13,6 +13,8 @@ extends Resource
 @export var mask_bounds: Rect2
 ## Baked full-area images already contain terrain eligibility; avoid applying it twice.
 @export var coverage_includes_terrain: bool = false
+## Written by the baker; empty crop maps can avoid allocating any particles.
+@export var coverage_is_empty: bool = false
 
 @export_group("Bake")
 @export_range(256, 8192, 256) var bake_resolution: int = 4096
