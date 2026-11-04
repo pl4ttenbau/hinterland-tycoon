@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://gk0hya8mskwm"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_world"]
+[ext_resource type="PackedScene" uid="uid://7lql5smxq1vp" path="res://world/gdansk/mapscenes/terrain/terrain_gdansk.tscn" id="2_terrain"]
+[ext_resource type="PackedScene" uid="uid://bkox8ym3do2eb" path="res://assets/packed/environment/day_environment.tscn" id="3_environment"]
+[ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="4_residences"]
+[ext_resource type="PackedScene" uid="uid://bt7v82puopvu3" path="res://world/gdansk/mapscenes/towns_gdansk.tscn" id="5_towns"]
+[ext_resource type="PackedScene" uid="uid://ca4ssx4ps5u6" path="res://world/gdansk/mapscenes/editorobjects_gdansk.tscn" id="6_editor"]
+[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="7_industries"]
+[ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/importexport/deco_loader.gd" id="8_deco"]
+[ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="9_cursor"]
+[ext_resource type="Script" uid="uid://b3731raomqh8x" path="res://addons/hinterland_tools/editor_cache.gd" id="10_cache"]
+
+[node name="WorldGdansk" type="Node" unique_id=1117811273 node_paths=PackedStringArray("terrain")]
+script = ExtResource("1_world")
+map_key = "gdansk"
+terrain = NodePath("WorldTerrain")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="WorldTerrain" parent="." unique_id=175849276 instance=ExtResource("2_terrain")]
+
+[node name="Towns" parent="." unique_id=952416414 node_paths=PackedStringArray("world_scene") instance=ExtResource("5_towns")]
+world_scene = NodePath("..")
+
+[node name="Residences" type="Node" parent="." unique_id=1758801196 node_paths=PackedStringArray("world_scene")]
+script = ExtResource("4_residences")
+world_scene = NodePath("..")
+
+[node name="Industries" type="Node" parent="." unique_id=1029954138 node_paths=PackedStringArray("world_scene")]
+script = ExtResource("7_industries")
+world_scene = NodePath("..")
+
+[node name="Deco" type="Node" parent="." unique_id=30435165]
+script = ExtResource("8_deco")
+
+[node name="EditorObjects" parent="." unique_id=277426875 instance=ExtResource("6_editor")]
+
+[node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("3_environment")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.065117, 0)
+
+[node name="WorldCursor3D" type="Marker3D" parent="." unique_id=830804789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.833506, 0)
+gizmo_extents = 10.0
+script = ExtResource("9_cursor")
+
+[node name="EditorCache" type="Node3D" parent="." unique_id=936659441]
+script = ExtResource("10_cache")

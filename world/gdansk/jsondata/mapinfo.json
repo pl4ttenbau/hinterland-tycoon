@@ -1,0 +1,30 @@
+{
+  "key": "gdansk",
+  "name": "Gdańskie Koleje Dojazdowe",
+  "loc": "POLAND",
+  "defaultYear": 1960,
+  "startPos": [
+    0,
+    0
+  ],
+  "sizeAndPos": {
+    "longLat": {
+      "topLeft": [
+        54.37,
+        18.66
+      ],
+      "bottomRight": [
+        54.0465,
+        19.213
+      ]
+    },
+    "rasterSize": [
+      3600,
+      3600
+    ],
+    "rasterOffset": [
+      -1800,
+      -1800
+    ]
+  }
+}

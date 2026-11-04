@@ -109,8 +109,12 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
+diffuse_mode = 2
 albedo_texture = ExtResource("5_fq40n")
 metallic_specular = 0.0
+backlight_enabled = true
+backlight = Color(0.54202884, 0.54202884, 0.5420288, 1)
+disable_receive_shadows = true
 billboard_mode = 2
 billboard_keep_scale = true
 

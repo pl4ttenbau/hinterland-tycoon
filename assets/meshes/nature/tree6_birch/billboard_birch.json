@@ -1,0 +1,88 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree6_birch/deco_tree6_birch.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree6_birch/mesh/tree6_birch.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    7.230985869208108,
+    7.230985869208108
+  ],
+  "tree_height": 6.652506999671459,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "bark": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree6_birch/mesh/tex_tree6_bark.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": false,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "branches": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree6_birch/mesh/tex_tree6_branches.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -1.6429920196533203,
+      -2.0203449726104736,
+      -0.0843011662364006
+    ],
+    "max": [
+      2.5399720668792725,
+      2.192406415939331,
+      6.568205833435059
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_birch.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.43797664222761207,
+        0.03999998815076139
+      ],
+      "quad_center_from_base_right_up": [
+        0.4484900236129761,
+        3.3262535855174065
+      ]
+    }
+  ]
+}

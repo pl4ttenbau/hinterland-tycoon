@@ -1,0 +1,109 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree3_kastanie/tree3_kastanie.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree3_kastanie/tree3_kastanie.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    9.979466397477232,
+    9.979466397477232
+  ],
+  "tree_height": 9.181109085679054,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "trunk-01": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree3_kastanie/tree3_bark_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": false,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "branch-01": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree3_kastanie/tree3_branch-2-02.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "branch-02": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree3_kastanie/tree3_branch-2-01.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.3810000180975,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -3.4559121131896973,
+      -3.759700059890747,
+      -0.06574024260044098
+    ],
+    "max": [
+      3.5121259689331055,
+      3.2472007274627686,
+      9.115368843078613
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_chestnut.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.49718352397290405,
+        0.04000001717159479
+      ],
+      "quad_center_from_base_right_up": [
+        0.0281069278717041,
+        4.590554371476173
+      ]
+    }
+  ]
+}

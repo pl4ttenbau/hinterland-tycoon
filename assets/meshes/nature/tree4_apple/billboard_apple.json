@@ -1,0 +1,88 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree4_apple/tree4_apple.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree4_apple/tree4_apple.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    8.182340706496134,
+    8.182340706496134
+  ],
+  "tree_height": 7.527753449976444,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "mat_tree4_twigs": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree4_apple/tex_tree4_twigs_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "mat_tree4_bark": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree4_apple/tex_tree4_bark_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": false,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -2.871994972229004,
+      -2.78733491897583,
+      -0.10540924221277237
+    ],
+    "max": [
+      2.871994972229004,
+      3.297931432723999,
+      7.422344207763672
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_apple.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.5,
+        0.03999999408130561
+      ],
+      "quad_center_from_base_right_up": [
+        0.0,
+        3.763876773416996
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree5_pine/deco_tree5_pine.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree5_pine/mesh/tree5_pine.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    11.532363198373629,
+    11.532363198373629
+  ],
+  "tree_height": 10.609774142503738,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "cedar_01_bark": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree5_pine/mesh/pine_01_bark_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": false,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "cedar_01_branch": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree5_pine/mesh/pine_01_branch_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.49200002337,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -3.0130369663238525,
+      -2.9369919300079346,
+      -0.24870923161506653
+    ],
+    "max": [
+      3.3372159004211426,
+      3.0637307167053223,
+      10.361064910888672
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_pine.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.48594481770470915,
+        0.04000001938175324
+      ],
+      "quad_center_from_base_right_up": [
+        0.16208946704864502,
+        5.304886847734451
+      ]
+    }
+  ]
+}
