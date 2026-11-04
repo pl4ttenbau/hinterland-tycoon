@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b8mqhxvhnuum1"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://bdtxotl8myxft" path="res://world/franzburger/mapscenes/terrain/terrain_mat_franzburger.tres" id="1_r1bh6"]
-[ext_resource type="Terrain3DAssets" uid="uid://cb1kin0sj8htb" path="res://world/franzburger/mapscenes/terrain/terrain_assets_franzburger.res" id="2_cpcyg"]
+[ext_resource type="Terrain3DAssets" uid="uid://cospv5a85o7wp" path="res://world/franzburger/mapscenes/terrain/terrain_assets_franzburger.res" id="2_cpcyg"]
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_cpcyg"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
+[ext_resource type="Resource" path="res://world/franzburger/vegetation/grass_areas.tres" id="21_grass_areas"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 size = Vector2(3800, 2600)
@@ -23,3 +25,6 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 12.5, 0, 0, 0, 1, 0, 22, -102.33)
 material_override = ExtResource("3_cpcyg")
 mesh = SubResource("PlaneMesh_w7ts7")
+
+[node name="TerrainGrass" parent="." unique_id=1972905355 instance=ExtResource("20_grass")]
+grass_areas = ExtResource("21_grass_areas")

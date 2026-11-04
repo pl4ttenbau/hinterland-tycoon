@@ -51,6 +51,7 @@ enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://add
 folder_colors={
 "res://addons/": "gray",
 "res://addons/hinterland_tools/": "red",
+"res://addons/terrain_3d/": "teal",
 "res://assets/": "orange",
 "res://game/gamescripts/": "blue",
 "res://scenes/": "yellow",

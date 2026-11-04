@@ -4,6 +4,10 @@
 [ext_resource type="Terrain3DAssets" uid="uid://b05e5wan5pgj2" path="res://world/sachalin/mapscenes/terrain/terrain_assets_sachalin.res" id="2_vq54b"]
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_rsr3t"]
 
+[ext_resource type="PackedScene" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
+
+[ext_resource type="Resource" path="res://world/sachalin/vegetation/grass_areas.tres" id="21_grass_areas"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
 size = Vector2(4096, 4096)
 
@@ -28,3 +32,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2172.6409, 30.5, 1794.787)
 mesh = SubResource("PlaneMesh_rsr3t")
 surface_material_override/0 = ExtResource("3_rsr3t")
+
+[node name="TerrainGrass" parent="." instance=ExtResource("20_grass")]
+grass_areas = ExtResource("21_grass_areas")

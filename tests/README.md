@@ -1,3 +1,13 @@
+Industry supply warning checks:
+
+```sh
+godot --headless --path . --script res://tests/industry_supply_test.gd -- --no-mcp
+```
+
+These check missing producers against the runtime recipe catalog and the four map
+scenes without spawning terrain. Select the editor's Industries node to see warnings;
+see `doc/industry-supply.md` for scope and refresh behavior.
+
 Rail and road vehicle pricing checks:
 
 ```sh

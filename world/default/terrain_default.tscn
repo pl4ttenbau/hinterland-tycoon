@@ -94,11 +94,6 @@ normal_texture = SubResource("ImageTexture_sqhi7")
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_sqhi7")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_yrt86"), SubResource("Terrain3DTextureAsset_sr4e8"), SubResource("Terrain3DTextureAsset_nd4sy")])
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_c2xmk"]
-shape = 0
-section_length = 0.18
-section_segments = 1
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_ecp7s"]
 size = Vector2(24, 24)
 
@@ -111,11 +106,7 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="CustomTerrain3DParticles" parent="." unique_id=1790827538 node_paths=PackedStringArray("terrain") instance=ExtResource("6_eddt3")]
-rows = 80
-amount = 6400
 terrain = NodePath("..")
-instance_spacing = 0.296875
-mesh = SubResource("RibbonTrailMesh_c2xmk")
 
 [node name="LittlePondWater" type="MeshInstance3D" parent="." unique_id=689973240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.94775, 4.521064, 45.46585)

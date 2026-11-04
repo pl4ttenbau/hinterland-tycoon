@@ -1,69 +1,39 @@
-// Copyright © 2025 Cory Petkovsek, Roope Palmroos, and Contributors.
-
 shader_type spatial;
+render_mode cull_disabled;
 
-render_mode skip_vertex_transform, cull_disabled, blend_mix;
+uniform sampler2D grass_texture : source_color, filter_linear_mipmap, repeat_disable;
+uniform float draw_distance = 16.0;
+uniform float fade_start = 10.0;
+uniform float wind_strength : hint_range(0.0, 0.2) = 0.055;
+uniform float saturation : hint_range(0.0, 1.0) = 0.8;
+varying float blade_height;
+varying float variation;
 
-uniform vec2 wind_direction = vec2(1.0, 1.0);
-
-varying vec4 data;
-
-// A lot of hard coded things here atm.
 void vertex() {
-	// Wind effect from model data, in this case no vertex colors,
-	// so just use vertex Y component, including mesh offset
-	data[2] = (VERTEX.y + 0.55);
-	data[2] *= data[2]; // make non-linear
-
-	// Ribbon used as a grass mesh.. so pinch the top.
-	VERTEX.xz *= (1.0 - data[2]);
-
-	// Brighten tips
-	COLOR = mix(COLOR, vec4(1.0), smoothstep(0.9, 1.0, data[2]));
-	// Darken base, skip is scale is less than threshold, as this means "grow in" is occuring.
-	COLOR *= INSTANCE_CUSTOM[3] < 0.35 ? 1. : mix(1.0, 0.75, smoothstep(0.35, 0.0, data[2]));
-	// Save red/green shift for fragment
-	data.rg = INSTANCE_CUSTOM.rg;
-
-	// World space vertex
-	vec3 w_vertex = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	// Get wind force and scale from process()
-	float scale = pow(INSTANCE_CUSTOM[3] * INSTANCE_CUSTOM[3], 0.707);
-	float force = INSTANCE_CUSTOM[2] * data[2] * scale;
-	// Add some cheap jitter at high wind values
-	force -= fract(force * 256.0) * force * 0.05;
-	// Curve the result
-	force = pow(force, 0.707);
-
-	// These 2 combined result in a decent bend without resorting to matrices or pivot data.
-	// Lateral move and wobble
-	float lateral_wobble = sin(TIME * 2.0 * (1.0 + data.r + data.g)) * 0.25 * (1.0 - INSTANCE_CUSTOM[2]);
-	vec2 direction = normalize(wind_direction);
-	w_vertex.xz -= (vec2(-direction.y, direction.x) * lateral_wobble + direction) * force;
-	// Flatten
-	w_vertex.y -= INSTANCE_CUSTOM[2] * force * data[2];
-
-	// Save final wind force value for fragment.
-	data[3] = force;
-
-	VERTEX = (VIEW_MATRIX * vec4(w_vertex, 1.0)).xyz;
-	NORMAL = MODELVIEW_NORMAL_MATRIX * NORMAL;
-	BINORMAL = MODELVIEW_NORMAL_MATRIX * BINORMAL;
-	TANGENT = MODELVIEW_NORMAL_MATRIX * TANGENT;
+	vec3 root = MODEL_MATRIX[3].xyz;
+	float distance_to_camera = distance(root, CAMERA_POSITION_WORLD);
+	float fade = 1.0 - smoothstep(fade_start, draw_distance, distance_to_camera);
+	// Thin the distant population smoothly as well as shrinking its silhouettes.
+	float coverage = mix(1.0, 0.35, smoothstep(5.0, draw_distance, distance_to_camera));
+	fade *= smoothstep(INSTANCE_CUSTOM.x - 0.12, INSTANCE_CUSTOM.x + 0.12, coverage);
+	blade_height = clamp(VERTEX.y, 0.0, 1.0);
+	variation = INSTANCE_CUSTOM.z;
+	VERTEX *= fade;
+	float wind = sin(TIME * 1.7 + root.x * 0.6 + root.z * 0.3);
+	VERTEX.x += wind * blade_height * blade_height * wind_strength * fade;
+	// Cards receive light from either side without casting extra shadows.
 }
 
 void fragment() {
-	// Hard coded color.
-	ALBEDO = vec3(0.1, 0.20, 0.025) * (data[2] * 0.5 + 0.5);
-	ALBEDO.rg *= (data.rg * 0.3 + 0.9);
-	ALBEDO *= pow(COLOR.rgb, vec3(2.2));
-	// Modify roughness / specular based on wind force for added detail
-	float spec_rough = clamp(max(data[2], data[3]), 0., 1.);
-	ROUGHNESS = 1. - spec_rough;
-	SPECULAR = clamp(spec_rough * 0.25, 0., .15);
-
-	BACKLIGHT = vec3(0.33);
-	#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
-	ALBEDO = pow(ALBEDO, vec3(0.4));
-	#endif
+	vec4 tex = texture(grass_texture, UV);
+	ALBEDO = tex.rgb * mix(vec3(0.78, 0.85, 0.7), vec3(1.08, 1.03, 0.85), variation);
+	ALBEDO *= mix(0.8, 1.0, blade_height) * COLOR.rgb;
+	float luminance = dot(ALBEDO, vec3(0.2126, 0.7152, 0.0722));
+	ALBEDO = mix(vec3(luminance), ALBEDO, saturation);
+	ALPHA = tex.a;
+	ALPHA_SCISSOR_THRESHOLD = 0.35;
+	ROUGHNESS = 0.95;
+	SPECULAR = 0.1;
+	BACKLIGHT = vec3(0.2);
+	NORMAL = normalize((VIEW_MATRIX * vec4(0.0, 1.0, 0.0, 0.0)).xyz);
 }

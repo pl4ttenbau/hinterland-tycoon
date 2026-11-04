@@ -4,6 +4,10 @@
 [ext_resource type="Terrain3DAssets" uid="uid://bm1sl0reyqaud" path="res://world/mpsb/mapscenes/terrain/terrain_assets_mpsb.res" id="2_b6nfv"]
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_d8a4r"]
 
+[ext_resource type="PackedScene" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
+
+[ext_resource type="Resource" path="res://world/mpsb/vegetation/grass_areas.tres" id="21_grass_areas"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_2pcia"]
 size = Vector2(2400, 2400)
 
@@ -38,3 +42,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2158.813, 10.024422, 3207.9233)
 material_override = ExtResource("3_d8a4r")
 mesh = SubResource("PlaneMesh_b6nfv")
+
+[node name="TerrainGrass" parent="." instance=ExtResource("20_grass")]
+grass_areas = ExtResource("21_grass_areas")
