@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GrassAreaDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/resources/terrain/grass_area_definition.gd" id="1_areas"]
+
+[ext_resource type="Texture2D" path="res://world/harzmountains/vegetation/grass_coverage.png" id="2_coverage"]
+
+[resource]
+script = ExtResource("1_areas")
+description = "Harz: Grass Green (0), Grass Dark (2), Patchy Grass (5). Crops and plowed fields excluded."
+terrain_texture_ids = PackedInt32Array(0, 2, 5)
+coverage_mask = ExtResource("2_coverage")
+mask_bounds = Rect2(0, 0, 4096, 4096)
+coverage_includes_terrain = true

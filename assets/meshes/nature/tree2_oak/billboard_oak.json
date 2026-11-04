@@ -1,0 +1,109 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree2_oak/tree2_oak.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree2_oak/tree2_oak.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    11.128022732294124,
+    11.128022732294124
+  ],
+  "tree_height": 10.237780913710594,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "trunk-01": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree2_oak/tree2_bark_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": false,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "branch-2-01": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree2_oak/tree2_branch-1-01.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "branch-2-02": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/tree2_oak/tree2_branch-1-02.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.5,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -3.3065779209136963,
+      -4.484896183013916,
+      -0.15038429200649261
+    ],
+    "max": [
+      4.052659034729004,
+      3.985966682434082,
+      10.087396621704102
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_oak.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.46647737285573027,
+        0.039999984600736505
+      ],
+      "quad_center_from_base_right_up": [
+        0.3730405569076538,
+        5.118890628218651
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxr0m833vfemd"]
+[gd_scene load_steps=11 format=3 uid="uid://cxr0m833vfemd"]
 
 [ext_resource type="ArrayMesh" uid="uid://dcto13dfge4gi" path="res://assets/meshes/structures/half_timbered_1/half_timbered_1.obj" id="1_78jwu"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_ryg52"]
 [ext_resource type="Texture2D" uid="uid://kkjh5nnb8s1h" path="res://assets/meshes/structures/half_timbered_1/tex_half_timbered_1_d.png" id="3_l5q24"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="3_rveds"]
@@ -38,3 +39,6 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042087793, 5.0648236, 0.11382866)
 shape = SubResource("BoxShape3D_rt3yr")
+
+[node name="Door" type="Marker3D" parent="."]
+script = ExtResource("door_marker")

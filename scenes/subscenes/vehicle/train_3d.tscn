@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_gwvd7"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_5404p"]
 
+[ext_resource type="Script" uid="uid://df2ldyahe2024" path="res://game/gamescripts/nodes/vehicle/movement/train_movement.gd" id="7_movement"]
+
 [sub_resource type="Resource" id="Resource_gwvd7"]
 script = ExtResource("6_5404p")
 
@@ -27,3 +29,6 @@ metadata/_custom_type_script = "uid://cd14s12pa8x8k"
 script = ExtResource("4_rmda2")
 inventory = SubResource("Resource_5404p")
 metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="TrainMovement" type="Node" parent="."]
+script = ExtResource("7_movement")

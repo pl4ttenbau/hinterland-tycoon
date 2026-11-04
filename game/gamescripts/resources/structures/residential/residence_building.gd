@@ -1,6 +1,8 @@
 ## Created for every pre-placed res bld in TownBuildingsHolder class
 class_name ResidenceBuildingData extends AbstractStructure
 
+@export_storage var road_connection: RoadConnection
+
 @export_storage var res_bld_type: ResBldType:
 	get(): return self.bld_type as ResBldType
 

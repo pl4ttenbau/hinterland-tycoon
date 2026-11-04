@@ -1,0 +1,59 @@
+[
+	{
+		"key": "oldtimer_car",
+		"purchase_price": 12300,
+		"display_name": "Škoda 645 Limousine (c. 1930)",
+		"model_scene_path": "res://assets/meshes/vehicles/road/oldtimer_car/model_oldtimer_car.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 90.0,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 6.0
+		},
+		"length_metres": 5.176962,
+		"width_metres": 1.952088,
+		"height_metres": 2.020763,
+		"mass_tonnes": 1.54,
+		"payload_tonnes": null,
+		"motor_power_kw": 33.0
+	},
+	{
+		"key": "gaz_aa_truck",
+		"purchase_price": 9700,
+		"display_name": "GAZ-AA Truck",
+		"model_scene_path": "res://assets/meshes/vehicles/road/gaz_aa_truck/gaz_aa_truck.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 70.0,
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 4.0
+		},
+		"length_metres": 5.542035,
+		"width_metres": 2.089896,
+		"height_metres": 1.993434,
+		"mass_tonnes": 1.81,
+		"payload_tonnes": 1.5,
+		"motor_power_kw": 30.89
+	},
+	{
+		"key": "trabant_601_green",
+		"purchase_price": 9600,
+		"display_name": "Trabant 601 Universal (Green)",
+		"model_scene_path": "res://assets/meshes/vehicles/road/trabant_601/trabant_601_green.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 100.0,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 4.0
+		},
+		"length_metres": 3.582603,
+		"width_metres": 1.569755,
+		"height_metres": 1.572999,
+		"mass_tonnes": 0.65,
+		"payload_tonnes": 0.39,
+		"motor_power_kw": 19.1
+	}
+]

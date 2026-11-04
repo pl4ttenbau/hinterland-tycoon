@@ -4,6 +4,22 @@ class_name WorldResidences extends Node
 
 const EDITOR_RESIDENCE = preload("res://game/gamescripts/nodes/structures/editor_residence_3d.gd")
 
+@export_tool_button("Refresh Road Connections")
+var refresh_road_connections: Callable = do_refresh_road_connections
+
+func do_refresh_road_connections() -> void:
+	var world: Node = world_scene if world_scene != null else get_parent()
+	var roads: Array[RoadCurveCandidate] = ResidenceRoadConnector.prepare_editor_roads(ResidenceRoadConnector.editor_roads(world))
+	var connected: int = 0
+	for house: Node3D in houses:
+		if house is EDITOR_RESIDENCE:
+			house.road_connection = ResidenceRoadConnector.find_prepared(ResidenceRoadConnector.exit_for(house), roads)
+			if house.road_connection != null:
+				connected += 1
+	if Engine.is_editor_hint():
+		EditorInterface.mark_scene_as_unsaved()
+	print("Residence road connections refreshed: %d connected" % connected)
+
 @export var world_scene: WorldMapScene
 
 @export_storage var houses: Array[Node3D]:

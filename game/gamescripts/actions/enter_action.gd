@@ -2,6 +2,9 @@ class_name EnterAction extends BaseAction
 
 func on_trigger():
 	super.on_trigger()
+	if Managers.vehicles != null and Managers.vehicles.player_road_vehicle != null:
+		Managers.vehicles.exit_road_vehicle()
+		return
 	if GlobalState.active_cam.get_meta("cam_name") == "CAM_PLAYER":
 		self.enter_train()
 	else:

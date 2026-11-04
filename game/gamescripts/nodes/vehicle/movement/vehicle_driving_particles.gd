@@ -18,10 +18,10 @@ func _ready() -> void:
 		self.effect_strength_changed.connect(signal_callable)
 	if !Engine.is_editor_hint():
 		if self.locomotive:
-			var train_motor: TrainMotor = self.locomotive.train3d.motor
+			var train_movement: TrainMovement = self.locomotive.train3d.movement
 			var motor_speed_callable: Callable = Callable(self, "_on_motor_current_speed_changed")
-			if !train_motor.speed.changed.is_connected(motor_speed_callable):
-				train_motor.speed.changed.connect(motor_speed_callable)
+			if !train_movement.speed.changed.is_connected(motor_speed_callable):
+				train_movement.speed.changed.connect(motor_speed_callable)
 
 #region Callbacks
 func _on_effect_strength_changed(_val: float):

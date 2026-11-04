@@ -12,7 +12,7 @@ func _ready() -> void:
 #region Callbacks
 func _on_speed_slider_change(scaled_speed: float):
 	if self.current_train:
-		var current_speed: VehicleSpeed = self.current_train.motor.speed
+		var current_speed: VehicleSpeed = self.current_train.movement.speed
 		current_speed.target = (scaled_speed /100.0)
 		Loggie.info("Set target speed to %.1f" % scaled_speed)
 	else:

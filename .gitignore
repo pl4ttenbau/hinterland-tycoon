@@ -3,3 +3,13 @@ doc/messtisch*
 .godot/
 /android/
 godot_state_charts_examples/*
+exports/
+
+# Local grass generation, diagnostics and internal notes (runtime assets stay in world/).
+/tools/grass/
+/doc/internal/
+
+# Other stuff from generators
+
+*.pyc
+tools/__pycache__/

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c8f1x2eykmxwk"]
 
-[ext_resource type="Script" uid="uid://dqw3uvri4i6ex" path="res://game/gamescripts/nodes/infr/rail_depot_3d.gd" id="1_q7jsm"]
+[ext_resource type="Script" uid="uid://dqw3uvri4i6ex" path="res://game/gamescripts/nodes/infr/depot/rail_depot_3d.gd" id="1_q7jsm"]
 [ext_resource type="PackedScene" uid="uid://ba1s1o8o7ue74" path="res://assets/meshes/infr/rail/rail_depot/mesh_rail_depot.tscn" id="2_pv8n6"]
-[ext_resource type="Script" uid="uid://dr4x4fb34ie3u" path="res://game/gamescripts/resources/infr/infr_nodes/special/depot_collider.gd" id="3_pv8n6"]
+[ext_resource type="Script" uid="uid://dr4x4fb34ie3u" path="res://game/gamescripts/resources/infr/infr_nodes/depot/rail_depot_collider.gd" id="3_pv8n6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehqfj"]
 size = Vector3(9.595596, 5.140503, 21.91742)

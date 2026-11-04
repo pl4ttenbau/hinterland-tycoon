@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bexgdye55jr3d"]
+
+[ext_resource type="PackedScene" uid="uid://dovmbpq12oxx7" path="res://assets/meshes/infr/road/road_depot/mesh/road_depot.obj" id="1_y8tu0"]
+
+[node name="MeshRoadDepot" type="Node3D" unique_id=1852082005]
+
+[node name="road_depot" parent="." unique_id=669539252 instance=ExtResource("1_y8tu0")]

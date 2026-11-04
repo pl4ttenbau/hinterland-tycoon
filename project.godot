@@ -21,7 +21,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MCPRuntime="*res://addons/godot_mcp/runtime/mcp_runtime.gd"
 Loggie="*res://addons/loggie/loggie.gd"
 Enums="*res://game/gamescripts/enums.gd"
 SignalBus="*res://game/gamescripts/state/signal_bus.gd"
@@ -32,6 +31,7 @@ Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*uid://14cjvmakycc"
 ButtonFeedback="*res://addons/button_feedback/button_feedback.gd"
 EditorState="*uid://0ergxaw8n5vf"
+MCPRuntime="*uid://vm45gif4yrcf"
 
 [debug_draw_3d]
 
@@ -44,13 +44,14 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/button_feedback/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/godot-polyliner/plugin.cfg", "res://addons/godotresourcecleaner/plugin.cfg", "res://addons/hinterland_tools/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/mesh_inspector/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg", "res://addons/reference_finder/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
+enabled=PackedStringArray("res://addons/Basic FPS Player/plugin.cfg", "res://addons/PathMesh3D/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/button_feedback/plugin.cfg", "res://addons/gdscript_refactoring/plugin.cfg", "res://addons/godot-polyliner/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/godotresourcecleaner/plugin.cfg", "res://addons/hinterland_tools/plugin.cfg", "res://addons/launchpin/plugin.cfg", "res://addons/loggie/plugin.cfg", "res://addons/mesh_inspector/plugin.cfg", "res://addons/monitor_overlay/plugin.cfg", "res://addons/reference_finder/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://addons/": "gray",
 "res://addons/hinterland_tools/": "red",
+"res://addons/terrain_3d/": "teal",
 "res://assets/": "orange",
 "res://game/gamescripts/": "blue",
 "res://scenes/": "yellow",
@@ -128,6 +129,11 @@ jolt_physics_3d/simulation/areas_detect_static_bodies=true
 
 [rendering]
 
+reflections/reflection_atlas/reflection_size=128
+reflections/reflection_atlas/reflection_count=8
+environment/ssao/quality=1
+environment/ssao/fadeout_from=40.0
+environment/ssao/fadeout_to=160.0
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true

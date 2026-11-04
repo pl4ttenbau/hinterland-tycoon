@@ -4,6 +4,10 @@ class_name BaseEntityClickHandler extends AbstractClickHandler
 static var INDUSTRY_DIAG_PATH = "res://scenes/ui/dialogs/industry_dialog/industry_dialog.tscn"
 
 func handle_click(entity_collider: Node3D) -> bool:
+	if entity_collider is RoadVehicle3D:
+		Managers.vehicles.enter_road_vehicle(entity_collider)
+		stop_input()
+		return true
 	#if UiState.ui_mode != Enums.UiMode.WALKING:
 	#	return false
 	if !entity_collider || !entity_collider is ClickableCollider: 
@@ -12,8 +16,10 @@ func handle_click(entity_collider: Node3D) -> bool:
 		return self._on_vehicle_clicked(entity_collider)
 	if entity_collider is RailForkCollider:
 		return _on_rail_fork_click(entity_collider)
-	if entity_collider is DepotCollider:
-		return self._on_depot_clicked(entity_collider)
+	if entity_collider is RailDepotCollider:
+		return self._on_rail_depot_clicked(entity_collider)
+	if entity_collider is RoadDepotCollider:
+		return self._on_road_depot_clicked(entity_collider)
 	if entity_collider is IndustryCollider:
 		return self._on_industry_click(entity_collider)
 	if entity_collider is ClickableCollider:
@@ -46,10 +52,17 @@ func _on_vehicle_clicked(veh_collider: VehicleCollider) -> bool:
 	Managers.vehicles.enter_vehicle(veh3d)
 	return true
 
-func _on_depot_clicked(depot_collider: DepotCollider) -> bool:
+func _on_rail_depot_clicked(depot_collider: RailDepotCollider) -> bool:
 	if depot_collider.depot_obj:
 		var depot_num: int = depot_collider.depot_obj.num
 		SignalBus.request_spawn_action.emit(depot_num)
+		return true
+	return false
+
+func _on_road_depot_clicked(depot_collider: RoadDepotCollider) -> bool:
+	if depot_collider.depot_obj:
+		SignalBus.request_road_vehicle_spawn.emit(depot_collider.depot_obj)
+		stop_input()
 		return true
 	return false
 

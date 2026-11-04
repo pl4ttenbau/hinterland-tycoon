@@ -1,39 +1,43 @@
 @icon("res://assets/icons/icon_good_white.png")
 class_name StationGoodsSpawner extends Node
 
-const LOG_SPAWNING: bool = true
-
 @export var has_map_selected: bool = false
 
-func _ready() -> void:
-	$SpawnPassengersTimer.timeout.connect(Callable(self, "_on_passenger_spawn_tick"))
-	
-#region Passengers
-func spawn_rnd_passenger():
-	if ! self.has_map_selected: return
-	if ! GlobalState.loaded_map: return
-	var rnd_outer_residence = Residence3D.get_random()
-	if rnd_outer_residence && rnd_outer_residence.res_bld_obj:
-		var start_node_station: NodeStationLinkData = rnd_outer_residence.connected_station
-		if start_node_station:
-			var parent_station_num: int = start_node_station.parent_station_num
-			var station3d: RailStation3D = Managers.stations.get_station_3d_with_num(parent_station_num)
-			if start_node_station && station3d:
-				# TODO: here we need to use targeted goods again
-				# var spawned_res := SpawnedGood.new("passenger", 1, Residence3D.get_random().res_bld_obj)
-				station3d.get_inventory().add_good_of("passenger")
-				if LOG_SPAWNING:
-					var town_name: String = station3d.station.connected_town.town_name
-					var station_name: String = station3d.station.station_name
-					Loggie.debug("Spawned passenger in station %s-%s" % [town_name, station_name])
-			else:
-				Loggie.error("Cannot find Station3D with Num %d" % parent_station_num)
-#endregion
+var passenger_planner := PassengerTripPlanner.new()
 
-#region Callbacks
-func _on_passenger_spawn_tick():
-	self.spawn_rnd_passenger()
-	
-func _on_map_selected(_selected_map: MapData):
-	self.has_map_selected = true
-#endregion
+func _ready() -> void:
+	$SpawnPassengersTimer.timeout.connect(_on_passenger_spawn_tick)
+
+## One attempt per existing timer tick. Failed plans create no passenger and are
+## not retried, so unconnected destinations retain their intended discard chance.
+func spawn_rnd_passenger() -> bool:
+	if not has_map_selected or GlobalState.loaded_map == null:
+		return false
+	passenger_planner.refresh(GlobalState.res_bld_containers)
+	return spawn_passenger(passenger_planner.plan())
+
+## Materialize the resolved trip directly in the origin stop's inventory. There
+## is no temporary world object to clean up, and no destination-less fallback.
+func spawn_passenger(request: PassengerSpawnRequest) -> bool:
+	if request == null or request.origin_stop == null or request.destination_stop == null:
+		return false
+	if request.origin_stop.num < 0 or request.destination_stop.num < 0 \
+			or request.origin_stop.num == request.destination_stop.num:
+		return false
+	var origin: InventoryEntity3D = request.origin_stop.get_inventory_view()
+	var destination: InventoryEntity3D = request.destination_stop.get_inventory_view()
+	if not is_instance_valid(origin) or not is_instance_valid(destination) \
+			or not origin.is_inside_tree() or not destination.is_inside_tree():
+		return false
+	var component: InventoryContainer = InventoryContainer.find_on(origin)
+	if component == null or not component.accepts(&"passenger") or component.free_capacity() < 1:
+		return false
+	# Destination occupancy does not block travel demand; only the waiting room
+	# where the passenger actually appears needs capacity for this spawn.
+	return component.get_inventory().change_stack(&"passenger", request.destination_stop.num, 1)
+
+func _on_passenger_spawn_tick() -> void:
+	spawn_rnd_passenger()
+
+func _on_map_selected(_selected_map: MapData) -> void:
+	has_map_selected = true

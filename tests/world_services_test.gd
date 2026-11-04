@@ -24,16 +24,46 @@ func _on_local_initialized(coordinator: WorldServicesCoordinator) -> void:
 	self.check(Managers.towns == coordinator.towns and Managers.town_buildings == coordinator.town_buildings, "Town services are registered")
 	self.check(Managers.rails == coordinator.rails and Managers.forks == coordinator.forks and Managers.roads == coordinator.roads, "Infrastructure services are registered")
 	self.check(Managers.stations == coordinator.stations and Managers.depots == coordinator.depots, "Stations and depots are registered")
+	self.check(Managers.interchanges == coordinator.interchanges and Managers.road_stops == coordinator.road_stops, "Interchange and road stop services are registered before loading")
 	self.check(Managers.vehicles == coordinator.vehicles and Managers.industries == coordinator.industries and Managers.map_spawner == coordinator.map_spawner, "Remaining world services are registered")
 	self.check(coordinator.town_buildings.has_res_bld_types_loaded, "Late subscribers use persistent type readiness")
 	self.check(not coordinator.world_timer.is_stopped() and not coordinator.passenger_timer.is_stopped(), "Timers start after wiring")
 
 func _run() -> void:
 	self.check(self.test_service_lifecycle(), "Service lifecycle test finished")
+	self.check(self.test_road_depot(), "Road depot integration test finished")
 	self.check(self.test_residence_conversion(), "Residence conversion test finished")
 	self.check(self.test_all_residence_variants(), "All residence variants test finished")
 	print("World services tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
+
+## Exercise the real road-loaded/spawned signal chain without terrain or rail views.
+func test_road_depot() -> bool:
+	var previous_map: String = GlobalState.selected_map_name
+	var previous_roads: Array[RoadData] = GlobalState.roads.duplicate()
+	var previous_depots: Array[RoadDepotData] = GlobalState.road_depots.duplicate()
+	var coordinator: WorldServicesCoordinator = SERVICES.instantiate()
+	self.add_child(coordinator)
+	self.check(coordinator.initialize() == OK, "Depot fixture initializes its services")
+	GlobalState.selected_map_name = "franzburger"
+	coordinator.roads.load_roads()
+	self.check(coordinator.depots.road_depots.size() == 1, "Road-loaded signal loads the authored road depot")
+	self.check(coordinator.depots.rail_depots.is_empty(), "Road loading does not reload rail depots")
+	var depot: RoadDepotData = coordinator.depots.road_depots[0]
+	self.check(depot.road_num == 363 and depot.road_pos == "END", "Road depot JSON uses road anchor fields")
+	depot.num = 73
+	SignalBus.roads_spawned.emit()
+	self.check(coordinator.depots.road_containers.size() == 1, "Zero-argument road-spawned signal creates a depot view")
+	var view: RoadDepot3D = coordinator.depots.road_containers[0]
+	self.check(view.depot == depot and depot.num == 73, "Spawning preserves the authored depot identity")
+	self.check(RoadDepotData.get_by_num(73) == depot, "Road depot lookup uses the road collection")
+	self.check(view.position.is_equal_approx(depot.get_depot_road_node().position), "Depot view uses its road endpoint")
+	self.check((view.get_node("RoadDepotCollider") as RoadDepotCollider).get_click_ref().entity_num == 73, "Collider reports the road depot ID")
+	coordinator.free()
+	GlobalState.selected_map_name = previous_map
+	GlobalState.roads = previous_roads
+	GlobalState.road_depots = previous_depots
+	return true
 
 func test_service_lifecycle() -> bool:
 	var map_list_loader: MapLoader = Managers.map_list_loader
@@ -58,6 +88,7 @@ func test_service_lifecycle() -> bool:
 	self.check(SignalBus.map_selected.get_connections().size() == connection_count, "Repeated initialization does not duplicate listeners")
 	self.check(self.local_completions == 1 and self.global_completions == 1, "Completion signals fire once per coordinator")
 	self.check(coordinator.rails.track_storage.track_added.is_connected(coordinator.forks._on_track_loaded), "Fork loader is wired to track storage")
+	self.check(SignalBus.roads_spawned.is_connected(coordinator.town_buildings._on_roads_spawned), "House connections wait for roads to spawn")
 	var replacement: WorldServicesCoordinator = SERVICES.instantiate()
 	self.add_child(replacement)
 	self.check(replacement.initialize() == ERR_ALREADY_IN_USE, "A second active session cannot replace service registrations")
@@ -95,10 +126,8 @@ func test_residence_conversion() -> bool:
 	editor.transform = Transform3D(Basis(Vector3.UP, 0.8).scaled(Vector3(2, 2, 2)), Vector3(3, 2, 1))
 	houses.add_child(editor)
 	var expected_transform: Transform3D = editor.global_transform
-	var door := Marker3D.new()
-	door.name = "Door"
+	var door: Marker3D = editor.get_node("Door")
 	door.position = Vector3(1, 0, -2)
-	editor.add_child(door)
 	var door_position: Vector3 = door.global_position
 	var legacy := Residence3D.new()
 	legacy.placed_res_bld_type = "wooden_shack"
@@ -118,6 +147,25 @@ func test_residence_conversion() -> bool:
 	self.check(runtime.get_node_or_null("StaticBody3D") != null, "Shared model collider survives conversion")
 	self.check(runtime.res_bld_obj.is_registered and runtime.res_bld_obj.town_num == town.num, "Converted house has registered runtime data and town assignment")
 	self.check(runtime.num != legacy.num, "Runtime houses receive distinct IDs")
+	var roads := RoadsLoader.new()
+	Managers.roads = roads
+	var road := RoadData.of(77, "rural_road")
+	var door_script: Script = load("res://game/gamescripts/nodes/structures/residence_door.gd")
+	self.check(door.get_script() == door_script, "Runtime door retains the exit helper")
+	road.start_pos = door.get_exit_position() - Vector3(20, 0, 0)
+	road.curve = Curve3D.new()
+	road.curve.add_point(Vector3.ZERO)
+	road.curve.add_point(Vector3(100, 0, 0))
+	roads.storage.add(road)
+	holder._on_roads_spawned()
+	self.check(runtime.res_bld_obj.road_connection != null and is_equal_approx(runtime.res_bld_obj.road_connection.dist_from_zero, 20), "Runtime loading connects using the door tail")
+	self.check(legacy.res_bld_obj.road_connection != null, "Legacy houses without doors use their origins")
+	road.start_pos.y += 100
+	holder.refresh_road_connections()
+	self.check(runtime.res_bld_obj.road_connection == null, "Runtime refresh clears a connection outside the cutoff")
+	GlobalState.roads.erase(road)
+	Managers.roads = null
+	roads.free()
 	for residence: Residence3D in holder.placed_buildings:
 		GlobalState.res_blds.erase(residence.res_bld_obj)
 		GlobalState.res_bld_containers.erase(residence)
@@ -146,7 +194,10 @@ func test_all_residence_variants() -> bool:
 		var placement: Node3D = packed.instantiate()
 		self.check(placement.get_script() == editor_script, "House uses the editor script: %s" % entry["key"])
 		self.check(placement.placed_res_bld_type == entry["key"], "House resolves its catalog type: %s" % entry["key"])
+		var door: Node3D = placement.get_node_or_null("Door")
+		self.check(door != null and door.get_script() == load("res://game/gamescripts/nodes/structures/residence_door.gd"), "House has a typed door marker: %s" % entry["key"])
 		container.add_child(placement)
+		self.check(door != null and door.get_child_count() == 0, "Direction preview is absent at runtime: %s" % entry["key"])
 		var children: Array[Node] = placement.get_children()
 		var converted: Residence3D = placement.create_runtime()
 		self.check(converted != null and converted.get_children() == children, "All authored children survive: %s" % entry["key"])

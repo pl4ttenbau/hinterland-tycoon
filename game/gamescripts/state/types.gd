@@ -22,9 +22,9 @@ func ensure_initialized() -> Error:
 	# Goods must exist before industry recipes can be validated.
 	var loaders: Array[AbstractGameTypeLoader] = [
 		GoodsTypesLoader.new(), InfrTypesLoader.new(), IndustryTypeLoader.new(),
-		ResidentialBldTypeLoader.new(), RailVehicleTypesLoader.new()
+		ResidentialBldTypeLoader.new(), RailVehicleTypesLoader.new(), RoadVehicleTypesLoader.new()
 	]
-	var names: Array[StringName] = [&"goods", &"infrastructure", &"industries", &"residences", &"rail_vehicles"]
+	var names: Array[StringName] = [&"goods", &"infrastructure", &"industries", &"residences", &"rail_vehicles", &"road_vehicles"]
 	for index: int in range(loaders.size()):
 		loaders[index].loading_finished.connect(self._on_type_loaded.bind(names[index]), CONNECT_ONE_SHOT)
 		var error: Error = loaders[index].load_types()

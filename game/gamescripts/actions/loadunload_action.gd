@@ -9,6 +9,8 @@ func _enter_tree() -> void:
 	SignalBus.player_exited_train.connect(Callable(self, "_on_train_exited"))
 
 func on_trigger():
+	if UiState.current_diag != null:
+		return
 	super.on_trigger()
 	self.show_transfer_inventory_diag()
 

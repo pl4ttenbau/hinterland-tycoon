@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://dcdx38gwigayp"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://bpandgw7lrhcn" path="res://world/harzmountains/mapscenes/terrain/terrain_mat_harzmountains.res" id="1_kd810"]
-[ext_resource type="Terrain3DAssets" uid="uid://dlgrceogt4x2e" path="res://world/harzmountains/mapscenes/terrain/terrain_assets_harzmountains.res" id="1_l3qu8"]
+[ext_resource type="Terrain3DAssets" uid="uid://d55gcguyu5ku" path="res://world/harzmountains/mapscenes/terrain/terrain_assets_harzmountains.res" id="1_l3qu8"]
+[ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_l3qu8"]
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="4_jxf6l"]
-[ext_resource type="Material" uid="uid://cd24vo6bnaj5u" path="res://assets/packed/shaders/water/new_water_shader.tres" id="38_w7ts7"]
+[ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
+
+[ext_resource type="Resource" path="res://world/harzmountains/vegetation/grass_areas.tres" id="21_grass_areas"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 
@@ -46,80 +49,84 @@ metadata/_edit_lock_ = true
 
 [node name="Eckertalsee" type="MeshInstance3D" parent="Water" unique_id=66271528]
 transform = Transform3D(138.381, 0, 163.407, 0, 1, 0, -196.088, 0, 115.318, 568.73, 57.8153, 1604.57)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Neuwerksee" type="MeshInstance3D" parent="Water" unique_id=15193627]
 transform = Transform3D(360, 0, 0, 0, 1, 0, 0, 0, 250, 3728.5815, 28.608162, 3846.3772)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="LakesAroundVeckenstedt" type="MeshInstance3D" parent="Water" unique_id=1978026456]
 transform = Transform3D(360, 0, 0, 0, 1, 0, 0, 0, 250, 2150.0068, 1.4670372, 288.9362)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Kalte Bode" type="MeshInstance3D" parent="Water" unique_id=910612166]
 transform = Transform3D(128.334, 0, 36.2389, 0, 1, 0, -77.6548, 0, 59.8894, 2519.38, 34.8866, 3388.17)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="TalsperreKoenigshuetteSusenburg" type="MeshInstance3D" parent="Water" unique_id=1505973905]
 transform = Transform3D(178.9329, 0, -7.610845, 0, 1, 0, 19.570745, 0, 69.58502, 3284.965, 27.310867, 3478.4307)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="BraunlageGondelsee" type="MeshInstance3D" parent="Water" unique_id=1568559639]
 transform = Transform3D(13.9959755, 0, -0.4795354, 0, 1, 0, 0.33567476, 0, 19.994251, 986.48346, 55.569862, 3793.7444)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="RuebelandKalkwerkTeich" type="MeshInstance3D" parent="Water" unique_id=1053807894]
 transform = Transform3D(12.022663, 0, -31.965954, 0, 1, 0, 15.982977, 0, 24.045326, 3034.4604, 38.66044, 3023.486)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="StapelburgTeich" type="MeshInstance3D" parent="Water" unique_id=711599005]
 transform = Transform3D(-1.032865, 0, -19.9455, 0, 1, 0, 13.961847, 0, -1.4755214, 1375.2928, 5.8985186, 402.6531)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Zilierbachsperre" type="MeshInstance3D" parent="Water" unique_id=1013353407]
 transform = Transform3D(29.6962, 0, 123.287, 0, 0.5, 0, -177.533, 0, 20.6224, 2983.21, 38.5817, 2527.39)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_w7ts7")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Eckertalsperre" type="MeshInstance3D" parent="Water" unique_id=242901872]
 transform = Transform3D(-0.842565, 0, 0.538594, 0, 1, 0, -0.538594, 0, -0.842565, 470.015, 48.7693, 1395.03)
 material_override = SubResource("StandardMaterial3D_l3qu8")
 mesh = SubResource("BoxMesh_kd810")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="WernigerodeHoltemme" type="MeshInstance3D" parent="Water" unique_id=1206899806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3071.6772, 3.9273567, 1146.6151)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_jxf6l")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="HasserodeHoltemmeS" type="MeshInstance3D" parent="Water" unique_id=1358053376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2979.0283, 4.7460823, 1568.7058)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_l3qu8")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="HasserodeHoltemmeN" type="MeshInstance3D" parent="Water" unique_id=1940382457]
 transform = Transform3D(0.8931238, 0.007061489, 0.44975552, -0.007906258, 0.9999687, 2.3283064e-10, -0.44974145, -0.0035558837, 0.8931517, 2649.752, 7.1903996, 1709.967)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_kd810")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="RuebelandRivers" type="MeshInstance3D" parent="Water" unique_id=1737928081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3894.1506, 20.668934, 3096.4866)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_t3gr1")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Ilsenburg" type="MeshInstance3D" parent="Water" unique_id=375082259]
 transform = Transform3D(0.8635188, 0, -0.5043167, 0, 1, 0, 0.5043167, 0, 0.8635188, 1671.6893, 5.9290085, 1061.4875)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_xikb8")
+surface_material_override/0 = ExtResource("3_l3qu8")
 
 [node name="Ilsenburg2" type="MeshInstance3D" parent="Water" unique_id=1627818255]
 transform = Transform3D(0.8635188, 0, -0.5043167, 0, 1, 0, 0.5043167, 0, 0.8635188, 1900.7802, 6.9858713, 894.4208)
-material_override = ExtResource("38_w7ts7")
 mesh = SubResource("PlaneMesh_80h4v")
+surface_material_override/0 = ExtResource("3_l3qu8")
+
+[node name="TerrainGrass" parent="." unique_id=760034455 instance=ExtResource("20_grass")]
+grass_areas = ExtResource("21_grass_areas")

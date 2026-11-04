@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ca4ssx4ps5u6"]
+
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/editor_object_container.gd" id="1_editor"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/infrastructure/editor_infr_container.gd" id="2_infr"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="3_roads"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="4_rails"]
+
+[node name="EditorObjects" type="Node3D"]
+script = ExtResource("1_editor")
+map_key = "gdansk"
+
+[node name="EditorInfr" type="Node3D" parent="."]
+script = ExtResource("2_infr")
+
+[node name="EditorRoads" type="Node3D" parent="EditorInfr"]
+script = ExtResource("3_roads")
+
+[node name="EditorRails" type="Node3D" parent="EditorInfr"]
+script = ExtResource("4_rails")
+
+[node name="EditorStops" type="Node3D" parent="."]

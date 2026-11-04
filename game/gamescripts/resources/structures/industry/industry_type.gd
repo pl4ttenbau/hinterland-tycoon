@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/icon_industry_white.png")
 class_name IndustryType extends Resource
 

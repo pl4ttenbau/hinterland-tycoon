@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="1_2wq7r"]
 [ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="2_2wq7r"]
 [ext_resource type="PackedScene" uid="uid://ct8g7drb5fdjs" path="res://assets/meshes/structures/old_city_house_bakery/mesh/mesh_old_city_house_bakery.tscn" id="2_bbkam"]
+[ext_resource type="Script" uid="uid://dbn62d6fvquef" path="res://game/gamescripts/nodes/structures/residence_door.gd" id="door_marker"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2wq7r"]
 size = Vector3(8.851074, 11.481689, 7.8094482)
@@ -21,3 +22,7 @@ metadata/_custom_type_script = "uid://chalq0opfem2r"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResBldCollider" unique_id=24202902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3951416, 5.625122, -0.2876587)
 shape = SubResource("BoxShape3D_2wq7r")
+
+[node name="Door" type="Marker3D" parent="." unique_id=2003590211]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.3926907, -0.20402086, 0.06543219)
+script = ExtResource("door_marker")

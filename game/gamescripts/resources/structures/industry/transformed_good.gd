@@ -1,3 +1,4 @@
+@tool
 class_name TransformedGood extends Resource
 
 @export var res_key: String

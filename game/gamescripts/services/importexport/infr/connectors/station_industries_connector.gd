@@ -2,35 +2,27 @@
 class_name StationIndustriesConnector extends Node
 
 @export var has_connected: bool = false
+const MAX_INDUSTRY_DIST: float = 200.0
 
-static var MAX_INDUSTRY_DIST = 200
-
-func connect_industries():
-	if self.has_connected: return
-	if GlobalState.industries.is_empty(): return
-	if Managers.stations.node_stations_storage.get_all().is_empty(): return
-	Loggie.info("Connecting industries ..")
-	var connected_ind_counter: int = 0
+func connect_industries() -> void:
+	if has_connected or not is_instance_valid(Managers.interchanges) or not Managers.interchanges.is_loaded:
+		return
+	if GlobalState.industries.is_empty():
+		return
+	for interchange: InterchangeData in Managers.interchanges.interchanges:
+		interchange.connections.clear_industries()
 	for industry: IndustryData in GlobalState.industries:
-		var closest_station_link: NodeStationLinkData = null
-		var closest_distance: float = 99999
-		var station_links: Array[NodeStationLinkData] = Managers.stations.node_stations_storage.get_all()
-		for node_station_link: NodeStationLinkData in station_links:
-			var sq_dist: float = industry.pos.distance_squared_to(node_station_link.position)
-			if sq_dist <= closest_distance:
-				closest_station_link = node_station_link
-				closest_distance = sq_dist
-		if closest_station_link && closest_distance > MAX_INDUSTRY_DIST:
-			var parent_station: RailStationData = closest_station_link.parent_station
-			parent_station.connections.connect_industry(industry)
-			connected_ind_counter += 1
-	self.has_connected = true
-	Loggie.info("Connected %d industries to station" % connected_ind_counter)
+		industry.station_connection = null
+		var access: Dictionary = Managers.interchanges.find_access(industry.pos, MAX_INDUSTRY_DIST)
+		if not access.is_empty():
+			access.interchange.connections.connect_industry(industry, access.stops)
+	has_connected = true
 
-#region Callbacks
-func _on_node_station_links_spawned():
-	self.connect_industries()
+func _on_node_station_links_spawned() -> void:
+	connect_industries()
 
-func _on_industries_spawned():
-	self.connect_industries()
-#endregion
+func _on_stops_linked() -> void:
+	connect_industries()
+
+func _on_industries_spawned() -> void:
+	connect_industries()

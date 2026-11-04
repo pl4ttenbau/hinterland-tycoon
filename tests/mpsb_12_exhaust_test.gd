@@ -27,13 +27,13 @@ func _run() -> void:
 
 func _test_model() -> bool:
 	var train: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate() as Train3D
-	train._create_motor(Enums.PathDirection.TRACK_NODES_INCREASE)
+	train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
 	var locomotive: Vehicle3D = MODEL.instantiate() as Vehicle3D
 	locomotive.vehicle_obj = VehicleData.new()
 	locomotive.train3d = train
 	train.add_vehicle(locomotive, true)
 	get_tree().root.add_child(train)
-	train.set_physics_process(false)
+	train.movement.set_physics_process(false)
 	var exhaust: Node3D = locomotive.get_node("Steam/ChimneyExhaust") as Node3D
 	exhaust.set_process(false)
 	exhaust.set_physics_process(false)
@@ -51,23 +51,23 @@ func _test_model() -> bool:
 	locomotive.position.z -= 5.0 / 60.0
 	exhaust._physics_process(1.0 / 60.0)
 	check(exhaust.vehicle_velocity.is_equal_approx(Vector3(0.0, 0.0, -5.0)), "world velocity comes from physics displacement in meters/second")
-	train.motor.start()
-	train.motor.speed.current = 0.25
-	train.motor.speed.target = 1.0
+	train.movement.start()
+	train.movement.speed.current = 0.25
+	train.movement.speed.target = 1.0
 	exhaust._physics_process(1.0 / 60.0)
 	var acceleration_load: float = exhaust.engine_load
 	check(acceleration_load > 0.8, "acceleration produces strong exhaust effort")
-	train.motor.speed.target = train.motor.speed.current
+	train.movement.speed.target = train.movement.speed.current
 	exhaust._physics_process(1.0 / 60.0)
 	var cruising_load: float = exhaust.engine_load
 	check(cruising_load > 0.0 and cruising_load < acceleration_load, "cruising reduces exhaust effort")
-	train.motor.speed.brake_applied = true
+	train.movement.speed.brake_applied = true
 	exhaust._physics_process(1.0 / 60.0)
 	check(exhaust.engine_load < cruising_load, "braking suppresses powered chuffs")
 	locomotive.position.z += 3.0 / 60.0
 	exhaust._physics_process(1.0 / 60.0)
 	check(exhaust.vehicle_velocity.z > 2.99, "reverse movement reverses inherited exhaust velocity")
-	train.motor.stop()
+	train.movement.stop()
 	exhaust._physics_process(1.0 / 60.0)
 	check(is_zero_approx(exhaust.engine_load) and exhaust.exhaust_strength > 0.0, "stopped locomotive retains a small idle plume")
 	train.free()

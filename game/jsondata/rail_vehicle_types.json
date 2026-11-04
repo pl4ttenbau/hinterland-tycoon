@@ -1,6 +1,7 @@
 [
 	{
 		"key": "loco_faur",
+		"purchase_price": 219200,
 		"display_name": "FAUR 750mm",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_faur/model_loco_faur.tscn",
 		"max_speed_kmh": 45,
@@ -14,6 +15,7 @@
 	},
 	{
 		"key": "wismar_railbus",
+		"purchase_price": 82400,
 		"display_name": "Wismar Railbus",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/wismar_railbus/model_wismar_railbus.tscn",
 		"max_speed_kmh": 60,
@@ -31,6 +33,7 @@
 	},
 	{
 		"key": "saechs_wagon_kb4",
+		"purchase_price": 23000,
 		"display_name": "S\u00e4chs. Schmalspurwagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/saechs_wagon_kb4/model_saechs_kb4_wagon.tscn",
 		"max_speed_kmh": 40,
@@ -48,6 +51,7 @@
 	},
 	{
 		"key": "mpsb_wismar_wagon",
+		"purchase_price": 15100,
 		"display_name": "MPSB Passenger Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_wismar_wagon/model_mpsb_wismar_wagon.tscn",
 		"max_speed_kmh": 35,
@@ -65,6 +69,7 @@
 	},
 	{
 		"key": "soviet_torp_wagon",
+		"purchase_price": 29300,
 		"display_name": "Soviet Kipper Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_torp_wagon/model_soviet_torp_wagon.tscn",
 		"max_speed_kmh": 60,
@@ -82,6 +87,7 @@
 	},
 	{
 		"key": "mpsb_12",
+		"purchase_price": 96100,
 		"display_name": "MPSB No 12",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn",
 		"max_speed_kmh": 38,
@@ -95,6 +101,7 @@
 	},
 	{
 		"key": "loco_tu6a",
+		"purchase_price": 60300,
 		"display_name": "TU6A",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_tu6a/model_loco_tu6a.tscn",
 		"max_speed_kmh": 40,
@@ -108,6 +115,7 @@
 	},
 	{
 		"key": "pv40_soviet_wagon",
+		"purchase_price": 18500,
 		"display_name": "PV40 Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/pv40_soviet_wagon/model_pv40_soviet_wagon.tscn",
 		"max_speed_kmh": 40,
@@ -125,6 +133,7 @@
 	},
 	{
 		"key": "dr_umbauwagen",
+		"purchase_price": 21600,
 		"display_name": "DR Umbauwagen",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_umbauwagen/model_dr_umbauwagen.tscn",
 		"max_speed_kmh": 90,
@@ -142,6 +151,7 @@
 	},
 	{
 		"key": "dr_v60",
+		"purchase_price": 165200,
 		"display_name": "DR V60",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v60/model_dr_v60.tscn",
 		"max_speed_kmh": 50,
@@ -155,6 +165,7 @@
 	},
 	{
 		"key": "laenderbahn_wagon",
+		"purchase_price": 19700,
 		"display_name": "L\u00e4nderbahn Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/laenderbahn_wagon/model_laenderbahn_wagon.tscn",
 		"max_speed_kmh": 50,
@@ -172,6 +183,7 @@
 	},
 	{
 		"key": "boxcar_german",
+		"purchase_price": 19700,
 		"display_name": "German Boxcar",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/boxcar_german/model_boxcar_german.tscn",
 		"max_speed_kmh": 65,
@@ -189,6 +201,7 @@
 	},
 	{
 		"key": "soviet_tgm6",
+		"purchase_price": 311000,
 		"display_name": "TGM 6",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_tgm6/model_soviet_tgm6.tscn",
 		"max_speed_kmh": 75,
@@ -202,6 +215,7 @@
 	},
 	{
 		"key": "dr_v100",
+		"purchase_price": 451200,
 		"display_name": "DR V100",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v100/model_dr_v100.tscn",
 		"max_speed_kmh": 80,
@@ -215,6 +229,7 @@
 	},
 	{
 		"key": "mpsb_open_wagon",
+		"purchase_price": 10100,
 		"display_name": "MPSB Open Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_open_wagon/model_mpsb_open_wagon.tscn",
 		"max_speed_kmh": 35,
@@ -232,6 +247,7 @@
 	},
 	{
 		"key": "fkbn_t1_motorwagon",
+		"purchase_price": 108100,
 		"display_name": "FKB T1 Motorwagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/model_fkbn_t1_motorwagon.tscn",
 		"max_speed_kmh": 60,
@@ -249,6 +265,7 @@
 	},
 	{
 		"key": "soviet_vz20_tank_wagon",
+		"purchase_price": 6800,
 		"display_name": "VZ20 Tank Wagon",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_vz20_tank_wagon/model_soviet_vz20_tank_wagon.tscn",
 		"max_speed_kmh": 45,

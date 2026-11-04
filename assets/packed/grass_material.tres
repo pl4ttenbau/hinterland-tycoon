@@ -1,8 +1,13 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dbmjrvosa64js"]
 
 [ext_resource type="Shader" uid="uid://c0648phnvpvtj" path="res://assets/packed/grass_mat_shader.gdshader" id="1_xjlxo"]
+[ext_resource type="Texture2D" uid="uid://ce5lbwsqkeod5" path="res://assets/textures/billboard/grass_green1.dds" id="2_grass"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_xjlxo")
-shader_parameter/wind_direction = Vector2(1, 1)
+shader_parameter/grass_texture = ExtResource("2_grass")
+shader_parameter/draw_distance = 16.0
+shader_parameter/fade_start = 10.0
+shader_parameter/wind_strength = 0.055
+shader_parameter/saturation = 0.8

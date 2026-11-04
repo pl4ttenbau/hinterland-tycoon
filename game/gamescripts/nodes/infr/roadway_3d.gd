@@ -10,6 +10,11 @@ class_name RoadWay3D extends GameEntity3D
 	get(): return self.entity as RoadData
 
 #region Initialization
+func _enter_tree() -> void:
+	# Configure before the child's READY builds the warped mesh. The addon owns
+	# the static body and rebuilds it whenever the path/mesh changes.
+	get_road_mesh().collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH
+
 func assign_node_names():
 	var track_num: int = self.entity.num
 	self.name = "Road_%d_Container" % track_num

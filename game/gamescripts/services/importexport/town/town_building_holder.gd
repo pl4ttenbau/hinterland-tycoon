@@ -3,6 +3,26 @@
 class_name TownBuildingHolder extends Node
 
 const EDITOR_RESIDENCE = preload("res://game/gamescripts/nodes/structures/editor_residence_3d.gd")
+var _roads_ready: bool = false
+var _warned_missing_doors: Dictionary = {}
+
+func _on_roads_spawned() -> void:
+	_roads_ready = true
+	refresh_road_connections()
+
+func refresh_road_connections() -> void:
+	if not _roads_ready or not is_instance_valid(Managers.roads):
+		return
+	var roads: Array[RoadCurveCandidate] = ResidenceRoadConnector.prepare_roads(Managers.roads.storage.get_all())
+	var missing: PackedStringArray = []
+	for house: Residence3D in placed_buildings:
+		house.res_bld_obj.road_connection = ResidenceRoadConnector.find_prepared(ResidenceRoadConnector.exit_for(house), roads)
+		var key: String = house.placed_res_bld_type
+		if ResidenceRoadConnector.door_for(house) == null and not _warned_missing_doors.has(key):
+			_warned_missing_doors[key] = true
+			missing.append(key)
+	if not missing.is_empty():
+		push_warning("Residences without Door markers use their origins: %s" % ", ".join(missing))
 
 @export var placed_buildings: Array[Residence3D] = []
 
@@ -32,6 +52,7 @@ func load_preplaced_town_buildings():
 				self.place_preplaced_res_bld(residence)
 		elif child is Residence3D:
 			self.place_preplaced_res_bld(child as Residence3D)
+	self.refresh_road_connections()
 	SignalBus.town_buildings_spawned.emit()
 
 func place_preplaced_res_bld(outer_bld: Residence3D):

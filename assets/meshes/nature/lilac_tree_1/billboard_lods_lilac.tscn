@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/meshes/nature/lilac_tree_1/lilac_tree_1.obj" id="1_pnn6s"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/lilac_tree_1/tex_lilac_tree_1_branch_d.png" id="2_y7m3y"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/lilac_tree_1/tex_lilac_tree_1_branch_n.png" id="3_4l64g"]
+[ext_resource type="Texture2D" path="res://assets/meshes/nature/lilac_tree_1/billboard_lilac.png" id="4_hveqr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ueqho"]
+transparency = 2
+alpha_scissor_threshold = 0.44
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_y7m3y")
+normal_enabled = true
+normal_texture = ExtResource("3_4l64g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3y3x"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+diffuse_mode = 2
+albedo_texture = ExtResource("4_hveqr")
+metallic_specular = 0.0
+disable_receive_shadows = true
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_4m5bg"]
+material = SubResource("StandardMaterial3D_f3y3x")
+size = Vector2(2.9611545, 2.9611545)
+center_offset = Vector3(-0.046880007, 1.362131, 0)
+
+[node name="TreeLODs" type="Node3D" unique_id=1531396392]
+
+[node name="TreeLOD0" type="MeshInstance3D" parent="." unique_id=513593219]
+mesh = ExtResource("1_pnn6s")
+surface_material_override/1 = SubResource("StandardMaterial3D_ueqho")
+
+[node name="TreeLOD1" type="MeshInstance3D" parent="." unique_id=470366648]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_4m5bg")

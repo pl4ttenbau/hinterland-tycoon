@@ -1,5 +1,5 @@
 {
-	"depots": [
+	"railDepots": [
 		{
 			"num": 1,
 			"name": "Klausdorf Depot FKB-N",
@@ -29,6 +29,14 @@
 			"name": "Stralsund Depot DR",
 			"trackNum": 109,
 			"trackPos": "END"
+		}
+	],
+	"roadDepots": [
+		{
+			"num": 1,
+			"name": "Stralsund NVA Depot",
+			"roadNum": 363,
+			"roadPos": "END"
 		}
 	]
 }

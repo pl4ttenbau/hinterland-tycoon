@@ -19,6 +19,9 @@ signal map_selected(map_obj: MapData)
 #region Actions
 @warning_ignore("unused_signal")
 signal request_spawn_action(depot_num: int)
+
+@warning_ignore("unused_signal")
+signal request_road_vehicle_spawn(depot: RoadDepotData)
 #endregion
 
 #region UI
@@ -52,6 +55,12 @@ signal player_entered_train(train3d: Train3D)
 
 @warning_ignore("unused_signal")
 signal player_exited_train()
+
+@warning_ignore("unused_signal")
+signal player_entered_road_vehicle(vehicle: RoadVehicle3D)
+
+@warning_ignore("unused_signal")
+signal player_exited_road_vehicle()
 #endregion
 
 #region Rails
@@ -69,6 +78,9 @@ signal fork_changed(fork: RailNodeForkData)
 #endregion
 
 #region Roads 
+@warning_ignore("unused_signal")
+signal roads_loaded(rails: Array[RoadData])
+
 @warning_ignore("unused_signal")
 signal road_spawned(road_container: RoadWay3D)
 

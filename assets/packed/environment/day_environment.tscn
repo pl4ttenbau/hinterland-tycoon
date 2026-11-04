@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bkox8ym3do2eb"]
 
+[ext_resource type="Script" uid="uid://dn068h4dw8pqt" path="res://game/gamescripts/nodes/world/world_reflections.gd" id="1_nsaee"]
+[ext_resource type="Script" uid="uid://7rp4t57liulj" path="res://game/gamescripts/nodes/world/game_world_environment.gd" id="1_ss27d"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b3ybs"]
 
 [sub_resource type="Sky" id="Sky_hw0ba"]
@@ -7,22 +10,43 @@ sky_material = SubResource("ProceduralSkyMaterial_b3ybs")
 
 [sub_resource type="Environment" id="Environment_nsaee"]
 background_mode = 2
+background_energy_multiplier = 1.5
 sky = SubResource("Sky_hw0ba")
 ambient_light_source = 3
-tonemap_mode = 2
+ambient_light_energy = 1.2
+tonemap_mode = 4
+tonemap_exposure = 1.2
+ssao_radius = 0.75
+ssao_intensity = 1.0
+ssao_power = 1.25
+ssao_detail = 0.3
 glow_enabled = true
+glow_intensity = 0.15
+fog_light_color = Color(0.62, 0.68, 0.74, 1)
+fog_density = 0.0003
+fog_aerial_perspective = 0.25
+fog_sky_affect = 0.15
+adjustment_enabled = true
+adjustment_contrast = 1.03
+adjustment_saturation = 1.04
 
 [node name="DayEnvironment" type="Node3D" unique_id=662525974]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=94662353]
 environment = SubResource("Environment_nsaee")
+script = ExtResource("1_ss27d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1619288257]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(1, 0.98, 0.95, 1)
+light_energy = 1.15
 shadow_enabled = true
 shadow_bias = 0.15
-shadow_opacity = 0.89
+shadow_opacity = 0.9
 directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.5
+directional_shadow_max_distance = 120.0
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="." unique_id=1386134091]
-intensity = 0.6
+[node name="LocalReflections" type="Node3D" parent="." unique_id=138702026]
+script = ExtResource("1_nsaee")

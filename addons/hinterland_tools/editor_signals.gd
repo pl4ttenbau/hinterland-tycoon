@@ -1,5 +1,6 @@
 @tool
-extends Node
+## Plugin-owned signals shared by editor toolbar, viewport tools and cache actions.
+class_name HinterlandEditorSignals extends Node
 
 static var instance: Node
 

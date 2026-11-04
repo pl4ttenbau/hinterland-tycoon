@@ -22,8 +22,14 @@ signal buildings_changed()
 @export_storage var totalPops: int
 @export_storage var res_bld_containers: Array[Residence3D] = []
 
-@export_storage var stations: Array[NodeStationLinkData] = []
+@export_storage var stations: Array[AbstractStation] = []
 @export_storage var station_blds_assigned: bool = false
+
+@export_group("Town Center")
+## Persistent road ID. -1 leaves the center unassigned.
+@export var center_road_num: int = -1
+## Zero-based index of a crossing node on that road. -1 leaves it unassigned.
+@export var center_node_index: int = -1
 #endregion
 
 static var last_town_num: int = 0
@@ -69,10 +75,27 @@ func has_bld_around(check_pos: Vector3) -> bool:
 
 #region Stations
 func connect_new_station(station: AbstractStation):
-	self.stations.append(station)
+	if not self.stations.has(station):
+		self.stations.append(station)
 #endregion
 
 #region Helper-Methods
+## Resolve against supplied map roads, without coupling authoring data to managers.
+## Invalid, removed, or non-crossing references have no center; no origin fallback.
+func get_center_node(roads: Array[RoadData]) -> RoadNode:
+	if self.center_road_num < 0 or self.center_node_index < 0:
+		return null
+	for road: RoadData in roads:
+		if road == null or road.num != self.center_road_num:
+			continue
+		if self.center_node_index >= road.nodes.size():
+			return null
+		var node: RoadNode = road.nodes[self.center_node_index]
+		if node == null or node.cross == null or node.cross.connecting_roads.is_empty():
+			return null
+		return node
+	return null
+
 func _to_string():
 	return "<Town %s>" % self.town_name
 	

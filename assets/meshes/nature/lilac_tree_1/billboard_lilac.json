@@ -1,0 +1,67 @@
+{
+  "source": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/lilac_tree_1/lilac_tree_1.tscn",
+  "mesh": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/lilac_tree_1/lilac_tree_1.obj",
+  "image_size": [
+    512,
+    512
+  ],
+  "quad_size": [
+    2.9611544475386995,
+    2.9611544475386995
+  ],
+  "tree_height": 2.7242620917356035,
+  "units": "source mesh units (metres if source is metre-scaled)",
+  "shading": "unlit albedo, double sided, alpha cutout, no baked shadows",
+  "alpha_cutoff": null,
+  "scene_materials": {
+    "mat_lilac_tree_bark": {
+      "texture": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/nature/lilac_tree_1/tex_lilac_tree_1_branch_d.png",
+      "tint": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "alpha_cutoff": 0.44,
+      "use_alpha": true,
+      "uv_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "uv_offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "camera": "orthographic, horizontal; 0 degrees looks from Blender -Y towards +Y",
+  "pivot": "source origin X/Y at lowest mesh Z, after import into Blender Z-up",
+  "bounds_blender_z_up": {
+    "min": [
+      -1.0947990417480469,
+      -1.0184780359268188,
+      -9.260535449584495e-08
+    ],
+    "max": [
+      1.0010390281677246,
+      1.2265952825546265,
+      2.724261999130249
+    ]
+  },
+  "views": [
+    {
+      "image": "billboard_lilac.png",
+      "azimuth_degrees": 0.0,
+      "pivot_uv_bottom_left": [
+        0.5158316655279929,
+        0.03999998436330221
+      ],
+      "quad_center_from_base_right_up": [
+        -0.04688000679016113,
+        1.362131092170479
+      ]
+    }
+  ]
+}

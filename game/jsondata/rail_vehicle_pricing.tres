@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RailVehiclePricing" format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/resources/vehicles/type/rail_vehicle_pricing.gd" id="1_pricing"]
+
+[resource]
+script = ExtResource("1_pricing")
+locomotive_base = 20000.0
+price_per_kw = 250.0
+price_per_kn = 1000.0
+estimated_adhesion = 0.25
+wagon_base = 2000.0
+price_per_capacity_unit = 300.0
+speed_base_multiplier = 0.75
+speed_reference_kmh = 160.0
+rounding_step = 100

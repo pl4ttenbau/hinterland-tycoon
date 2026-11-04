@@ -19,6 +19,8 @@ func are_world_services_initialized() -> bool:
 @export var forks: RailForkLoader
 @export var roads: RoadsLoader
 @export var stations: StationsHolder
+@export var interchanges: InterchangesLoader
+@export var road_stops: RoadStopsLoader
 
 @export var depots: DepotLoader
 @export var vehicles: VehiclePlacer

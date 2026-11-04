@@ -1,7 +1,6 @@
-extends RefCounted
+## Regression checks for road endpoint matching and cache editing.
+class_name RoadConnectionsSuite extends RefCounted
 
-const Connections = preload("res://addons/hinterland_tools/road_endpoint_connections.gd")
-const Store = preload("res://addons/hinterland_tools/infr_json_store.gd")
 var failures: int = 0
 var checks: int = 0
 
@@ -32,7 +31,7 @@ func test_visible_connections(tree: SceneTree) -> bool:
 	var source := GeneratedRoadWays.new()
 	world.add_child(source)
 	var a: EditorInfrLine3D = line(source, 1, [Vector3(-10, 0, 0), Vector3.ZERO])
-	var cache: Node3D = Store.container_for(world, Enums.InfrDomain.ROAD)
+	var cache: Node3D = InfrJsonStore.container_for(world, Enums.InfrDomain.ROAD)
 	cache.show()
 	var b: EditorInfrLine3D = line(cache, 2, [Vector3.ZERO, Vector3(10, 0, 0)])
 	var c: EditorInfrLine3D = line(cache, 3, [Vector3.ZERO, Vector3(0, 0, 10)])
@@ -41,16 +40,27 @@ func test_visible_connections(tree: SceneTree) -> bool:
 	var hidden: EditorInfrLine3D = line(source, 6, [Vector3.ZERO, Vector3.ONE])
 	hidden.hide()
 	line(cache, 7, [Vector3.ZERO, Vector3.ONE], Enums.InfrDomain.RAIL)
-	var service: Node = Connections.ensure(world)
-	for road: Node3D in Connections.visible_roads(world):
+	var service: Node = RoadEndpointConnection.ensure(world)
+	for road: Node3D in RoadEndpointConnection.visible_roads(world):
 		road._register_connections()
 	service.rebuild()
 	check(a.get_parent() == source and source.visible, "Visible EditorObjects roads are not adopted or hidden by cache")
 	check(a.end_connections.size() == 2 and b.start_connections.size() == 2 and c.start_connections.size() == 2, "Three roads connect reciprocally across cache and source")
 	check(a.start_connections.is_empty(), "Open endpoint remains unconnected")
-	check(a.end_connections[0].endpoint == 0, "Inspector identifies the neighboring endpoint")
+	check(a.end_connections[0].endpoint == Enums.EnumStartOrEnd.START, "Inspector identifies the neighboring start")
+	check(b.start_connections[0].endpoint == Enums.EnumStartOrEnd.END, "Inspector identifies the neighboring end")
+	var target: Resource = a.end_connections[0]
+	var endpoint_property: Dictionary = {}
+	for property: Dictionary in target.get_property_list():
+		if property.name == "endpoint":
+			endpoint_property = property
+	var enum_labels: String = str(endpoint_property.get("hint_string", "")).to_upper()
+	check(endpoint_property.get("hint") == PROPERTY_HINT_ENUM and "START" in enum_labels and "END" in enum_labels, "Inspector shows named endpoint enum values")
+	check(bool(endpoint_property.get("usage", 0) & PROPERTY_USAGE_READ_ONLY) and not bool(endpoint_property.get("usage", 0) & PROPERTY_USAGE_STORAGE), "Derived endpoint is read-only and not saved")
+	service.rebuild()
+	check(a.end_connections[0] == target, "Unchanged rebuilds preserve inspected connection entries")
 	var markers: int = 0
-	for road: Node3D in Connections.visible_roads(world):
+	for road: Node3D in RoadEndpointConnection.visible_roads(world):
 		for marker: MeshInstance3D in road._junction_markers:
 			if is_instance_valid(marker) and marker.visible:
 				markers += 1
@@ -90,7 +100,7 @@ func test_visible_connections(tree: SceneTree) -> bool:
 	world.add_child(camera)
 	camera.position = Vector3(0, 20, 20)
 	camera.look_at(Vector3(-10, 0, 0))
-	var drawing = load("res://addons/hinterland_tools/infr_drawing_tool.gd").new()
+	var drawing = InfrDrawingTool.new()
 	drawing.begin(world, Enums.InfrDomain.ROAD)
 	var mouse: Vector2 = camera.unproject_position(Vector3(-10, 0, 0))
 	drawing.update_pointer(camera, mouse, Vector3(-10, 0, 0), true)
@@ -113,19 +123,19 @@ func test_saved_connections(tree: SceneTree) -> bool:
 		4: record(4, [0, 0.5, 0], [10, 0.5, 0]),
 	}
 	records[1].points[0]["cross"] = {"connectiveRoads": [99], "custom": "keep"}
-	var self_links: Array = Connections.neighbors([{"id": 8, "end": 0, "pos": Vector3.ZERO}, {"id": 8, "end": 1, "pos": Vector3.ZERO}])
+	var self_links: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(8, 0, Vector3.ZERO), EditorRoadEndpoint.new(8, 1, Vector3.ZERO)])
 	check(self_links[0].is_empty() and self_links[1].is_empty(), "A loop road cannot connect to itself")
-	var boundary: Array = Connections.neighbors([{"id": 1, "end": 0, "pos": Vector3(-0.001, 0, 0)}, {"id": 2, "end": 0, "pos": Vector3(0.001, 0, 0)}])
+	var boundary: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(1, 0, Vector3(-0.001, 0, 0)), EditorRoadEndpoint.new(2, 0, Vector3(0.001, 0, 0))])
 	check(boundary[0] == [1], "Endpoint hashing handles negative cell boundaries")
-	var rounded: Array = Connections.neighbors([{"id": 1, "end": 0, "pos": Vector3(0.0049, 0.0049, 0)}, {"id": 2, "end": 0, "pos": Vector3(0.019, 0.019, 0)}])
+	var rounded: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(1, 0, Vector3(0.0049, 0.0049, 0)), EditorRoadEndpoint.new(2, 0, Vector3(0.019, 0.019, 0))])
 	check(rounded[0].is_empty(), "Editor matching uses rounded geometry consistently with JSON saving")
-	Connections.update_json(records)
+	RoadEndpointConnection.update_json(records)
 	check(records[1].points[1].cross.connectiveRoads == [2, 3], "Save connects all coincident road endpoints")
 	check(records[2].points[0].cross.connectiveRoads == [1, 3], "Save writes reciprocal links")
 	check(not records[4].points[0].has("cross"), "A height-separated road is not a crossing")
 	check(records[1].points[0].cross.connectiveRoads == [99] and records[1].points[0].cross.custom == "keep", "Existing manual links and custom metadata survive")
 	var before: String = JSON.stringify(records)
-	Connections.update_json(records)
+	RoadEndpointConnection.update_json(records)
 	check(JSON.stringify(records) == before, "Repeated crossing generation is idempotent")
 	# Simulate JSON's numeric decoding before moving a connected endpoint.
 	var decoded: Dictionary = JSON.parse_string(JSON.stringify(records))
@@ -133,7 +143,7 @@ func test_saved_connections(tree: SceneTree) -> bool:
 	for id: String in decoded:
 		reread[int(id)] = decoded[id]
 	reread[2].points[0].pos = [5, 0, 0]
-	Connections.update_json(reread)
+	RoadEndpointConnection.update_json(reread)
 	check(2 not in reread[1].points[1].cross.connectiveRoads and reread[2].points[0].cross.connectiveRoads.is_empty(), "Moving an endpoint removes both sides of generated links after JSON reload")
 	check(reread[1].points[0].cross.custom == "keep", "Automatic cleanup does not touch manual metadata")
 	var directory: String = "/tmp/road-connections-%d" % OS.get_process_id()
@@ -144,11 +154,11 @@ func test_saved_connections(tree: SceneTree) -> bool:
 	file.close()
 	var original: String = FileAccess.get_file_as_string(path)
 	var road: EditorInfrLine3D = line(tree.root, 2, [Vector3.ZERO, Vector3(10, 0, 0)])
-	var store := Store.new()
+	var store := InfrJsonStore.new()
 	var roads: Array[EditorInfrLine3D] = [road]
-	var saved: Dictionary = store.save_lines(path, roads, Enums.InfrDomain.ROAD)
+	var saved: EditorActionResult = store.save_lines(path, roads, Enums.InfrDomain.ROAD)
 	check(saved.ok and FileAccess.get_file_as_string(saved.backup) == original, "Crossing save retains an exact backup")
-	var data: Array = Store.read_records(path).records
+	var data: Array = InfrJsonStore.read_records(path).records
 	check(int(data[0].points[1].cross.connectiveRoads[0]) == 2 and int(data[1].points[0].cross.connectiveRoads[0]) == 1, "JSON save updates cached and existing road records together")
 	var runtime: RoadData = RoadMapper.road_from_data_json(data[0])
 	check(runtime.nodes[1].cross.connecting_roads == [2], "Generated crossings load into the existing runtime RoadCross model")

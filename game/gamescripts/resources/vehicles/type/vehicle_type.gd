@@ -7,7 +7,9 @@ class_name VehicleTypeData extends Resource
 
 @export var model_scene_path: String
 
-@export var max_speed_kmh: int
+## Road models may be catalogued before their operating specifications are known.
+## Loaded rail definitions still require a positive integer speed.
+var max_speed_kmh: Variant = null
 
 @export var usable_infr: UsableInfrType
 
@@ -21,6 +23,10 @@ class_name VehicleTypeData extends Resource
 ## typed floats would turn unknown values into zero.
 var mass_tonnes: Variant = null
 var motor_power_kw: Variant = null
+## Starting tractive effort in kN; null means it has not been supplied in the catalog.
+var tractive_effort_kn: Variant = null
+## Catalog purchase price in whole game DM; null permits formula-based pricing.
+var purchase_price: Variant = null
 
 #region Initialization
 static func of_key(_key: String) -> VehicleTypeData:
@@ -40,6 +46,10 @@ func get_preview_img_path() -> String:
 	return self.model_scene_path.get_base_dir().path_join("preview.png")
 	
 func is_locomotive(): return self.has_motor
+
+## Concrete vehicle domains supply their purchase-price balance.
+func get_purchase_price() -> Variant:
+	return purchase_price
 
 static func get_by_key(veh_type_key: String) -> VehicleTypeData:
 	return GameTypes.get_veh_type(veh_type_key)

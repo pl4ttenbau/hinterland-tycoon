@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- A reusable stock component: crate plus connection sockets. -->
+  <g stroke="#91baf2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M3 9 13 4l10 5v13l-10 6-10-6Z"/>
+    <path d="m3 9 10 6 10-6M13 15v13M8 6.5l10 6"/>
+    <path d="M23 13h5m-5 6h5"/>
+  </g>
+  <g fill="#91baf2"><circle cx="28" cy="13" r="2"/><circle cx="28" cy="19" r="2"/></g>
+</svg>

@@ -1,0 +1,354 @@
+[
+	{
+		"num": 1,
+		"name": "MPSB",
+		"townNum": 3,
+		"townName": "Friedland",
+		"stops": []
+	},
+	{
+		"num": 2,
+		"name": "Ort",
+		"townNum": 5,
+		"townName": "Ramelow",
+		"stops": [
+			{
+				"num": 2,
+				"domain": "RAIL",
+				"trackNum": 6,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 3,
+		"name": "Land",
+		"townNum": 24,
+		"townName": "Rebelow",
+		"stops": [
+			{
+				"num": 3,
+				"domain": "RAIL",
+				"trackNum": 8,
+				"nodeIndex": 8,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 4,
+		"name": "Bahnhof",
+		"townNum": 11,
+		"townName": "Dennin",
+		"stops": [
+			{
+				"num": 4,
+				"domain": "RAIL",
+				"trackNum": 57,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 5,
+		"name": "Ort",
+		"townNum": 12,
+		"townName": "Krien",
+		"stops": [
+			{
+				"num": 5,
+				"domain": "RAIL",
+				"trackNum": 65,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 6,
+		"name": "Dorf",
+		"townNum": 22,
+		"townName": "Medow",
+		"stops": [
+			{
+				"num": 6,
+				"domain": "RAIL",
+				"trackNum": 66,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 7,
+		"name": "Ort",
+		"townNum": 10,
+		"townName": "Gützkow",
+		"stops": [
+			{
+				"num": 7,
+				"domain": "RAIL",
+				"trackNum": 25,
+				"nodeIndex": 1,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 8,
+		"name": "Harbour",
+		"townNum": 1,
+		"townName": "Jarmen",
+		"stops": [
+			{
+				"num": 8,
+				"domain": "RAIL",
+				"trackNum": 15,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 25,
+				"domain": "RAIL",
+				"trackNum": 103,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 9,
+		"name": "Ort",
+		"townNum": 30,
+		"townName": "Dargezin",
+		"stops": [
+			{
+				"num": 9,
+				"domain": "RAIL",
+				"trackNum": 36,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 10,
+		"name": "Kleinbhf",
+		"townNum": 10,
+		"townName": "Züssow",
+		"stops": [
+			{
+				"num": 10,
+				"domain": "RAIL",
+				"trackNum": 41,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 11,
+		"name": "Ort",
+		"townNum": 17,
+		"townName": "Blesewitz",
+		"stops": [
+			{
+				"num": 11,
+				"domain": "RAIL",
+				"trackNum": 44,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 12,
+		"name": "Kleinbhf (MPSB)",
+		"townNum": 23,
+		"townName": "Anklam",
+		"stops": [
+			{
+				"num": 12,
+				"domain": "RAIL",
+				"trackNum": 48,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 24,
+				"domain": "RAIL",
+				"trackNum": 49,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 13,
+		"name": "Harbour (MPSB)",
+		"townNum": 17,
+		"townName": "Anklam",
+		"stops": [
+			{
+				"num": 13,
+				"domain": "RAIL",
+				"trackNum": 73,
+				"nodeIndex": 1,
+				"type": "STATION_PASS",
+				"hideBuilding": true
+			}
+		]
+	},
+	{
+		"num": 14,
+		"name": "Stadt",
+		"townNum": 25,
+		"townName": "Iven",
+		"stops": [
+			{
+				"num": 14,
+				"domain": "RAIL",
+				"trackNum": 69,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 15,
+		"name": "Forsthaus",
+		"townNum": 25,
+		"townName": "Janow",
+		"stops": [
+			{
+				"num": 15,
+				"domain": "RAIL",
+				"trackNum": 70,
+				"nodeIndex": 7,
+				"type": "STATION_GOODS"
+			}
+		]
+	},
+	{
+		"num": 16,
+		"name": "Ort",
+		"townNum": 33,
+		"townName": "Müggenburg",
+		"stops": [
+			{
+				"num": 16,
+				"domain": "RAIL",
+				"trackNum": 72,
+				"nodeIndex": 10,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 17,
+		"name": "Kreuz",
+		"townNum": 15,
+		"townName": "Schmarsow",
+		"stops": [
+			{
+				"num": 17,
+				"domain": "RAIL",
+				"trackNum": 76,
+				"nodeIndex": 3,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 18,
+		"name": "Meadows",
+		"townNum": 27,
+		"townName": "Alt-Tellin",
+		"stops": [
+			{
+				"num": 18,
+				"domain": "RAIL",
+				"trackNum": 80,
+				"nodeIndex": 5,
+				"type": "STATION_GOODS"
+			}
+		]
+	},
+	{
+		"num": 19,
+		"name": "Ort",
+		"townNum": 9,
+		"townName": "Daberkow",
+		"stops": [
+			{
+				"num": 19,
+				"domain": "RAIL",
+				"trackNum": 81,
+				"nodeIndex": 10,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 20,
+		"name": "Ort",
+		"townNum": 37,
+		"townName": "Kartlow",
+		"stops": [
+			{
+				"num": 20,
+				"domain": "RAIL",
+				"trackNum": 97,
+				"nodeIndex": 7,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 21,
+		"name": "Quarry",
+		"townNum": 1,
+		"townName": "Jarmen",
+		"stops": [
+			{
+				"num": 21,
+				"domain": "RAIL",
+				"trackNum": 98,
+				"nodeIndex": 9,
+				"type": "STATION_GOODS"
+			}
+		]
+	},
+	{
+		"num": 22,
+		"name": "Town",
+		"townNum": 1,
+		"townName": "Jarmen",
+		"stops": [
+			{
+				"num": 22,
+				"domain": "RAIL",
+				"trackNum": 100,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 23,
+		"name": "Halt",
+		"townNum": 13,
+		"townName": "Neetzow",
+		"stops": [
+			{
+				"num": 23,
+				"domain": "RAIL",
+				"trackNum": 13,
+				"nodeIndex": 10,
+				"type": "STATION_PASS"
+			}
+		]
+	}
+]

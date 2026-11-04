@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://7lql5smxq1vp"]
+
+[ext_resource type="Terrain3DMaterial" uid="uid://c4l60rkev0uya" path="res://world/gdansk/mapscenes/terrain/terrain_mat_gdansk.tres" id="1_jj4g4"]
+[ext_resource type="Terrain3DAssets" uid="uid://b4pvntplaot65" path="res://world/gdansk/mapscenes/terrain/terrain_assets_gdansk.res" id="2_5ul1g"]
+[ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_5ul1g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qwrwv"]
+size = Vector2(5000, 5000)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwrwv"]
+
+[node name="TerrainGdansk" type="Terrain3D" unique_id=175849276]
+data_directory = "res://world/gdansk/heightdata"
+material = ExtResource("1_jj4g4")
+assets = ExtResource("2_5ul1g")
+show_grid = true
+displacement_sharpness = 0.5
+show_region_grid = true
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="BalticSea" type="MeshInstance3D" parent="." unique_id=354807359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.647888, 0)
+material_override = ExtResource("3_5ul1g")
+mesh = SubResource("PlaneMesh_qwrwv")
+surface_material_override/0 = SubResource("ShaderMaterial_qwrwv")

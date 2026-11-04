@@ -1,0 +1,345 @@
+[gd_scene format=3 uid="uid://bt7v82puopvu3"]
+
+[ext_resource type="Script" path="res://game/gamescripts/nodes/world/collections/world_towns.gd" id="1_mtwcu"]
+[ext_resource type="PackedScene" path="res://scenes/subscenes/town/town_root.tscn" id="2_eti54"]
+[ext_resource type="Script" path="res://game/gamescripts/resources/town/town3d.gd" id="3_qwdfe"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="4_ebkdq"]
+[ext_resource type="Script" path="res://game/gamescripts/resources/town/town.gd" id="5_cd4s7"]
+[ext_resource type="Script" path="res://game/gamescripts/resources/infr/station/abstract_station.gd" id="6_hpl3b"]
+
+[sub_resource type="Resource" id="Resource_mfsgx"]
+script = ExtResource("5_cd4s7")
+town_name = "Tczew"
+pos_xz = Vector2(-930.3534, 1353.1512)
+num = 1
+type = 9
+
+[sub_resource type="Resource" id="Resource_kp3io"]
+script = ExtResource("5_cd4s7")
+town_name = "Nowy Dwór Gdański"
+pos_xz = Vector2(1161.7532, -71.47762)
+num = 2
+type = 9
+
+[sub_resource type="Resource" id="Resource_7n81k"]
+script = ExtResource("5_cd4s7")
+town_name = "Nowy Staw"
+pos_xz = Vector2(469.29706, 822.4817)
+num = 3
+type = 9
+
+[sub_resource type="Resource" id="Resource_7mdwi"]
+script = ExtResource("5_cd4s7")
+town_name = "Pszczółki"
+pos_xz = Vector2(-1565.7448, 385.82568)
+num = 4
+type = 9
+
+[sub_resource type="Resource" id="Resource_2jxx1"]
+script = ExtResource("5_cd4s7")
+town_name = "Stegna"
+pos_xz = Vector2(1148.6008, -1339.9944)
+num = 5
+type = 9
+
+[sub_resource type="Resource" id="Resource_q1vuc"]
+script = ExtResource("5_cd4s7")
+town_name = "Sztutowo"
+pos_xz = Vector2(1566.0673, -1355.9491)
+num = 6
+type = 9
+
+[sub_resource type="Resource" id="Resource_0sojl"]
+script = ExtResource("5_cd4s7")
+town_name = "Stare Pole"
+pos_xz = Vector2(1737.3914, 1707.9392)
+is_minor = true
+num = 7
+type = 9
+
+[sub_resource type="Resource" id="Resource_6hh2p"]
+script = ExtResource("5_cd4s7")
+town_name = "Skowarcz"
+pos_xz = Vector2(-1676.3453, 266.61588)
+is_minor = true
+num = 8
+type = 9
+
+[sub_resource type="Resource" id="Resource_r523n"]
+script = ExtResource("5_cd4s7")
+town_name = "Różyny"
+pos_xz = Vector2(-1785.259, 80.786224)
+is_minor = true
+num = 9
+type = 9
+
+[sub_resource type="Resource" id="Resource_qicy3"]
+script = ExtResource("5_cd4s7")
+town_name = "Cedry Wielkie"
+pos_xz = Vector2(-591.2684, -400.246)
+is_minor = true
+num = 10
+type = 9
+
+[sub_resource type="Resource" id="Resource_hq063"]
+script = ExtResource("5_cd4s7")
+town_name = "Lisewo Malborskie"
+pos_xz = Vector2(-692.79663, 1237.1233)
+is_minor = true
+num = 11
+type = 9
+
+[sub_resource type="Resource" id="Resource_onuex"]
+script = ExtResource("5_cd4s7")
+town_name = "Suchy Dąb"
+pos_xz = Vector2(-1101.5005, 19.819054)
+is_minor = true
+num = 12
+type = 9
+
+[sub_resource type="Resource" id="Resource_jsotc"]
+script = ExtResource("5_cd4s7")
+town_name = "Grabiny-Zameczek"
+pos_xz = Vector2(-1199.4695, -335.03455)
+is_minor = true
+num = 13
+type = 9
+
+[sub_resource type="Resource" id="Resource_mukyj"]
+script = ExtResource("5_cd4s7")
+town_name = "Ostaszewo"
+pos_xz = Vector2(102.71516, -53.437008)
+is_minor = true
+num = 14
+type = 9
+
+[sub_resource type="Resource" id="Resource_4x1h6"]
+script = ExtResource("5_cd4s7")
+town_name = "Szpęgawa"
+pos_xz = Vector2(-1303.2546, 1223.7007)
+is_minor = true
+num = 15
+type = 9
+
+[sub_resource type="Resource" id="Resource_bl8fh"]
+script = ExtResource("5_cd4s7")
+town_name = "Lichnowy"
+pos_xz = Vector2(-151.10286, 1041.3065)
+is_minor = true
+num = 16
+type = 9
+
+[sub_resource type="Resource" id="Resource_8arn5"]
+script = ExtResource("5_cd4s7")
+town_name = "Kmiecin"
+pos_xz = Vector2(1387.0363, 211.8232)
+is_minor = true
+num = 17
+type = 9
+
+[sub_resource type="Resource" id="Resource_0nkwo"]
+script = ExtResource("5_cd4s7")
+town_name = "Jantar"
+pos_xz = Vector2(622.7134, -1413.7211)
+is_minor = true
+num = 18
+type = 9
+
+[sub_resource type="Resource" id="Resource_piwv1"]
+script = ExtResource("5_cd4s7")
+town_name = "Wiślinka"
+pos_xz = Vector2(-884.9468, -1361.7609)
+is_minor = true
+num = 19
+type = 9
+
+[sub_resource type="Resource" id="Resource_ufmrc"]
+script = ExtResource("5_cd4s7")
+town_name = "Cedry Małe"
+pos_xz = Vector2(-446.60483, -723.8311)
+is_minor = true
+num = 20
+type = 9
+
+[node name="Towns" type="Node" unique_id=410405806]
+script = ExtResource("1_mtwcu")
+
+[node name="Town3D_Tczew" type="Node3D" parent="." unique_id=379283880 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -930.3534, 41.252636, 1353.1512)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_mfsgx")
+metadata/gps_latitude = 54.0865756
+metadata/gps_longitude = 18.7936245
+metadata/population_reference_not_1960 = 57990.0
+metadata/placement_source = "https://www.openstreetmap.org/node/30116761"
+
+[node name="Town3D_Nowy Dwór Gdański" type="Node3D" parent="." unique_id=657859094 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1161.7532, 16.098919, -71.47762)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_kp3io")
+metadata/gps_latitude = 54.2146299
+metadata/gps_longitude = 19.1150846
+metadata/population_reference_not_1960 = 9618.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31531183"
+
+[node name="Town3D_Nowy Staw" type="Node3D" parent="." unique_id=458712715 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 469.29706, 16.151604, 822.4817)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_7n81k")
+metadata/gps_latitude = 54.1342754
+metadata/gps_longitude = 19.0086861
+metadata/population_reference_not_1960 = 4101.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31531177"
+
+[node name="Town3D_Pszczółki" type="Node3D" parent="." unique_id=725498135 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1565.7448, 30.488218, 385.82568)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_7mdwi")
+metadata/gps_latitude = 54.1735247
+metadata/gps_longitude = 18.6959942
+metadata/population_reference_not_1960 = 4053.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530963"
+
+[node name="Town3D_Stegna" type="Node3D" parent="." unique_id=525759972 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1148.6008, 17.561337, -1339.9944)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_2jxx1")
+metadata/gps_latitude = 54.3286519
+metadata/gps_longitude = 19.1130637
+metadata/population_reference_not_1960 = 4000.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530640"
+
+[node name="Town3D_Sztutowo" type="Node3D" parent="." unique_id=95639733 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1566.0673, 16.36188, -1355.9491)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_q1vuc")
+metadata/gps_latitude = 54.330086
+metadata/gps_longitude = 19.177209
+metadata/population_reference_not_1960 = 2988.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530415"
+
+[node name="Town3D_Stare Pole" type="Node3D" parent="." unique_id=151215466 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1737.3914, 16.110294, 1707.9392)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_0sojl")
+metadata/gps_latitude = 54.0546851
+metadata/gps_longitude = 19.2035336
+metadata/population_reference_not_1960 = 1834.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530664"
+
+[node name="Town3D_Skowarcz" type="Node3D" parent="." unique_id=1403380232 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1676.3453, 32.69818, 266.61588)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_6hh2p")
+metadata/gps_latitude = 54.18424
+metadata/gps_longitude = 18.679
+metadata/population_reference_not_1960 = 1425.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530730"
+
+[node name="Town3D_Różyny" type="Node3D" parent="." unique_id=90828355 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1785.259, 43.985676, 80.786224)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_r523n")
+metadata/gps_latitude = 54.2009435
+metadata/gps_longitude = 18.662265
+metadata/population_reference_not_1960 = 1300.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530897"
+
+[node name="Town3D_Cedry Wielkie" type="Node3D" parent="." unique_id=1012996073 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -591.2684, 17.730083, -400.246)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_qicy3")
+metadata/gps_latitude = 54.2441816
+metadata/gps_longitude = 18.8457262
+metadata/population_reference_not_1960 = 1293.0
+metadata/placement_source = "https://www.cedry-wielkie.pl/index.php/5032-jest-nas-nieco-wiecej"
+
+[node name="Town3D_Lisewo Malborskie" type="Node3D" parent="." unique_id=1493234492 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -692.79663, 21.373915, 1237.1233)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_hq063")
+metadata/gps_latitude = 54.0970049
+metadata/gps_longitude = 18.830126
+metadata/population_reference_not_1960 = 1265.0
+metadata/placement_source = "https://www.lichnowy.pl/asp/gmina-w-liczbach%2C420"
+
+[node name="Town3D_Suchy Dąb" type="Node3D" parent="." unique_id=802587378 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1101.5005, 16.095114, 19.819054)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_onuex")
+metadata/gps_latitude = 54.2064236
+metadata/gps_longitude = 18.7673271
+metadata/population_reference_not_1960 = 1110.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530606"
+
+[node name="Town3D_Grabiny-Zameczek" type="Node3D" parent="." unique_id=1290928950 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1199.4695, 18.476604, -335.03455)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_jsotc")
+metadata/gps_latitude = 54.23832
+metadata/gps_longitude = 18.7522738
+metadata/population_reference_not_1960 = 1106.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31532174"
+
+[node name="Town3D_Ostaszewo" type="Node3D" parent="." unique_id=1318029978 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.71516, 18.261452, -53.437008)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_mukyj")
+metadata/gps_latitude = 54.2130083
+metadata/gps_longitude = 18.9523594
+metadata/population_reference_not_1960 = 1017.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31531120"
+
+[node name="Town3D_Szpęgawa" type="Node3D" parent="." unique_id=535931026 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1303.2546, 25.033335, 1223.7007)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_4x1h6")
+metadata/gps_latitude = 54.0982114
+metadata/gps_longitude = 18.7363268
+metadata/population_reference_not_1960 = 1000.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31530468"
+
+[node name="Town3D_Lichnowy" type="Node3D" parent="." unique_id=486930776 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.10286, 21.370571, 1041.3065)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_bl8fh")
+metadata/gps_latitude = 54.1146061
+metadata/gps_longitude = 18.9133593
+metadata/population_reference_not_1960 = 973.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31531632"
+
+[node name="Town3D_Kmiecin" type="Node3D" parent="." unique_id=925468847 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1387.0363, 17.32073, 211.8232)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_8arn5")
+metadata/gps_latitude = 54.1891651
+metadata/gps_longitude = 19.1497002
+metadata/population_reference_not_1960 = 970.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31531885"
+
+[node name="Town3D_Jantar" type="Node3D" parent="." unique_id=2143440367 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 622.7134, 17.295897, -1413.7211)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_0nkwo")
+metadata/gps_latitude = 54.3352789
+metadata/gps_longitude = 19.0322591
+metadata/population_reference_not_1960 = 940.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31532037"
+
+[node name="Town3D_Wiślinka" type="Node3D" parent="." unique_id=39182290 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -884.9468, 16.19373, -1361.7609)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_piwv1")
+metadata/gps_latitude = 54.3306084
+metadata/gps_longitude = 18.8006014
+metadata/population_reference_not_1960 = 939.0
+metadata/placement_source = "https://www.openstreetmap.org/node/31529698"
+
+[node name="Town3D_Cedry Małe" type="Node3D" parent="." unique_id=300035880 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -446.60483, 16.238277, -723.8311)
+script = ExtResource("3_qwdfe")
+town = SubResource("Resource_ufmrc")
+metadata/gps_latitude = 54.2732674
+metadata/gps_longitude = 18.8679543
+metadata/population_reference_not_1960 = 931.0
+metadata/placement_source = "https://www.cedry-wielkie.pl/index.php/5032-jest-nas-nieco-wiecej"

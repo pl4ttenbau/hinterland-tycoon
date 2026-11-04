@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c0icty7apdu0r"]
+
+[ext_resource type="ArrayMesh" uid="uid://ctmelj8uxgvdq" path="res://assets/meshes/infr/road/waypoint/route_marker.obj" id="1"]
+[ext_resource type="Material" path="res://assets/meshes/infr/road/waypoint/route_marker.tres" id="2"]
+
+[node name="RouteMarker" type="MeshInstance3D" unique_id=1277664987]
+material_override = ExtResource("2")
+mesh = ExtResource("1")

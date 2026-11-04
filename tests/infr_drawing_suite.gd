@@ -1,4 +1,5 @@
-extends RefCounted
+## Regression checks for infrastructure drawing, snapping and history.
+class_name InfrDrawingSuite extends RefCounted
 
 var failures: int = 0
 
@@ -29,7 +30,7 @@ func run(tree: SceneTree) -> int:
 	world.add_child(camera)
 	camera.position = Vector3(0, 20, 20)
 	camera.look_at(Vector3.ZERO)
-	var tool = load("res://addons/hinterland_tools/infr_drawing_tool.gd").new()
+	var tool = InfrDrawingTool.new()
 	tool.begin(world, Enums.InfrDomain.ROAD)
 	roads = world.get_node("EditorCache")
 	world.get_node("EditorCache").show()
