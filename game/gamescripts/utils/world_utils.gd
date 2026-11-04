@@ -38,29 +38,59 @@ static func create_transform(pos: Vector3, rot: Vector3, scale: Vector3) -> Tran
 	return Transform3D(base, pos)
 
 #region GPS Coords
+## Parses decimal degrees in latitude, longitude order. Invalid input is empty.
 static func gps_coords_str_to_float_arr(gps_coords_str: String) -> Array[float]:
-	var splitted: Array = gps_coords_str.split(",")
-	if splitted == null || splitted.size() <= 1:
-		Loggie.warn("Cant convert String \"%s\" to Float Array; return empty Array" % gps_coords_str)
+	var parts: PackedStringArray = gps_coords_str.strip_edges().split(",", true)
+	if parts.size() != 2:
+		Loggie.warn("GPS coordinates must be decimal latitude, longitude")
 		return []
-	return [
-		String(splitted[0]).replace(" ", "").to_float(),
-		String(splitted[1]).replace(" ", "").to_float()
-	]
+	var coords: Array[float] = []
+	for part: String in parts:
+		var value: String = part.strip_edges()
+		if not value.is_valid_float():
+			Loggie.warn("GPS coordinates must contain two valid numbers")
+			return []
+		coords.append(value.to_float())
+	if not is_finite(coords[0]) or not is_finite(coords[1]) \
+			or absf(coords[0]) > 90.0 or absf(coords[1]) > 180.0:
+		Loggie.warn("GPS coordinates are outside latitude/longitude limits")
+		return []
+	return coords
 
-static func gps_coords_to_map_pos(gps_coords: Array[float], map_pos_size: MapSizeAndPosData) -> Vector2i:
-	var map_w_rad: float = map_pos_size.long_lat.top - map_pos_size.long_lat.left
-	var map_h_rad: float = map_pos_size.long_lat.right - map_pos_size.long_lat.left
-	# calculate X pos with longitude
-	var longitude: float = gps_coords[1]
-	var x_perc: float = (longitude - map_pos_size.long_lat.left) / map_w_rad
-	var x_raster_no_offset: float = x_perc * map_pos_size.raster_width
-	var x_raster: int = round(x_raster_no_offset + map_pos_size.raster_offset[0])
-	# calculate Y pos with latitude
+## Returns fractional heightmap sample coordinates, including rasterOffset.
+## The two GPS corners identify the outer sample centres, so N samples have
+## N-1 intervals. +X is east; +Y here becomes world +Z (south).
+## Multiply by Terrain3D.vertex_spacing to get world-space coordinates.
+## Invalid data or a point outside the map returns an infinite vector.
+static func gps_coords_to_map_pos(gps_coords: Array[float], map_pos_size: MapSizeAndPosData) -> Vector2:
+	var invalid := Vector2(INF, INF)
+	if gps_coords.size() != 2 or map_pos_size == null or map_pos_size.long_lat == null:
+		Loggie.warn("Cannot convert GPS position: missing coordinates or map metadata")
+		return invalid
+	var bounds: MapLongLat = map_pos_size.long_lat
+	if bounds.topLeft.size() != 2 or bounds.bottomRight.size() != 2 \
+			or map_pos_size.raster_size.size() != 2 or map_pos_size.raster_offset.size() != 2:
+		Loggie.warn("Cannot convert GPS position: incomplete map metadata")
+		return invalid
+	var north: float = bounds.top
+	var south: float = bounds.bottom
+	var west: float = bounds.left
+	var east: float = bounds.right
+	if not is_finite(north) or not is_finite(south) or not is_finite(west) or not is_finite(east) \
+			or north <= south or east <= west \
+			or map_pos_size.raster_width < 2 or map_pos_size.raster_height < 2:
+		Loggie.warn("Cannot convert GPS position: invalid map bounds or raster size")
+		return invalid
 	var latitude: float = gps_coords[0]
-	var y_perc: float = (latitude - map_pos_size.long_lat.bottom) / map_h_rad
-	var y_raster_no_offset: float = map_pos_size.raster_height - (y_perc * map_pos_size.raster_height)
-	var y_raster: int = round(y_raster_no_offset + map_pos_size.raster_offset[1])
-	# return as float array
-	return Vector2i(x_raster, y_raster)
+	var longitude: float = gps_coords[1]
+	if not is_finite(latitude) or not is_finite(longitude) \
+			or latitude < south or latitude > north or longitude < west or longitude > east:
+		Loggie.warn("GPS position is outside this map's bounds")
+		return invalid
+	var x_fraction: float = (longitude - west) / (east - west)
+	var z_fraction: float = (north - latitude) / (north - south)
+	return Vector2(
+		x_fraction * (map_pos_size.raster_width - 1.0) + map_pos_size.raster_offset[0],
+		z_fraction * (map_pos_size.raster_height - 1.0) + map_pos_size.raster_offset[1]
+	)
 #endregion
