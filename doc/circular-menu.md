@@ -10,6 +10,7 @@ previous mouse and movement settings before launching an action or dialog.
 | Enter train / Leave vehicle | A train is available / player occupies a vehicle |
 | Auto-routing | Player occupies a road vehicle |
 | Place road marker | On foot, with the session's roads loaded |
+| Create stop | On foot, with the session's station services loaded |
 | Connect tracks | On foot, with rail services loaded |
 | Inventory | During gameplay |
 | Company information | During gameplay; empty themed dialog |
@@ -22,6 +23,10 @@ The dispatcher rechecks road-vehicle occupancy and marker placement conditions.
 Company and Game Menu now open empty themed modal shells with Close/Escape.
 Place remains omitted until there is a working placement action.
 Vehicle spawning remains tied to depot selection rather than an arbitrary location.
+
+Create stop captures the player's position on a road or track. A physical stop
+within 50 m opens the add-to-station dialog; otherwise it opens the new-station
+dialog. See [Station creator](station-creator.md).
 
 The action icons in `assets/ui/icons/actions/` use a shared 32 px grid and cream
 2 px strokes. Every exposed action has its own icon; entry and exit differ too.

@@ -19,6 +19,7 @@ func available_actions() -> Array[Dictionary]:
 	var items: Array[Dictionary] = []
 	var vehicles: VehiclePlacer = Managers.vehicles
 	var in_road_vehicle := is_instance_valid(vehicles) and is_instance_valid(vehicles.player_road_vehicle)
+	in_road_vehicle = in_road_vehicle or (is_instance_valid(GlobalState.player) and is_instance_valid(GlobalState.player.in_road_vehicle))
 	var in_train := is_instance_valid(GlobalState.player) and is_instance_valid(GlobalState.player.in_train)
 	if in_road_vehicle or in_train:
 		items.append(_item("Leave vehicle", "Enter", "exit_vehicle"))
@@ -30,6 +31,10 @@ func available_actions() -> Array[Dictionary]:
 		items.append(_item("Place road marker", "RoadMarker", "road_marker"))
 	if not in_road_vehicle and not in_train and is_instance_valid(Managers.rails):
 		items.append(_item("Connect tracks", "Connect", "connect_tracks"))
+	if not in_road_vehicle and not in_train and is_instance_valid(Managers.interchanges):
+		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
+		if is_instance_valid(creator) and creator.is_available():
+			items.append(_item("Create stop", "CreateStop", "create_stop"))
 	items.append(_item("Inventory", "LoadUnload", "inventory"))
 	items.append(_item("Company information", "Company", "company_info"))
 	items.append(_item("Game menu", "Game Menu", "game_menu"))

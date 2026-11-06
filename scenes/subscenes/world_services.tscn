@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mwib66eodp4g" path="res://game/gamescripts/nodes/world/world_services_coordinator.gd" id="1_coordinator"]
 [ext_resource type="Script" uid="uid://d2qv4spmqnuw" path="res://game/gamescripts/services/importexport/infr/station/interchanges_loader.gd" id="2_interchanges"]
 [ext_resource type="Script" uid="uid://dfjho0xjq5ok7" path="res://game/gamescripts/services/importexport/infr/station/road_stops_loader.gd" id="3_road_stops"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/infr/station/station_creator.gd" id="4_creator"]
 [ext_resource type="Script" uid="uid://d351uiai28hdv" path="res://game/gamescripts/services/importexport/town/town_loader.gd" id="6_nc0f4"]
 [ext_resource type="Script" uid="uid://c7gt02qlrpy3v" path="res://game/gamescripts/services/importexport/town/town_building_holder.gd" id="7_rnkef"]
 [ext_resource type="Script" uid="uid://dks5gu537djg2" path="res://game/gamescripts/services/importexport/infr/rail/rail_loader.gd" id="8_pcopj"]
@@ -37,6 +38,9 @@ metadata/_custom_type_script = "uid://c7gt02qlrpy3v"
 
 [node name="Interchanges" type="Node" parent="Infr"]
 script = ExtResource("2_interchanges")
+
+[node name="StationCreator" type="Node" parent="Infr/Interchanges"]
+script = ExtResource("4_creator")
 
 [node name="RoadStops" type="Node" parent="Infr"]
 script = ExtResource("3_road_stops")

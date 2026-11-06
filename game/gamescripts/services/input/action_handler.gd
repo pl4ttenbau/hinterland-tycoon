@@ -14,6 +14,11 @@ func _on_action_triggered(action_name: String) -> bool:
 		return true
 	if action_name == "AutoRoute":
 		return is_instance_valid(Managers.vehicles) and Managers.vehicles.open_road_route_dialog()
+	if action_name == "CreateStop":
+		if not is_instance_valid(Managers.interchanges):
+			return false
+		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
+		return is_instance_valid(creator) and creator.open_placement_dialog()
 	if action_name == "RoadMarker":
 		if not is_instance_valid(Managers.roads):
 			return false

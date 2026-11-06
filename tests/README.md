@@ -1,3 +1,13 @@
+Station creator checks:
+
+```sh
+godot --headless --path . --fixed-fps 60 --script res://tests/station_creator_test.gd -- --no-mcp
+```
+
+These exercise supporting-surface picking, runtime rail/road stops, 50 m joining,
+route anchors, catchment updates, both dialogs and real player action dispatch.
+See `doc/station-creator.md` for behavior and optional rendered previews.
+
 Industry supply warning checks:
 
 ```sh

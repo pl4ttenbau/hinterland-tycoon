@@ -138,6 +138,31 @@ func register_stop(stop: AbstractStation, interchange_num: int) -> Error:
 	self.stops_by_num[stop.num] = stop
 	return OK
 
+func next_interchange_num() -> int:
+	var result: int = 0
+	for number: int in by_num:
+		result = maxi(result, number + 1)
+	return result
+
+func next_stop_num() -> int:
+	var result: int = 0
+	for number: int in stops_by_num:
+		result = maxi(result, number + 1)
+	return result
+
+func create_runtime_interchange(title: String, town: TownData) -> InterchangeData:
+	if not is_loaded or title.strip_edges().is_empty() or town == null:
+		return null
+	var interchange := InterchangeData.new()
+	interchange.num = next_interchange_num()
+	interchange.interchange_name = title.strip_edges()
+	interchange.town_num = town.num
+	interchange.town_name = town.town_name
+	interchange.connected_town = town
+	interchanges.append(interchange)
+	by_num[interchange.num] = interchange
+	return interchange
+
 ## A building belongs once to the interchange with the closest reachable stop.
 ## Retain every reachable stop in that interchange for later boarding/routing.
 func find_access(position: Vector3, radius: float = 200.0) -> Dictionary:
