@@ -1,0 +1,247 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="1_industries"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/industry/industry_placeholder.gd" id="2_placeholder"]
+
+[node name="Industries" type="Node"]
+script = ExtResource("1_industries")
+
+[node name="NowyStaw_Sugarworks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 514.324951, 18.176472, 804.745300)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 1
+type_key = "SUGAR_MILL"
+ind_name = "Cukrownia Nowy Staw"
+metadata/gps_latitude = 54.135869657
+metadata/gps_longitude = 19.015604806
+metadata/location_confidence = "approximate historical factory footprint"
+metadata/representation_note = "Factory quarter checked against ckr. on the historical scan; marker represents the complex, not a surveyed building corner. Existing beet-to-sugar recipe."
+
+[node name="StarePole_Sugarworks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1682.278198, 19.482809, 1732.469849)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 2
+type_key = "SUGAR_MILL"
+ind_name = "Cukrownia Stare Pole"
+metadata/gps_latitude = 54.052480134
+metadata/gps_longitude = 19.195065252
+metadata/location_confidence = "heritage register map point"
+metadata/representation_note = "GPS from the National Heritage Institute directions link. Existing beet-to-sugar recipe."
+
+[node name="NowyStaw_Brickworks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 530.230408, 18.157267, 844.221436)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 3
+type_key = "BRICKWORKS"
+ind_name = "Cegielnia Nowy Staw"
+metadata/gps_latitude = 54.132321302
+metadata/gps_longitude = 19.018048740
+metadata/location_confidence = "approximate former building-materials industrial quarter"
+metadata/representation_note = "Approximate site along Obrońców Westerplatte, near the scan m. bud. complex. Municipal sources identify the former brickyard with this street. Exact kiln footprint and 1960 operating status remain uncertain. Current recipe uses gravel, not clay."
+
+[node name="Gdansk_Refinery" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1286.358887, 16.693304, -1538.234253)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 4
+type_key = "OIL_REFINERY"
+ind_name = "Rafineria Gdańska"
+metadata/gps_latitude = 54.346470903
+metadata/gps_longitude = 18.738922905
+metadata/location_confidence = "modern industrial polygon centre"
+metadata/representation_note = "Included at user request despite historical production starting in December 1975. Current recipe oil -> chemicals. Oil import/supply remains unresolved; no fictitious oilfield added."
+
+[node name="Stegna_Fishery" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1149.273315, 23.848932, -1532.776611)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 5
+type_key = "FISHERY"
+ind_name = "Stegna — przystań rybacka"
+metadata/gps_latitude = 54.345980337
+metadata/gps_longitude = 19.113167031
+metadata/location_confidence = "approximate landing hinterland"
+metadata/representation_note = "Stegna fishing cooperative documented in 1951. Modern landing reference moved approximately 60 m inland for the game building; exact 1960 facility footprint unverified. Existing fishery recipe."
+
+[node name="Tczew_GearboxWorks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -959.815002, 37.834747, 1441.412598)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 6
+type_key = "WORKSHOP"
+ind_name = "Tczew — Zakłady Sprzętu Motoryzacyjnego"
+metadata/gps_latitude = 54.078642130
+metadata/gps_longitude = 18.789097611
+metadata/location_confidence = "modern successor industrial polygon centre"
+metadata/representation_note = "Approximation at the Eaton/Polmo works site; name uses the earlier organization, POLMO from 1968. Unchanged WORKSHOP recipe also produces weapons; not a historical armament-production claim."
+
+[node name="Tczew_GasMeterWorks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -988.595337, 40.735287, 1348.402344)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 7
+type_key = "WORKSHOP"
+ind_name = "Tczew — Pomorska Fabryka Gazomierzy"
+metadata/gps_latitude = 54.087002457
+metadata/gps_longitude = 18.784675404
+metadata/location_confidence = "modern successor industrial polygon centre"
+metadata/representation_note = "Modern Metrix site used as a factory-quarter reference for the post-1954 Piaskowa works. WORKSHOP produces generic machines and weapons, not gas meters; recipe approximation only."
+
+[node name="Tczew_Gasworks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -880.528381, 29.706442, 1369.496338)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 8
+type_key = "COAL_PLANT"
+ind_name = "Gazownia Tczew"
+metadata/gps_latitude = 54.085106400
+metadata/gps_longitude = 18.801280302
+metadata/location_confidence = "modern gasworks industrial polygon centre"
+metadata/representation_note = "Coal-demand proxy only. No town-gas, coke or tar output is represented by the current COAL_PLANT recipe."
+
+[node name="NowyDwor_RailwayWorkshops" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1218.220093, 16.422058, -45.000774)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 9
+type_key = "SMITHY"
+ind_name = "Nowy Dwór Gdański — warsztaty kolejowe"
+metadata/gps_latitude = 54.212250000
+metadata/gps_longitude = 19.123760965
+metadata/location_confidence = "approximate narrow-gauge yard/workshop quarter"
+metadata/representation_note = "Near existing narrow-gauge workshop spurs. SMITHY is a generic railway/metalworking proxy producing tools and track, not a literal vehicle-repair simulation."
+
+[node name="Zajaczkowo_RailwayWorkshops" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1070.478027, 22.580437, 1093.807373)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 10
+type_key = "SMITHY"
+ind_name = "Zajączkowo Tczewskie — warsztaty kolejowe"
+metadata/gps_latitude = 54.109887001
+metadata/gps_longitude = 18.772093818
+metadata/location_confidence = "OSM named railway-workshops point"
+metadata/representation_note = "Generic SMITHY proxy for the railway service site. Exact 1960 building footprint unverified."
+
+[node name="Gorki_Shipyard" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1012.407593, 17.541515, -1620.399658)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 11
+type_key = "SMITHY"
+ind_name = "Górki Zachodnie — stocznia rzeczna"
+metadata/gps_latitude = 54.353856429
+metadata/gps_longitude = 18.781016560
+metadata/location_confidence = "official shipyard coordinate"
+metadata/representation_note = "Official company position. Wisła name dates from 1967. SMITHY follows the existing Franzburger shipyard abstraction; no ship cargo exists."
+
+[node name="Przerobka_RailwayWorks" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1672.352661, 17.868029, -1697.713867)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 12
+type_key = "SMITHY"
+ind_name = "Gdańsk Przeróbka — ZNTK"
+metadata/gps_latitude = 54.360805901
+metadata/gps_longitude = 18.679613498
+metadata/location_confidence = "modern former-works industrial polygon centre"
+metadata/representation_note = "Generic railway metalworking proxy; not a literal vehicle repair recipe."
+
+[node name="Koszwaly_Farm" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -919.278503, 16.252577, -1142.345337)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 13
+type_key = "FARM"
+ind_name = "PGR Koszwały"
+metadata/gps_latitude = 54.310886001
+metadata/gps_longitude = 18.795326198
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="KrzyweKolo_Ranch" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1189.936646, 17.429008, 389.593781)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 14
+type_key = "RANCH"
+ind_name = "PGR Krzywe Koło"
+metadata/gps_latitude = 54.173185999
+metadata/gps_longitude = 18.753738548
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="GrabowePole_Farm" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1165.412598, 18.337954, -206.767761)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 15
+type_key = "FARM"
+ind_name = "PGR Grabowe Pole"
+metadata/gps_latitude = 54.226790600
+metadata/gps_longitude = 18.757506761
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="NowaCerkiew_Ranch" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -232.813828, 17.795462, 302.435669)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 16
+type_key = "RANCH"
+ind_name = "PGR Nowa Cerkiew"
+metadata/gps_latitude = 54.181020300
+metadata/gps_longitude = 18.900804099
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="OrlowoI_Farm" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 856.348633, 16.820063, 188.187256)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 17
+type_key = "FARM"
+ind_name = "PGR Orłowo I"
+metadata/gps_latitude = 54.191289642
+metadata/gps_longitude = 19.068158042
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="OrlowoII_Ranch" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 982.891296, 16.665258, -73.341087)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 18
+type_key = "RANCH"
+ind_name = "PGR Orłowo II"
+metadata/gps_latitude = 54.214797400
+metadata/gps_longitude = 19.087601802
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="Cyganka_Farm" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1169.707520, 15.957626, -220.484467)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 19
+type_key = "FARM"
+ind_name = "PGR Cyganka"
+metadata/gps_latitude = 54.228023541
+metadata/gps_longitude = 19.116306824
+metadata/location_confidence = "approximate PGR building-cluster reading from historical scan"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."
+
+[node name="Nowotna_Ranch" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1177.228760, 16.786804, -645.873596)
+gizmo_extents = 10.0
+script = ExtResource("2_placeholder")
+num = 20
+type_key = "RANCH"
+ind_name = "PGR Nowotna"
+metadata/gps_latitude = 54.266260102
+metadata/gps_longitude = 19.117462491
+metadata/location_confidence = "modern farmyard centre cross-checked against historical PGR label"
+metadata/representation_note = "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed."

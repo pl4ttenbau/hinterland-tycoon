@@ -160,6 +160,38 @@ is_minor = true
 num = 20
 type = 9
 
+[sub_resource type="Resource" id="Resource_gdansk_stogi"]
+script = ExtResource("5_cd4s7")
+town_name = "Gdańsk–Stogi"
+pos_xz = Vector2(-1413.410767, -1706.882080)
+is_minor = false
+num = 21
+type = 9
+
+[sub_resource type="Resource" id="Resource_gdansk_przerobka"]
+script = ExtResource("5_cd4s7")
+town_name = "Gdańsk–Przeróbka"
+pos_xz = Vector2(-1644.240112, -1645.491089)
+is_minor = false
+num = 22
+type = 9
+
+[sub_resource type="Resource" id="Resource_gdansk_rudno"]
+script = ExtResource("5_cd4s7")
+town_name = "Gdańsk–Rudno (Długie Ogrody)"
+pos_xz = Vector2(-1709.079346, -1589.364502)
+is_minor = false
+num = 23
+type = 9
+
+[sub_resource type="Resource" id="Resource_gdansk_gorki_zachodnie"]
+script = ExtResource("5_cd4s7")
+town_name = "Gdańsk–Górki Zachodnie"
+pos_xz = Vector2(-1049.335205, -1628.442871)
+is_minor = true
+num = 24
+type = 9
+
 [node name="Towns" type="Node" unique_id=410405806]
 script = ExtResource("1_mtwcu")
 
@@ -322,3 +354,52 @@ metadata/gps_latitude = 54.2732674
 metadata/gps_longitude = 18.8679543
 metadata/population_reference_not_1960 = 931.0
 metadata/placement_source = "https://www.cedry-wielkie.pl/index.php/5032-jest-nas-nieco-wiecej"
+
+[node name="Town3D_Gdańsk–Stogi" parent="." unique_id=418370287 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1413.410767, 17.648745, -1706.882080)
+town = SubResource("Resource_gdansk_stogi")
+metadata/gps_latitude = 54.361630000
+metadata/gps_longitude = 18.719400900
+metadata/scenario_year = 1968
+metadata/intended_relative_scale = "largest of the four additions"
+metadata/placement_source = "https://www.openstreetmap.org/way/1336986131"
+metadata/location_anchor = "Stryjewskiego high-street point in the residential settlement; not the district polygon centroid."
+metadata/history_source = "https://gdansk.gedanopedia.pl/gdansk/?title=STOGI"
+metadata/population_note = "No verified historical population assigned; size is a gameplay classification."
+
+[node name="Town3D_Gdańsk–Przeróbka" parent="." unique_id=1665121492 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1644.240112, 17.167040, -1645.491089)
+town = SubResource("Resource_gdansk_przerobka")
+metadata/gps_latitude = 54.356111800
+metadata/gps_longitude = 18.683933100
+metadata/scenario_year = 1968
+metadata/intended_relative_scale = "medium workers neighbourhood"
+metadata/placement_source = "https://www.openstreetmap.org/way/256364046"
+metadata/location_anchor = "Bajki / Kryniczna residential junction, in the estate quarter developed during the 1960s."
+metadata/history_source = "https://gdansk.gedanopedia.pl/gdansk/?title=PRZER%C3%93BKA"
+metadata/population_note = "No verified historical population assigned; size is a gameplay classification."
+
+[node name="Town3D_Gdańsk–Rudno (Długie Ogrody)" parent="." unique_id=1673330385 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1709.079346, 17.733269, -1589.364502)
+town = SubResource("Resource_gdansk_rudno")
+metadata/gps_latitude = 54.351066800
+metadata/gps_longitude = 18.673970300
+metadata/scenario_year = 1968
+metadata/intended_relative_scale = "compact denser urban cluster"
+metadata/placement_source = "https://www.openstreetmap.org/node/1847623797"
+metadata/location_anchor = "Głęboka / Mostek junction in the Rudno housing quarter; the marker represents the adjoining Długie Ogrody area as well."
+metadata/history_source = "https://gdansk.gedanopedia.pl/?title=RUDNO"
+metadata/population_note = "No verified historical population assigned; size is a gameplay classification."
+
+[node name="Town3D_Gdańsk–Górki Zachodnie" parent="." unique_id=1495047221 instance=ExtResource("2_eti54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1049.335205, 17.571831, -1628.442871)
+town = SubResource("Resource_gdansk_gorki_zachodnie")
+metadata/gps_latitude = 54.354579400
+metadata/gps_longitude = 18.775342500
+metadata/scenario_year = 1968
+metadata/intended_relative_scale = "small waterfront/shipyard settlement"
+metadata/placement_source = "https://www.openstreetmap.org/way/182591717"
+metadata/location_anchor = "Łowicka residential-road corner near the shipyard-workers housing area; separated from the shipyard marker."
+metadata/history_source = "https://gdansk.gedanopedia.pl/gdansk/?title=G%C3%93RKI_ZACHODNIE"
+metadata/population_note = "No verified historical population assigned; size is a gameplay classification."
+
