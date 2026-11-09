@@ -1,5 +1,5 @@
-## child of a real iventory
-## contains an amount of goods, but no higher-leven functions to interact with
+## Stores the quantities and aggregate totals behind a GoodsInventory.
+## Each placed scene instance owns its stock, including any authored starting goods.
 class_name BaseGoodsStorage extends Resource
 
 @export var inventory_dict: Dictionary = Dictionary()
@@ -13,6 +13,9 @@ class_name BaseGoodsStorage extends Resource
 static var DEFAULT_MAX_STORAGE = 150.0
 
 func _init() -> void:
+	# GoodsInventory is already local to the scene. Mark its nested storage local
+	# as well so PackedScene creates a separate stock resource for each instance.
+	self.resource_local_to_scene = true
 	self.max_storage = DEFAULT_MAX_STORAGE
 
 func get_amount(goods_type_key: String) -> float:
