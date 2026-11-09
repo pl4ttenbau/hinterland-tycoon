@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cjnlved5jgseb"]
+
+[ext_resource type="PackedScene" uid="uid://cupu45ab07wh7" path="res://assets/meshes/industry/sawmill/mesh/sawmill_merged.gltf" id="1_4tyih"]
+
+[node name="MeshSawmill" unique_id=29808110 instance=ExtResource("1_4tyih")]

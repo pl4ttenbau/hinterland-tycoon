@@ -35,6 +35,7 @@ mesh = ExtResource("2_6kui1")
 surface_material_override/0 = SubResource("StandardMaterial3D_ti6h2")
 
 [node name="ResBldCollider" type="StaticBody3D" parent="." unique_id=977989044]
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_e3lrm")
 script = ExtResource("3_gtjmp")
 metadata/_custom_type_script = "uid://chalq0opfem2r"
