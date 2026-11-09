@@ -84,8 +84,8 @@ func add_runtime_stop(station: RailStationData) -> void:
 func create_station_3d(station_obj: RailStationData):
 	var instance: RailStation3D = load(STATION_3D_SCENE_PATH).instantiate()
 	instance.station = station_obj
-	if station_obj.curve_offset >= 0.0:
-		instance.station_pos = station_obj.position
+	# Inventory discovery and transfer both use the station view's position.
+	instance.station_pos = station_obj.position
 	self.add_child(instance, true)
 	instance.name = RailStation3D.STATION_NAME_FORMAT % [station_obj.town_name, station_obj.station_name]
 

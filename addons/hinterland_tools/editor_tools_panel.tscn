@@ -102,6 +102,18 @@ button_group = SubResource("ButtonGroup_8krnh")
 text = "Select Object"
 icon = SubResource("ImageTexture_sfkbt")
 
+[node name="CreateInterchange" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Create Interchange"
+
+[node name="AddStop" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Add Stop"
+
 [node name="FreeTool" type="Button" parent="Buttons" unique_id=1906754543]
 unique_name_in_owner = true
 layout_mode = 2

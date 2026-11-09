@@ -72,4 +72,4 @@ enum UiMode {
 
 ## IDs for the editor toolbar's enum-keyed Button lookup.
 ## Tool behavior stays in the plugin until tools become individual classes.
-enum EnumEditorTool { NONE, BUILD_TOWN, CREATE_ROAD, CREATE_RAIL, SELECT_OBJECT }
+enum EnumEditorTool { NONE, BUILD_TOWN, CREATE_ROAD, CREATE_RAIL, SELECT_OBJECT, CREATE_INTERCHANGE, ADD_STOP }

@@ -116,3 +116,6 @@ func _add_node_marker(index: int, mesh: Mesh, material: Material) -> void:
 
 func _exit_tree() -> void:
 	clear()
+
+func get_marked_line() -> EditorInfrLine3D:
+	return _line if is_instance_valid(_line) else null

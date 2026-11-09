@@ -64,23 +64,18 @@ static func gps_coords_str_to_float_arr(gps_coords_str: String) -> Array[float]:
 ## Invalid data or a point outside the map returns an infinite vector.
 static func gps_coords_to_map_pos(gps_coords: Array[float], map_pos_size: MapSizeAndPosData) -> Vector2:
 	var invalid := Vector2(INF, INF)
-	if gps_coords.size() != 2 or map_pos_size == null or map_pos_size.long_lat == null:
+	if gps_coords.size() != 2:
 		Loggie.warn("Cannot convert GPS position: missing coordinates or map metadata")
 		return invalid
-	var bounds: MapLongLat = map_pos_size.long_lat
-	if bounds.topLeft.size() != 2 or bounds.bottomRight.size() != 2 \
-			or map_pos_size.raster_size.size() != 2 or map_pos_size.raster_offset.size() != 2:
-		Loggie.warn("Cannot convert GPS position: incomplete map metadata")
+	var map_error: String = gps_map_validation_error(map_pos_size)
+	if not map_error.is_empty():
+		Loggie.warn("Cannot convert GPS position: %s" % map_error)
 		return invalid
+	var bounds: MapLongLat = map_pos_size.long_lat
 	var north: float = bounds.top
 	var south: float = bounds.bottom
 	var west: float = bounds.left
 	var east: float = bounds.right
-	if not is_finite(north) or not is_finite(south) or not is_finite(west) or not is_finite(east) \
-			or north <= south or east <= west \
-			or map_pos_size.raster_width < 2 or map_pos_size.raster_height < 2:
-		Loggie.warn("Cannot convert GPS position: invalid map bounds or raster size")
-		return invalid
 	var latitude: float = gps_coords[0]
 	var longitude: float = gps_coords[1]
 	if not is_finite(latitude) or not is_finite(longitude) \
@@ -93,4 +88,46 @@ static func gps_coords_to_map_pos(gps_coords: Array[float], map_pos_size: MapSiz
 		x_fraction * (map_pos_size.raster_width - 1.0) + map_pos_size.raster_offset[0],
 		z_fraction * (map_pos_size.raster_height - 1.0) + map_pos_size.raster_offset[1]
 	)
+
+static func gps_map_validation_error(map_pos_size: MapSizeAndPosData) -> String:
+	if map_pos_size == null or map_pos_size.long_lat == null:
+		return "missing map metadata"
+	var bounds: MapLongLat = map_pos_size.long_lat
+	if bounds.topLeft.size() != 2 or bounds.bottomRight.size() != 2 \
+			or map_pos_size.raster_size.size() != 2 or map_pos_size.raster_offset.size() != 2:
+		return "incomplete map metadata"
+	if not is_finite(bounds.top) or not is_finite(bounds.bottom) \
+			or not is_finite(bounds.left) or not is_finite(bounds.right) \
+			or bounds.top <= bounds.bottom or bounds.right <= bounds.left \
+			or map_pos_size.raster_width < 2 or map_pos_size.raster_height < 2:
+		return "invalid map bounds or raster size"
+	return ""
+
+## Returns decimal latitude and longitude from global X/Z, or an empty array
+## if the map metadata is unusable or the point lies outside the raster.
+static func world_pos_to_gps_coords(world_xz: Vector2, vertex_spacing: float, map_pos_size: MapSizeAndPosData) -> Array[float]:
+	if not world_xz.is_finite() or not is_finite(vertex_spacing) or vertex_spacing <= 0.0 \
+			or not gps_map_validation_error(map_pos_size).is_empty():
+		return []
+	# Convert both sample corners to world space the same way as GPS placement.
+	# This keeps the rounded world positions of the boundary samples in bounds.
+	var sample_x: int = map_pos_size.raster_offset[0]
+	var sample_z: int = map_pos_size.raster_offset[1]
+	var northwest := Vector2(sample_x, sample_z) * vertex_spacing
+	var southeast := Vector2(
+		sample_x + map_pos_size.raster_width - 1.0,
+		sample_z + map_pos_size.raster_height - 1.0
+	) * vertex_spacing
+	if not northwest.is_finite() or not southeast.is_finite() \
+			or southeast.x <= northwest.x or southeast.y <= northwest.y \
+			or world_xz.x < northwest.x or world_xz.x > southeast.x \
+			or world_xz.y < northwest.y or world_xz.y > southeast.y:
+		return []
+	var bounds: MapLongLat = map_pos_size.long_lat
+	var x_fraction: float = inverse_lerp(northwest.x, southeast.x, world_xz.x)
+	var z_fraction: float = inverse_lerp(northwest.y, southeast.y, world_xz.y)
+	return [
+		lerpf(bounds.top, bounds.bottom, z_fraction),
+		lerpf(bounds.left, bounds.right, x_fraction)
+	]
 #endregion

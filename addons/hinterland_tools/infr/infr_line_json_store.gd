@@ -137,10 +137,13 @@ static func write_with_backup(path: String, records: Array) -> EditorActionResul
 	# Work on a copy so serialization does not modify live curves/caller data.
 	records = records.duplicate(true)
 	round_positions(records)
+	return write_text_with_backup(path, format_json(records) + "\n")
+
+static func write_text_with_backup(path: String, contents: String) -> EditorActionResult:
 	var absolute: String = ProjectSettings.globalize_path(path)
 	var suffix: String = "%s-%d" % [Time.get_datetime_string_from_system().replace(":", "-"), Time.get_ticks_usec()]
 	var temporary: String = absolute + ".tmp-" + suffix
-	var result: EditorActionResult = _write_temporary_json(temporary, records)
+	var result: EditorActionResult = _write_temporary_json(temporary, contents)
 	if not result.ok:
 		return result
 	var backup: String = ""
@@ -157,11 +160,11 @@ static func write_with_backup(path: String, records: Array) -> EditorActionResul
 		return failure("Could not replace JSON; original retained: " + error_string(error))
 	return EditorActionResult.success(0, backup)
 
-static func _write_temporary_json(path: String, records: Array) -> EditorActionResult:
+static func _write_temporary_json(path: String, contents: String) -> EditorActionResult:
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		return failure("Cannot write temporary JSON: " + error_string(FileAccess.get_open_error()))
-	file.store_string(format_json(records) + "\n")
+	file.store_string(contents)
 	file.flush()
 	var error: Error = file.get_error()
 	file.close()

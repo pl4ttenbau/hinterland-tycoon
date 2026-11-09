@@ -55,5 +55,24 @@
 		"mass_tonnes": 0.65,
 		"payload_tonnes": 0.39,
 		"motor_power_kw": 19.1
+	},
+	{
+		"key": "daimler_1911_bus",
+		"purchase_price": 12000,
+		"display_name": "Daimler 1911 Bus",
+		"model_scene_path": "res://assets/meshes/vehicles/road/daimler_1911_bus/vehicle_daimler_1911_bus.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 27.0,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 34.0
+		},
+		"length_metres": 7.838,
+		"width_metres": 2.4,
+		"height_metres": 3.936,
+		"mass_tonnes": 4.0,
+		"payload_tonnes": 1.7,
+		"motor_power_kw": 30.0
 	}
 ]

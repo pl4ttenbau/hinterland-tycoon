@@ -29,6 +29,7 @@ func test_toolbar(tree: SceneTree) -> bool:
 	var other_panel: Control = load("res://addons/hinterland_tools/editor_tools_panel.tscn").instantiate()
 	tree.root.add_child(other_panel)
 	var other_buttons: Dictionary[Enums.EnumEditorTool, Button] = HinterlandEditorPlugin.create_tool_buttons(other_panel)
+	buttons[Enums.EnumEditorTool.SELECT_OBJECT].button_pressed = true
 	other_buttons[Enums.EnumEditorTool.SELECT_OBJECT].button_pressed = true
 	check(buttons[Enums.EnumEditorTool.SELECT_OBJECT].button_pressed, "A second panel cannot release this panel's selected tool")
 	other_panel.free()

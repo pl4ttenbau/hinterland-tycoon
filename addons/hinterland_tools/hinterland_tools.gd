@@ -17,6 +17,8 @@ var residence_road_preview: EditorResidenceRoadPreview
 var line_node_markers: InfrLineNodeMarkers
 
 var drawing = InfrDrawingTool.new()
+var interchange_authoring := preload("res://addons/hinterland_tools/infr/interchange_authoring.gd").new()
+var station_dialog: ConfirmationDialog
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
@@ -69,6 +71,8 @@ static func create_tool_buttons(panel: Control) -> Dictionary[Enums.EnumEditorTo
 		Enums.EnumEditorTool.CREATE_ROAD: panel.get_node("%CreateRoad"),
 		Enums.EnumEditorTool.CREATE_RAIL: panel.get_node("%CreateRail"),
 		Enums.EnumEditorTool.SELECT_OBJECT: panel.get_node("%SelectObject"),
+		Enums.EnumEditorTool.CREATE_INTERCHANGE: panel.get_node("%CreateInterchange"),
+		Enums.EnumEditorTool.ADD_STOP: panel.get_node("%AddStop"),
 	}
 	var group := ButtonGroup.new()
 	group.allow_unpress = true
@@ -130,6 +134,8 @@ func _forward_3d_gui_input(camera: Camera3D, event: InputEvent) -> AfterGUIInput
 	if is_instance_valid(self.line_node_markers):
 		self.line_node_markers.set_process(true)
 		self.line_node_markers.update_view(camera)
+	if is_instance_valid(self.active_world) and _station_tool_active():
+		return _forward_station_input(camera, event)
 	# Leave selection and camera navigation to Godot when the tool is inactive.
 	if not is_instance_valid(self.active_world) or not (is_tool_active(Enums.EnumEditorTool.BUILD_TOWN) or is_tool_active(Enums.EnumEditorTool.CREATE_ROAD) or is_tool_active(Enums.EnumEditorTool.CREATE_RAIL) or self._selection_active()):
 		return AFTER_GUI_INPUT_PASS
@@ -205,6 +211,10 @@ func _on_scene_changed(root: Node) -> void:
 		self.editor_signals.terrain_clicked.connect(self._on_terrain_clicked)
 
 func _disconnect_world() -> void:
+	if is_instance_valid(station_dialog):
+		station_dialog.hide()
+		station_dialog.queue_free()
+		station_dialog = null
 	self.drawing.clear()
 	if is_instance_valid(self.line_node_markers):
 		self.line_node_markers.clear()
@@ -238,6 +248,9 @@ func _on_free_tool_pressed() -> void:
 func _update_tool_status() -> void:
 	if not is_instance_valid(self.active_world):
 		self.tool_status.text = "No tool selected · Open a world map to use the editor tools."
+	elif _station_tool_active():
+		var action: String = "Add Stop" if is_tool_active(Enums.EnumEditorTool.ADD_STOP) else "Create Interchange"
+		self.tool_status.text = action + " · Select a saved road or rail, then click one of its node markers · Esc to exit"
 	elif self._selection_active():
 		self.tool_status.text = "Select Object · Click a visible road/rail to inspect its ID and properties · Esc or Free Tool: leave selection mode"
 	elif is_tool_active(Enums.EnumEditorTool.CREATE_ROAD) or is_tool_active(Enums.EnumEditorTool.CREATE_RAIL):
@@ -340,3 +353,133 @@ func _on_history_version_changed() -> void:
 	if is_instance_valid(self.drawing.world):
 		self.drawing.refresh_endpoints()
 		self.drawing.hide_pointer()
+
+func _station_tool_active() -> bool:
+	return is_tool_active(Enums.EnumEditorTool.CREATE_INTERCHANGE) or is_tool_active(Enums.EnumEditorTool.ADD_STOP)
+
+func _forward_station_input(camera: Camera3D, event: InputEvent) -> AfterGUIInput:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		_on_free_tool_pressed()
+		return AFTER_GUI_INPUT_STOP
+	if not event is InputEventMouseButton or event.button_index != MOUSE_BUTTON_LEFT or not event.pressed:
+		return AFTER_GUI_INPUT_PASS
+	if event.alt_pressed or event.ctrl_pressed or event.shift_pressed or event.meta_pressed:
+		return AFTER_GUI_INPUT_PASS
+	var line: EditorInfrLine3D = line_node_markers.get_marked_line()
+	if is_instance_valid(line) and active_world.is_ancestor_of(line) and line.is_visible_in_tree() and line.curve != null:
+		var index: int = _pick_station_node(line, camera, event.position)
+		if index >= 0:
+			var adding_stop: bool = is_tool_active(Enums.EnumEditorTool.ADD_STOP)
+			var draft: Dictionary = interchange_authoring.prepare(active_world, line, index, adding_stop)
+			if draft.has("error"):
+				file_status.text = draft.error
+			else:
+				_open_station_dialog(draft, adding_stop)
+			return AFTER_GUI_INPUT_STOP
+	# Let the same tool select a different line before picking one of its nodes.
+	var hit: EditorPickHit = object_selection.pick(active_world, camera, event.position, _selection_depth(camera, event.position))
+	if hit != null:
+		_inspect_selection_hit(hit)
+		_update_tool_status()
+		return AFTER_GUI_INPUT_STOP
+	return AFTER_GUI_INPUT_PASS
+
+func _pick_station_node(line: EditorInfrLine3D, camera: Camera3D, mouse: Vector2) -> int:
+	var best_index: int = -1
+	var best_distance: float = 9.0
+	var best_depth: float = INF
+	for index: int in line.curve.point_count:
+		var position: Vector3 = line.to_global(line.curve.get_point_position(index))
+		var depth: float = -camera.to_local(position).z
+		if depth < camera.near or depth > camera.far:
+			continue
+		var distance: float = mouse.distance_to(camera.unproject_position(position))
+		if distance < best_distance or (distance == best_distance and depth < best_depth):
+			best_distance = distance
+			best_depth = depth
+			best_index = index
+	return best_index
+
+func _open_station_dialog(draft: Dictionary, adding_stop: bool) -> void:
+	if is_instance_valid(station_dialog):
+		return
+	var towns: Array[TownData] = []
+	if not adding_stop:
+		var town_root := active_world.get_node_or_null("Towns") as WorldTowns
+		if town_root != null:
+			towns = town_root.get_town_objs()
+		if towns.is_empty():
+			file_status.text = "Add a town to this map before creating an interchange."
+			return
+	var dialog := ConfirmationDialog.new()
+	station_dialog = dialog
+	dialog.title = "Add Stop" if adding_stop else "Create Interchange"
+	dialog.ok_button_text = "Add Stop" if adding_stop else "Create Interchange"
+	dialog.dialog_hide_on_ok = false
+	var form := VBoxContainer.new()
+	form.custom_minimum_size.x = 340
+	dialog.add_child(form)
+	var location := Label.new()
+	location.text = "%s node %d" % ["Road" if draft.anchor.domain == "ROAD" else "Rail", draft.anchor.nodeIndex]
+	form.add_child(location)
+	var title_input: LineEdit
+	var parent_choice := OptionButton.new()
+	if adding_stop:
+		parent_choice.tooltip_text = "Choose the interchange for this stop."
+		for candidate: Dictionary in draft.candidates:
+			parent_choice.add_item("%s (%.1f m)" % [candidate.record.name, candidate.distance])
+	else:
+		title_input = LineEdit.new()
+		title_input.placeholder_text = "Interchange name"
+		parent_choice.tooltip_text = "Choose the town for this interchange."
+		form.add_child(title_input)
+		for town: TownData in towns:
+			parent_choice.add_item(town.town_name)
+	form.add_child(parent_choice)
+	var stop_choice: OptionButton
+	if adding_stop:
+		stop_choice = OptionButton.new()
+		var options: Array[String] = ["Right", "Left", "Both"] if draft.anchor.domain == "ROAD" else ["Passenger", "Goods"]
+		for option: String in options:
+			stop_choice.add_item(option)
+		form.add_child(stop_choice)
+	var status := Label.new()
+	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	form.add_child(status)
+	dialog.canceled.connect(dialog.queue_free)
+	dialog.close_requested.connect(dialog.queue_free)
+	dialog.confirmed.connect(func() -> void:
+		var records: Array = draft.records.duplicate(true)
+		var draft_to_save: Dictionary = draft.duplicate()
+		draft_to_save.records = records
+		if adding_stop:
+			var parent_num: int = int(draft.candidates[parent_choice.selected].record.num)
+			var stop: Dictionary = draft.anchor.duplicate()
+			stop.num = draft.next_stop
+			if stop.domain == "ROAD":
+				stop.roadSide = stop_choice.get_item_text(stop_choice.selected).to_upper()
+			else:
+				stop.type = "STATION_PASS" if stop_choice.selected == 0 else "STATION_GOODS"
+			for record: Dictionary in records:
+				if int(record.num) == parent_num:
+					record.stops.append(stop)
+					break
+		else:
+			var title: String = title_input.text.strip_edges()
+			if title.is_empty():
+				status.text = "Enter an interchange name."
+				return
+			var town: TownData = towns[parent_choice.selected]
+			records.append({"num": draft.next_interchange, "name": title, "townNum": town.num,
+				"townName": town.town_name, "editorPosition": InfrJsonStore.vec_array(draft.position), "stops": []})
+		var result: EditorActionResult = interchange_authoring.save(draft_to_save)
+		if not result.ok:
+			status.text = result.error
+			return
+		file_status.text = "Saved stop to interchanges.json." if adding_stop else "Saved interchange to interchanges.json."
+		dialog.hide()
+		dialog.queue_free())
+	add_child(dialog)
+	dialog.popup_centered()
+	if not adding_stop:
+		title_input.grab_focus()
