@@ -52,12 +52,22 @@ func test_road_depot() -> bool:
 	var depot: RoadDepotData = coordinator.depots.road_depots[0]
 	self.check(depot.road_num == 363 and depot.road_pos == "END", "Road depot JSON uses road anchor fields")
 	depot.num = 73
+	coordinator.roads.spawn_road(depot.road)
+	var road: RoadWay3D = coordinator.roads.storage.get_container_by_num(depot.road_num)
+	road.rotate_y(0.3)
+	var path: Path3D = road.get_path_3d()
+	var length: float = path.curve.get_baked_length()
 	SignalBus.roads_spawned.emit()
 	self.check(coordinator.depots.road_containers.size() == 1, "Zero-argument road-spawned signal creates a depot view")
 	var view: RoadDepot3D = coordinator.depots.road_containers[0]
 	self.check(view.depot == depot and depot.num == 73, "Spawning preserves the authored depot identity")
 	self.check(RoadDepotData.get_by_num(73) == depot, "Road depot lookup uses the road collection")
-	self.check(view.position.is_equal_approx(depot.get_depot_road_node().position), "Depot view uses its road endpoint")
+	var entrance: Marker3D = view.get_node("RoadEntrance")
+	var endpoint: Vector3 = path.to_global(path.curve.sample_baked(length))
+	var inward: Vector3 = path.to_global(path.curve.sample_baked(length - 0.5)) - endpoint
+	inward.y = 0.0
+	self.check(entrance.global_position.distance_to(endpoint) < 0.001, "Garage entrance meets the live road endpoint")
+	self.check(entrance.global_basis.z.dot(inward.normalized()) > 0.999, "Garage entrance faces back along the road")
 	self.check((view.get_node("RoadDepotCollider") as RoadDepotCollider).get_click_ref().entity_num == 73, "Collider reports the road depot ID")
 	coordinator.free()
 	GlobalState.selected_map_name = previous_map

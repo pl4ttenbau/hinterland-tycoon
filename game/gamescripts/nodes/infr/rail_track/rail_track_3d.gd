@@ -3,6 +3,7 @@
 class_name RailTrack3D extends GameEntity3D
 
 const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
+const SCENE_PATH_1067MM = "res://assets/meshes/infr/rail/rail_track_1067mm/path_rail_1067mm_bedded.tscn"
 const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn"
 const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_600mm/path_rail_600mm_bedded.tscn"
 
@@ -47,7 +48,9 @@ func _hide_bed_when_required(track_obj: RailTrackData):
 #endregion
 		
 static func get_scene_path(track_obj: RailTrackData) -> String:
-	if track_obj.infr_type_key == "750_MM":
+	if track_obj.infr_type_key == InfrType.GAUGE_1067_MM:
+		return SCENE_PATH_1067MM
+	elif track_obj.infr_type_key == "750_MM":
 		return SCENE_PATH_750MM
 	elif track_obj.infr_type_key == "600_MM":
 		return SCENE_PATH_600MM

@@ -7,9 +7,10 @@ signal goods_change()
 
 @export var amount_used: float
 @export var amount_max: float
-## Subsets of aggregate passenger totals: good key -> physical stop ID -> amount.
-## Legacy counts without a recorded destination remain an explicit unassigned group.
+## Legacy serialized stop IDs, converted once the map stop registry is ready.
 @export var passenger_destinations: Dictionary = {}
+## Passenger good -> destination interchange ID -> amount.
+@export var passenger_interchange_destinations: Dictionary = {}
 
 func _init() -> void:
 	self.resource_local_to_scene = true
@@ -62,11 +63,15 @@ func can_take(amount_dto: GoodsAmount):
 
 ## Select a passenger batch without merging people with different destinations.
 func stack_amount(key: StringName, destination: int = -1) -> float:
+	_upgrade_passenger_destinations()
 	var total: float = storage.get_amount(key)
-	var groups: Dictionary = passenger_destinations.get(key, {})
+	var groups: Dictionary = passenger_interchange_destinations.get(key, {})
 	if destination >= 0:
 		return float(groups.get(destination, 0))
 	for count: float in groups.values():
+		total -= count
+	var legacy_groups: Dictionary = passenger_destinations.get(key, {})
+	for count: float in legacy_groups.values():
 		total -= count
 	return maxf(0, total)
 
@@ -83,11 +88,12 @@ func change_stack(key: StringName, destination: int, delta: float, notify: bool 
 	if delta < 0 and stack_amount(key, destination) < -delta:
 		return false
 	if good.is_passenger() and destination >= 0:
-		var groups: Dictionary = passenger_destinations.get(key, {}).duplicate()
+		_upgrade_passenger_destinations()
+		var groups: Dictionary = passenger_interchange_destinations.get(key, {}).duplicate()
 		groups[destination] = float(groups.get(destination, 0)) + delta
 		if is_zero_approx(groups[destination]):
 			groups.erase(destination)
-		passenger_destinations[key] = groups
+		passenger_interchange_destinations[key] = groups
 	storage.change_amount(key, delta)
 	if notify:
 		goods_change.emit()
@@ -95,13 +101,14 @@ func change_stack(key: StringName, destination: int, delta: float, notify: bool 
 
 ## Generate passenger/cargo rows without changing existing aggregate consumers.
 func stacks(passengers: bool) -> Array[InventoryStack]:
+	_upgrade_passenger_destinations()
 	var result: Array[InventoryStack] = []
 	for key: String in storage.get_res_key_list():
 		var good: BaseGoodsType = GameTypes.resource_types.get(key)
 		if good == null or good.is_passenger() != passengers:
 			continue
 		if passengers:
-			var groups: Dictionary = passenger_destinations.get(key, {})
+			var groups: Dictionary = passenger_interchange_destinations.get(key, {})
 			for destination: int in groups:
 				if float(groups[destination]) > 0:
 					result.append(InventoryStack.new(key, groups[destination], destination))
@@ -110,8 +117,29 @@ func stacks(passengers: bool) -> Array[InventoryStack]:
 			result.append(InventoryStack.new(key, unassigned))
 	result.sort_custom(func(a: InventoryStack, b: InventoryStack):
 		# Sort the resource names, rather than StringName's interned identifiers.
-		return str(a.good_key) < str(b.good_key) if a.good_key != b.good_key else a.destination_stop < b.destination_stop)
+		return str(a.good_key) < str(b.good_key) if a.good_key != b.good_key else a.destination_interchange < b.destination_interchange)
 	return result
+
+## Old stop IDs can overlap interchange IDs. Translate through the stop catalog
+## and merge destinations that now share one interchange. Passengers whose old
+## stop is missing remain in the aggregate as unassigned.
+func _upgrade_passenger_destinations() -> void:
+	if passenger_destinations.is_empty() or not is_instance_valid(Managers.interchanges):
+		return
+	var catalog: InterchangesLoader = Managers.interchanges
+	if not catalog.is_loaded or catalog.stops_by_num.size() < catalog.stop_definitions.size():
+		return
+	for key: StringName in passenger_destinations:
+		var old_groups: Dictionary = passenger_destinations[key]
+		var groups: Dictionary = passenger_interchange_destinations.get(key, {}).duplicate()
+		for stop_id: int in old_groups:
+			var stop: AbstractStation = catalog.stops_by_num.get(stop_id)
+			if stop == null or stop.interchange == null:
+				continue
+			var destination: int = stop.interchange.num
+			groups[destination] = float(groups.get(destination, 0.0)) + float(old_groups[stop_id])
+		passenger_interchange_destinations[key] = groups
+	passenger_destinations = {}
 
 #region Callbacks
 func _on_goods_changed():

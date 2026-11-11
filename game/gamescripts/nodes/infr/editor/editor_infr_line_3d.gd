@@ -14,6 +14,8 @@ var _junction_markers: Array[MeshInstance3D] = []
 func _validate_property(property: Dictionary) -> void:
 	if property.name in ["start_connections", "end_connections"]:
 		property.usage = PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY
+	elif property.name == "rail_gauge" and infr_domain != Enums.InfrDomain.RAIL:
+		property.usage &= ~PROPERTY_USAGE_EDITOR
 
 func _register_connections() -> void:
 	if not is_inside_tree():
@@ -98,6 +100,8 @@ func _create_junction_marker() -> MeshInstance3D:
 @export var num: int = -1
 @export var infr_name: String
 @export var infr_domain: Enums.InfrDomain
+## An empty value keeps the gauge already saved in the map's track record.
+@export_enum("600_MM", "750_MM", "1067_MM", "NORMAL_GAUGE") var rail_gauge: String = ""
 
 @export var color: Color:
 	get(): return self._get_color()
@@ -153,6 +157,8 @@ func _enter_tree():
 
 #region Curve
 func create_curve_from_dict(infr_dict: Dictionary):
+	if infr_domain == Enums.InfrDomain.RAIL:
+		rail_gauge = infr_dict.get("type", "")
 	self.curve = Curve3D.new()
 	var abs_points: PackedVector3Array = []
 	var point_handle_in: PackedVector3Array = []

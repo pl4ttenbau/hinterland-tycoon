@@ -5,6 +5,11 @@ signal inventory_connected(inv_obj: GoodsInventory)
 @export var cached_inventory: GoodsInventory
 
 func get_inventory() -> GoodsInventory:
+	# Access can change when an entity is linked to an interchange. Keep the
+	# cache for its own inventory so it remains available if it is unlinked.
+	var shared_inventory: GoodsInventory = get_shared_inventory()
+	if shared_inventory != null:
+		return shared_inventory
 	if self.cached_inventory:
 		return self.cached_inventory
 	# find and cache
@@ -14,10 +19,13 @@ func get_inventory() -> GoodsInventory:
 		self.inventory_connected.emit(found)
 	return found
 
+## Override when this view is an access point for another entity's inventory.
+func get_shared_inventory() -> GoodsInventory:
+	return null
+
 #region Initialization
 func _ready() -> void:
-	if !self.cached_inventory:
-		self._find_inventory()
+	get_inventory()
 
 func _find_inventory() -> GoodsInventory:
 	var component: InventoryContainer = InventoryContainer.find_on(self)

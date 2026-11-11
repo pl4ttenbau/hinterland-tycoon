@@ -6,10 +6,7 @@ class_name RoadStationData extends AbstractStation
 ## The stopping point is an authored road node, independent of building access links.
 @export var road_num: int = -1
 @export var node_index: int = -1
-## Side relative to increasing node order; BOTH can describe a future two-sided stop.
-@export var road_side: Enums.RoadSide = Enums.RoadSide.RIGHT
-## Direction through the road's node order; STOP is not a served direction.
-@export var direction: Enums.PathDirection = Enums.PathDirection.TRACK_NODES_INCREASE
+@export var direction: Enums.RoadStopDirection = Enums.RoadStopDirection.ROAD_NODES_INCREASE
 
 ## World position of the station representation, like RailStationData.position.
 @export var position: Vector3:
@@ -27,13 +24,29 @@ func anchor(roads: RoadStore) -> RoadNode:
 	var road: RoadData = roads._by_id.get(road_num)
 	if road == null:
 		return null
-	if curve_offset >= 0.0:
-		if road.curve == null or curve_offset > road.curve.get_baked_length():
+	var offset: float = curve_offset
+	if offset < 0.0:
+		if node_index < 0 or node_index >= road.nodes.size():
 			return null
-		var result := RoadRouteAnchor.at(road, curve_offset)
-		result.arrival_direction = 0 if road_side == Enums.RoadSide.BOTH else (1 if road_side == Enums.RoadSide.RIGHT else -1)
-		return result
-	return road.nodes[node_index] if node_index >= 0 and node_index < road.nodes.size() else null
+		var node: RoadNode = road.nodes[node_index]
+		if direction == Enums.RoadStopDirection.BOTH_DIRECTIONS:
+			return node
+		if road.curve == null:
+			road.build_curve()
+		offset = RoadRouteAnchor.offset_of(node)
+	if road.curve == null or offset > road.curve.get_baked_length():
+		return null
+	var result := RoadRouteAnchor.at(road, offset)
+	match direction:
+		Enums.RoadStopDirection.ROAD_NODES_INCREASE:
+			result.arrival_direction = 1
+		Enums.RoadStopDirection.ROAD_NODES_DECREASE:
+			result.arrival_direction = -1
+	return result
+
+static func direction_key(data: Dictionary) -> String:
+	var key: Variant = data.get("roadStopDirection")
+	return key if key is String and Enums.RoadStopDirection.has(key) else ""
 
 ## Map JSON uses the same camelCase convention as rail station catalogs.
 ## Resolving road/node references and deriving world placement belong to the loader.
@@ -42,8 +55,9 @@ static func of_dict(data: Dictionary) -> RoadStationData:
 		if not _is_nonnegative_integer(data.get(field)):
 			push_error("Road stop requires a nonnegative integer %s" % field)
 			return null
-	if not data.get("roadSide") is String or not Enums.RoadSide.has(data["roadSide"]):
-		push_error("Road stop requires roadSide LEFT, RIGHT or BOTH")
+	var served_direction: String = direction_key(data)
+	if served_direction.is_empty():
+		push_error("Road stop requires roadStopDirection ROAD_NODES_INCREASE, ROAD_NODES_DECREASE or BOTH_DIRECTIONS")
 		return null
 	for field: String in ["name", "townName", "type"]:
 		if data.has(field) and not data[field] is String:
@@ -58,7 +72,7 @@ static func of_dict(data: Dictionary) -> RoadStationData:
 	var station_obj := RoadStationData.new(int(data["num"]), data.get("name", ""), int(data.get("townNum", -1)))
 	station_obj.road_num = int(data["roadNum"])
 	station_obj.node_index = int(data["nodeIndex"])
-	station_obj.road_side = Enums.RoadSide[data["roadSide"]]
+	station_obj.direction = Enums.RoadStopDirection[served_direction]
 	station_obj.town_name = data.get("townName", "")
 	station_obj.station_type = data.get("type", "")
 	station_obj.hide_building = data.get("hideBuilding", false)

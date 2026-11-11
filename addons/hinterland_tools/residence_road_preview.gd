@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	var world: Node = EditorInterface.get_edited_scene_root()
 	var house: Node3D
 	for selected: Node in EditorInterface.get_selection().get_selected_nodes():
+		# TODO pls explain this better
 		var candidate: Node = selected
 		while candidate != null and candidate != world:
 			if candidate is EditorResidence3D:

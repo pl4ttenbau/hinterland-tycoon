@@ -1,7 +1,41 @@
 [gd_scene format=3 uid="uid://ch7sv6kjy6a0g"]
 
 [ext_resource type="PackedScene" uid="uid://b4gf4jqaxlbqy" path="res://assets/meshes/infr/road/bus_stop_1/mesh/bus_stop_1.obj" id="1_qcy8j"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain_new/packed/pavement/pavement_dh_1024.png" id="2_paving"]
+[ext_resource type="Texture2D" path="res://assets/textures/terrain_new/packed/pavement/pavement_nr.png" id="3_paving_normal_roughness"]
+
+[sub_resource type="StandardMaterial3D" id="Material_foundation"]
+albedo_color = Color(0.48, 0.47, 0.44, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="BoxMesh_foundation"]
+material = SubResource("Material_foundation")
+size = Vector3(2.1, 1.33, 4.4)
+
+[sub_resource type="StandardMaterial3D" id="Material_paving"]
+albedo_texture = ExtResource("2_paving")
+roughness_texture = ExtResource("3_paving_normal_roughness")
+roughness_texture_channel = 3
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("3_paving_normal_roughness")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_platform"]
+material = SubResource("Material_paving")
+size = Vector3(2.1, 0.08, 4.4)
 
 [node name="MeshBusTop1" type="Node3D" unique_id=1484963525]
 
 [node name="bus_stop_1" parent="." unique_id=509502484 instance=ExtResource("1_qcy8j")]
+position = Vector3(0.3, 0.06905, 0)
+scale = Vector3(1.2, 1.2, 1.2)
+
+[node name="Foundation" type="MeshInstance3D" parent="."]
+position = Vector3(0.15, -0.485, 0)
+mesh = SubResource("BoxMesh_foundation")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+position = Vector3(0.15, 0.22, 0)
+mesh = SubResource("BoxMesh_platform")

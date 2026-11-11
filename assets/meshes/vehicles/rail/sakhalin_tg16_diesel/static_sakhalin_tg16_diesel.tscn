@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/mesh/mesh_sakhalin_tg16_diesel.tscn" id="1_mesh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tg16"]
+size = Vector3(2.97, 4.036, 15.45)
+
+[node name="StaticSakhalinTg16Diesel" type="Node3D"]
+
+[node name="MeshSakhalinTg16Diesel" parent="." instance=ExtResource("1_mesh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+position = Vector3(0, 1.995, 0)
+shape = SubResource("BoxShape3D_tg16")

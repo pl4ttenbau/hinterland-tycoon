@@ -81,7 +81,9 @@ func _merge_line_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, record
 		return failure(problem)
 	record["num"] = line.num
 	record["name"] = line.infr_name
-	if not record.has("type"):
+	if domain == Enums.InfrDomain.RAIL and not line.rail_gauge.is_empty():
+		record["type"] = line.rail_gauge
+	elif not record.has("type"):
 		record["type"] = "rural_road" if domain == Enums.InfrDomain.ROAD else "NORMAL_GAUGE"
 	if domain == Enums.InfrDomain.ROAD:
 		record["autosmooth"] = line.autosmooth

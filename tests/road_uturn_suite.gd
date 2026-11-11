@@ -152,8 +152,8 @@ func test_both_road_ends() -> bool:
 
 # Load/unload executes only at visits, never at the temporary U-turn approach.
 func test_returning_passengers() -> bool:
-	var a: RoadStationData = _stop(70, 1)
-	var b: RoadStationData = _stop(71, 3)
+	var a: RoadStationData = _stop(70, 1, 70)
+	var b: RoadStationData = _stop(71, 3, 71)
 	a.get_inventory_view().get_inventory().change_stack(&"passenger", 71, 4)
 	b.get_inventory_view().get_inventory().change_stack(&"passenger", 70, 4)
 	var depot := RoadDepotData.new()

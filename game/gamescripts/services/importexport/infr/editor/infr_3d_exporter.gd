@@ -17,7 +17,7 @@ static func infr3d_to_rail_dict(infr3d: EditorInfrLine3D) -> Dictionary:
 	var rail_dict: Dictionary = {}
 	rail_dict.set("name", "Generated Rail Track")
 	rail_dict.set("num", -1)
-	rail_dict.set("type", "NORMAL_GAUGE")
+	rail_dict.set("type", infr3d.rail_gauge if not infr3d.rail_gauge.is_empty() else "NORMAL_GAUGE")
 	var start_pos: Vector3 = infr3d.global_position
 	# add nodes
 	var nodes_arr: Array = infr3d_curve_to_node_json_arr(start_pos, infr3d.curve)

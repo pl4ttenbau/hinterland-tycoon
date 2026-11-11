@@ -10,6 +10,8 @@ static func validate(source: InventoryEndpoint, target: InventoryEndpoint, stack
 	error = _validate_stock(source, stack, amount)
 	if not error.is_empty():
 		return error
+	if completes_passenger_trip(target, stack):
+		return ""
 	if not target.component().accepts(stack.good_key):
 		return "The destination cannot carry this resource category."
 	if target.component().free_capacity() + 0.00001 < amount:
@@ -33,33 +35,28 @@ static func _validate_stock(source: InventoryEndpoint, stack: InventoryStack, am
 	if stack == null or not is_finite(amount) or amount <= 0:
 		return "Choose a resource and a positive quantity."
 	var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
-	if good == null or (not good.is_passenger() and stack.destination_stop != -1) or stack.destination_stop < -1:
+	if good == null or (not good.is_passenger() and stack.destination_interchange != -1) or stack.destination_interchange < -1:
 		return "Invalid resource or passenger destination."
 	if good.is_passenger() and not is_equal_approx(amount, roundf(amount)):
 		return "Passengers must be transferred in whole numbers."
-	if source.inventory().stack_amount(stack.good_key, stack.destination_stop) < amount:
+	if source.inventory().stack_amount(stack.good_key, stack.destination_interchange) < amount:
 		return "There is not enough stock in that group."
 	return ""
 
-## Completing a trip removes exactly the chosen destination batch from the
-## vehicle. Passengers never re-enter the waiting stock at their own destination.
-static func complete_passenger_trip(source: InventoryEndpoint, target: InventoryEndpoint,
-		stack: InventoryStack, amount: float, arrival_stop: int) -> String:
-	var error: String = validate_access(source, target)
-	if not error.is_empty():
-		return error
-	error = _validate_stock(source, stack, amount)
-	if not error.is_empty():
-		return error
-	var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
-	if not good.is_passenger() or arrival_stop < 0 or stack.destination_stop != arrival_stop:
-		return "Passengers can only finish their trip at their own destination stop."
-	return "" if source.inventory().change_stack(stack.good_key, stack.destination_stop, -amount) else "Passenger stock changed before arrival."
+## Compare the actual shared stock so every access point at the destination
+## completes the trip, regardless of which physical stop the vehicle reached.
+static func completes_passenger_trip(target: InventoryEndpoint, stack: InventoryStack) -> bool:
+	if target == null or stack == null or stack.destination_interchange < 0 or not is_instance_valid(Managers.interchanges):
+		return false
+	var destination: InterchangeData = Managers.interchanges.by_num.get(stack.destination_interchange)
+	return destination != null and destination.inventory != null and target.inventory() == destination.inventory
 
 static func maximum(source: InventoryEndpoint, target: InventoryEndpoint, stack: InventoryStack) -> float:
 	if source == null or target == null or stack == null or not source.available() or not target.available():
 		return 0
-	var amount: float = minf(source.inventory().stack_amount(stack.good_key, stack.destination_stop), target.component().free_capacity())
+	var amount: float = source.inventory().stack_amount(stack.good_key, stack.destination_interchange)
+	if not completes_passenger_trip(target, stack):
+		amount = minf(amount, target.component().free_capacity())
 	var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
 	if good != null and good.is_passenger():
 		amount = floorf(amount)
@@ -71,11 +68,13 @@ static func transfer(source: InventoryEndpoint, target: InventoryEndpoint, stack
 	if not error.is_empty():
 		return error
 	var from: GoodsInventory = source.inventory()
+	if completes_passenger_trip(target, stack):
+		return "" if from.change_stack(stack.good_key, stack.destination_interchange, -amount) else "Passenger stock changed before arrival."
 	var to: GoodsInventory = target.inventory()
-	if not from.change_stack(stack.good_key, stack.destination_stop, -amount, false):
+	if not from.change_stack(stack.good_key, stack.destination_interchange, -amount, false):
 		return "Source inventory changed; select the resource again."
-	if not to.change_stack(stack.good_key, stack.destination_stop, amount, false):
-		from.change_stack(stack.good_key, stack.destination_stop, amount, false)
+	if not to.change_stack(stack.good_key, stack.destination_interchange, amount, false):
+		from.change_stack(stack.good_key, stack.destination_interchange, amount, false)
 		return "The destination rejected the transfer."
 	from.goods_change.emit()
 	to.goods_change.emit()

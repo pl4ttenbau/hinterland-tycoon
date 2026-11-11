@@ -14,8 +14,10 @@ static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePat
 	var next_track_num: int = get_next_track_num_from_node(current_segment.end_node)
 	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, current_segment.end_node.position)
 	if next_track_num >= 0 && next_dir != Enums.PathDirection.STOP:
-		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		var next_linked_segment: VehiclePathSegment = VehiclePathSegment.of_rail(next_track_num, next_dir)
+		if not InfrType.rail_gauges_compatible(current_segment.as_rail_track().infr_type_key, next_linked_segment.as_rail_track().infr_type_key):
+			return null
+		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		next_linked_segment.previous = current_segment
 		# connect to previous
 		current_segment.next = next_linked_segment

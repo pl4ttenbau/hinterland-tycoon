@@ -1,77 +1,86 @@
 @icon("res://assets/icons/icon_gears_white.png")
 class_name IndustryProduction extends Node
 
+enum BatchResult { COMPLETED, MISSING_INPUTS, STORAGE_FULL, UNAVAILABLE, INVALID_RECIPE }
+
+const CAPACITY_EPSILON: float = 0.00001
+
 @export var industry3d: Industry3D
 
 func _ready() -> void:
-	if !self.industry3d:
-		var parent: Node = self.get_parent()
-		if parent is Industry3D:
-			self.industry3d = parent
-	self.add_production_timer()
+	if industry3d == null:
+		industry3d = get_parent() as Industry3D
+	var production_timer := IndustryProductionTimer.new()
+	production_timer.timeout.connect(run_cycle)
+	add_child(production_timer)
 
-func add_production_timer():
-	var production_timer: IndustryProductionTimer = IndustryProductionTimer.new()
-	production_timer.timeout.connect(Callable(self, "_on_production_timeout"))
-	self.add_child(production_timer)
+## Resolve stock at the start of each cycle so station links are picked up even
+## when the industry entered the scene before the map connected its stops.
+func run_cycle() -> BatchResult:
+	if not is_instance_valid(industry3d) or industry3d.industry == null:
+		return BatchResult.UNAVAILABLE
+	return run_batch(industry3d.industry.ind_type, industry3d.get_inventory())
 
-#region Inventory
-func produce_good(good_type_key: String):
-	var amount: int = self.get_produced_amount(good_type_key)
-	var spawned_good: GoodsAmount = GoodsAmount.new(good_type_key, amount)
-	self.get_inventory().add_goods_amount(spawned_good)
+## A batch succeeds as a whole. Inputs free space for this batch's outputs, and
+## a recipe with only inputs is a consumer that simply removes those goods.
+static func run_batch(recipe: IndustryType, inventory: GoodsInventory) -> BatchResult:
+	if recipe == null or inventory == null or inventory.storage == null:
+		return BatchResult.UNAVAILABLE
 
-func has_required_goods() -> bool:
-	for required_res: TransformedGood in self.get_ind_type().requires:
-		var goods_amount := GoodsAmount.new(required_res.res_key, required_res.res_modifier)
-		if ! self.get_inventory().has_enough(goods_amount): return false
+	var inputs: Dictionary[StringName, float] = {}
+	var outputs: Dictionary[StringName, float] = {}
+	if not _collect_amounts(recipe.requires, inputs) or not _collect_amounts(recipe.produces, outputs):
+		return BatchResult.INVALID_RECIPE
+	if inputs.is_empty() and outputs.is_empty():
+		return BatchResult.INVALID_RECIPE
+
+	for key: StringName in inputs:
+		# Tagged passenger groups belong to trips. Industry recipes use unassigned stock.
+		if inventory.stack_amount(key) < inputs[key]:
+			return BatchResult.MISSING_INPUTS
+
+	var change_in_used_space: float = _total_amount(outputs) - _total_amount(inputs)
+	var final_used_space: float = inventory.storage.current_storage + change_in_used_space
+	if not is_finite(final_used_space) or not is_finite(inventory.amount_max):
+		return BatchResult.INVALID_RECIPE
+	# Previously overfilled inventories can still run batches that drain stock.
+	if change_in_used_space > 0.0 and (inventory.amount_max <= 0.0 \
+			or final_used_space > inventory.amount_max + CAPACITY_EPSILON):
+		return BatchResult.STORAGE_FULL
+
+	_apply_batch(inventory, inputs, outputs)
+	return BatchResult.COMPLETED
+
+## Combine repeated lines before checking stock or capacity.
+static func _collect_amounts(rows: Array[TransformedGood], amounts: Dictionary[StringName, float]) -> bool:
+	for row: TransformedGood in rows:
+		if row == null or not is_finite(row.res_modifier) or row.res_modifier <= 0.0:
+			return false
+		var key := StringName(row.res_key)
+		var good: BaseGoodsType = GameTypes.resource_types.get(key)
+		if good == null or (good.is_passenger() and row.res_modifier != floorf(row.res_modifier)):
+			return false
+		var total: float = amounts.get(key, 0.0) + row.res_modifier
+		if not is_finite(total):
+			return false
+		amounts[key] = total
 	return true
 
-func get_produced_amount(good_type_key: String) -> int:
-	var ind_type: IndustryType = self.get_ind_obj().ind_type
-	for produced_good: TransformedGood in ind_type.produces:
-		if produced_good.res_key == good_type_key:
-			return produced_good.res_modifier as int
-	return 0
-#endregion
+static func _total_amount(amounts: Dictionary[StringName, float]) -> float:
+	var total: float = 0.0
+	for amount: float in amounts.values():
+		total += amount
+	return total
 
-#region Node Getters
-func get_ind_obj() -> IndustryData:
-	var ind_obj: IndustryData = self.industry3d.industry
-	if !ind_obj:
-		Loggie.warn("Cannot get industry obj of %s" % self.name)
-	return ind_obj
-
-func get_ind_type() -> IndustryType:
-	var ind_type: IndustryType = self.get_ind_obj().ind_type
-	if !ind_type:
-		Loggie.warn("Cannot get industry type of %s" % self.name)
-	return ind_type
-
-func get_inventory() -> GoodsInventory:
-	var station_3d: InventoryEntity3D = self.find_ind_station()
-	if station_3d:
-		return station_3d.get_inventory()
-	return self.industry3d.get_inventory()
-
-func find_ind_station() -> InventoryEntity3D:
-	var ind_obj: IndustryData = self.get_ind_obj()
-	if ind_obj && ind_obj.station_connection:
-		for stop: AbstractStation in ind_obj.station_connection.reachable_stops:
-			var view: InventoryEntity3D = stop.get_inventory_view()
-			if view != null:
-				return view
-		var station_obj = ind_obj.station_connection.station
-		return station_obj.get_inventory_view() if station_obj != null else null
-	return null
-#endregion
-
-#region Callbacks
-func _on_production_timeout():
-	if ! self.industry3d:
-		Loggie.warn("Error in %s: industry type not loaded" % self.name)
-		return
-	if self.has_required_goods():
-		for produced_good: TransformedGood in self.get_ind_obj().ind_type.produces:
-			self.produce_good(produced_good.res_key)
-#endregion
+## The preflight validates every key and the full input requirement before any
+## mutation. Apply each net change once, then publish the completed inventory.
+static func _apply_batch(inventory: GoodsInventory, inputs: Dictionary[StringName, float],
+		outputs: Dictionary[StringName, float]) -> void:
+	for key: StringName in inputs:
+		var delta: float = outputs.get(key, 0.0) - inputs[key]
+		if delta != 0.0:
+			inventory.change_stack(key, -1, delta, false)
+	for key: StringName in outputs:
+		if not inputs.has(key):
+			inventory.change_stack(key, -1, outputs[key], false)
+	inventory.goods_change.emit()

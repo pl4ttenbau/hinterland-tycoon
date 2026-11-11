@@ -68,17 +68,16 @@ func plan() -> PassengerSpawnRequest:
 		return null
 	var destination: ResidenceBuildingData = choose_residence(origin)
 	var destination_stop: AbstractStation = _connected_stop(destination)
-	if destination_stop == null or destination_stop.num == origin_stop.num:
+	if destination_stop == null or destination_stop.interchange.num == origin_stop.interchange.num:
 		return null
-	return PassengerSpawnRequest.new(origin, destination, origin_stop, destination_stop)
+	return PassengerSpawnRequest.new(origin, destination, origin_stop, destination_stop.interchange)
 
-## The connector orders reachable_stops by access distance. Keep the first live
-## physical stop rather than replacing it with its parent interchange's ID.
+## Resolve the closest live physical access point before planning the trip.
 func _connected_stop(data: ResidenceBuildingData) -> AbstractStation:
 	if data == null:
 		return null
 	for stop: AbstractStation in data.reachable_stops:
-		if stop == null or stop.num < 0:
+		if stop == null or stop.num < 0 or stop.interchange == null or stop.interchange.num < 0:
 			continue
 		var view: InventoryEntity3D = stop.get_inventory_view()
 		if is_instance_valid(view) and view.is_inside_tree() and view.get_inventory() != null:

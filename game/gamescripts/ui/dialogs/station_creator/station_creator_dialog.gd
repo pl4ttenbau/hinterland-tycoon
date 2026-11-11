@@ -38,15 +38,15 @@ func _ready() -> void:
 		_build_existing(content)
 	else:
 		_build_new(content)
-	_add_label(content, "Road side" if placement.domain == "ROAD" else "Stop type")
+	_add_label(content, "Direction of travel" if placement.domain == "ROAD" else "Stop type")
 	_settings = OptionButton.new()
 	_settings.name = "StopSettings"
 	content.add_child(_settings)
 	if placement.domain == "ROAD":
-		for label: String in ["Left", "Right", "Both"]:
-			_settings.add_item(label)
-		_settings.select(placement.side)
-		_add_label(content, "Sides follow the road's direction.")
+		_settings.add_item("Increasing node order", Enums.RoadStopDirection.ROAD_NODES_INCREASE)
+		_settings.add_item("Decreasing node order", Enums.RoadStopDirection.ROAD_NODES_DECREASE)
+		_settings.add_item("Both directions", Enums.RoadStopDirection.BOTH_DIRECTIONS)
+		_settings.select(_settings.get_item_index(placement.direction))
 	else:
 		_settings.add_item("Passenger")
 		_settings.add_item("Goods")
@@ -129,8 +129,10 @@ func _confirm() -> void:
 		if _town.selected >= 0:
 			town_num = _town.get_selected_id()
 	var station_type: String = "STATION_PASS" if _settings.selected == 0 else "STATION_GOODS"
-	var side: Enums.RoadSide = _settings.selected as Enums.RoadSide if placement.domain == "ROAD" else Enums.RoadSide.RIGHT
-	var result: Dictionary = tool.create_stop(placement, interchange_num, station_name, town_num, station_type, side)
+	var direction := Enums.RoadStopDirection.ROAD_NODES_INCREASE
+	if placement.domain == "ROAD":
+		direction = _settings.get_selected_id() as Enums.RoadStopDirection
+	var result: Dictionary = tool.create_stop(placement, interchange_num, station_name, town_num, station_type, direction)
 	if result.has("error"):
 		_status.text = result.error
 		return

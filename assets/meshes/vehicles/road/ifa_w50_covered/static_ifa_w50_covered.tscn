@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/road/ifa_w50_covered/mesh/mesh_ifa_w50_covered.tscn" id="1_mesh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.5, 2.75, 6.48)
+
+[node name="StaticIfaW50Covered" type="Node3D"]
+
+[node name="MeshIfaW50Covered" parent="." instance=ExtResource("1_mesh")]
+
+[node name="Chassis" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis"]
+position = Vector3(0, 2.125, 0)
+shape = SubResource("BoxShape3D_chassis")

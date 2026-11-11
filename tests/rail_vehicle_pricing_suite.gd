@@ -110,7 +110,8 @@ func test_catalog_and_ui() -> bool:
 		await tree.process_frame
 		await tree.process_frame
 		var label: Label = item.get_node("%PurchasePriceLabel")
-		var expected: String = "%sDM %d" % ["~" if definition.has_motor else "", price]
+		var estimated: bool = definition.has_motor and definition.tractive_effort_kn == null
+		var expected: String = "%sDM %d" % ["~" if estimated else "", price]
 		check(label.text == expected, "%s displays its computed price and estimate marker" % definition.key)
 		var country: Label = item.get_node("HMargin/VehicleListHLayout/VBoxContainer/Control/VehicleTypeCountryLabel")
 		check(country.get_global_rect().end.x <= label.get_global_rect().position.x, "Price does not overlap the country label")

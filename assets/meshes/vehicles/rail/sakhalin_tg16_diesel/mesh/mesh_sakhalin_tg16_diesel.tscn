@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/mesh/sakhalin_tg16.gltf" id="1_gltf"]
+
+[node name="MeshSakhalinTg16Diesel" instance=ExtResource("1_gltf")]

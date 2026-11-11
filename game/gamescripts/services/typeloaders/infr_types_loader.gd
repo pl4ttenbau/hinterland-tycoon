@@ -15,5 +15,6 @@ static func make_types() -> Array[InfrType]:
 	infr_types.append(InfrType.new(0, "750_MM", true, "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"))
 	infr_types.append(InfrType.new(1, "NORMAL_GAUGE", true, "res://scenes/subscenes/infr/rail_path_mesh_3d.tscn"))
 	infr_types.append(InfrType.new(2, "RURAL_ROAD", false, "res://scenes/subscenes/infr/road_path_mesh_3d.tscn"))
+	infr_types.append(InfrType.new(3, InfrType.GAUGE_1067_MM, true, RailTrack3D.SCENE_PATH_1067MM))
 	
 	return infr_types

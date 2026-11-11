@@ -37,12 +37,12 @@ func discover() -> Array[InventoryEndpoint]:
 func _offer_stops() -> void:
 	if is_instance_valid(GlobalState.player.in_station):
 		var current: RailStation3D = GlobalState.player.in_station
-		_offer(current, "%s (rail stop)" % current.station.station_name, null, InventoryEndpoint.Kind.STOP)
+		_offer(current, "%s (rail stop)" % current.station.get_display_name(), null, InventoryEndpoint.Kind.STOP)
 	if is_instance_valid(Managers.interchanges):
 		for stop: AbstractStation in Managers.interchanges.stops_by_num.values():
 			var view: InventoryEntity3D = stop.get_inventory_view()
 			if is_instance_valid(view) and view.global_position.distance_to(_origin) <= InventoryTransferService.REACH_METRES:
-				_offer(view, "%s · stop %d" % [stop.station_name, stop.num], null, InventoryEndpoint.Kind.STOP)
+				_offer(view, "%s · stop %d" % [stop.get_display_name(), stop.num], null, InventoryEndpoint.Kind.STOP)
 
 func _offer_nearby(owner: Node3D, label: String, access: Node3D = null, kind: InventoryEndpoint.Kind = InventoryEndpoint.Kind.OTHER) -> void:
 	var anchor: Node3D = access if is_instance_valid(access) else owner
@@ -55,6 +55,12 @@ func _offer(owner: Node3D, label: String, access: Node3D = null, kind: Inventory
 		return
 	endpoint.kind = kind
 	var id: int = endpoint.inventory().get_instance_id()
-	if not _seen.has(id):
-		_seen[id] = true
-		_items.append(endpoint)
+	if _seen.has(id):
+		# Several physical stops can expose the same stock. Use the closest one
+		# for manual reach checks while keeping just one row for the inventory.
+		var index: int = _seen[id]
+		if endpoint.position().distance_squared_to(_origin) < _items[index].position().distance_squared_to(_origin):
+			_items[index] = endpoint
+		return
+	_seen[id] = _items.size()
+	_items.append(endpoint)

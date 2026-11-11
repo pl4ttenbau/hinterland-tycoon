@@ -37,7 +37,20 @@ var interchange_num: int:
 func _init():
 	super(Enums.EntityTypes.STATION)
 
-## Resolve the existing per-stop inventory without privileging either mode.
+## Include the city when a station name such as HBF is ambiguous on its own.
+func get_display_name() -> String:
+	var station_title: String = station_name.strip_edges()
+	var city: String = town_name.strip_edges()
+	if station_title.is_empty():
+		station_title = "Station"
+	if city.is_empty() or city.nocasecmp_to(station_title) == 0:
+		return station_title
+	return "%s · %s" % [city, station_title]
+
+func get_interchange_inventory() -> GoodsInventory:
+	return interchange.inventory if interchange != null else null
+
+## Resolve the physical access point used for positioning and transfer reach.
 func get_inventory_view() -> InventoryEntity3D:
 	if self is RailStationData and is_instance_valid(Managers.stations):
 		return Managers.stations.get_station_3d_with_num(self.num)

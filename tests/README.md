@@ -8,6 +8,16 @@ These exercise supporting-surface picking, runtime rail/road stops, 50 m joining
 route anchors, catchment updates, both dialogs and real player action dispatch.
 See `doc/station-creator.md` for behavior and optional rendered previews.
 
+Industry batch and station inventory checks:
+
+```sh
+godot --headless --path . --script res://tests/industry_production_test.gd -- --no-mcp
+godot --headless --path . res://tests/interchanges_test.tscn -- --no-mcp
+```
+
+See [industry production and stock](../doc/industry-production.md) for behavior
+and test coverage.
+
 Industry supply warning checks:
 
 ```sh
@@ -36,7 +46,7 @@ godot --headless --path . --fixed-fps 60 --script res://tests/road_routing_test.
 ```
 
 The commented suite covers intermediate/reversed road travel, explicit crossings,
-height separation, arc-length costs, missing anchors, physical passenger targets,
+height separation, arc-length costs, missing anchors, interchange passenger targets,
 resource round trips, independent drafts, action ordering and save/cancel behavior.
 It does not execute passenger or goods transfers.
 Execution checks drive a real vehicle through three visits, preserve progress

@@ -92,10 +92,10 @@ func _build_actions_tab(content: VBoxContainer) -> void:
 	for key: String in GameTypes.resource_types:
 		_goods.add_item(key.capitalize())
 		_goods.set_item_metadata(_goods.item_count - 1, StringName(key))
-	_passenger_targets = _add_selector(selectors, "Passenger destination stops")
-	for id: int in _all_stops():
-		var stop: AbstractStation = _all_stops()[id]
-		_passenger_targets.add_item("%s · stop %d" % [stop.station_name, id])
+	_passenger_targets = _add_selector(selectors, "Passenger destination interchanges")
+	var destinations: Dictionary[int, InterchangeData] = RoadRouteAction.available_destinations(_all_stops())
+	for id: int in destinations:
+		_passenger_targets.add_item(InventoryPresentation.interchange_label(destinations[id]))
 		_passenger_targets.set_item_metadata(_passenger_targets.item_count - 1, id)
 	var buttons := HBoxContainer.new()
 	content.add_child(buttons)
@@ -157,7 +157,7 @@ func _fill_point_choices() -> void:
 			for id: int in _all_stops():
 				var stop: RoadStationData = _all_stops()[id] as RoadStationData
 				if stop != null:
-					_offer_reference(RoadRoutePoint.Kind.STOP, id, "%s · stop %d" % [stop.station_name, id])
+					_offer_reference(RoadRoutePoint.Kind.STOP, id, "%s · stop %d" % [stop.get_display_name(), id])
 		RoadRoutePoint.Kind.DEPOT:
 			for depot: RoadDepotData in GlobalState.road_depots:
 				_offer_reference(RoadRoutePoint.Kind.DEPOT, depot.num, "%s · depot %d" % [depot.depot_name, depot.num])
@@ -235,7 +235,7 @@ func _add_action() -> void:
 	for item: int in _goods.get_selected_items():
 		action.goods.append(_goods.get_item_metadata(item))
 	for item: int in _passenger_targets.get_selected_items():
-		action.passenger_targets.append(_passenger_targets.get_item_metadata(item))
+		action.passenger_interchange_targets.append(_passenger_targets.get_item_metadata(item))
 	_status.text = action.validate(GameTypes.resource_types, _all_stops(), vehicle.vehicle_obj.veh_type.capacity)
 	if _status.text.is_empty():
 		plan.points[index].actions.append(action)

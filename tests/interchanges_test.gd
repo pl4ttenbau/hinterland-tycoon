@@ -25,7 +25,7 @@ func _run() -> void:
 func definitions() -> Array:
 	return [{"num": 7, "name": "Shared station", "townNum": 3, "townName": "Town", "stops": [
 		{"num": 12, "domain": "RAIL", "trackNum": 4, "nodeIndex": 0, "hideBuilding": true},
-		{"num": 13, "domain": "ROAD", "roadNum": 42, "nodeIndex": 0, "roadSide": "BOTH"}
+		{"num": 13, "domain": "ROAD", "roadNum": 42, "nodeIndex": 0, "roadStopDirection": "BOTH_DIRECTIONS"}
 	]}, {"num": 8, "name": "Empty interchange", "townNum": 3, "stops": []}]
 
 func test_catalog_validation() -> bool:
@@ -51,9 +51,14 @@ func test_catalog_validation() -> bool:
 		var fixture: Array = self.definitions()
 		fixture[0]["stops"][0].merge(fields, true)
 		invalid.append(fixture)
-	var invalid_side: Array = self.definitions()
-	invalid_side[0]["stops"][1]["roadSide"] = "right"
-	invalid.append(invalid_side)
+	var invalid_direction: Array = self.definitions()
+	invalid_direction[0]["stops"][1]["roadStopDirection"] = "road_nodes_increase"
+	invalid.append(invalid_direction)
+	var legacy: Array = self.definitions()
+	var legacy_stop: Dictionary = legacy[0]["stops"][1]
+	legacy_stop.erase("roadStopDirection")
+	legacy_stop["roadSide"] = "BOTH"
+	invalid.append(legacy)
 	for fixture: Variant in invalid:
 		self.check(loader.load_definitions(fixture) != OK, "Invalid catalog is rejected")
 		self.check(loader.by_num[7] == first and loader.stop_definitions.size() == 2, "Invalid reload leaves the previous catalog intact")
@@ -137,6 +142,19 @@ func test_mixed_loading() -> bool:
 	var bus: BusStop3D = coordinator.road_stops.containers_by_num[13]
 	self.check(bus.station == road and bus.get_node("Model").get_child_count() == 2, "BOTH creates two shelters for one logical bus stop")
 	self.check(bus.get_node("Model/Shelter").global_position.distance_to(bus.get_node("Model/OppositeShelter").global_position) > 7.9, "The two shelters occupy opposite road sides")
+	test_legacy_passenger_destinations(interchange)
+	var bus_sign: StationSign3D = bus.get_node("StationSign3D")
+	var inventory: GoodsInventory = interchange.inventory
+	inventory.change_stack(&"passenger", rail.num, 2)
+	inventory.add_goods_amount(GoodsAmount.new("lumber", 4))
+	for sign_3d: StationSign3D in [rail_sign, bus_sign]:
+		self.check(sign_3d.visibility_range_end == 200.0 and sign_3d.visibility_range_end_margin == 0.0, "Runtime stop signs have a 200 m visibility cutoff")
+		self.check(sign_3d.station_inventory == inventory and sign_3d.station_sign_ui.passengers_amount == 2 \
+			and sign_3d.station_sign_ui.cargo_amount == 4, "Rail and bus signs update from the same interchange inventory")
+	inventory.change_stack(&"passenger", rail.num, -2)
+	inventory.remove_goods_amount(GoodsAmount.new("lumber", 4))
+	check(test_shared_stock(rail_view, bus), "Shared-stock test completed")
+	check(test_station_dialogs(link.station3d, bus), "Station dialogs test completed")
 	coordinator.road_stops.spawn_stops()
 	self.check(coordinator.road_stops.containers_by_num.size() == 1, "Repeated road spawning does not duplicate stops")
 	self.check(coordinator.load_map_data(key) == ERR_ALREADY_IN_USE, "Repeated map loading cannot duplicate network resources")
@@ -150,6 +168,114 @@ func test_mixed_loading() -> bool:
 	DirAccess.remove_absolute(folder)
 	DirAccess.remove_absolute("res://world/" + key)
 	GlobalState.station_objs.clear()
+	return true
+
+func test_legacy_passenger_destinations(interchange: InterchangeData) -> void:
+	var stock := GoodsInventory.new()
+	stock.add_goods_amount(GoodsAmount.new("passenger", 4))
+	# Stops 12 and 13 share interchange 7. Stop 999 was deleted from the map.
+	stock.passenger_destinations = {&"passenger": {12: 1.0, 13: 2.0, 999: 1.0}}
+	check(stock.stack_amount(&"passenger", interchange.num) == 3, "Old stop targets merge into the destination interchange")
+	check(stock.stack_amount(&"passenger") == 1 and stock.get_amount("passenger") == 4, "A deleted legacy target becomes unassigned without losing stock")
+
+func test_shared_stock(rail_view: RailStation3D, bus: BusStop3D) -> bool:
+	var interchange: InterchangeData = rail_view.station.interchange
+	var rail_access: InventoryEndpoint = InventoryEndpoint.from_node(rail_view)
+	var road_access: InventoryEndpoint = InventoryEndpoint.from_node(bus)
+	check(rail_access.inventory() == interchange.inventory and road_access.inventory() == interchange.inventory, "Rail and road access the interchange's inventory")
+	check(rail_access.position() != road_access.position(), "Each endpoint retains its physical access position")
+	check(coordinator.interchanges.by_num[8].inventory != interchange.inventory, "Other interchanges own independent stock")
+
+	# Deliver a batch through the bus stop and run the real industry's timer callback.
+	var data := IndustryData.new("SAWMILL", bus.global_position)
+	data.ind_name = "Test sawmill"
+	interchange.connections.connect_industry(data, [bus.station])
+	var industry := Industry3D.new()
+	industry.industry = data
+	var collider := IndustryCollider.new()
+	industry.add_child(collider)
+	add_child(industry)
+	var industry_access: InventoryEndpoint = InventoryEndpoint.from_node(industry)
+	check(industry_access.inventory() == rail_access.inventory(), "The industry exposes the same stock for manual transfers")
+
+	var delivery := Node3D.new()
+	delivery.add_child(InventoryContainer.new())
+	add_child(delivery)
+	delivery.global_position = bus.global_position
+	var cargo: InventoryEndpoint = InventoryEndpoint.from_node(delivery)
+	cargo.inventory().add_goods_amount(GoodsAmount.new("lumber", 9))
+	var lumber := InventoryStack.new(&"lumber", 9)
+	check(InventoryTransferService.transfer(cargo, road_access, lumber, 9).is_empty(), "Road access accepts a delivery of sawmill input")
+
+	var production: IndustryProduction = industry.get_node("Production")
+	check(test_live_industry_recipe(collider, production), "Industry dialog test completed")
+	check(rail_access.inventory().get_amount("lumber") == 0, "Sawmill consumes its batch from the interchange")
+	check(rail_access.inventory().get_amount("boards") == 3, "The rail stop can load the sawmill's output")
+
+	# Keep this fixture out of the catchment checks that follow.
+	interchange.connections.clear_industries()
+	check(industry_access.inventory() != interchange.inventory, "An unconnected industry uses its local stock")
+	GlobalState.industries.erase(data)
+	industry.free()
+	delivery.free()
+	return true
+
+func test_live_industry_recipe(collider: IndustryCollider, production: IndustryProduction) -> bool:
+	var handler := BaseEntityClickHandler.new()
+	add_child(handler)
+	check(handler.handle_click(collider), "Clicking the sawmill opens its recipe dialog")
+	var dialog := UiState.current_diag as IndustryDialog
+	if dialog == null:
+		handler.free()
+		return false
+	var inputs: ItemList = dialog.get_node("%IndustryConsumption").get_node("%GoodsTable")
+	var outputs: ItemList = dialog.get_node("%IndustryProduction").get_node("%GoodsTable")
+	check(inputs.get_item_text(0).contains("9 in stock"), "Industry dialog sees the delivery before the batch")
+
+	# Fire the real timer without waiting for five seconds of wall time.
+	var timer: Timer = production.get_child(0)
+	timer.timeout.emit()
+	check(inputs.get_item_text(0).contains("0 in stock"), "The input table refreshes after consumption")
+	check(outputs.get_item_text(0).contains("3 in stock"), "The output table refreshes after production")
+
+	dialog.free()
+	handler.free()
+	return true
+
+func test_station_dialogs(rail_link: NodeStationLink3D, bus: BusStop3D) -> bool:
+	var handler := BaseEntityClickHandler.new()
+	add_child(handler)
+	var rail_collider: StationCollider = rail_link.get_node("StationBuilding3D/StationBody")
+	var road_collider: StationCollider = bus.get_node("Model/OppositeShelter/ShelterClick")
+
+	# Both physical station models open the same information through the click handler.
+	for collider: StationCollider in [rail_collider, road_collider]:
+		check(handler.handle_click(collider), "Clicking a station opens its information dialog")
+		var dialog := UiState.current_diag as ModalGameDialog
+		if dialog == null:
+			continue
+		var headline: Label = dialog.get_node("%Headline")
+		var city: Label = dialog.get_node("%TownName")
+		var connections: ItemList = dialog.get_node("%Connections")
+		var goods: ItemList = dialog.get_node("%Inventory")
+		check(headline.text == bus.station.station_name, "Station dialog shows the interchange name")
+		check(city.visible and city.text == bus.station.town_name, "The station name has a city heading")
+		check(connections.item_count == 2, "Station dialog lists both physical stops")
+		check(goods.item_count == 1 and goods.get_item_text(0).contains("Boards"), "Station dialog shows stock from production")
+
+		# Stock changes while the dialog is open should refresh its inventory list.
+		var inventory: GoodsInventory = bus.get_inventory()
+		inventory.add_goods_amount(GoodsAmount.new("milk", 1.5))
+		check(goods.item_count == 2 and goods.get_item_text(1).contains("Milk"), "The dialog refreshes when milk arrives")
+		inventory.remove_goods_amount(GoodsAmount.new("milk", 1.5))
+		inventory.change_stack(&"passenger", bus.station.interchange.num, 1)
+		var passenger_row: String = goods.get_item_text(goods.item_count - 1)
+		check(passenger_row.contains(city.text) and passenger_row.contains(headline.text), "Passenger destinations show both city and station")
+		inventory.change_stack(&"passenger", bus.station.interchange.num, -1)
+		dialog.get_node("%CloseButton").pressed.emit()
+		check(dialog.is_queued_for_deletion(), "Close button dismisses the station dialog")
+		dialog.free()
+	handler.free()
 	return true
 
 func test_catchments(rail: RailStationData, road: RoadStationData, town: TownData) -> void:
@@ -199,25 +325,12 @@ func test_missing_anchors(rails: RailTrackStore, roads: RoadStore) -> bool:
 	return true
 
 func test_migrated_maps() -> bool:
-	var expected: Dictionary = {
-		"franzburger": [1, 0, 1], "harzmountains": [22, 19, 0],
-		"mpsb": [23, 24, 0], "sachalin": [13, 13, 0]
-	}
-	for key: String in expected:
+	for key: String in ["franzburger", "harzmountains", "mpsb", "sachalin"]:
 		var services: WorldServicesCoordinator = SERVICES.instantiate()
 		self.add_child(services)
 		self.check(services.initialize() == OK, "Services initialize for migrated map: " + key)
 		self.check(services.load_map_data(key) == OK, "Real data pipeline loads migrated map: " + key)
 		var catalog: InterchangesLoader = services.interchanges
-		# Franzburger is actively authored beyond its initial migration fixture.
-		# Compare against the source catalog rather than its historic stop count.
-		if key == "franzburger":
-			var authored: Array = JSON.parse_string(FileAccess.get_file_as_string("res://world/%s/jsondata/interchanges.json" % key))
-			var counts: Array[int] = [authored.size(), 0, 0]
-			for interchange: Dictionary in authored:
-				for stop: Dictionary in interchange["stops"]:
-					counts[1 if stop["domain"] == "RAIL" else 2] += 1
-			expected[key] = counts
 		var rails: RailTrackStore = services.rails.track_storage
 		var roads: RoadStore = services.roads.storage
 		for definition: Dictionary in JSON.parse_string(FileAccess.get_file_as_string("res://world/%s/jsondata/tracks.json" % key)):
@@ -232,7 +345,7 @@ func test_migrated_maps() -> bool:
 				var rail_stop: RailStationData = catalog.stops_by_num[int(definition["num"])]
 				self.check(rail_stop.station_type == definition.get("type", "STATION_PASS"), "Rail stop retains its authored passenger/goods type: " + key)
 			else: road_count += 1
-		self.check([catalog.interchanges.size(), rail_count, road_count] == expected[key], "Migration preserves every interchange and physical stop: " + key)
+		self.check([catalog.interchanges.size(), rail_count, road_count] == authored_station_counts(key), "Loading preserves every authored interchange and stop: " + key)
 		self.check(catalog.stops_by_num.size() == rail_count + road_count, "Every physical stop is registered exactly once: " + key)
 		for stop: AbstractStation in catalog.stops_by_num.values():
 			self.check(stop.interchange != null and stop.interchange.stops.has(stop), "Loaded stop has its parent interchange: " + key)
@@ -252,3 +365,13 @@ func test_migrated_maps() -> bool:
 			road.crosses.clear()
 		GlobalState.roads.clear()
 	return true
+
+## Map authors can add stops without changing this loader regression test.
+func authored_station_counts(map_key: String) -> Array[int]:
+	var path: String = "res://world/%s/jsondata/interchanges.json" % map_key
+	var authored: Array = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var counts: Array[int] = [authored.size(), 0, 0]
+	for interchange: Dictionary in authored:
+		for stop: Dictionary in interchange["stops"]:
+			counts[1 if stop["domain"] == "RAIL" else 2] += 1
+	return counts

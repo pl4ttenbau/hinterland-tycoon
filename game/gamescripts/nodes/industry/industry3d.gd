@@ -14,6 +14,17 @@ static var last_ind_num: int = 0
 		
 @export var sign3d: IndustrySign3D
 
+## Production, the info dialog and manual transfers use the same inventory.
+func get_shared_inventory() -> GoodsInventory:
+	if industry == null or industry.station_connection == null:
+		return null
+	var connection: StationIndustryConnection = industry.station_connection
+	if connection.interchange != null:
+		return connection.interchange.inventory
+	# Standalone stations can still be connected by older callers.
+	var stop_view: InventoryEntity3D = connection.station.get_inventory_view() if connection.station != null else null
+	return stop_view.get_inventory() if is_instance_valid(stop_view) else null
+
 #region Static Constructor
 static func of(_industry: IndustryData) -> Industry3D:
 	if ! _industry.ind_type:
@@ -36,11 +47,10 @@ func spawn_industry_label() -> IndustrySign3D:
 	return IndustrySign3D.of(self)
 
 func spawn_inventory_and_production():
-	if !self.has_node("Inventory"):
+	if InventoryContainer.find_on(self) == null:
 		var inventory_container: InventoryContainer = InventoryContainer.new()
-		inventory_container.inventory = GoodsInventory.new()
-		self.add_child(inventory_container)
 		inventory_container.name = "Inventory"
+		self.add_child(inventory_container)
 	if !self.has_node("Production"):
 		var production: IndustryProduction = IndustryProduction.new()
 		production.industry3d = self

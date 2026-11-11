@@ -22,7 +22,7 @@ func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
 	GameTypes.ensure_initialized()
 	_setup_network()
-	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
+	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_stop_directions", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	_cleanup()
@@ -36,6 +36,10 @@ func _setup_network() -> void:
 	_add_road(30, [[30, 5, 0], [30, 5, -30]])
 	RoadCross.of(roads._by_id[10].nodes[1], [20, 30])
 	var stop := RoadStationData.new(201, "Destination")
+	stop.interchange = InterchangeData.new()
+	stop.interchange.num = 501
+	stop.interchange.interchange_name = "Destination"
+	stop.interchange.connections.parent = null
 	stop.road_num = 20
 	stop.node_index = 2
 	stops[201] = stop
@@ -78,6 +82,28 @@ func _node_point(road: int, index: int) -> RoadRoutePoint:
 	point.node_index = index
 	return point
 
+func test_stop_directions() -> bool:
+	var road: RoadData = roads._by_id[20]
+	var pathfinder := RoadPathfinder.new()
+	pathfinder.build([road])
+	var stop := RoadStationData.new()
+	stop.road_num = road.num
+	stop.node_index = 1
+	for direction: Enums.RoadStopDirection in [Enums.RoadStopDirection.ROAD_NODES_INCREASE, Enums.RoadStopDirection.ROAD_NODES_DECREASE]:
+		stop.direction = direction
+		var increasing: bool = direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE
+		var anchor := stop.anchor(roads) as RoadRouteAnchor
+		check(anchor != null and anchor.position.is_equal_approx(road.nodes[1].position), "One-way authored stop keeps its node position")
+		var from: RoadNode = road.nodes[0] if increasing else road.nodes[2]
+		var opposite: RoadNode = road.nodes[2] if increasing else road.nodes[0]
+		check(pathfinder.find_path(from, anchor).size() == 2, "Stop allows a direct route from the served direction")
+		var path: Array[RoadNode] = pathfinder.find_path(opposite, anchor)
+		check(path.size() == 3 and path[1] == from, "Approaching from the opposite end requires routing through the served direction")
+	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
+	check(stop.anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
+	stop.connections.parent = null
+	return true
+
 ## A direct-looking curved road must not beat a genuinely shorter connected route.
 func test_curved_cost() -> bool:
 	# Add a long bowed alternative between the same source/destination anchors.
@@ -94,7 +120,7 @@ func test_curved_cost() -> bool:
 	check(is_equal_approx(network.path_length(path), 90.0), "Shortest path uses curve arc distances")
 	return true
 
-## Node/stop/depot references stay distinct; passenger selectors use physical stop IDs.
+## Node/stop/depot references stay distinct; passenger selectors use interchange IDs.
 func test_route_data() -> bool:
 	var plan := RoadRoutePlan.new()
 	plan.points.append(_node_point(10, 0))
@@ -110,19 +136,24 @@ func test_route_data() -> bool:
 	var action := RoadRouteAction.new()
 	action.goods.append(&"passenger")
 	stop.actions.append(action)
-	check(not _validate(plan).is_empty(), "Passengers require an explicit physical destination")
-	action.passenger_targets.append(201)
+	check(not _validate(plan).is_empty(), "Passengers require an explicit destination interchange")
+	action.passenger_interchange_targets.append(501)
 	check(_validate(plan).is_empty(), "Connected route with passenger destination validates")
 	var good: BaseGoodsType = GameTypes.resource_types["passenger"]
-	check(action.matches(good, 201) and not action.matches(good, 202), "Passenger destinations are selected independently")
+	var destinations: Array[int] = action.destination_ids(stops)
+	check(action.matches(good, 501, destinations) and not action.matches(good, 201, destinations), "Passenger targets are separate from waypoint stop IDs")
+	var legacy := RoadRouteAction.new()
+	legacy.goods.assign([&"passenger"])
+	legacy.passenger_targets.assign([201])
+	check(legacy.validate(GameTypes.resource_types, stops, null).is_empty() and legacy.destination_ids(stops) == [501], "Saved stop targets resolve to the parent interchange")
 
 	# Editing copies and resource round trips preserve action data without sharing it.
 	var copy: RoadRoutePlan = plan.duplicate(true)
-	copy.points[1].actions[0].passenger_targets.append(202)
-	check(action.passenger_targets == [201], "Draft action edits do not mutate the saved plan")
+	copy.points[1].actions[0].passenger_interchange_targets.append(502)
+	check(action.passenger_interchange_targets == [501], "Draft action edits do not mutate the saved plan")
 	check(ResourceSaver.save(plan, "/tmp/road-routing-plan.tres") == OK, "Itinerary can be serialized")
 	var loaded: RoadRoutePlan = ResourceLoader.load("/tmp/road-routing-plan.tres", "", ResourceLoader.CACHE_MODE_IGNORE)
-	check(loaded.points[1].actions[0].passenger_targets == [201], "Round trip retains physical passenger targets")
+	check(loaded.points[1].actions[0].passenger_interchange_targets == [501], "Round trip retains destination interchanges")
 	stop.target_num = 999
 	check(not _validate(plan).is_empty(), "Deleted stop is rejected without retargeting")
 	return true
@@ -186,7 +217,7 @@ func _check_action_editing(dialog: GameDialog) -> void:
 	dialog.call("_add_action")
 	(dialog.get("_action_kind") as OptionButton).select(1)
 	dialog.call("_add_action")
-	check(stop.actions.size() == 2 and stop.actions[0].passenger_targets == [201], "Dialog adds load/unload actions with physical passenger targets")
+	check(stop.actions.size() == 2 and stop.actions[0].passenger_interchange_targets == [501], "Dialog adds load/unload actions with interchange targets")
 	(dialog.get("_actions") as ItemList).select(1)
 	dialog.call("_move_action", -1)
 	check(stop.actions[0].kind == RoadRouteAction.Kind.UNLOAD, "Transfer actions can be reordered")
@@ -227,6 +258,9 @@ func test_execution() -> bool:
 
 	# A removed inventory must stop the car at its visit, never silently skip it.
 	var stop := RoadStationData.new(401, "Transfer stop")
+	stop.interchange = InterchangeData.new()
+	stop.interchange.num = 601
+	stop.interchange.connections.parent = null
 	stop.road_num = 100
 	stop.node_index = 2
 	catalog.stops_by_num[401] = stop
@@ -236,7 +270,7 @@ func test_execution() -> bool:
 	point.target_num = 401
 	var action := RoadRouteAction.new()
 	action.goods.append(&"passenger")
-	action.passenger_targets.append(401)
+	action.passenger_interchange_targets.append(601)
 	point.actions.append(action)
 	body.route_plan.points.assign([_node_point(100, 1), point, _node_point(100, 3)])
 	check(body.plan_execution.start(body), "Plan with a later transfer visit starts")

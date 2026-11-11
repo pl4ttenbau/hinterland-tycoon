@@ -13,6 +13,9 @@ metadata/_custom_type_script = "uid://ch38ek1gm5uvb"
 
 [node name="MeshRoadDepot" parent="." unique_id=1852082005 instance=ExtResource("1_cxs2n")]
 
+[node name="RoadEntrance" type="Marker3D" parent="."]
+position = Vector3(-1.12, 0, 3.55)
+
 [node name="RoadDepotCollider" type="StaticBody3D" parent="." unique_id=614034493]
 script = ExtResource("3_u6e1p")
 metadata/_custom_type_script = "uid://thdijkv400b2"

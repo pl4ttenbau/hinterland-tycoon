@@ -63,11 +63,16 @@ func test_unknown_specs() -> bool:
 
 func test_catalog_and_dialog() -> bool:
 	check(GameTypes.ensure_initialized() == OK, "Catalog initializes with road prices")
-	var expected: Dictionary = {"oldtimer_car": 12300, "gaz_aa_truck": 9700, "trabant_601_green": 9600}
+	var expected: Dictionary = {
+		"oldtimer_car": 12300, "gaz_aa_truck": 9700, "trabant_601_green": 9600,
+		"daimler_1911_bus": 12000, "ifa_w50_covered": 23900,
+	}
 	for key: String in expected:
 		check(GameTypes.get_veh_type(key).get_purchase_price() == expected[key], "%s gets its catalog price" % key)
 		var definition: RoadVehicleTypeData = GameTypes.get_veh_type(key)
-		check(definition.purchase_price == RoadVehicleTypeData.PRICING.price_for(definition), "Stored road price matches the generator")
+		# The Daimler has a hand-set price. Other catalog prices follow the generator.
+		if key != "daimler_1911_bus":
+			check(definition.purchase_price == RoadVehicleTypeData.PRICING.price_for(definition), "Stored road price matches the generator")
 	var depot := RoadDepotData.new()
 	depot.depot_name = "Pricing test depot"
 	var dialog: RoadVehicleSpawnDialog = RoadVehicleSpawnDialog.create(depot)

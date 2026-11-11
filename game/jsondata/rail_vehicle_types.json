@@ -228,6 +228,21 @@
 		"mass_tonnes": 64.0
 	},
 	{
+		"key": "sakhalin_tg16_diesel",
+		"purchase_price": 719200,
+		"display_name": "Sakhalin TG16 (Single Section)",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/model_sakhalin_tg16_diesel.tscn",
+		"max_speed_kmh": 85,
+		"usable_infr": {
+			"subtype": "1067_MM"
+		},
+		"has_motor": true,
+		"length_metres": 15.45,
+		"motor_power_kw": 1207,
+		"mass_tonnes": 74.0,
+		"tractive_effort_kn": 239.5
+	},
+	{
 		"key": "mpsb_open_wagon",
 		"purchase_price": 10100,
 		"display_name": "MPSB Open Wagon",

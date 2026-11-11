@@ -4,6 +4,7 @@ class_name HinterlandEditorPlugin extends EditorPlugin
 
 const TOOLS_PANEL_SCENE = preload("res://addons/hinterland_tools/editor_tools_panel.tscn")
 const STATE_AUTOLOAD_NAME = "EditorState"
+const ROAD_AXLE_GIZMO = preload("res://addons/hinterland_tools/vehicles/road_vehicle_axle_gizmo.gd")
 
 var editor_signals: HinterlandEditorSignals
 var map_panel: VBoxContainer
@@ -15,6 +16,7 @@ var object_selection := ObjectSelectedTool.new()
 var file_status: Label
 var residence_road_preview: EditorResidenceRoadPreview
 var line_node_markers: InfrLineNodeMarkers
+var road_axle_gizmo: EditorNode3DGizmoPlugin
 
 var drawing = InfrDrawingTool.new()
 var interchange_authoring := preload("res://addons/hinterland_tools/infr/interchange_authoring.gd").new()
@@ -34,6 +36,8 @@ func _disable_plugin() -> void:
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	print("HinterlandTycoon plugin activated!")
+	road_axle_gizmo = ROAD_AXLE_GIZMO.new()
+	add_node_3d_gizmo_plugin(road_axle_gizmo)
 	# Keep editor events on the plugin, whose lifetime spans edited scenes.
 	self.editor_signals = HinterlandEditorSignals.new()
 	self.editor_signals.name = "EditorSignals"
@@ -100,6 +104,8 @@ func is_tool_active(tool: Enums.EnumEditorTool) -> bool:
 
 func _exit_tree() -> void:
 	print("Deactivating HinterlandTycoon plugin")
+	remove_node_3d_gizmo_plugin(road_axle_gizmo)
+	road_axle_gizmo = null
 	self._disconnect_world()
 	if is_instance_valid(self.residence_road_preview):
 		self.residence_road_preview.queue_free()
@@ -439,9 +445,14 @@ func _open_station_dialog(draft: Dictionary, adding_stop: bool) -> void:
 	var stop_choice: OptionButton
 	if adding_stop:
 		stop_choice = OptionButton.new()
-		var options: Array[String] = ["Right", "Left", "Both"] if draft.anchor.domain == "ROAD" else ["Passenger", "Goods"]
-		for option: String in options:
-			stop_choice.add_item(option)
+		if draft.anchor.domain == "ROAD":
+			stop_choice.tooltip_text = "Choose the direction of travel served by this stop."
+			stop_choice.add_item("Increasing node order", Enums.RoadStopDirection.ROAD_NODES_INCREASE)
+			stop_choice.add_item("Decreasing node order", Enums.RoadStopDirection.ROAD_NODES_DECREASE)
+			stop_choice.add_item("Both directions", Enums.RoadStopDirection.BOTH_DIRECTIONS)
+		else:
+			stop_choice.add_item("Passenger")
+			stop_choice.add_item("Goods")
 		form.add_child(stop_choice)
 	var status := Label.new()
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -457,7 +468,7 @@ func _open_station_dialog(draft: Dictionary, adding_stop: bool) -> void:
 			var stop: Dictionary = draft.anchor.duplicate()
 			stop.num = draft.next_stop
 			if stop.domain == "ROAD":
-				stop.roadSide = stop_choice.get_item_text(stop_choice.selected).to_upper()
+				stop.roadStopDirection = Enums.RoadStopDirection.find_key(stop_choice.get_selected_id())
 			else:
 				stop.type = "STATION_PASS" if stop_choice.selected == 0 else "STATION_GOODS"
 			for record: Dictionary in records:

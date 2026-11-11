@@ -20,6 +20,9 @@ const STATION_NAME_FORMAT = "Station3D_%s-%s"
 		self.position = value
 		self.station_placed.emit(value)
 
+func get_shared_inventory() -> GoodsInventory:
+	return station.get_interchange_inventory() if station != null else null
+
 #region Initialization
 # must be done in init, as station obj is assigned before scene tree entering
 func _init() -> void:

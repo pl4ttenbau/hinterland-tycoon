@@ -24,16 +24,17 @@ approach, Left a decreasing-order approach, and Both either. The physical driver
 still uses the road centreline; traffic lane offsets remain separate work.
 
 Transfer instructions currently require a stop, because ordinary nodes and depots
-have no station inventory. Passenger instructions require one or more **specific
-physical destination stops**, never an interchange ID. Different passenger goods
-(such as passenger, tourist and soldier) retain this same destination filter.
+have no station inventory. Passenger instructions select one or more destination
+interchanges. Vehicles still visit physical stops. An unload at any stop of the
+destination interchange completes the trip. Passenger, tourist and soldier
+batches use the same destination filter.
 Vehicle cargo-category compatibility is checked when adding/saving instructions.
 
 The editor works on a deep copy. **Save plan** validates all anchors, road-segment
 connectivity and action selectors before assigning the plan to the vehicle.
 **Cancel** retains the previous plan. Saving only stores a plan on this session's
 vehicle. **Start plan** begins execution; leave the vehicle to give control to the
-automatic driver. Transfers remain inactive. ResourceSaver round trips
+automatic driver. Transfer actions run at the scheduled stops. ResourceSaver round trips
 are supported, but game-save integration is not implemented.
 
 ## Pathfinding

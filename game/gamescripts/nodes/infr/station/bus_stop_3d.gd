@@ -23,6 +23,9 @@ var _sign: StationSign3D
 		self._apply_station()
 		self.station_assigned.emit(value)
 
+func get_shared_inventory() -> GoodsInventory:
+	return station.get_interchange_inventory() if station != null else null
+
 func _enter_tree() -> void:
 	self._connect_station()
 	self._apply_station()
@@ -73,16 +76,17 @@ func _layout_shelters() -> void:
 		return
 	var shelter := self.get_node("Model/Shelter") as Node3D
 	var opposite := self.get_node_or_null("Model/OppositeShelter") as Node3D
-	# BOTH is one logical stop/inventory with two visual shelters, not two
-	# different IDs or duplicated passenger queues.
-	if self.station.road_side == Enums.RoadSide.BOTH and opposite == null:
+	# A stop serving both directions shares one inventory across two shelters.
+	var both_directions: bool = self.station.direction == Enums.RoadStopDirection.BOTH_DIRECTIONS
+	if both_directions and opposite == null:
 		opposite = shelter.duplicate() as Node3D
 		opposite.name = "OppositeShelter"
 		self.get_node("Model").add_child(opposite)
-	elif self.station.road_side != Enums.RoadSide.BOTH and opposite != null:
+	elif not both_directions and opposite != null:
 		opposite.free()
 		opposite = null
-	var sign: float = -1.0 if self.station.road_side == Enums.RoadSide.LEFT else 1.0
+	# Right-hand traffic puts the increasing direction to the right of the curve.
+	var sign: float = -1.0 if self.station.direction == Enums.RoadStopDirection.ROAD_NODES_DECREASE else 1.0
 	self._place_shelter(shelter, sign)
 	if opposite != null:
 		self._place_shelter(opposite, -1.0)

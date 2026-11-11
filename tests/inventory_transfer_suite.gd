@@ -23,6 +23,7 @@ func run(scene_tree: SceneTree) -> int:
 		&"test_warehouse_stock_isolation",
 		&"test_transfers",
 		&"test_passengers",
+		&"test_manual_passenger_arrival",
 		&"test_vehicle_dialog",
 	]
 	for test: StringName in test_cases:
@@ -132,6 +133,53 @@ func test_passengers() -> bool:
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 	return true
 
+# Exercise arrival through the same transfer controls the player uses.
+func test_manual_passenger_arrival() -> bool:
+	var previous_catalog: InterchangesLoader = Managers.interchanges
+	var catalog := InterchangesLoader.new()
+	Managers.interchanges = catalog
+	var destination := InterchangeData.new()
+	destination.num = 7
+	destination.interchange_name = "HBF"
+	destination.town_name = "Stralsund"
+	destination.inventory.amount_max = 0
+	catalog.by_num[7] = destination
+
+	# The stop's physical ID differs from the destination stored in the bag.
+	var stop := RoadStationData.new(21)
+	stop.interchange = destination
+	var view: BusStop3D = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn").instantiate()
+	view.station = stop
+	host.add_child(view)
+	var station_access: InventoryEndpoint = InventoryEndpoint.from_node(view, "Stralsund HBF")
+	station_access.kind = InventoryEndpoint.Kind.STOP
+	var bag: InventoryEndpoint = endpoint("Player bag")
+	bag.kind = InventoryEndpoint.Kind.PLAYER
+	bag.inventory().change_stack(&"passenger", destination.num, 2)
+
+	var dialog: InventoryTransferDialog = load("res://scenes/ui/dialogs/transfer_inventory/transfer_inventory_dialog.tscn").instantiate()
+	dialog.available_endpoints.assign([bag, station_access])
+	host.add_child(dialog)
+	dialog._tabs._buttons[0].pressed.emit()
+	var row: TreeItem = dialog._left._table.get_root().get_first_child()
+	row.select(0)
+	dialog._left._on_row_selected()
+	dialog._maximum.pressed.emit()
+	check(dialog._quantity.value == 2 and not dialog._move_right.disabled, "Max offers all arriving passengers at a full interchange")
+	dialog._move_right.pressed.emit()
+	check(bag.inventory().get_amount("passenger") == 0, "The player's unload button completes the trip")
+	check(destination.inventory.get_amount("passenger") == 0, "Arrivals do not join waiting stock")
+	check(dialog._status.text.contains("arrived at Stralsund HBF"), "The dialog reports arrival")
+
+	dialog.close_all()
+	await tree.process_frame
+	view.free()
+	stop.connections.parent = null
+	destination.connections.parent = null
+	Managers.interchanges = previous_catalog
+	catalog.free()
+	return true
+
 # Exercise the actual GAZ picker, both transfer buttons, filters, tabs and modal cleanup.
 func test_vehicle_dialog() -> bool:
 	var previous_player: PlayerHead3D = GlobalState.player
@@ -192,7 +240,7 @@ func test_vehicle_dialog() -> bool:
 	dialog._tabs._buttons[0].pressed.emit()
 	check(dialog._right._table.columns == 3 and dialog._quantity.step == 1, "Passenger tab shows destination column and whole quantities")
 	row = dialog._right._table.get_root().get_first_child()
-	check(row.get_metadata(0).destination_stop == 201, "Passenger row retains its physical destination")
+	check(row.get_metadata(0).destination_interchange == 201, "Passenger row retains its interchange destination")
 
 	dialog.close_all()
 	await tree.process_frame
@@ -232,7 +280,7 @@ func _test_nearby_stops() -> bool:
 		if item.kind == InventoryEndpoint.Kind.STOP:
 			stop_count += 1
 	check(stop_count == 2, "Discovery includes both nearby physical road stops and excludes distant stops")
-	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Shared station names retain distinct physical stop labels")
+	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Unknown interchange IDs retain distinct fallback labels")
 	stops.free()
 	interchanges.free()
 	for record: RoadStationData in records:

@@ -22,9 +22,10 @@ of the captured player position, using world-space 3D distance.
   town is selected initially. Confirmation creates the interchange and its first
   stop together; cancellation publishes neither.
 
-Road stops offer Left, Right or Both, relative to increasing road node order.
-Both creates two shelters with one logical stop and inventory. Rail stops offer
-Passenger or Goods. Added stops inherit their interchange's name and town.
+Road stops offer Increasing node order, Decreasing node order, or Both directions.
+The default follows the side of the road where the player stands. Both directions
+creates two shelters for one physical stop. Rail stops offer Passenger or Goods.
+Added stops inherit their interchange's name, town, and shared inventory.
 
 Confirmation revalidates infrastructure and interchange proximity. A stop on the
 same infrastructure less than 2 m away blocks duplicate placement. Invalid input
@@ -40,7 +41,7 @@ remain per physical stop, with no automatic interchange transfers.
 
 `AbstractStation.curve_offset >= 0` marks a curve-anchored gameplay stop; `-1`
 retains the existing authored node anchor. Road route targets resolve runtime
-stops to `RoadRouteAnchor`, including road-side arrival direction. Runtime rail
+stops to `RoadRouteAnchor` with the selected arrival direction. Runtime rail
 adapters retain a nearby node reference without replacing its `station` link.
 
 Creation only changes session state. The managers do not write authored map JSON;

@@ -89,7 +89,7 @@ func _is_road_spawn_occupied(candidate: RoadVehicle3D) -> bool:
 	for other: RoadVehicle3D in road_vehicles:
 		if other == candidate or not is_instance_valid(other):
 			continue
-		var clearance: float = (candidate.vehicle_obj.veh_type.length_metres + other.vehicle_obj.veh_type.length_metres) * 0.5 + 0.5
+		var clearance: float = (candidate.dimensions_metres.z + other.dimensions_metres.z) * 0.5 + 0.5
 		if candidate.global_position.distance_to(other.global_position) < clearance:
 			return true
 	return false

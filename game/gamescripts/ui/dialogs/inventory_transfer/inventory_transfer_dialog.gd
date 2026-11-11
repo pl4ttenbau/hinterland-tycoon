@@ -200,12 +200,19 @@ func _set_maximum() -> void:
 #region Transfer commands
 func _transfer(source: InventoryTransferPanel, target: InventoryTransferPanel) -> void:
 	var stack: InventoryStack = source.selected_stack
-	var error: String = InventoryTransferService.transfer(source.endpoint, target.endpoint, stack, _quantity.value)
+	var amount: float = _quantity.value
+	var destination_label: String = target.endpoint.label if target.endpoint != null else ""
+	var completes_trip: bool = InventoryTransferService.completes_passenger_trip(target.endpoint, stack)
+	var error: String = InventoryTransferService.transfer(source.endpoint, target.endpoint, stack, amount)
 	if not error.is_empty():
 		_status.text = error
 		_status.add_theme_color_override("font_color", Color("e9a48d"))
 		return
-	_status.text = "Moved %s %s to %s." % [InventoryPresentation.quantity(_quantity.value), str(stack.good_key).capitalize(), target.endpoint.label]
+	var quantity_text: String = InventoryPresentation.quantity(amount)
+	if completes_trip:
+		_status.text = "%s %s arrived at %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label]
+	else:
+		_status.text = "Moved %s %s to %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label]
 	_status.add_theme_color_override("font_color", Color("c8dfb1"))
 	_update_controls()
 #endregion

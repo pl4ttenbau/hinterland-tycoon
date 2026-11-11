@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn" id="1_base"]
+[ext_resource type="ArrayMesh" path="res://assets/meshes/infr/rail/rail_track_1067mm/rail_track_1067mm_tracks.obj" id="2_tracks"]
+
+[node name="OuterRailTrack" instance=ExtResource("1_base")]
+
+[node name="TrackPathMesh" parent="." index="1"]
+mesh = ExtResource("2_tracks")

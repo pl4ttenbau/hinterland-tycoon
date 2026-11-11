@@ -1,5 +1,11 @@
 class_name InfrType extends Resource
 
+const GAUGE_1067_MM: String = "1067_MM"
+
+## Keep 1,067 mm tracks and vehicles separate from the legacy rail network.
+static func rail_gauges_compatible(first: String, second: String) -> bool:
+	return first == second or (first != GAUGE_1067_MM and second != GAUGE_1067_MM)
+
 @export var num: int
 @export var is_rail: bool
 @export var key: String

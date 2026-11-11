@@ -1,0 +1,4 @@
+newmtl matRailTrack
+Kd 1.000000 1.000000 1.000000
+map_Kd ../tex/tex_rail_tracks_wooden_d.png
+map_Bump ../tex/tex_rail_tracks_wooden_n.png

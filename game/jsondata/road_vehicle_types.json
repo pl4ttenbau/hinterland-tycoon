@@ -11,9 +11,6 @@
 			"cat": "PASSENGER",
 			"amount": 6.0
 		},
-		"length_metres": 5.176962,
-		"width_metres": 1.952088,
-		"height_metres": 2.020763,
 		"mass_tonnes": 1.54,
 		"payload_tonnes": null,
 		"motor_power_kw": 33.0
@@ -30,9 +27,6 @@
 			"cat": "FREIGHT",
 			"amount": 4.0
 		},
-		"length_metres": 5.542035,
-		"width_metres": 2.089896,
-		"height_metres": 1.993434,
 		"mass_tonnes": 1.81,
 		"payload_tonnes": 1.5,
 		"motor_power_kw": 30.89
@@ -49,9 +43,6 @@
 			"cat": "PASSENGER",
 			"amount": 4.0
 		},
-		"length_metres": 3.582603,
-		"width_metres": 1.569755,
-		"height_metres": 1.572999,
 		"mass_tonnes": 0.65,
 		"payload_tonnes": 0.39,
 		"motor_power_kw": 19.1
@@ -68,11 +59,24 @@
 			"cat": "PASSENGER",
 			"amount": 34.0
 		},
-		"length_metres": 7.838,
-		"width_metres": 2.4,
-		"height_metres": 3.936,
 		"mass_tonnes": 4.0,
 		"payload_tonnes": 1.7,
 		"motor_power_kw": 30.0
+	},
+	{
+		"key": "ifa_w50_covered",
+		"purchase_price": 23900,
+		"display_name": "IFA W50 L (Covered)",
+		"model_scene_path": "res://assets/meshes/vehicles/road/ifa_w50_covered/vehicle_ifa_w50_covered.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 90.0,
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 12.0
+		},
+		"mass_tonnes": 4.78,
+		"payload_tonnes": 5.02,
+		"motor_power_kw": 92.0
 	}
 ]

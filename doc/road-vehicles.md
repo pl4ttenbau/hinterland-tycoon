@@ -79,8 +79,8 @@ and [Museumsstiftung's Trabant 601 Kombi record](https://onlinesammlung.museumss
 `RoadStationData` inherits `AbstractStation`, independently of building
 `RoadConnection` resources. Road and rail stops belong to named `InterchangeData`
 parents and share their name/town metadata. A physical road stop has a manual
-stop number, road number, zero-based node index, and road side. `BOTH` creates
-two shelter models for one logical stop and inventory.
+stop number, road number, zero-based node index, and direction of travel.
+`BOTH_DIRECTIONS` creates two shelter models for one logical stop and inventory.
 
 Every map now uses `jsondata/interchanges.json`, containing mixed rail/road
 `stops` arrays. The coordinator loads all interchange parents, both infrastructure

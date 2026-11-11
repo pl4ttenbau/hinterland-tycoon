@@ -127,7 +127,7 @@ func _assign_visit_path(vehicle: RoadVehicle3D, point: RoadRoutePoint, node: Roa
 	var turn: RoadUTurnPlanner.Approach = RoadUTurnPlanner.prepare(segments, vehicle.global_basis.z)
 	if turn != null:
 		return _assign_turn_approach(vehicle, turn)
-	var trim: float = maxf(0.0, 10.0 - vehicle.vehicle_obj.veh_type.length_metres * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
+	var trim: float = maxf(0.0, 10.0 - vehicle.dimensions_metres.z * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
 	if segments.is_empty() or not vehicle.route.assign_segments(segments, trim):
 		stop(vehicle, "No drivable path from the current position. Move back onto a connected road.")
 		return false
@@ -140,7 +140,7 @@ func _assign_visit_path(vehicle: RoadVehicle3D, point: RoadRoutePoint, node: Roa
 func _assign_turn_approach(vehicle: RoadVehicle3D, turn: RoadUTurnPlanner.Approach) -> bool:
 	_turn_approach = turn
 	_turn_started = false
-	var margin: float = vehicle.vehicle_obj.veh_type.length_metres * 0.55
+	var margin: float = vehicle.dimensions_metres.z * 0.55
 	var assigned: bool = vehicle.route.assign_segments(turn.segments)
 	var endpoint: Vector3 = turn.path.to_global(turn.path.curve.sample_baked(turn.offset))
 	if (assigned and vehicle.route.remaining() <= margin + 0.4) or (not assigned and vehicle.global_position.distance_to(endpoint) <= margin + 1):

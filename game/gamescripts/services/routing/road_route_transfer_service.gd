@@ -18,7 +18,7 @@ static func execute(vehicle: RoadVehicle3D, point: RoadRoutePoint,
 		return result
 	var source: InventoryEndpoint = stop_end if action.kind == RoadRouteAction.Kind.LOAD else vehicle_end
 	var target: InventoryEndpoint = vehicle_end if action.kind == RoadRouteAction.Kind.LOAD else stop_end
-	_execute_stacks(source, target, action, stop.num, result)
+	_execute_stacks(source, target, action, action.destination_ids(stops), result)
 	return result
 
 ## Validate live references as well as the frozen plan: infrastructure or a
@@ -38,40 +38,33 @@ static func _validate_action(vehicle: RoadVehicle3D, point: RoadRoutePoint,
 ## Snapshot rows in stable resource/destination order. Read available quantities
 ## again for each transfer; change signals may update inventory between rows.
 static func _execute_stacks(source: InventoryEndpoint, target: InventoryEndpoint,
-		action: RoadRouteAction, stop: int, result: RoadRouteTransferResult) -> void:
+		action: RoadRouteAction, destinations: Array[int], result: RoadRouteTransferResult) -> void:
 	var rows: Array[InventoryStack] = source.inventory().stacks(false)
 	rows.append_array(source.inventory().stacks(true))
 	for stack: InventoryStack in rows:
 		var good: BaseGoodsType = GameTypes.resource_types.get(stack.good_key)
-		if not action.matches(good, stack.destination_stop):
+		if not action.matches(good, stack.destination_interchange, destinations):
 			continue
-		result.error = _move_stack(source, target, stack, action, stop, result)
+		result.error = _move_stack(source, target, stack, result)
 		if not result.error.is_empty():
 			return
 
-## Loading/unloading is a single best-effort visit, not a wait-until-full order.
-## At the exact destination, passengers leave the simulation; elsewhere they
-## remain a destination-tagged waiting batch if explicitly unloaded there.
+## Service the selected batch once. The shared transfer service handles both
+## arrivals and intermediate unloads, including their different capacity rules.
 static func _move_stack(source: InventoryEndpoint, target: InventoryEndpoint,
-		stack: InventoryStack, action: RoadRouteAction, stop: int, result: RoadRouteTransferResult) -> String:
+		stack: InventoryStack, result: RoadRouteTransferResult) -> String:
 	var error: String = InventoryTransferService.validate_access(source, target)
 	if not error.is_empty():
 		return error
-	var amount: float = source.inventory().stack_amount(stack.good_key, stack.destination_stop)
-	if amount <= 0:
-		return ""
-	if action.kind == RoadRouteAction.Kind.UNLOAD and stack.destination_stop == stop:
-		error = InventoryTransferService.complete_passenger_trip(source, target, stack, amount, stop)
-		if error.is_empty():
-			result.moved += amount
-			result.completed_passengers += amount
-		return error
-	if not target.component().accepts(stack.good_key):
+	var completes_trip: bool = InventoryTransferService.completes_passenger_trip(target, stack)
+	if not completes_trip and not target.component().accepts(stack.good_key):
 		return "The destination cannot carry %s." % stack.good_key
-	amount = InventoryTransferService.maximum(source, target, stack)
+	var amount: float = InventoryTransferService.maximum(source, target, stack)
 	if amount <= 0:
 		return ""
 	error = InventoryTransferService.transfer(source, target, stack, amount)
 	if error.is_empty():
 		result.moved += amount
+		if completes_trip:
+			result.completed_passengers += amount
 	return error

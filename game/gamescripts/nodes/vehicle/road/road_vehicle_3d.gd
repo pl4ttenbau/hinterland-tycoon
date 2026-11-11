@@ -31,6 +31,7 @@ var route := RoadVehicleRoute.new()
 var player_driving: bool = false
 var camera: Camera3D
 var wheelbase: float = 2.5
+var dimensions_metres: Vector3
 var maximum_speed_kmh: float = 50.0
 var motor_power_watts: float = 25000.0
 var _arrived: bool = false
@@ -41,124 +42,11 @@ var _turn_velocity: Vector3
 
 #region Construction
 ## Construct before tree insertion so callers can assign a path and spawn pose.
-## Generic wheel placement can later be replaced without changing either driver.
 static func of(type_key: String) -> RoadVehicle3D:
-	if GameTypes.ensure_initialized() != OK:
-		return null
-	var type: RoadVehicleTypeData = GameTypes.get_veh_type(type_key) as RoadVehicleTypeData
-	if type == null:
-		push_warning("Cannot spawn road vehicle type: %s" % type_key)
-		return null
-	var body := RoadVehicle3D.new()
-	body._configure_catalog_values(type)
-	body._configure_physics()
-	body._build_vehicle(type)
-	return body
-
-## Convert catalog tonnes/kW to physics kilograms/watts. Unknown specifications
-## use prototype defaults without changing the catalog's nullable values.
-func _configure_catalog_values(type: RoadVehicleTypeData) -> void:
-	vehicle_obj = VehicleData.of(type.key)
-	name = "RoadVehicle_%d" % vehicle_obj.num
-	mass = float(type.mass_tonnes) * 1000.0 if type.mass_tonnes != null else 1000.0
-	maximum_speed_kmh = float(type.max_speed_kmh) if type.max_speed_kmh != null else 50.0
-	motor_power_watts = float(type.motor_power_kw) * 1000.0 if type.motor_power_kw != null else 25000.0
-
-func _configure_physics() -> void:
-	continuous_cd = true
-	# The tall chassis box must not lift the centre of mass above the wheels.
-	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	center_of_mass = Vector3.ZERO
-	collision_layer = 2
-	collision_mask = 15
-
-## Share estimated dimensions between chassis, suspension, visual and camera.
-func _build_vehicle(type: RoadVehicleTypeData) -> void:
-	var length: float = type.length_metres
-	var width: float = float(type.width_metres) if type.width_metres != null else 1.8
-	var height: float = float(type.height_metres) if type.height_metres != null else 1.8
-	wheelbase = length * 0.6
-	var radius: float = clampf(width * 0.2, 0.28, 0.45)
-	var ride_height: float = radius + 0.08
-	_add_chassis(Vector3(width, height, length), ride_height)
-	_add_wheels(width, radius)
-	_add_model(type, ride_height)
-	_add_camera(length, height)
-	_add_inventory(type)
-
-## A regular component supplies stock/capacity without changing the physics body's base class.
-func _add_inventory(type: RoadVehicleTypeData) -> void:
-	inventory_component = InventoryContainer.new()
-	inventory_component.name = "Inventory"
-	inventory_component.display_name = "%s #%d" % [type.display_name, vehicle_obj.num]
-	inventory_component.capacity_override = float(type.capacity.amount) if type.capacity != null else 0.0
-	if type.capacity != null:
-		inventory_component.accepted_categories.append(type.capacity.goods_cat)
-	add_child(inventory_component)
-	inventory_component.get_inventory()
+	return RoadVehicleFactory.create(type_key)
 
 func get_inventory() -> GoodsInventory:
 	return inventory_component.get_inventory() if is_instance_valid(inventory_component) else null
-
-## Dimensions are width/height/length in metres; the body origin stays low.
-func _add_chassis(dimensions: Vector3, ride_height: float) -> void:
-	var shape := CollisionShape3D.new()
-	var box := BoxShape3D.new()
-	box.size = dimensions * Vector3(0.85, 0.65, 0.9)
-	shape.shape = box
-	shape.position.y = dimensions.y * 0.65 - ride_height
-	add_child(shape)
-
-func _add_wheels(width: float, radius: float) -> void:
-	for axle: int in [-1, 1]:
-		for side: int in [-1, 1]:
-			add_child(_create_wheel(axle, side, width, radius))
-
-## +Z is the front axle and +X the driver's left. These shared suspension values
-## are handling assumptions; front wheels steer and rear wheels provide traction.
-func _create_wheel(axle: int, side: int, width: float, radius: float) -> VehicleWheel3D:
-	var wheel := VehicleWheel3D.new()
-	wheel.name = "%s%s" % ["Front" if axle == 1 else "Rear", "Left" if side == 1 else "Right"]
-	wheel.position = Vector3(side * width * 0.4, 0.1, axle * wheelbase * 0.5)
-	wheel.use_as_steering = axle == 1
-	wheel.use_as_traction = axle == -1
-	wheel.wheel_radius = radius
-	wheel.wheel_rest_length = 0.18
-	wheel.suspension_travel = 0.2
-	wheel.suspension_stiffness = 40.0
-	wheel.suspension_max_force = mass * 10.0
-	wheel.damping_compression = 0.5
-	wheel.damping_relaxation = 0.8
-	return wheel
-
-## Catalog scenes also serve as decoration or train-style views. Keep only their
-## visuals so the oldtimer's Vehicle3D script and static collider never run.
-func _add_model(type: RoadVehicleTypeData, ride_height: float) -> void:
-	var model: Node3D = load(type.model_scene_path).instantiate()
-	model.set_script(null)
-	_strip_model_physics(model)
-	if type.key in ["gaz_aa_truck", "trabant_601_green"]:
-		model.rotation.y = PI * 0.5
-	model.position.y = -ride_height
-	add_child(model)
-
-func _add_camera(length: float, height: float) -> void:
-	camera = Camera3D.new()
-	camera.name = "DrivingCamera"
-	camera.position = Vector3(0, height + 2.0, -length - 4.0)
-	camera.rotation.y = PI
-	camera.rotation.x = -0.18
-	camera.set_meta("cam_name", &"CAM_ROAD_VEHICLE")
-	add_child(camera)
-
-static func _strip_model_physics(node: Node) -> void:
-	for child: Node in node.get_children():
-		if child is CollisionObject3D:
-			child.free()
-		else:
-			_strip_model_physics(child)
-	if node is GeometryInstance3D:
-		node.layers = 64
 #endregion
 
 #region Driver handoff

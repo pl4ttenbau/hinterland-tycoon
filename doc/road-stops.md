@@ -24,7 +24,7 @@ physical rail and road access points, with no separate child names.
         "domain": "ROAD",
         "roadNum": 42,
         "nodeIndex": 3,
-        "roadSide": "RIGHT"
+        "roadStopDirection": "ROAD_NODES_INCREASE"
       }
     ]
   }
@@ -37,13 +37,17 @@ physical rail and road access points, with no separate child names.
   `townName` is optional; when omitted, town binding supplies the map town's name.
   Empty interchanges are valid, but have no physical catchment yet.
 - Every stop requires `num`, `domain` (`RAIL` or `ROAD`), and `nodeIndex`.
-  Rail stops require `trackNum`; road stops require `roadNum` and `roadSide`.
+  Rail stops require `trackNum`. Road stops require `roadNum` and `roadStopDirection`.
 - All IDs and node indices are nonnegative integers. Node index zero is valid.
   Stop numbers must be unique across **both modes and every interchange on the
   map**. Interchange numbers have a separate namespace. A rail node may hold one
   physical stop; duplicate rail anchors are rejected.
-- `roadSide` is `LEFT`, `RIGHT`, or `BOTH`, facing along increasing road node
-  indices. It describes physical placement, not a traffic driving-side rule.
+- `roadStopDirection` is `ROAD_NODES_INCREASE`, `ROAD_NODES_DECREASE`, or
+  `BOTH_DIRECTIONS`. It specifies which direction a vehicle can approach from.
+  In right-hand traffic, increasing node order places the shelter to the right
+  of the road when facing increasing node indices. Decreasing order places it
+  to the left. Swap the directional values when reversing a road's node order
+  to keep its shelters on the same physical side.
 - Stops may additionally specify `type` and `hideBuilding`. The latter defaults
   to false. Name, town and interchange membership belong to the parent; supplying
   `name`, `townNum`, `townName` or `interchangeNum` in a child record is rejected.
@@ -56,7 +60,7 @@ physical rail and road access points, with no separate child names.
 
 `InterchangeData.stops` and `AbstractStation.interchange` provide membership in
 both directions. `station_name`, `town_num`, and `town_name` read through to the
-shared parent. `Managers.interchanges.stops_by_num` is the common stop lookup;
+shared parent, which also owns the inventory. `Managers.interchanges.stops_by_num` is the common stop lookup;
 `Managers.stations` retains the rail-specific lookup and `Managers.road_stops`
 provides the road-specific one.
 
@@ -72,10 +76,11 @@ make distant stops in the same interchange directly accessible to that building.
 
 Connections are held in `InterchangeData.connections`; reassignment removes old
 membership and does not duplicate buildings. Road-only interchanges are supported.
-Passenger spawning and industry production resolve an existing inventory through
-a reachable rail or road stop. Inventories remain per stop, with no automatic
-transfers or destination routing yet. A future storage refactor can replace the
-connection Resources with packed building-ID arrays; that is not part of this pass.
+The interchange owns one 60-unit inventory. Its rail and road stops and linked
+industries access the same stock. Each stop retains its physical location for
+transfer reach and its ID for route waypoints. Passengers target the interchange
+and can finish their trip at any of its stops. Standalone stops retain
+their local inventory. See [industry production and stock](industry-production.md).
 
 `WorldServicesCoordinator` registers every service before wiring callbacks.
 Its explicit `load_map_data()` sequence is:
@@ -105,8 +110,9 @@ matching the associated `RailStationData.num`. Stops are no longer authored insi
 
 Rail and road stops share the existing blue `StationSign3D` / `StationSignPanel`
 billboard. Each physical stop shows its interchange's name. In the game, the
-sign also displays that stop's live passenger/cargo inventory. Hiding a station
-building does not hide its sign; BOTH road stops have one sign and one inventory.
+sign displays the interchange's live passenger and cargo totals. Click a rail
+platform or road shelter to open the station information dialog. Hiding a station
+building leaves its sign visible. Road stops serving both directions have one sign.
 
 To preview stops while authoring a map, open `editorobjects_<map>.tscn` separately,
 select the `WorldEditorObjects` root, and click **Load Stop Labels JSON**. This
@@ -127,22 +133,19 @@ with platform/node views under their station. Bus stops spawn under
 
 `BusStop3D` extends `InventoryEntity3D`, uses the 3D station icon and follows its
 `RoadStationData.position`. The reusable scene is
-`res://scenes/subscenes/infr/station/bus_stop_3d.tscn`. Each logical stop initially
-has its own 60-unit inventory, matching the existing rail station scene.
+`res://scenes/subscenes/infr/station/bus_stop_3d.tscn`. Stops attached to an
+interchange expose its stock through their inventory component.
 
 `RoadStopsLoader` positions stops at their authored road nodes and samples the
 road curve's horizontal tangent to arrange the shelters. Each shelter's long edge
 is parallel to the road and its open side faces inward, including both shelters
-of a BOTH stop. Its adjustable
+of a stop serving both directions. Its adjustable
 `roadside_offset_metres` defaults to 4 m because road widths are not currently
 part of the authored infrastructure definition. The offset may need adjusting
 for individual road widths.
 
-`BOTH` creates two visual shelters under **one** logical stop, stop ID and
-inventory. Boarding direction, clicking, automatic bus
-services and intermodal transfers are separate future work. The interchange
-membership itself does not merge existing rail/road inventories or implement
-passenger destination routing.
+`BOTH_DIRECTIONS` creates two visual shelters for **one** physical stop ID. Either shelter
+opens the same station dialog and accesses the same interchange inventory.
 
 ## Existing map migration
 
@@ -161,5 +164,5 @@ manual numbers above the old range. Those numbers are now authored in JSON and
 remain stable on subsequent loads. Unused legacy groups were retained as empty
 interchanges. Existing type/building flags were carried onto the physical stops.
 Franzburger's authored Hafen stop retains its name, town metadata, road 34/node 3
-anchor and BOTH side setting. Track geometry, handles, fork metadata and node
+anchor and continues to serve both directions. Track geometry, handles, fork metadata and node
 indices were preserved while removing inline station definitions.

@@ -10,12 +10,23 @@ class_name RailTrackData extends AbstractTrack
 @export var forks: Array[RailNodeForkData] = []
 
 const NEAR_DISTANCE_MAX: float = 100.0
+## Distance from the track curve to the top of the rail mesh, in metres.
+const RAIL_HEAD_HEIGHT_METRES: Dictionary[String, float] = {
+	"NORMAL_GAUGE": 0.262066,
+	"1067_MM": 0.262066,
+	"750_MM": 0.262066,
+	"600_MM": 0.262066,
+}
 
 func _init():
 	super(Enums.EntityTypes.RAIL)
 
 static func get_by_num(_rail_num: int) -> RailTrackData:
 	return Managers.rails.track_storage.get_by_num(_rail_num)
+
+func get_rail_head_height() -> float:
+	# Legacy track types use the standard-gauge scene.
+	return RAIL_HEAD_HEIGHT_METRES.get(self.infr_type_key, RAIL_HEAD_HEIGHT_METRES["NORMAL_GAUGE"])
 	
 #region Add Nodes
 func add_node(rail_node: RailNodeData, update: bool):

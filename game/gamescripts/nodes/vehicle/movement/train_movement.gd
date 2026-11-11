@@ -43,6 +43,7 @@ var running_msec: int = -1
 var _speed_tween: Tween
 ## Distinguish tween samples from external writes that need a fresh ramp.
 var _applying_speed_sample: bool = false
+var _rollout_end_distance: float = INF
 
 ## Expose the existing speed scale for the speedometer.
 var current_speed_percentage: float:
@@ -96,8 +97,15 @@ func start() -> bool:
 	self.started.emit()
 	return true
 
+## Limit the automatic depot departure to a distance along the active path.
+func start_rollout(distance: float) -> void:
+	self._rollout_end_distance = self.m_passed_since_start + distance
+	if not self.start():
+		self._rollout_end_distance = INF
+
 ## Stop cancels the tween before zeroing speed, so it cannot accelerate again afterwards.
 func stop() -> void:
+	self._rollout_end_distance = INF
 	self.is_started = false
 	self.running_msec = -1
 	self._cancel_speed_tween()
@@ -164,6 +172,8 @@ func move_forwards(delta_seconds: float) -> void:
 		return
 	## Speed is converted to world metres for this physics step.
 	var tick_dist: float = self.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
+	var rollout_remaining: float = self._rollout_end_distance - self.m_passed_since_start
+	tick_dist = minf(tick_dist, rollout_remaining)
 	self.get_active_path().ensure_lookahead(self.get_front_distance() + tick_dist)
 	## In reverse, wagons lead the locomotive and must reach buffers first.
 	var available: float = maxf(0.0, self.get_active_path().curve.get_baked_length() - self.get_front_distance())
@@ -172,6 +182,11 @@ func move_forwards(delta_seconds: float) -> void:
 	self.place_vehicles()
 	if tick_dist >= available:
 		self.active_path_end_reached.emit(self.current_segment.end_node)
+	elif tick_dist >= rollout_remaining:
+		## Stay ready for the driver's next speed request.
+		self._rollout_end_distance = INF
+		self.speed.target = 0.0
+		self.speed.current = 0.0
 
 ## Carriages keep their physical order when the train travels backwards.
 func get_vehicle_distance(veh3d: Vehicle3D) -> float:
@@ -201,11 +216,15 @@ func derail() -> void:
 
 ## Place every vehicle at its own curve sample, so rotation changes along each bend.
 func place_vehicles() -> void:
-	if self.get_active_path() == null or self.get_active_path().curve.point_count < 2:
+	var path: ActiveRailVehiclePath = self.get_active_path()
+	if path == null or path.curve.point_count < 2:
 		return
 	for veh3d: Vehicle3D in self.train.vehicles:
 		## Sample in world space because the curve stores the rail network coordinates.
-		var target_transf: Transform3D = self.get_active_path().get_transf_at_m_passed(self.get_vehicle_distance(veh3d))
+		var distance: float = self.get_vehicle_distance(veh3d)
+		var target_transf: Transform3D = path.get_transf_at_m_passed(distance)
+		var segment: VehiclePathSegment = path.segments[path.get_segment_index(distance)]
+		target_transf.origin += target_transf.basis.y * segment.as_rail_track().get_rail_head_height()
 		if self.is_reversed:
 			## Reversing travel does not physically turn the locomotive or wagons around.
 			target_transf = target_transf.rotated_local(Vector3.UP, PI)

@@ -1,23 +1,27 @@
 class_name ActiveRailVehiclePath extends Path3D
 
-## Show the active route with the existing green marker balls.
-const SHOW_DEBUG: bool = true
 const SEGMENT_NODE_MARKER_PATH = "res://assets/meshes/markers/infr_end/selected_node.tscn"
 const DEBUG_MARKERS_PARENT_NAME = "DebugMarkers"
+
+## Show the active route with the existing green marker balls.
+const SHOW_DEBUG: bool = false
+
+## Plan at least this far ahead, without committing the fork settings.
+const LOOKAHEAD_METRES: float = 20.0
 
 signal extended(added_segment)
 
 ## The controller supplies distance, occupancy and derailment without depending on node parents.
 @export var movement: TrainMovement
 @export var segments: Array[VehiclePathSegment] = []
+
 ## Each segment ends at this curve point; joined endpoints share one point.
 var segment_end_points: Array[int] = []
 ## Distances identify segment boundaries even when a route visits the same fork twice.
 var segment_end_distances: Array[float] = []
+
 ## Keep callbacks so obsolete routes and freed trains can disconnect their listeners.
 var watched_forks: Dictionary = {}
-## Plan at least this far ahead, without committing the fork settings.
-const LOOKAHEAD_METRES: float = 20.0
 
 static func of_segment(_movement: TrainMovement, _segment: VehiclePathSegment) -> ActiveRailVehiclePath:
 	## The active curve keeps travelled history as well as a provisional route ahead.
@@ -58,8 +62,10 @@ func _append_track_curve(track_curve: Curve3D) -> void:
 			self.curve.add_point(track_curve.get_point_position(point_i), track_curve.get_point_in(point_i), track_curve.get_point_out(point_i))
 
 ## Compare the new point with the current endpoint to avoid duplicate fork points.
-func _ends_at(position: Vector3) -> bool:
-	return self.curve.point_count > 0 and self.curve.get_point_position(self.curve.point_count - 1).is_equal_approx(position)
+func _ends_at(possible_end_position: Vector3) -> bool:
+	if self.curve.point_count <= 0: return false
+	var last_node_pos: Vector3 = self.curve.get_point_position(self.curve.point_count - 1)
+	return last_node_pos.is_equal_approx(possible_end_position)
 
 ## Align only the outgoing span, leaving the existing approach geometry untouched.
 func _join_outgoing_handle(track_curve: Curve3D, point_i: int) -> void:

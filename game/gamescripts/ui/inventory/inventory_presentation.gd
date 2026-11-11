@@ -6,14 +6,34 @@ static var _icons: Dictionary = {}
 static func quantity(amount: float) -> String:
 	return str(int(amount)) if is_equal_approx(amount, roundf(amount)) else "%.1f" % amount
 
-static func destination(stop: int) -> String:
-	if stop < 0:
+## Each recipe line shows the quantity per batch and the stock available now.
+static func fill_recipe_list(list: ItemList, rows: Array[TransformedGood], inventory: GoodsInventory, inputs: bool) -> void:
+	list.clear()
+	for row: TransformedGood in rows:
+		var stock: String = "unavailable"
+		if inventory != null:
+			var amount: float = inventory.stack_amount(row.res_key) if inputs else inventory.get_amount(row.res_key)
+			stock = "%s in stock" % quantity(amount)
+		var label: String = "%s × %s per batch · %s" % [quantity(row.res_modifier), row.res_key.capitalize(), stock]
+		list.add_item(label, null, false)
+	if rows.is_empty():
+		list.add_item("None", null, false)
+
+static func destination(interchange_id: int) -> String:
+	if interchange_id < 0:
 		return "Unassigned"
 	if is_instance_valid(Managers.interchanges):
-		var station: AbstractStation = Managers.interchanges.stops_by_num.get(stop)
-		if station != null:
-			return "%s · #%d" % [station.station_name, stop]
-	return "Stop #%d" % stop
+		var interchange: InterchangeData = Managers.interchanges.by_num.get(interchange_id)
+		if interchange != null:
+			return interchange_label(interchange)
+	return "Interchange #%d" % interchange_id
+
+static func interchange_label(interchange: InterchangeData) -> String:
+	var title: String = interchange.interchange_name
+	var city: String = interchange.town_name
+	if not city.is_empty() and city.nocasecmp_to(title) != 0:
+		return "%s · %s" % [city, title]
+	return title
 
 static func icon(key: StringName) -> Texture2D:
 	if not _icons.has(key):

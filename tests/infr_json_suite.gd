@@ -57,8 +57,10 @@ func test_save(tree: SceneTree) -> bool:
 	check(int(data[0].points[0].fork.connectiveTracks[0]) == 8 and data[0].points[1].station.name == "keep", "Fork/station metadata survives")
 	check(WorldUtils.vec3_from_float_arr(data[0].points[1].pos) == Vector3(18, 8, -3), "Positions are saved in world coordinates")
 	check(WorldUtils.vec3_from_float_arr(data[0].points[0].handleOut) == Vector3(2, 6, 12), "Handle offsets include parent scale without translation")
+	line.rail_gauge = InfrType.GAUGE_1067_MM
 	var again: EditorActionResult = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
 	check(again.ok and again.backup != saved.backup and FileAccess.file_exists(saved.backup), "Every save retains a separate backup")
+	check(InfrJsonStore.read_records(path).records[0].type == InfrType.GAUGE_1067_MM, "A track gauge selected in the editor is saved")
 	var before: String = FileAccess.get_file_as_string(path)
 	line.curve.add_point(Vector3(9, 0, 0))
 	check(not store.save_lines(path, lines, Enums.InfrDomain.RAIL).ok and FileAccess.get_file_as_string(path) == before, "Changed point counts cannot silently move station/fork metadata")

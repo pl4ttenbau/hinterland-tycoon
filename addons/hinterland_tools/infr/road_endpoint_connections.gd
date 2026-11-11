@@ -178,6 +178,7 @@ func _stage_cache_copy(line: Node3D, cache: Node3D, world: Node) -> Node3D:
 	# Copy authored properties, not derived marker/rendering children. The curve
 	# must be independent: changing the edit must never change the reference view.
 	var copy: Node3D = line.get_script().of(line.infr_domain, line.num, line.infr_name, line.autosmooth)
+	copy.rail_gauge = line.rail_gauge
 	copy.curve = line.curve.duplicate(true)
 	copy.abs_aabb = line.abs_aabb
 	copy.transform = cache.global_transform.affine_inverse() * line.global_transform

@@ -63,6 +63,13 @@ enum RoadSide {
 	BOTH
 }
 
+## Directions of travel served by a road stop.
+enum RoadStopDirection {
+	ROAD_NODES_INCREASE,
+	ROAD_NODES_DECREASE,
+	BOTH_DIRECTIONS
+}
+
 enum UiMode {
 	WALKING,
 	BUILD_INFR,

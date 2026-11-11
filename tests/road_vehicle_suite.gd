@@ -41,7 +41,11 @@ func run(scene_tree: SceneTree) -> int:
 
 func test_models() -> bool:
 	check(GameTypes.ensure_initialized() == OK, "Catalog initializes")
-	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green"]:
+	var layouts := {
+		"daimler_1911_bus": Vector4(4.01, 1.28, 1.61, 1.87),
+		"ifa_w50_covered": Vector4(3.20, 0.45, 1.70, 1.78),
+	}
+	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green", "daimler_1911_bus", "ifa_w50_covered"]:
 		var body := RoadVehicle3D.of(key)
 		check(body != null and body.vehicle_obj.veh_type.key == key, "Catalog vehicle spawns as a road body")
 		if body == null:
@@ -52,6 +56,23 @@ func test_models() -> bool:
 				wheels += 1
 		check(wheels == 4, "Vehicle has four raycast wheels")
 		check(body.mass > 500.0 and body.camera != null, "Mass and camera are configured before tree insertion")
+
+		# The authored box supplies runtime dimensions. Check the measured axle layouts.
+		var chassis := body.get_node_or_null("CollisionShape3D") as CollisionShape3D
+		check(chassis != null and chassis.shape is BoxShape3D and body.dimensions_metres.is_equal_approx(chassis.shape.size),
+			"Runtime dimensions come from the mounted chassis box for %s" % key)
+		var front: VehicleWheel3D = body.get_node("FrontLeft")
+		var rear: VehicleWheel3D = body.get_node("RearLeft")
+		var layout: Vector4 = layouts.get(key, Vector4(body.dimensions_metres.z * 0.6, 0, 0, 0))
+		check(is_equal_approx(front.position.z - rear.position.z, layout.x) \
+			and is_equal_approx((front.position.z + rear.position.z) * 0.5, layout.y) \
+			and is_equal_approx(body.wheelbase, layout.x), "Physics and steering use the scene axle layout for %s" % key)
+		if layouts.has(key):
+			var front_right: VehicleWheel3D = body.get_node("FrontRight")
+			var rear_right: VehicleWheel3D = body.get_node("RearRight")
+			check(is_equal_approx(front.position.x - front_right.position.x, layout.z) \
+				and is_equal_approx(rear.position.x - rear_right.position.x, layout.w), "%s wheels follow the two authored track widths" % key)
+
 		tree.root.add_child(body)
 		body.freeze = true
 		body._physics_process(1.0 / 60.0)
@@ -250,8 +271,8 @@ func test_depot_spawning() -> bool:
 	# Exercise both endpoint directions through the public depot-spawning API.
 	for endpoint: String in ["START", "END"]:
 		depot.road_pos = endpoint
-		var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
-		check(body != null, "Car spawns from a %s depot" % endpoint)
+		var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle_at_depot("daimler_1911_bus", depot)
+		check(body != null, "Daimler bus spawns from a %s depot" % endpoint)
 		if body == null:
 			continue
 
@@ -265,7 +286,11 @@ func test_depot_spawning() -> bool:
 		if endpoint == "END":
 			tangent = -tangent
 		check(body.global_basis.z.dot(tangent.normalized()) > 0.999, "Vehicle faces away from the %s depot" % endpoint)
-		check(not body.route.is_valid() and body.brake > 0, "Depot car is parked without an automatic route")
+		# The imported bus nose points along the mesh scene's local +X axis.
+		var mesh: Node3D = body.get_node_or_null("StaticDaimler1911Bus/MeshDaimler1911Bus")
+		check(mesh != null and mesh.global_basis.x.normalized().dot(tangent.normalized()) > 0.999,
+			"Daimler bus nose faces away from the %s depot" % endpoint)
+		check(not body.route.is_valid() and body.brake > 0, "Depot bus is parked without an automatic route")
 
 		# A rejected duplicate must not leave a registered car behind.
 		check(fixture.manager.spawn_road_vehicle_at_depot("trabant_601_green", depot) == null, "An occupied depot spawn point rejects another car")
@@ -305,7 +330,7 @@ func test_spawn_dialog() -> bool:
 		action.free()
 		_free_driving_fixture(fixture)
 		return false
-	check(dialog.get("_list").item_count == 3, "Selector lists the three road vehicles without trains")
+	check(dialog.get("_list").item_count == 5, "Selector lists the five road vehicles without trains")
 	check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog blocks world controls and exposes the mouse")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED, "Dialog suspends the actual walking player")
 

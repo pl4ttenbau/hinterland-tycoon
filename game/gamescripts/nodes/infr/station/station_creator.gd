@@ -55,7 +55,9 @@ func placement_on(infrastructure: AbstractTrack, position: Vector3) -> Dictionar
 	var offset: float = infrastructure.curve.get_closest_offset(local_position)
 	var center: Vector3 = infrastructure.curve.sample_baked(offset)
 	var heading: Vector3 = infrastructure.curve.sample_baked(minf(offset + 0.2, infrastructure.curve.get_baked_length())) - infrastructure.curve.sample_baked(maxf(0.0, offset - 0.2))
-	var side: Enums.RoadSide = Enums.RoadSide.RIGHT if (local_position - center).dot(heading.cross(Vector3.UP)) >= 0.0 else Enums.RoadSide.LEFT
+	var direction := Enums.RoadStopDirection.ROAD_NODES_INCREASE
+	if road != null and (local_position - center).dot(heading.cross(Vector3.UP)) < 0.0:
+		direction = Enums.RoadStopDirection.ROAD_NODES_DECREASE
 	var nodes: Array = infrastructure.get("nodes")
 	var nearest_index: int = 0
 	var nearest_distance: float = INF
@@ -66,7 +68,7 @@ func placement_on(infrastructure: AbstractTrack, position: Vector3) -> Dictionar
 			nearest_index = index
 	return {"domain": "ROAD" if road != null else "RAIL", "infrastructure_num": infrastructure.num,
 		"offset": offset, "node_index": nearest_index, "origin": position,
-		"position": center + road.start_pos if road != null else center, "side": side}
+		"position": center + road.start_pos if road != null else center, "direction": direction}
 
 ## One entry per interchange, sorted by its nearest physical stop (across modes).
 func nearby_interchanges(position: Vector3) -> Array[InterchangeData]:
@@ -115,7 +117,7 @@ func placement_error(placement: Dictionary) -> String:
 
 ## Validate everything before publishing the new parent or stop.
 func create_stop(placement: Dictionary, interchange_num: int, title: String, town_num: int,
-		station_type: String, side: Enums.RoadSide) -> Dictionary:
+		station_type: String, direction: Enums.RoadStopDirection) -> Dictionary:
 	if not is_available():
 		return {"error": "Station services are no longer available."}
 	var problem: String = placement_error(placement)
@@ -123,8 +125,8 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		return {"error": problem}
 	if placement.domain == "RAIL" and station_type not in ["STATION_PASS", "STATION_GOODS"]:
 		return {"error": "Choose a passenger or goods stop."}
-	if placement.domain == "ROAD" and side not in [Enums.RoadSide.LEFT, Enums.RoadSide.RIGHT, Enums.RoadSide.BOTH]:
-		return {"error": "Choose the road side."}
+	if placement.domain == "ROAD" and Enums.RoadStopDirection.find_key(direction) == null:
+		return {"error": "Choose the direction of travel."}
 	var catalog: InterchangesLoader = Managers.interchanges
 	var nearby: Array[InterchangeData] = nearby_interchanges(placement.origin)
 	var interchange: InterchangeData = catalog.by_num.get(interchange_num)
@@ -150,7 +152,7 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		var road_stop := RoadStationData.new(catalog.next_stop_num())
 		road_stop.road_num = placement.infrastructure_num
 		road_stop.node_index = placement.node_index
-		road_stop.road_side = side
+		road_stop.direction = direction
 		road_stop.position = placement.position
 		stop = road_stop
 	else:

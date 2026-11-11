@@ -19,5 +19,12 @@
 			"trackPos": "END"
 		}
 	],
-	"roadDepots": [ ]
+	"roadDepots": [
+		{
+			"num": 4,
+			"name": "Anklam Factory Depot",
+			"roadNum": 286,
+			"roadPos": "END"
+		}
+	]
 }

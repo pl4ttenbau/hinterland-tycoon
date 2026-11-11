@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://tu1b7r6x3l41"]
+
+[ext_resource type="PackedScene" uid="uid://bfrof6absiw33" path="res://assets/meshes/vehicles/road/daimler_1911_bus/mesh/mesh_daimler_1911_bus.tscn" id="1_dy1x8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(7.8384094, 3.935791, 2.4)
+
+[node name="StaticDaimler1911Bus" type="Node3D" unique_id=1759571038]
+
+[node name="MeshDaimler1911Bus" parent="." unique_id=1346938080 instance=ExtResource("1_dy1x8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=904970691]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2057438433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11643982, 1.868, 0)
+shape = SubResource("BoxShape3D_qwrwv")

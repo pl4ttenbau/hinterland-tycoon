@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/road/ifa_w50_covered/mesh/mesh_ifa_w50_covered.tscn" id="1_mesh"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_model_3d.gd" id="road_model"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="road_axle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.5, 2.75, 6.48)
+
+[node name="IfaW50Covered" type="Node3D" node_paths=PackedStringArray("chassis")]
+script = ExtResource("road_model")
+chassis = NodePath("Chassis/CollisionShape3D")
+
+[node name="MeshIfaW50Covered" parent="." instance=ExtResource("1_mesh")]
+
+[node name="Chassis" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis"]
+position = Vector3(0, 2.125, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="RearAxle" type="Marker3D" parent="."]
+position = Vector3(0, 0.5, -1.15)
+script = ExtResource("road_axle")
+track_width = 1.78
+wheel_radius = 0.5
+
+[node name="FrontAxle" type="Marker3D" parent="."]
+position = Vector3(0, 0.5, 2.05)
+script = ExtResource("road_axle")
+track_width = 1.7
+wheel_radius = 0.5

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c7nrjrwr7f2m6"]
+
+[ext_resource type="PackedScene" uid="uid://bfrof6absiw33" path="res://assets/meshes/vehicles/road/daimler_1911_bus/mesh/mesh_daimler_1911_bus.tscn" id="1_if4gc"]
+[ext_resource type="Script" uid="uid://mgohye4batjb" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="road_axle"]
+[ext_resource type="Script" uid="uid://crmk7g2hykne2" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_model_3d.gd" id="road_model"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.4, 3.936, 7.838)
+
+[node name="StaticDaimler1911Bus" type="Node3D" unique_id=1759571038 node_paths=PackedStringArray("chassis")]
+script = ExtResource("road_model")
+chassis = NodePath("Chassis/CollisionShape3D")
+
+[node name="MeshDaimler1911Bus" parent="." unique_id=1346938080 instance=ExtResource("1_if4gc")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
+
+[node name="Chassis" type="StaticBody3D" parent="." unique_id=673687439]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis" unique_id=913643376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5584, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="RearAxle" type="Marker3D" parent="." unique_id=47646738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, -0.725)
+script = ExtResource("road_axle")
+track_width = 1.87
+wheel_radius = 0.45
+
+[node name="FrontAxle" type="Marker3D" parent="." unique_id=1751352157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37326258, 3.285)
+script = ExtResource("road_axle")
+track_width = 1.61
+wheel_radius = 0.35000000000000003

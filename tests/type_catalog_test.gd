@@ -57,7 +57,7 @@ func test_catalog_lifecycle() -> bool:
 	self.check(self.session_ready_count == 1, "First session starts after loading")
 	var source_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RailVehicleTypesLoader.CATALOG_PATH))
 	var road_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source_catalog.size() == 17 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
+	self.check(source_catalog.size() == 18 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
 	for index: int in range(source_catalog.size()):
 		var vehicle: VehicleTypeData = GameTypes.vehicle_types[index]
 		self.check(vehicle is RailVehicleTypeData, "Rail catalog creates rail definitions")
@@ -137,7 +137,9 @@ func test_invalid_catalogs() -> bool:
 
 func test_road_catalogs() -> bool:
 	var source: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source.size() == 3 and GameTypes.get_veh_type("trabant_601_green") is RoadVehicleTypeData, "Road catalog includes the oldtimer, GAZ truck and green Trabant")
+	self.check(source.size() == 5 and GameTypes.get_veh_type("daimler_1911_bus") is RoadVehicleTypeData
+		and GameTypes.get_veh_type("ifa_w50_covered") is RoadVehicleTypeData,
+		"Road catalog includes the Daimler bus and covered IFA W50")
 	for entry: Dictionary in source:
 		var definition: VehicleTypeData = GameTypes.get_veh_type(entry["key"])
 		self.check(definition is RoadVehicleTypeData, "Road catalog creates road definitions")
@@ -155,16 +157,18 @@ func test_road_catalogs() -> bool:
 		self.check(definition.payload_tonnes == entry.get("payload_tonnes"), "Physical payload loads independently of game cargo counts")
 		self.check(definition.get_mesh_path() == entry["model_scene_path"] \
 			and FileAccess.file_exists(definition.get_mesh_path()), "Road model path is explicit and exists")
-		self.check(definition.width_metres == entry["width_metres"] \
-			and definition.height_metres == entry["height_metres"], "Model dimensions load from JSON")
+		self.check(definition.length_metres == 0.0 and definition.width_metres == null \
+			and definition.height_metres == null, "Scene-authored road models need no catalog dimensions")
 	# Complete specifications can be authored later without changing the mapper.
 	var populated: Dictionary = source[0].duplicate(true)
 	populated["max_speed_kmh"] = 40
 	populated["capacity"] = {"cat": "PASSENGER", "amount": 4}
 	populated["payload_tonnes"] = 0
+	populated["length_metres"] = 5.0
 	var mapped: RoadVehicleTypeData = VehicleMapper.road_type_dict_to_class(populated)
 	self.check(mapped != null and mapped.max_speed_kmh == 40 and mapped.capacity.amount == 4, "Road specifications load when supplied")
 	self.check(mapped != null and mapped.payload_tonnes == 0, "Explicit zero payload is distinct from unknown payload")
+	self.check(mapped != null and mapped.length_metres == 5.0, "Legacy road catalogs can still provide length")
 	self.check(not populated["usable_infr"].has("domain"), "Road mapping leaves source data unchanged")
 	var existing_count: int = GameTypes.vehicle_types.size()
 	var path: String = "/tmp/hinterland-road-catalog-%d.json" % OS.get_process_id()
@@ -172,6 +176,7 @@ func test_road_catalogs() -> bool:
 		{"usable_infr": {"domain": "RAIL"}}, {"max_speed_kmh": "fast"},
 		{"max_speed_kmh": 0}, {"max_speed_kmh": 1.5}, {"length_metres": -1},
 		{"width_metres": 0}, {"height_metres": -1},
+		{"wheelbase_metres": 0}, {"wheelbase_metres": "4"}, {"axle_offset_metres": true}, {"model_yaw_degrees": "90"},
 		{"payload_tonnes": -1}, {"payload_tonnes": "1.5"}, {"payload_tonnes": true},
 		{"capacity": {"cat": "PASSENGER", "amount": -1}}
 	]

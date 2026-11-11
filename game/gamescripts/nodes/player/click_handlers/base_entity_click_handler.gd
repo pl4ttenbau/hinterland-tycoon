@@ -2,6 +2,7 @@
 class_name BaseEntityClickHandler extends AbstractClickHandler
 
 static var INDUSTRY_DIAG_PATH = "res://scenes/ui/dialogs/industry_dialog/industry_dialog.tscn"
+const STATION_DIALOG_PATH = "res://scenes/ui/dialogs/station_info/station_info_dialog.tscn"
 
 func handle_click(entity_collider: Node3D) -> bool:
 	if entity_collider is RoadVehicle3D:
@@ -22,22 +23,31 @@ func handle_click(entity_collider: Node3D) -> bool:
 		return self._on_road_depot_clicked(entity_collider)
 	if entity_collider is IndustryCollider:
 		return self._on_industry_click(entity_collider)
+	if entity_collider is StationCollider:
+		return _on_station_click(entity_collider)
 	if entity_collider is ClickableCollider:
 		return self._on_other_clickable_collider_click(entity_collider)
 	return false
 
 ## == ENTITY CLICKS ==
-func _on_industry_click(c_ref: IndustryCollider):
-	var ind_num: int = c_ref.get_click_ref().entity_num
-	var clicked_ind: IndustryData = IndustryData.get_by_num(ind_num)
-	# open diag
-	var diag_scene: PackedScene = load(INDUSTRY_DIAG_PATH)
-	# open industry dialog
-	var instance: IndustryDialog = diag_scene.instantiate()
-	instance.industry = clicked_ind
-	$/root.add_child(instance)
-	# stop event handling & return handled as true
-	self.stop_input()
+func _on_industry_click(collider: IndustryCollider) -> bool:
+	var industry_view: Industry3D = collider.outer_industry
+	if not is_instance_valid(industry_view) or industry_view.industry == null or UiState.current_diag != null:
+		return false
+	var dialog: IndustryDialog = load(INDUSTRY_DIAG_PATH).instantiate()
+	dialog.industry_view = industry_view
+	get_tree().root.add_child(dialog)
+	stop_input()
+	return true
+
+func _on_station_click(collider: StationCollider) -> bool:
+	var stop: AbstractStation = collider.get_stop()
+	if stop == null or UiState.current_diag != null:
+		return false
+	var dialog = load(STATION_DIALOG_PATH).instantiate()
+	dialog.stop = stop
+	get_tree().root.add_child(dialog)
+	stop_input()
 	return true
 	
 func _on_rail_fork_click(fork_collider: RailForkCollider) -> bool:

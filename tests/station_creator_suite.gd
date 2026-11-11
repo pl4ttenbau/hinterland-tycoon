@@ -75,7 +75,7 @@ func test_create_and_join() -> bool:
 	var industry := IndustryData.new(GameTypes.industry_types[0].key, Vector3(160, 5, 110))
 	var placement: Dictionary = tool.placement_on(road, Vector3(150, 5, 100))
 	check(placement.position.is_equal_approx(Vector3(150, 5, 100)), "Placement retains a point between authored nodes")
-	var result: Dictionary = tool.create_stop(placement, -1, "New station", town.num, "", Enums.RoadSide.BOTH)
+	var result: Dictionary = tool.create_stop(placement, -1, "New station", town.num, "", Enums.RoadStopDirection.BOTH_DIRECTIONS)
 	check(result.has("stop"), "First stop creates a new interchange")
 	if not result.has("stop"):
 		return false
@@ -95,7 +95,7 @@ func test_create_and_join() -> bool:
 	check(tool.nearby_interchanges(stop.position + Vector3(50, 0, 0)) == [stop.interchange], "Exactly 50 m joins the existing interchange")
 	check(tool.nearby_interchanges(stop.position + Vector3(50.01, 0, 0)).is_empty(), "Beyond 50 m creates a new interchange")
 	var rail_placement: Dictionary = tool.placement_on(rail, Vector3(170, 5, 130))
-	var joined: Dictionary = tool.create_stop(rail_placement, stop.interchange_num, "Ignored", -1, "STATION_GOODS", Enums.RoadSide.RIGHT)
+	var joined: Dictionary = tool.create_stop(rail_placement, stop.interchange_num, "Ignored", -1, "STATION_GOODS", Enums.RoadStopDirection.ROAD_NODES_INCREASE)
 	check(joined.has("stop"), "Rail stop can join a nearby road interchange")
 	if not joined.has("stop"):
 		return false
@@ -117,9 +117,9 @@ func test_create_and_join() -> bool:
 func test_validation() -> bool:
 	var placement: Dictionary = tool.placement_on(road, Vector3(400, 5, 100))
 	var count: int = services.interchanges.interchanges.size()
-	check(tool.create_stop(placement, -1, " ", town.num, "", Enums.RoadSide.RIGHT).has("error"), "Blank name is rejected")
-	check(tool.create_stop(placement, -1, "Orphan", -1, "", Enums.RoadSide.RIGHT).has("error"), "Missing town is rejected")
-	check(tool.create_stop(placement, 0, "", -1, "", Enums.RoadSide.RIGHT).has("error"), "Distant interchange cannot be joined")
+	check(tool.create_stop(placement, -1, " ", town.num, "", Enums.RoadStopDirection.ROAD_NODES_INCREASE).has("error"), "Blank name is rejected")
+	check(tool.create_stop(placement, -1, "Orphan", -1, "", Enums.RoadStopDirection.ROAD_NODES_INCREASE).has("error"), "Missing town is rejected")
+	check(tool.create_stop(placement, 0, "", -1, "", Enums.RoadStopDirection.ROAD_NODES_INCREASE).has("error"), "Distant interchange cannot be joined")
 	check(services.interchanges.interchanges.size() == count, "Failed creation does not publish an empty parent")
 	var duplicate: Dictionary = tool.placement_on(road, Vector3(150, 5, 100))
 	check(not tool.placement_error(duplicate).is_empty(), "Duplicate placement is rejected")
@@ -132,12 +132,14 @@ func test_dialogs() -> bool:
 	var script: GDScript = load("res://game/gamescripts/ui/dialogs/station_creator/station_creator_dialog.gd")
 	if script == null or not script.can_instantiate():
 		return false
-	var placement: Dictionary = tool.placement_on(road, Vector3(400, 5, 100))
+	var placement: Dictionary = tool.placement_on(road, Vector3(400, 5, 99))
 	var before: int = services.interchanges.stops_by_num.size()
 	var previous_blocked: bool = UiState.movement_blocked
 	var dialog: ModalGameDialog = script.create(tool, placement)
 	add_child(dialog)
 	check(dialog.dialog_key == "CreateStationDialog" and dialog.get_node("%OkButton").text == "Create station", "No nearby stop opens the new-station menu")
+	var directions := dialog.find_child("StopSettings", true, false) as OptionButton
+	check(directions.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE, "The dialog defaults to the direction served on the player's side")
 	await capture_preview(dialog, "create")
 	check(UiState.movement_blocked, "Dialog suspends world input")
 	dialog.close_all()
@@ -145,9 +147,12 @@ func test_dialogs() -> bool:
 	check(services.interchanges.stops_by_num.size() == before and UiState.movement_blocked == previous_blocked and UiState.current_diag == null, "Cancel makes no stop and restores input")
 	dialog = script.create(tool, placement)
 	add_child(dialog)
+	var next_stop_num: int = services.interchanges.next_stop_num()
 	dialog.get_node("%OkButton").pressed.emit()
 	await get_tree().process_frame
 	check(services.interchanges.stops_by_num.size() == before + 1, "Confirm creates a station through the actual dialog")
+	var created: RoadStationData = services.interchanges.stops_by_num.get(next_stop_num)
+	check(created != null and created.direction == Enums.RoadStopDirection.ROAD_NODES_DECREASE, "The created stop keeps the selected travel direction")
 	placement = tool.placement_on(road, Vector3(420, 5, 100))
 	dialog = script.create(tool, placement)
 	add_child(dialog)
@@ -164,7 +169,7 @@ func test_dialogs() -> bool:
 
 func test_multiple_stations() -> bool:
 	var placement: Dictionary = tool.placement_on(road, Vector3(250, 5, 100))
-	var created: Dictionary = tool.create_stop(placement, -1, "Another station", town.num, "", Enums.RoadSide.LEFT)
+	var created: Dictionary = tool.create_stop(placement, -1, "Another station", town.num, "", Enums.RoadStopDirection.ROAD_NODES_DECREASE)
 	check(created.has("stop"), "A separate station can be created beyond every existing stop's 50 m radius")
 	if not created.has("stop"):
 		return false

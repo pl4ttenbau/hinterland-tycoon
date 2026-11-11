@@ -41,13 +41,19 @@ static func road_type_dict_to_class(data: Dictionary) -> RoadVehicleTypeData:
 	if not _is_valid(road_data, true):
 		return null
 	var definition := RoadVehicleTypeData.new()
-	for field: String in ["width_metres", "height_metres", "payload_tonnes"]:
+	for field: String in ["width_metres", "height_metres", "payload_tonnes", "wheelbase_metres"]:
 		var value: Variant = road_data.get(field)
 		if value != null and (not _is_number(value) or not is_finite(float(value)) \
 				or value < 0 or (value == 0 and field != "payload_tonnes")):
 			push_error("Road vehicle %s has an invalid %s" % [road_data["key"], field])
 			return null
 		definition.set(field, float(value) if value != null else null)
+	for field: String in ["axle_offset_metres", "model_yaw_degrees"]:
+		var value: Variant = road_data.get(field, 0.0)
+		if not _is_number(value) or not is_finite(float(value)):
+			push_error("Road vehicle %s has an invalid %s" % [road_data["key"], field])
+			return null
+		definition.set(field, float(value))
 	_apply_fields(definition, road_data)
 	return definition
 
@@ -57,7 +63,7 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	definition.model_scene_path = data["model_scene_path"]
 	definition.max_speed_kmh = int(data["max_speed_kmh"]) if data.get("max_speed_kmh") != null else null
 	definition.has_motor = data["has_motor"]
-	definition.length_metres = float(data["length_metres"])
+	definition.length_metres = float(data.get("length_metres", 0.0))
 	definition.mass_tonnes = float(data["mass_tonnes"]) if data.get("mass_tonnes") != null else null
 	definition.motor_power_kw = float(data["motor_power_kw"]) if data.get("motor_power_kw") != null else null
 	definition.tractive_effort_kn = float(data["tractive_effort_kn"]) if data.get("tractive_effort_kn") != null else null
@@ -66,7 +72,7 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	if data.has("capacity"):
 		definition.capacity = GoodsCapacity.of_json(data["capacity"])
 
-static func _is_valid(data: Dictionary, allow_unknown_speed: bool = false) -> bool:
+static func _is_valid(data: Dictionary, road_vehicle: bool = false) -> bool:
 	var price: Variant = data.get("purchase_price")
 	if price != null and (not _is_number(price) or not is_finite(float(price)) \
 			or price <= 0 or int(price) != price):
@@ -76,14 +82,17 @@ static func _is_valid(data: Dictionary, allow_unknown_speed: bool = false) -> bo
 		if not data.get(field) is String or data[field].is_empty():
 			push_error("Vehicle definition requires a nonempty %s" % field)
 			return false
-	if not (allow_unknown_speed and data.get("max_speed_kmh") == null):
+	if not (road_vehicle and data.get("max_speed_kmh") == null):
 		if not _is_number(data.get("max_speed_kmh")) or not is_finite(float(data["max_speed_kmh"])) \
 				or data["max_speed_kmh"] <= 0 or int(data["max_speed_kmh"]) != data["max_speed_kmh"]:
 			push_error("Vehicle %s requires a positive integer speed" % data["key"])
 			return false
-	if not _is_number(data.get("length_metres")) or data["length_metres"] <= 0:
-		push_error("Vehicle %s requires a positive length" % data["key"])
-		return false
+	# Road scenes can supply the dimensions. Older road catalogs still accept a length.
+	if not road_vehicle or data.has("length_metres"):
+		var length: Variant = data.get("length_metres")
+		if not _is_number(length) or not is_finite(float(length)) or length <= 0:
+			push_error("Vehicle %s requires a positive length" % data["key"])
+			return false
 	for field: String in ["mass_tonnes", "motor_power_kw", "tractive_effort_kn"]:
 		var value: Variant = data.get(field)
 		if value != null and (not _is_number(value) or not is_finite(float(value)) \

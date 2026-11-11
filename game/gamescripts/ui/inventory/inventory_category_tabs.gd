@@ -18,7 +18,7 @@ var _group := ButtonGroup.new()
 
 func _ready() -> void:
 	add_theme_constant_override("separation", 8)
-	_build_tab("Passengers", "By destination stop", InventoryPresentation.icon(&"passenger"), 0)
+	_build_tab("Passengers", "By interchange", InventoryPresentation.icon(&"passenger"), 0)
 	_build_tab("Cargo", "Materials and goods", load("res://assets/ui/images/goods_type/box_storage.png"), 1)
 	_sync_selection()
 

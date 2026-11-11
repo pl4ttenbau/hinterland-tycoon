@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://42bcdxqv8y0v"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_vehicle"]
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/mesh/mesh_sakhalin_tg16_diesel.tscn" id="2_mesh"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_collider"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tg16"]
+size = Vector3(2.97, 4.036, 15.45)
+
+[node name="ModelSakhalinTg16Diesel" type="Node3D" unique_id=866764442]
+script = ExtResource("1_vehicle")
+
+[node name="MeshSakhalinTg16Diesel" parent="." unique_id=1181814121 instance=ExtResource("2_mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262066, 0)
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=840732960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262066, 0)
+visible = false
+script = ExtResource("3_collider")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=389726224]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.995, 0)
+shape = SubResource("BoxShape3D_tg16")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1215461603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.312066, -7.75)
+metadata/cam_name = &"CAM_VEHICLE"

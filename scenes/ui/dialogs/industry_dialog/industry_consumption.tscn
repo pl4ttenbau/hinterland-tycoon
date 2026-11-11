@@ -19,5 +19,3 @@ text = "Consumption"
 unique_name_in_owner = true
 layout_mode = 2
 auto_height = true
-item_count = 1
-item_0/text = "1 Wood"

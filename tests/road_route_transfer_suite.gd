@@ -61,8 +61,19 @@ func _setup() -> void:
 	Managers.roads.add_child(view)
 	Managers.roads.storage.add_container(view)
 
-func _stop(id: int, index: int = 0) -> RoadStationData:
+func _stop(id: int, index: int = 0, interchange_id: int = -1) -> RoadStationData:
 	var data := RoadStationData.new(id, "Stop %d" % id)
+	if interchange_id >= 0:
+		var catalog: InterchangesLoader = Managers.interchanges
+		var interchange: InterchangeData = catalog.by_num.get(interchange_id)
+		if interchange == null:
+			interchange = InterchangeData.new()
+			interchange.num = interchange_id
+			interchange.interchange_name = "Station %d" % interchange_id
+			catalog.by_num[interchange_id] = interchange
+			catalog.interchanges.append(interchange)
+		data.interchange = interchange
+		interchange.stops.append(data)
 	data.road_num = road.num
 	data.node_index = index
 	data.position = road.nodes[index].position + Vector3(4, 0, 0)
@@ -93,7 +104,7 @@ func _action(kind: RoadRouteAction.Kind, goods: Array[StringName], goals: Array[
 	var action := RoadRouteAction.new()
 	action.kind = kind
 	action.goods = goods
-	action.passenger_targets = goals
+	action.passenger_interchange_targets = goals
 	return action
 
 func _execute(body: RoadVehicle3D, stop: AbstractStation, action: RoadRouteAction) -> RoadRouteTransferResult:
@@ -129,36 +140,37 @@ func test_cargo() -> bool:
 # even if its waiting inventory is full; other batches remain aboard or waiting.
 func test_passengers() -> bool:
 	var origin: RoadStationData = _stop(10)
-	var destination: RoadStationData = _stop(11)
-	_stop(12)
+	# Both stops serve interchange 11. Unload at the second physical stop.
+	_stop(11, 0, 11)
+	var destination: RoadStationData = _stop(111, 0, 11)
+	_stop(12, 0, 12)
 	var body: RoadVehicle3D = _vehicle("trabant_601_green")
 	var stock: GoodsInventory = origin.get_inventory_view().get_inventory()
 	stock.change_stack(&"passenger", 11, 3)
 	stock.change_stack(&"passenger", 12, 2)
 	stock.change_stack(&"passenger", -1, 1)
 	var result: RoadRouteTransferResult = _execute(body, origin, _action(RoadRouteAction.Kind.LOAD, [&"passenger"], [11]))
-	check(result.error.is_empty() and result.moved == 3, "Load selects only the requested physical destination")
+	check(result.error.is_empty() and result.moved == 3, "Load selects only the requested interchange")
 	check(stock.stack_amount(&"passenger", 12) == 2 and stock.stack_amount(&"passenger") == 1, "Other and unassigned passenger batches are untouched")
 	result = _execute(body, origin, _action(RoadRouteAction.Kind.LOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.moved == 1, "Passenger loading respects whole-person capacity")
 
-	var target_component: InventoryContainer = InventoryContainer.find_on(destination.get_inventory_view())
-	target_component.capacity_override = 0
+	var target_stock: GoodsInventory = destination.interchange.inventory
+	target_stock.amount_max = 0
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [11])
 	result = _execute(body, destination, unload)
 	check(result.error.is_empty() and result.completed_passengers == 3, "Arriving passengers complete their trips despite a full waiting room")
-	check(body.get_inventory().storage.total_passengers == 1 and target_component.get_inventory().storage.total_passengers == 0, "Finished passengers are removed rather than added to waiting stock")
+	check(body.get_inventory().storage.total_passengers == 1 and target_stock.storage.total_passengers == 0, "Finished passengers are removed rather than added to waiting stock")
 	result = _execute(body, destination, unload)
 	check(result.error.is_empty() and result.moved == 0, "Repeated arrival cannot remove a different destination batch")
 
-	var vehicle_end: InventoryEndpoint = InventoryEndpoint.from_node(body)
 	var stop_end: InventoryEndpoint = InventoryEndpoint.from_node(destination.get_inventory_view())
 	var wrong_goal := InventoryStack.new(&"passenger", 1, 12)
-	check(not InventoryTransferService.complete_passenger_trip(vehicle_end, stop_end, wrong_goal, 1, 11).is_empty(), "Passengers cannot finish at the wrong physical stop")
-	target_component.capacity_override = 10
+	check(not InventoryTransferService.completes_passenger_trip(stop_end, wrong_goal), "The wrong interchange cannot complete the trip")
+	target_stock.amount_max = 10
 	result = _execute(body, destination, _action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.completed_passengers == 0 and result.moved == 1, "Explicit intermediate unload preserves a waiting passenger's onward goal")
-	check(target_component.get_inventory().stack_amount(&"passenger", 12) == 1, "Intermediate passengers retain the original destination ID")
+	check(target_stock.stack_amount(&"passenger", 12) == 1, "Intermediate passengers retain the original destination ID")
 	body.free()
 	return true
 
@@ -228,7 +240,7 @@ func test_ordered_execution() -> bool:
 # at another, using the same controller and arrival path as the game.
 func test_physical_passenger_route() -> bool:
 	var origin: RoadStationData = _stop(30, 1)
-	var destination: RoadStationData = _stop(31, 3)
+	var destination: RoadStationData = _stop(31, 3, 31)
 	var stock: GoodsInventory = origin.get_inventory_view().get_inventory()
 	stock.change_stack(&"passenger", 31, 4)
 	var depot := RoadDepotData.new()

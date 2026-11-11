@@ -97,8 +97,8 @@ static func _validate_stop_anchor(stop: Dictionary, rail_anchors: Dictionary) ->
 		if rail_anchors.has(anchor):
 			return _invalid("Two rail stops use track/node %s" % anchor)
 		rail_anchors[anchor] = true
-	elif not stop.get("roadSide") is String or not Enums.RoadSide.has(stop["roadSide"]):
-		return _invalid("Road stop %d requires LEFT, RIGHT or BOTH" % int(stop["num"]))
+	elif RoadStationData.direction_key(stop).is_empty():
+		return _invalid("Road stop %d requires roadStopDirection ROAD_NODES_INCREASE, ROAD_NODES_DECREASE or BOTH_DIRECTIONS" % int(stop["num"]))
 	return OK
 
 func _create_interchange(record: Dictionary) -> void:

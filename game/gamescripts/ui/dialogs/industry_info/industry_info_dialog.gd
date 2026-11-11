@@ -1,40 +1,34 @@
-class_name IndustryDialog extends GameDialog
+class_name IndustryDialog extends ModalGameDialog
 
-@export var industry: IndustryData:
-	get(): return industry
-	set(value):
-		industry = value
-		# initialize children
-		%NameAndTypeBox.industry = value
-		# self.set_connected_station()
-		self.set_production_consumption()
-
-#region Initialization
-func _init():
-	super()
-	self.dialog_key = "IndustryDialog"
-	
-func set_name_and_type():
-	# set name label
-	if self.industry.ind_name:
-		%NameLabel.text = "»%s«" % self.industry.ind_name
-	# set type label
-	%TypeLabel.text = self.industry.ind_type.name
-	
-func set_connected_station():
-	%IndustryStationList.industry = self.industry
-	
-func set_production_consumption():
-	%IndustryProduction.industry = self.industry
-	%IndustryConsumption.industry = self.industry
+var industry_view: Industry3D
+var _recipe: IndustryType
+var _inventory: GoodsInventory
 
 func _ready() -> void:
-	# unlocke mouse from player
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	# bind signals
-	%CloseButton.pressed.connect(Callable(self, "_on_close_button_click"))
+	dialog_key = "IndustryDialog"
+	_suspend_world_input()
+	if not is_instance_valid(industry_view) or industry_view.industry == null or industry_view.industry.ind_type == null:
+		close_all()
+		return
 
-#region Callbacks
-func _on_close_button_click():
-	super.close_all()
-#endregion
+	var industry: IndustryData = industry_view.industry
+	_recipe = industry.ind_type
+	_inventory = industry_view.get_inventory()
+	%NameAndTypeBox.industry = industry
+	%IndustryStationList.industry = industry
+	%CloseButton.pressed.connect(close_all)
+	%CloseButton.grab_focus()
+
+	# Both recipe tables read the same stock as the production cycle.
+	if _inventory != null:
+		_inventory.goods_change.connect(_refresh_recipe)
+	_refresh_recipe()
+
+func _refresh_recipe() -> void:
+	%IndustryProduction.show_recipe(_recipe, _inventory)
+	%IndustryConsumption.show_recipe(_recipe, _inventory)
+
+func _exit_tree() -> void:
+	if _inventory != null and _inventory.goods_change.is_connected(_refresh_recipe):
+		_inventory.goods_change.disconnect(_refresh_recipe)
+	super()

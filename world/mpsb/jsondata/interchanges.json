@@ -78,6 +78,13 @@
 				"trackNum": 66,
 				"nodeIndex": 3,
 				"type": "STATION_PASS"
+			},
+			{
+				"num": 32,
+				"domain": "ROAD",
+				"roadNum": 19,
+				"nodeIndex": 3,
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
@@ -110,7 +117,7 @@
 				"type": "STATION_PASS"
 			},
 			{
-				"num": 25,
+				"num": 33,
 				"domain": "RAIL",
 				"trackNum": 103,
 				"nodeIndex": 4,
@@ -160,12 +167,19 @@
 				"trackNum": 44,
 				"nodeIndex": 4,
 				"type": "STATION_PASS"
+			},
+			{
+				"num": 31,
+				"domain": "ROAD",
+				"roadNum": 97,
+				"nodeIndex": 7,
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
 	{
 		"num": 12,
-		"name": "Kleinbhf (MPSB)",
+		"name": "HBF",
 		"townNum": 23,
 		"townName": "Anklam",
 		"stops": [
@@ -182,12 +196,34 @@
 				"trackNum": 49,
 				"nodeIndex": 3,
 				"type": "STATION_PASS"
+			},
+			{
+				"num": 25,
+				"domain": "RAIL",
+				"trackNum": 54,
+				"nodeIndex": 2,
+				"type": "STATION_PASS"
+			},
+			{
+				"num": 26,
+				"domain": "RAIL",
+				"trackNum": 53,
+				"nodeIndex": 3,
+				"type": "STATION_GOODS"
+			},
+			{
+				"num": 27,
+				"domain": "ROAD",
+				"roadNum": 172,
+				"nodeIndex": 4,
+				"type": "STATION_PASS",
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
 	{
 		"num": 13,
-		"name": "Harbour (MPSB)",
+		"name": "Harbour",
 		"townNum": 17,
 		"townName": "Anklam",
 		"stops": [
@@ -198,6 +234,14 @@
 				"nodeIndex": 1,
 				"type": "STATION_PASS",
 				"hideBuilding": true
+			},
+			{
+				"num": 28,
+				"domain": "ROAD",
+				"roadNum": 67,
+				"nodeIndex": 4,
+				"type": "STATION_GOODS",
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
@@ -348,6 +392,36 @@
 				"trackNum": 13,
 				"nodeIndex": 10,
 				"type": "STATION_PASS"
+			}
+		]
+	},
+	{
+		"num": 24,
+		"name": "Market",
+		"townNum": 17,
+		"townName": "Anklam",
+		"stops": [
+			{
+				"num": 29,
+				"domain": "ROAD",
+				"roadNum": 67,
+				"nodeIndex": 4,
+				"roadStopDirection": "BOTH_DIRECTIONS"
+			}
+		]
+	},
+	{
+		"num": 25,
+		"name": "Graveyard",
+		"townNum": 17,
+		"townName": "Anklam",
+		"stops": [
+			{
+				"num": 30,
+				"domain": "ROAD",
+				"roadNum": 67,
+				"nodeIndex": 4,
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	}

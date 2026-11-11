@@ -66,21 +66,54 @@ func _test_spawn() -> bool:
 	## Keep this route unconnected so no world or fork service is needed.
 	var track := RailTrackData.new()
 	track.num = 55
+	track.infr_type_key = "600_MM"
 	track.add_node(RailNodeData.of(0, Vector3.ZERO, track), false)
 	track.add_node(RailNodeData.of(1, Vector3(0.0, 0.0, -100.0), track), false)
 	track.build_curve()
 	rails.track_storage.add(track)
-	## This is the same entry point called by the runtime vehicle-spawning service.
-	var train: Train3D = Train3D.of("mpsb_12", VehicleStartPos.of(55, 0, Enums.PathDirection.TRACK_NODES_INCREASE))
+	var previous_vehicles: VehiclePlacer = Managers.vehicles
+	var placer := VehiclePlacer.new()
+	self.add_child(placer)
+	Managers.vehicles = placer
+	var depot := RailDepotData.new()
+	depot.num = 55
+	depot.track_num = 55
+	depot.track_pos = "END"
+	GlobalState.rail_depots.append(depot)
+	var action := SpawnAction.new()
+	action.last_clicked_depot_num = depot.num
+	var composition := TrainVehicleListDto.new()
+	composition.append(TrainVehicleDto.of(0, "mpsb_12"))
+	composition.append(TrainVehicleDto.of(1, "mpsb_wismar_wagon"))
+	action.spawn_train(composition)
+	var train: Train3D = placer.trains[0]
+	var movement: TrainMovement = train.movement
 	self.check(train.train_obj != null and train.train_obj.locomotive == train.locomotive.vehicle_obj, "Production spawn links train data to the locomotive")
-	self.check(train.train_obj.vehicles.size() == 1 and train.vehicles.size() == 1, "Production spawn creates one data vehicle and one scene vehicle")
-	self.check(train.movement.train == train and train.movement.active_path != null, "Production spawn wires movement and initializes the route before insertion")
-	self.get_tree().root.add_child(train)
-	self.check(train.movement.start(), "A normally spawned train starts successfully")
-	self.advance_ramp(train.movement, 1.0)
-	train.movement.move_forwards(0.5)
-	self.check(train.movement.m_passed_since_start > 0.0, "A normally spawned train accelerates and advances")
-	train.free()
+	self.check(train.train_obj.vehicles.size() == 2 and train.vehicles.size() == 2, "Production spawn includes the locomotive and wagon")
+	self.check(movement.train == train and movement.active_path != null, "Production spawn wires movement and initializes the route")
+	for vehicle: Vehicle3D in train.vehicles:
+		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Depot spawn places the whole train at rail-head height")
+	var start_distance: float = movement.m_passed_since_start
+	self.advance_ramp(movement, 1.0)
+	movement.move_forwards(0.5)
+	self.check(movement.m_passed_since_start > start_distance, "A depot train accelerates and advances")
+	self.advance_ramp(movement, 20.0)
+	movement.move_forwards(10.0)
+	var rollout_end: float = start_distance + train.length_in_m() + 10.0
+	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The last rollout step stops at the full consist length plus 10 metres")
+	for vehicle: Vehicle3D in train.vehicles:
+		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Rollout keeps each vehicle at rail-head height")
+	movement.move_forwards(1.0)
+	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The train remains parked at the rollout limit")
+	movement.speed.target = 1.0
+	self.advance_ramp(movement, 1.0)
+	movement.move_forwards(0.5)
+	self.check(movement.m_passed_since_start > rollout_end, "A driver can pull away after the depot rollout")
+	GlobalState.rail_depots.erase(depot)
+	GlobalState.trains.erase(train)
+	action.free()
+	placer.free()
+	Managers.vehicles = previous_vehicles
 	for node: RailNodeData in track.nodes:
 		node.parent_track = null
 	Managers.rails = previous_rails
