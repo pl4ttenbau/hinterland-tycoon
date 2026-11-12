@@ -61,14 +61,19 @@ func spawn_stops() -> void:
 		view.station = stop
 		self.add_child(view)
 		var road: RoadData = Managers.roads.storage._by_id[stop.road_num]
-		view.configure_road_layout(self._heading(road, stop.node_index), self.roadside_offset_metres)
+		view.configure_road_layout(self._heading(road, stop.node_index, stop.curve_offset), self.roadside_offset_metres)
 		self.containers_by_num[stop.num] = view
 	self.stops_spawned.emit()
 
-func _heading(road: RoadData, node_index: int) -> Vector3:
+func add_runtime_stop(stop: RoadStationData) -> void:
+	stops.append(stop)
+	by_num[stop.num] = stop
+	spawn_stops()
+
+func _heading(road: RoadData, node_index: int, curve_offset: float = -1.0) -> Vector3:
 	if road.curve == null:
 		road.build_curve()
-	var offset: float = road.curve.get_closest_offset(road.nodes[node_index].rel_position)
+	var offset: float = curve_offset if curve_offset >= 0.0 else road.curve.get_closest_offset(road.nodes[node_index].rel_position)
 	var length: float = road.curve.get_baked_length()
 	var heading: Vector3 = road.curve.sample_baked(minf(length, offset + 0.2), true) \
 		- road.curve.sample_baked(maxf(0.0, offset - 0.2), true)

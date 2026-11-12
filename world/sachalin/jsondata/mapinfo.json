@@ -6,4 +6,12 @@
 	"defaultYear": 1970,
 	
 	"startPos": [-84.82, 1051.33],
+	"sizeAndPos": {
+		"longLat": {
+			"topLeft": [47.46507, 141.82830],
+			"bottomRight": [46.50594, 143.23495]
+		},
+		"rasterSize": [4096, 4096],
+		"rasterOffset": [-2048, -2048]
+	}
 }

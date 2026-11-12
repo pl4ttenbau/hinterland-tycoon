@@ -66,9 +66,26 @@ func create_3d_stations():
 	for station_obj: RailStationData in self.stations_objs:
 		self.create_station_3d(station_obj)
 
+## Curve-anchored gameplay stops reuse the adapter without replacing node.station.
+func add_runtime_stop(station: RailStationData) -> void:
+	var track: RailTrackData = Managers.rails.track_storage._by_id[station.track_num]
+	var node: RailNodeData = track.nodes[station.node_index]
+	var link := NodeStationLinkData.of(node, station.num)
+	link.num = station.num
+	link.position = track.curve.sample_baked(station.curve_offset)
+	station.connect_node_station(link)
+	station.position = link.position
+	stations_objs.append(station)
+	stations_by_num[station.num] = station
+	add_station_link_from_node(link)
+	create_station_3d(station)
+	spawn_station_link(link).adjust_rotation_from_track()
+
 func create_station_3d(station_obj: RailStationData):
 	var instance: RailStation3D = load(STATION_3D_SCENE_PATH).instantiate()
 	instance.station = station_obj
+	if station_obj.curve_offset >= 0.0:
+		instance.station_pos = station_obj.position
 	self.add_child(instance, true)
 	instance.name = RailStation3D.STATION_NAME_FORMAT % [station_obj.town_name, station_obj.station_name]
 
@@ -113,6 +130,7 @@ func spawn_station_link(node_station_link: NodeStationLinkData) -> NodeStationLi
 	# add to parent station
 	var station_3d: RailStation3D = self.get_station_3d_with_num(node_station_link.parent_station_num)
 	station_3d.add_child(station_link_3d, true)
+	station_link_3d.global_position = node_station_link.position
 	return station_link_3d
 #endregion
 

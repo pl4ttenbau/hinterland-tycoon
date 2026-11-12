@@ -1,0 +1,58 @@
+{
+  "world_bounds_west_south_east_north": [
+    18.66,
+    54.0465,
+    19.213,
+    54.37
+  ],
+  "source": "https://ckan.multimediagdansk.pl/dataset/granice-dzielnic-w-gdansku",
+  "source_date": "Dataset description: boundaries as of 2024-11-06; download 2026-11-07",
+  "interpretation": "Modern district polygons intersected with the game crop, for orientation only. Fractions are land/admin area, not population or 1960 borders. Population attributes deliberately not used.",
+  "districts": [
+    {
+      "name": "Krakowiec–Górki Zachodnie",
+      "fraction_of_modern_district_in_crop": 0.9153,
+      "intersection_area_km2": 7.635
+    },
+    {
+      "name": "Młyniska",
+      "fraction_of_modern_district_in_crop": 0.1003,
+      "intersection_area_km2": 0.433
+    },
+    {
+      "name": "Olszynka",
+      "fraction_of_modern_district_in_crop": 0.9395,
+      "intersection_area_km2": 7.381
+    },
+    {
+      "name": "Orunia–Św. Wojciech–Lipce",
+      "fraction_of_modern_district_in_crop": 0.216,
+      "intersection_area_km2": 4.246
+    },
+    {
+      "name": "Przeróbka",
+      "fraction_of_modern_district_in_crop": 0.3146,
+      "intersection_area_km2": 2.164
+    },
+    {
+      "name": "Rudniki",
+      "fraction_of_modern_district_in_crop": 1.0,
+      "intersection_area_km2": 14.656
+    },
+    {
+      "name": "Stogi",
+      "fraction_of_modern_district_in_crop": 0.2566,
+      "intersection_area_km2": 3.419
+    },
+    {
+      "name": "Śródmieście",
+      "fraction_of_modern_district_in_crop": 0.3887,
+      "intersection_area_km2": 2.195
+    },
+    {
+      "name": "Wyspa Sobieszewska",
+      "fraction_of_modern_district_in_crop": 0.9994,
+      "intersection_area_km2": 35.772
+    }
+  ]
+}

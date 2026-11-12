@@ -1,0 +1,958 @@
+{
+  "sheet": "N-34-50-D",
+  "date": "2026-11-08",
+  "source_sha256": "1aa1d9a88f628d30559bdc14b103721474f93457e8e6a068cd6f829893527931",
+  "source_size": [
+    2421,
+    2835
+  ],
+  "output_size": [
+    2761,
+    3160
+  ],
+  "output_sha256": "a34399ce9b053929eb848c4ba2114b0cdb710dd61698a9d428a9fc2b0212060c",
+  "datum": "Pulkovo 1942 / original map coordinates; no WGS84 conversion performed",
+  "display_decimals": 6,
+  "interval_arcminutes": 1,
+  "note": "Exact degree/minute-to-decimal conversion. Border tick placement is a visual reading aid fitted to the scan, not survey georeferencing. Six decimal places do not imply sub-metre positional accuracy.",
+  "map_frame_translation_pixels": [
+    170,
+    100
+  ],
+  "bounds_west_south_east_north": [
+    18.75,
+    54.333333333333336,
+    19,
+    54.5
+  ],
+  "original_pixel_regions": [
+    {
+      "source_box": [
+        0,
+        0,
+        100,
+        214
+      ],
+      "destination": [
+        0,
+        0
+      ]
+    },
+    {
+      "source_box": [
+        0,
+        214,
+        100,
+        2555
+      ],
+      "destination": [
+        0,
+        314
+      ]
+    },
+    {
+      "source_box": [
+        0,
+        2555,
+        100,
+        2835
+      ],
+      "destination": [
+        0,
+        2755
+      ]
+    },
+    {
+      "source_box": [
+        100,
+        0,
+        2190,
+        214
+      ],
+      "destination": [
+        270,
+        0
+      ]
+    },
+    {
+      "source_box": [
+        100,
+        214,
+        2190,
+        2555
+      ],
+      "destination": [
+        270,
+        314
+      ]
+    },
+    {
+      "source_box": [
+        100,
+        2555,
+        2190,
+        2835
+      ],
+      "destination": [
+        270,
+        2755
+      ]
+    },
+    {
+      "source_box": [
+        2190,
+        0,
+        2421,
+        214
+      ],
+      "destination": [
+        2530,
+        0
+      ]
+    },
+    {
+      "source_box": [
+        2190,
+        214,
+        2421,
+        2555
+      ],
+      "destination": [
+        2530,
+        314
+      ]
+    },
+    {
+      "source_box": [
+        2190,
+        2555,
+        2421,
+        2835
+      ],
+      "destination": [
+        2530,
+        2755
+      ]
+    }
+  ],
+  "map_interior_identical_before_jpeg_encoding": true,
+  "outside_annotation_jpeg_channel_error_median": 0.0,
+  "outside_annotation_jpeg_channel_error_p99": 1.0,
+  "rail_overlay": "Existing red railway highlights preserved without redrawing or resampling.",
+  "labels": [
+    {
+      "edge": "top",
+      "division": 0,
+      "axis": "longitude",
+      "decimal_degrees": 18.75,
+      "text": "18.750000",
+      "source_bar_pixel": [
+        197.0,
+        245.0
+      ],
+      "output_bar_pixel": [
+        367,
+        345
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 1,
+      "axis": "longitude",
+      "decimal_degrees": 18.766666666666666,
+      "text": "18.766667",
+      "source_bar_pixel": [
+        324.06666666666666,
+        245.13333333333333
+      ],
+      "output_bar_pixel": [
+        494,
+        345
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 2,
+      "axis": "longitude",
+      "decimal_degrees": 18.783333333333335,
+      "text": "18.783333",
+      "source_bar_pixel": [
+        451.1333333333333,
+        245.26666666666668
+      ],
+      "output_bar_pixel": [
+        621,
+        345
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 3,
+      "axis": "longitude",
+      "decimal_degrees": 18.8,
+      "text": "18.800000",
+      "source_bar_pixel": [
+        578.2,
+        245.4
+      ],
+      "output_bar_pixel": [
+        748,
+        345
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 4,
+      "axis": "longitude",
+      "decimal_degrees": 18.816666666666666,
+      "text": "18.816667",
+      "source_bar_pixel": [
+        705.2666666666667,
+        245.53333333333333
+      ],
+      "output_bar_pixel": [
+        875,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 5,
+      "axis": "longitude",
+      "decimal_degrees": 18.833333333333332,
+      "text": "18.833333",
+      "source_bar_pixel": [
+        832.3333333333333,
+        245.66666666666666
+      ],
+      "output_bar_pixel": [
+        1002,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 6,
+      "axis": "longitude",
+      "decimal_degrees": 18.85,
+      "text": "18.850000",
+      "source_bar_pixel": [
+        959.4000000000001,
+        245.8
+      ],
+      "output_bar_pixel": [
+        1129,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 7,
+      "axis": "longitude",
+      "decimal_degrees": 18.866666666666667,
+      "text": "18.866667",
+      "source_bar_pixel": [
+        1086.4666666666667,
+        245.93333333333334
+      ],
+      "output_bar_pixel": [
+        1256,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 8,
+      "axis": "longitude",
+      "decimal_degrees": 18.883333333333333,
+      "text": "18.883333",
+      "source_bar_pixel": [
+        1213.5333333333333,
+        246.06666666666666
+      ],
+      "output_bar_pixel": [
+        1384,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 9,
+      "axis": "longitude",
+      "decimal_degrees": 18.9,
+      "text": "18.900000",
+      "source_bar_pixel": [
+        1340.6,
+        246.2
+      ],
+      "output_bar_pixel": [
+        1511,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 10,
+      "axis": "longitude",
+      "decimal_degrees": 18.916666666666668,
+      "text": "18.916667",
+      "source_bar_pixel": [
+        1467.6666666666665,
+        246.33333333333334
+      ],
+      "output_bar_pixel": [
+        1638,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 11,
+      "axis": "longitude",
+      "decimal_degrees": 18.933333333333334,
+      "text": "18.933333",
+      "source_bar_pixel": [
+        1594.7333333333331,
+        246.46666666666667
+      ],
+      "output_bar_pixel": [
+        1765,
+        346
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 12,
+      "axis": "longitude",
+      "decimal_degrees": 18.95,
+      "text": "18.950000",
+      "source_bar_pixel": [
+        1721.8000000000002,
+        246.6
+      ],
+      "output_bar_pixel": [
+        1892,
+        347
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 13,
+      "axis": "longitude",
+      "decimal_degrees": 18.966666666666665,
+      "text": "18.966667",
+      "source_bar_pixel": [
+        1848.8666666666668,
+        246.73333333333332
+      ],
+      "output_bar_pixel": [
+        2019,
+        347
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 14,
+      "axis": "longitude",
+      "decimal_degrees": 18.983333333333334,
+      "text": "18.983333",
+      "source_bar_pixel": [
+        1975.9333333333334,
+        246.86666666666667
+      ],
+      "output_bar_pixel": [
+        2146,
+        347
+      ]
+    },
+    {
+      "edge": "top",
+      "division": 15,
+      "axis": "longitude",
+      "decimal_degrees": 19.0,
+      "text": "19.000000",
+      "source_bar_pixel": [
+        2103.0,
+        247.0
+      ],
+      "output_bar_pixel": [
+        2273,
+        347
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 0,
+      "axis": "longitude",
+      "decimal_degrees": 18.75,
+      "text": "18.750000",
+      "source_bar_pixel": [
+        188.0,
+        2521.0
+      ],
+      "output_bar_pixel": [
+        358,
+        2621
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 1,
+      "axis": "longitude",
+      "decimal_degrees": 18.766666666666666,
+      "text": "18.766667",
+      "source_bar_pixel": [
+        315.5333333333333,
+        2521.2
+      ],
+      "output_bar_pixel": [
+        486,
+        2621
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 2,
+      "axis": "longitude",
+      "decimal_degrees": 18.783333333333335,
+      "text": "18.783333",
+      "source_bar_pixel": [
+        443.06666666666666,
+        2521.4
+      ],
+      "output_bar_pixel": [
+        613,
+        2621
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 3,
+      "axis": "longitude",
+      "decimal_degrees": 18.8,
+      "text": "18.800000",
+      "source_bar_pixel": [
+        570.6,
+        2521.6
+      ],
+      "output_bar_pixel": [
+        741,
+        2622
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 4,
+      "axis": "longitude",
+      "decimal_degrees": 18.816666666666666,
+      "text": "18.816667",
+      "source_bar_pixel": [
+        698.1333333333333,
+        2521.8
+      ],
+      "output_bar_pixel": [
+        868,
+        2622
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 5,
+      "axis": "longitude",
+      "decimal_degrees": 18.833333333333332,
+      "text": "18.833333",
+      "source_bar_pixel": [
+        825.6666666666666,
+        2522.0
+      ],
+      "output_bar_pixel": [
+        996,
+        2622
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 6,
+      "axis": "longitude",
+      "decimal_degrees": 18.85,
+      "text": "18.850000",
+      "source_bar_pixel": [
+        953.2,
+        2522.2
+      ],
+      "output_bar_pixel": [
+        1123,
+        2622
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 7,
+      "axis": "longitude",
+      "decimal_degrees": 18.866666666666667,
+      "text": "18.866667",
+      "source_bar_pixel": [
+        1080.7333333333333,
+        2522.4
+      ],
+      "output_bar_pixel": [
+        1251,
+        2622
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 8,
+      "axis": "longitude",
+      "decimal_degrees": 18.883333333333333,
+      "text": "18.883333",
+      "source_bar_pixel": [
+        1208.2666666666667,
+        2522.6
+      ],
+      "output_bar_pixel": [
+        1378,
+        2623
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 9,
+      "axis": "longitude",
+      "decimal_degrees": 18.9,
+      "text": "18.900000",
+      "source_bar_pixel": [
+        1335.8,
+        2522.8
+      ],
+      "output_bar_pixel": [
+        1506,
+        2623
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 10,
+      "axis": "longitude",
+      "decimal_degrees": 18.916666666666668,
+      "text": "18.916667",
+      "source_bar_pixel": [
+        1463.3333333333333,
+        2523.0
+      ],
+      "output_bar_pixel": [
+        1633,
+        2623
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 11,
+      "axis": "longitude",
+      "decimal_degrees": 18.933333333333334,
+      "text": "18.933333",
+      "source_bar_pixel": [
+        1590.8666666666666,
+        2523.2
+      ],
+      "output_bar_pixel": [
+        1761,
+        2623
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 12,
+      "axis": "longitude",
+      "decimal_degrees": 18.95,
+      "text": "18.950000",
+      "source_bar_pixel": [
+        1718.4,
+        2523.4
+      ],
+      "output_bar_pixel": [
+        1888,
+        2623
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 13,
+      "axis": "longitude",
+      "decimal_degrees": 18.966666666666665,
+      "text": "18.966667",
+      "source_bar_pixel": [
+        1845.9333333333334,
+        2523.6
+      ],
+      "output_bar_pixel": [
+        2016,
+        2624
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 14,
+      "axis": "longitude",
+      "decimal_degrees": 18.983333333333334,
+      "text": "18.983333",
+      "source_bar_pixel": [
+        1973.4666666666667,
+        2523.8
+      ],
+      "output_bar_pixel": [
+        2143,
+        2624
+      ]
+    },
+    {
+      "edge": "bottom",
+      "division": 15,
+      "axis": "longitude",
+      "decimal_degrees": 19.0,
+      "text": "19.000000",
+      "source_bar_pixel": [
+        2101.0,
+        2524.0
+      ],
+      "output_bar_pixel": [
+        2271,
+        2624
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 0,
+      "axis": "latitude",
+      "decimal_degrees": 54.5,
+      "text": "54.500000",
+      "source_bar_pixel": [
+        149.0,
+        291.0
+      ],
+      "output_bar_pixel": [
+        319,
+        391
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 1,
+      "axis": "latitude",
+      "decimal_degrees": 54.483333333333334,
+      "text": "54.483333",
+      "source_bar_pixel": [
+        147.9,
+        509.3
+      ],
+      "output_bar_pixel": [
+        318,
+        609
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 2,
+      "axis": "latitude",
+      "decimal_degrees": 54.46666666666667,
+      "text": "54.466667",
+      "source_bar_pixel": [
+        146.8,
+        727.6
+      ],
+      "output_bar_pixel": [
+        317,
+        828
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 3,
+      "axis": "latitude",
+      "decimal_degrees": 54.45,
+      "text": "54.450000",
+      "source_bar_pixel": [
+        145.7,
+        945.9
+      ],
+      "output_bar_pixel": [
+        316,
+        1046
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 4,
+      "axis": "latitude",
+      "decimal_degrees": 54.43333333333333,
+      "text": "54.433333",
+      "source_bar_pixel": [
+        144.6,
+        1164.2
+      ],
+      "output_bar_pixel": [
+        315,
+        1264
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 5,
+      "axis": "latitude",
+      "decimal_degrees": 54.416666666666664,
+      "text": "54.416667",
+      "source_bar_pixel": [
+        143.5,
+        1382.5
+      ],
+      "output_bar_pixel": [
+        314,
+        1482
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 6,
+      "axis": "latitude",
+      "decimal_degrees": 54.4,
+      "text": "54.400000",
+      "source_bar_pixel": [
+        142.4,
+        1600.8
+      ],
+      "output_bar_pixel": [
+        312,
+        1701
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 7,
+      "axis": "latitude",
+      "decimal_degrees": 54.38333333333333,
+      "text": "54.383333",
+      "source_bar_pixel": [
+        141.3,
+        1819.1
+      ],
+      "output_bar_pixel": [
+        311,
+        1919
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 8,
+      "axis": "latitude",
+      "decimal_degrees": 54.36666666666667,
+      "text": "54.366667",
+      "source_bar_pixel": [
+        140.2,
+        2037.4
+      ],
+      "output_bar_pixel": [
+        310,
+        2137
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 9,
+      "axis": "latitude",
+      "decimal_degrees": 54.35,
+      "text": "54.350000",
+      "source_bar_pixel": [
+        139.1,
+        2255.7
+      ],
+      "output_bar_pixel": [
+        309,
+        2356
+      ]
+    },
+    {
+      "edge": "left",
+      "division": 10,
+      "axis": "latitude",
+      "decimal_degrees": 54.333333333333336,
+      "text": "54.333333",
+      "source_bar_pixel": [
+        138.0,
+        2474.0
+      ],
+      "output_bar_pixel": [
+        308,
+        2574
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 0,
+      "axis": "latitude",
+      "decimal_degrees": 54.5,
+      "text": "54.500000",
+      "source_bar_pixel": [
+        2151.0,
+        294.0
+      ],
+      "output_bar_pixel": [
+        2321,
+        394
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 1,
+      "axis": "latitude",
+      "decimal_degrees": 54.483333333333334,
+      "text": "54.483333",
+      "source_bar_pixel": [
+        2150.6,
+        512.3
+      ],
+      "output_bar_pixel": [
+        2321,
+        612
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 2,
+      "axis": "latitude",
+      "decimal_degrees": 54.46666666666667,
+      "text": "54.466667",
+      "source_bar_pixel": [
+        2150.2,
+        730.6
+      ],
+      "output_bar_pixel": [
+        2320,
+        831
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 3,
+      "axis": "latitude",
+      "decimal_degrees": 54.45,
+      "text": "54.450000",
+      "source_bar_pixel": [
+        2149.8,
+        948.9
+      ],
+      "output_bar_pixel": [
+        2320,
+        1049
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 4,
+      "axis": "latitude",
+      "decimal_degrees": 54.43333333333333,
+      "text": "54.433333",
+      "source_bar_pixel": [
+        2149.4,
+        1167.2
+      ],
+      "output_bar_pixel": [
+        2319,
+        1267
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 5,
+      "axis": "latitude",
+      "decimal_degrees": 54.416666666666664,
+      "text": "54.416667",
+      "source_bar_pixel": [
+        2149.0,
+        1385.5
+      ],
+      "output_bar_pixel": [
+        2319,
+        1486
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 6,
+      "axis": "latitude",
+      "decimal_degrees": 54.4,
+      "text": "54.400000",
+      "source_bar_pixel": [
+        2148.6,
+        1603.8
+      ],
+      "output_bar_pixel": [
+        2319,
+        1704
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 7,
+      "axis": "latitude",
+      "decimal_degrees": 54.38333333333333,
+      "text": "54.383333",
+      "source_bar_pixel": [
+        2148.2,
+        1822.1
+      ],
+      "output_bar_pixel": [
+        2318,
+        1922
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 8,
+      "axis": "latitude",
+      "decimal_degrees": 54.36666666666667,
+      "text": "54.366667",
+      "source_bar_pixel": [
+        2147.8,
+        2040.4
+      ],
+      "output_bar_pixel": [
+        2318,
+        2140
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 9,
+      "axis": "latitude",
+      "decimal_degrees": 54.35,
+      "text": "54.350000",
+      "source_bar_pixel": [
+        2147.4,
+        2258.7
+      ],
+      "output_bar_pixel": [
+        2317,
+        2359
+      ]
+    },
+    {
+      "edge": "right",
+      "division": 10,
+      "axis": "latitude",
+      "decimal_degrees": 54.333333333333336,
+      "text": "54.333333",
+      "source_bar_pixel": [
+        2147.0,
+        2477.0
+      ],
+      "output_bar_pixel": [
+        2317,
+        2577
+      ]
+    }
+  ],
+  "file": "../mikoszewo_N-34-50-D_edition_1974_print_1975.jpg",
+  "backup_zip": "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/before_remaining_decimal_labels_2026-11-08.zip",
+  "script": "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/annotate_decimal_graticule.py",
+  "config": "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/decimal_graticule_configs/N-34-50-D.json"
+}

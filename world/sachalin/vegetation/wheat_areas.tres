@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GrassAreaDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/resources/terrain/grass_area_definition.gd" id="1_areas"]
+
+[ext_resource type="Texture2D" path="res://world/sachalin/vegetation/wheat_coverage.png" id="2_coverage"]
+
+[resource]
+script = ExtResource("1_areas")
+description = "sachalin: wheat only on the yellow field texture; meadow and plowed fields excluded."
+terrain_texture_ids = PackedInt32Array(9)
+coverage_mask = ExtResource("2_coverage")
+mask_bounds = Rect2(-2304, -2048, 4352, 4352)
+coverage_includes_terrain = true
+coverage_is_empty = true

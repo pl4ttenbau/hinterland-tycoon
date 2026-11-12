@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cpu7v0c5kunqc"]
 
 [ext_resource type="Script" uid="uid://uhvki7xim0f4" path="res://game/gamescripts/ui/radial_menu/radial_action_menu.gd" id="1_vvx78"]
-[ext_resource type="Script" uid="uid://ctmktgvck1b0v" path="res://addons/RadialMenu/RadialMenu.gd" id="2_bqhpw"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/radial_menu/control/RadialMenu.gd" id="2_bqhpw"]
 
 [node name="OuterRadialMenu" type="Control" unique_id=83446410]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 458.0
-offset_bottom = 333.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vvx78")
@@ -18,12 +21,8 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -8.5
-offset_right = 8.5
-offset_bottom = 23.0
+anchors_preset = 0
+mouse_filter = 2
 grow_horizontal = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HoveredActionOuter" unique_id=1972162209]
@@ -38,15 +37,7 @@ size_flags_vertical = 1
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1202547124]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RadialMenu" type="Control" parent="CenterContainer" unique_id=1751903653]
+[node name="RadialMenu" type="Control" parent="." unique_id=1751903653]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(300, 222.26306)
@@ -54,4 +45,5 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("2_bqhpw")
-metadata/_custom_type_script = "uid://ctmktgvck1b0v"
+show_animation = true
+animation_speed_factor = 0.14

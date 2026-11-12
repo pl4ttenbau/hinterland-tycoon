@@ -30,12 +30,12 @@ func free_capacity() -> float:
 	return maxf(0, data.amount_max - data.storage.current_storage)
 
 ## Discover only a direct component, avoiding accidental access to a child vehicle's stock.
-static func find_on(owner: Node) -> InventoryContainer:
-	if not is_instance_valid(owner):
+static func find_on(_owner: Node) -> InventoryContainer:
+	if not is_instance_valid(_owner):
 		return null
-	if owner is InventoryContainer:
-		return owner
-	for child: Node in owner.get_children():
+	if _owner is InventoryContainer:
+		return _owner
+	for child: Node in _owner.get_children():
 		if child is InventoryContainer:
 			return child
 	return null

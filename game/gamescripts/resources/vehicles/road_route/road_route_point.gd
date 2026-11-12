@@ -20,8 +20,7 @@ func resolve(roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], 
 		var stop: RoadStationData = stops.get(target_num) as RoadStationData
 		if stop == null:
 			return null
-		road_id = stop.road_num
-		index = stop.node_index
+		return stop.anchor(roads)
 	elif kind == Kind.DEPOT:
 		var depot: RoadDepotData = _find_depot(depots)
 		if depot == null or depot.road_pos not in ["START", "END"]:

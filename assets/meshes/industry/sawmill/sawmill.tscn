@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c1sv5ph5r7xml"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_3njdm"]
+[ext_resource type="PackedScene" uid="uid://cjnlved5jgseb" path="res://assets/meshes/industry/sawmill/mesh/mesh_sawmill.tscn" id="2_nwaj4"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_nygv7"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_ewqgn"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_h1qi2"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_ugga5"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_fflfh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(13.507751, 5.4104004, 7.364746)
+
+[sub_resource type="Resource" id="Resource_q3x8e"]
+script = ExtResource("6_ugga5")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_7nkl4"]
+script = ExtResource("5_h1qi2")
+storage = SubResource("Resource_q3x8e")
+amount_max = 200.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="Sawmill" type="Node3D" unique_id=1275706583]
+script = ExtResource("1_3njdm")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshSawmill" parent="." unique_id=29808110 instance=ExtResource("2_nwaj4")]
+
+[node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=1920399736]
+script = ExtResource("3_nygv7")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider" unique_id=1739070626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038970947, 2.6263428, -0.006591797)
+shape = SubResource("BoxShape3D_qwrwv")
+
+[node name="Inventory" type="Node" parent="." unique_id=564655]
+script = ExtResource("4_ewqgn")
+inventory = SubResource("Resource_7nkl4")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1987842931 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("7_fflfh")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"

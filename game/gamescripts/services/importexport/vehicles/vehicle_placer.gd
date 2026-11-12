@@ -19,12 +19,12 @@ var _walking_collision_layer: int
 var _walking_collision_mask: int
 
 #region Initialization
-## R edits the occupied road vehicle's plan; walking and other dialogs keep their inputs.
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_R:
-		if is_instance_valid(player_road_vehicle) and UiState.current_diag == null:
-			get_tree().root.add_child(ROUTE_DIALOG.create(player_road_vehicle))
-			get_viewport().set_input_as_handled()
+## Called by the circular menu only for the currently occupied road vehicle.
+func open_road_route_dialog() -> bool:
+	if not is_instance_valid(player_road_vehicle) or UiState.current_diag != null:
+		return false
+	get_tree().root.add_child(ROUTE_DIALOG.create(player_road_vehicle))
+	return true
 
 func _check_rails_and_terrain() -> bool:
 	if !GlobalState:

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="4_residences"]
 [ext_resource type="PackedScene" uid="uid://bt7v82puopvu3" path="res://world/gdansk/mapscenes/towns_gdansk.tscn" id="5_towns"]
 [ext_resource type="PackedScene" uid="uid://ca4ssx4ps5u6" path="res://world/gdansk/mapscenes/editorobjects_gdansk.tscn" id="6_editor"]
-[ext_resource type="Script" uid="uid://g6bsjtyavuig" path="res://game/gamescripts/nodes/world/collections/world_industries.gd" id="7_industries"]
+[ext_resource type="PackedScene" path="res://world/gdansk/mapscenes/industries_gdansk.tscn" id="7_industries"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/importexport/deco_loader.gd" id="8_deco"]
 [ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="9_cursor"]
 [ext_resource type="Script" uid="uid://b3731raomqh8x" path="res://addons/hinterland_tools/editor_cache.gd" id="10_cache"]
@@ -26,8 +26,7 @@ world_scene = NodePath("..")
 script = ExtResource("4_residences")
 world_scene = NodePath("..")
 
-[node name="Industries" type="Node" parent="." unique_id=1029954138 node_paths=PackedStringArray("world_scene")]
-script = ExtResource("7_industries")
+[node name="Industries" parent="." unique_id=1029954138 node_paths=PackedStringArray("world_scene") instance=ExtResource("7_industries")]
 world_scene = NodePath("..")
 
 [node name="Deco" type="Node" parent="." unique_id=30435165]

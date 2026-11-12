@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://assets/packed/wheat_mat_shader.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" path="res://assets/textures/billboard/wheat_2_clumps_d.png" id="2_atlas"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/wheat_atlas = ExtResource("2_atlas")
+shader_parameter/wind_strength = 0.18
+shader_parameter/saturation = 0.85

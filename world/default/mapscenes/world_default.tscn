@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://cf8u4b8ekgut3"]
+
+[ext_resource type="Script" uid="uid://dfps4gg6r750j" path="res://game/gamescripts/nodes/world/collections/world_map_scene.gd" id="1_2asbh"]
+[ext_resource type="PackedScene" uid="uid://bdjerkhg2knfu" path="res://world/default/mapscenes/terrain_default.tscn" id="2_lrxql"]
+[ext_resource type="PackedScene" uid="uid://cke1ahhdqyxxj" path="res://world/default/mapscenes/editorobjects_default.tscn" id="3_ui4sc"]
+[ext_resource type="Script" uid="uid://1fjbuvieye0f" path="res://game/gamescripts/nodes/infr/rail_track/rail_track_3d.gd" id="4_7ohvd"]
+[ext_resource type="ArrayMesh" uid="uid://vphafb1c2c38" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_tracks.obj" id="5_a6gl0"]
+[ext_resource type="Texture2D" uid="uid://do0eodfbabq40" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_d.png" id="6_lk115"]
+[ext_resource type="Texture2D" uid="uid://dwsr7pp2doaky" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_n.png" id="7_xyect"]
+[ext_resource type="Texture2D" uid="uid://0yxx8lqgtmom" path="res://assets/meshes/infr/rail/tex/tex_rail_tracks_wooden_r.png" id="8_qkc8r"]
+[ext_resource type="ArrayMesh" uid="uid://dxlt24spn86wr" path="res://assets/meshes/infr/rail/rail_track_750mm/rail_track_750mm_ground.obj" id="9_bin8b"]
+[ext_resource type="Texture2D" uid="uid://cj08uu08hj8vb" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_d.png" id="10_vbajv"]
+[ext_resource type="Texture2D" uid="uid://bauuoftegomi6" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_ao.png" id="11_usabc"]
+[ext_resource type="Texture2D" uid="uid://wcnvp7fwig3s" path="res://assets/meshes/infr/rail/rail_track_750mm/tex_rail_track_normal_ground_r.png" id="12_3e8ug"]
+[ext_resource type="ArrayMesh" uid="uid://oc5u0xnyqqpt" path="res://assets/meshes/structures/half_timbered_barn/half_timbered_barn.obj" id="13_lk115"]
+[ext_resource type="Script" uid="uid://chalq0opfem2r" path="res://game/gamescripts/nodes/structures/res_bld_collider.gd" id="14_xyect"]
+[ext_resource type="PackedScene" uid="uid://bm6eywo16382d" path="res://assets/meshes/structures/polish_house_1/polish_house_1.tscn" id="15_3e8ug"]
+[ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="16_jeq0h"]
+[ext_resource type="PackedScene" uid="uid://cb4ue2pxotkme" path="res://assets/meshes/nature/tree3_kastanie/tree3_kastanie.tscn" id="17_nxu5m"]
+[ext_resource type="PackedScene" uid="uid://blqw3dknktgg8" path="res://assets/meshes/deco/signal_tower/signal_tower.tscn" id="18_ijxtf"]
+[ext_resource type="PackedScene" uid="uid://bb5bylj7g1h04" path="res://scenes/subscenes/industry/industry3d_sign_scene.tscn" id="19_r34uw"]
+[ext_resource type="PackedScene" uid="uid://di33devkk6mhv" path="res://assets/meshes/deco/pilzleuchte/pilzleuchte.tscn" id="20_ueuup"]
+
+[sub_resource type="Curve3D" id="Curve3D_jeq0h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.234018, 0.61949205, 0.8673334, 1, 0, 0, 0, 0, 0, -4.7979507, 0.23966122, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxu5m"]
+albedo_texture = ExtResource("6_lk115")
+roughness_texture = ExtResource("8_qkc8r")
+normal_enabled = true
+normal_texture = ExtResource("7_xyect")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijxtf"]
+albedo_texture = ExtResource("10_vbajv")
+roughness_texture = ExtResource("12_3e8ug")
+normal_enabled = true
+ao_enabled = true
+ao_texture = ExtResource("11_usabc")
+heightmap_scale = 2.2
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qkc8r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bin8b"]
+size = Vector3(25.3006, 11.7227, 9.16028)
+
+[sub_resource type="MultiMesh" id="MultiMesh_kil6y"]
+transform_format = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s8qsh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="WorldDefault" type="Node" unique_id=883819597]
+script = ExtResource("1_2asbh")
+metadata/_custom_type_script = "uid://dfps4gg6r750j"
+
+[node name="Terrain3D" parent="." unique_id=940868700 instance=ExtResource("2_lrxql")]
+
+[node name="EditorObjects" parent="." unique_id=373374799 instance=ExtResource("3_ui4sc")]
+
+[node name="OuterRailTrack" type="Node3D" parent="." unique_id=447725391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.793, 7.56636, 23.55)
+script = ExtResource("4_7ohvd")
+
+[node name="TrackPath" type="Path3D" parent="OuterRailTrack" unique_id=1515113800]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+rotation_edit_mode = 1
+curve = SubResource("Curve3D_jeq0h")
+
+[node name="TrackPathMesh" type="PathMesh3D" parent="OuterRailTrack" unique_id=403359882 node_paths=PackedStringArray("path_3d")]
+path_3d = NodePath("../TrackPath")
+mesh = ExtResource("5_a6gl0")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 192
+surface_1/tile_rotation = Vector3(0, 0, 0)
+surface_1/tile_rotation_order = 2
+surface_1/distribution = 0
+surface_1/alignment = 0
+surface_1/warp_along_curve = true
+surface_1/sample_cubic = false
+surface_1/tilt = true
+surface_1/offset = Vector2(0, 0)
+surface_1/triangle_count = 1248
+material_override = SubResource("StandardMaterial3D_nxu5m")
+
+[node name="BedPathMesh" type="PathMesh3D" parent="OuterRailTrack" unique_id=678293243 node_paths=PackedStringArray("path_3d")]
+path_3d = NodePath("../TrackPath")
+mesh = ExtResource("9_bin8b")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+surface_0/triangle_count = 256
+material_override = SubResource("StandardMaterial3D_ijxtf")
+
+[node name="HalfTimberedBarn" type="Node3D" parent="." unique_id=483972209]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HalfTimberedBarn" unique_id=1743631774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.498554, 8.586021, 67.92201)
+mesh = ExtResource("13_lk115")
+
+[node name="ResBldCollider" type="StaticBody3D" parent="HalfTimberedBarn/MeshInstance3D" unique_id=666157259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.573923, 16.702173, -5.8260193)
+physics_material_override = SubResource("PhysicsMaterial_qkc8r")
+script = ExtResource("14_xyect")
+metadata/_custom_type_script = "uid://chalq0opfem2r"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HalfTimberedBarn/MeshInstance3D/ResBldCollider" unique_id=1943747683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.775812, -16.533134, 5.87912)
+shape = SubResource("BoxShape3D_bin8b")
+
+[node name="PolishHouse1" parent="." unique_id=2005346308 instance=ExtResource("15_3e8ug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1174, 7.99088, 15.6514)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=552389080]
+multimesh = SubResource("MultiMesh_kil6y")
+
+[node name="Campfire" parent="." unique_id=1265694802 instance=ExtResource("16_jeq0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.8981, 6.64192, 80.5601)
+
+[node name="Tree3" parent="." unique_id=1915614709 instance=ExtResource("17_nxu5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.7584, 6.9311, 64.4647)
+
+[node name="SignalTower" parent="." unique_id=1887228741 instance=ExtResource("18_ijxtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
+
+[node name="Sprite3D" parent="SignalTower" unique_id=64163115 instance=ExtResource("19_r34uw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9403534, 19.862587, 1.4434013)
+texture = SubResource("ViewportTexture_s8qsh")
+
+[node name="Pilzleuchte" parent="." unique_id=1791571326 instance=ExtResource("20_ueuup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.845093, 9.050041, 30.95818)
