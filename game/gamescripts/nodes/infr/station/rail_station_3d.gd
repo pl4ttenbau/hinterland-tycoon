@@ -1,3 +1,4 @@
+@tool
 class_name RailStation3D extends InventoryEntity3D
 
 signal station_assigned(station_obj: RailStationData)
@@ -26,8 +27,10 @@ func get_shared_inventory() -> GoodsInventory:
 #region Initialization
 # must be done in init, as station obj is assigned before scene tree entering
 func _init() -> void:
+	super()
 	# connect to signals
-	self.station_assigned.connect(Callable(self, "_on_station_assigned"))
+	if not Engine.is_editor_hint():
+		self.station_assigned.connect(Callable(self, "_on_station_assigned"))
 #endregion
 
 #region Callbacks
@@ -37,3 +40,6 @@ func _on_station_assigned(station_obj: RailStationData):
 func _on_station_positioned(pos: Vector3):
 	self.station_pos = pos
 #endregion
+
+func _requires_constructable() -> bool:
+	return true

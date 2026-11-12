@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/nodes_3d/icon_station.svg")
 class_name BusStop3D extends InventoryEntity3D
 
@@ -15,6 +16,9 @@ var _sign: StationSign3D
 @export var station: RoadStationData:
 	get(): return self.entity as RoadStationData
 	set(value):
+		if Engine.is_editor_hint():
+			self.entity = value
+			return
 		if self.station == value:
 			return
 		self._disconnect_station()
@@ -27,16 +31,23 @@ func get_shared_inventory() -> GoodsInventory:
 	return station.get_interchange_inventory() if station != null else null
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint():
+		return
 	self._connect_station()
 	self._apply_station()
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	super()
 	self._sign = load(SIGN_SCENE_PATH).instantiate()
 	self._sign.name = "StationSign3D"
 	self._sign.position = Vector3(0, 15, 0)
 	self.add_child(self._sign)
 	self._sign.bind_station(self.station, self.get_inventory())
+
+func _requires_constructable() -> bool:
+	return true
 
 func _connect_station() -> void:
 	if self.station != null and not self.station.positioned.is_connected(self._on_station_positioned):
@@ -100,5 +111,7 @@ func _place_shelter(shelter: Node3D, side_sign: float) -> void:
 		shelter.look_at(shelter.global_position + self._road_heading * side_sign)
 
 func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		return
 	self._disconnect_station()
 	super()

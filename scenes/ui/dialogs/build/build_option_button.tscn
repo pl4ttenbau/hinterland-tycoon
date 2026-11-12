@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/build/build_option_button.gd" id="1"]
+
+[node name="BuildOptionButton" type="Button"]
+tooltip_text = "Construction cost in game money"
+theme_type_variation = &"ManagementButton"
+script = ExtResource("1")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -12,6 +12,8 @@ previous mouse and movement settings before launching an action or dialog.
 | Place road marker | On foot, with the session's roads loaded |
 | Create stop | On foot, with the session's station services loaded |
 | Connect tracks | On foot, with rail services loaded |
+| Prospect | During gameplay. Step out of the vehicle to take a reading. |
+| Build | During gameplay with terrain loaded |
 | Inventory | During gameplay |
 | Company information | During gameplay; empty themed dialog |
 | Game menu | During gameplay; empty themed dialog |
@@ -27,6 +29,23 @@ Vehicle spawning remains tied to depot selection rather than an arbitrary locati
 Create stop captures the player's position on a road or track. A physical stop
 within 50 m opens the add-to-station dialog; otherwise it opens the new-station
 dialog. See [Station creator](station-creator.md).
+
+Prospect opens a dialog for the player's current position. Select Prospect in
+the dialog to take a reading and place a survey sign. Select a sign to reopen its
+saved reading. The signs last for the current session, and readings near an
+existing sign reuse that sign. Positive readings below 10% display as Trace.
+The session's ProspectingManager owns the signs and supports fresh geology
+queries at a world X/Z point.
+
+Build opens the Industry, Station and Misc tabs. Select Mine under Industry to
+move an opaque green model over the terrain and see nearby survey results.
+Press Enter to choose a resource at the selected point, then select Build mine.
+The mine produces that resource through the normal industry inventory, with
+output scaled by local richness. Escape cancels the current placement attempt.
+The session's ConstructionManager checks terrain and uses the collision shape
+assigned to Constructable3D to test the proposed footprint.
+An industry or station scene with no direct Constructable3D child shows a
+configuration warning in the Godot editor.
 
 The action icons in `assets/ui/icons/actions/` use a shared 32 px grid and cream
 2 px strokes. Every exposed action has its own icon; entry and exit differ too.

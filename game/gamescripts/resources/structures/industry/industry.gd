@@ -11,9 +11,11 @@ class_name IndustryData extends GameEntityData
 static var _last_ind_num: int = 0
 
 #region Scene Callbacks
-func _init(_ind_type_str: String, _pos: Vector3):
+func _init(_ind_type_str: String, _pos: Vector3, site_recipe: IndustryType = null):
 	super(Enums.EntityTypes.INDUSTRY)
-	self.ind_type = self._get_ind_type_by_str(_ind_type_str)
+	self.ind_type = site_recipe if site_recipe != null else self._get_ind_type_by_str(_ind_type_str)
+	if site_recipe != null:
+		self.ind_name = site_recipe.name
 	self.pos = _pos
 	self._autoregister()
 

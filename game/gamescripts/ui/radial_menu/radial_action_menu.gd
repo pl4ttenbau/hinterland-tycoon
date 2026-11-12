@@ -35,6 +35,8 @@ func available_actions() -> Array[Dictionary]:
 		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
 		if is_instance_valid(creator) and creator.is_available():
 			items.append(_item("Create stop", "CreateStop", "create_stop"))
+	items.append(_item("Prospect", "Prospect", "prospect"))
+	items.append(_item("Build", "Build", "build"))
 	items.append(_item("Inventory", "LoadUnload", "inventory"))
 	items.append(_item("Company information", "Company", "company_info"))
 	items.append(_item("Game menu", "Game Menu", "game_menu"))

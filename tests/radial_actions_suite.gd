@@ -47,6 +47,8 @@ func run() -> void:
 	var menu := scene.instantiate() as RadialActionMenu
 	root.add_child(menu)
 	check("Company" in _ids(menu) and "Game Menu" in _ids(menu), "Both new menu dialogs are offered on foot")
+	check("Prospect" in _ids(menu), "Prospect is offered on foot")
+	check("Build" in _ids(menu), "Build is offered in the circular menu")
 	check("RoadMarker" in _ids(menu) and "AutoRoute" not in _ids(menu), "Walking offers marker, not auto-routing")
 	check("Enter" not in _ids(menu), "No train entry when train list is empty")
 	for unsupported: String in ["Place"]:
@@ -54,16 +56,18 @@ func run() -> void:
 	var road_vehicle := RoadVehicle3D.new()
 	vehicles.player_road_vehicle = road_vehicle
 	check("Company" in _ids(menu) and "Game Menu" in _ids(menu), "Both new menu dialogs remain available inside a vehicle")
+	check("Prospect" in _ids(menu), "Prospect remains in the road-vehicle menu")
 	check("AutoRoute" in _ids(menu) and "Enter" in _ids(menu), "Occupied road vehicle offers routing and exit")
 	check("RoadMarker" not in _ids(menu) and "Connect" not in _ids(menu), "Road vehicle hides on-foot actions")
 	vehicles.player_road_vehicle = null
 	var train := Train3D.new()
 	player.in_train = train
 	check("AutoRoute" not in _ids(menu) and "RoadMarker" not in _ids(menu), "Train occupancy does not expose road actions")
+	check("Prospect" in _ids(menu), "Prospect remains in the train menu")
 	var control: Control = menu.get_node("%RadialMenu")
 	control.set_items(menu.available_actions())
-	check(control.get_node("ItemIcons").get_child_count() == 4, "Changing context rebuilds icon nodes")
-	check(is_equal_approx(control.item_angle * 4, control.circle_coverage * TAU), "Changing context recalculates segment geometry")
+	check(control.get_node("ItemIcons").get_child_count() == 6, "Changing context rebuilds icon nodes")
+	check(is_equal_approx(control.item_angle * 6, control.circle_coverage * TAU), "Changing context recalculates segment geometry")
 	player.in_train = null
 	var handler := ActionHandler.new()
 	var action := CountingAction.new()
@@ -98,6 +102,7 @@ func run() -> void:
 		await get_tree().process_frame
 		check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked, "Escape closes the dialog and restores input")
 	GlobalState.player = player
+	await _test_prospect(menu, handler, road_vehicle)
 
 	# Open/short release must remain available to click; long release activates once.
 	var press := InputEventMouseButton.new()
@@ -164,3 +169,345 @@ func run() -> void:
 	rails.free()
 	print("Radial actions: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures else 0)
+
+func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle: RoadVehicle3D) -> void:
+	var old_player: PlayerHead3D = GlobalState.player
+	var old_camera: Camera3D = GlobalState.active_cam
+	var old_world: WorldMapScene = GlobalState.world_container
+	var old_prospecting: ProspectingManager = Managers.prospecting
+	var player_scene: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	var body: BasicFpsPlayer = player_scene.get_node("Player")
+	body.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	add_child(player_scene)
+	var terrain := Terrain3D.new()
+	var world := WorldMapScene.new()
+	world.map_key = "mpsb"
+	world.terrain = terrain
+	world.add_child(terrain)
+	add_child(world)
+	terrain.set_camera(GlobalState.active_cam)
+	terrain.data.add_region_blankp(Vector3.ZERO)
+	var prospecting := ProspectingManager.new()
+	prospecting.marker_scene = load("res://scenes/subscenes/marker/survey_marker_3d.tscn")
+	add_child(prospecting)
+	prospecting.set_world(world)
+	Managers.prospecting = prospecting
+	body.global_position = Vector3(53, 6, 78)
+	GlobalState.active_cam.position.x = 75.0
+	var expected: Dictionary[String, float] = world.sample_minerals_at(body.global_position)
+	var sample := Vector2(body.global_position.x, body.global_position.z)
+	check(prospecting.get_traces_at_pos(sample) == expected and prospecting.readings_near(sample).is_empty(), "Fresh X/Z readings do not create surveys")
+	check(prospecting.get_traces_at_pos(Vector2(4096, 4096)).is_empty(), "Geology queries outside terrain have no readings")
+	check(expected != world.sample_minerals_at(GlobalState.active_cam.global_position), "Player and camera samples differ in the fixture")
+	menu._on_radial_action_selected("Prospect", null)
+	await get_tree().process_frame
+	var dialog := UiState.current_diag as ProspectDialog
+	check(dialog != null and dialog.can_prospect and dialog.readings.is_empty(), "Prospect opens an unsurveyed dialog")
+	if dialog != null:
+		var captured_position: Vector3 = body.global_position
+		body.global_position += Vector3(30, 0, 0)
+		dialog.find_child("ProspectButton", true, false).pressed.emit()
+		check(dialog.readings == expected, "The Prospect button reads the player's captured position")
+		var grid: GridContainer = dialog.get_node("%Content/Readings")
+		check(grid.get_child_count() == 8, "Prospect displays a row for each of the four resources")
+		check(body.process_mode == Node.PROCESS_MODE_DISABLED and not handler._on_action_triggered("Prospect"), "Prospect suspends walking and rejects duplicate dialogs")
+		dialog.get_node("%OkButton").pressed.emit()
+		await get_tree().process_frame
+		check(UiState.current_diag == null and body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED, "Closing Prospect restores the walking state")
+		body.global_position = captured_position + Vector3.RIGHT
+		await _test_survey_marker(handler, prospecting, expected)
+	GlobalState.player.in_road_vehicle = road_vehicle
+	check(handler._on_action_triggered("Prospect"), "Prospect dispatches from the vehicle menu")
+	dialog = UiState.current_diag as ProspectDialog
+	check(dialog != null and dialog.readings.is_empty() and dialog.message.begins_with("Step out"), "In-vehicle Prospect prompts the player to step out")
+	if dialog != null:
+		dialog.close_all()
+		await get_tree().process_frame
+	GlobalState.player.in_road_vehicle = null
+	body.global_position = Vector3(4096, 6, 4096)
+	check(handler._on_action_triggered("Prospect"), "Prospect opens outside the terrain")
+	dialog = UiState.current_diag as ProspectDialog
+	check(dialog != null and dialog.readings.is_empty() and not dialog.message.is_empty(), "Missing terrain has a message instead of readings")
+	if dialog != null:
+		dialog.close_all()
+		await get_tree().process_frame
+	var old_construction: ConstructionManager = Managers.construction
+	var construction := ConstructionManager.new()
+	add_child(construction)
+	Managers.construction = construction
+	await _test_construction_footprint(construction, world)
+	await _test_build(handler, body)
+	Managers.construction = old_construction
+	construction.free()
+	var marker := prospecting.get_marker(1)
+	prospecting.set_world(null)
+	await get_tree().process_frame
+	check(prospecting.get_marker(1) == null and not is_instance_valid(marker), "Clearing the active world removes its signs and readings")
+	Managers.prospecting = old_prospecting
+	prospecting.free()
+	player_scene.free()
+	world.free()
+	GlobalState.player = old_player
+	GlobalState.active_cam = old_camera
+	GlobalState.world_container = old_world
+
+func _test_construction_footprint(construction: ConstructionManager, world: WorldMapScene) -> void:
+	var building := Node3D.new()
+	var component := Constructable3D.new()
+	building.add_child(component)
+	var proposed := Transform3D(Basis(Vector3.UP, PI * 0.5), Vector3(180, 0, 180))
+	check(construction.site_error(world, building, proposed).contains("missing its placement shape"), "Construction reports a missing footprint")
+
+	var mount := Node3D.new()
+	mount.position = Vector3(0, 2, 3)
+	building.add_child(mount)
+	var body := StaticBody3D.new()
+	body.position.x = 1.0
+	mount.add_child(body)
+	var footprint := CollisionShape3D.new()
+	footprint.position.x = 2.0
+	footprint.shape = BoxShape3D.new()
+	body.add_child(footprint)
+	component.placement_shape = footprint
+
+	var obstacle := StaticBody3D.new()
+	var obstacle_shape := CollisionShape3D.new()
+	obstacle_shape.shape = BoxShape3D.new()
+	obstacle.add_child(obstacle_shape)
+	add_child(obstacle)
+	obstacle.global_position = proposed * Vector3(3, 2, 3)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	check(construction.site_error(world, building, proposed).contains("overlap"), "Construction composes a nested footprint with the proposed rotation")
+	obstacle.add_to_group(ConstructionManager.NON_BLOCKING_GROUP)
+	check(construction.site_error(world, building, proposed).is_empty(), "Construction allows overlap with non-blocking markers")
+	obstacle.free()
+	building.free()
+
+func _test_survey_marker(handler: ActionHandler, prospecting: ProspectingManager, expected: Dictionary[String, float]) -> void:
+	var marker := prospecting.get_marker(1)
+	check(marker != null and marker.readings == expected, "Prospecting places one survey sign with the reading")
+	if marker == null:
+		return
+	var signpost := marker.get_node("Signpost") as MeshInstance3D
+	check(signpost != null and signpost.mesh != null and signpost.scene_file_path.ends_with("/prospecting/prospect_marker.tscn"), "Survey sign uses the dedicated prospecting model")
+	var reference: ClickRef = marker.get_click_ref()
+	check(reference.entity_type == Enums.EntityTypes.MARKER and reference.entity_num == marker.marker_num, "Survey sign has a numbered MARKER click reference")
+	check(handler._on_action_triggered("Prospect"), "Prospect reopens a surveyed spot")
+	var dialog := UiState.current_diag as ProspectDialog
+	check(dialog != null and dialog.readings == expected, "Nearby prospecting shows the saved results immediately")
+	if dialog != null:
+		dialog.find_child("ProspectButton", true, false).pressed.emit()
+		dialog.close_all()
+		await get_tree().process_frame
+	check(prospecting.get_marker(1) == marker and prospecting.get_marker(2) == null, "Prospecting nearby reuses the sign")
+
+	var clicks := PlayerMouseClick.new()
+	var entity_clicks := BaseEntityClickHandler.new()
+	entity_clicks.name = "EntityClickHandler"
+	clicks.add_child(entity_clicks)
+	var terrain_clicks := TerrainClickHandler.new()
+	terrain_clicks.name = "TerrainClickHandler"
+	clicks.add_child(terrain_clicks)
+	add_child(clicks)
+	var camera: Camera3D = GlobalState.active_cam
+	var board: Vector3 = signpost.to_global(Vector3(0.0, 0.85, 0.067)) if signpost != null else marker.global_position
+	camera.look_at_from_position(board + Vector3.BACK * 8.0, board)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	clicks.cast_ray(get_viewport().get_visible_rect().size * 0.5)
+	dialog = UiState.current_diag as ProspectDialog
+	check(dialog != null and dialog.readings == expected and not dialog.can_prospect, "Clicking the sign opens its saved report through the world ray")
+	if dialog != null:
+		dialog.close_all()
+		await get_tree().process_frame
+	clicks.free()
+
+func _test_build(handler: ActionHandler, body: BasicFpsPlayer) -> void:
+	for view: GameEntity3D in [Industry3D.new(), RailStation3D.new(), BusStop3D.new()]:
+		check(view._get_configuration_warnings().size() == 1, "Industry and station views warn about a missing Constructable3D")
+		view.add_child(Constructable3D.new())
+		check(view._get_configuration_warnings().is_empty(), "A direct Constructable3D clears the missing-component warning")
+		view.free()
+
+	check(handler._on_action_triggered("Build"), "Build opens the picker on a loaded map")
+	var picker: GameDialog = UiState.current_diag
+	if picker == null:
+		return
+	var tabs: CategoryTabs = picker.get_node("%Content/Categories")
+	var options: VBoxContainer = picker.get_node("%Content/Options")
+	check(tabs.get_children().map(func(tab: Button) -> String: return tab.tooltip_text) == ["Industry", "Station", "Misc"], "Build shows the requested tabs")
+	tabs.get_child(1).pressed.emit()
+	check(options.get_node("Station").visible and options.get_node("Empty").visible, "Station tab shows an empty state")
+	tabs.get_child(2).pressed.emit()
+	check(options.get_node("Misc").visible and options.get_node("Empty").visible, "Misc tab shows an empty state")
+	tabs.get_child(0).pressed.emit()
+	var mine := options.get_node("Industry/Mine") as Button
+	check(mine != null and mine.text.contains("10000"), "Mine reads its construction cost from the scene")
+	if mine == null:
+		picker.close_all()
+		await get_tree().process_frame
+		return
+	mine.pressed.emit()
+	for frame: int in 3:
+		await get_tree().process_frame
+	var preview := UiState.current_diag as BuildPreview
+	check(preview != null and body.process_mode == Node.PROCESS_MODE_DISABLED, "Selecting Mine starts an input-owning preview")
+	if preview == null:
+		return
+	check(preview.model.scale.is_equal_approx(Vector3.ONE * 1.5), "Preview uses the mine model's authored scale")
+	var meshes: Array[Node] = preview.model.find_children("*", "MeshInstance3D", true, false)
+	check(not meshes.is_empty() and meshes[0].material_override is StandardMaterial3D and meshes[0].material_override.transparency == BaseMaterial3D.TRANSPARENCY_DISABLED, "Mine preview uses an opaque override")
+	var camera: Camera3D = GlobalState.active_cam
+	camera.look_at_from_position(Vector3(115, 45, 115), Vector3(115, 0, 115), Vector3.FORWARD)
+	var center: Vector2 = get_viewport().get_visible_rect().size * 0.5
+	preview._update_preview(center)
+	check(preview.model.is_visible_in_tree() and preview.model.global_position.distance_to(Vector3(115, 0, 115)) < 1.0, "Preview follows a ground hit")
+	var first: Vector3 = preview.model.global_position
+	preview._update_preview(center + Vector2(center.x * 0.4, 0))
+	check(preview.model.is_visible_in_tree() and first.distance_to(preview.model.global_position) > 1.0, "Moving the cursor changes the ground position")
+	camera.look_at(Vector3(115, 100, 114))
+	preview._update_preview(center)
+	check(not preview.model.is_visible_in_tree(), "Preview hides when the mouse points above terrain")
+	var escape := InputEventAction.new()
+	escape.action = "ui_cancel"
+	escape.pressed = true
+	preview._input(escape)
+	await get_tree().process_frame
+	check(UiState.current_diag == null and body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED, "Escape removes the preview and restores walking")
+	await _test_mine_construction(handler, camera, center)
+
+
+func _test_mine_construction(handler: ActionHandler, camera: Camera3D, center: Vector2) -> void:
+	check(GameTypes.ensure_initialized() == OK, "Mining uses the standard industry and goods catalogs")
+	var world: WorldMapScene = GlobalState.world_container
+	var site: Vector3 = _rich_coal_site(world)
+	check(site.is_finite(), "The test terrain has a rich coal site")
+	if not site.is_finite():
+		return
+
+	var old_industries: IndustrySpawner = Managers.industries
+	var old_interchanges: InterchangesLoader = Managers.interchanges
+	var spawner := IndustrySpawner.new()
+	var interchanges := InterchangesLoader.new()
+	add_child(spawner)
+	add_child(interchanges)
+	Managers.industries = spawner
+	Managers.interchanges = interchanges
+	check(interchanges.load_definitions([{"num": 0, "name": "Mine stop", "townNum": 0, "stops": []}]) == OK, "Mine stop fixture loads")
+	var stop := RoadStationData.new(1, "Mine stop", 0)
+	stop.position = site + Vector3.RIGHT * 30.0
+	check(interchanges.register_stop(stop, 0) == OK, "The road stop belongs to an interchange")
+	var bus: BusStop3D = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn").instantiate()
+	bus.station = stop
+	add_child(bus)
+
+	var preview: BuildPreview = await _open_mine_preview(handler)
+	if preview != null:
+		await _confirm_coal_mine(preview, world, camera, center, site, spawner, bus)
+	else:
+		check(false, "Build opens a preview for construction")
+	if not spawner.storage.get_containers().is_empty():
+		await _test_occupied_mine_site(handler, camera, center, spawner.storage.get_containers()[0].global_position)
+
+	spawner.free()
+	check(stop.interchange.connections.industries.is_empty(), "Removing a runtime mine releases its interchange connection")
+	bus.free()
+	interchanges.free()
+	Managers.industries = old_industries
+	Managers.interchanges = old_interchanges
+
+
+func _confirm_coal_mine(preview: BuildPreview, world: WorldMapScene, camera: Camera3D, center: Vector2,
+		site: Vector3, spawner: IndustrySpawner, bus: BusStop3D) -> void:
+	# The earlier survey fixture sits here. Move to it before testing a blind build.
+	var surveyed := Vector3(53, 0, 78)
+	camera.look_at_from_position(surveyed + Vector3.UP * 45.0, surveyed, Vector3.FORWARD)
+	preview._update_preview(center)
+	check(preview._site_detail.text.begins_with("Survey"), "Mine preview shows saved survey readings")
+	camera.look_at_from_position(site + Vector3.UP * 45.0, site, Vector3.FORWARD)
+	preview._update_preview(center)
+	check(preview._site_detail.text == "Unsurveyed", "A blind site can still be selected")
+	var selected_position: Vector3 = preview.model.global_position
+	var enter := InputEventAction.new()
+	enter.action = "ui_enter"
+	enter.pressed = true
+	preview._input(enter)
+	for frame: int in 3:
+		await get_tree().process_frame
+	var dialog := UiState.current_diag as MineResourceDialog
+	check(dialog != null and spawner.storage.get_all().is_empty(), "Enter opens resource selection before placing anything")
+	if dialog == null:
+		if is_instance_valid(preview):
+			preview.close_all()
+			await get_tree().process_frame
+		return
+	var readings: Dictionary[String, float] = world.sample_minerals_at(selected_position)
+	check(dialog.readings == readings, "Confirmation samples the exact selected site")
+	var choices: OptionButton = dialog.get_node("%ResourceChoices")
+	var coal: int = -1
+	for index: int in choices.item_count:
+		if choices.get_item_text(index).begins_with("Coal"):
+			coal = index
+			break
+	check(coal >= 0, "The mine offers coal")
+	if coal < 0:
+		dialog.close_all()
+		await get_tree().process_frame
+		return
+	choices.select(coal)
+	dialog.get_node("%BuildButton").pressed.emit()
+	await get_tree().process_frame
+	check(UiState.current_diag == null and spawner.storage.get_containers().size() == 1, "Confirming one resource creates a single industry")
+	if spawner.storage.get_containers().is_empty():
+		return
+	var mine: Industry3D = spawner.storage.get_containers()[0]
+	check(mine.global_position.is_equal_approx(selected_position), "The live mine occupies the selected site")
+	check(mine.industry.ind_type.produces.size() == 1 and GameTypes.get_ind_type("COAL_MINE").produces[0].res_modifier == 4.0, "The site recipe has one output and preserves the authored coal mine recipe")
+	var production: IndustryProduction = mine.get_node("Production")
+	check(production.run_cycle() == IndustryProduction.BatchResult.COMPLETED, "The placed mine runs the standard production batch")
+	var road_access: InventoryEndpoint = InventoryEndpoint.from_node(bus)
+	var amount: float = road_access.inventory().get_amount("coal")
+	check(is_equal_approx(amount, readings["coal"] * MinePlacement.FULL_RICHNESS_BATCH), "The nearby road stop receives coal scaled by local richness")
+	var truck := Node3D.new()
+	truck.add_child(InventoryContainer.new())
+	add_child(truck)
+	truck.global_position = bus.global_position
+	var cargo: InventoryEndpoint = InventoryEndpoint.from_node(truck)
+	check(InventoryTransferService.transfer(road_access, cargo, InventoryStack.new(&"coal", amount), amount).is_empty(), "A vehicle inventory can load the mine's coal from the road stop")
+	truck.free()
+
+
+func _open_mine_preview(handler: ActionHandler) -> BuildPreview:
+	if not handler._on_action_triggered("Build"):
+		return null
+	UiState.current_diag.get_node("%Content/Options/Industry/Mine").pressed.emit()
+	for frame: int in 3:
+		await get_tree().process_frame
+	return UiState.current_diag as BuildPreview
+
+
+func _test_occupied_mine_site(handler: ActionHandler, camera: Camera3D, center: Vector2, site: Vector3) -> void:
+	var preview: BuildPreview = await _open_mine_preview(handler)
+	check(preview != null, "Another mine placement can start after confirmation")
+	if preview == null:
+		return
+	await get_tree().physics_frame
+	camera.look_at_from_position(site + Vector3.UP * 45.0, site, Vector3.FORWARD)
+	preview._update_preview(center)
+	var enter := InputEventAction.new()
+	enter.action = "ui_enter"
+	enter.pressed = true
+	preview._input(enter)
+	check(UiState.current_diag == preview and preview._site_detail.text.contains("overlap"), "A mine footprint cannot overlap an existing mine")
+	preview.close_all()
+	await get_tree().process_frame
+
+
+func _rich_coal_site(world: WorldMapScene) -> Vector3:
+	for x: int in range(32, 224, 8):
+		for z: int in range(32, 224, 8):
+			var site := Vector3(x, 0, z)
+			if world.sample_minerals_at(site)["coal"] > 0.4:
+				return site
+	return Vector3.INF

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fmjckb8m3fvw"
-path.s3tc="res://.godot/imported/tex_mineshaft_house_d.png-0333bcbd0dd2635e2232e416e0a47cea.s3tc.ctex"
+uid="uid://b18diiwqe74td"
+path.s3tc="res://.godot/imported/tex_mineshaft_middle_d.png-c865d70508bdaaf0fc94ea8b154c3a53.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/industry/mineshaft/tex_mineshaft_house_d.png"
-dest_files=["res://.godot/imported/tex_mineshaft_house_d.png-0333bcbd0dd2635e2232e416e0a47cea.s3tc.ctex"]
+source_file="res://assets/meshes/industry/mineshaft/mesh/tex_mineshaft_middle_d.png"
+dest_files=["res://.godot/imported/tex_mineshaft_middle_d.png-c865d70508bdaaf0fc94ea8b154c3a53.s3tc.ctex"]
 
 [params]
 

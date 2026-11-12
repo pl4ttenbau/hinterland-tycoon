@@ -24,6 +24,8 @@ var _connections: Array[Dictionary] = []
 @onready var road_exit_connector: RoadIndustryExitConnector = $Infr/Roads/RoadIndustryExitConnector
 @onready var vehicles: VehiclePlacer = $Vehicles
 @onready var industries: IndustrySpawner = $Industries
+@onready var construction: ConstructionManager = $Construction
+@onready var prospecting: ProspectingManager = $Prospecting
 @onready var depots: DepotLoader = $Depots
 @onready var map_spawner: MapSpawner = $LoadedMap
 @onready var world_timer: Timer = $LoadedMap/WorldUpdateTimer
@@ -56,7 +58,8 @@ func _collect_services() -> void:
 		&"rails": self.rails, &"forks": self.forks, &"stations": self.stations,
 		&"interchanges": self.interchanges, &"road_stops": self.road_stops,
 		&"roads": self.roads, &"vehicles": self.vehicles,
-		&"industries": self.industries, &"depots": self.depots,
+		&"industries": self.industries, &"construction": self.construction,
+		&"prospecting": self.prospecting, &"depots": self.depots,
 		&"map_spawner": self.map_spawner
 	}
 
@@ -101,6 +104,7 @@ func _wire_services() -> void:
 ## Preserve map_spawned listener order: towns/houses, rails, roads, industries.
 ## These callbacks place views; load_map_data separately orders their source data.
 func _wire_world_placement() -> void:
+	self._listen(SignalBus.map_spawned, self.prospecting.set_world)
 	self._listen(SignalBus.map_spawned, self.towns._on_map_spawned)
 	self._listen(SignalBus.map_spawned, self.town_buildings._on_map_spawned)
 	self._listen(SignalBus.map_spawned, self.rails._on_map_spawned)

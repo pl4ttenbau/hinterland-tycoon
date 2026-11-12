@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/build/build_option_list.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/build/build_option_button.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://assets/meshes/industry/mineshaft/mineshaft.tscn" id="3"]
+
+[node name="Options" type="VBoxContainer"]
+script = ExtResource("1")
+
+[node name="Industry" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Mine" parent="Industry" instance=ExtResource("2")]
+layout_mode = 2
+building_title = "Mine"
+building_scene = ExtResource("3")
+
+[node name="Station" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Misc" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Empty" type="Label" parent="."]
+visible = false
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "No buildings available."

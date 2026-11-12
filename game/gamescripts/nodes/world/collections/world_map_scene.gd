@@ -3,8 +3,12 @@
 @icon("res://assets/icons/icon_terrain.png")
 class_name WorldMapScene extends Node
 
+const MineralGeologySampler = preload("res://game/gamescripts/resources/terrain/mineral_geology.gd")
+
 @export var map_key: String
 @export var terrain: Terrain3D
+
+var _mineral_geology: MineralGeologySampler
 
 @warning_ignore("unused_signal")
 signal world_update()
@@ -46,6 +50,14 @@ func get_height_at(abs_pos: Vector3) -> float:
 
 func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 	return Vector3(abs_pos.x, get_height_at(abs_pos), abs_pos.z)
+
+func sample_minerals_at(abs_pos: Vector3) -> Dictionary[String, float]:
+	if _mineral_geology == null:
+		# The exporter uses the same map seed, so both paths sample the same fields.
+		_mineral_geology = MineralGeologySampler.new(map_key.hash())
+	if terrain == null:
+		return _mineral_geology.sample(abs_pos)
+	return _mineral_geology.sample(abs_pos, terrain.data, terrain.assets)
 	
 func get_terrain() -> Terrain3D:
 	return self.get_child(0)

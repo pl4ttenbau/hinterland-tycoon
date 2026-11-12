@@ -25,7 +25,8 @@ enum EntityTypes {
 	GOOD,
 	DECO_STATIC,
 	DECO_SPLINE,
-	INTERCHANGE # Append new entity kinds to preserve existing serialized enum values.
+	INTERCHANGE,
+	MARKER # Append new entity kinds to preserve existing serialized enum values.
 }
 
 enum InfrDomain {

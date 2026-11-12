@@ -78,6 +78,10 @@ func _on_road_depot_clicked(depot_collider: RoadDepotCollider) -> bool:
 
 func _on_other_clickable_collider_click(clickable_collider: ClickableCollider) -> bool:
 	var c_ref: ClickRef = clickable_collider.get_click_ref()
+	if c_ref == null:
+		return false
+	if c_ref.entity_type == Enums.EntityTypes.MARKER and not Prospecting.open_marker(c_ref.entity_num):
+		return false
 	SignalBus.collider_click.emit(c_ref)
 	if c_ref.get_type_str():
 		Loggie.info("Click %s %d" % [c_ref.get_type_str(), c_ref.entity_num])

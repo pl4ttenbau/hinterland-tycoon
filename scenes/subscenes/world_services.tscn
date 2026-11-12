@@ -21,6 +21,9 @@
 [ext_resource type="Script" uid="uid://btd81kjh22btd" path="res://game/gamescripts/services/importexport/map/map_spawner.gd" id="18_yvyyf"]
 [ext_resource type="Script" uid="uid://cmjg7ahl38lqk" path="res://game/gamescripts/nodes/triggers/world_update_timer.gd" id="19_waht2"]
 [ext_resource type="Script" uid="uid://djgld1jv3ymu8" path="res://game/gamescripts/nodes/terrain/terrain_raycaster.gd" id="20_20yvh"]
+[ext_resource type="Script" path="res://game/gamescripts/services/construction/construction_manager.gd" id="21_construction"]
+[ext_resource type="Script" path="res://game/gamescripts/services/prospecting/prospecting_manager.gd" id="22_prospecting"]
+[ext_resource type="PackedScene" path="res://scenes/subscenes/marker/survey_marker_3d.tscn" id="23_survey_marker"]
 
 [node name="WorldServices" type="Node" unique_id=102886502]
 script = ExtResource("1_coordinator")
@@ -89,6 +92,13 @@ script = ExtResource("15_g3fbs")
 [node name="Industries" type="Node" parent="." unique_id=1333823754]
 script = ExtResource("16_6wawu")
 metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
+
+[node name="Construction" type="Node" parent="."]
+script = ExtResource("21_construction")
+
+[node name="Prospecting" type="Node" parent="."]
+script = ExtResource("22_prospecting")
+marker_scene = ExtResource("23_survey_marker")
 
 [node name="Depots" type="Node" parent="." unique_id=1488410899]
 script = ExtResource("17_qsvwm")

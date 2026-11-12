@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="mesh/prospect_marker_albedo.png" id="1"]
+[ext_resource type="Texture2D" path="mesh/prospect_marker_normal.png" id="2"]
+[ext_resource type="Texture2D" path="mesh/prospect_marker_roughness.png" id="3"]
+
+[resource]
+resource_name = "ProspectMarker"
+albedo_texture = ExtResource("1")
+roughness = 1.0
+roughness_texture = ExtResource("3")
+roughness_texture_channel = 0
+normal_enabled = true
+normal_texture = ExtResource("2")

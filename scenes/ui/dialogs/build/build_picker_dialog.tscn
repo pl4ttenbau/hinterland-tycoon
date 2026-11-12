@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/build/build_picker_dialog.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/build/build_category_tabs.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/build/build_option_list.tscn" id="4"]
+
+[node name="BuildPickerDialog" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Panel" parent="Center" index="0"]
+custom_minimum_size = Vector2(600, 320)
+
+[node name="Content" parent="Center/Panel/Padding/Layout" index="1"]
+theme_override_constants/separation = 12
+
+[node name="Categories" parent="Center/Panel/Padding/Layout/Content" index="0" instance=ExtResource("3")]
+layout_mode = 2
+
+[node name="Options" parent="Center/Panel/Padding/Layout/Content" index="1" instance=ExtResource("4")]
+layout_mode = 2
+
+[connection signal="category_selected" from="Center/Panel/Padding/Layout/Content/Categories" to="Center/Panel/Padding/Layout/Content/Options" method="show_category"]
+[connection signal="option_selected" from="Center/Panel/Padding/Layout/Content/Options" to="." method="_on_option_selected"]

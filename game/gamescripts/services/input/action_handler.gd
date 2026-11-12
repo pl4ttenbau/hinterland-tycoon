@@ -14,6 +14,10 @@ func _on_action_triggered(action_name: String) -> bool:
 		return true
 	if action_name == "AutoRoute":
 		return is_instance_valid(Managers.vehicles) and Managers.vehicles.open_road_route_dialog()
+	if action_name == "Prospect":
+		return Prospecting.open_at_player()
+	if action_name == "Build":
+		return MinePlacement.open_picker(GlobalState.world_container)
 	if action_name == "CreateStop":
 		if not is_instance_valid(Managers.interchanges):
 			return false

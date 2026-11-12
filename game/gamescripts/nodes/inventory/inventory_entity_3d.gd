@@ -1,3 +1,4 @@
+@tool
 class_name InventoryEntity3D extends GameEntity3D
 
 signal inventory_connected(inv_obj: GoodsInventory)
@@ -25,7 +26,8 @@ func get_shared_inventory() -> GoodsInventory:
 
 #region Initialization
 func _ready() -> void:
-	get_inventory()
+	if not Engine.is_editor_hint():
+		get_inventory()
 
 func _find_inventory() -> GoodsInventory:
 	var component: InventoryContainer = InventoryContainer.find_on(self)
@@ -33,4 +35,5 @@ func _find_inventory() -> GoodsInventory:
 #endregion
 
 func _exit_tree() -> void:
-	self.cached_inventory = null
+	if not Engine.is_editor_hint():
+		self.cached_inventory = null

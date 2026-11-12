@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/nodes_3d/icon_industry.svg")
 class_name Industry3D extends InventoryEntity3D
 
@@ -9,6 +10,8 @@ static var last_ind_num: int = 0
 	get(): return self.entity as IndustryData
 	set(value): 
 		self.entity = value
+		if Engine.is_editor_hint() or value == null:
+			return
 		self.position = value.pos
 		self._set_name(value)
 		
@@ -39,6 +42,8 @@ static func of(_industry: IndustryData) -> Industry3D:
 
 #region Initialization
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	self.spawn_industry_label()
 	self.spawn_inventory_and_production()
 	super._ready()
@@ -63,3 +68,6 @@ func _set_name(ind_obj: IndustryData):
 	var underscored: String = ind_obj.ind_name.replace(" ", "_")
 	self.name = underscored
 #endregion
+
+func _requires_constructable() -> bool:
+	return true

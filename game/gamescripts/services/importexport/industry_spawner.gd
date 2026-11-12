@@ -28,6 +28,26 @@ func spawn_industries():
 			self.storage.add_container(industry3d)
 	SignalBus.industries_spawned.emit()
 
+## The caller owns the off-tree view until placement succeeds.
+func place_runtime_industry(view: Industry3D, recipe: IndustryType, position: Vector3) -> void:
+	var industry := IndustryData.new(recipe.key, position, recipe)
+	view.industry = industry
+	add_child(view)
+	view.global_position = position
+	storage.add_container(view)
+	view.tree_exiting.connect(_remove_runtime_industry.bind(view), CONNECT_ONE_SHOT)
+	StationIndustriesConnector.connect_industry(industry)
+	if is_instance_valid(Managers.world_services):
+		industry.road_exit = Managers.world_services.road_exit_connector.find_closest_road_node(industry)
+
+func _remove_runtime_industry(view: Industry3D) -> void:
+	# Break the interchange's back-reference before the view and its data go away.
+	var connection: StationIndustryConnection = view.industry.station_connection
+	if connection != null and connection.interchange != null:
+		connection.interchange.connections.industries.erase(connection)
+		view.industry.station_connection = null
+	storage.remove_runtime_industry(view)
+
 #region Getters
 func get_map_industry_container() -> WorldIndustries:
 	if self.ind_placeholder_parent != null: return self.ind_placeholder_parent
