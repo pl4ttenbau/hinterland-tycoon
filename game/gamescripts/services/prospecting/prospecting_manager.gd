@@ -1,12 +1,20 @@
-## Provides geology queries and owns the survey records for the active map.
+## Provides geology queries and owns surveys and reserves for the active map.
 class_name ProspectingManager extends Node
 
 const SURVEY_RADIUS: float = 2.0
+const MINE_RADIUS: float = 100.0
+const DEPOSIT_CELL_SIZE: float = 16.0
+const FULL_RICHNESS_CELL_RESERVE: float = 800.0
 
 @export var marker_scene: PackedScene
 
+## Reserve units spent per cargo unit produced. Higher values exhaust mines faster.
+@export_range(0.01, 100.0, 0.01) var depletion_factor: float = 1.0
+
 var _world: WorldMapScene
 var _markers: Dictionary[int, SurveyMarker3D] = {}
+## Sparse runtime ledger: world cell coordinates → resource key → shared reserve.
+var _reserves: Dictionary[Vector2i, Dictionary] = {}
 var _next_marker_num: int = 1
 
 
@@ -14,6 +22,7 @@ func set_world(world: WorldMapScene) -> void:
 	if _world == world:
 		return
 	_clear_markers()
+	_reserves.clear()
 	_world = world
 
 
@@ -35,6 +44,39 @@ func get_traces_at_pos(world_pos: Vector2) -> Dictionary[String, float]:
 	if position.is_finite():
 		return _world.sample_minerals_at(position)
 	return {}
+
+
+## Cells are keyed by fixed world coordinates. Rebuilding or overlapping another
+## mine reuses the same balances, including cells whose reserves have reached zero.
+func reserves_for_mine(world_pos: Vector2, resource: String) -> Array[MineralReserve]:
+	var cells: Array[MineralReserve] = []
+	if not world_pos.is_finite():
+		return cells
+	var reach := Vector2.ONE * MINE_RADIUS
+	var first := Vector2i(((world_pos - reach) / DEPOSIT_CELL_SIZE).floor())
+	var last := Vector2i(((world_pos + reach) / DEPOSIT_CELL_SIZE).floor())
+	for x: int in range(first.x, last.x + 1):
+		for z: int in range(first.y, last.y + 1):
+			var key := Vector2i(x, z)
+			var center: Vector2 = (Vector2(key) + Vector2(0.5, 0.5)) * DEPOSIT_CELL_SIZE
+			if world_pos.distance_squared_to(center) <= MINE_RADIUS * MINE_RADIUS:
+				var cell := _get_reserve(key, center, resource)
+				if cell != null:
+					cells.append(cell)
+	return cells
+
+
+func _get_reserve(key: Vector2i, center: Vector2, resource: String) -> MineralReserve:
+	var resources: Dictionary = _reserves.get(key, {})
+	if not resources.has(resource):
+		var richness: float = get_traces_at_pos(center).get(resource, 0.0)
+		if richness <= 0.0:
+			return null
+		var reserve := MineralReserve.new()
+		reserve.remaining = richness * FULL_RICHNESS_CELL_RESERVE
+		resources[resource] = reserve
+		_reserves[key] = resources
+	return resources[resource]
 
 
 func readings_near(world_pos: Vector2) -> Dictionary[String, float]:
@@ -97,5 +139,4 @@ func _clear_markers() -> void:
 
 
 func _exit_tree() -> void:
-	_clear_markers()
-	_world = null
+	set_world(null)

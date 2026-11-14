@@ -16,12 +16,14 @@ func _get_next_track_num() -> int:
 #endregion
 
 #region Create Tracks
-func create_new_track() -> RailTrack3D:
+func create_new_track(start: Vector3, end: Vector3) -> RailTrack3D:
 	# create new rail track obj
 	var new_track: RailTrackData = RailTrackData.new()
 	new_track.num = self._get_next_track_num()
 	new_track.track_name = "New Track %d" % new_track.num
 	new_track.infr_type_key = "750_MM"
+	new_track.add_node(RailNodeData.of(0, start, new_track), false)
+	new_track.add_node(RailNodeData.of(1, end, new_track), false)
 	Loggie.info("Creating new track: %s" % new_track.track_name)
 	# spawn as RailTrack3D
 	var track3d: RailTrack3D = Managers.rails.instanciate_rail_track(new_track)
@@ -47,15 +49,24 @@ func add_new_node(pos: Vector3):
 #endregion
 
 #region Callables
-func _on_ui_mode_changed(ui_mode: Enums.UiMode):
+func _on_ui_mode_changed(ui_mode: Enums.UiMode) -> void:
 	self.is_active = ui_mode == Enums.UiMode.BUILD_INFR
-	if self.is_active:
-		UiState.build_infr_mode.track3d = self.create_new_track()
-		# add starting pos to track
-		self.add_new_node(UiState.build_infr_mode.at_fork.pos)
-	
-func _on_terrain_click(pos: Vector3):
-	if ! self.is_active: return
+
+
+func _on_terrain_click(pos: Vector3) -> void:
+	var mode: UiModeBuildInfr = UiState.build_infr_mode
+	if not self.is_active or mode == null or mode.at_fork == null or not pos.is_finite():
+		return
 	var bedding_pos: Vector3 = pos + BEDDING_OFFSET
-	self.add_new_node(bedding_pos)
+	var track: RailTrack3D = self.curr_track3d
+	var start: Vector3 = mode.at_fork.pos if track == null else track.track.nodes.back().position
+	if start.is_equal_approx(bedding_pos):
+		return
+	var company := CompanyData.current()
+	if company != null and not company.spend(CompanyData.TRACK_SEGMENT_COST):
+		return
+	if track == null:
+		mode.track3d = create_new_track(start, bedding_pos)
+	else:
+		self.add_new_node(bedding_pos)
 #endregion

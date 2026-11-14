@@ -11,6 +11,8 @@ signal goods_change()
 @export var passenger_destinations: Dictionary = {}
 ## Passenger good -> destination interchange ID -> amount.
 @export var passenger_interchange_destinations: Dictionary = {}
+## Cargo unloaded by the company and still waiting for a consumer.
+@export_storage var delivered_cargo: Dictionary[StringName, float] = {}
 
 func _init() -> void:
 	self.resource_local_to_scene = true
@@ -94,6 +96,12 @@ func change_stack(key: StringName, destination: int, delta: float, notify: bool 
 		if is_zero_approx(groups[destination]):
 			groups.erase(destination)
 		passenger_interchange_destinations[key] = groups
+	if delta < 0.0 and delivered_cargo.has(key):
+		var remaining: float = delivered_cargo[key] + delta
+		if remaining > 0.0:
+			delivered_cargo[key] = remaining
+		else:
+			delivered_cargo.erase(key)
 	storage.change_amount(key, delta)
 	if notify:
 		goods_change.emit()

@@ -130,7 +130,6 @@ func run() -> void:
 	check(not handler._on_action_triggered("Unknown"), "Unknown action is rejected")
 	check(not handler._on_action_triggered("AutoRoute"), "Routing rechecks vehicle occupancy at dispatch")
 	check(not handler._on_action_triggered("RoadMarker"), "No marker action when no session placement tool is present")
-	GlobalState.player = null
 	for action_key: String in ["Game Menu", "Company"]:
 		var previous_mouse_mode := Input.mouse_mode
 		var previous_blocked := UiState.movement_blocked
@@ -138,7 +137,13 @@ func run() -> void:
 		var dialog: GameDialog = UiState.current_diag
 		var expected_key := "GameMenuDialog" if action_key == "Game Menu" else "CompanyInfoDialog"
 		check(is_instance_valid(dialog) and dialog.dialog_key == expected_key, "Correct named dialog is registered")
-		check(dialog.get_node("%Content").get_child_count() == 0, "Dialog content is intentionally empty")
+		if action_key == "Company":
+			check(dialog.get_node("%Cash").text == CompanyData.format_cash(player.company.cash), "Company shows the player's cash reserves")
+			player.company.record_delivery(1.5, 3)
+			check(dialog.get_node("%PassengerTotal").text == "3" and dialog.get_node("%CargoTotal").text == "1.5", "Company totals refresh while the dialog is open")
+			check(dialog.get_node("%Income").text == "DM 675.00", "Company shows income at the fixed transport rates")
+		else:
+			check(dialog.get_node("%Content").get_child_count() == 0, "Game menu remains an empty shell")
 		check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog suspends world input")
 		check(not handler._on_action_triggered(action_key), "Cannot open a duplicate dialog")
 		dialog.get_node("%OkButton").pressed.emit()
@@ -152,7 +157,6 @@ func run() -> void:
 		dialog._input(escape)
 		await get_tree().process_frame
 		check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked, "Escape closes the dialog and restores input")
-	GlobalState.player = player
 	await _test_dialog_lifecycle()
 	await _test_train_composition()
 	await _test_prospect(menu, handler, road_vehicle)
@@ -308,6 +312,7 @@ func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle
 	var sample := Vector2(body.global_position.x, body.global_position.z)
 	check(prospecting.get_traces_at_pos(sample) == expected and prospecting.readings_near(sample).is_empty(), "Fresh X/Z readings do not create surveys")
 	check(prospecting.get_traces_at_pos(Vector2(4096, 4096)).is_empty(), "Geology queries outside terrain have no readings")
+	_test_mine_reserve_areas(prospecting)
 	check(expected != world.sample_minerals_at(GlobalState.active_cam.global_position), "Player and camera samples differ in the fixture")
 	menu._on_radial_action_selected("Prospect", null)
 	await get_tree().process_frame
@@ -360,6 +365,24 @@ func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle
 	GlobalState.player = old_player
 	GlobalState.active_cam = old_camera
 	GlobalState.world_container = old_world
+
+func _test_mine_reserve_areas(prospecting: ProspectingManager) -> void:
+	var site := Vector2(40, 40)
+	var first: Array[MineralReserve] = prospecting.reserves_for_mine(site, "stone")
+	var nearby: Array[MineralReserve] = prospecting.reserves_for_mine(site + Vector2(128, 0), "stone")
+	var distant: Array[MineralReserve] = prospecting.reserves_for_mine(Vector2(231, 231), "stone")
+	var other: Array[MineralReserve] = prospecting.reserves_for_mine(site, "gravel")
+	var original_nearby: float = MineralReserve.total(nearby)
+	var original_distant: float = MineralReserve.total(distant)
+	var original_other: float = MineralReserve.total(other)
+	var initial: float = MineralReserve.total(first)
+	check(initial > 0.0 and original_nearby > 0.0 and original_distant > 0.0 and original_other > 0.0, "Mine areas have finite reserves")
+	if initial <= 0.0:
+		return
+	MineralReserve.draw_down(first, initial, initial)
+	check(MineralReserve.total(nearby) < original_nearby, "Nearby mines share the depleted portion of their areas")
+	check(MineralReserve.total(distant) == original_distant and MineralReserve.total(other) == original_other, "Distant areas and other minerals keep their reserves")
+	check(MineralReserve.total(prospecting.reserves_for_mine(site, "stone")) == 0.0, "Reopening an exhausted area reuses its empty cells")
 
 func _test_construction_footprint(construction: ConstructionManager, world: WorldMapScene) -> void:
 	var building := Node3D.new()
@@ -438,6 +461,11 @@ func _test_survey_marker(handler: ActionHandler, prospecting: ProspectingManager
 	button.position = release.position - Vector2(12, 12)
 	button.size = Vector2(24, 24)
 	hud.add_child(button)
+	var cash: Label = hud.get_node("OuterBottomBar/ButtomBarLaybout/CashPanel/Margin/Cash")
+	var company := CompanyData.current()
+	check(cash.text.contains("DM 1,000,000.00"), "Cash is visible in the game HUD")
+	company.spend(1)
+	check(cash.text.contains("DM 999,999.00"), "The HUD updates immediately after a purchase")
 	await get_tree().process_frame
 	get_viewport().push_input(press, true)
 	get_viewport().push_input(release, true)
@@ -494,7 +522,7 @@ func _test_build(handler: ActionHandler, body: BasicFpsPlayer) -> void:
 	check(options.get_node("Misc").visible and options.get_node("Empty").visible, "Misc tab shows an empty state")
 	tabs.get_child(0).pressed.emit()
 	var mine := options.get_node("Industry/Mine") as Button
-	check(mine != null and mine.text.contains("10000"), "Mine reads its construction cost from the scene")
+	check(mine != null and mine.text.contains("DM 10,000.00"), "Mine reads its construction cost from the scene")
 	if mine == null:
 		picker.close_all()
 		await get_tree().process_frame
@@ -607,7 +635,16 @@ func _confirm_coal_mine(preview: BuildPreview, world: WorldMapScene, camera: Cam
 		await get_tree().process_frame
 		return
 	choices.select(coal)
+	var company := CompanyData.current()
+	var cash_before: float = company.cash
+	company.cash = dialog.construction_cost - 1
 	dialog.get_node("%BuildButton").pressed.emit()
+	check(spawner.storage.get_all().is_empty() and dialog.get_node("%Status").text.contains("Insufficient funds"),
+		"Unaffordable mine placement leaves the site and dialog open")
+	check(company.cash == dialog.construction_cost - 1, "A rejected mine purchase leaves cash unchanged")
+	company.cash = cash_before
+	dialog.get_node("%BuildButton").pressed.emit()
+	check(company.cash == cash_before - 10_000, "Mine construction charges its authored price")
 	await get_tree().process_frame
 	check(UiState.current_diag == null and spawner.storage.get_containers().size() == 1, "Confirming one resource creates a single industry")
 	if spawner.storage.get_containers().is_empty():
@@ -616,10 +653,13 @@ func _confirm_coal_mine(preview: BuildPreview, world: WorldMapScene, camera: Cam
 	check(mine.global_position.is_equal_approx(selected_position), "The live mine occupies the selected site")
 	check(mine.industry.ind_type.produces.size() == 1 and GameTypes.get_ind_type("COAL_MINE").produces[0].res_modifier == 4.0, "The site recipe has one output and preserves the authored coal mine recipe")
 	var production: IndustryProduction = mine.get_node("Production")
+	var starting_reserves: float = MineralReserve.total(mine.industry.mine_reserves)
 	check(production.run_cycle() == IndustryProduction.BatchResult.COMPLETED, "The placed mine runs the standard production batch")
 	var road_access: InventoryEndpoint = InventoryEndpoint.from_node(bus)
 	var amount: float = road_access.inventory().get_amount("coal")
 	check(is_equal_approx(amount, readings["coal"] * MinePlacement.FULL_RICHNESS_BATCH), "The nearby road stop receives coal scaled by local richness")
+	var spent: float = starting_reserves - MineralReserve.total(mine.industry.mine_reserves)
+	check(is_equal_approx(spent, amount * Managers.prospecting.depletion_factor), "The placed mine spends reserves as cargo reaches the stop")
 	var truck := Node3D.new()
 	truck.add_child(InventoryContainer.new())
 	add_child(truck)

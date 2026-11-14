@@ -23,7 +23,7 @@ static func create(source_depot: RoadDepotData) -> RoadVehicleSpawnDialog:
 
 func _ready() -> void:
 	dialog_key = "SpawnRoadVehicleDialog"
-	title_text = "Spawn road vehicle"
+	title_text = "Buy road vehicle"
 	_build_content()
 	_build_buttons()
 	_populate_vehicles()
@@ -72,7 +72,7 @@ func _add_selection(content: VBoxContainer) -> void:
 
 func _build_buttons() -> void:
 	_spawn_button = get_node("%OkButton")
-	_spawn_button.text = "Spawn vehicle"
+	_spawn_button.text = "Buy vehicle"
 	_spawn_button.pressed.connect(_spawn_selected)
 	var actions := HBoxContainer.new()
 	_spawn_button.get_parent().add_child(actions)

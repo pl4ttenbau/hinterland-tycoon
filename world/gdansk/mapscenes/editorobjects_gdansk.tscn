@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="3_roads"]
 [ext_resource type="Script" path="res://game/gamescripts/services/editor/infrastructure/editor_rails.gd" id="4_rails"]
 [ext_resource type="Script" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="vegetation_tool"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/minerals/editor_resource_traces.gd" id="resource_traces_tool"]
 
 [node name="EditorObjects" type="Node3D"]
 script = ExtResource("1_editor")
@@ -12,6 +13,9 @@ map_key = "gdansk"
 
 [node name="EditorVegetation" type="Node3D" parent="."]
 script = ExtResource("vegetation_tool")
+
+[node name="EditorResourceTraces" type="Node" parent="."]
+script = ExtResource("resource_traces_tool")
 
 [node name="EditorInfr" type="Node3D" parent="."]
 script = ExtResource("2_infr")

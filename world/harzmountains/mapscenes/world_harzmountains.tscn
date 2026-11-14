@@ -1893,3 +1893,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3391.0486, 3.7801437, 817.579
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
+
+[editable path="EditorObjects"]

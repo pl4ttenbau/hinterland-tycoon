@@ -42,6 +42,7 @@ func run(scene_tree: SceneTree) -> int:
 func test_models() -> bool:
 	check(GameTypes.ensure_initialized() == OK, "Catalog initializes")
 	var layouts := {
+		"trabant_601_green": Vector4(2.0073933, 0.10205, 1.255804, 1.255804),
 		"daimler_1911_bus": Vector4(4.01, 1.28, 1.61, 1.87),
 		"ifa_w50_covered": Vector4(3.20, 0.45, 1.70, 1.78),
 	}
@@ -333,9 +334,17 @@ func test_spawn_dialog() -> bool:
 	check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog blocks world controls and exposes the mouse")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED, "Dialog suspends the actual walking player")
 
-	# Activate the real button, then let queued dialog cleanup finish.
+	# The same selection can be retried once sufficient funds are available.
+	var company := CompanyData.current()
+	var price: int = GameTypes.get_veh_type("oldtimer_car").get_purchase_price()
+	company.cash = price - 1
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
-	check(fixture.manager.road_vehicles.size() == 1, "Spawn button creates the selected car")
+	check(company.cash == price - 1 and fixture.manager.road_vehicles.is_empty()
+		and dialog.get("_error").text.contains("Insufficient funds"), "Unaffordable purchase reports an error without spawning")
+	company.cash = CompanyData.STARTING_CASH
+	(dialog.get_node("%OkButton") as Button).pressed.emit()
+	check(fixture.manager.road_vehicles.size() == 1, "Buy button creates the selected car")
+	check(company.cash == CompanyData.STARTING_CASH - price and company.spending == price, "A road purchase charges its catalog price")
 	await tree.process_frame
 	check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked, "Successful spawning closes the dialog and restores controls")
 	check(Input.mouse_mode == previous_mouse, "Dialog restores the previous mouse mode")
@@ -346,6 +355,7 @@ func test_spawn_dialog() -> bool:
 	dialog = UiState.current_diag
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(not dialog.is_queued_for_deletion() and dialog.get("_error").visible, "Occupied spawn reports an error and keeps the dialog open")
+	check(company.cash == CompanyData.STARTING_CASH - price, "Occupied spawn and cancellation leave cash unchanged")
 	dialog.close_all()
 	await tree.process_frame
 	check(UiState.current_diag == null and fixture.manager.road_vehicles.size() == 1, "Cancel closes without spawning another car")

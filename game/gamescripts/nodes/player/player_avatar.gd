@@ -1,6 +1,8 @@
 @icon("res://assets/icons/nodes_3d/icon_player_avatar.svg")
 class_name PlayerAvatar extends InventoryEntity3D
 
+var company := CompanyData.new()
+
 @export var walking_body: BasicFpsPlayer
 @export var walking_camera: Camera3D
 @export var control: PlayerControl

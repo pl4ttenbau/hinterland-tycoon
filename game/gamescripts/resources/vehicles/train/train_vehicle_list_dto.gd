@@ -38,3 +38,17 @@ func _swap(index: int, neighbor: int) -> void:
 	rows[index].index = index
 	row.index = neighbor
 	updated.emit()
+
+
+## A draft with an empty composition or an unpriced row cannot be bought.
+func purchase_price() -> int:
+	if rows.is_empty():
+		return -1
+	var total: int = 0
+	for row: TrainVehicleDto in rows:
+		var type := GameTypes.get_veh_type(row.veh_type_key) as RailVehicleTypeData
+		var price: Variant = type.get_purchase_price() if type != null else null
+		if price == null:
+			return -1
+		total += int(price)
+	return total

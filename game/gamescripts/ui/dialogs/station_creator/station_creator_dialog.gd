@@ -52,7 +52,8 @@ func _ready() -> void:
 	_status = _add_label(content, "")
 	_status.name = "Status"
 	var confirm: Button = get_node("%OkButton")
-	confirm.text = "Add stop" if adding else "Create station"
+	var action: String = "Add stop" if adding else "Create station"
+	confirm.text = "%s · %s" % [action, CompanyData.format_cash(CompanyData.STOP_COST)]
 	confirm.pressed.connect(_confirm)
 	confirm.disabled = not adding and _town.item_count == 0
 	if confirm.disabled:

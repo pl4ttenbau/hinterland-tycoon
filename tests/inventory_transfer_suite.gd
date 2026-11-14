@@ -24,6 +24,7 @@ func run(scene_tree: SceneTree) -> int:
 		&"test_transfers",
 		&"test_passengers",
 		&"test_manual_passenger_arrival",
+		&"test_cargo_income",
 		&"test_vehicle_dialog",
 	]
 	for test: StringName in test_cases:
@@ -179,6 +180,38 @@ func test_manual_passenger_arrival() -> bool:
 	Managers.interchanges = previous_catalog
 	catalog.free()
 	return true
+
+func test_cargo_income() -> bool:
+	var player := PlayerAvatar.new()
+	var previous_player: PlayerAvatar = GlobalState.player
+	GlobalState.player = player
+	var company: CompanyData = player.company
+	var truck: InventoryEndpoint = endpoint("Delivery truck")
+	truck.kind = InventoryEndpoint.Kind.VEHICLE
+	var stop: InventoryEndpoint = endpoint("Goods stop")
+	stop.kind = InventoryEndpoint.Kind.STOP
+	var inventory: GoodsInventory = stop.inventory()
+	truck.inventory().change_stack(&"coal", -1, 2.5)
+	inventory.change_stack(&"coal", -1, 0.5)
+	var stack := InventoryStack.new(&"coal", 2.5)
+	check(InventoryTransferService.transfer(truck, stop, stack, 2.5).is_empty(), "The truck unloads a fractional shipment")
+	check(company.cash == CompanyData.STARTING_CASH, "Unloading leaves payment pending")
+	var consumer := IndustryType.new("TEST", "Test power plant", "", 0, ["2xcoal"], [])
+	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.COMPLETED,
+		"An industry consumes the first part of the shipment")
+	check(company.cargo_delivered == 2.0 and company.transport_income == 500.0,
+		"The company is paid for the cargo consumed")
+	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.MISSING_INPUTS,
+		"An incomplete delivery cannot pay out")
+	var final_batch := IndustryType.new("TEST", "Test boiler", "", 0, ["1xcoal"], [])
+	check(IndustryProduction.run_batch(final_batch, inventory) == IndustryProduction.BatchResult.COMPLETED,
+		"Delivered and existing stock can be used together")
+	check(company.cargo_delivered == 2.5 and company.cash == CompanyData.STARTING_CASH + 625.0,
+		"Fractional cargo pays once and pre-existing stock earns nothing")
+	GlobalState.player = previous_player
+	player.free()
+	return true
+
 
 # Exercise the actual GAZ picker, both transfer buttons, filters, tabs and modal cleanup.
 func test_vehicle_dialog() -> bool:

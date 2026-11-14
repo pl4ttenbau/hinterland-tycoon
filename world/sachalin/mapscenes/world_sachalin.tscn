@@ -1264,3 +1264,5 @@ metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 transform = Transform3D(0.24501927, 0, 9.996998, 0, 10, 0, -9.996998, 0, 0.24501927, 416.46844, 31.69299, -425.91614)
 script = ExtResource("37_bly2v")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
+
+[editable path="EditorObjects"]

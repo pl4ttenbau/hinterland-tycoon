@@ -68,14 +68,30 @@ static func transfer(source: InventoryEndpoint, target: InventoryEndpoint, stack
 	if not error.is_empty():
 		return error
 	var from: GoodsInventory = source.inventory()
+	var company := CompanyData.current()
 	if completes_passenger_trip(target, stack):
-		return "" if from.change_stack(stack.good_key, stack.destination_interchange, -amount) else "Passenger stock changed before arrival."
+		if not from.change_stack(stack.good_key, stack.destination_interchange, -amount, false):
+			return "Passenger stock changed before arrival."
+		if company != null and source.kind == InventoryEndpoint.Kind.VEHICLE:
+			company.record_delivery(0.0, roundi(amount))
+		from.goods_change.emit()
+		return ""
 	var to: GoodsInventory = target.inventory()
+	var pending_cargo: float = from.delivered_cargo.get(stack.good_key, 0.0)
 	if not from.change_stack(stack.good_key, stack.destination_interchange, -amount, false):
 		return "Source inventory changed; select the resource again."
 	if not to.change_stack(stack.good_key, stack.destination_interchange, amount, false):
 		from.change_stack(stack.good_key, stack.destination_interchange, amount, false)
+		if pending_cargo > 0.0:
+			from.delivered_cargo[stack.good_key] = pending_cargo
 		return "The destination rejected the transfer."
+	var good: BaseGoodsType = GameTypes.resource_types[stack.good_key]
+	var moved_delivery: float = minf(amount, pending_cargo)
+	if company != null and good.is_cargo() and source.kind == InventoryEndpoint.Kind.VEHICLE \
+			and target.kind in [InventoryEndpoint.Kind.STOP, InventoryEndpoint.Kind.INDUSTRY]:
+		moved_delivery = amount
+	if moved_delivery > 0.0:
+		to.delivered_cargo[stack.good_key] = to.delivered_cargo.get(stack.good_key, 0.0) + moved_delivery
 	from.goods_change.emit()
 	to.goods_change.emit()
 	return ""

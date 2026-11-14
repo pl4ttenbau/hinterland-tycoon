@@ -85,7 +85,20 @@ func _test_spawn() -> bool:
 	var composition := TrainVehicleListDto.new()
 	composition.append(TrainVehicleDto.of(0, "mpsb_12"))
 	composition.append(TrainVehicleDto.of(1, "mpsb_wismar_wagon"))
-	action.spawn_train(composition)
+	var player := PlayerAvatar.new()
+	GlobalState.player = player
+	var price: int = composition.purchase_price()
+	player.company.cash = price - 1
+	check(action.spawn_train(composition).contains("Insufficient funds") and placer.trains.is_empty()
+		and player.company.cash == price - 1, "Unaffordable train order leaves cash and the depot unchanged")
+	player.company.cash = CompanyData.STARTING_CASH
+	check(action.spawn_train(composition).is_empty(), "The full consist can be purchased")
+	check(price == 111_200 and player.company.cash == CompanyData.STARTING_CASH - price,
+		"Train purchase charges both the locomotive and wagon")
+	GlobalState.player = null
+	player.free()
+	if placer.trains.is_empty():
+		return false
 	var train: Train3D = placer.trains[0]
 	var movement: TrainMovement = train.movement
 	self.check(train.train_obj != null and train.train_obj.locomotive == train.locomotive.vehicle_obj, "Production spawn links train data to the locomotive")

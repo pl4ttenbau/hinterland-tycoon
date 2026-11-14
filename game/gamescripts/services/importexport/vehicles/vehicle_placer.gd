@@ -58,6 +58,16 @@ func spawn_road_vehicle_at_depot(type_key: String, depot: RoadDepotData) -> Road
 	var paths: Array[Path3D] = _resolve_road_paths([depot.road_num])
 	if paths.is_empty():
 		return _reject_road_depot_spawn("The depot's road is unavailable.")
+	var company := CompanyData.current()
+	var price: Variant
+	if company != null:
+		var type := GameTypes.get_veh_type(type_key) as RoadVehicleTypeData
+		price = type.get_purchase_price() if type != null else null
+		if price == null:
+			return _reject_road_depot_spawn("This vehicle has no purchase price.")
+		var problem: String = company.spending_error(price)
+		if not problem.is_empty():
+			return _reject_road_depot_spawn(problem)
 	var vehicle: RoadVehicle3D = spawn_road_vehicle(
 		type_key, [depot.road_num], depot.road_pos == "END", ROAD_DEPOT_SPAWN_DISTANCE
 	)
@@ -67,6 +77,9 @@ func spawn_road_vehicle_at_depot(type_key: String, depot: RoadDepotData) -> Road
 		vehicle.free()
 		return _reject_road_depot_spawn("Move the vehicle at the spawn point before spawning another.")
 	vehicle.clear_route()
+	if company != null and not company.spend(price):
+		vehicle.free()
+		return _reject_road_depot_spawn(company.spending_error(price))
 	return vehicle
 
 ## Include pending spawns before the physics server has registered their shapes.

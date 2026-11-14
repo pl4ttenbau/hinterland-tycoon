@@ -76,6 +76,7 @@ func _open_resource_dialog(position: Vector3) -> void:
 		return
 	var dialog := RESOURCE_DIALOG.instantiate() as MineResourceDialog
 	# Use the exact selected location. A nearby survey is only a preview of the site.
+	dialog.construction_cost = Constructable3D.find_on(_building).construction_cost
 	dialog.readings = Managers.prospecting.get_traces_at_pos(Vector2(position.x, position.z))
 	dialog.build_requested.connect(_build_mine.bind(position, dialog))
 	dialog.closed.connect(_finish, CONNECT_ONE_SHOT)
@@ -91,6 +92,15 @@ func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog
 	if richness <= 0.0 or not GameTypes.resource_types.has(resource):
 		dialog.show_error("Choose an available resource.")
 		return
+	var reserves: Array[MineralReserve] = Managers.prospecting.reserves_for_mine(Vector2(position.x, position.z), resource)
+	if MineralReserve.total(reserves) <= 0.0:
+		dialog.show_error("This mining area is worked out for %s." % ProspectDialog.resource_name(resource))
+		return
+
+	var company := CompanyData.current()
+	if company != null and not company.spend(dialog.construction_cost):
+		dialog.show_error(company.spending_error(dialog.construction_cost))
+		return
 
 	# Keep the output site-local because authored industries share their catalog recipes.
 	var mesh_name: String = _building.scene_file_path.get_file().get_basename()
@@ -98,12 +108,13 @@ func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog
 	recipe.produces.append(TransformedGood.new(resource, FULL_RICHNESS_BATCH * richness))
 	var view: Industry3D = _building
 	_building = null
-	Managers.industries.place_runtime_industry(view, recipe, position)
+	Managers.industries.place_runtime_industry(view, recipe, position, reserves)
 	dialog.close_all()
 
 
 func _site_error(position: Vector3) -> String:
-	if not is_instance_valid(Managers.industries) or not is_instance_valid(Managers.construction) or not is_instance_valid(_building):
+	if not is_instance_valid(Managers.industries) or not is_instance_valid(Managers.construction) \
+			or not is_instance_valid(Managers.prospecting) or not is_instance_valid(_building):
 		return "Industry construction is unavailable here."
 	return Managers.construction.site_error(_world, _building, Transform3D(_building.basis, position))
 

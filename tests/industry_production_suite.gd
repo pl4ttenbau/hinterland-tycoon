@@ -11,6 +11,7 @@ func run() -> int:
 		test_missing_inputs,
 		test_output_capacity,
 		test_producer_and_consumer,
+		test_mine_depletion,
 		test_invalid_output,
 		test_tagged_passengers,
 		test_milk,
@@ -71,6 +72,32 @@ func test_producer_and_consumer() -> bool:
 	check(IndustryProduction.run_batch(plant, inventory) == Result.COMPLETED, "A coal plant can consume without outputs")
 	check(inventory.get_amount("coal") == 0, "The plant removes its coal requirement")
 	check(IndustryProduction.run_batch(plant, inventory) == Result.MISSING_INPUTS, "The plant needs another delivery")
+	return true
+
+func test_mine_depletion() -> bool:
+	var inventory: GoodsInventory = make_inventory(3.0)
+	var recipe := IndustryType.new("TEST", "Test mine", "", 0, [], ["2xcoal"])
+	var first := MineralReserve.new()
+	first.remaining = 4.0
+	var second := MineralReserve.new()
+	second.remaining = 2.0
+	var cells: Array[MineralReserve] = [first, second]
+	inventory.change_stack(&"coal", -1, 3.0)
+	var observed: Array[float] = []
+	var record: Callable = func() -> void: observed.append(MineralReserve.total(cells))
+	inventory.goods_change.connect(record)
+	check(IndustryProduction.run_batch(recipe, inventory, cells, 2.0) == Result.STORAGE_FULL, "Full stock spends no reserves")
+	check(is_equal_approx(MineralReserve.total(cells), 6.0) and observed.is_empty(), "A rejected batch publishes no reserve change")
+
+	inventory.change_stack(&"coal", -1, -3.0, false)
+	check(IndustryProduction.run_batch(recipe, inventory, cells, 2.0) == Result.COMPLETED, "Mine produces with a depletion factor")
+	check(is_equal_approx(first.remaining, 4.0 / 3.0) and is_equal_approx(second.remaining, 2.0 / 3.0), "Each cell spends the same fraction of its reserves")
+	check(observed.size() == 1 and is_equal_approx(observed[0], 2.0), "Listeners see reserves after the batch commits")
+
+	check(IndustryProduction.run_batch(recipe, inventory, cells, 2.0) == Result.COMPLETED, "The final partial batch fits the remaining stock capacity")
+	check(is_equal_approx(inventory.get_amount("coal"), 3.0) and MineralReserve.total(cells) == 0.0, "The final batch ships only the available coal")
+	check(IndustryProduction.run_batch(recipe, inventory, cells, 2.0) == Result.DEPOSIT_EXHAUSTED and observed.size() == 2, "An exhausted deposit stops producing")
+	inventory.goods_change.disconnect(record)
 	return true
 
 func test_invalid_output() -> bool:

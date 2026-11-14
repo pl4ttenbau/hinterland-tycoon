@@ -4,6 +4,8 @@ class_name IndustryData extends GameEntityData
 @export var pos: Vector3
 @export var ind_type: IndustryType
 @export var ind_name: String
+## Player-built mines draw from these shared deposit cells.
+@export_storage var mine_reserves: Array[MineralReserve] = []
 
 @export var station_connection: StationIndustryConnection
 @export_storage var road_exit: RoadNode

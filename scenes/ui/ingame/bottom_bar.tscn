@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_right = 18
 
@@ -16,6 +17,7 @@ theme_override_constants/margin_right = 18
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="PosLabelPanel" type="PanelContainer" parent="ButtomBarLaybout" unique_id=442692798]
 layout_mode = 2
@@ -31,3 +33,24 @@ size_flags_horizontal = 0
 text = "43.4 4335.1 0.00"
 horizontal_alignment = 1
 script = ExtResource("1_qnjfh")
+
+
+[node name="Spacer" type="Control" parent="ButtomBarLaybout"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CashPanel" type="PanelContainer" parent="ButtomBarLaybout"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="ButtomBarLaybout/CashPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_right = 14
+
+[node name="Cash" type="Label" parent="ButtomBarLaybout/CashPanel/Margin"]
+layout_mode = 2
+text = "Cash  DM 0.00"
+horizontal_alignment = 2

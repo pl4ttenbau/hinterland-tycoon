@@ -17,7 +17,7 @@ func _ready() -> void:
 	var building: Node = building_scene.instantiate()
 	var component := Constructable3D.find_on(building)
 	if component != null and component.preview_scene != null and component.construction_cost >= 0:
-		text = "%s  ·  %d" % [building_title, component.construction_cost]
+		text = "%s  ·  %s" % [building_title, CompanyData.format_cash(component.construction_cost)]
 		_preview_scene = component.preview_scene
 		if component.model != null:
 			_model_transform = component.model.transform

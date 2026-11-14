@@ -12,7 +12,7 @@ func on_trigger():
 	Loggie.info("Near tracks: %d" % near_tracks.size())
 	var nearest_fork: NewRailForkData = get_nearest_fork(player_pos, near_tracks)
 	if nearest_fork:
-		var nearest_track_name: String = nearest_fork.rail_nodes[0].parent_track.track_name
+		var nearest_track_name: String = nearest_fork.node_forks[0].track.track_name
 		Loggie.info("Nearest fork: Node %d of Track \"%s\"" % [nearest_fork.num, nearest_track_name])
 		self.spawn_fork_marker(nearest_fork)
 	else:
@@ -27,11 +27,11 @@ func get_tracks_near_pos(pos: Vector3) -> Array[RailTrackData]:
 
 func get_nearest_fork(pos: Vector3, near_tracks: Array[RailTrackData]) -> NewRailForkData:
 	var nearest_fork: NewRailForkData
-	var nearest_fork_dist: float
+	var nearest_fork_dist: float = INF
 	for near_track in near_tracks:
 		for node_fork in near_track.get_node_forks():
 			var fork_dist: float = node_fork.position.distance_squared_to(pos)
-			if ! nearest_fork_dist || fork_dist < nearest_fork_dist:
+			if fork_dist < nearest_fork_dist:
 				nearest_fork_dist = fork_dist
 				nearest_fork = Managers.forks.get_fork_at_pos(node_fork.position)
 	return nearest_fork
@@ -42,7 +42,7 @@ func count_tracks() -> int:
 func spawn_fork_marker(_fork: NewRailForkData):
 	self.enable_building_mode(_fork)
 	var marker: SelectedNodeMarker3D = load(MARKER_SCENE).instantiate()
-	_fork.container.add_child(marker)
+	_fork.fork3d.add_child(marker)
 
 func enable_building_mode(_fork: NewRailForkData):
 	# create build mode obj

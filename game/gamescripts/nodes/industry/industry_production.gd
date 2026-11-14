@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_gears_white.png")
 class_name IndustryProduction extends Node
 
-enum BatchResult { COMPLETED, MISSING_INPUTS, STORAGE_FULL, UNAVAILABLE, INVALID_RECIPE }
+enum BatchResult { COMPLETED, MISSING_INPUTS, STORAGE_FULL, UNAVAILABLE, INVALID_RECIPE, DEPOSIT_EXHAUSTED }
 
 const CAPACITY_EPSILON: float = 0.00001
 
@@ -19,11 +19,19 @@ func _ready() -> void:
 func run_cycle() -> BatchResult:
 	if not is_instance_valid(industry3d) or industry3d.industry == null:
 		return BatchResult.UNAVAILABLE
-	return run_batch(industry3d.industry.ind_type, industry3d.get_inventory())
+	var industry: IndustryData = industry3d.industry
+	var inventory: GoodsInventory = industry3d.get_inventory()
+	if industry.mine_reserves.is_empty():
+		return run_batch(industry.ind_type, inventory)
+	var manager: ProspectingManager = Managers.prospecting
+	if not is_instance_valid(manager):
+		return BatchResult.UNAVAILABLE
+	return run_batch(industry.ind_type, inventory, industry.mine_reserves, manager.depletion_factor)
 
 ## A batch succeeds as a whole. Inputs free space for this batch's outputs, and
 ## a recipe with only inputs is a consumer that simply removes those goods.
-static func run_batch(recipe: IndustryType, inventory: GoodsInventory) -> BatchResult:
+static func run_batch(recipe: IndustryType, inventory: GoodsInventory,
+		reserves: Array[MineralReserve] = [], depletion_factor: float = 1.0) -> BatchResult:
 	if recipe == null or inventory == null or inventory.storage == null:
 		return BatchResult.UNAVAILABLE
 
@@ -33,6 +41,19 @@ static func run_batch(recipe: IndustryType, inventory: GoodsInventory) -> BatchR
 		return BatchResult.INVALID_RECIPE
 	if inputs.is_empty() and outputs.is_empty():
 		return BatchResult.INVALID_RECIPE
+
+	var available: float = 0.0
+	var reserve_cost: float = 0.0
+	if not reserves.is_empty():
+		if not inputs.is_empty() or outputs.size() != 1 or not is_finite(depletion_factor) or depletion_factor <= 0.0:
+			return BatchResult.INVALID_RECIPE
+		available = MineralReserve.total(reserves)
+		if available <= 0.0:
+			return BatchResult.DEPOSIT_EXHAUSTED
+		# Let the final batch ship the fraction that remains in the deposit.
+		var resource: StringName = outputs.keys()[0]
+		reserve_cost = minf(outputs[resource] * depletion_factor, available)
+		outputs[resource] = reserve_cost / depletion_factor
 
 	for key: StringName in inputs:
 		# Tagged passenger groups belong to trips. Industry recipes use unassigned stock.
@@ -48,7 +69,15 @@ static func run_batch(recipe: IndustryType, inventory: GoodsInventory) -> BatchR
 			or final_used_space > inventory.amount_max + CAPACITY_EPSILON):
 		return BatchResult.STORAGE_FULL
 
-	_apply_batch(inventory, inputs, outputs)
+	var delivered: float = _apply_batch(inventory, inputs, outputs)
+	# Commit reserves before notifying inventory listeners. Any following batch
+	# sees both the delivered cargo and the updated shared cells.
+	if reserve_cost > 0.0:
+		MineralReserve.draw_down(reserves, reserve_cost, available)
+	var company := CompanyData.current()
+	if company != null:
+		company.record_delivery(delivered, 0)
+	inventory.goods_change.emit()
 	return BatchResult.COMPLETED
 
 ## Combine repeated lines before checking stock or capacity.
@@ -73,14 +102,13 @@ static func _total_amount(amounts: Dictionary[StringName, float]) -> float:
 	return total
 
 ## The preflight validates every key and the full input requirement before any
-## mutation. Apply each net change once, then publish the completed inventory.
+## mutation. Settle delivered inputs even when the recipe produces the same good.
 static func _apply_batch(inventory: GoodsInventory, inputs: Dictionary[StringName, float],
-		outputs: Dictionary[StringName, float]) -> void:
+		outputs: Dictionary[StringName, float]) -> float:
+	var delivered: float = 0.0
 	for key: StringName in inputs:
-		var delta: float = outputs.get(key, 0.0) - inputs[key]
-		if delta != 0.0:
-			inventory.change_stack(key, -1, delta, false)
+		delivered += minf(inputs[key], inventory.delivered_cargo.get(key, 0.0))
+		inventory.change_stack(key, -1, -inputs[key], false)
 	for key: StringName in outputs:
-		if not inputs.has(key):
-			inventory.change_stack(key, -1, outputs[key], false)
-	inventory.goods_change.emit()
+		inventory.change_stack(key, -1, outputs[key], false)
+	return delivered

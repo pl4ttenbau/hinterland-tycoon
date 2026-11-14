@@ -2,6 +2,7 @@ class_name MineResourceDialog extends MenuShellDialog
 
 signal build_requested(resource: String)
 
+var construction_cost: int
 var readings: Dictionary[String, float]
 var _resources: Array[String] = []
 
@@ -20,6 +21,7 @@ func _ready() -> void:
 			_choices.add_item("%s · %s" % [
 				ProspectDialog.resource_name(resource), ProspectDialog.richness_text(readings[resource]),
 			])
+	_build.text = "Build mine · %s" % CompanyData.format_cash(construction_cost)
 	_build.disabled = _resources.is_empty()
 	%Status.visible = _resources.is_empty()
 	_choices.grab_focus()

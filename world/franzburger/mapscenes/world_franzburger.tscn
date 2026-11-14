@@ -2041,3 +2041,5 @@ metadata/initialized_roads = true
 metadata/initialized_roads_visible_sources = true
 metadata/initialized_rails = true
 metadata/initialized_rails_visible_sources = true
+
+[editable path="EditorObjects"]

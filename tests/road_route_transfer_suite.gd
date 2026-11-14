@@ -139,6 +139,9 @@ func test_cargo() -> bool:
 # Passenger selection stays goal-specific. At their goal they leave the simulation,
 # even if its waiting inventory is full; other batches remain aboard or waiting.
 func test_passengers() -> bool:
+	var previous_player: PlayerAvatar = GlobalState.player
+	var player := PlayerAvatar.new()
+	GlobalState.player = player
 	var origin: RoadStationData = _stop(10)
 	# Both stops serve interchange 11. Unload at the second physical stop.
 	_stop(11, 0, 11)
@@ -154,6 +157,7 @@ func test_passengers() -> bool:
 	check(stock.stack_amount(&"passenger", 12) == 2 and stock.stack_amount(&"passenger") == 1, "Other and unassigned passenger batches are untouched")
 	result = _execute(body, origin, _action(RoadRouteAction.Kind.LOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.moved == 1, "Passenger loading respects whole-person capacity")
+	check(player.company.cash == CompanyData.STARTING_CASH, "Boarding passengers earns no income")
 
 	var target_stock: GoodsInventory = destination.interchange.inventory
 	target_stock.amount_max = 0
@@ -171,6 +175,10 @@ func test_passengers() -> bool:
 	result = _execute(body, destination, _action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.completed_passengers == 0 and result.moved == 1, "Explicit intermediate unload preserves a waiting passenger's onward goal")
 	check(target_stock.stack_amount(&"passenger", 12) == 1, "Intermediate passengers retain the original destination ID")
+	check(player.company.passengers_delivered == 3 and player.company.cash == CompanyData.STARTING_CASH + 300,
+		"Only arrivals at the correct interchange are counted and paid once")
+	GlobalState.player = previous_player
+	player.free()
 	body.free()
 	return true
 

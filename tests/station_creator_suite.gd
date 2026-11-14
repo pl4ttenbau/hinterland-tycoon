@@ -37,7 +37,7 @@ func run() -> bool:
 	rail = RailMapper.rail_track_from_dict({"num": 6, "type": "750_MM", "points": [{"pos": [100, 5, 130]}, {"pos": [500, 5, 130]}]})
 	rail.build_curve()
 	services.rails.track_storage.add(rail)
-	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch"]:
+	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch", "test_track_spending"]:
 		if await call(test) != true:
 			check(false, test + " aborted")
 	services.free()
@@ -137,7 +137,7 @@ func test_dialogs() -> bool:
 	var previous_blocked: bool = UiState.movement_blocked
 	var dialog: ModalGameDialog = script.create(tool, placement)
 	add_child(dialog)
-	check(dialog.dialog_key == "CreateStationDialog" and dialog.get_node("%OkButton").text == "Create station", "No nearby stop opens the new-station menu")
+	check(dialog.dialog_key == "CreateStationDialog" and dialog.get_node("%OkButton").text == "Create station · DM 5,000.00", "No nearby stop opens the new-station menu")
 	var directions := dialog.find_child("StopSettings", true, false) as OptionButton
 	check(directions.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE, "The dialog defaults to the direction served on the player's side")
 	await capture_preview(dialog, "create")
@@ -156,7 +156,7 @@ func test_dialogs() -> bool:
 	placement = tool.placement_on(road, Vector3(420, 5, 100))
 	dialog = script.create(tool, placement)
 	add_child(dialog)
-	check(dialog.dialog_key == "AddStationStopDialog" and dialog.get_node("%OkButton").text == "Add stop", "Nearby stop opens the add-stop menu")
+	check(dialog.dialog_key == "AddStationStopDialog" and dialog.get_node("%OkButton").text == "Add stop · DM 5,000.00", "Nearby stop opens the add-stop menu")
 	check(dialog.find_child("StationName", true, false) == null, "Existing station dialog does not rename the interchange")
 	await capture_preview(dialog, "add")
 	dialog.get_node("%OkButton").pressed.emit()
@@ -204,6 +204,16 @@ func test_action_dispatch() -> bool:
 	UiState.current_diag._input(escape)
 	await get_tree().process_frame
 	check(body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED and services.interchanges.stops_by_num.size() == before, "Escape restores the exact player process mode without creating a stop")
+	var placement: Dictionary = tool.placement_on(road, Vector3(300, 5, 100))
+	player.company.cash = 4_999
+	var rejected: Dictionary = tool.create_stop(placement, 0, "", -1, "", Enums.RoadStopDirection.BOTH_DIRECTIONS)
+	check(rejected.has("error") and rejected.error.contains("Insufficient funds")
+		and services.interchanges.stops_by_num.size() == before and player.company.cash == 4_999,
+		"An unaffordable stop leaves cash and infrastructure unchanged")
+	player.company.cash = 5_000
+	var nearby: Array[InterchangeData] = tool.nearby_interchanges(placement.origin)
+	var created: Dictionary = tool.create_stop(placement, nearby[0].num, "", -1, "", Enums.RoadStopDirection.BOTH_DIRECTIONS)
+	check(created.has("stop") and player.company.cash == 0, "A successful stop charges the company once")
 	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
 	var vehicle := RoadVehicle3D.of("trabant_601_green")
 	vehicle.freeze = true
@@ -219,6 +229,35 @@ func test_action_dispatch() -> bool:
 	player_scene.free()
 	handler.free()
 	return true
+
+func test_track_spending() -> bool:
+	var player := PlayerAvatar.new()
+	GlobalState.player = player
+	var fork := NewRailForkData.new(Vector3(500, 5, 130))
+	UiState.build_infr_mode = UiModeBuildInfr.from_fork(fork)
+	var builder: NewRailBuilder = services.rail_builder
+	builder._on_ui_mode_changed(Enums.UiMode.BUILD_INFR)
+	check(builder.curr_track3d == null and player.company.cash == CompanyData.STARTING_CASH,
+		"Entering rail build mode does not place or charge for track")
+	player.company.cash = 500
+	builder._on_terrain_click(Vector3(520, 5, 130))
+	var track: RailTrack3D = builder.curr_track3d
+	check(track != null and track.track.nodes.size() == 2 and player.company.cash == 0,
+		"Adding a rail segment consumes the quoted price")
+	builder._on_terrain_click(Vector3(540, 5, 130))
+	check(track.track.nodes.size() == 2 and player.company.cash == 0,
+		"An unaffordable rail segment is rejected")
+	builder._on_ui_mode_changed(Enums.UiMode.WALKING)
+	UiState.build_infr_mode = null
+	GlobalState.outer_tracks.erase(track)
+	for node: RailNodeData in track.track.nodes:
+		node.parent_track = null
+	track.free()
+	GlobalState.player = null
+	player.free()
+	fork.setting.parent = null
+	return true
+
 
 func capture_preview(dialog: Control, kind: String) -> void:
 	for frame: int in 3:

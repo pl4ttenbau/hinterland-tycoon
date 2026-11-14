@@ -2062,3 +2062,5 @@ metadata/_custom_type_script = "uid://byq8dj7pajain"
 script = ExtResource("58_3yyxn")
 metadata/initialized_roads = true
 metadata/initialized_roads_visible_sources = true
+
+[editable path="EditorObjects"]

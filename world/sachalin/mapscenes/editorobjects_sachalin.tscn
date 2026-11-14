@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="6_gkr5v"]
 [ext_resource type="Material" uid="uid://drhyjn8jb0c4k" path="res://assets/packed/materials/line3d_roadway_mat.tres" id="7_w6jj8"]
 [ext_resource type="Script" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="vegetation_tool"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/minerals/editor_resource_traces.gd" id="resource_traces_tool"]
 
 [sub_resource type="Curve3D" id="Curve3D_okvmk"]
 _data = {
@@ -1437,6 +1438,9 @@ metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
 
 [node name="EditorVegetation" type="Node3D" parent="."]
 script = ExtResource("vegetation_tool")
+
+[node name="EditorResourceTraces" type="Node" parent="."]
+script = ExtResource("resource_traces_tool")
 
 [node name="EditorInfr" type="Node3D" parent="." unique_id=1401065680]
 script = ExtResource("2_70atd")

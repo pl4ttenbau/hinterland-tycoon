@@ -29,8 +29,10 @@ func spawn_industries():
 	SignalBus.industries_spawned.emit()
 
 ## The caller owns the off-tree view until placement succeeds.
-func place_runtime_industry(view: Industry3D, recipe: IndustryType, position: Vector3) -> void:
+func place_runtime_industry(view: Industry3D, recipe: IndustryType, position: Vector3,
+		mine_reserves: Array[MineralReserve] = []) -> void:
 	var industry := IndustryData.new(recipe.key, position, recipe)
+	industry.mine_reserves = mine_reserves
 	view.industry = industry
 	add_child(view)
 	view.global_position = position

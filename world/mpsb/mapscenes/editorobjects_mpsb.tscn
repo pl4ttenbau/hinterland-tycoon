@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn" id="9_axtmg"]
 [ext_resource type="Script" uid="uid://cfv2khmybf5f" path="res://game/gamescripts/nodes/infr/station/sign/station_sign_3d.gd" id="10_d4aj7"]
 [ext_resource type="Script" uid="uid://cpdgqt5cmjayq" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="vegetation_tool"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/minerals/editor_resource_traces.gd" id="resource_traces_tool"]
 
 [sub_resource type="Curve3D" id="Curve3D_nglh6"]
 _data = {
@@ -2840,6 +2841,9 @@ map_key = "mpsb"
 
 [node name="EditorVegetation" type="Node3D" parent="." unique_id=1215180284]
 script = ExtResource("vegetation_tool")
+
+[node name="EditorResourceTraces" type="Node" parent="."]
+script = ExtResource("resource_traces_tool")
 
 [node name="EditorInfr" type="Node3D" parent="." unique_id=1707559253]
 script = ExtResource("2_hkfi2")

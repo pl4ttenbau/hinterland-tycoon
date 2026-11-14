@@ -1,3 +1,4 @@
+@tool
 class_name MineralGeology extends RefCounted
 
 const PAINTED_RICHNESS_FLOOR: float = 0.50
