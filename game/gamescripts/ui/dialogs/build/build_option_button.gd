@@ -1,31 +1,40 @@
 class_name BuildOptionButton extends Button
 
-signal option_selected(building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D)
+signal option_selected(definition: IndustryBuildingType, building: PackedScene,
+		preview_scene: PackedScene, model_transform: Transform3D)
 
-@export var building_title: String
-@export var building_scene: PackedScene
+@export var building_key: String
 
+var _definition: IndustryBuildingType
+var _building_scene: PackedScene
 var _preview_scene: PackedScene
 var _model_transform := Transform3D.IDENTITY
 
 
 func _ready() -> void:
-	if building_scene == null:
+	_definition = GameTypes.industry_buildings.get(building_key)
+	if _definition == null or _definition.construction_cost < 0:
 		hide()
 		return
-	# Read the component off-tree to avoid running the live building's _enter_tree and _ready.
-	var building: Node = building_scene.instantiate()
+	_building_scene = load(_definition.scene_path) as PackedScene
+	_preview_scene = load(_definition.preview_scene_path) as PackedScene
+	if _building_scene == null or _preview_scene == null:
+		hide()
+		return
+
+	# Read local geometry off-tree so the live building's callbacks do not run.
+	var building: Node = _building_scene.instantiate()
 	var component := Constructable3D.find_on(building)
-	if component != null and component.preview_scene != null and component.construction_cost >= 0:
-		text = "%s  ·  %s" % [building_title, CompanyData.format_cash(component.construction_cost)]
-		_preview_scene = component.preview_scene
+	if component == null or component.placement_shape == null or component.placement_shape.shape == null:
+		_preview_scene = null
+		hide()
+	else:
+		text = "%s  ·  %s" % [_definition.display_name, CompanyData.format_cash(_definition.construction_cost)]
 		if component.model != null:
 			_model_transform = component.model.transform
-	else:
-		hide()
 	building.free()
 
 
 func _on_pressed() -> void:
 	if _preview_scene != null:
-		option_selected.emit(building_scene, _preview_scene, _model_transform)
+		option_selected.emit(_definition, _building_scene, _preview_scene, _model_transform)

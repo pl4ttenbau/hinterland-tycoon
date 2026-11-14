@@ -7,6 +7,7 @@ const FULL_RICHNESS_BATCH: float = 4.0
 
 var _world: WorldMapScene
 var _building: Industry3D
+var _definition: IndustryBuildingType
 
 
 static func open_picker(world: WorldMapScene) -> bool:
@@ -43,6 +44,7 @@ func _start_preview(selection: Dictionary) -> void:
 		return
 
 	_building = building
+	_definition = selection.definition
 	var preview := BuildPreview.new()
 	preview.terrain = _world.terrain
 	preview.construction = Managers.construction
@@ -76,7 +78,7 @@ func _open_resource_dialog(position: Vector3) -> void:
 		return
 	var dialog := RESOURCE_DIALOG.instantiate() as MineResourceDialog
 	# Use the exact selected location. A nearby survey is only a preview of the site.
-	dialog.construction_cost = Constructable3D.find_on(_building).construction_cost
+	dialog.construction_cost = _definition.construction_cost
 	dialog.readings = Managers.prospecting.get_traces_at_pos(Vector2(position.x, position.z))
 	dialog.build_requested.connect(_build_mine.bind(position, dialog))
 	dialog.closed.connect(_finish, CONNECT_ONE_SHOT)
@@ -103,8 +105,7 @@ func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog
 		return
 
 	# Keep the output site-local because authored industries share their catalog recipes.
-	var mesh_name: String = _building.scene_file_path.get_file().get_basename()
-	var recipe := IndustryType.new("MINE", "%s mine" % ProspectDialog.resource_name(resource), mesh_name, 20, [], [])
+	var recipe := IndustryType.new("MINE", "%s mine" % ProspectDialog.resource_name(resource), _definition, 20)
 	recipe.produces.append(TransformedGood.new(resource, FULL_RICHNESS_BATCH * richness))
 	var view: Industry3D = _building
 	_building = null

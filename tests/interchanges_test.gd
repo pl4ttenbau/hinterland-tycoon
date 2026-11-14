@@ -1,6 +1,7 @@
 class_name InterchangesTest extends Node
 
 const SERVICES = preload("res://scenes/subscenes/world_services.tscn")
+const TOWN_CENTER = preload("res://scenes/subscenes/town/town_root.tscn")
 
 var failures: int = 0
 var phases: Array[String] = []
@@ -155,6 +156,7 @@ func test_mixed_loading() -> bool:
 	inventory.remove_goods_amount(GoodsAmount.new("lumber", 4))
 	check(test_shared_stock(rail_view, bus), "Shared-stock test completed")
 	check(test_station_dialogs(link.station3d, bus), "Station dialogs test completed")
+	test_town_wealth_from_shared_stock(bus, town)
 	coordinator.road_stops.spawn_stops()
 	self.check(coordinator.road_stops.containers_by_num.size() == 1, "Repeated road spawning does not duplicate stops")
 	self.check(coordinator.load_map_data(key) == ERR_ALREADY_IN_USE, "Repeated map loading cannot duplicate network resources")
@@ -219,6 +221,43 @@ func test_shared_stock(rail_view: RailStation3D, bus: BusStop3D) -> bool:
 	industry.free()
 	delivery.free()
 	return true
+
+func test_town_wealth_from_shared_stock(bus: BusStop3D, station_town: TownData) -> void:
+	var site: Vector3 = bus.global_position
+	var nearest_town := TownData.new()
+	nearest_town.town_name = "Nearby town"
+	var town_store: TownStore = coordinator.towns.storage
+	var station_center: Town3D = add_town_center(station_town, site + Vector3.RIGHT * 80.0)
+	var nearest_center: Town3D = add_town_center(nearest_town, site + Vector3(4, 90, 0))
+	town_store.add_outter(station_center)
+	town_store.add_outter(nearest_center)
+
+	var recipe: IndustryType = GameTypes.get_ind_type("COAL_PLANT")
+	var building: Industry3D = load(recipe.building.scene_path).instantiate()
+	coordinator.industries.place_runtime_industry(building, recipe, site)
+	check(building.industry.closest_town == nearest_town,
+		"The placed industry remembers the closest town by horizontal distance")
+	var stock: GoodsInventory = bus.station.interchange.inventory
+	check(building.get_inventory() == stock, "The plant draws from its connected interchange")
+	stock.add_goods_amount(GoodsAmount.new("coal", 4))
+
+	var production: IndustryProduction = building.get_node("Production")
+	check(production.run_cycle() == IndustryProduction.BatchResult.COMPLETED, "The plant consumes the shared coal")
+	check(is_equal_approx(nearest_town.wealth, 0.4) and station_town.wealth == 0.0,
+		"Wealth goes to the industry's town even when the station belongs to another town")
+
+	building.free()
+	nearest_center.free()
+	station_center.free()
+
+
+func add_town_center(town: TownData, world_position: Vector3) -> Town3D:
+	var center: Town3D = TOWN_CENTER.instantiate()
+	center.town = town
+	add_child(center)
+	center.global_position = world_position
+	return center
+
 
 func test_live_industry_recipe(collider: IndustryCollider, production: IndustryProduction) -> bool:
 	var handler := BaseEntityClickHandler.new()

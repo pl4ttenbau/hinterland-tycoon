@@ -31,8 +31,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Constructable3D" type="Node" parent="." node_paths=PackedStringArray("model", "placement_shape")]
 script = ExtResource("9_constructable")
-preview_scene = ExtResource("2_yvm43")
-construction_cost = 10000
+industry_building_key = "mineshaft"
 model = NodePath("../MeshMineshaft")
 placement_shape = NodePath("../IndustryCollider/CollisionShape3D")
 

@@ -4,6 +4,7 @@ extends Node
 @export var vehicle_types_dict: Dictionary
 
 @export var infr_types: Array[InfrType]
+var industry_buildings: Dictionary[String, IndustryBuildingType] = {}
 @export var industry_types: Array[IndustryType]
 @export var res_bld_type_store: ResBldTypeStore = ResBldTypeStore.new()
 @export var vehicle_types: Array[VehicleTypeData]
@@ -51,17 +52,13 @@ func _fail_initialization(error: Error) -> Error:
 func _clear_catalogs() -> void:
 	self.resource_types.clear()
 	self.infr_types.clear()
+	self.industry_buildings.clear()
 	self.industry_types.clear()
 	self.res_bld_type_store = ResBldTypeStore.new()
 	self.vehicle_types.clear()
 	self.vehicle_types_dict.clear()
 
 func _validate_references() -> Error:
-	for industry: IndustryType in self.industry_types:
-		for good: TransformedGood in industry.requires + industry.produces:
-			if not self.resource_types.has(good.res_key):
-				push_error("Industry %s references unknown goods %s" % [industry.key, good.res_key])
-				return ERR_INVALID_DATA
 	for vehicle: VehicleTypeData in self.vehicle_types:
 		if vehicle.usable_infr == null:
 			push_error("Vehicle %s has no infrastructure definition" % vehicle.key)

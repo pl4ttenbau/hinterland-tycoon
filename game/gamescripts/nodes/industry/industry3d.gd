@@ -30,14 +30,20 @@ func get_shared_inventory() -> GoodsInventory:
 
 #region Static Constructor
 static func of(_industry: IndustryData) -> Industry3D:
-	if ! _industry.ind_type:
-		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
+	if _industry.ind_type == null or _industry.ind_type.building == null:
+		push_error("Industry %s is missing a building definition." % _industry.ind_name)
 		return null
-	var scene_path := _industry.ind_type.get_mesh_path()
-	var packed_scene: PackedScene = load(scene_path)
-	var instanciated: Industry3D = packed_scene.instantiate()
-	instanciated.industry = _industry
-	return instanciated
+	var scene_path: String = _industry.ind_type.building.scene_path
+	var packed_scene := load(scene_path) as PackedScene
+	if packed_scene == null:
+		return null
+	var building: Node = packed_scene.instantiate()
+	if not building is Industry3D:
+		push_error("Industry building scene %s must have an Industry3D root." % scene_path)
+		building.free()
+		return null
+	building.industry = _industry
+	return building
 #endregion
 
 #region Initialization

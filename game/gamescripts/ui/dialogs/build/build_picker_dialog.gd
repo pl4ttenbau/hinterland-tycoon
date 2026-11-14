@@ -9,6 +9,6 @@ func _ready() -> void:
 	%Content.get_node("Categories").publish_selection()
 
 
-func _on_option_selected(building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D) -> void:
-	diag_result = {"building": building, "preview": preview_scene, "transform": model_transform}
+func _on_option_selected(definition: IndustryBuildingType, building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D) -> void:
+	diag_result = {"definition": definition, "building": building, "preview": preview_scene, "transform": model_transform}
 	close_all()

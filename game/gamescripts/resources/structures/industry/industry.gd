@@ -7,6 +7,9 @@ class_name IndustryData extends GameEntityData
 ## Player-built mines draw from these shared deposit cells.
 @export_storage var mine_reserves: Array[MineralReserve] = []
 
+## Assigned from the town centers on this map when the industry is placed.
+var closest_town: TownData
+
 @export var station_connection: StationIndustryConnection
 @export_storage var road_exit: RoadNode
 
@@ -16,8 +19,8 @@ static var _last_ind_num: int = 0
 func _init(_ind_type_str: String, _pos: Vector3, site_recipe: IndustryType = null):
 	super(Enums.EntityTypes.INDUSTRY)
 	self.ind_type = site_recipe if site_recipe != null else self._get_ind_type_by_str(_ind_type_str)
-	if site_recipe != null:
-		self.ind_name = site_recipe.name
+	if self.ind_type != null:
+		self.ind_name = self.ind_type.name
 	self.pos = _pos
 	self._autoregister()
 
@@ -51,8 +54,6 @@ static func from_placeholder(placeholder: IndustryPlaceholder) -> IndustryData:
 	var ind_obj := IndustryData.new(placeholder.type_key, placeholder.global_position)
 	if placeholder.ind_name:
 		ind_obj.ind_name = placeholder.ind_name
-	else:
-		ind_obj.name = placeholder.name
 	return ind_obj
 #endregion
 

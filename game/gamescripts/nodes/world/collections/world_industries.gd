@@ -38,7 +38,10 @@ func _refresh_supply_warnings_deferred() -> void:
 ## are not used on this map do not create requirements of their own.
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
-	var catalog: Array[IndustryType] = RECIPE_CATALOG.make_types()
+	var definitions := RECIPE_CATALOG.new()
+	if definitions.read() != OK:
+		return PackedStringArray([definitions.problem])
+	var catalog: Array[IndustryType] = definitions.industries
 	var placed_industries: Dictionary[IndustryPlaceholder, IndustryType] = _collect_placed_industries(catalog, warnings)
 	var produced_goods: Dictionary[String, bool] = _collect_produced_goods(placed_industries)
 	var consumers_by_good: Dictionary[String, PackedStringArray] = _collect_consumers_by_good(placed_industries)

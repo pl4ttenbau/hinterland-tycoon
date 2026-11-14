@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-signal option_selected(building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D)
+signal option_selected(definition: IndustryBuildingType, building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D)
 
 
 func _ready() -> void:
@@ -25,5 +25,5 @@ func show_category(category_name: StringName) -> void:
 	$Empty.visible = not has_options
 
 
-func _on_option_selected(building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D) -> void:
-	option_selected.emit(building, preview_scene, model_transform)
+func _on_option_selected(definition: IndustryBuildingType, building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D) -> void:
+	option_selected.emit(definition, building, preview_scene, model_transform)

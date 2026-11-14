@@ -1,6 +1,12 @@
 @tool
 class_name Constructable3D extends Node
 
+## Catalog key for industry buildings. Other constructables can supply their own settings.
+@export var industry_building_key: String:
+	set(value):
+		industry_building_key = value
+		update_configuration_warnings()
+
 ## A visual-only scene shared with the building's live model.
 @export var preview_scene: PackedScene:
 	set(value):
@@ -38,9 +44,20 @@ static func missing_warning(building: Node) -> PackedStringArray:
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
-	if preview_scene == null:
+	var has_preview: bool = preview_scene != null
+	var cost: int = construction_cost
+	if not industry_building_key.is_empty():
+		var catalog := IndustryRecipeCatalog.new()
+		if catalog.read_buildings() != OK:
+			return PackedStringArray([catalog.problem])
+		var definition: IndustryBuildingType = catalog.buildings.get(industry_building_key)
+		if definition == null:
+			return PackedStringArray(["Unknown industry building key: %s." % industry_building_key])
+		has_preview = not definition.preview_scene_path.is_empty()
+		cost = definition.construction_cost
+	if not has_preview:
 		warnings.append("Assign a visual scene for the build preview.")
-	if construction_cost < 0:
+	if cost < 0:
 		warnings.append("Set the construction cost. Use 0 for a free building.")
 	if placement_shape == null or placement_shape.shape == null:
 		warnings.append("Assign a collision shape for construction overlap checks.")

@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://56qvdd74rjl1"
 [node name="WorldPicker" type="Node" parent="Input" unique_id=1119828470]
 script = ExtResource("7_6wawu")
 
-[node name="WorldInteraction" type="Node" parent="Input" node_paths=PackedStringArray("entity_click_handler")]
+[node name="WorldInteraction" type="Node" parent="Input" unique_id=1344189955 node_paths=PackedStringArray("entity_click_handler")]
 script = ExtResource("9_interaction")
 entity_click_handler = NodePath("EntityClickHandler")
 
@@ -84,5 +84,5 @@ primitives_drawn = true
 total_draw_calls = true
 metadata/_custom_type_script = "uid://cr3yk242noau8"
 
-[connection signal="pick_requested" from="Input/WorldInteraction" to="Input/WorldPicker" method="pick"]
 [connection signal="picked" from="Input/WorldPicker" to="Input/WorldInteraction" method="_on_world_picked"]
+[connection signal="pick_requested" from="Input/WorldInteraction" to="Input/WorldPicker" method="pick"]

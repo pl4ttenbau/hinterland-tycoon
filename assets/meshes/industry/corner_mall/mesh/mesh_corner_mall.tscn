@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b77bwtxjhn4bn"]
+
+[ext_resource type="PackedScene" uid="uid://b8yr5w4xg8hyx" path="res://assets/meshes/industry/corner_mall/mesh/corner_mall.gltf" id="1_ksqou"]
+
+[node name="MeshCornerMall" unique_id=1474413501 instance=ExtResource("1_ksqou")]

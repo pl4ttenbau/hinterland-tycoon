@@ -8,7 +8,18 @@ Each interchange starts with a capacity of 60 units shared by all its stops and 
 
 Raw producers such as coal mines have no inputs. Consumers such as coal plants remove their inputs every successful cycle. Recipes can use fractional cargo quantities, while passenger quantities use whole numbers. Recipes only use unassigned passengers, which keeps passengers with a destination available for their trips.
 
-`IndustryRecipeCatalog` supplies both the simulation and the map editor's missing-producer check. Milk is registered as liquid cargo under the key `milk`. Dairy production and consumption can be authored in that catalog.
+`IndustryRecipeCatalog` loads both catalogs for the simulation and the map editor's missing-producer check.
+
+## Industry definitions
+
+- [`game/jsondata/industry_buildings.json`](../game/jsondata/industry_buildings.json) gives each building a stable `key`, a `display_name` for the build picker, and its full `scene_path`. Set `construction` to `null` until placement is configured. A configured building supplies its `cost` (use `0` for a free building), `preview_scene_path`, and `materials` as a list of goods and amounts. Its scene's `Constructable3D` child supplies the placement collider and optional preview transform. The mine picker uses the catalog price and preview. Construction material quantities are stored for future construction gameplay.
+- [`game/jsondata/industries.json`](../game/jsondata/industries.json) gives each industry its own `key`, `display_name`, `building_key`, `workers`, `requires`, and `produces`. Coal mines and iron mines, for example, share the same mineshaft building. Each recipe quantity has a `good` and an `amount`, such as `{"good": "milk", "amount": 1.5}`. Milk is registered as liquid cargo.
+
+Map placeholders still use the industry key. Their optional name takes precedence over the recipe's display name.
+
+## Town wealth
+
+An industry remembers the nearest placed town when it spawns, using horizontal distance to the town center. Town wealth starts at zero. Each successful batch with inputs and no outputs adds **0.1 wealth per consumed unit** to that town, whether the goods come from the industry's own inventory or a connected interchange. Power plants, malls, shops, and restaurants currently qualify. Town wealth is available as a session value for future town growth.
 
 ## Mine depletion
 
@@ -44,7 +55,8 @@ godot --headless --path . res://tests/interchanges_test.tscn -- --no-mcp
 ```
 
 The production suite checks inputs, capacity, notifications, mine depletion,
-passenger stock, and fractional milk. The radial action suite checks shared
+passenger stock, fractional milk, and which batches earn town wealth. The radial action suite checks shared
 mining areas and production into a real road stop. The interchange suite
 delivers lumber at a road stop, runs a linked sawmill, checks the output from
-a rail stop, and opens the station dialog from both physical models.
+a rail stop, and opens the station dialog from both physical models. It also
+verifies that a plant drawing from shared stock credits its closest town.

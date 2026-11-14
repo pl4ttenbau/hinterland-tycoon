@@ -196,14 +196,14 @@ func test_cargo_income() -> bool:
 	var stack := InventoryStack.new(&"coal", 2.5)
 	check(InventoryTransferService.transfer(truck, stop, stack, 2.5).is_empty(), "The truck unloads a fractional shipment")
 	check(company.cash == CompanyData.STARTING_CASH, "Unloading leaves payment pending")
-	var consumer := IndustryType.new("TEST", "Test power plant", "", 0, ["2xcoal"], [])
+	var consumer := IndustryType.new("TEST", "Test power plant", null, 0, ["2xcoal"], [])
 	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.COMPLETED,
 		"An industry consumes the first part of the shipment")
 	check(company.cargo_delivered == 2.0 and company.transport_income == 500.0,
 		"The company is paid for the cargo consumed")
 	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.MISSING_INPUTS,
 		"An incomplete delivery cannot pay out")
-	var final_batch := IndustryType.new("TEST", "Test boiler", "", 0, ["1xcoal"], [])
+	var final_batch := IndustryType.new("TEST", "Test boiler", null, 0, ["1xcoal"], [])
 	check(IndustryProduction.run_batch(final_batch, inventory) == IndustryProduction.BatchResult.COMPLETED,
 		"Delivered and existing stock can be used together")
 	check(company.cargo_delivered == 2.5 and company.cash == CompanyData.STARTING_CASH + 625.0,

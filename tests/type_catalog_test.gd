@@ -1,5 +1,7 @@
 extends Node
 
+const AUTHORED_TOWNS_PATH := "res://world/harzmountains/mapscenes/towns_harzmountains.tscn"
+
 var failures: int = 0
 var categories: Array[StringName] = []
 var failed_loader_completions: int = 0
@@ -25,7 +27,8 @@ func _on_initialized() -> void:
 	self.completion_count += 1
 	self.completion_had_all_types = GameTypes.is_initialized and not GameTypes.is_initializing \
 		and not GameTypes.resource_types.is_empty() and not GameTypes.infr_types.is_empty() \
-		and not GameTypes.industry_types.is_empty() and not GameTypes.res_bld_type_store.get_all().is_empty() \
+		and not GameTypes.industry_buildings.is_empty() and not GameTypes.industry_types.is_empty() \
+		and not GameTypes.res_bld_type_store.get_all().is_empty() \
 		and not GameTypes.vehicle_types_dict.is_empty()
 
 func _on_session_ready() -> void:
@@ -36,6 +39,8 @@ func _run() -> void:
 	self.check(self.test_catalog_lifecycle(), "Catalog lifecycle test finished")
 	self.check(self.test_invalid_catalogs(), "Invalid catalog test finished")
 	self.check(self.test_road_catalogs(), "Road catalog test finished")
+	self.check(self.test_industry_catalogs(), "Industry catalogs test finished")
+	test_town_wealth_is_local_to_map()
 	self.check(self.test_residence_catalogs(), "Residence catalog test finished")
 	self.check(self.test_map_locations(), "Map location test finished")
 	print("Type catalog tests: %d failures" % self.failures)
@@ -209,6 +214,57 @@ func test_road_catalogs() -> bool:
 	self.check(self.failed_loader_completions == 0, "Failed road loaders never announce completion")
 	DirAccess.remove_absolute(path)
 	return true
+
+func test_industry_catalogs() -> bool:
+	var mine: IndustryBuildingType = GameTypes.industry_buildings["mineshaft"]
+	check(GameTypes.get_ind_type("COAL_MINE").building == mine and GameTypes.get_ind_type("IRON_MINE").building == mine,
+		"Different recipes share the same keyed building")
+	var mall: IndustryType = GameTypes.get_ind_type("BIG_STORE")
+	check(mall.name == "Big Store" and mall.building.key == "corner_mall",
+		"The recipe name is independent of the building it uses")
+	check(mall.building.construction_cost == 12000 and mine.construction_cost == 10000,
+		"Both configured buildings keep their construction prices")
+	check(GameTypes.get_ind_type("SAWMILL").building.construction_cost < 0,
+		"A building with no construction data has no purchase price")
+
+	for definition: IndustryBuildingType in GameTypes.industry_buildings.values():
+		var scene := load(definition.scene_path) as PackedScene
+		var building: Node = scene.instantiate()
+		check(building is Industry3D, "%s uses a playable industry scene" % definition.key)
+		if definition.construction_cost >= 0:
+			var component := Constructable3D.find_on(building)
+			check(component != null and component._get_configuration_warnings().is_empty(),
+				"%s has a preview, price and placement geometry" % definition.key)
+		building.free()
+
+	# A misspelled building key cannot leave a half-loaded catalog.
+	var path: String = "/tmp/industry-catalog-%d.json" % OS.get_process_id()
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return false
+	var rows: Array = JSON.parse_string(FileAccess.get_file_as_string(IndustryRecipeCatalog.INDUSTRIES_PATH))
+	rows[0]["building_key"] = "missing_building"
+	file.store_string(JSON.stringify(rows))
+	file.close()
+	var catalog := IndustryRecipeCatalog.new()
+	check(catalog.read(IndustryRecipeCatalog.BUILDINGS_PATH, path) == ERR_INVALID_DATA,
+		"A recipe requires a building defined in the building catalog")
+	check(catalog.buildings.is_empty() and catalog.industries.is_empty(), "The failed read exposes no partial definitions")
+	DirAccess.remove_absolute(path)
+	return true
+
+
+func test_town_wealth_is_local_to_map() -> void:
+	var scene := load(AUTHORED_TOWNS_PATH) as PackedScene
+	var first := scene.instantiate() as WorldTowns
+	var second := scene.instantiate() as WorldTowns
+	var first_town: TownData = first.get_town_objs()[0]
+	var second_town: TownData = second.get_town_objs()[0]
+	first_town.wealth = 2.0
+	check(second_town.wealth == 0.0, "A second instance of the authored map starts with fresh town wealth")
+	first.free()
+	second.free()
+
 
 func _on_residence_loader_finished() -> void:
 	self.residence_loader_completions += 1

@@ -11,6 +11,7 @@ func run() -> int:
 		test_missing_inputs,
 		test_output_capacity,
 		test_producer_and_consumer,
+		test_consumer_wealth,
 		test_mine_depletion,
 		test_invalid_output,
 		test_tagged_passengers,
@@ -35,7 +36,7 @@ func make_inventory(capacity: float) -> GoodsInventory:
 func test_missing_inputs() -> bool:
 	var inventory: GoodsInventory = make_inventory(20)
 	inventory.add_goods_amount(GoodsAmount.new("lumber", 5))
-	var recipe := IndustryType.new("TEST", "Test sawmill", "", 0, ["3xlumber", "3xlumber"], ["2xboards"])
+	var recipe := IndustryType.new("TEST", "Test sawmill", null, 0, ["3xlumber", "3xlumber"], ["2xboards"])
 
 	# Each input line fits alone. The whole batch needs six lumber.
 	check(IndustryProduction.run_batch(recipe, inventory) == Result.MISSING_INPUTS, "Repeated inputs count toward one requirement")
@@ -45,7 +46,7 @@ func test_missing_inputs() -> bool:
 func test_output_capacity() -> bool:
 	var inventory: GoodsInventory = make_inventory(5)
 	inventory.add_goods_amount(GoodsAmount.new("coal", 5))
-	var recipe := IndustryType.new("TEST", "Test converter", "", 0, ["1xcoal"], ["2xboards"])
+	var recipe := IndustryType.new("TEST", "Test converter", null, 0, ["1xcoal"], ["2xboards"])
 	var observed_stock: Array[Vector2] = []
 	var observe_stock: Callable = func() -> void:
 		observed_stock.append(Vector2(inventory.get_amount("coal"), inventory.get_amount("boards")))
@@ -74,9 +75,29 @@ func test_producer_and_consumer() -> bool:
 	check(IndustryProduction.run_batch(plant, inventory) == Result.MISSING_INPUTS, "The plant needs another delivery")
 	return true
 
+func test_consumer_wealth() -> bool:
+	var town := TownData.new()
+	var inventory: GoodsInventory = make_inventory(20)
+	var sawmill: IndustryType = GameTypes.get_ind_type("SAWMILL")
+	var plant: IndustryType = GameTypes.get_ind_type("COAL_PLANT")
+	inventory.add_goods_amount(GoodsAmount.new("lumber", 9))
+	inventory.add_goods_amount(GoodsAmount.new("coal", 4))
+
+	check(IndustryProduction.run_batch(sawmill, inventory, [], 1.0, town) == Result.COMPLETED,
+		"The sawmill completes an intermediate batch")
+	check(town.wealth == 0.0, "A recipe that produces anything earns no town wealth")
+	check(IndustryProduction.run_batch(plant, inventory, [], 1.0, town) == Result.COMPLETED,
+		"The power plant uses the coal at the end of its chain")
+	check(is_equal_approx(town.wealth, 0.4), "Four consumed units earn 0.4 wealth")
+	check(IndustryProduction.run_batch(plant, inventory, [], 1.0, town) == Result.MISSING_INPUTS,
+		"The next batch waits for new coal")
+	check(is_equal_approx(town.wealth, 0.4), "A failed batch cannot credit wealth again")
+	return true
+
+
 func test_mine_depletion() -> bool:
 	var inventory: GoodsInventory = make_inventory(3.0)
-	var recipe := IndustryType.new("TEST", "Test mine", "", 0, [], ["2xcoal"])
+	var recipe := IndustryType.new("TEST", "Test mine", null, 0, [], ["2xcoal"])
 	var first := MineralReserve.new()
 	first.remaining = 4.0
 	var second := MineralReserve.new()
@@ -103,7 +124,7 @@ func test_mine_depletion() -> bool:
 func test_invalid_output() -> bool:
 	var inventory: GoodsInventory = make_inventory(10)
 	inventory.add_goods_amount(GoodsAmount.new("lumber", 2))
-	var invalid := IndustryType.new("TEST", "Invalid converter", "", 0, ["2xlumber"], ["1xboards", "1xunknown"])
+	var invalid := IndustryType.new("TEST", "Invalid converter", null, 0, ["2xlumber"], ["1xboards", "1xunknown"])
 	check(IndustryProduction.run_batch(invalid, inventory) == Result.INVALID_RECIPE, "Unknown output rejects the whole recipe")
 	check(inventory.get_amount("lumber") == 2 and inventory.get_amount("boards") == 0, "Invalid output leaves inputs and other outputs untouched")
 	return true
@@ -111,7 +132,7 @@ func test_invalid_output() -> bool:
 func test_tagged_passengers() -> bool:
 	var inventory: GoodsInventory = make_inventory(10)
 	inventory.change_stack(&"soldier", 17, 2)
-	var passenger_consumer := IndustryType.new("TEST", "Passenger consumer", "", 0, ["1xsoldier"], [])
+	var passenger_consumer := IndustryType.new("TEST", "Passenger consumer", null, 0, ["1xsoldier"], [])
 	check(IndustryProduction.run_batch(passenger_consumer, inventory) == Result.MISSING_INPUTS, "Destination-tagged passengers cannot satisfy recipes")
 	check(inventory.stack_amount(&"soldier", 17) == 2, "The tagged batch remains available for its trip")
 	return true
@@ -121,7 +142,7 @@ func test_milk() -> bool:
 	var milk: BaseGoodsType = GameTypes.resource_types.get(&"milk")
 	check(milk != null and milk.res_cat == BaseGoodsType.ResourceCategory.LIQUID, "Milk is registered as liquid cargo")
 
-	var recipe := IndustryType.new("TEST", "Test dairy", "", 0, [], ["1.5xmilk"])
+	var recipe := IndustryType.new("TEST", "Test dairy", null, 0, [], ["1.5xmilk"])
 	check(IndustryProduction.run_batch(recipe, inventory) == Result.COMPLETED, "Liquid recipes support fractional quantities")
 	check(inventory.get_amount("milk") == 1.5, "The batch preserves the fractional output")
 	return true

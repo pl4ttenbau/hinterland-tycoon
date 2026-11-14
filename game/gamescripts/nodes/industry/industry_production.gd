@@ -4,6 +4,7 @@ class_name IndustryProduction extends Node
 enum BatchResult { COMPLETED, MISSING_INPUTS, STORAGE_FULL, UNAVAILABLE, INVALID_RECIPE, DEPOSIT_EXHAUSTED }
 
 const CAPACITY_EPSILON: float = 0.00001
+const WEALTH_PER_CONSUMED_UNIT: float = 0.1
 
 @export var industry3d: Industry3D
 
@@ -22,7 +23,7 @@ func run_cycle() -> BatchResult:
 	var industry: IndustryData = industry3d.industry
 	var inventory: GoodsInventory = industry3d.get_inventory()
 	if industry.mine_reserves.is_empty():
-		return run_batch(industry.ind_type, inventory)
+		return run_batch(industry.ind_type, inventory, [], 1.0, industry.closest_town)
 	var manager: ProspectingManager = Managers.prospecting
 	if not is_instance_valid(manager):
 		return BatchResult.UNAVAILABLE
@@ -31,7 +32,8 @@ func run_cycle() -> BatchResult:
 ## A batch succeeds as a whole. Inputs free space for this batch's outputs, and
 ## a recipe with only inputs is a consumer that simply removes those goods.
 static func run_batch(recipe: IndustryType, inventory: GoodsInventory,
-		reserves: Array[MineralReserve] = [], depletion_factor: float = 1.0) -> BatchResult:
+		reserves: Array[MineralReserve] = [], depletion_factor: float = 1.0,
+		closest_town: TownData = null) -> BatchResult:
 	if recipe == null or inventory == null or inventory.storage == null:
 		return BatchResult.UNAVAILABLE
 
@@ -77,6 +79,10 @@ static func run_batch(recipe: IndustryType, inventory: GoodsInventory,
 	var company := CompanyData.current()
 	if company != null:
 		company.record_delivery(delivered, 0)
+	# A good reaches the end of its chain when the recipe consumes it without
+	# producing anything. Commit wealth with the stock before notifying listeners.
+	if closest_town != null and outputs.is_empty():
+		closest_town.wealth += _total_amount(inputs) * WEALTH_PER_CONSUMED_UNIT
 	inventory.goods_change.emit()
 	return BatchResult.COMPLETED
 

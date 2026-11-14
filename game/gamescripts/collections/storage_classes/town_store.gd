@@ -49,6 +49,21 @@ func get_centers() -> Array[Town3D]:
 	
 func get_center_by_num(town_num: int) -> Town3D:
 	return self._centers_by_id.get(town_num)
+
+## Use the placed centers in world space. Elevation does not affect the distance.
+func get_closest_to(position: Vector3) -> TownData:
+	var closest: TownData
+	var closest_distance: float = INF
+	var location := Vector2(position.x, position.z)
+	for center: Town3D in _centers_list:
+		if not is_instance_valid(center) or not center.is_inside_tree() or center.town == null:
+			continue
+		var center_pos: Vector3 = center.global_position
+		var distance: float = location.distance_squared_to(Vector2(center_pos.x, center_pos.z))
+		if distance < closest_distance:
+			closest = center.town
+			closest_distance = distance
+	return closest
 #endregion
 
 #region Callbacks & Helpers 
