@@ -3,7 +3,7 @@
 Right-click opens the menu. Hold and release over a segment to choose it, or
 release quickly and click a segment. Escape cancels, including during opening.
 The game pauses walking/driving input while the menu owns it, then restores the
-previous mouse and movement settings before launching an action or dialog.
+gameplay mouse and movement settings before launching an action or dialog.
 
 | Action | Availability |
 | --- | --- |
@@ -49,6 +49,22 @@ configuration warning in the Godot editor.
 
 The action icons in `assets/ui/icons/actions/` use a shared 32 px grid and cream
 2 px strokes. Every exposed action has its own icon; entry and exit differ too.
+
+## Code paths
+
+- `RadialActionMenu` builds the visible action list each time the menu opens.
+  The radial control handles drawing, hover, and selection. On selection, the
+  wrapper releases its input block and defers `action_requested` until the
+  current input event has finished.
+- `GameSession` connects that signal to `ActionHandler`. The handler checks
+  the current context again and dispatches to an action node or the feature
+  that opens the dialog.
+- `GameDialog` registers on tree entry and emits its result once when closing.
+  The top dialog receives Escape. `ModalGameDialog` holds the input block until
+  tree exit, including when a scene is unloaded. `MenuShellDialog` adds a
+  shared layout, content slot, and Close button. To open the next stage of a
+  flow such as mine placement, take the result from `closed` and wait for
+  `tree_exited` before adding the next dialog.
 
 ## Owned control
 

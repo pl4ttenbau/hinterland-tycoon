@@ -98,10 +98,10 @@ func test_player() -> bool:
 	road.position.y = 10.0
 	tree.root.add_child(road)
 	await settle()
-	var outer: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
-	var player: BasicFpsPlayer = outer.get_node("Player")
+	var outer: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: BasicFpsPlayer = outer.walking_body
 	player.position = Vector3(0, 14, -10)
-	var previous_player: PlayerHead3D = GlobalState.player
+	var previous_player: PlayerAvatar = GlobalState.player
 	var previous_camera: Camera3D = GlobalState.active_cam
 	tree.root.add_child(outer)
 	check(not player.get_node("PlayerCollisionShape").disabled, "Actual player collider is enabled")

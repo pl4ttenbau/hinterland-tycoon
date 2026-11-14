@@ -146,19 +146,13 @@ signal industries_spawned()
 signal mouse_click(event: InputEventMouseButton)
 
 @warning_ignore("unused_signal")
-signal collider_click(collider: ClickableCollider)
+signal collider_click(reference: ClickRef)
 
 @warning_ignore("unused_signal")
 signal unhandled_collider_click(collider: Node3D)
-
-@warning_ignore("unused_signal")
-signal terrain_click(pos: Vector3)
 #endregion
 
 #region UI
 @warning_ignore("unused_signal")
 signal ui_update_tick()
-
-@warning_ignore("unused_signal")
-signal action_menu_triggered(action_name: String)
 #endregion

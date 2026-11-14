@@ -24,7 +24,6 @@ static func create(source_depot: RoadDepotData) -> RoadVehicleSpawnDialog:
 func _ready() -> void:
 	dialog_key = "SpawnRoadVehicleDialog"
 	title_text = "Spawn road vehicle"
-	_suspend_world_input()
 	_build_content()
 	_build_buttons()
 	_populate_vehicles()

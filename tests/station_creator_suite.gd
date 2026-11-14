@@ -186,12 +186,12 @@ func test_multiple_stations() -> bool:
 	return true
 
 func test_action_dispatch() -> bool:
-	var player_scene: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
-	var body: BasicFpsPlayer = player_scene.get_node("Player")
+	var player_scene: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	var body: BasicFpsPlayer = player_scene.walking_body
 	body.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	add_child(player_scene)
 	body.global_position = Vector3(300, 5.5, 100)
-	var player: PlayerHead3D = GlobalState.player
+	var player: PlayerAvatar = GlobalState.player
 	var handler := ActionHandler.new()
 	add_child(handler)
 	var before: int = services.interchanges.stops_by_num.size()
@@ -205,11 +205,13 @@ func test_action_dispatch() -> bool:
 	await get_tree().process_frame
 	check(body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED and services.interchanges.stops_by_num.size() == before, "Escape restores the exact player process mode without creating a stop")
 	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
-	var vehicle := RoadVehicle3D.new()
-	player.in_road_vehicle = vehicle
+	var vehicle := RoadVehicle3D.of("trabant_601_green")
+	vehicle.freeze = true
+	add_child(vehicle)
+	check(player.control.enter_road_vehicle(vehicle), "Fixture boards the road vehicle")
 	check(not menu.available_actions().any(func(item: Dictionary): return item.id == "CreateStop"), "Create stop is hidden inside a road vehicle")
 	check(not handler._on_action_triggered("CreateStop"), "Dispatcher rechecks vehicle occupancy")
-	player.in_road_vehicle = null
+	player.control.exit_vehicle()
 	vehicle.free()
 	menu.free()
 	GlobalState.player = null

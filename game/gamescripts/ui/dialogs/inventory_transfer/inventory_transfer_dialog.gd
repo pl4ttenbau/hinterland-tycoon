@@ -19,7 +19,6 @@ var _active_side: int = 0
 func _ready() -> void:
 	dialog_key = "InventoryTransferDiag"
 	title_text = "Transfer inventory"
-	_suspend_world_input()
 	_build_layout()
 	_refresh_available()
 	var passenger_default: bool = _left.endpoint != null and BaseGoodsType.ResourceCategory.PASSENGER in _left.endpoint.component().accepted_categories

@@ -1,25 +1,43 @@
 [gd_scene format=3 uid="uid://coliyiexqbd0o"]
 
-[ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="1_6v6yf"]
-[ext_resource type="PackedScene" uid="uid://bpjbrmuupoc4x" path="res://scenes/subscenes/player_head.tscn" id="3_tgnit"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/player/player_avatar.gd" id="1_avatar"]
+[ext_resource type="Script" uid="uid://0ou2op0l50qf" path="res://addons/Basic FPS Player/Src/basic_player_startup.gd" id="2_fps"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="3_inventory"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/player/player_control.gd" id="4_control"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
 
-[node name="OuterPlayer" type="Node3D" unique_id=521537048]
+[node name="PlayerAvatar" type="Node3D" unique_id=521537048 node_paths=PackedStringArray("walking_body", "walking_camera", "control")]
+script = ExtResource("1_avatar")
+walking_body = NodePath("WalkingBody")
+walking_camera = NodePath("WalkingBody/Head/Camera3D")
+control = NodePath("Control")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=196254571]
-unique_name_in_owner = true
+[node name="WalkingBody" type="CharacterBody3D" parent="." unique_id=196254571]
 collision_layer = 8
 collision_mask = 7
 input_ray_pickable = false
-script = ExtResource("1_6v6yf")
+script = ExtResource("2_fps")
 CAPTURE_ON_START = false
 UPDATE_PLAYER_ON_PHYS_STEP = false
-metadata/_custom_type_script = "uid://0ou2op0l50qf"
 
-[node name="PlayerCollisionShape" type="CollisionShape3D" parent="Player" unique_id=77284677]
+[node name="PlayerCollisionShape" type="CollisionShape3D" parent="WalkingBody" unique_id=77284677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.002611, 0)
 shape = SubResource("CapsuleShape3D_mg4js")
 
-[node name="Head" parent="Player" unique_id=1525288275 instance=ExtResource("3_tgnit")]
+[node name="Head" type="Node3D" parent="WalkingBody" unique_id=1525288275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.965481, 0)
+
+[node name="Camera3D" type="Camera3D" parent="WalkingBody/Head" unique_id=1956442638]
+current = true
+fov = 55.0
+far = 750.0
+metadata/cam_name = &"CAM_PLAYER"
+
+[node name="Inventory" type="Node" parent="." unique_id=134791975]
+script = ExtResource("3_inventory")
+capacity_override = 3.0
+
+[node name="Control" type="Node" parent="." node_paths=PackedStringArray("avatar")]
+script = ExtResource("4_control")
+avatar = NodePath("..")

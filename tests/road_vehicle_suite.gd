@@ -6,14 +6,14 @@ class DrivingFixture:
 	var roads: RoadsLoader
 	var manager: VehiclePlacer
 	var body: RoadVehicle3D
-	var outer_player: Node3D
+	var avatar: PlayerAvatar
 	var player: BasicFpsPlayer
 	var walking_process_mode: int
 	var walking_mask: int
 	var walking_layer: int
 	var previous_roads: RoadsLoader
 	var previous_vehicles: VehiclePlacer
-	var previous_player: PlayerHead3D
+	var previous_player: PlayerAvatar
 	var previous_camera: Camera3D
 
 var failures: int = 0
@@ -176,9 +176,9 @@ func _test_automatic_acceleration(fixture: DrivingFixture) -> bool:
 
 ## Capture walking settings before the service suspends the actual player scene.
 func _add_fixture_player(fixture: DrivingFixture) -> void:
-	fixture.outer_player = load("res://scenes/subscenes/player.tscn").instantiate()
-	tree.root.add_child(fixture.outer_player)
-	fixture.player = fixture.outer_player.get_node("Player")
+	fixture.avatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	tree.root.add_child(fixture.avatar)
+	fixture.player = fixture.avatar.walking_body
 	fixture.walking_process_mode = fixture.player.process_mode
 	fixture.walking_mask = fixture.player.collision_mask
 	fixture.walking_layer = fixture.player.collision_layer
@@ -188,11 +188,11 @@ func _test_takeover(fixture: DrivingFixture) -> bool:
 	var body: RoadVehicle3D = fixture.body
 	var position_before: Vector3 = body.global_position
 	var velocity_before: Vector3 = body.linear_velocity
-	fixture.manager.enter_vehicle(body)
-	check(fixture.manager.player_road_vehicle == body and body.player_driving, "Entering switches the input source")
+	fixture.avatar.control.enter_vehicle(body)
+	check(fixture.avatar.control.current_road_vehicle() == body and body.player_driving, "Entering switches the input source")
 	check(body.global_position == position_before and body.linear_velocity == velocity_before, "Takeover preserves position and momentum")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED and fixture.player.collision_layer == 0, "Walking player cannot move or collide while driving")
-	check(GlobalState.player.in_road_vehicle == body and GlobalState.active_cam == body.camera, "Player state and camera follow the road vehicle")
+	check(fixture.avatar.control.current_road_vehicle() == body and GlobalState.active_cam == body.camera, "Player state and camera follow the road vehicle")
 	body.apply_driver_input(0.0, -1.0, 0.0, 1.0 / 60.0)
 	check(body.brake > 0.0 and is_zero_approx(body.engine_force), "Opposite pedal brakes before reverse")
 	Input.action_press("move_right")
@@ -202,11 +202,11 @@ func _test_takeover(fixture: DrivingFixture) -> bool:
 	return true
 
 func _test_route_resumption(fixture: DrivingFixture) -> bool:
-	fixture.manager.exit_road_vehicle()
+	fixture.avatar.control.exit_vehicle()
 	var progress_before: float = fixture.body.route.progress
 	await frames(60)
 	check(fixture.body.route.progress > progress_before + 1.0, "Automatic route following resumes after releasing control on the road")
-	fixture.manager.enter_vehicle(fixture.body)
+	fixture.avatar.control.enter_vehicle(fixture.body)
 	return true
 
 ## Hold real wheel steering over physics frames; movement must leave the centreline.
@@ -219,11 +219,11 @@ func _test_free_steering_and_exit(fixture: DrivingFixture) -> bool:
 	check(absf(body.global_position.x) > 0.5, "Player steering moves the car away from the route centreline")
 	var position_before: Vector3 = body.global_position
 	var velocity_before: Vector3 = body.linear_velocity
-	fixture.manager.exit_road_vehicle()
-	check(not body.player_driving and fixture.manager.player_road_vehicle == null, "Leaving restores automatic route control")
+	fixture.avatar.control.exit_vehicle()
+	check(not body.player_driving and fixture.avatar.control.current_road_vehicle() == null, "Leaving restores automatic route control")
 	check(body.global_position == position_before and body.linear_velocity == velocity_before, "Release preserves position and momentum")
 	check(fixture.player.process_mode == fixture.walking_process_mode and fixture.player.collision_layer == fixture.walking_layer and fixture.player.collision_mask == fixture.walking_mask, "Leaving restores original player collision and processing")
-	check(GlobalState.active_cam == GlobalState.player.cam and GlobalState.player.in_road_vehicle == null, "Leaving restores walking camera and state")
+	check(GlobalState.active_cam == fixture.avatar.walking_camera and not fixture.avatar.control.is_in_vehicle(), "Leaving restores walking camera and state")
 	return true
 
 func _test_offroad_deletion(fixture: DrivingFixture) -> bool:
@@ -232,10 +232,10 @@ func _test_offroad_deletion(fixture: DrivingFixture) -> bool:
 	body.global_position += Vector3(40, 0, 0)
 	body._physics_process(1.0 / 60.0)
 	check(body.brake > 0 and is_zero_approx(body.engine_force), "Off-route recovery holds the brakes without teleporting")
-	fixture.manager.enter_vehicle(body)
+	fixture.avatar.control.enter_vehicle(body)
 	body.queue_free()
 	await tree.process_frame
-	check(fixture.manager.player_road_vehicle == null and fixture.player.collision_mask == fixture.walking_mask, "Deleting an occupied vehicle restores the player")
+	check(fixture.avatar.control.current_road_vehicle() == null and fixture.player.collision_mask == fixture.walking_mask, "Deleting an occupied vehicle restores the player")
 	return true
 
 ## A fresh, uninterrupted run reaches the bend and terminal stop.
@@ -249,8 +249,8 @@ func _test_terminal_stop(fixture: DrivingFixture) -> bool:
 	return true
 
 func _free_driving_fixture(fixture: DrivingFixture) -> void:
-	if is_instance_valid(fixture.outer_player):
-		fixture.outer_player.free()
+	if is_instance_valid(fixture.avatar):
+		fixture.avatar.free()
 	fixture.manager.free()
 	fixture.roads.free()
 	Managers.roads = fixture.previous_roads
@@ -312,7 +312,6 @@ func test_spawn_dialog() -> bool:
 	# Arrange an actual SpawnAction subscriber and remember the surrounding UI state.
 	var fixture: DrivingFixture = _create_driving_fixture()
 	_add_fixture_player(fixture)
-	var previous_dialog: GameDialog = UiState.current_diag
 	var previous_mouse: Input.MouseMode = Input.mouse_mode
 	var previous_blocked: bool = UiState.movement_blocked
 	var depot := RoadDepotData.new()
@@ -353,6 +352,5 @@ func test_spawn_dialog() -> bool:
 
 	# Release the signal subscriber and restore the previous session.
 	action.free()
-	UiState.current_diag = previous_dialog
 	_free_driving_fixture(fixture)
 	return true

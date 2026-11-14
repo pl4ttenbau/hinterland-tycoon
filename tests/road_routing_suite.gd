@@ -350,7 +350,7 @@ func _check_marker_execution(manager: VehiclePlacer, loader: RoadsLoader, depot:
 func test_markers() -> bool:
 	# Arrange a physical road with an intermediate shape node, plus the real player.
 	var old_roads: RoadsLoader = Managers.roads
-	var old_player: PlayerHead3D = GlobalState.player
+	var old_player: PlayerAvatar = GlobalState.player
 	var old_camera: Camera3D = GlobalState.active_cam
 	var loader := RoadsLoader.new()
 	Managers.roads = loader
@@ -364,9 +364,9 @@ func test_markers() -> bool:
 	loader.storage.add_container(view)
 	for frame: int in range(4):
 		await tree.process_frame
-	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
 	tree.root.add_child(player)
-	(player.get_node("Player") as Node3D).global_position = Vector3(1, 0.3, -17.3)
+	player.walking_body.global_position = Vector3(1, 0.3, -17.3)
 	var tool: MARKER_TOOL = loader.get_child(0) as MARKER_TOOL
 	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
 	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")

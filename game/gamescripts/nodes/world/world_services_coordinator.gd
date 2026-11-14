@@ -119,7 +119,6 @@ func _wire_rails() -> void:
 	self._listen(self.rails.track_storage.track_added, self.forks._on_track_loaded)
 	self._listen(SignalBus.rails_spawned, self.forks._on_rails_spawned)
 	self._listen(SignalBus.ui_mode_switched, self.rail_builder._on_ui_mode_changed)
-	self._listen(SignalBus.terrain_click, self.rail_builder._on_terrain_click)
 	self._listen(SignalBus.rails_spawned, self.residence_connector._on_rails_spawned)
 	self._listen(SignalBus.rails_spawned, self.vehicles._on_rails_rails_spawned)
 

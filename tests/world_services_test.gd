@@ -36,8 +36,23 @@ func _run() -> void:
 	self.check(self.test_road_depot(), "Road depot integration test finished")
 	self.check(self.test_residence_conversion(), "Residence conversion test finished")
 	self.check(self.test_all_residence_variants(), "All residence variants test finished")
+	self.test_world_input_wiring()
 	print("World services tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
+
+func test_world_input_wiring() -> void:
+	var session: GameSession = load("res://scenes/game_session.tscn").instantiate()
+	add_child(session)
+	var picker: WorldPicker = session.get_node("Input/WorldPicker")
+	var interaction := session.world_interaction
+	var menu: RadialActionMenu = session.get_node("GameWindow/OuterRadialMenu")
+	var actions: ActionHandler = session.get_node("Input/ActionHandler")
+	check(menu.action_requested.is_connected(actions._on_action_triggered), "Session routes menu selections to its action handler")
+	check(interaction.pick_requested.is_connected(picker.pick), "Session routes click requests to the picker")
+	check(picker.picked.is_connected(interaction._on_world_picked), "Session routes picks back to world interaction")
+	check(interaction.terrain_clicked.is_connected(session.world_services.rail_builder._on_terrain_click), "Session routes terrain clicks to the rail builder")
+	session.free()
+
 
 ## Exercise the real road-loaded/spawned signal chain without terrain or rail views.
 func test_road_depot() -> bool:

@@ -4,7 +4,10 @@ const MARKER_SCENE = "res://assets/meshes/markers/infr_end/selected_node.tscn"
 
 func on_trigger():
 	super.on_trigger()
-	var player_pos: Vector3 = GlobalState.player.global_position
+	var player := GlobalState.player
+	if not is_instance_valid(player):
+		return
+	var player_pos := player.walking_camera.global_position
 	var near_tracks: Array[RailTrackData] = self.get_tracks_near_pos(player_pos)
 	Loggie.info("Near tracks: %d" % near_tracks.size())
 	var nearest_fork: NewRailForkData = get_nearest_fork(player_pos, near_tracks)

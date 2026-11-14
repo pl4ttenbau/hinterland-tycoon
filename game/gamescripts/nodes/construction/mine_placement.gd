@@ -24,7 +24,7 @@ static func open_picker(world: WorldMapScene) -> bool:
 
 func _picker_closed(result: Variant, picker: MenuShellDialog) -> void:
 	if result is Dictionary:
-		# Each modal restores input on exit. Let it finish before the next one captures input.
+		# The close signal carries the result. Wait for tree exit so the next stage starts with input released.
 		picker.tree_exited.connect(_start_preview.bind(result), CONNECT_ONE_SHOT | CONNECT_DEFERRED)
 	else:
 		queue_free()
@@ -63,6 +63,7 @@ func _show_survey(position: Vector3, preview: BuildPreview) -> void:
 
 
 func _preview_closed(result: Variant, preview: BuildPreview) -> void:
+	# Keep the same handoff for confirmation. The selected point stays fixed through this stage.
 	if result is Vector3:
 		preview.tree_exited.connect(_open_resource_dialog.bind(result), CONNECT_ONE_SHOT | CONNECT_DEFERRED)
 	else:

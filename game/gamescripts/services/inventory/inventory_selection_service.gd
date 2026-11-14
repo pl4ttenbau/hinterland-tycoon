@@ -10,18 +10,18 @@ func discover() -> Array[InventoryEndpoint]:
 	_seen.clear()
 	if not is_instance_valid(GlobalState.player):
 		return _items
-	var player: PlayerHead3D = GlobalState.player
-	var access: Node3D = player.in_road_vehicle if is_instance_valid(player.in_road_vehicle) else player
-	if is_instance_valid(player.in_train) and is_instance_valid(player.in_train.get_cam()):
-		access = player.in_train.get_cam()
+	var player := GlobalState.player
+	var access := player.control.interaction_anchor()
 	_origin = access.global_position
 	# The occupied vehicle is the useful default; the player's own bag stays accessible.
-	if is_instance_valid(player.in_road_vehicle):
-		_offer(player.in_road_vehicle, player.in_road_vehicle.inventory_component.display_name, access, InventoryEndpoint.Kind.VEHICLE)
-	if is_instance_valid(player.in_train):
-		_offer(player.in_train, "Train %d" % player.in_train.num, access, InventoryEndpoint.Kind.VEHICLE)
+	var road_vehicle := player.control.current_road_vehicle()
+	if is_instance_valid(road_vehicle):
+		_offer(road_vehicle, road_vehicle.inventory_component.display_name, access, InventoryEndpoint.Kind.VEHICLE)
+	var occupied_train := player.control.current_train()
+	if is_instance_valid(occupied_train):
+		_offer(occupied_train, "Train %d" % occupied_train.num, access, InventoryEndpoint.Kind.VEHICLE)
 	_offer(player, "Player", access, InventoryEndpoint.Kind.PLAYER)
-	_offer_stops()
+	_offer_stops(player.current_station())
 	if is_instance_valid(Managers.vehicles):
 		for vehicle: RoadVehicle3D in Managers.vehicles.road_vehicles:
 			if is_instance_valid(vehicle) and is_instance_valid(vehicle.inventory_component):
@@ -34,9 +34,8 @@ func discover() -> Array[InventoryEndpoint]:
 			_offer_nearby(industry, str(industry.name), null, InventoryEndpoint.Kind.INDUSTRY)
 	return _items
 
-func _offer_stops() -> void:
-	if is_instance_valid(GlobalState.player.in_station):
-		var current: RailStation3D = GlobalState.player.in_station
+func _offer_stops(current: RailStation3D) -> void:
+	if is_instance_valid(current):
 		_offer(current, "%s (rail stop)" % current.station.get_display_name(), null, InventoryEndpoint.Kind.STOP)
 	if is_instance_valid(Managers.interchanges):
 		for stop: AbstractStation in Managers.interchanges.stops_by_num.values():

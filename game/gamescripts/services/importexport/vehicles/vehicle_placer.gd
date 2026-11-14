@@ -1,31 +1,16 @@
 @icon("res://assets/icons/icon_locomotive_white.png")
 class_name VehiclePlacer extends Node
 
-const ROUTE_DIALOG = preload("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
-
 @export var rail_containers: Array[RailTrack3D]
 @export var trains: Array[Train3D] = []
 @export var start_vehicles_spawned: bool = false
 
-@export var player_train: Train3D
-
 var road_vehicles: Array[RoadVehicle3D] = []
-var player_road_vehicle: RoadVehicle3D
 ## User-facing reason for a rejected depot spawn, read by the selection dialog.
 var last_road_spawn_error: String = ""
 const ROAD_DEPOT_SPAWN_DISTANCE: float = 10.0
-var _walking_process_mode: int
-var _walking_collision_layer: int
-var _walking_collision_mask: int
 
 #region Initialization
-## Called by the circular menu only for the currently occupied road vehicle.
-func open_road_route_dialog() -> bool:
-	if not is_instance_valid(player_road_vehicle) or UiState.current_diag != null:
-		return false
-	get_tree().root.add_child(ROUTE_DIALOG.create(player_road_vehicle))
-	return true
-
 func _check_rails_and_terrain() -> bool:
 	if !GlobalState:
 		push_warning("Cannot save vehicle in scene: Globals not found")
@@ -129,88 +114,6 @@ func spawn_train(veh_type_key: String, start_pos: VehicleStartPos) -> Train3D:
 	GlobalState.trains.append(train3d)
 	self.trains.append(train3d)
 	return train3d
-#endregion
-
-#region Enter & Exit
-func enter_vehicle(veh3d: Node3D):
-	if veh3d is RoadVehicle3D:
-		enter_road_vehicle(veh3d)
-		return
-	if not veh3d is Vehicle3D or veh3d.train3d == null:
-		return
-	if player_road_vehicle != null:
-		exit_road_vehicle()
-	self.player_train = veh3d.train3d
-	self.activate_cam(self.player_train.get_cam())
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.player_entered_train.emit(self.player_train)
-
-## Transfer input/camera ownership without changing the vehicle's physical motion.
-func enter_road_vehicle(vehicle: RoadVehicle3D) -> void:
-	if player_road_vehicle == vehicle or not is_instance_valid(GlobalState.player):
-		return
-	if player_road_vehicle != null:
-		exit_road_vehicle()
-	if player_train != null:
-		exit_train()
-	_suspend_walking_player(GlobalState.player.player_parent)
-	player_road_vehicle = vehicle
-	vehicle.set_player_driving(true)
-	vehicle.tree_exiting.connect(exit_road_vehicle, CONNECT_ONE_SHOT)
-	activate_cam(vehicle.camera)
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	SignalBus.player_entered_road_vehicle.emit(vehicle)
-
-## Preserve the exact settings so leaving also works for a custom walking setup.
-func _suspend_walking_player(player: BasicFpsPlayer) -> void:
-	_walking_process_mode = player.process_mode
-	_walking_collision_layer = player.collision_layer
-	_walking_collision_mask = player.collision_mask
-	player.process_mode = Node.PROCESS_MODE_DISABLED
-	player.collision_layer = 0
-	player.collision_mask = 0
-	player.velocity = Vector3.ZERO
-
-## Also called when an occupied car leaves the tree; restoration must be shared.
-func exit_road_vehicle() -> void:
-	var vehicle: RoadVehicle3D = player_road_vehicle
-	if not is_instance_valid(vehicle):
-		return
-	vehicle.set_player_driving(false)
-	if vehicle.tree_exiting.is_connected(exit_road_vehicle):
-		vehicle.tree_exiting.disconnect(exit_road_vehicle)
-	player_road_vehicle = null
-	if is_instance_valid(GlobalState.player):
-		_restore_walking_player(GlobalState.player.player_parent, vehicle)
-		activate_cam(GlobalState.player.cam)
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	SignalBus.player_exited_road_vehicle.emit()
-
-## Use the body's low origin with a small step up beside the door.
-func _restore_walking_player(player: BasicFpsPlayer, vehicle: RoadVehicle3D) -> void:
-	player.global_position = vehicle.global_position + vehicle.global_basis.x.normalized() * 3.0 + Vector3.UP * 0.5
-	player.process_mode = _walking_process_mode as Node.ProcessMode
-	player.collision_layer = _walking_collision_layer
-	player.collision_mask = _walking_collision_mask
-
-func _exit_tree() -> void:
-	if is_instance_valid(player_road_vehicle):
-		exit_road_vehicle()
-	
-func exit_train():
-	SignalBus.player_exited_train.emit()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	self.activate_cam(GlobalState.player.cam)
-	self.player_train = null
-
-func activate_cam(cam: Camera3D):
-	cam.make_current()
-	GlobalState.active_cam = cam
-	var terr3d: Terrain3D = GlobalState.world_container.terrain if is_instance_valid(GlobalState.world_container) else null
-	if terr3d:
-		terr3d.set_camera(cam)
-	else:
-		Loggie.warn("Terrain3D cannot be found for camera change")
 #endregion
 
 #region Callbacks

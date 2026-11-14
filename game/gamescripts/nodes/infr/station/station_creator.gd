@@ -13,11 +13,9 @@ func is_available() -> bool:
 func open_placement_dialog() -> bool:
 	if not is_available() or UiState.current_diag != null or not is_instance_valid(GlobalState.player):
 		return false
-	if is_instance_valid(GlobalState.player.in_train) or is_instance_valid(GlobalState.player.in_road_vehicle):
+	if GlobalState.player.control.is_in_vehicle():
 		return false
-	if is_instance_valid(Managers.vehicles) and is_instance_valid(Managers.vehicles.player_road_vehicle):
-		return false
-	var player: BasicFpsPlayer = GlobalState.player.player_parent
+	var player: BasicFpsPlayer = GlobalState.player.walking_body
 	if not is_instance_valid(player):
 		return false
 	var placement: Dictionary = placement_at(player.global_position, player.get_rid())

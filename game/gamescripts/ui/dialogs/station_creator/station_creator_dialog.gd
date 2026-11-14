@@ -22,7 +22,6 @@ func _ready() -> void:
 	var adding: bool = not nearby.is_empty()
 	title_text = "Add stop to station" if adding else "Create station"
 	dialog_key = "AddStationStopDialog" if adding else "CreateStationDialog"
-	_suspend_world_input()
 	get_node("OuterPanel/OuterMargin").custom_minimum_size.y = 0
 	get_node("OuterPanel/OuterMargin/OuterVLayout").custom_minimum_size.x = 460
 	var panel: Control = get_node("OuterPanel")

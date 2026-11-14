@@ -26,7 +26,6 @@ func _ready() -> void:
 	dialog_key = "RoadRouteDialog"
 	title_text = "Road vehicle route"
 	plan = vehicle.route_plan.duplicate(true)
-	_suspend_world_input()
 	network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
 	_build_content()
 	_build_footer()

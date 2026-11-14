@@ -6,7 +6,6 @@ var _inventory: GoodsInventory
 
 func _ready() -> void:
 	dialog_key = "IndustryDialog"
-	_suspend_world_input()
 	if not is_instance_valid(industry_view) or industry_view.industry == null or industry_view.industry.ind_type == null:
 		close_all()
 		return

@@ -20,7 +20,6 @@ static func create(source: PLACEMENT_TOOL, position: Dictionary) -> RoadMarkerDi
 func _ready() -> void:
 	title_text = "Place road marker"
 	dialog_key = "RoadMarkerDialog"
-	_suspend_world_input()
 	get_node("OuterPanel/OuterMargin").custom_minimum_size.y = 0
 	get_node("OuterPanel/OuterMargin/OuterVLayout").custom_minimum_size.x = 460
 	var panel: Control = get_node("OuterPanel")

@@ -23,6 +23,11 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	var node_station_3d: NodeStationLink3D = self.get_parent_node_3d() as NodeStationLink3D
 	self.parent_station_3d = node_station_3d.get_parent_station_3d()
+
+func _exit_tree() -> void:
+	if player_inside and is_instance_valid(parent_station_3d):
+		player_inside = false
+		SignalBus.player_exited_station.emit(parent_station_3d)
 #endregion
 
 #region Helper-Methods
@@ -52,7 +57,7 @@ func veh3d_is_locomotive(veh3d: Vehicle3D) -> bool:
 
 #region Callbacks
 func _on_body_entered(body: Node3D):
-	if body is CharacterBody3D:
+	if is_instance_valid(GlobalState.player) and body == GlobalState.player.walking_body:
 		self.player_inside = true
 		self.player_entered.emit()
 		SignalBus.player_entered_station.emit(self.parent_station_3d)
@@ -62,7 +67,7 @@ func _on_body_entered(body: Node3D):
 			self.trigger_train_entered(body.vehicle3d.train3d)
 
 func _on_body_exited(body: Node3D):
-	if body is CharacterBody3D:
+	if is_instance_valid(GlobalState.player) and body == GlobalState.player.walking_body:
 		self.player_inside = false
 		self.player_exited.emit()
 		SignalBus.player_exited_station.emit(self.parent_station_3d)

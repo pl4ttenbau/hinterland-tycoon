@@ -5,7 +5,6 @@ var _inventory: GoodsInventory
 
 func _ready() -> void:
 	dialog_key = "StationInfoDialog"
-	_suspend_world_input()
 	if stop == null:
 		close_all()
 		return

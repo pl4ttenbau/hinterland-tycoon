@@ -182,21 +182,22 @@ func test_manual_passenger_arrival() -> bool:
 
 # Exercise the actual GAZ picker, both transfer buttons, filters, tabs and modal cleanup.
 func test_vehicle_dialog() -> bool:
-	var previous_player: PlayerHead3D = GlobalState.player
+	var previous_player: PlayerAvatar = GlobalState.player
 	var previous_camera: Camera3D = GlobalState.active_cam
-	var previous_dialog: GameDialog = UiState.current_diag
 	var previous_blocked: bool = UiState.movement_blocked
 	var previous_mouse: Input.MouseMode = Input.mouse_mode
-	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
 	host.add_child(player)
-	var walking: BasicFpsPlayer = player.get_node("Player")
+	var walking: BasicFpsPlayer = player.walking_body
 	var previous_process: int = walking.process_mode
 	var gaz := RoadVehicle3D.of("gaz_aa_truck")
 	gaz.freeze = true
 	host.add_child(gaz)
-	GlobalState.player.in_road_vehicle = gaz
+	check(player.control.enter_road_vehicle(gaz), "Fixture boards the GAZ")
+	var driving_mouse := Input.mouse_mode
 	var items: Array[InventoryEndpoint] = InventorySelectionService.new().discover()
 	check(not items.is_empty() and items[0].inventory() == gaz.get_inventory(), "Occupied GAZ is discovered before the player bag")
+	check(items.size() > 1 and items[1].inventory() == player.get_inventory() and player.get_inventory().amount_max == 3.0, "The avatar root exposes the existing three-unit bag")
 	check(gaz.get_inventory().amount_max == 4 and not gaz.inventory_component.accepts(&"passenger"), "GAZ uses its freight-only catalog capacity")
 	check(_test_nearby_stops() == true, "Nearby stop discovery completes")
 	var stop: InventoryEndpoint = endpoint("DepotStock", 100)
@@ -244,13 +245,15 @@ func test_vehicle_dialog() -> bool:
 
 	dialog.close_all()
 	await tree.process_frame
-	check(UiState.current_diag == null and walking.process_mode == previous_process, "Closing restores player processing and clears dialog")
-	check(UiState.movement_blocked == previous_blocked and Input.mouse_mode == previous_mouse, "Closing restores exact input state")
+	check(UiState.current_diag == null and walking.process_mode == Node.PROCESS_MODE_DISABLED, "Closing clears the dialog and keeps walking suspended while driving")
+	check(UiState.movement_blocked == previous_blocked and Input.mouse_mode == driving_mouse, "Closing restores the driving input state")
+	player.control.exit_vehicle()
+	check(walking.process_mode == previous_process, "Exiting the vehicle restores walking")
+	Input.mouse_mode = previous_mouse
 	player.free()
 	gaz.free()
 	GlobalState.player = previous_player
 	GlobalState.active_cam = previous_camera
-	UiState.current_diag = previous_dialog
 	return true
 
 # Nearby road stops have separate identities even when they share a name.

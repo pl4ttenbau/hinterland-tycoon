@@ -21,18 +21,25 @@ func _ids(menu: RadialActionMenu) -> Array:
 	return menu.available_actions().map(func(item: Dictionary): return item.id)
 
 func run() -> void:
+	if DisplayServer.get_name() == "headless":
+		get_tree().root.size = Vector2i(1280, 720)
+	check(GameTypes.ensure_initialized() == OK, "Vehicle types initialize")
 	var root: Window = get_tree().root
 	var old_vehicles: VehiclePlacer = Managers.vehicles
 	var old_roads: RoadsLoader = Managers.roads
 	var old_rails: RailsLoader = Managers.rails
-	var old_player: PlayerHead3D = GlobalState.player
+	var old_player: PlayerAvatar = GlobalState.player
+	var old_camera := GlobalState.active_cam
+	var old_mouse := Input.mouse_mode
 	var old_trains: Array[Train3D] = GlobalState.trains
 	var old_main_menu: bool = UiState.in_main_menu
 	var old_blocked: bool = UiState.movement_blocked
 	var vehicles := VehiclePlacer.new()
 	var roads := RoadsLoader.new()
 	var rails := RailsLoader.new()
-	var player := PlayerHead3D.new()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	player.walking_body.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	add_child(player)
 	Managers.vehicles = vehicles
 	Managers.roads = roads
 	Managers.rails = rails
@@ -53,28 +60,72 @@ func run() -> void:
 	check("Enter" not in _ids(menu), "No train entry when train list is empty")
 	for unsupported: String in ["Place"]:
 		check(unsupported not in _ids(menu), "Unimplemented action is not shown: " + unsupported)
-	var road_vehicle := RoadVehicle3D.new()
-	vehicles.player_road_vehicle = road_vehicle
+	var road_vehicle := RoadVehicle3D.of("trabant_601_green")
+	road_vehicle.freeze = true
+	add_child(road_vehicle)
+	check(player.control.enter_road_vehicle(road_vehicle), "Fixture boards a road vehicle")
 	check("Company" in _ids(menu) and "Game Menu" in _ids(menu), "Both new menu dialogs remain available inside a vehicle")
 	check("Prospect" in _ids(menu), "Prospect remains in the road-vehicle menu")
 	check("AutoRoute" in _ids(menu) and "Enter" in _ids(menu), "Occupied road vehicle offers routing and exit")
 	check("RoadMarker" not in _ids(menu) and "Connect" not in _ids(menu), "Road vehicle hides on-foot actions")
-	vehicles.player_road_vehicle = null
 	var train := Train3D.new()
-	player.in_train = train
+	var locomotive := Vehicle3D.new()
+	locomotive.train3d = train
+	train.locomotive = locomotive
+	var train_camera := Camera3D.new()
+	train_camera.name = "Camera3D"
+	locomotive.add_child(train_camera)
+	train_camera.owner = locomotive
+	train.add_child(locomotive)
+	add_child(train)
+	var collider := VehicleCollider.new()
+	locomotive.add_child(collider)
+	var click_handler := BaseEntityClickHandler.new()
+	add_child(click_handler)
+	check(click_handler.handle_click(collider), "Train click switches from road vehicle to train")
+	check(not road_vehicle.player_driving and player.control.current_train() == train and GlobalState.active_cam == train_camera, "Switching targets releases the old driver and changes the camera")
+	click_handler.free()
+	collider.free()
 	check("AutoRoute" not in _ids(menu) and "RoadMarker" not in _ids(menu), "Train occupancy does not expose road actions")
 	check("Prospect" in _ids(menu), "Prospect remains in the train menu")
 	var control: Control = menu.get_node("%RadialMenu")
 	control.set_items(menu.available_actions())
 	check(control.get_node("ItemIcons").get_child_count() == 6, "Changing context rebuilds icon nodes")
 	check(is_equal_approx(control.item_angle * 6, control.circle_coverage * TAU), "Changing context recalculates segment geometry")
-	player.in_train = null
+	var enter_action := EnterAction.new()
+	add_child(enter_action)
+	enter_action.on_trigger()
+	check(not player.control.is_in_vehicle() and GlobalState.active_cam == player.walking_camera, "Enter exits the train through player control")
+	check(player.walking_position().is_equal_approx(train_camera.global_position + Vector3(12, -1, 0)), "Train exit preserves the walking placement offset")
+	GlobalState.trains.append(train)
+	var interact := InputEventKey.new()
+	interact.physical_keycode = KEY_E
+	interact.pressed = true
+	UiState.movement_blocked = true
+	enter_action._unhandled_key_input(interact)
+	check(not player.control.is_in_vehicle(), "A blocked UI prevents keyboard boarding")
+	UiState.movement_blocked = false
+	enter_action._unhandled_key_input(interact)
+	check(player.control.current_train() == train, "The vehicle key boards the available train through player control")
+	UiState.block_world_input(menu)
+	var overlay: ModalGameDialog = load("res://scenes/ui/dialogs/game_menu/game_menu_dialog.tscn").instantiate()
+	add_child(overlay)
+	UiState.release_world_input(menu)
+	check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Releasing one input owner leaves the modal in control")
+	train.free()
+	check(not player.control.is_in_vehicle() and player.walking_body.process_mode == Node.PROCESS_MODE_DISABLED, "Vehicle deletion preserves the modal's walking suspension")
+	overlay.close_all()
+	await get_tree().process_frame
+	check(player.walking_body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED and GlobalState.active_cam == player.walking_camera, "Closing the modal restores walking after the occupied train is deleted")
+	GlobalState.trains.clear()
+	enter_action.free()
 	var handler := ActionHandler.new()
 	var action := CountingAction.new()
 	action.name = "ConnectAction"
 	action.key = "Connect"
 	handler.add_child(action)
 	root.add_child(handler)
+	menu.action_requested.connect(handler._on_action_triggered)
 	check(handler._on_action_triggered("Connect") and action.calls == 1, "Connect dispatches exactly once")
 	check(not handler._on_action_triggered("Unknown"), "Unknown action is rejected")
 	check(not handler._on_action_triggered("AutoRoute"), "Routing rechecks vehicle occupancy at dispatch")
@@ -102,6 +153,8 @@ func run() -> void:
 		await get_tree().process_frame
 		check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked, "Escape closes the dialog and restores input")
 	GlobalState.player = player
+	await _test_dialog_lifecycle()
+	await _test_train_composition()
 	await _test_prospect(menu, handler, road_vehicle)
 
 	# Open/short release must remain available to click; long release activates once.
@@ -121,8 +174,10 @@ func run() -> void:
 	check((radial.global_position + radial.center_offset).distance_to(menu.get_viewport_rect().size / 2.0) < 1.0, "Menu stays centred after layout and animation")
 	var release := InputEventMouseButton.new()
 	release.button_index = MOUSE_BUTTON_RIGHT
+	radial.msecs_at_opened = Time.get_ticks_msec()
 	menu._input(release)
-	check(radial.visible, "Wrapper does not swallow selection on release")
+	radial._radial_input(release)
+	check(radial.visible and UiState.movement_blocked, "A short right release keeps the menu open for a selection")
 	radial.set_selected_item(0)
 	handler.remove_child(action)
 	action.free()
@@ -153,30 +208,85 @@ func run() -> void:
 	handler.free()
 	menu.free()
 	await get_tree().process_frame
-	vehicles.player_road_vehicle = null
 	Managers.vehicles = old_vehicles
 	Managers.roads = old_roads
 	Managers.rails = old_rails
 	GlobalState.player = old_player
+	GlobalState.active_cam = old_camera
+	Input.mouse_mode = old_mouse
 	GlobalState.trains = old_trains
 	UiState.in_main_menu = old_main_menu
 	UiState.movement_blocked = old_blocked
 	player.free()
 	road_vehicle.free()
-	train.free()
 	vehicles.free()
 	roads.free()
 	rails.free()
 	print("Radial actions: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures else 0)
 
+func _test_dialog_lifecycle() -> void:
+	var shell: PackedScene = load("res://scenes/ui/dialogs/game_menu/game_menu_dialog.tscn")
+	var outer := shell.instantiate() as ModalGameDialog
+	check(UiState.current_diag == null, "An off-tree dialog leaves gameplay input alone")
+	add_child(outer)
+	var inner := shell.instantiate() as ModalGameDialog
+	add_child(inner)
+	var results: Array = []
+	inner.closed.connect(func(result: Variant): results.append(result))
+	var escape := InputEventAction.new()
+	escape.action = "ui_cancel"
+	escape.pressed = true
+	outer._input(escape)
+	check(not outer.is_queued_for_deletion() and UiState.current_diag == inner, "Only the top dialog accepts Escape")
+	inner._input(escape)
+	inner.close_all()
+	check(results.size() == 1 and results[0] == null, "Repeated close requests emit one cancellation result")
+	await get_tree().process_frame
+	check(UiState.current_diag == outer and UiState.movement_blocked, "Closing the top dialog restores the underlying modal")
+	outer.free()
+	check(UiState.current_diag == null and not UiState.movement_blocked, "Direct removal also releases the modal")
+
+
+func _test_train_composition() -> void:
+	var spawn_action := SpawnAction.new()
+	add_child(spawn_action)
+	var dialog := spawn_action.show_compose_train_diag()
+	check(UiState.current_diag == dialog and UiState.movement_blocked, "Train composition uses the shared modal lifecycle")
+	var catalog := dialog.get_node("%AddableVehiclesList") as VehicleListUi
+	var add := dialog.get_node("%AddVehicleButton") as Button
+	for key: String in ["loco_faur", "wismar_railbus"]:
+		catalog.selection_changed.emit(key)
+		add.pressed.emit()
+	await get_tree().process_frame
+	var list := dialog.get_node("%TrainVehicleList")
+	var second := list.get_child(2) as TrainCompositionVehicleRow
+	(second.get_node("%BtnUp") as Button).pressed.emit()
+	check(dialog.vehicle_rows.rows[0].veh_type_key == "wismar_railbus", "The row moves up in the draft")
+	await get_tree().process_frame
+	var first := list.get_child(1) as TrainCompositionVehicleRow
+	(first.get_node("%BtnDown") as Button).pressed.emit()
+	check(dialog.vehicle_rows.rows[0].veh_type_key == "loco_faur", "The row moves down in the draft")
+	await get_tree().process_frame
+	first = list.get_child(1) as TrainCompositionVehicleRow
+	(first.get_node("%BtnRemove") as Button).pressed.emit()
+	check(dialog.vehicle_rows.rows.size() == 1 and dialog.vehicle_rows.rows[0].index == 0, "Removing a row reindexes the draft")
+	var escape := InputEventAction.new()
+	escape.action = "ui_cancel"
+	escape.pressed = true
+	dialog._input(escape)
+	await get_tree().process_frame
+	check(UiState.current_diag == null and not UiState.movement_blocked, "Cancel closes the composition and releases gameplay input")
+	spawn_action.free()
+
+
 func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle: RoadVehicle3D) -> void:
-	var old_player: PlayerHead3D = GlobalState.player
+	var old_player: PlayerAvatar = GlobalState.player
 	var old_camera: Camera3D = GlobalState.active_cam
 	var old_world: WorldMapScene = GlobalState.world_container
 	var old_prospecting: ProspectingManager = Managers.prospecting
-	var player_scene: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
-	var body: BasicFpsPlayer = player_scene.get_node("Player")
+	var player_scene: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	var body: BasicFpsPlayer = player_scene.walking_body
 	body.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	add_child(player_scene)
 	var terrain := Terrain3D.new()
@@ -216,14 +326,14 @@ func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle
 		check(UiState.current_diag == null and body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED, "Closing Prospect restores the walking state")
 		body.global_position = captured_position + Vector3.RIGHT
 		await _test_survey_marker(handler, prospecting, expected)
-	GlobalState.player.in_road_vehicle = road_vehicle
+	check(player_scene.control.enter_road_vehicle(road_vehicle), "Prospect fixture boards a road vehicle")
 	check(handler._on_action_triggered("Prospect"), "Prospect dispatches from the vehicle menu")
 	dialog = UiState.current_diag as ProspectDialog
 	check(dialog != null and dialog.readings.is_empty() and dialog.message.begins_with("Step out"), "In-vehicle Prospect prompts the player to step out")
 	if dialog != null:
 		dialog.close_all()
 		await get_tree().process_frame
-	GlobalState.player.in_road_vehicle = null
+	player_scene.control.exit_vehicle()
 	body.global_position = Vector3(4096, 6, 4096)
 	check(handler._on_action_triggered("Prospect"), "Prospect opens outside the terrain")
 	dialog = UiState.current_diag as ProspectDialog
@@ -302,26 +412,67 @@ func _test_survey_marker(handler: ActionHandler, prospecting: ProspectingManager
 		await get_tree().process_frame
 	check(prospecting.get_marker(1) == marker and prospecting.get_marker(2) == null, "Prospecting nearby reuses the sign")
 
-	var clicks := PlayerMouseClick.new()
-	var entity_clicks := BaseEntityClickHandler.new()
-	entity_clicks.name = "EntityClickHandler"
-	clicks.add_child(entity_clicks)
-	var terrain_clicks := TerrainClickHandler.new()
-	terrain_clicks.name = "TerrainClickHandler"
-	clicks.add_child(terrain_clicks)
-	add_child(clicks)
-	var camera: Camera3D = GlobalState.active_cam
+	var picker := WorldPicker.new()
+	add_child(picker)
+	var interaction := WorldInteraction.new()
+	interaction.entity_click_handler = BaseEntityClickHandler.new()
+	interaction.add_child(interaction.entity_click_handler)
+	add_child(interaction)
+	interaction.pick_requested.connect(picker.pick)
+	picker.picked.connect(interaction._on_world_picked)
+	var camera := Camera3D.new()
+	add_child(camera)
+	camera.make_current()
 	var board: Vector3 = signpost.to_global(Vector3(0.0, 0.85, 0.067)) if signpost != null else marker.global_position
 	camera.look_at_from_position(board + Vector3.BACK * 8.0, board)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
-	clicks.cast_ray(get_viewport().get_visible_rect().size * 0.5)
+	var release := InputEventMouseButton.new()
+	release.button_index = MOUSE_BUTTON_LEFT
+	release.position = get_viewport().get_visible_rect().size * 0.5
+	var press := release.duplicate() as InputEventMouseButton
+	press.pressed = true
+	var hud: Control = load("res://scenes/ui/ingame/ingame_overlay.tscn").instantiate()
+	add_child(hud)
+	var button := Button.new()
+	button.position = release.position - Vector2(12, 12)
+	button.size = Vector2(24, 24)
+	hud.add_child(button)
+	await get_tree().process_frame
+	get_viewport().push_input(press, true)
+	get_viewport().push_input(release, true)
+	check(UiState.current_diag == null, "A HUD button gets first chance at the click")
+	button.free()
+
+	UiState.block_world_input(handler)
+	get_viewport().push_input(press, true)
+	get_viewport().push_input(release, true)
+	check(UiState.current_diag == null, "A world input block prevents picking the sign")
+	UiState.release_world_input(handler)
+	get_viewport().push_input(press, true)
+	get_viewport().push_input(release, true)
 	dialog = UiState.current_diag as ProspectDialog
-	check(dialog != null and dialog.readings == expected and not dialog.can_prospect, "Clicking the sign opens its saved report through the world ray")
+	check(dialog != null and dialog.readings == expected and not dialog.can_prospect, "A click through the HUD crosshair opens the sign from the current viewport camera")
 	if dialog != null:
 		dialog.close_all()
 		await get_tree().process_frame
-	clicks.free()
+	var terrain_hits: Array[Vector3] = []
+	interaction.terrain_clicked.connect(func(position: Vector3): terrain_hits.append(position))
+	var terrain := GlobalState.world_container.terrain
+	var ground := Vector3(board.x + 10.0, 0, board.z)
+	camera.look_at_from_position(ground + Vector3.UP * 30, ground, Vector3.FORWARD)
+	terrain.set_camera(camera)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	get_viewport().push_input(press, true)
+	get_viewport().push_input(release, true)
+	check(terrain_hits.size() == 1 and terrain_hits[0].distance_to(ground) < 1.0, "A terrain click emits one world position")
+	terrain.set_camera(GlobalState.active_cam)
+	GlobalState.active_cam.make_current()
+	camera.free()
+	hud.free()
+	interaction.free()
+	picker.free()
 
 func _test_build(handler: ActionHandler, body: BasicFpsPlayer) -> void:
 	for view: GameEntity3D in [Industry3D.new(), RailStation3D.new(), BusStop3D.new()]:

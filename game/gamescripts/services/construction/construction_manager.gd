@@ -38,6 +38,10 @@ func site_error(world: WorldMapScene, building: Node3D, proposed: Transform3D) -
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.shape = footprint.shape
 	query.transform = proposed * local
+	# Terrain can fill the query's result limit with heightfield contacts.
+	var terrain_collision := world.terrain.get_collision()
+	if terrain_collision != null:
+		query.exclude = [terrain_collision.get_rid()]
 	var space: PhysicsDirectSpaceState3D = world.terrain.get_world_3d().direct_space_state
 	for hit: Dictionary in space.intersect_shape(query):
 		var collider: Object = hit.collider

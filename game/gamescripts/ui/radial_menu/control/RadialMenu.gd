@@ -38,8 +38,7 @@ const JOY_AXIS_RESCALE = 1.0/(1.0-JOY_DEADZONE)
 
 const ITEM_ICONS_NAME = "ItemIcons"
 
-# defines how long you have to wait before releasing a mouse button will
-# close the menu.
+# A short release leaves the menu open. After this threshold, release selects the highlighted item.
 const MOUSE_RELEASE_TIMEOUT = 400
 
 enum Position { off, inside, outside }
@@ -74,7 +73,7 @@ var item_angle = PI/6: set = _set_item_angle
 var tween : Tween
 
 
-# default menu itemsmn
+# Sample items for the standalone control. The gameplay wrapper supplies actions.
 var menu_items = [
 	{ 'texture': STAR_TEXTURE, 'title': 'Item1', 'id': 'arc_id1'},
 	{ 'texture': STAR_TEXTURE, 'title': 'Item2', 'id': 'arc_id2'},
@@ -103,7 +102,7 @@ var state = MenuState.closed			# state of the menu
 
 var center_offset = null				# offset of the arc center from top left
 var orig_item_angle = 0					# backup value for animation
-var msecs_at_opened = 0					# msecs since start when menu openeed
+var msecs_at_opened = 0					# timestamp for distinguishing a tap from a held release
 var opened_at_position					# this is where user has clicked
 var moved_to_position					# this is the actual center of the menu
 var active_submenu_idx = -1
@@ -775,6 +774,7 @@ func signal_id():
 		emit_signal("canceled")
 
 
+# The action count can change between openings, so rebuild icons and segment geometry together.
 func set_items(items):
 	"""
 	Changes the menu items. Expects a list of 3-item dictionaries with the

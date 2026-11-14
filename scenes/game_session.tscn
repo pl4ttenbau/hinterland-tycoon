@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
 [ext_resource type="Script" uid="uid://c7rapfs44v5lx" path="res://game/gamescripts/actions/show_near_action.gd" id="6_0dtnv"]
-[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/player/player_mouse_click.gd" id="7_6wawu"]
+[ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/input/world_picker.gd" id="7_6wawu"]
 [ext_resource type="Script" uid="uid://56qvdd74rjl1" path="res://game/gamescripts/actions/loadunload_action.gd" id="7_7yd2d"]
-[ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/player/click_handlers/base_entity_click_handler.gd" id="8_qsvwm"]
-[ext_resource type="Script" uid="uid://dfb5g16bgjuwi" path="res://game/gamescripts/nodes/player/click_handlers/terrain_click_handler.gd" id="9_yvyyf"]
+[ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/input/base_entity_click_handler.gd" id="8_qsvwm"]
+[ext_resource type="Script" uid="uid://boue3jkx474wc" path="res://game/gamescripts/nodes/input/world_interaction.gd" id="9_interaction"]
 [ext_resource type="PackedScene" uid="uid://cf8u4b8ekgut3" path="res://world/default/mapscenes/world_default.tscn" id="15_kyr8p"]
 [ext_resource type="PackedScene" uid="uid://cjf3k54llhqk5" path="res://scenes/ui/startmenu/startmenu_main.tscn" id="21_sc7tx"]
 [ext_resource type="PackedScene" uid="uid://4vshk56t46ml" path="res://scenes/ui/ingame/ingame_overlay.tscn" id="22_mwjue"]
@@ -20,7 +20,7 @@
 [node name="GameSession" type="Node3D" unique_id=2103121247]
 script = ExtResource("1_eorrk")
 
-[node name="OuterPlayer" parent="." unique_id=1457588995 instance=ExtResource("2_11abr")]
+[node name="PlayerAvatar" parent="." unique_id=1457588995 instance=ExtResource("2_11abr")]
 
 [node name="Input" type="Node" parent="." unique_id=2121846234]
 
@@ -46,16 +46,16 @@ script = ExtResource("7_7yd2d")
 key = "LoadUnload"
 metadata/_custom_type_script = "uid://56qvdd74rjl1"
 
-[node name="PlayerMouseClick" type="Node" parent="Input" unique_id=1119828470]
+[node name="WorldPicker" type="Node" parent="Input" unique_id=1119828470]
 script = ExtResource("7_6wawu")
 
-[node name="EntityClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1092272095]
+[node name="WorldInteraction" type="Node" parent="Input" node_paths=PackedStringArray("entity_click_handler")]
+script = ExtResource("9_interaction")
+entity_click_handler = NodePath("EntityClickHandler")
+
+[node name="EntityClickHandler" type="Node" parent="Input/WorldInteraction" unique_id=1092272095]
 script = ExtResource("8_qsvwm")
 metadata/_custom_type_script = "uid://c3n1pjne8toik"
-
-[node name="TerrainClickHandler" type="Node" parent="Input/PlayerMouseClick" unique_id=1247511969]
-script = ExtResource("9_yvyyf")
-metadata/_custom_type_script = "uid://dfb5g16bgjuwi"
 
 [node name="WorldServices" parent="." unique_id=1255505454 instance=ExtResource("53_services")]
 
@@ -83,3 +83,6 @@ objects_drawn = true
 primitives_drawn = true
 total_draw_calls = true
 metadata/_custom_type_script = "uid://cr3yk242noau8"
+
+[connection signal="pick_requested" from="Input/WorldInteraction" to="Input/WorldPicker" method="pick"]
+[connection signal="picked" from="Input/WorldPicker" to="Input/WorldInteraction" method="_on_world_picked"]

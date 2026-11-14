@@ -1,6 +1,5 @@
 class_name SpawnAction extends BaseAction
 
-const VEHICLE_SELECT_DIAG_SCENE = "res://scenes/ui/dialogs/select_vehicle/select_vehicle_dialog.tscn"
 const COMPOSE_TRAIN_DIAG_SCENE = "res://scenes/ui/dialogs/train_composition/train_composition_dialog.tscn"
 const ROAD_SPAWN_DIALOG = preload("res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_spawn_dialog.gd")
 const TRAIN_DEPOT_CLEARANCE_METRES: float = 10.0
@@ -20,8 +19,8 @@ func _on_road_vehicle_spawn_requested(depot: RoadDepotData) -> void:
 
 func on_trigger():
 	super.on_trigger()
-	var diag_instance: TrainCompositionDialog = self.show_compose_train_diag()
-	diag_instance.before_closed.connect(Callable(self, "_on_before_diag_closed"))
+	if UiState.current_diag == null:
+		show_compose_train_diag()
 
 func show_compose_train_diag() -> TrainCompositionDialog:
 	var diag_scene: PackedScene = load(COMPOSE_TRAIN_DIAG_SCENE)
@@ -29,8 +28,8 @@ func show_compose_train_diag() -> TrainCompositionDialog:
 	var depot: RailDepotData = RailDepotData.get_by_num(self.last_clicked_depot_num)
 	if depot != null:
 		(diag_instance.get_node("%AddableVehiclesList") as VehicleListUi).depot_track = depot.track
-	$/root.add_child(diag_instance)
-	diag_instance.show_dialog()
+	diag_instance.closed.connect(_on_train_composition_closed, CONNECT_ONE_SHOT)
+	get_tree().root.add_child(diag_instance)
 	return diag_instance
 
 func spawn_train(spawn_dto: TrainVehicleListDto):
@@ -70,10 +69,8 @@ func _on_spawn_action_request(depot_num: int):
 	self.last_clicked_depot_num = depot_num
 	self.on_trigger()
 
-func _on_before_diag_closed(diag_result):
-	if !diag_result is TrainVehicleListDto:
-		Loggie.error("Wrong Diag result when closing ComposeTrainDialog")
-		return
-	var spawn_dto: TrainVehicleListDto = diag_result as TrainVehicleListDto
-	self.spawn_train(spawn_dto)
+## Escape closes with a null result. Only the Spawn button supplies a train.
+func _on_train_composition_closed(result: Variant) -> void:
+	if result is TrainVehicleListDto:
+		spawn_train(result)
 #endregion

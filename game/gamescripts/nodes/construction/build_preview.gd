@@ -1,3 +1,4 @@
+## The modal terrain preview publishes the selected position to MinePlacement.
 class_name BuildPreview extends ModalGameDialog
 
 signal site_changed(position: Vector3)
@@ -12,7 +13,6 @@ var _site_detail: Label
 
 func _ready() -> void:
 	dialog_key = "BuildPreview"
-	_suspend_world_input()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
@@ -55,7 +55,9 @@ func _update_preview(cursor: Vector2) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_enter"):
+	if UiState.current_diag != self:
+		return
+	if event.is_action_pressed(&"ui_enter"):
 		get_viewport().set_input_as_handled()
 		if not _anchor.visible or _closing:
 			return

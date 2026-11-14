@@ -1,6 +1,7 @@
 ## Run road_vehicle_preview.tscn (F6) for an isolated driving/collision playground.
 extends Node3D
 
+var player: PlayerAvatar
 var manager: VehiclePlacer
 var vehicle: RoadVehicle3D
 var overview: Camera3D
@@ -85,8 +86,8 @@ func _add_rail() -> void:
 	add_child(rail)
 
 func _add_player_and_overview() -> void:
-	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
-	player.get_node("Player").position = Vector3(2.5, 1, -5)
+	player = load("res://scenes/subscenes/player.tscn").instantiate()
+	player.walking_body.position = Vector3(2.5, 1, -5)
 	add_child(player)
 	overview = Camera3D.new()
 	overview.position = Vector3(60, 65, 12)
@@ -106,8 +107,8 @@ func _add_status_label() -> void:
 
 func _restart() -> void:
 	if is_instance_valid(vehicle):
-		if manager.player_road_vehicle != null:
-			manager.exit_road_vehicle()
+		if player.control.is_in_vehicle():
+			player.control.exit_vehicle()
 		vehicle.free()
 	vehicle = manager.spawn_road_vehicle("trabant_601_green", [9101])
 	overview.make_current()
@@ -118,11 +119,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event is not InputEventKey or not event.pressed or event.echo:
 		return
 	if event.physical_keycode == KEY_E:
-		if manager.player_road_vehicle != null:
-			manager.exit_road_vehicle()
+		if player.control.is_in_vehicle():
+			player.control.exit_vehicle()
 		else:
-			manager.enter_road_vehicle(vehicle)
-	elif event.physical_keycode == KEY_R and manager.player_road_vehicle == null:
+			player.control.enter_road_vehicle(vehicle)
+	elif event.physical_keycode == KEY_R and not player.control.is_in_vehicle():
 		_restart()
 	elif event.physical_keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
