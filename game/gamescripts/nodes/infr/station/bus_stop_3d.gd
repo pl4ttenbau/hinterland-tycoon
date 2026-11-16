@@ -3,6 +3,7 @@
 class_name BusStop3D extends InventoryEntity3D
 
 const SIGN_SCENE_PATH: String = "res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn"
+const SHELTER_SCENE := preload("res://assets/meshes/infr/road/bus_stop_1/mesh_bus_top_1.tscn")
 
 signal station_assigned(station_obj: RoadStationData)
 signal station_placed(world_position: Vector3)
@@ -105,10 +106,15 @@ func _layout_shelters() -> void:
 ## The authored shelter runs along Z and opens toward -X. Align its long edge
 ## with the road, reversing the opposite side so both entrances face the road.
 func _place_shelter(shelter: Node3D, side_sign: float) -> void:
-	var right: Vector3 = self._road_heading.cross(Vector3.UP).normalized()
-	shelter.global_position = self.station.position + right * self._roadside_offset * side_sign
-	if not self._road_heading.is_zero_approx():
-		shelter.look_at(shelter.global_position + self._road_heading * side_sign)
+	shelter.global_transform = shelter_transform(self._road_heading, self._roadside_offset, side_sign).translated(self.station.position)
+
+## The preview and built stop share this transform relative to the road center.
+## Use +1 for increasing road order and -1 for the opposite carriageway.
+static func shelter_transform(heading: Vector3, offset_metres: float, side_sign: float) -> Transform3D:
+	var forward: Vector3 = heading * side_sign
+	var offset: Vector3 = forward.cross(Vector3.UP).normalized() * offset_metres
+	var orientation := Basis.IDENTITY if forward.is_zero_approx() else Basis.looking_at(forward)
+	return Transform3D(orientation, offset)
 
 func _exit_tree() -> void:
 	if Engine.is_editor_hint():

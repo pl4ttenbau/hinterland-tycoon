@@ -48,38 +48,34 @@ func _load_rail_stop(definition: Dictionary, catalog: InterchangesLoader) -> Err
 	var error: Error = catalog.register_stop(station, int(definition["interchangeNum"]))
 	if error != OK:
 		return error
-	self.stations_objs.append(station)
-	self.stations_by_num[station.num] = station
+	_register_rail_stop(station)
+	return OK
+
+func _register_rail_stop(station: RailStationData) -> NodeStationLinkData:
 	var track: RailTrackData = Managers.rails.track_storage._by_id[station.track_num]
 	var node: RailNodeData = track.nodes[station.node_index]
-	# Preserve the authored stop ID on the adapter used by rail signs/catchments.
 	var link := NodeStationLinkData.of(node, station.num)
 	link.num = station.num
 	link.hide_building = station.hide_building
-	node.station = link
-	station.connect_node_station(link)
-	self.add_station_link_from_node(link)
-	return OK
-
-## spawns new RailStation3D instances
-func create_3d_stations():
-	for station_obj: RailStationData in self.stations_objs:
-		self.create_station_3d(station_obj)
-
-## Curve-anchored gameplay stops reuse the adapter without replacing node.station.
-func add_runtime_stop(station: RailStationData) -> void:
-	var track: RailTrackData = Managers.rails.track_storage._by_id[station.track_num]
-	var node: RailNodeData = track.nodes[station.node_index]
-	var link := NodeStationLinkData.of(node, station.num)
-	link.num = station.num
-	link.position = track.curve.sample_baked(station.curve_offset)
+	if station.curve_offset >= 0.0:
+		link.position = track.curve.sample_baked(station.curve_offset)
+	else:
+		node.station = link
 	station.connect_node_station(link)
 	station.position = link.position
 	stations_objs.append(station)
 	stations_by_num[station.num] = station
 	add_station_link_from_node(link)
+	return link
+
+func create_3d_stations() -> void:
+	for station_obj: RailStationData in stations_objs:
+		create_station_3d(station_obj)
+
+func add_runtime_stop(station: RailStationData, building: RailPlatform3D) -> void:
+	var link: NodeStationLinkData = _register_rail_stop(station)
 	create_station_3d(station)
-	spawn_station_link(link).adjust_rotation_from_track()
+	spawn_station_link(link, building).adjust_rotation_from_track()
 
 func create_station_3d(station_obj: RailStationData):
 	var instance: RailStation3D = load(STATION_3D_SCENE_PATH).instantiate()
@@ -111,7 +107,7 @@ func add_station_link_from_node(node_station_link: NodeStationLinkData):
 	# add to track & global station list
 	var station_track: RailTrackData = node_station_link.parent_node.parent_track
 	station_track.node_stations.append(node_station_link)
-	Managers.stations.node_stations_storage.add(node_station_link)
+	node_stations_storage.add(node_station_link)
 
 ## Station objects are created with the rail tracks, but instanciated one by one here
 ## this only happens, after the parents - RailStationData - are loaded & spawned in scene tree
@@ -124,13 +120,13 @@ func spawn_station_links():
 			outer_station.adjust_rotation_from_track()
 	SignalBus.node_station_links_spawned.emit()
 
-func spawn_station_link(node_station_link: NodeStationLinkData) -> NodeStationLink3D:
-	var station_link_3d: NodeStationLink3D = node_station_link.spawn()
+func spawn_station_link(node_station_link: NodeStationLinkData, building: RailPlatform3D = null) -> NodeStationLink3D:
+	var station_link_3d: NodeStationLink3D = node_station_link.spawn(building)
 	self.node_stations_storage.add_container(station_link_3d)
 	# add to parent station
 	var station_3d: RailStation3D = self.get_station_3d_with_num(node_station_link.parent_station_num)
+	station_link_3d.position = station_3d.to_local(node_station_link.position)
 	station_3d.add_child(station_link_3d, true)
-	station_link_3d.global_position = node_station_link.position
 	return station_link_3d
 #endregion
 

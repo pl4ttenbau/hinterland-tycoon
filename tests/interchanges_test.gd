@@ -286,6 +286,11 @@ func test_station_dialogs(rail_link: NodeStationLink3D, bus: BusStop3D) -> bool:
 	add_child(handler)
 	var rail_collider: StationCollider = rail_link.get_node("StationBuilding3D/StationBody")
 	var road_collider: StationCollider = bus.get_node("Model/OppositeShelter/ShelterClick")
+	var hidden_platform: Node3D = rail_collider.get_parent()
+	var platform_shape: CollisionShape3D = rail_collider.get_node("StationShape3D")
+	check(not hidden_platform.visible and platform_shape.disabled, "hideBuilding removes the platform and its collision")
+	check(rail_link.get_node("StationSign3D").visible and rail_link.get_node("Area3D").monitoring,
+		"hideBuilding leaves the sign and station catchment active")
 
 	# Both physical station models open the same information through the click handler.
 	for collider: StationCollider in [rail_collider, road_collider]:
@@ -295,11 +300,22 @@ func test_station_dialogs(rail_link: NodeStationLink3D, bus: BusStop3D) -> bool:
 			continue
 		var headline: Label = dialog.get_node("%Headline")
 		var city: Label = dialog.get_node("%TownName")
-		var connections: ItemList = dialog.get_node("%Connections")
-		var goods: ItemList = dialog.get_node("%Inventory")
+		var tabs: TabContainer = dialog.get_node("%StationTabs")
+		var stops: ItemList = dialog.get_node("%Stops")
+		var coverage: ItemList = dialog.get_node("%CoverageList")
+		var goods: ItemList = dialog.get_node("%InventoryList")
 		check(headline.text == bus.station.station_name, "Station dialog shows the interchange name")
 		check(city.visible and city.text == bus.station.town_name, "The station name has a city heading")
-		check(connections.item_count == 2, "Station dialog lists both physical stops")
+		check(tabs.get_tab_title(0) == "Stops" and tabs.get_tab_title(1) == "Coverage"
+			and tabs.get_tab_title(2) == "Inventory", "The dialog keeps stops, coverage, and stock in separate tabs")
+		check(stops.item_count == 2, "Station dialog lists both physical stops")
+		var clicked_stop: String = stops.get_item_text(0)
+		var stop_detail: String = "Hidden platform" if collider == rail_collider else "Both directions"
+		check(clicked_stop.begins_with("This stop") and clicked_stop.contains(stop_detail)
+			and not stops.get_item_text(1).begins_with("This stop"), "The clicked stop is first and shows its platform or direction")
+		check(coverage.item_count == 2 and coverage.get_item_text(1) == "No connected industries",
+			"Coverage shows an explicit empty state without mixing in physical stops")
+		tabs.current_tab = 2
 		check(goods.item_count == 1 and goods.get_item_text(0).contains("Boards"), "Station dialog shows stock from production")
 
 		# Stock changes while the dialog is open should refresh its inventory list.

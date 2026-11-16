@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdpuy6nv6x0pf"
-path.s3tc="res://.godot/imported/tex_platform_1_n.png-c04229fd1e618232972c47668916c3cf.s3tc.ctex"
+path.s3tc="res://.godot/imported/tex_platform_1_n.png-2a915da6e9bc447e47fcf43ff9e6ef46.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/infr/station/tex_platform_1_n.png"
-dest_files=["res://.godot/imported/tex_platform_1_n.png-c04229fd1e618232972c47668916c3cf.s3tc.ctex"]
+source_file="res://assets/meshes/infr/stops/passenger_platform/mesh/tex_platform_1_n.png"
+dest_files=["res://.godot/imported/tex_platform_1_n.png-2a915da6e9bc447e47fcf43ff9e6ef46.s3tc.ctex"]
 
 [params]
 

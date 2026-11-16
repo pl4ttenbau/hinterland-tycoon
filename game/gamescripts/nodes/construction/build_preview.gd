@@ -29,7 +29,7 @@ func _ready() -> void:
 	_anchor = Node3D.new()
 	_anchor.hide()
 	add_child(_anchor)
-	_tint_model()
+	tint_model(model)
 	_anchor.add_child(model)
 
 
@@ -85,7 +85,7 @@ func _add_footer_label(footer: VBoxContainer, caption: String) -> Label:
 	return label
 
 
-func _tint_model() -> void:
+static func tint_model(model: Node3D) -> void:
 	# Apply the tint to the preview instances. Other users of the model keep their materials.
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color("#39c962")

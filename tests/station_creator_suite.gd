@@ -37,7 +37,7 @@ func run() -> bool:
 	rail = RailMapper.rail_track_from_dict({"num": 6, "type": "750_MM", "points": [{"pos": [100, 5, 130]}, {"pos": [500, 5, 130]}]})
 	rail.build_curve()
 	services.rails.track_storage.add(rail)
-	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch", "test_track_spending"]:
+	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch", "test_track_spending", "test_rail_confirmation"]:
 		if await call(test) != true:
 			check(false, test + " aborted")
 	services.free()
@@ -129,35 +129,60 @@ func test_validation() -> bool:
 	return true
 
 func test_dialogs() -> bool:
-	var script: GDScript = load("res://game/gamescripts/ui/dialogs/station_creator/station_creator_dialog.gd")
-	if script == null or not script.can_instantiate():
-		return false
-	var placement: Dictionary = tool.placement_on(road, Vector3(400, 5, 99))
+	var placement: Dictionary = tool.placement_on(road, Vector3(400, 5, 99), Vector3.LEFT)
 	var before: int = services.interchanges.stops_by_num.size()
 	var previous_blocked: bool = UiState.movement_blocked
-	var dialog: ModalGameDialog = script.create(tool, placement)
+	var dialog: ModalGameDialog = StationCreatorDialog.create(tool, placement)
 	add_child(dialog)
 	check(dialog.dialog_key == "CreateStationDialog" and dialog.get_node("%OkButton").text == "Create station · DM 5,000.00", "No nearby stop opens the new-station menu")
-	var directions := dialog.find_child("StopSettings", true, false) as OptionButton
-	check(directions.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE, "The dialog defaults to the direction served on the player's side")
+	var sides: OptionButton = dialog.get_node("%RoadSide")
+	check(sides.get_item_text(sides.selected) == "Right"
+		and sides.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
+		"Looking back along the road makes the decreasing shelter the player's right")
+	var preview := dialog.get_node("RoadPlacementPreview") as Node3D
+	check(preview.get_node("ReverseShelter").visible and not preview.get_node("ForwardShelter").visible,
+		"Only the selected shelter is previewed initially")
+	sides.select(2)
+	sides.item_selected.emit(sides.selected)
+	check(preview.get_node("ReverseShelter").visible and preview.get_node("ForwardShelter").visible,
+		"Both sides previews two shelters")
 	await capture_preview(dialog, "create")
 	check(UiState.movement_blocked, "Dialog suspends world input")
 	dialog.close_all()
 	await get_tree().process_frame
-	check(services.interchanges.stops_by_num.size() == before and UiState.movement_blocked == previous_blocked and UiState.current_diag == null, "Cancel makes no stop and restores input")
-	dialog = script.create(tool, placement)
+	check(not is_instance_valid(preview) and services.interchanges.stops_by_num.size() == before
+		and UiState.movement_blocked == previous_blocked and UiState.current_diag == null,
+		"Cancel removes the preview, makes no stop, and restores input")
+	dialog = StationCreatorDialog.create(tool, tool.placement_on(road, placement.origin, Vector3.RIGHT))
 	add_child(dialog)
+	sides = dialog.get_node("%RoadSide")
+	check(sides.get_item_text(sides.selected) == "Left"
+		and sides.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
+		"Turning around changes the label while keeping the default shelter on the player's side of the road")
+	sides.select(1)
+	sides.item_selected.emit(sides.selected)
+	preview = dialog.get_node("RoadPlacementPreview")
+	var forward: Node3D = preview.get_node("ForwardShelter")
+	var expected_transform: Transform3D = forward.global_transform
+	var geometry: MeshInstance3D = forward.find_children("*", "MeshInstance3D", true, false)[0]
+	var material := geometry.material_override as StandardMaterial3D
+	check(forward.visible and not preview.get_node("ReverseShelter").visible
+		and material.albedo_color.is_equal_approx(Color("#39c962")),
+		"Changing sides swaps the green shelter preview")
 	var next_stop_num: int = services.interchanges.next_stop_num()
 	dialog.get_node("%OkButton").pressed.emit()
 	await get_tree().process_frame
 	check(services.interchanges.stops_by_num.size() == before + 1, "Confirm creates a station through the actual dialog")
 	var created: RoadStationData = services.interchanges.stops_by_num.get(next_stop_num)
-	check(created != null and created.direction == Enums.RoadStopDirection.ROAD_NODES_DECREASE, "The created stop keeps the selected travel direction")
+	check(created != null and created.direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE, "The created stop keeps the direction for the selected side")
+	var view: BusStop3D = services.road_stops.containers_by_num.get(next_stop_num)
+	var shelter: Node3D = view.get_node("Model/Shelter")
+	check(shelter.global_transform.is_equal_approx(expected_transform), "The finished shelter matches the preview position and rotation")
 	placement = tool.placement_on(road, Vector3(420, 5, 100))
-	dialog = script.create(tool, placement)
+	dialog = StationCreatorDialog.create(tool, placement)
 	add_child(dialog)
 	check(dialog.dialog_key == "AddStationStopDialog" and dialog.get_node("%OkButton").text == "Add stop · DM 5,000.00", "Nearby stop opens the add-stop menu")
-	check(dialog.find_child("StationName", true, false) == null, "Existing station dialog does not rename the interchange")
+	check(not dialog.get_node("%StationName").is_visible_in_tree(), "Existing station dialog does not rename the interchange")
 	await capture_preview(dialog, "add")
 	dialog.get_node("%OkButton").pressed.emit()
 	await get_tree().process_frame
@@ -166,6 +191,128 @@ func test_dialogs() -> bool:
 	check(menu.available_actions().any(func(item: Dictionary): return item.id == "CreateStop"), "Loaded session offers Create stop in the action menu")
 	menu.free()
 	return true
+
+func test_rail_confirmation() -> bool:
+	var placement: Dictionary = tool.placement_on(rail, Vector3(270, 5, 130))
+	var before: int = services.interchanges.stops_by_num.size()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	player.walking_body.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	add_child(player)
+	player.walking_body.global_position = Vector3(270, 5.5, 130)
+	var handler := ActionHandler.new()
+	add_child(handler)
+	var cash: int = player.company.cash
+	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
+	check(menu.available_actions().any(func(item: Dictionary): return item.title == "Build platform"),
+		"The radial action says Build platform on the track")
+	menu.free()
+	var opened: bool = handler._on_action_triggered("CreateStop")
+	var dialog := UiState.current_diag as StationCreatorDialog
+	check(opened and dialog != null, "Create stop opens the rail confirmation while standing on the track")
+	if dialog == null:
+		_free_placement_player(player, handler)
+		return false
+	var preview := dialog.get_node("RailPlacementPreview") as Node3D
+	var visual := preview.get_node("PlatformModel") as BuildingMesh3D
+	var model := visual.get_child(0) as MeshInstance3D
+	var tint := model.material_override as StandardMaterial3D
+	var transform: Transform3D = preview.global_transform
+	check(visual.transform.is_equal_approx(Transform3D.IDENTITY), "Passenger mesh scene starts at identity")
+	check(tint.albedo_color.is_equal_approx(Color("#39c962")) and transform.origin.is_equal_approx(placement.position),
+		"Rail confirmation shows the green platform at the track position")
+	var yes: Button = dialog.get_node("%OkButton")
+	var no: Button = yes.get_parent().get_child(1)
+	check(yes.text.begins_with("Yes") and no.text == "No", "Rail construction offers Yes and No")
+	no.pressed.emit()
+	await get_tree().process_frame
+	check(not is_instance_valid(preview) and services.interchanges.stops_by_num.size() == before
+		and player.company.cash == cash, "No clears the preview without placing or charging for the stop")
+	handler._on_action_triggered("CreateStop")
+	dialog = UiState.current_diag as StationCreatorDialog
+	if dialog == null:
+		_free_placement_player(player, handler)
+		return false
+	preview = dialog.get_node("RailPlacementPreview")
+	var side := dialog.find_child("PlatformSide", true, false) as OptionButton
+	side.select(side.get_item_index(RailStationData.PlatformSide.LEFT))
+	side.item_selected.emit(side.selected)
+	check(preview.global_position.is_equal_approx(transform.origin) and preview.global_basis.z.dot(transform.basis.z) < -0.99,
+		"Left flips the platform without moving the stop")
+	transform = preview.global_transform
+	var types := dialog.find_child("PlatformType", true, false) as OptionButton
+	types.select(1)
+	types.item_selected.emit(types.selected)
+	visual = preview.get_node("PlatformModel")
+	model = visual.get_child(0)
+	var cargo: StationBuildingCatalog = StationBuildingCatalog.rail_platform("STATION_GOODS")
+	check(visual.scene_file_path == cargo.preview_scene.resource_path
+		and visual.transform.is_equal_approx(Transform3D.IDENTITY)
+		and preview.global_transform.is_equal_approx(transform)
+		and (model.material_override as StandardMaterial3D).albedo_color.is_equal_approx(Color("#39c962")),
+		"Cargo swaps to its green BuildingMesh3D preview without resetting the selected side")
+	var preview_mesh_transform: Transform3D = model.global_transform
+	var next_stop: int = services.interchanges.next_stop_num()
+	dialog.get_node("%OkButton").pressed.emit()
+	await get_tree().process_frame
+	var stop := services.interchanges.stops_by_num.get(next_stop) as RailStationData
+	check(stop != null and not is_instance_valid(dialog) and player.company.cash == cash - CompanyData.STOP_COST,
+		"Yes places the rail stop, charges once and closes the preview")
+	if stop == null:
+		_free_placement_player(player, handler)
+		return false
+	var link: NodeStationLink3D = stop.node_stations[0].station3d
+	var building := link.get_node("StationBuilding3D") as RailPlatform3D
+	var built_model := building.platform_mesh.get_child(0) as MeshInstance3D
+	check(stop.station_type == "STATION_GOODS" and building.scene_file_path == cargo.building_scene.resource_path
+		and building.platform_mesh.scene_file_path == cargo.preview_scene.resource_path
+		and built_model.global_transform.is_equal_approx(preview_mesh_transform),
+		"The Cargo choice places the matching RailPlatform3D and mesh at the preview transform")
+	await get_tree().physics_frame
+	var body := building.get_node("StationBody") as StationCollider
+	for sample: Vector3 in [Vector3(0, 1.1, -5.4), Vector3(13, 0.54, -5.4)]:
+		var surface: Vector3 = building.to_global(sample)
+		var query := PhysicsRayQueryParameters3D.create(surface + Vector3.UP * 2.0, surface - Vector3.UP * 2.0, 1)
+		var hit: Dictionary = building.get_world_3d().direct_space_state.intersect_ray(query)
+		check(hit.get("collider") == body and absf(hit.position.y - surface.y) < 0.08,
+			"Cargo collision follows the visible deck and sloped ramp")
+	check(body.get_stop() == stop, "The cargo platform collider opens its station information")
+	var duplicate: Dictionary = tool.placement_on(rail, Vector3(290, 5, 130))
+	var rejected: Dictionary = tool.create_stop(duplicate, stop.interchange_num, "", -1, "STATION_PASS", Enums.RoadStopDirection.ROAD_NODES_INCREASE)
+	check(rejected.has("error") and rejected.error.contains("already has a platform")
+		and player.company.cash == cash - CompanyData.STOP_COST,
+		"The same interchange cannot buy another platform on this track")
+
+	player.walking_body.global_position = Vector3(485, 5.5, 130)
+	handler._on_action_triggered("CreateStop")
+	dialog = UiState.current_diag as StationCreatorDialog
+	if dialog == null:
+		_free_placement_player(player, handler)
+		return false
+	preview = dialog.get_node("RailPlacementPreview")
+	var hide_option := dialog.find_child("HidePlatform", true, false) as CheckBox
+	hide_option.button_pressed = true
+	check(not preview.get_node("PlatformModel").visible and preview.get_node("StopMarker").visible,
+		"Hiding the platform shows the stopping point in the preview")
+	next_stop = services.interchanges.next_stop_num()
+	dialog.get_node("%OkButton").pressed.emit()
+	await get_tree().process_frame
+	_free_placement_player(player, handler)
+	var hidden := services.interchanges.stops_by_num.get(next_stop) as RailStationData
+	if hidden == null:
+		return false
+	var hidden_link: NodeStationLink3D = hidden.node_stations[0].station3d
+	var hidden_shape := hidden_link.get_node("StationBuilding3D/StationBody/StationShape3D") as CollisionShape3D
+	check(hidden.interchange != stop.interchange and hidden.hide_building and hidden_shape.disabled
+		and not hidden_link.get_node("StationBuilding3D").visible and hidden_link.get_node("StationSign3D").visible,
+		"A different interchange may build a hidden stop on the same track with its sign and without collision")
+	return true
+
+func _free_placement_player(player: PlayerAvatar, handler: ActionHandler) -> void:
+	GlobalState.player = null
+	GlobalState.active_cam = null
+	player.free()
+	handler.free()
+
 
 func test_multiple_stations() -> bool:
 	var placement: Dictionary = tool.placement_on(road, Vector3(250, 5, 100))
@@ -176,8 +323,7 @@ func test_multiple_stations() -> bool:
 	placement = tool.placement_on(road, Vector3(210, 5, 100))
 	var nearby: Array[InterchangeData] = tool.nearby_interchanges(placement.origin)
 	check(nearby.size() == 2 and nearby[0] == created.stop.interchange, "Nearby stations are deduplicated and ordered by closest stop")
-	var script: GDScript = load("res://game/gamescripts/ui/dialogs/station_creator/station_creator_dialog.gd")
-	var dialog: ModalGameDialog = script.create(tool, placement)
+	var dialog: ModalGameDialog = StationCreatorDialog.create(tool, placement)
 	add_child(dialog)
 	var selector: OptionButton = dialog.find_child("ExistingStation", true, false)
 	check(selector != null and selector.item_count == 2 and selector.selected == 0, "Ambiguous placement offers both stations, with nearest selected")
@@ -195,8 +341,12 @@ func test_action_dispatch() -> bool:
 	var handler := ActionHandler.new()
 	add_child(handler)
 	var before: int = services.interchanges.stops_by_num.size()
+	player.walking_camera.look_at(player.walking_camera.global_position + Vector3.LEFT)
 	check(handler._on_action_triggered("CreateStop"), "Action captures a real player's supporting road and opens the dialog")
 	check(UiState.current_diag != null and body.process_mode == Node.PROCESS_MODE_DISABLED, "Creator dialog suspends the walking player")
+	var road_side: OptionButton = UiState.current_diag.get_node("%RoadSide")
+	check(road_side.get_item_id(1) == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
+		"The real action maps Right from the walking camera's view")
 	check(not handler._on_action_triggered("CreateStop"), "Repeated dispatch cannot open a duplicate dialog")
 	var escape := InputEventAction.new()
 	escape.action = "ui_cancel"

@@ -1,5 +1,10 @@
 class_name StationInfoDialog extends ModalGameDialog
 
+const RAIL_ICON := preload("res://assets/icons/icon_rail_track_white.png")
+const ROAD_ICON := preload("res://assets/icons/icon_road_white.png")
+const HOUSE_ICON := preload("res://assets/icons/icon_house_white.png")
+const INDUSTRY_ICON := preload("res://assets/icons/icon_industry_white.png")
+
 var stop: AbstractStation
 var _inventory: GoodsInventory
 
@@ -26,44 +31,93 @@ func _ready() -> void:
 	if _inventory != null:
 		_inventory.goods_change.connect(_refresh_inventory)
 
-	_fill_connections()
+	_fill_stops()
+	_fill_coverage()
 	_refresh_inventory()
 
-## Show the interchange's physical access points and the buildings it serves.
-func _fill_connections() -> void:
-	var list: ItemList = %Connections
-	list.clear()
+func _fill_stops() -> void:
 	var interchange: InterchangeData = stop.interchange
-	var stops: Array[AbstractStation] = [stop]
+	_add_stop_row(stop, true)
 	if interchange != null:
-		stops = interchange.stops
-	for connection: AbstractStation in stops:
-		list.add_item(_describe_stop(connection), null, false)
+		for other: AbstractStation in interchange.stops:
+			if other != stop:
+				_add_stop_row(other, false)
 
+func _add_stop_row(connection: AbstractStation, opened_here: bool) -> void:
+	var list: ItemList = %Stops
+	var parts := PackedStringArray()
+	var icon: Texture2D
+	var line_id: String
+	if opened_here:
+		parts.append("This stop")
+	if connection is RailStationData:
+		icon = RAIL_ICON
+		line_id = "Track #%d" % connection.track_num
+		var track: RailTrackData
+		if is_instance_valid(Managers.rails):
+			track = Managers.rails.track_storage._by_id.get(connection.track_num)
+		parts.append("Cargo rail" if connection.station_type == "STATION_GOODS" else "Passenger rail")
+		if connection.hide_building:
+			parts.append("Hidden platform")
+		elif connection.curve_offset >= 0.0:
+			parts.append("Left side" if connection.platform_side == RailStationData.PlatformSide.LEFT else "Right side")
+		parts.append(_line_label(track, line_id))
+	elif connection is RoadStationData:
+		icon = ROAD_ICON
+		line_id = "Road #%d" % connection.road_num
+		var road: RoadData
+		if is_instance_valid(Managers.roads):
+			road = Managers.roads.storage._by_id.get(connection.road_num)
+		parts.append("Road stop")
+		match connection.direction:
+			Enums.RoadStopDirection.ROAD_NODES_INCREASE: parts.append("Toward road end")
+			Enums.RoadStopDirection.ROAD_NODES_DECREASE: parts.append("Toward road start")
+			Enums.RoadStopDirection.BOTH_DIRECTIONS: parts.append("Both directions")
+		if connection.hide_building:
+			parts.append("Hidden shelter")
+		parts.append(_line_label(road, line_id))
+	else:
+		parts.append("Stop")
+	var caption: String = " · ".join(parts)
+	var row: int = list.add_item(caption, icon, false)
+	var reference: String = "Stop #%d" % connection.num
+	if not line_id.is_empty():
+		reference += " · " + line_id
+	list.set_item_tooltip(row, "%s\n%s" % [caption, reference])
+	if opened_here:
+		list.set_item_custom_fg_color(row, list.get_theme_color("caret_color"))
+
+func _line_label(line: AbstractTrack, fallback: String) -> String:
+	if line != null and not line.track_name.strip_edges().is_empty():
+		return line.track_name
+	return fallback
+
+func _fill_coverage() -> void:
+	var list: ItemList = %CoverageList
+	var interchange: InterchangeData = stop.interchange
 	var buildings: StationConnections = interchange.connections if interchange != null else stop.connections
+	var homes: int = buildings.houses.size()
+	list.add_item("Connected homes · %d" % homes, HOUSE_ICON, false)
+	var industries: int = 0
 	for connection: StationIndustryConnection in buildings.industries:
 		var industry: IndustryData = connection.industry
 		if industry != null and industry.ind_type != null:
 			var industry_name: String = industry.ind_name if not industry.ind_name.is_empty() else industry.ind_type.name
-			list.add_item("Industry · %s" % industry_name, null, false)
-	if not buildings.houses.is_empty():
-		list.add_item("Connected homes · %d" % buildings.houses.size(), null, false)
-
-func _describe_stop(connection: AbstractStation) -> String:
-	if connection is RailStationData:
-		return "Rail stop #%d · Track #%d" % [connection.num, connection.track_num]
-	if connection is RoadStationData:
-		return "Road stop #%d · Road #%d" % [connection.num, connection.road_num]
-	return "Stop #%d" % connection.num
+			list.add_item(industry_name, INDUSTRY_ICON, false)
+			industries += 1
+	if industries == 0:
+		list.add_item("No connected industries", INDUSTRY_ICON, false)
 
 ## Passenger batches show the city and station of their destination interchange.
 func _refresh_inventory() -> void:
-	var list: ItemList = %Inventory
+	var list: ItemList = %InventoryList
 	list.clear()
 	if _inventory == null:
 		%Capacity.text = "Inventory unavailable"
 		return
-	%Capacity.text = "%s / %s units" % [
+	var caption: String = "Shared stock" if stop.interchange != null else "Stop stock"
+	%Capacity.text = "%s · %s / %s units" % [
+		caption,
 		InventoryPresentation.quantity(_inventory.storage.current_storage),
 		InventoryPresentation.quantity(_inventory.amount_max),
 	]

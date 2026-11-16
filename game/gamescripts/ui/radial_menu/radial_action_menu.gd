@@ -34,7 +34,8 @@ func available_actions() -> Array[Dictionary]:
 	if not in_vehicle and is_instance_valid(Managers.interchanges):
 		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
 		if is_instance_valid(creator) and creator.is_available():
-			items.append(_item("Create stop", "CreateStop", "create_stop"))
+			var walking: BasicFpsPlayer = player.walking_body if is_instance_valid(player) else null
+			items.append(_item(creator.action_title(walking), "CreateStop", "create_stop"))
 	items.append(_item("Prospect", "Prospect", "prospect"))
 	items.append(_item("Build", "Build", "build"))
 	items.append(_item("Inventory", "LoadUnload", "inventory"))
