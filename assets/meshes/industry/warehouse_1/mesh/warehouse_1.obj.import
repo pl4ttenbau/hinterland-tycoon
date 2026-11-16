@@ -4,18 +4,20 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dhstwvtpf8rf5"
-path="res://.godot/imported/warehouse_1.obj-5f612fd7b50b1bb8994cc5591ae8a6d2.scn"
+path="res://.godot/imported/warehouse_1.obj-f89d12e49c08a26426125c5cb889245c.scn"
 
 [deps]
 
-source_file="res://assets/meshes/industry/warehouse_1/warehouse_1.obj"
-dest_files=["res://.godot/imported/warehouse_1.obj-5f612fd7b50b1bb8994cc5591ae8a6d2.scn"]
+source_file="res://assets/meshes/industry/warehouse_1/mesh/warehouse_1.obj"
+dest_files=["res://.godot/imported/warehouse_1.obj-f89d12e49c08a26426125c5cb889245c.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

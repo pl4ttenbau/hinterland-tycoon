@@ -386,7 +386,7 @@ func _test_mine_reserve_areas(prospecting: ProspectingManager) -> void:
 
 func _test_construction_footprint(construction: ConstructionManager, world: WorldMapScene) -> void:
 	var building := Node3D.new()
-	var component := Constructable3D.new()
+	var component := Constructable.new()
 	building.add_child(component)
 	var proposed := Transform3D(Basis(Vector3.UP, PI * 0.5), Vector3(180, 0, 180))
 	check(construction.site_error(world, building, proposed).contains("missing its placement shape"), "Construction reports a missing footprint")
@@ -401,7 +401,7 @@ func _test_construction_footprint(construction: ConstructionManager, world: Worl
 	footprint.position.x = 2.0
 	footprint.shape = BoxShape3D.new()
 	body.add_child(footprint)
-	component.placement_shape = footprint
+	component.placement_collision_shape = footprint
 
 	var obstacle := StaticBody3D.new()
 	var obstacle_shape := CollisionShape3D.new()
@@ -504,9 +504,9 @@ func _test_survey_marker(handler: ActionHandler, prospecting: ProspectingManager
 
 func _test_build(handler: ActionHandler, body: BasicFpsPlayer) -> void:
 	for view: GameEntity3D in [Industry3D.new(), RailStation3D.new(), BusStop3D.new()]:
-		check(view._get_configuration_warnings().size() == 1, "Industry and station views warn about a missing Constructable3D")
-		view.add_child(Constructable3D.new())
-		check(view._get_configuration_warnings().is_empty(), "A direct Constructable3D clears the missing-component warning")
+		check(view._get_configuration_warnings().size() == 1, "Industry and station views warn about a missing Constructable")
+		view.add_child(Constructable.new())
+		check(view._get_configuration_warnings().is_empty(), "A direct Constructable clears the missing-component warning")
 		view.free()
 
 	check(handler._on_action_triggered("Build"), "Build opens the picker on a loaded map")

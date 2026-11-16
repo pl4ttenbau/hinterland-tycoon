@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://gghoavnif2y6"]
+
+[ext_resource type="Script" uid="uid://djbnfqrei1eq" path="res://game/gamescripts/nodes/construction/building_mesh_3d.gd" id="1_41fdq"]
+[ext_resource type="PackedScene" uid="uid://bl8dkt8ihgdfc" path="res://assets/meshes/industry/oil_derrick/mesh/oil_derrick_merged.obj" id="2_s6d4w"]
+
+[node name="MeshOilDerrick" type="Node3D" unique_id=1693790778]
+script = ExtResource("1_41fdq")
+metadata/_custom_type_script = "uid://djbnfqrei1eq"
+
+[node name="oil_derrick_merged" parent="." unique_id=1714600635 instance=ExtResource("2_s6d4w")]

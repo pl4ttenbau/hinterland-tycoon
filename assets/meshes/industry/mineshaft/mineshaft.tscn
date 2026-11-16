@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="6_ud687"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="7_q3x8e"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_yvm43"]
-[ext_resource type="Script" path="res://game/gamescripts/nodes/construction/constructable_3d.gd" id="9_constructable"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="9_constructable"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p1ie3"]
 size = Vector3(15.310032, 25.0383, 15.64447)
@@ -29,11 +29,10 @@ metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 [node name="MeshMineshaft" parent="." unique_id=499984617 instance=ExtResource("2_yvm43")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
-[node name="Constructable3D" type="Node" parent="." node_paths=PackedStringArray("model", "placement_shape")]
+[node name="Constructable3D" type="Node" parent="." node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
 script = ExtResource("9_constructable")
-industry_building_key = "mineshaft"
-model = NodePath("../MeshMineshaft")
-placement_shape = NodePath("../IndustryCollider/CollisionShape3D")
+visual_model = NodePath("../MeshMineshaft")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
 
 [node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=113687436]
 script = ExtResource("4_acou4")

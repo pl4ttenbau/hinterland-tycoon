@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_r2mer"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_74n2m"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_i4qor"]
-[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/nodes/construction/constructable_3d.gd" id="8_ujmii"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="8_ujmii"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
 size = Vector3(17.6987, 12.236084, 15.745483)
@@ -48,9 +48,8 @@ script = ExtResource("7_i4qor")
 industry3d = NodePath("..")
 metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
 
-[node name="Constructable3D" type="Node" parent="." unique_id=207826137 node_paths=PackedStringArray("model", "placement_shape")]
+[node name="Constructable" type="Node" parent="." unique_id=207826137 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
 script = ExtResource("8_ujmii")
-industry_building_key = "corner_mall"
-model = NodePath("../MeshCornerMall")
-placement_shape = NodePath("../IndustryCollider/CollisionShape3D")
+visual_model = NodePath("../MeshCornerMall")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
 metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

@@ -232,9 +232,11 @@ func test_industry_catalogs() -> bool:
 		var building: Node = scene.instantiate()
 		check(building is Industry3D, "%s uses a playable industry scene" % definition.key)
 		if definition.construction_cost >= 0:
-			var component := Constructable3D.find_on(building)
+			check(ResourceLoader.exists(definition.preview_scene_path, "PackedScene"),
+				"%s has a catalog preview scene" % definition.key)
+			var component := Constructable.find_on(building)
 			check(component != null and component._get_configuration_warnings().is_empty(),
-				"%s has a preview, price and placement geometry" % definition.key)
+				"%s has placement geometry" % definition.key)
 		building.free()
 
 	# A misspelled building key cannot leave a half-loaded catalog.

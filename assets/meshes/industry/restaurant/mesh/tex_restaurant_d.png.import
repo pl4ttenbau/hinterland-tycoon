@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx52htn4x4cp5"
-path.s3tc="res://.godot/imported/tex_oil_derrick_lighter_planks.jpg-8f276713257738cd2c1bf4f3326b8fd2.s3tc.ctex"
+uid="uid://b666mknuvjkoj"
+path.s3tc="res://.godot/imported/tex_restaurant_d.png-e166cc8177658098d72d63c17df3f0a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks.jpg"
-dest_files=["res://.godot/imported/tex_oil_derrick_lighter_planks.jpg-8f276713257738cd2c1bf4f3326b8fd2.s3tc.ctex"]
+source_file="res://assets/meshes/industry/restaurant/mesh/tex_restaurant_d.png"
+dest_files=["res://.godot/imported/tex_restaurant_d.png-e166cc8177658098d72d63c17df3f0a9.s3tc.ctex"]
 
 [params]
 

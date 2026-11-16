@@ -1,24 +1,15 @@
 [gd_scene format=3 uid="uid://ctaxui6oj0kwf"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_jfdgb"]
-[ext_resource type="ArrayMesh" uid="uid://cyaai7n6y26x8" path="res://assets/meshes/industry/restaurant/restaurant.obj" id="2_0ratj"]
+[ext_resource type="PackedScene" uid="uid://db525awq7335k" path="res://assets/meshes/industry/restaurant/mesh/mesh_restaurant.tscn" id="2_d7t2n"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_ljf2g"]
-[ext_resource type="Texture2D" uid="uid://b666mknuvjkoj" path="res://assets/meshes/industry/restaurant/tex_restaurant_d.png" id="3_r7ln6"]
-[ext_resource type="Texture2D" uid="uid://cnjrhq0skfm5u" path="res://assets/meshes/industry/restaurant/tex_restaurant_n.png" id="4_e41w3"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="6_qra3x"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="7_qqtyg"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="8_d7t2n"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="8_qqtyg"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="10_bcvc6"]
 [ext_resource type="Texture2D" uid="uid://6cutts1xcfx5" path="res://assets/textures/particles/smoke/smoke5.png" id="10_y8q64"]
 [ext_resource type="Material" uid="uid://bxne5dwv3k3ic" path="res://assets/packed/particles/minor_smoke_particle_mat.tres" id="11_tyf5i"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qra3x"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("3_r7ln6")
-normal_enabled = true
-normal_texture = ExtResource("4_e41w3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljf2g"]
 size = Vector3(11.2487335, 16.403564, 12.422577)
@@ -50,13 +41,10 @@ grow_amount = 8.235
 script = ExtResource("1_jfdgb")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=70414750]
-visibility_range_end = 330.0
-visibility_range_end_margin = 33.0
-mesh = ExtResource("2_0ratj")
-surface_material_override/0 = SubResource("StandardMaterial3D_qra3x")
+[node name="MeshRestaurant" parent="." unique_id=2115495306 instance=ExtResource("2_d7t2n")]
 
 [node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=740215182]
+visible = false
 script = ExtResource("3_ljf2g")
 metadata/_custom_type_script = "uid://byfh10jnd57t6"
 
@@ -84,3 +72,9 @@ lifetime = 4.0
 randomness = 0.6
 process_material = ExtResource("11_tyf5i")
 draw_pass_1 = SubResource("QuadMesh_2kav7")
+
+[node name="Constructable" type="Node" parent="." unique_id=281912285 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
+script = ExtResource("10_bcvc6")
+visual_model = NodePath("../MeshRestaurant")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
+metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

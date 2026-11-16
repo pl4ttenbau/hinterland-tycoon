@@ -70,7 +70,6 @@ func validate_goods(goods: Dictionary) -> Error:
 				return _fail(INDUSTRIES_PATH, "%s has invalid recipe quantity for %s." % [definition.key, amount.res_key])
 	return OK
 
-
 func _read_rows(path: String) -> Array:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:

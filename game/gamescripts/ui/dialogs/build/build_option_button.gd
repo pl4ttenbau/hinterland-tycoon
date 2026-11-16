@@ -24,14 +24,15 @@ func _ready() -> void:
 
 	# Read local geometry off-tree so the live building's callbacks do not run.
 	var building: Node = _building_scene.instantiate()
-	var component := Constructable3D.find_on(building)
-	if component == null or component.placement_shape == null or component.placement_shape.shape == null:
+	var component := Constructable.find_on(building)
+	var footprint: CollisionShape3D = component.placement_collision_shape if component != null else null
+	if footprint == null or footprint.shape == null:
 		_preview_scene = null
 		hide()
 	else:
 		text = "%s  ·  %s" % [_definition.display_name, CompanyData.format_cash(_definition.construction_cost)]
-		if component.model != null:
-			_model_transform = component.model.transform
+		if component.visual_model != null:
+			_model_transform = component.visual_model.transform
 	building.free()
 
 

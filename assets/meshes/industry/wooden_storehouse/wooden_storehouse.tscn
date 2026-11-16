@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_jyp8w"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_chdje"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_jyp8w"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="8_bmij4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4djgp"]
 size = Vector3(10.672501, 9.578918, 9.058624)
@@ -45,3 +46,9 @@ metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 script = ExtResource("6_jyp8w")
 industry3d = NodePath("..")
 metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="Constructable" type="Node" parent="." unique_id=173689172 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
+script = ExtResource("8_bmij4")
+visual_model = NodePath("../MeshWoodenStorehouse")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
+metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

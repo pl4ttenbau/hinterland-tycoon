@@ -2,7 +2,9 @@
 class_name IndustryBuildingType extends Resource
 
 @export var key: String
+
 @export var display_name: String
+
 @export_file("*.tscn") var scene_path: String
 
 ## A negative cost marks a building without construction configured.

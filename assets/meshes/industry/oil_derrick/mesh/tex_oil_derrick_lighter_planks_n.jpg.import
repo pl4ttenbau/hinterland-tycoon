@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh40d8wsen3g5"
-path.s3tc="res://.godot/imported/tex_oil_derrick_darker_planks_n.jpg-e25f54844390d86ce8645f1a2bb2a1e9.s3tc.ctex"
+uid="uid://c4gulibn6ntyl"
+path.s3tc="res://.godot/imported/tex_oil_derrick_lighter_planks_n.jpg-f9ca6e6355fbbd5056fd2ea7d1e36b31.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_darker_planks_n.jpg"
-dest_files=["res://.godot/imported/tex_oil_derrick_darker_planks_n.jpg-e25f54844390d86ce8645f1a2bb2a1e9.s3tc.ctex"]
+source_file="res://assets/meshes/industry/oil_derrick/mesh/tex_oil_derrick_lighter_planks_n.jpg"
+dest_files=["res://.godot/imported/tex_oil_derrick_lighter_planks_n.jpg-f9ca6e6355fbbd5056fd2ea7d1e36b31.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_darker_planks_n.jpg"
+roughness/src_normal="res://assets/meshes/industry/oil_derrick/tex_oil_derrick_lighter_planks_n.jpg"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

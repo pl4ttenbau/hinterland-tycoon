@@ -21,8 +21,8 @@ func site_error(world: WorldMapScene, building: Node3D, proposed: Transform3D) -
 	if not is_instance_valid(building):
 		return "The building is unavailable."
 
-	var component := Constructable3D.find_on(building)
-	var footprint: CollisionShape3D = component.placement_shape if component != null else null
+	var component := Constructable.find_on(building)
+	var footprint: CollisionShape3D = component.placement_collision_shape if component != null else null
 	if footprint == null or footprint.shape == null:
 		return "The building is missing its placement shape."
 

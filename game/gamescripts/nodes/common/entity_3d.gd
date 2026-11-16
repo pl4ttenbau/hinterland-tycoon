@@ -11,7 +11,7 @@ func _init() -> void:
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-	return Constructable3D.missing_warning(self) if _requires_constructable() else PackedStringArray()
+	return Constructable.missing_warning(self) if _requires_constructable() else PackedStringArray()
 
 
 func _requires_constructable() -> bool:

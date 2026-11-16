@@ -43,8 +43,8 @@ Press Enter to choose a resource at the selected point, then select Build mine.
 The mine produces that resource through the normal industry inventory, with
 output scaled by local richness. Escape cancels the current placement attempt.
 The session's ConstructionManager checks terrain and uses the collision shape
-assigned to Constructable3D to test the proposed footprint.
-An industry or station scene with no direct Constructable3D child shows a
+assigned to `Constructable` to test the proposed footprint.
+An industry or station scene with no direct `Constructable` child shows a
 configuration warning in the Godot editor.
 
 The action icons in `assets/ui/icons/actions/` use a shared 32 px grid and cream
