@@ -2,6 +2,8 @@
 
 `RoadVehicle3D` remains the single movement controller. Player driving and ordinary automatic road following use the same `VehicleBody3D` wheel physics, steering limit, suspension, engine and brakes. The player's turning radius is unchanged.
 
+The automatic driver samples the route ahead for bends and uses their curvature to limit corner speed. It works backwards from each bend to find where braking should begin, using half the configured `braking_deceleration` as its approach estimate. `cornering_lateral_acceleration` sets how fast the driver aims to take curves, and longer wheelbases start steering farther ahead. The vehicle follows the bend using wheel physics.
+
 ## Automatic endpoint manoeuvre
 
 When the next driving segment reverses the vehicle's current direction, `RoadUTurnPlanner` prepares an approach to the road end in its present direction. The vehicle drives there using normal physics and brakes to a stop. A reversal inside a longer path is likewise split at its road endpoint. No authored road nodes, markers or extra route visits are created.

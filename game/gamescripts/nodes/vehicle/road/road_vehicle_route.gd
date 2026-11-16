@@ -6,6 +6,8 @@ class_name RoadVehicleRoute extends RefCounted
 
 const JOIN_TOLERANCE: float = 0.1
 const SAMPLE_SPACING: float = 0.75
+const BEND_SAMPLE_SPACING: float = 2.0
+const MIN_CORNER_SPEED: float = 1.5
 
 ## World-space samples consumed by steering; source roads keep their own curves.
 var curve: Curve3D
@@ -118,3 +120,44 @@ func remaining() -> float:
 
 func sample_ahead(distance: float) -> Vector3:
 	return curve.sample_baked(minf(progress + distance, curve.get_baked_length()))
+
+## Estimate curvature from nearby horizontal chords. Work backwards from
+## each bend's speed so the car can brake while still on the straight.
+func speed_before_bends(cruise_speed: float, deceleration: float, lateral_acceleration: float) -> float:
+	var speed_squared: float = cruise_speed * cruise_speed
+	# A bend farther away than the stopping distance cannot lower the cruise cap.
+	var approach: float = speed_squared / (2.0 * deceleration)
+	var last: float = minf(progress + approach + BEND_SAMPLE_SPACING, curve.get_baked_length())
+	var offset: float = progress
+	while offset < last:
+		var curvature: float = _horizontal_curvature(offset)
+		if curvature > 0.001:
+			# Lateral acceleration is v² × curvature. Solve for the bend's speed
+			# squared, with a low-speed floor so the car keeps moving through it.
+			var corner_speed_squared: float = maxf(MIN_CORNER_SPEED * MIN_CORNER_SPEED, lateral_acceleration / curvature)
+			# Give the brakes a little lead before the sampled bend.
+			var distance: float = maxf(0.0, offset - progress - BEND_SAMPLE_SPACING)
+			# Braking over distance d removes 2ad from v². Add that back to the
+			# corner's v² to find how fast we can be going now and still slow in time.
+			# The tightest approach limit wins, even if its bend is farther away.
+			speed_squared = minf(speed_squared, corner_speed_squared + 2.0 * deceleration * distance)
+		offset += BEND_SAMPLE_SPACING
+	# Compare speeds in squared units to avoid a root for every sample. The
+	# driver needs metres per second, so convert the winning limit just once.
+	return sqrt(speed_squared)
+
+## Estimate the bend at a distance along the baked route, in radians per metre.
+## Compare the incoming and outgoing chords projected onto the XZ plane, so
+## hills do not count as turns. A straight gives zero. A tighter turn gives a
+## larger value, which lowers the safe corner speed.
+func _horizontal_curvature(offset: float) -> float:
+	var before: float = maxf(0.0, offset - BEND_SAMPLE_SPACING)
+	var after: float = minf(curve.get_baked_length(), offset + BEND_SAMPLE_SPACING)
+	var point: Vector3 = curve.sample_baked(offset)
+	var incoming: Vector3 = point - curve.sample_baked(before)
+	var outgoing: Vector3 = curve.sample_baked(after) - point
+	var incoming_flat := Vector2(incoming.x, incoming.z)
+	var outgoing_flat := Vector2(outgoing.x, outgoing.z)
+	if incoming_flat.length_squared() < 0.01 or outgoing_flat.length_squared() < 0.01:
+		return 0.0
+	return absf(incoming_flat.angle_to(outgoing_flat)) / ((after - before) * 0.5)

@@ -178,7 +178,7 @@ func test_dialog() -> bool:
 	var dialog: GameDialog = script.create(vehicle)
 	tree.root.add_child(dialog)
 	var draft: RoadRoutePlan = dialog.get("plan")
-	draft.points.assign([_node_point(10, 0), _node_point(20, 2)])
+	draft.points.assign([_node_point(10, 0)])
 	_check_action_editing(dialog)
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(vehicle.route_plan.points.size() == 2, "Save assigns the connected draft to the vehicle")
@@ -190,7 +190,7 @@ func test_dialog() -> bool:
 	dialog = script.create(vehicle)
 	tree.root.add_child(dialog)
 	(dialog.get("plan") as RoadRoutePlan).points.clear()
-	dialog.close_all()
+	(dialog.get_node("%CancelButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(vehicle.route_plan.points.size() == 2, "Cancel keeps the saved itinerary")
 	vehicle.free()
@@ -204,22 +204,37 @@ func test_dialog() -> bool:
 ## Exercise actual selector metadata, append order and action reordering in the draft.
 func _check_action_editing(dialog: GameDialog) -> void:
 	var draft: RoadRoutePlan = dialog.get("plan")
-	var stop := RoadRoutePoint.new()
-	stop.kind = RoadRoutePoint.Kind.STOP
-	stop.target_num = 201
-	draft.points[1] = stop
-	dialog.call("_refresh_points", 1)
-	var goods: ItemList = dialog.get("_goods")
+	var points: Node = dialog.get_node("%Route points")
+	var kind: OptionButton = points.get_node("%PointKind")
+	var stop_index: int = kind.get_item_index(RoadRoutePoint.Kind.STOP)
+	kind.select(stop_index)
+	kind.item_selected.emit(stop_index)
+	var targets: OptionButton = points.get_node("%Targets")
+	# Stop 201 is first in the fixture's road-stop catalog.
+	targets.select(0)
+	(points.get_node("%AddPoint") as Button).pressed.emit()
+	check(draft.points.size() == 2 and draft.points[1].target_num == 201, "Point editor adds the selected physical stop")
+	if draft.points.size() != 2:
+		return
+	var stop: RoadRoutePoint = draft.points[1]
+
+	# Both scene tabs share the same draft and selection.
+	(dialog.get_node("%Tabs") as TabContainer).current_tab = 1
+	var actions: Node = dialog.get_node("%Load and unload")
+	var goods: ItemList = actions.get_node("%Goods")
 	for index: int in range(goods.item_count):
 		if goods.get_item_metadata(index) == &"passenger":
 			goods.select(index)
-	(dialog.get("_passenger_targets") as ItemList).select(0)
-	dialog.call("_add_action")
-	(dialog.get("_action_kind") as OptionButton).select(1)
-	dialog.call("_add_action")
+	(actions.get_node("%PassengerTargets") as ItemList).select(0)
+	var add_action: Button = actions.get_node("%AddAction")
+	add_action.pressed.emit()
+	(actions.get_node("%ActionKind") as OptionButton).select(1)
+	add_action.pressed.emit()
 	check(stop.actions.size() == 2 and stop.actions[0].passenger_interchange_targets == [501], "Dialog adds load/unload actions with interchange targets")
-	(dialog.get("_actions") as ItemList).select(1)
-	dialog.call("_move_action", -1)
+	if stop.actions.size() != 2:
+		return
+	(actions.get_node("%Actions") as ItemList).select(1)
+	(actions.get_node("%MoveUp") as Button).pressed.emit()
 	check(stop.actions[0].kind == RoadRouteAction.Kind.UNLOAD, "Transfer actions can be reordered")
 
 ## Drive actual physics through multiple visits, then prove transfer instructions pause.
@@ -418,8 +433,10 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
 	var dialog: GameDialog = script.create(vehicle)
 	tree.root.add_child(dialog)
-	var kinds: OptionButton = dialog.get("_kind")
-	check(kinds.get_item_id(0) == RoadRoutePoint.Kind.MARKER and dialog.get("_choices").size() == 2, "Route picker defaults to the two named markers")
+	var editor: Node = dialog.get_node("%Route points")
+	var kinds: OptionButton = editor.get_node("%PointKind")
+	var targets: OptionButton = editor.get_node("%Targets")
+	check(kinds.get_selected_id() == RoadRoutePoint.Kind.MARKER and targets.item_count == 2, "Route picker defaults to the two named markers")
 	for index: int in range(kinds.item_count):
 		check(kinds.get_item_id(index) != RoadRoutePoint.Kind.NODE, "Raw nodes cannot be selected as route targets")
 	dialog.free()

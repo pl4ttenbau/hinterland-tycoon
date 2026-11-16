@@ -33,7 +33,7 @@ func frames(count: int) -> void:
 
 func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
-	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_depot_spawning", &"test_spawn_dialog"]:
+	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_depot_spawning", &"test_spawn_dialog"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	print("Road vehicle tests: %d passed, %d failures" % [passed, failures])
@@ -133,7 +133,7 @@ func test_driving() -> bool:
 	_free_driving_fixture(fixture)
 	return true
 
-func _create_driving_fixture() -> DrivingFixture:
+func _create_driving_fixture(curve: Curve3D = null) -> DrivingFixture:
 	var fixture := DrivingFixture.new()
 	fixture.previous_roads = Managers.roads
 	fixture.previous_vehicles = Managers.vehicles
@@ -145,18 +145,20 @@ func _create_driving_fixture() -> DrivingFixture:
 	tree.root.add_child(fixture.manager)
 	Managers.roads = fixture.roads
 	Managers.vehicles = fixture.manager
-	_add_fixture_road(fixture.roads)
+	_add_fixture_road(fixture.roads, curve)
 	return fixture
 
 ## A straight approach followed by a bend tests both acceleration and steering.
-func _add_fixture_road(roads: RoadsLoader) -> void:
+func _add_fixture_road(roads: RoadsLoader, curve: Curve3D = null) -> void:
 	var road: RoadWay3D = load(RoadData.RURAL_ROAD_SCENE_PATH).instantiate()
 	var data := RoadData.of(9101, "rural_road")
-	data.curve = Curve3D.new()
-	data.curve.add_point(Vector3.ZERO)
-	data.curve.add_point(Vector3(0, 0, -70), Vector3(0, 0, 15), Vector3(0, 0, -15))
-	data.curve.add_point(Vector3(15, 0, -100), Vector3(-15, 0, 0), Vector3(15, 0, 0))
-	data.curve.add_point(Vector3(45, 0, -100))
+	if curve == null:
+		curve = Curve3D.new()
+		curve.add_point(Vector3.ZERO)
+		curve.add_point(Vector3(0, 0, -70), Vector3(0, 0, 15), Vector3(0, 0, -15))
+		curve.add_point(Vector3(15, 0, -100), Vector3(-15, 0, 0), Vector3(15, 0, 0))
+		curve.add_point(Vector3(45, 0, -100))
+	data.curve = curve
 	road.road = data
 	roads.add_child(road)
 	roads.storage.add_container(road)
@@ -247,6 +249,68 @@ func _test_terminal_stop(fixture: DrivingFixture) -> bool:
 	await frames(1800)
 	check(fixture.body.global_position.y > 0.0 and fixture.body.global_position.y < 1.5, "Automatic driver stays on the road through its bend")
 	check(completions[0] == 1 and absf(fixture.body.signed_speed_mps()) < 0.3, "Automatic driver stops at route end and signals once")
+	return true
+
+## Test a small car and a long bus on the same bend and outside obstacle.
+func test_corner_braking() -> bool:
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(0, 0, -100), Vector3.ZERO, Vector3(0, 0, -3.31))
+	curve.add_point(Vector3(6, 0, -106), Vector3(-3.31, 0, 0))
+	curve.add_point(Vector3(51, 0, -106))
+	var fixture: DrivingFixture = _create_driving_fixture(curve)
+	var house: StaticBody3D = _add_corner_house(fixture.roads)
+	for frame: int in range(4):
+		await tree.process_frame
+
+	var car_completed: bool = await _check_house_bend(fixture, house, "trabant_601_green", 9.0, 3.0)
+	var bus_completed: bool = await _check_house_bend(fixture, house, "daimler_1911_bus", 5.0, 1.5)
+	_free_driving_fixture(fixture)
+	return car_completed and bus_completed
+
+
+func _add_corner_house(parent: Node) -> StaticBody3D:
+	# A solid box stands outside the bend, directly in the path of an overshoot.
+	var house := StaticBody3D.new()
+	house.name = "House"
+	house.position = Vector3(-1, 3, -110)
+	var collider := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(5, 6, 7)
+	collider.shape = box
+	house.add_child(collider)
+	parent.add_child(house)
+	return house
+
+
+func _check_house_bend(fixture: DrivingFixture, house: StaticBody3D, vehicle_key: String,
+		minimum_straight_speed: float, minimum_speed_drop: float) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle(vehicle_key, [9101])
+	if body == null:
+		return false
+	body.cruise_speed_kmh = 55
+	body.max_contacts_reported = 8
+	body.contact_monitor = true
+	var house_hit: Array[bool] = [false]
+	body.body_entered.connect(func(other: Node): house_hit[0] = house_hit[0] or other == house)
+
+	# Compare speed on the open straight with speed before the turn-in point.
+	var straight_speed: float = 0.0
+	var approach_speed: float = INF
+	for frame: int in range(2100):
+		await tree.physics_frame
+		if body.global_position.z > -80.0:
+			straight_speed = maxf(straight_speed, body.signed_speed_mps())
+		if body.global_position.z <= -97.0 and is_inf(approach_speed):
+			approach_speed = body.signed_speed_mps()
+		if body.global_position.x > 24.0:
+			break
+	check(straight_speed > minimum_straight_speed and approach_speed < straight_speed - minimum_speed_drop,
+		"%s brakes on the straight before the house bend (%.2f to %.2f m/s)" % [vehicle_key, straight_speed, approach_speed])
+	check(body.global_position.x > 24.0 and absf(body.global_position.z + 106.0) < 1.5 and body.global_position.y > 0.0,
+		"%s clears the bend and stays on the road (%s)" % [vehicle_key, body.global_position])
+	check(not house_hit[0], "%s clears the house without a collision" % vehicle_key)
+	body.free()
 	return true
 
 func _free_driving_fixture(fixture: DrivingFixture) -> void:

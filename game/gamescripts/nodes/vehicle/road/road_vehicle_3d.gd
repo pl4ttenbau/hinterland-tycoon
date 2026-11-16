@@ -14,6 +14,10 @@ signal route_finished()
 @export var steering_rate: float = 1.8
 ## Assumed deceleration in m/s² used to calculate the automatic stopping distance.
 @export var braking_deceleration: float = 3.0
+
+## Target lateral acceleration in m/s² when planning automatic corner speed.
+@export_range(0.5, 5.0, 0.1) var cornering_lateral_acceleration: float = 1.5
+
 ## Maximum horizontal distance in metres from which automatic driving may resume.
 @export var route_recovery_distance: float = 6.0
 ## Gameplay radius in metres, deliberately independent of physical steering limits.
@@ -142,7 +146,7 @@ func begin_automatic_uturn(path: Path3D, endpoint: float) -> bool:
 	if not is_instance_valid(path) or not path.is_inside_tree() or path.curve == null:
 		return false
 	var end: Vector3 = path.to_global(path.curve.sample_baked(endpoint))
-	if global_position.distance_to(end) > vehicle_obj.veh_type.length_metres * 0.55 + 1.5:
+	if global_position.distance_to(end) > dimensions_metres.z * 0.55 + 1.5:
 		return false
 	if not _uturn.build(global_transform, path, endpoint, automatic_uturn_radius):
 		return false
@@ -230,10 +234,11 @@ func _drive_route(delta: float) -> void:
 		apply_driver_input(0.0, 0.0, 1.0, delta)
 		return
 	var speed: float = signed_speed_mps()
-	var lookahead: float = maxf(4.0, absf(speed) * 0.8)
+	# A long wheelbase needs to start steering earlier, even at corner speed.
+	var lookahead: float = maxf(maxf(4.0, wheelbase * 1.6), absf(speed) * 0.8)
 	var target: Vector3 = to_local(route.sample_ahead(lookahead))
 	var angle: float = atan2(target.x, target.z)
-	var stop_margin: float = vehicle_obj.veh_type.length_metres * 0.55
+	var stop_margin: float = dimensions_metres.z * 0.55
 	var distance_left: float = maxf(0.0, route.remaining() - stop_margin)
 	if absf(angle) > PI * 0.65 and distance_left > 1.0:
 		if plan_execution.running:
@@ -251,13 +256,16 @@ func _is_near_route() -> bool:
 	var horizontal_error := Vector2(global_position.x - nearest.x, global_position.z - nearest.z)
 	return horizontal_error.length() <= route_recovery_distance
 
-## Corner caution and v² = 2ad braking lower the cruise cap before the final stop.
+## Plan for bends beyond the steering lookahead, then apply heading and stop limits.
 func _desired_route_speed(angle: float, distance_left: float) -> float:
-	var desired_speed: float = minf(cruise_speed_kmh, maximum_speed_kmh) / 3.6
-	desired_speed = minf(desired_speed / (1.0 + absf(angle) * 2.0), sqrt(2.0 * braking_deceleration * distance_left))
 	if distance_left < 0.3:
-		desired_speed = 0.0
-	return desired_speed
+		return 0.0
+	var cruise_speed: float = minf(cruise_speed_kmh, maximum_speed_kmh) / 3.6
+	var stop_speed: float = sqrt(2.0 * braking_deceleration * distance_left)
+	# Allow for brake response and leave grip available for steering.
+	var approach_deceleration: float = maxf(0.1, braking_deceleration * 0.5)
+	var bend_speed: float = route.speed_before_bends(cruise_speed, approach_deceleration, cornering_lateral_acceleration)
+	return minf(bend_speed, minf(cruise_speed / (1.0 + absf(angle) * 2.0), stop_speed))
 
 ## Convert target speed to pedals and latch arrival once for this assigned path.
 func _apply_route_speed(turn: float, desired_speed: float, speed: float, delta: float) -> void:
