@@ -93,7 +93,11 @@ U-turns and fixed-path segments share one kinematic hold: `_hold_scripted()` rec
 
 While held, `current_velocity()` returns the scripted velocity (a frozen body's `linear_velocity` is not authoritative), and `signed_speed_mps()` uses it. The executor and transfer service use `current_velocity()` for their "is the vehicle stationary" checks.
 
-On arrival the body stays held and stationary. The executor parks it for stop servicing and endpoint-turn approaches with `clear_route(true)`, which keeps the hold. Plan stops and completion call `clear_route()`, which releases to wheel physics with zero velocity. Manual takeover releases with the scripted tangent velocity.
+On arrival the body stays held and stationary. Between movements of one itinerary (stop servicing, waiting at a road end before a U-turn) the executor calls `park()`, which drops the driving path but keeps the hold. Plan stops and completion call `clear_route()`, which releases to wheel physics with zero velocity. Manual takeover releases with the scripted tangent velocity.
+
+Ending a U-turn only discards its geometry (`RoadVehicleUTurn.reset()`); each caller decides separately whether the body is released. Completion keeps the hold with fixed-path following on and otherwise releases with the exit velocity. `park()` keeps it, `clear_route()` releases without velocity, and manual takeover releases with velocity.
+
+The executor reads and sets the vehicle's arrival only through `has_arrived()`, `assign_path_segments()` (which resets arrival for the new path) and `mark_arrived()` (parked at a road end, nothing left to drive).
 
 ### Trade-offs
 

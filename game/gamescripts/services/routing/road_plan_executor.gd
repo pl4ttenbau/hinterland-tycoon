@@ -63,7 +63,7 @@ func tick(vehicle: RoadVehicle3D) -> void:
 				_begin_visit(vehicle)
 	elif not vehicle.route.is_valid():
 		stop(vehicle, "Driving path is no longer available.")
-	elif vehicle._arrived:
+	elif vehicle.has_arrived():
 		if not _plan.points[current_point].actions.is_empty():
 			_hold_for_actions(vehicle)
 		elif _finish_visit(vehicle):
@@ -112,7 +112,8 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 ## a stationary vehicle. Clearing the driving curve applies the parking brake.
 func _hold_for_actions(vehicle: RoadVehicle3D) -> void:
 	_servicing_visit = true
-	vehicle.clear_route(true)
+	# Park rather than clear: a fixed-path vehicle stays held through servicing.
+	vehicle.park()
 	status = "Servicing point %d of %d" % [current_point + 1, _plan.points.size()]
 
 ## A single-side marker is served only when facing its permitted approach direction.
@@ -133,29 +134,30 @@ func _assign_visit_path(vehicle: RoadVehicle3D, point: RoadRoutePoint, node: Roa
 	if turn != null:
 		return _assign_turn_approach(vehicle, turn)
 	var trim: float = maxf(0.0, 10.0 - vehicle.dimensions_metres.z * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
-	if segments.is_empty() or not vehicle.route.assign_segments(segments, trim):
+	if segments.is_empty() or not vehicle.assign_path_segments(segments, trim):
 		stop(vehicle, "No drivable path from the current position. Move back onto a connected road.")
 		return false
-	vehicle._arrived = false
 	status = "Driving to point %d of %d" % [current_point + 1, _plan.points.size()]
 	return true
 
-## A reversal first follows ordinary wheel physics to the road end. Only the
-## short turnaround is scripted; the target visit and its actions remain pending.
+## A reversal first drives to the road end with the normal driver (wheel physics,
+## or the fixed path when that switch is on). Only the short turnaround is a
+## special manoeuvre; the target visit and its actions remain pending.
 func _assign_turn_approach(vehicle: RoadVehicle3D, turn: RoadUTurnPlanner.Approach) -> bool:
 	_turn_approach = turn
 	_turn_started = false
 	var margin: float = vehicle.dimensions_metres.z * 0.55
-	var assigned: bool = vehicle.route.assign_segments(turn.segments)
+	# Assigning resets the vehicle's arrival latch, so the approach is driven.
+	var assigned: bool = vehicle.assign_path_segments(turn.segments)
 	var endpoint: Vector3 = turn.path.to_global(turn.path.curve.sample_baked(turn.offset))
 	if (assigned and vehicle.route.remaining() <= margin + 0.4) or (not assigned and vehicle.global_position.distance_to(endpoint) <= margin + 1):
-		vehicle.clear_route(true)
-		vehicle._arrived = true
+		# Already at the road end: nothing to drive. Park (keeping a fixed-path
+		# hold) and report arrival so _tick_uturn() starts the turn once stopped.
+		vehicle.park()
+		vehicle.mark_arrived()
 	elif not assigned:
 		stop(vehicle, "No drivable approach to the road end for a U-turn.")
 		return false
-	else:
-		vehicle._arrived = false
 	status = "Driving to road end for a U-turn"
 	return true
 
@@ -172,7 +174,7 @@ func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
 			_turn_started = false
 			_begin_visit(vehicle)
 		return true
-	if not vehicle._arrived:
+	if not vehicle.has_arrived():
 		return false
 	if vehicle.current_velocity().length() > 0.2:
 		return true

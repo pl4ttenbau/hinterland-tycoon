@@ -94,7 +94,9 @@ func get_inventory() -> GoodsInventory:
 func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 	if not route.assign(paths, backwards):
 		return false
-	_end_automatic_uturn(true)
+	_uturn.reset()
+	# The physical driver takes the body back now, keeping its velocity. With
+	# fixed-path following, the body stays held and eases onto the new curve.
 	if not follow_road_path:
 		_release_scripted(true)
 	if is_inside_tree():
@@ -102,26 +104,58 @@ func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 	_arrived = false
 	return true
 
-## Remove automatic driving requests without changing the body's physical state.
-## keep_held leaves a fixed-path body frozen where it stands (stop servicing, a
-## turn approach); plan stops and completion release it to wheel physics.
-func clear_route(keep_held: bool = false) -> void:
-	_end_automatic_uturn(false)
-	if keep_held:
-		_reset_path_follow()
-		_scripted_velocity = Vector3.ZERO
-	else:
-		_release_scripted(false)
+## Replace the driving path with partial-road segments chosen by the itinerary
+## executor, and start driving it. The arrival latch is reset for the new path.
+## Returns false, keeping the current path, if the segments do not form one.
+func assign_path_segments(segments: Array[Dictionary], end_trim: float = 0.0) -> bool:
+	if not route.assign_segments(segments, end_trim):
+		return false
+	_arrived = false
+	return true
+
+## Stop where the vehicle stands and drop its driving path, but keep a fixed-path
+## body frozen. The executor parks this way between movements of one itinerary
+## (servicing a stop, waiting at a road end before a U-turn), so a held body
+## does not drop onto its suspension in between. An active turn is abandoned.
+## A body driven by wheel physics just gets the parking brake.
+func park() -> void:
+	_uturn.reset()
+	_reset_path_follow()
+	_scripted_velocity = Vector3.ZERO
+	_drop_route()
+
+## Stop and drop the driving path, handing any frozen body back to wheel physics
+## with zero velocity. Used when automatic driving ends: plan stops, completion,
+## a vehicle that is no longer assigned a path.
+func clear_route() -> void:
+	_uturn.reset()
+	_release_scripted(false)
+	_drop_route()
+
+## Shared by park() and clear_route(): forget the path and apply the parking brake.
+func _drop_route() -> void:
 	route = RoadVehicleRoute.new()
 	_arrived = false
 	engine_force = 0.0
 	brake = mass * 0.04
 
+## True once the vehicle has stopped at the end of its driving path. Whichever
+## driver owns movement latches this; assigning a new path resets it.
+func has_arrived() -> bool:
+	return _arrived
+
+## Latch arrival without driving. The executor uses this when it parks a vehicle
+## already standing at the road end where its U-turn starts.
+func mark_arrived() -> void:
+	_arrived = true
+
 ## Change only the input source; retain pose, velocity and automatic path progress.
 func set_player_driving(enabled: bool) -> void:
 	player_driving = enabled
 	if enabled:
-		_end_automatic_uturn(true)
+		# The player takes over mid-manoeuvre: drop the turn and hand the body
+		# back to wheel physics with its current scripted velocity.
+		_uturn.reset()
 		_release_scripted(true)
 		_arrived = false
 	# Clear the previous driver's force immediately, preserving physical motion.
@@ -290,21 +324,12 @@ func _drive_automatic_uturn(delta: float) -> void:
 	_uturn.progress = next
 	plan_execution.status = "Turning at road end"
 	if next >= _uturn.curve.get_baked_length():
-		_end_automatic_uturn(true)
-
-## Completion keeps the exit velocity. With fixed-path following on, the body
-## stays held so the next segment continues without dropping onto the suspension.
-func _end_automatic_uturn(keep_velocity: bool) -> void:
-	if not _uturn.active:
-		return
-	_uturn.active = false
-	_uturn.source = null
-	_uturn.curve = null
-	_uturn.progress = 0
-	if not keep_velocity:
-		_scripted_velocity = Vector3.ZERO
-	if not (keep_velocity and follow_road_path):
-		_release_scripted(keep_velocity)
+		_uturn.reset()
+		# The physical driver takes over with the curve's exit velocity. With
+		# fixed-path following, the body stays held and the next segment
+		# continues at that speed without dropping onto the suspension.
+		if not follow_road_path:
+			_release_scripted(true)
 
 #endregion
 
@@ -313,7 +338,8 @@ func _end_automatic_uturn(keep_velocity: bool) -> void:
 ## as the physical driver. Arrival keeps the body held and stationary, so stops
 ## and U-turns follow without a physics handoff; clear_route() releases it.
 func _drive_route_fixed(delta: float) -> void:
-	# No route while held means parked by the executor; a stop releases via clear_route().
+	# No route while held means the executor parked us (park()); stay put until
+	# it assigns the next path, or clear_route() hands the body back to physics.
 	if not route.is_valid() or _arrived:
 		if _scripted:
 			_scripted_velocity = Vector3.ZERO

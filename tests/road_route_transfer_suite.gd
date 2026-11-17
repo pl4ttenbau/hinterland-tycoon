@@ -234,7 +234,7 @@ func test_ordered_execution() -> bool:
 	check(body.plan_execution.running and body.plan_execution.current_point == 1, "Successful actions advance to the next visit")
 
 	body.global_position = road.nodes[3].position + Vector3.UP * 0.8
-	body._arrived = true
+	body.mark_arrived()
 	body.plan_execution.tick(body)
 	body.plan_execution.tick(body)
 	check(body.plan_execution.status == "Plan complete", "No stock at the final load action still completes the plan")

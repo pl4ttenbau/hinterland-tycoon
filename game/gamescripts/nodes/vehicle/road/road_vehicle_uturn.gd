@@ -41,6 +41,14 @@ func build(pose: Transform3D, path: Path3D, endpoint: float, radius: float) -> b
 	active = true
 	return true
 
+## Discard the curve and progress. Safe to call when no turn is active. This only
+## forgets the geometry; freezing and releasing the body stays with the vehicle.
+func reset() -> void:
+	active = false
+	source = null
+	curve = null
+	progress = 0
+
 func is_valid() -> bool:
 	return active and curve != null and is_instance_valid(source) and source.is_inside_tree()
 
