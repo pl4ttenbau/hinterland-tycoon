@@ -31,6 +31,7 @@ func available_actions() -> Array[Dictionary]:
 		items.append(_item("Place road marker", "RoadMarker", "road_marker"))
 	if not in_vehicle and is_instance_valid(Managers.rails):
 		items.append(_item("Connect tracks", "Connect", "connect_tracks"))
+		items.append(_item("Place rail signal", "RailSignal", "rail_signal"))
 	if in_vehicle and TrainCoupling.available(player.control.current_train()):
 		items.append({
 			"title": "Coupling", "id": "Coupling",

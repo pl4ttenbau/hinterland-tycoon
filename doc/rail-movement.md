@@ -25,10 +25,11 @@ Running resistance and gradients are not modelled yet.
 ### Movement authority
 
 `get_movement_authority()` is the distance the train may still travel: the depot
-rollout limit or the end of its known route (a buffer, an unset fork or a gauge
-change). The speed never exceeds `sqrt(2 · 0.5 m/s² · authority)`, so trains brake
+rollout limit, the end of its known route (a buffer, an unset fork or a gauge
+change), or the stopping point before the first [signal](#signals) ahead that shows
+stop. The speed never exceeds `sqrt(2 · 0.5 m/s² · authority)`, so trains brake
 smoothly to a stop there instead of halting instantly. The route is planned at least
-the stopping distance plus 20 m ahead. Signals will add their own limit to the authority.
+the stopping distance plus 20 m ahead.
 
 If the authority suddenly shrinks (a switch thrown ahead), the train brakes at the
 brake-control rate; if that is not enough, the hard stop at the route end still applies.
@@ -57,10 +58,33 @@ The graph describes topology only and ignores current switch settings.
 `Managers.rails.get_network_graph()` builds it on first use and rebuilds after a
 track is added or the network is edited.
 
+## Signals
+
+A `RailSignalData` sits on one track at `offset` metres from the track's first node and
+protects one direction of travel (`NODES_INCREASE`, `NODES_DECREASE`) or `BOTH`.
+`Managers.rails.signals` (a `RailSignalStore`) holds them for the session; they are not
+saved yet. A track with signals cannot be erased.
+
+Signals are automatic block signals (`RailSignalBlocks`). A signal shows stop while any
+train body is on its block: the track ahead in the protected direction, up to the next
+signal for that direction, a buffer, or a gauge change. The block follows the current
+switch settings, so throwing a switch can change a signal's aspect.
+
+`TrainMovement.get_signal_authority()` looks along the train's known route for signals
+that protect its direction of travel and are still ahead of the leading vehicle's nose.
+At the first one showing stop, the train must stand with its nose 2 m short of the signal.
+A signal that turns red too late to stop for is overrun; the train continues through the block.
+
+Players place signals from the circular menu ("Place rail signal") while standing on a
+track. The facing defaults to the view direction. Until signal meshes exist, each signal
+shows one `Label3D` per protected direction, beside the track on the right of the travel
+direction: the signal name and GO (green) or STOP (red), refreshed four times a second.
+
 ## Tests
 
 ```sh
 godot --headless --path . res://tests/train_movement_test.tscn -- --no-mcp
 godot --headless --path . res://tests/train_path_test.tscn -- --no-mcp
 godot --headless --path . res://tests/rail_network_graph_test.tscn -- --no-mcp
+godot --headless --path . res://tests/rail_signal_test.tscn -- --no-mcp
 ```

@@ -11,6 +11,8 @@ signal network_changed()
 @export var track_storage: RailTrackStore = RailTrackStore.new()
 @export var fork_storage: RailNodeForkStore = RailNodeForkStore.new()
 @export var outer_buffers: Array[RailBuffer3D] = []
+## Block signals placed in this session.
+@export var signals: RailSignalStore = RailSignalStore.new()
 
 @export var builder: NewRailBuilder:
 	get(): return $NewRailBuilder as NewRailBuilder
@@ -21,6 +23,12 @@ var _network_graph: RailNetworkGraph
 func _init() -> void:
 	network_changed.connect(_invalidate_network_graph)
 	track_storage.track_added.connect(_invalidate_network_graph.unbind(1))
+
+func _ready() -> void:
+	var tool: Node = load("res://game/gamescripts/nodes/marker/rail_signal_tool.gd").new()
+	tool.name = "RailSignalTool"
+	tool.rails = self
+	add_child(tool)
 
 ## Directed track graph shared by route finding and, later, signal blocks.
 func get_network_graph() -> RailNetworkGraph:
@@ -317,6 +325,9 @@ func _remove_buffer(node: RailNodeData) -> void:
 
 func _track_has_dependencies(track: RailTrackData) -> bool:
 	if not track.node_stations.is_empty():
+		return true
+	## Signal positions are track offsets that an edit cannot rebase safely.
+	if not signals.get_on_track(track.num).is_empty():
 		return true
 	for node: RailNodeData in track.nodes:
 		if node.station != null:

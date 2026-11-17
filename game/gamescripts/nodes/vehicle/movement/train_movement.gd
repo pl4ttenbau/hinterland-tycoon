@@ -117,14 +117,49 @@ func get_speed_mps() -> float:
 func get_stopping_distance() -> float:
 	return TrainDynamics.stopping_distance(self.speed_mps)
 
-## Distance the train may still travel before it must stand: the rollout limit or the end of the known route.
-## Signals will add their own limits here.
+## Distance the train may still travel before it must stand: the rollout limit, the end of the known route,
+## or the stopping point before the first signal ahead that shows stop.
 func get_movement_authority() -> float:
 	var remaining: float = self._rollout_end_distance - self.m_passed_since_start
 	var path: ActiveRailVehiclePath = self.get_active_path()
 	if path != null:
 		remaining = minf(remaining, path.curve.get_baked_length() - self.get_front_distance())
+	remaining = minf(remaining, self.get_signal_authority())
 	return maxf(remaining, 0.0)
+
+## Distance to the stopping point before the first signal ahead on the known route that shows stop.
+## A signal the leading vehicle's nose has already passed no longer applies.
+func get_signal_authority() -> float:
+	var store: RailSignalStore = RailSignalBlocks.get_store()
+	var path: ActiveRailVehiclePath = self.get_active_path()
+	if store == null or store.signals.is_empty() or path == null or not is_instance_valid(self.train):
+		return INF
+	var front: float = self.get_front_distance()
+	var lead_half: float = 0.0
+	for veh3d: Vehicle3D in self.train.vehicles:
+		if is_equal_approx(self.get_vehicle_distance(veh3d), front):
+			lead_half = maxf(lead_half, RailSignalBlocks.half_length(veh3d))
+	var ahead: Array = []
+	for segment_i: int in range(path.segments.size()):
+		var seg_start: float = 0.0 if segment_i == 0 else path.segment_end_distances[segment_i - 1]
+		var seg_end: float = path.segment_end_distances[segment_i]
+		if seg_end <= front:
+			continue
+		var segment: VehiclePathSegment = path.segments[segment_i]
+		for rail_signal: RailSignalData in store.get_on_track(segment.track_num):
+			if not rail_signal.protects(segment.movement_dir):
+				continue
+			var distance: float = RailSignalBlocks.track_to_path_distance(segment, seg_start, seg_end, rail_signal.offset)
+			if distance > front + lead_half:
+				ahead.append([distance, rail_signal, segment.movement_dir])
+	if ahead.is_empty():
+		return INF
+	ahead.sort_custom(func(a: Array, b: Array) -> bool: return a[0] < b[0])
+	var spans: Dictionary = RailSignalBlocks.occupancy(GlobalState.trains, self.train)
+	for entry: Array in ahead:
+		if not RailSignalBlocks.is_block_clear(entry[1], entry[2], store, spans):
+			return entry[0] - lead_half - RailSignalBlocks.STOP_MARGIN_METRES - front
+	return INF
 
 ## Accelerate towards the driver's target, or brake for the target, the brake control or the authority end.
 func update_speed(delta_seconds: float) -> void:
