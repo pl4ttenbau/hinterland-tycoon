@@ -296,6 +296,7 @@ func _check_fixed_path_run(fixture: DrivingFixture) -> bool:
 	body.route_finished.connect(func(): completions[0] += 1)
 	var started: bool = false
 	var worst: float = 0.0
+	var samples: int = 0
 	for frame: int in range(2400):
 		await tree.physics_frame
 		if body.is_following_fixed_path():
@@ -304,9 +305,11 @@ func _check_fixed_path_run(fixture: DrivingFixture) -> bool:
 			if body.route.progress > body._path_entry_progress + RoadVehicle3D.PATH_BLEND_METRES:
 				var on_curve: Vector3 = body.route.curve.sample_baked(body.route.progress)
 				worst = maxf(worst, Vector2(body.global_position.x - on_curve.x, body.global_position.z - on_curve.z).length())
+				samples += 1
 		if completions[0] > 0:
 			break
 	check(started, "A settled vehicle switches to fixed-path following")
+	check(samples > 100, "Fixed path moves the vehicle past its entry blend (%d samples)" % samples)
 	check(worst < 0.05, "Fixed path stays on the centreline through the tight bend (%.3f m off)" % worst)
 	check(completions[0] == 1 and body.freeze and absf(body.signed_speed_mps()) < 0.01,
 		"Fixed path stops once at the route end, held and stationary")

@@ -89,7 +89,7 @@ Following starts only from a body whose wheels rest on the road (or one already 
 
 ### Shared scripted motion
 
-U-turns and fixed-path segments share one kinematic hold: `_hold_scripted()` records `freeze`/`freeze_mode` once and freezes kinematically; `_release_scripted(keep_velocity)` restores them. Holding is idempotent, so with the switch on a vehicle passes from a fixed-path approach into a U-turn and back onto the next segment without ever dropping onto its suspension. Both movers commit poses through `_move_scripted()`, which uses the same overlap-and-sweep check described above; a blocked step holds pose and progress and zeroes the reported velocity.
+U-turns and fixed-path segments share one kinematic hold: `_hold_scripted()` records `freeze`/`freeze_mode` once and freezes kinematically; `_release_scripted(keep_velocity)` restores them. Holding is idempotent, so with the switch on a vehicle passes from a fixed-path approach into a U-turn and back onto the next segment without ever dropping onto its suspension. Both movers commit poses through `_move_scripted()`, which uses the same overlap-and-sweep check described above; a blocked step holds pose and progress and zeroes the reported velocity. The check runs `SCRIPTED_GROUND_CLEARANCE` (0.1 m) above the body: authored chassis boxes reach down to the road surface that the wheels hold them above, so an unraised check reports the supporting road as an obstruction. Obstacles lower than that clearance are ignored.
 
 While held, `current_velocity()` returns the scripted velocity (a frozen body's `linear_velocity` is not authoritative), and `signed_speed_mps()` uses it. The executor and transfer service use `current_velocity()` for their "is the vehicle stationary" checks.
 

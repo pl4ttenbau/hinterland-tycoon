@@ -42,6 +42,11 @@ static var follow_road_path: bool = false
 ## Distance in metres over which fixed-path following eases from the takeover pose.
 const PATH_BLEND_METRES: float = 3.0
 
+## Scripted obstacle checks run this far above the body. Authored chassis boxes
+## reach down to the road surface the wheels hold them above, so an unraised
+## check would report the supporting road itself as an obstruction.
+const SCRIPTED_GROUND_CLEARANCE: float = 0.1
+
 var vehicle_obj: VehicleData
 var inventory_component: InventoryContainer
 
@@ -223,7 +228,9 @@ func _release_scripted(keep_velocity: bool) -> void:
 func _scripted_motion_is_clear(pose: Transform3D) -> bool:
 	# Explicit space queries still work while wheel/body simulation is frozen.
 	# Check the next rotated footprint, then sweep its translation; ignore self.
+	# Both run slightly raised so the road under the wheels is not an obstacle.
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var lift := Vector3.UP * SCRIPTED_GROUND_CLEARANCE
 	for child: Node in get_children():
 		if not child is CollisionShape3D or child.disabled or child.shape == null:
 			continue
@@ -232,10 +239,10 @@ func _scripted_motion_is_clear(pose: Transform3D) -> bool:
 		query.exclude = [get_rid()]
 		query.collision_mask = collision_mask
 		query.margin = 0.02
-		query.transform = pose * child.transform
+		query.transform = Transform3D(pose.basis, pose.origin + lift) * child.transform
 		if not space.intersect_shape(query, 1).is_empty():
 			return false
-		query.transform = Transform3D(pose.basis, global_position) * child.transform
+		query.transform = Transform3D(pose.basis, global_position + lift) * child.transform
 		query.motion = pose.origin - global_position
 		if space.cast_motion(query)[0] < 1.0:
 			return false
