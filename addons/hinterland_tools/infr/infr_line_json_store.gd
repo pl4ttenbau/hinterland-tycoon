@@ -120,7 +120,10 @@ func _prepare_records_for_save(records: Dictionary, domain: Enums.InfrDomain) ->
 	ids.sort()
 	var output: Array = []
 	for num: int in ids:
-		output.append(records[num])
+		var record: Dictionary = records[num]
+		if domain == Enums.InfrDomain.RAIL and record.get("type") is String:
+			record["type"] = InfrType.normalize_rail_gauge(record["type"])
+		output.append(record)
 	return output
 
 static func round_positions(records: Array) -> void:

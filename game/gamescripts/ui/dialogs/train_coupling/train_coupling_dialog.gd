@@ -52,19 +52,9 @@ func _ready() -> void:
 	add_child(refresh_timer)
 
 func _build_content() -> void:
-	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var outer_panel: PanelContainer = $OuterPanel
-	outer_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	outer_panel.custom_minimum_size = Vector2(704, 517)
-	outer_panel.resized.connect(_center_panel)
-	resized.connect(_center_panel)
-	_center_panel.call_deferred()
-	var frame: MarginContainer = get_node("OuterPanel/OuterMargin/OuterVLayout/Container")
-	for margin: String in ["left", "right", "top", "bottom"]:
-		frame.add_theme_constant_override("margin_" + margin, 12)
-	var content := VBoxContainer.new()
-	content.add_theme_constant_override("separation", 10)
-	frame.add_child(content)
+	# Leave room for both consist columns. The base scene centers the panel as it grows.
+	$OuterPanel.custom_minimum_size = Vector2(704, 517)
+	var content: VBoxContainer = %Content
 	_status = _label(content)
 	var columns := HBoxContainer.new()
 	columns.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -100,16 +90,6 @@ func _build_content() -> void:
 	_error = _label(content)
 	_error.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_error.hide()
-
-	var close_button: Button = %OkButton
-	close_button.text = "Close"
-	close_button.add_theme_font_size_override("font_size", 18)
-	close_button.pressed.connect(close_all)
-
-## The shared panel grows with confirmations. Keep it centered at either size.
-func _center_panel() -> void:
-	var outer_panel: PanelContainer = $OuterPanel
-	outer_panel.position = (size - outer_panel.size) * 0.5
 
 func _build_nearby_panel(parent: VBoxContainer, heading: String, at_front: bool) -> NearbyPanel:
 	var panel := NearbyPanel.new()

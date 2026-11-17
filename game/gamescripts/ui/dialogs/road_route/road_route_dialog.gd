@@ -44,8 +44,10 @@ func _on_point_selected(index: int) -> void:
 	_actions_editor.show_point(point, "point %d · %s" % [index + 1, _points_editor.point_label(point)])
 
 
-func _show_status(message: String) -> void:
+func _show_status(message: String, highlighted: bool = false) -> void:
 	_status.text = message
+	_status.visible = not message.is_empty()
+	_status.theme_type_variation = &"AccentLabel" if highlighted else &"MutedLabel"
 
 
 func _save() -> void:

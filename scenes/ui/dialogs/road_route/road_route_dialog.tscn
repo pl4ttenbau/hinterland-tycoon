@@ -1,100 +1,55 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="4_frame"]
 [ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogs/road_route/road_route_points_editor.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogs/road_route/road_route_actions_editor.tscn" id="3"]
 
-[node name="RoadRouteDialog" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="RoadRouteDialog" instance=ExtResource("4_frame")]
 script = ExtResource("1")
 dialog_key = "RoadRouteDialog"
 title_text = "Road vehicle route"
 success_btn_text = "Save plan"
 
-[node name="Center" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Panel" type="PanelContainer" parent="Center"]
+[node name="OuterPanel" parent="." index="0"]
 custom_minimum_size = Vector2(724, 0)
-layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="Center/Panel"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
-
-[node name="Layout" type="VBoxContainer" parent="Center/Panel/Margin"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Headline" type="Label" parent="Center/Panel/Margin/Layout"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"HeadlineLabel"
+[node name="Headline" parent="OuterPanel/OuterMargin/OuterVLayout" index="0"]
 text = "Road vehicle route"
 
-[node name="Tabs" type="TabContainer" parent="Center/Panel/Margin/Layout"]
+[node name="Tabs" type="TabContainer" parent="OuterPanel/OuterMargin/OuterVLayout/Content" index="0"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 current_tab = 0
-use_hidden_tabs_for_min_size = true
 
-[node name="Route points" parent="Center/Panel/Margin/Layout/Tabs" instance=ExtResource("2")]
+[node name="Route points" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="0" instance=ExtResource("2")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Load and unload" parent="Center/Panel/Margin/Layout/Tabs" instance=ExtResource("3")]
+[node name="Load and unload" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="1" instance=ExtResource("3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Status" type="Label" parent="Center/Panel/Margin/Layout"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_type_variation = &"MutedLabel"
-autowrap_mode = 3
-
-[node name="Buttons" type="HBoxContainer" parent="Center/Panel/Margin/Layout"]
-layout_mode = 2
-
-[node name="OkButton" type="Button" parent="Center/Panel/Margin/Layout/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
+[node name="OkButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="0"]
+visible = true
 size_flags_horizontal = 3
 theme_type_variation = &"ManagementButton"
 text = "Save plan"
 
-[node name="StartButton" type="Button" parent="Center/Panel/Margin/Layout/Buttons"]
+[node name="StartButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"PrimaryButton"
 text = "Start plan"
 
-[node name="CancelButton" type="Button" parent="Center/Panel/Margin/Layout/Buttons"]
-unique_name_in_owner = true
-layout_mode = 2
+[node name="CancelButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="2"]
 size_flags_horizontal = 3
-theme_type_variation = &"ManagementButton"
 text = "Cancel"
 
-[connection signal="point_selected" from="Center/Panel/Margin/Layout/Tabs/Route points" to="." method="_on_point_selected"]
-[connection signal="status_changed" from="Center/Panel/Margin/Layout/Tabs/Route points" to="." method="_show_status"]
-[connection signal="status_changed" from="Center/Panel/Margin/Layout/Tabs/Load and unload" to="." method="_show_status"]
-[connection signal="pressed" from="Center/Panel/Margin/Layout/Buttons/OkButton" to="." method="_save"]
-[connection signal="pressed" from="Center/Panel/Margin/Layout/Buttons/StartButton" to="." method="_start"]
-[connection signal="pressed" from="Center/Panel/Margin/Layout/Buttons/CancelButton" to="." method="close_all"]
+[connection signal="point_selected" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_on_point_selected"]
+[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_show_status"]
+[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Load and unload" to="." method="_show_status" binds=[true]]
+[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/OkButton" to="." method="_save"]
+[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/StartButton" to="." method="_start"]

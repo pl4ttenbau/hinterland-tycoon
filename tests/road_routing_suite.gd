@@ -174,12 +174,15 @@ func test_dialog() -> bool:
 	Managers.interchanges = interchanges
 	GlobalState.road_depots = depots
 	var vehicle := RoadVehicle3D.of("oldtimer_car")
-	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
-	var dialog: GameDialog = script.create(vehicle)
-	tree.root.add_child(dialog)
-	var draft: RoadRoutePlan = dialog.get("plan")
-	draft.points.assign([_node_point(10, 0)])
+	var viewport := SubViewport.new()
+	viewport.size = Vector2i(1280, 720)
+	tree.root.add_child(viewport)
+	var dialog := RoadRouteDialog.create(vehicle)
+	viewport.add_child(dialog)
+	await _check_dialog_layout(dialog, "Route points")
+	dialog.plan.points.assign([_node_point(10, 0)])
 	_check_action_editing(dialog)
+	await _check_dialog_layout(dialog, "Load and unload")
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(vehicle.route_plan.points.size() == 2, "Save assigns the connected draft to the vehicle")
 	check(not vehicle.route.is_valid() and not vehicle.player_driving, "Saving does not start automatic driving")
@@ -187,12 +190,14 @@ func test_dialog() -> bool:
 	check(UiState.current_diag == null, "Route dialog releases modal state")
 
 	# Cancelling an edited copy must retain the previously saved itinerary.
-	dialog = script.create(vehicle)
-	tree.root.add_child(dialog)
-	(dialog.get("plan") as RoadRoutePlan).points.clear()
+	dialog = RoadRouteDialog.create(vehicle)
+	viewport.add_child(dialog)
+	dialog.plan.points.clear()
 	(dialog.get_node("%CancelButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(vehicle.route_plan.points.size() == 2, "Cancel keeps the saved itinerary")
+	await _check_grain_action(viewport)
+	viewport.free()
 	vehicle.free()
 	loader.free()
 	interchanges.free()
@@ -200,6 +205,53 @@ func test_dialog() -> bool:
 	Managers.interchanges = previous_interchanges
 	GlobalState.road_depots = previous_depots
 	return true
+
+## Wrapped text needs a layout pass at the panel's actual width after a tab switch.
+func _check_dialog_layout(dialog: RoadRouteDialog, tab_name: String) -> void:
+	for frame: int in range(3):
+		await tree.process_frame
+	var panel: PanelContainer = dialog.get_node("OuterPanel")
+	var bounds: Rect2 = dialog.get_viewport_rect()
+	var panel_rect: Rect2 = panel.get_global_rect()
+	check(bounds.encloses(panel_rect) and panel_rect.get_center().distance_to(bounds.get_center()) <= 1.0,
+		"%s fits in the viewport and stays centered" % tab_name)
+
+## Exercise the same grain instruction with the catalog's freight truck and an aggregate fixture.
+func _check_grain_action(viewport: SubViewport) -> void:
+	var truck := RoadVehicle3D.of("gaz_aa_truck")
+	var type := truck.vehicle_obj.veh_type.duplicate() as RoadVehicleTypeData
+	truck.vehicle_obj.veh_type = type
+	var point := RoadRoutePoint.new()
+	point.kind = RoadRoutePoint.Kind.STOP
+	point.target_num = 201
+	truck.route_plan.points.append(point)
+	var aggregate := GoodsCapacity.of(type.capacity.amount, BaseGoodsType.ResourceCategory.AGGREGATE)
+	for capacity: GoodsCapacity in [type.capacity, aggregate]:
+		type.capacity = capacity
+		var dialog := RoadRouteDialog.create(truck)
+		viewport.add_child(dialog)
+		(dialog.get_node("%Tabs") as TabContainer).current_tab = 1
+		var editor: RoadRouteActionsEditor = dialog.get_node("%Load and unload")
+		var goods: ItemList = editor.get_node("%Goods")
+		var actions: ItemList = editor.get_node("%Actions")
+		var status: Label = dialog.get_node("%Status")
+		for index: int in range(goods.item_count):
+			if goods.get_item_metadata(index) == &"grains":
+				goods.select(index)
+				break
+		(editor.get_node("%AddAction") as Button).pressed.emit()
+		if capacity == aggregate:
+			check(dialog.plan.points[0].actions.size() == 1 and actions.item_count == 1
+				and actions.get_item_text(0) == "Load grains" and actions.is_selected(0),
+				"An aggregate vehicle visibly adds the grain loading action")
+		else:
+			check(dialog.plan.points[0].actions.is_empty() and actions.item_count == 0,
+				"A freight truck rejects the grain loading action")
+			check(status.visible and status.text.contains("Aggregate") and status.text.contains("Freight"),
+				"The rejected grain loading action explains the cargo mismatch")
+			await _check_dialog_layout(dialog, "Grain capacity warning")
+		dialog.free()
+	truck.free()
 
 ## Exercise actual selector metadata, append order and action reordering in the draft.
 func _check_action_editing(dialog: GameDialog) -> void:

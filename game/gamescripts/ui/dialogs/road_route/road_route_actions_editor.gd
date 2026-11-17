@@ -29,7 +29,7 @@ func edit(vehicle: RoadVehicle3D, stops: Dictionary) -> void:
 
 func show_point(point: RoadRoutePoint, label: String = "") -> void:
 	_point = point
-	%ActionContext.text = "Actions at " + label if _point != null else "Select a route point on the first tab. Transfers require a physical stop."
+	%ActionContext.text = "Actions at " + label if _point != null else "Select a physical stop on the Route points tab."
 	_refresh_actions()
 
 
@@ -42,10 +42,10 @@ func _refresh_actions() -> void:
 
 func _add_action() -> void:
 	if not is_instance_valid(_vehicle):
-		status_changed.emit("This vehicle is no longer available.")
+		_reject_action("This vehicle is no longer available.")
 		return
 	if _point == null or _point.kind != RoadRoutePoint.Kind.STOP:
-		status_changed.emit("Select a physical stop before adding a transfer action.")
+		_reject_action("Select a physical stop before adding a transfer action.")
 		return
 	var action := RoadRouteAction.new()
 	action.kind = _kind.get_selected_id() as RoadRouteAction.Kind
@@ -55,10 +55,19 @@ func _add_action() -> void:
 		action.passenger_interchange_targets.append(_passenger_targets.get_item_metadata(item))
 
 	var error: String = action.validate(GameTypes.resource_types, _stops, _vehicle.vehicle_obj.veh_type.capacity)
-	status_changed.emit(error)
-	if error.is_empty():
-		_point.actions.append(action)
-		_refresh_actions()
+	if not error.is_empty():
+		_reject_action(error)
+		return
+	_point.actions.append(action)
+	_refresh_actions()
+	_actions.select(_actions.item_count - 1)
+	_actions.ensure_current_is_visible()
+	status_changed.emit("")
+
+
+func _reject_action(message: String) -> void:
+	Loggie.warn("Could not add road route action: %s" % message)
+	status_changed.emit(message)
 
 
 func _remove_action() -> void:

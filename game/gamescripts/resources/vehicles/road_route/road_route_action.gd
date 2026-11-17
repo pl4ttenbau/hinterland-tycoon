@@ -16,7 +16,10 @@ func validate(catalog: Dictionary, stops: Dictionary, capacity: GoodsCapacity) -
 		if good == null:
 			return "Unknown good: %s" % key
 		if capacity != null and capacity.goods_cat != good.res_cat:
-			return "This vehicle cannot carry %s." % key
+			var categories := BaseGoodsType.ResourceCategory.keys()
+			return "%s (%s) cannot be carried with %s capacity." % [
+				good.get_display_text(), categories[good.res_cat].capitalize(),
+				categories[capacity.goods_cat].capitalize()]
 		if good.is_passenger() and passenger_targets.is_empty() and passenger_interchange_targets.is_empty():
 			return "Choose at least one destination interchange for passengers."
 	for target: int in passenger_targets:

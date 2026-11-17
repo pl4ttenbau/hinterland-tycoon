@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b0fdevfdrakks"]
+
+[ext_resource type="PackedScene" uid="uid://crj833uw1g5e7" path="res://assets/meshes/vehicles/road/vaz1201/mesh/vaz1201.gltf" id="1_xvseb"]
+
+[node name="MeshVaz1201" unique_id=403073515 instance=ExtResource("1_xvseb")]
+
+[node name="vaz1201" parent="." index="0" unique_id=240947383]
+layers = 64
+visibility_range_end = 220.0
+visibility_range_end_margin = 22.0

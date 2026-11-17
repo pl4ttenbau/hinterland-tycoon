@@ -5,7 +5,8 @@ uniform sampler2D grass_texture : source_color, filter_linear_mipmap, repeat_dis
 uniform float draw_distance = 16.0;
 uniform float fade_start = 10.0;
 uniform float wind_strength : hint_range(0.0, 0.2) = 0.055;
-uniform float saturation : hint_range(0.0, 1.0) = 0.8;
+uniform float saturation : hint_range(0.0, 1.0) = 0.68;
+uniform float brightness : hint_range(0.5, 1.5) = 0.9;
 varying float blade_height;
 varying float variation;
 
@@ -29,7 +30,7 @@ void fragment() {
 	ALBEDO = tex.rgb * mix(vec3(0.78, 0.85, 0.7), vec3(1.08, 1.03, 0.85), variation);
 	ALBEDO *= mix(0.8, 1.0, blade_height) * COLOR.rgb;
 	float luminance = dot(ALBEDO, vec3(0.2126, 0.7152, 0.0722));
-	ALBEDO = mix(vec3(luminance), ALBEDO, saturation);
+	ALBEDO = mix(vec3(luminance), ALBEDO, saturation) * brightness;
 	ALPHA = tex.a;
 	ALPHA_SCISSOR_THRESHOLD = 0.35;
 	ROUGHNESS = 0.95;
