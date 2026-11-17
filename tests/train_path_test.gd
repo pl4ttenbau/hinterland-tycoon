@@ -74,6 +74,8 @@ func make_train(track: RailTrackData, distance: float, lengths: Array[float]) ->
 	return train
 
 func _run() -> void:
+	## Route markers are off in the game; the marker checks need them.
+	ActiveRailVehiclePath.show_debug = true
 	self.rails = RailsLoader.new()
 	Managers.rails = self.rails
 	self.forks = RailForkLoader.new()

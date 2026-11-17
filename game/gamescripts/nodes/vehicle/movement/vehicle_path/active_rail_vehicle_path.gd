@@ -3,8 +3,8 @@ class_name ActiveRailVehiclePath extends Path3D
 const SEGMENT_NODE_MARKER_PATH = "res://assets/meshes/markers/infr_end/selected_node.tscn"
 const DEBUG_MARKERS_PARENT_NAME = "DebugMarkers"
 
-## Show the active route with the existing green marker balls.
-const SHOW_DEBUG: bool = false
+## Show the active route with the existing green marker balls. Off in the game; tests switch it on.
+static var show_debug: bool = false
 
 ## Plan at least this far ahead, without committing the fork settings.
 const LOOKAHEAD_METRES: float = 20.0
@@ -298,7 +298,7 @@ func _exit_tree() -> void:
 #region Debug Markers
 ## Rebuild from the current curve so discarded branches disappear and shared points show once.
 func refresh_debug_markers() -> void:
-	if not SHOW_DEBUG:
+	if not show_debug:
 		return
 	self._clear_debug_markers()
 	for point_i: int in range(self.curve.point_count):

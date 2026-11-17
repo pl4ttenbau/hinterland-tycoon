@@ -70,10 +70,14 @@ func _test_roads(roads: RoadsLoader, eraser: EraserManager) -> bool:
 	_check(tail.curve.get_point_in(1) == handle and tail.curve.get_point_position(0) == Vector3.ZERO, "Right curve retains its handles in the new local frame")
 	var tail_view: RoadWay3D = roads.storage.get_container_by_num(tail.num)
 	_check(view.get_path_3d().curve == road.curve and tail_view.position == tail.start_pos, "Both road views use the new curves and origins")
+	# PathMesh3D rebuilds mesh and collision on the next idle frame; physics then needs a step to see it.
+	await get_tree().process_frame
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	_check(view.get_road_mesh().get_total_triangle_count() > 0 and tail_view.get_road_mesh().get_total_triangle_count() > 0, "Sub-tile road fragments keep their meshes")
-	_check(_road_hit(5.0) and _road_hit(25.0) and not _road_hit(15.0), "Sub-tile fragments keep collision and the erased gap is clear")
+	_check(_road_hit(5.0), "Left sub-tile fragment keeps collision")
+	_check(_road_hit(25.0), "Right sub-tile fragment keeps collision")
+	_check(not _road_hit(15.0), "The erased gap is clear of collision")
 	_check(branch.nodes[0].cross.connecting_roads == [tail.num] and end.cross.connecting_roads == [branch.num], "Reciprocal road links follow the moved endpoint")
 	_check(overpass.nodes[0].cross == null, "A mismatched height cannot inherit a link")
 	var graph := RoadPathfinder.new()
