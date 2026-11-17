@@ -33,7 +33,7 @@ func frames(count: int) -> void:
 
 func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
-	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_depot_spawning", &"test_spawn_dialog"]:
+	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_fixed_path", &"test_depot_spawning", &"test_spawn_dialog"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	print("Road vehicle tests: %d passed, %d failures" % [passed, failures])
@@ -268,6 +268,69 @@ func test_corner_braking() -> bool:
 	_free_driving_fixture(fixture)
 	return car_completed and bus_completed
 
+
+## The global switch keeps the body on the centreline through the tight house bend
+## that the physical driver has to steer through, then stops held at the route end.
+func test_fixed_path() -> bool:
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(0, 0, -100), Vector3.ZERO, Vector3(0, 0, -3.31))
+	curve.add_point(Vector3(6, 0, -106), Vector3(-3.31, 0, 0))
+	curve.add_point(Vector3(51, 0, -106))
+	var fixture: DrivingFixture = _create_driving_fixture(curve)
+	_add_corner_house(fixture.roads)
+	for frame: int in range(4):
+		await tree.process_frame
+	RoadVehicle3D.follow_road_path = true
+	var run_completed: bool = await _check_fixed_path_run(fixture)
+	var takeover_completed: bool = await _check_fixed_path_takeover(fixture)
+	RoadVehicle3D.follow_road_path = false
+	_free_driving_fixture(fixture)
+	return run_completed and takeover_completed
+
+func _check_fixed_path_run(fixture: DrivingFixture) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle("trabant_601_green", [9101])
+	if body == null:
+		return false
+	var completions: Array[int] = [0]
+	body.route_finished.connect(func(): completions[0] += 1)
+	var started: bool = false
+	var worst: float = 0.0
+	for frame: int in range(2400):
+		await tree.physics_frame
+		if body.is_following_fixed_path():
+			started = true
+			# Measure after the entry blend from the settled spawn pose.
+			if body.route.progress > body._path_entry_progress + RoadVehicle3D.PATH_BLEND_METRES:
+				var on_curve: Vector3 = body.route.curve.sample_baked(body.route.progress)
+				worst = maxf(worst, Vector2(body.global_position.x - on_curve.x, body.global_position.z - on_curve.z).length())
+		if completions[0] > 0:
+			break
+	check(started, "A settled vehicle switches to fixed-path following")
+	check(worst < 0.05, "Fixed path stays on the centreline through the tight bend (%.3f m off)" % worst)
+	check(completions[0] == 1 and body.freeze and absf(body.signed_speed_mps()) < 0.01,
+		"Fixed path stops once at the route end, held and stationary")
+	check(body.global_position.x > 40.0 and body.global_position.y > 0.0 and body.global_position.y < 1.5,
+		"Fixed path reaches the end of the road at ride height (%s)" % body.global_position)
+	body.free()
+	return true
+
+## Manual takeover mid-route hands back wheel physics with the scripted speed.
+func _check_fixed_path_takeover(fixture: DrivingFixture) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle("trabant_601_green", [9101])
+	if body == null:
+		return false
+	for frame: int in range(1200):
+		await tree.physics_frame
+		if body.is_following_fixed_path() and body.signed_speed_mps() > 3.0:
+			break
+	var speed: float = body.signed_speed_mps()
+	check(speed > 3.0 and body.freeze, "Fixed-path vehicle accelerates while held")
+	body.set_player_driving(true)
+	check(not body.freeze and not body.is_following_fixed_path(), "Manual takeover restores wheel physics")
+	check(absf(body.linear_velocity.dot(body.global_basis.z) - speed) < 0.5, "Manual takeover keeps the scripted speed")
+	body.free()
+	return true
 
 func _add_corner_house(parent: Node) -> StaticBody3D:
 	# A solid box stands outside the bend, directly in the path of an overshoot.

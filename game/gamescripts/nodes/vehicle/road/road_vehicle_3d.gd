@@ -1,10 +1,16 @@
 ## One physical vehicle: the player supplies free steering, otherwise the route
-## supplies steering and speed requests. Automatic endpoint U-turns temporarily
-## use a collision-checked curve; manual driving always retains wheel physics.
+## supplies steering and speed requests. Scripted motion (endpoint U-turns, and
+## optionally whole routes) temporarily uses a collision-checked kinematic pose;
+## manual driving always retains wheel physics.
 class_name RoadVehicle3D extends VehicleBody3D
 
 ## Emitted once per assigned driving path after its terminal stop.
 signal route_finished()
+
+## Global switch: when true, automatic driving places every road vehicle exactly
+## on its route curve (kinematic, collision-checked) instead of steering with
+## wheel physics. Player driving is unaffected. Takes effect on the next tick.
+static var follow_road_path: bool = false
 
 ## Automatic driving speed cap in km/h; bends and terminal braking may lower it.
 @export var cruise_speed_kmh: float = 30.0
@@ -30,6 +36,12 @@ signal route_finished()
 ## Scripted U-turn speed in metres per second.
 @export_range(0.25, 4.0, 0.05) var automatic_uturn_speed: float = 1.5
 
+## Acceleration in m/s² while following the road curve; braking uses braking_deceleration.
+@export_range(0.1, 5.0, 0.1) var path_acceleration: float = 1.5
+
+## Distance in metres over which fixed-path following eases from the takeover pose.
+const PATH_BLEND_METRES: float = 3.0
+
 var vehicle_obj: VehicleData
 var inventory_component: InventoryContainer
 
@@ -47,9 +59,20 @@ var maximum_speed_kmh: float = 50.0
 var motor_power_watts: float = 25000.0
 var _arrived: bool = false
 var _uturn := RoadVehicleUTurn.new()
-var _turn_previous_freeze: bool
-var _turn_previous_freeze_mode: RigidBody3D.FreezeMode
-var _turn_velocity: Vector3
+
+# Scripted motion: shared kinematic hold for U-turns and fixed-path following.
+var _scripted: bool = false
+var _scripted_velocity: Vector3
+var _pre_script_freeze: bool
+var _pre_script_freeze_mode: RigidBody3D.FreezeMode
+
+# Fixed-path following progress; route.progress remains the position on the curve.
+var _path_active: bool = false
+var _path_curve: Curve3D
+var _path_speed: float = 0.0
+var _path_height: float = 0.0
+var _path_entry: Transform3D
+var _path_entry_progress: float = 0.0
 
 #region Construction
 ## Construct before tree insertion so callers can assign a path and spawn pose.
@@ -67,14 +90,23 @@ func set_route(paths: Array[Path3D], backwards: bool = false) -> bool:
 	if not route.assign(paths, backwards):
 		return false
 	_end_automatic_uturn(true)
+	if not follow_road_path:
+		_release_scripted(true)
 	if is_inside_tree():
 		route.progress = route.curve.get_closest_offset(global_position)
 	_arrived = false
 	return true
 
 ## Remove automatic driving requests without changing the body's physical state.
-func clear_route() -> void:
+## keep_held leaves a fixed-path body frozen where it stands (stop servicing, a
+## turn approach); plan stops and completion release it to wheel physics.
+func clear_route(keep_held: bool = false) -> void:
 	_end_automatic_uturn(false)
+	if keep_held:
+		_reset_path_follow()
+		_scripted_velocity = Vector3.ZERO
+	else:
+		_release_scripted(false)
 	route = RoadVehicleRoute.new()
 	_arrived = false
 	engine_force = 0.0
@@ -85,31 +117,42 @@ func set_player_driving(enabled: bool) -> void:
 	player_driving = enabled
 	if enabled:
 		_end_automatic_uturn(true)
+		_release_scripted(true)
 		_arrived = false
 	# Clear the previous driver's force immediately, preserving physical motion.
 	engine_force = 0.0
 	brake = 0.0
 	sleeping = false
 
+## Velocity of whichever driver owns the body: physics, or the scripted pose.
+func current_velocity() -> Vector3:
+	return _scripted_velocity if _scripted else linear_velocity
+
 func signed_speed_mps() -> float:
-	return linear_velocity.dot(global_basis.z.normalized())
+	return current_velocity().dot(global_basis.z.normalized())
+
+func is_following_fixed_path() -> bool:
+	return _path_active
 #endregion
 
 #region Shared driving inputs
 func _physics_process(delta: float) -> void:
-	# One driver owns movement per tick: manual input, an active turn, or normal
-	# route physics. The executor can enter a turn, so check again after its tick.
+	# One driver owns movement per tick: manual input, an active turn, fixed-path
+	# following or normal route physics. The executor can enter a turn, so check
+	# again after its tick.
 	if player_driving:
 		_drive_player(delta)
+		return
+	if is_automatic_uturning():
+		_drive_automatic_uturn(delta)
+		return
+	plan_execution.tick(self)
+	if is_automatic_uturning():
+		_drive_automatic_uturn(delta)
+	elif follow_road_path:
+		_drive_route_fixed(delta)
 	else:
-		if is_automatic_uturning():
-			_drive_automatic_uturn(delta)
-			return
-		plan_execution.tick(self)
-		if is_automatic_uturning():
-			_drive_automatic_uturn(delta)
-		else:
-			_drive_route(delta)
+		_drive_route(delta)
 
 func _drive_player(delta: float) -> void:
 	if UiState.current_diag != null or UiState.movement_blocked:
@@ -141,25 +184,17 @@ func _available_engine_force(speed: float) -> float:
 	return minf(mass * 1.5, motor_power_watts / maxf(absf(speed), 2.0) * 0.5)
 #endregion
 
-#region Automatic endpoint U-turns
-func is_automatic_uturning() -> bool:
-	return _uturn.active
-
-## Only the automatic route executor requests this, after braking at a road end.
-## Kinematic freeze prevents the wheel solver from fighting the scripted curve.
-func begin_automatic_uturn(path: Path3D, endpoint: float) -> bool:
-	if _uturn.active or player_driving or linear_velocity.length() > 0.2 or not is_finite(automatic_uturn_speed) or automatic_uturn_speed <= 0:
-		return false
-	if not is_instance_valid(path) or not path.is_inside_tree() or path.curve == null:
-		return false
-	var end: Vector3 = path.to_global(path.curve.sample_baked(endpoint))
-	if global_position.distance_to(end) > dimensions_metres.z * 0.55 + 1.5:
-		return false
-	if not _uturn.build(global_transform, path, endpoint, automatic_uturn_radius):
-		return false
-	_turn_previous_freeze = freeze
-	_turn_previous_freeze_mode = freeze_mode
-	_turn_velocity = Vector3.ZERO
+#region Scripted motion
+## Kinematic freeze stops the wheel solver from fighting a scripted pose. Holding
+## is idempotent, so fixed-path following can pass straight into a U-turn and back
+## while the original freeze configuration is recorded only once.
+func _hold_scripted() -> void:
+	if _scripted:
+		return
+	_pre_script_freeze = freeze
+	_pre_script_freeze_mode = freeze_mode
+	_scripted = true
+	_scripted_velocity = Vector3.ZERO
 	freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 	freeze = true
 	linear_velocity = Vector3.ZERO
@@ -167,29 +202,25 @@ func begin_automatic_uturn(path: Path3D, endpoint: float) -> bool:
 	engine_force = 0
 	brake = 0
 	steering = 0
-	_arrived = false
-	return true
 
-func _drive_automatic_uturn(delta: float) -> void:
-	if not _uturn.is_valid():
-		plan_execution.stop(self, "U-turn road is no longer available.")
+## Restore exactly the previous freeze configuration. Manual takeover keeps the
+## scripted tangent velocity; stops discard it. Safe to call when not held.
+func _release_scripted(keep_velocity: bool) -> void:
+	if not _scripted:
 		return
-	var next: float = minf(_uturn.progress + automatic_uturn_speed * delta, _uturn.curve.get_baked_length())
-	var pose: Transform3D = _uturn.sample(next)
-	if not _uturn_motion_is_clear(pose):
-		_turn_velocity = Vector3.ZERO
-		plan_execution.status = "U-turn blocked: waiting for clearance."
-		return
-	_turn_velocity = (pose.origin - global_position) / maxf(delta, 0.001)
-	global_transform = pose
-	_uturn.progress = next
-	plan_execution.status = "Turning at road end"
-	if next >= _uturn.curve.get_baked_length():
-		_end_automatic_uturn(true)
+	var velocity: Vector3 = _scripted_velocity if keep_velocity else Vector3.ZERO
+	_scripted = false
+	_scripted_velocity = Vector3.ZERO
+	_reset_path_follow()
+	freeze = _pre_script_freeze
+	freeze_mode = _pre_script_freeze_mode
+	linear_velocity = velocity if not freeze else Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	sleeping = false
 
 ## Sweep using the next orientation too, so a wide body cannot rotate through
-## nearby obstacles. Collisions stay enabled throughout the assisted manoeuvre.
-func _uturn_motion_is_clear(pose: Transform3D) -> bool:
+## nearby obstacles. Collisions stay enabled throughout scripted motion.
+func _scripted_motion_is_clear(pose: Transform3D) -> bool:
 	# Explicit space queries still work while wheel/body simulation is frozen.
 	# Check the next rotated footprint, then sweep its translation; ignore self.
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
@@ -210,8 +241,52 @@ func _uturn_motion_is_clear(pose: Transform3D) -> bool:
 			return false
 	return true
 
-## Manual takeover keeps the current pose and tangent velocity. Stops discard
-## turn velocity. Both restore exactly the body's previous freeze configuration.
+## Commit a checked pose, deriving the velocity reported while frozen.
+func _move_scripted(pose: Transform3D, delta: float) -> bool:
+	if not _scripted_motion_is_clear(pose):
+		_scripted_velocity = Vector3.ZERO
+		return false
+	_scripted_velocity = (pose.origin - global_position) / maxf(delta, 0.001)
+	global_transform = pose
+	return true
+#endregion
+
+#region Automatic endpoint U-turns
+func is_automatic_uturning() -> bool:
+	return _uturn.active
+
+## Only the automatic route executor requests this, after braking at a road end.
+func begin_automatic_uturn(path: Path3D, endpoint: float) -> bool:
+	if _uturn.active or player_driving or current_velocity().length() > 0.2 or not is_finite(automatic_uturn_speed) or automatic_uturn_speed <= 0:
+		return false
+	if not is_instance_valid(path) or not path.is_inside_tree() or path.curve == null:
+		return false
+	var end: Vector3 = path.to_global(path.curve.sample_baked(endpoint))
+	if global_position.distance_to(end) > dimensions_metres.z * 0.55 + 1.5:
+		return false
+	if not _uturn.build(global_transform, path, endpoint, automatic_uturn_radius):
+		return false
+	_hold_scripted()
+	_reset_path_follow()
+	_scripted_velocity = Vector3.ZERO
+	_arrived = false
+	return true
+
+func _drive_automatic_uturn(delta: float) -> void:
+	if not _uturn.is_valid():
+		plan_execution.stop(self, "U-turn road is no longer available.")
+		return
+	var next: float = minf(_uturn.progress + automatic_uturn_speed * delta, _uturn.curve.get_baked_length())
+	if not _move_scripted(_uturn.sample(next), delta):
+		plan_execution.status = "U-turn blocked: waiting for clearance."
+		return
+	_uturn.progress = next
+	plan_execution.status = "Turning at road end"
+	if next >= _uturn.curve.get_baked_length():
+		_end_automatic_uturn(true)
+
+## Completion keeps the exit velocity. With fixed-path following on, the body
+## stays held so the next segment continues without dropping onto the suspension.
 func _end_automatic_uturn(keep_velocity: bool) -> void:
 	if not _uturn.active:
 		return
@@ -219,18 +294,101 @@ func _end_automatic_uturn(keep_velocity: bool) -> void:
 	_uturn.source = null
 	_uturn.curve = null
 	_uturn.progress = 0
-	freeze = _turn_previous_freeze
-	freeze_mode = _turn_previous_freeze_mode
-	linear_velocity = _turn_velocity if keep_velocity and not freeze else Vector3.ZERO
-	angular_velocity = Vector3.ZERO
-	sleeping = false
+	if not keep_velocity:
+		_scripted_velocity = Vector3.ZERO
+	if not (keep_velocity and follow_road_path):
+		_release_scripted(keep_velocity)
 
+#endregion
+
+#region Fixed-path driving
+## Place the body on the route curve, using the same bend and stop speed planning
+## as the physical driver. Arrival keeps the body held and stationary, so stops
+## and U-turns follow without a physics handoff; clear_route() releases it.
+func _drive_route_fixed(delta: float) -> void:
+	# No route while held means parked by the executor; a stop releases via clear_route().
+	if not route.is_valid() or _arrived:
+		if _scripted:
+			_scripted_velocity = Vector3.ZERO
+		else:
+			apply_driver_input(0.0, 0.0, 1.0, delta)
+		return
+	# A new curve (replanned segment, legacy set_route) restarts the entry blend.
+	if (not _path_active or _path_curve != route.curve) and not _begin_path_follow():
+		# Unsettled or too far off the curve: the physical driver recovers first.
+		_drive_route(delta)
+		return
+	var length: float = route.curve.get_baked_length()
+	var distance_left: float = maxf(0.0, length - route.progress - dimensions_metres.z * 0.55)
+	# Heading error is always zero on the curve; only bends and the stop limit speed.
+	var desired: float = _desired_route_speed(0.0, distance_left)
+	var rate: float = path_acceleration if desired > _path_speed else braking_deceleration
+	_path_speed = move_toward(_path_speed, desired, rate * delta)
+	var next: float = minf(route.progress + _path_speed * delta, length)
+	if not _move_scripted(_route_pose(next), delta):
+		_path_speed = 0.0
+		if plan_execution.running:
+			plan_execution.status = "Blocked: waiting for clearance."
+		return
+	route.progress = next
+	if plan_execution.running:
+		plan_execution.status = plan_execution.driving_status()
+	if desired < 0.1 and _path_speed < 0.1:
+		_path_speed = 0.0
+		_scripted_velocity = Vector3.ZERO
+		_arrived = true
+		route_finished.emit()
+
+## Start from a settled body (or one already held after a U-turn) near the curve.
+## Its current height above the centreline is kept for the whole path.
+func _begin_path_follow() -> bool:
+	if not _scripted and not _is_settled():
+		return false
+	route.update_progress(global_position)
+	if not _is_near_route():
+		return false
+	var speed: float = maxf(0.0, signed_speed_mps())
+	_hold_scripted()
+	_path_speed = speed
+	_path_height = global_position.y - route.curve.sample_baked(route.progress).y
+	_path_entry = global_transform
+	_path_entry_progress = route.progress
+	_path_curve = route.curve
+	_path_active = true
+	return true
+
+## Heading from a ±0.5 m chord, so slopes pitch the body. Ease in from the
+## takeover pose so starting a few metres off the centreline does not snap.
+func _route_pose(offset: float) -> Transform3D:
+	var curve: Curve3D = route.curve
+	var length: float = curve.get_baked_length()
+	var behind: Vector3 = curve.sample_baked(maxf(0.0, offset - 0.5))
+	var ahead: Vector3 = curve.sample_baked(minf(length, offset + 0.5))
+	var target := Transform3D(Basis.looking_at((ahead - behind).normalized(), Vector3.UP, true),
+		curve.sample_baked(offset) + Vector3.UP * _path_height)
+	var blend: float = clampf((offset - _path_entry_progress) / PATH_BLEND_METRES, 0.0, 1.0)
+	return _path_entry.interpolate_with(target, blend)
+
+## Wheels resting on the road; a freshly spawned or bouncing body settles first.
+func _is_settled() -> bool:
+	var contacts: int = 0
+	for child: Node in get_children():
+		if child is VehicleWheel3D and child.is_in_contact():
+			contacts += 1
+	return contacts >= 3 and absf(linear_velocity.y) < 0.5
+
+func _reset_path_follow() -> void:
+	_path_active = false
+	_path_curve = null
+	_path_speed = 0.0
 #endregion
 
 #region Automatic driving
 
 ## Execute geometry supplied by a planner; do not choose destinations or transfer goods.
 func _drive_route(delta: float) -> void:
+	# Turning fixed-path following off at runtime hands the body back to physics.
+	_release_scripted(true)
 	if not route.is_valid():
 		apply_driver_input(0.0, 0.0, 1.0, delta)
 		return

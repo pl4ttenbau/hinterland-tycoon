@@ -27,7 +27,7 @@ static func _validate_action(vehicle: RoadVehicle3D, point: RoadRoutePoint,
 		action: RoadRouteAction, stops: Dictionary) -> String:
 	if not is_instance_valid(vehicle) or not vehicle.is_inside_tree():
 		return "Vehicle is no longer available."
-	if vehicle.player_driving or vehicle.linear_velocity.length() > MAX_SERVICE_SPEED:
+	if vehicle.player_driving or vehicle.current_velocity().length() > MAX_SERVICE_SPEED:
 		return "Stop the vehicle and release manual control before servicing."
 	if point == null or point.kind != RoadRoutePoint.Kind.STOP or not stops.get(point.target_num) is RoadStationData:
 		return "The transfer stop is no longer available."

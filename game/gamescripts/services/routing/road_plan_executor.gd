@@ -58,7 +58,7 @@ func tick(vehicle: RoadVehicle3D) -> void:
 	if _tick_uturn(vehicle):
 		return
 	if _servicing_visit:
-		if vehicle.linear_velocity.length() <= RoadRouteTransferService.MAX_SERVICE_SPEED:
+		if vehicle.current_velocity().length() <= RoadRouteTransferService.MAX_SERVICE_SPEED:
 			if _finish_visit(vehicle):
 				_begin_visit(vehicle)
 	elif not vehicle.route.is_valid():
@@ -112,7 +112,7 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 ## a stationary vehicle. Clearing the driving curve applies the parking brake.
 func _hold_for_actions(vehicle: RoadVehicle3D) -> void:
 	_servicing_visit = true
-	vehicle.clear_route()
+	vehicle.clear_route(true)
 	status = "Servicing point %d of %d" % [current_point + 1, _plan.points.size()]
 
 ## A single-side marker is served only when facing its permitted approach direction.
@@ -149,7 +149,7 @@ func _assign_turn_approach(vehicle: RoadVehicle3D, turn: RoadUTurnPlanner.Approa
 	var assigned: bool = vehicle.route.assign_segments(turn.segments)
 	var endpoint: Vector3 = turn.path.to_global(turn.path.curve.sample_baked(turn.offset))
 	if (assigned and vehicle.route.remaining() <= margin + 0.4) or (not assigned and vehicle.global_position.distance_to(endpoint) <= margin + 1):
-		vehicle.clear_route()
+		vehicle.clear_route(true)
 		vehicle._arrived = true
 	elif not assigned:
 		stop(vehicle, "No drivable approach to the road end for a U-turn.")
@@ -174,7 +174,7 @@ func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
 		return true
 	if not vehicle._arrived:
 		return false
-	if vehicle.linear_velocity.length() > 0.2:
+	if vehicle.current_velocity().length() > 0.2:
 		return true
 	if vehicle.begin_automatic_uturn(_turn_approach.path, _turn_approach.offset):
 		_turn_started = true
