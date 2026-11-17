@@ -74,6 +74,11 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="BuildHint" type="Label" parent="BuildingModeIcon/BuildDetails"]
+layout_mode = 2
+text = "Click terrain to add points · Enter to review · Esc to discard"
+horizontal_alignment = 1
+
 [node name="BuildingModeIconImage" type="TextureRect" parent="BuildingModeIcon/BuildDetails" unique_id=821246702]
 layout_mode = 2
 mouse_filter = 2

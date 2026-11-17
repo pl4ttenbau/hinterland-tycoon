@@ -19,9 +19,9 @@ func _enter_tree() -> void:
 func add(track_obj: RailTrackData):
 	self._list.append(track_obj)
 	self._create_indexes(track_obj)
-	self.track_added.emit(track_obj)
 	if track_obj.num > self._max_num:
 		self._max_num = track_obj.num
+	self.track_added.emit(track_obj)
 	
 func add_container(outer_track: RailTrack3D):
 	self._containers.append(outer_track)
@@ -30,6 +30,23 @@ func add_container(outer_track: RailTrack3D):
 func _create_indexes(track_obj: RailTrackData):
 	self._by_id.set(track_obj.num, track_obj)
 #endregion
+
+## Remove the indexes and detach the view immediately so it stops colliding.
+func remove(track: RailTrackData) -> void:
+	if _by_id.get(track.num) != track:
+		return
+	_list.erase(track)
+	_by_id.erase(track.num)
+	GlobalState.tracks.erase(track)
+	var view: RailTrack3D = _containers_by_id.get(track.num)
+	_containers_by_id.erase(track.num)
+	if is_instance_valid(view):
+		_containers.erase(view)
+		GlobalState.outer_tracks.erase(view)
+		if view.get_parent() != null:
+			view.get_parent().remove_child(view)
+		view.queue_free()
+
 
 #region Get Rail Tracks
 func get_all() -> Array[RailTrackData]:

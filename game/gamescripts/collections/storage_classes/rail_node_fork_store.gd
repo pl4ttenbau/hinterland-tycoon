@@ -29,3 +29,19 @@ func get_by_pos(fork_pos: Vector3) -> RailNodeForkData:
 func get_by_track(track_num: int) -> RailNodeForkData:
 	return self._by_track_num.get(track_num)
 #endregion	
+
+
+func remove(fork: RailNodeForkData) -> void:
+	_list.erase(fork)
+	GlobalState.forks.erase(fork)
+
+
+## A surviving endpoint may now belong to a new fragment.
+func rebuild_indexes() -> void:
+	_by_num.clear()
+	_by_track_num.clear()
+	_by_pos.clear()
+	for fork: RailNodeForkData in _list:
+		_by_num[fork.num] = fork
+		_by_track_num[fork.track.num] = fork
+		_by_pos[fork.position] = fork

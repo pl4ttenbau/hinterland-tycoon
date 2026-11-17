@@ -7,6 +7,7 @@ var current_point: int = 0
 var status: String = "Not started"
 var _plan: RoadRoutePlan
 var _network := RoadPathfinder.new()
+var _network_revision: int = -1
 var _servicing_visit: bool = false
 ## Temporary navigation substep, never a visit: current_point stays unchanged.
 ## Keeping the approach until completion also lets manual interruption replan.
@@ -19,12 +20,16 @@ var _turn_started: bool = false
 func driving_status() -> String:
 	return "Driving to road end for a U-turn" if _turn_approach != null else "Driving to point %d" % (current_point + 1)
 
+func references_road_nodes(road_num: int) -> bool:
+	return running and _plan != null and _plan.references_road_nodes(road_num)
+
+
 ## Freeze a validated plan so editing cannot change a segment that is already being driven.
 func start(vehicle: RoadVehicle3D) -> bool:
 	if not is_instance_valid(Managers.roads):
 		status = "Road network is unavailable."
 		return false
-	_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
+	_rebuild_network(vehicle)
 	var stops: Dictionary = _stops()
 	status = vehicle.route_plan.validate(_network, Managers.roads.storage, stops, GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity, Managers.roads.markers)
 	if not status.is_empty():
@@ -180,7 +185,14 @@ func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
 
 #region Driving-path construction
 ## Attach the current road offset to the graph, choosing the lowest total arc cost.
+func _rebuild_network(vehicle: RoadVehicle3D) -> void:
+	_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
+	_network_revision = Managers.roads.network_revision
+
+
 func _segments_to(vehicle: RoadVehicle3D, destination: RoadNode) -> Array[Dictionary]:
+	if _network_revision != Managers.roads.network_revision:
+		_rebuild_network(vehicle)
 	var start: Dictionary = _nearest_road_position(vehicle)
 	var nearest: RoadWay3D = start.road
 	if nearest == null or float(start.distance) > vehicle.route_recovery_distance:

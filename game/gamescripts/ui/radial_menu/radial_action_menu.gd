@@ -31,6 +31,11 @@ func available_actions() -> Array[Dictionary]:
 		items.append(_item("Place road marker", "RoadMarker", "road_marker"))
 	if not in_vehicle and is_instance_valid(Managers.rails):
 		items.append(_item("Connect tracks", "Connect", "connect_tracks"))
+	if in_vehicle and TrainCoupling.available(player.control.current_train()):
+		items.append({
+			"title": "Coupling", "id": "Coupling",
+			"texture": preload("res://assets/icons/icon_locomotive_white.png"),
+		})
 	if not in_vehicle and is_instance_valid(Managers.interchanges):
 		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
 		if is_instance_valid(creator) and creator.is_available():

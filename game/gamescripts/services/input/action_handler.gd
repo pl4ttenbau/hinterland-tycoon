@@ -16,6 +16,8 @@ func _on_action_triggered(action_name: String) -> bool:
 			return _open_dialog("res://scenes/ui/dialogs/company_info/company_info_dialog.tscn")
 		"AutoRoute":
 			return _open_road_route_dialog()
+		"Coupling":
+			return _open_coupling_dialog()
 		"Prospect":
 			return Prospecting.open_at_player()
 		"Build":
@@ -47,6 +49,17 @@ func _open_road_route_dialog() -> bool:
 	if not is_instance_valid(vehicle):
 		return false
 	get_tree().root.add_child(ROUTE_DIALOG.create(vehicle))
+	return true
+
+
+func _open_coupling_dialog() -> bool:
+	var player := GlobalState.player
+	if not is_instance_valid(player):
+		return false
+	var train := player.control.current_train()
+	if not TrainCoupling.available(train):
+		return false
+	get_tree().root.add_child(TrainCouplingDialog.create(train.locomotive))
 	return true
 
 

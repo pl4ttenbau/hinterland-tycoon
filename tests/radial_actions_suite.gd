@@ -67,6 +67,7 @@ func run() -> void:
 	check("Company" in _ids(menu) and "Game Menu" in _ids(menu), "Both new menu dialogs remain available inside a vehicle")
 	check("Prospect" in _ids(menu), "Prospect remains in the road-vehicle menu")
 	check("AutoRoute" in _ids(menu) and "Enter" in _ids(menu), "Occupied road vehicle offers routing and exit")
+	check("Coupling" not in _ids(menu), "Road vehicles do not offer train coupling")
 	check("RoadMarker" not in _ids(menu) and "Connect" not in _ids(menu), "Road vehicle hides on-foot actions")
 	var train := Train3D.new()
 	var locomotive := Vehicle3D.new()

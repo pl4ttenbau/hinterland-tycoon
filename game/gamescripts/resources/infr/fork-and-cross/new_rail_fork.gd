@@ -24,7 +24,7 @@ func _init(_pos: Vector3):
 	NewRailForkData._last_fork_num += 1
 	self.num = NewRailForkData._last_fork_num
 	# connect 2 signal
-	Managers.forks.forks_spawned.connect(Callable(self, "_on_forks_spawned"))
+	Managers.forks.forks_spawned.connect(self.refresh_setting)
 	self.node_fork_connected.connect(Callable(self, "_on_node_fork_connected"))
 	
 func connect_rail_node_fork(rail_node_fork: RailNodeForkData):
@@ -39,6 +39,8 @@ func is_changable() -> bool:
 #region Getters
 # Static & Switchable Track Getters
 func get_static_track_num() -> int:
+	if self.setting.current != null:
+		return self.setting.current.root
 	if self.static_tracks.is_empty():
 		if self.is_changable():
 			var forks_tracks_arr_str: String = ", ".join(self.connected_tracks)
@@ -71,11 +73,11 @@ func switch():
 	self.switched.emit(curr_setting)
 #endregion
 
-#region Callables
-func _on_forks_spawned():
+func refresh_setting() -> void:
 	self.setting.init_current_setting()
 	self.setting_initialized.emit(self.setting)
 
+#region Callables
 func _on_node_fork_connected(node_fork: RailNodeForkData):
 	var track_num: int = node_fork.track.num
 	# add to own NodeForkData array

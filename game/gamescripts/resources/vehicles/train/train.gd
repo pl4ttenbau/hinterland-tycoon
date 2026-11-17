@@ -8,11 +8,12 @@ signal vehicles_changed(veh_arr: Array[VehicleData])
 
 @export_storage var vehicles: Array[VehicleData] = []
 
+var _locomotive: VehicleData
+
 @export_storage var locomotive: VehicleData:
-	get(): return locomotive
+	get(): return _locomotive
 	set(value):
-		## Store inside the setter; assigning this property from a helper calls the setter again.
-		locomotive = value
+		_locomotive = value
 		self.locomotive_changed.emit(value)
 		self.append_vehicle(value)
 
@@ -31,4 +32,12 @@ func append_vehicle(_vehicle: VehicleData) -> Array[VehicleData]:
 	self.vehicles.append(_vehicle)
 	self.vehicles_changed.emit(self.vehicles)
 	return self.vehicles
+
+func replace_consist(ordered: Array[VehicleData], engine: VehicleData) -> void:
+	var engine_changed: bool = _locomotive != engine
+	vehicles = ordered
+	_locomotive = engine
+	if engine_changed:
+		locomotive_changed.emit(engine)
+	vehicles_changed.emit(vehicles)
 #endregion

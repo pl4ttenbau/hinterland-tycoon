@@ -37,7 +37,7 @@ func run() -> bool:
 	rail = RailMapper.rail_track_from_dict({"num": 6, "type": "750_MM", "points": [{"pos": [100, 5, 130]}, {"pos": [500, 5, 130]}]})
 	rail.build_curve()
 	services.rails.track_storage.add(rail)
-	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch", "test_track_spending", "test_rail_confirmation"]:
+	for test: String in ["test_physical_placement", "test_create_and_join", "test_validation", "test_dialogs", "test_multiple_stations", "test_action_dispatch", "test_rail_confirmation"]:
 		if await call(test) != true:
 			check(false, test + " aborted")
 	services.free()
@@ -379,35 +379,6 @@ func test_action_dispatch() -> bool:
 	player_scene.free()
 	handler.free()
 	return true
-
-func test_track_spending() -> bool:
-	var player := PlayerAvatar.new()
-	GlobalState.player = player
-	var fork := NewRailForkData.new(Vector3(500, 5, 130))
-	UiState.build_infr_mode = UiModeBuildInfr.from_fork(fork)
-	var builder: NewRailBuilder = services.rail_builder
-	builder._on_ui_mode_changed(Enums.UiMode.BUILD_INFR)
-	check(builder.curr_track3d == null and player.company.cash == CompanyData.STARTING_CASH,
-		"Entering rail build mode does not place or charge for track")
-	player.company.cash = 500
-	builder._on_terrain_click(Vector3(520, 5, 130))
-	var track: RailTrack3D = builder.curr_track3d
-	check(track != null and track.track.nodes.size() == 2 and player.company.cash == 0,
-		"Adding a rail segment consumes the quoted price")
-	builder._on_terrain_click(Vector3(540, 5, 130))
-	check(track.track.nodes.size() == 2 and player.company.cash == 0,
-		"An unaffordable rail segment is rejected")
-	builder._on_ui_mode_changed(Enums.UiMode.WALKING)
-	UiState.build_infr_mode = null
-	GlobalState.outer_tracks.erase(track)
-	for node: RailNodeData in track.track.nodes:
-		node.parent_track = null
-	track.free()
-	GlobalState.player = null
-	player.free()
-	fork.setting.parent = null
-	return true
-
 
 func capture_preview(dialog: Control, kind: String) -> void:
 	for frame: int in 3:

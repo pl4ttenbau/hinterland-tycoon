@@ -58,6 +58,24 @@
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/ddr_ew_65/editor_ddr_ew_65.tscn" id="58_1n2u2"]
 [ext_resource type="Script" uid="uid://b3731raomqh8x" path="res://addons/hinterland_tools/editor_cache.gd" id="59_03nvo"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_xndjc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1n2u2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lqwhp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r3dv8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kqk70"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_03nvo"]
+viewport_path = NodePath("SubViewport")
+
 [node name="WorldContainer" type="Node" unique_id=1670658413 node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_hp62h")
 map_key = "franzburger"
@@ -2025,6 +2043,24 @@ transform = Transform3D(0.9001288, 0.0232923, 0.43500075, -1.8626451e-09, 0.9985
 transform = Transform3D(0.96344835, 0, -0.26789424, 0, 1, 0, 0.26789424, 0, 0.96344835, 735.4993, 23.319862, -353.08685)
 
 [node name="EditorObjects" parent="." unique_id=498932354 instance=ExtResource("54_xndjc")]
+
+[node name="RoadStop_1" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="0" unique_id=703079687]
+texture = SubResource("ViewportTexture_xndjc")
+
+[node name="RailStop_2" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="1" unique_id=1596559202]
+texture = SubResource("ViewportTexture_1n2u2")
+
+[node name="RoadStop_3" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="2" unique_id=94387239]
+texture = SubResource("ViewportTexture_lqwhp")
+
+[node name="RailStop_4" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="3" unique_id=202055274]
+texture = SubResource("ViewportTexture_r3dv8")
+
+[node name="RailStop_5" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="4" unique_id=1834796545]
+texture = SubResource("ViewportTexture_kqk70")
+
+[node name="RoadStop_6" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="5" unique_id=1649113944]
+texture = SubResource("ViewportTexture_03nvo")
 
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("11_2qmku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.065117, 0)

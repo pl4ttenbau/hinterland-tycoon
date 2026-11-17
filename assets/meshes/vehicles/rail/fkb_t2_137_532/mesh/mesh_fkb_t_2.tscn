@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://duyncmqdqqsus"]
+
+[ext_resource type="PackedScene" uid="uid://c03tvwpvhl7bm" path="res://assets/meshes/vehicles/rail/fkb_t2_137_532/mesh/fkb_t2.gltf" id="1_0vfdp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwfwg"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="MeshFkbT2" unique_id=1400888917 instance=ExtResource("1_0vfdp")]
+
+[node name="FKB_T2" parent="." index="0" unique_id=1539412810]
+layers = 64
+visibility_range_end = 330.0
+visibility_range_end_margin = 33.0
+surface_material_override/1 = SubResource("StandardMaterial3D_rwfwg")

@@ -31,6 +31,7 @@ func are_world_services_initialized() -> bool:
 @export var town_buildings: TownBuildingHolder
 
 @export var industries: IndustrySpawner
+@export var eraser: EraserManager
 @export var construction: ConstructionManager
 @export var prospecting: ProspectingManager
 #endregion

@@ -28,12 +28,12 @@ func advance_ramp(movement: TrainMovement, seconds: float) -> void:
 func _run() -> void:
 	if self._test_train_data() != true:
 		self.check(false, "Train data setter test did not finish")
-	if self._test_spawn() != true:
+	if await self._test_spawn() != true:
 		self.check(false, "Production train spawn test did not finish")
 	if self._test_movement() != true:
 		self.check(false, "Movement test did not finish")
 	print("Train movement tests: %d passed, %d failures" % [self.passed, self.failures])
-	self.get_tree().quit(0 if self.failures == 0 else 1)
+	self.get_tree().quit.call_deferred(0 if self.failures == 0 else 1)
 
 ## Assign through the public property so a recursive setter cannot hide behind bare scene fixtures.
 func _test_train_data() -> bool:
@@ -122,6 +122,8 @@ func _test_spawn() -> bool:
 	self.advance_ramp(movement, 1.0)
 	movement.move_forwards(0.5)
 	self.check(movement.m_passed_since_start > rollout_end, "A driver can pull away after the depot rollout")
+	if await _test_coupling(placer, train, track) != true:
+		self.check(false, "Coupling test did not finish")
 	GlobalState.rail_depots.erase(depot)
 	GlobalState.trains.erase(train)
 	action.free()
@@ -131,6 +133,150 @@ func _test_spawn() -> bool:
 		node.parent_track = null
 	Managers.rails = previous_rails
 	rails.free()
+	return true
+
+func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData) -> bool:
+	var engine: Vehicle3D = train.locomotive
+	var wagon: Vehicle3D = train.vehicles.back()
+	var movement: TrainMovement = train.movement
+	movement.stop()
+	movement.m_passed_since_start = 45.0
+	movement.update_segment_progress()
+	movement.place_vehicles()
+	var wagon_pose: Transform3D = wagon.global_transform
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	add_child(player)
+	var menu_scene: PackedScene = load("res://scenes/ui/radial_menu/radial_action_menu.tscn")
+	var menu: RadialActionMenu = menu_scene.instantiate()
+	add_child(menu)
+	var actions := ActionHandler.new()
+	add_child(actions)
+	check(not menu.available_actions().any(func(item: Dictionary) -> bool: return item.id == "Coupling") \
+		and not actions._on_action_triggered("Coupling"), "Coupling cannot open on foot even with a train in the world")
+	check(player.control.enter_train(train), "Board the selected train before opening the dialog")
+	check(menu.available_actions().any(func(item: Dictionary) -> bool: return item.id == "Coupling"),
+		"The radial menu offers Coupling in the cab")
+	menu.free()
+	check(actions._on_action_triggered("Coupling"), "The radial action opens the coupling dialog")
+	var dialog := UiState.current_diag as TrainCouplingDialog
+	if dialog == null:
+		return false
+	var dialog_panel: Control = dialog.get_node("OuterPanel")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(dialog_panel.size.x >= 700.0 and dialog_panel.size.y >= 500.0
+		and (dialog_panel.position + dialog_panel.size * 0.5).is_equal_approx(dialog.size * 0.5),
+		"The expanded coupling panel remains centered")
+	check(dialog.dialog_key == "TrainCouplingDialog" and UiState.movement_blocked, "Coupling is a modal game dialog")
+	dialog._select_vehicle(1)
+	dialog._preview_split(true)
+	check(train.count() == 2 and dialog._confirm.text == "Confirm split", "Preview leaves the original joint connected")
+	dialog._commit()
+	var parked: Train3D = wagon.train3d
+	check(parked != train and parked.locomotive == null and parked.train_obj.vehicles == [wagon.vehicle_obj],
+		"Uncoupling creates a registered wagon-only consist")
+	check(parked in placer.trains and parked in GlobalState.trains and parked.num != train.num,
+		"The parked wagon has its own train identity")
+	check(player.control.current_train() == train and train.locomotive == engine
+		and wagon.global_transform.is_equal_approx(wagon_pose) and dialog._selected == wagon,
+		"Splitting keeps the cab, the wagon's pose and the dialog selection")
+	check(dialog._front.pair.text.contains(engine.vehicle_obj.veh_type.display_name)
+		and not dialog._rear.button.visible, "The detached wagon sees the engine in front")
+	dialog._preview_join(true)
+	check(dialog._summary.text.begins_with("Front") and train.count() == 1 and parked.count() == 1,
+		"The dialog previews the front joint of the selected wagon")
+	dialog._commit()
+	check(wagon.train3d == train and player.control.current_train() == train and dialog._selected == wagon,
+		"Coupling onto the occupied cab retains it and keeps the wagon selected")
+	check(TrainCoupling.split(train, engine, wagon).is_empty(), "The rejoined consist can split again")
+	parked = wagon.train3d
+	dialog.close_all()
+	remove_child(player)
+	player.free()
+	var rear: TrainCoupling.Connection = TrainCoupling.nearby(train, false)
+	check(rear != null and rear.other == parked and rear.facing_end == wagon,
+		"The engine sees the detached wagon behind it")
+	if rear == null:
+		return false
+	movement.speed.current = 0.01
+	check(not TrainCoupling.join(train, rear).is_empty() and train.count() == 1, "Moving trains cannot couple")
+	movement.speed.current = 0.0
+	var source_stock: GoodsInventory = parked.get_inventory()
+	var target_stock: GoodsInventory = train.get_inventory()
+	source_stock.storage.change_amount(&"coal", 2.0)
+	source_stock.delivered_cargo[&"coal"] = 1.0
+	target_stock.storage.change_amount(&"coal", 149.0)
+	check(not TrainCoupling.join(train, rear).is_empty() and wagon.train3d == parked,
+		"A join that cannot fit the combined stock leaves both consists intact")
+	target_stock.storage.change_amount(&"coal", -149.0)
+	check(TrainCoupling.join(train, rear).is_empty() and train.vehicles == [engine, wagon]
+		and wagon.global_transform.is_equal_approx(wagon_pose), "Rear coupling restores the consist without moving either vehicle")
+	check(is_equal_approx(target_stock.storage.get_amount(&"coal"), 2.0)
+		and is_equal_approx(target_stock.delivered_cargo[&"coal"], 1.0), "Coupling retains stock and delivery metadata")
+	check(parked not in placer.trains and parked not in GlobalState.trains and parked.is_queued_for_deletion(),
+		"The absorbed consist leaves both train registries immediately")
+
+	var start_pos := VehicleStartPos.of(track.num, 0, movement.direction)
+	var facing: Train3D = placer.spawn_train("mpsb_12", start_pos)
+	facing.movement.is_reversed = true
+	facing.movement.m_passed_since_start = movement.m_passed_since_start \
+		+ (engine.vehicle_obj.veh_type.length_metres + 0.3) * (-1.0 if movement.is_reversed else 1.0)
+	facing.movement.update_segment_progress()
+	facing.movement.place_vehicles()
+	var other_engine: Vehicle3D = facing.locomotive
+	var facing_basis: Basis = other_engine.global_basis
+	var front: TrainCoupling.Connection = TrainCoupling.nearby(train, true)
+	check(front != null and front.other == facing and front.reverse_order, "Front-to-front coupling detects the facing end")
+	check(TrainCoupling.join(train, front).is_empty() and train.vehicles == [other_engine, engine, wagon]
+		and train.locomotive == engine and other_engine.global_basis.is_equal_approx(facing_basis),
+		"Front coupling preserves cab ownership and the other engine's orientation")
+	check(TrainCoupling.split(train, other_engine, engine).is_empty()
+		and other_engine.train3d.locomotive == other_engine and train.vehicles == [engine, wagon],
+		"A front split retains the original cab and creates a second powered consist")
+	var rear_distance: float = movement.get_vehicle_distance(wagon)
+	var rear_train: Train3D = placer.spawn_train("mpsb_12", start_pos)
+	rear_train.movement.m_passed_since_start = rear_distance - (wagon.vehicle_obj.veh_type.length_metres \
+		+ rear_train.locomotive.vehicle_obj.veh_type.length_metres) * 0.5 - 0.4
+	rear_train.movement.update_segment_progress()
+	rear_train.movement.place_vehicles()
+	check(TrainCoupling.nearby(train, true) != null and TrainCoupling.nearby(train, false) != null,
+		"The same consist can show candidates at both ends")
+	await get_tree().process_frame
+	var two_sided := TrainCouplingDialog.create(engine)
+	get_tree().root.add_child(two_sided)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(two_sided._front.button.visible and two_sided._rear.button.visible
+		and is_equal_approx(two_sided._current_list.get_global_rect().end.y,
+			two_sided._rear.button.get_global_rect().end.y),
+		"Both coupling actions are visible and the columns align at the bottom")
+	var stale: TrainCoupling.Connection = TrainCoupling.nearby(train, false)
+	two_sided._preview_join(false)
+	check(not two_sided._confirm.disabled, "The rear joint can be confirmed while the route fits")
+	var spacing: float = (wagon.vehicle_obj.veh_type.length_metres \
+		+ rear_train.locomotive.vehicle_obj.veh_type.length_metres) * 0.5
+	## Both ends still face each other, but closing the joint needs a centre beyond the buffer.
+	movement.m_passed_since_start = wagon.offset_to_first + spacing - 0.15
+	movement.update_segment_progress()
+	movement.place_vehicles()
+	rear_train.movement.m_passed_since_start = 0.0
+	rear_train.movement.update_segment_progress()
+	rear_train.movement.place_vehicles()
+	two_sided._refresh()
+	var route_error: String = "The joined consist cannot fit on the current rail route."
+	check(two_sided._rear.button.visible and two_sided._rear.button.disabled \
+		and two_sided._rear.pair.text.contains(route_error), "The nearby list explains why the join will not fit")
+	check(two_sided._confirm.disabled and two_sided._summary.text.contains(route_error),
+		"An open preview disables confirmation when the route no longer fits")
+	check(TrainCoupling.join(train, stale) == route_error and train.count() == 2 and rear_train.count() == 1,
+		"Confirmation checks the same route fit before changing either consist")
+	two_sided.close_all()
+	rear_train.movement.m_passed_since_start = spacing + 2.0
+	rear_train.movement.place_vehicles()
+	check(TrainCoupling.nearby(train, false) == null and not TrainCoupling.join(train, stale).is_empty(),
+		"A preview cannot couple a vehicle that has moved out of range")
+	actions.free()
+	await get_tree().process_frame
 	return true
 
 ## Exercise early wiring, speed interpolation, interrupted ramps and controller lifetime.

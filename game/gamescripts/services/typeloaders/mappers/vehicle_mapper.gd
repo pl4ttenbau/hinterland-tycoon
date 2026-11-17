@@ -23,6 +23,7 @@ static func rail_type_dict_to_class(data: Dictionary) -> RailVehicleTypeData:
 		return null
 	var definition := RailVehicleTypeData.new()
 	_apply_fields(definition, rail_data)
+	definition.usable_infr.subtype = InfrType.normalize_rail_gauge(definition.usable_infr.subtype)
 	return definition
 
 static func road_type_dict_to_class(data: Dictionary) -> RoadVehicleTypeData:

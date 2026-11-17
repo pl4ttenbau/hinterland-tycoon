@@ -8,10 +8,13 @@ signal route_finished()
 
 ## Automatic driving speed cap in km/h; bends and terminal braking may lower it.
 @export var cruise_speed_kmh: float = 30.0
+
 ## Maximum front-wheel angle in radians, shared by both input sources.
 @export var steering_limit: float = 0.55
+
 ## Steering response in radians per second.
 @export var steering_rate: float = 1.8
+
 ## Assumed deceleration in m/s² used to calculate the automatic stopping distance.
 @export var braking_deceleration: float = 3.0
 
@@ -20,16 +23,20 @@ signal route_finished()
 
 ## Maximum horizontal distance in metres from which automatic driving may resume.
 @export var route_recovery_distance: float = 6.0
+
 ## Gameplay radius in metres, deliberately independent of physical steering limits.
 @export_range(0.25, 5.0, 0.05) var automatic_uturn_radius: float = 1.25
+
 ## Scripted U-turn speed in metres per second.
 @export_range(0.25, 4.0, 0.05) var automatic_uturn_speed: float = 1.5
 
 var vehicle_obj: VehicleData
 var inventory_component: InventoryContainer
+
 ## Editable itinerary data, separate from the currently executed driving geometry.
 @export var route_plan: RoadRoutePlan = RoadRoutePlan.new()
 var plan_execution := preload("res://game/gamescripts/services/routing/road_plan_executor.gd").new()
+
 ## Temporary driving geometry and progress, not a service itinerary or pathfinder.
 var route := RoadVehicleRoute.new()
 var player_driving: bool = false
@@ -278,3 +285,17 @@ func _apply_route_speed(turn: float, desired_speed: float, speed: float, delta: 
 			route_finished.emit()
 	apply_driver_input(turn, pedal, braking, delta)
 #endregion
+
+
+func uses_road(road: RoadWay3D) -> bool:
+	var path: Path3D = road.get_path_3d()
+	if path in route._paths or _uturn.source == path:
+		return true
+	if not is_inside_tree() or not path.is_inside_tree():
+		return false
+	# A manually driven or parked vehicle may have no driving route.
+	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP, global_position - Vector3.UP * 2.0, 1)
+	query.exclude = [get_rid()]
+	var hit: Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
+	var collider: Node = hit.get("collider")
+	return collider != null and road.is_ancestor_of(collider)

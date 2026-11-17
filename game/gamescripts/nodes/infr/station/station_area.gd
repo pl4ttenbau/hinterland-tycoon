@@ -44,15 +44,20 @@ func trigger_train_exited(train3d: Train3D):
 	Loggie.info("Train leaving station area")
 	self.trains_inside.erase(train3d)
 	# unset station in train
-	train3d.current_station = null
+	if train3d.current_station == self:
+		train3d.current_station = null
 	# call local & global signal
 	self.train_exited.emit(train3d)
 	SignalBus.train_exited_station.emit(self.parent_station_3d, train3d)
 
-func veh3d_is_locomotive(veh3d: Vehicle3D) -> bool:
-	if veh3d:
-		return veh3d.vehicle_obj.veh_type.is_locomotive()
-	return false
+func refresh_train(train: Train3D) -> void:
+	if not is_instance_valid(train):
+		return
+	var inside: bool = train.locomotive != null and train.locomotive in vehicles_inside
+	if inside and train not in trains_inside:
+		trigger_train_entered(train)
+	elif not inside and train in trains_inside:
+		trigger_train_exited(train)
 #endregion
 
 #region Callbacks
@@ -62,9 +67,9 @@ func _on_body_entered(body: Node3D):
 		self.player_entered.emit()
 		SignalBus.player_entered_station.emit(self.parent_station_3d)
 	elif body is VehicleCollider:
-		self.vehicles_inside.append(body.vehicle3d)
-		if self.veh3d_is_locomotive(body.vehicle3d):
-			self.trigger_train_entered(body.vehicle3d.train3d)
+		if body.vehicle3d not in vehicles_inside:
+			self.vehicles_inside.append(body.vehicle3d)
+		refresh_train(body.vehicle3d.train3d)
 
 func _on_body_exited(body: Node3D):
 	if is_instance_valid(GlobalState.player) and body == GlobalState.player.walking_body:
@@ -73,6 +78,5 @@ func _on_body_exited(body: Node3D):
 		SignalBus.player_exited_station.emit(self.parent_station_3d)
 	elif body is VehicleCollider:
 		self.vehicles_inside.erase(body.vehicle3d)
-		if self.veh3d_is_locomotive(body.vehicle3d):
-			self.trigger_train_exited(body.vehicle3d.train3d)
+		refresh_train(body.vehicle3d.train3d)
 #endregion

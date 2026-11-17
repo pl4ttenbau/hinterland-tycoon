@@ -3,11 +3,13 @@
 class_name RailTrack3D extends GameEntity3D
 
 const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
-const SCENE_PATH_1067MM = "res://assets/meshes/infr/rail/rail_track_1067mm/path_rail_1067mm_bedded.tscn"
+const SCENE_PATH_1000MM = "res://assets/meshes/infr/rail/rail_track_1000mm/path_rail_1000mm_bedded.tscn"
 const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn"
 const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_600mm/path_rail_600mm_bedded.tscn"
 
 signal track_assigned(track: RailTrackData)
+
+var is_construction_preview := false
 
 @export var curve: Curve3D:
 	get(): return (get_child(0) as Path3D).curve
@@ -15,8 +17,12 @@ signal track_assigned(track: RailTrackData)
 
 @export var track: RailTrackData:
 	set(value):
+		var previous: RailTrackData = self.track
+		if previous != null:
+			previous.curve_built.disconnect(_on_curve_built)
 		self.entity = value
 		self.curve = value.curve
+		value.curve_built.connect(_on_curve_built)
 		self._hide_bed_when_required(track)
 		self.track_assigned.emit(track)
 	get():
@@ -31,7 +37,7 @@ func _enter_tree() -> void:
 		if child is PathMesh3D:
 			# Only the bedding supports walking. Rails and sleepers stay visual
 			# so their individual edges cannot obstruct the player's collider.
-			var solid_bedding: bool = child == bedding and child.visible
+			var solid_bedding: bool = child == bedding and child.visible and not is_construction_preview
 			child.collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH if solid_bedding else PathMesh3D.COLLISION_MODE_NONE
 	
 func assign_node_names():
@@ -44,12 +50,13 @@ func _hide_bed_when_required(track_obj: RailTrackData):
 	var bedding: PathMesh3D = self.get_bed_mesh()
 	if bedding:
 		bedding.visible = not track_obj.hideFill
-		bedding.collision_mode = PathMesh3D.COLLISION_MODE_NONE if track_obj.hideFill else PathMesh3D.COLLISION_MODE_TRIMESH
+		var solid_bedding: bool = bedding.visible and not is_construction_preview
+		bedding.collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH if solid_bedding else PathMesh3D.COLLISION_MODE_NONE
 #endregion
 		
 static func get_scene_path(track_obj: RailTrackData) -> String:
-	if track_obj.infr_type_key == InfrType.GAUGE_1067_MM:
-		return SCENE_PATH_1067MM
+	if track_obj.infr_type_key == InfrType.GAUGE_1000_MM:
+		return SCENE_PATH_1000MM
 	elif track_obj.infr_type_key == "750_MM":
 		return SCENE_PATH_750MM
 	elif track_obj.infr_type_key == "600_MM":
@@ -64,6 +71,9 @@ func get_bed_mesh() -> PathMesh3D:
 	return null
 		
 #region Callbacks
+func _on_curve_built(built_curve: Curve3D) -> void:
+	self.curve = built_curve
+
 func _on_track_set(_track: RailTrackData):
 	self.assign_node_names()
 #endregion

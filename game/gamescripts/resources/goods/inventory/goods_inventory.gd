@@ -128,6 +128,26 @@ func stacks(passengers: bool) -> Array[InventoryStack]:
 		return str(a.good_key) < str(b.good_key) if a.good_key != b.good_key else a.destination_interchange < b.destination_interchange)
 	return result
 
+## Joining trains folds the retiring inventory into the surviving one. Keep
+## destination and delivery metadata, including legacy passenger groups.
+func absorb_stock(source: GoodsInventory) -> void:
+	for key: String in source.storage.get_res_key_list():
+		var amount: float = source.storage.get_amount(key)
+		if amount > 0.0:
+			storage.change_amount(key, amount)
+	_merge_passenger_groups(passenger_destinations, source.passenger_destinations)
+	_merge_passenger_groups(passenger_interchange_destinations, source.passenger_interchange_destinations)
+	for key: StringName in source.delivered_cargo:
+		delivered_cargo[key] = delivered_cargo.get(key, 0.0) + source.delivered_cargo[key]
+	goods_change.emit()
+
+func _merge_passenger_groups(target: Dictionary, source: Dictionary) -> void:
+	for key: StringName in source:
+		var groups: Dictionary = target.get(key, {})
+		for destination: int in source[key]:
+			groups[destination] = groups.get(destination, 0.0) + source[key][destination]
+		target[key] = groups
+
 ## Old stop IDs can overlap interchange IDs. Translate through the stop catalog
 ## and merge destinations that now share one interchange. Passengers whose old
 ## stop is missing remain in the aggregate as unassigned.

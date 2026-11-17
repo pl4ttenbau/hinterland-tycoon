@@ -1,5 +1,5 @@
 {
-	"depots": [
+	"railDepots": [
 		{
 			"num": 1,
 			"name": "Cholmsk Depot",
@@ -13,10 +13,10 @@
 			"trackPos": "END"
 		},
 		{
-			"num": 2,
+			"num": 3,
 			"name": "Korsakov Depot",
 			"trackNum": 63,
 			"trackPos": "END"
-		},
+		}
 	]
 }

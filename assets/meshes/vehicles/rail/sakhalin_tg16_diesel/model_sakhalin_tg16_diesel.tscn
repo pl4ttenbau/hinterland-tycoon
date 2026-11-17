@@ -11,10 +11,8 @@ size = Vector3(2.97, 4.036, 15.45)
 script = ExtResource("1_vehicle")
 
 [node name="MeshSakhalinTg16Diesel" parent="." unique_id=1181814121 instance=ExtResource("2_mesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262066, 0)
 
 [node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=840732960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262066, 0)
 visible = false
 script = ExtResource("3_collider")
 
@@ -23,5 +21,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.995, 0)
 shape = SubResource("BoxShape3D_tg16")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1215461603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.312066, -7.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, -7.75)
 metadata/cam_name = &"CAM_VEHICLE"

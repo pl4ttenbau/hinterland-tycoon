@@ -1,3 +1,16 @@
+Run all automated tests from the project root:
+
+```sh
+sh tests/run-tests.sh
+```
+
+The runner checks PATH for `godot4` or `godot`, then falls back to
+`/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64`. To override either,
+run `GODOT_BIN=/path/to/godot sh tests/run-tests.sh`. Open the project in Godot
+once on a fresh checkout so its assets are imported. The runner starts each
+suite in a separate headless process, prints the log directory, and exits
+with a nonzero status if any suite fails.
+
 Station creator checks:
 
 ```sh

@@ -120,13 +120,20 @@ func _place_road_vehicle_at_path_start(vehicle: RoadVehicle3D, start_distance: f
 
 func spawn_train(veh_type_key: String, start_pos: VehicleStartPos) -> Train3D:
 	var train3d := Train3D.of(veh_type_key, start_pos)
-	self.add_child(train3d)
-	# assign name and num
-	train3d.name = "Train_%d" % train3d.num
-	# add to own array and as child
-	GlobalState.trains.append(train3d)
-	self.trains.append(train3d)
+	register_train(train3d)
 	return train3d
+
+func register_train(train3d: Train3D) -> void:
+	train3d.num = Train3D._next_train_num()
+	train3d.name = "Train_%d" % train3d.num
+	add_child(train3d)
+	GlobalState.trains.append(train3d)
+	trains.append(train3d)
+	train3d.tree_exiting.connect(unregister_train.bind(train3d), CONNECT_ONE_SHOT)
+
+func unregister_train(train3d: Train3D) -> void:
+	GlobalState.trains.erase(train3d)
+	trains.erase(train3d)
 #endregion
 
 #region Callbacks

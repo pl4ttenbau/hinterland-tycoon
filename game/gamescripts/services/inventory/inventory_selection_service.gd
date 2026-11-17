@@ -28,7 +28,10 @@ func discover() -> Array[InventoryEndpoint]:
 				_offer_nearby(vehicle, vehicle.inventory_component.display_name, null, InventoryEndpoint.Kind.VEHICLE)
 		for train: Train3D in Managers.vehicles.trains:
 			if is_instance_valid(train):
-				_offer_nearby(train, "Train %d" % train.num, train.get_cam(), InventoryEndpoint.Kind.VEHICLE)
+				var anchor: Node3D = train.get_cam()
+				if anchor == null and not train.vehicles.is_empty():
+					anchor = train.vehicles.front()
+				_offer_nearby(train, "Train %d" % train.num, anchor, InventoryEndpoint.Kind.VEHICLE)
 	for industry: Industry3D in GlobalState.ind_bld_containers:
 		if is_instance_valid(industry):
 			_offer_nearby(industry, str(industry.name), null, InventoryEndpoint.Kind.INDUSTRY)

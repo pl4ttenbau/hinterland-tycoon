@@ -21,9 +21,9 @@ signal active_path_end_reached(reached_node: RailNodeData)
 var speed: VehicleSpeed = VehicleSpeed.new()
 ## The route keeps its own geometry, fork subscriptions and debug markers.
 var active_path: ActiveRailVehiclePath
-## Distance along the assembled route to the locomotive's centre.
+## Distance along the assembled route to the first vehicle's centre.
 @export var m_passed_since_start: float = 0.0
-## Distance travelled within the segment currently under the locomotive.
+## Distance travelled within the segment currently under the first vehicle.
 @export var m_passed_on_segment: float = 0.0
 ## Carriages keep their facing and order when travelling backwards.
 @export var is_reversed: bool = false
@@ -31,7 +31,7 @@ var active_path: ActiveRailVehiclePath
 @export var derailed: bool = false
 ## Parking node used to build the initial route before simulation starts.
 @export var last_node: RailNodeData
-## The locomotive's segment is independent of provisional segments ahead.
+## The first vehicle's segment is independent of provisional segments ahead.
 @export var current_segment: VehiclePathSegment
 ## Direction of travel through the current track's node order.
 @export var direction: Enums.PathDirection
@@ -103,6 +103,11 @@ func start_rollout(distance: float) -> void:
 	if not self.start():
 		self._rollout_end_distance = INF
 
+func cancel_rollout() -> void:
+	if is_finite(_rollout_end_distance):
+		_rollout_end_distance = INF
+		speed.target = 0.0
+
 ## Stop cancels the tween before zeroing speed, so it cannot accelerate again afterwards.
 func stop() -> void:
 	self._rollout_end_distance = INF
@@ -172,6 +177,8 @@ func move_forwards(delta_seconds: float) -> void:
 		return
 	## Speed is converted to world metres for this physics step.
 	var tick_dist: float = self.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
+	if is_zero_approx(tick_dist):
+		return
 	var rollout_remaining: float = self._rollout_end_distance - self.m_passed_since_start
 	tick_dist = minf(tick_dist, rollout_remaining)
 	self.get_active_path().ensure_lookahead(self.get_front_distance() + tick_dist)
@@ -192,9 +199,16 @@ func move_forwards(delta_seconds: float) -> void:
 func get_vehicle_distance(veh3d: Vehicle3D) -> float:
 	return self.m_passed_since_start + veh3d.offset_to_first * (1.0 if self.is_reversed else -1.0)
 
+func get_vehicle_segment(veh3d: Vehicle3D) -> VehiclePathSegment:
+	return active_path.segments[active_path.get_segment_index(get_vehicle_distance(veh3d))]
+
+func is_parked() -> bool:
+	return not derailed and is_zero_approx(speed.current) \
+		and (not is_started or speed.brake_applied or is_zero_approx(speed.target))
+
 ## The leading vehicle centre determines how much path must be available ahead.
 func get_front_distance() -> float:
-	## The locomotive leads normally; the last wagon leads after reversing.
+	## The first vehicle leads normally; the last vehicle leads after reversing.
 	var front_distance: float = self.m_passed_since_start
 	for veh3d: Vehicle3D in self.train.vehicles:
 		front_distance = maxf(front_distance, self.get_vehicle_distance(veh3d))
@@ -220,17 +234,19 @@ func place_vehicles() -> void:
 	if path == null or path.curve.point_count < 2:
 		return
 	for veh3d: Vehicle3D in self.train.vehicles:
-		## Sample in world space because the curve stores the rail network coordinates.
 		var distance: float = self.get_vehicle_distance(veh3d)
-		var target_transf: Transform3D = path.get_transf_at_m_passed(distance)
-		var segment: VehiclePathSegment = path.segments[path.get_segment_index(distance)]
-		target_transf.origin += target_transf.basis.y * segment.as_rail_track().get_rail_head_height()
-		if self.is_reversed:
-			## Reversing travel does not physically turn the locomotive or wagons around.
+		var target_transf: Transform3D = get_rail_transform(distance)
+		if is_reversed != veh3d.faces_rear:
 			target_transf = target_transf.rotated_local(Vector3.UP, PI)
 		veh3d.global_transform = target_transf
 
-## Keep the locomotive's current track separate from the provisional route ahead.
+func get_rail_transform(distance: float) -> Transform3D:
+	var pose: Transform3D = active_path.get_transf_at_m_passed(distance)
+	var segment: VehiclePathSegment = active_path.segments[active_path.get_segment_index(distance)]
+	pose.origin += pose.basis.y * segment.as_rail_track().get_rail_head_height()
+	return pose
+
+## Keep the first vehicle's current track separate from the provisional route ahead.
 func update_segment_progress() -> void:
 	## Segment distances are measured on the assembled curve, not on track node counts.
 	var segment_i: int = self.get_active_path().get_segment_index(self.m_passed_since_start)

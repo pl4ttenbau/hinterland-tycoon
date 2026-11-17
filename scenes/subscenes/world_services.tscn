@@ -25,6 +25,8 @@
 [ext_resource type="Script" path="res://game/gamescripts/services/prospecting/prospecting_manager.gd" id="22_prospecting"]
 [ext_resource type="PackedScene" path="res://scenes/subscenes/marker/survey_marker_3d.tscn" id="23_survey_marker"]
 
+[ext_resource type="Script" path="res://game/gamescripts/services/erasing/eraser_manager.gd" id="24_eraser"]
+
 [node name="WorldServices" type="Node" unique_id=102886502]
 script = ExtResource("1_coordinator")
 
@@ -95,6 +97,9 @@ metadata/_custom_type_script = "uid://dn4l5gfmxqkiv"
 
 [node name="Construction" type="Node" parent="."]
 script = ExtResource("21_construction")
+
+[node name="Eraser" type="Node" parent="."]
+script = ExtResource("24_eraser")
 
 [node name="Prospecting" type="Node" parent="."]
 script = ExtResource("22_prospecting")

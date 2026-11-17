@@ -20,7 +20,7 @@ static var _last_train_num: int = 0
 ## The train scene wires its movement controller before factory setup or scene insertion.
 @export var movement: TrainMovement
 
-@export var current_station = NodeStationLink3D
+@export var current_station: StationCatchmentArea
 
 static func _next_train_num() -> int:
 	Train3D._last_train_num += 1
@@ -55,16 +55,45 @@ func spawn_wagon(veh_data: VehicleData):
 	self.add_vehicle(Vehicle3D.of_vehicle_obj(veh_data, self), false)
 
 func add_vehicle(veh3d: Vehicle3D, is_locomotive: bool = false):
+	veh3d.train3d = self
 	var num_in_train: int = self.vehicles.size()
 	veh3d.num_in_train = num_in_train
 	self.vehicles.append(veh3d)
 	if is_locomotive: 
 		self.locomotive = veh3d
+	veh3d.offset_to_first = vehicles[num_in_train - 1].offset_to_first \
+		+ veh3d.calc_offset_to_previous(num_in_train) if num_in_train > 0 else 0.0
 	$TrainVehicles.add_child(veh3d)
-	## Vehicles added before entering the scene tree still need their carriage spacing.
-	for attached_vehicle: Vehicle3D in self.vehicles:
-		attached_vehicle.offset_to_first = attached_vehicle.calc_offset_to_first()
 	self.on_vehicle_added.emit(veh3d)
+
+## Retain the actual vehicles, including their models, cameras and collision bodies.
+func replace_consist(ordered: Array[Vehicle3D]) -> void:
+	vehicles = ordered
+	if locomotive not in vehicles:
+		locomotive = null
+		for vehicle: Vehicle3D in vehicles:
+			if vehicle.vehicle_obj.veh_type.is_locomotive():
+				locomotive = vehicle
+				break
+	var data: Array[VehicleData] = []
+	var container: Node = $TrainVehicles
+	var offset: float = 0.0
+	for index: int in range(vehicles.size()):
+		var vehicle: Vehicle3D = vehicles[index]
+		vehicle.num_in_train = index
+		if vehicle.get_parent() != container:
+			var pose: Transform3D = vehicle.global_transform
+			vehicle.get_parent().remove_child(vehicle)
+			vehicle.train3d = self
+			container.add_child(vehicle, true)
+			vehicle.global_transform = pose
+		offset += vehicle.calc_offset_to_previous(index)
+		vehicle.offset_to_first = offset
+		container.move_child(vehicle, index)
+		data.append(vehicle.vehicle_obj)
+	var engine: VehicleData = locomotive.vehicle_obj if locomotive != null else null
+	train_obj.replace_consist(data, engine)
+
 #endregion
 
 #region Size Getters
@@ -85,6 +114,8 @@ func get_static_body() -> StaticBody3D: return self.get_child(0)
 func get_next_node_index() -> int: return self.wheels.target.index
 
 func get_cam() -> Camera3D:
+	if not is_instance_valid(locomotive):
+		return null
 	var model_cam: Camera3D = self.locomotive.find_child("Camera3D", true)
 	if !model_cam: Loggie.error("Cannot find camera in vehicle model \"%s\"" % self.locomotive.name)
 	return model_cam

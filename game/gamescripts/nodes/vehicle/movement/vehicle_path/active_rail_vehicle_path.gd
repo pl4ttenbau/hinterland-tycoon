@@ -32,6 +32,32 @@ static func of_segment(_movement: TrainMovement, _segment: VehiclePathSegment) -
 	active_path.add_segment(_segment)
 	return active_path
 
+## Keep occupied geometry exact while giving each consist its own fork listeners and links.
+func copy_for(controller: TrainMovement) -> ActiveRailVehiclePath:
+	var path := ActiveRailVehiclePath.new()
+	path.name = name
+	path.movement = controller
+	path.curve = curve.duplicate()
+	path.segment_end_points = segment_end_points.duplicate()
+	path.segment_end_distances = segment_end_distances.duplicate()
+	for segment: VehiclePathSegment in segments:
+		var copy := segment.duplicate() as VehiclePathSegment
+		copy.previous = null
+		copy.next = null
+		copy.continues = false
+		if not path.segments.is_empty():
+			copy.previous = path.segments.back()
+			copy.previous.next = copy
+			copy.previous.continues = true
+		path.segments.append(copy)
+	path._refresh_fork_listeners()
+	return path
+
+func retire() -> void:
+	_disconnect_forks()
+	_release_segment_links(0)
+	queue_free()
+
 ## Append geometry, remember the segment boundary, and update its fork listeners and markers.
 func add_segment(added_segment: VehiclePathSegment) -> Curve3D:
 	self._append_track_curve(self._get_curve_in_travel_direction(added_segment))
@@ -105,7 +131,7 @@ func ensure_lookahead(front_distance: float) -> void:
 		self.add_segment(next_segment)
 		extensions += 1
 
-## Return the segment under the locomotive, rather than the furthest planned segment.
+## Return the segment at a particular distance along the route.
 func get_segment_index(distance: float) -> int:
 	for segment_i: int in range(self.segment_end_distances.size()):
 		if distance < self.segment_end_distances[segment_i]:

@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://game/gamescripts/nodes/player/player_control.gd" id="4_control"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mg4js"]
+radius = 0.3
+height = 1.76
 
 [node name="PlayerAvatar" type="Node3D" unique_id=521537048 node_paths=PackedStringArray("walking_body", "walking_camera", "control")]
 script = ExtResource("1_avatar")
@@ -22,11 +24,11 @@ CAPTURE_ON_START = false
 UPDATE_PLAYER_ON_PHYS_STEP = false
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="WalkingBody" unique_id=77284677]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.002611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882611, 0)
 shape = SubResource("CapsuleShape3D_mg4js")
 
 [node name="Head" type="Node3D" parent="WalkingBody" unique_id=1525288275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.965481, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.652611, 0)
 
 [node name="Camera3D" type="Camera3D" parent="WalkingBody/Head" unique_id=1956442638]
 current = true

@@ -10,6 +10,8 @@ signal terrain_clicked(position: Vector3)
 func _unhandled_input(event: InputEvent) -> void:
 	if UiState.is_world_input_blocked() or not event is InputEventMouseButton or event.pressed:
 		return
+	if UiState.ui_mode == Enums.UiMode.BUILD_INFR and event.button_index != MOUSE_BUTTON_LEFT:
+		return
 	pick_requested.emit(event.position)
 	SignalBus.mouse_click.emit(event)
 

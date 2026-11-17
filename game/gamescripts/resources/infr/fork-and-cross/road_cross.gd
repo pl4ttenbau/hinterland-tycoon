@@ -5,7 +5,8 @@ class_name RoadCross extends Resource
 @export var parent_node: RoadNode:
 	set(value):
 		parent_node = value
-		value.cross = self
+		if value != null:
+			value.cross = self
 	get(): return parent_node
 
 static func of(_node: RoadNode, _connected_roads: Array[int]):

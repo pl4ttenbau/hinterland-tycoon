@@ -5,7 +5,6 @@ const SCENE_PATH = "res://scenes/ui/dialogs/road_route/road_route_dialog.tscn"
 
 var vehicle: RoadVehicle3D
 var plan: RoadRoutePlan
-var _network := RoadPathfinder.new()
 
 @onready var _points_editor: RoadRoutePointsEditor = %"Route points"
 @onready var _actions_editor: RoadRouteActionsEditor = %"Load and unload"
@@ -26,8 +25,6 @@ func _ready() -> void:
 		%StartButton.disabled = true
 		return
 	plan = vehicle.route_plan.duplicate(true)
-	if is_instance_valid(Managers.roads):
-		_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
 	var markers: RoadMarkerStore = Managers.roads.markers if is_instance_valid(Managers.roads) else null
 	var stops: Dictionary = _all_stops()
 	_show_status("%s. Start the plan, then leave the vehicle for automatic driving." % vehicle.plan_execution.status)
@@ -59,8 +56,11 @@ func _save() -> void:
 		_show_status("Road network is unavailable.")
 		return
 
+	# Rebuild against the live roads when saving the edited plan.
+	var network := RoadPathfinder.new()
 	var vehicle_type: VehicleTypeData = vehicle.vehicle_obj.veh_type
-	var error: String = plan.validate(_network, Managers.roads.storage, _all_stops(), GlobalState.road_depots,
+	network.build(Managers.roads.storage.get_all(), vehicle_type.usable_infr.subtype)
+	var error: String = plan.validate(network, Managers.roads.storage, _all_stops(), GlobalState.road_depots,
 		GameTypes.resource_types, vehicle_type.capacity, Managers.roads.markers)
 	_show_status(error)
 	if error.is_empty():

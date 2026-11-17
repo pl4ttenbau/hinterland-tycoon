@@ -101,7 +101,9 @@ func _create_junction_marker() -> MeshInstance3D:
 @export var infr_name: String
 @export var infr_domain: Enums.InfrDomain
 ## An empty value keeps the gauge already saved in the map's track record.
-@export_enum("600_MM", "750_MM", "1067_MM", "NORMAL_GAUGE") var rail_gauge: String = ""
+@export_enum("600_MM", "750_MM", "1000_MM", "NORMAL_GAUGE") var rail_gauge: String = "":
+	set(value):
+		rail_gauge = InfrType.normalize_rail_gauge(value)
 
 @export var color: Color:
 	get(): return self._get_color()

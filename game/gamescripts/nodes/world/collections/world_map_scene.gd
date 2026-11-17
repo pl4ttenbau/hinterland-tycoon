@@ -4,6 +4,7 @@
 class_name WorldMapScene extends Node
 
 const MineralGeologySampler = preload("res://game/gamescripts/resources/terrain/mineral_geology.gd")
+const TerrainVegetation = preload("res://game/gamescripts/nodes/world/terrain_grass.gd")
 
 @export var map_key: String
 @export var terrain: Terrain3D
@@ -50,6 +51,18 @@ func get_height_at(abs_pos: Vector3) -> float:
 
 func get_pos_at_height(abs_pos: Vector3) -> Vector3:
 	return Vector3(abs_pos.x, get_height_at(abs_pos), abs_pos.z)
+
+## Update this world's grass and wheat coverage along the completed ballast footprint.
+func clear_rail_vegetation(curve: Curve3D, half_width: float) -> void:
+	if not is_instance_valid(terrain):
+		return
+	var footprint := curve.duplicate() as Curve3D
+	footprint.bake_interval = 1.0
+	footprint.up_vector_enabled = false
+	var points: PackedVector3Array = footprint.get_baked_points()
+	for node: Node in get_tree().get_nodes_in_group(&"_terrain_vegetation"):
+		if node is TerrainVegetation and node.terrain == terrain:
+			node.clear_along_rail(points, half_width)
 
 func sample_minerals_at(abs_pos: Vector3) -> Dictionary[String, float]:
 	if _mineral_geology == null:

@@ -19,6 +19,8 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 	else:
 		# add connected_to
 		var existing: NewRailForkData = self.forks_by_pos.get(fork_pos)
+		if node_fork in existing.node_forks:
+			return
 		existing.setting.all_set_to.append(node_fork.set_to)
 		existing.connect_rail_node_fork(node_fork)
 
