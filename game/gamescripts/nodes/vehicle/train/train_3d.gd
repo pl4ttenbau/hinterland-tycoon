@@ -111,8 +111,6 @@ func length_in_m() -> float:
 #region Node Children Getters
 func get_static_body() -> StaticBody3D: return self.get_child(0)
 
-func get_next_node_index() -> int: return self.wheels.target.index
-
 func get_cam() -> Camera3D:
 	if not is_instance_valid(locomotive):
 		return null

@@ -13,7 +13,6 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 	if ! forks_by_pos.has(fork_pos):
 		# create new NewRailFork
 		var new_fork := NewRailForkData.new(fork_pos)
-		new_fork.setting.all_set_to.append(node_fork.set_to)
 		new_fork.connect_rail_node_fork(node_fork)
 		self.forks_by_pos.set(fork_pos, new_fork)
 	else:
@@ -21,15 +20,10 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 		var existing: NewRailForkData = self.forks_by_pos.get(fork_pos)
 		if node_fork in existing.node_forks:
 			return
-		existing.setting.all_set_to.append(node_fork.set_to)
 		existing.connect_rail_node_fork(node_fork)
 
-# TODO: use
-func _get_or_create_fork(_fork_pos: Vector3) -> NewRailForkData:
-	var fork_at_pos: NewRailForkData = forks_by_pos.get(_fork_pos, null)
-	if fork_at_pos: return fork_at_pos
-	else: return NewRailForkData.new(_fork_pos)
-		
+## Grouping by position is only for loading: legs at one position form one junction.
+## Everywhere else, reach the junction through `RailNodeForkData.junction`.
 func get_fork_at_pos(fork_pos: Vector3) -> NewRailForkData:
 	return self.forks_by_pos.get(fork_pos)
 		

@@ -121,10 +121,10 @@ func _run() -> void:
 	for vehicle: Vehicle3D in train.vehicles:
 		poses.append(vehicle.global_transform)
 	train.movement.start()
-	## Reversal must cancel the previous speed ramp before constructing its return route.
-	var forward_tween: Tween = train.movement._speed_tween
+	## Reversal must drop the forward speed before constructing its return route.
+	train.movement.speed.current = 0.5
 	train.movement.reverse_from_current_spot()
-	self.check(not forward_tween.is_valid(), "Reversing cancels the previous speed tween")
+	self.check(is_zero_approx(train.movement.speed_mps) and train.movement.is_started, "Reversing restarts from a standstill")
 	self.check_markers(path, "Reversed route markers")
 	for vehicle_i: int in range(train.vehicles.size()):
 		self.check(train.vehicles[vehicle_i].global_position.distance_to(poses[vehicle_i].origin) < 0.03, "Reversing preserves every vehicle position")
@@ -150,6 +150,27 @@ func _run() -> void:
 	buffer_train.movement.move_forwards(10.0)
 	self.check(not buffer_train.movement.is_started, "Buffer stops the train")
 	self.check(is_equal_approx(buffer_train.movement.m_passed_since_start, 40.0), "Buffer overshoot is clamped")
+	## A powered train brakes for the end of its known route instead of hitting the buffer.
+	var long_track := self.make_track(3, [Vector3(100, 0, 0), Vector3(100, 0, -300)])
+	var braking_train := self.make_train(long_track, 0.0, [10.0])
+	var engine_type: VehicleTypeData = braking_train.locomotive.vehicle_obj.veh_type
+	engine_type.has_motor = true
+	engine_type.max_speed_kmh = 36
+	engine_type.mass_tonnes = 20.0
+	engine_type.tractive_effort_kn = 10.0
+	braking_train.movement.start()
+	var top_speed: float = 0.0
+	var last_speed: float = 0.0
+	for _step: int in range(60 * 120):
+		if not braking_train.movement.is_started:
+			break
+		braking_train.movement.update_speed(1.0 / 60.0)
+		last_speed = braking_train.movement.speed_mps
+		top_speed = maxf(top_speed, last_speed)
+		braking_train.movement.move_forwards(1.0 / 60.0)
+	self.check(not braking_train.movement.is_started and is_equal_approx(braking_train.movement.m_passed_since_start, 300.0),
+		"A powered train stops exactly at the end of its route")
+	self.check(is_equal_approx(top_speed, 10.0) and last_speed < 0.05, "It reaches full speed and has braked almost to a standstill at the end")
 	self.check(PathCurveUtils.get_reversed_direction(Enums.PathDirection.TRACK_NODES_INCREASE) == Enums.PathDirection.TRACK_NODES_DECREASE, "Increasing direction reverses correctly")
 	self.check(PathCurveUtils.get_reversed_direction(Enums.PathDirection.TRACK_NODES_DECREASE) == Enums.PathDirection.TRACK_NODES_INCREASE, "Decreasing direction reverses correctly")
 	## A stationary locomotive occupying the switch must also derail immediately.
@@ -171,12 +192,13 @@ func _run() -> void:
 	## Releasing trains must disconnect Resource listeners that outlive their scene nodes.
 	train.free()
 	buffer_train.free()
+	braking_train.free()
 	occupied_train.free()
 	cleared_train.free()
 	return_train.free()
 	self.check(fork.setting.current.setting_changed.get_connections().is_empty(), "Freed trains release fork listeners")
 	## Break fixture data cycles normally retained for the lifetime of a loaded map.
-	for track: RailTrackData in [approach, straight, branch]:
+	for track: RailTrackData in [approach, straight, branch, long_track]:
 		for rail_node: RailNodeData in track.nodes:
 			if rail_node.fork != null:
 				rail_node.fork.railNode = null

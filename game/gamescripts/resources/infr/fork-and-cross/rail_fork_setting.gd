@@ -6,8 +6,6 @@ class_name RailForkSetting extends Resource
 
 @export var settable_tracks: Array[int] = []
 
-@export var all_set_to: Array[int] = []
-
 func _init(_parent: NewRailForkData):
 	self.parent = _parent
 	
@@ -43,6 +41,14 @@ func switch() -> CurrentForkSetting:
 	if future_i == self.settable_tracks.size():
 		future_i = 0
 	return self._switch_to_track(self.settable_tracks[future_i], old_connected)
+
+## Select a settable branch directly, as route-setting will. Returns null if it is not settable.
+func set_connected(track_num: int) -> CurrentForkSetting:
+	if self.current == null or not self.settable_tracks.has(track_num):
+		return null
+	if self.current.connected == track_num:
+		return self.current
+	return self._switch_to_track(track_num, self.current.connected)
 
 func _switch_to_track(track_num: int, _previous_track_num) -> CurrentForkSetting:
 	self.current.connected = track_num

@@ -33,7 +33,7 @@ func get_nearest_fork(pos: Vector3, near_tracks: Array[RailTrackData]) -> NewRai
 			var fork_dist: float = node_fork.position.distance_squared_to(pos)
 			if fork_dist < nearest_fork_dist:
 				nearest_fork_dist = fork_dist
-				nearest_fork = Managers.forks.get_fork_at_pos(node_fork.position)
+				nearest_fork = node_fork.junction
 	return nearest_fork
 	
 func count_tracks() -> int:

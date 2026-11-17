@@ -15,6 +15,23 @@ signal network_changed()
 @export var builder: NewRailBuilder:
 	get(): return $NewRailBuilder as NewRailBuilder
 
+## Built on first use after any track is added or the network is edited.
+var _network_graph: RailNetworkGraph
+
+func _init() -> void:
+	network_changed.connect(_invalidate_network_graph)
+	track_storage.track_added.connect(_invalidate_network_graph.unbind(1))
+
+## Directed track graph shared by route finding and, later, signal blocks.
+func get_network_graph() -> RailNetworkGraph:
+	if _network_graph == null:
+		_network_graph = RailNetworkGraph.new()
+		_network_graph.build(track_storage.get_all())
+	return _network_graph
+
+func _invalidate_network_graph() -> void:
+	_network_graph = null
+
 #region Initialization
 func load_rail_tracks() -> void:
 	Loggie.info("Loading rail track from json..")
@@ -106,7 +123,7 @@ func erase_fork(track: RailTrackData, index: int) -> Error:
 	var node: RailNodeData = track.nodes[index]
 	if node.fork == null:
 		return ERR_DOES_NOT_EXIST
-	var group: NewRailForkData = _fork_at(node.position)
+	var group: NewRailForkData = node.fork.junction
 	if _track_has_active_train(track) or _fork_has_active_train(group):
 		return ERR_BUSY
 	var removed: RailNodeForkData = node.fork
@@ -128,7 +145,7 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 	for node: RailNodeData in track.nodes:
 		if node.fork == null:
 			continue
-		var group: NewRailForkData = _fork_at(node.position)
+		var group: NewRailForkData = node.fork.junction
 		if group != null and group not in junctions:
 			if _fork_has_active_train(group):
 				return ERR_BUSY
@@ -209,11 +226,6 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 	return OK
 
 
-func _fork_at(position: Vector3) -> NewRailForkData:
-	var forks: RailForkLoader = _fork_loader()
-	return forks.get_fork_at_pos(position) if forks != null else null
-
-
 func _fork_loader() -> RailForkLoader:
 	var loader: RailForkLoader = get_node_or_null("RailForkLoader")
 	if loader == null and Managers.rails == self:
@@ -228,7 +240,7 @@ func _remove_fork_leg(leg: RailNodeForkData, removing_node: bool) -> void:
 	fork_storage.remove(leg)
 	node.fork = null
 	leg.connective_tracks.clear()
-	leg.all_connective_tracks.clear()
+	leg.junction = null
 	leg.container = null
 	if not removing_node and (node.is_first() or node.is_last()):
 		node.is_end = true
@@ -248,7 +260,6 @@ func _reconcile_fork(group: NewRailForkData, removed: Array[RailNodeForkData]) -
 		group.node_forks.erase(leg)
 	group.connected_tracks.clear()
 	group.static_tracks.clear()
-	group.setting.all_set_to.clear()
 	group.setting.settable_tracks.clear()
 	group.setting.current = null
 	if group.node_forks.size() < 2:
@@ -274,11 +285,8 @@ func _reconcile_fork(group: NewRailForkData, removed: Array[RailNodeForkData]) -
 		group.setting.current = CurrentForkSetting.new(root.track.num, connected.track.num)
 	group.refresh_setting()
 	for leg: RailNodeForkData in group.node_forks:
-		leg.all_connective_tracks.assign(group.connected_tracks)
 		leg.connective_tracks.assign(group.connected_tracks)
 		leg.connective_tracks.erase(leg.track.num)
-		if group.setting.current != null:
-			group.setting.all_set_to.append(group.setting.get_next_track_from_track(leg.track.num))
 	if is_instance_valid(group.fork3d):
 		group.fork3d.adjust_rotation.call_deferred()
 

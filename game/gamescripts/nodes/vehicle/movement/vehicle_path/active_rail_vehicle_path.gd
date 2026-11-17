@@ -156,8 +156,8 @@ func _refresh_fork_listeners() -> void:
 func _watch_fork(node_fork: RailNodeForkData) -> void:
 	if node_fork == null:
 		return
-	## All track endpoints at this position belong to the same physical switch.
-	var fork: NewRailForkData = Managers.forks.get_fork_at_pos(node_fork.position)
+	## All legs of the same physical switch share one junction.
+	var fork: NewRailForkData = node_fork.junction
 	if fork == null or self.watched_forks.has(fork):
 		return
 	## Listen to the setting itself, including changes made outside the fork UI.
@@ -188,13 +188,16 @@ func _get_fork_boundaries(fork: NewRailForkData) -> Array[int]:
 	## Keep every occurrence so loops cannot hide an occupied crossing.
 	var boundaries: Array[int] = []
 	for segment_i: int in range(self.segments.size()):
-		if self.segments[segment_i].end_node.position.is_equal_approx(fork.pos):
+		if _is_at_fork(self.segments[segment_i].end_node, fork):
 			boundaries.append(segment_i)
 	return boundaries
 
+static func _is_at_fork(node: RailNodeData, fork: NewRailForkData) -> bool:
+	return node != null and node.fork != null and node.fork.junction == fork
+
 ## Include the route's starting fork as well as every segment-end crossing.
 func _is_fork_occupied(fork: NewRailForkData, boundaries: Array[int]) -> bool:
-	if self.segments[0].start_node.position.is_equal_approx(fork.pos) and self.movement.occupies_path_distance(0.0):
+	if _is_at_fork(self.segments[0].start_node, fork) and self.movement.occupies_path_distance(0.0):
 		return true
 	for segment_i: int in boundaries:
 		if self.movement.occupies_path_distance(self.segment_end_distances[segment_i]):

@@ -73,8 +73,6 @@ signal rail_spawned(rail_container: RailTrack3D)
 @warning_ignore("unused_signal")
 signal rails_spawned(containers: Array[RailTrack3D])
 
-@warning_ignore("unused_signal")
-signal fork_changed(fork: RailNodeForkData)
 #endregion
 
 #region Roads 

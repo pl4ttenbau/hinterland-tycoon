@@ -1,15 +1,6 @@
 @icon("res://assets/icons/nodes_3d/icon_locomotive.svg")
 class_name TrainMovement extends Node
 
-## Convert the original motor speed scale into world metres per second.
-const VEH_SPEED_MODIFIER: float = 50.0
-## Maximum speed on the original motor scale; preserve the existing driving speed.
-const MAX_ABS_SPEED: float = 0.12
-## Preserve the former 0.005-per-0.1-second acceleration duration.
-const SPEED_CHANGE_PER_SECOND: float = 0.05
-## The service brake reaches zero in half the normal ramp time.
-const BRAKE_RATE_MULTIPLIER: float = 2.0
-
 signal started()
 signal stopped()
 signal reversing()
@@ -17,8 +8,10 @@ signal active_path_end_reached(reached_node: RailNodeData)
 
 ## Assigned by the train scene at instantiation, independently of this node's parent.
 @export var train: Train3D
-## Speed values and driver requests stay separate from the controller's tween.
+## Driver requests and the speed shown in the UI, as fractions of the consist's maximum speed.
 var speed: VehicleSpeed = VehicleSpeed.new()
+## Physical speed along the route in metres per second; `speed.current` mirrors it as a fraction.
+var speed_mps: float = 0.0
 ## The route keeps its own geometry, fork subscriptions and debug markers.
 var active_path: ActiveRailVehiclePath
 ## Distance along the assembled route to the first vehicle's centre.
@@ -39,10 +32,8 @@ var active_path: ActiveRailVehiclePath
 @export var is_started: bool = false
 ## Engine timestamp of the last explicit start, or -1 while stopped.
 var running_msec: int = -1
-## Only one tween may write the train's speed at a time.
-var _speed_tween: Tween
-## Distinguish tween samples from external writes that need a fresh ramp.
-var _applying_speed_sample: bool = false
+## Distinguish this controller's own speed updates from external corrections.
+var _writing_speed: bool = false
 var _rollout_end_distance: float = INF
 
 ## Expose the existing speed scale for the speedometer.
@@ -54,22 +45,16 @@ var current_speed_percentage: float:
 var running_time: int:
 	get(): return Time.get_ticks_msec() - self.running_msec if self.is_started else -1
 
-## Wire references and signals before entering the tree; no tween is created here.
+## Wire references and signals before entering the tree.
 func configure(owner_train: Train3D) -> void:
 	self.train = owner_train
 	## Move before model effects sample world displacement, preserving the previous parent-first order.
 	self.process_physics_priority = self.train.process_physics_priority - 1
-	if not self.speed.target_changed.is_connected(self._on_target_speed_changed):
-		self.speed.target_changed.connect(self._on_target_speed_changed)
-		self.speed.brake_changed.connect(self._on_brake_changed)
+	if not self.speed.changed.is_connected(self._on_current_speed_changed):
 		self.speed.changed.connect(self._on_current_speed_changed)
 		self.active_path_end_reached.connect(self._on_active_path_end_reached)
 	if not SignalBus.scene_root_ready.is_connected(self._on_world_ready):
 		SignalBus.scene_root_ready.connect(self._on_world_ready)
-
-## A start requested before insertion waits until a node-bound tween can be created.
-func _enter_tree() -> void:
-	self._retarget_speed()
 
 ## Placement needs world transforms, but all dependency wiring has already happened.
 func _ready() -> void:
@@ -93,7 +78,6 @@ func start() -> bool:
 		return false
 	self.is_started = true
 	self.running_msec = Time.get_ticks_msec()
-	self._retarget_speed()
 	self.started.emit()
 	return true
 
@@ -108,75 +92,91 @@ func cancel_rollout() -> void:
 		_rollout_end_distance = INF
 		speed.target = 0.0
 
-## Stop cancels the tween before zeroing speed, so it cannot accelerate again afterwards.
+## Stopping switches the controller off and zeroes the speed immediately.
 func stop() -> void:
 	self._rollout_end_distance = INF
 	self.is_started = false
 	self.running_msec = -1
-	self._cancel_speed_tween()
-	self.speed.current = 0.0
+	self._set_speed_mps(0.0)
 	self.stopped.emit()
 
-## Replace an interrupted ramp from its actual speed, keeping only one writer active.
-func _retarget_speed() -> void:
-	self._cancel_speed_tween()
-	if not self.is_started or not self.is_inside_tree() or self.derailed:
+#region Speed
+## Consist limits are read on demand, so coupling and splitting need no notification.
+func get_dynamics() -> TrainDynamics:
+	if not is_instance_valid(self.train):
+		return TrainDynamics.new()
+	return TrainDynamics.of_vehicles(self.train.vehicles)
+
+func get_max_speed_mps() -> float:
+	return self.get_dynamics().max_speed_mps
+
+func get_speed_mps() -> float:
+	return self.speed_mps
+
+## Distance needed to stop from the current speed with service braking.
+func get_stopping_distance() -> float:
+	return TrainDynamics.stopping_distance(self.speed_mps)
+
+## Distance the train may still travel before it must stand: the rollout limit or the end of the known route.
+## Signals will add their own limits here.
+func get_movement_authority() -> float:
+	var remaining: float = self._rollout_end_distance - self.m_passed_since_start
+	var path: ActiveRailVehiclePath = self.get_active_path()
+	if path != null:
+		remaining = minf(remaining, path.curve.get_baked_length() - self.get_front_distance())
+	return maxf(remaining, 0.0)
+
+## Accelerate towards the driver's target, or brake for the target, the brake control or the authority end.
+func update_speed(delta_seconds: float) -> void:
+	if self.derailed or not self.is_started:
 		return
-	## Braking overrides traction without replacing the driver's requested target.
-	var effective_target: float = 0.0 if self.speed.brake_applied else self.speed.target
-	## Smaller speed changes take proportionally less time, matching the original ramp.
-	var distance: float = absf(effective_target - self.speed.current)
-	if is_zero_approx(distance):
+	var dynamics: TrainDynamics = self.get_dynamics()
+	var target_mps: float = 0.0 if self.speed.brake_applied else clampf(self.speed.target, 0.0, 1.0) * dynamics.max_speed_mps
+	## The route ahead must be known for at least the distance needed to stop from the next speed;
+	## the path adds its own margin beyond that.
+	if self.get_active_path() != null:
+		var next_speed: float = self.speed_mps + dynamics.traction_acceleration(self.speed_mps) * delta_seconds
+		self.get_active_path().ensure_lookahead(self.get_front_distance() + TrainDynamics.stopping_distance(next_speed))
+	var authority_mps: float = TrainDynamics.approach_speed(self.get_movement_authority())
+	var desired: float = minf(target_mps, authority_mps)
+	var next: float = self.speed_mps
+	if next < desired:
+		next = minf(desired, next + dynamics.traction_acceleration(next) * delta_seconds)
+	elif next > desired:
+		## Following the stopping curve: each step lands back on it, so the effective rate is the service rate.
+		var braking: bool = self.speed.brake_applied or next > authority_mps
+		var deceleration: float = TrainDynamics.BRAKE_DECELERATION if braking else TrainDynamics.SERVICE_DECELERATION
+		next = maxf(desired, next - deceleration * delta_seconds)
+	self._set_speed_mps(next, dynamics.max_speed_mps)
+
+## Keep the fraction shown by the UI in step with the physical speed.
+func _set_speed_mps(value: float, max_speed: float = -1.0) -> void:
+	self.speed_mps = maxf(value, 0.0)
+	if max_speed < 0.0:
+		max_speed = self.get_max_speed_mps()
+	var fraction: float = self.speed_mps / max_speed if max_speed > 0.0 else 0.0
+	## Avoid a change signal every physics tick while the speed holds.
+	if fraction == self.speed.current:
 		return
-	## The brake multiplier shortens the duration while retaining quadratic easing.
-	var rate: float = SPEED_CHANGE_PER_SECOND * (BRAKE_RATE_MULTIPLIER if self.speed.brake_applied else 1.0)
-	self._speed_tween = self.create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	self._speed_tween.tween_method(self._apply_speed_sample, self.speed.current, effective_target, distance / rate).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	self._speed_tween.finished.connect(self._on_speed_tween_finished)
+	self._writing_speed = true
+	self.speed.current = fraction
+	self._writing_speed = false
 
-## Updating through the normal setter keeps speedometer and exhaust signals working.
-func _apply_speed_sample(value: float) -> void:
-	self._applying_speed_sample = true
-	self.speed.current = value
-	self._applying_speed_sample = false
-
-## Killing the previous tween also prevents its completion callback from touching a newer ramp.
-func _cancel_speed_tween() -> void:
-	if self._speed_tween != null and self._speed_tween.is_valid():
-		self._speed_tween.kill()
-	self._speed_tween = null
-
-## Release the completed tween reference without changing the final speed sample.
-func _on_speed_tween_finished() -> void:
-	self._speed_tween = null
-
-## Target changes while stopped merely store the request for the next explicit start.
-func _on_target_speed_changed(_value: float) -> void:
-	self._retarget_speed()
-
-## Applying or releasing the brake replaces the active ramp from its current speed.
-func _on_brake_changed(_applied: bool) -> void:
-	self._retarget_speed()
-
-## External speed corrections also interrupt the ramp, while tween samples do not.
-func _on_current_speed_changed(_value: float) -> void:
-	if not self._applying_speed_sample:
-		self._retarget_speed()
-
-## Keep the existing speed scale while moving all speed control into this component.
-func get_current_speed() -> float:
-	return self.speed.current * MAX_ABS_SPEED
+## External corrections of the fraction (tests, previews, coupling) set the physical speed.
+func _on_current_speed_changed(value: float) -> void:
+	if not self._writing_speed:
+		self.speed_mps = maxf(value, 0.0) * self.get_max_speed_mps()
+#endregion
 
 ## Route users access the configured path directly instead of assuming a child-node layout.
 func get_active_path() -> ActiveRailVehiclePath:
 	return self.active_path
 
-## Advance by distance and sample the path directly, without overlapping half-second tweens.
+## Advance by the current speed for this step, never past the rollout limit or the route end.
 func move_forwards(delta_seconds: float) -> void:
 	if self.derailed or self.get_active_path() == null:
 		return
-	## Speed is converted to world metres for this physics step.
-	var tick_dist: float = self.get_current_speed() * delta_seconds * VEH_SPEED_MODIFIER
+	var tick_dist: float = self.speed_mps * delta_seconds
 	if is_zero_approx(tick_dist):
 		return
 	var rollout_remaining: float = self._rollout_end_distance - self.m_passed_since_start
@@ -193,7 +193,7 @@ func move_forwards(delta_seconds: float) -> void:
 		## Stay ready for the driver's next speed request.
 		self._rollout_end_distance = INF
 		self.speed.target = 0.0
-		self.speed.current = 0.0
+		self._set_speed_mps(0.0)
 
 ## Carriages keep their physical order when the train travels backwards.
 func get_vehicle_distance(veh3d: Vehicle3D) -> float:
@@ -286,6 +286,7 @@ func _physics_process(delta: float) -> void:
 			self.stop()
 		return
 	if self.is_started:
+		self.update_speed(delta)
 		self.move_forwards(delta)
 
 ## Preserve the existing world-start signal as the explicit simulation start boundary.
@@ -298,6 +299,6 @@ func _on_active_path_end_reached(reached_node: RailNodeData) -> void:
 	Loggie.info("Reached node: %d at %v" % [reached_node.index, reached_node.position])
 	self.stop()
 
-## A removed controller must not retain a running speed tween.
+## A removed controller leaves its train stopped.
 func _exit_tree() -> void:
 	self.stop()

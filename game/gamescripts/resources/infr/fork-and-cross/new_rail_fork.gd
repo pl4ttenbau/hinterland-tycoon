@@ -67,10 +67,56 @@ func get_track_dir_from_fork(track_num: int) -> Enums.PathDirection:
 	return Enums.PathDirection.STOP
 #endregion
 
+#region Topology
+## The track every route through this junction uses: the static root of a switch.
+func get_root_track_num() -> int:
+	if self.connected_tracks.size() == 2 and self.setting.current == null:
+		return self.connected_tracks[0]
+	return self.get_static_track_num()
+
+## Tracks a train arriving on `from_track_num` could leave on, for any switch setting.
+## Matches RailForkSetting.get_next_track_from_track: root to a branch, any branch back to the root.
+func get_exit_track_nums(from_track_num: int) -> Array[int]:
+	var exits: Array[int] = []
+	if not self.connected_tracks.has(from_track_num) or self.connected_tracks.size() < 2:
+		return exits
+	var root: int = self.get_root_track_num()
+	if from_track_num != root:
+		exits.append(root)
+		return exits
+	for track_num: int in self.connected_tracks:
+		if track_num != root and self._is_branch(track_num):
+			exits.append(track_num)
+	return exits
+
+## A plain joint of two tracks always connects them; a switch connects its root to settable branches.
+func _is_branch(track_num: int) -> bool:
+	if self.connected_tracks.size() == 2:
+		return true
+	if self.setting.current != null and self.setting.current.connected == track_num:
+		return true
+	return not self.static_tracks.has(track_num)
+
+## The leg of this junction on the given track, or null.
+func get_node_fork(track_num: int) -> RailNodeForkData:
+	for node_fork: RailNodeForkData in self.node_forks:
+		if node_fork.track.num == track_num:
+			return node_fork
+	return null
+#endregion
+
 #region Switching
 func switch():
 	var curr_setting: CurrentForkSetting = self.setting.switch()
 	self.switched.emit(curr_setting)
+
+## Point the switch at one branch. Returns false if that branch cannot be selected here.
+func set_connected_track(track_num: int) -> bool:
+	var curr_setting: CurrentForkSetting = self.setting.set_connected(track_num)
+	if curr_setting == null:
+		return false
+	self.switched.emit(curr_setting)
+	return true
 #endregion
 
 func refresh_setting() -> void:
@@ -80,6 +126,7 @@ func refresh_setting() -> void:
 #region Callables
 func _on_node_fork_connected(node_fork: RailNodeForkData):
 	var track_num: int = node_fork.track.num
+	node_fork.junction = self
 	# add to own NodeForkData array
 	self.node_forks.append(node_fork)
 	# remember all connected, but also unmovable track connections

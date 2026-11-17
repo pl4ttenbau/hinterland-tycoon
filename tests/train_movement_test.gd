@@ -16,13 +16,20 @@ func check(condition: bool, message: String) -> void:
 		self.failures += 1
 		push_error(message)
 
-## Stepping a paused tween makes time-based assertions independent of machine frame rate.
-func advance_ramp(movement: TrainMovement, seconds: float) -> void:
-	if movement._speed_tween == null:
-		self.check(false, "Expected an active speed tween")
-		return
-	movement._speed_tween.pause()
-	movement._speed_tween.custom_step(seconds)
+## Step the controller at 60 Hz directly, independent of machine frame rate.
+func simulate(movement: TrainMovement, seconds: float, move: bool = true) -> void:
+	for _step: int in range(roundi(seconds * 60.0)):
+		movement.update_speed(1.0 / 60.0)
+		if move:
+			movement.move_forwards(1.0 / 60.0)
+
+## A bare vehicle with only the data that movement reads.
+func make_vehicle(train: Train3D, veh_type: VehicleTypeData) -> Vehicle3D:
+	var vehicle := Vehicle3D.new()
+	vehicle.train3d = train
+	vehicle.vehicle_obj = VehicleData.new()
+	vehicle.vehicle_obj.veh_type = veh_type
+	return vehicle
 
 ## Detect aborted tests as well as failed checks, and always finish with a process exit code.
 func _run() -> void:
@@ -107,20 +114,18 @@ func _test_spawn() -> bool:
 	for vehicle: Vehicle3D in train.vehicles:
 		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Depot spawn places the whole train at rail-head height")
 	var start_distance: float = movement.m_passed_since_start
-	self.advance_ramp(movement, 1.0)
-	movement.move_forwards(0.5)
+	self.simulate(movement, 1.0)
 	self.check(movement.m_passed_since_start > start_distance, "A depot train accelerates and advances")
-	self.advance_ramp(movement, 20.0)
-	movement.move_forwards(10.0)
+	self.simulate(movement, 60.0)
 	var rollout_end: float = start_distance + train.length_in_m() + 10.0
-	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The last rollout step stops at the full consist length plus 10 metres")
+	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The rollout brakes to a stop at the full consist length plus 10 metres")
+	self.check(is_zero_approx(movement.speed_mps) and is_zero_approx(movement.speed.target), "After the rollout the train stands with no target speed")
 	for vehicle: Vehicle3D in train.vehicles:
 		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Rollout keeps each vehicle at rail-head height")
-	movement.move_forwards(1.0)
+	self.simulate(movement, 1.0)
 	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The train remains parked at the rollout limit")
 	movement.speed.target = 1.0
-	self.advance_ramp(movement, 1.0)
-	movement.move_forwards(0.5)
+	self.simulate(movement, 1.0)
 	self.check(movement.m_passed_since_start > rollout_end, "A driver can pull away after the depot rollout")
 	if await _test_coupling(placer, train, track) != true:
 		self.check(false, "Coupling test did not finish")
@@ -279,7 +284,7 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 	await get_tree().process_frame
 	return true
 
-## Exercise early wiring, speed interpolation, interrupted ramps and controller lifetime.
+## Exercise early wiring, the physical speed model and controller lifetime.
 func _test_movement() -> bool:
 	## Use the production scene so its instantiation notification supplies the dependency.
 	var train: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate()
@@ -288,67 +293,73 @@ func _test_movement() -> bool:
 	self.check(movement != null and movement.train == train, "Instantiation wires the explicit train reference")
 	self.check(movement.process_physics_priority < train.process_physics_priority, "Movement runs before model effects sample displacement")
 	self.check(not train.is_inside_tree() and not movement.is_started, "Wiring does not insert or start the train")
+	## 10 kN on 20 t gives 0.5 m/s² until 1000 kW limits the force, far above 10 m/s.
+	var engine_type := VehicleTypeData.new()
+	engine_type.has_motor = true
+	engine_type.max_speed_kmh = 36
+	engine_type.mass_tonnes = 20.0
+	engine_type.tractive_effort_kn = 10.0
+	engine_type.motor_power_kw = 1000.0
+	engine_type.length_metres = 10.0
+	train.add_vehicle(self.make_vehicle(train, engine_type), true)
+	var dynamics: TrainDynamics = movement.get_dynamics()
+	self.check(is_equal_approx(dynamics.max_speed_mps, 10.0), "Maximum speed comes from the catalog in km/h")
+	self.check(is_equal_approx(dynamics.traction_acceleration(0.0), 0.5), "Tractive effort limits starting acceleration")
+	self.check(is_equal_approx(TrainDynamics.stopping_distance(5.0), 25.0), "Service braking from 5 m/s needs 25 m")
+	self.check(is_equal_approx(TrainDynamics.approach_speed(25.0), 5.0), "Approach speed is the inverse of stopping distance")
 	movement.speed.target = 0.5
-	self.check(movement._speed_tween == null, "Target requests before startup create no tween")
+	movement.update_speed(1.0)
+	self.check(is_zero_approx(movement.speed_mps), "Target requests before startup do not move the train")
 	self.check(movement.start(), "Start can be requested before scene insertion")
-	self.check(movement._speed_tween == null, "Early start waits for the scene tree before creating a tween")
 	self.get_tree().root.add_child(train)
-	self.check(movement._speed_tween != null, "Entering the tree creates the pending speed tween")
 	self.check(is_equal_approx(movement.speed.target, 0.5), "Start preserves the selected target")
-	self.advance_ramp(movement, 5.0)
-	self.check(is_equal_approx(movement.speed.current, 0.125), "Half of the ten-second ramp gives quadratic speed 0.125")
-	## A new target must kill the old ramp and begin at the actual current speed.
-	var replaced_tween: Tween = movement._speed_tween
-	movement.speed.target = 0.25
-	self.check(not replaced_tween.is_valid(), "Changing target kills the previous tween")
-	self.check(is_equal_approx(movement.speed.current, 0.125), "Changing target does not jump speed")
-	self.advance_ramp(movement, 1.25)
-	self.check(is_equal_approx(movement.speed.current, 0.15625), "Retargeted ramp starts from actual speed")
-	self.advance_ramp(movement, 1.25)
-	self.check(is_equal_approx(movement.speed.current, 0.25) and movement._speed_tween == null, "Completed ramp reaches the target and releases its tween")
-	## Braking halves the duration and retains the driver's traction request.
+	self.simulate(movement, 4.0, false)
+	self.check(is_equal_approx(movement.speed_mps, 2.0) and is_equal_approx(movement.speed.current, 0.2),
+		"Four seconds at 0.5 m/s² reach 2 m/s, shown as 20 % of maximum speed")
+	self.simulate(movement, 10.0, false)
+	self.check(is_equal_approx(movement.speed_mps, 5.0), "Acceleration ends at the selected target")
+	## The brake control decelerates faster and keeps the driver's traction request.
 	movement.speed.brake_applied = true
-	self.advance_ramp(movement, 1.25)
-	self.check(is_equal_approx(movement.speed.current, 0.1875), "Brake uses the faster quadratic ramp")
-	self.check(is_equal_approx(movement.speed.target, 0.25), "Braking preserves the selected target")
-	self.advance_ramp(movement, 1.25)
-	self.check(is_zero_approx(movement.speed.current) and movement.is_started, "Service brake holds zero without switching off movement")
+	self.simulate(movement, 2.0, false)
+	self.check(is_equal_approx(movement.speed_mps, 3.0), "The brake control decelerates at 1 m/s²")
+	self.check(is_equal_approx(movement.speed.target, 0.5), "Braking preserves the selected target")
+	self.simulate(movement, 5.0, false)
+	self.check(is_zero_approx(movement.speed_mps) and movement.is_started, "The brake holds zero without switching off movement")
 	movement.speed.brake_applied = false
-	self.advance_ramp(movement, 2.5)
-	self.check(is_equal_approx(movement.speed.current, 0.0625), "Releasing the brake resumes towards the selected target")
-	## Stop and later target edits must not revive a killed speed tween.
-	replaced_tween = movement._speed_tween
+	self.simulate(movement, 2.0, false)
+	self.check(is_equal_approx(movement.speed_mps, 1.0), "Releasing the brake resumes towards the selected target")
+	movement.speed.target = 0.05
+	self.simulate(movement, 0.5, false)
+	self.check(is_equal_approx(movement.speed_mps, 0.75), "A lower target uses service braking at 0.5 m/s²")
+	## 50 kW gives only 5 kN at 10 m/s.
+	engine_type.motor_power_kw = 50.0
+	self.check(is_equal_approx(movement.get_dynamics().traction_acceleration(10.0), 0.25), "Power limits acceleration at higher speed")
+	engine_type.motor_power_kw = 1000.0
+	var wagon_type := VehicleTypeData.new()
+	wagon_type.max_speed_kmh = 18
+	wagon_type.mass_tonnes = 20.0
+	var consist: Array[VehicleTypeData] = [engine_type, wagon_type]
+	var wagons_only: Array[VehicleTypeData] = [wagon_type]
+	self.check(is_equal_approx(TrainDynamics.of_types(consist).max_speed_mps, 5.0), "The slowest vehicle sets the consist's maximum speed")
+	self.check(is_equal_approx(TrainDynamics.of_types(consist).traction_acceleration(0.0), 0.25), "Wagon mass reduces acceleration")
+	self.check(is_zero_approx(TrainDynamics.of_types(wagons_only).traction_acceleration(0.0)), "An unpowered consist cannot accelerate")
+	## Stop zeroes the speed; later target edits do nothing until the next start.
 	movement.stop()
-	self.check(not replaced_tween.is_valid() and is_zero_approx(movement.speed.current), "Stop kills the tween before zeroing speed")
+	self.check(is_zero_approx(movement.speed_mps) and is_zero_approx(movement.speed.current), "Stop zeroes the speed")
 	movement.speed.target = 0.75
-	self.check(movement._speed_tween == null and not movement.is_started, "Target changes while stopped do not start a ramp")
-	movement.speed.brake_applied = true
+	movement.update_speed(1.0)
+	self.check(is_zero_approx(movement.speed_mps) and not movement.is_started, "Target changes while stopped do not move the train")
 	movement.start()
-	self.check(movement._speed_tween == null and is_zero_approx(movement.speed.current), "Starting with the brake applied holds zero")
-	movement.speed.brake_applied = false
-	self.advance_ramp(movement, 7.5)
-	self.check(is_equal_approx(movement.speed.current, 0.1875), "Restart uses the saved target instead of resetting to full speed")
-	## Direct corrections should replace the current ramp rather than fight it next frame.
-	replaced_tween = movement._speed_tween
 	movement.speed.current = 0.5
-	self.check(not replaced_tween.is_valid(), "External speed corrections replace the tween")
-	self.advance_ramp(movement, 2.5)
-	self.check(is_equal_approx(movement.speed.current, 0.5625), "Correction retargets from the externally supplied speed")
+	self.check(is_equal_approx(movement.speed_mps, 5.0), "External corrections of the speed fraction set the physical speed")
 	## Parenthood is for lifetime only; the explicit train reference identifies the controlled train.
 	var controller_host := Node.new()
 	self.add_child(controller_host)
 	movement.reparent(controller_host)
 	self.check(movement.train == train and movement.get_parent() != train, "Movement keeps its explicit train after reparenting")
-	movement.start()
-	self.advance_ramp(movement, 1.0)
-	replaced_tween = movement._speed_tween
 	movement.derail()
-	self.check(not replaced_tween.is_valid() and movement.derailed, "Derailment cancels the active ramp")
+	self.check(movement.derailed and not movement.is_started and is_zero_approx(movement.speed_mps), "Derailment stops the train")
 	self.check(not movement.start() and is_zero_approx(movement.speed.current), "Derailed movement cannot restart")
-	movement.derailed = false
-	movement.start()
-	replaced_tween = movement._speed_tween
 	controller_host.free()
-	self.check(not replaced_tween.is_valid(), "Freeing the controller cancels its tween")
 	train.free()
 	return true

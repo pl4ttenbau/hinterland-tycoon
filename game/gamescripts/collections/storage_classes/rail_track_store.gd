@@ -57,9 +57,6 @@ func get_by_num(track_num: int) -> RailTrackData:
 	if ! found: Loggie.error("Cannot get track %d; out of index?" % track_num)
 	return found
 	
-func get_by_name(track_name: StringName) -> RailTrackData:
-	return self._by_name.get(track_name)
-	
 func get_container_by_num(track_num: int) -> RailTrack3D:
 	var found: RailTrack3D = self._containers_by_id.get(track_num, null)
 	if ! found: Loggie.error("Cannot get RailTrack3D %d; out of index?" % track_num)
