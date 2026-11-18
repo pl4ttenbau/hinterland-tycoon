@@ -312,7 +312,7 @@ func _check_marker_execution(manager: VehiclePlacer, loader: RoadsLoader, depot:
 
 	return body
 
-## M captures the road under the actual player; Shift+M creates one two-sided target.
+## The menu entry captures the road under the player; the dialog selects its side.
 func test_markers() -> bool:
 	# Arrange a physical road with an intermediate shape node, plus the real player.
 	var old_roads: RoadsLoader = Managers.roads
@@ -337,24 +337,21 @@ func test_markers() -> bool:
 	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
 	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")
 
-	# Use the same key handler and confirmation control as gameplay.
-	var key := InputEventKey.new()
-	key.physical_keycode = KEY_M
-	key.pressed = true
-	tool._unhandled_key_input(key)
+	# Use the same entry point and confirmation control as the circular menu.
+	check(tool.open_placement_dialog(), "Menu action opens the marker naming dialog")
 	var dialog: GameDialog = UiState.current_diag
-	check(dialog != null and dialog.dialog_key == "RoadMarkerDialog", "M opens the marker naming dialog")
+	check(dialog != null and dialog.dialog_key == "RoadMarkerDialog", "Marker action opens the naming dialog")
 	(dialog.get("_name") as LineEdit).text = "My marker"
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(loader.markers.markers.size() == 1 and loader.markers.markers[0].marker_name == "My marker", "Confirmation stores the chosen marker name")
 	check(absf(loader.markers.markers[0].offset - 17.3) < 0.02, "Marker stores the exact road offset, not a nearby shape node")
-	key.shift_pressed = true
-	tool._unhandled_key_input(key)
+	check(tool.open_placement_dialog(), "Second marker can be placed")
 	dialog = UiState.current_diag
+	(dialog.get("_side") as OptionButton).select(Enums.RoadSide.BOTH)
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	await tree.process_frame
-	check(loader.markers.markers.size() == 2 and loader.markers.markers[1].side == Enums.RoadSide.BOTH, "Shift+M creates one BOTH marker")
+	check(loader.markers.markers.size() == 2 and loader.markers.markers[1].side == Enums.RoadSide.BOTH, "Choosing Both creates one BOTH marker")
 	check(loader.markers.markers[1].marker_name == "Marker 2", "Unedited marker names use unique numbers")
 	check(tool._views[2].get_child_count() == 4, "One BOTH marker has two visual signs")
 	check(tool._views[2].get_child(0).scene_file_path == MARKER_TOOL.MARKER_SCENE, "Placed markers use the authored waypoint mesh")

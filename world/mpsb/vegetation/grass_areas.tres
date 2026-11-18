@@ -11,3 +11,4 @@ terrain_texture_ids = PackedInt32Array(0, 1, 2)
 coverage_mask = ExtResource("2_coverage")
 mask_bounds = Rect2(256, 256, 3072, 3072)
 coverage_includes_terrain = true
+coverage_is_empty = false

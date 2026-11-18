@@ -29,6 +29,9 @@ var interchange_num: int:
 
 @export var hide_building: bool = false
 
+## Runtime placement along the infrastructure curve. -1 retains authored node anchors.
+@export var curve_offset: float = -1.0
+
 @export var connections: StationConnections = StationConnections.new(self)
 
 func _init():

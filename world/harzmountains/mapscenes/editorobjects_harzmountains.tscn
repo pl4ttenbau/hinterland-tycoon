@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://dhht3vcp2qam5" path="res://assets/packed/materials/line3d_rail_track_mat.tres" id="5_4flip"]
 [ext_resource type="Script" uid="uid://b157dhgx7ojrw" path="res://game/gamescripts/services/editor/infrastructure/editor_roads.gd" id="6_2gwxi"]
 [ext_resource type="Material" uid="uid://drhyjn8jb0c4k" path="res://assets/packed/materials/line3d_roadway_mat.tres" id="7_j2dcm"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="vegetation_tool"]
 
 [sub_resource type="Curve3D" id="Curve3D_vbllm"]
 _data = {
@@ -2503,6 +2504,9 @@ point_count = 5
 [node name="EditorObjects" type="Node3D" unique_id=344995228]
 script = ExtResource("1_2ph23")
 map_key = "harzmountains"
+
+[node name="EditorVegetation" type="Node3D" parent="."]
+script = ExtResource("vegetation_tool")
 
 [node name="EditorInfr" type="Node3D" parent="." unique_id=876516435]
 script = ExtResource("2_j2dcm")

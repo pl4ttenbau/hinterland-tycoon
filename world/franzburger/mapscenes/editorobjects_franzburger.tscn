@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://drhyjn8jb0c4k" path="res://assets/packed/materials/line3d_roadway_mat.tres" id="5_t1wor"]
 [ext_resource type="Material" uid="uid://dhht3vcp2qam5" path="res://assets/packed/materials/line3d_rail_track_mat.tres" id="6_t1wor"]
 [ext_resource type="PackedScene" uid="uid://3f5quual3ygu" path="res://scenes/subscenes/infr/station/sign/station_sign_3d.tscn" id="8_sfi3o"]
+[ext_resource type="Script" path="res://game/gamescripts/services/editor/vegetation/editor_vegetation.gd" id="vegetation_tool"]
 
 [sub_resource type="Curve3D" id="Curve3D_rph8o"]
 _data = {
@@ -3846,6 +3847,9 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_enohd")
 map_key = "franzburger"
 metadata/_custom_type_script = "uid://cr2oyr6h3rrlr"
+
+[node name="EditorVegetation" type="Node3D" parent="."]
+script = ExtResource("vegetation_tool")
 
 [node name="EditorInfr" type="Node3D" parent="." unique_id=2121330301]
 script = ExtResource("2_t1wor")

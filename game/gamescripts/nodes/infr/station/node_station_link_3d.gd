@@ -38,6 +38,16 @@ func get_parent_station_3d() -> RailStation3D:
 
 #region Helper-Methods
 func adjust_rotation_from_track():
+	var station: RailStationData = self.node_station.parent_station
+	if station.curve_offset >= 0.0:
+		var curve: Curve3D = self.node_station.parent_node.parent_track.curve
+		var offset: float = station.curve_offset
+		var heading: Vector3 = curve.sample_baked(minf(curve.get_baked_length(), offset + 0.2)) - curve.sample_baked(maxf(0.0, offset - 0.2))
+		heading.y = 0.0
+		if not heading.is_zero_approx():
+			self.look_at(self.global_position - heading)
+			self.rotate_y(WorldUtils.NINETY_DEG_IN_RAD)
+		return
 	var track_node: RailNodeData = self.node_station.parent_node
 	var prev_node: RailNodeData = self.get_parent_track_node_by_index(track_node.index -1)
 	var next_node: RailNodeData = self.get_parent_track_node_by_index(track_node.index +1)

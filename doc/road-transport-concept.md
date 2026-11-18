@@ -2,7 +2,8 @@
 
 ## Implemented: route-plan editing
 
-Enter a road vehicle and press **R** to open its route editor. The first tab adds,
+Enter a road vehicle, open the circular menu with **right-click**, and choose
+**Auto-routing** to open its route editor. The first tab adds,
 removes and reorders route points. The second tab edits the selected point's
 ordered **Load** and **Unload** instructions, with one or more selected goods.
 
@@ -11,9 +12,9 @@ Selectable point kinds are **named road marker**, **physical road stop**, and
 remain valid. Stops, markers and depots use separate IDs. References resolve
 against current data when saving; depots resolve to their START/END road anchor.
 
-On foot, stand on a road and press **M**. A small dialog captures that road
+On foot, stand on a road and choose **Place road marker** from the circular menu. A small dialog captures that road
 position and offers a default name such as **Marker 1**. Its side defaults to
-where the player stands; **Shift+M** defaults to **Both**. Name and side can be
+where the player stands. Choose **Both** in the side selector for a two-sided marker. Name and side can be
 changed before confirming. Placement uses the physical road beneath the player,
 not the nearest road or a bridge overhead. Markers are session data for now.
 

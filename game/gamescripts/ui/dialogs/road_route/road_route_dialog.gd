@@ -152,7 +152,7 @@ func _fill_point_choices() -> void:
 			for marker: RoadMarkerData in Managers.roads.markers.markers:
 				_offer_reference(RoadRoutePoint.Kind.MARKER, marker.num, "%s · %d" % [marker.marker_name, marker.num])
 			if _choices.is_empty():
-				_status.text = "No markers yet. On foot, press M while standing on a road."
+				_status.text = "No markers yet. On foot, open the circular menu and choose Place road marker while standing on a road."
 		RoadRoutePoint.Kind.STOP:
 			for id: int in _all_stops():
 				var stop: RoadStationData = _all_stops()[id] as RoadStationData

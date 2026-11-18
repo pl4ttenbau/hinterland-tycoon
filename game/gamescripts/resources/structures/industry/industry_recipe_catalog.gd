@@ -12,7 +12,7 @@ static func make_types() -> Array[IndustryType]:
 		IndustryType.new("COAL_MINE", "Coal Mine", "mineshaft", 20, [], ["4xcoal"]),
 		IndustryType.new("IRON_MINE","Iron Mine", "mineshaft", 30, [], ["6xore"]),
 		IndustryType.new("QUARRY", "Quarry", "mineshaft", 12, [], ["8xstone", "3xgravel"]),
-		IndustryType.new("FOREST", "Forest", "warehouse_1", 9, [], ["10xlumber"]),
+		IndustryType.new("FOREST", "Forest", "sawmill", 9, [], ["10xlumber"]),
 		IndustryType.new("CHARCOAL_BURNER", "Charcoal Burner", "warehouse_1", 15, ["3xlumber"], ["2xcoal"]),
 		# producers: liquid
 		IndustryType.new("OIL_WELL", "Oil Well", "oil_derrick", 15, [], ["9xoil"]),
@@ -23,7 +23,7 @@ static func make_types() -> Array[IndustryType]:
 		IndustryType.new("BUTCHER", "Butcher", "warehouse_1", 9, ["3xfish"], ["3xmeat"]),
 		# transformers: aggregates
 		IndustryType.new("SMELTER", "Smelter", "factory_small", 22, ["3xore", "3xcoal"], ["3xingots"]),
-		IndustryType.new("SAWMILL", "Sawmill", "warehouse_1", 12, ["9xlumber"], ["3xboards"]),
+		IndustryType.new("SAWMILL", "Sawmill", "sawmill", 12, ["9xlumber"], ["3xboards"]),
 		IndustryType.new("BRICKWORKS", "Brickworks", "factory_small", 12, ["5xgravel"], ["2xbricks"]),
 		IndustryType.new("PAPER_MILL", "Paper Mill", "warehouse_1", 12, ["6xlumber", "2xchemicals"], ["2xpaper"]),
 		IndustryType.new("FERTILIZER_FACTORY", "Fertilizer Factory", "oil_derrick", 12, ["2xchemicals", "5xbeets"], ["2xfertilizer"]),

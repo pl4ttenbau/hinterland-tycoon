@@ -17,9 +17,18 @@ func run(scene_tree: SceneTree) -> int:
 	GameTypes.ensure_initialized()
 	host = Node3D.new()
 	tree.root.add_child(host)
-	for test: StringName in [&"test_components", &"test_transfers", &"test_passengers", &"test_vehicle_dialog"]:
+
+	var test_cases: Array[StringName] = [
+		&"test_components",
+		&"test_warehouse_stock_isolation",
+		&"test_transfers",
+		&"test_passengers",
+		&"test_vehicle_dialog",
+	]
+	for test: StringName in test_cases:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
+
 	host.free()
 	print("Inventory transfer tests: %d passed, %d failures" % [passed, failures])
 	return 0 if failures == 0 else 1
@@ -47,6 +56,27 @@ func test_components() -> bool:
 	component.capacity_override = 0
 	check(component.get_inventory().amount_max == 0 and component.free_capacity() == 0, "Zero override means no capacity")
 	check(InventoryContainer.find_on(null) == null, "Missing entity is safely rejected")
+	return true
+
+# Packed scene instances must isolate the stock inside their inventory resources.
+func test_warehouse_stock_isolation() -> bool:
+	# Use the real scene to exercise its authored inventory. Keep both instances
+	# outside the tree so industry startup and production cannot change the stock.
+	var warehouse: PackedScene = load("res://assets/meshes/industry/warehouse_1/warehouse_1.tscn")
+	var first_warehouse: Node = warehouse.instantiate()
+	var second_warehouse: Node = warehouse.instantiate()
+	var first_inventory: GoodsInventory = InventoryContainer.find_on(first_warehouse).get_inventory()
+	var second_inventory: GoodsInventory = InventoryContainer.find_on(second_warehouse).get_inventory()
+
+	# Compare against the authored starting amount so the scene can ship with stock.
+	var second_coal_before: float = second_inventory.get_amount("coal")
+	var stock_added: bool = first_inventory.add_goods_amount(GoodsAmount.new("coal", 7))
+
+	check(stock_added, "Adding stock to the first warehouse succeeds")
+	check(second_inventory.get_amount("coal") == second_coal_before, "Warehouse instances keep independent stock")
+
+	first_warehouse.free()
+	second_warehouse.free()
 	return true
 
 # Reject every invalid transaction before mutating either endpoint or emitting signals.

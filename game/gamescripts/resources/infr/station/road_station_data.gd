@@ -23,6 +23,18 @@ func _init(_num: int = -1, _name: String = "", _town_num: int = -1) -> void:
 	self.station_name = _name
 	self.town_num = _town_num
 
+func anchor(roads: RoadStore) -> RoadNode:
+	var road: RoadData = roads._by_id.get(road_num)
+	if road == null:
+		return null
+	if curve_offset >= 0.0:
+		if road.curve == null or curve_offset > road.curve.get_baked_length():
+			return null
+		var result := RoadRouteAnchor.at(road, curve_offset)
+		result.arrival_direction = 0 if road_side == Enums.RoadSide.BOTH else (1 if road_side == Enums.RoadSide.RIGHT else -1)
+		return result
+	return road.nodes[node_index] if node_index >= 0 and node_index < road.nodes.size() else null
+
 ## Map JSON uses the same camelCase convention as rail station catalogs.
 ## Resolving road/node references and deriving world placement belong to the loader.
 static func of_dict(data: Dictionary) -> RoadStationData:

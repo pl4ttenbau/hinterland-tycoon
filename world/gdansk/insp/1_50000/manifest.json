@@ -1,0 +1,217 @@
+{
+  "collected": "2026-11-07",
+  "scope": "Six 1:50,000 sheets: original four central/southern references plus Gdańsk and Mikoszewo city/coastal sheets. Remaining western and northeastern edge strips are still deferred.",
+  "coordinate_note": "Geographic neatline bounds read from the map grid; original maps use coordinate system 1942. Bounds are suitable for identifying sheet coverage, not a completed georeferencing transform.",
+  "world_bounds_west_south_east_north": [
+    18.66,
+    54.0465,
+    19.213,
+    54.37
+  ],
+  "maps": [
+    {
+      "sheet": "N-34-62-B",
+      "printed_title": "Ostaszewo",
+      "file": "ostaszewo_N-34-62-B_edition_1970-1974.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-062-2.jpg",
+      "frame_west_south_east_north": [
+        18.75,
+        54.166666666666664,
+        19,
+        54.333333333333336
+      ],
+      "date_notes": "Heading: Wydanie pierwsze PRL 1970–74; source material dated 1963/74, 1962/74, 1970.",
+      "notes": "Partial red railway reading aid, added programmatically over the original scan. Includes identifiable standard and narrow-gauge sections; uncertain historical branches and some marginal sections remain unmarked. Not a complete historical inventory or survey-accurate digitization. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 6081767,
+      "sha256": "906d45099048692586538cab4e6e1ee5d73695595098436f09570dc23ecae4d1",
+      "rail_overlay_coverage": "Small coastal edge fragment only; historical inland alignments not confidently identified.",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-62-B.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "92b4a5bc28cf19046a8306017e6fb3dedc7ece98206006a030096bd50dff382d",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    },
+    {
+      "sheet": "N-34-63-A",
+      "printed_title": "Nowy Dwór Gdański",
+      "file": "nowy_dwor_gdanski_N-34-63-A_survey_1985-1989_print_1992.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-063-1.jpg",
+      "frame_west_south_east_north": [
+        19,
+        54.166666666666664,
+        19.25,
+        54.333333333333336
+      ],
+      "date_notes": "Content 1985–89; publication Warszawa 1992.",
+      "notes": "Partial red railway reading aid, added programmatically over the original scan. Includes identifiable standard and narrow-gauge sections; uncertain historical branches and some marginal sections remain unmarked. Not a complete historical inventory or survey-accurate digitization. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 6014794,
+      "sha256": "f25da9159dbc2ce2d0f3db49b3f9bba45a1b1b4efa0b2295ebe94b23911996cd",
+      "rail_overlay_coverage": "Identifiable main routes and station tracks; some former branches are incomplete.",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-63-A.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "9e7b307013ea01ebe758bff7a215e5a5c38426d8b435479230e121bc1b0afe3d",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    },
+    {
+      "sheet": "N-34-62-D",
+      "printed_title": "Tczew",
+      "file": "tczew_N-34-62-D_content_1985_edition_1988.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-062-4.jpg",
+      "frame_west_south_east_north": [
+        18.75,
+        54,
+        19,
+        54.166666666666664
+      ],
+      "date_notes": "Heading: Wydanie 1988, stan 1985.",
+      "notes": "Partial red railway reading aid, added programmatically over the original scan. Includes identifiable standard and narrow-gauge sections; uncertain historical branches and some marginal sections remain unmarked. Not a complete historical inventory or survey-accurate digitization. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 5739411,
+      "sha256": "ed5fe3a1c91266dbc0af12f9b8f857766feb41cc9b3569f838beccf1ac487c17",
+      "rail_overlay_coverage": "Identifiable main routes and station tracks; some former branches are incomplete.",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-62-D.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "84b2e773c77263ee54ceb89ea093db07b3a949e4f2bc1866a26f512b19909750",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    },
+    {
+      "sheet": "N-34-63-C",
+      "printed_title": "Malbork",
+      "file": "malbork_N-34-63-C_content_1985-1989.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-063-3.jpg",
+      "frame_west_south_east_north": [
+        19,
+        54,
+        19.25,
+        54.166666666666664
+      ],
+      "date_notes": "Content 1985–89; bottom publication Warszawa 1991 and print marking 1992.",
+      "notes": "Partial red railway reading aid, added programmatically over the original scan. Includes identifiable standard and narrow-gauge sections; uncertain historical branches and some marginal sections remain unmarked. Not a complete historical inventory or survey-accurate digitization. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 5874872,
+      "sha256": "358ef1bdfc8ebb88709ffc15918dc1ee9ed43f87de14aa3b9cfe2581c864d948",
+      "rail_overlay_coverage": "Identifiable main routes and station tracks; some former branches are incomplete.",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-63-C.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "ad9ac8c36a8c971cedeaa0310fc652e741897fde2ae353b3c9617f1e27005164",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    },
+    {
+      "sheet": "N-34-50-C",
+      "printed_title": "Gdańsk",
+      "file": "gdansk_N-34-50-C_edition_1974_print_1976.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-050-3.jpg",
+      "frame_west_south_east_north": [
+        18.5,
+        54.333333333333336,
+        18.75,
+        54.5
+      ],
+      "date_notes": "Heading: Wydanie drugie PRL 1974. Bottom print mark: Druk WZKart. 76 r. Source diagram includes survey/update labels 1960/74, 61/74, 1962/74 and 1974; marine bathymetry from a 1967 chart.",
+      "notes": "Gdańsk city sheet: includes Stogi, Przeróbka and Rudno/Długie Ogrody within our world crop; also much of the city outside the crop. Original source scan archived before decimal-border annotation; no red railway overlay added. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 6301165,
+      "sha256": "0c26d675b3aabe2e8307b22a72b7fbee3afc40d58923b52e4977bb3946a37a2e",
+      "rail_overlay_coverage": "No railway highlights; decimal-degree border labels added 2026-11-08.",
+      "added": "2026-11-07",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-50-C.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "ccd6ba3cdc8487aa2e4dbdf83f696c77540db8aaed51032d40a3b4de74eba6dc",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    },
+    {
+      "sheet": "N-34-50-D",
+      "printed_title": "Mikoszewo",
+      "file": "mikoszewo_N-34-50-D_edition_1974_print_1975.jpg",
+      "scale": 50000,
+      "source_url": "https://maps.vlasenko.net/smtm50/n-34-050-4.jpg",
+      "frame_west_south_east_north": [
+        18.75,
+        54.333333333333336,
+        19,
+        54.5
+      ],
+      "date_notes": "Heading: Wydanie drugie PRL 1974. Bottom print mark: Druk WZKart. 75 r. Source diagram: 1962/74. Later catalogues may call the sheet Gdańsk-Sobieszewo.",
+      "notes": "Adjoining sheet with Górki Zachodnie, Sobieszewo and Świbno. Large sea area; the useful coastal/island strip is along the bottom of the sheet. Original source scan archived before decimal-border annotation; no red railway overlay added. Decimal-degree labels added on 2026-11-08 at every one-minute division on all four borders. Labels express the printed 1942 datum, not converted WGS84. Blank annotation strips added outside the map; mapped area and existing railway highlights were not resampled.",
+      "dimensions": [
+        2761,
+        3160
+      ],
+      "bytes": 5303891,
+      "sha256": "a34399ce9b053929eb848c4ba2114b0cdb710dd61698a9d428a9fc2b0212060c",
+      "rail_overlay_coverage": "No railway highlights; decimal-degree border labels added 2026-11-08.",
+      "added": "2026-11-07",
+      "coordinate_annotation": {
+        "date": "2026-11-08",
+        "metadata": "generation/decimal_coordinate_labels_N-34-50-D.json",
+        "labels": 54,
+        "datum": "Original map 1942 coordinates; no WGS84 conversion",
+        "before_annotation_sha256": "1aa1d9a88f628d30559bdc14b103721474f93457e8e6a068cd6f829893527931",
+        "map_frame_translation_pixels": [
+          170,
+          100
+        ]
+      }
+    }
+  ],
+  "rail_annotation_pass": "2026-11-07: four files annotated; original text and map geometry retained, no image-generation output used.",
+  "city_sheet_addition": "2026-11-07: N-34-50-C Gdańsk and N-34-50-D Mikoszewo added as unannotated original scans; edition/print dates read from the images. The original four annotated files are unchanged.",
+  "decimal_coordinate_annotation": "2026-11-08: all six sheets labelled at every minute division on all four borders (54 labels per sheet; 324 total). Blue longitude, red latitude; original 1942 datum. The accepted N-34-63-A sheet was unchanged during the remaining-five pass.",
+  "decimal_coordinate_validation": "generation/decimal_coordinate_labels_validation.json"
+}

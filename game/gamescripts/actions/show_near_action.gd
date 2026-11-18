@@ -6,7 +6,7 @@ func on_trigger():
 	super.on_trigger()
 	var player_pos: Vector3 = GlobalState.player.global_position
 	var near_tracks: Array[RailTrackData] = self.get_tracks_near_pos(player_pos)
-	Loggie.info("Near tracks: " + ", ".join(near_tracks))
+	Loggie.info("Near tracks: %d" % near_tracks.size())
 	var nearest_fork: NewRailForkData = get_nearest_fork(player_pos, near_tracks)
 	if nearest_fork:
 		var nearest_track_name: String = nearest_fork.rail_nodes[0].parent_track.track_name

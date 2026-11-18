@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/nodes/world/terrain_wheat.gd" id="1_wheat"]
+[ext_resource type="Material" path="res://assets/packed/wheat_material.tres" id="2_material"]
+[ext_resource type="Resource" path="res://world/default/vegetation/wheat_areas.tres" id="3_default"]
+
+[node name="TerrainWheat" type="Node3D"]
+script = ExtResource("1_wheat")
+grass_material = ExtResource("2_material")
+grass_areas = ExtResource("3_default")
+instance_spacing = 1.0
+density = 0.9
+draw_distance = 14.0
+fade_start = 10.0
+minimum_normal_y = 0.9

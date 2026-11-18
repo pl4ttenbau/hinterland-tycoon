@@ -1,0 +1,20 @@
+{
+  "source_image": "/home/cornelinux/.godotproj/hinterland-tycoon/world/gdansk/insp/1_50000/mikoszewo_N-34-50-D_edition_1974_print_1975.jpg",
+  "source_sha256": "1aa1d9a88f628d30559bdc14b103721474f93457e8e6a068cd6f829893527931",
+  "source_unchanged": true,
+  "crop_box_original_pixels": [
+    70,
+    2020,
+    820,
+    2550
+  ],
+  "render": "Deterministic crop and annotation overlay; original numbers retained. No generative image editing.",
+  "example_point": "Illustrative P, approximately halfway between the 21 and 22 minute latitude ticks and 46 and 47 minute longitude ticks.",
+  "example_map_latitude_dms": "54°21′30″ N",
+  "example_map_longitude_dms": "18°46′30″ E",
+  "example_map_decimal_lat_lon": [
+    54.35833333333333,
+    18.775
+  ],
+  "datum_note": "These are map-datum coordinates, not a verified WGS84 GPS fix. Approximate scan reading, not survey-grade georeferencing."
+}

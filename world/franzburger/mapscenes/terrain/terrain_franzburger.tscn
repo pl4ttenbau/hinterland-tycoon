@@ -5,6 +5,8 @@
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_cpcyg"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
 [ext_resource type="Resource" path="res://world/franzburger/vegetation/grass_areas.tres" id="21_grass_areas"]
+[ext_resource type="PackedScene" path="res://assets/packed/TerrainWheat.tscn" id="22_wheat"]
+[ext_resource type="Resource" path="res://world/franzburger/vegetation/wheat_areas.tres" id="23_wheat_areas"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 size = Vector2(3800, 2600)
@@ -26,5 +28,10 @@ transform = Transform3D(1, 0, 0, 0, 12.5, 0, 0, 0, 1, 0, 22, -102.33)
 material_override = ExtResource("3_cpcyg")
 mesh = SubResource("PlaneMesh_w7ts7")
 
-[node name="TerrainGrass" parent="." unique_id=1972905355 instance=ExtResource("20_grass")]
+[node name="TerrainGrass" parent="." unique_id=1972905355 node_paths=PackedStringArray("terrain") instance=ExtResource("20_grass")]
+terrain = NodePath("..")
 grass_areas = ExtResource("21_grass_areas")
+
+[node name="TerrainWheat" parent="." unique_id=1459783148 node_paths=PackedStringArray("terrain") instance=ExtResource("22_wheat")]
+terrain = NodePath("..")
+grass_areas = ExtResource("23_wheat_areas")

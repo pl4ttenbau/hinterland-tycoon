@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-08",
+  "sheets": 6,
+  "newly_labelled": 5,
+  "labels_per_sheet": 54,
+  "total_labels": 324,
+  "shared_edges_checked": 6,
+  "checksums_sizes_and_decimal_arithmetic_verified": true,
+  "accepted_first_sheet_unchanged": true,
+  "map_interiors_identical_before_jpeg_encoding": true,
+  "new_batch_outside_annotation_jpeg_error_p99": 1,
+  "backup_zip": "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/before_remaining_decimal_labels_2026-11-08.zip"
+}

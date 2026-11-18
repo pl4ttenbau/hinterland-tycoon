@@ -7,23 +7,22 @@ var roads: RoadsLoader
 var _views: Dictionary = {}
 var _message: Label
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if not event is InputEventKey or not event.pressed or event.echo or event.physical_keycode != KEY_M:
-		return
+## Shared entry point for the circular menu; placement is captured before naming.
+func open_placement_dialog() -> bool:
 	if Managers.roads != roads or UiState.current_diag != null or not is_instance_valid(GlobalState.player):
-		return
-	if GlobalState.player.in_road_vehicle != null or GlobalState.player.in_train != null:
-		return
+		return false
+	if is_instance_valid(GlobalState.player.in_road_vehicle) or is_instance_valid(GlobalState.player.in_train):
+		return false
 	var player: BasicFpsPlayer = GlobalState.player.player_parent
+	if not is_instance_valid(player):
+		return false
 	var placement: Dictionary = placement_at(player.global_position, player.get_rid())
-	get_viewport().set_input_as_handled()
 	if placement.is_empty():
 		_show_message("Stand on a road to place a marker.")
-		return
+		return false
 	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_marker/road_marker_dialog.gd")
-	if event.shift_pressed:
-		placement.side = Enums.RoadSide.BOTH
 	get_tree().root.add_child(script.create(self, placement))
+	return true
 
 ## A physical ray prevents selecting a nearby road or a bridge above/below the player.
 func placement_at(position: Vector3, exclude: RID = RID()) -> Dictionary:
