@@ -1,0 +1,14 @@
+# One atlas and matching PBR texture maps.
+newmtl ProspectMarker
+Kd 1.0 1.0 1.0
+Ks 0.3 0.3 0.3
+Ns 80.0
+Ni 1.45
+d 1.0
+illum 2
+Pr 0.55
+Pm 0.0
+map_Kd prospect_marker_albedo.png
+map_Pr prospect_marker_roughness.png
+norm prospect_marker_normal.png
+map_Bump -bm 1.0 prospect_marker_normal.png

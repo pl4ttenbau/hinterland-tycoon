@@ -1,18 +1,17 @@
 class_name IndustryStationList extends MarginContainer
 
 @export var industry: IndustryData:
-	get(): return industry
 	set(value):
 		industry = value
-		self.build_table()
+		_refresh()
 
-func build_table():
-	# get rid of default item
-	%StationsTable.clear()
-	# and add correct one (railway only now)
-	var station_conn: StationIndustryConnection = self.industry.station_connection
-	if station_conn:
-		var station_name: String = station_conn.interchange.interchange_name if station_conn.interchange != null else station_conn.station.station_name
-		%StationsTable.add_item(station_name, null, false)
+func _refresh() -> void:
+	var list: ItemList = %StationsTable
+	list.clear()
+	var connection: StationIndustryConnection = industry.station_connection if industry != null else null
+	if connection != null and connection.interchange != null:
+		list.add_item("%s · shared stock" % connection.interchange.interchange_name, null, false)
+	elif connection != null and connection.station != null:
+		list.add_item(connection.station.station_name, null, false)
 	else:
-		%StationsTable.add_item("none", null, false)
+		list.add_item("Industry stock", null, false)

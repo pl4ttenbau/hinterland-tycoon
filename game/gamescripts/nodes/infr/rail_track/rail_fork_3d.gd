@@ -18,6 +18,8 @@ func _init() -> void:
 #endregion
 
 func adjust_rotation() -> void:
+	if not is_inside_tree() or fork_obj.connected_tracks.is_empty():
+		return
 	var next_static_node_pos: Vector3 = self._get_pos_of_next_static_track_node()
 	self.look_at(next_static_node_pos)
 	self.rotate_y(WorldUtils.NINETY_DEG_IN_RAD)
@@ -25,7 +27,8 @@ func adjust_rotation() -> void:
 	self.adjust_fork_arrow_rotation()
 
 func adjust_fork_arrow_rotation():
-	if !self.fork_obj.setting.current || !self.fork_obj.setting.current.connected: return
+	if self.fork_obj.setting.current == null:
+		return
 	var target: Vector3 = self.fork_obj.setting.get_connected_next_node().position
 	$ForkArrow.look_at(target)
 
@@ -53,13 +56,13 @@ func _on_fork_obj_set(set_fork_obj: NewRailForkData):
 	set_fork_obj.setting_initialized.connect(Callable(self, "_on_setting_initialized"))
 
 func _on_setting_initialized(_fork_setting: RailForkSetting):
-	if self.fork_obj.connected_tracks.size() <= 2:
-		self.fork_mesh.visible = false
-		self.fork_arrow_mesh.visible = false
+	var can_switch: bool = self.fork_obj.setting.settable_tracks.size() > 1
+	self.fork_mesh.visible = can_switch
+	self.fork_arrow_mesh.visible = can_switch
+	if can_switch:
+		self.adjust_fork_arrow_rotation()
 
 func _on_fork_switched(new_setting: CurrentForkSetting):
-	if !new_setting || !new_setting.connected: return
-	#show arrow
-	self.adjust_fork_arrow_rotation()
-	$ForkArrow.visible = true
+	if new_setting != null:
+		self.adjust_fork_arrow_rotation()
 #endregion

@@ -2,6 +2,9 @@
 @icon("res://assets/icons/nodes_3d/icon_mouse.svg")
 class_name WorldCursor3D extends Marker3D
 
+const GPS_UNAVAILABLE := "GPS unavailable"
+const GPS_OUTSIDE_MAP := "Outside map bounds"
+
 @export_tool_button("Put On Ground")
 var put_on_ground = Callable(self, "_do_put_on_ground")
 
@@ -9,11 +12,39 @@ var put_on_ground = Callable(self, "_do_put_on_ground")
 var copy_pos_as_json = Callable(self, "_do_copy_pos_as_json")
 
 @export_group("GPS", "gps_")
+## The current marker position in decimal latitude, longitude.
+@export_custom(PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY)
+var gps_current_gps: String:
+	get:
+		return _get_current_gps_text()
+
+@export_tool_button("Copy Current GPS")
+var gps_copy_current = _do_copy_current_gps
+
 ## Decimal degrees in latitude, longitude order, e.g. 54.21463, 19.11508.
 @export var gps_coords: String
 
 @export_tool_button("From GPS Coords", "Callable")
 var gps_apply_fromcoords = do_apply_gps_coords_pos
+
+func _get_current_gps_text() -> String:
+	if not is_inside_tree():
+		return GPS_UNAVAILABLE
+	var map_pos_size: MapSizeAndPosData = get_map_size_pos_dto_in_editor(false)
+	var terrain: Terrain3D = get_editor_terrain(false)
+	if terrain == null:
+		return GPS_UNAVAILABLE
+	var world_xz := Vector2(global_position.x, global_position.z)
+	var coords: Array[float] = WorldUtils.world_pos_to_gps_coords(world_xz, terrain.vertex_spacing, map_pos_size)
+	if coords.is_empty():
+		return GPS_OUTSIDE_MAP if WorldUtils.gps_map_validation_error(map_pos_size).is_empty() else GPS_UNAVAILABLE
+	return "%.6f, %.6f" % coords
+
+func _do_copy_current_gps() -> void:
+	var current: String = gps_current_gps
+	if current == GPS_UNAVAILABLE or current == GPS_OUTSIDE_MAP:
+		return
+	DisplayServer.clipboard_set(current)
 
 func _do_put_on_ground() -> void:
 	var terrain: Terrain3D = get_editor_terrain()
@@ -68,18 +99,20 @@ func _get_world_map() -> WorldMapScene:
 		return EditorInterface.get_edited_scene_root() as WorldMapScene
 	return null
 
-func get_map_size_pos_dto_in_editor() -> MapSizeAndPosData:
+func get_map_size_pos_dto_in_editor(report_missing: bool = true) -> MapSizeAndPosData:
 	var world: WorldMapScene = _get_world_map()
 	if world == null or world.map_key.is_empty():
-		Loggie.warn("Cannot place cursor: open the world scene with its map_key set")
+		if report_missing:
+			Loggie.warn("Cannot place cursor: open the world scene with its map_key set")
 		return null
 	var map_data: MapData = MapData.parse(world.map_key)
 	if map_data == null or map_data.size_and_pos == null:
-		Loggie.warn("Cannot load GPS map metadata for %s" % world.map_key)
+		if report_missing:
+			Loggie.warn("Cannot load GPS map metadata for %s" % world.map_key)
 		return null
 	return map_data.size_and_pos
 
-func get_editor_terrain() -> Terrain3D:
+func get_editor_terrain(report_missing: bool = true) -> Terrain3D:
 	var world: WorldMapScene = _get_world_map()
 	if world != null and is_instance_valid(world.terrain):
 		return world.terrain
@@ -93,5 +126,6 @@ func get_editor_terrain() -> Terrain3D:
 		var candidates: Array[Node] = scene_root.find_children("*", "Terrain3D", true, false)
 		if not candidates.is_empty():
 			return candidates[0] as Terrain3D
-	Loggie.warn("Cannot place cursor: no Terrain3D found in the world scene")
+	if report_missing:
+		Loggie.warn("Cannot place cursor: no Terrain3D found in the world scene")
 	return null

@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="mesh/prospect_marker.obj" id="1"]
+[ext_resource type="Material" path="prospect_marker.tres" id="2"]
+
+[node name="ProspectMarker" type="MeshInstance3D"]
+material_override = ExtResource("2")
+mesh = ExtResource("1")

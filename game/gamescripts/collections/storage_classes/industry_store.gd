@@ -24,6 +24,15 @@ func add_container(outer_ind: Industry3D):
 	self._containers.append(outer_ind)
 	self._containers_by_id.set(outer_ind.industry.num, outer_ind)
 	GlobalState.ind_bld_containers.append(outer_ind)
+
+func remove_runtime_industry(view: Industry3D) -> void:
+	var industry: IndustryData = view.industry
+	_list.erase(industry)
+	_containers.erase(view)
+	_by_id.erase(industry.num)
+	_containers_by_id.erase(industry.num)
+	GlobalState.industries.erase(industry)
+	GlobalState.ind_bld_containers.erase(view)
 	
 func _create_indexes(ind_obj: IndustryData):
 	self._by_id.set(ind_obj.num, ind_obj)

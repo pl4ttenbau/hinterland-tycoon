@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://db525awq7335k"]
+
+[ext_resource type="PackedScene" uid="uid://cyaai7n6y26x8" path="res://assets/meshes/industry/restaurant/mesh/restaurant.obj" id="1_goeke"]
+[ext_resource type="Script" uid="uid://djbnfqrei1eq" path="res://game/gamescripts/nodes/construction/building_mesh_3d.gd" id="1_j7y86"]
+
+[node name="MeshRestaurant" type="Node3D" unique_id=43444568]
+script = ExtResource("1_j7y86")
+metadata/_custom_type_script = "uid://djbnfqrei1eq"
+
+[node name="restaurant2" parent="." unique_id=2115495306 instance=ExtResource("1_goeke")]

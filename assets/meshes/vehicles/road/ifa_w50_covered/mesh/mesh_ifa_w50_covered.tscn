@@ -1,0 +1,5 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/road/ifa_w50_covered/mesh/ifa_w50_covered.gltf" id="1_mesh"]
+
+[node name="MeshIfaW50Covered" instance=ExtResource("1_mesh")]

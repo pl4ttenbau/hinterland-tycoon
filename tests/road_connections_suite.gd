@@ -123,6 +123,10 @@ func test_saved_connections(tree: SceneTree) -> bool:
 		4: record(4, [0, 0.5, 0], [10, 0.5, 0]),
 	}
 	records[1].points[0]["cross"] = {"connectiveRoads": [99], "custom": "keep"}
+	var legacy_cross: Dictionary = {"connectiveRoads": [99.0, 99, 2.0, 2, 8.0], "autoConnectiveRoads": [2, 8]}
+	records[1].points[1]["cross"] = legacy_cross
+	var legacy_runtime: RoadCross = RoadMapper.cross_from_dict_and_data(null, legacy_cross)
+	check(legacy_runtime.connecting_roads == [99, 2, 8], "Legacy crossings load each numeric road ID once")
 	var self_links: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(8, 0, Vector3.ZERO), EditorRoadEndpoint.new(8, 1, Vector3.ZERO)])
 	check(self_links[0].is_empty() and self_links[1].is_empty(), "A loop road cannot connect to itself")
 	var boundary: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(1, 0, Vector3(-0.001, 0, 0)), EditorRoadEndpoint.new(2, 0, Vector3(0.001, 0, 0))])
@@ -130,8 +134,10 @@ func test_saved_connections(tree: SceneTree) -> bool:
 	var rounded: Array = RoadEndpointConnection.neighbors([EditorRoadEndpoint.new(1, 0, Vector3(0.0049, 0.0049, 0)), EditorRoadEndpoint.new(2, 0, Vector3(0.019, 0.019, 0))])
 	check(rounded[0].is_empty(), "Editor matching uses rounded geometry consistently with JSON saving")
 	RoadEndpointConnection.update_json(records)
-	check(records[1].points[1].cross.connectiveRoads == [2, 3], "Save connects all coincident road endpoints")
-	check(records[2].points[0].cross.connectiveRoads == [1, 3], "Save writes reciprocal links")
+	var updated_cross: Dictionary = records[1].points[1].cross
+	check(updated_cross.connectiveRoads == [99] and updated_cross.connectiveRoads[0] is int and updated_cross.autoConnectiveRoads == [2, 3], "Save migrates legacy links and writes each integer ID only once")
+	check(RoadMapper.cross_from_dict_and_data(null, updated_cross).connecting_roads == [99, 2, 3], "Runtime loads both manual and generated links")
+	check(records[2].points[0].cross == {"autoConnectiveRoads": [1, 3]}, "Save writes reciprocal links")
 	check(not records[4].points[0].has("cross"), "A height-separated road is not a crossing")
 	check(records[1].points[0].cross.connectiveRoads == [99] and records[1].points[0].cross.custom == "keep", "Existing manual links and custom metadata survive")
 	var before: String = JSON.stringify(records)
@@ -144,7 +150,7 @@ func test_saved_connections(tree: SceneTree) -> bool:
 		reread[int(id)] = decoded[id]
 	reread[2].points[0].pos = [5, 0, 0]
 	RoadEndpointConnection.update_json(reread)
-	check(2 not in reread[1].points[1].cross.connectiveRoads and reread[2].points[0].cross.connectiveRoads.is_empty(), "Moving an endpoint removes both sides of generated links after JSON reload")
+	check(reread[1].points[1].cross.autoConnectiveRoads == [3] and not reread[2].points[0].has("cross"), "Moving an endpoint removes both sides of generated links after JSON reload")
 	check(reread[1].points[0].cross.custom == "keep", "Automatic cleanup does not touch manual metadata")
 	var directory: String = "/tmp/road-connections-%d" % OS.get_process_id()
 	DirAccess.make_dir_recursive_absolute(directory)
@@ -158,8 +164,10 @@ func test_saved_connections(tree: SceneTree) -> bool:
 	var roads: Array[EditorInfrLine3D] = [road]
 	var saved: EditorActionResult = store.save_lines(path, roads, Enums.InfrDomain.ROAD)
 	check(saved.ok and FileAccess.get_file_as_string(saved.backup) == original, "Crossing save retains an exact backup")
+	var saved_text: String = FileAccess.get_file_as_string(path)
+	check(saved_text.contains('"autoConnectiveRoads": [2]') and not saved_text.contains('"connectiveRoads"'), "JSON writes each generated ID once using integer notation")
 	var data: Array = InfrJsonStore.read_records(path).records
-	check(int(data[0].points[1].cross.connectiveRoads[0]) == 2 and int(data[1].points[0].cross.connectiveRoads[0]) == 1, "JSON save updates cached and existing road records together")
+	check(data[0].points[1].cross == {"autoConnectiveRoads": [2.0]} and data[1].points[0].cross == {"autoConnectiveRoads": [1.0]}, "JSON save updates cached and existing road records together")
 	var runtime: RoadData = RoadMapper.road_from_data_json(data[0])
 	check(runtime.nodes[1].cross.connecting_roads == [2], "Generated crossings load into the existing runtime RoadCross model")
 	runtime.nodes[1].cross = null

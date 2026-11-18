@@ -31,30 +31,34 @@ func make_station(data: Dictionary) -> RoadStationData:
 	return station
 
 func test_json() -> bool:
-	var record: Dictionary = JSON.parse_string('{"num":0,"roadNum":0,"nodeIndex":0,"roadSide":"RIGHT"}')
+	var record: Dictionary = JSON.parse_string('{"num":0,"roadNum":0,"nodeIndex":0,"roadStopDirection":"ROAD_NODES_INCREASE"}')
 	var stop: RoadStationData = self.make_station(record)
 	self.check(stop != null and stop is AbstractStation, "A minimal road record creates station data")
 	self.check(stop.num == 0 and stop.road_num == 0 and stop.node_index == 0, "JSON numbers accept stop ID, road ID and node index zero")
-	self.check(stop.road_side == Enums.RoadSide.RIGHT and stop.town_num == -1 \
+	self.check(stop.direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE and stop.town_num == -1 \
 		and stop.station_name.is_empty() and not stop.hide_building, "Minimal records retain optional station defaults")
-	self.check(not record.has("name") and record["roadSide"] == "RIGHT", "Parsing leaves the source record unchanged")
-	for side: String in ["LEFT", "RIGHT", "BOTH"]:
+	self.check(not record.has("name") and record["roadStopDirection"] == "ROAD_NODES_INCREASE", "Parsing leaves the source record unchanged")
+	for direction: String in Enums.RoadStopDirection.keys():
 		var variant: Dictionary = record.duplicate(true)
-		variant["roadSide"] = side
-		self.check(self.make_station(variant).road_side == Enums.RoadSide[side], "All three road sides load")
+		variant["roadStopDirection"] = direction
+		self.check(self.make_station(variant).direction == Enums.RoadStopDirection[direction], "All three road stop directions load")
 	var full: Dictionary = record.duplicate(true)
 	full.merge({"name": "Village", "townNum": 3, "townName": "Town", "type": "BUS_STOP", "hideBuilding": true})
 	var named: RoadStationData = self.make_station(full)
 	self.check(named.station_name == "Village" and named.town_num == 3 and named.town_name == "Town" \
 		and named.station_type == "BUS_STOP" and named.hide_building, "Optional metadata follows rail station conventions")
 	print("Checking invalid road stops; the following validation errors are expected.")
-	for field: String in ["num", "roadNum", "nodeIndex", "roadSide"]:
+	var legacy: Dictionary = record.duplicate()
+	legacy.erase("roadStopDirection")
+	legacy["roadSide"] = "LEFT"
+	self.check(self.make_station(legacy) == null, "Legacy side cannot stand in for the required road stop direction")
+	for field: String in ["num", "roadNum", "nodeIndex", "roadStopDirection"]:
 		var missing: Dictionary = record.duplicate(true)
 		missing.erase(field)
 		self.check(self.make_station(missing) == null, "Each of the four core fields is required")
 	for fields: Dictionary in [
 		{"num": -1}, {"num": true}, {"roadNum": "1"}, {"nodeIndex": 0.5},
-		{"nodeIndex": null}, {"roadSide": "right"}, {"roadSide": 1},
+		{"nodeIndex": null}, {"roadStopDirection": "STOP"}, {"roadStopDirection": 1},
 		{"name": null}, {"townNum": -1}, {"townName": 3}, {"type": false}, {"hideBuilding": "true"}
 	]:
 		var invalid: Dictionary = record.duplicate(true)
@@ -66,8 +70,8 @@ func test_scene() -> bool:
 	var packed: PackedScene = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn")
 	var stop: BusStop3D = packed.instantiate()
 	var other: BusStop3D = packed.instantiate()
-	var first: RoadStationData = self.make_station({"num": 1, "roadNum": 4, "nodeIndex": 0, "roadSide": "LEFT"})
-	var second: RoadStationData = self.make_station({"num": 2, "roadNum": 4, "nodeIndex": 1, "roadSide": "RIGHT", "hideBuilding": true})
+	var first: RoadStationData = self.make_station({"num": 1, "roadNum": 4, "nodeIndex": 0, "roadStopDirection": "ROAD_NODES_DECREASE"})
+	var second: RoadStationData = self.make_station({"num": 2, "roadNum": 4, "nodeIndex": 1, "roadStopDirection": "ROAD_NODES_INCREASE", "hideBuilding": true})
 	first.station_name = "First stop"
 	second.station_name = "Second stop"
 	first.position = Vector3(4, 2, 6)
@@ -127,18 +131,23 @@ func test_shelter_orientation() -> bool:
 	var heading := Vector3(1, 0, -1).normalized()
 	var packed: PackedScene = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn")
 
-	# BOTH adds a second shelter but shares the same physical stop and inventory.
-	for side: String in ["LEFT", "RIGHT", "BOTH"]:
+	var right: Vector3 = heading.cross(Vector3.UP)
+	for direction: String in Enums.RoadStopDirection.keys():
 		var stop: BusStop3D = packed.instantiate()
-		stop.station = self.make_station({"num": 50, "roadNum": 4, "nodeIndex": 0, "roadSide": side})
+		stop.station = self.make_station({"num": 50, "roadNum": 4, "nodeIndex": 0, "roadStopDirection": direction})
 		stop.station.position = Vector3(8, 2, 6)
 		parent.add_child(stop)
 		stop.configure_road_layout(heading, 4.0)
-		for shelter: Node3D in stop.get_node("Model").get_children():
+		var shelters: Array[Node] = stop.get_node("Model").get_children()
+		self.check(shelters.size() == (2 if direction == "BOTH_DIRECTIONS" else 1), "Only stops serving both directions get two shelters")
+		var side_sign: float = -1.0 if direction == "ROAD_NODES_DECREASE" else 1.0
+		for shelter: Node3D in shelters:
 			var toward_road: Vector3 = (stop.station.position - shelter.global_position).normalized()
-			self.check(absf(shelter.global_basis.z.normalized().dot(heading)) > 0.999, "Shelter long edge is parallel to the road on %s" % side)
-			self.check((-shelter.global_basis.x.normalized()).dot(toward_road) > 0.999, "Shelter entrance faces the road on %s" % side)
+			self.check(absf(shelter.global_basis.z.normalized().dot(heading)) > 0.999, "Shelter long edge is parallel to the road for %s" % direction)
+			self.check((-shelter.global_basis.x.normalized()).dot(toward_road) > 0.999, "Shelter entrance faces the road for %s" % direction)
 			self.check(is_equal_approx(shelter.global_position.distance_to(stop.station.position), 4.0), "Orientation preserves the roadside offset")
+			self.check(is_equal_approx(toward_road.dot(right), -side_sign), "Shelter is on the right-hand traffic side for %s" % direction)
+			side_sign = -side_sign
 		stop.free()
 
 	# Free views before the shared station-resource cleanup in the runner.
@@ -152,7 +161,7 @@ func test_editor_labels() -> bool:
 	var fixtures: Dictionary = {
 		"interchanges.json": [{"num": 7, "name": "Shared interchange", "townNum": 3, "stops": [
 			{"num": 12, "domain": "RAIL", "trackNum": 4, "nodeIndex": 0},
-			{"num": 13, "domain": "ROAD", "roadNum": 42, "nodeIndex": 1, "roadSide": "BOTH"}
+			{"num": 13, "domain": "ROAD", "roadNum": 42, "nodeIndex": 1, "roadStopDirection": "BOTH_DIRECTIONS"}
 		]}],
 		"tracks.json": [{"num": 4, "points": [{"pos": [10, 2, 20]}, {"pos": [30, 2, 20]}]}],
 		"roads.json": [{"num": 42, "points": [{"pos": [10, 2, 25]}, {"pos": [30, 2, 25]}]}]

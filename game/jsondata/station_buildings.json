@@ -1,0 +1,14 @@
+{
+	"STATION_PASS": {
+		"scene_path": "res://assets/meshes/infr/stops/passenger_platform/passenger_platform.tscn",
+		"construction": {
+			"preview_scene_path": "res://assets/meshes/infr/stops/passenger_platform/mesh/mesh_passenger_platform.tscn"
+		}
+	},
+	"STATION_GOODS": {
+		"scene_path": "res://assets/meshes/infr/stops/cargo_platform/cargo_platform.tscn",
+		"construction": {
+			"preview_scene_path": "res://assets/meshes/infr/stops/cargo_platform/mesh/mesh_cargo_platform.tscn"
+		}
+	}
+}

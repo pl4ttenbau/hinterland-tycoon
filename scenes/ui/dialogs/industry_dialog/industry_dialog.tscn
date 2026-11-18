@@ -77,6 +77,11 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="MineReserves" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
 [node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1148532739]
 unique_name_in_owner = true
 layout_mode = 2

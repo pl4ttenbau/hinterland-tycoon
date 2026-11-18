@@ -1,8 +1,33 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://c3w23ifwlxuaj"]
 
-[ext_resource type="PackedScene" path="res://assets/meshes/vehicles/road/trabant_601/mesh/mesh_trabant_601_green.tscn" id="1_model"]
+[ext_resource type="PackedScene" uid="uid://bd5moia5feqpk" path="res://assets/meshes/vehicles/road/trabant_601/mesh/mesh_trabant_601_green.tscn" id="1_model"]
+[ext_resource type="Script" uid="uid://mgohye4batjb" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="road_axle"]
+[ext_resource type="Script" uid="uid://crmk7g2hykne2" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_model_3d.gd" id="road_model"]
 
-[node name="Trabant601Green" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(1.569755, 1.572999, 3.582603)
 
-[node name="Model" parent="." instance=ExtResource("1_model")]
-scale = Vector3(1.2, 1.2, 1.2)
+[node name="Trabant601Green" type="Node3D" unique_id=1169680287 node_paths=PackedStringArray("chassis")]
+script = ExtResource("road_model")
+chassis = NodePath("Chassis/CollisionShape3D")
+
+[node name="Model" parent="." unique_id=1070360792 instance=ExtResource("1_model")]
+transform = Transform3D(9.059749e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, 9.059749e-08, 0, 0, 0)
+
+[node name="Chassis" type="StaticBody3D" parent="." unique_id=750849819]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis" unique_id=517899812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0224494, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="RearAxle" type="Marker3D" parent="." unique_id=1507645410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.313951, -0.9016467)
+script = ExtResource("road_axle")
+track_width = 1.255804
+wheel_radius = 0.313951
+
+[node name="FrontAxle" type="Marker3D" parent="." unique_id=263893079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.313951, 1.1057466)
+script = ExtResource("road_axle")
+track_width = 1.255804
+wheel_radius = 0.313951

@@ -12,7 +12,6 @@ class_name TrackSectionData extends Resource
 
 static func of(_last: RailNodeData, _next: RailNodeData) -> TrackSectionData:
 	var inst := TrackSectionData.new()
-	inst.last_node = _last
-	inst.next_node = _next
-	inst.track = _last.parent_track
+	inst.origin = _last
+	inst.target = _next
 	return inst

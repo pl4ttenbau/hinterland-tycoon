@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://ds8ckifkf8h16" path="res://game/gamescripts/nodes/infr/roadway_3d.gd" id="1_road"]
+[ext_resource type="ArrayMesh" path="res://assets/meshes/infr/road/cobblestone_road/road_tile.obj" id="2_mesh"]
+[ext_resource type="Material" path="res://assets/meshes/infr/road/cobblestone_road/road_material.tres" id="3_material"]
+
+[sub_resource type="Curve3D" id="Curve3D_preview"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[node name="OuterRoad" type="Node3D"]
+script = ExtResource("1_road")
+source_drivable_width_metres = 4.8
+source_mesh_height_metres = 0.17
+
+[node name="RoadPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_preview")
+
+[node name="PathMesh3D" type="PathMesh3D" parent="." node_paths=PackedStringArray("path_3d")]
+material_override = ExtResource("3_material")
+path_3d = NodePath("../RoadPath")
+mesh = ExtResource("2_mesh")
+surface_0/distribution = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = false
+surface_0/tilt = true
+layers = 16
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

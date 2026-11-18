@@ -32,8 +32,8 @@ static func of(_rail_node: RailNodeData, _station_num: int) -> NodeStationLinkDa
 	instance.parent_node = _rail_node
 	return instance
 	
-func spawn() -> NodeStationLink3D:
-	self.station3d = NodeStationLink3D.of(self)
+func spawn(building: RailPlatform3D = null) -> NodeStationLink3D:
+	self.station3d = NodeStationLink3D.of(self, building)
 	return self.station3d
 
 #region Find By Distance

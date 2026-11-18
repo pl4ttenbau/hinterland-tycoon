@@ -13,6 +13,8 @@ up_vector_enabled = false
 
 [node name="OuterRoad" type="Node3D"]
 script = ExtResource("1_4qmth")
+source_drivable_width_metres = 3.34
+source_mesh_height_metres = 0.179787
 
 [node name="RoadPath" type="Path3D" parent="."]
 rotation_edit_mode = 1

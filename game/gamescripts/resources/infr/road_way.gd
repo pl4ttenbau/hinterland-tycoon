@@ -26,12 +26,13 @@ static func of(_num: int, _type: String) -> RoadData:
 
 #region Creation
 func spawn() -> RoadWay3D:
+	var definition := get_road_type()
+	if definition == null:
+		return null
 	if ! self.curve: self.build_curve()
-	# instanciate Container from PackedScene
-	var scene: Resource = load(self.get_type_scene())
-	var outer_road: RoadWay3D = scene.instantiate() as RoadWay3D
+	var outer_road := definition.scene.instantiate() as RoadWay3D
 	outer_road.road = self
-	# add_to_group("Roads")
+	outer_road.apply_mesh_profile(definition)
 	return outer_road
 	
 func build_curve() -> void:
@@ -53,10 +54,14 @@ func add_node(_road_node: RoadNode):
 #endregion
 
 #region Getters
+func get_road_type() -> RoadType:
+	if GameTypes.road_types.is_empty() and GameTypes.ensure_initialized() != OK:
+		return null
+	return GameTypes.get_road_type(self.infr_type_key)
+
 func get_type_scene() -> String:
-	if self.infr_type_key == "rural_road": return RURAL_ROAD_SCENE_PATH
-	elif self.infr_type_key == "dirt_path": return DIRT_PATH_SCENE_PATH
-	return RURAL_ROAD_SCENE_PATH
+	var definition := get_road_type()
+	return definition.scene.resource_path if definition != null else ""
 	
 func get_road_node(_i: int) -> RoadNode:
 	if _i > 0:

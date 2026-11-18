@@ -18,8 +18,8 @@ func try_industry_exit_finding():
 	var found_road_exits: int = 0
 	for industry3d: Industry3D in GlobalState.ind_bld_containers:
 		var closest_road_node = self.find_closest_road_node(industry3d.industry)
+		industry3d.industry.road_exit = closest_road_node
 		if closest_road_node:
-			industry3d.industry.road_exit = closest_road_node
 			found_road_exits += 1
 	Loggie.info("Found %d road exits for %d industries" % [found_road_exits, GlobalState.ind_bld_containers.size()])
 		

@@ -25,7 +25,8 @@ enum EntityTypes {
 	GOOD,
 	DECO_STATIC,
 	DECO_SPLINE,
-	INTERCHANGE # Append new entity kinds to preserve existing serialized enum values.
+	INTERCHANGE,
+	MARKER # Append new entity kinds to preserve existing serialized enum values.
 }
 
 enum InfrDomain {
@@ -63,6 +64,13 @@ enum RoadSide {
 	BOTH
 }
 
+## Directions of travel served by a road stop.
+enum RoadStopDirection {
+	ROAD_NODES_INCREASE,
+	ROAD_NODES_DECREASE,
+	BOTH_DIRECTIONS
+}
+
 enum UiMode {
 	WALKING,
 	BUILD_INFR,
@@ -72,4 +80,4 @@ enum UiMode {
 
 ## IDs for the editor toolbar's enum-keyed Button lookup.
 ## Tool behavior stays in the plugin until tools become individual classes.
-enum EnumEditorTool { NONE, BUILD_TOWN, CREATE_ROAD, CREATE_RAIL, SELECT_OBJECT }
+enum EnumEditorTool { NONE, BUILD_TOWN, CREATE_ROAD, CREATE_RAIL, SELECT_OBJECT, CREATE_INTERCHANGE, ADD_STOP }

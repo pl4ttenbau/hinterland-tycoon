@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cujr7t5fatu0u"]
+
+[ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_iatpx"]
+[ext_resource type="PackedScene" uid="uid://b77bwtxjhn4bn" path="res://assets/meshes/industry/corner_mall/mesh/mesh_corner_mall.tscn" id="2_03gge"]
+[ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_jhhx5"]
+[ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_xvijy"]
+[ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_r2mer"]
+[ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_74n2m"]
+[ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_i4qor"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="8_ujmii"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(17.6987, 12.236084, 15.745483)
+
+[sub_resource type="Resource" id="Resource_w8yjb"]
+resource_local_to_scene = true
+script = ExtResource("6_74n2m")
+metadata/_custom_type_script = "uid://ddk4jv4q07x08"
+
+[sub_resource type="Resource" id="Resource_54nbo"]
+resource_local_to_scene = true
+script = ExtResource("5_r2mer")
+storage = SubResource("Resource_w8yjb")
+amount_max = 200.0
+metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
+
+[node name="IndustryCornerMall" type="Node3D" unique_id=522079552]
+script = ExtResource("1_iatpx")
+metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
+
+[node name="MeshCornerMall" parent="." unique_id=1474413501 instance=ExtResource("2_03gge")]
+
+[node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=1681247902]
+script = ExtResource("3_jhhx5")
+metadata/_custom_type_script = "uid://byfh10jnd57t6"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IndustryCollider" unique_id=1100032142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008651733, 6.1119385, -0.066223145)
+shape = SubResource("BoxShape3D_qwrwv")
+
+[node name="Inventory" type="Node" parent="." unique_id=749624596]
+script = ExtResource("4_xvijy")
+inventory = SubResource("Resource_54nbo")
+metadata/_custom_type_script = "uid://cbhvwirshj8vf"
+
+[node name="Production" type="Node" parent="." unique_id=1527240155 node_paths=PackedStringArray("industry3d")]
+script = ExtResource("7_i4qor")
+industry3d = NodePath("..")
+metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="Constructable" type="Node" parent="." unique_id=207826137 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
+script = ExtResource("8_ujmii")
+visual_model = NodePath("../MeshCornerMall")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
+metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

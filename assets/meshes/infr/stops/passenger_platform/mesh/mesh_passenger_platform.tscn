@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/nodes/construction/building_mesh_3d.gd" id="1_visual"]
+[ext_resource type="Texture2D" uid="uid://bm4b4g0qk3nex" path="res://assets/meshes/infr/stops/passenger_platform/mesh/tex_platform_1_d.png" id="1_cyx2g"]
+[ext_resource type="Texture2D" uid="uid://bdpuy6nv6x0pf" path="res://assets/meshes/infr/stops/passenger_platform/mesh/tex_platform_1_n.png" id="2_pjj2v"]
+[ext_resource type="Texture2D" uid="uid://cscuwb4wkk8id" path="res://assets/meshes/infr/stops/passenger_platform/mesh/tex_platform_1_r.png" id="3_0cmdo"]
+[ext_resource type="ArrayMesh" uid="uid://dsocfvc7nhhpr" path="res://assets/meshes/infr/stops/passenger_platform/mesh/platform_1.obj" id="4_013s3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co1x6"]
+albedo_texture = ExtResource("1_cyx2g")
+roughness_texture = ExtResource("3_0cmdo")
+normal_enabled = true
+normal_texture = ExtResource("2_pjj2v")
+
+[node name="PassengerPlatformMesh" type="Node3D"]
+script = ExtResource("1_visual")
+
+[node name="PlatformMesh" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_co1x6")
+visibility_range_end = 350.0
+visibility_range_end_margin = 35.0
+mesh = ExtResource("4_013s3")

@@ -23,6 +23,8 @@ func run(scene_tree: SceneTree) -> int:
 		&"test_warehouse_stock_isolation",
 		&"test_transfers",
 		&"test_passengers",
+		&"test_manual_passenger_arrival",
+		&"test_cargo_income",
 		&"test_vehicle_dialog",
 	]
 	for test: StringName in test_cases:
@@ -132,28 +134,108 @@ func test_passengers() -> bool:
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 	return true
 
+# Exercise arrival through the same transfer controls the player uses.
+func test_manual_passenger_arrival() -> bool:
+	var previous_catalog: InterchangesLoader = Managers.interchanges
+	var catalog := InterchangesLoader.new()
+	Managers.interchanges = catalog
+	var destination := InterchangeData.new()
+	destination.num = 7
+	destination.interchange_name = "HBF"
+	destination.town_name = "Stralsund"
+	destination.inventory.amount_max = 0
+	catalog.by_num[7] = destination
+
+	# The stop's physical ID differs from the destination stored in the bag.
+	var stop := RoadStationData.new(21)
+	stop.interchange = destination
+	var view: BusStop3D = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn").instantiate()
+	view.station = stop
+	host.add_child(view)
+	var station_access: InventoryEndpoint = InventoryEndpoint.from_node(view, "Stralsund HBF")
+	station_access.kind = InventoryEndpoint.Kind.STOP
+	var bag: InventoryEndpoint = endpoint("Player bag")
+	bag.kind = InventoryEndpoint.Kind.PLAYER
+	bag.inventory().change_stack(&"passenger", destination.num, 2)
+
+	var dialog: InventoryTransferDialog = load("res://scenes/ui/dialogs/transfer_inventory/transfer_inventory_dialog.tscn").instantiate()
+	dialog.available_endpoints.assign([bag, station_access])
+	host.add_child(dialog)
+	dialog._tabs._buttons[0].pressed.emit()
+	var row: TreeItem = dialog._left._table.get_root().get_first_child()
+	row.select(0)
+	dialog._left._on_row_selected()
+	dialog._maximum.pressed.emit()
+	check(dialog._quantity.value == 2 and not dialog._move_right.disabled, "Max offers all arriving passengers at a full interchange")
+	dialog._move_right.pressed.emit()
+	check(bag.inventory().get_amount("passenger") == 0, "The player's unload button completes the trip")
+	check(destination.inventory.get_amount("passenger") == 0, "Arrivals do not join waiting stock")
+	check(dialog._status.text.contains("arrived at Stralsund HBF"), "The dialog reports arrival")
+
+	dialog.close_all()
+	await tree.process_frame
+	view.free()
+	stop.connections.parent = null
+	destination.connections.parent = null
+	Managers.interchanges = previous_catalog
+	catalog.free()
+	return true
+
+func test_cargo_income() -> bool:
+	var player := PlayerAvatar.new()
+	var previous_player: PlayerAvatar = GlobalState.player
+	GlobalState.player = player
+	var company: CompanyData = player.company
+	var truck: InventoryEndpoint = endpoint("Delivery truck")
+	truck.kind = InventoryEndpoint.Kind.VEHICLE
+	var stop: InventoryEndpoint = endpoint("Goods stop")
+	stop.kind = InventoryEndpoint.Kind.STOP
+	var inventory: GoodsInventory = stop.inventory()
+	truck.inventory().change_stack(&"coal", -1, 2.5)
+	inventory.change_stack(&"coal", -1, 0.5)
+	var stack := InventoryStack.new(&"coal", 2.5)
+	check(InventoryTransferService.transfer(truck, stop, stack, 2.5).is_empty(), "The truck unloads a fractional shipment")
+	check(company.cash == CompanyData.STARTING_CASH, "Unloading leaves payment pending")
+	var consumer := IndustryType.new("TEST", "Test power plant", null, 0, ["2xcoal"], [])
+	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.COMPLETED,
+		"An industry consumes the first part of the shipment")
+	check(company.cargo_delivered == 2.0 and company.transport_income == 500.0,
+		"The company is paid for the cargo consumed")
+	check(IndustryProduction.run_batch(consumer, inventory) == IndustryProduction.BatchResult.MISSING_INPUTS,
+		"An incomplete delivery cannot pay out")
+	var final_batch := IndustryType.new("TEST", "Test boiler", null, 0, ["1xcoal"], [])
+	check(IndustryProduction.run_batch(final_batch, inventory) == IndustryProduction.BatchResult.COMPLETED,
+		"Delivered and existing stock can be used together")
+	check(company.cargo_delivered == 2.5 and company.cash == CompanyData.STARTING_CASH + 625.0,
+		"Fractional cargo pays once and pre-existing stock earns nothing")
+	GlobalState.player = previous_player
+	player.free()
+	return true
+
+
 # Exercise the actual GAZ picker, both transfer buttons, filters, tabs and modal cleanup.
 func test_vehicle_dialog() -> bool:
-	var previous_player: PlayerHead3D = GlobalState.player
+	var previous_player: PlayerAvatar = GlobalState.player
 	var previous_camera: Camera3D = GlobalState.active_cam
-	var previous_dialog: GameDialog = UiState.current_diag
 	var previous_blocked: bool = UiState.movement_blocked
 	var previous_mouse: Input.MouseMode = Input.mouse_mode
-	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
 	host.add_child(player)
-	var walking: BasicFpsPlayer = player.get_node("Player")
+	var walking: BasicFpsPlayer = player.walking_body
 	var previous_process: int = walking.process_mode
-	var gaz := RoadVehicle3D.of("gaz_aa_truck")
-	gaz.freeze = true
-	host.add_child(gaz)
-	GlobalState.player.in_road_vehicle = gaz
+	var truck := RoadVehicle3D.of("ifa_w50_covered")
+	truck.freeze = true
+	host.add_child(truck)
+	check(player.control.enter_road_vehicle(truck), "Fixture boards the IFA")
+	var driving_mouse := Input.mouse_mode
 	var items: Array[InventoryEndpoint] = InventorySelectionService.new().discover()
-	check(not items.is_empty() and items[0].inventory() == gaz.get_inventory(), "Occupied GAZ is discovered before the player bag")
-	check(gaz.get_inventory().amount_max == 4 and not gaz.inventory_component.accepts(&"passenger"), "GAZ uses its freight-only catalog capacity")
+	check(not items.is_empty() and items[0].inventory() == truck.get_inventory(), "Occupied IFA is discovered before the player bag")
+	check(items.size() > 1 and items[1].inventory() == player.get_inventory() and player.get_inventory().amount_max == 3.0, "The avatar root exposes the existing three-unit bag")
+	check(truck.get_inventory().amount_max == 12 and not truck.inventory_component.accepts(&"passenger"), "IFA uses its freight-only catalog capacity")
 	check(_test_nearby_stops() == true, "Nearby stop discovery completes")
 	var stop: InventoryEndpoint = endpoint("DepotStock", 100)
 	stop.kind = InventoryEndpoint.Kind.STOP
-	stop.inventory().add_goods_amount(GoodsAmount.new("lumber", 8))
+	stop.inventory().add_goods_amount(GoodsAmount.new("lumber", 16))
 	stop.inventory().change_stack(&"passenger", 201, 3)
 	items.append(stop)
 
@@ -162,7 +244,7 @@ func test_vehicle_dialog() -> bool:
 	host.add_child(dialog)
 	await tree.process_frame
 	await tree.process_frame
-	check(dialog._left.endpoint.inventory() == gaz.get_inventory() and dialog._right.endpoint == stop, "Dialog defaults to occupied truck and a stop")
+	check(dialog._left.endpoint.inventory() == truck.get_inventory() and dialog._right.endpoint == stop, "Dialog defaults to occupied truck and a stop")
 	check(dialog._tabs.current_tab == 1 and dialog._right._table.columns == 2, "Freight vehicle starts on Cargo")
 	check(dialog._quantity.value == 1, "Cargo quantity defaults to exactly one unit")
 	check(walking.process_mode == Node.PROCESS_MODE_DISABLED and UiState.movement_blocked, "Inventory dialog suspends walking")
@@ -172,18 +254,18 @@ func test_vehicle_dialog() -> bool:
 	row.select(0)
 	dialog._right._on_row_selected()
 	dialog._maximum.pressed.emit()
-	check(dialog._quantity.value == 4 and not dialog._move_left.disabled, "Max selects the truck's remaining capacity")
+	check(dialog._quantity.value == 12 and not dialog._move_left.disabled, "Max selects the truck's remaining capacity")
 	dialog._move_left.pressed.emit()
 	await tree.process_frame
 	await tree.process_frame
-	check(gaz.get_inventory().get_amount("lumber") == 4 and stop.inventory().get_amount("lumber") == 4, "Move-left button loads the GAZ")
+	check(truck.get_inventory().get_amount("lumber") == 12 and stop.inventory().get_amount("lumber") == 4, "Move-left button loads the IFA")
 	row = dialog._left._table.get_root().get_first_child()
 	row.select(0)
 	dialog._left._on_row_selected()
 	dialog._quantity.value = 1
 	dialog._move_right.pressed.emit()
 	await tree.process_frame
-	check(gaz.get_inventory().get_amount("lumber") == 3 and stop.inventory().get_amount("lumber") == 5, "Move-right button unloads the GAZ")
+	check(truck.get_inventory().get_amount("lumber") == 11 and stop.inventory().get_amount("lumber") == 5, "Move-right button unloads the IFA")
 
 	dialog._right._search.text = "missing"
 	dialog._right._refresh()
@@ -192,17 +274,19 @@ func test_vehicle_dialog() -> bool:
 	dialog._tabs._buttons[0].pressed.emit()
 	check(dialog._right._table.columns == 3 and dialog._quantity.step == 1, "Passenger tab shows destination column and whole quantities")
 	row = dialog._right._table.get_root().get_first_child()
-	check(row.get_metadata(0).destination_stop == 201, "Passenger row retains its physical destination")
+	check(row.get_metadata(0).destination_interchange == 201, "Passenger row retains its interchange destination")
 
 	dialog.close_all()
 	await tree.process_frame
-	check(UiState.current_diag == null and walking.process_mode == previous_process, "Closing restores player processing and clears dialog")
-	check(UiState.movement_blocked == previous_blocked and Input.mouse_mode == previous_mouse, "Closing restores exact input state")
+	check(UiState.current_diag == null and walking.process_mode == Node.PROCESS_MODE_DISABLED, "Closing clears the dialog and keeps walking suspended while driving")
+	check(UiState.movement_blocked == previous_blocked and Input.mouse_mode == driving_mouse, "Closing restores the driving input state")
+	player.control.exit_vehicle()
+	check(walking.process_mode == previous_process, "Exiting the vehicle restores walking")
+	Input.mouse_mode = previous_mouse
 	player.free()
-	gaz.free()
+	truck.free()
 	GlobalState.player = previous_player
 	GlobalState.active_cam = previous_camera
-	UiState.current_diag = previous_dialog
 	return true
 
 # Nearby road stops have separate identities even when they share a name.
@@ -232,7 +316,7 @@ func _test_nearby_stops() -> bool:
 		if item.kind == InventoryEndpoint.Kind.STOP:
 			stop_count += 1
 	check(stop_count == 2, "Discovery includes both nearby physical road stops and excludes distant stops")
-	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Shared station names retain distinct physical stop labels")
+	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Unknown interchange IDs retain distinct fallback labels")
 	stops.free()
 	interchanges.free()
 	for record: RoadStationData in records:

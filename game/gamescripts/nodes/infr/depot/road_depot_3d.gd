@@ -15,25 +15,26 @@ static func of(depot_obj: RoadDepotData) -> RoadDepot3D:
 	var prefab: PackedScene = preload(SCENE_PATH)
 	var instanciated_container: RoadDepot3D = prefab.instantiate()
 	instanciated_container.depot = depot_obj
-	instanciated_container.position = instanciated_container.get_pos_from_road()
 	instanciated_container.set_meta("depot", depot_obj)
 	return instanciated_container
-	
-## Face inward from either endpoint. The origin is also a valid target position.
-func adjust_rotation() -> void:
-	if road == null or road.nodes.size() < 2:
-		return
-	var target_index: int = 1 if depot.road_pos == "START" else road.nodes.size() - 2
-	var target_pos: Vector3 = road.nodes[target_index].position
-	if not global_position.is_equal_approx(target_pos):
-		look_at(target_pos)
 #endregion
-	
-#region Depot Track Node Getters
-func get_pos_from_road() -> Vector3:
-	var road_node := self.depot.get_depot_road_node()
-	if !road_node:
-		Loggie.error("Cannot get depot position: neither at track START nor END")
-		return Vector3.ZERO
-	return road_node.position
-#endregion
+
+## Place the garage entrance at the live road endpoint with its +Z axis facing the road.
+func align_to_road(path: Path3D) -> bool:
+	if path == null or path.curve == null or depot.road_pos not in ["START", "END"]:
+		return false
+	var length: float = path.curve.get_baked_length()
+	if is_zero_approx(length):
+		return false
+	var from_start: bool = depot.road_pos == "START"
+	var sample_distance: float = minf(0.5, length)
+	var endpoint: Vector3 = path.to_global(path.curve.sample_baked(0.0 if from_start else length))
+	var along_road: Vector3 = path.to_global(path.curve.sample_baked(sample_distance if from_start else length - sample_distance))
+	var heading: Vector3 = along_road - endpoint
+	heading.y = 0.0
+	if heading.is_zero_approx():
+		return false
+	var facing: Basis = Basis.looking_at(heading, Vector3.UP, true)
+	var entrance: Marker3D = $RoadEntrance
+	global_transform = Transform3D(facing, endpoint - facing * entrance.position)
+	return true

@@ -8,8 +8,8 @@
 script = ExtResource("1_wheat")
 grass_material = ExtResource("2_material")
 grass_areas = ExtResource("3_default")
-instance_spacing = 1.0
+instance_spacing = 1.25
 density = 0.9
-draw_distance = 14.0
-fade_start = 10.0
+draw_distance = 24.0
+fade_start = 18.0
 minimum_normal_y = 0.9

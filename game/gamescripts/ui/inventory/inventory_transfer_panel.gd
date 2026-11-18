@@ -61,7 +61,7 @@ func set_endpoints(items: Array[InventoryEndpoint], selected: int) -> void:
 
 func set_passengers(enabled: bool) -> void:
 	passengers = enabled
-	_search.placeholder_text = "Filter passengers or destination stops" if enabled else "Filter cargo"
+	_search.placeholder_text = "Filter passengers or destinations" if enabled else "Filter cargo"
 	_refresh()
 
 func _on_endpoint_selected(index: int) -> void:
@@ -96,7 +96,7 @@ func _refresh() -> void:
 	_table.set_column_title(0, "Passenger" if passengers else "Resource")
 	if passengers:
 		_table.set_column_custom_minimum_width(0, 145)
-		_table.set_column_title(1, "Destination stop")
+		_table.set_column_title(1, "Destination")
 	_table.set_column_title(_table.columns - 1, "Qty")
 	_table.set_column_expand(_table.columns - 1, false)
 	_table.set_column_custom_minimum_width(_table.columns - 1, 75)
@@ -111,7 +111,7 @@ func _refresh() -> void:
 
 func _add_row(root: TreeItem, stack: InventoryStack, selected: String) -> void:
 	var title: String = str(stack.good_key).capitalize()
-	var destination: String = InventoryPresentation.destination(stack.destination_stop)
+	var destination: String = InventoryPresentation.destination(stack.destination_interchange)
 	if not _search.text.is_empty() and not (title + " " + destination).containsn(_search.text):
 		return
 	var row: TreeItem = _table.create_item(root)

@@ -1,5 +1,7 @@
 extends Node
 
+const AUTHORED_TOWNS_PATH := "res://world/harzmountains/mapscenes/towns_harzmountains.tscn"
+
 var failures: int = 0
 var categories: Array[StringName] = []
 var failed_loader_completions: int = 0
@@ -25,7 +27,8 @@ func _on_initialized() -> void:
 	self.completion_count += 1
 	self.completion_had_all_types = GameTypes.is_initialized and not GameTypes.is_initializing \
 		and not GameTypes.resource_types.is_empty() and not GameTypes.infr_types.is_empty() \
-		and not GameTypes.industry_types.is_empty() and not GameTypes.res_bld_type_store.get_all().is_empty() \
+		and not GameTypes.industry_buildings.is_empty() and not GameTypes.industry_types.is_empty() \
+		and not GameTypes.res_bld_type_store.get_all().is_empty() \
 		and not GameTypes.vehicle_types_dict.is_empty()
 
 func _on_session_ready() -> void:
@@ -36,6 +39,8 @@ func _run() -> void:
 	self.check(self.test_catalog_lifecycle(), "Catalog lifecycle test finished")
 	self.check(self.test_invalid_catalogs(), "Invalid catalog test finished")
 	self.check(self.test_road_catalogs(), "Road catalog test finished")
+	self.check(self.test_industry_catalogs(), "Industry catalogs test finished")
+	test_town_wealth_is_local_to_map()
 	self.check(self.test_residence_catalogs(), "Residence catalog test finished")
 	self.check(self.test_map_locations(), "Map location test finished")
 	print("Type catalog tests: %d failures" % self.failures)
@@ -57,7 +62,7 @@ func test_catalog_lifecycle() -> bool:
 	self.check(self.session_ready_count == 1, "First session starts after loading")
 	var source_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RailVehicleTypesLoader.CATALOG_PATH))
 	var road_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source_catalog.size() == 17 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
+	self.check(source_catalog.size() == 18 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
 	for index: int in range(source_catalog.size()):
 		var vehicle: VehicleTypeData = GameTypes.vehicle_types[index]
 		self.check(vehicle is RailVehicleTypeData, "Rail catalog creates rail definitions")
@@ -137,7 +142,9 @@ func test_invalid_catalogs() -> bool:
 
 func test_road_catalogs() -> bool:
 	var source: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source.size() == 3 and GameTypes.get_veh_type("trabant_601_green") is RoadVehicleTypeData, "Road catalog includes the oldtimer, GAZ truck and green Trabant")
+	self.check(source.size() == 5 and GameTypes.get_veh_type("daimler_1911_bus") is RoadVehicleTypeData
+		and GameTypes.get_veh_type("ifa_w50_covered") is RoadVehicleTypeData,
+		"Road catalog includes the Daimler bus and covered IFA W50")
 	for entry: Dictionary in source:
 		var definition: VehicleTypeData = GameTypes.get_veh_type(entry["key"])
 		self.check(definition is RoadVehicleTypeData, "Road catalog creates road definitions")
@@ -155,16 +162,18 @@ func test_road_catalogs() -> bool:
 		self.check(definition.payload_tonnes == entry.get("payload_tonnes"), "Physical payload loads independently of game cargo counts")
 		self.check(definition.get_mesh_path() == entry["model_scene_path"] \
 			and FileAccess.file_exists(definition.get_mesh_path()), "Road model path is explicit and exists")
-		self.check(definition.width_metres == entry["width_metres"] \
-			and definition.height_metres == entry["height_metres"], "Model dimensions load from JSON")
+		self.check(definition.length_metres == 0.0 and definition.width_metres == null \
+			and definition.height_metres == null, "Scene-authored road models need no catalog dimensions")
 	# Complete specifications can be authored later without changing the mapper.
 	var populated: Dictionary = source[0].duplicate(true)
 	populated["max_speed_kmh"] = 40
 	populated["capacity"] = {"cat": "PASSENGER", "amount": 4}
 	populated["payload_tonnes"] = 0
+	populated["length_metres"] = 5.0
 	var mapped: RoadVehicleTypeData = VehicleMapper.road_type_dict_to_class(populated)
 	self.check(mapped != null and mapped.max_speed_kmh == 40 and mapped.capacity.amount == 4, "Road specifications load when supplied")
 	self.check(mapped != null and mapped.payload_tonnes == 0, "Explicit zero payload is distinct from unknown payload")
+	self.check(mapped != null and mapped.length_metres == 5.0, "Legacy road catalogs can still provide length")
 	self.check(not populated["usable_infr"].has("domain"), "Road mapping leaves source data unchanged")
 	var existing_count: int = GameTypes.vehicle_types.size()
 	var path: String = "/tmp/hinterland-road-catalog-%d.json" % OS.get_process_id()
@@ -172,6 +181,7 @@ func test_road_catalogs() -> bool:
 		{"usable_infr": {"domain": "RAIL"}}, {"max_speed_kmh": "fast"},
 		{"max_speed_kmh": 0}, {"max_speed_kmh": 1.5}, {"length_metres": -1},
 		{"width_metres": 0}, {"height_metres": -1},
+		{"wheelbase_metres": 0}, {"wheelbase_metres": "4"}, {"axle_offset_metres": true}, {"model_yaw_degrees": "90"},
 		{"payload_tonnes": -1}, {"payload_tonnes": "1.5"}, {"payload_tonnes": true},
 		{"capacity": {"cat": "PASSENGER", "amount": -1}}
 	]
@@ -204,6 +214,59 @@ func test_road_catalogs() -> bool:
 	self.check(self.failed_loader_completions == 0, "Failed road loaders never announce completion")
 	DirAccess.remove_absolute(path)
 	return true
+
+func test_industry_catalogs() -> bool:
+	var mine: IndustryBuildingType = GameTypes.industry_buildings["mineshaft"]
+	check(GameTypes.get_ind_type("COAL_MINE").building == mine and GameTypes.get_ind_type("IRON_MINE").building == mine,
+		"Different recipes share the same keyed building")
+	var mall: IndustryType = GameTypes.get_ind_type("BIG_STORE")
+	check(mall.name == "Big Store" and mall.building.key == "corner_mall",
+		"The recipe name is independent of the building it uses")
+	check(mall.building.construction_cost == 12000 and mine.construction_cost == 10000,
+		"Both configured buildings keep their construction prices")
+	check(GameTypes.get_ind_type("SAWMILL").building.construction_cost < 0,
+		"A building with no construction data has no purchase price")
+
+	for definition: IndustryBuildingType in GameTypes.industry_buildings.values():
+		var scene := load(definition.scene_path) as PackedScene
+		var building: Node = scene.instantiate()
+		check(building is Industry3D, "%s uses a playable industry scene" % definition.key)
+		if definition.construction_cost >= 0:
+			check(ResourceLoader.exists(definition.preview_scene_path, "PackedScene"),
+				"%s has a catalog preview scene" % definition.key)
+			var component := Constructable.find_on(building)
+			check(component != null and component._get_configuration_warnings().is_empty(),
+				"%s has placement geometry" % definition.key)
+		building.free()
+
+	# A misspelled building key cannot leave a half-loaded catalog.
+	var path: String = "/tmp/industry-catalog-%d.json" % OS.get_process_id()
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return false
+	var rows: Array = JSON.parse_string(FileAccess.get_file_as_string(IndustryRecipeCatalog.INDUSTRIES_PATH))
+	rows[0]["building_key"] = "missing_building"
+	file.store_string(JSON.stringify(rows))
+	file.close()
+	var catalog := IndustryRecipeCatalog.new()
+	check(catalog.read(IndustryRecipeCatalog.BUILDINGS_PATH, path) == ERR_INVALID_DATA,
+		"A recipe requires a building defined in the building catalog")
+	check(catalog.buildings.is_empty() and catalog.industries.is_empty(), "The failed read exposes no partial definitions")
+	DirAccess.remove_absolute(path)
+	return true
+
+
+func test_town_wealth_is_local_to_map() -> void:
+	var scene := load(AUTHORED_TOWNS_PATH) as PackedScene
+	var first := scene.instantiate() as WorldTowns
+	var second := scene.instantiate() as WorldTowns
+	var first_town: TownData = first.get_town_objs()[0]
+	var second_town: TownData = second.get_town_objs()[0]
+	first_town.wealth = 2.0
+	check(second_town.wealth == 0.0, "A second instance of the authored map starts with fresh town wealth")
+	first.free()
+	second.free()
+
 
 func _on_residence_loader_finished() -> void:
 	self.residence_loader_completions += 1

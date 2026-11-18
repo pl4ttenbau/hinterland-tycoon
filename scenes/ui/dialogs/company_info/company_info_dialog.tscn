@@ -1,7 +1,75 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
 [ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/company_info/company_info_dialog.gd" id="2"]
 
 [node name="CompanyInfoDialog" instance=ExtResource("1")]
 script = ExtResource("2")
+
+[node name="Totals" type="GridContainer" parent="Center/Panel/Padding/Layout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 12
+
+[node name="CashLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cash reserves"
+
+[node name="Cash" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DM 0.00"
+horizontal_alignment = 2
+
+[node name="PassengerTotalLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Passengers delivered"
+
+[node name="PassengerTotal" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="CargoTotalLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cargo units delivered"
+
+[node name="CargoTotal" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="IncomeLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Transport income"
+
+[node name="Income" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DM 0.00"
+horizontal_alignment = 2
+
+[node name="SpendingLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Construction and vehicle spending"
+
+[node name="Spending" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DM 0.00"
+horizontal_alignment = 2
+
+
+[node name="DeliveryRates" type="Label" parent="Center/Panel/Padding/Layout/Content" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3

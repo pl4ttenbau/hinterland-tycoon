@@ -2,6 +2,8 @@
 
 `RoadVehicle3D` remains the single movement controller. Player driving and ordinary automatic road following use the same `VehicleBody3D` wheel physics, steering limit, suspension, engine and brakes. The player's turning radius is unchanged.
 
+The automatic driver samples the route ahead for bends and uses their curvature to limit corner speed. It works backwards from each bend to find where braking should begin, using half the configured `braking_deceleration` as its approach estimate. `cornering_lateral_acceleration` sets how fast the driver aims to take curves, and longer wheelbases start steering farther ahead. The vehicle follows the bend using wheel physics.
+
 ## Automatic endpoint manoeuvre
 
 When the next driving segment reverses the vehicle's current direction, `RoadUTurnPlanner` prepares an approach to the road end in its present direction. The vehicle drives there using normal physics and brakes to a stop. A reversal inside a longer path is likewise split at its road endpoint. No authored road nodes, markers or extra route visits are created.
@@ -44,7 +46,8 @@ There is no second movement controller, path-following scene, or automatic-only 
 | Normal automatic segment | `_drive_route()` | Normal wheel physics | On physical arrival |
 | Approach to a reversal | `_drive_route()` | Normal wheel physics | Pending visit unchanged |
 | Automatic turnaround | `_drive_automatic_uturn()` | Kinematic freeze plus explicit collision queries | Suspended |
-| Stop servicing | `RoadPlanExecutor` and transfer service | Stationary normal body | After ordered actions succeed |
+| Fixed-path segment (switch on) | `_drive_route_fixed()` | Kinematic freeze plus explicit collision queries | On scripted arrival |
+| Stop servicing | `RoadPlanExecutor` and transfer service | Stationary normal body, or held stationary in fixed-path mode | After ordered actions succeed |
 
 The controller checks for an active turn both before and after the executor ticks. That second check matters: arriving at an endpoint can start a turn during the executor's tick. Ordinary steering must not also move the body in that frame. While a turn is active, the executor does not advance visits or execute load/unload actions.
 
@@ -76,4 +79,32 @@ Deleting or detaching the source `Path3D` invalidates the active curve. The cont
 
 This is a temporary gameplay solution for automatic endpoint reversals. It is not lane switching, a realistic steering-radius simulation, a terrain search, or traffic management. The assisted curve may use space beyond the road mesh; world geometry can block it. There is no timed automatic recovery from a blocked manoeuvre. Roads modified in place do not reshape an already active world-space turn curve; the next driving segment is resolved after the turn.
 
-Do not broaden this into ordinary automatic curve-following without revisiting the handoff and collision rules. Normal driving, suspension, braking, off-route checks and manual vehicle handling remain the existing physics-driven implementation.
+## Fixed-path following (global switch)
+
+`RoadVehicle3D.follow_road_path` is a static switch, off by default. When on, automatic driving stops steering with wheel physics and places every road vehicle exactly on its route curve. It applies to itinerary execution and to the legacy `set_route()` API alike. Player driving is unaffected. Changing it takes effect on the next physics tick; switching it off hands any held vehicle back to wheel physics with its current velocity.
+
+The speed is a scalar along the curve. Its target comes from the same `_desired_route_speed()` planner as the physical driver, so bend braking (`cornering_lateral_acceleration`) and the terminal stop margin are unchanged; it accelerates at `path_acceleration` (default **1.5 m/s²**) and brakes at `braking_deceleration`. `route.progress` is advanced directly instead of being projected from the body's position.
+
+Following starts only from a body whose wheels rest on the road (or one already held after a U-turn) within `route_recovery_distance` of the curve; otherwise the physical driver recovers first. The body's height above the centreline at that moment is kept for the whole segment, and the heading comes from a ±0.5 m chord so slopes pitch the body. The first `PATH_BLEND_METRES` (3 m) ease from the actual takeover pose, so starting slightly off the centreline does not snap. A new route curve (a replanned segment) restarts this blend.
+
+### Shared scripted motion
+
+U-turns and fixed-path segments share one kinematic hold: `_hold_scripted()` records `freeze`/`freeze_mode` once and freezes kinematically; `_release_scripted(keep_velocity)` restores them. Holding is idempotent, so with the switch on a vehicle passes from a fixed-path approach into a U-turn and back onto the next segment without ever dropping onto its suspension. Both movers commit poses through `_move_scripted()`, which uses the same overlap-and-sweep check described above; a blocked step holds pose and progress and zeroes the reported velocity. The check runs `SCRIPTED_GROUND_CLEARANCE` (0.1 m) above the body: authored chassis boxes reach down to the road surface that the wheels hold them above, so an unraised check reports the supporting road as an obstruction. Obstacles lower than that clearance are ignored.
+
+While held, `current_velocity()` returns the scripted velocity (a frozen body's `linear_velocity` is not authoritative), and `signed_speed_mps()` uses it. The executor and transfer service use `current_velocity()` for their "is the vehicle stationary" checks.
+
+On arrival the body stays held and stationary. Between movements of one itinerary (stop servicing, waiting at a road end before a U-turn) the executor calls `park()`, which drops the driving path but keeps the hold. Plan stops and completion call `clear_route()`, which releases to wheel physics with zero velocity. Manual takeover releases with the scripted tangent velocity.
+
+Ending a U-turn only discards its geometry (`RoadVehicleUTurn.reset()`); each caller decides separately whether the body is released. Completion keeps the hold with fixed-path following on and otherwise releases with the exit velocity. `park()` keeps it, `clear_route()` releases without velocity, and manual takeover releases with velocity.
+
+The executor reads and sets the vehicle's arrival only through `has_arrived()`, `assign_path_segments()` (which resets arrival for the new path) and `mark_arrived()` (parked at a road end, nothing left to drive).
+
+### Trade-offs
+
+A held vehicle has no suspension, roll or pitch response beyond the road's slope. Obstacles are never pushed: the vehicle waits until the sweep is clear. The kept height assumes the road surface follows its curve; where it does not, the body floats or sinks. Each held vehicle runs one overlap query and one sweep per collision shape per physics tick.
+
+## Verification of fixed-path following
+
+`road_vehicle_suite.gd` (`test_fixed_path`) checks that the body stays within 5 cm of the centreline through the tight house bend, stops once at the route end held and stationary, and that manual takeover restores wheel physics with the scripted speed. `road_uturn_suite.gd` (`test_fixed_path_both_ends`) repeats the two-endpoint itinerary with the switch on and checks the body stays held from each turn into the next segment.
+
+Normal driving with the switch off, suspension, off-route checks and manual vehicle handling remain the existing physics-driven implementation.

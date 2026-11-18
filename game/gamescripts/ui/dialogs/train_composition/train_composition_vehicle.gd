@@ -1,25 +1,26 @@
+## A row sends its reorder or remove request to the shared draft.
 class_name TrainCompositionVehicleRow extends Control
 
-@export var train_veh: TrainVehicleDto:
-	get(): return train_veh
-	set(value):
-		train_veh = value
-		%VehicleTypeText.text = value.veh_type_obj.display_name
-		
+@export var train_veh: TrainVehicleDto
 @export var parent_list: TrainVehicleListDto
 
+
 func _ready() -> void:
-	%BtnUp.pressed.connect(Callable(self, "_on_btn_up_pressed"))
-	%BtnDown.pressed.connect(Callable(self, "_on_btn_down_pressed"))
-	%BtnRemove.pressed.connect(Callable(self, "on_btn_remove_pressed"))
+	if train_veh == null or parent_list == null:
+		return
+	%VehicleTypeText.text = train_veh.veh_type_obj.display_name
+	%BtnUp.pressed.connect(_on_move_up)
+	%BtnDown.pressed.connect(_on_move_down)
+	%BtnRemove.pressed.connect(_on_remove)
 
-#region Callbacks
-func _on_btn_up_pressed():
-	self.veh_list.move_up(self.index)
 
-func _on_btn_down_pressed():
-	self.veh_list.move_down(self.index)
+func _on_move_up() -> void:
+	parent_list.move_up(parent_list.rows.find(train_veh))
 
-func on_btn_remove_pressed():
-	self.veh_list.remove(self.index)
-#endregion
+
+func _on_move_down() -> void:
+	parent_list.move_down(parent_list.rows.find(train_veh))
+
+
+func _on_remove() -> void:
+	parent_list.remove(parent_list.rows.find(train_veh))

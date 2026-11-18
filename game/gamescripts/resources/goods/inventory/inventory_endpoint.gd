@@ -13,6 +13,15 @@ static func from_node(owner: Node, title: String = "", access: Node3D = null) ->
 		return null
 	var endpoint := InventoryEndpoint.new()
 	endpoint._component = weakref(component)
+	var entity: Node = component.get_parent()
+	if entity is Train3D or entity is RoadVehicle3D:
+		endpoint.kind = Kind.VEHICLE
+	elif entity is BusStop3D or entity is RailStation3D:
+		endpoint.kind = Kind.STOP
+	elif entity is Industry3D:
+		endpoint.kind = Kind.INDUSTRY
+	elif entity is PlayerAvatar:
+		endpoint.kind = Kind.PLAYER
 	endpoint._anchor = weakref(access if access != null else owner)
 	endpoint.label = title if not title.is_empty() else (component.display_name if not component.display_name.is_empty() else str(owner.name))
 	return endpoint

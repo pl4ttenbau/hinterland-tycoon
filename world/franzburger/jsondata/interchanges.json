@@ -10,7 +10,7 @@
 				"domain": "ROAD",
 				"roadNum": 34,
 				"nodeIndex": 3,
-				"roadSide": "BOTH"
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			},
 			{
 				"num": 7,
@@ -39,7 +39,7 @@
 				"domain": "ROAD",
 				"roadNum": 122,
 				"nodeIndex": 4,
-				"roadSide": "BOTH"
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			},
 			{
 				"num": 4,
@@ -68,7 +68,7 @@
 				"domain": "ROAD",
 				"roadNum": 357,
 				"nodeIndex": 1,
-				"roadSide": "BOTH"
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
@@ -83,7 +83,7 @@
 				"domain": "ROAD",
 				"roadNum": 355,
 				"nodeIndex": 3,
-				"roadSide": "RIGHT"
+				"roadStopDirection": "ROAD_NODES_INCREASE"
 			}
 		]
 	},
@@ -112,7 +112,7 @@
 				"domain": "ROAD",
 				"roadNum": 211,
 				"nodeIndex": 5,
-				"roadSide": "BOTH"
+				"roadStopDirection": "BOTH_DIRECTIONS"
 			}
 		]
 	},
@@ -127,7 +127,7 @@
 				"domain": "ROAD",
 				"roadNum": 44,
 				"nodeIndex": 1,
-				"roadSide": "RIGHT"
+				"roadStopDirection": "ROAD_NODES_INCREASE"
 			}
 		]
 	},

@@ -24,6 +24,9 @@ var _connections: Array[Dictionary] = []
 @onready var road_exit_connector: RoadIndustryExitConnector = $Infr/Roads/RoadIndustryExitConnector
 @onready var vehicles: VehiclePlacer = $Vehicles
 @onready var industries: IndustrySpawner = $Industries
+@onready var eraser: EraserManager = $Eraser
+@onready var construction: ConstructionManager = $Construction
+@onready var prospecting: ProspectingManager = $Prospecting
 @onready var depots: DepotLoader = $Depots
 @onready var map_spawner: MapSpawner = $LoadedMap
 @onready var world_timer: Timer = $LoadedMap/WorldUpdateTimer
@@ -56,7 +59,8 @@ func _collect_services() -> void:
 		&"rails": self.rails, &"forks": self.forks, &"stations": self.stations,
 		&"interchanges": self.interchanges, &"road_stops": self.road_stops,
 		&"roads": self.roads, &"vehicles": self.vehicles,
-		&"industries": self.industries, &"depots": self.depots,
+		&"industries": self.industries, &"eraser": self.eraser, &"construction": self.construction,
+		&"prospecting": self.prospecting, &"depots": self.depots,
 		&"map_spawner": self.map_spawner
 	}
 
@@ -88,6 +92,8 @@ func _start_services() -> void:
 
 #region Session signal wiring
 func _wire_services() -> void:
+	self.eraser.rails = self.rails
+	self.eraser.roads = self.roads
 	_wire_world_placement()
 	_wire_towns()
 	_wire_rails()
@@ -101,6 +107,7 @@ func _wire_services() -> void:
 ## Preserve map_spawned listener order: towns/houses, rails, roads, industries.
 ## These callbacks place views; load_map_data separately orders their source data.
 func _wire_world_placement() -> void:
+	self._listen(SignalBus.map_spawned, self.prospecting.set_world)
 	self._listen(SignalBus.map_spawned, self.towns._on_map_spawned)
 	self._listen(SignalBus.map_spawned, self.town_buildings._on_map_spawned)
 	self._listen(SignalBus.map_spawned, self.rails._on_map_spawned)
@@ -115,7 +122,6 @@ func _wire_rails() -> void:
 	self._listen(self.rails.track_storage.track_added, self.forks._on_track_loaded)
 	self._listen(SignalBus.rails_spawned, self.forks._on_rails_spawned)
 	self._listen(SignalBus.ui_mode_switched, self.rail_builder._on_ui_mode_changed)
-	self._listen(SignalBus.terrain_click, self.rail_builder._on_terrain_click)
 	self._listen(SignalBus.rails_spawned, self.residence_connector._on_rails_spawned)
 	self._listen(SignalBus.rails_spawned, self.vehicles._on_rails_rails_spawned)
 
@@ -133,6 +139,8 @@ func _wire_stops_and_catchments() -> void:
 	self._listen(SignalBus.town_buildings_spawned, self.residence_connector._on_residences_placed)
 
 func _wire_roads() -> void:
+	self._listen(self.roads.network_changed, self.town_buildings.refresh_road_connections)
+	self._listen(self.roads.network_changed, self.road_exit_connector.try_industry_exit_finding)
 	self._listen(SignalBus.roads_spawned, self.road_exit_connector._on_roads_spawned)
 	self._listen(SignalBus.roads_spawned, self.town_buildings._on_roads_spawned)
 	self._listen(SignalBus.industries_spawned, self.road_exit_connector._on_industries_spawned)
@@ -195,6 +203,9 @@ func _fail(error: Error) -> Error:
 ## An unmounted session must stop listening even if its nodes have not been freed.
 func _exit_tree() -> void:
 	self.is_initialized = false
+	if is_instance_valid(eraser):
+		eraser.rails = null
+		eraser.roads = null
 	_disconnect_services()
 	_unregister_services()
 	_stop_timers()

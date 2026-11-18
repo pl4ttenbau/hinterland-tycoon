@@ -11,9 +11,9 @@ var _message: Label
 func open_placement_dialog() -> bool:
 	if Managers.roads != roads or UiState.current_diag != null or not is_instance_valid(GlobalState.player):
 		return false
-	if is_instance_valid(GlobalState.player.in_road_vehicle) or is_instance_valid(GlobalState.player.in_train):
+	if GlobalState.player.control.is_in_vehicle():
 		return false
-	var player: BasicFpsPlayer = GlobalState.player.player_parent
+	var player: BasicFpsPlayer = GlobalState.player.walking_body
 	if not is_instance_valid(player):
 		return false
 	var placement: Dictionary = placement_at(player.global_position, player.get_rid())

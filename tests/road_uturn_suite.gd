@@ -5,7 +5,7 @@ func suite_name() -> String:
 	return "Road U-turn tests"
 
 func test_names() -> Array[StringName]:
-	return [&"test_planning", &"test_geometry", &"test_manual_handoff", &"test_obstacles", &"test_source_removal", &"test_both_road_ends", &"test_returning_passengers"]
+	return [&"test_planning", &"test_geometry", &"test_manual_handoff", &"test_obstacles", &"test_source_removal", &"test_both_road_ends", &"test_fixed_path_both_ends", &"test_returning_passengers"]
 
 # Opposite targets require an endpoint detour; ordinary bends remain physical.
 func test_planning() -> bool:
@@ -114,6 +114,17 @@ func test_source_removal() -> bool:
 # Real physics travels to the far end before reversing, then turns at the other
 # end for the second visit. This verifies the curve-to-wheel handoff both ways.
 func test_both_road_ends() -> bool:
+	return await _both_road_ends(false)
+
+# With the global fixed-path switch, the body stays held from the road curve into
+# each turn and back; stopping the finished plan still restores wheel physics.
+func test_fixed_path_both_ends() -> bool:
+	RoadVehicle3D.follow_road_path = true
+	var completed: bool = await _both_road_ends(true)
+	RoadVehicle3D.follow_road_path = false
+	return completed
+
+func _both_road_ends(fixed: bool) -> bool:
 	var depot := RoadDepotData.new()
 	depot.road_num = road.num
 	depot.road_pos = "START"
@@ -134,11 +145,14 @@ func test_both_road_ends() -> bool:
 	var turns: int = 0
 	var was_turning: bool = false
 	var farthest: float = body.position.z
+	var released_between: bool = false
 	for frame: int in range(6000):
 		await tree.physics_frame
 		var turning: bool = body.is_automatic_uturning()
 		if turning and not was_turning:
 			turns += 1
+		if turns > 0 and not body.freeze and body.plan_execution.status != "Plan complete":
+			released_between = true
 		was_turning = turning
 		farthest = minf(farthest, body.position.z)
 		if body.plan_execution.status == "Plan complete":
@@ -147,13 +161,15 @@ func test_both_road_ends() -> bool:
 	check(turns == 2 and farthest < -95, "Car visits the road end instead of turning in the middle")
 	check(not body.freeze and not body.is_automatic_uturning() and body.position.y > 0, "Wheel physics and support resume after the turns")
 	check(body.position.z < -25 and body.position.z > -31, "Returning car reaches the actual final visit")
+	if fixed:
+		check(not released_between, "Fixed-path driving stays held from each turn into the next segment")
 	body.free()
 	return true
 
 # Load/unload executes only at visits, never at the temporary U-turn approach.
 func test_returning_passengers() -> bool:
-	var a: RoadStationData = _stop(70, 1)
-	var b: RoadStationData = _stop(71, 3)
+	var a: RoadStationData = _stop(70, 1, 70)
+	var b: RoadStationData = _stop(71, 3, 71)
 	a.get_inventory_view().get_inventory().change_stack(&"passenger", 71, 4)
 	b.get_inventory_view().get_inventory().change_stack(&"passenger", 70, 4)
 	var depot := RoadDepotData.new()

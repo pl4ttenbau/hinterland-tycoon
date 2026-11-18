@@ -2,7 +2,7 @@
 	{
 		"num": 1,
 		"name": "Stralsund-Ost Bhf Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -40,7 +40,7 @@
 	{
 		"num": 2,
 		"name": "Stralsund-Ost Bhf Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -78,7 +78,7 @@
 	{
 		"num": 3,
 		"name": "Stralsund-Ost <> Stadtwald.",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -138,7 +138,7 @@
 	{
 		"num": 4,
 		"name": "Stralsund-Stadtwald <> Krönnewitz",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -198,7 +198,7 @@
 	{
 		"num": 5,
 		"name": "Krönnewitz <> Altenpleen Station",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -250,7 +250,7 @@
 	{
 		"num": 6,
 		"name": "Altenpleen Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -292,7 +292,7 @@
 	{
 		"num": 7,
 		"name": "Altenpleen Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -338,7 +338,7 @@
 	{
 		"num": 8,
 		"name": "Altenpleen Station <> Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -369,7 +369,7 @@
 	{
 		"num": 9,
 		"name": "Altenpleen Fork Barth Klausdorf Direction",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -424,7 +424,7 @@
 	{
 		"num": 10,
 		"name": "Altenpleen Fork Barth Barth Direction",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -480,7 +480,7 @@
 	{
 		"num": 11,
 		"name": "Muuks Stretch",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -528,7 +528,7 @@
 	{
 		"num": 12,
 		"name": "Muuks <> Klausdorf Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -584,7 +584,7 @@
 	{
 		"num": 13,
 		"name": "Klausdorf Fork <> Station",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -615,7 +615,7 @@
 	{
 		"num": 14,
 		"name": "Klausdorf Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -646,7 +646,7 @@
 	{
 		"num": 15,
 		"name": "Klausdorf Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -681,7 +681,7 @@
 	{
 		"num": 16,
 		"name": "Klausdorf Depot Branch",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -715,7 +715,7 @@
 	{
 		"num": 17,
 		"name": "Damgarten FKB Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -757,7 +757,7 @@
 	{
 		"num": 18,
 		"name": "Damgarten FKB Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -799,7 +799,7 @@
 	{
 		"num": 19,
 		"name": "Damgarten FKB Station Depot",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -822,7 +822,7 @@
 	{
 		"num": 20,
 		"name": "Damgarten FKB Bend",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -881,7 +881,7 @@
 	{
 		"num": 21,
 		"name": "Damgarten FKB Stretch",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -939,7 +939,7 @@
 	{
 		"num": 22,
 		"name": "Damgarten <> Saal",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -994,7 +994,7 @@
 	{
 		"num": 23,
 		"name": "Saal Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1032,7 +1032,7 @@
 	{
 		"num": 24,
 		"name": "Saal Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1070,7 +1070,7 @@
 	{
 		"num": 25,
 		"name": "Saal <> Herrmanshof",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1141,7 +1141,7 @@
 	{
 		"num": 26,
 		"name": "Herrmannshof <> Lüdershagen",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1195,7 +1195,7 @@
 	{
 		"num": 27,
 		"name": "Lüdershagen <> Spoldershagen",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1254,7 +1254,7 @@
 	{
 		"num": 28,
 		"name": "Spoldershagen Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1296,7 +1296,7 @@
 	{
 		"num": 29,
 		"name": "Spoldershagen Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1342,7 +1342,7 @@
 	{
 		"num": 30,
 		"name": "Spoldershagen <> Barth Airport",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1401,7 +1401,7 @@
 	{
 		"num": 31,
 		"name": "Barth Airport <> Barth Station Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1448,7 +1448,7 @@
 	{
 		"num": 32,
 		"name": "Barth Station Ribnitz Exit <> Barth Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1470,7 +1470,7 @@
 	{
 		"num": 33,
 		"name": "Barth Station Ribnitz Exit <> Barth Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1492,7 +1492,7 @@
 	{
 		"num": 34,
 		"name": "Barth Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1520,7 +1520,7 @@
 	{
 		"num": 35,
 		"name": "Barth Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1552,7 +1552,7 @@
 	{
 		"num": 36,
 		"name": "Barth Station Stralsund Exit <> Barth Station Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1578,7 +1578,7 @@
 	{
 		"num": 37,
 		"name": "Barth Station Stralsund Exit <> Barth Station Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1604,7 +1604,7 @@
 	{
 		"num": 38,
 		"name": "Barth Station Stralsund Exit <> Barth Harbour Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1639,7 +1639,7 @@
 	{
 		"num": 39,
 		"name": "Barth Harbour Fork <> Zipke",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1721,7 +1721,7 @@
 	{
 		"num": 40,
 		"name": "Zipke <> Gr. Kordshagen",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1784,7 +1784,7 @@
 	{
 		"num": 41,
 		"name": "Gr. Kordshagen Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1826,7 +1826,7 @@
 	{
 		"num": 42,
 		"name": "Gr. Kordshagen Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -1860,7 +1860,7 @@
 	{
 		"num": 43,
 		"name": "Gr. Kordshagen <> Altenpleen Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
@@ -2325,7 +2325,11 @@
 				"handleIn": [3.94, -0.01, -0.4]
 			},
 			{
-				"pos": [405.37, 26.32, -275.62]
+				"pos": [405.37, 26.32, -275.62],
+				"fork": {
+					"connectiveTracks": [56],
+					"setTo": 56
+				}
 			}
 		]
 	},
@@ -3514,7 +3518,7 @@
 	{
 		"num": 84,
 		"name": "Stralsund FKB-N Depot",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"tag": "RÜKB",
 		"points": [
 			{

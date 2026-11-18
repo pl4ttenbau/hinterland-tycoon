@@ -1,0 +1,70 @@
+[
+	{
+		"key": "corner_mall",
+		"display_name": "Corner Mall",
+		"scene_path": "res://assets/meshes/industry/corner_mall/corner_mall.tscn",
+		"construction": {
+			"cost": 12000,
+			"preview_scene_path": "res://assets/meshes/industry/corner_mall/mesh/mesh_corner_mall.tscn",
+			"materials": []
+		}
+	},
+	{
+		"key": "factory_small",
+		"display_name": "Small Factory",
+		"scene_path": "res://assets/meshes/industry/factory_small/factory_small.tscn",
+		"construction": null
+	},
+	{
+		"key": "mineshaft",
+		"display_name": "Mine",
+		"scene_path": "res://assets/meshes/industry/mineshaft/mineshaft.tscn",
+		"construction": {
+			"cost": 10000,
+			"preview_scene_path": "res://assets/meshes/industry/mineshaft/mesh/mesh_mineshaft.tscn",
+			"materials": []
+		}
+	},
+	{
+		"key": "oil_derrick",
+		"display_name": "Oil Derrick",
+		"scene_path": "res://assets/meshes/industry/oil_derrick/oil_derrick.tscn",
+		"construction": null
+	},
+	{
+		"key": "restaurant",
+		"display_name": "Restaurant",
+		"scene_path": "res://assets/meshes/industry/restaurant/restaurant.tscn",
+		"construction": null
+	},
+	{
+		"key": "sawmill",
+		"display_name": "Sawmill",
+		"scene_path": "res://assets/meshes/industry/sawmill/sawmill.tscn",
+		"construction": null
+	},
+	{
+		"key": "warehouse_1",
+		"display_name": "Warehouse",
+		"scene_path": "res://assets/meshes/industry/warehouse_1/warehouse_1.tscn",
+		"construction": null
+	},
+	{
+		"key": "warehouse_wooden",
+		"display_name": "Wooden Warehouse",
+		"scene_path": "res://assets/meshes/industry/warehouse_wooden/warehouse_wooden.tscn",
+		"construction": null
+	},
+	{
+		"key": "windmill_2",
+		"display_name": "Windmill",
+		"scene_path": "res://assets/meshes/industry/windmill_2/windmill_2.tscn",
+		"construction": null
+	},
+	{
+		"key": "wooden_storehouse",
+		"display_name": "Wooden Storehouse",
+		"scene_path": "res://assets/meshes/industry/wooden_storehouse/wooden_storehouse.tscn",
+		"construction": null
+	}
+]

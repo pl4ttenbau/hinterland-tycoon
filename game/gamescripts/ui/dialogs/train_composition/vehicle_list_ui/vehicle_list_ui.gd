@@ -10,6 +10,8 @@ signal selection_changed(veh_type_key: String)
 @export var all_vehicle_types: Array[VehicleTypeData] = []
 @export var filtered: Array[VehicleTypeData] = []
 
+var depot_track: RailTrackData
+
 @export var hide_wagons: bool = false:
 	get(): return hide_wagons
 	set(value):
@@ -40,6 +42,8 @@ func load_vehicles():
 func filter():
 	self.filtered = []
 	for veh_type: VehicleTypeData in self.all_vehicle_types:
+		if depot_track != null and not InfrType.rail_gauges_compatible(depot_track.infr_type_key, veh_type.usable_infr.subtype):
+			continue
 		if !self.hide_wagons || veh_type.has_motor:
 			self.filtered.append(veh_type)
 	self.vehicles_filtered.emit()

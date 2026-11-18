@@ -59,13 +59,20 @@ func spawn_road_depots():
 	Loggie.info("Spawning depots..")
 	for depot_obj: RoadDepotData in self.road_depots:
 		var road_depot_3d: RoadDepot3D = self.spawn_single_road_depot(depot_obj)
-		self.road_containers.append(road_depot_3d)
+		if road_depot_3d != null:
+			self.road_containers.append(road_depot_3d)
 
 func spawn_single_road_depot(depot_obj: RoadDepotData) -> RoadDepot3D:
+	var road: RoadWay3D = Managers.roads.storage.get_container_by_num(depot_obj.road_num)
+	if road == null:
+		return null
 	# Preserve the authored ID used by lookup and click references.
 	var road_depot_3d: RoadDepot3D = depot_obj.spawn()
 	self.add_child(road_depot_3d, true)
-	road_depot_3d.adjust_rotation()
+	if not road_depot_3d.align_to_road(road.get_path_3d()):
+		Loggie.warn("Cannot align road depot %d to road %d" % [depot_obj.num, depot_obj.road_num])
+		road_depot_3d.free()
+		return null
 	return road_depot_3d
 #endregion
 

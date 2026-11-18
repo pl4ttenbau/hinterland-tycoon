@@ -26,6 +26,8 @@ func _on_local_initialized(coordinator: WorldServicesCoordinator) -> void:
 	self.check(Managers.stations == coordinator.stations and Managers.depots == coordinator.depots, "Stations and depots are registered")
 	self.check(Managers.interchanges == coordinator.interchanges and Managers.road_stops == coordinator.road_stops, "Interchange and road stop services are registered before loading")
 	self.check(Managers.vehicles == coordinator.vehicles and Managers.industries == coordinator.industries and Managers.map_spawner == coordinator.map_spawner, "Remaining world services are registered")
+	self.check(Managers.construction == coordinator.construction, "Construction is registered with the session")
+	self.check(Managers.prospecting == coordinator.prospecting, "Prospecting is registered with the session")
 	self.check(coordinator.town_buildings.has_res_bld_types_loaded, "Late subscribers use persistent type readiness")
 	self.check(not coordinator.world_timer.is_stopped() and not coordinator.passenger_timer.is_stopped(), "Timers start after wiring")
 
@@ -34,8 +36,23 @@ func _run() -> void:
 	self.check(self.test_road_depot(), "Road depot integration test finished")
 	self.check(self.test_residence_conversion(), "Residence conversion test finished")
 	self.check(self.test_all_residence_variants(), "All residence variants test finished")
+	self.test_world_input_wiring()
 	print("World services tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
+
+func test_world_input_wiring() -> void:
+	var session: GameSession = load("res://scenes/game_session.tscn").instantiate()
+	add_child(session)
+	var picker: WorldPicker = session.get_node("Input/WorldPicker")
+	var interaction := session.world_interaction
+	var menu: RadialActionMenu = session.get_node("GameWindow/OuterRadialMenu")
+	var actions: ActionHandler = session.get_node("Input/ActionHandler")
+	check(menu.action_requested.is_connected(actions._on_action_triggered), "Session routes menu selections to its action handler")
+	check(interaction.pick_requested.is_connected(picker.pick), "Session routes click requests to the picker")
+	check(picker.picked.is_connected(interaction._on_world_picked), "Session routes picks back to world interaction")
+	check(interaction.terrain_clicked.is_connected(session.world_services.rail_builder._on_terrain_click), "Session routes terrain clicks to the rail builder")
+	session.free()
+
 
 ## Exercise the real road-loaded/spawned signal chain without terrain or rail views.
 func test_road_depot() -> bool:
@@ -52,12 +69,22 @@ func test_road_depot() -> bool:
 	var depot: RoadDepotData = coordinator.depots.road_depots[0]
 	self.check(depot.road_num == 363 and depot.road_pos == "END", "Road depot JSON uses road anchor fields")
 	depot.num = 73
+	coordinator.roads.spawn_road(depot.road)
+	var road: RoadWay3D = coordinator.roads.storage.get_container_by_num(depot.road_num)
+	road.rotate_y(0.3)
+	var path: Path3D = road.get_path_3d()
+	var length: float = path.curve.get_baked_length()
 	SignalBus.roads_spawned.emit()
 	self.check(coordinator.depots.road_containers.size() == 1, "Zero-argument road-spawned signal creates a depot view")
 	var view: RoadDepot3D = coordinator.depots.road_containers[0]
 	self.check(view.depot == depot and depot.num == 73, "Spawning preserves the authored depot identity")
 	self.check(RoadDepotData.get_by_num(73) == depot, "Road depot lookup uses the road collection")
-	self.check(view.position.is_equal_approx(depot.get_depot_road_node().position), "Depot view uses its road endpoint")
+	var entrance: Marker3D = view.get_node("RoadEntrance")
+	var endpoint: Vector3 = path.to_global(path.curve.sample_baked(length))
+	var inward: Vector3 = path.to_global(path.curve.sample_baked(length - 0.5)) - endpoint
+	inward.y = 0.0
+	self.check(entrance.global_position.distance_to(endpoint) < 0.001, "Garage entrance meets the live road endpoint")
+	self.check(entrance.global_basis.z.dot(inward.normalized()) > 0.999, "Garage entrance faces back along the road")
 	self.check((view.get_node("RoadDepotCollider") as RoadDepotCollider).get_click_ref().entity_num == 73, "Collider reports the road depot ID")
 	coordinator.free()
 	GlobalState.selected_map_name = previous_map
@@ -89,12 +116,15 @@ func test_service_lifecycle() -> bool:
 	self.check(self.local_completions == 1 and self.global_completions == 1, "Completion signals fire once per coordinator")
 	self.check(coordinator.rails.track_storage.track_added.is_connected(coordinator.forks._on_track_loaded), "Fork loader is wired to track storage")
 	self.check(SignalBus.roads_spawned.is_connected(coordinator.town_buildings._on_roads_spawned), "House connections wait for roads to spawn")
+	self.check(SignalBus.map_spawned.is_connected(coordinator.prospecting.set_world), "Prospecting activates when the map spawns")
 	var replacement: WorldServicesCoordinator = SERVICES.instantiate()
 	self.add_child(replacement)
 	self.check(replacement.initialize() == ERR_ALREADY_IN_USE, "A second active session cannot replace service registrations")
 	self.check(Managers.world_services == coordinator, "Rejected session preserves active services")
 	self.remove_child(coordinator)
 	self.check(not Managers.are_world_services_initialized() and Managers.rails == null and Managers.towns == null, "Unmounting clears session registrations")
+	self.check(Managers.construction == null, "Unmounting releases the construction manager")
+	self.check(Managers.prospecting == null, "Unmounting releases the prospecting manager")
 	self.check(Managers.map_list_loader == map_list_loader, "Application services survive session cleanup")
 	self.check(SignalBus.map_selected.get_connections().size() == initial_connections, "Unmounted services release global listeners before being freed")
 	self.check(not coordinator.rails.track_storage.track_added.is_connected(coordinator.forks._on_track_loaded), "Unmounting releases Resource listeners")

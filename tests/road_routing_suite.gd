@@ -22,7 +22,7 @@ func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
 	GameTypes.ensure_initialized()
 	_setup_network()
-	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
+	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_stop_directions", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	_cleanup()
@@ -36,6 +36,10 @@ func _setup_network() -> void:
 	_add_road(30, [[30, 5, 0], [30, 5, -30]])
 	RoadCross.of(roads._by_id[10].nodes[1], [20, 30])
 	var stop := RoadStationData.new(201, "Destination")
+	stop.interchange = InterchangeData.new()
+	stop.interchange.num = 501
+	stop.interchange.interchange_name = "Destination"
+	stop.interchange.connections.parent = null
 	stop.road_num = 20
 	stop.node_index = 2
 	stops[201] = stop
@@ -78,6 +82,28 @@ func _node_point(road: int, index: int) -> RoadRoutePoint:
 	point.node_index = index
 	return point
 
+func test_stop_directions() -> bool:
+	var road: RoadData = roads._by_id[20]
+	var pathfinder := RoadPathfinder.new()
+	pathfinder.build([road])
+	var stop := RoadStationData.new()
+	stop.road_num = road.num
+	stop.node_index = 1
+	for direction: Enums.RoadStopDirection in [Enums.RoadStopDirection.ROAD_NODES_INCREASE, Enums.RoadStopDirection.ROAD_NODES_DECREASE]:
+		stop.direction = direction
+		var increasing: bool = direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE
+		var anchor := stop.anchor(roads) as RoadRouteAnchor
+		check(anchor != null and anchor.position.is_equal_approx(road.nodes[1].position), "One-way authored stop keeps its node position")
+		var from: RoadNode = road.nodes[0] if increasing else road.nodes[2]
+		var opposite: RoadNode = road.nodes[2] if increasing else road.nodes[0]
+		check(pathfinder.find_path(from, anchor).size() == 2, "Stop allows a direct route from the served direction")
+		var path: Array[RoadNode] = pathfinder.find_path(opposite, anchor)
+		check(path.size() == 3 and path[1] == from, "Approaching from the opposite end requires routing through the served direction")
+	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
+	check(stop.anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
+	stop.connections.parent = null
+	return true
+
 ## A direct-looking curved road must not beat a genuinely shorter connected route.
 func test_curved_cost() -> bool:
 	# Add a long bowed alternative between the same source/destination anchors.
@@ -94,7 +120,7 @@ func test_curved_cost() -> bool:
 	check(is_equal_approx(network.path_length(path), 90.0), "Shortest path uses curve arc distances")
 	return true
 
-## Node/stop/depot references stay distinct; passenger selectors use physical stop IDs.
+## Node/stop/depot references stay distinct; passenger selectors use interchange IDs.
 func test_route_data() -> bool:
 	var plan := RoadRoutePlan.new()
 	plan.points.append(_node_point(10, 0))
@@ -110,19 +136,24 @@ func test_route_data() -> bool:
 	var action := RoadRouteAction.new()
 	action.goods.append(&"passenger")
 	stop.actions.append(action)
-	check(not _validate(plan).is_empty(), "Passengers require an explicit physical destination")
-	action.passenger_targets.append(201)
+	check(not _validate(plan).is_empty(), "Passengers require an explicit destination interchange")
+	action.passenger_interchange_targets.append(501)
 	check(_validate(plan).is_empty(), "Connected route with passenger destination validates")
 	var good: BaseGoodsType = GameTypes.resource_types["passenger"]
-	check(action.matches(good, 201) and not action.matches(good, 202), "Passenger destinations are selected independently")
+	var destinations: Array[int] = action.destination_ids(stops)
+	check(action.matches(good, 501, destinations) and not action.matches(good, 201, destinations), "Passenger targets are separate from waypoint stop IDs")
+	var legacy := RoadRouteAction.new()
+	legacy.goods.assign([&"passenger"])
+	legacy.passenger_targets.assign([201])
+	check(legacy.validate(GameTypes.resource_types, stops, null).is_empty() and legacy.destination_ids(stops) == [501], "Saved stop targets resolve to the parent interchange")
 
 	# Editing copies and resource round trips preserve action data without sharing it.
 	var copy: RoadRoutePlan = plan.duplicate(true)
-	copy.points[1].actions[0].passenger_targets.append(202)
-	check(action.passenger_targets == [201], "Draft action edits do not mutate the saved plan")
+	copy.points[1].actions[0].passenger_interchange_targets.append(502)
+	check(action.passenger_interchange_targets == [501], "Draft action edits do not mutate the saved plan")
 	check(ResourceSaver.save(plan, "/tmp/road-routing-plan.tres") == OK, "Itinerary can be serialized")
 	var loaded: RoadRoutePlan = ResourceLoader.load("/tmp/road-routing-plan.tres", "", ResourceLoader.CACHE_MODE_IGNORE)
-	check(loaded.points[1].actions[0].passenger_targets == [201], "Round trip retains physical passenger targets")
+	check(loaded.points[1].actions[0].passenger_interchange_targets == [501], "Round trip retains destination interchanges")
 	stop.target_num = 999
 	check(not _validate(plan).is_empty(), "Deleted stop is rejected without retargeting")
 	return true
@@ -143,12 +174,15 @@ func test_dialog() -> bool:
 	Managers.interchanges = interchanges
 	GlobalState.road_depots = depots
 	var vehicle := RoadVehicle3D.of("oldtimer_car")
-	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
-	var dialog: GameDialog = script.create(vehicle)
-	tree.root.add_child(dialog)
-	var draft: RoadRoutePlan = dialog.get("plan")
-	draft.points.assign([_node_point(10, 0), _node_point(20, 2)])
+	var viewport := SubViewport.new()
+	viewport.size = Vector2i(1280, 720)
+	tree.root.add_child(viewport)
+	var dialog := RoadRouteDialog.create(vehicle)
+	viewport.add_child(dialog)
+	await _check_dialog_layout(dialog, "Route points")
+	dialog.plan.points.assign([_node_point(10, 0)])
 	_check_action_editing(dialog)
+	await _check_dialog_layout(dialog, "Load and unload")
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(vehicle.route_plan.points.size() == 2, "Save assigns the connected draft to the vehicle")
 	check(not vehicle.route.is_valid() and not vehicle.player_driving, "Saving does not start automatic driving")
@@ -156,12 +190,14 @@ func test_dialog() -> bool:
 	check(UiState.current_diag == null, "Route dialog releases modal state")
 
 	# Cancelling an edited copy must retain the previously saved itinerary.
-	dialog = script.create(vehicle)
-	tree.root.add_child(dialog)
-	(dialog.get("plan") as RoadRoutePlan).points.clear()
-	dialog.close_all()
+	dialog = RoadRouteDialog.create(vehicle)
+	viewport.add_child(dialog)
+	dialog.plan.points.clear()
+	(dialog.get_node("%CancelButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(vehicle.route_plan.points.size() == 2, "Cancel keeps the saved itinerary")
+	await _check_grain_action(viewport)
+	viewport.free()
 	vehicle.free()
 	loader.free()
 	interchanges.free()
@@ -170,25 +206,83 @@ func test_dialog() -> bool:
 	GlobalState.road_depots = previous_depots
 	return true
 
+## Wrapped text needs a layout pass at the panel's actual width after a tab switch.
+func _check_dialog_layout(dialog: RoadRouteDialog, tab_name: String) -> void:
+	for frame: int in range(3):
+		await tree.process_frame
+	var panel: PanelContainer = dialog.get_node("OuterPanel")
+	var bounds: Rect2 = dialog.get_viewport_rect()
+	var panel_rect: Rect2 = panel.get_global_rect()
+	check(bounds.encloses(panel_rect) and panel_rect.get_center().distance_to(bounds.get_center()) <= 1.0,
+		"%s fits in the viewport and stays centered" % tab_name)
+
+## Exercise the same grain instruction with the catalog's freight and aggregate trucks.
+func _check_grain_action(viewport: SubViewport) -> void:
+	for key: String in ["ifa_w50_covered", "gaz_aa_truck"]:
+		var truck := RoadVehicle3D.of(key)
+		var point := RoadRoutePoint.new()
+		point.kind = RoadRoutePoint.Kind.STOP
+		point.target_num = 201
+		truck.route_plan.points.append(point)
+		var dialog := RoadRouteDialog.create(truck)
+		viewport.add_child(dialog)
+		(dialog.get_node("%Tabs") as TabContainer).current_tab = 1
+		var editor: RoadRouteActionsEditor = dialog.get_node("%Load and unload")
+		var goods: ItemList = editor.get_node("%Goods")
+		var actions: ItemList = editor.get_node("%Actions")
+		var status: Label = dialog.get_node("%Status")
+		for index: int in range(goods.item_count):
+			if goods.get_item_metadata(index) == &"grains":
+				goods.select(index)
+				break
+		(editor.get_node("%AddAction") as Button).pressed.emit()
+		if key == "gaz_aa_truck":
+			check(dialog.plan.points[0].actions.size() == 1 and actions.item_count == 1
+				and actions.get_item_text(0) == "Load grains" and actions.is_selected(0),
+				"The aggregate GAZ-AA visibly adds the grain loading action")
+		else:
+			check(dialog.plan.points[0].actions.is_empty() and actions.item_count == 0,
+				"The freight IFA rejects the grain loading action")
+			check(status.visible and status.text.contains("Aggregate") and status.text.contains("Freight"),
+				"The rejected grain loading action explains the cargo mismatch")
+			await _check_dialog_layout(dialog, "Grain capacity warning")
+		dialog.free()
+		truck.free()
+
 ## Exercise actual selector metadata, append order and action reordering in the draft.
 func _check_action_editing(dialog: GameDialog) -> void:
 	var draft: RoadRoutePlan = dialog.get("plan")
-	var stop := RoadRoutePoint.new()
-	stop.kind = RoadRoutePoint.Kind.STOP
-	stop.target_num = 201
-	draft.points[1] = stop
-	dialog.call("_refresh_points", 1)
-	var goods: ItemList = dialog.get("_goods")
+	var points: Node = dialog.get_node("%Route points")
+	var kind: OptionButton = points.get_node("%PointKind")
+	var stop_index: int = kind.get_item_index(RoadRoutePoint.Kind.STOP)
+	kind.select(stop_index)
+	kind.item_selected.emit(stop_index)
+	var targets: OptionButton = points.get_node("%Targets")
+	# Stop 201 is first in the fixture's road-stop catalog.
+	targets.select(0)
+	(points.get_node("%AddPoint") as Button).pressed.emit()
+	check(draft.points.size() == 2 and draft.points[1].target_num == 201, "Point editor adds the selected physical stop")
+	if draft.points.size() != 2:
+		return
+	var stop: RoadRoutePoint = draft.points[1]
+
+	# Both scene tabs share the same draft and selection.
+	(dialog.get_node("%Tabs") as TabContainer).current_tab = 1
+	var actions: Node = dialog.get_node("%Load and unload")
+	var goods: ItemList = actions.get_node("%Goods")
 	for index: int in range(goods.item_count):
 		if goods.get_item_metadata(index) == &"passenger":
 			goods.select(index)
-	(dialog.get("_passenger_targets") as ItemList).select(0)
-	dialog.call("_add_action")
-	(dialog.get("_action_kind") as OptionButton).select(1)
-	dialog.call("_add_action")
-	check(stop.actions.size() == 2 and stop.actions[0].passenger_targets == [201], "Dialog adds load/unload actions with physical passenger targets")
-	(dialog.get("_actions") as ItemList).select(1)
-	dialog.call("_move_action", -1)
+	(actions.get_node("%PassengerTargets") as ItemList).select(0)
+	var add_action: Button = actions.get_node("%AddAction")
+	add_action.pressed.emit()
+	(actions.get_node("%ActionKind") as OptionButton).select(1)
+	add_action.pressed.emit()
+	check(stop.actions.size() == 2 and stop.actions[0].passenger_interchange_targets == [501], "Dialog adds load/unload actions with interchange targets")
+	if stop.actions.size() != 2:
+		return
+	(actions.get_node("%Actions") as ItemList).select(1)
+	(actions.get_node("%MoveUp") as Button).pressed.emit()
 	check(stop.actions[0].kind == RoadRouteAction.Kind.UNLOAD, "Transfer actions can be reordered")
 
 ## Drive actual physics through multiple visits, then prove transfer instructions pause.
@@ -227,6 +321,9 @@ func test_execution() -> bool:
 
 	# A removed inventory must stop the car at its visit, never silently skip it.
 	var stop := RoadStationData.new(401, "Transfer stop")
+	stop.interchange = InterchangeData.new()
+	stop.interchange.num = 601
+	stop.interchange.connections.parent = null
 	stop.road_num = 100
 	stop.node_index = 2
 	catalog.stops_by_num[401] = stop
@@ -236,7 +333,7 @@ func test_execution() -> bool:
 	point.target_num = 401
 	var action := RoadRouteAction.new()
 	action.goods.append(&"passenger")
-	action.passenger_targets.append(401)
+	action.passenger_interchange_targets.append(601)
 	point.actions.append(action)
 	body.route_plan.points.assign([_node_point(100, 1), point, _node_point(100, 3)])
 	check(body.plan_execution.start(body), "Plan with a later transfer visit starts")
@@ -316,7 +413,7 @@ func _check_marker_execution(manager: VehiclePlacer, loader: RoadsLoader, depot:
 func test_markers() -> bool:
 	# Arrange a physical road with an intermediate shape node, plus the real player.
 	var old_roads: RoadsLoader = Managers.roads
-	var old_player: PlayerHead3D = GlobalState.player
+	var old_player: PlayerAvatar = GlobalState.player
 	var old_camera: Camera3D = GlobalState.active_cam
 	var loader := RoadsLoader.new()
 	Managers.roads = loader
@@ -330,9 +427,9 @@ func test_markers() -> bool:
 	loader.storage.add_container(view)
 	for frame: int in range(4):
 		await tree.process_frame
-	var player: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
 	tree.root.add_child(player)
-	(player.get_node("Player") as Node3D).global_position = Vector3(1, 0.3, -17.3)
+	player.walking_body.global_position = Vector3(1, 0.3, -17.3)
 	var tool: MARKER_TOOL = loader.get_child(0) as MARKER_TOOL
 	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
 	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")
@@ -384,8 +481,10 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 	var script: GDScript = load("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
 	var dialog: GameDialog = script.create(vehicle)
 	tree.root.add_child(dialog)
-	var kinds: OptionButton = dialog.get("_kind")
-	check(kinds.get_item_id(0) == RoadRoutePoint.Kind.MARKER and dialog.get("_choices").size() == 2, "Route picker defaults to the two named markers")
+	var editor: Node = dialog.get_node("%Route points")
+	var kinds: OptionButton = editor.get_node("%PointKind")
+	var targets: OptionButton = editor.get_node("%Targets")
+	check(kinds.get_selected_id() == RoadRoutePoint.Kind.MARKER and targets.item_count == 2, "Route picker defaults to the two named markers")
 	for index: int in range(kinds.item_count):
 		check(kinds.get_item_id(index) != RoadRoutePoint.Kind.NODE, "Raw nodes cannot be selected as route targets")
 	dialog.free()

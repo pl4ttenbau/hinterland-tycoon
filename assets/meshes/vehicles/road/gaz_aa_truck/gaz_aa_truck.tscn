@@ -2,6 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://cm2ijd3q0hjxa" path="res://assets/meshes/vehicles/road/gaz_aa_truck/mesh/mesh_gaz_aa_truck.tscn" id="1_lgy1w"]
 
-[node name="GazAaTruck" type="Node3D" unique_id=1121675533]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_model_3d.gd" id="road_model"]
+[ext_resource type="Script" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="road_axle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.089896, 1.993434, 5.542035)
+
+[node name="GazAaTruck" type="Node3D" unique_id=1121675533 node_paths=PackedStringArray("chassis")]
+script = ExtResource("road_model")
+chassis = NodePath("Chassis/CollisionShape3D")
 
 [node name="MeshGazAaTruck" parent="." unique_id=314079992 instance=ExtResource("1_lgy1w")]
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="Chassis" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis"]
+position = Vector3(0, 1.2957321, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="RearAxle" type="Marker3D" parent="."]
+position = Vector3(0, 0.4179792, -1.6626105)
+script = ExtResource("road_axle")
+track_width = 1.6719168
+wheel_radius = 0.4179792
+
+[node name="FrontAxle" type="Marker3D" parent="."]
+position = Vector3(0, 0.4179792, 1.6626105)
+script = ExtResource("road_axle")
+track_width = 1.6719168
+wheel_radius = 0.4179792

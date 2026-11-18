@@ -7,6 +7,7 @@ var current_point: int = 0
 var status: String = "Not started"
 var _plan: RoadRoutePlan
 var _network := RoadPathfinder.new()
+var _network_revision: int = -1
 var _servicing_visit: bool = false
 ## Temporary navigation substep, never a visit: current_point stays unchanged.
 ## Keeping the approach until completion also lets manual interruption replan.
@@ -19,12 +20,16 @@ var _turn_started: bool = false
 func driving_status() -> String:
 	return "Driving to road end for a U-turn" if _turn_approach != null else "Driving to point %d" % (current_point + 1)
 
+func references_road_nodes(road_num: int) -> bool:
+	return running and _plan != null and _plan.references_road_nodes(road_num)
+
+
 ## Freeze a validated plan so editing cannot change a segment that is already being driven.
 func start(vehicle: RoadVehicle3D) -> bool:
 	if not is_instance_valid(Managers.roads):
 		status = "Road network is unavailable."
 		return false
-	_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
+	_rebuild_network(vehicle)
 	var stops: Dictionary = _stops()
 	status = vehicle.route_plan.validate(_network, Managers.roads.storage, stops, GlobalState.road_depots, GameTypes.resource_types, vehicle.vehicle_obj.veh_type.capacity, Managers.roads.markers)
 	if not status.is_empty():
@@ -53,12 +58,12 @@ func tick(vehicle: RoadVehicle3D) -> void:
 	if _tick_uturn(vehicle):
 		return
 	if _servicing_visit:
-		if vehicle.linear_velocity.length() <= RoadRouteTransferService.MAX_SERVICE_SPEED:
+		if vehicle.current_velocity().length() <= RoadRouteTransferService.MAX_SERVICE_SPEED:
 			if _finish_visit(vehicle):
 				_begin_visit(vehicle)
 	elif not vehicle.route.is_valid():
 		stop(vehicle, "Driving path is no longer available.")
-	elif vehicle._arrived:
+	elif vehicle.has_arrived():
 		if not _plan.points[current_point].actions.is_empty():
 			_hold_for_actions(vehicle)
 		elif _finish_visit(vehicle):
@@ -107,7 +112,8 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 ## a stationary vehicle. Clearing the driving curve applies the parking brake.
 func _hold_for_actions(vehicle: RoadVehicle3D) -> void:
 	_servicing_visit = true
-	vehicle.clear_route()
+	# Park rather than clear: a fixed-path vehicle stays held through servicing.
+	vehicle.park()
 	status = "Servicing point %d of %d" % [current_point + 1, _plan.points.size()]
 
 ## A single-side marker is served only when facing its permitted approach direction.
@@ -127,30 +133,31 @@ func _assign_visit_path(vehicle: RoadVehicle3D, point: RoadRoutePoint, node: Roa
 	var turn: RoadUTurnPlanner.Approach = RoadUTurnPlanner.prepare(segments, vehicle.global_basis.z)
 	if turn != null:
 		return _assign_turn_approach(vehicle, turn)
-	var trim: float = maxf(0.0, 10.0 - vehicle.vehicle_obj.veh_type.length_metres * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
-	if segments.is_empty() or not vehicle.route.assign_segments(segments, trim):
+	var trim: float = maxf(0.0, 10.0 - vehicle.dimensions_metres.z * 0.55) if point.kind == RoadRoutePoint.Kind.DEPOT else 0.0
+	if segments.is_empty() or not vehicle.assign_path_segments(segments, trim):
 		stop(vehicle, "No drivable path from the current position. Move back onto a connected road.")
 		return false
-	vehicle._arrived = false
 	status = "Driving to point %d of %d" % [current_point + 1, _plan.points.size()]
 	return true
 
-## A reversal first follows ordinary wheel physics to the road end. Only the
-## short turnaround is scripted; the target visit and its actions remain pending.
+## A reversal first drives to the road end with the normal driver (wheel physics,
+## or the fixed path when that switch is on). Only the short turnaround is a
+## special manoeuvre; the target visit and its actions remain pending.
 func _assign_turn_approach(vehicle: RoadVehicle3D, turn: RoadUTurnPlanner.Approach) -> bool:
 	_turn_approach = turn
 	_turn_started = false
-	var margin: float = vehicle.vehicle_obj.veh_type.length_metres * 0.55
-	var assigned: bool = vehicle.route.assign_segments(turn.segments)
+	var margin: float = vehicle.dimensions_metres.z * 0.55
+	# Assigning resets the vehicle's arrival latch, so the approach is driven.
+	var assigned: bool = vehicle.assign_path_segments(turn.segments)
 	var endpoint: Vector3 = turn.path.to_global(turn.path.curve.sample_baked(turn.offset))
 	if (assigned and vehicle.route.remaining() <= margin + 0.4) or (not assigned and vehicle.global_position.distance_to(endpoint) <= margin + 1):
-		vehicle.clear_route()
-		vehicle._arrived = true
+		# Already at the road end: nothing to drive. Park (keeping a fixed-path
+		# hold) and report arrival so _tick_uturn() starts the turn once stopped.
+		vehicle.park()
+		vehicle.mark_arrived()
 	elif not assigned:
 		stop(vehicle, "No drivable approach to the road end for a U-turn.")
 		return false
-	else:
-		vehicle._arrived = false
 	status = "Driving to road end for a U-turn"
 	return true
 
@@ -167,9 +174,9 @@ func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
 			_turn_started = false
 			_begin_visit(vehicle)
 		return true
-	if not vehicle._arrived:
+	if not vehicle.has_arrived():
 		return false
-	if vehicle.linear_velocity.length() > 0.2:
+	if vehicle.current_velocity().length() > 0.2:
 		return true
 	if vehicle.begin_automatic_uturn(_turn_approach.path, _turn_approach.offset):
 		_turn_started = true
@@ -180,7 +187,14 @@ func _tick_uturn(vehicle: RoadVehicle3D) -> bool:
 
 #region Driving-path construction
 ## Attach the current road offset to the graph, choosing the lowest total arc cost.
+func _rebuild_network(vehicle: RoadVehicle3D) -> void:
+	_network.build(Managers.roads.storage.get_all(), vehicle.vehicle_obj.veh_type.usable_infr.subtype)
+	_network_revision = Managers.roads.network_revision
+
+
 func _segments_to(vehicle: RoadVehicle3D, destination: RoadNode) -> Array[Dictionary]:
+	if _network_revision != Managers.roads.network_revision:
+		_rebuild_network(vehicle)
 	var start: Dictionary = _nearest_road_position(vehicle)
 	var nearest: RoadWay3D = start.road
 	if nearest == null or float(start.distance) > vehicle.route_recovery_distance:

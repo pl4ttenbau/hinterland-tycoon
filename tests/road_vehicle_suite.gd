@@ -6,14 +6,14 @@ class DrivingFixture:
 	var roads: RoadsLoader
 	var manager: VehiclePlacer
 	var body: RoadVehicle3D
-	var outer_player: Node3D
+	var avatar: PlayerAvatar
 	var player: BasicFpsPlayer
 	var walking_process_mode: int
 	var walking_mask: int
 	var walking_layer: int
 	var previous_roads: RoadsLoader
 	var previous_vehicles: VehiclePlacer
-	var previous_player: PlayerHead3D
+	var previous_player: PlayerAvatar
 	var previous_camera: Camera3D
 
 var failures: int = 0
@@ -33,7 +33,7 @@ func frames(count: int) -> void:
 
 func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
-	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_depot_spawning", &"test_spawn_dialog"]:
+	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_fixed_path", &"test_depot_spawning", &"test_spawn_dialog"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	print("Road vehicle tests: %d passed, %d failures" % [passed, failures])
@@ -41,7 +41,12 @@ func run(scene_tree: SceneTree) -> int:
 
 func test_models() -> bool:
 	check(GameTypes.ensure_initialized() == OK, "Catalog initializes")
-	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green"]:
+	var layouts := {
+		"trabant_601_green": Vector4(2.0073933, 0.10205, 1.255804, 1.255804),
+		"daimler_1911_bus": Vector4(4.01, 1.28, 1.61, 1.87),
+		"ifa_w50_covered": Vector4(3.20, 0.45, 1.70, 1.78),
+	}
+	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green", "daimler_1911_bus", "ifa_w50_covered"]:
 		var body := RoadVehicle3D.of(key)
 		check(body != null and body.vehicle_obj.veh_type.key == key, "Catalog vehicle spawns as a road body")
 		if body == null:
@@ -52,6 +57,23 @@ func test_models() -> bool:
 				wheels += 1
 		check(wheels == 4, "Vehicle has four raycast wheels")
 		check(body.mass > 500.0 and body.camera != null, "Mass and camera are configured before tree insertion")
+
+		# The authored box supplies runtime dimensions. Check the measured axle layouts.
+		var chassis := body.get_node_or_null("CollisionShape3D") as CollisionShape3D
+		check(chassis != null and chassis.shape is BoxShape3D and body.dimensions_metres.is_equal_approx(chassis.shape.size),
+			"Runtime dimensions come from the mounted chassis box for %s" % key)
+		var front: VehicleWheel3D = body.get_node("FrontLeft")
+		var rear: VehicleWheel3D = body.get_node("RearLeft")
+		var layout: Vector4 = layouts.get(key, Vector4(body.dimensions_metres.z * 0.6, 0, 0, 0))
+		check(is_equal_approx(front.position.z - rear.position.z, layout.x) \
+			and is_equal_approx((front.position.z + rear.position.z) * 0.5, layout.y) \
+			and is_equal_approx(body.wheelbase, layout.x), "Physics and steering use the scene axle layout for %s" % key)
+		if layouts.has(key):
+			var front_right: VehicleWheel3D = body.get_node("FrontRight")
+			var rear_right: VehicleWheel3D = body.get_node("RearRight")
+			check(is_equal_approx(front.position.x - front_right.position.x, layout.z) \
+				and is_equal_approx(rear.position.x - rear_right.position.x, layout.w), "%s wheels follow the two authored track widths" % key)
+
 		tree.root.add_child(body)
 		body.freeze = true
 		body._physics_process(1.0 / 60.0)
@@ -111,7 +133,7 @@ func test_driving() -> bool:
 	_free_driving_fixture(fixture)
 	return true
 
-func _create_driving_fixture() -> DrivingFixture:
+func _create_driving_fixture(curve: Curve3D = null) -> DrivingFixture:
 	var fixture := DrivingFixture.new()
 	fixture.previous_roads = Managers.roads
 	fixture.previous_vehicles = Managers.vehicles
@@ -123,18 +145,20 @@ func _create_driving_fixture() -> DrivingFixture:
 	tree.root.add_child(fixture.manager)
 	Managers.roads = fixture.roads
 	Managers.vehicles = fixture.manager
-	_add_fixture_road(fixture.roads)
+	_add_fixture_road(fixture.roads, curve)
 	return fixture
 
 ## A straight approach followed by a bend tests both acceleration and steering.
-func _add_fixture_road(roads: RoadsLoader) -> void:
+func _add_fixture_road(roads: RoadsLoader, curve: Curve3D = null) -> void:
 	var road: RoadWay3D = load(RoadData.RURAL_ROAD_SCENE_PATH).instantiate()
 	var data := RoadData.of(9101, "rural_road")
-	data.curve = Curve3D.new()
-	data.curve.add_point(Vector3.ZERO)
-	data.curve.add_point(Vector3(0, 0, -70), Vector3(0, 0, 15), Vector3(0, 0, -15))
-	data.curve.add_point(Vector3(15, 0, -100), Vector3(-15, 0, 0), Vector3(15, 0, 0))
-	data.curve.add_point(Vector3(45, 0, -100))
+	if curve == null:
+		curve = Curve3D.new()
+		curve.add_point(Vector3.ZERO)
+		curve.add_point(Vector3(0, 0, -70), Vector3(0, 0, 15), Vector3(0, 0, -15))
+		curve.add_point(Vector3(15, 0, -100), Vector3(-15, 0, 0), Vector3(15, 0, 0))
+		curve.add_point(Vector3(45, 0, -100))
+	data.curve = curve
 	road.road = data
 	roads.add_child(road)
 	roads.storage.add_container(road)
@@ -155,9 +179,9 @@ func _test_automatic_acceleration(fixture: DrivingFixture) -> bool:
 
 ## Capture walking settings before the service suspends the actual player scene.
 func _add_fixture_player(fixture: DrivingFixture) -> void:
-	fixture.outer_player = load("res://scenes/subscenes/player.tscn").instantiate()
-	tree.root.add_child(fixture.outer_player)
-	fixture.player = fixture.outer_player.get_node("Player")
+	fixture.avatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	tree.root.add_child(fixture.avatar)
+	fixture.player = fixture.avatar.walking_body
 	fixture.walking_process_mode = fixture.player.process_mode
 	fixture.walking_mask = fixture.player.collision_mask
 	fixture.walking_layer = fixture.player.collision_layer
@@ -167,11 +191,11 @@ func _test_takeover(fixture: DrivingFixture) -> bool:
 	var body: RoadVehicle3D = fixture.body
 	var position_before: Vector3 = body.global_position
 	var velocity_before: Vector3 = body.linear_velocity
-	fixture.manager.enter_vehicle(body)
-	check(fixture.manager.player_road_vehicle == body and body.player_driving, "Entering switches the input source")
+	fixture.avatar.control.enter_vehicle(body)
+	check(fixture.avatar.control.current_road_vehicle() == body and body.player_driving, "Entering switches the input source")
 	check(body.global_position == position_before and body.linear_velocity == velocity_before, "Takeover preserves position and momentum")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED and fixture.player.collision_layer == 0, "Walking player cannot move or collide while driving")
-	check(GlobalState.player.in_road_vehicle == body and GlobalState.active_cam == body.camera, "Player state and camera follow the road vehicle")
+	check(fixture.avatar.control.current_road_vehicle() == body and GlobalState.active_cam == body.camera, "Player state and camera follow the road vehicle")
 	body.apply_driver_input(0.0, -1.0, 0.0, 1.0 / 60.0)
 	check(body.brake > 0.0 and is_zero_approx(body.engine_force), "Opposite pedal brakes before reverse")
 	Input.action_press("move_right")
@@ -181,11 +205,11 @@ func _test_takeover(fixture: DrivingFixture) -> bool:
 	return true
 
 func _test_route_resumption(fixture: DrivingFixture) -> bool:
-	fixture.manager.exit_road_vehicle()
+	fixture.avatar.control.exit_vehicle()
 	var progress_before: float = fixture.body.route.progress
 	await frames(60)
 	check(fixture.body.route.progress > progress_before + 1.0, "Automatic route following resumes after releasing control on the road")
-	fixture.manager.enter_vehicle(fixture.body)
+	fixture.avatar.control.enter_vehicle(fixture.body)
 	return true
 
 ## Hold real wheel steering over physics frames; movement must leave the centreline.
@@ -198,11 +222,11 @@ func _test_free_steering_and_exit(fixture: DrivingFixture) -> bool:
 	check(absf(body.global_position.x) > 0.5, "Player steering moves the car away from the route centreline")
 	var position_before: Vector3 = body.global_position
 	var velocity_before: Vector3 = body.linear_velocity
-	fixture.manager.exit_road_vehicle()
-	check(not body.player_driving and fixture.manager.player_road_vehicle == null, "Leaving restores automatic route control")
+	fixture.avatar.control.exit_vehicle()
+	check(not body.player_driving and fixture.avatar.control.current_road_vehicle() == null, "Leaving restores automatic route control")
 	check(body.global_position == position_before and body.linear_velocity == velocity_before, "Release preserves position and momentum")
 	check(fixture.player.process_mode == fixture.walking_process_mode and fixture.player.collision_layer == fixture.walking_layer and fixture.player.collision_mask == fixture.walking_mask, "Leaving restores original player collision and processing")
-	check(GlobalState.active_cam == GlobalState.player.cam and GlobalState.player.in_road_vehicle == null, "Leaving restores walking camera and state")
+	check(GlobalState.active_cam == fixture.avatar.walking_camera and not fixture.avatar.control.is_in_vehicle(), "Leaving restores walking camera and state")
 	return true
 
 func _test_offroad_deletion(fixture: DrivingFixture) -> bool:
@@ -211,10 +235,10 @@ func _test_offroad_deletion(fixture: DrivingFixture) -> bool:
 	body.global_position += Vector3(40, 0, 0)
 	body._physics_process(1.0 / 60.0)
 	check(body.brake > 0 and is_zero_approx(body.engine_force), "Off-route recovery holds the brakes without teleporting")
-	fixture.manager.enter_vehicle(body)
+	fixture.avatar.control.enter_vehicle(body)
 	body.queue_free()
 	await tree.process_frame
-	check(fixture.manager.player_road_vehicle == null and fixture.player.collision_mask == fixture.walking_mask, "Deleting an occupied vehicle restores the player")
+	check(fixture.avatar.control.current_road_vehicle() == null and fixture.player.collision_mask == fixture.walking_mask, "Deleting an occupied vehicle restores the player")
 	return true
 
 ## A fresh, uninterrupted run reaches the bend and terminal stop.
@@ -227,9 +251,137 @@ func _test_terminal_stop(fixture: DrivingFixture) -> bool:
 	check(completions[0] == 1 and absf(fixture.body.signed_speed_mps()) < 0.3, "Automatic driver stops at route end and signals once")
 	return true
 
+## Test a small car and a long bus on the same bend and outside obstacle.
+func test_corner_braking() -> bool:
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(0, 0, -100), Vector3.ZERO, Vector3(0, 0, -3.31))
+	curve.add_point(Vector3(6, 0, -106), Vector3(-3.31, 0, 0))
+	curve.add_point(Vector3(51, 0, -106))
+	var fixture: DrivingFixture = _create_driving_fixture(curve)
+	var house: StaticBody3D = _add_corner_house(fixture.roads)
+	for frame: int in range(4):
+		await tree.process_frame
+
+	var car_completed: bool = await _check_house_bend(fixture, house, "trabant_601_green", 9.0, 3.0)
+	var bus_completed: bool = await _check_house_bend(fixture, house, "daimler_1911_bus", 5.0, 1.5)
+	_free_driving_fixture(fixture)
+	return car_completed and bus_completed
+
+
+## The global switch keeps the body on the centreline through the tight house bend
+## that the physical driver has to steer through, then stops held at the route end.
+func test_fixed_path() -> bool:
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(0, 0, -100), Vector3.ZERO, Vector3(0, 0, -3.31))
+	curve.add_point(Vector3(6, 0, -106), Vector3(-3.31, 0, 0))
+	curve.add_point(Vector3(51, 0, -106))
+	var fixture: DrivingFixture = _create_driving_fixture(curve)
+	_add_corner_house(fixture.roads)
+	for frame: int in range(4):
+		await tree.process_frame
+	RoadVehicle3D.follow_road_path = true
+	var run_completed: bool = await _check_fixed_path_run(fixture)
+	var takeover_completed: bool = await _check_fixed_path_takeover(fixture)
+	RoadVehicle3D.follow_road_path = false
+	_free_driving_fixture(fixture)
+	return run_completed and takeover_completed
+
+func _check_fixed_path_run(fixture: DrivingFixture) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle("trabant_601_green", [9101])
+	if body == null:
+		return false
+	var completions: Array[int] = [0]
+	body.route_finished.connect(func(): completions[0] += 1)
+	var started: bool = false
+	var worst: float = 0.0
+	var samples: int = 0
+	for frame: int in range(2400):
+		await tree.physics_frame
+		if body.is_following_fixed_path():
+			started = true
+			# Measure after the entry blend from the settled spawn pose.
+			if body.route.progress > body._path_entry_progress + RoadVehicle3D.PATH_BLEND_METRES:
+				var on_curve: Vector3 = body.route.curve.sample_baked(body.route.progress)
+				worst = maxf(worst, Vector2(body.global_position.x - on_curve.x, body.global_position.z - on_curve.z).length())
+				samples += 1
+		if completions[0] > 0:
+			break
+	check(started, "A settled vehicle switches to fixed-path following")
+	check(samples > 100, "Fixed path moves the vehicle past its entry blend (%d samples)" % samples)
+	check(worst < 0.05, "Fixed path stays on the centreline through the tight bend (%.3f m off)" % worst)
+	check(completions[0] == 1 and body.freeze and absf(body.signed_speed_mps()) < 0.01,
+		"Fixed path stops once at the route end, held and stationary")
+	check(body.global_position.x > 40.0 and body.global_position.y > 0.0 and body.global_position.y < 1.5,
+		"Fixed path reaches the end of the road at ride height (%s)" % body.global_position)
+	body.free()
+	return true
+
+## Manual takeover mid-route hands back wheel physics with the scripted speed.
+func _check_fixed_path_takeover(fixture: DrivingFixture) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle("trabant_601_green", [9101])
+	if body == null:
+		return false
+	for frame: int in range(1200):
+		await tree.physics_frame
+		if body.is_following_fixed_path() and body.signed_speed_mps() > 3.0:
+			break
+	var speed: float = body.signed_speed_mps()
+	check(speed > 3.0 and body.freeze, "Fixed-path vehicle accelerates while held")
+	body.set_player_driving(true)
+	check(not body.freeze and not body.is_following_fixed_path(), "Manual takeover restores wheel physics")
+	check(absf(body.linear_velocity.dot(body.global_basis.z) - speed) < 0.5, "Manual takeover keeps the scripted speed")
+	body.free()
+	return true
+
+func _add_corner_house(parent: Node) -> StaticBody3D:
+	# A solid box stands outside the bend, directly in the path of an overshoot.
+	var house := StaticBody3D.new()
+	house.name = "House"
+	house.position = Vector3(-1, 3, -110)
+	var collider := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(5, 6, 7)
+	collider.shape = box
+	house.add_child(collider)
+	parent.add_child(house)
+	return house
+
+
+func _check_house_bend(fixture: DrivingFixture, house: StaticBody3D, vehicle_key: String,
+		minimum_straight_speed: float, minimum_speed_drop: float) -> bool:
+	var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle(vehicle_key, [9101])
+	if body == null:
+		return false
+	body.cruise_speed_kmh = 55
+	body.max_contacts_reported = 8
+	body.contact_monitor = true
+	var house_hit: Array[bool] = [false]
+	body.body_entered.connect(func(other: Node): house_hit[0] = house_hit[0] or other == house)
+
+	# Compare speed on the open straight with speed before the turn-in point.
+	var straight_speed: float = 0.0
+	var approach_speed: float = INF
+	for frame: int in range(2100):
+		await tree.physics_frame
+		if body.global_position.z > -80.0:
+			straight_speed = maxf(straight_speed, body.signed_speed_mps())
+		if body.global_position.z <= -97.0 and is_inf(approach_speed):
+			approach_speed = body.signed_speed_mps()
+		if body.global_position.x > 24.0:
+			break
+	check(straight_speed > minimum_straight_speed and approach_speed < straight_speed - minimum_speed_drop,
+		"%s brakes on the straight before the house bend (%.2f to %.2f m/s)" % [vehicle_key, straight_speed, approach_speed])
+	check(body.global_position.x > 24.0 and absf(body.global_position.z + 106.0) < 1.5 and body.global_position.y > 0.0,
+		"%s clears the bend and stays on the road (%s)" % [vehicle_key, body.global_position])
+	check(not house_hit[0], "%s clears the house without a collision" % vehicle_key)
+	body.free()
+	return true
+
 func _free_driving_fixture(fixture: DrivingFixture) -> void:
-	if is_instance_valid(fixture.outer_player):
-		fixture.outer_player.free()
+	if is_instance_valid(fixture.avatar):
+		fixture.avatar.free()
 	fixture.manager.free()
 	fixture.roads.free()
 	Managers.roads = fixture.previous_roads
@@ -250,8 +402,8 @@ func test_depot_spawning() -> bool:
 	# Exercise both endpoint directions through the public depot-spawning API.
 	for endpoint: String in ["START", "END"]:
 		depot.road_pos = endpoint
-		var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
-		check(body != null, "Car spawns from a %s depot" % endpoint)
+		var body: RoadVehicle3D = fixture.manager.spawn_road_vehicle_at_depot("daimler_1911_bus", depot)
+		check(body != null, "Daimler bus spawns from a %s depot" % endpoint)
 		if body == null:
 			continue
 
@@ -265,7 +417,11 @@ func test_depot_spawning() -> bool:
 		if endpoint == "END":
 			tangent = -tangent
 		check(body.global_basis.z.dot(tangent.normalized()) > 0.999, "Vehicle faces away from the %s depot" % endpoint)
-		check(not body.route.is_valid() and body.brake > 0, "Depot car is parked without an automatic route")
+		# The imported bus nose points along the mesh scene's local +X axis.
+		var mesh: Node3D = body.get_node_or_null("StaticDaimler1911Bus/MeshDaimler1911Bus")
+		check(mesh != null and mesh.global_basis.x.normalized().dot(tangent.normalized()) > 0.999,
+			"Daimler bus nose faces away from the %s depot" % endpoint)
+		check(not body.route.is_valid() and body.brake > 0, "Depot bus is parked without an automatic route")
 
 		# A rejected duplicate must not leave a registered car behind.
 		check(fixture.manager.spawn_road_vehicle_at_depot("trabant_601_green", depot) == null, "An occupied depot spawn point rejects another car")
@@ -287,7 +443,6 @@ func test_spawn_dialog() -> bool:
 	# Arrange an actual SpawnAction subscriber and remember the surrounding UI state.
 	var fixture: DrivingFixture = _create_driving_fixture()
 	_add_fixture_player(fixture)
-	var previous_dialog: GameDialog = UiState.current_diag
 	var previous_mouse: Input.MouseMode = Input.mouse_mode
 	var previous_blocked: bool = UiState.movement_blocked
 	var depot := RoadDepotData.new()
@@ -305,13 +460,21 @@ func test_spawn_dialog() -> bool:
 		action.free()
 		_free_driving_fixture(fixture)
 		return false
-	check(dialog.get("_list").item_count == 3, "Selector lists the three road vehicles without trains")
+	check(dialog.get("_list").item_count == 5, "Selector lists the five road vehicles without trains")
 	check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog blocks world controls and exposes the mouse")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED, "Dialog suspends the actual walking player")
 
-	# Activate the real button, then let queued dialog cleanup finish.
+	# The same selection can be retried once sufficient funds are available.
+	var company := CompanyData.current()
+	var price: int = GameTypes.get_veh_type("oldtimer_car").get_purchase_price()
+	company.cash = price - 1
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
-	check(fixture.manager.road_vehicles.size() == 1, "Spawn button creates the selected car")
+	check(company.cash == price - 1 and fixture.manager.road_vehicles.is_empty()
+		and dialog.get("_error").text.contains("Insufficient funds"), "Unaffordable purchase reports an error without spawning")
+	company.cash = CompanyData.STARTING_CASH
+	(dialog.get_node("%OkButton") as Button).pressed.emit()
+	check(fixture.manager.road_vehicles.size() == 1, "Buy button creates the selected car")
+	check(company.cash == CompanyData.STARTING_CASH - price and company.spending == price, "A road purchase charges its catalog price")
 	await tree.process_frame
 	check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked, "Successful spawning closes the dialog and restores controls")
 	check(Input.mouse_mode == previous_mouse, "Dialog restores the previous mouse mode")
@@ -322,12 +485,12 @@ func test_spawn_dialog() -> bool:
 	dialog = UiState.current_diag
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(not dialog.is_queued_for_deletion() and dialog.get("_error").visible, "Occupied spawn reports an error and keeps the dialog open")
+	check(company.cash == CompanyData.STARTING_CASH - price, "Occupied spawn and cancellation leave cash unchanged")
 	dialog.close_all()
 	await tree.process_frame
 	check(UiState.current_diag == null and fixture.manager.road_vehicles.size() == 1, "Cancel closes without spawning another car")
 
 	# Release the signal subscriber and restore the previous session.
 	action.free()
-	UiState.current_diag = previous_dialog
 	_free_driving_fixture(fixture)
 	return true

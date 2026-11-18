@@ -47,12 +47,12 @@ func _run() -> bool:
 				shared_daylight = true
 		_check(shared_daylight, "%s uses the shared daylight" % map_key)
 	var vehicle_type := VehicleTypeData.new()
-	vehicle_type.model_scene_path = "res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/model_fkbn_t1_motorwagon.tscn"
+	vehicle_type.model_scene_path = "res://assets/meshes/vehicles/rail/fkb_t2_137_532/model_fkb_t2_137_532.tscn"
 	var vehicle_data := VehicleData.new()
 	vehicle_data.veh_type = vehicle_type
 	var vehicle: Vehicle3D = Vehicle3D.of_vehicle_obj(vehicle_data)
 	var visuals: Array[Node] = vehicle.find_children("*", "GeometryInstance3D", true, false)
-	_check(not visuals.is_empty(), "Legacy railcar fixture contains renderable geometry")
+	_check(not visuals.is_empty(), "FKB T2 contains renderable geometry")
 	for visual: Node in visuals:
 		_check((visual as GeometryInstance3D).layers == 64, "Spawned railcars use the Vehicles layer")
 	vehicle.free()

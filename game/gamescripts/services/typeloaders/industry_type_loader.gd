@@ -1,15 +1,15 @@
 class_name IndustryTypeLoader extends AbstractGameTypeLoader
 
-const RECIPES = preload("res://game/gamescripts/resources/structures/industry/industry_recipe_catalog.gd")
-
 func load_types() -> Error:
-	var definitions: Array[IndustryType] = make_types()
-	var error: Error = validate_keys(definitions)
+	var catalog := IndustryRecipeCatalog.new()
+	var error: Error = catalog.read()
+	if error == OK:
+		error = catalog.validate_goods(GameTypes.resource_types)
 	if error != OK:
+		push_error(catalog.problem)
 		return error
-	GameTypes.industry_types = definitions
-	self.loading_finished.emit()
+
+	GameTypes.industry_buildings = catalog.buildings
+	GameTypes.industry_types = catalog.industries
+	loading_finished.emit()
 	return OK
-	
-func make_types() -> Array[IndustryType]:
-	return RECIPES.make_types()

@@ -92,3 +92,26 @@ static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
 	elif infr_domain_str == "WATER": return Enums.InfrDomain.WATER
 	elif infr_domain_str == "AIR": return Enums.InfrDomain.AIR
 	else: return Enums.InfrDomain.STATIONARY
+
+
+## PathMesh3D requires at least one complete tile. Compress the source along
+## the path for short sections, preserving their width, material and collision.
+static func fit_short_path_mesh(path_mesh: PathMesh3D, curve: Curve3D) -> void:
+	var source: Mesh = path_mesh.mesh
+	if source == null or curve == null:
+		return
+	# The rail and road source tiles are aligned to local Z.
+	var bounds: AABB = source.get_aabb()
+	var tile_length: float = maxf(0.0, bounds.end.z) - minf(0.0, bounds.position.z)
+	var section_length: float = curve.get_baked_length()
+	if section_length <= 0.0 or section_length >= tile_length:
+		return
+	var scale_z: float = (section_length / tile_length) * 0.99999
+	var transform := Transform3D(Basis.from_scale(Vector3(1.0, 1.0, scale_z)), Vector3.ZERO)
+	var fitted := ArrayMesh.new()
+	for index: int in source.get_surface_count():
+		var surface := SurfaceTool.new()
+		surface.append_from(source, index, transform)
+		surface.set_material(source.surface_get_material(index))
+		surface.commit(fitted)
+	path_mesh.mesh = fitted

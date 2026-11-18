@@ -1,6 +1,11 @@
 @icon("res://assets/icons/icon_station_white.png")
 class_name RailStationData extends AbstractStation
 
+## Looking from the track start toward its end.
+enum PlatformSide { RIGHT, LEFT }
+
+@export var platform_side: PlatformSide = PlatformSide.RIGHT
+
 ## connections
 @export var connected_town: TownData
 

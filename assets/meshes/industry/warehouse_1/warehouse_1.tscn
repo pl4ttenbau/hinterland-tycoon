@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dpmf707hcg5r"]
 
 [ext_resource type="Script" uid="uid://dkjwwmkbxo38y" path="res://game/gamescripts/nodes/industry/industry3d.gd" id="1_1jdkd"]
-[ext_resource type="PackedScene" uid="uid://cufatwmnpnv5m" path="res://assets/meshes/industry/warehouse_1/mesh_warehouse_1.tscn" id="2_jk2i7"]
+[ext_resource type="PackedScene" uid="uid://dq5cjkesfcmqi" path="res://assets/meshes/industry/warehouse_1/mesh/mesh_warehouse_1.tscn" id="2_jk2i7"]
 [ext_resource type="Script" uid="uid://byfh10jnd57t6" path="res://game/gamescripts/resources/structures/industry/industry_collider.gd" id="3_fwiqu"]
 [ext_resource type="Script" uid="uid://cbhvwirshj8vf" path="res://game/gamescripts/nodes/inventory/inventory_container.gd" id="4_0h862"]
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_358e6"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="6_358e6"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_jk2i7"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="8_x134c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8embk"]
 
@@ -49,3 +50,9 @@ metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 script = ExtResource("6_358e6")
 industry3d = NodePath("..")
 metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="Constructable" type="Node" parent="." unique_id=1862507876 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
+script = ExtResource("8_x134c")
+visual_model = NodePath("../MeshWarehouse1")
+placement_collision_shape = NodePath("../ClickableCollider/CollisionShape3D")
+metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

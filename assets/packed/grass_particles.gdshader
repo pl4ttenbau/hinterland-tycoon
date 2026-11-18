@@ -12,6 +12,8 @@ uniform bool grass_area_includes_terrain = false;
 uniform sampler2D grass_area_mask : hint_default_white, filter_linear, repeat_disable;
 uniform vec2 grass_area_origin = vec2(0.0);
 uniform vec2 grass_area_size = vec2(1.0);
+uniform bool rail_clearance_enabled = false;
+uniform sampler2D rail_clearance_mask : hint_default_white, filter_linear, repeat_disable;
 uniform float minimum_normal_y = 0.85;
 uniform float _vertex_spacing = 1.0;
 uniform float _region_size = 256.0;
@@ -82,6 +84,10 @@ bool place(uint index, vec3 emitter, inout mat4 transform, inout vec4 color, ino
 			return false;
 		}
 		allowance *= textureLod(grass_area_mask, uv, 0.0).r;
+	}
+	if (rail_clearance_enabled) {
+		vec2 tile_uv = (xz - emitter.xz) / (float(instance_rows) * instance_spacing);
+		allowance *= textureLod(rail_clearance_mask, tile_uv, 0.0).r;
 	}
 	// Fixed independent randomness turns gray coverage into stable density, not
 	// translucent cards or rectangular blocks. A zero allowance always rejects.

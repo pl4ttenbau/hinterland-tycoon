@@ -5,11 +5,8 @@ class_name Vehicle3D extends GameEntity3D
 @export var num_in_train: int
 @export var train3d: Train3D
 @export var offset_to_first: float
-
-#region Initialization
-func _enter_tree() -> void:
-	self.train3d.on_vehicle_added.connect(Callable(self, "_on_vehicle_added_to_train"))
-#endregion
+## A vehicle may face either way within the ordered consist.
+@export var faces_rear: bool = false
 
 #region Static Constructors
 static func of_vehicle_obj(_veh_obj: VehicleData, _train3d: Train3D = null) -> Vehicle3D:
@@ -39,9 +36,4 @@ func calc_offset_to_previous(i_in_train: int)-> float:
 	var half_own_length: float = self.train3d.vehicles[i_in_train].vehicle_obj.veh_type.length_metres /2
 	var half_other_length: float = veh_before.vehicle_obj.veh_type.length_metres /2
 	return half_own_length + half_other_length
-#endregion
-
-#region Callbacks
-func _on_vehicle_added_to_train(_new_veh3d: Vehicle3D):
-	self.offset_to_first = self.calc_offset_to_first()
 #endregion

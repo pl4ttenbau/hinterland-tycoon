@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/prospect/prospect_dialog.gd" id="2"]
+
+[node name="ProspectDialog" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Content" parent="Center/Panel/Padding/Layout" index="1"]
+theme_override_constants/separation = 12
+
+[node name="Status" type="Label" parent="Center/Panel/Padding/Layout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Readings" type="GridContainer" parent="Center/Panel/Padding/Layout/Content" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 6
+columns = 2

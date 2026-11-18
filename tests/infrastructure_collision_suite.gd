@@ -23,7 +23,7 @@ func ray_at(host: Node3D, point: Vector3) -> Dictionary:
 
 func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
-	for test: StringName in [&"test_roads", &"test_rails", &"test_player"]:
+	for test: StringName in [&"test_roads", &"test_road_type_profile", &"test_mud_and_cobbles", &"test_rails", &"test_player"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
 	print("Infrastructure collision tests: %d passed, %d failures" % [passed, failures])
@@ -54,6 +54,70 @@ func test_roads() -> bool:
 		var point: Vector3 = road.get_path_3d().to_global(curve.sample_baked(curve.get_baked_length() * 0.5))
 		var edited_hit: Dictionary = ray_at(road, point)
 		check(not edited_hit.is_empty() and absf(edited_hit.position.y - point.y) < 0.5, "Collision rebuilds after editing a curve")
+		road.free()
+	return true
+
+func test_road_type_profile() -> bool:
+	if GameTypes.ensure_initialized() != OK:
+		return false
+	var rural := GameTypes.get_road_type("rural_road")
+	var dirt := GameTypes.get_road_type("dirt_path")
+	check(rural != null and dirt != null and rural != dirt, "Road catalog loads both existing road types")
+	if rural == null:
+		return false
+	var data := RoadData.of(1, "legacy_road")
+	check(data.get_road_type() == rural, "Legacy road types fall back to the rural profile")
+	data.curve = Curve3D.new()
+	data.curve.add_point(Vector3.ZERO)
+	data.curve.add_point(Vector3(0, 0, -20))
+	var width := rural.drivable_width_metres
+	var height := rural.mesh_height_metres
+	rural.drivable_width_metres = 8.0
+	rural.mesh_height_metres = 0.45
+	var road := data.spawn()
+	rural.drivable_width_metres = width
+	rural.mesh_height_metres = height
+	if road == null:
+		return false
+	tree.root.add_child(road)
+	await settle()
+	var centre := ray_at(road, Vector3(0, 0, -10))
+	var edge := ray_at(road, Vector3(3.5, 0, -10))
+	check(not centre.is_empty() and absf(centre.position.y - 0.45) < 0.01, "Mesh height raises the spawned road surface")
+	check(not edge.is_empty() and absf(edge.position.y - 0.45) < 0.01, "Drivable width extends the surfaced collision")
+	var path := road.get_path_3d()
+	var route := RoadVehicleRoute.new()
+	check(route.assign([path]) and route.sample_ahead(5.0).is_equal_approx(Vector3(0, 0, -5)), "Automatic routes still sample the centre spline")
+	road.free()
+	return true
+
+func test_mud_and_cobbles() -> bool:
+	if GameTypes.ensure_initialized() != OK:
+		return false
+	for key: String in ["cobblestone_road", "mud_road"]:
+		var data := RoadMapper.road_from_data_json({
+			"num": 2,
+			"type": key,
+			"points": [{"pos": [0, 0, 0]}, {"pos": [0, 0, -24]}],
+		})
+		var definition := data.get_road_type()
+		if definition == null or definition.key != key:
+			return false
+		var road := data.spawn()
+		if road == null:
+			return false
+		tree.root.add_child(road)
+		await settle()
+		var material := road.get_road_mesh().material_override as StandardMaterial3D
+		check(material != null and material.normal_enabled and material.normal_texture != null and material.roughness_texture != null,
+			"%s spawns with normal and roughness maps" % key)
+		var centre := ray_at(road, Vector3(0.0, 0.0, -10.0))
+		var wheel := ray_at(road, Vector3(0.99, 0.0, -10.0))
+		check(not centre.is_empty() and absf(centre.position.y - definition.mesh_height_metres) < 0.01,
+			"%s supports collision at the catalog height" % key)
+		check(not wheel.is_empty(), "%s supports collision at the wheel track" % key)
+		if key == "mud_road" and not centre.is_empty() and not wheel.is_empty():
+			check(wheel.position.y < centre.position.y - 0.05, "Mud wheel tracks are recessed below the grassy centre")
 		road.free()
 	return true
 
@@ -98,10 +162,10 @@ func test_player() -> bool:
 	road.position.y = 10.0
 	tree.root.add_child(road)
 	await settle()
-	var outer: Node3D = load("res://scenes/subscenes/player.tscn").instantiate()
-	var player: BasicFpsPlayer = outer.get_node("Player")
+	var outer: PlayerAvatar = load("res://scenes/subscenes/player.tscn").instantiate()
+	var player: BasicFpsPlayer = outer.walking_body
 	player.position = Vector3(0, 14, -10)
-	var previous_player: PlayerHead3D = GlobalState.player
+	var previous_player: PlayerAvatar = GlobalState.player
 	var previous_camera: Camera3D = GlobalState.active_cam
 	tree.root.add_child(outer)
 	check(not player.get_node("PlayerCollisionShape").disabled, "Actual player collider is enabled")
