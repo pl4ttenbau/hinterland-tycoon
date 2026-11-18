@@ -32,6 +32,9 @@ func available_actions() -> Array[Dictionary]:
 	if not in_vehicle and is_instance_valid(Managers.rails):
 		items.append(_item("Connect tracks", "Connect", "connect_tracks"))
 		items.append(_item("Place rail signal", "RailSignal", "rail_signal"))
+		var signal_tool: RailSignalTool = Managers.rails.get_node_or_null("RailSignalTool")
+		if is_instance_valid(signal_tool) and signal_tool.can_remove_near_player():
+			items.append(_item("Remove rail signal", "RemoveRailSignal", "rail_signal_remove"))
 	if in_vehicle and TrainCoupling.available(player.control.current_train()):
 		items.append({
 			"title": "Coupling", "id": "Coupling",

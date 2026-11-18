@@ -8,6 +8,13 @@ const SCENE_PATH = "res://scenes/subscenes/infr/fork_3d/rail_fork_3d.tscn"
 
 signal forks_spawned()
 
+## Junctions and their legs and settings reference each other; break the cycles when the loader goes away.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		for junction: NewRailForkData in forks_by_pos.values():
+			junction.release_legs()
+		forks_by_pos.clear()
+
 func add_new_or_connection(node_fork: RailNodeForkData):
 	var fork_pos: Vector3 = node_fork.railNode.position
 	if ! forks_by_pos.has(fork_pos):

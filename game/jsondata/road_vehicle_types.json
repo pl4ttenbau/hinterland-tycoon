@@ -24,8 +24,8 @@
 		"has_motor": true,
 		"max_speed_kmh": 70.0,
 		"capacity": {
-			"cat": "FREIGHT",
-			"amount": 4.0
+			"cat": "AGGREGATE",
+			"amount": 5.0
 		},
 		"mass_tonnes": 1.81,
 		"payload_tonnes": 1.5,
@@ -78,5 +78,21 @@
 		"mass_tonnes": 4.78,
 		"payload_tonnes": 5.02,
 		"motor_power_kw": 92.0
-	}
+	},
+	{
+		"key": "vaz1201",
+		"purchase_price": 11000,
+		"display_name": "VAZ-1201",
+		"model_scene_path": "res://assets/meshes/vehicles/road/vaz1201/vaz1201.tscn",
+		"usable_infr": {},
+		"has_motor": true,
+		"max_speed_kmh": 140.0,
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 4.0
+		},
+		"mass_tonnes": 0.97,
+		"payload_tonnes": 0.39,
+		"motor_power_kw": 46.1
+	},
 ]

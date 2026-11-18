@@ -28,6 +28,8 @@ func _on_action_triggered(action_name: String) -> bool:
 			return _open_road_marker_tool()
 		"RailSignal":
 			return _open_rail_signal_tool()
+		"RemoveRailSignal":
+			return _remove_rail_signal()
 
 	# Enter, Connect and Inventory use the BaseAction children in GameSession.
 	for child: Node in get_children():
@@ -86,3 +88,10 @@ func _open_rail_signal_tool() -> bool:
 		return false
 	var tool := Managers.rails.get_node_or_null("RailSignalTool") as RailSignalTool
 	return is_instance_valid(tool) and tool.open_placement_dialog()
+
+
+func _remove_rail_signal() -> bool:
+	if not is_instance_valid(Managers.rails):
+		return false
+	var tool := Managers.rails.get_node_or_null("RailSignalTool") as RailSignalTool
+	return is_instance_valid(tool) and tool.remove_near_player()

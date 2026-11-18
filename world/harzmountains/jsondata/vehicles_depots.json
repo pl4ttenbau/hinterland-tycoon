@@ -1,5 +1,5 @@
 {
-	"depots": [
+	"railDepots": [
 		{
 			"num": 2,
 			"name": "Wernigerode Depot HSB",
@@ -17,6 +17,14 @@
 			"name": "Rübeland Depot RÜB",
 			"trackNum": 55,
 			"trackPos": "END"
+		}
+	],
+	"roadDepots": [
+		{
+			"num": 5,
+			"name": "Wernigerode Bus Depot",
+			"roadNum": 262,
+			"roadPos": "END"
 		}
 	]
 }

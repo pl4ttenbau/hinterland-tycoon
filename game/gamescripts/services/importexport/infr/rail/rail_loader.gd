@@ -30,6 +30,30 @@ func _ready() -> void:
 	tool.rails = self
 	add_child(tool)
 
+## Track data links both ways: track ↔ nodes, node ↔ fork leg and station link, leg ↔ junction.
+## Reference counting cannot free such cycles, so break them when the loader goes away.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		release_network()
+
+func release_network() -> void:
+	for track: RailTrackData in track_storage.get_all():
+		for node: RailNodeData in track.nodes:
+			if node.fork != null:
+				var junction: NewRailForkData = node.fork.junction
+				if junction != null:
+					junction.release_legs()
+				node.fork.junction = null
+				node.fork.railNode = null
+				node.fork = null
+			if node.station != null:
+				node.station.parent_node = null
+				node.station = null
+			node.parent_track = null
+		track.nodes.clear()
+		track.forks.clear()
+		track.node_stations.clear()
+
 ## Directed track graph shared by route finding and, later, signal blocks.
 func get_network_graph() -> RailNetworkGraph:
 	if _network_graph == null:

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://crmk7g2hykne2" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_model_3d.gd" id="1_y0gst"]
 [ext_resource type="PackedScene" uid="uid://b0fdevfdrakks" path="res://assets/meshes/vehicles/road/vaz1201/mesh/mesh_vaz_1201.tscn" id="2_keomr"]
-[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_4jwr1"]
 [ext_resource type="Script" uid="uid://mgohye4batjb" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="4_sdoar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
@@ -10,16 +9,14 @@ size = Vector3(1.5253906, 1.3623047, 3.976593)
 
 [node name="Vaz1201" type="Node3D" unique_id=753769968 node_paths=PackedStringArray("chassis")]
 script = ExtResource("1_y0gst")
-chassis = NodePath("VehicleCollider/CollisionShape3D")
+chassis = NodePath("Chassis/CollisionShape3D")
 metadata/_custom_type_script = "uid://crmk7g2hykne2"
 
 [node name="MeshVaz1201" parent="." unique_id=403073515 instance=ExtResource("2_keomr")]
 
-[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1367852854]
-script = ExtResource("3_4jwr1")
-metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+[node name="Chassis" type="StaticBody3D" parent="." unique_id=1715217065]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=2113787920]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis" unique_id=2113787920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051757813, 0.6713909, -0.2157135)
 shape = SubResource("BoxShape3D_qwrwv")
 

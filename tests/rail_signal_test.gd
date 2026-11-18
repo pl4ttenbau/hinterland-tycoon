@@ -141,7 +141,31 @@ func _run() -> void:
 	fork.setting.current.connected = branch.num
 	self.check(not self.clear_for(s3, increase, [c]), "A train on the branch occupies a block set for the branch")
 
+	## Placing and removing through the tool keeps the store, labels and erase guard in step.
+	var tool := RailSignalTool.new()
+	tool.rails = self.rails
+	self.add_child(tool)
+	var placement: Dictionary = tool.placement_at(Vector3(1, 0, -40), Vector3.FORWARD)
+	self.check(placement.get("track_num") == approach.num and absf(placement.get("offset", -1.0) - 40.0) < 0.5, "Placement finds the nearest track and offset")
+	self.check(placement.get("facing") == RailSignalData.Facing.NODES_INCREASE, "Placement faces the view direction along the track")
+	var placed: RailSignalData = tool.place(placement, "", placement.facing)
+	self.check(placed != null and tool.get_node_or_null("RailSignal_%d" % placed.num) != null, "Placing shows the signal's labels")
+	self.check(tool.nearest_signal(Vector3(3, 0, -42)) == placed, "The nearest signal within reach is found for removal")
+	self.check(tool.nearest_signal(Vector3(30, 0, -42)) == null, "No signal is found out of reach")
+	self.check(tool.remove(placed) and self.rails.signals.get_by_num(placed.num) == null, "Removing drops the signal from the store")
+	self.check(tool.get_node_or_null("RailSignal_%d" % placed.num) == null, "Removing detaches the labels at once")
+	self.check(not tool.remove(placed), "Removing twice reports failure")
+	self.rails.signals.remove(s3)
+	self.rails.signals.remove(s1)
+	self.check(not self.rails._track_has_dependencies(approach), "A track without signals can be erased again")
+
 	for train: Train3D in self.added_trains:
 		GlobalState.trains.erase(train)
+		train.free()
+	## Loaders outside the tree are not freed at exit; they would leak with all their track data.
+	Managers.rails = null
+	Managers.forks = null
+	self.rails.free()
+	self.forks.free()
 	print("Rail signal tests: %d failures" % self.failures)
 	self.get_tree().quit(0 if self.failures == 0 else 1)

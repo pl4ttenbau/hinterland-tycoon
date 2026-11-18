@@ -10,7 +10,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.49859619140625, -0.00322596239857375, 3.24993896484375],
 				"cross": {
-					"connectiveRoads": [3, 268],
 					"autoConnectiveRoads": [3, 268]
 				}
 			},
@@ -69,7 +68,6 @@
 				"handleIn": [0.3545125424861908, -0.02729161642491817, -2.817128419876098],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [2, 16],
 					"autoConnectiveRoads": [2, 16]
 				}
 			}
@@ -86,7 +84,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.9869180917739868, -0.12133089452981947, 0.46685791015625],
 				"cross": {
-					"connectiveRoads": [1, 16],
 					"autoConnectiveRoads": [1, 16]
 				}
 			},
@@ -133,7 +130,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.7600504755973816, 0.03266525268554687, -4.0482177734375],
 				"cross": {
-					"connectiveRoads": [1, 268],
 					"autoConnectiveRoads": [1, 268]
 				}
 			},
@@ -157,7 +153,6 @@
 				"handleIn": [-0.34234619140625, -0.0521952323615551, 2.3081867694854736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [4, 160],
 					"autoConnectiveRoads": [4, 160]
 				}
 			}
@@ -174,7 +169,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.5567830204963684, -0.1268666535615921, -2.2820026874542236],
 				"cross": {
-					"connectiveRoads": [3, 160],
 					"autoConnectiveRoads": [3, 160]
 				}
 			},
@@ -198,7 +192,6 @@
 				"handleIn": [-2.00799560546875, 0.03157806396484375, 2.4563395977020264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [5, 14, 159],
 					"autoConnectiveRoads": [5, 14, 159]
 				}
 			}
@@ -215,7 +208,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.3504436016082764, 0.09791628271341324, 0.4795125424861908],
 				"cross": {
-					"connectiveRoads": [4, 14, 159],
 					"autoConnectiveRoads": [4, 14, 159]
 				}
 			},
@@ -239,7 +231,6 @@
 				"handleIn": [1.4614664316177368, -0.00986480712890625, 0.2018025666475296],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [6, 155],
 					"autoConnectiveRoads": [6, 155]
 				}
 			}
@@ -256,7 +247,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1559245586395264, 0.00031661987304687, -0.5385945439338684],
 				"cross": {
-					"connectiveRoads": [5, 155],
 					"autoConnectiveRoads": [5, 155]
 				}
 			},
@@ -290,7 +280,6 @@
 				"handleIn": [-0.495361328125, -0.00742212915793061, 3.17633056640625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [7, 151],
 					"autoConnectiveRoads": [7, 151]
 				}
 			}
@@ -307,7 +296,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.687255859375, 0.015625, -2.5982868671417236],
 				"cross": {
-					"connectiveRoads": [6, 151],
 					"autoConnectiveRoads": [6, 151]
 				}
 			},
@@ -321,7 +309,6 @@
 				"handleIn": [-2.9211628437042236, -0.03489812090992927, 3.0471599102020264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [8, 10],
 					"autoConnectiveRoads": [8, 10]
 				}
 			}
@@ -338,7 +325,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.6021525859832764, -0.04942067340016365, -0.1521403044462204],
 				"cross": {
-					"connectiveRoads": [7, 10],
 					"autoConnectiveRoads": [7, 10]
 				}
 			},
@@ -362,7 +348,6 @@
 				"handleIn": [1.7299600839614868, 0.00607426976785063, -0.4757080078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [9, 158],
 					"autoConnectiveRoads": [9, 158]
 				}
 			}
@@ -379,7 +364,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.7952880859375, 0.0009943643817678, 0.837158203125],
 				"cross": {
-					"connectiveRoads": [8, 158],
 					"autoConnectiveRoads": [8, 158]
 				}
 			},
@@ -433,7 +417,6 @@
 				"handleIn": [2.72393798828125, 0.24438349902629852, -0.1350301057100296],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [61],
 					"autoConnectiveRoads": [61]
 				}
 			}
@@ -450,7 +433,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.4195759296417236, 0.08279546350240707, -0.9884236454963684],
 				"cross": {
-					"connectiveRoads": [7, 8],
 					"autoConnectiveRoads": [7, 8]
 				}
 			},
@@ -474,7 +456,6 @@
 				"handleIn": [-1.1766561269760132, 0.01862589456140995, -0.1242879256606102],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [11, 153],
 					"autoConnectiveRoads": [11, 153]
 				}
 			}
@@ -491,7 +472,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3989665508270264, -0.01625696755945682, 0.5396728515625],
 				"cross": {
-					"connectiveRoads": [10, 153],
 					"autoConnectiveRoads": [10, 153]
 				}
 			},
@@ -510,7 +490,6 @@
 				"handleIn": [-1.96551513671875, 0.00638707494363188, -1.52880859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [12, 15, 156],
 					"autoConnectiveRoads": [12, 15, 156]
 				}
 			}
@@ -527,7 +506,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1975505352020264, -0.00296529126353561, 0.2176106721162796],
 				"cross": {
-					"connectiveRoads": [11, 15, 156],
 					"autoConnectiveRoads": [11, 15, 156]
 				}
 			},
@@ -561,7 +539,6 @@
 				"handleIn": [-1.3493856191635132, 0.00254948926158249, 1.2763265371322632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [13, 157],
 					"autoConnectiveRoads": [13, 157]
 				}
 			}
@@ -578,7 +555,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.2614238262176514, 0.02019882202148437, 0.402099609375],
 				"cross": {
-					"connectiveRoads": [12, 157],
 					"autoConnectiveRoads": [12, 157]
 				}
 			},
@@ -660,7 +636,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.6404215097427368, -0.01957511901855468, -1.5290731191635132],
 				"cross": {
-					"connectiveRoads": [4, 5, 159],
 					"autoConnectiveRoads": [4, 5, 159]
 				}
 			},
@@ -674,7 +649,6 @@
 				"handleIn": [-1.6645711660385132, -0.04108238220214844, 1.6327921152114868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [15, 154],
 					"autoConnectiveRoads": [15, 154]
 				}
 			}
@@ -691,7 +665,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5837198495864868, 0.07328224182128906, -1.6320394277572632],
 				"cross": {
-					"connectiveRoads": [14, 154],
 					"autoConnectiveRoads": [14, 154]
 				}
 			},
@@ -720,7 +693,6 @@
 				"handleIn": [1.0215657949447632, 0.00250689196400344, 3.2295734882354736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [11, 12, 156],
 					"autoConnectiveRoads": [11, 12, 156]
 				}
 			}
@@ -737,7 +709,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.00457763671875, 0.03545570373535156, 3.0152995586395264],
 				"cross": {
-					"connectiveRoads": [1, 2],
 					"autoConnectiveRoads": [1, 2]
 				}
 			},
@@ -821,7 +792,6 @@
 				"handleIn": [-0.4981485903263092, 0.0188420619815588, -3.0042011737823486],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [17],
 					"autoConnectiveRoads": [17]
 				}
 			}
@@ -838,7 +808,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.6793416142463684, 0.16592025756835938, 6.503758907318115],
 				"cross": {
-					"connectiveRoads": [16],
 					"autoConnectiveRoads": [16]
 				}
 			},
@@ -847,7 +816,6 @@
 				"handleIn": [-0.6793416142463684, -0.16592025756835938, -6.503758907318115],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [18],
 					"autoConnectiveRoads": [18]
 				}
 			}
@@ -864,7 +832,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.3611246645450592, -0.04348881915211677, 3.508855104446411],
 				"cross": {
-					"connectiveRoads": [17],
 					"autoConnectiveRoads": [17]
 				}
 			},
@@ -878,7 +845,6 @@
 				"handleIn": [-0.2079671174287796, 0.0895436629652977, -5.49981164932251],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [19, 239],
 					"autoConnectiveRoads": [19, 239]
 				}
 			}
@@ -895,7 +861,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.10699462890625, -0.01568984985351562, 0.4862416684627533],
 				"cross": {
-					"connectiveRoads": [18, 239],
 					"autoConnectiveRoads": [18, 239]
 				}
 			},
@@ -909,7 +874,6 @@
 				"handleIn": [-3.985595703125, -0.00911204051226377, -0.1388804167509079],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [20],
 					"autoConnectiveRoads": [20]
 				}
 			}
@@ -926,7 +890,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [5.289021968841553, 0.0569203682243824, -0.1803741455078125],
 				"cross": {
-					"connectiveRoads": [19],
 					"autoConnectiveRoads": [19]
 				}
 			},
@@ -935,7 +898,6 @@
 				"handleIn": [-5.289021968841553, -0.0569203682243824, 0.1803741455078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [21],
 					"autoConnectiveRoads": [21]
 				}
 			}
@@ -952,7 +914,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.908955812454224, 0.01026407908648252, -0.8435465693473816],
 				"cross": {
-					"connectiveRoads": [20],
 					"autoConnectiveRoads": [20]
 				}
 			},
@@ -1006,7 +967,6 @@
 				"handleIn": [-3.9987285137176514, 0.18072509765625, 1.145329833030701],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [22],
 					"autoConnectiveRoads": [22]
 				}
 			}
@@ -1023,7 +983,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.153279781341553, -0.1149749755859375, -1.180511474609375],
 				"cross": {
-					"connectiveRoads": [21],
 					"autoConnectiveRoads": [21]
 				}
 			},
@@ -1082,7 +1041,6 @@
 				"handleIn": [-4.165476322174072, 0.09086481481790544, 0.95819091796875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [23, 177, 178],
 					"autoConnectiveRoads": [23, 177, 178]
 				}
 			}
@@ -1099,7 +1057,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.6826984882354736, -0.05659230425953865, 0.0702260360121727],
 				"cross": {
-					"connectiveRoads": [22, 177, 178],
 					"autoConnectiveRoads": [22, 177, 178]
 				}
 			},
@@ -1173,7 +1130,6 @@
 				"handleIn": [-3.92205810546875, 0.03668848797678947, -0.2044321745634079],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [24],
 					"autoConnectiveRoads": [24]
 				}
 			}
@@ -1190,7 +1146,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.9971137046813965, 0.0099423723295331, 0.4776712954044342],
 				"cross": {
-					"connectiveRoads": [23],
 					"autoConnectiveRoads": [23]
 				}
 			},
@@ -1279,7 +1234,6 @@
 				"handleIn": [-2.7138900756835938, 0.0561726875603199, -0.2697957456111908],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [25],
 					"autoConnectiveRoads": [25]
 				}
 			}
@@ -1296,7 +1250,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.99530553817749, 0.05458450317382812, -0.532318115234375],
 				"cross": {
-					"connectiveRoads": [24],
 					"autoConnectiveRoads": [24]
 				}
 			},
@@ -1340,7 +1293,6 @@
 				"handleIn": [-4.354898929595947, -0.07871755212545395, 0.3573659360408783],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [26, 93],
 					"autoConnectiveRoads": [26, 93]
 				}
 			}
@@ -1357,7 +1309,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [6.610626220703125, 0.29965081810951233, -0.2059529572725296],
 				"cross": {
-					"connectiveRoads": [25, 93],
 					"autoConnectiveRoads": [25, 93]
 				}
 			},
@@ -1391,7 +1342,6 @@
 				"handleIn": [-4.877420902252197, 0.18726985156536105, -0.0639699324965477],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [27],
 					"autoConnectiveRoads": [27]
 				}
 			}
@@ -1408,7 +1358,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [5.506062984466553, -0.07929357141256332, -0.344573974609375],
 				"cross": {
-					"connectiveRoads": [26],
 					"autoConnectiveRoads": [26]
 				}
 			},
@@ -1452,7 +1401,6 @@
 				"handleIn": [-5.447774410247803, 0.0488535575568676, 0.4277140200138092],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [28],
 					"autoConnectiveRoads": [28]
 				}
 			}
@@ -1469,7 +1417,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [9.756306648254396, 0.00967661570757627, -1.1273905038833618],
 				"cross": {
-					"connectiveRoads": [27],
 					"autoConnectiveRoads": [27]
 				}
 			},
@@ -1518,7 +1465,6 @@
 				"handleIn": [-7.032124996185303, -0.00540415430441498, 3.067494630813598],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [29, 143, 144],
 					"autoConnectiveRoads": [29, 143, 144]
 				}
 			}
@@ -1535,7 +1481,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [8.1448974609375, -0.13124847412109375, -3.4078369140625],
 				"cross": {
-					"connectiveRoads": [28, 143, 144],
 					"autoConnectiveRoads": [28, 143, 144]
 				}
 			},
@@ -1544,7 +1489,6 @@
 				"handleIn": [-8.1448974609375, 0.13124847412109375, 3.4078369140625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [30, 51],
 					"autoConnectiveRoads": [30, 51]
 				}
 			}
@@ -1561,7 +1505,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.427083492279053, -0.08488210290670395, -1.943471312522888],
 				"cross": {
-					"connectiveRoads": [29, 51],
 					"autoConnectiveRoads": [29, 51]
 				}
 			},
@@ -1585,7 +1528,6 @@
 				"handleIn": [-1.25250244140625, 0.02947489358484745, 0.69720458984375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [31, 118],
 					"autoConnectiveRoads": [31, 118]
 				}
 			}
@@ -1602,7 +1544,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3257648944854736, 0.0370279960334301, -1.6180521249771118],
 				"cross": {
-					"connectiveRoads": [30, 118],
 					"autoConnectiveRoads": [30, 118]
 				}
 			},
@@ -1631,7 +1572,6 @@
 				"handleIn": [-1.5637410879135132, -0.0653940811753273, -0.0621744804084301],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [32, 353],
 					"autoConnectiveRoads": [32, 353]
 				}
 			}
@@ -1648,7 +1588,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5214437246322632, -0.0148162841796875, 0.8123372197151184],
 				"cross": {
-					"connectiveRoads": [31, 353],
 					"autoConnectiveRoads": [31, 353]
 				}
 			},
@@ -1672,7 +1611,6 @@
 				"handleIn": [-1.3968709707260132, -0.0195770263671875, -0.3358866274356842],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [33, 122],
 					"autoConnectiveRoads": [33, 122]
 				}
 			}
@@ -1689,7 +1627,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.63580322265625, -0.0112152099609375, -0.012298583984375],
 				"cross": {
-					"connectiveRoads": [32, 122],
 					"autoConnectiveRoads": [32, 122]
 				}
 			},
@@ -1703,7 +1640,6 @@
 				"handleIn": [-5.915303707122803, -0.0098025007173419, 1.173980712890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [34, 366, 367],
 					"autoConnectiveRoads": [34, 366, 367]
 				}
 			}
@@ -1720,7 +1656,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1927490234375, -0.0856577530503273, -0.7843017578125],
 				"cross": {
-					"connectiveRoads": [33, 366, 367],
 					"autoConnectiveRoads": [33, 366, 367]
 				}
 			},
@@ -1764,7 +1699,6 @@
 				"handleIn": [-1.58306884765625, 0.00444793701171875, -3.7327880859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [35, 119, 365],
 					"autoConnectiveRoads": [35, 119, 365]
 				}
 			}
@@ -1781,7 +1715,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1938068866729736, -0.029876708984375, -1.6720479726791382],
 				"cross": {
-					"connectiveRoads": [34, 119, 365],
 					"autoConnectiveRoads": [34, 119, 365]
 				}
 			},
@@ -1795,7 +1728,6 @@
 				"handleIn": [-2.3616130352020264, 0.0478515625, 2.0073955059051514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [36],
 					"autoConnectiveRoads": [36]
 				}
 			}
@@ -1812,7 +1744,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.836263179779053, 0.12890498340129852, -4.5313720703125],
 				"cross": {
-					"connectiveRoads": [35],
 					"autoConnectiveRoads": [35]
 				}
 			},
@@ -1821,7 +1752,6 @@
 				"handleIn": [-4.836263179779053, -0.12890498340129852, 4.5313720703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [37],
 					"autoConnectiveRoads": [37]
 				}
 			}
@@ -1838,7 +1768,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3561604022979736, 0.00705591822043061, -2.326527833938598],
 				"cross": {
-					"connectiveRoads": [36],
 					"autoConnectiveRoads": [36]
 				}
 			},
@@ -1852,7 +1781,6 @@
 				"handleIn": [-3.06683349609375, 0.00042724609375, 2.6959228515625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [38, 362],
 					"autoConnectiveRoads": [38, 362]
 				}
 			}
@@ -1869,7 +1797,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0560505390167236, 0.00584793090820312, -1.58404541015625],
 				"cross": {
-					"connectiveRoads": [37, 362],
 					"autoConnectiveRoads": [37, 362]
 				}
 			},
@@ -1883,7 +1810,6 @@
 				"handleIn": [-2.4499714374542236, 0.03490066528320312, 2.1525371074676514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [39],
 					"autoConnectiveRoads": [39]
 				}
 			}
@@ -1900,7 +1826,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [16.39670753479004, -0.01178995799273252, -18.30660057067871],
 				"cross": {
-					"connectiveRoads": [38],
 					"autoConnectiveRoads": [38]
 				}
 			},
@@ -1909,7 +1834,6 @@
 				"handleIn": [-16.39670753479004, 0.01178995799273252, 18.30660057067871],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [40],
 					"autoConnectiveRoads": [40]
 				}
 			}
@@ -1926,7 +1850,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.4591267108917236, 0.03695742413401604, -2.498077392578125],
 				"cross": {
-					"connectiveRoads": [39],
 					"autoConnectiveRoads": [39]
 				}
 			},
@@ -1950,7 +1873,6 @@
 				"handleIn": [-1.3345947265625, -0.1701558381319046, 2.4652507305145264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [41, 211],
 					"autoConnectiveRoads": [41, 211]
 				}
 			}
@@ -1967,7 +1889,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3555094003677368, -0.01158014964312315, -3.10552978515625],
 				"cross": {
-					"connectiveRoads": [40, 211],
 					"autoConnectiveRoads": [40, 211]
 				}
 			},
@@ -2001,7 +1922,6 @@
 				"handleIn": [-0.32470703125, 0.02903366088867187, 3.4683024883270264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [42, 45, 210],
 					"autoConnectiveRoads": [42, 45, 210]
 				}
 			}
@@ -2018,7 +1938,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.8498942852020264, -0.05411911010742187, 0.281982421875],
 				"cross": {
-					"connectiveRoads": [41, 45, 210],
 					"autoConnectiveRoads": [41, 45, 210]
 				}
 			},
@@ -2042,7 +1961,6 @@
 				"handleIn": [4.17962646484375, 0.00615692138671875, -0.4960733950138092],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [43, 44, 208],
 					"autoConnectiveRoads": [43, 44, 208]
 				}
 			}
@@ -2059,7 +1977,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.4707437753677368, -0.10170364379882813, -3.2079265117645264],
 				"cross": {
-					"connectiveRoads": [42, 44, 208],
 					"autoConnectiveRoads": [42, 44, 208]
 				}
 			},
@@ -2073,7 +1990,6 @@
 				"handleIn": [0.5361735224723816, 0.09495798498392104, 2.76055908203125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [44, 210],
 					"autoConnectiveRoads": [44, 210]
 				}
 			}
@@ -2090,7 +2006,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.9902546405792236, 0.03148778155446052, -0.8688151240348816],
 				"cross": {
-					"connectiveRoads": [43, 210],
 					"autoConnectiveRoads": [43, 210]
 				}
 			},
@@ -2154,7 +2069,6 @@
 				"handleIn": [-2.8562419414520264, 0.00876553822308778, 0.5250244140625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [42, 43, 208],
 					"autoConnectiveRoads": [42, 43, 208]
 				}
 			}
@@ -2171,7 +2085,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.42724609375, 0.00206883740611374, -2.3623859882354736],
 				"cross": {
-					"connectiveRoads": [41, 42, 210],
 					"autoConnectiveRoads": [41, 42, 210]
 				}
 			},
@@ -2195,7 +2108,6 @@
 				"handleIn": [-5.896565914154053, 0.0295689906924963, 4.79058837890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [46, 370, 372],
 					"autoConnectiveRoads": [46, 370, 372]
 				}
 			}
@@ -2212,7 +2124,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5853271484375, -0.03602917864918709, -2.0439860820770264],
 				"cross": {
-					"connectiveRoads": [45, 370, 372],
 					"autoConnectiveRoads": [45, 370, 372]
 				}
 			},
@@ -2271,7 +2182,6 @@
 				"handleIn": [-2.418701171875, 0.05584589764475822, 2.2308349609375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [47, 374],
 					"autoConnectiveRoads": [47, 374]
 				}
 			}
@@ -2288,7 +2198,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.2887370586395264, 0.05694580078125, -2.6859333515167236],
 				"cross": {
-					"connectiveRoads": [46, 374],
 					"autoConnectiveRoads": [46, 374]
 				}
 			},
@@ -2317,7 +2226,6 @@
 				"handleIn": [-2.3345134258270264, -0.0283025112003088, 0.8378499150276184],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [48, 378],
 					"autoConnectiveRoads": [48, 378]
 				}
 			}
@@ -2334,7 +2242,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.962809085845947, -0.05334599688649177, -0.49749755859375],
 				"cross": {
-					"connectiveRoads": [47, 378],
 					"autoConnectiveRoads": [47, 378]
 				}
 			},
@@ -2383,7 +2290,6 @@
 				"handleIn": [-3.7386066913604736, -0.06364186853170395, 0.2763671875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [49],
 					"autoConnectiveRoads": [49]
 				}
 			}
@@ -2400,7 +2306,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [6.354207515716553, -0.18519847095012665, -0.0675252303481102],
 				"cross": {
-					"connectiveRoads": [48],
 					"autoConnectiveRoads": [48]
 				}
 			},
@@ -2449,7 +2354,6 @@
 				"handleIn": [-4.9239501953125, 0.0302149448543787, 1.53436279296875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [50, 385],
 					"autoConnectiveRoads": [50, 385]
 				}
 			}
@@ -2466,7 +2370,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.498494625091553, -0.05671310424804687, -0.2195231169462204],
 				"cross": {
-					"connectiveRoads": [49, 385],
 					"autoConnectiveRoads": [49, 385]
 				}
 			},
@@ -2480,7 +2383,6 @@
 				"handleIn": [-5.348836421966553, 0.02707799337804317, 1.17486572265625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [238, 381, 388],
 					"autoConnectiveRoads": [238, 381, 388]
 				}
 			}
@@ -2497,7 +2399,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.9700927734375, 0.05273691937327385, 3.617279052734375],
 				"cross": {
-					"connectiveRoads": [29, 30],
 					"autoConnectiveRoads": [29, 30]
 				}
 			},
@@ -2511,7 +2412,6 @@
 				"handleIn": [-1.95648193359375, -0.08739852905273438, -3.7992451190948486],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [52, 148, 149],
 					"autoConnectiveRoads": [52, 148, 149]
 				}
 			}
@@ -2528,7 +2428,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.18408203125, 0.10354486852884293, 4.37786865234375],
 				"cross": {
-					"connectiveRoads": [51, 148, 149],
 					"autoConnectiveRoads": [51, 148, 149]
 				}
 			},
@@ -2547,7 +2446,6 @@
 				"handleIn": [-1.3848673105239868, -0.03356679156422615, -2.612314939498902],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [53, 147, 358],
 					"autoConnectiveRoads": [53, 147, 358]
 				}
 			}
@@ -2564,7 +2462,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.7001138925552368, 0.010162353515625, 3.3363189697265625],
 				"cross": {
-					"connectiveRoads": [52, 147, 358],
 					"autoConnectiveRoads": [52, 147, 358]
 				}
 			},
@@ -2578,7 +2475,6 @@
 				"handleIn": [-1.1429647207260132, -0.0024871826171875, -2.199351072311402],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [54, 55],
 					"autoConnectiveRoads": [54, 55]
 				}
 			}
@@ -2595,7 +2491,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.6773681640625, 0.1406504362821579, 3.244420289993286],
 				"cross": {
-					"connectiveRoads": [53, 55],
 					"autoConnectiveRoads": [53, 55]
 				}
 			},
@@ -2624,7 +2519,6 @@
 				"handleIn": [1.7596842050552368, 0.03807703778147697, -1.2900747060775757],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [146, 356],
 					"autoConnectiveRoads": [146, 356]
 				}
 			}
@@ -2641,7 +2535,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.23199462890625, 0.0366719551384449, 4.0048065185546875],
 				"cross": {
-					"connectiveRoads": [53, 54],
 					"autoConnectiveRoads": [53, 54]
 				}
 			},
@@ -2675,7 +2568,6 @@
 				"handleIn": [-1.1663411855697632, -0.11182022094726564, -4.051513671875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [58],
 					"autoConnectiveRoads": [58]
 				}
 			}
@@ -2692,7 +2584,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-9.365620613098145, -0.00533548975363373, -2.1073405742645264],
 				"cross": {
-					"connectiveRoads": [59],
 					"autoConnectiveRoads": [59]
 				}
 			},
@@ -2701,7 +2592,6 @@
 				"handleIn": [9.365620613098145, 0.00533548975363373, 2.1073405742645264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [57],
 					"autoConnectiveRoads": [57]
 				}
 			}
@@ -2718,7 +2608,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.311177730560303, -0.03116734884679317, -1.7622194290161133],
 				"cross": {
-					"connectiveRoads": [56],
 					"autoConnectiveRoads": [56]
 				}
 			},
@@ -2747,7 +2636,6 @@
 				"handleIn": [3.3084309101104736, 0.3331489562988281, 2.1924197673797607],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [58, 123],
 					"autoConnectiveRoads": [58, 123]
 				}
 			}
@@ -2764,7 +2652,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.618408203125, -0.18235397338867188, -2.4389114379882813],
 				"cross": {
-					"connectiveRoads": [57, 123],
 					"autoConnectiveRoads": [57, 123]
 				}
 			},
@@ -2843,7 +2730,6 @@
 				"handleIn": [0.8202311396598816, 0.04215367510914802, 3.1831817626953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [55],
 					"autoConnectiveRoads": [55]
 				}
 			}
@@ -2860,7 +2746,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1791179180145264, -0.03359540179371834, 1.0392417907714844],
 				"cross": {
-					"connectiveRoads": [56],
 					"autoConnectiveRoads": [56]
 				}
 			},
@@ -2894,7 +2779,6 @@
 				"handleIn": [-2.2611083984375, 0.19448725879192352, -2.0953304767608643],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [60, 129],
 					"autoConnectiveRoads": [60, 129]
 				}
 			}
@@ -2911,7 +2795,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.5485026836395264, 0.05965932086110115, 3.700653076171875],
 				"cross": {
-					"connectiveRoads": [59, 129],
 					"autoConnectiveRoads": [59, 129]
 				}
 			},
@@ -2973,7 +2856,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-6.937174320220947, 0.01244990061968565, 0.3736979067325592],
 				"cross": {
-					"connectiveRoads": [9],
 					"autoConnectiveRoads": [9]
 				}
 			},
@@ -2982,7 +2864,6 @@
 				"handleIn": [6.937174320220947, -0.01244990061968565, -0.3736979067325592],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [62],
 					"autoConnectiveRoads": [62]
 				}
 			}
@@ -2999,7 +2880,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.9257404804229736, 0.26469168066978455, 0.0330607108771801],
 				"cross": {
-					"connectiveRoads": [61],
 					"autoConnectiveRoads": [61]
 				}
 			},
@@ -3018,7 +2898,6 @@
 				"handleIn": [4.736328125, -0.0384114570915699, -0.6185505986213684],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [63, 269],
 					"autoConnectiveRoads": [63, 269]
 				}
 			}
@@ -3035,7 +2914,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-6.737752437591553, 0.01228459645062685, 1.20709228515625],
 				"cross": {
-					"connectiveRoads": [62, 269],
 					"autoConnectiveRoads": [62, 269]
 				}
 			},
@@ -3054,7 +2932,6 @@
 				"handleIn": [2.4711506366729736, 0.03195571899414062, -0.0981241837143898],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [64],
 					"autoConnectiveRoads": [64]
 				}
 			}
@@ -3071,7 +2948,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.394429683685303, 0.00661977147683501, -1.3475545644760132],
 				"cross": {
-					"connectiveRoads": [63],
 					"autoConnectiveRoads": [63]
 				}
 			},
@@ -3120,7 +2996,6 @@
 				"handleIn": [3.938334226608277, -0.02019882202148437, -0.9952189326286316],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [65, 321],
 					"autoConnectiveRoads": [65, 321]
 				}
 			}
@@ -3137,7 +3012,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.4977214336395264, -0.00602340698242187, 0.5838215947151184],
 				"cross": {
-					"connectiveRoads": [64, 321],
 					"autoConnectiveRoads": [64, 321]
 				}
 			},
@@ -3161,7 +3035,6 @@
 				"handleIn": [1.73828125, 0.00170516967773437, -1.71002197265625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [66, 320],
 					"autoConnectiveRoads": [66, 320]
 				}
 			}
@@ -3178,7 +3051,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.8354085087776184, 0.03714625164866447, 3.11505126953125],
 				"cross": {
-					"connectiveRoads": [65, 320],
 					"autoConnectiveRoads": [65, 320]
 				}
 			},
@@ -3197,7 +3069,6 @@
 				"handleIn": [0.7158203125, 0.00238800048828125, -3.66455078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [67, 321],
 					"autoConnectiveRoads": [67, 321]
 				}
 			}
@@ -3214,7 +3085,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6111246347427368, 0.00566736841574311, 4.587728023529053],
 				"cross": {
-					"connectiveRoads": [66, 321],
 					"autoConnectiveRoads": [66, 321]
 				}
 			},
@@ -3238,7 +3108,6 @@
 				"handleIn": [3.2911376953125, 0.0527242012321949, -3.60833740234375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [68, 319],
 					"autoConnectiveRoads": [68, 319]
 				}
 			}
@@ -3255,7 +3124,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.8369953632354736, -0.03417714312672615, 3.00244140625],
 				"cross": {
-					"connectiveRoads": [67, 319],
 					"autoConnectiveRoads": [67, 319]
 				}
 			},
@@ -3269,7 +3137,6 @@
 				"handleIn": [3.1889240741729736, 0.01375325489789247, -2.5691936016082764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [69, 318, 319],
 					"autoConnectiveRoads": [69, 318, 319]
 				}
 			}
@@ -3286,7 +3153,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.1145832538604736, -0.005859375, 2.079823732376098],
 				"cross": {
-					"connectiveRoads": [68, 318, 319],
 					"autoConnectiveRoads": [68, 318, 319]
 				}
 			},
@@ -3335,7 +3201,6 @@
 				"handleIn": [0.2357177734375, 0.02732467651367187, -6.172647953033447],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [70],
 					"autoConnectiveRoads": [70]
 				}
 			}
@@ -3352,7 +3217,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4064127504825592, 0.04762395098805427, 3.851816892623902],
 				"cross": {
-					"connectiveRoads": [69],
 					"autoConnectiveRoads": [69]
 				}
 			},
@@ -3386,7 +3250,6 @@
 				"handleIn": [1.5455322265625, -0.203996017575264, -2.949127197265625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [71, 261],
 					"autoConnectiveRoads": [71, 261]
 				}
 			}
@@ -3403,7 +3266,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.8799235820770264, 0.00369517016224563, 0.0603739432990551],
 				"cross": {
-					"connectiveRoads": [70, 261],
 					"autoConnectiveRoads": [70, 261]
 				}
 			},
@@ -3447,7 +3309,6 @@
 				"handleIn": [4.420816898345947, -0.08314323425292969, -1.214263916015625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [72],
 					"autoConnectiveRoads": [72]
 				}
 			}
@@ -3464,7 +3325,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-6.558837890625, 0.19474029541015625, 1.5953775644302368],
 				"cross": {
-					"connectiveRoads": [71],
 					"autoConnectiveRoads": [71]
 				}
 			},
@@ -3533,7 +3393,6 @@
 				"handleIn": [2.6094970703125, 0.00768152857199311, -4.5853118896484375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [73, 76],
 					"autoConnectiveRoads": [73, 76]
 				}
 			}
@@ -3550,7 +3409,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.7922770977020264, -0.0214055385440588, 2.292205810546875],
 				"cross": {
-					"connectiveRoads": [72, 76],
 					"autoConnectiveRoads": [72, 76]
 				}
 			},
@@ -3564,7 +3422,6 @@
 				"handleIn": [4.802327632904053, 0.04287974163889885, -2.5315144062042236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [74, 77],
 					"autoConnectiveRoads": [74, 77]
 				}
 			}
@@ -3581,7 +3438,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.8731689453125, -0.01003519725054502, -1.4466552734375],
 				"cross": {
-					"connectiveRoads": [73, 77],
 					"autoConnectiveRoads": [73, 77]
 				}
 			},
@@ -3605,7 +3461,6 @@
 				"handleIn": [2.1263835430145264, -0.00449752807617187, 2.3183441162109375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [75, 264],
 					"autoConnectiveRoads": [75, 264]
 				}
 			}
@@ -3622,7 +3477,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3872478008270264, 0.02812957763671875, -1.838368773460388],
 				"cross": {
-					"connectiveRoads": [74, 264],
 					"autoConnectiveRoads": [74, 264]
 				}
 			},
@@ -3641,7 +3495,6 @@
 				"handleIn": [-1.9630941152572632, 0.00643539428710937, 0.9469451904296876],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [76, 265],
 					"autoConnectiveRoads": [76, 265]
 				}
 			}
@@ -3658,7 +3511,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.5385334491729736, 0.01356887817382812, -1.930669188499451],
 				"cross": {
-					"connectiveRoads": [72, 73],
 					"autoConnectiveRoads": [72, 73]
 				}
 			},
@@ -3677,7 +3529,6 @@
 				"handleIn": [3.6750895977020264, -0.0241877231746912, 3.566904783248902],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [75, 265],
 					"autoConnectiveRoads": [75, 265]
 				}
 			}
@@ -3694,7 +3545,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.850830078125, -0.00196520495228469, 2.770009279251098],
 				"cross": {
-					"connectiveRoads": [73, 74],
 					"autoConnectiveRoads": [73, 74]
 				}
 			},
@@ -3768,7 +3618,6 @@
 				"handleIn": [4.579345703125, 0.0018157958984375, 1.5193506479263306],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [78],
 					"autoConnectiveRoads": [78]
 				}
 			}
@@ -3785,7 +3634,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.534871578216553, 0.00646718358621001, 6.1992621421813965],
 				"cross": {
-					"connectiveRoads": [77],
 					"autoConnectiveRoads": [77]
 				}
 			},
@@ -3824,7 +3672,6 @@
 				"handleIn": [-0.1173909530043602, -0.02640787698328495, -6.861347675323486],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [79, 87],
 					"autoConnectiveRoads": [79, 87]
 				}
 			}
@@ -3841,7 +3688,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.5505778193473816, -0.09259668737649918, 5.537286281585693],
 				"cross": {
-					"connectiveRoads": [78, 87],
 					"autoConnectiveRoads": [78, 87]
 				}
 			},
@@ -3855,7 +3701,6 @@
 				"handleIn": [-0.00996907521039247, -0.03621165081858635, -4.833410739898682],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [80, 255],
 					"autoConnectiveRoads": [80, 255]
 				}
 			}
@@ -3872,7 +3717,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.03515625, 0.01684951782226562, 2.6494266986846924],
 				"cross": {
-					"connectiveRoads": [79, 255],
 					"autoConnectiveRoads": [79, 255]
 				}
 			},
@@ -3891,7 +3735,6 @@
 				"handleIn": [-0.1529541015625, 0.0278778076171875, -3.475059509277344],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [81, 254],
 					"autoConnectiveRoads": [81, 254]
 				}
 			}
@@ -3908,7 +3751,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0444742850959301, -0.02894401550292968, 2.9624404907226563],
 				"cross": {
-					"connectiveRoads": [80, 254],
 					"autoConnectiveRoads": [80, 254]
 				}
 			},
@@ -3927,7 +3769,6 @@
 				"handleIn": [-0.2165120393037796, 0.01604525186121463, -3.431610107421875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [82, 256],
 					"autoConnectiveRoads": [82, 256]
 				}
 			}
@@ -3944,7 +3785,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0990397110581398, 0.00387382507324218, 2.5968551635742188],
 				"cross": {
-					"connectiveRoads": [81, 256],
 					"autoConnectiveRoads": [81, 256]
 				}
 			},
@@ -3958,7 +3798,6 @@
 				"handleIn": [0.3639322817325592, 0.00216484069824218, -2.1808674335479736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [83, 92],
 					"autoConnectiveRoads": [83, 92]
 				}
 			}
@@ -3975,7 +3814,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.5852457880973816, 0.05888112261891365, 3.6825358867645264],
 				"cross": {
-					"connectiveRoads": [82, 92],
 					"autoConnectiveRoads": [82, 92]
 				}
 			},
@@ -3984,7 +3822,6 @@
 				"handleIn": [0.5852457880973816, -0.05888112261891365, -3.6825358867645264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [84, 252],
 					"autoConnectiveRoads": [84, 252]
 				}
 			}
@@ -4001,7 +3838,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.531494140625, 0.04044024273753166, 2.3690693378448486],
 				"cross": {
-					"connectiveRoads": [83, 252],
 					"autoConnectiveRoads": [83, 252]
 				}
 			},
@@ -4025,7 +3861,6 @@
 				"handleIn": [-2.7298583984375, 0.04596074298024177, -1.76702880859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [85, 250],
 					"autoConnectiveRoads": [85, 250]
 				}
 			}
@@ -4042,7 +3877,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.9606525897979736, 0.1955413818359375, 3.450795412063598],
 				"cross": {
-					"connectiveRoads": [84, 250],
 					"autoConnectiveRoads": [84, 250]
 				}
 			},
@@ -4051,7 +3885,6 @@
 				"handleIn": [3.9606525897979736, -0.1955413818359375, -3.450795412063598],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [86],
 					"autoConnectiveRoads": [86]
 				}
 			}
@@ -4068,7 +3901,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.414225101470947, 0.08649762719869614, 4.775390625],
 				"cross": {
-					"connectiveRoads": [85],
 					"autoConnectiveRoads": [85]
 				}
 			},
@@ -4090,7 +3922,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.6583659648895264, -0.02706527709960937, -0.07596460729837418],
 				"cross": {
-					"connectiveRoads": [78, 79],
 					"autoConnectiveRoads": [78, 79]
 				}
 			},
@@ -4149,7 +3980,6 @@
 				"handleIn": [3.33203125, 0.01099777221679687, -0.12919235229492188],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [88, 89],
 					"autoConnectiveRoads": [88, 89]
 				}
 			}
@@ -4166,7 +3996,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.4888101816177368, 0.03438059613108635, 3.1663169860839844],
 				"cross": {
-					"connectiveRoads": [87, 89],
 					"autoConnectiveRoads": [87, 89]
 				}
 			},
@@ -4193,7 +4022,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-6.4696044921875, 0.03703562542796135, 0.2218271940946579],
 				"cross": {
-					"connectiveRoads": [87, 88],
 					"autoConnectiveRoads": [87, 88]
 				}
 			},
@@ -4232,7 +4060,6 @@
 				"handleIn": [-0.2408040314912796, -0.00141270959284156, -5.730763912200928],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [90],
 					"autoConnectiveRoads": [90]
 				}
 			}
@@ -4249,7 +4076,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0084228515625, -0.00810813903808593, 3.736394166946411],
 				"cross": {
-					"connectiveRoads": [89],
 					"autoConnectiveRoads": [89]
 				}
 			},
@@ -4293,7 +4119,6 @@
 				"handleIn": [-1.8267822265625, -0.00311279296875, 0.5381495356559753],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [91, 92],
 					"autoConnectiveRoads": [91, 92]
 				}
 			}
@@ -4310,7 +4135,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [5.3197021484375, -0.00215975451283156, -1.802502989768982],
 				"cross": {
-					"connectiveRoads": [90, 92],
 					"autoConnectiveRoads": [90, 92]
 				}
 			},
@@ -4337,7 +4161,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5631510019302368, 0.00089836120605468, 2.245997190475464],
 				"cross": {
-					"connectiveRoads": [90, 91],
 					"autoConnectiveRoads": [90, 91]
 				}
 			},
@@ -4396,7 +4219,6 @@
 				"handleIn": [-2.2323405742645264, 0.11884943395853044, -0.3655548095703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [82, 83],
 					"autoConnectiveRoads": [82, 83]
 				}
 			}
@@ -4413,7 +4235,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.3697052001953125, -0.0340474434196949, -3.1157634258270264],
 				"cross": {
-					"connectiveRoads": [25, 26],
 					"autoConnectiveRoads": [25, 26]
 				}
 			},
@@ -4427,7 +4248,6 @@
 				"handleIn": [0.4949493408203125, -0.02703221701085567, 4.059122562408447],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [94],
 					"autoConnectiveRoads": [94]
 				}
 			}
@@ -4444,7 +4264,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.2122446745634079, 0.0900014266371727, -3.726338624954224],
 				"cross": {
-					"connectiveRoads": [93],
 					"autoConnectiveRoads": [93]
 				}
 			},
@@ -4458,7 +4277,6 @@
 				"handleIn": [0.00636800145730376, -0.09988657385110856, 3.6063945293426514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [95],
 					"autoConnectiveRoads": [95]
 				}
 			}
@@ -4475,7 +4293,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0640818253159523, -0.02824529074132442, -4.754964351654053],
 				"cross": {
-					"connectiveRoads": [94],
 					"autoConnectiveRoads": [94]
 				}
 			},
@@ -4489,7 +4306,6 @@
 				"handleIn": [0.3091532289981842, 0.01199722290039062, 4.10968017578125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [96, 99],
 					"autoConnectiveRoads": [96, 99]
 				}
 			}
@@ -4506,7 +4322,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.7132772207260132, 0.01743507385253906, -2.576527833938598],
 				"cross": {
-					"connectiveRoads": [95, 99],
 					"autoConnectiveRoads": [95, 99]
 				}
 			},
@@ -4535,7 +4350,6 @@
 				"handleIn": [0.483734130859375, 0.07001367956399918, 1.2930399179458618],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [97, 100],
 					"autoConnectiveRoads": [97, 100]
 				}
 			}
@@ -4552,7 +4366,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.3354848325252533, -0.22972361743450165, -2.455902099609375],
 				"cross": {
-					"connectiveRoads": [96, 100],
 					"autoConnectiveRoads": [96, 100]
 				}
 			},
@@ -4571,7 +4384,6 @@
 				"handleIn": [3.1783039569854736, 0.0667470321059227, 2.060068845748902],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [98, 101],
 					"autoConnectiveRoads": [98, 101]
 				}
 			}
@@ -4588,7 +4400,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6972757577896118, 0.02547836303710937, 2.311146974563598],
 				"cross": {
-					"connectiveRoads": [97, 101],
 					"autoConnectiveRoads": [97, 101]
 				}
 			},
@@ -4607,7 +4418,6 @@
 				"handleIn": [1.5808563232421875, 0.03953806683421135, -1.65631103515625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [99, 100],
 					"autoConnectiveRoads": [99, 100]
 				}
 			}
@@ -4624,7 +4434,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.2177988290786743, 0.06509526818990707, 1.9810384511947632],
 				"cross": {
-					"connectiveRoads": [98, 100],
 					"autoConnectiveRoads": [98, 100]
 				}
 			},
@@ -4658,7 +4467,6 @@
 				"handleIn": [-1.8505605459213257, -0.051605224609375, -1.36090087890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [95, 96],
 					"autoConnectiveRoads": [95, 96]
 				}
 			}
@@ -4675,7 +4483,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.673375368118286, 0.2331269532442093, 1.6984761953353882],
 				"cross": {
-					"connectiveRoads": [98, 99],
 					"autoConnectiveRoads": [98, 99]
 				}
 			},
@@ -4704,7 +4511,6 @@
 				"handleIn": [-1.9068094491958616, 0.11945978552103044, 1.3843485116958618],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [96, 97],
 					"autoConnectiveRoads": [96, 97]
 				}
 			}
@@ -4721,7 +4527,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.7718505859375, -0.2165781706571579, -5.445973873138428],
 				"cross": {
-					"connectiveRoads": [97, 98],
 					"autoConnectiveRoads": [97, 98]
 				}
 			},
@@ -4765,7 +4570,6 @@
 				"handleIn": [3.723698854446411, 0.08163324743509293, 2.36090087890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [102, 169],
 					"autoConnectiveRoads": [102, 169]
 				}
 			}
@@ -4782,7 +4586,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.390411376953125, -0.02541987039148807, -2.66864013671875],
 				"cross": {
-					"connectiveRoads": [101, 169],
 					"autoConnectiveRoads": [101, 169]
 				}
 			},
@@ -4841,7 +4644,6 @@
 				"handleIn": [-2.589472532272339, 0.06730524450540543, 2.840087890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [103, 190],
 					"autoConnectiveRoads": [103, 190]
 				}
 			}
@@ -4858,7 +4660,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.240712642669678, 0.04782358929514885, 1.2512410879135132],
 				"cross": {
-					"connectiveRoads": [102, 190],
 					"autoConnectiveRoads": [102, 190]
 				}
 			},
@@ -4887,7 +4688,6 @@
 				"handleIn": [-2.942840576171875, -0.02488835714757442, 0.7613525390625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [104, 340],
 					"autoConnectiveRoads": [104, 340]
 				}
 			}
@@ -4904,7 +4704,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6732177734375, -0.0119997663423419, -0.5345051884651184],
 				"cross": {
-					"connectiveRoads": [103, 340],
 					"autoConnectiveRoads": [103, 340]
 				}
 			},
@@ -4923,7 +4722,6 @@
 				"handleIn": [-3.2871601581573486, 0.00229644775390625, 1.5685831308364868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [105, 340],
 					"autoConnectiveRoads": [105, 340]
 				}
 			}
@@ -4940,7 +4738,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.000885009765625, -0.00340716051869094, -1.03240966796875],
 				"cross": {
-					"connectiveRoads": [104, 340],
 					"autoConnectiveRoads": [104, 340]
 				}
 			},
@@ -4959,7 +4756,6 @@
 				"handleIn": [-1.504150390625, 0.03029886819422245, 0.4013875424861908],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [106, 341],
 					"autoConnectiveRoads": [106, 341]
 				}
 			}
@@ -4976,7 +4772,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.2864177227020264, 0.01532554626464843, -0.5324910283088684],
 				"cross": {
-					"connectiveRoads": [105, 341],
 					"autoConnectiveRoads": [105, 341]
 				}
 			},
@@ -4995,7 +4790,6 @@
 				"handleIn": [-2.4197590351104736, -0.0347086600959301, 0.72802734375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [107, 342, 344],
 					"autoConnectiveRoads": [107, 342, 344]
 				}
 			}
@@ -5012,7 +4806,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.609405517578125, -0.00315539049915969, -1.48333740234375],
 				"cross": {
-					"connectiveRoads": [106, 342, 344],
 					"autoConnectiveRoads": [106, 342, 344]
 				}
 			},
@@ -5066,7 +4859,6 @@
 				"handleIn": [-1.995819091796875, 0.0403289794921875, 1.9635009765625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [108],
 					"autoConnectiveRoads": [108]
 				}
 			}
@@ -5083,7 +4875,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9222819805145264, 0.00413195276632905, -3.5745646953582764],
 				"cross": {
-					"connectiveRoads": [107],
 					"autoConnectiveRoads": [107]
 				}
 			},
@@ -5132,7 +4923,6 @@
 				"handleIn": [-4.2047119140625, 0.00318400072865188, 4.083028316497803],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [109, 207],
 					"autoConnectiveRoads": [109, 207]
 				}
 			}
@@ -5149,7 +4939,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1294758319854736, -0.02044677734375, -0.1083780899643898],
 				"cross": {
-					"connectiveRoads": [108, 207],
 					"autoConnectiveRoads": [108, 207]
 				}
 			},
@@ -5168,7 +4957,6 @@
 				"handleIn": [-1.8782958984375, 0.03243382647633552, -1.52191162109375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [110],
 					"autoConnectiveRoads": [110]
 				}
 			}
@@ -5185,7 +4973,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.4900104999542236, -0.068695068359375, 4.987386226654053],
 				"cross": {
-					"connectiveRoads": [109],
 					"autoConnectiveRoads": [109]
 				}
 			},
@@ -5194,7 +4981,6 @@
 				"handleIn": [-2.4900104999542236, 0.068695068359375, -4.987386226654053],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [111],
 					"autoConnectiveRoads": [111]
 				}
 			}
@@ -5211,7 +4997,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.9556071162223816, 0.06408437341451645, 4.078084468841553],
 				"cross": {
-					"connectiveRoads": [110],
 					"autoConnectiveRoads": [110]
 				}
 			},
@@ -5275,7 +5060,6 @@
 				"handleIn": [-1.3904622793197632, -0.01810073852539062, -2.6745197772979736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [112],
 					"autoConnectiveRoads": [112]
 				}
 			}
@@ -5292,7 +5076,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5565999746322632, -0.05696932598948479, 2.685791015625],
 				"cross": {
-					"connectiveRoads": [111],
 					"autoConnectiveRoads": [111]
 				}
 			},
@@ -5346,7 +5129,6 @@
 				"handleIn": [-2.4189250469207764, 0.02852503396570682, -3.5948283672332764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [113],
 					"autoConnectiveRoads": [113]
 				}
 			}
@@ -5363,7 +5145,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.35455322265625, 0.26757559180259705, 3.8642578125],
 				"cross": {
-					"connectiveRoads": [112],
 					"autoConnectiveRoads": [112]
 				}
 			},
@@ -5392,7 +5173,6 @@
 				"handleIn": [-4.267354488372803, 0.01697158813476562, -4.912088871002197],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [114, 131],
 					"autoConnectiveRoads": [114, 131]
 				}
 			}
@@ -5409,7 +5189,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0206706523895264, 0.07539049535989761, 1.87347412109375],
 				"cross": {
-					"connectiveRoads": [113, 131],
 					"autoConnectiveRoads": [113, 131]
 				}
 			},
@@ -5423,7 +5202,6 @@
 				"handleIn": [-2.18280029296875, 0.02851295471191406, -2.178314208984375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [115, 137, 345],
 					"autoConnectiveRoads": [115, 137, 345]
 				}
 			}
@@ -5440,7 +5218,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3311564922332764, -0.0670420303940773, 2.561798095703125],
 				"cross": {
-					"connectiveRoads": [114, 137, 345],
 					"autoConnectiveRoads": [114, 137, 345]
 				}
 			},
@@ -5464,7 +5241,6 @@
 				"handleIn": [-2.05999755859375, 0.00836690235882997, -2.578155517578125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [116, 349, 351],
 					"autoConnectiveRoads": [116, 349, 351]
 				}
 			}
@@ -5481,7 +5257,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.9230550527572632, -0.06755828857421875, 2.489837646484375],
 				"cross": {
-					"connectiveRoads": [115, 349, 351],
 					"autoConnectiveRoads": [115, 349, 351]
 				}
 			},
@@ -5510,7 +5285,6 @@
 				"handleIn": [-0.01676432229578495, 0.01770146749913692, -1.878041625022888],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [117, 352, 368],
 					"autoConnectiveRoads": [117, 352, 368]
 				}
 			}
@@ -5527,7 +5301,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0652262344956398, -0.06562614440917969, 2.058380126953125],
 				"cross": {
-					"connectiveRoads": [116, 352, 368],
 					"autoConnectiveRoads": [116, 352, 368]
 				}
 			},
@@ -5551,7 +5324,6 @@
 				"handleIn": [1.08831787109375, 0.00020980834960937, -3.224863767623902],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [118, 353, 354],
 					"autoConnectiveRoads": [118, 353, 354]
 				}
 			}
@@ -5568,7 +5340,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.1229654550552368, 0.03848711773753166, 2.71453857421875],
 				"cross": {
-					"connectiveRoads": [117, 353, 354],
 					"autoConnectiveRoads": [117, 353, 354]
 				}
 			},
@@ -5592,7 +5363,6 @@
 				"handleIn": [0.72406005859375, 0.03250439837574959, -4.410552978515625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [30, 31],
 					"autoConnectiveRoads": [30, 31]
 				}
 			}
@@ -5609,7 +5379,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.4438069760799408, -0.01835759542882442, 3.6256916522979736],
 				"cross": {
-					"connectiveRoads": [34, 35, 365],
 					"autoConnectiveRoads": [34, 35, 365]
 				}
 			},
@@ -5633,7 +5402,6 @@
 				"handleIn": [1.1009114980697632, -0.01897303201258182, -3.2882080078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [120],
 					"autoConnectiveRoads": [120]
 				}
 			}
@@ -5650,7 +5418,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.2291666269302368, 0.00971857737749815, 2.995473146438598],
 				"cross": {
-					"connectiveRoads": [119],
 					"autoConnectiveRoads": [119]
 				}
 			},
@@ -5689,7 +5456,6 @@
 				"handleIn": [2.7995402812957764, 0.08728408813476563, 0.9888051152229308],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [121, 122],
 					"autoConnectiveRoads": [121, 122]
 				}
 			}
@@ -5706,7 +5472,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.1873779296875, 0.00696182250976562, 3.5884246826171875],
 				"cross": {
-					"connectiveRoads": [120, 122],
 					"autoConnectiveRoads": [120, 122]
 				}
 			},
@@ -5735,7 +5500,6 @@
 				"handleIn": [-1.2452188730239868, -0.02105840109288692, -1.9185028076171875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [126, 360],
 					"autoConnectiveRoads": [126, 360]
 				}
 			}
@@ -5752,7 +5516,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.08148193359375, -0.09619140625, -3.764836549758911],
 				"cross": {
-					"connectiveRoads": [120, 121],
 					"autoConnectiveRoads": [120, 121]
 				}
 			},
@@ -5796,7 +5559,6 @@
 				"handleIn": [-1.38360595703125, -0.03319168090820312, 2.128204345703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [32, 33],
 					"autoConnectiveRoads": [32, 33]
 				}
 			}
@@ -5813,7 +5575,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.8306884765625, -0.19031143188476565, 2.7914092540740967],
 				"cross": {
-					"connectiveRoads": [57, 58],
 					"autoConnectiveRoads": [57, 58]
 				}
 			},
@@ -5857,7 +5618,6 @@
 				"handleIn": [-1.9396566152572632, -0.06603368371725082, -2.641326904296875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [124],
 					"autoConnectiveRoads": [124]
 				}
 			}
@@ -5874,7 +5634,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.2844442129135132, 0.03805923461914062, 1.620684266090393],
 				"cross": {
-					"connectiveRoads": [123],
 					"autoConnectiveRoads": [123]
 				}
 			},
@@ -5913,7 +5672,6 @@
 				"handleIn": [2.8379108905792236, 0.025177001953125, -0.7778956294059753],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [125, 130, 369],
 					"autoConnectiveRoads": [125, 130, 369]
 				}
 			}
@@ -5930,7 +5688,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.56622314453125, -0.02454376220703125, 0.9816207885742188],
 				"cross": {
-					"connectiveRoads": [124, 130, 369],
 					"autoConnectiveRoads": [124, 130, 369]
 				}
 			},
@@ -5954,7 +5711,6 @@
 				"handleIn": [3.1361083984375, 0.092010498046875, 0.8915736079216003],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [130],
 					"autoConnectiveRoads": [130]
 				}
 			}
@@ -5971,7 +5727,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1440227031707764, 0.11809667199850082, 3.460072755813598],
 				"cross": {
-					"connectiveRoads": [121, 360],
 					"autoConnectiveRoads": [121, 360]
 				}
 			},
@@ -5990,7 +5745,6 @@
 				"handleIn": [-1.3739013671875, 0.07610448449850082, -1.8177133798599243],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [127, 361],
 					"autoConnectiveRoads": [127, 361]
 				}
 			}
@@ -6007,7 +5761,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.06317138671875, -0.01238505076617002, 4.5721435546875],
 				"cross": {
-					"connectiveRoads": [126, 361],
 					"autoConnectiveRoads": [126, 361]
 				}
 			},
@@ -6056,7 +5809,6 @@
 				"handleIn": [-1.6812337636947632, 0.05307388305664062, -4.085206508636475],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [128],
 					"autoConnectiveRoads": [128]
 				}
 			}
@@ -6073,7 +5825,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1878459453582764, -0.01256052684038877, 5.473602294921875],
 				"cross": {
-					"connectiveRoads": [127],
 					"autoConnectiveRoads": [127]
 				}
 			},
@@ -6122,7 +5873,6 @@
 				"handleIn": [-2.8083088397979736, 0.4742940366268158, -1.9771080017089844],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [129],
 					"autoConnectiveRoads": [129]
 				}
 			}
@@ -6139,7 +5889,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.9290771484375, 0.14211654663085938, 1.4536195993423462],
 				"cross": {
-					"connectiveRoads": [128],
 					"autoConnectiveRoads": [128]
 				}
 			},
@@ -6168,7 +5917,6 @@
 				"handleIn": [1.0751138925552368, -0.12636184692382813, -1.4868749380111694],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [59, 60],
 					"autoConnectiveRoads": [59, 60]
 				}
 			}
@@ -6185,7 +5933,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.56005859375, -0.02140935324132442, -3.1914494037628174],
 				"cross": {
-					"connectiveRoads": [124, 125, 369],
 					"autoConnectiveRoads": [124, 125, 369]
 				}
 			},
@@ -6244,7 +5991,6 @@
 				"handleIn": [0.2733561098575592, 0.01233673095703125, -2.8768844604492188],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [125],
 					"autoConnectiveRoads": [125]
 				}
 			}
@@ -6261,7 +6007,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2911579608917236, 0.01109441090375185, 0.9609171748161316],
 				"cross": {
-					"connectiveRoads": [113, 114],
 					"autoConnectiveRoads": [113, 114]
 				}
 			},
@@ -6290,7 +6035,6 @@
 				"handleIn": [1.74566650390625, -0.00499598169699311, -0.9146220088005066],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [132, 139],
 					"autoConnectiveRoads": [132, 139]
 				}
 			}
@@ -6307,7 +6051,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1788737028837204, -0.02709197998046875, 2.72357177734375],
 				"cross": {
-					"connectiveRoads": [131, 139],
 					"autoConnectiveRoads": [131, 139]
 				}
 			},
@@ -6321,7 +6064,6 @@
 				"handleIn": [-0.3013712465763092, 0.03149032592773437, -2.156585693359375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [133, 355],
 					"autoConnectiveRoads": [133, 355]
 				}
 			}
@@ -6338,7 +6080,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.4193115234375, -0.08831151574850082, 2.272552490234375],
 				"cross": {
-					"connectiveRoads": [132, 355],
 					"autoConnectiveRoads": [132, 355]
 				}
 			},
@@ -6357,7 +6098,6 @@
 				"handleIn": [-0.1133219376206398, 0.0673014298081398, -2.2914021015167236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [134, 138],
 					"autoConnectiveRoads": [134, 138]
 				}
 			}
@@ -6374,7 +6114,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.32891845703125, 0.0027618408203125, 1.8750509023666384],
 				"cross": {
-					"connectiveRoads": [133, 138],
 					"autoConnectiveRoads": [133, 138]
 				}
 			},
@@ -6393,7 +6132,6 @@
 				"handleIn": [-0.4006144106388092, 0.0115509033203125, -1.5690511465072632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [135],
 					"autoConnectiveRoads": [135]
 				}
 			}
@@ -6410,7 +6148,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.7983194589614868, 0.00369389844126999, 0.3984781801700592],
 				"cross": {
-					"connectiveRoads": [134],
 					"autoConnectiveRoads": [134]
 				}
 			},
@@ -6454,7 +6191,6 @@
 				"handleIn": [0.15228271484375, -0.03538767620921135, 2.4300739765167236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [136, 350],
 					"autoConnectiveRoads": [136, 350]
 				}
 			}
@@ -6471,7 +6207,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.44830322265625, 0.09159469604492188, -1.932607054710388],
 				"cross": {
-					"connectiveRoads": [135, 350],
 					"autoConnectiveRoads": [135, 350]
 				}
 			},
@@ -6490,7 +6225,6 @@
 				"handleIn": [0.2121378630399704, -0.0781351700425148, 1.1249593496322632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [137, 355],
 					"autoConnectiveRoads": [137, 355]
 				}
 			}
@@ -6507,7 +6241,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1925252228975296, 0.06683412939310074, -1.94842529296875],
 				"cross": {
-					"connectiveRoads": [136, 355],
 					"autoConnectiveRoads": [136, 355]
 				}
 			},
@@ -6531,7 +6264,6 @@
 				"handleIn": [-1.8995157480239868, 0.1384735107421875, 1.2689005136489868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [114, 115, 345],
 					"autoConnectiveRoads": [114, 115, 345]
 				}
 			}
@@ -6548,7 +6280,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.265869140625, 0.02692031860351562, 0.3709513247013092],
 				"cross": {
-					"connectiveRoads": [133, 134],
 					"autoConnectiveRoads": [133, 134]
 				}
 			},
@@ -6577,7 +6308,6 @@
 				"handleIn": [1.72607421875, 0.00203386950306594, -0.1172892227768898],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [139, 140],
 					"autoConnectiveRoads": [139, 140]
 				}
 			}
@@ -6594,7 +6324,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1156005859375, -0.03436024859547615, -1.8655294179916384],
 				"cross": {
-					"connectiveRoads": [131, 132],
 					"autoConnectiveRoads": [131, 132]
 				}
 			},
@@ -6638,7 +6367,6 @@
 				"handleIn": [-0.7748005986213684, 0.08478609472513199, -4.06982421875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [138, 140],
 					"autoConnectiveRoads": [138, 140]
 				}
 			}
@@ -6655,7 +6383,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.1913248747587204, -0.02763811685144901, 1.9014180898666384],
 				"cross": {
-					"connectiveRoads": [138, 139],
 					"autoConnectiveRoads": [138, 139]
 				}
 			},
@@ -6684,7 +6411,6 @@
 				"handleIn": [0.01243082713335752, 0.0187505092471838, -2.4972636699676514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [141],
 					"autoConnectiveRoads": [141]
 				}
 			}
@@ -6701,7 +6427,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1739501953125, 0.0651753768324852, 3.592987060546875],
 				"cross": {
-					"connectiveRoads": [140],
 					"autoConnectiveRoads": [140]
 				}
 			},
@@ -6710,7 +6435,6 @@
 				"handleIn": [-0.1739501953125, -0.0651753768324852, -3.592987060546875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [142],
 					"autoConnectiveRoads": [142]
 				}
 			}
@@ -6727,7 +6451,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.2677205502986908, 0.16226322948932648, 2.133412599563598],
 				"cross": {
-					"connectiveRoads": [141],
 					"autoConnectiveRoads": [141]
 				}
 			},
@@ -6741,7 +6464,6 @@
 				"handleIn": [-0.266845703125, 0.02430089376866817, -1.883575439453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [143, 354],
 					"autoConnectiveRoads": [143, 354]
 				}
 			}
@@ -6758,7 +6480,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.5786336064338684, -0.01919046975672245, 2.4327800273895264],
 				"cross": {
-					"connectiveRoads": [142, 354],
 					"autoConnectiveRoads": [142, 354]
 				}
 			},
@@ -6797,7 +6518,6 @@
 				"handleIn": [-0.84991455078125, -0.00523249292746186, -2.485728025436402],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [28, 29, 144],
 					"autoConnectiveRoads": [28, 29, 144]
 				}
 			}
@@ -6814,7 +6534,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.48626708984375, 0.04255421832203865, 1.7827554941177368],
 				"cross": {
-					"connectiveRoads": [28, 29, 143],
 					"autoConnectiveRoads": [28, 29, 143]
 				}
 			},
@@ -6843,7 +6562,6 @@
 				"handleIn": [-0.1220296248793602, -0.03537750244140625, -2.5915324687957764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [145, 149],
 					"autoConnectiveRoads": [145, 149]
 				}
 			}
@@ -6860,7 +6578,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.1457112580537796, 0.1124623641371727, 3.64501953125],
 				"cross": {
-					"connectiveRoads": [144, 149],
 					"autoConnectiveRoads": [144, 149]
 				}
 			},
@@ -6884,7 +6601,6 @@
 				"handleIn": [-0.19818115234375, -0.00343831372447311, -1.802256226539612],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [150, 357],
 					"autoConnectiveRoads": [150, 357]
 				}
 			}
@@ -6901,7 +6617,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.991455078125, 0.3014882504940033, 1.1407572031021118],
 				"cross": {
-					"connectiveRoads": [54, 356],
 					"autoConnectiveRoads": [54, 356]
 				}
 			},
@@ -6930,7 +6645,6 @@
 				"handleIn": [2.70965576171875, 0.03163719177246094, -0.2361501008272171],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [150, 391],
 					"autoConnectiveRoads": [150, 391]
 				}
 			}
@@ -6947,7 +6661,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1632893085479736, -0.0329640693962574, -1.2874044179916382],
 				"cross": {
-					"connectiveRoads": [52, 53, 358],
 					"autoConnectiveRoads": [52, 53, 358]
 				}
 			},
@@ -6971,7 +6684,6 @@
 				"handleIn": [-2.8645832538604736, 0.02011871337890625, 1.438720703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [148],
 					"autoConnectiveRoads": [148]
 				}
 			}
@@ -6988,7 +6700,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.8656819462776184, -0.0842437744140625, -2.0672810077667236],
 				"cross": {
-					"connectiveRoads": [147],
 					"autoConnectiveRoads": [147]
 				}
 			},
@@ -7027,7 +6738,6 @@
 				"handleIn": [2.28704833984375, -0.05179595947265625, -0.6351725459098816],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [51, 52, 149],
 					"autoConnectiveRoads": [51, 52, 149]
 				}
 			}
@@ -7044,7 +6754,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1113688945770264, -0.1088848114013672, -2.021616697311402],
 				"cross": {
-					"connectiveRoads": [144, 145],
 					"autoConnectiveRoads": [144, 145]
 				}
 			},
@@ -7073,7 +6782,6 @@
 				"handleIn": [-2.05718994140625, -0.02216593362390995, 1.2041116952896118],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [51, 52, 148],
 					"autoConnectiveRoads": [51, 52, 148]
 				}
 			}
@@ -7090,7 +6798,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0728759765625, 0.1555684357881546, 3.4009246826171875],
 				"cross": {
-					"connectiveRoads": [145, 357],
 					"autoConnectiveRoads": [145, 357]
 				}
 			},
@@ -7114,7 +6821,6 @@
 				"handleIn": [-0.0740152969956398, -0.05442364886403084, -1.945307374000549],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [146, 391],
 					"autoConnectiveRoads": [146, 391]
 				}
 			}
@@ -7131,7 +6837,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.186767578125, 0.05366897583007812, 0.182373046875],
 				"cross": {
-					"connectiveRoads": [6, 7],
 					"autoConnectiveRoads": [6, 7]
 				}
 			},
@@ -7150,7 +6855,6 @@
 				"handleIn": [-1.2899576425552368, 0.007171630859375, 0.04608154296875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [152, 155],
 					"autoConnectiveRoads": [152, 155]
 				}
 			}
@@ -7167,7 +6871,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.2728068828582764, 0.02680587768554687, -0.2285970002412796],
 				"cross": {
-					"connectiveRoads": [151, 155],
 					"autoConnectiveRoads": [151, 155]
 				}
 			},
@@ -7186,7 +6889,6 @@
 				"handleIn": [-1.6734415292739868, -0.0570526123046875, -0.18878173828125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [153, 154],
 					"autoConnectiveRoads": [153, 154]
 				}
 			}
@@ -7203,7 +6905,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.5131022334098816, -0.05565134808421135, -2.8020222187042236],
 				"cross": {
-					"connectiveRoads": [152, 154],
 					"autoConnectiveRoads": [152, 154]
 				}
 			},
@@ -7222,7 +6923,6 @@
 				"handleIn": [0.23291015625, -0.01738357543945312, 2.1648762226104736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [10, 11],
 					"autoConnectiveRoads": [10, 11]
 				}
 			}
@@ -7239,7 +6939,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3190103769302368, 0.09579340368509293, 2.5815227031707764],
 				"cross": {
-					"connectiveRoads": [152, 153],
 					"autoConnectiveRoads": [152, 153]
 				}
 			},
@@ -7263,7 +6962,6 @@
 				"handleIn": [-1.5790201425552368, 0.04482269287109375, -2.21832275390625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [14, 15],
 					"autoConnectiveRoads": [14, 15]
 				}
 			}
@@ -7280,7 +6978,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.3816935122013092, -0.00131607055664062, 2.2184245586395264],
 				"cross": {
-					"connectiveRoads": [151, 152],
 					"autoConnectiveRoads": [151, 152]
 				}
 			},
@@ -7309,7 +7006,6 @@
 				"handleIn": [0.3174234926700592, -0.02036158181726932, -2.1012165546417236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [5, 6],
 					"autoConnectiveRoads": [5, 6]
 				}
 			}
@@ -7326,7 +7022,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.6329752802848816, -0.00051116943359375, -2.10235595703125],
 				"cross": {
-					"connectiveRoads": [11, 12, 15],
 					"autoConnectiveRoads": [11, 12, 15]
 				}
 			},
@@ -7358,7 +7053,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.77056884765625, -0.01783116720616817, -2.3523356914520264],
 				"cross": {
-					"connectiveRoads": [12, 13],
 					"autoConnectiveRoads": [12, 13]
 				}
 			},
@@ -7400,7 +7094,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.0063068866729736, 0.035064697265625, -3.2785236835479736],
 				"cross": {
-					"connectiveRoads": [8, 9],
 					"autoConnectiveRoads": [8, 9]
 				}
 			},
@@ -7452,7 +7145,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.8116252422332764, 0.0519002266228199, 3.5908203125],
 				"cross": {
-					"connectiveRoads": [4, 5, 14],
 					"autoConnectiveRoads": [4, 5, 14]
 				}
 			},
@@ -7471,7 +7163,6 @@
 				"handleIn": [-0.96014404296875, 0.0450948067009449, -2.0244140625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [160, 161],
 					"autoConnectiveRoads": [160, 161]
 				}
 			}
@@ -7488,7 +7179,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1859333515167236, -0.1456502228975296, -0.1302286833524704],
 				"cross": {
-					"connectiveRoads": [3, 4],
 					"autoConnectiveRoads": [3, 4]
 				}
 			},
@@ -7512,7 +7202,6 @@
 				"handleIn": [-3.4495646953582764, 0.06211598590016365, 0.9473876953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [159, 161],
 					"autoConnectiveRoads": [159, 161]
 				}
 			}
@@ -7529,7 +7218,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6077067852020264, -0.0665130615234375, 1.86004638671875],
 				"cross": {
-					"connectiveRoads": [159, 160],
 					"autoConnectiveRoads": [159, 160]
 				}
 			},
@@ -7568,7 +7256,6 @@
 				"handleIn": [-3.619883298873902, 0.04634730145335197, -0.21014404296875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [162],
 					"autoConnectiveRoads": [162]
 				}
 			}
@@ -7585,7 +7272,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.106089353561402, -0.01752471923828125, 0.1995646208524704],
 				"cross": {
-					"connectiveRoads": [161],
 					"autoConnectiveRoads": [161]
 				}
 			},
@@ -7649,7 +7335,6 @@
 				"handleIn": [-2.6707255840301514, 0.00490570068359375, -0.1338297575712204],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [163, 164],
 					"autoConnectiveRoads": [163, 164]
 				}
 			}
@@ -7666,7 +7351,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1546428203582764, -0.00344085693359375, -2.3673908710479736],
 				"cross": {
-					"connectiveRoads": [162, 164],
 					"autoConnectiveRoads": [162, 164]
 				}
 			},
@@ -7748,7 +7432,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6620280742645264, -0.01871236227452755, 0.8183797001838684],
 				"cross": {
-					"connectiveRoads": [162, 163],
 					"autoConnectiveRoads": [162, 163]
 				}
 			},
@@ -7807,7 +7490,6 @@
 				"handleIn": [-3.1366169452667236, 0.00055948895169422, -1.898773193359375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [165, 176],
 					"autoConnectiveRoads": [165, 176]
 				}
 			}
@@ -7824,7 +7506,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.8209024667739868, 0.03771209716796875, -0.0339864082634449],
 				"cross": {
-					"connectiveRoads": [164, 176],
 					"autoConnectiveRoads": [164, 176]
 				}
 			},
@@ -7863,7 +7544,6 @@
 				"handleIn": [-3.629969358444214, 0.00026957193040288, -0.2835489809513092],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [166, 175],
 					"autoConnectiveRoads": [166, 175]
 				}
 			}
@@ -7880,7 +7560,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.3292949199676514, 0.0563812255859375, 1.4101969003677368],
 				"cross": {
-					"connectiveRoads": [165, 175],
 					"autoConnectiveRoads": [165, 175]
 				}
 			},
@@ -7909,7 +7588,6 @@
 				"handleIn": [-2.7528889179229736, -0.01341374684125185, -0.785491943359375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [167, 170],
 					"autoConnectiveRoads": [167, 170]
 				}
 			}
@@ -7926,7 +7604,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.908015012741089, 0.00339126586914062, 0.6297505497932434],
 				"cross": {
-					"connectiveRoads": [166, 170],
 					"autoConnectiveRoads": [166, 170]
 				}
 			},
@@ -7950,7 +7627,6 @@
 				"handleIn": [-1.9220046997070313, -0.01787694357335567, 0.3128865659236908],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [168, 173],
 					"autoConnectiveRoads": [168, 173]
 				}
 			}
@@ -7967,7 +7643,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5459392070770264, 0.00682767247781157, -0.0803426131606102],
 				"cross": {
-					"connectiveRoads": [167, 173],
 					"autoConnectiveRoads": [167, 173]
 				}
 			},
@@ -8041,7 +7716,6 @@
 				"handleIn": [-1.875003218650818, 0.00408045435324311, 1.3907369375228882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [169],
 					"autoConnectiveRoads": [169]
 				}
 			}
@@ -8058,7 +7732,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2288105487823486, 0.0753631591796875, -0.5206502079963684],
 				"cross": {
-					"connectiveRoads": [101, 102],
 					"autoConnectiveRoads": [101, 102]
 				}
 			},
@@ -8137,7 +7810,6 @@
 				"handleIn": [2.6013996601104736, 0.03307342529296875, -1.9130452871322632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [168],
 					"autoConnectiveRoads": [168]
 				}
 			}
@@ -8154,7 +7826,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1396891325712204, -0.02503776550292968, -2.880706787109375],
 				"cross": {
-					"connectiveRoads": [166, 167],
 					"autoConnectiveRoads": [166, 167]
 				}
 			},
@@ -8178,7 +7849,6 @@
 				"handleIn": [-0.1370290070772171, -0.00772730493918061, 2.76202392578125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [171, 172],
 					"autoConnectiveRoads": [171, 172]
 				}
 			}
@@ -8195,7 +7865,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.2520395815372467, -0.03123601339757442, -2.4357097148895264],
 				"cross": {
-					"connectiveRoads": [170, 172],
 					"autoConnectiveRoads": [170, 172]
 				}
 			},
@@ -8262,7 +7931,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.958974123001098, -0.0690511092543602, 0.8927409052848816],
 				"cross": {
-					"connectiveRoads": [170, 171],
 					"autoConnectiveRoads": [170, 171]
 				}
 			},
@@ -8286,7 +7954,6 @@
 				"handleIn": [-2.59363055229187, -0.03292465209960937, -0.0977071151137352],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [173, 174],
 					"autoConnectiveRoads": [173, 174]
 				}
 			}
@@ -8303,7 +7970,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.08536529541015625, -0.06191762164235115, -3.2470500469207764],
 				"cross": {
-					"connectiveRoads": [167, 168],
 					"autoConnectiveRoads": [167, 168]
 				}
 			},
@@ -8322,7 +7988,6 @@
 				"handleIn": [0.48614755272865295, 0.00867716502398252, 3.7174580097198486],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [172, 174],
 					"autoConnectiveRoads": [172, 174]
 				}
 			}
@@ -8339,7 +8004,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7249248027801514, 0.00436528539285063, -0.1347554475069046],
 				"cross": {
-					"connectiveRoads": [172, 173],
 					"autoConnectiveRoads": [172, 173]
 				}
 			},
@@ -8391,7 +8055,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5621541738510132, 0.00171979272272437, -2.214731931686402],
 				"cross": {
-					"connectiveRoads": [165, 166],
 					"autoConnectiveRoads": [165, 166]
 				}
 			},
@@ -8423,7 +8086,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.156585693359375, 0.03778457641601562, 4.565338134765625],
 				"cross": {
-					"connectiveRoads": [164, 165],
 					"autoConnectiveRoads": [164, 165]
 				}
 			},
@@ -8482,7 +8144,6 @@
 				"handleIn": [0.1429341584444046, 0.00930023193359375, -2.365712404251098],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [177],
 					"autoConnectiveRoads": [177]
 				}
 			}
@@ -8499,7 +8160,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.1063130721449852, 0.0679779052734375, 3.2066447734832764],
 				"cross": {
-					"connectiveRoads": [176],
 					"autoConnectiveRoads": [176]
 				}
 			},
@@ -8578,7 +8238,6 @@
 				"handleIn": [0.35028076171875, -0.00995127391070127, -2.563013792037964],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [22, 23, 178],
 					"autoConnectiveRoads": [22, 23, 178]
 				}
 			}
@@ -8595,7 +8254,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.01420084666460752, 0.0989023819565773, 3.708582639694214],
 				"cross": {
-					"connectiveRoads": [22, 23, 177],
 					"autoConnectiveRoads": [22, 23, 177]
 				}
 			},
@@ -8714,7 +8372,6 @@
 				"handleIn": [0.9228413701057434, -0.07261403650045395, -2.278403043746948],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [179, 185],
 					"autoConnectiveRoads": [179, 185]
 				}
 			}
@@ -8731,7 +8388,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.1755167692899704, 0.09277471154928207, 2.122875213623047],
 				"cross": {
-					"connectiveRoads": [178, 185],
 					"autoConnectiveRoads": [178, 185]
 				}
 			},
@@ -8750,7 +8406,6 @@
 				"handleIn": [-0.6042124629020691, 0.03166135028004646, -1.929973602294922],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [180, 181],
 					"autoConnectiveRoads": [180, 181]
 				}
 			}
@@ -8767,7 +8422,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.408538818359375, 0.02207565307617187, 2.1960411071777344],
 				"cross": {
-					"connectiveRoads": [179, 181],
 					"autoConnectiveRoads": [179, 181]
 				}
 			},
@@ -8811,7 +8465,6 @@
 				"handleIn": [-1.7053629159927368, 0.07405980676412582, -3.581167221069336],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [183, 189],
 					"autoConnectiveRoads": [183, 189]
 				}
 			}
@@ -8828,7 +8481,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.912022829055786, -0.09109751135110856, 2.0804874897003174],
 				"cross": {
-					"connectiveRoads": [179, 180],
 					"autoConnectiveRoads": [179, 180]
 				}
 			},
@@ -8852,7 +8504,6 @@
 				"handleIn": [0.0610249824821949, -0.03431447222828865, -2.382014513015747],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [182, 186],
 					"autoConnectiveRoads": [182, 186]
 				}
 			}
@@ -8869,7 +8520,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.460749387741089, -0.07089487463235855, 1.7326542139053345],
 				"cross": {
-					"connectiveRoads": [181, 186],
 					"autoConnectiveRoads": [181, 186]
 				}
 			},
@@ -8893,7 +8543,6 @@
 				"handleIn": [-3.0369465351104736, 0.01085917185992002, -0.5014864802360535],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [183, 184],
 					"autoConnectiveRoads": [183, 184]
 				}
 			}
@@ -8910,7 +8559,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.519831418991089, -0.03963978961110115, 0.4510854184627533],
 				"cross": {
-					"connectiveRoads": [182, 184],
 					"autoConnectiveRoads": [182, 184]
 				}
 			},
@@ -8934,7 +8582,6 @@
 				"handleIn": [-1.90277099609375, 0.05452601239085197, 0.9241854548454284],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [180, 189],
 					"autoConnectiveRoads": [180, 189]
 				}
 			}
@@ -8951,7 +8598,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.8354237675666809, -0.00729497289285063, -1.937135100364685],
 				"cross": {
-					"connectiveRoads": [182, 183],
 					"autoConnectiveRoads": [182, 183]
 				}
 			},
@@ -8993,7 +8639,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8741201162338257, -0.13514073193073273, -0.27081045508384705],
 				"cross": {
-					"connectiveRoads": [178, 179],
 					"autoConnectiveRoads": [178, 179]
 				}
 			},
@@ -9045,7 +8690,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6319427490234375, -0.0203094482421875, 1.6573671102523804],
 				"cross": {
-					"connectiveRoads": [181, 182],
 					"autoConnectiveRoads": [181, 182]
 				}
 			},
@@ -9059,7 +8703,6 @@
 				"handleIn": [2.4134368896484375, 0.04124705120921135, -1.90725839138031],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [187, 188],
 					"autoConnectiveRoads": [187, 188]
 				}
 			}
@@ -9076,7 +8719,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1441853046417236, -0.04804738238453865, 0.7745959162712097],
 				"cross": {
-					"connectiveRoads": [186, 188],
 					"autoConnectiveRoads": [186, 188]
 				}
 			},
@@ -9108,7 +8750,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.2819315493106842, -0.08157221227884293, 2.7494125366210938],
 				"cross": {
-					"connectiveRoads": [186, 187],
 					"autoConnectiveRoads": [186, 187]
 				}
 			},
@@ -9170,7 +8811,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.6582235097885132, -0.0088653564453125, 2.958092451095581],
 				"cross": {
-					"connectiveRoads": [180, 183],
 					"autoConnectiveRoads": [180, 183]
 				}
 			},
@@ -9227,7 +8867,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8011270761489868, -0.00974019337445497, -2.1741130352020264],
 				"cross": {
-					"connectiveRoads": [102, 103],
 					"autoConnectiveRoads": [102, 103]
 				}
 			},
@@ -9276,7 +8915,6 @@
 				"handleIn": [0.0607401542365551, -0.05660756304860115, 2.3791911602020264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [191],
 					"autoConnectiveRoads": [191]
 				}
 			}
@@ -9293,7 +8931,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.6550140380859375, 0.0338795967400074, -2.584716796875],
 				"cross": {
-					"connectiveRoads": [190],
 					"autoConnectiveRoads": [190]
 				}
 			},
@@ -9357,7 +8994,6 @@
 				"handleIn": [-2.346425294876098, -0.0425669364631176, 0.9738972783088684],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [192],
 					"autoConnectiveRoads": [192]
 				}
 			}
@@ -9374,7 +9010,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.741973876953125, 0.02866236306726932, -1.3355306386947632],
 				"cross": {
-					"connectiveRoads": [191],
 					"autoConnectiveRoads": [191]
 				}
 			},
@@ -9438,7 +9073,6 @@
 				"handleIn": [-0.8425496220588684, -0.0491739921271801, 1.90283203125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [193, 194],
 					"autoConnectiveRoads": [193, 194]
 				}
 			}
@@ -9455,7 +9089,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.2262775897979736, -0.0162938442081213, -1.9160970449447632],
 				"cross": {
-					"connectiveRoads": [192, 194],
 					"autoConnectiveRoads": [192, 194]
 				}
 			},
@@ -9517,7 +9150,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.2383931875228882, -0.00170135498046875, -2.0693767070770264],
 				"cross": {
-					"connectiveRoads": [192, 193],
 					"autoConnectiveRoads": [192, 193]
 				}
 			},
@@ -9576,7 +9208,6 @@
 				"handleIn": [-2.8241474628448486, 0.0291875209659338, -0.0541585274040699],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [195, 207],
 					"autoConnectiveRoads": [195, 207]
 				}
 			}
@@ -9593,7 +9224,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.7000935673713684, 0.03199513629078865, -3.2238566875457764],
 				"cross": {
-					"connectiveRoads": [194, 207],
 					"autoConnectiveRoads": [194, 207]
 				}
 			},
@@ -9647,7 +9277,6 @@
 				"handleIn": [-0.0543619804084301, 0.04692840576171875, 2.82794189453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [196, 197],
 					"autoConnectiveRoads": [196, 197]
 				}
 			}
@@ -9664,7 +9293,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.6862691044807434, 0.0103238420560956, -2.9518635272979736],
 				"cross": {
-					"connectiveRoads": [195, 197],
 					"autoConnectiveRoads": [195, 197]
 				}
 			},
@@ -9678,7 +9306,6 @@
 				"handleIn": [0.3770345151424408, 0.03341801837086677, 3.4474079608917236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [198, 199],
 					"autoConnectiveRoads": [198, 199]
 				}
 			}
@@ -9695,7 +9322,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.709686279296875, 0.0120391845703125, 2.6009724140167236],
 				"cross": {
-					"connectiveRoads": [195, 196],
 					"autoConnectiveRoads": [195, 196]
 				}
 			},
@@ -9737,7 +9363,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.9861552119255066, -0.003509521484375, -1.9335123300552368],
 				"cross": {
-					"connectiveRoads": [196, 199],
 					"autoConnectiveRoads": [196, 199]
 				}
 			},
@@ -9771,7 +9396,6 @@
 				"handleIn": [-0.637054443359375, -0.00964228343218565, 1.48760986328125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [200, 201, 202],
 					"autoConnectiveRoads": [200, 201, 202]
 				}
 			}
@@ -9788,7 +9412,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.8863729238510132, -0.00450007105246186, -1.1336873769760132],
 				"cross": {
-					"connectiveRoads": [196, 198],
 					"autoConnectiveRoads": [196, 198]
 				}
 			},
@@ -9842,7 +9465,6 @@
 				"handleIn": [0.4856770932674408, -0.01692326925694942, 2.49615478515625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [200, 203],
 					"autoConnectiveRoads": [200, 203]
 				}
 			}
@@ -9859,7 +9481,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.254974365234375, -0.00883992481976747, -1.61114501953125],
 				"cross": {
-					"connectiveRoads": [198, 201, 202],
 					"autoConnectiveRoads": [198, 201, 202]
 				}
 			},
@@ -9883,7 +9504,6 @@
 				"handleIn": [-2.0726318359375, 0.0136934919282794, 1.2467244863510132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [199, 203],
 					"autoConnectiveRoads": [199, 203]
 				}
 			}
@@ -9900,7 +9520,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.473276853561402, 0.02703857421875, -0.1953125],
 				"cross": {
-					"connectiveRoads": [198, 200, 202],
 					"autoConnectiveRoads": [198, 200, 202]
 				}
 			},
@@ -9924,7 +9543,6 @@
 				"handleIn": [2.490753173828125, 0.03479130938649177, -0.011962890625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [205, 206],
 					"autoConnectiveRoads": [205, 206]
 				}
 			}
@@ -9941,7 +9559,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.465362548828125, 0.03259531781077385, -2.190185546875],
 				"cross": {
-					"connectiveRoads": [198, 200, 201],
 					"autoConnectiveRoads": [198, 200, 201]
 				}
 			},
@@ -10013,7 +9630,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.8880411982536316, 0.01422818470746278, -1.4993489980697632],
 				"cross": {
-					"connectiveRoads": [199, 200],
 					"autoConnectiveRoads": [199, 200]
 				}
 			},
@@ -10062,7 +9678,6 @@
 				"handleIn": [-1.9132486581802368, -0.00517590856179595, 2.5015869140625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [204],
 					"autoConnectiveRoads": [204]
 				}
 			}
@@ -10079,7 +9694,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.05621337890625, -0.00287882494740188, -1.3363851308822632],
 				"cross": {
-					"connectiveRoads": [203],
 					"autoConnectiveRoads": [203]
 				}
 			},
@@ -10131,7 +9745,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.2202046662569046, 0.0238672886043787, 3.2569172382354736],
 				"cross": {
-					"connectiveRoads": [201, 206],
 					"autoConnectiveRoads": [201, 206]
 				}
 			},
@@ -10173,7 +9786,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.8459675312042236, 0.03771336749196052, 0.0876871719956398],
 				"cross": {
-					"connectiveRoads": [201, 205],
 					"autoConnectiveRoads": [201, 205]
 				}
 			},
@@ -10205,7 +9817,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1147053241729736, -0.01926422119140625, -1.1973062753677368],
 				"cross": {
-					"connectiveRoads": [108, 109],
 					"autoConnectiveRoads": [108, 109]
 				}
 			},
@@ -10269,7 +9880,6 @@
 				"handleIn": [2.3938496112823486, -0.02640279196202755, 0.1175537109375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [194, 195],
 					"autoConnectiveRoads": [194, 195]
 				}
 			}
@@ -10286,7 +9896,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.6030477285385132, -0.00357691454701125, 2.1387531757354736],
 				"cross": {
-					"connectiveRoads": [42, 43, 44],
 					"autoConnectiveRoads": [42, 43, 44]
 				}
 			},
@@ -10310,7 +9919,6 @@
 				"handleIn": [1.1569417715072632, -0.005340576171875, -2.349853515625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [209],
 					"autoConnectiveRoads": [209]
 				}
 			}
@@ -10327,7 +9935,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8741251230239868, 0.07308324426412582, 1.4456685781478882],
 				"cross": {
-					"connectiveRoads": [208],
 					"autoConnectiveRoads": [208]
 				}
 			},
@@ -10369,7 +9976,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3338420391082764, 0.05385971069335937, -0.8628743290901184],
 				"cross": {
-					"connectiveRoads": [43, 44],
 					"autoConnectiveRoads": [43, 44]
 				}
 			},
@@ -10413,7 +10019,6 @@
 				"handleIn": [-0.9743245244026184, -0.08327611535787582, -1.9154256582260132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [41, 42, 45],
 					"autoConnectiveRoads": [41, 42, 45]
 				}
 			}
@@ -10430,7 +10035,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3577880859375, -0.15931828320026398, 1.594512939453125],
 				"cross": {
-					"connectiveRoads": [40, 41],
 					"autoConnectiveRoads": [40, 41]
 				}
 			},
@@ -10504,7 +10108,6 @@
 				"handleIn": [-1.48583984375, -0.06769116967916489, -0.432647705078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [212, 213],
 					"autoConnectiveRoads": [212, 213]
 				}
 			}
@@ -10521,7 +10124,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.1515706777572632, -0.12005869299173356, 1.7428690195083618],
 				"cross": {
-					"connectiveRoads": [211, 213],
 					"autoConnectiveRoads": [211, 213]
 				}
 			},
@@ -10573,7 +10175,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9903564453125, -0.07870610803365707, 0.4820963442325592],
 				"cross": {
-					"connectiveRoads": [211, 212],
 					"autoConnectiveRoads": [211, 212]
 				}
 			},
@@ -10617,7 +10218,6 @@
 				"handleIn": [-2.7235107421875, 0.1035054549574852, -1.613525390625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [214],
 					"autoConnectiveRoads": [214]
 				}
 			}
@@ -10634,7 +10234,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.4466552734375, -0.0488993339240551, 1.729400634765625],
 				"cross": {
-					"connectiveRoads": [213],
 					"autoConnectiveRoads": [213]
 				}
 			},
@@ -10673,7 +10272,6 @@
 				"handleIn": [-2.2469482421875, -0.00215911865234375, -2.0627644062042236],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [215],
 					"autoConnectiveRoads": [215]
 				}
 			}
@@ -10690,7 +10288,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5043132305145264, -0.00298309326171875, 2.4400432109832764],
 				"cross": {
-					"connectiveRoads": [214],
 					"autoConnectiveRoads": [214]
 				}
 			},
@@ -10719,7 +10316,6 @@
 				"handleIn": [-1.3784586191177368, 0.0114809675142169, -1.7880147695541382],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [216, 220],
 					"autoConnectiveRoads": [216, 220]
 				}
 			}
@@ -10736,7 +10332,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3724771738052368, -0.03298759460449219, 1.803741455078125],
 				"cross": {
-					"connectiveRoads": [215, 220],
 					"autoConnectiveRoads": [215, 220]
 				}
 			},
@@ -10765,7 +10360,6 @@
 				"handleIn": [-1.5938720703125, -0.00115966796875, -1.0676370859146118],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [217, 218],
 					"autoConnectiveRoads": [217, 218]
 				}
 			}
@@ -10782,7 +10376,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.8125, 0.02248700521886348, 1.348602294921875],
 				"cross": {
-					"connectiveRoads": [216, 218],
 					"autoConnectiveRoads": [216, 218]
 				}
 			},
@@ -10826,7 +10419,6 @@
 				"handleIn": [-2.7794189453125, 0.00278472900390625, -0.01200358103960752],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [221],
 					"autoConnectiveRoads": [221]
 				}
 			}
@@ -10843,7 +10435,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5403646230697632, 0.1281566619873047, -1.63140869140625],
 				"cross": {
-					"connectiveRoads": [216, 217],
 					"autoConnectiveRoads": [216, 217]
 				}
 			},
@@ -10867,7 +10458,6 @@
 				"handleIn": [-1.7243245840072632, -0.22888056933879852, 1.969838500022888],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [219, 220],
 					"autoConnectiveRoads": [219, 220]
 				}
 			}
@@ -10884,7 +10474,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.0173746347427368, 0.04336293414235115, -0.9132792353630066],
 				"cross": {
-					"connectiveRoads": [218, 220],
 					"autoConnectiveRoads": [218, 220]
 				}
 			},
@@ -10921,7 +10510,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2834064960479736, 0.07993952184915543, -1.7958780527114868],
 				"cross": {
-					"connectiveRoads": [218, 219],
 					"autoConnectiveRoads": [218, 219]
 				}
 			},
@@ -10960,7 +10548,6 @@
 				"handleIn": [1.3050943613052368, 0.24549484252929688, -2.033070802688598],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [215, 216],
 					"autoConnectiveRoads": [215, 216]
 				}
 			}
@@ -10977,7 +10564,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.34326171875, 0.02517191506922245, -0.4503580629825592],
 				"cross": {
-					"connectiveRoads": [217],
 					"autoConnectiveRoads": [217]
 				}
 			},
@@ -11036,7 +10622,6 @@
 				"handleIn": [-3.3186442852020264, 0.0240503940731287, 0.3903706967830658],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [222],
 					"autoConnectiveRoads": [222]
 				}
 			}
@@ -11053,7 +10638,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.8152668476104736, -0.02527872659265995, -0.02605183981359005],
 				"cross": {
-					"connectiveRoads": [221],
 					"autoConnectiveRoads": [221]
 				}
 			},
@@ -11107,7 +10691,6 @@
 				"handleIn": [-2.6416015625, 0.05969492718577385, -1.2459512948989868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [223, 231],
 					"autoConnectiveRoads": [223, 231]
 				}
 			}
@@ -11124,7 +10707,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.2779541015625, -0.02419662475585937, 1.169830322265625],
 				"cross": {
-					"connectiveRoads": [222, 231],
 					"autoConnectiveRoads": [222, 231]
 				}
 			},
@@ -11158,7 +10740,6 @@
 				"handleIn": [-3.0335693359375, 0.12941615283489227, -0.3137715756893158],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [224, 226, 227],
 					"autoConnectiveRoads": [224, 226, 227]
 				}
 			}
@@ -11175,7 +10756,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6219074726104736, 0.07498550415039063, 0.948455810546875],
 				"cross": {
-					"connectiveRoads": [223, 226, 227],
 					"autoConnectiveRoads": [223, 226, 227]
 				}
 			},
@@ -11219,7 +10799,6 @@
 				"handleIn": [-2.7121174335479736, -0.0377960205078125, 0.0972696915268898],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [225],
 					"autoConnectiveRoads": [225]
 				}
 			}
@@ -11236,7 +10815,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [5.209757328033447, 0.3069559633731842, -0.2354939728975296],
 				"cross": {
-					"connectiveRoads": [224],
 					"autoConnectiveRoads": [224]
 				}
 			},
@@ -11313,7 +10891,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.6056314706802368, 0.057891845703125, 2.5247089862823486],
 				"cross": {
-					"connectiveRoads": [223, 224, 227],
 					"autoConnectiveRoads": [223, 224, 227]
 				}
 			},
@@ -11367,7 +10944,6 @@
 				"handleIn": [0.3523763120174408, 0.0665435791015625, -2.2114410400390625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [233],
 					"autoConnectiveRoads": [233]
 				}
 			}
@@ -11384,7 +10960,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.1446533203125, -0.00131607055664062, -1.7848001718521118],
 				"cross": {
-					"connectiveRoads": [223, 224, 226],
 					"autoConnectiveRoads": [223, 224, 226]
 				}
 			},
@@ -11413,7 +10988,6 @@
 				"handleIn": [0.7958170771598816, 0.00793647766113281, 2.361317873001098],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [228, 231],
 					"autoConnectiveRoads": [228, 231]
 				}
 			}
@@ -11430,7 +11004,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0792236328125, -0.01200040150433778, -2.0465087890625],
 				"cross": {
-					"connectiveRoads": [227, 231],
 					"autoConnectiveRoads": [227, 231]
 				}
 			},
@@ -11449,7 +11022,6 @@
 				"handleIn": [0.1416829377412796, 0.01040776539593935, 2.0098469257354736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [229, 232],
 					"autoConnectiveRoads": [229, 232]
 				}
 			}
@@ -11466,7 +11038,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.2231852263212204, 0.00765228271484375, -3.43572998046875],
 				"cross": {
-					"connectiveRoads": [228, 232],
 					"autoConnectiveRoads": [228, 232]
 				}
 			},
@@ -11485,7 +11056,6 @@
 				"handleIn": [0.7830810546875, -0.01743952371180057, 1.9359842538833616],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [230, 232],
 					"autoConnectiveRoads": [230, 232]
 				}
 			}
@@ -11502,7 +11072,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.04052734375, -0.01730664633214473, -2.0651652812957764],
 				"cross": {
-					"connectiveRoads": [229, 232],
 					"autoConnectiveRoads": [229, 232]
 				}
 			},
@@ -11551,7 +11120,6 @@
 				"handleIn": [-2.9888103008270264, 0.00438690185546875, 1.6793619394302368],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [235],
 					"autoConnectiveRoads": [235]
 				}
 			}
@@ -11568,7 +11136,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6595051288604736, -0.10631052404642104, -1.4350687265396118],
 				"cross": {
-					"connectiveRoads": [222, 223],
 					"autoConnectiveRoads": [222, 223]
 				}
 			},
@@ -11597,7 +11164,6 @@
 				"handleIn": [-1.93798828125, 0.08652941137552261, 1.0606689453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [227, 228],
 					"autoConnectiveRoads": [227, 228]
 				}
 			}
@@ -11614,7 +11180,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2550456523895264, 0.1416912078857422, -0.3537394106388092],
 				"cross": {
-					"connectiveRoads": [228, 229],
 					"autoConnectiveRoads": [228, 229]
 				}
 			},
@@ -11688,7 +11253,6 @@
 				"handleIn": [-1.154541015625, 0.00370979309082031, -0.03090413473546505],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [229, 230],
 					"autoConnectiveRoads": [229, 230]
 				}
 			}
@@ -11705,7 +11269,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.9918619990348816, 0.0980173721909523, 2.345911741256714],
 				"cross": {
-					"connectiveRoads": [226],
 					"autoConnectiveRoads": [226]
 				}
 			},
@@ -11759,7 +11322,6 @@
 				"handleIn": [0.5157470703125, -0.02606328390538692, -2.4064204692840576],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [234],
 					"autoConnectiveRoads": [234]
 				}
 			}
@@ -11776,7 +11338,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1259765625, -0.01414362620562315, 1.7556432485580444],
 				"cross": {
-					"connectiveRoads": [233],
 					"autoConnectiveRoads": [233]
 				}
 			},
@@ -11893,7 +11454,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.7652587890625, 0.00693321228027343, -1.2259317636489868],
 				"cross": {
-					"connectiveRoads": [230],
 					"autoConnectiveRoads": [230]
 				}
 			},
@@ -11962,7 +11522,6 @@
 				"handleIn": [1.5253092050552368, -0.09748586267232896, 4.374532222747803],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [236],
 					"autoConnectiveRoads": [236]
 				}
 			}
@@ -11979,7 +11538,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.4910888671875, 0.15883636474609375, -3.3827922344207764],
 				"cross": {
-					"connectiveRoads": [235],
 					"autoConnectiveRoads": [235]
 				}
 			},
@@ -12038,7 +11596,6 @@
 				"handleIn": [-0.2352294921875, 0.00664393091574311, 2.27825927734375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [237, 238],
 					"autoConnectiveRoads": [237, 238]
 				}
 			}
@@ -12055,7 +11612,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8079427480697632, 0.00296529126353561, -0.2574462890625],
 				"cross": {
-					"connectiveRoads": [236, 238],
 					"autoConnectiveRoads": [236, 238]
 				}
 			},
@@ -12117,7 +11673,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1173502579331398, 0.08757400512695313, -1.3713582754135132],
 				"cross": {
-					"connectiveRoads": [236, 237],
 					"autoConnectiveRoads": [236, 237]
 				}
 			},
@@ -12186,7 +11741,6 @@
 				"handleIn": [1.2646077871322632, 0.0962473526597023, 2.1324870586395264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [50, 381, 388],
 					"autoConnectiveRoads": [50, 381, 388]
 				}
 			}
@@ -12203,7 +11757,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.687642574310303, 0.0767415389418602, -0.7238972783088684],
 				"cross": {
-					"connectiveRoads": [18, 19],
 					"autoConnectiveRoads": [18, 19]
 				}
 			},
@@ -12247,7 +11800,6 @@
 				"handleIn": [3.2999470233917236, -0.06541315466165543, -0.0337626151740551],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [240],
 					"autoConnectiveRoads": [240]
 				}
 			}
@@ -12264,7 +11816,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.4644978046417236, 0.0896199569106102, 0.013890583999454975],
 				"cross": {
-					"connectiveRoads": [239],
 					"autoConnectiveRoads": [239]
 				}
 			},
@@ -12278,7 +11829,6 @@
 				"handleIn": [2.8504638671875, -0.13039524853229523, -0.02927144430577755],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [241, 322],
 					"autoConnectiveRoads": [241, 322]
 				}
 			}
@@ -12295,7 +11845,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.1376953125, 0.019079843536019325, 0.4891713559627533],
 				"cross": {
-					"connectiveRoads": [240, 322],
 					"autoConnectiveRoads": [240, 322]
 				}
 			},
@@ -12334,7 +11883,6 @@
 				"handleIn": [3.2240192890167236, 0.15767288208007813, -1.1871236562728882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [242],
 					"autoConnectiveRoads": [242]
 				}
 			}
@@ -12351,7 +11899,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.2175090312957764, 0.08921051025390625, 1.2022857666015625],
 				"cross": {
-					"connectiveRoads": [241],
 					"autoConnectiveRoads": [241]
 				}
 			},
@@ -12400,7 +11947,6 @@
 				"handleIn": [3.7191364765167236, -0.12643687427043915, -1.24652099609375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [243],
 					"autoConnectiveRoads": [243]
 				}
 			}
@@ -12417,7 +11963,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.372090816497803, -0.20952479541301727, 1.7291971445083618],
 				"cross": {
-					"connectiveRoads": [242],
 					"autoConnectiveRoads": [242]
 				}
 			},
@@ -12456,7 +12001,6 @@
 				"handleIn": [4.715921878814697, 0.029946645721793175, -3.151395082473755],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [244],
 					"autoConnectiveRoads": [244]
 				}
 			}
@@ -12473,7 +12017,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.119059085845947, 0.030709585174918175, 2.7248408794403076],
 				"cross": {
-					"connectiveRoads": [243],
 					"autoConnectiveRoads": [243]
 				}
 			},
@@ -12512,7 +12055,6 @@
 				"handleIn": [2.7534992694854736, -0.021881103515625, -0.5506629943847656],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [245, 328],
 					"autoConnectiveRoads": [245, 328]
 				}
 			}
@@ -12529,7 +12071,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.3834228515625, 0.03910064697265625, 0.3365682065486908],
 				"cross": {
-					"connectiveRoads": [244, 328],
 					"autoConnectiveRoads": [244, 328]
 				}
 			},
@@ -12553,7 +12094,6 @@
 				"handleIn": [2.3572998046875, -0.0257441196590662, -0.37533697485923767],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [246, 263],
 					"autoConnectiveRoads": [246, 263]
 				}
 			}
@@ -12570,7 +12110,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.2439777851104736, -0.03281911090016365, 1.0776723623275757],
 				"cross": {
-					"connectiveRoads": [245, 263],
 					"autoConnectiveRoads": [245, 263]
 				}
 			},
@@ -12624,7 +12163,6 @@
 				"handleIn": [5.525064945220947, 0.0048001608811318874, -2.7434921264648438],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [247],
 					"autoConnectiveRoads": [247]
 				}
 			}
@@ -12641,7 +12179,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-5.6480712890625, -0.048290252685546875, 3.111820936203003],
 				"cross": {
-					"connectiveRoads": [246],
 					"autoConnectiveRoads": [246]
 				}
 			},
@@ -12685,7 +12222,6 @@
 				"handleIn": [3.4667561054229736, -0.1372782438993454, -1.0206069946289063],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [248],
 					"autoConnectiveRoads": [248]
 				}
 			}
@@ -12702,7 +12238,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8854166269302368, -0.0038960773963481188, 0.6143519282341003],
 				"cross": {
-					"connectiveRoads": [247],
 					"autoConnectiveRoads": [247]
 				}
 			},
@@ -12756,7 +12291,6 @@
 				"handleIn": [4.4215087890625, 0.0024871826171875, 0.3204905092716217],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [249],
 					"autoConnectiveRoads": [249]
 				}
 			}
@@ -12773,7 +12307,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.9375407695770264, -0.0026830036658793688, -0.5356242060661316],
 				"cross": {
-					"connectiveRoads": [248],
 					"autoConnectiveRoads": [248]
 				}
 			},
@@ -12817,7 +12350,6 @@
 				"handleIn": [1.8409423828125, -0.03675079345703125, -0.552093505859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [251, 253, 260],
 					"autoConnectiveRoads": [251, 253, 260]
 				}
 			}
@@ -12834,7 +12366,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.5096843242645264, 0.18080265820026398, -1.9473520517349243],
 				"cross": {
-					"connectiveRoads": [84, 85],
 					"autoConnectiveRoads": [84, 85]
 				}
 			},
@@ -12858,7 +12389,6 @@
 				"handleIn": [-1.8792724609375, 0.005352020263671875, 0.7291310429573059],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [251, 252],
 					"autoConnectiveRoads": [251, 252]
 				}
 			}
@@ -12875,7 +12405,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.268798828125, 0.00807952880859375, -0.7770945429801941],
 				"cross": {
-					"connectiveRoads": [250, 252],
 					"autoConnectiveRoads": [250, 252]
 				}
 			},
@@ -12899,7 +12428,6 @@
 				"handleIn": [-3.498046875, -0.06543096154928207, 1.6525777578353882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [249, 253, 260],
 					"autoConnectiveRoads": [249, 253, 260]
 				}
 			}
@@ -12916,7 +12444,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.957275390625, -0.05856768414378166, 0.4416554868221283],
 				"cross": {
-					"connectiveRoads": [83, 84],
 					"autoConnectiveRoads": [83, 84]
 				}
 			},
@@ -12940,7 +12467,6 @@
 				"handleIn": [-2.73583984375, 0.061613719910383224, -1.422821044921875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [250, 251],
 					"autoConnectiveRoads": [250, 251]
 				}
 			}
@@ -12957,7 +12483,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.627685546875, -0.0652669295668602, -2.26605224609375],
 				"cross": {
-					"connectiveRoads": [249, 251, 260],
 					"autoConnectiveRoads": [249, 251, 260]
 				}
 			},
@@ -13009,7 +12534,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.5043132305145264, 0.0855712890625, 0.5483779907226563],
 				"cross": {
-					"connectiveRoads": [80, 81],
 					"autoConnectiveRoads": [80, 81]
 				}
 			},
@@ -13061,7 +12585,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.2265625, 0.04737091064453125, -0.3136952817440033],
 				"cross": {
-					"connectiveRoads": [79, 80],
 					"autoConnectiveRoads": [79, 80]
 				}
 			},
@@ -13085,7 +12608,6 @@
 				"handleIn": [-3.143310546875, -0.04580942913889885, -3.498385190963745],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [257, 258, 259],
 					"autoConnectiveRoads": [257, 258, 259]
 				}
 			}
@@ -13102,7 +12624,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5595295429229736, 0.2605508267879486, -0.09091949462890625],
 				"cross": {
-					"connectiveRoads": [81, 82],
 					"autoConnectiveRoads": [81, 82]
 				}
 			},
@@ -13121,7 +12642,6 @@
 				"handleIn": [-2.2670490741729736, -0.0264739990234375, 0.5338211059570313],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [257, 258],
 					"autoConnectiveRoads": [257, 258]
 				}
 			}
@@ -13138,7 +12658,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0504150390625, 0.001255035400390625, -2.8624088764190674],
 				"cross": {
-					"connectiveRoads": [256, 258],
 					"autoConnectiveRoads": [256, 258]
 				}
 			},
@@ -13167,7 +12686,6 @@
 				"handleIn": [-0.1781412810087204, 0.013111114501953125, 1.8698984384536743],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [255, 258, 259],
 					"autoConnectiveRoads": [255, 258, 259]
 				}
 			}
@@ -13184,7 +12702,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3123779296875, -0.04884083941578865, -0.16677601635456085],
 				"cross": {
-					"connectiveRoads": [256, 257],
 					"autoConnectiveRoads": [256, 257]
 				}
 			},
@@ -13228,7 +12745,6 @@
 				"handleIn": [2.5115559101104736, -0.06944528967142105, 2.559453248977661],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [255, 257, 259],
 					"autoConnectiveRoads": [255, 257, 259]
 				}
 			}
@@ -13245,7 +12761,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.2590738534927368, -0.07738494873046875, -2.3968582153320313],
 				"cross": {
-					"connectiveRoads": [255, 257, 258],
 					"autoConnectiveRoads": [255, 257, 258]
 				}
 			},
@@ -13282,7 +12797,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.8122152090072632, 0.0266393031924963, 1.7506103515625],
 				"cross": {
-					"connectiveRoads": [249, 251, 253],
 					"autoConnectiveRoads": [249, 251, 253]
 				}
 			},
@@ -13329,7 +12843,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.49560546875, -0.04339154437184334, 2.7053630352020264],
 				"cross": {
-					"connectiveRoads": [70, 71],
 					"autoConnectiveRoads": [70, 71]
 				}
 			},
@@ -13358,7 +12871,6 @@
 				"handleIn": [-1.8040771484375, 0.12406667321920395, -2.3979594707489014],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [262],
 					"autoConnectiveRoads": [262]
 				}
 			}
@@ -13375,7 +12887,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.2357990741729736, -0.10454559326171875, 1.7907460927963257],
 				"cross": {
-					"connectiveRoads": [261],
 					"autoConnectiveRoads": [261]
 				}
 			},
@@ -13434,7 +12945,6 @@
 				"handleIn": [-1.7384847402572632, 0.06560007482767105, -4.017847537994385],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [263],
 					"autoConnectiveRoads": [263]
 				}
 			}
@@ -13451,7 +12961,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.7762857675552368, -0.02847798727452755, 4.213770389556885],
 				"cross": {
-					"connectiveRoads": [262],
 					"autoConnectiveRoads": [262]
 				}
 			},
@@ -13495,7 +13004,6 @@
 				"handleIn": [-1.5506185293197632, -0.10174306482076645, -5.144062042236328],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [245, 246],
 					"autoConnectiveRoads": [245, 246]
 				}
 			}
@@ -13512,7 +13020,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.5659586191177368, 0.0391337089240551, -2.1319172382354736],
 				"cross": {
-					"connectiveRoads": [74, 75],
 					"autoConnectiveRoads": [74, 75]
 				}
 			},
@@ -13546,7 +13053,6 @@
 				"handleIn": [-1.7298990488052368, -0.026747385039925575, 2.0532124042510986],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [265, 266],
 					"autoConnectiveRoads": [265, 266]
 				}
 			}
@@ -13563,7 +13069,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.3448486328125, 0.008759181015193462, -2.2365570068359375],
 				"cross": {
-					"connectiveRoads": [75, 76],
 					"autoConnectiveRoads": [75, 76]
 				}
 			},
@@ -13597,7 +13102,6 @@
 				"handleIn": [2.7451171875, 0.02890777587890625, 1.3998922109603882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [264, 266],
 					"autoConnectiveRoads": [264, 266]
 				}
 			}
@@ -13614,7 +13118,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.272705078125, -0.0123837785795331, -3.6794841289520264],
 				"cross": {
-					"connectiveRoads": [264, 265],
 					"autoConnectiveRoads": [264, 265]
 				}
 			},
@@ -13638,7 +13141,6 @@
 				"handleIn": [-1.2685140371322632, 0.17966461181640625, 4.435739994049072],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [267],
 					"autoConnectiveRoads": [267]
 				}
 			}
@@ -13655,7 +13157,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.7806803584098816, 0.03046671487390995, -3.2252705097198486],
 				"cross": {
-					"connectiveRoads": [266],
 					"autoConnectiveRoads": [266]
 				}
 			},
@@ -13702,7 +13203,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.670166015625, 0.01062774658203125, -2.9399821758270264],
 				"cross": {
-					"connectiveRoads": [1, 3],
 					"autoConnectiveRoads": [1, 3]
 				}
 			},
@@ -13739,7 +13239,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.89373779296875, -0.012584050185978413, -3.701416015625],
 				"cross": {
-					"connectiveRoads": [62, 63],
 					"autoConnectiveRoads": [62, 63]
 				}
 			},
@@ -13783,7 +13282,6 @@
 				"handleIn": [-3.7047321796417236, -0.03792572021484375, 2.3463542461395264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [270],
 					"autoConnectiveRoads": [270]
 				}
 			}
@@ -13800,7 +13298,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.9150186777114868, -0.0306828822940588, -1.5992635488510132],
 				"cross": {
-					"connectiveRoads": [269],
 					"autoConnectiveRoads": [269]
 				}
 			},
@@ -13834,7 +13331,6 @@
 				"handleIn": [-0.0837809219956398, -0.0031941730994731188, 4.981363773345947],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [271],
 					"autoConnectiveRoads": [271]
 				}
 			}
@@ -13851,7 +13347,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.12774658203125, 0.0257390346378088, -3.72882080078125],
 				"cross": {
-					"connectiveRoads": [270],
 					"autoConnectiveRoads": [270]
 				}
 			},
@@ -13880,7 +13375,6 @@
 				"handleIn": [0.53314208984375, -0.02942657470703125, 3.08441162109375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [272, 273],
 					"autoConnectiveRoads": [272, 273]
 				}
 			}
@@ -13897,7 +13391,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.46624755859375, -0.0060450234450399876, -0.5894775390625],
 				"cross": {
-					"connectiveRoads": [271, 273],
 					"autoConnectiveRoads": [271, 273]
 				}
 			},
@@ -13959,7 +13452,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3139852285385132, 0.0043538413010537624, -1.8259481191635132],
 				"cross": {
-					"connectiveRoads": [271, 272],
 					"autoConnectiveRoads": [271, 272]
 				}
 			},
@@ -14003,7 +13495,6 @@
 				"handleIn": [0.8148193359375, 0.0533955879509449, 2.8553264141082764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [274],
 					"autoConnectiveRoads": [274]
 				}
 			}
@@ -14020,7 +13511,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3396810293197632, 0.1604207307100296, -6.033731937408447],
 				"cross": {
-					"connectiveRoads": [273],
 					"autoConnectiveRoads": [273]
 				}
 			},
@@ -14029,7 +13519,6 @@
 				"handleIn": [1.3396810293197632, -0.1604207307100296, 6.033731937408447],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [275],
 					"autoConnectiveRoads": [275]
 				}
 			}
@@ -14046,7 +13535,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.08209228515625, 0.03885650634765625, -2.3652546405792236],
 				"cross": {
-					"connectiveRoads": [274],
 					"autoConnectiveRoads": [274]
 				}
 			},
@@ -14085,7 +13573,6 @@
 				"handleIn": [0.4337361752986908, -0.0272216796875, 1.9469197988510132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [276, 317],
 					"autoConnectiveRoads": [276, 317]
 				}
 			}
@@ -14102,7 +13589,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.32489013671875, -0.0075009665451943874, -4.6239013671875],
 				"cross": {
-					"connectiveRoads": [275, 317],
 					"autoConnectiveRoads": [275, 317]
 				}
 			},
@@ -14146,7 +13632,6 @@
 				"handleIn": [0.25469970703125, -0.0049413046799600124, 2.8275554180145264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [277, 280],
 					"autoConnectiveRoads": [277, 280]
 				}
 			}
@@ -14163,7 +13648,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4599609375, -0.0065256753005087376, -3.0802001953125],
 				"cross": {
-					"connectiveRoads": [276, 280],
 					"autoConnectiveRoads": [276, 280]
 				}
 			},
@@ -14177,7 +13661,6 @@
 				"handleIn": [0.9710693359375, 0.02979532815515995, 2.7096354961395264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [278, 293],
 					"autoConnectiveRoads": [278, 293]
 				}
 			}
@@ -14194,7 +13677,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.0233154296875, 0.009267170913517475, -2.9423420429229736],
 				"cross": {
-					"connectiveRoads": [277, 293],
 					"autoConnectiveRoads": [277, 293]
 				}
 			},
@@ -14223,7 +13705,6 @@
 				"handleIn": [2.1783039569854736, -0.015383402816951275, 1.360595703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [279, 291],
 					"autoConnectiveRoads": [279, 291]
 				}
 			}
@@ -14240,7 +13721,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.80419921875, 0.0029780070763081312, -0.2408854216337204],
 				"cross": {
-					"connectiveRoads": [278, 291],
 					"autoConnectiveRoads": [278, 291]
 				}
 			},
@@ -14269,7 +13749,6 @@
 				"handleIn": [1.433837890625, 0.00807952880859375, 0.3798828125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [294, 316],
 					"autoConnectiveRoads": [294, 316]
 				}
 			}
@@ -14286,7 +13765,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1849567890167236, -0.0026613872032612562, -0.7049560546875],
 				"cross": {
-					"connectiveRoads": [276, 277],
 					"autoConnectiveRoads": [276, 277]
 				}
 			},
@@ -14305,7 +13783,6 @@
 				"handleIn": [-3.9265339374542236, 0.0012537637958303094, 0.89013671875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [281, 292],
 					"autoConnectiveRoads": [281, 292]
 				}
 			}
@@ -14322,7 +13799,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.5393474102020264, 0.0029017131309956312, -0.3872477114200592],
 				"cross": {
-					"connectiveRoads": [280, 292],
 					"autoConnectiveRoads": [280, 292]
 				}
 			},
@@ -14351,7 +13827,6 @@
 				"handleIn": [-0.6366780400276184, -0.0071004233323037624, 2.3577880859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [282, 287],
 					"autoConnectiveRoads": [282, 287]
 				}
 			}
@@ -14368,7 +13843,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.4217325747013092, 0.0013669332256540656, -3.2261555194854736],
 				"cross": {
-					"connectiveRoads": [281, 287],
 					"autoConnectiveRoads": [281, 287]
 				}
 			},
@@ -14382,7 +13856,6 @@
 				"handleIn": [-0.47314453125, 0.009221394546329975, 2.9862873554229736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [283, 289],
 					"autoConnectiveRoads": [283, 289]
 				}
 			}
@@ -14399,7 +13872,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.0869548320770264, 0.0064684548415243626, -0.5991618037223816],
 				"cross": {
-					"connectiveRoads": [282, 289],
 					"autoConnectiveRoads": [282, 289]
 				}
 			},
@@ -14428,7 +13900,6 @@
 				"handleIn": [-3.2211101055145264, -0.0006802876596339047, 0.4673665463924408],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [284, 286],
 					"autoConnectiveRoads": [284, 286]
 				}
 			}
@@ -14445,7 +13916,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.011250972747803, -0.0009142557973973453, -0.8046467900276184],
 				"cross": {
-					"connectiveRoads": [283, 286],
 					"autoConnectiveRoads": [283, 286]
 				}
 			},
@@ -14499,7 +13969,6 @@
 				"handleIn": [-2.1817219257354736, -0.0315144844353199, 0.5426838994026184],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [285],
 					"autoConnectiveRoads": [285]
 				}
 			}
@@ -14516,7 +13985,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5877685546875, -0.006519317626953125, -0.8125813603401184],
 				"cross": {
-					"connectiveRoads": [284],
 					"autoConnectiveRoads": [284]
 				}
 			},
@@ -14560,7 +14028,6 @@
 				"handleIn": [-4.329172611236572, -0.04205322265625, 0.1038818359375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [404],
 					"autoConnectiveRoads": [404]
 				}
 			}
@@ -14577,7 +14044,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.1390380859375, -0.0032170612830668688, 2.7138671875],
 				"cross": {
-					"connectiveRoads": [283, 284],
 					"autoConnectiveRoads": [283, 284]
 				}
 			},
@@ -14596,7 +14062,6 @@
 				"handleIn": [0.5039469599723816, 0.0027821857947856188, -3.0360920429229736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [287, 288],
 					"autoConnectiveRoads": [287, 288]
 				}
 			}
@@ -14613,7 +14078,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7461345195770264, 0.00011761983478209004, -0.5994059443473816],
 				"cross": {
-					"connectiveRoads": [281, 282],
 					"autoConnectiveRoads": [281, 282]
 				}
 			},
@@ -14642,7 +14106,6 @@
 				"handleIn": [-3.0614216327667236, 0.010241826064884663, -0.7628580927848816],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [286, 288],
 					"autoConnectiveRoads": [286, 288]
 				}
 			}
@@ -14659,7 +14122,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0966999530792236, 0.007644017692655325, 0.9489338994026184],
 				"cross": {
-					"connectiveRoads": [286, 287],
 					"autoConnectiveRoads": [286, 287]
 				}
 			},
@@ -14701,7 +14163,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.5970458984375, 0.008447647094726563, -0.1660563200712204],
 				"cross": {
-					"connectiveRoads": [282, 283],
 					"autoConnectiveRoads": [282, 283]
 				}
 			},
@@ -14725,7 +14186,6 @@
 				"handleIn": [1.7912801504135132, 0.005774816032499075, 0.1032307967543602],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [290, 292],
 					"autoConnectiveRoads": [290, 292]
 				}
 			}
@@ -14742,7 +14202,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1374714374542236, 0.0020745594520121813, -0.1357421875],
 				"cross": {
-					"connectiveRoads": [289, 292],
 					"autoConnectiveRoads": [289, 292]
 				}
 			},
@@ -14761,7 +14220,6 @@
 				"handleIn": [2.121826171875, 0.002208709716796875, 0.2598876953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [291, 293],
 					"autoConnectiveRoads": [291, 293]
 				}
 			}
@@ -14778,7 +14236,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.5732219219207764, 0.0084012346342206, -0.5085042119026184],
 				"cross": {
-					"connectiveRoads": [290, 293],
 					"autoConnectiveRoads": [290, 293]
 				}
 			},
@@ -14807,7 +14264,6 @@
 				"handleIn": [4.69244384765625, 0.008984883315861225, 0.2588704526424408],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [278, 279],
 					"autoConnectiveRoads": [278, 279]
 				}
 			}
@@ -14824,7 +14280,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.5891926884651184, 0.009545008651912212, 3.1343994140625],
 				"cross": {
-					"connectiveRoads": [289, 290],
 					"autoConnectiveRoads": [289, 290]
 				}
 			},
@@ -14848,7 +14303,6 @@
 				"handleIn": [-0.09124755859375, 0.0036748249549418688, -2.15771484375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [280, 281],
 					"autoConnectiveRoads": [280, 281]
 				}
 			}
@@ -14865,7 +14319,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.9104410409927368, 0.0034421284217387438, 2.8239338397979736],
 				"cross": {
-					"connectiveRoads": [290, 291],
 					"autoConnectiveRoads": [290, 291]
 				}
 			},
@@ -14889,7 +14342,6 @@
 				"handleIn": [1.58245849609375, 0.034600574523210526, -1.595703125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [277, 278],
 					"autoConnectiveRoads": [277, 278]
 				}
 			}
@@ -14906,7 +14358,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.18316650390625, 0.02021280862390995, -1.4933267831802368],
 				"cross": {
-					"connectiveRoads": [279, 316],
 					"autoConnectiveRoads": [279, 316]
 				}
 			},
@@ -14950,7 +14401,6 @@
 				"handleIn": [3.6366779804229736, 0.02950286865234375, 0.021240234375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [295],
 					"autoConnectiveRoads": [295]
 				}
 			}
@@ -14967,7 +14417,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.8017578125, 0.0038897197227925062, 0.316650390625],
 				"cross": {
-					"connectiveRoads": [294],
 					"autoConnectiveRoads": [294]
 				}
 			},
@@ -14991,7 +14440,6 @@
 				"handleIn": [2.89599609375, -0.0033098857384175062, -0.7928059697151184],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [296],
 					"autoConnectiveRoads": [296]
 				}
 			}
@@ -15008,7 +14456,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.7578938007354736, 0.017513275146484375, 1.6256917715072632],
 				"cross": {
-					"connectiveRoads": [295],
 					"autoConnectiveRoads": [295]
 				}
 			},
@@ -15032,7 +14479,6 @@
 				"handleIn": [1.4114583730697632, 0.05990855023264885, -1.5364176034927368],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [297],
 					"autoConnectiveRoads": [297]
 				}
 			}
@@ -15049,7 +14495,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.9193522930145264, 0.037970226258039474, 5.2796630859375],
 				"cross": {
-					"connectiveRoads": [296],
 					"autoConnectiveRoads": [296]
 				}
 			},
@@ -15058,7 +14503,6 @@
 				"handleIn": [3.9193522930145264, -0.037970226258039474, -5.2796630859375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [298],
 					"autoConnectiveRoads": [298]
 				}
 			}
@@ -15075,7 +14519,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.22998046875, 0.033662158995866776, 1.8617349863052368],
 				"cross": {
-					"connectiveRoads": [297],
 					"autoConnectiveRoads": [297]
 				}
 			},
@@ -15099,7 +14542,6 @@
 				"handleIn": [2.9790852069854736, -0.0041681923903524876, -1.630126953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [299, 300],
 					"autoConnectiveRoads": [299, 300]
 				}
 			}
@@ -15116,7 +14558,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.8058674335479736, 0.0075861611403524876, 0.4831136167049408],
 				"cross": {
-					"connectiveRoads": [298, 300],
 					"autoConnectiveRoads": [298, 300]
 				}
 			},
@@ -15145,7 +14586,6 @@
 				"handleIn": [2.1534831523895264, -0.0007794697885401547, -0.5259602665901184],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [305],
 					"autoConnectiveRoads": [305]
 				}
 			}
@@ -15162,7 +14602,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3016763925552368, 0.001834869384765625, -4.01806640625],
 				"cross": {
-					"connectiveRoads": [298, 299],
 					"autoConnectiveRoads": [298, 299]
 				}
 			},
@@ -15186,7 +14625,6 @@
 				"handleIn": [1.0377197265625, -0.00301361083984375, 1.9804280996322632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [301, 306],
 					"autoConnectiveRoads": [301, 306]
 				}
 			}
@@ -15203,7 +14641,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.0099283456802368, 0.011423747055232525, -2.261474609375],
 				"cross": {
-					"connectiveRoads": [300, 306],
 					"autoConnectiveRoads": [300, 306]
 				}
 			},
@@ -15227,7 +14664,6 @@
 				"handleIn": [3.7667236328125, 0.003192901611328125, 0.89404296875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [302, 308],
 					"autoConnectiveRoads": [302, 308]
 				}
 			}
@@ -15244,7 +14680,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.6523845195770264, 0.01199213694781065, -0.646484375],
 				"cross": {
-					"connectiveRoads": [301, 308],
 					"autoConnectiveRoads": [301, 308]
 				}
 			},
@@ -15268,7 +14703,6 @@
 				"handleIn": [2.1993000507354736, -0.031342823058366776, -0.9985758662223816],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [303, 310],
 					"autoConnectiveRoads": [303, 310]
 				}
 			}
@@ -15285,7 +14719,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.4684245586395264, 0.0047670998610556126, -0.5802001953125],
 				"cross": {
-					"connectiveRoads": [302, 310],
 					"autoConnectiveRoads": [302, 310]
 				}
 			},
@@ -15314,7 +14747,6 @@
 				"handleIn": [2.8614501953125, -0.00766754150390625, 0.2782389223575592],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [304, 314],
 					"autoConnectiveRoads": [304, 314]
 				}
 			}
@@ -15331,7 +14763,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.3225910663604736, -0.0037638347130268812, -0.2502034604549408],
 				"cross": {
-					"connectiveRoads": [303, 314],
 					"autoConnectiveRoads": [303, 314]
 				}
 			},
@@ -15398,7 +14829,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.5580241084098816, -0.0062650046311318874, -2.6297607421875],
 				"cross": {
-					"connectiveRoads": [299],
 					"autoConnectiveRoads": [299]
 				}
 			},
@@ -15417,7 +14847,6 @@
 				"handleIn": [0.3732503354549408, 0.0377655029296875, 1.9662679433822632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [306, 307, 309],
 					"autoConnectiveRoads": [306, 307, 309]
 				}
 			}
@@ -15434,7 +14863,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.01025390625, 0.02691141702234745, -1.7416177988052368],
 				"cross": {
-					"connectiveRoads": [305, 307, 309],
 					"autoConnectiveRoads": [305, 307, 309]
 				}
 			},
@@ -15458,7 +14886,6 @@
 				"handleIn": [-3.3600666522979736, 0.010716755874454975, 1.7008463144302368],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [300, 301],
 					"autoConnectiveRoads": [300, 301]
 				}
 			}
@@ -15475,7 +14902,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.013753254897892475, 0.0065765380859375, -2.5519611835479736],
 				"cross": {
-					"connectiveRoads": [305, 306, 309],
 					"autoConnectiveRoads": [305, 306, 309]
 				}
 			},
@@ -15494,7 +14920,6 @@
 				"handleIn": [0.0940755233168602, -0.000804901123046875, 1.6866455078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [308, 312],
 					"autoConnectiveRoads": [308, 312]
 				}
 			}
@@ -15511,7 +14936,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.0413411445915699, -0.0024884541053324938, -1.9111734628677368],
 				"cross": {
-					"connectiveRoads": [307, 312],
 					"autoConnectiveRoads": [307, 312]
 				}
 			},
@@ -15530,7 +14954,6 @@
 				"handleIn": [-0.1494140625, -0.00589752197265625, 2.1016438007354736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [301, 302],
 					"autoConnectiveRoads": [301, 302]
 				}
 			}
@@ -15547,7 +14970,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6295166015625, 0.0044403076171875, 1.1960042715072632],
 				"cross": {
-					"connectiveRoads": [305, 306, 307],
 					"autoConnectiveRoads": [305, 306, 307]
 				}
 			},
@@ -15581,7 +15003,6 @@
 				"handleIn": [0.02433268167078495, -0.017655054107308388, 3.071533203125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [311, 313],
 					"autoConnectiveRoads": [311, 313]
 				}
 			}
@@ -15598,7 +15019,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.00732421875, -0.005400975700467825, 2.2740886211395264],
 				"cross": {
-					"connectiveRoads": [302, 303],
 					"autoConnectiveRoads": [302, 303]
 				}
 			},
@@ -15617,7 +15037,6 @@
 				"handleIn": [0.0378011055290699, 0.0030015308875590563, -2.0291340351104736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [311, 312],
 					"autoConnectiveRoads": [311, 312]
 				}
 			}
@@ -15634,7 +15053,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4473876953125, -0.0066471099853515625, 3.4356689453125],
 				"cross": {
-					"connectiveRoads": [310, 312],
 					"autoConnectiveRoads": [310, 312]
 				}
 			},
@@ -15643,7 +15061,6 @@
 				"handleIn": [0.4473876953125, 0.0066471099853515625, -3.4356689453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [309, 313],
 					"autoConnectiveRoads": [309, 313]
 				}
 			}
@@ -15660,7 +15077,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.6881511211395264, 0.020753225311636925, -0.3508707582950592],
 				"cross": {
-					"connectiveRoads": [307, 308],
 					"autoConnectiveRoads": [307, 308]
 				}
 			},
@@ -15679,7 +15095,6 @@
 				"handleIn": [3.8113200664520264, -0.0012919107684865594, -0.1895751953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [310, 311],
 					"autoConnectiveRoads": [310, 311]
 				}
 			}
@@ -15696,7 +15111,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.6475830078125, 0.018152236938476563, 0.7429606318473816],
 				"cross": {
-					"connectiveRoads": [309, 311],
 					"autoConnectiveRoads": [309, 311]
 				}
 			},
@@ -15715,7 +15129,6 @@
 				"handleIn": [3.5118408203125, 0.00919342041015625, -0.4253336489200592],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [314, 315],
 					"autoConnectiveRoads": [314, 315]
 				}
 			}
@@ -15732,7 +15145,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.2992349863052368, -3.0517578125e-05, -1.9158529043197632],
 				"cross": {
-					"connectiveRoads": [313, 315],
 					"autoConnectiveRoads": [313, 315]
 				}
 			},
@@ -15761,7 +15173,6 @@
 				"handleIn": [0.1690673828125, -0.0037371318321675062, 2.2659504413604736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [303, 304],
 					"autoConnectiveRoads": [303, 304]
 				}
 			}
@@ -15778,7 +15189,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6796875, 0.0024121601600199938, 1.3868001699447632],
 				"cross": {
-					"connectiveRoads": [313, 314],
 					"autoConnectiveRoads": [313, 314]
 				}
 			},
@@ -15825,7 +15235,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4512125551700592, 0.010861714370548725, 3.4012451171875],
 				"cross": {
-					"connectiveRoads": [279, 294],
 					"autoConnectiveRoads": [279, 294]
 				}
 			},
@@ -15864,7 +15273,6 @@
 				"handleIn": [-0.57696533203125, -0.0011444091796875, -4.420003414154053],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [317],
 					"autoConnectiveRoads": [317]
 				}
 			}
@@ -15881,7 +15289,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.39031982421875, -0.0038159687537699938, 4.039164066314697],
 				"cross": {
-					"connectiveRoads": [316],
 					"autoConnectiveRoads": [316]
 				}
 			},
@@ -15930,7 +15337,6 @@
 				"handleIn": [-1.8759561777114868, 0.003696441650390625, -1.0424600839614868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [275, 276],
 					"autoConnectiveRoads": [275, 276]
 				}
 			}
@@ -15947,7 +15353,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.4232177734375, 0.00260162353515625, -3.2558391094207764],
 				"cross": {
-					"connectiveRoads": [68, 69, 319],
 					"autoConnectiveRoads": [68, 69, 319]
 				}
 			},
@@ -15999,7 +15404,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0394287109375, 0.00033442178391851485, 0.97674560546875],
 				"cross": {
-					"connectiveRoads": [67, 68],
 					"autoConnectiveRoads": [67, 68]
 				}
 			},
@@ -16048,7 +15452,6 @@
 				"handleIn": [1.950439453125, 0.02126312255859375, 2.8689777851104736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [68, 69, 318],
 					"autoConnectiveRoads": [68, 69, 318]
 				}
 			}
@@ -16065,7 +15468,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.8267414569854736, 0.01097869873046875, -1.88519287109375],
 				"cross": {
-					"connectiveRoads": [65, 66],
 					"autoConnectiveRoads": [65, 66]
 				}
 			},
@@ -16112,7 +15514,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.0416259765625, 0.03723398968577385, -0.009134928695857525],
 				"cross": {
-					"connectiveRoads": [66, 67],
 					"autoConnectiveRoads": [66, 67]
 				}
 			},
@@ -16156,7 +15557,6 @@
 				"handleIn": [-0.1671345978975296, 0.00341033935546875, 1.92596435546875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [64, 65],
 					"autoConnectiveRoads": [64, 65]
 				}
 			}
@@ -16173,7 +15573,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3585001230239868, -0.029001235961914063, -2.968292236328125],
 				"cross": {
-					"connectiveRoads": [240, 241],
 					"autoConnectiveRoads": [240, 241]
 				}
 			},
@@ -16192,7 +15591,6 @@
 				"handleIn": [1.3581339120864868, 0.033639270812273026, 2.1175994873046875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [323],
 					"autoConnectiveRoads": [323]
 				}
 			}
@@ -16209,7 +15607,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2515056133270264, -0.1024119034409523, -3.6472980976104736],
 				"cross": {
-					"connectiveRoads": [322],
 					"autoConnectiveRoads": [322]
 				}
 			},
@@ -16253,7 +15650,6 @@
 				"handleIn": [3.1818645000457764, 0.02510579489171505, 0.2221781462430954],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [324, 325],
 					"autoConnectiveRoads": [324, 325]
 				}
 			}
@@ -16270,7 +15666,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.70355224609375, -0.05676015093922615, -4.008341312408447],
 				"cross": {
-					"connectiveRoads": [323, 325],
 					"autoConnectiveRoads": [323, 325]
 				}
 			},
@@ -16299,7 +15694,6 @@
 				"handleIn": [2.7552897930145264, 0.0487467460334301, 0.2633870542049408],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [325, 326, 327],
 					"autoConnectiveRoads": [325, 326, 327]
 				}
 			}
@@ -16316,7 +15710,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.7758991718292236, -0.00885009765625, 0.680145263671875],
 				"cross": {
-					"connectiveRoads": [323, 324],
 					"autoConnectiveRoads": [323, 324]
 				}
 			},
@@ -16360,7 +15753,6 @@
 				"handleIn": [0.2038777619600296, 0.06598663330078125, 2.3793742656707764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [324, 326, 327],
 					"autoConnectiveRoads": [324, 326, 327]
 				}
 			}
@@ -16377,7 +15769,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0717976912856102, 0.004634857177734375, -3.0651042461395264],
 				"cross": {
-					"connectiveRoads": [324, 325, 327],
 					"autoConnectiveRoads": [324, 325, 327]
 				}
 			},
@@ -16419,7 +15810,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-3.920166015625, 0.003692626953125, -0.6640726923942566],
 				"cross": {
-					"connectiveRoads": [324, 325, 326],
 					"autoConnectiveRoads": [324, 325, 326]
 				}
 			},
@@ -16501,7 +15891,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.987060546875, 0.02060445211827755, 5.22210168838501],
 				"cross": {
-					"connectiveRoads": [244, 245],
 					"autoConnectiveRoads": [244, 245]
 				}
 			},
@@ -16545,7 +15934,6 @@
 				"handleIn": [-0.8097330927848816, -0.03245289996266365, -4.901775360107422],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [329],
 					"autoConnectiveRoads": [329]
 				}
 			}
@@ -16562,7 +15950,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.6449177861213684, 0.04476674273610115, 3.7188594341278076],
 				"cross": {
-					"connectiveRoads": [328],
 					"autoConnectiveRoads": [328]
 				}
 			},
@@ -16611,7 +15998,6 @@
 				"handleIn": [-2.7582194805145264, 0.0208918247371912, -0.2642466127872467],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [330, 337],
 					"autoConnectiveRoads": [330, 337]
 				}
 			}
@@ -16628,7 +16014,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.0644938945770264, 0.011484782211482525, 0.2872365415096283],
 				"cross": {
-					"connectiveRoads": [329, 337],
 					"autoConnectiveRoads": [329, 337]
 				}
 			},
@@ -16647,7 +16032,6 @@
 				"handleIn": [-2.3695881366729736, 0.0755411759018898, -1.9006246328353882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [331, 332],
 					"autoConnectiveRoads": [331, 332]
 				}
 			}
@@ -16664,7 +16048,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.8208820819854736, -0.02380879782140255, -1.9400991201400757],
 				"cross": {
-					"connectiveRoads": [330, 332],
 					"autoConnectiveRoads": [330, 332]
 				}
 			},
@@ -16701,7 +16084,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3691812753677368, 0.12533314526081085, 3.2041168212890625],
 				"cross": {
-					"connectiveRoads": [330, 331],
 					"autoConnectiveRoads": [330, 331]
 				}
 			},
@@ -16725,7 +16107,6 @@
 				"handleIn": [0.84326171875, -0.0166778564453125, -1.4930368661880493],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [333, 336],
 					"autoConnectiveRoads": [333, 336]
 				}
 			}
@@ -16742,7 +16123,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.4342448711395264, -0.04184214398264885, -1.3594716787338257],
 				"cross": {
-					"connectiveRoads": [332, 336],
 					"autoConnectiveRoads": [332, 336]
 				}
 			},
@@ -16761,7 +16141,6 @@
 				"handleIn": [2.2506103515625, -0.02076212503015995, -2.4348247051239014],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [334, 339],
 					"autoConnectiveRoads": [334, 339]
 				}
 			}
@@ -16778,7 +16157,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8700155019760132, 0.01935831643640995, 1.9417470693588257],
 				"cross": {
-					"connectiveRoads": [333, 339],
 					"autoConnectiveRoads": [333, 339]
 				}
 			},
@@ -16792,7 +16170,6 @@
 				"handleIn": [2.3237712383270264, -0.01984405517578125, -2.3181965351104736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [335, 336, 338],
 					"autoConnectiveRoads": [335, 336, 338]
 				}
 			}
@@ -16809,7 +16186,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.4962971210479736, 0.02819315530359745, 1.9117685556411743],
 				"cross": {
-					"connectiveRoads": [334, 336, 338],
 					"autoConnectiveRoads": [334, 336, 338]
 				}
 			},
@@ -16866,7 +16242,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.1407064199447632, 0.010974884033203125, 2.5443878173828125],
 				"cross": {
-					"connectiveRoads": [332, 333],
 					"autoConnectiveRoads": [332, 333]
 				}
 			},
@@ -16905,7 +16280,6 @@
 				"handleIn": [2.2576904296875, 0.05564117431640625, 1.964324951171875],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [334, 335, 338],
 					"autoConnectiveRoads": [334, 335, 338]
 				}
 			}
@@ -16922,7 +16296,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.6749267578125, 0.11676152795553207, 2.7906596660614014],
 				"cross": {
-					"connectiveRoads": [329, 330],
 					"autoConnectiveRoads": [329, 330]
 				}
 			},
@@ -16941,7 +16314,6 @@
 				"handleIn": [1.3233438730239868, -0.032871246337890625, -2.221705198287964],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [338, 339],
 					"autoConnectiveRoads": [338, 339]
 				}
 			}
@@ -16958,7 +16330,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.8975015878677368, 0.1068572998046875, 2.4864044189453125],
 				"cross": {
-					"connectiveRoads": [337, 339],
 					"autoConnectiveRoads": [337, 339]
 				}
 			},
@@ -16987,7 +16358,6 @@
 				"handleIn": [-3.2458293437957764, 0.022591909393668175, -3.03997802734375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [334, 335, 336],
 					"autoConnectiveRoads": [334, 335, 336]
 				}
 			}
@@ -17004,7 +16374,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.5161540508270264, 0.02332560159265995, -2.725611448287964],
 				"cross": {
-					"connectiveRoads": [333, 334],
 					"autoConnectiveRoads": [333, 334]
 				}
 			},
@@ -17023,7 +16392,6 @@
 				"handleIn": [2.91925048828125, -0.0049641928635537624, 2.9555816650390625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [337, 338],
 					"autoConnectiveRoads": [337, 338]
 				}
 			}
@@ -17040,7 +16408,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.236419677734375, 0.061654407531023026, -3.3475749492645264],
 				"cross": {
-					"connectiveRoads": [103, 104],
 					"autoConnectiveRoads": [103, 104]
 				}
 			},
@@ -17084,7 +16451,6 @@
 				"handleIn": [-0.838134765625, 0.04772758483886719, -2.4169108867645264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [104, 105],
 					"autoConnectiveRoads": [104, 105]
 				}
 			}
@@ -17101,7 +16467,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4496358335018158, 0.035432178527116776, -2.7455852031707764],
 				"cross": {
-					"connectiveRoads": [105, 106],
 					"autoConnectiveRoads": [105, 106]
 				}
 			},
@@ -17125,7 +16490,6 @@
 				"handleIn": [-0.703460693359375, 0.010772068984806538, 1.6869100332260132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [342, 343],
 					"autoConnectiveRoads": [342, 343]
 				}
 			}
@@ -17142,7 +16506,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.684814453125, 0.01114018727093935, 0.7497761845588684],
 				"cross": {
-					"connectiveRoads": [341, 343],
 					"autoConnectiveRoads": [341, 343]
 				}
 			},
@@ -17166,7 +16529,6 @@
 				"handleIn": [-0.661590576171875, -0.010307948105037212, -3.21478271484375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [106, 107, 344],
 					"autoConnectiveRoads": [106, 107, 344]
 				}
 			}
@@ -17183,7 +16545,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.96075439453125, -0.02034759521484375, -2.0831298828125],
 				"cross": {
-					"connectiveRoads": [341, 342],
 					"autoConnectiveRoads": [341, 342]
 				}
 			},
@@ -17220,7 +16581,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.5009053349494934, -0.047308605164289474, 2.5032958984375],
 				"cross": {
-					"connectiveRoads": [106, 107, 342],
 					"autoConnectiveRoads": [106, 107, 342]
 				}
 			},
@@ -17262,7 +16622,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.392822265625, -0.051558177918195724, -1.3102010488510132],
 				"cross": {
-					"connectiveRoads": [114, 115, 137],
 					"autoConnectiveRoads": [114, 115, 137]
 				}
 			},
@@ -17271,7 +16630,6 @@
 				"handleIn": [-2.392822265625, 0.051558177918195724, 1.3102010488510132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [346, 348],
 					"autoConnectiveRoads": [346, 348]
 				}
 			}
@@ -17288,7 +16646,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.012308756820857525, -0.06121826171875, -3.5301411151885986],
 				"cross": {
-					"connectiveRoads": [345, 348],
 					"autoConnectiveRoads": [345, 348]
 				}
 			},
@@ -17332,7 +16689,6 @@
 				"handleIn": [-2.31353759765625, 0.00576019287109375, 0.4998982846736908],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [347],
 					"autoConnectiveRoads": [347]
 				}
 			}
@@ -17349,7 +16705,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0636394023895264, -0.11871591955423355, -0.06689453125],
 				"cross": {
-					"connectiveRoads": [346],
 					"autoConnectiveRoads": [346]
 				}
 			},
@@ -17383,7 +16738,6 @@
 				"handleIn": [-0.6960245966911316, 0.017477670684456825, -2.0513408184051514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [348, 349],
 					"autoConnectiveRoads": [348, 349]
 				}
 			}
@@ -17400,7 +16754,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9460041522979736, -0.06585057824850082, -1.28985595703125],
 				"cross": {
-					"connectiveRoads": [345, 346],
 					"autoConnectiveRoads": [345, 346]
 				}
 			},
@@ -17419,7 +16772,6 @@
 				"handleIn": [-1.9049886465072632, -0.016373952850699425, 1.0087381601333618],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [347, 349],
 					"autoConnectiveRoads": [347, 349]
 				}
 			}
@@ -17436,7 +16788,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.8990682363510132, 0.06389109045267105, -1.493255615234375],
 				"cross": {
-					"connectiveRoads": [115, 116, 351],
 					"autoConnectiveRoads": [115, 116, 351]
 				}
 			},
@@ -17465,7 +16816,6 @@
 				"handleIn": [1.3939615488052368, 0.048018138855695724, 3.1335856914520264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [347, 348],
 					"autoConnectiveRoads": [347, 348]
 				}
 			}
@@ -17482,7 +16832,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3603923320770264, -0.026352563872933388, -0.02915445901453495],
 				"cross": {
-					"connectiveRoads": [135, 136],
 					"autoConnectiveRoads": [135, 136]
 				}
 			},
@@ -17501,7 +16850,6 @@
 				"handleIn": [-1.9092000722885132, -0.0015875498065724969, 0.1055806502699852],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [351, 352],
 					"autoConnectiveRoads": [351, 352]
 				}
 			}
@@ -17518,7 +16866,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1668293476104736, 0.026704788208007813, 0.0399576835334301],
 				"cross": {
-					"connectiveRoads": [350, 352],
 					"autoConnectiveRoads": [350, 352]
 				}
 			},
@@ -17537,7 +16884,6 @@
 				"handleIn": [-1.7212320566177368, -0.06321907043457031, 0.735382080078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [115, 116, 349],
 					"autoConnectiveRoads": [115, 116, 349]
 				}
 			}
@@ -17554,7 +16900,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.19134521484375, -0.01530329417437315, 2.8131206035614014],
 				"cross": {
-					"connectiveRoads": [350, 351],
 					"autoConnectiveRoads": [350, 351]
 				}
 			},
@@ -17593,7 +16938,6 @@
 				"handleIn": [-2.3245646953582764, -0.0036468505859375, -0.5162455439567566],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [116, 117, 368],
 					"autoConnectiveRoads": [116, 117, 368]
 				}
 			}
@@ -17610,7 +16954,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.9325765371322632, 0.07684707641601563, 1.3756510019302368],
 				"cross": {
-					"connectiveRoads": [117, 118, 354],
 					"autoConnectiveRoads": [117, 118, 354]
 				}
 			},
@@ -17634,7 +16977,6 @@
 				"handleIn": [-1.6439615488052368, -0.024262109771370888, -2.3486735820770264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [31, 32],
 					"autoConnectiveRoads": [31, 32]
 				}
 			}
@@ -17651,7 +16993,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.6012370586395264, -0.00031153360032476485, -1.4302572011947632],
 				"cross": {
-					"connectiveRoads": [117, 118, 353],
 					"autoConnectiveRoads": [117, 118, 353]
 				}
 			},
@@ -17705,7 +17046,6 @@
 				"handleIn": [1.829345703125, -0.057821910828351974, -0.0062052407301962376],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [142, 143],
 					"autoConnectiveRoads": [142, 143]
 				}
 			}
@@ -17722,7 +17062,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.5304768085479736, 0.014540989883244038, 0.1730448454618454],
 				"cross": {
-					"connectiveRoads": [132, 133],
 					"autoConnectiveRoads": [132, 133]
 				}
 			},
@@ -17746,7 +17085,6 @@
 				"handleIn": [-2.3541057109832764, -0.03147061541676521, 0.16778564453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [136, 137],
 					"autoConnectiveRoads": [136, 137]
 				}
 			}
@@ -17763,7 +17101,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.4260660409927368, -0.011946995742619038, -2.8554584980010986],
 				"cross": {
-					"connectiveRoads": [54, 146],
 					"autoConnectiveRoads": [54, 146]
 				}
 			},
@@ -17787,7 +17124,6 @@
 				"handleIn": [1.11236572265625, 0.00024731954908929765, 2.6105854511260986],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [357, 358, 359],
 					"autoConnectiveRoads": [357, 358, 359]
 				}
 			}
@@ -17804,7 +17140,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7074382305145264, -0.16066615283489227, -0.1430155485868454],
 				"cross": {
-					"connectiveRoads": [145, 150],
 					"autoConnectiveRoads": [145, 150]
 				}
 			},
@@ -17823,7 +17158,6 @@
 				"handleIn": [-2.4828083515167236, 0.06508573144674301, 1.0806680917739868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [356, 358, 359],
 					"autoConnectiveRoads": [356, 358, 359]
 				}
 			}
@@ -17840,7 +17174,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.48492431640625, 0.022029241546988487, -1.3593801259994507],
 				"cross": {
-					"connectiveRoads": [356, 357, 359],
 					"autoConnectiveRoads": [356, 357, 359]
 				}
 			},
@@ -17864,7 +17197,6 @@
 				"handleIn": [-1.35882568359375, -0.021233877167105675, 1.2734273672103882],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [52, 53, 147],
 					"autoConnectiveRoads": [52, 53, 147]
 				}
 			}
@@ -17881,7 +17213,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4070841372013092, -0.03382937237620354, -2.9360454082489014],
 				"cross": {
-					"connectiveRoads": [356, 357, 358],
 					"autoConnectiveRoads": [356, 357, 358]
 				}
 			},
@@ -17918,7 +17249,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.0426433086395264, -0.08780034631490707, -1.4632415771484375],
 				"cross": {
-					"connectiveRoads": [121, 126],
 					"autoConnectiveRoads": [121, 126]
 				}
 			},
@@ -17950,7 +17280,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1411945819854736, -0.12313588708639145, -0.9427947998046875],
 				"cross": {
-					"connectiveRoads": [126, 127],
 					"autoConnectiveRoads": [126, 127]
 				}
 			},
@@ -17977,7 +17306,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9518024921417236, 0.09358152002096176, 2.873870849609375],
 				"cross": {
-					"connectiveRoads": [37, 38],
 					"autoConnectiveRoads": [37, 38]
 				}
 			},
@@ -17996,7 +17324,6 @@
 				"handleIn": [-2.4277546405792236, -0.040191650390625, -1.8967489004135132],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [363, 364],
 					"autoConnectiveRoads": [363, 364]
 				}
 			}
@@ -18013,7 +17340,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7138469219207764, -0.0451507568359375, 1.33935546875],
 				"cross": {
-					"connectiveRoads": [362, 364],
 					"autoConnectiveRoads": [362, 364]
 				}
 			},
@@ -18040,7 +17366,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2599079608917236, -0.17902374267578125, 3.2046711444854736],
 				"cross": {
-					"connectiveRoads": [362, 363],
 					"autoConnectiveRoads": [362, 363]
 				}
 			},
@@ -18067,7 +17392,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.2897746562957764, -0.017767587676644325, 2.0173542499542236],
 				"cross": {
-					"connectiveRoads": [34, 35, 119],
 					"autoConnectiveRoads": [34, 35, 119]
 				}
 			},
@@ -18101,7 +17425,6 @@
 				"handleIn": [1.74700927734375, -0.021188100799918175, 1.377716064453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [366],
 					"autoConnectiveRoads": [366]
 				}
 			}
@@ -18118,7 +17441,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.0964763164520264, -0.0024553935509175062, -1.3495584726333618],
 				"cross": {
-					"connectiveRoads": [365],
 					"autoConnectiveRoads": [365]
 				}
 			},
@@ -18142,7 +17464,6 @@
 				"handleIn": [0.62750244140625, 0.001232147216796875, 3.6150615215301514],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [33, 34, 367],
 					"autoConnectiveRoads": [33, 34, 367]
 				}
 			}
@@ -18159,7 +17480,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0847371444106102, 0.0644429549574852, -3.9238994121551514],
 				"cross": {
-					"connectiveRoads": [33, 34, 366],
 					"autoConnectiveRoads": [33, 34, 366]
 				}
 			},
@@ -18193,7 +17513,6 @@
 				"handleIn": [4.241902828216553, 0.13261668384075165, 1.93536376953125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [368],
 					"autoConnectiveRoads": [368]
 				}
 			}
@@ -18210,7 +17529,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-5.792928218841553, 0.032623291015625, -2.2975666522979736],
 				"cross": {
-					"connectiveRoads": [367],
 					"autoConnectiveRoads": [367]
 				}
 			},
@@ -18234,7 +17552,6 @@
 				"handleIn": [2.74981689453125, -0.06883367151021957, 0.7769572138786316],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [116, 117, 352],
 					"autoConnectiveRoads": [116, 117, 352]
 				}
 			}
@@ -18251,7 +17568,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.3166910409927368, 0.020172119140625, 3.3650081157684326],
 				"cross": {
-					"connectiveRoads": [124, 125, 130],
 					"autoConnectiveRoads": [124, 125, 130]
 				}
 			},
@@ -18283,7 +17599,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9475505352020264, -0.07018280029296875, 3.3443400859832764],
 				"cross": {
-					"connectiveRoads": [45, 46, 372],
 					"autoConnectiveRoads": [45, 46, 372]
 				}
 			},
@@ -18327,7 +17642,6 @@
 				"handleIn": [-3.9569499492645264, 0.21940867602825165, -3.1432902812957764],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [371],
 					"autoConnectiveRoads": [371]
 				}
 			}
@@ -18344,7 +17658,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.0665283203125, -0.0088653564453125, 3.5782878398895264],
 				"cross": {
-					"connectiveRoads": [370],
 					"autoConnectiveRoads": [370]
 				}
 			},
@@ -18401,7 +17714,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.3104248046875, 0.011296589858829975, -3.2419636249542236],
 				"cross": {
-					"connectiveRoads": [45, 46, 370],
 					"autoConnectiveRoads": [45, 46, 370]
 				}
 			},
@@ -18470,7 +17782,6 @@
 				"handleIn": [-1.4292398691177368, 0.06489308923482895, 2.2711994647979736],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [373, 380],
 					"autoConnectiveRoads": [373, 380]
 				}
 			}
@@ -18487,7 +17798,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.1842448711395264, -0.0222447719424963, -2.9941813945770264],
 				"cross": {
-					"connectiveRoads": [372, 380],
 					"autoConnectiveRoads": [372, 380]
 				}
 			},
@@ -18544,7 +17854,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.0365396738052368, 0.0010935465106740594, -3.3242390155792236],
 				"cross": {
-					"connectiveRoads": [46, 47],
 					"autoConnectiveRoads": [46, 47]
 				}
 			},
@@ -18573,7 +17882,6 @@
 				"handleIn": [-0.02766927145421505, 0.0711771622300148, 3.0718181133270264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [375, 379, 380],
 					"autoConnectiveRoads": [375, 379, 380]
 				}
 			}
@@ -18590,7 +17898,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [0.503662109375, -0.054180145263671875, -5.0908203125],
 				"cross": {
-					"connectiveRoads": [374, 379, 380],
 					"autoConnectiveRoads": [374, 379, 380]
 				}
 			},
@@ -18604,7 +17911,6 @@
 				"handleIn": [-2.1884357929229736, -0.0006726582651026547, 3.8570556640625],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [376, 377],
 					"autoConnectiveRoads": [376, 377]
 				}
 			}
@@ -18621,7 +17927,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.1431477069854736, -0.035414379090070724, -2.8735554218292236],
 				"cross": {
-					"connectiveRoads": [375, 377],
 					"autoConnectiveRoads": [375, 377]
 				}
 			},
@@ -18678,7 +17983,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.391357421875, -0.03314208984375, 1.68768310546875],
 				"cross": {
-					"connectiveRoads": [375, 376],
 					"autoConnectiveRoads": [375, 376]
 				}
 			},
@@ -18697,7 +18001,6 @@
 				"handleIn": [-1.5338541269302368, -0.06266912072896957, -3.0198161602020264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [378, 379],
 					"autoConnectiveRoads": [378, 379]
 				}
 			}
@@ -18714,7 +18017,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.2464193105697632, 0.008092244155704975, 2.18902587890625],
 				"cross": {
-					"connectiveRoads": [377, 379],
 					"autoConnectiveRoads": [377, 379]
 				}
 			},
@@ -18733,7 +18035,6 @@
 				"handleIn": [-0.4305013120174408, 0.0066324868239462376, -2.2074382305145264],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [47, 48],
 					"autoConnectiveRoads": [47, 48]
 				}
 			}
@@ -18750,7 +18051,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7828369140625, -0.0051091513596475124, -0.201904296875],
 				"cross": {
-					"connectiveRoads": [374, 375, 380],
 					"autoConnectiveRoads": [374, 375, 380]
 				}
 			},
@@ -18769,7 +18069,6 @@
 				"handleIn": [-2.87890625, 0.0084317522123456, 0.6612548828125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [377, 378],
 					"autoConnectiveRoads": [377, 378]
 				}
 			}
@@ -18786,7 +18085,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.1343586444854736, 0.06570180505514145, -0.1129964217543602],
 				"cross": {
-					"connectiveRoads": [372, 373],
 					"autoConnectiveRoads": [372, 373]
 				}
 			},
@@ -18840,7 +18138,6 @@
 				"handleIn": [-3.0606281757354736, 0.0051015219651162624, 0.3242594301700592],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [374, 375, 379],
 					"autoConnectiveRoads": [374, 375, 379]
 				}
 			}
@@ -18857,7 +18154,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.16064453125, 0.029239654541015625, -3.30645751953125],
 				"cross": {
-					"connectiveRoads": [50, 238, 388],
 					"autoConnectiveRoads": [50, 238, 388]
 				}
 			},
@@ -18876,7 +18172,6 @@
 				"handleIn": [0.82568359375, 0.02178446389734745, 1.7445068359375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [382, 387],
 					"autoConnectiveRoads": [382, 387]
 				}
 			}
@@ -18893,7 +18188,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.661865234375, -0.09722900390625, -2.0996906757354736],
 				"cross": {
-					"connectiveRoads": [381, 387],
 					"autoConnectiveRoads": [381, 387]
 				}
 			},
@@ -18912,7 +18206,6 @@
 				"handleIn": [0.8994954228401184, -0.0294774379581213, 2.75872802734375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [383, 386, 390],
 					"autoConnectiveRoads": [383, 386, 390]
 				}
 			}
@@ -18929,7 +18222,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.8638916015625, -0.0015716552734375, -2.650146484375],
 				"cross": {
-					"connectiveRoads": [382, 386, 390],
 					"autoConnectiveRoads": [382, 386, 390]
 				}
 			},
@@ -18963,7 +18255,6 @@
 				"handleIn": [0.3826904296875, 0.06651052087545395, 1.3520303964614868],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [384],
 					"autoConnectiveRoads": [384]
 				}
 			}
@@ -18980,7 +18271,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3763021230697632, -0.05313873291015625, -4.870096683502197],
 				"cross": {
-					"connectiveRoads": [383],
 					"autoConnectiveRoads": [383]
 				}
 			},
@@ -19017,7 +18307,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.3830159604549408, -0.05612945556640625, -2.4058837890625],
 				"cross": {
-					"connectiveRoads": [49, 50],
 					"autoConnectiveRoads": [49, 50]
 				}
 			},
@@ -19036,7 +18325,6 @@
 				"handleIn": [0.596923828125, -0.0267181396484375, 1.9714761972427368],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [386, 387],
 					"autoConnectiveRoads": [386, 387]
 				}
 			}
@@ -19053,7 +18341,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.6754963994026184, 0.0242894496768713, -2.00048828125],
 				"cross": {
-					"connectiveRoads": [385, 387],
 					"autoConnectiveRoads": [385, 387]
 				}
 			},
@@ -19087,7 +18374,6 @@
 				"handleIn": [-3.8172607421875, -0.016231536865234375, 0.8269450068473816],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [382, 383, 390],
 					"autoConnectiveRoads": [382, 383, 390]
 				}
 			}
@@ -19104,7 +18390,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.3548176288604736, 0.006092071533203125, -0.3941243588924408],
 				"cross": {
-					"connectiveRoads": [385, 386],
 					"autoConnectiveRoads": [385, 386]
 				}
 			},
@@ -19128,7 +18413,6 @@
 				"handleIn": [-2.6020915508270264, -0.0336100272834301, 0.39385986328125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [381, 382],
 					"autoConnectiveRoads": [381, 382]
 				}
 			}
@@ -19145,7 +18429,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.7974445819854736, -0.0069427490234375, -2.0982258319854736],
 				"cross": {
-					"connectiveRoads": [50, 238, 381],
 					"autoConnectiveRoads": [50, 238, 381]
 				}
 			},
@@ -19179,7 +18462,6 @@
 				"handleIn": [0.6445719599723816, -0.00652313232421875, 2.49835205078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [389, 390],
 					"autoConnectiveRoads": [389, 390]
 				}
 			}
@@ -19196,7 +18478,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4895833432674408, -0.03099568746984005, -2.4777424335479736],
 				"cross": {
-					"connectiveRoads": [388, 390],
 					"autoConnectiveRoads": [388, 390]
 				}
 			},
@@ -19223,7 +18504,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0194904804229736, -0.04319508746266365, -0.921875],
 				"cross": {
-					"connectiveRoads": [382, 383, 386],
 					"autoConnectiveRoads": [382, 383, 386]
 				}
 			},
@@ -19242,7 +18522,6 @@
 				"handleIn": [-2.619140625, -0.03387196734547615, 0.4814453125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [388, 389],
 					"autoConnectiveRoads": [388, 389]
 				}
 			}
@@ -19259,7 +18538,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4241739809513092, -0.048249561339616776, 3.0280559062957764],
 				"cross": {
-					"connectiveRoads": [146, 150],
 					"autoConnectiveRoads": [146, 150]
 				}
 			},
@@ -19288,7 +18566,6 @@
 				"handleIn": [0.67730712890625, 0.00637054443359375, -4.577178955078125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [392],
 					"autoConnectiveRoads": [392]
 				}
 			}
@@ -19305,7 +18582,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.9700520634651184, -0.0608062744140625, 4.953402042388916],
 				"cross": {
-					"connectiveRoads": [391],
 					"autoConnectiveRoads": [391]
 				}
 			},
@@ -19339,7 +18615,6 @@
 				"handleIn": [1.8181356191635132, 0.0479838065803051, -4.1192474365234375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [393],
 					"autoConnectiveRoads": [393]
 				}
 			}
@@ -19356,7 +18631,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.9459228515625, -0.07743072509765625, 3.83984375],
 				"cross": {
-					"connectiveRoads": [392],
 					"autoConnectiveRoads": [392]
 				}
 			},
@@ -19385,7 +18659,6 @@
 				"handleIn": [0.49334716796875, 0.012240092270076275, -1.915108323097229],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [394, 400, 401],
 					"autoConnectiveRoads": [394, 400, 401]
 				}
 			}
@@ -19402,7 +18675,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.4201456606388092, 0.0031865437049418688, 3.3213183879852295],
 				"cross": {
-					"connectiveRoads": [393, 400, 401],
 					"autoConnectiveRoads": [393, 400, 401]
 				}
 			},
@@ -19421,7 +18693,6 @@
 				"handleIn": [-0.4807332456111908, -0.0025049846153706312, -3.901548147201538],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [395, 399],
 					"autoConnectiveRoads": [395, 399]
 				}
 			}
@@ -19438,7 +18709,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.05047607421875, 0.11367034912109375, 3.935260772705078],
 				"cross": {
-					"connectiveRoads": [394, 399],
 					"autoConnectiveRoads": [394, 399]
 				}
 			},
@@ -19457,7 +18727,6 @@
 				"handleIn": [-0.0894775390625, -0.02169036865234375, -1.641278624534607],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [396, 397],
 					"autoConnectiveRoads": [396, 397]
 				}
 			}
@@ -19474,7 +18743,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.3985189199447632, 0.015179951675236225, 2.8151729106903076],
 				"cross": {
-					"connectiveRoads": [395, 397],
 					"autoConnectiveRoads": [395, 397]
 				}
 			},
@@ -19511,7 +18779,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.4429118633270264, -0.01868692971765995, 0.7592036128044128],
 				"cross": {
-					"connectiveRoads": [395, 396],
 					"autoConnectiveRoads": [395, 396]
 				}
 			},
@@ -19530,7 +18797,6 @@
 				"handleIn": [-2.9437663555145264, 0.1930287629365921, -0.42768988013267517],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [398, 399],
 					"autoConnectiveRoads": [398, 399]
 				}
 			}
@@ -19547,7 +18813,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.9106647968292236, 0.00691986083984375, 0.3551991879940033],
 				"cross": {
-					"connectiveRoads": [397, 399],
 					"autoConnectiveRoads": [397, 399]
 				}
 			},
@@ -19604,7 +18869,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0450032539665699, -0.0053113303147256374, -2.4358482360839844],
 				"cross": {
-					"connectiveRoads": [397, 398],
 					"autoConnectiveRoads": [397, 398]
 				}
 			},
@@ -19638,7 +18902,6 @@
 				"handleIn": [2.13299560546875, 0.060845691710710526, -0.07530593872070313],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [394, 395],
 					"autoConnectiveRoads": [394, 395]
 				}
 			}
@@ -19655,7 +18918,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-2.9537150859832764, -0.05114491656422615, -0.00646209716796875],
 				"cross": {
-					"connectiveRoads": [393, 394, 401],
 					"autoConnectiveRoads": [393, 394, 401]
 				}
 			},
@@ -19687,7 +18949,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.0671794414520264, 0.023469289764761925, 0.3004824221134186],
 				"cross": {
-					"connectiveRoads": [393, 394, 400],
 					"autoConnectiveRoads": [393, 394, 400]
 				}
 			},
@@ -19706,7 +18967,6 @@
 				"handleIn": [-2.9996540546417236, -0.043003082275390625, -0.00482177734375],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [402, 403],
 					"autoConnectiveRoads": [402, 403]
 				}
 			}
@@ -19723,7 +18983,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.84503173828125, 0.017370859161019325, -0.028408685699105263],
 				"cross": {
-					"connectiveRoads": [401, 403],
 					"autoConnectiveRoads": [401, 403]
 				}
 			},
@@ -19750,7 +19009,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-0.0026652019005268812, -0.043226879090070724, 3.1758906841278076],
 				"cross": {
-					"connectiveRoads": [401, 402],
 					"autoConnectiveRoads": [401, 402]
 				}
 			},
@@ -19777,7 +19035,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.949737548828125, -0.02840423583984375, -0.2381184846162796],
 				"cross": {
-					"connectiveRoads": [285],
 					"autoConnectiveRoads": [285]
 				}
 			},
@@ -19811,7 +19068,6 @@
 				"handleIn": [-2.0688579082489014, 0.00035349527024663985, -1.4389241933822632],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [405, 406],
 					"autoConnectiveRoads": [405, 406]
 				}
 			}
@@ -19828,7 +19084,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [1.5484822988510132, 0.0065511069260537624, 1.3729654550552368],
 				"cross": {
-					"connectiveRoads": [404, 406],
 					"autoConnectiveRoads": [404, 406]
 				}
 			},
@@ -19862,7 +19117,6 @@
 				"handleIn": [-2.8638408184051514, -0.02494049072265625, -0.7510986328125],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [407],
 					"autoConnectiveRoads": [407]
 				}
 			}
@@ -19879,7 +19133,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-1.6949259042739868, 0.006389617919921875, 2.4997150897979736],
 				"cross": {
-					"connectiveRoads": [404, 405],
 					"autoConnectiveRoads": [404, 405]
 				}
 			},
@@ -19926,7 +19179,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.92510986328125, -0.00615692138671875, 0.7853190302848816],
 				"cross": {
-					"connectiveRoads": [405],
 					"autoConnectiveRoads": [405]
 				}
 			},
@@ -19965,7 +19217,6 @@
 				"handleIn": [-1.9832662343978882, 0.0115966796875, 0.0611979179084301],
 				"handleOut": [0.0, 0.0, 0.0],
 				"cross": {
-					"connectiveRoads": [408],
 					"autoConnectiveRoads": [408]
 				}
 			}
@@ -19982,7 +19233,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6609089374542236, 0.0075823464430868626, -0.4417724609375],
 				"cross": {
-					"connectiveRoads": [407],
 					"autoConnectiveRoads": [407]
 				}
 			},

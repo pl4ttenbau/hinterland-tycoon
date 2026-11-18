@@ -79,6 +79,8 @@ Players place signals from the circular menu ("Place rail signal") while standin
 track. The facing defaults to the view direction. Until signal meshes exist, each signal
 shows one `Label3D` per protected direction, beside the track on the right of the travel
 direction: the signal name and GO (green) or STOP (red), refreshed four times a second.
+Standing within 6 m of a signal adds "Remove rail signal" to the menu, which removes the
+nearest one.
 
 ## Tests
 

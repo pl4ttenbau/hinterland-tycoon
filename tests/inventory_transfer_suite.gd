@@ -223,19 +223,19 @@ func test_vehicle_dialog() -> bool:
 	host.add_child(player)
 	var walking: BasicFpsPlayer = player.walking_body
 	var previous_process: int = walking.process_mode
-	var gaz := RoadVehicle3D.of("gaz_aa_truck")
-	gaz.freeze = true
-	host.add_child(gaz)
-	check(player.control.enter_road_vehicle(gaz), "Fixture boards the GAZ")
+	var truck := RoadVehicle3D.of("ifa_w50_covered")
+	truck.freeze = true
+	host.add_child(truck)
+	check(player.control.enter_road_vehicle(truck), "Fixture boards the IFA")
 	var driving_mouse := Input.mouse_mode
 	var items: Array[InventoryEndpoint] = InventorySelectionService.new().discover()
-	check(not items.is_empty() and items[0].inventory() == gaz.get_inventory(), "Occupied GAZ is discovered before the player bag")
+	check(not items.is_empty() and items[0].inventory() == truck.get_inventory(), "Occupied IFA is discovered before the player bag")
 	check(items.size() > 1 and items[1].inventory() == player.get_inventory() and player.get_inventory().amount_max == 3.0, "The avatar root exposes the existing three-unit bag")
-	check(gaz.get_inventory().amount_max == 4 and not gaz.inventory_component.accepts(&"passenger"), "GAZ uses its freight-only catalog capacity")
+	check(truck.get_inventory().amount_max == 12 and not truck.inventory_component.accepts(&"passenger"), "IFA uses its freight-only catalog capacity")
 	check(_test_nearby_stops() == true, "Nearby stop discovery completes")
 	var stop: InventoryEndpoint = endpoint("DepotStock", 100)
 	stop.kind = InventoryEndpoint.Kind.STOP
-	stop.inventory().add_goods_amount(GoodsAmount.new("lumber", 8))
+	stop.inventory().add_goods_amount(GoodsAmount.new("lumber", 16))
 	stop.inventory().change_stack(&"passenger", 201, 3)
 	items.append(stop)
 
@@ -244,7 +244,7 @@ func test_vehicle_dialog() -> bool:
 	host.add_child(dialog)
 	await tree.process_frame
 	await tree.process_frame
-	check(dialog._left.endpoint.inventory() == gaz.get_inventory() and dialog._right.endpoint == stop, "Dialog defaults to occupied truck and a stop")
+	check(dialog._left.endpoint.inventory() == truck.get_inventory() and dialog._right.endpoint == stop, "Dialog defaults to occupied truck and a stop")
 	check(dialog._tabs.current_tab == 1 and dialog._right._table.columns == 2, "Freight vehicle starts on Cargo")
 	check(dialog._quantity.value == 1, "Cargo quantity defaults to exactly one unit")
 	check(walking.process_mode == Node.PROCESS_MODE_DISABLED and UiState.movement_blocked, "Inventory dialog suspends walking")
@@ -254,18 +254,18 @@ func test_vehicle_dialog() -> bool:
 	row.select(0)
 	dialog._right._on_row_selected()
 	dialog._maximum.pressed.emit()
-	check(dialog._quantity.value == 4 and not dialog._move_left.disabled, "Max selects the truck's remaining capacity")
+	check(dialog._quantity.value == 12 and not dialog._move_left.disabled, "Max selects the truck's remaining capacity")
 	dialog._move_left.pressed.emit()
 	await tree.process_frame
 	await tree.process_frame
-	check(gaz.get_inventory().get_amount("lumber") == 4 and stop.inventory().get_amount("lumber") == 4, "Move-left button loads the GAZ")
+	check(truck.get_inventory().get_amount("lumber") == 12 and stop.inventory().get_amount("lumber") == 4, "Move-left button loads the IFA")
 	row = dialog._left._table.get_root().get_first_child()
 	row.select(0)
 	dialog._left._on_row_selected()
 	dialog._quantity.value = 1
 	dialog._move_right.pressed.emit()
 	await tree.process_frame
-	check(gaz.get_inventory().get_amount("lumber") == 3 and stop.inventory().get_amount("lumber") == 5, "Move-right button unloads the GAZ")
+	check(truck.get_inventory().get_amount("lumber") == 11 and stop.inventory().get_amount("lumber") == 5, "Move-right button unloads the IFA")
 
 	dialog._right._search.text = "missing"
 	dialog._right._refresh()
@@ -284,7 +284,7 @@ func test_vehicle_dialog() -> bool:
 	check(walking.process_mode == previous_process, "Exiting the vehicle restores walking")
 	Input.mouse_mode = previous_mouse
 	player.free()
-	gaz.free()
+	truck.free()
 	GlobalState.player = previous_player
 	GlobalState.active_cam = previous_camera
 	return true

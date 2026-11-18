@@ -86,7 +86,7 @@ func _stop(id: int, index: int = 0, interchange_id: int = -1) -> RoadStationData
 	stops[id] = data
 	return data
 
-func _vehicle(key: String = "gaz_aa_truck") -> RoadVehicle3D:
+func _vehicle(key: String = "ifa_w50_covered") -> RoadVehicle3D:
 	var body := RoadVehicle3D.of(key)
 	body.freeze = true
 	body.set_physics_process(false)
@@ -115,12 +115,13 @@ func test_cargo() -> bool:
 	var stop: RoadStationData = _stop(0)
 	var body: RoadVehicle3D = _vehicle()
 	var stock: GoodsInventory = stop.get_inventory_view().get_inventory()
-	stock.change_stack(&"lumber", -1, 5)
+	var capacity: float = body.get_inventory().amount_max
+	stock.change_stack(&"lumber", -1, capacity + 1)
 	stock.change_stack(&"tools", -1, 3)
 	var load := _action(RoadRouteAction.Kind.LOAD, [&"lumber", &"tools"])
 	var result: RoadRouteTransferResult = _execute(body, stop, load)
-	check(result.error.is_empty() and result.moved == 4, "Load moves up to the GAZ's shared capacity")
-	check(body.get_inventory().get_amount("lumber") == 4 and stock.get_amount("lumber") == 1, "Cargo load conserves lumber")
+	check(result.error.is_empty() and result.moved == capacity, "Load moves up to the IFA's shared capacity")
+	check(body.get_inventory().get_amount("lumber") == capacity and stock.get_amount("lumber") == 1, "Cargo load conserves lumber")
 	check(stock.get_amount("tools") == 3, "Later selected resources cannot overfill the vehicle")
 	result = _execute(body, stop, load)
 	check(result.error.is_empty() and result.moved == 0, "Loading a full vehicle is a successful no-op")
@@ -130,7 +131,7 @@ func test_cargo() -> bool:
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"lumber"])
 	result = _execute(body, stop, unload)
 	check(result.error.is_empty() and result.moved == 2, "Unloading respects remaining stop capacity")
-	check(body.get_inventory().get_amount("lumber") == 2 and stock.get_amount("lumber") == 3, "Partial unload leaves excess aboard")
+	check(body.get_inventory().get_amount("lumber") == capacity - 2 and stock.get_amount("lumber") == 3, "Partial unload leaves excess aboard")
 	result = _execute(body, stop, unload)
 	check(result.error.is_empty() and result.moved == 0, "Unloading at a full stop does not wait indefinitely")
 	body.free()
@@ -214,23 +215,24 @@ func test_ordered_execution() -> bool:
 	body.position.y = 0.8
 	# This fixture tests actions only; face the next stop to avoid a U-turn phase.
 	body.rotation.y = PI
-	body.get_inventory().change_stack(&"lumber", -1, 4)
+	var capacity: float = body.get_inventory().amount_max
+	body.get_inventory().change_stack(&"lumber", -1, capacity)
 	var stock: GoodsInventory = first.get_inventory_view().get_inventory()
-	stock.change_stack(&"tools", -1, 4)
+	stock.change_stack(&"tools", -1, capacity)
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"lumber"])
 	var load := _action(RoadRouteAction.Kind.LOAD, [&"tools"])
 	body.route_plan.points = [_point(20, [unload, load]), _point(21, [load])]
 	body.player_driving = true
 	check(body.plan_execution.start(body), "Plan starts beside the first stop under manual control")
 	body.plan_execution.tick(body)
-	check(body.get_inventory().get_amount("lumber") == 4 and stock.get_amount("tools") == 4, "Start and manual tick do not execute stop actions")
+	check(body.get_inventory().get_amount("lumber") == capacity and stock.get_amount("tools") == capacity, "Start and manual tick do not execute stop actions")
 	body.player_driving = false
 	body.linear_velocity = Vector3(0, 0, 2)
 	body.plan_execution.tick(body)
 	check(body.get_inventory().get_amount("tools") == 0, "Servicing waits until the vehicle is stationary")
 	body.linear_velocity = Vector3.ZERO
 	body.plan_execution.tick(body)
-	check(body.get_inventory().get_amount("lumber") == 0 and body.get_inventory().get_amount("tools") == 4, "Ordered unload frees capacity for the following load")
+	check(body.get_inventory().get_amount("lumber") == 0 and body.get_inventory().get_amount("tools") == capacity, "Ordered unload frees capacity for the following load")
 	check(body.plan_execution.running and body.plan_execution.current_point == 1, "Successful actions advance to the next visit")
 
 	body.global_position = road.nodes[3].position + Vector3.UP * 0.8

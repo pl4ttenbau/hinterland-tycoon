@@ -43,14 +43,13 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 		node_index += 1
 
 static func cross_from_dict_and_data(parent_node: RoadNode, road_data: Dictionary) -> RoadCross:
-	var road_cross: RoadCross = RoadCross.of(parent_node, [])
-	road_cross.parent_node = parent_node
-	# add connective roads
-	var connective_roads: Array = road_data.get("connectiveRoads", null)
-	if connective_roads:
-		for conn_road_float: float in connective_roads:
-			road_cross.connecting_roads.append(int(conn_road_float))
-	return road_cross
+	var connecting_roads: Array[int] = []
+	for key: String in ["connectiveRoads", "autoConnectiveRoads"]:
+		for raw_id: Variant in road_data.get(key, []) as Array:
+			var id: int = int(raw_id)
+			if id not in connecting_roads:
+				connecting_roads.append(id)
+	return RoadCross.of(parent_node, connecting_roads)
 	
 static func editor_line_from_data(road_data_dict: Dictionary) -> EditorInfrLine3D:
 	var road_num: int = road_data_dict.get("num")

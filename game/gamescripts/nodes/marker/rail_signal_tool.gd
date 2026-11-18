@@ -3,6 +3,8 @@ class_name RailSignalTool extends Node
 
 ## The player must stand within this horizontal distance of the track centreline.
 const MAX_PLACEMENT_DISTANCE: float = 4.0
+## Removal picks the nearest signal within this distance of the player.
+const MAX_REMOVAL_DISTANCE: float = 6.0
 ## Labels stand beside the track, on the right-hand side of the direction they apply to.
 const LABEL_SIDE_OFFSET: float = 2.5
 const LABEL_HEIGHT: float = 3.0
@@ -76,6 +78,63 @@ func place(placement: Dictionary, title: String, facing: RailSignalData.Facing) 
 	_show_signal(rail_signal, track)
 	refresh_aspects()
 	return rail_signal
+
+#region Removal
+## The circular menu offers removal only while a signal is within reach of the walking player.
+func can_remove_near_player() -> bool:
+	var player: BasicFpsPlayer = _walking_player()
+	return player != null and nearest_signal(player.global_position) != null
+
+## Remove the signal nearest to the walking player, from the circular menu.
+func remove_near_player() -> bool:
+	var player: BasicFpsPlayer = _walking_player()
+	if player == null:
+		return false
+	var rail_signal: RailSignalData = nearest_signal(player.global_position)
+	if rail_signal == null:
+		_show_message("Stand next to a rail signal to remove it.")
+		return false
+	var title: String = rail_signal.signal_name
+	if not remove(rail_signal):
+		return false
+	_show_message("Removed %s." % title)
+	return true
+
+## The nearest signal to a world position, measured to its point on the track centreline.
+func nearest_signal(position: Vector3, max_distance: float = MAX_REMOVAL_DISTANCE) -> RailSignalData:
+	var best: RailSignalData = null
+	var best_distance: float = max_distance
+	for rail_signal: RailSignalData in rails.signals.signals:
+		var track: RailTrackData = rails.track_storage._by_id.get(rail_signal.track_num)
+		if track == null or track.curve == null:
+			continue
+		var distance: float = _to_world(track, track.curve.sample_baked(rail_signal.offset)).distance_to(position)
+		if distance <= best_distance:
+			best_distance = distance
+			best = rail_signal
+	return best
+
+## Drop the signal and its labels. Trains and other signals see the change on their next check.
+func remove(rail_signal: RailSignalData) -> bool:
+	if not rails.signals.remove(rail_signal):
+		return false
+	_labels.erase(rail_signal.num)
+	var view: Node = _views.get(rail_signal.num)
+	_views.erase(rail_signal.num)
+	if is_instance_valid(view):
+		## Detach now; queued deletion alone leaves the label visible until the frame ends.
+		remove_child(view)
+		view.queue_free()
+	return true
+
+func _walking_player() -> BasicFpsPlayer:
+	if Managers.rails != rails or UiState.current_diag != null or not is_instance_valid(GlobalState.player):
+		return null
+	if GlobalState.player.control.is_in_vehicle():
+		return null
+	var player: BasicFpsPlayer = GlobalState.player.walking_body
+	return player if is_instance_valid(player) else null
+#endregion
 
 func _process(delta: float) -> void:
 	if _labels.is_empty():

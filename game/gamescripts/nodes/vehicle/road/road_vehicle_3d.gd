@@ -10,7 +10,7 @@ signal route_finished()
 ## Global switch: when true, automatic driving places every road vehicle exactly
 ## on its route curve (kinematic, collision-checked) instead of steering with
 ## wheel physics. Player driving is unaffected. Takes effect on the next tick.
-static var follow_road_path: bool = false
+static var follow_road_path: bool = true
 
 ## Automatic driving speed cap in km/h; bends and terminal braking may lower it.
 @export var cruise_speed_kmh: float = 30.0

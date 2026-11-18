@@ -12,6 +12,13 @@ func next_num() -> int:
 func add(rail_signal: RailSignalData) -> void:
 	self.signals.append(rail_signal)
 
+func remove(rail_signal: RailSignalData) -> bool:
+	var index: int = self.signals.find(rail_signal)
+	if index < 0:
+		return false
+	self.signals.remove_at(index)
+	return true
+
 func get_by_num(num: int) -> RailSignalData:
 	for rail_signal: RailSignalData in self.signals:
 		if rail_signal.num == num:

@@ -2044,6 +2044,9 @@ transform = Transform3D(0.96344835, 0, -0.26789424, 0, 1, 0, 0.26789424, 0, 0.96
 
 [node name="EditorObjects" parent="." unique_id=498932354 instance=ExtResource("54_xndjc")]
 
+[node name="RailTrack_53" parent="EditorObjects/EditorInfr/EditorRails" parent_id_path=PackedInt32Array(498932354, 450637173) index="52" unique_id=713620986]
+rail_gauge = "NORMAL_GAUGE"
+
 [node name="RoadStop_1" parent="EditorObjects/EditorStops" parent_id_path=PackedInt32Array(498932354, 247676361) index="0" unique_id=703079687]
 texture = SubResource("ViewportTexture_xndjc")
 

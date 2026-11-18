@@ -6,7 +6,7 @@
 			{
 				"pos": [1705.90, 12.40, 2021.40],
 				"cross": {
-					"connectiveRoads": [3, 4, 143.0, 243],
+					"connectiveRoads": [143],
 					"autoConnectiveRoads": [3, 4, 243]
 				}
 			},
@@ -33,7 +33,6 @@
 			{
 				"pos": [1804.90, 12.60, 1962.60],
 				"cross": {
-					"connectiveRoads": [2],
 					"autoConnectiveRoads": [2]
 				}
 			}
@@ -46,7 +45,6 @@
 			{
 				"pos": [1804.90, 12.60, 1962.60],
 				"cross": {
-					"connectiveRoads": [1],
 					"autoConnectiveRoads": [1]
 				}
 			},
@@ -81,7 +79,6 @@
 			{
 				"pos": [1976.10, 12.70, 1905.20],
 				"cross": {
-					"connectiveRoads": [19],
 					"autoConnectiveRoads": [19]
 				}
 			}
@@ -94,7 +91,7 @@
 			{
 				"pos": [1705.90, 12.40, 2021.40],
 				"cross": {
-					"connectiveRoads": [1, 4, 143.0, 243],
+					"connectiveRoads": [143],
 					"autoConnectiveRoads": [1, 4, 243]
 				}
 			},
@@ -125,7 +122,6 @@
 			{
 				"pos": [1598.80, 11.70, 1967.90],
 				"cross": {
-					"connectiveRoads": [4, 5],
 					"autoConnectiveRoads": [4, 5]
 				}
 			}
@@ -138,7 +134,7 @@
 			{
 				"pos": [1705.90, 12.40, 2021.40],
 				"cross": {
-					"connectiveRoads": [1, 3, 143.0, 243],
+					"connectiveRoads": [143],
 					"autoConnectiveRoads": [1, 3, 243]
 				}
 			},
@@ -173,7 +169,6 @@
 			{
 				"pos": [1598.80, 11.70, 1967.90],
 				"cross": {
-					"connectiveRoads": [3, 5],
 					"autoConnectiveRoads": [3, 5]
 				}
 			}
@@ -186,7 +181,6 @@
 			{
 				"pos": [1598.80, 11.70, 1967.90],
 				"cross": {
-					"connectiveRoads": [3, 4],
 					"autoConnectiveRoads": [3, 4]
 				}
 			},
@@ -225,7 +219,6 @@
 			{
 				"pos": [1357.60, 13.10, 1878.70],
 				"cross": {
-					"connectiveRoads": [7, 254],
 					"autoConnectiveRoads": [7, 254]
 				}
 			}
@@ -239,14 +232,12 @@
 			{
 				"pos": [1348.10, 11.07, 1536.91],
 				"cross": {
-					"connectiveRoads": [10],
 					"autoConnectiveRoads": [10]
 				}
 			},
 			{
 				"pos": [1337.80, 11.90, 1528.20],
 				"cross": {
-					"connectiveRoads": [11],
 					"autoConnectiveRoads": [11]
 				}
 			}
@@ -259,7 +250,6 @@
 			{
 				"pos": [1357.60, 13.10, 1878.70],
 				"cross": {
-					"connectiveRoads": [5, 254],
 					"autoConnectiveRoads": [5, 254]
 				}
 			},
@@ -284,7 +274,6 @@
 			{
 				"pos": [1339.20, 11.70, 1703.40],
 				"cross": {
-					"connectiveRoads": [8],
 					"autoConnectiveRoads": [8]
 				}
 			}
@@ -297,7 +286,6 @@
 			{
 				"pos": [1339.20, 11.70, 1703.40],
 				"cross": {
-					"connectiveRoads": [7],
 					"autoConnectiveRoads": [7]
 				}
 			},
@@ -319,7 +307,7 @@
 			{
 				"pos": [1379.50, 12.70, 1559.60],
 				"cross": {
-					"connectiveRoads": [8.0, 9, 10],
+					"connectiveRoads": [8],
 					"autoConnectiveRoads": [9, 10]
 				}
 			}
@@ -332,7 +320,7 @@
 			{
 				"pos": [1379.50, 12.70, 1559.60],
 				"cross": {
-					"connectiveRoads": [7.0, 8, 9.0, 10],
+					"connectiveRoads": [7, 9],
 					"autoConnectiveRoads": [8, 10]
 				}
 			},
@@ -384,7 +372,7 @@
 			{
 				"pos": [1379.50, 12.70, 1559.60],
 				"cross": {
-					"connectiveRoads": [7.0, 8, 9],
+					"connectiveRoads": [7],
 					"autoConnectiveRoads": [8, 9]
 				}
 			},
@@ -399,7 +387,6 @@
 			{
 				"pos": [1348.10, 11.07, 1536.91],
 				"cross": {
-					"connectiveRoads": [6],
 					"autoConnectiveRoads": [6]
 				}
 			}
@@ -412,7 +399,6 @@
 			{
 				"pos": [1337.80, 11.90, 1528.20],
 				"cross": {
-					"connectiveRoads": [6],
 					"autoConnectiveRoads": [6]
 				}
 			},
@@ -463,7 +449,6 @@
 			{
 				"pos": [1221.40, 12.40, 1386.50],
 				"cross": {
-					"connectiveRoads": [12, 87],
 					"autoConnectiveRoads": [12, 87]
 				}
 			}
@@ -476,7 +461,6 @@
 			{
 				"pos": [1221.40, 12.40, 1386.50],
 				"cross": {
-					"connectiveRoads": [11, 87],
 					"autoConnectiveRoads": [11, 87]
 				}
 			},
@@ -507,7 +491,6 @@
 			{
 				"pos": [1112.10, 12.50, 1384.60],
 				"cross": {
-					"connectiveRoads": [14],
 					"autoConnectiveRoads": [14]
 				}
 			}
@@ -520,7 +503,7 @@
 			{
 				"pos": [1093.60, 12.23, 1361.40],
 				"cross": {
-					"connectiveRoads": [14.0, 160.0]
+					"connectiveRoads": [14, 160]
 				}
 			},
 			{
@@ -550,7 +533,6 @@
 			{
 				"pos": [1052.30, 11.90, 1274.00],
 				"cross": {
-					"connectiveRoads": [75, 79],
 					"autoConnectiveRoads": [75, 79]
 				}
 			}
@@ -563,14 +545,13 @@
 			{
 				"pos": [1112.10, 12.50, 1384.60],
 				"cross": {
-					"connectiveRoads": [12],
 					"autoConnectiveRoads": [12]
 				}
 			},
 			{
 				"pos": [1093.60, 12.30, 1361.40],
 				"cross": {
-					"connectiveRoads": [159.0, 160],
+					"connectiveRoads": [159],
 					"autoConnectiveRoads": [160]
 				}
 			}
@@ -583,7 +564,6 @@
 			{
 				"pos": [2140.80, 13.10, 1621.70],
 				"cross": {
-					"connectiveRoads": [16],
 					"autoConnectiveRoads": [16]
 				}
 			},
@@ -605,7 +585,6 @@
 			{
 				"pos": [2140.80, 13.10, 1621.70],
 				"cross": {
-					"connectiveRoads": [15],
 					"autoConnectiveRoads": [15]
 				}
 			},
@@ -621,7 +600,6 @@
 			{
 				"pos": [2128.90, 13.70, 1681.00],
 				"cross": {
-					"connectiveRoads": [18],
 					"autoConnectiveRoads": [18]
 				}
 			}
@@ -634,7 +612,6 @@
 			{
 				"pos": [2115.10, 13.00, 1934.20],
 				"cross": {
-					"connectiveRoads": [19, 20],
 					"autoConnectiveRoads": [19, 20]
 				}
 			},
@@ -665,7 +642,6 @@
 			{
 				"pos": [2049.30, 12.80, 1820.20],
 				"cross": {
-					"connectiveRoads": [18],
 					"autoConnectiveRoads": [18]
 				}
 			}
@@ -678,7 +654,7 @@
 			{
 				"pos": [2049.30, 12.80, 1820.20],
 				"cross": {
-					"connectiveRoads": [17, 18.0],
+					"connectiveRoads": [18],
 					"autoConnectiveRoads": [17]
 				}
 			},
@@ -706,7 +682,6 @@
 			{
 				"pos": [2128.90, 13.70, 1681.00],
 				"cross": {
-					"connectiveRoads": [16],
 					"autoConnectiveRoads": [16]
 				}
 			}
@@ -719,7 +694,6 @@
 			{
 				"pos": [1976.10, 12.70, 1905.20],
 				"cross": {
-					"connectiveRoads": [2],
 					"autoConnectiveRoads": [2]
 				}
 			},
@@ -750,7 +724,6 @@
 			{
 				"pos": [2115.10, 13.00, 1934.20],
 				"cross": {
-					"connectiveRoads": [17, 20],
 					"autoConnectiveRoads": [17, 20]
 				}
 			}
@@ -763,7 +736,6 @@
 			{
 				"pos": [2115.10, 13.00, 1934.20],
 				"cross": {
-					"connectiveRoads": [17, 19],
 					"autoConnectiveRoads": [17, 19]
 				}
 			},
@@ -776,7 +748,6 @@
 			{
 				"pos": [2155.60, 13.90, 1962.50],
 				"cross": {
-					"connectiveRoads": [21, 22],
 					"autoConnectiveRoads": [21, 22]
 				}
 			}
@@ -789,7 +760,6 @@
 			{
 				"pos": [2155.60, 13.90, 1962.50],
 				"cross": {
-					"connectiveRoads": [20, 22],
 					"autoConnectiveRoads": [20, 22]
 				}
 			},
@@ -824,7 +794,6 @@
 			{
 				"pos": [2311.00, 12.00, 1911.60],
 				"cross": {
-					"connectiveRoads": [39],
 					"autoConnectiveRoads": [39]
 				}
 			}
@@ -837,7 +806,6 @@
 			{
 				"pos": [2155.60, 13.90, 1962.50],
 				"cross": {
-					"connectiveRoads": [20, 21],
 					"autoConnectiveRoads": [20, 21]
 				}
 			},
@@ -859,7 +827,6 @@
 			{
 				"pos": [2073.40, 12.90, 2077.40],
 				"cross": {
-					"connectiveRoads": [23, 96],
 					"autoConnectiveRoads": [23, 96]
 				}
 			}
@@ -872,7 +839,6 @@
 			{
 				"pos": [2073.40, 12.90, 2077.40],
 				"cross": {
-					"connectiveRoads": [22, 96],
 					"autoConnectiveRoads": [22, 96]
 				}
 			},
@@ -895,7 +861,6 @@
 			{
 				"pos": [2030.70, 13.20, 2176.80],
 				"cross": {
-					"connectiveRoads": [24, 25],
 					"autoConnectiveRoads": [24, 25]
 				}
 			}
@@ -908,7 +873,6 @@
 			{
 				"pos": [2030.70, 13.20, 2176.80],
 				"cross": {
-					"connectiveRoads": [23, 25],
 					"autoConnectiveRoads": [23, 25]
 				}
 			},
@@ -943,7 +907,6 @@
 			{
 				"pos": [2136.80, 12.80, 2323.70],
 				"cross": {
-					"connectiveRoads": [40, 108],
 					"autoConnectiveRoads": [40, 108]
 				}
 			}
@@ -956,7 +919,6 @@
 			{
 				"pos": [2030.70, 13.20, 2176.80],
 				"cross": {
-					"connectiveRoads": [23, 24],
 					"autoConnectiveRoads": [23, 24]
 				}
 			},
@@ -981,7 +943,6 @@
 			{
 				"pos": [1916.10, 13.40, 2277.30],
 				"cross": {
-					"connectiveRoads": [26],
 					"autoConnectiveRoads": [26]
 				}
 			}
@@ -994,7 +955,6 @@
 			{
 				"pos": [1916.10, 13.40, 2277.30],
 				"cross": {
-					"connectiveRoads": [25],
 					"autoConnectiveRoads": [25]
 				}
 			},
@@ -1016,7 +976,6 @@
 			{
 				"pos": [1784.80, 13.30, 2291.40],
 				"cross": {
-					"connectiveRoads": [27, 28],
 					"autoConnectiveRoads": [27, 28]
 				}
 			}
@@ -1029,7 +988,6 @@
 			{
 				"pos": [1784.80, 13.30, 2291.40],
 				"cross": {
-					"connectiveRoads": [26, 28],
 					"autoConnectiveRoads": [26, 28]
 				}
 			},
@@ -1057,7 +1015,6 @@
 			{
 				"pos": [1784.80, 13.30, 2291.40],
 				"cross": {
-					"connectiveRoads": [26, 27],
 					"autoConnectiveRoads": [26, 27]
 				}
 			},
@@ -1073,7 +1030,6 @@
 			{
 				"pos": [1698.50, 14.10, 2353.80],
 				"cross": {
-					"connectiveRoads": [29],
 					"autoConnectiveRoads": [29]
 				}
 			}
@@ -1086,7 +1042,6 @@
 			{
 				"pos": [1698.50, 14.10, 2353.80],
 				"cross": {
-					"connectiveRoads": [28],
 					"autoConnectiveRoads": [28]
 				}
 			},
@@ -1099,7 +1054,6 @@
 			{
 				"pos": [1653.10, 14.00, 2410.60],
 				"cross": {
-					"connectiveRoads": [30, 31],
 					"autoConnectiveRoads": [30, 31]
 				}
 			}
@@ -1112,7 +1066,7 @@
 			{
 				"pos": [1653.10, 14.00, 2410.60],
 				"cross": {
-					"connectiveRoads": [28.0, 29, 31],
+					"connectiveRoads": [28],
 					"autoConnectiveRoads": [29, 31]
 				}
 			},
@@ -1128,7 +1082,6 @@
 			{
 				"pos": [1571.00, 14.70, 2357.20],
 				"cross": {
-					"connectiveRoads": [118, 184],
 					"autoConnectiveRoads": [118, 184]
 				}
 			}
@@ -1141,7 +1094,7 @@
 			{
 				"pos": [1653.10, 14.00, 2410.60],
 				"cross": {
-					"connectiveRoads": [28.0, 29, 30],
+					"connectiveRoads": [28],
 					"autoConnectiveRoads": [29, 30]
 				}
 			},
@@ -1160,7 +1113,6 @@
 			{
 				"pos": [1756.50, 14.50, 2443.50],
 				"cross": {
-					"connectiveRoads": [32, 185],
 					"autoConnectiveRoads": [32, 185]
 				}
 			}
@@ -1173,7 +1125,6 @@
 			{
 				"pos": [1756.50, 14.50, 2443.50],
 				"cross": {
-					"connectiveRoads": [31, 185],
 					"autoConnectiveRoads": [31, 185]
 				}
 			},
@@ -1210,7 +1161,6 @@
 			{
 				"pos": [1943.40, 14.20, 2499.50],
 				"cross": {
-					"connectiveRoads": [45, 46, 90],
 					"autoConnectiveRoads": [45, 46, 90]
 				}
 			}
@@ -1223,7 +1173,6 @@
 			{
 				"pos": [2174.90, 12.30, 3127.70],
 				"cross": {
-					"connectiveRoads": [34, 38, 99],
 					"autoConnectiveRoads": [34, 38, 99]
 				}
 			},
@@ -1241,7 +1190,6 @@
 			{
 				"pos": [2099.50, 12.30, 3130.80],
 				"cross": {
-					"connectiveRoads": [69],
 					"autoConnectiveRoads": [69]
 				}
 			}
@@ -1254,7 +1202,6 @@
 			{
 				"pos": [2174.90, 12.30, 3127.70],
 				"cross": {
-					"connectiveRoads": [33, 38, 99],
 					"autoConnectiveRoads": [33, 38, 99]
 				}
 			},
@@ -1273,7 +1220,6 @@
 			{
 				"pos": [2159.50, 12.30, 3195.50],
 				"cross": {
-					"connectiveRoads": [35],
 					"autoConnectiveRoads": [35]
 				}
 			}
@@ -1286,14 +1232,12 @@
 			{
 				"pos": [2159.50, 12.30, 3195.50],
 				"cross": {
-					"connectiveRoads": [34],
 					"autoConnectiveRoads": [34]
 				}
 			},
 			{
 				"pos": [2149.40, 12.50, 3226.20],
 				"cross": {
-					"connectiveRoads": [36, 37],
 					"autoConnectiveRoads": [36, 37]
 				}
 			}
@@ -1306,7 +1250,6 @@
 			{
 				"pos": [2149.40, 12.50, 3226.20],
 				"cross": {
-					"connectiveRoads": [35, 37],
 					"autoConnectiveRoads": [35, 37]
 				}
 			},
@@ -1322,7 +1265,6 @@
 			{
 				"pos": [2149.40, 12.50, 3226.20],
 				"cross": {
-					"connectiveRoads": [35, 36],
 					"autoConnectiveRoads": [35, 36]
 				}
 			},
@@ -1349,7 +1291,6 @@
 			{
 				"pos": [2204.20, 14.20, 3170.30],
 				"cross": {
-					"connectiveRoads": [38],
 					"autoConnectiveRoads": [38]
 				}
 			}
@@ -1362,7 +1303,6 @@
 			{
 				"pos": [2204.20, 14.20, 3170.30],
 				"cross": {
-					"connectiveRoads": [37],
 					"autoConnectiveRoads": [37]
 				}
 			},
@@ -1381,7 +1321,6 @@
 			{
 				"pos": [2174.90, 12.30, 3127.70],
 				"cross": {
-					"connectiveRoads": [33, 34, 99],
 					"autoConnectiveRoads": [33, 34, 99]
 				}
 			}
@@ -1394,7 +1333,6 @@
 			{
 				"pos": [2311.00, 12.00, 1911.60],
 				"cross": {
-					"connectiveRoads": [21],
 					"autoConnectiveRoads": [21]
 				}
 			},
@@ -1417,7 +1355,6 @@
 			{
 				"pos": [2456.20, 11.60, 1884.80],
 				"cross": {
-					"connectiveRoads": [155],
 					"autoConnectiveRoads": [155]
 				}
 			}
@@ -1430,7 +1367,6 @@
 			{
 				"pos": [2136.80, 12.80, 2323.70],
 				"cross": {
-					"connectiveRoads": [24, 108],
 					"autoConnectiveRoads": [24, 108]
 				}
 			},
@@ -1465,7 +1401,6 @@
 			{
 				"pos": [2046.30, 13.90, 2389.10],
 				"cross": {
-					"connectiveRoads": [41, 42],
 					"autoConnectiveRoads": [41, 42]
 				}
 			}
@@ -1478,7 +1413,6 @@
 			{
 				"pos": [2046.30, 13.90, 2389.10],
 				"cross": {
-					"connectiveRoads": [40, 42],
 					"autoConnectiveRoads": [40, 42]
 				}
 			},
@@ -1510,7 +1444,6 @@
 			{
 				"pos": [2046.30, 13.90, 2389.10],
 				"cross": {
-					"connectiveRoads": [40, 41],
 					"autoConnectiveRoads": [40, 41]
 				}
 			},
@@ -1529,7 +1462,6 @@
 			{
 				"pos": [2017.80, 16.20, 2453.40],
 				"cross": {
-					"connectiveRoads": [43, 46],
 					"autoConnectiveRoads": [43, 46]
 				}
 			}
@@ -1542,7 +1474,6 @@
 			{
 				"pos": [2017.80, 16.20, 2453.40],
 				"cross": {
-					"connectiveRoads": [42, 46],
 					"autoConnectiveRoads": [42, 46]
 				}
 			},
@@ -1558,7 +1489,6 @@
 			{
 				"pos": [2012.40, 15.00, 2511.50],
 				"cross": {
-					"connectiveRoads": [44, 45, 133],
 					"autoConnectiveRoads": [44, 45, 133]
 				}
 			}
@@ -1571,7 +1501,6 @@
 			{
 				"pos": [2012.40, 15.00, 2511.50],
 				"cross": {
-					"connectiveRoads": [43, 45, 133],
 					"autoConnectiveRoads": [43, 45, 133]
 				}
 			},
@@ -1590,7 +1519,6 @@
 			{
 				"pos": [2012.40, 15.00, 2511.50],
 				"cross": {
-					"connectiveRoads": [43, 44, 133],
 					"autoConnectiveRoads": [43, 44, 133]
 				}
 			},
@@ -1609,7 +1537,6 @@
 			{
 				"pos": [1943.40, 14.20, 2499.50],
 				"cross": {
-					"connectiveRoads": [32, 46, 90],
 					"autoConnectiveRoads": [32, 46, 90]
 				}
 			}
@@ -1622,7 +1549,6 @@
 			{
 				"pos": [1943.40, 14.20, 2499.50],
 				"cross": {
-					"connectiveRoads": [32, 45, 90],
 					"autoConnectiveRoads": [32, 45, 90]
 				}
 			},
@@ -1644,7 +1570,6 @@
 			{
 				"pos": [2017.80, 16.20, 2453.40],
 				"cross": {
-					"connectiveRoads": [42, 43],
 					"autoConnectiveRoads": [42, 43]
 				}
 			}
@@ -1666,7 +1591,6 @@
 			{
 				"pos": [1427.20, 14.70, 1196.00],
 				"cross": {
-					"connectiveRoads": [48],
 					"autoConnectiveRoads": [48]
 				}
 			}
@@ -1679,7 +1603,6 @@
 			{
 				"pos": [1427.20, 14.70, 1196.00],
 				"cross": {
-					"connectiveRoads": [47],
 					"autoConnectiveRoads": [47]
 				}
 			},
@@ -1695,7 +1618,6 @@
 			{
 				"pos": [1423.10, 11.90, 1126.40],
 				"cross": {
-					"connectiveRoads": [49, 137],
 					"autoConnectiveRoads": [49, 137]
 				}
 			}
@@ -1708,7 +1630,6 @@
 			{
 				"pos": [1423.10, 11.90, 1126.40],
 				"cross": {
-					"connectiveRoads": [48, 137],
 					"autoConnectiveRoads": [48, 137]
 				}
 			},
@@ -1735,7 +1656,6 @@
 			{
 				"pos": [1355.90, 11.90, 1071.70],
 				"cross": {
-					"connectiveRoads": [50, 51],
 					"autoConnectiveRoads": [50, 51]
 				}
 			}
@@ -1748,7 +1668,6 @@
 			{
 				"pos": [1355.90, 11.90, 1071.70],
 				"cross": {
-					"connectiveRoads": [49, 51],
 					"autoConnectiveRoads": [49, 51]
 				}
 			},
@@ -1771,7 +1690,6 @@
 			{
 				"pos": [1280.40, 14.50, 1034.90],
 				"cross": {
-					"connectiveRoads": [89, 278],
 					"autoConnectiveRoads": [89, 278]
 				}
 			}
@@ -1784,7 +1702,6 @@
 			{
 				"pos": [1355.90, 11.90, 1071.70],
 				"cross": {
-					"connectiveRoads": [49, 50],
 					"autoConnectiveRoads": [49, 50]
 				}
 			},
@@ -1803,7 +1720,6 @@
 			{
 				"pos": [1378.70, 14.20, 962.30],
 				"cross": {
-					"connectiveRoads": [114],
 					"autoConnectiveRoads": [114]
 				}
 			}
@@ -1816,7 +1732,6 @@
 			{
 				"pos": [2726.10, 13.20, 1780.10],
 				"cross": {
-					"connectiveRoads": [64, 152, 153],
 					"autoConnectiveRoads": [64, 152, 153]
 				}
 			},
@@ -1829,7 +1744,6 @@
 			{
 				"pos": [2768.90, 13.20, 1789.20],
 				"cross": {
-					"connectiveRoads": [53, 58, 61],
 					"autoConnectiveRoads": [53, 58, 61]
 				}
 			}
@@ -1842,7 +1756,6 @@
 			{
 				"pos": [2768.90, 13.20, 1789.20],
 				"cross": {
-					"connectiveRoads": [52, 58, 61],
 					"autoConnectiveRoads": [52, 58, 61]
 				}
 			},
@@ -1861,7 +1774,6 @@
 			{
 				"pos": [2822.10, 13.00, 1805.40],
 				"cross": {
-					"connectiveRoads": [54, 55],
 					"autoConnectiveRoads": [54, 55]
 				}
 			}
@@ -1874,14 +1786,12 @@
 			{
 				"pos": [2822.10, 13.00, 1805.40],
 				"cross": {
-					"connectiveRoads": [53, 55],
 					"autoConnectiveRoads": [53, 55]
 				}
 			},
 			{
 				"pos": [2814.90, 12.30, 1824.30],
 				"cross": {
-					"connectiveRoads": [56, 171],
 					"autoConnectiveRoads": [56, 171]
 				}
 			}
@@ -1894,7 +1804,6 @@
 			{
 				"pos": [2822.10, 13.00, 1805.40],
 				"cross": {
-					"connectiveRoads": [53, 54],
 					"autoConnectiveRoads": [53, 54]
 				}
 			},
@@ -1907,7 +1816,6 @@
 			{
 				"pos": [2830.50, 11.60, 1758.30],
 				"cross": {
-					"connectiveRoads": [67, 172],
 					"autoConnectiveRoads": [67, 172]
 				}
 			}
@@ -1920,7 +1828,6 @@
 			{
 				"pos": [2814.90, 12.30, 1824.30],
 				"cross": {
-					"connectiveRoads": [54, 171],
 					"autoConnectiveRoads": [54, 171]
 				}
 			},
@@ -1933,7 +1840,6 @@
 			{
 				"pos": [2794.60, 12.50, 1869.30],
 				"cross": {
-					"connectiveRoads": [57, 66],
 					"autoConnectiveRoads": [57, 66]
 				}
 			}
@@ -1946,7 +1852,6 @@
 			{
 				"pos": [2794.60, 12.50, 1869.30],
 				"cross": {
-					"connectiveRoads": [56, 66],
 					"autoConnectiveRoads": [56, 66]
 				}
 			},
@@ -1985,7 +1890,6 @@
 			{
 				"pos": [2793.10, 12.50, 2051.10],
 				"cross": {
-					"connectiveRoads": [107],
 					"autoConnectiveRoads": [107]
 				}
 			}
@@ -1998,7 +1902,6 @@
 			{
 				"pos": [2768.90, 13.20, 1789.20],
 				"cross": {
-					"connectiveRoads": [52, 53, 61],
 					"autoConnectiveRoads": [52, 53, 61]
 				}
 			},
@@ -2008,7 +1911,6 @@
 			{
 				"pos": [2759.50, 12.40, 1817.30],
 				"cross": {
-					"connectiveRoads": [59, 60],
 					"autoConnectiveRoads": [59, 60]
 				}
 			}
@@ -2021,7 +1923,6 @@
 			{
 				"pos": [2759.50, 12.40, 1817.30],
 				"cross": {
-					"connectiveRoads": [58, 60],
 					"autoConnectiveRoads": [58, 60]
 				}
 			},
@@ -2031,7 +1932,6 @@
 			{
 				"pos": [2746.30, 12.30, 1854.80],
 				"cross": {
-					"connectiveRoads": [65, 66],
 					"autoConnectiveRoads": [65, 66]
 				}
 			}
@@ -2044,7 +1944,6 @@
 			{
 				"pos": [2759.50, 12.40, 1817.30],
 				"cross": {
-					"connectiveRoads": [58, 59],
 					"autoConnectiveRoads": [58, 59]
 				}
 			},
@@ -2063,7 +1962,6 @@
 			{
 				"pos": [2768.90, 13.20, 1789.20],
 				"cross": {
-					"connectiveRoads": [52, 53, 58],
 					"autoConnectiveRoads": [52, 53, 58]
 				}
 			},
@@ -2073,7 +1971,6 @@
 			{
 				"pos": [2774.00, 11.80, 1752.80],
 				"cross": {
-					"connectiveRoads": [62, 63],
 					"autoConnectiveRoads": [62, 63]
 				}
 			}
@@ -2086,7 +1983,6 @@
 			{
 				"pos": [2774.00, 11.80, 1752.80],
 				"cross": {
-					"connectiveRoads": [61, 63],
 					"autoConnectiveRoads": [61, 63]
 				}
 			},
@@ -2105,7 +2001,6 @@
 			{
 				"pos": [2774.00, 11.80, 1752.80],
 				"cross": {
-					"connectiveRoads": [61, 62],
 					"autoConnectiveRoads": [61, 62]
 				}
 			},
@@ -2115,7 +2010,6 @@
 			{
 				"pos": [2749.70, 11.10, 1729.80],
 				"cross": {
-					"connectiveRoads": [64, 67, 68],
 					"autoConnectiveRoads": [64, 67, 68]
 				}
 			}
@@ -2128,7 +2022,6 @@
 			{
 				"pos": [2726.10, 13.20, 1780.10],
 				"cross": {
-					"connectiveRoads": [52, 152, 153],
 					"autoConnectiveRoads": [52, 152, 153]
 				}
 			},
@@ -2141,7 +2034,6 @@
 			{
 				"pos": [2749.70, 11.10, 1729.80],
 				"cross": {
-					"connectiveRoads": [63, 67, 68],
 					"autoConnectiveRoads": [63, 67, 68]
 				}
 			}
@@ -2154,14 +2046,12 @@
 			{
 				"pos": [2746.30, 12.30, 1854.80],
 				"cross": {
-					"connectiveRoads": [59, 66],
 					"autoConnectiveRoads": [59, 66]
 				}
 			},
 			{
 				"pos": [2728.00, 12.50, 1849.60],
 				"cross": {
-					"connectiveRoads": [150],
 					"autoConnectiveRoads": [150]
 				}
 			}
@@ -2174,7 +2064,6 @@
 			{
 				"pos": [2746.30, 12.30, 1854.80],
 				"cross": {
-					"connectiveRoads": [59, 65],
 					"autoConnectiveRoads": [59, 65]
 				}
 			},
@@ -2187,7 +2076,6 @@
 			{
 				"pos": [2794.60, 12.50, 1869.30],
 				"cross": {
-					"connectiveRoads": [56, 57],
 					"autoConnectiveRoads": [56, 57]
 				}
 			}
@@ -2200,7 +2088,6 @@
 			{
 				"pos": [2830.50, 11.60, 1758.30],
 				"cross": {
-					"connectiveRoads": [55, 172],
 					"autoConnectiveRoads": [55, 172]
 				}
 			},
@@ -2231,7 +2118,6 @@
 			{
 				"pos": [2749.70, 11.10, 1729.80],
 				"cross": {
-					"connectiveRoads": [63, 64, 68],
 					"autoConnectiveRoads": [63, 64, 68]
 				}
 			}
@@ -2244,7 +2130,6 @@
 			{
 				"pos": [2749.70, 11.10, 1729.80],
 				"cross": {
-					"connectiveRoads": [63, 64, 67],
 					"autoConnectiveRoads": [63, 64, 67]
 				}
 			},
@@ -2262,7 +2147,6 @@
 			{
 				"pos": [2728.00, 11.00, 1633.90],
 				"cross": {
-					"connectiveRoads": [161],
 					"autoConnectiveRoads": [161]
 				}
 			}
@@ -2275,7 +2159,6 @@
 			{
 				"pos": [2099.50, 12.30, 3130.80],
 				"cross": {
-					"connectiveRoads": [33],
 					"autoConnectiveRoads": [33]
 				}
 			},
@@ -2294,7 +2177,6 @@
 			{
 				"pos": [2041.80, 15.10, 3129.40],
 				"cross": {
-					"connectiveRoads": [70],
 					"autoConnectiveRoads": [70]
 				}
 			}
@@ -2307,7 +2189,6 @@
 			{
 				"pos": [2041.80, 15.10, 3129.40],
 				"cross": {
-					"connectiveRoads": [69],
 					"autoConnectiveRoads": [69]
 				}
 			},
@@ -2334,7 +2215,6 @@
 			{
 				"pos": [1953.00, 22.40, 3102.40],
 				"cross": {
-					"connectiveRoads": [71],
 					"autoConnectiveRoads": [71]
 				}
 			}
@@ -2347,7 +2227,7 @@
 			{
 				"pos": [1953.00, 22.40, 3102.40],
 				"cross": {
-					"connectiveRoads": [70, 71.0],
+					"connectiveRoads": [71],
 					"autoConnectiveRoads": [70]
 				}
 			},
@@ -2381,7 +2261,6 @@
 			{
 				"pos": [1846.70, 19.30, 2993.00],
 				"cross": {
-					"connectiveRoads": [72, 255],
 					"autoConnectiveRoads": [72, 255]
 				}
 			}
@@ -2394,7 +2273,6 @@
 			{
 				"pos": [1846.70, 19.30, 2993.00],
 				"cross": {
-					"connectiveRoads": [71, 255],
 					"autoConnectiveRoads": [71, 255]
 				}
 			},
@@ -2427,7 +2305,6 @@
 			{
 				"pos": [1874.90, 17.70, 2855.50],
 				"cross": {
-					"connectiveRoads": [73, 74],
 					"autoConnectiveRoads": [73, 74]
 				}
 			}
@@ -2440,7 +2317,6 @@
 			{
 				"pos": [1874.90, 17.70, 2855.50],
 				"cross": {
-					"connectiveRoads": [72, 74],
 					"autoConnectiveRoads": [72, 74]
 				}
 			},
@@ -2456,7 +2332,6 @@
 			{
 				"pos": [1826.10, 17.00, 2804.30],
 				"cross": {
-					"connectiveRoads": [91, 230],
 					"autoConnectiveRoads": [91, 230]
 				}
 			}
@@ -2469,7 +2344,6 @@
 			{
 				"pos": [1874.90, 17.70, 2855.50],
 				"cross": {
-					"connectiveRoads": [72, 73],
 					"autoConnectiveRoads": [72, 73]
 				}
 			},
@@ -2494,7 +2368,6 @@
 			{
 				"pos": [1052.30, 11.90, 1274.00],
 				"cross": {
-					"connectiveRoads": [13, 79],
 					"autoConnectiveRoads": [13, 79]
 				}
 			},
@@ -2517,7 +2390,6 @@
 			{
 				"pos": [977.70, 12.50, 1283.10],
 				"cross": {
-					"connectiveRoads": [77, 92],
 					"autoConnectiveRoads": [77, 92]
 				}
 			}
@@ -2530,14 +2402,12 @@
 			{
 				"pos": [1031.80, 12.50, 1307.30],
 				"cross": {
-					"connectiveRoads": [77, 78],
 					"autoConnectiveRoads": [77, 78]
 				}
 			},
 			{
 				"pos": [1041.30, 12.30, 1292.90],
 				"cross": {
-					"connectiveRoads": [79, 80],
 					"autoConnectiveRoads": [79, 80]
 				}
 			}
@@ -2550,7 +2420,6 @@
 			{
 				"pos": [1031.80, 12.50, 1307.30],
 				"cross": {
-					"connectiveRoads": [76, 78],
 					"autoConnectiveRoads": [76, 78]
 				}
 			},
@@ -2563,7 +2432,6 @@
 			{
 				"pos": [977.70, 12.50, 1283.10],
 				"cross": {
-					"connectiveRoads": [75, 92],
 					"autoConnectiveRoads": [75, 92]
 				}
 			}
@@ -2576,7 +2444,6 @@
 			{
 				"pos": [1031.80, 12.50, 1307.30],
 				"cross": {
-					"connectiveRoads": [76, 77],
 					"autoConnectiveRoads": [76, 77]
 				}
 			},
@@ -2586,7 +2453,6 @@
 			{
 				"pos": [1017.10, 12.80, 1335.30],
 				"cross": {
-					"connectiveRoads": [81, 82, 83],
 					"autoConnectiveRoads": [81, 82, 83]
 				}
 			}
@@ -2599,14 +2465,12 @@
 			{
 				"pos": [1052.30, 11.90, 1274.00],
 				"cross": {
-					"connectiveRoads": [13, 75],
 					"autoConnectiveRoads": [13, 75]
 				}
 			},
 			{
 				"pos": [1041.30, 12.30, 1292.90],
 				"cross": {
-					"connectiveRoads": [76, 80],
 					"autoConnectiveRoads": [76, 80]
 				}
 			}
@@ -2619,7 +2483,6 @@
 			{
 				"pos": [1041.30, 12.30, 1292.90],
 				"cross": {
-					"connectiveRoads": [76, 79],
 					"autoConnectiveRoads": [76, 79]
 				}
 			},
@@ -2632,7 +2495,6 @@
 			{
 				"pos": [1049.00, 12.80, 1336.30],
 				"cross": {
-					"connectiveRoads": [81, 160],
 					"autoConnectiveRoads": [81, 160]
 				}
 			}
@@ -2645,14 +2507,13 @@
 			{
 				"pos": [1049.00, 12.80, 1336.30],
 				"cross": {
-					"connectiveRoads": [76.0, 79.0, 80, 160],
+					"connectiveRoads": [76, 79],
 					"autoConnectiveRoads": [80, 160]
 				}
 			},
 			{
 				"pos": [1017.10, 12.80, 1335.30],
 				"cross": {
-					"connectiveRoads": [78, 82, 83],
 					"autoConnectiveRoads": [78, 82, 83]
 				}
 			}
@@ -2665,7 +2526,6 @@
 			{
 				"pos": [1017.10, 12.80, 1335.30],
 				"cross": {
-					"connectiveRoads": [78, 81, 83],
 					"autoConnectiveRoads": [78, 81, 83]
 				}
 			},
@@ -2681,7 +2541,6 @@
 			{
 				"pos": [1023.60, 12.80, 1397.50],
 				"cross": {
-					"connectiveRoads": [86],
 					"autoConnectiveRoads": [86]
 				}
 			}
@@ -2694,7 +2553,6 @@
 			{
 				"pos": [1017.10, 12.80, 1335.30],
 				"cross": {
-					"connectiveRoads": [78, 81, 82],
 					"autoConnectiveRoads": [78, 81, 82]
 				}
 			},
@@ -2707,7 +2565,6 @@
 			{
 				"pos": [981.00, 13.50, 1337.40],
 				"cross": {
-					"connectiveRoads": [84],
 					"autoConnectiveRoads": [84]
 				}
 			}
@@ -2720,7 +2577,6 @@
 			{
 				"pos": [981.00, 13.50, 1337.40],
 				"cross": {
-					"connectiveRoads": [83],
 					"autoConnectiveRoads": [83]
 				}
 			},
@@ -2736,7 +2592,6 @@
 			{
 				"pos": [944.80, 14.00, 1379.00],
 				"cross": {
-					"connectiveRoads": [85, 86],
 					"autoConnectiveRoads": [85, 86]
 				}
 			}
@@ -2749,7 +2604,6 @@
 			{
 				"pos": [944.80, 14.00, 1379.00],
 				"cross": {
-					"connectiveRoads": [84, 86],
 					"autoConnectiveRoads": [84, 86]
 				}
 			},
@@ -2780,7 +2634,6 @@
 			{
 				"pos": [898.10, 13.50, 1584.80],
 				"cross": {
-					"connectiveRoads": [120, 246],
 					"autoConnectiveRoads": [120, 246]
 				}
 			}
@@ -2793,7 +2646,7 @@
 			{
 				"pos": [1023.60, 12.80, 1397.50],
 				"cross": {
-					"connectiveRoads": [82, 85.0],
+					"connectiveRoads": [85],
 					"autoConnectiveRoads": [82]
 				}
 			},
@@ -2809,7 +2662,7 @@
 			{
 				"pos": [944.80, 14.00, 1379.00],
 				"cross": {
-					"connectiveRoads": [84, 85, 86.0],
+					"connectiveRoads": [86],
 					"autoConnectiveRoads": [84, 85]
 				}
 			}
@@ -2822,7 +2675,6 @@
 			{
 				"pos": [1221.40, 12.40, 1386.50],
 				"cross": {
-					"connectiveRoads": [11, 12],
 					"autoConnectiveRoads": [11, 12]
 				}
 			},
@@ -2853,7 +2705,6 @@
 			{
 				"pos": [1254.60, 11.40, 1289.20],
 				"cross": {
-					"connectiveRoads": [88],
 					"autoConnectiveRoads": [88]
 				}
 			}
@@ -2866,7 +2717,6 @@
 			{
 				"pos": [1254.60, 11.40, 1289.20],
 				"cross": {
-					"connectiveRoads": [87],
 					"autoConnectiveRoads": [87]
 				}
 			},
@@ -2893,7 +2743,6 @@
 			{
 				"pos": [1208.00, 13.10, 1175.20],
 				"cross": {
-					"connectiveRoads": [89],
 					"autoConnectiveRoads": [89]
 				}
 			}
@@ -2906,7 +2755,6 @@
 			{
 				"pos": [1208.00, 13.10, 1175.20],
 				"cross": {
-					"connectiveRoads": [88],
 					"autoConnectiveRoads": [88]
 				}
 			},
@@ -2941,7 +2789,6 @@
 			{
 				"pos": [1280.40, 14.50, 1034.90],
 				"cross": {
-					"connectiveRoads": [50, 278],
 					"autoConnectiveRoads": [50, 278]
 				}
 			}
@@ -2954,7 +2801,6 @@
 			{
 				"pos": [1943.40, 14.20, 2499.50],
 				"cross": {
-					"connectiveRoads": [32, 45, 46],
 					"autoConnectiveRoads": [32, 45, 46]
 				}
 			},
@@ -2997,7 +2843,6 @@
 			{
 				"pos": [1818.70, 15.90, 2640.10],
 				"cross": {
-					"connectiveRoads": [91],
 					"autoConnectiveRoads": [91]
 				}
 			}
@@ -3010,7 +2855,6 @@
 			{
 				"pos": [1818.70, 15.90, 2640.10],
 				"cross": {
-					"connectiveRoads": [90],
 					"autoConnectiveRoads": [90]
 				}
 			},
@@ -3046,7 +2890,6 @@
 			{
 				"pos": [1826.10, 17.00, 2804.30],
 				"cross": {
-					"connectiveRoads": [73, 230],
 					"autoConnectiveRoads": [73, 230]
 				}
 			}
@@ -3059,7 +2902,6 @@
 			{
 				"pos": [977.70, 12.50, 1283.10],
 				"cross": {
-					"connectiveRoads": [75, 77],
 					"autoConnectiveRoads": [75, 77]
 				}
 			},
@@ -3069,7 +2911,6 @@
 			{
 				"pos": [924.50, 13.40, 1268.10],
 				"cross": {
-					"connectiveRoads": [282, 283],
 					"autoConnectiveRoads": [282, 283]
 				}
 			}
@@ -3082,7 +2923,6 @@
 			{
 				"pos": [747.50, 13.50, 1241.10],
 				"cross": {
-					"connectiveRoads": [282],
 					"autoConnectiveRoads": [282]
 				}
 			},
@@ -3098,7 +2938,6 @@
 			{
 				"pos": [659.50, 11.90, 1232.50],
 				"cross": {
-					"connectiveRoads": [94],
 					"autoConnectiveRoads": [94]
 				}
 			}
@@ -3111,7 +2950,7 @@
 			{
 				"pos": [659.50, 11.90, 1232.50],
 				"cross": {
-					"connectiveRoads": [9.0, 93],
+					"connectiveRoads": [9],
 					"autoConnectiveRoads": [93]
 				}
 			},
@@ -3127,7 +2966,6 @@
 			{
 				"pos": [582.00, 11.70, 1195.50],
 				"cross": {
-					"connectiveRoads": [95],
 					"autoConnectiveRoads": [95]
 				}
 			}
@@ -3140,7 +2978,6 @@
 			{
 				"pos": [582.00, 11.70, 1195.50],
 				"cross": {
-					"connectiveRoads": [94],
 					"autoConnectiveRoads": [94]
 				}
 			},
@@ -3153,7 +2990,6 @@
 			{
 				"pos": [529.10, 12.40, 1165.80],
 				"cross": {
-					"connectiveRoads": [131],
 					"autoConnectiveRoads": [131]
 				}
 			}
@@ -3166,7 +3002,6 @@
 			{
 				"pos": [2073.40, 12.90, 2077.40],
 				"cross": {
-					"connectiveRoads": [22, 23],
 					"autoConnectiveRoads": [22, 23]
 				}
 			},
@@ -3200,7 +3035,6 @@
 			{
 				"pos": [2372.40, 12.10, 2125.00],
 				"cross": {
-					"connectiveRoads": [97, 112],
 					"autoConnectiveRoads": [97, 112]
 				}
 			}
@@ -3213,7 +3047,6 @@
 			{
 				"pos": [2372.40, 12.10, 2125.00],
 				"cross": {
-					"connectiveRoads": [96, 112],
 					"autoConnectiveRoads": [96, 112]
 				}
 			},
@@ -3241,7 +3074,6 @@
 			{
 				"pos": [2510.70, 11.70, 2061.90],
 				"cross": {
-					"connectiveRoads": [98, 113],
 					"autoConnectiveRoads": [98, 113]
 				}
 			}
@@ -3254,7 +3086,6 @@
 			{
 				"pos": [2510.70, 11.70, 2061.90],
 				"cross": {
-					"connectiveRoads": [97, 113],
 					"autoConnectiveRoads": [97, 113]
 				}
 			},
@@ -3288,7 +3119,6 @@
 			{
 				"pos": [2536.10, 12.10, 1876.30],
 				"cross": {
-					"connectiveRoads": [154, 155],
 					"autoConnectiveRoads": [154, 155]
 				}
 			}
@@ -3301,7 +3131,6 @@
 			{
 				"pos": [2174.90, 12.30, 3127.70],
 				"cross": {
-					"connectiveRoads": [33, 34, 38],
 					"autoConnectiveRoads": [33, 34, 38]
 				}
 			},
@@ -3326,7 +3155,6 @@
 			{
 				"pos": [2322.50, 11.90, 3100.90],
 				"cross": {
-					"connectiveRoads": [100],
 					"autoConnectiveRoads": [100]
 				}
 			}
@@ -3339,7 +3167,6 @@
 			{
 				"pos": [2322.50, 11.90, 3100.90],
 				"cross": {
-					"connectiveRoads": [99],
 					"autoConnectiveRoads": [99]
 				}
 			},
@@ -3390,7 +3217,6 @@
 			{
 				"pos": [2423.20, 14.80, 2932.40],
 				"cross": {
-					"connectiveRoads": [101, 180],
 					"autoConnectiveRoads": [101, 180]
 				}
 			}
@@ -3403,7 +3229,6 @@
 			{
 				"pos": [2423.20, 14.80, 2932.40],
 				"cross": {
-					"connectiveRoads": [100, 180],
 					"autoConnectiveRoads": [100, 180]
 				}
 			},
@@ -3416,7 +3241,6 @@
 			{
 				"pos": [2440.10, 15.40, 2872.60],
 				"cross": {
-					"connectiveRoads": [102, 179, 191],
 					"autoConnectiveRoads": [102, 179, 191]
 				}
 			}
@@ -3429,7 +3253,6 @@
 			{
 				"pos": [2440.10, 15.40, 2872.60],
 				"cross": {
-					"connectiveRoads": [101, 179, 191],
 					"autoConnectiveRoads": [101, 179, 191]
 				}
 			},
@@ -3463,7 +3286,6 @@
 			{
 				"pos": [2490.90, 14.10, 2664.20],
 				"cross": {
-					"connectiveRoads": [103, 136],
 					"autoConnectiveRoads": [103, 136]
 				}
 			}
@@ -3476,7 +3298,6 @@
 			{
 				"pos": [2490.90, 14.10, 2664.20],
 				"cross": {
-					"connectiveRoads": [102, 136],
 					"autoConnectiveRoads": [102, 136]
 				}
 			},
@@ -3503,7 +3324,6 @@
 			{
 				"pos": [2572.30, 13.00, 2592.50],
 				"cross": {
-					"connectiveRoads": [104, 287],
 					"autoConnectiveRoads": [104, 287]
 				}
 			}
@@ -3516,7 +3336,6 @@
 			{
 				"pos": [2572.30, 13.00, 2592.50],
 				"cross": {
-					"connectiveRoads": [103, 287],
 					"autoConnectiveRoads": [103, 287]
 				}
 			},
@@ -3535,7 +3354,6 @@
 			{
 				"pos": [2613.20, 13.40, 2530.00],
 				"cross": {
-					"connectiveRoads": [105, 288],
 					"autoConnectiveRoads": [105, 288]
 				}
 			}
@@ -3548,7 +3366,6 @@
 			{
 				"pos": [2613.20, 13.40, 2530.00],
 				"cross": {
-					"connectiveRoads": [104, 288],
 					"autoConnectiveRoads": [104, 288]
 				}
 			},
@@ -3582,7 +3399,7 @@
 			{
 				"pos": [2673.70, 12.40, 2355.30],
 				"cross": {
-					"connectiveRoads": [106, 110, 111.0, 168.0],
+					"connectiveRoads": [111, 168],
 					"autoConnectiveRoads": [106, 110]
 				}
 			}
@@ -3595,7 +3412,7 @@
 			{
 				"pos": [2673.70, 12.40, 2355.30],
 				"cross": {
-					"connectiveRoads": [105, 110, 111.0, 168.0],
+					"connectiveRoads": [111, 168],
 					"autoConnectiveRoads": [105, 110]
 				}
 			},
@@ -3626,7 +3443,6 @@
 			{
 				"pos": [2763.60, 11.60, 2237.60],
 				"cross": {
-					"connectiveRoads": [107, 227],
 					"autoConnectiveRoads": [107, 227]
 				}
 			}
@@ -3639,7 +3455,6 @@
 			{
 				"pos": [2763.60, 11.60, 2237.60],
 				"cross": {
-					"connectiveRoads": [106, 227],
 					"autoConnectiveRoads": [106, 227]
 				}
 			},
@@ -3690,7 +3505,6 @@
 			{
 				"pos": [2793.10, 12.50, 2051.10],
 				"cross": {
-					"connectiveRoads": [57],
 					"autoConnectiveRoads": [57]
 				}
 			}
@@ -3703,7 +3517,6 @@
 			{
 				"pos": [2136.80, 12.80, 2323.70],
 				"cross": {
-					"connectiveRoads": [24, 40],
 					"autoConnectiveRoads": [24, 40]
 				}
 			},
@@ -3733,7 +3546,6 @@
 			{
 				"pos": [2253.80, 13.00, 2217.80],
 				"cross": {
-					"connectiveRoads": [109, 112],
 					"autoConnectiveRoads": [109, 112]
 				}
 			}
@@ -3746,7 +3558,6 @@
 			{
 				"pos": [2253.80, 13.00, 2217.80],
 				"cross": {
-					"connectiveRoads": [108, 112],
 					"autoConnectiveRoads": [108, 112]
 				}
 			},
@@ -3774,7 +3585,6 @@
 			{
 				"pos": [2415.80, 13.60, 2357.00],
 				"cross": {
-					"connectiveRoads": [110, 111],
 					"autoConnectiveRoads": [110, 111]
 				}
 			}
@@ -3787,7 +3597,6 @@
 			{
 				"pos": [2415.80, 13.60, 2357.00],
 				"cross": {
-					"connectiveRoads": [109, 111],
 					"autoConnectiveRoads": [109, 111]
 				}
 			},
@@ -3830,7 +3639,7 @@
 			{
 				"pos": [2673.70, 12.40, 2355.30],
 				"cross": {
-					"connectiveRoads": [105, 106, 168.0],
+					"connectiveRoads": [168],
 					"autoConnectiveRoads": [105, 106]
 				}
 			}
@@ -3843,7 +3652,6 @@
 			{
 				"pos": [2415.80, 13.60, 2357.00],
 				"cross": {
-					"connectiveRoads": [109, 110],
 					"autoConnectiveRoads": [109, 110]
 				}
 			},
@@ -3877,7 +3685,6 @@
 			{
 				"pos": [2253.80, 13.00, 2217.80],
 				"cross": {
-					"connectiveRoads": [108, 109],
 					"autoConnectiveRoads": [108, 109]
 				}
 			},
@@ -3902,7 +3709,6 @@
 			{
 				"pos": [2372.40, 12.10, 2125.00],
 				"cross": {
-					"connectiveRoads": [96, 97],
 					"autoConnectiveRoads": [96, 97]
 				}
 			}
@@ -3915,7 +3721,6 @@
 			{
 				"pos": [2510.70, 11.70, 2061.90],
 				"cross": {
-					"connectiveRoads": [97, 98],
 					"autoConnectiveRoads": [97, 98]
 				}
 			},
@@ -3937,7 +3742,6 @@
 			{
 				"pos": [2664.60, 11.80, 2192.30],
 				"cross": {
-					"connectiveRoads": [227],
 					"autoConnectiveRoads": [227]
 				}
 			}
@@ -3950,7 +3754,6 @@
 			{
 				"pos": [1378.70, 14.20, 962.30],
 				"cross": {
-					"connectiveRoads": [51],
 					"autoConnectiveRoads": [51]
 				}
 			},
@@ -3978,7 +3781,6 @@
 			{
 				"pos": [1490.90, 18.20, 876.90],
 				"cross": {
-					"connectiveRoads": [115],
 					"autoConnectiveRoads": [115]
 				}
 			}
@@ -3991,7 +3793,7 @@
 			{
 				"pos": [1490.90, 18.20, 876.90],
 				"cross": {
-					"connectiveRoads": [114, 115.0],
+					"connectiveRoads": [115],
 					"autoConnectiveRoads": [114]
 				}
 			},
@@ -4001,7 +3803,6 @@
 			{
 				"pos": [1524.20, 18.10, 880.20],
 				"cross": {
-					"connectiveRoads": [116],
 					"autoConnectiveRoads": [116]
 				}
 			}
@@ -4014,7 +3815,6 @@
 			{
 				"pos": [1524.20, 18.10, 880.20],
 				"cross": {
-					"connectiveRoads": [115],
 					"autoConnectiveRoads": [115]
 				}
 			},
@@ -4027,7 +3827,6 @@
 			{
 				"pos": [1576.30, 17.30, 891.30],
 				"cross": {
-					"connectiveRoads": [117],
 					"autoConnectiveRoads": [117]
 				}
 			}
@@ -4040,7 +3839,6 @@
 			{
 				"pos": [1576.30, 17.30, 891.30],
 				"cross": {
-					"connectiveRoads": [116],
 					"autoConnectiveRoads": [116]
 				}
 			},
@@ -4083,7 +3881,6 @@
 			{
 				"pos": [1787.60, 17.70, 937.10],
 				"cross": {
-					"connectiveRoads": [148],
 					"autoConnectiveRoads": [148]
 				}
 			}
@@ -4096,7 +3893,6 @@
 			{
 				"pos": [1571.00, 14.70, 2357.20],
 				"cross": {
-					"connectiveRoads": [30, 184],
 					"autoConnectiveRoads": [30, 184]
 				}
 			},
@@ -4127,7 +3923,6 @@
 			{
 				"pos": [1444.90, 14.50, 2312.30],
 				"cross": {
-					"connectiveRoads": [119, 130, 241],
 					"autoConnectiveRoads": [119, 130, 241]
 				}
 			}
@@ -4140,7 +3935,6 @@
 			{
 				"pos": [1444.90, 14.50, 2312.30],
 				"cross": {
-					"connectiveRoads": [118, 130, 241],
 					"autoConnectiveRoads": [118, 130, 241]
 				}
 			},
@@ -4156,7 +3950,6 @@
 			{
 				"pos": [1382.40, 14.60, 2300.70],
 				"cross": {
-					"connectiveRoads": [128, 129],
 					"autoConnectiveRoads": [128, 129]
 				}
 			}
@@ -4169,7 +3962,6 @@
 			{
 				"pos": [898.10, 13.50, 1584.80],
 				"cross": {
-					"connectiveRoads": [85, 246],
 					"autoConnectiveRoads": [85, 246]
 				}
 			},
@@ -4200,7 +3992,6 @@
 			{
 				"pos": [857.70, 15.70, 1745.60],
 				"cross": {
-					"connectiveRoads": [121, 122],
 					"autoConnectiveRoads": [121, 122]
 				}
 			}
@@ -4213,7 +4004,6 @@
 			{
 				"pos": [857.70, 15.70, 1745.60],
 				"cross": {
-					"connectiveRoads": [120, 122],
 					"autoConnectiveRoads": [120, 122]
 				}
 			},
@@ -4235,7 +4025,6 @@
 			{
 				"pos": [821.30, 14.20, 1800.30],
 				"cross": {
-					"connectiveRoads": [123, 247],
 					"autoConnectiveRoads": [123, 247]
 				}
 			}
@@ -4248,7 +4037,6 @@
 			{
 				"pos": [857.70, 15.70, 1745.60],
 				"cross": {
-					"connectiveRoads": [120, 121],
 					"autoConnectiveRoads": [120, 121]
 				}
 			},
@@ -4276,7 +4064,6 @@
 			{
 				"pos": [919.90, 14.40, 1820.70],
 				"cross": {
-					"connectiveRoads": [247, 248],
 					"autoConnectiveRoads": [247, 248]
 				}
 			}
@@ -4289,7 +4076,6 @@
 			{
 				"pos": [821.30, 14.20, 1800.30],
 				"cross": {
-					"connectiveRoads": [121, 247],
 					"autoConnectiveRoads": [121, 247]
 				}
 			},
@@ -4308,7 +4094,6 @@
 			{
 				"pos": [758.30, 13.70, 1846.10],
 				"cross": {
-					"connectiveRoads": [124, 238],
 					"autoConnectiveRoads": [124, 238]
 				}
 			}
@@ -4321,7 +4106,6 @@
 			{
 				"pos": [758.30, 13.70, 1846.10],
 				"cross": {
-					"connectiveRoads": [123, 238],
 					"autoConnectiveRoads": [123, 238]
 				}
 			},
@@ -4352,7 +4136,6 @@
 			{
 				"pos": [830.00, 13.60, 2024.40],
 				"cross": {
-					"connectiveRoads": [125, 200],
 					"autoConnectiveRoads": [125, 200]
 				}
 			}
@@ -4365,7 +4148,6 @@
 			{
 				"pos": [830.00, 13.60, 2024.40],
 				"cross": {
-					"connectiveRoads": [124, 200],
 					"autoConnectiveRoads": [124, 200]
 				}
 			},
@@ -4393,7 +4175,6 @@
 			{
 				"pos": [1022.30, 15.70, 2065.40],
 				"cross": {
-					"connectiveRoads": [126],
 					"autoConnectiveRoads": [126]
 				}
 			}
@@ -4406,7 +4187,6 @@
 			{
 				"pos": [1022.30, 15.70, 2065.40],
 				"cross": {
-					"connectiveRoads": [125],
 					"autoConnectiveRoads": [125]
 				}
 			},
@@ -4445,7 +4225,6 @@
 			{
 				"pos": [1151.60, 18.10, 2162.00],
 				"cross": {
-					"connectiveRoads": [127],
 					"autoConnectiveRoads": [127]
 				}
 			}
@@ -4458,7 +4237,6 @@
 			{
 				"pos": [1151.60, 18.10, 2162.00],
 				"cross": {
-					"connectiveRoads": [126],
 					"autoConnectiveRoads": [126]
 				}
 			},
@@ -4509,7 +4287,6 @@
 			{
 				"pos": [1240.80, 15.40, 2328.00],
 				"cross": {
-					"connectiveRoads": [128, 249],
 					"autoConnectiveRoads": [128, 249]
 				}
 			}
@@ -4522,7 +4299,6 @@
 			{
 				"pos": [1240.80, 15.40, 2328.00],
 				"cross": {
-					"connectiveRoads": [127, 249],
 					"autoConnectiveRoads": [127, 249]
 				}
 			},
@@ -4547,7 +4323,6 @@
 			{
 				"pos": [1382.40, 14.60, 2300.70],
 				"cross": {
-					"connectiveRoads": [119, 129],
 					"autoConnectiveRoads": [119, 129]
 				}
 			}
@@ -4560,7 +4335,6 @@
 			{
 				"pos": [1382.40, 14.60, 2300.70],
 				"cross": {
-					"connectiveRoads": [119, 128],
 					"autoConnectiveRoads": [119, 128]
 				}
 			},
@@ -4587,7 +4361,6 @@
 			{
 				"pos": [1418.90, 14.40, 2352.70],
 				"cross": {
-					"connectiveRoads": [130],
 					"autoConnectiveRoads": [130]
 				}
 			}
@@ -4600,7 +4373,6 @@
 			{
 				"pos": [1444.90, 14.50, 2312.30],
 				"cross": {
-					"connectiveRoads": [118, 119, 241],
 					"autoConnectiveRoads": [118, 119, 241]
 				}
 			},
@@ -4623,7 +4395,6 @@
 			{
 				"pos": [1418.90, 14.40, 2352.70],
 				"cross": {
-					"connectiveRoads": [129],
 					"autoConnectiveRoads": [129]
 				}
 			}
@@ -4636,7 +4407,6 @@
 			{
 				"pos": [529.10, 12.40, 1165.80],
 				"cross": {
-					"connectiveRoads": [95],
 					"autoConnectiveRoads": [95]
 				}
 			},
@@ -4670,7 +4440,6 @@
 			{
 				"pos": [541.30, 12.60, 1326.30],
 				"cross": {
-					"connectiveRoads": [132],
 					"autoConnectiveRoads": [132]
 				}
 			}
@@ -4683,7 +4452,6 @@
 			{
 				"pos": [541.30, 12.60, 1326.30],
 				"cross": {
-					"connectiveRoads": [131],
 					"autoConnectiveRoads": [131]
 				}
 			},
@@ -4711,7 +4479,6 @@
 			{
 				"pos": [568.31, 12.70, 1471.50],
 				"cross": {
-					"connectiveRoads": [177, 244],
 					"autoConnectiveRoads": [177, 244]
 				}
 			}
@@ -4724,7 +4491,6 @@
 			{
 				"pos": [2012.40, 15.00, 2511.50],
 				"cross": {
-					"connectiveRoads": [43, 44, 45],
 					"autoConnectiveRoads": [43, 44, 45]
 				}
 			},
@@ -4751,7 +4517,6 @@
 			{
 				"pos": [2126.70, 16.80, 2489.50],
 				"cross": {
-					"connectiveRoads": [134],
 					"autoConnectiveRoads": [134]
 				}
 			}
@@ -4764,7 +4529,6 @@
 			{
 				"pos": [2126.70, 16.80, 2489.50],
 				"cross": {
-					"connectiveRoads": [133],
 					"autoConnectiveRoads": [133]
 				}
 			},
@@ -4799,7 +4563,6 @@
 			{
 				"pos": [2210.60, 19.70, 2545.30],
 				"cross": {
-					"connectiveRoads": [135],
 					"autoConnectiveRoads": [135]
 				}
 			}
@@ -4812,7 +4575,6 @@
 			{
 				"pos": [2210.60, 19.70, 2545.30],
 				"cross": {
-					"connectiveRoads": [134],
 					"autoConnectiveRoads": [134]
 				}
 			},
@@ -4834,7 +4596,6 @@
 			{
 				"pos": [2322.60, 16.90, 2546.80],
 				"cross": {
-					"connectiveRoads": [136],
 					"autoConnectiveRoads": [136]
 				}
 			}
@@ -4847,7 +4608,6 @@
 			{
 				"pos": [2322.60, 16.90, 2546.80],
 				"cross": {
-					"connectiveRoads": [135],
 					"autoConnectiveRoads": [135]
 				}
 			},
@@ -4894,7 +4654,6 @@
 			{
 				"pos": [2490.90, 14.10, 2664.20],
 				"cross": {
-					"connectiveRoads": [102, 103],
 					"autoConnectiveRoads": [102, 103]
 				}
 			}
@@ -4907,7 +4666,7 @@
 			{
 				"pos": [1423.10, 11.90, 1126.40],
 				"cross": {
-					"connectiveRoads": [48, 49, 137.0],
+					"connectiveRoads": [137],
 					"autoConnectiveRoads": [48, 49]
 				}
 			},
@@ -4941,7 +4700,6 @@
 			{
 				"pos": [1607.90, 16.20, 1203.80],
 				"cross": {
-					"connectiveRoads": [138],
 					"autoConnectiveRoads": [138]
 				}
 			}
@@ -4954,7 +4712,6 @@
 			{
 				"pos": [1607.90, 16.20, 1203.80],
 				"cross": {
-					"connectiveRoads": [137],
 					"autoConnectiveRoads": [137]
 				}
 			},
@@ -5000,7 +4757,6 @@
 			{
 				"pos": [1817.70, 13.50, 1342.80],
 				"cross": {
-					"connectiveRoads": [139],
 					"autoConnectiveRoads": [139]
 				}
 			}
@@ -5013,7 +4769,6 @@
 			{
 				"pos": [1817.70, 13.50, 1342.80],
 				"cross": {
-					"connectiveRoads": [138],
 					"autoConnectiveRoads": [138]
 				}
 			},
@@ -5059,7 +4814,6 @@
 			{
 				"pos": [2127.00, 14.90, 1375.10],
 				"cross": {
-					"connectiveRoads": [140, 263],
 					"autoConnectiveRoads": [140, 263]
 				}
 			}
@@ -5072,7 +4826,6 @@
 			{
 				"pos": [2127.00, 14.90, 1375.10],
 				"cross": {
-					"connectiveRoads": [139, 263],
 					"autoConnectiveRoads": [139, 263]
 				}
 			},
@@ -5082,7 +4835,6 @@
 			{
 				"pos": [2161.30, 14.00, 1373.30],
 				"cross": {
-					"connectiveRoads": [141, 188],
 					"autoConnectiveRoads": [141, 188]
 				}
 			}
@@ -5095,7 +4847,6 @@
 			{
 				"pos": [2161.30, 14.00, 1373.30],
 				"cross": {
-					"connectiveRoads": [140, 188],
 					"autoConnectiveRoads": [140, 188]
 				}
 			},
@@ -5129,7 +4880,6 @@
 			{
 				"pos": [2155.50, 16.80, 1220.80],
 				"cross": {
-					"connectiveRoads": [142, 143],
 					"autoConnectiveRoads": [142, 143]
 				}
 			}
@@ -5142,7 +4892,6 @@
 			{
 				"pos": [2155.50, 16.80, 1220.80],
 				"cross": {
-					"connectiveRoads": [141, 143],
 					"autoConnectiveRoads": [141, 143]
 				}
 			},
@@ -5155,7 +4904,6 @@
 			{
 				"pos": [2159.70, 17.80, 1159.80],
 				"cross": {
-					"connectiveRoads": [144, 145],
 					"autoConnectiveRoads": [144, 145]
 				}
 			}
@@ -5168,7 +4916,6 @@
 			{
 				"pos": [2155.50, 16.80, 1220.80],
 				"cross": {
-					"connectiveRoads": [141, 142],
 					"autoConnectiveRoads": [141, 142]
 				}
 			},
@@ -5187,7 +4934,7 @@
 			{
 				"pos": [2218.60, 18.10, 1161.30],
 				"cross": {
-					"connectiveRoads": [144, 146.0, 164],
+					"connectiveRoads": [146],
 					"autoConnectiveRoads": [144, 164]
 				}
 			}
@@ -5200,7 +4947,6 @@
 			{
 				"pos": [2159.70, 17.80, 1159.80],
 				"cross": {
-					"connectiveRoads": [142, 145],
 					"autoConnectiveRoads": [142, 145]
 				}
 			},
@@ -5216,7 +4962,7 @@
 			{
 				"pos": [2218.60, 18.10, 1161.30],
 				"cross": {
-					"connectiveRoads": [143, 146.0, 164],
+					"connectiveRoads": [146],
 					"autoConnectiveRoads": [143, 164]
 				}
 			}
@@ -5229,7 +4975,6 @@
 			{
 				"pos": [2159.70, 17.80, 1159.80],
 				"cross": {
-					"connectiveRoads": [142, 144],
 					"autoConnectiveRoads": [142, 144]
 				}
 			},
@@ -5269,7 +5014,6 @@
 			{
 				"pos": [2150.60, 16.40, 1004.70],
 				"cross": {
-					"connectiveRoads": [146],
 					"autoConnectiveRoads": [146]
 				}
 			}
@@ -5282,7 +5026,6 @@
 			{
 				"pos": [2150.60, 16.40, 1004.70],
 				"cross": {
-					"connectiveRoads": [145],
 					"autoConnectiveRoads": [145]
 				}
 			},
@@ -5316,7 +5059,6 @@
 			{
 				"pos": [1980.70, 17.10, 950.50],
 				"cross": {
-					"connectiveRoads": [147],
 					"autoConnectiveRoads": [147]
 				}
 			}
@@ -5329,7 +5071,6 @@
 			{
 				"pos": [1980.70, 17.10, 950.50],
 				"cross": {
-					"connectiveRoads": [146],
 					"autoConnectiveRoads": [146]
 				}
 			},
@@ -5360,7 +5101,6 @@
 			{
 				"pos": [1869.30, 19.00, 883.40],
 				"cross": {
-					"connectiveRoads": [148, 149],
 					"autoConnectiveRoads": [148, 149]
 				}
 			}
@@ -5373,7 +5113,6 @@
 			{
 				"pos": [1787.60, 17.70, 937.10],
 				"cross": {
-					"connectiveRoads": [117],
 					"autoConnectiveRoads": [117]
 				}
 			},
@@ -5398,7 +5137,6 @@
 			{
 				"pos": [1869.30, 19.00, 883.40],
 				"cross": {
-					"connectiveRoads": [147, 149],
 					"autoConnectiveRoads": [147, 149]
 				}
 			}
@@ -5411,7 +5149,6 @@
 			{
 				"pos": [1869.30, 19.00, 883.40],
 				"cross": {
-					"connectiveRoads": [147, 148],
 					"autoConnectiveRoads": [147, 148]
 				}
 			},
@@ -5439,7 +5176,6 @@
 			{
 				"pos": [1987.70, 22.00, 790.10],
 				"cross": {
-					"connectiveRoads": [156, 281],
 					"autoConnectiveRoads": [156, 281]
 				}
 			}
@@ -5452,7 +5188,6 @@
 			{
 				"pos": [2728.00, 12.50, 1849.60],
 				"cross": {
-					"connectiveRoads": [65],
 					"autoConnectiveRoads": [65]
 				}
 			},
@@ -5462,7 +5197,7 @@
 			{
 				"pos": [2705.60, 13.00, 1842.90],
 				"cross": {
-					"connectiveRoads": [151, 152.0],
+					"connectiveRoads": [152],
 					"autoConnectiveRoads": [151]
 				}
 			}
@@ -5475,7 +5210,7 @@
 			{
 				"pos": [2705.60, 13.00, 1842.90],
 				"cross": {
-					"connectiveRoads": [150, 152.0],
+					"connectiveRoads": [152],
 					"autoConnectiveRoads": [150]
 				}
 			},
@@ -5488,7 +5223,6 @@
 			{
 				"pos": [2663.90, 12.30, 1829.70],
 				"cross": {
-					"connectiveRoads": [153, 154],
 					"autoConnectiveRoads": [153, 154]
 				}
 			}
@@ -5501,7 +5235,6 @@
 			{
 				"pos": [2726.10, 13.20, 1780.10],
 				"cross": {
-					"connectiveRoads": [52, 64, 153],
 					"autoConnectiveRoads": [52, 64, 153]
 				}
 			},
@@ -5523,7 +5256,6 @@
 			{
 				"pos": [2726.10, 13.20, 1780.10],
 				"cross": {
-					"connectiveRoads": [52, 64, 152],
 					"autoConnectiveRoads": [52, 64, 152]
 				}
 			},
@@ -5551,7 +5283,7 @@
 			{
 				"pos": [2663.90, 12.30, 1829.70],
 				"cross": {
-					"connectiveRoads": [151, 153.0, 154],
+					"connectiveRoads": [153],
 					"autoConnectiveRoads": [151, 154]
 				}
 			}
@@ -5564,7 +5296,7 @@
 			{
 				"pos": [2663.90, 12.30, 1829.70],
 				"cross": {
-					"connectiveRoads": [151, 153, 154.0],
+					"connectiveRoads": [154],
 					"autoConnectiveRoads": [151, 153]
 				}
 			},
@@ -5589,7 +5321,6 @@
 			{
 				"pos": [2536.10, 12.10, 1876.30],
 				"cross": {
-					"connectiveRoads": [98, 155],
 					"autoConnectiveRoads": [98, 155]
 				}
 			}
@@ -5602,7 +5333,7 @@
 			{
 				"pos": [2536.10, 12.10, 1876.30],
 				"cross": {
-					"connectiveRoads": [98, 154, 155.0],
+					"connectiveRoads": [155],
 					"autoConnectiveRoads": [98, 154]
 				}
 			},
@@ -5618,7 +5349,6 @@
 			{
 				"pos": [2456.20, 11.60, 1884.80],
 				"cross": {
-					"connectiveRoads": [39],
 					"autoConnectiveRoads": [39]
 				}
 			}
@@ -5631,7 +5361,6 @@
 			{
 				"pos": [1987.70, 22.00, 790.10],
 				"cross": {
-					"connectiveRoads": [149, 281],
 					"autoConnectiveRoads": [149, 281]
 				}
 			},
@@ -5666,7 +5395,6 @@
 			{
 				"pos": [2048.20, 22.70, 695.30],
 				"cross": {
-					"connectiveRoads": [157, 158],
 					"autoConnectiveRoads": [157, 158]
 				}
 			}
@@ -5679,7 +5407,6 @@
 			{
 				"pos": [2048.20, 22.70, 695.30],
 				"cross": {
-					"connectiveRoads": [156, 158],
 					"autoConnectiveRoads": [156, 158]
 				}
 			},
@@ -5694,7 +5421,6 @@
 			{
 				"pos": [2090.50, 23.40, 659.00],
 				"cross": {
-					"connectiveRoads": [182, 276, 277],
 					"autoConnectiveRoads": [182, 276, 277]
 				}
 			}
@@ -5707,7 +5433,6 @@
 			{
 				"pos": [2048.20, 22.70, 695.30],
 				"cross": {
-					"connectiveRoads": [156, 157],
 					"autoConnectiveRoads": [156, 157]
 				}
 			},
@@ -5720,7 +5445,6 @@
 			{
 				"pos": [2020.20, 24.90, 667.00],
 				"cross": {
-					"connectiveRoads": [183, 275],
 					"autoConnectiveRoads": [183, 275]
 				}
 			}
@@ -5733,7 +5457,6 @@
 			{
 				"pos": [1049.00, 12.80, 1336.30],
 				"cross": {
-					"connectiveRoads": [80, 81],
 					"autoConnectiveRoads": [80, 81]
 				}
 			},
@@ -5746,7 +5469,7 @@
 			{
 				"pos": [1093.60, 12.30, 1361.40],
 				"cross": {
-					"connectiveRoads": [14, 159.0],
+					"connectiveRoads": [159],
 					"autoConnectiveRoads": [14]
 				}
 			}
@@ -5759,7 +5482,6 @@
 			{
 				"pos": [2728.00, 11.00, 1633.90],
 				"cross": {
-					"connectiveRoads": [68],
 					"autoConnectiveRoads": [68]
 				}
 			},
@@ -5802,7 +5524,6 @@
 			{
 				"pos": [2827.00, 12.90, 1401.90],
 				"cross": {
-					"connectiveRoads": [162, 163],
 					"autoConnectiveRoads": [162, 163]
 				}
 			}
@@ -5815,7 +5536,6 @@
 			{
 				"pos": [2827.00, 12.90, 1401.90],
 				"cross": {
-					"connectiveRoads": [161, 163],
 					"autoConnectiveRoads": [161, 163]
 				}
 			},
@@ -5837,7 +5557,6 @@
 			{
 				"pos": [2738.30, 13.00, 1387.70],
 				"cross": {
-					"connectiveRoads": [175],
 					"autoConnectiveRoads": [175]
 				}
 			}
@@ -5850,7 +5569,6 @@
 			{
 				"pos": [2827.00, 12.90, 1401.90],
 				"cross": {
-					"connectiveRoads": [161, 162],
 					"autoConnectiveRoads": [161, 162]
 				}
 			},
@@ -5887,7 +5605,6 @@
 			{
 				"pos": [2218.60, 18.10, 1161.30],
 				"cross": {
-					"connectiveRoads": [143, 144],
 					"autoConnectiveRoads": [143, 144]
 				}
 			},
@@ -5915,7 +5632,6 @@
 			{
 				"pos": [2339.30, 18.20, 1129.90],
 				"cross": {
-					"connectiveRoads": [165],
 					"autoConnectiveRoads": [165]
 				}
 			}
@@ -5928,7 +5644,6 @@
 			{
 				"pos": [2339.30, 18.20, 1129.90],
 				"cross": {
-					"connectiveRoads": [164],
 					"autoConnectiveRoads": [164]
 				}
 			},
@@ -5953,7 +5668,6 @@
 			{
 				"pos": [2409.80, 18.60, 1115.00],
 				"cross": {
-					"connectiveRoads": [166],
 					"autoConnectiveRoads": [166]
 				}
 			}
@@ -5966,7 +5680,6 @@
 			{
 				"pos": [2409.80, 18.60, 1115.00],
 				"cross": {
-					"connectiveRoads": [165],
 					"autoConnectiveRoads": [165]
 				}
 			},
@@ -5988,7 +5701,6 @@
 			{
 				"pos": [2502.90, 20.50, 1093.80],
 				"cross": {
-					"connectiveRoads": [167, 176],
 					"autoConnectiveRoads": [167, 176]
 				}
 			}
@@ -6001,7 +5713,6 @@
 			{
 				"pos": [2502.90, 20.50, 1093.80],
 				"cross": {
-					"connectiveRoads": [166, 176],
 					"autoConnectiveRoads": [166, 176]
 				}
 			},
@@ -6026,7 +5737,6 @@
 			{
 				"pos": [2421.50, 19.20, 899.80],
 				"cross": {
-					"connectiveRoads": [168],
 					"autoConnectiveRoads": [168]
 				}
 			}
@@ -6039,7 +5749,6 @@
 			{
 				"pos": [2421.50, 19.20, 899.80],
 				"cross": {
-					"connectiveRoads": [167],
 					"autoConnectiveRoads": [167]
 				}
 			},
@@ -6064,7 +5773,6 @@
 			{
 				"pos": [2446.30, 19.50, 784.00],
 				"cross": {
-					"connectiveRoads": [169],
 					"autoConnectiveRoads": [169]
 				}
 			}
@@ -6077,7 +5785,6 @@
 			{
 				"pos": [2446.30, 19.50, 784.00],
 				"cross": {
-					"connectiveRoads": [168],
 					"autoConnectiveRoads": [168]
 				}
 			},
@@ -6090,7 +5797,6 @@
 			{
 				"pos": [2408.30, 19.50, 779.10],
 				"cross": {
-					"connectiveRoads": [170, 240],
 					"autoConnectiveRoads": [170, 240]
 				}
 			}
@@ -6103,7 +5809,6 @@
 			{
 				"pos": [2408.30, 19.50, 779.10],
 				"cross": {
-					"connectiveRoads": [169, 240],
 					"autoConnectiveRoads": [169, 240]
 				}
 			},
@@ -6116,7 +5821,6 @@
 			{
 				"pos": [2380.00, 19.30, 774.30],
 				"cross": {
-					"connectiveRoads": [181, 239],
 					"autoConnectiveRoads": [181, 239]
 				}
 			}
@@ -6129,7 +5833,7 @@
 			{
 				"pos": [2814.90, 12.30, 1824.30],
 				"cross": {
-					"connectiveRoads": [54, 56, 171.0],
+					"connectiveRoads": [171],
 					"autoConnectiveRoads": [54, 56]
 				}
 			},
@@ -6154,7 +5858,6 @@
 			{
 				"pos": [2915.00, 12.30, 1831.10],
 				"cross": {
-					"connectiveRoads": [172, 173],
 					"autoConnectiveRoads": [172, 173]
 				}
 			}
@@ -6167,7 +5870,6 @@
 			{
 				"pos": [2915.00, 12.30, 1831.10],
 				"cross": {
-					"connectiveRoads": [171, 173],
 					"autoConnectiveRoads": [171, 173]
 				}
 			},
@@ -6206,7 +5908,6 @@
 			{
 				"pos": [2830.50, 11.60, 1758.30],
 				"cross": {
-					"connectiveRoads": [55, 67],
 					"autoConnectiveRoads": [55, 67]
 				}
 			}
@@ -6219,7 +5920,6 @@
 			{
 				"pos": [2915.00, 12.30, 1831.10],
 				"cross": {
-					"connectiveRoads": [171, 172],
 					"autoConnectiveRoads": [171, 172]
 				}
 			},
@@ -6238,7 +5938,7 @@
 			{
 				"pos": [2995.30, 12.30, 1878.70],
 				"cross": {
-					"connectiveRoads": [174, 175.0, 196],
+					"connectiveRoads": [175],
 					"autoConnectiveRoads": [174, 196]
 				}
 			}
@@ -6251,7 +5951,6 @@
 			{
 				"pos": [2995.30, 12.30, 1878.70],
 				"cross": {
-					"connectiveRoads": [173, 196],
 					"autoConnectiveRoads": [173, 196]
 				}
 			},
@@ -6273,7 +5972,6 @@
 			{
 				"pos": [2738.30, 13.00, 1387.70],
 				"cross": {
-					"connectiveRoads": [162],
 					"autoConnectiveRoads": [162]
 				}
 			},
@@ -6292,7 +5990,6 @@
 			{
 				"pos": [2649.70, 15.20, 1323.50],
 				"cross": {
-					"connectiveRoads": [176, 190],
 					"autoConnectiveRoads": [176, 190]
 				}
 			}
@@ -6305,7 +6002,6 @@
 			{
 				"pos": [2649.70, 15.20, 1323.50],
 				"cross": {
-					"connectiveRoads": [175, 190],
 					"autoConnectiveRoads": [175, 190]
 				}
 			},
@@ -6342,7 +6038,6 @@
 			{
 				"pos": [2502.90, 20.50, 1093.80],
 				"cross": {
-					"connectiveRoads": [166, 167],
 					"autoConnectiveRoads": [166, 167]
 				}
 			}
@@ -6355,7 +6050,6 @@
 			{
 				"pos": [568.31, 12.70, 1471.50],
 				"cross": {
-					"connectiveRoads": [132, 244],
 					"autoConnectiveRoads": [132, 244]
 				}
 			},
@@ -6383,7 +6077,6 @@
 			{
 				"pos": [502.70, 14.90, 1591.90],
 				"cross": {
-					"connectiveRoads": [178],
 					"autoConnectiveRoads": [178]
 				}
 			}
@@ -6396,7 +6089,6 @@
 			{
 				"pos": [502.70, 14.90, 1591.90],
 				"cross": {
-					"connectiveRoads": [177],
 					"autoConnectiveRoads": [177]
 				}
 			},
@@ -6421,7 +6113,6 @@
 			{
 				"pos": [403.10, 14.90, 1691.70],
 				"cross": {
-					"connectiveRoads": [197, 234, 262],
 					"autoConnectiveRoads": [197, 234, 262]
 				}
 			}
@@ -6434,7 +6125,6 @@
 			{
 				"pos": [2440.10, 15.40, 2872.60],
 				"cross": {
-					"connectiveRoads": [101, 102, 191],
 					"autoConnectiveRoads": [101, 102, 191]
 				}
 			},
@@ -6459,7 +6149,6 @@
 			{
 				"pos": [2391.50, 18.00, 2903.90],
 				"cross": {
-					"connectiveRoads": [180],
 					"autoConnectiveRoads": [180]
 				}
 			}
@@ -6472,7 +6161,6 @@
 			{
 				"pos": [2391.50, 18.00, 2903.90],
 				"cross": {
-					"connectiveRoads": [179],
 					"autoConnectiveRoads": [179]
 				}
 			},
@@ -6488,7 +6176,6 @@
 			{
 				"pos": [2423.20, 14.80, 2932.40],
 				"cross": {
-					"connectiveRoads": [100, 101],
 					"autoConnectiveRoads": [100, 101]
 				}
 			}
@@ -6501,7 +6188,6 @@
 			{
 				"pos": [2380.00, 19.30, 774.30],
 				"cross": {
-					"connectiveRoads": [170, 239],
 					"autoConnectiveRoads": [170, 239]
 				}
 			},
@@ -6535,7 +6221,6 @@
 			{
 				"pos": [2249.50, 21.80, 712.40],
 				"cross": {
-					"connectiveRoads": [182],
 					"autoConnectiveRoads": [182]
 				}
 			}
@@ -6548,7 +6233,6 @@
 			{
 				"pos": [2249.50, 21.80, 712.40],
 				"cross": {
-					"connectiveRoads": [181],
 					"autoConnectiveRoads": [181]
 				}
 			},
@@ -6594,7 +6278,6 @@
 			{
 				"pos": [2090.50, 23.40, 659.00],
 				"cross": {
-					"connectiveRoads": [157, 276, 277],
 					"autoConnectiveRoads": [157, 276, 277]
 				}
 			}
@@ -6607,7 +6290,6 @@
 			{
 				"pos": [2020.20, 24.90, 667.00],
 				"cross": {
-					"connectiveRoads": [158, 275],
 					"autoConnectiveRoads": [158, 275]
 				}
 			},
@@ -6626,7 +6308,6 @@
 			{
 				"pos": [2007.50, 26.20, 630.90],
 				"cross": {
-					"connectiveRoads": [276],
 					"autoConnectiveRoads": [276]
 				}
 			}
@@ -6639,7 +6320,6 @@
 			{
 				"pos": [1571.00, 14.70, 2357.20],
 				"cross": {
-					"connectiveRoads": [30, 118],
 					"autoConnectiveRoads": [30, 118]
 				}
 			},
@@ -6667,7 +6347,6 @@
 			{
 				"pos": [1756.50, 14.50, 2443.50],
 				"cross": {
-					"connectiveRoads": [31, 32],
 					"autoConnectiveRoads": [31, 32]
 				}
 			},
@@ -6710,7 +6389,6 @@
 			{
 				"pos": [1608.60, 15.00, 2536.90],
 				"cross": {
-					"connectiveRoads": [186, 187],
 					"autoConnectiveRoads": [186, 187]
 				}
 			}
@@ -6723,7 +6401,6 @@
 			{
 				"pos": [1608.60, 15.00, 2536.90],
 				"cross": {
-					"connectiveRoads": [185, 187],
 					"autoConnectiveRoads": [185, 187]
 				}
 			},
@@ -6751,7 +6428,6 @@
 			{
 				"pos": [1608.60, 15.00, 2536.90],
 				"cross": {
-					"connectiveRoads": [185, 186],
 					"autoConnectiveRoads": [185, 186]
 				}
 			},
@@ -6782,7 +6458,6 @@
 			{
 				"pos": [2161.30, 14.00, 1373.30],
 				"cross": {
-					"connectiveRoads": [140, 141],
 					"autoConnectiveRoads": [140, 141]
 				}
 			},
@@ -6822,7 +6497,6 @@
 			{
 				"pos": [2339.20, 14.80, 1394.50],
 				"cross": {
-					"connectiveRoads": [189],
 					"autoConnectiveRoads": [189]
 				}
 			}
@@ -6835,7 +6509,6 @@
 			{
 				"pos": [2339.20, 14.80, 1394.50],
 				"cross": {
-					"connectiveRoads": [188],
 					"autoConnectiveRoads": [188]
 				}
 			},
@@ -6872,7 +6545,6 @@
 			{
 				"pos": [2504.40, 14.70, 1349.80],
 				"cross": {
-					"connectiveRoads": [190],
 					"autoConnectiveRoads": [190]
 				}
 			}
@@ -6885,7 +6557,6 @@
 			{
 				"pos": [2504.40, 14.70, 1349.80],
 				"cross": {
-					"connectiveRoads": [189],
 					"autoConnectiveRoads": [189]
 				}
 			},
@@ -6913,7 +6584,6 @@
 			{
 				"pos": [2649.70, 15.20, 1323.50],
 				"cross": {
-					"connectiveRoads": [175, 176],
 					"autoConnectiveRoads": [175, 176]
 				}
 			}
@@ -6926,7 +6596,6 @@
 			{
 				"pos": [2440.10, 15.40, 2872.60],
 				"cross": {
-					"connectiveRoads": [101, 102, 179],
 					"autoConnectiveRoads": [101, 102, 179]
 				}
 			},
@@ -6950,7 +6619,6 @@
 			{
 				"pos": [2537.90, 12.90, 2902.70],
 				"cross": {
-					"connectiveRoads": [192],
 					"autoConnectiveRoads": [192]
 				}
 			}
@@ -6963,7 +6631,6 @@
 			{
 				"pos": [2537.90, 12.90, 2902.70],
 				"cross": {
-					"connectiveRoads": [191],
 					"autoConnectiveRoads": [191]
 				}
 			},
@@ -7003,7 +6670,6 @@
 			{
 				"pos": [2757.90, 12.90, 2884.70],
 				"cross": {
-					"connectiveRoads": [193],
 					"autoConnectiveRoads": [193]
 				}
 			}
@@ -7016,7 +6682,6 @@
 			{
 				"pos": [2757.90, 12.90, 2884.70],
 				"cross": {
-					"connectiveRoads": [192],
 					"autoConnectiveRoads": [192]
 				}
 			},
@@ -7035,7 +6700,6 @@
 			{
 				"pos": [2834.00, 14.10, 2902.10],
 				"cross": {
-					"connectiveRoads": [194, 195],
 					"autoConnectiveRoads": [194, 195]
 				}
 			}
@@ -7048,7 +6712,7 @@
 			{
 				"pos": [2834.00, 14.10, 2902.10],
 				"cross": {
-					"connectiveRoads": [165.0, 193, 195],
+					"connectiveRoads": [165],
 					"autoConnectiveRoads": [193, 195]
 				}
 			},
@@ -7073,7 +6737,6 @@
 			{
 				"pos": [2834.00, 14.10, 2902.10],
 				"cross": {
-					"connectiveRoads": [193, 194],
 					"autoConnectiveRoads": [193, 194]
 				}
 			},
@@ -7098,7 +6761,6 @@
 			{
 				"pos": [2995.30, 12.30, 1878.70],
 				"cross": {
-					"connectiveRoads": [173, 174],
 					"autoConnectiveRoads": [173, 174]
 				}
 			},
@@ -7141,7 +6803,6 @@
 			{
 				"pos": [2994.90, 11.40, 1745.30],
 				"cross": {
-					"connectiveRoads": [284, 285, 286],
 					"autoConnectiveRoads": [284, 285, 286]
 				}
 			}
@@ -7154,7 +6815,6 @@
 			{
 				"pos": [403.10, 14.90, 1691.70],
 				"cross": {
-					"connectiveRoads": [178, 234, 262],
 					"autoConnectiveRoads": [178, 234, 262]
 				}
 			},
@@ -7164,7 +6824,6 @@
 			{
 				"pos": [390.10, 15.40, 1724.10],
 				"cross": {
-					"connectiveRoads": [198],
 					"autoConnectiveRoads": [198]
 				}
 			}
@@ -7177,7 +6836,6 @@
 			{
 				"pos": [390.10, 15.40, 1724.10],
 				"cross": {
-					"connectiveRoads": [197],
 					"autoConnectiveRoads": [197]
 				}
 			},
@@ -7190,7 +6848,6 @@
 			{
 				"pos": [374.80, 14.90, 1763.00],
 				"cross": {
-					"connectiveRoads": [199, 236],
 					"autoConnectiveRoads": [199, 236]
 				}
 			}
@@ -7203,7 +6860,6 @@
 			{
 				"pos": [374.80, 14.90, 1763.00],
 				"cross": {
-					"connectiveRoads": [198, 236],
 					"autoConnectiveRoads": [198, 236]
 				}
 			},
@@ -7228,7 +6884,7 @@
 			{
 				"pos": [366.40, 15.20, 1876.70],
 				"cross": {
-					"connectiveRoads": [164.0, 237, 264],
+					"connectiveRoads": [164],
 					"autoConnectiveRoads": [237, 264]
 				}
 			}
@@ -7241,7 +6897,6 @@
 			{
 				"pos": [830.00, 13.60, 2024.40],
 				"cross": {
-					"connectiveRoads": [124, 125],
 					"autoConnectiveRoads": [124, 125]
 				}
 			},
@@ -7272,7 +6927,6 @@
 			{
 				"pos": [914.20, 18.90, 2223.80],
 				"cross": {
-					"connectiveRoads": [201, 231],
 					"autoConnectiveRoads": [201, 231]
 				}
 			}
@@ -7285,7 +6939,6 @@
 			{
 				"pos": [914.20, 18.90, 2223.80],
 				"cross": {
-					"connectiveRoads": [200, 231],
 					"autoConnectiveRoads": [200, 231]
 				}
 			},
@@ -7307,7 +6960,6 @@
 			{
 				"pos": [921.00, 15.60, 2357.50],
 				"cross": {
-					"connectiveRoads": [202],
 					"autoConnectiveRoads": [202]
 				}
 			}
@@ -7320,14 +6972,12 @@
 			{
 				"pos": [921.00, 15.60, 2357.50],
 				"cross": {
-					"connectiveRoads": [201],
 					"autoConnectiveRoads": [201]
 				}
 			},
 			{
 				"pos": [917.30, 13.30, 2380.70],
 				"cross": {
-					"connectiveRoads": [203],
 					"autoConnectiveRoads": [203]
 				}
 			}
@@ -7340,7 +6990,6 @@
 			{
 				"pos": [917.30, 13.30, 2380.70],
 				"cross": {
-					"connectiveRoads": [202],
 					"autoConnectiveRoads": [202]
 				}
 			},
@@ -7350,7 +6999,6 @@
 			{
 				"pos": [908.50, 11.50, 2412.60],
 				"cross": {
-					"connectiveRoads": [204, 211],
 					"autoConnectiveRoads": [204, 211]
 				}
 			}
@@ -7363,7 +7011,6 @@
 			{
 				"pos": [908.50, 11.50, 2412.60],
 				"cross": {
-					"connectiveRoads": [203, 211],
 					"autoConnectiveRoads": [203, 211]
 				}
 			},
@@ -7406,7 +7053,6 @@
 			{
 				"pos": [795.70, 22.80, 2526.60],
 				"cross": {
-					"connectiveRoads": [205, 207],
 					"autoConnectiveRoads": [205, 207]
 				}
 			}
@@ -7419,7 +7065,6 @@
 			{
 				"pos": [795.70, 22.80, 2526.60],
 				"cross": {
-					"connectiveRoads": [204, 207],
 					"autoConnectiveRoads": [204, 207]
 				}
 			},
@@ -7435,7 +7080,6 @@
 			{
 				"pos": [795.30, 23.90, 2581.80],
 				"cross": {
-					"connectiveRoads": [206, 210],
 					"autoConnectiveRoads": [206, 210]
 				}
 			}
@@ -7448,7 +7092,6 @@
 			{
 				"pos": [795.30, 23.90, 2581.80],
 				"cross": {
-					"connectiveRoads": [205, 210],
 					"autoConnectiveRoads": [205, 210]
 				}
 			},
@@ -7482,7 +7125,7 @@
 			{
 				"pos": [795.70, 22.80, 2526.60],
 				"cross": {
-					"connectiveRoads": [204, 205, 206.0],
+					"connectiveRoads": [206],
 					"autoConnectiveRoads": [204, 205]
 				}
 			},
@@ -7492,7 +7135,6 @@
 			{
 				"pos": [763.20, 22.90, 2532.50],
 				"cross": {
-					"connectiveRoads": [208],
 					"autoConnectiveRoads": [208]
 				}
 			}
@@ -7505,7 +7147,6 @@
 			{
 				"pos": [763.20, 22.90, 2532.50],
 				"cross": {
-					"connectiveRoads": [207],
 					"autoConnectiveRoads": [207]
 				}
 			},
@@ -7515,7 +7156,6 @@
 			{
 				"pos": [733.20, 23.20, 2535.80],
 				"cross": {
-					"connectiveRoads": [209],
 					"autoConnectiveRoads": [209]
 				}
 			}
@@ -7528,7 +7168,6 @@
 			{
 				"pos": [733.20, 23.20, 2535.80],
 				"cross": {
-					"connectiveRoads": [208],
 					"autoConnectiveRoads": [208]
 				}
 			},
@@ -7541,7 +7180,6 @@
 			{
 				"pos": [731.30, 25.20, 2582.50],
 				"cross": {
-					"connectiveRoads": [210],
 					"autoConnectiveRoads": [210]
 				}
 			}
@@ -7554,7 +7192,6 @@
 			{
 				"pos": [731.30, 25.20, 2582.50],
 				"cross": {
-					"connectiveRoads": [209],
 					"autoConnectiveRoads": [209]
 				}
 			},
@@ -7573,7 +7210,6 @@
 			{
 				"pos": [795.30, 23.90, 2581.80],
 				"cross": {
-					"connectiveRoads": [205, 206],
 					"autoConnectiveRoads": [205, 206]
 				}
 			}
@@ -7586,7 +7222,6 @@
 			{
 				"pos": [908.50, 11.50, 2412.60],
 				"cross": {
-					"connectiveRoads": [203, 204],
 					"autoConnectiveRoads": [203, 204]
 				}
 			},
@@ -7620,7 +7255,6 @@
 			{
 				"pos": [1045.70, 17.00, 2506.60],
 				"cross": {
-					"connectiveRoads": [212],
 					"autoConnectiveRoads": [212]
 				}
 			}
@@ -7633,7 +7267,6 @@
 			{
 				"pos": [1045.70, 17.00, 2506.60],
 				"cross": {
-					"connectiveRoads": [211],
 					"autoConnectiveRoads": [211]
 				}
 			},
@@ -7658,7 +7291,6 @@
 			{
 				"pos": [1148.10, 22.80, 2615.50],
 				"cross": {
-					"connectiveRoads": [213],
 					"autoConnectiveRoads": [213]
 				}
 			}
@@ -7671,7 +7303,6 @@
 			{
 				"pos": [1148.10, 22.80, 2615.50],
 				"cross": {
-					"connectiveRoads": [212],
 					"autoConnectiveRoads": [212]
 				}
 			},
@@ -7705,7 +7336,6 @@
 			{
 				"pos": [1211.00, 23.50, 2796.10],
 				"cross": {
-					"connectiveRoads": [214, 215],
 					"autoConnectiveRoads": [214, 215]
 				}
 			}
@@ -7718,7 +7348,6 @@
 			{
 				"pos": [1211.00, 23.50, 2796.10],
 				"cross": {
-					"connectiveRoads": [213, 215],
 					"autoConnectiveRoads": [213, 215]
 				}
 			},
@@ -7737,7 +7366,6 @@
 			{
 				"pos": [1289.80, 19.20, 2866.20],
 				"cross": {
-					"connectiveRoads": [217, 218],
 					"autoConnectiveRoads": [217, 218]
 				}
 			}
@@ -7750,7 +7378,6 @@
 			{
 				"pos": [1211.00, 23.50, 2796.10],
 				"cross": {
-					"connectiveRoads": [213, 214],
 					"autoConnectiveRoads": [213, 214]
 				}
 			},
@@ -7772,7 +7399,6 @@
 			{
 				"pos": [1321.40, 18.80, 2829.50],
 				"cross": {
-					"connectiveRoads": [216, 217, 223],
 					"autoConnectiveRoads": [216, 217, 223]
 				}
 			}
@@ -7785,7 +7411,6 @@
 			{
 				"pos": [1321.40, 18.80, 2829.50],
 				"cross": {
-					"connectiveRoads": [215, 217, 223],
 					"autoConnectiveRoads": [215, 217, 223]
 				}
 			},
@@ -7801,7 +7426,6 @@
 			{
 				"pos": [1328.40, 19.40, 2889.80],
 				"cross": {
-					"connectiveRoads": [220, 221],
 					"autoConnectiveRoads": [220, 221]
 				}
 			}
@@ -7814,7 +7438,6 @@
 			{
 				"pos": [1321.40, 18.80, 2829.50],
 				"cross": {
-					"connectiveRoads": [215, 216, 223],
 					"autoConnectiveRoads": [215, 216, 223]
 				}
 			},
@@ -7830,7 +7453,6 @@
 			{
 				"pos": [1289.80, 19.20, 2866.20],
 				"cross": {
-					"connectiveRoads": [214, 218],
 					"autoConnectiveRoads": [214, 218]
 				}
 			}
@@ -7843,7 +7465,6 @@
 			{
 				"pos": [1289.80, 19.20, 2866.20],
 				"cross": {
-					"connectiveRoads": [214, 217],
 					"autoConnectiveRoads": [214, 217]
 				}
 			},
@@ -7853,7 +7474,6 @@
 			{
 				"pos": [1290.80, 19.30, 2889.00],
 				"cross": {
-					"connectiveRoads": [219, 221],
 					"autoConnectiveRoads": [219, 221]
 				}
 			}
@@ -7866,7 +7486,6 @@
 			{
 				"pos": [1290.80, 19.30, 2889.00],
 				"cross": {
-					"connectiveRoads": [218, 221],
 					"autoConnectiveRoads": [218, 221]
 				}
 			},
@@ -7879,7 +7498,6 @@
 			{
 				"pos": [1299.60, 19.60, 2925.50],
 				"cross": {
-					"connectiveRoads": [222],
 					"autoConnectiveRoads": [222]
 				}
 			}
@@ -7892,7 +7510,6 @@
 			{
 				"pos": [1328.40, 19.40, 2889.80],
 				"cross": {
-					"connectiveRoads": [216, 221],
 					"autoConnectiveRoads": [216, 221]
 				}
 			},
@@ -7908,7 +7525,6 @@
 			{
 				"pos": [1324.40, 18.70, 2942.40],
 				"cross": {
-					"connectiveRoads": [222],
 					"autoConnectiveRoads": [222]
 				}
 			}
@@ -7921,7 +7537,6 @@
 			{
 				"pos": [1328.40, 19.40, 2889.80],
 				"cross": {
-					"connectiveRoads": [216, 220],
 					"autoConnectiveRoads": [216, 220]
 				}
 			},
@@ -7934,7 +7549,6 @@
 			{
 				"pos": [1290.80, 19.30, 2889.00],
 				"cross": {
-					"connectiveRoads": [218, 219],
 					"autoConnectiveRoads": [218, 219]
 				}
 			}
@@ -7947,7 +7561,6 @@
 			{
 				"pos": [1299.60, 19.60, 2925.50],
 				"cross": {
-					"connectiveRoads": [219],
 					"autoConnectiveRoads": [219]
 				}
 			},
@@ -7957,7 +7570,6 @@
 			{
 				"pos": [1324.40, 18.70, 2942.40],
 				"cross": {
-					"connectiveRoads": [220],
 					"autoConnectiveRoads": [220]
 				}
 			}
@@ -7970,7 +7582,6 @@
 			{
 				"pos": [1321.40, 18.80, 2829.50],
 				"cross": {
-					"connectiveRoads": [215, 216, 217],
 					"autoConnectiveRoads": [215, 216, 217]
 				}
 			},
@@ -8004,7 +7615,6 @@
 			{
 				"pos": [1495.60, 12.70, 2897.40],
 				"cross": {
-					"connectiveRoads": [224],
 					"autoConnectiveRoads": [224]
 				}
 			}
@@ -8017,14 +7627,12 @@
 			{
 				"pos": [1495.60, 12.70, 2897.40],
 				"cross": {
-					"connectiveRoads": [223],
 					"autoConnectiveRoads": [223]
 				}
 			},
 			{
 				"pos": [1514.70, 12.90, 2892.60],
 				"cross": {
-					"connectiveRoads": [225],
 					"autoConnectiveRoads": [225]
 				}
 			}
@@ -8037,7 +7645,6 @@
 			{
 				"pos": [1514.70, 12.90, 2892.60],
 				"cross": {
-					"connectiveRoads": [224],
 					"autoConnectiveRoads": [224]
 				}
 			},
@@ -8053,7 +7660,6 @@
 			{
 				"pos": [1584.40, 16.00, 2881.30],
 				"cross": {
-					"connectiveRoads": [226, 261],
 					"autoConnectiveRoads": [226, 261]
 				}
 			}
@@ -8066,7 +7672,6 @@
 			{
 				"pos": [1584.40, 16.00, 2881.30],
 				"cross": {
-					"connectiveRoads": [225, 261],
 					"autoConnectiveRoads": [225, 261]
 				}
 			},
@@ -8089,7 +7694,6 @@
 			{
 				"pos": [1642.70, 16.10, 2825.10],
 				"cross": {
-					"connectiveRoads": [228],
 					"autoConnectiveRoads": [228]
 				}
 			}
@@ -8102,7 +7706,6 @@
 			{
 				"pos": [2664.60, 11.80, 2192.30],
 				"cross": {
-					"connectiveRoads": [113],
 					"autoConnectiveRoads": [113]
 				}
 			},
@@ -8121,7 +7724,7 @@
 			{
 				"pos": [2763.60, 11.60, 2237.60],
 				"cross": {
-					"connectiveRoads": [106, 107, 117.0],
+					"connectiveRoads": [117],
 					"autoConnectiveRoads": [106, 107]
 				}
 			}
@@ -8134,7 +7737,6 @@
 			{
 				"pos": [1642.70, 16.10, 2825.10],
 				"cross": {
-					"connectiveRoads": [226],
 					"autoConnectiveRoads": [226]
 				}
 			},
@@ -8165,7 +7767,6 @@
 			{
 				"pos": [1740.00, 14.30, 2812.80],
 				"cross": {
-					"connectiveRoads": [229],
 					"autoConnectiveRoads": [229]
 				}
 			}
@@ -8179,14 +7780,12 @@
 			{
 				"pos": [1740.00, 14.30, 2812.80],
 				"cross": {
-					"connectiveRoads": [228],
 					"autoConnectiveRoads": [228]
 				}
 			},
 			{
 				"pos": [1766.70, 14.30, 2812.90],
 				"cross": {
-					"connectiveRoads": [230],
 					"autoConnectiveRoads": [230]
 				}
 			}
@@ -8199,7 +7798,6 @@
 			{
 				"pos": [1766.70, 14.30, 2812.90],
 				"cross": {
-					"connectiveRoads": [229],
 					"autoConnectiveRoads": [229]
 				}
 			},
@@ -8218,7 +7816,6 @@
 			{
 				"pos": [1826.10, 17.00, 2804.30],
 				"cross": {
-					"connectiveRoads": [73, 91],
 					"autoConnectiveRoads": [73, 91]
 				}
 			}
@@ -8231,7 +7828,6 @@
 			{
 				"pos": [914.20, 18.90, 2223.80],
 				"cross": {
-					"connectiveRoads": [200, 201],
 					"autoConnectiveRoads": [200, 201]
 				}
 			},
@@ -8250,7 +7846,6 @@
 			{
 				"pos": [979.80, 19.90, 2214.20],
 				"cross": {
-					"connectiveRoads": [232, 233],
 					"autoConnectiveRoads": [232, 233]
 				}
 			}
@@ -8263,7 +7858,6 @@
 			{
 				"pos": [979.80, 19.90, 2214.20],
 				"cross": {
-					"connectiveRoads": [231, 233],
 					"autoConnectiveRoads": [231, 233]
 				}
 			},
@@ -8291,7 +7885,6 @@
 			{
 				"pos": [979.80, 19.90, 2214.20],
 				"cross": {
-					"connectiveRoads": [231, 232],
 					"autoConnectiveRoads": [231, 232]
 				}
 			},
@@ -8331,7 +7924,6 @@
 			{
 				"pos": [403.10, 14.90, 1691.70],
 				"cross": {
-					"connectiveRoads": [178, 197, 262],
 					"autoConnectiveRoads": [178, 197, 262]
 				}
 			},
@@ -8347,7 +7939,6 @@
 			{
 				"pos": [452.20, 15.10, 1710.80],
 				"cross": {
-					"connectiveRoads": [235, 236],
 					"autoConnectiveRoads": [235, 236]
 				}
 			}
@@ -8360,7 +7951,6 @@
 			{
 				"pos": [452.20, 15.10, 1710.80],
 				"cross": {
-					"connectiveRoads": [234, 236],
 					"autoConnectiveRoads": [234, 236]
 				}
 			},
@@ -8388,7 +7978,7 @@
 			{
 				"pos": [452.20, 15.10, 1710.80],
 				"cross": {
-					"connectiveRoads": [234, 235, 236.0],
+					"connectiveRoads": [236],
 					"autoConnectiveRoads": [234, 235]
 				}
 			},
@@ -8416,7 +8006,6 @@
 			{
 				"pos": [374.80, 14.90, 1763.00],
 				"cross": {
-					"connectiveRoads": [198, 199],
 					"autoConnectiveRoads": [198, 199]
 				}
 			}
@@ -8429,7 +8018,6 @@
 			{
 				"pos": [366.40, 15.20, 1876.70],
 				"cross": {
-					"connectiveRoads": [199, 264],
 					"autoConnectiveRoads": [199, 264]
 				}
 			},
@@ -8463,7 +8051,6 @@
 			{
 				"pos": [556.80, 15.20, 1902.20],
 				"cross": {
-					"connectiveRoads": [238],
 					"autoConnectiveRoads": [238]
 				}
 			}
@@ -8476,7 +8063,6 @@
 			{
 				"pos": [556.80, 15.20, 1902.20],
 				"cross": {
-					"connectiveRoads": [237],
 					"autoConnectiveRoads": [237]
 				}
 			},
@@ -8513,7 +8099,6 @@
 			{
 				"pos": [758.30, 13.70, 1846.10],
 				"cross": {
-					"connectiveRoads": [123, 124],
 					"autoConnectiveRoads": [123, 124]
 				}
 			}
@@ -8526,7 +8111,6 @@
 			{
 				"pos": [2380.00, 19.30, 774.30],
 				"cross": {
-					"connectiveRoads": [170, 181],
 					"autoConnectiveRoads": [170, 181]
 				}
 			},
@@ -8539,7 +8123,6 @@
 			{
 				"pos": [2386.10, 20.70, 739.20],
 				"cross": {
-					"connectiveRoads": [240],
 					"autoConnectiveRoads": [240]
 				}
 			}
@@ -8552,7 +8135,6 @@
 			{
 				"pos": [2386.10, 20.70, 739.20],
 				"cross": {
-					"connectiveRoads": [239],
 					"autoConnectiveRoads": [239]
 				}
 			},
@@ -8586,7 +8168,6 @@
 			{
 				"pos": [2408.30, 19.50, 779.10],
 				"cross": {
-					"connectiveRoads": [169, 170],
 					"autoConnectiveRoads": [169, 170]
 				}
 			}
@@ -8599,7 +8180,6 @@
 			{
 				"pos": [1444.90, 14.50, 2312.30],
 				"cross": {
-					"connectiveRoads": [118, 119, 130],
 					"autoConnectiveRoads": [118, 119, 130]
 				}
 			},
@@ -8636,7 +8216,6 @@
 			{
 				"pos": [1507.50, 13.60, 2213.10],
 				"cross": {
-					"connectiveRoads": [242],
 					"autoConnectiveRoads": [242]
 				}
 			}
@@ -8649,7 +8228,6 @@
 			{
 				"pos": [1507.50, 13.60, 2213.10],
 				"cross": {
-					"connectiveRoads": [241],
 					"autoConnectiveRoads": [241]
 				}
 			},
@@ -8680,7 +8258,6 @@
 			{
 				"pos": [1624.00, 13.60, 2144.30],
 				"cross": {
-					"connectiveRoads": [243],
 					"autoConnectiveRoads": [243]
 				}
 			}
@@ -8693,7 +8270,6 @@
 			{
 				"pos": [1705.90, 12.40, 2021.40],
 				"cross": {
-					"connectiveRoads": [1, 3, 4],
 					"autoConnectiveRoads": [1, 3, 4]
 				}
 			},
@@ -8736,7 +8312,6 @@
 			{
 				"pos": [1624.00, 13.60, 2144.30],
 				"cross": {
-					"connectiveRoads": [242],
 					"autoConnectiveRoads": [242]
 				}
 			}
@@ -8749,7 +8324,6 @@
 			{
 				"pos": [568.31, 12.70, 1471.50],
 				"cross": {
-					"connectiveRoads": [132, 177],
 					"autoConnectiveRoads": [132, 177]
 				}
 			},
@@ -8765,7 +8339,6 @@
 			{
 				"pos": [623.60, 13.80, 1511.10],
 				"cross": {
-					"connectiveRoads": [245],
 					"autoConnectiveRoads": [245]
 				}
 			}
@@ -8778,7 +8351,6 @@
 			{
 				"pos": [623.60, 13.80, 1511.10],
 				"cross": {
-					"connectiveRoads": [244],
 					"autoConnectiveRoads": [244]
 				}
 			},
@@ -8809,7 +8381,6 @@
 			{
 				"pos": [754.50, 14.00, 1560.10],
 				"cross": {
-					"connectiveRoads": [246],
 					"autoConnectiveRoads": [246]
 				}
 			}
@@ -8822,7 +8393,6 @@
 			{
 				"pos": [754.50, 14.00, 1560.10],
 				"cross": {
-					"connectiveRoads": [245],
 					"autoConnectiveRoads": [245]
 				}
 			},
@@ -8847,7 +8417,6 @@
 			{
 				"pos": [898.10, 13.50, 1584.80],
 				"cross": {
-					"connectiveRoads": [85, 120],
 					"autoConnectiveRoads": [85, 120]
 				}
 			}
@@ -8860,7 +8429,6 @@
 			{
 				"pos": [821.30, 14.20, 1800.30],
 				"cross": {
-					"connectiveRoads": [121, 123],
 					"autoConnectiveRoads": [121, 123]
 				}
 			},
@@ -8888,7 +8456,6 @@
 			{
 				"pos": [919.90, 14.40, 1820.70],
 				"cross": {
-					"connectiveRoads": [122, 248],
 					"autoConnectiveRoads": [122, 248]
 				}
 			}
@@ -8901,7 +8468,6 @@
 			{
 				"pos": [919.90, 14.40, 1820.70],
 				"cross": {
-					"connectiveRoads": [122, 247],
 					"autoConnectiveRoads": [122, 247]
 				}
 			},
@@ -8917,7 +8483,6 @@
 			{
 				"pos": [983.70, 14.40, 1869.30],
 				"cross": {
-					"connectiveRoads": [252],
 					"autoConnectiveRoads": [252]
 				}
 			}
@@ -8930,7 +8495,6 @@
 			{
 				"pos": [1240.80, 15.40, 2328.00],
 				"cross": {
-					"connectiveRoads": [127, 128],
 					"autoConnectiveRoads": [127, 128]
 				}
 			},
@@ -8943,7 +8507,6 @@
 			{
 				"pos": [1243.90, 12.90, 2396.10],
 				"cross": {
-					"connectiveRoads": [250, 251],
 					"autoConnectiveRoads": [250, 251]
 				}
 			}
@@ -8956,7 +8519,6 @@
 			{
 				"pos": [1243.90, 12.90, 2396.10],
 				"cross": {
-					"connectiveRoads": [249, 251],
 					"autoConnectiveRoads": [249, 251]
 				}
 			},
@@ -8981,7 +8543,6 @@
 			{
 				"pos": [1243.90, 12.90, 2396.10],
 				"cross": {
-					"connectiveRoads": [249, 250],
 					"autoConnectiveRoads": [249, 250]
 				}
 			},
@@ -9003,7 +8564,6 @@
 			{
 				"pos": [983.70, 14.40, 1869.30],
 				"cross": {
-					"connectiveRoads": [248],
 					"autoConnectiveRoads": [248]
 				}
 			},
@@ -9040,7 +8600,6 @@
 			{
 				"pos": [1106.50, 14.80, 1880.10],
 				"cross": {
-					"connectiveRoads": [253],
 					"autoConnectiveRoads": [253]
 				}
 			}
@@ -9053,7 +8612,6 @@
 			{
 				"pos": [1106.50, 14.80, 1880.10],
 				"cross": {
-					"connectiveRoads": [252],
 					"autoConnectiveRoads": [252]
 				}
 			},
@@ -9081,7 +8639,6 @@
 			{
 				"pos": [1215.70, 13.70, 1855.40],
 				"cross": {
-					"connectiveRoads": [254],
 					"autoConnectiveRoads": [254]
 				}
 			}
@@ -9094,7 +8651,6 @@
 			{
 				"pos": [1215.70, 13.70, 1855.40],
 				"cross": {
-					"connectiveRoads": [253],
 					"autoConnectiveRoads": [253]
 				}
 			},
@@ -9128,7 +8684,6 @@
 			{
 				"pos": [1357.60, 13.10, 1878.70],
 				"cross": {
-					"connectiveRoads": [5, 7],
 					"autoConnectiveRoads": [5, 7]
 				}
 			}
@@ -9141,7 +8696,6 @@
 			{
 				"pos": [1846.70, 19.30, 2993.00],
 				"cross": {
-					"connectiveRoads": [71, 72],
 					"autoConnectiveRoads": [71, 72]
 				}
 			},
@@ -9169,7 +8723,6 @@
 			{
 				"pos": [1755.10, 18.20, 3011.50],
 				"cross": {
-					"connectiveRoads": [256, 257],
 					"autoConnectiveRoads": [256, 257]
 				}
 			}
@@ -9182,7 +8735,6 @@
 			{
 				"pos": [1755.10, 18.20, 3011.50],
 				"cross": {
-					"connectiveRoads": [255, 257],
 					"autoConnectiveRoads": [255, 257]
 				}
 			},
@@ -9207,7 +8759,6 @@
 			{
 				"pos": [1708.30, 15.90, 3027.70],
 				"cross": {
-					"connectiveRoads": [258, 260],
 					"autoConnectiveRoads": [258, 260]
 				}
 			}
@@ -9220,7 +8771,6 @@
 			{
 				"pos": [1755.10, 18.20, 3011.50],
 				"cross": {
-					"connectiveRoads": [255, 256],
 					"autoConnectiveRoads": [255, 256]
 				}
 			},
@@ -9251,7 +8801,6 @@
 			{
 				"pos": [1703.90, 17.30, 3055.60],
 				"cross": {
-					"connectiveRoads": [258, 259],
 					"autoConnectiveRoads": [258, 259]
 				}
 			}
@@ -9264,7 +8813,6 @@
 			{
 				"pos": [1708.30, 15.90, 3027.70],
 				"cross": {
-					"connectiveRoads": [256, 260],
 					"autoConnectiveRoads": [256, 260]
 				}
 			},
@@ -9277,7 +8825,6 @@
 			{
 				"pos": [1703.90, 17.30, 3055.60],
 				"cross": {
-					"connectiveRoads": [257, 259],
 					"autoConnectiveRoads": [257, 259]
 				}
 			}
@@ -9290,7 +8837,6 @@
 			{
 				"pos": [1703.90, 17.30, 3055.60],
 				"cross": {
-					"connectiveRoads": [257, 258],
 					"autoConnectiveRoads": [257, 258]
 				}
 			},
@@ -9307,7 +8853,6 @@
 			{
 				"pos": [1708.30, 15.90, 3027.70],
 				"cross": {
-					"connectiveRoads": [256, 258],
 					"autoConnectiveRoads": [256, 258]
 				}
 			},
@@ -9335,7 +8880,6 @@
 			{
 				"pos": [1634.40, 14.00, 2977.10],
 				"cross": {
-					"connectiveRoads": [261],
 					"autoConnectiveRoads": [261]
 				}
 			}
@@ -9348,7 +8892,6 @@
 			{
 				"pos": [1634.40, 14.00, 2977.10],
 				"cross": {
-					"connectiveRoads": [260],
 					"autoConnectiveRoads": [260]
 				}
 			},
@@ -9379,7 +8922,6 @@
 			{
 				"pos": [1584.40, 16.00, 2881.30],
 				"cross": {
-					"connectiveRoads": [225, 226],
 					"autoConnectiveRoads": [225, 226]
 				}
 			}
@@ -9392,7 +8934,6 @@
 			{
 				"pos": [403.10, 14.90, 1691.70],
 				"cross": {
-					"connectiveRoads": [178, 197, 234],
 					"autoConnectiveRoads": [178, 197, 234]
 				}
 			},
@@ -9439,7 +8980,7 @@
 			{
 				"pos": [2127.00, 14.90, 1375.10],
 				"cross": {
-					"connectiveRoads": [139, 140, 240.0],
+					"connectiveRoads": [240],
 					"autoConnectiveRoads": [139, 140]
 				}
 			},
@@ -9494,7 +9035,6 @@
 			{
 				"pos": [366.40, 15.20, 1876.70],
 				"cross": {
-					"connectiveRoads": [199, 237],
 					"autoConnectiveRoads": [199, 237]
 				}
 			},
@@ -9513,7 +9053,6 @@
 			{
 				"pos": [327.20, 11.00, 1915.00],
 				"cross": {
-					"connectiveRoads": [265],
 					"autoConnectiveRoads": [265]
 				}
 			}
@@ -9527,7 +9066,6 @@
 			{
 				"pos": [327.20, 11.00, 1915.00],
 				"cross": {
-					"connectiveRoads": [264],
 					"autoConnectiveRoads": [264]
 				}
 			},
@@ -9537,7 +9075,7 @@
 			{
 				"pos": [318.90, 11.00, 1937.80],
 				"cross": {
-					"connectiveRoads": [266.0]
+					"connectiveRoads": [266]
 				}
 			}
 		]
@@ -9549,7 +9087,7 @@
 			{
 				"pos": [318.90, 10.89, 1937.80],
 				"cross": {
-					"connectiveRoads": [265.0]
+					"connectiveRoads": [265]
 				}
 			},
 			{
@@ -9635,7 +9173,6 @@
 			{
 				"pos": [526.38, 30.84, 2218.80],
 				"cross": {
-					"connectiveRoads": [267],
 					"autoConnectiveRoads": [267]
 				}
 			}
@@ -9648,7 +9185,6 @@
 			{
 				"pos": [526.38, 30.84, 2218.80],
 				"cross": {
-					"connectiveRoads": [266],
 					"autoConnectiveRoads": [266]
 				}
 			},
@@ -9692,7 +9228,7 @@
 			{
 				"pos": [2673.70, 12.37, 2355.30],
 				"cross": {
-					"connectiveRoads": [105.0, 106.0, 111.0]
+					"connectiveRoads": [105, 106, 111]
 				}
 			},
 			{
@@ -9750,7 +9286,6 @@
 			{
 				"pos": [2955.58, 12.93, 2413.75],
 				"cross": {
-					"connectiveRoads": [269],
 					"autoConnectiveRoads": [269]
 				}
 			}
@@ -9763,7 +9298,6 @@
 			{
 				"pos": [2955.58, 12.93, 2413.75],
 				"cross": {
-					"connectiveRoads": [268],
 					"autoConnectiveRoads": [268]
 				}
 			},
@@ -9778,7 +9312,6 @@
 			{
 				"pos": [2994.41, 12.70, 2441.09],
 				"cross": {
-					"connectiveRoads": [270, 272, 273],
 					"autoConnectiveRoads": [270, 272, 273]
 				}
 			}
@@ -9791,7 +9324,6 @@
 			{
 				"pos": [2994.41, 12.70, 2441.09],
 				"cross": {
-					"connectiveRoads": [269, 272, 273],
 					"autoConnectiveRoads": [269, 272, 273]
 				}
 			},
@@ -9818,7 +9350,6 @@
 			{
 				"pos": [3055.83, 12.73, 2473.01],
 				"cross": {
-					"connectiveRoads": [271],
 					"autoConnectiveRoads": [271]
 				}
 			}
@@ -9831,7 +9362,6 @@
 			{
 				"pos": [3055.83, 12.73, 2473.01],
 				"cross": {
-					"connectiveRoads": [270],
 					"autoConnectiveRoads": [270]
 				}
 			},
@@ -9870,7 +9400,6 @@
 			{
 				"pos": [2990.02, 12.35, 2483.12],
 				"cross": {
-					"connectiveRoads": [272, 274],
 					"autoConnectiveRoads": [272, 274]
 				}
 			}
@@ -9883,7 +9412,6 @@
 			{
 				"pos": [2990.02, 12.35, 2483.12],
 				"cross": {
-					"connectiveRoads": [271, 274],
 					"autoConnectiveRoads": [271, 274]
 				}
 			},
@@ -9896,7 +9424,6 @@
 			{
 				"pos": [2994.41, 12.70, 2441.09],
 				"cross": {
-					"connectiveRoads": [269, 270, 273],
 					"autoConnectiveRoads": [269, 270, 273]
 				}
 			}
@@ -9909,7 +9436,6 @@
 			{
 				"pos": [2994.41, 12.70, 2441.09],
 				"cross": {
-					"connectiveRoads": [269, 270, 272],
 					"autoConnectiveRoads": [269, 270, 272]
 				}
 			},
@@ -9931,7 +9457,6 @@
 			{
 				"pos": [2990.02, 12.35, 2483.12],
 				"cross": {
-					"connectiveRoads": [271, 272],
 					"autoConnectiveRoads": [271, 272]
 				}
 			},
@@ -9991,7 +9516,6 @@
 			{
 				"pos": [2020.20, 24.90, 667.00],
 				"cross": {
-					"connectiveRoads": [158, 183],
 					"autoConnectiveRoads": [158, 183]
 				}
 			},
@@ -10019,7 +9543,6 @@
 			{
 				"pos": [2007.50, 26.20, 630.90],
 				"cross": {
-					"connectiveRoads": [183],
 					"autoConnectiveRoads": [183]
 				}
 			},
@@ -10046,7 +9569,6 @@
 			{
 				"pos": [2090.50, 23.40, 659.00],
 				"cross": {
-					"connectiveRoads": [157, 182, 277],
 					"autoConnectiveRoads": [157, 182, 277]
 				}
 			}
@@ -10059,7 +9581,6 @@
 			{
 				"pos": [2090.50, 23.40, 659.00],
 				"cross": {
-					"connectiveRoads": [157, 182, 276],
 					"autoConnectiveRoads": [157, 182, 276]
 				}
 			},
@@ -10119,7 +9640,6 @@
 			{
 				"pos": [1280.40, 14.50, 1034.90],
 				"cross": {
-					"connectiveRoads": [50, 89],
 					"autoConnectiveRoads": [50, 89]
 				}
 			},
@@ -10134,7 +9654,6 @@
 			{
 				"pos": [1252.57, 13.75, 1007.17],
 				"cross": {
-					"connectiveRoads": [279, 280],
 					"autoConnectiveRoads": [279, 280]
 				}
 			}
@@ -10147,7 +9666,6 @@
 			{
 				"pos": [1252.57, 13.75, 1007.17],
 				"cross": {
-					"connectiveRoads": [278, 280],
 					"autoConnectiveRoads": [278, 280]
 				}
 			},
@@ -10207,7 +9725,6 @@
 			{
 				"pos": [1252.57, 13.75, 1007.17],
 				"cross": {
-					"connectiveRoads": [278, 279],
 					"autoConnectiveRoads": [278, 279]
 				}
 			},
@@ -10239,7 +9756,6 @@
 			{
 				"pos": [1987.70, 22.00, 790.10],
 				"cross": {
-					"connectiveRoads": [149, 156],
 					"autoConnectiveRoads": [149, 156]
 				}
 			},
@@ -10267,7 +9783,6 @@
 			{
 				"pos": [924.50, 13.40, 1268.10],
 				"cross": {
-					"connectiveRoads": [92, 283],
 					"autoConnectiveRoads": [92, 283]
 				}
 			},
@@ -10314,7 +9829,6 @@
 			{
 				"pos": [747.50, 13.50, 1241.10],
 				"cross": {
-					"connectiveRoads": [93],
 					"autoConnectiveRoads": [93]
 				}
 			}
@@ -10327,7 +9841,6 @@
 			{
 				"pos": [924.50, 13.40, 1268.10],
 				"cross": {
-					"connectiveRoads": [92, 282],
 					"autoConnectiveRoads": [92, 282]
 				}
 			},
@@ -10367,7 +9880,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.6863605976104736, -0.02092711068689823, -2.58837890625],
 				"cross": {
-					"connectiveRoads": [196, 285, 286],
 					"autoConnectiveRoads": [196, 285, 286]
 				}
 			},
@@ -10399,7 +9911,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [-4.610188961029053, -0.08758512884378433, -4.032267093658447],
 				"cross": {
-					"connectiveRoads": [196, 284, 286],
 					"autoConnectiveRoads": [196, 284, 286]
 				}
 			},
@@ -10446,7 +9957,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [2.0608723163604736, -0.0159158706665039, 0.9090983271598816],
 				"cross": {
-					"connectiveRoads": [196, 284, 285],
 					"autoConnectiveRoads": [196, 284, 285]
 				}
 			},
@@ -10473,7 +9983,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [3.366943359375, -0.042393047362565994, 1.5442708730697632],
 				"cross": {
-					"connectiveRoads": [103, 104],
 					"autoConnectiveRoads": [103, 104]
 				}
 			},
@@ -10535,7 +10044,6 @@
 				"handleIn": [0.0, 0.0, 0.0],
 				"handleOut": [4.241292476654053, 0.12791728973388672, 2.574462890625],
 				"cross": {
-					"connectiveRoads": [104, 105],
 					"autoConnectiveRoads": [104, 105]
 				}
 			},

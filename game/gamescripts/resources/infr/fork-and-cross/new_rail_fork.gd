@@ -119,6 +119,14 @@ func set_connected_track(track_num: int) -> bool:
 	return true
 #endregion
 
+## Break the junction ↔ leg and junction ↔ setting links so the data can be freed with its loader.
+func release_legs() -> void:
+	for node_fork: RailNodeForkData in self.node_forks:
+		node_fork.junction = null
+	self.node_forks.clear()
+	if self.setting != null:
+		self.setting.parent = null
+
 func refresh_setting() -> void:
 	self.setting.init_current_setting()
 	self.setting_initialized.emit(self.setting)
