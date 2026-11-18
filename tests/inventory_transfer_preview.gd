@@ -8,7 +8,7 @@ func _ready() -> void:
 	_preview.call_deferred()
 
 func _preview() -> void:
-	var truck := RoadVehicle3D.of("gaz_aa_truck")
+	var truck := RoadVehicle3D.of("ifa_w50_covered")
 	truck.freeze = true
 	add_child(truck)
 	truck.get_inventory().add_goods_amount(GoodsAmount.new("lumber", 2))
@@ -24,7 +24,7 @@ func _preview() -> void:
 	inventory.get_inventory().change_stack(&"passenger", 17, 12)
 	inventory.get_inventory().change_stack(&"passenger", 26, 7)
 	var dialog: InventoryTransferDialog = load("res://scenes/ui/dialogs/transfer_inventory/transfer_inventory_dialog.tscn").instantiate()
-	dialog.available_endpoints = [InventoryEndpoint.from_node(truck, "GAZ-AA truck #1"), InventoryEndpoint.from_node(station, "Sawmill loading station")]
+	dialog.available_endpoints = [InventoryEndpoint.from_node(truck, "IFA W50 truck #1"), InventoryEndpoint.from_node(station, "Sawmill loading station")]
 	add_child(dialog)
 
 	await get_tree().create_timer(1).timeout

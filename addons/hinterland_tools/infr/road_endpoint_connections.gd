@@ -135,26 +135,31 @@ static func _update_endpoint_crossing(index: int, entries: Array[EditorRoadEndpo
 	var entry: EditorRoadEndpoint = entries[index]
 	var point: Dictionary = records[entry.road_num].points[entry.node_index]
 	var cross: Dictionary = point.get("cross", {}).duplicate(true)
-	var previous_auto: Array = cross.get("autoConnectiveRoads", [])
-	var manual: Array = []
-	for id: Variant in cross.get("connectiveRoads", []):
+	var previous_auto: Array[int] = []
+	for id: Variant in cross.get("autoConnectiveRoads", []):
+		previous_auto.append(int(id))
+	var manual: Array[int] = []
+	for raw_id: Variant in cross.get("connectiveRoads", []):
+		# Older saves included generated IDs in both lists.
+		var id: int = int(raw_id)
 		if id not in previous_auto and id not in manual:
 			manual.append(id)
-	var automatic: Array = []
+	var automatic: Array[int] = []
 	for other: int in links[index]:
 		var id: int = entries[other].road_num
 		if id not in manual and id not in automatic:
 			automatic.append(id)
-	automatic.sort()
-	# Keep provenance, so moving endpoints removes only generated connections.
-	var combined: Array = manual + automatic
-	combined.sort()
-	if not combined.is_empty() or point.has("cross"):
-		cross["connectiveRoads"] = combined
-		if automatic.is_empty():
-			cross.erase("autoConnectiveRoads")
-		else:
-			cross["autoConnectiveRoads"] = automatic
+	cross.erase("connectiveRoads")
+	cross.erase("autoConnectiveRoads")
+	if not manual.is_empty():
+		manual.sort()
+		cross["connectiveRoads"] = manual
+	if not automatic.is_empty():
+		automatic.sort()
+		cross["autoConnectiveRoads"] = automatic
+	if cross.is_empty():
+		point.erase("cross")
+	else:
 		point["cross"] = cross
 
 func edit_in_cache(line: Node3D) -> Node3D:
@@ -178,6 +183,7 @@ func _stage_cache_copy(line: Node3D, cache: Node3D, world: Node) -> Node3D:
 	# Copy authored properties, not derived marker/rendering children. The curve
 	# must be independent: changing the edit must never change the reference view.
 	var copy: Node3D = line.get_script().of(line.infr_domain, line.num, line.infr_name, line.autosmooth)
+	copy.rail_gauge = line.rail_gauge
 	copy.curve = line.curve.duplicate(true)
 	copy.abs_aabb = line.abs_aabb
 	copy.transform = cache.global_transform.affine_inverse() * line.global_transform

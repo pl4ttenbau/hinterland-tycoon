@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bfrof6absiw33"]
+
+[ext_resource type="PackedScene" uid="uid://djs112qvmqpw1" path="res://assets/meshes/vehicles/road/daimler_1911_bus/mesh/daimler_bus_1911_merged.gltf" id="1_82c3t"]
+
+[node name="MeshDaimler1911Bus" unique_id=1346938080 instance=ExtResource("1_82c3t")]

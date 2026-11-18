@@ -19,9 +19,9 @@ func _enter_tree() -> void:
 func add(track_obj: RailTrackData):
 	self._list.append(track_obj)
 	self._create_indexes(track_obj)
-	self.track_added.emit(track_obj)
 	if track_obj.num > self._max_num:
 		self._max_num = track_obj.num
+	self.track_added.emit(track_obj)
 	
 func add_container(outer_track: RailTrack3D):
 	self._containers.append(outer_track)
@@ -31,6 +31,23 @@ func _create_indexes(track_obj: RailTrackData):
 	self._by_id.set(track_obj.num, track_obj)
 #endregion
 
+## Remove the indexes and detach the view immediately so it stops colliding.
+func remove(track: RailTrackData) -> void:
+	if _by_id.get(track.num) != track:
+		return
+	_list.erase(track)
+	_by_id.erase(track.num)
+	GlobalState.tracks.erase(track)
+	var view: RailTrack3D = _containers_by_id.get(track.num)
+	_containers_by_id.erase(track.num)
+	if is_instance_valid(view):
+		_containers.erase(view)
+		GlobalState.outer_tracks.erase(view)
+		if view.get_parent() != null:
+			view.get_parent().remove_child(view)
+		view.queue_free()
+
+
 #region Get Rail Tracks
 func get_all() -> Array[RailTrackData]:
 	return self._list
@@ -39,9 +56,6 @@ func get_by_num(track_num: int) -> RailTrackData:
 	var found: RailTrackData =  self._by_id.get(track_num)
 	if ! found: Loggie.error("Cannot get track %d; out of index?" % track_num)
 	return found
-	
-func get_by_name(track_name: StringName) -> RailTrackData:
-	return self._by_name.get(track_name)
 	
 func get_container_by_num(track_num: int) -> RailTrack3D:
 	var found: RailTrack3D = self._containers_by_id.get(track_num, null)

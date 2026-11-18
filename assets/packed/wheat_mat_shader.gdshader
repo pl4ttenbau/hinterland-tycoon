@@ -2,8 +2,8 @@ shader_type spatial;
 render_mode skip_vertex_transform, cull_disabled;
 
 uniform sampler2D wheat_atlas : source_color, filter_linear_mipmap, repeat_disable;
-uniform float draw_distance = 16.0;
-uniform float fade_start = 10.0;
+uniform float draw_distance = 24.0;
+uniform float fade_start = 18.0;
 uniform float wind_strength : hint_range(0.0, 0.5) = 0.18;
 uniform vec2 wind_direction = vec2(1.0, 0.35);
 uniform float saturation : hint_range(0.0, 1.0) = 0.85;

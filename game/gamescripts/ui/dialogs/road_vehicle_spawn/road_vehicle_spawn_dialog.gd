@@ -2,7 +2,6 @@
 class_name RoadVehicleSpawnDialog extends ModalGameDialog
 
 const BASE_SCENE: String = "res://scenes/ui/dialogs/default_dialog.tscn"
-const SCRIPT_PATH: String = "res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_spawn_dialog.gd"
 
 var depot: RoadDepotData
 var _types: Array[RoadVehicleTypeData] = []
@@ -16,24 +15,24 @@ var _spawn_button: Button
 ## Reuse the existing scene's unique heading/button nodes and visual styling.
 static func create(source_depot: RoadDepotData) -> RoadVehicleSpawnDialog:
 	var frame: Control = load(BASE_SCENE).instantiate()
-	frame.set_script(load(SCRIPT_PATH))
+	frame.set_script(RoadVehicleSpawnDialog)
 	var dialog: RoadVehicleSpawnDialog = frame as RoadVehicleSpawnDialog
 	dialog.depot = source_depot
 	return dialog
 
 func _ready() -> void:
 	dialog_key = "SpawnRoadVehicleDialog"
-	title_text = "Spawn road vehicle"
-	_suspend_world_input()
+	title_text = "Buy road vehicle"
+	# Keep room for both the vehicle list and the model preview.
+	$OuterPanel.custom_minimum_size = Vector2(704, 517)
 	_build_content()
 	_build_buttons()
 	_populate_vehicles()
 
 #region Content
 func _build_content() -> void:
-	var content := VBoxContainer.new()
+	var content: VBoxContainer = %Content
 	content.add_theme_constant_override("separation", 12)
-	get_node("OuterPanel/OuterMargin/OuterVLayout/Container").add_child(content)
 	var description := Label.new()
 	description.text = "%s\nSpawn 10 m along the road, facing away from the depot." % depot.depot_name
 	description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -72,18 +71,14 @@ func _add_selection(content: VBoxContainer) -> void:
 	visual.add_child(_preview_placeholder)
 
 func _build_buttons() -> void:
-	_spawn_button = get_node("%OkButton")
-	_spawn_button.text = "Spawn vehicle"
+	_spawn_button = %OkButton
+	_spawn_button.show()
+	success_btn_text = "Buy vehicle"
 	_spawn_button.pressed.connect(_spawn_selected)
-	var actions := HBoxContainer.new()
-	_spawn_button.get_parent().add_child(actions)
-	_spawn_button.reparent(actions)
 	_spawn_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var cancel := Button.new()
+	var cancel: Button = %CancelButton
 	cancel.text = "Cancel"
 	cancel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	cancel.pressed.connect(close_all)
-	actions.add_child(cancel)
 
 ## The shared catalog also contains trains; only road types appear here.
 func _populate_vehicles() -> void:

@@ -28,8 +28,8 @@ func _ready() -> void:
 func set_vehicle_image():
 	if self.veh_type_key:
 		var veh_type_obj := VehicleTypeData.get_by_key(self.veh_type_key)
-		var preview_tex: Texture = load(veh_type_obj.get_preview_img_path())
-		%PreviewTextureRect.texture = preview_tex
+		var preview_path: String = veh_type_obj.get_preview_img_path()
+		%PreviewTextureRect.texture = load(preview_path) as Texture2D if ResourceLoader.exists(preview_path) else null
 
 func set_vehicle_price() -> void:
 	var vehicle: VehicleTypeData = VehicleTypeData.get_by_key(veh_type_key)

@@ -61,8 +61,19 @@ func _setup() -> void:
 	Managers.roads.add_child(view)
 	Managers.roads.storage.add_container(view)
 
-func _stop(id: int, index: int = 0) -> RoadStationData:
+func _stop(id: int, index: int = 0, interchange_id: int = -1) -> RoadStationData:
 	var data := RoadStationData.new(id, "Stop %d" % id)
+	if interchange_id >= 0:
+		var catalog: InterchangesLoader = Managers.interchanges
+		var interchange: InterchangeData = catalog.by_num.get(interchange_id)
+		if interchange == null:
+			interchange = InterchangeData.new()
+			interchange.num = interchange_id
+			interchange.interchange_name = "Station %d" % interchange_id
+			catalog.by_num[interchange_id] = interchange
+			catalog.interchanges.append(interchange)
+		data.interchange = interchange
+		interchange.stops.append(data)
 	data.road_num = road.num
 	data.node_index = index
 	data.position = road.nodes[index].position + Vector3(4, 0, 0)
@@ -75,7 +86,7 @@ func _stop(id: int, index: int = 0) -> RoadStationData:
 	stops[id] = data
 	return data
 
-func _vehicle(key: String = "gaz_aa_truck") -> RoadVehicle3D:
+func _vehicle(key: String = "ifa_w50_covered") -> RoadVehicle3D:
 	var body := RoadVehicle3D.of(key)
 	body.freeze = true
 	body.set_physics_process(false)
@@ -93,7 +104,7 @@ func _action(kind: RoadRouteAction.Kind, goods: Array[StringName], goals: Array[
 	var action := RoadRouteAction.new()
 	action.kind = kind
 	action.goods = goods
-	action.passenger_targets = goals
+	action.passenger_interchange_targets = goals
 	return action
 
 func _execute(body: RoadVehicle3D, stop: AbstractStation, action: RoadRouteAction) -> RoadRouteTransferResult:
@@ -104,12 +115,13 @@ func test_cargo() -> bool:
 	var stop: RoadStationData = _stop(0)
 	var body: RoadVehicle3D = _vehicle()
 	var stock: GoodsInventory = stop.get_inventory_view().get_inventory()
-	stock.change_stack(&"lumber", -1, 5)
+	var capacity: float = body.get_inventory().amount_max
+	stock.change_stack(&"lumber", -1, capacity + 1)
 	stock.change_stack(&"tools", -1, 3)
 	var load := _action(RoadRouteAction.Kind.LOAD, [&"lumber", &"tools"])
 	var result: RoadRouteTransferResult = _execute(body, stop, load)
-	check(result.error.is_empty() and result.moved == 4, "Load moves up to the GAZ's shared capacity")
-	check(body.get_inventory().get_amount("lumber") == 4 and stock.get_amount("lumber") == 1, "Cargo load conserves lumber")
+	check(result.error.is_empty() and result.moved == capacity, "Load moves up to the IFA's shared capacity")
+	check(body.get_inventory().get_amount("lumber") == capacity and stock.get_amount("lumber") == 1, "Cargo load conserves lumber")
 	check(stock.get_amount("tools") == 3, "Later selected resources cannot overfill the vehicle")
 	result = _execute(body, stop, load)
 	check(result.error.is_empty() and result.moved == 0, "Loading a full vehicle is a successful no-op")
@@ -119,7 +131,7 @@ func test_cargo() -> bool:
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"lumber"])
 	result = _execute(body, stop, unload)
 	check(result.error.is_empty() and result.moved == 2, "Unloading respects remaining stop capacity")
-	check(body.get_inventory().get_amount("lumber") == 2 and stock.get_amount("lumber") == 3, "Partial unload leaves excess aboard")
+	check(body.get_inventory().get_amount("lumber") == capacity - 2 and stock.get_amount("lumber") == 3, "Partial unload leaves excess aboard")
 	result = _execute(body, stop, unload)
 	check(result.error.is_empty() and result.moved == 0, "Unloading at a full stop does not wait indefinitely")
 	body.free()
@@ -128,37 +140,46 @@ func test_cargo() -> bool:
 # Passenger selection stays goal-specific. At their goal they leave the simulation,
 # even if its waiting inventory is full; other batches remain aboard or waiting.
 func test_passengers() -> bool:
+	var previous_player: PlayerAvatar = GlobalState.player
+	var player := PlayerAvatar.new()
+	GlobalState.player = player
 	var origin: RoadStationData = _stop(10)
-	var destination: RoadStationData = _stop(11)
-	_stop(12)
+	# Both stops serve interchange 11. Unload at the second physical stop.
+	_stop(11, 0, 11)
+	var destination: RoadStationData = _stop(111, 0, 11)
+	_stop(12, 0, 12)
 	var body: RoadVehicle3D = _vehicle("trabant_601_green")
 	var stock: GoodsInventory = origin.get_inventory_view().get_inventory()
 	stock.change_stack(&"passenger", 11, 3)
 	stock.change_stack(&"passenger", 12, 2)
 	stock.change_stack(&"passenger", -1, 1)
 	var result: RoadRouteTransferResult = _execute(body, origin, _action(RoadRouteAction.Kind.LOAD, [&"passenger"], [11]))
-	check(result.error.is_empty() and result.moved == 3, "Load selects only the requested physical destination")
+	check(result.error.is_empty() and result.moved == 3, "Load selects only the requested interchange")
 	check(stock.stack_amount(&"passenger", 12) == 2 and stock.stack_amount(&"passenger") == 1, "Other and unassigned passenger batches are untouched")
 	result = _execute(body, origin, _action(RoadRouteAction.Kind.LOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.moved == 1, "Passenger loading respects whole-person capacity")
+	check(player.company.cash == CompanyData.STARTING_CASH, "Boarding passengers earns no income")
 
-	var target_component: InventoryContainer = InventoryContainer.find_on(destination.get_inventory_view())
-	target_component.capacity_override = 0
+	var target_stock: GoodsInventory = destination.interchange.inventory
+	target_stock.amount_max = 0
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [11])
 	result = _execute(body, destination, unload)
 	check(result.error.is_empty() and result.completed_passengers == 3, "Arriving passengers complete their trips despite a full waiting room")
-	check(body.get_inventory().storage.total_passengers == 1 and target_component.get_inventory().storage.total_passengers == 0, "Finished passengers are removed rather than added to waiting stock")
+	check(body.get_inventory().storage.total_passengers == 1 and target_stock.storage.total_passengers == 0, "Finished passengers are removed rather than added to waiting stock")
 	result = _execute(body, destination, unload)
 	check(result.error.is_empty() and result.moved == 0, "Repeated arrival cannot remove a different destination batch")
 
-	var vehicle_end: InventoryEndpoint = InventoryEndpoint.from_node(body)
 	var stop_end: InventoryEndpoint = InventoryEndpoint.from_node(destination.get_inventory_view())
 	var wrong_goal := InventoryStack.new(&"passenger", 1, 12)
-	check(not InventoryTransferService.complete_passenger_trip(vehicle_end, stop_end, wrong_goal, 1, 11).is_empty(), "Passengers cannot finish at the wrong physical stop")
-	target_component.capacity_override = 10
+	check(not InventoryTransferService.completes_passenger_trip(stop_end, wrong_goal), "The wrong interchange cannot complete the trip")
+	target_stock.amount_max = 10
 	result = _execute(body, destination, _action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [12]))
 	check(result.error.is_empty() and result.completed_passengers == 0 and result.moved == 1, "Explicit intermediate unload preserves a waiting passenger's onward goal")
-	check(target_component.get_inventory().stack_amount(&"passenger", 12) == 1, "Intermediate passengers retain the original destination ID")
+	check(target_stock.stack_amount(&"passenger", 12) == 1, "Intermediate passengers retain the original destination ID")
+	check(player.company.passengers_delivered == 3 and player.company.cash == CompanyData.STARTING_CASH + 300,
+		"Only arrivals at the correct interchange are counted and paid once")
+	GlobalState.player = previous_player
+	player.free()
 	body.free()
 	return true
 
@@ -194,27 +215,28 @@ func test_ordered_execution() -> bool:
 	body.position.y = 0.8
 	# This fixture tests actions only; face the next stop to avoid a U-turn phase.
 	body.rotation.y = PI
-	body.get_inventory().change_stack(&"lumber", -1, 4)
+	var capacity: float = body.get_inventory().amount_max
+	body.get_inventory().change_stack(&"lumber", -1, capacity)
 	var stock: GoodsInventory = first.get_inventory_view().get_inventory()
-	stock.change_stack(&"tools", -1, 4)
+	stock.change_stack(&"tools", -1, capacity)
 	var unload := _action(RoadRouteAction.Kind.UNLOAD, [&"lumber"])
 	var load := _action(RoadRouteAction.Kind.LOAD, [&"tools"])
 	body.route_plan.points = [_point(20, [unload, load]), _point(21, [load])]
 	body.player_driving = true
 	check(body.plan_execution.start(body), "Plan starts beside the first stop under manual control")
 	body.plan_execution.tick(body)
-	check(body.get_inventory().get_amount("lumber") == 4 and stock.get_amount("tools") == 4, "Start and manual tick do not execute stop actions")
+	check(body.get_inventory().get_amount("lumber") == capacity and stock.get_amount("tools") == capacity, "Start and manual tick do not execute stop actions")
 	body.player_driving = false
 	body.linear_velocity = Vector3(0, 0, 2)
 	body.plan_execution.tick(body)
 	check(body.get_inventory().get_amount("tools") == 0, "Servicing waits until the vehicle is stationary")
 	body.linear_velocity = Vector3.ZERO
 	body.plan_execution.tick(body)
-	check(body.get_inventory().get_amount("lumber") == 0 and body.get_inventory().get_amount("tools") == 4, "Ordered unload frees capacity for the following load")
+	check(body.get_inventory().get_amount("lumber") == 0 and body.get_inventory().get_amount("tools") == capacity, "Ordered unload frees capacity for the following load")
 	check(body.plan_execution.running and body.plan_execution.current_point == 1, "Successful actions advance to the next visit")
 
 	body.global_position = road.nodes[3].position + Vector3.UP * 0.8
-	body._arrived = true
+	body.mark_arrived()
 	body.plan_execution.tick(body)
 	body.plan_execution.tick(body)
 	check(body.plan_execution.status == "Plan complete", "No stock at the final load action still completes the plan")
@@ -228,7 +250,7 @@ func test_ordered_execution() -> bool:
 # at another, using the same controller and arrival path as the game.
 func test_physical_passenger_route() -> bool:
 	var origin: RoadStationData = _stop(30, 1)
-	var destination: RoadStationData = _stop(31, 3)
+	var destination: RoadStationData = _stop(31, 3, 31)
 	var stock: GoodsInventory = origin.get_inventory_view().get_inventory()
 	stock.change_stack(&"passenger", 31, 4)
 	var depot := RoadDepotData.new()

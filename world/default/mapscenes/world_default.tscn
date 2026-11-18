@@ -51,14 +51,14 @@ size = Vector3(25.3006, 11.7227, 9.16028)
 [sub_resource type="MultiMesh" id="MultiMesh_kil6y"]
 transform_format = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s8qsh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3e8ug"]
 viewport_path = NodePath("SubViewport")
 
 [node name="WorldDefault" type="Node" unique_id=883819597]
 script = ExtResource("1_2asbh")
 metadata/_custom_type_script = "uid://dfps4gg6r750j"
 
-[node name="Terrain3D" parent="." unique_id=940868700 instance=ExtResource("2_lrxql")]
+[node name="WorldTerrain" parent="." unique_id=940868700 instance=ExtResource("2_lrxql")]
 
 [node name="EditorObjects" parent="." unique_id=373374799 instance=ExtResource("3_ui4sc")]
 
@@ -141,7 +141,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7.3, 39)
 
 [node name="Sprite3D" parent="SignalTower" unique_id=64163115 instance=ExtResource("19_r34uw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9403534, 19.862587, 1.4434013)
-texture = SubResource("ViewportTexture_s8qsh")
+texture = SubResource("ViewportTexture_3e8ug")
 
 [node name="Pilzleuchte" parent="." unique_id=1791571326 instance=ExtResource("20_ueuup")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.845093, 9.050041, 30.95818)

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/meshes/infr/road/rural_road_1/tex_rural_road_d.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/meshes/infr/road/rural_road_1/tex_rural_road_n.png" id="2_normal"]
+
+[resource]
+albedo_texture = ExtResource("1_albedo")
+metallic_specular = 0.25
+roughness = 0.93
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("2_normal")
+texture_filter = 5

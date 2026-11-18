@@ -11,7 +11,7 @@ var _status: Label
 
 static func create(source: PLACEMENT_TOOL, position: Dictionary) -> RoadMarkerDialog:
 	var frame: Control = load("res://scenes/ui/dialogs/default_dialog.tscn").instantiate()
-	frame.set_script(load("res://game/gamescripts/ui/dialogs/road_marker/road_marker_dialog.gd"))
+	frame.set_script(RoadMarkerDialog)
 	var dialog := frame as RoadMarkerDialog
 	dialog.tool = source
 	dialog.placement = position.duplicate()
@@ -20,16 +20,8 @@ static func create(source: PLACEMENT_TOOL, position: Dictionary) -> RoadMarkerDi
 func _ready() -> void:
 	title_text = "Place road marker"
 	dialog_key = "RoadMarkerDialog"
-	_suspend_world_input()
-	get_node("OuterPanel/OuterMargin").custom_minimum_size.y = 0
-	get_node("OuterPanel/OuterMargin/OuterVLayout").custom_minimum_size.x = 460
-	var panel: Control = get_node("OuterPanel")
-	panel.offset_left = -250
-	panel.offset_right = 250
-	panel.offset_top = -170
-	panel.offset_bottom = 170
-	var content := VBoxContainer.new()
-	get_node("OuterPanel/OuterMargin/OuterVLayout/Container").add_child(content)
+	$OuterPanel.custom_minimum_size = Vector2(500, 340)
+	var content: VBoxContainer = %Content
 	_name = LineEdit.new()
 	_name.text = "Marker %d" % tool.roads.markers.next_num()
 	_name.text_submitted.connect(func(_text: String): _confirm())
@@ -47,18 +39,14 @@ func _ready() -> void:
 	_name.select_all()
 
 func _build_buttons() -> void:
-	var confirm: Button = get_node("%OkButton")
-	confirm.text = "Place marker"
+	var confirm: Button = %OkButton
+	confirm.show()
+	success_btn_text = "Place marker"
 	confirm.pressed.connect(_confirm)
-	var row := HBoxContainer.new()
-	confirm.get_parent().add_child(row)
-	confirm.reparent(row)
 	confirm.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var cancel := Button.new()
+	var cancel: Button = %CancelButton
 	cancel.text = "Cancel"
 	cancel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	cancel.pressed.connect(close_all)
-	row.add_child(cancel)
 
 func _confirm() -> void:
 	if _closing:

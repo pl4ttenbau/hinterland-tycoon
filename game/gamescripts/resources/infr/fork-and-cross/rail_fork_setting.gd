@@ -6,37 +6,49 @@ class_name RailForkSetting extends Resource
 
 @export var settable_tracks: Array[int] = []
 
-@export var all_set_to: Array[int] = []
-
 func _init(_parent: NewRailForkData):
 	self.parent = _parent
 	
-func init_current_setting():
-	# not connected to anything, rly only track end
-	if self.parent.connected_tracks.size() <= 1: 
+func init_current_setting() -> void:
+	var tracks: Array[int] = self.parent.connected_tracks
+	if tracks.size() < 2:
 		return
-	# straightly connected but no third rail
-	if parent.connected_tracks.size() == 2:
-		self.current = CurrentForkSetting.new(self.parent.connected_tracks[0], 
-			self.parent.connected_tracks[1])
-	# connected with at least 2 switchable settings
-	else:
-		self.current = CurrentForkSetting.new(
-			self.parent.get_static_track_num(), 
-			self.parent.get_switchable_track_nums()[0]
-		)
-		self.settable_tracks = self.parent.get_switchable_track_nums()
-	# fire initial switched signal, so current setting initialized itself
+	if tracks.size() == 2:
+		if self.current == null:
+			self.current = CurrentForkSetting.new(tracks[0], tracks[1])
+			self.parent.switched.emit(self.current)
+		return
+
+	var root_track: int = self.parent.get_static_track_num()
+	self.settable_tracks = self.parent.get_switchable_track_nums()
+	self.settable_tracks.erase(root_track)
+	# A formerly fixed two-track connection remains selectable when a branch is added.
+	if self.current != null:
+		if not self.settable_tracks.has(self.current.connected):
+			self.settable_tracks.push_front(self.current.connected)
+		return
+	if self.settable_tracks.is_empty():
+		return
+	self.current = CurrentForkSetting.new(root_track, self.settable_tracks[0])
 	self.parent.switched.emit(self.current)
 
 func switch() -> CurrentForkSetting:
-	if ! self.is_changable(): return
+	if self.current == null or self.settable_tracks.size() < 2:
+		return self.current
 	var old_connected: int = self.current.connected
 	var settable_i: int = self.settable_tracks.find(self.current.connected)
 	var future_i = settable_i + 1
 	if future_i == self.settable_tracks.size():
 		future_i = 0
 	return self._switch_to_track(self.settable_tracks[future_i], old_connected)
+
+## Select a settable branch directly, as route-setting will. Returns null if it is not settable.
+func set_connected(track_num: int) -> CurrentForkSetting:
+	if self.current == null or not self.settable_tracks.has(track_num):
+		return null
+	if self.current.connected == track_num:
+		return self.current
+	return self._switch_to_track(track_num, self.current.connected)
 
 func _switch_to_track(track_num: int, _previous_track_num) -> CurrentForkSetting:
 	self.current.connected = track_num

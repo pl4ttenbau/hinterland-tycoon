@@ -1,0 +1,65 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_route/road_route_points_editor.gd" id="1"]
+
+[node name="RoutePoints" type="VBoxContainer"]
+theme_override_constants/separation = 8
+script = ExtResource("1")
+
+[node name="PointKind" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Road marker"
+popup/item_0/id = 3
+popup/item_1/text = "Physical stop"
+popup/item_1/id = 1
+popup/item_2/text = "Road depot"
+popup/item_2/id = 2
+
+[node name="Targets" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddPoint" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ManagementButton"
+text = "Add point"
+
+[node name="Points" type="ItemList" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 165)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MoveUp" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ManagementButton"
+text = "Move up"
+
+[node name="MoveDown" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ManagementButton"
+text = "Move down"
+
+[node name="RemovePoint" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ManagementButton"
+text = "Remove point"
+
+[connection signal="item_selected" from="PointKind" to="." method="_fill_point_choices"]
+[connection signal="item_selected" from="Points" to="." method="_on_point_selected"]
+[connection signal="pressed" from="AddPoint" to="." method="_add_point"]
+[connection signal="pressed" from="Buttons/MoveUp" to="." method="_move_point" binds=[-1]]
+[connection signal="pressed" from="Buttons/MoveDown" to="." method="_move_point" binds=[1]]
+[connection signal="pressed" from="Buttons/RemovePoint" to="." method="_remove_point"]

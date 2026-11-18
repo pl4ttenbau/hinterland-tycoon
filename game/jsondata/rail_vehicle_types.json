@@ -228,6 +228,21 @@
 		"mass_tonnes": 64.0
 	},
 	{
+		"key": "sakhalin_tg16_diesel",
+		"purchase_price": 719200,
+		"display_name": "Sakhalin TG16 (Single Section)",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/model_sakhalin_tg16_diesel.tscn",
+		"max_speed_kmh": 85,
+		"usable_infr": {
+			"subtype": "1000_MM"
+		},
+		"has_motor": true,
+		"length_metres": 15.45,
+		"motor_power_kw": 1207,
+		"mass_tonnes": 74.0,
+		"tractive_effort_kn": 239.5
+	},
+	{
 		"key": "mpsb_open_wagon",
 		"purchase_price": 10100,
 		"display_name": "MPSB Open Wagon",
@@ -246,20 +261,20 @@
 		"mass_tonnes": 3.0
 	},
 	{
-		"key": "fkbn_t1_motorwagon",
+		"key": "fkb_t2_137_532",
 		"purchase_price": 108100,
-		"display_name": "FKB T1 Motorwagon",
-		"model_scene_path": "res://assets/meshes/vehicles/rail/fkbn_t1_motorwagon/model_fkbn_t1_motorwagon.tscn",
+		"display_name": "FKB T2 (DR VT 137 532)",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/fkb_t2_137_532/model_fkb_t2_137_532.tscn",
 		"max_speed_kmh": 60,
 		"usable_infr": {
-			"subtype": "750_MM"
+			"subtype": "1000_MM"
 		},
 		"has_motor": true,
 		"capacity": {
 			"cat": "PASSENGER",
 			"amount": 48
 		},
-		"length_metres": 12.461,
+		"length_metres": 12.96,
 		"motor_power_kw": 70,
 		"mass_tonnes": 18.0
 	},

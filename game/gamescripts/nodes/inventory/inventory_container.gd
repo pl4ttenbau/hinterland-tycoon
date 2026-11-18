@@ -13,6 +13,11 @@ func _enter_tree() -> void:
 	get_inventory()
 
 func get_inventory() -> GoodsInventory:
+	var view := get_parent() as InventoryEntity3D
+	if view != null:
+		var shared_inventory: GoodsInventory = view.get_shared_inventory()
+		if shared_inventory != null:
+			return shared_inventory
 	if inventory == null:
 		inventory = GoodsInventory.new()
 		inventory.amount_max = BaseGoodsStorage.DEFAULT_MAX_STORAGE

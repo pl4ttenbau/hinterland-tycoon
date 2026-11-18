@@ -6,7 +6,8 @@ extends Node3D
 
 const PLACEMENT: Shader = preload("res://assets/packed/grass_particles.gdshader")
 const GrassAreas = preload("res://game/gamescripts/resources/terrain/grass_area_definition.gd")
-const CELL_SIZE: float = 16.0
+const ClearanceMap = preload("res://game/gamescripts/resources/terrain/vegetation_clearance_map.gd")
+const CELL_SIZE: float = ClearanceMap.CELL_SIZE
 const MAX_WATER_PLANES: int = 32
 
 @export var terrain: Terrain3D
@@ -24,8 +25,8 @@ const MAX_WATER_PLANES: int = 32
 ## Fraction of candidates retained; reducing spacing is more costly than raising this.
 @export_range(0.0, 1.0, 0.05) var density: float = 0.75
 ## Range is capped by tile coverage. Call rebuild() after changing these settings.
-@export_range(4.0, 16.0, 1.0) var draw_distance: float = 16.0
-@export_range(2.0, 14.0, 1.0) var fade_start: float = 10.0
+@export_range(4.0, 32.0, 1.0) var draw_distance: float = 16.0
+@export_range(2.0, 31.0, 1.0) var fade_start: float = 10.0
 ## Map-specific terrain eligibility and optional general grass coverage mask.
 @export var grass_areas: GrassAreas = preload("res://world/default/vegetation/grass_areas.tres")
 @export_range(0.5, 1.0, 0.01) var minimum_normal_y: float = 0.85
@@ -34,10 +35,12 @@ const MAX_WATER_PLANES: int = 32
 
 var particle_count: int = 0
 var _tiles: Dictionary[Vector2i, GPUParticles3D] = {}
+var _rail_clearance := ClearanceMap.new()
 var _process_material: ShaderMaterial
 var _draw_material: ShaderMaterial
 var _mesh: Mesh
 var _rows: int
+var _tile_radius: int
 var _cell: Vector2i = Vector2i(2147483647, 2147483647)
 var _editor_preview_enabled: bool = true
 var _editor_refresh_delay: float = 0.0
@@ -116,15 +119,40 @@ func rebuild() -> void:
 	params["grass_texture_mask"] = grass_areas.get_texture_mask() if grass_areas else 0
 	for param: String in params:
 		_process_material.set_shader_parameter(param, params[param])
-	var rid: RID = _process_material.get_rid()
-	RenderingServer.material_set_param(rid, "_height_maps", terrain.data.get_height_maps_rid())
-	RenderingServer.material_set_param(rid, "_control_maps", terrain.data.get_control_maps_rid())
-	RenderingServer.material_set_param(rid, "_color_maps", terrain.data.get_color_maps_rid())
+	_bind_terrain_maps(_process_material)
 	_set_grass_area_mask()
 	_set_water_masks()
 	_draw_material = grass_material.duplicate() as ShaderMaterial
-	_draw_material.set_shader_parameter("draw_distance", clampf(draw_distance, 4.0, CELL_SIZE))
-	_draw_material.set_shader_parameter("fade_start", clampf(fade_start, 0.0, draw_distance - 1.0))
+	var distance_limit: float = clampf(draw_distance, 4.0, CELL_SIZE * 2.0)
+	_tile_radius = ceili(distance_limit / CELL_SIZE)
+	_draw_material.set_shader_parameter("draw_distance", distance_limit)
+	_draw_material.set_shader_parameter("fade_start", clampf(fade_start, 0.0, distance_limit - 1.0))
+
+func clear_along_rail(points: PackedVector3Array, half_width: float) -> void:
+	if grass_areas == null or grass_areas.coverage_is_empty or not is_instance_valid(terrain) or terrain.data == null:
+		return
+	for cell: Vector2i in _rail_clearance.clear_along(points, half_width, grass_areas, terrain.data.get_height):
+		if _tiles.has(cell):
+			var tile: GPUParticles3D = _tiles[cell]
+			_set_tile_coverage(tile, cell)
+			tile.restart(true)
+
+func _bind_terrain_maps(material: ShaderMaterial) -> void:
+	var rid: RID = material.get_rid()
+	RenderingServer.material_set_param(rid, "_height_maps", terrain.data.get_height_maps_rid())
+	RenderingServer.material_set_param(rid, "_control_maps", terrain.data.get_control_maps_rid())
+	RenderingServer.material_set_param(rid, "_color_maps", terrain.data.get_color_maps_rid())
+
+func _set_tile_coverage(tile: GPUParticles3D, cell: Vector2i) -> void:
+	var image: Image = _rail_clearance.get_cell(cell)
+	if image == null:
+		tile.process_material = _process_material
+		return
+	var material := _process_material.duplicate() as ShaderMaterial
+	_bind_terrain_maps(material)
+	material.set_shader_parameter("rail_clearance_enabled", true)
+	material.set_shader_parameter("rail_clearance_mask", ImageTexture.create_from_image(image))
+	tile.process_material = material
 
 func _set_grass_area_mask() -> void:
 	var has_mask: bool = grass_areas != null and grass_areas.coverage_mask != null
@@ -204,8 +232,9 @@ func _process(delta: float) -> void:
 
 func _update_tiles(cell: Vector2i) -> void:
 	var wanted: Array[Vector2i] = []
-	for x: int in range(-1, 2):
-		for z: int in range(-1, 2):
+	# Cover the full fade radius even when the camera is at the edge of its cell.
+	for x: int in range(-_tile_radius, _tile_radius + 1):
+		for z: int in range(-_tile_radius, _tile_radius + 1):
 			wanted.append(cell + Vector2i(x, z))
 	var spare: Array[GPUParticles3D] = []
 	for key: Vector2i in _tiles.keys():
@@ -217,6 +246,7 @@ func _update_tiles(cell: Vector2i) -> void:
 			continue
 		var tile: GPUParticles3D = spare.pop_back() if not spare.is_empty() else _make_tile()
 		tile.global_position = Vector3(key.x * CELL_SIZE, 0.0, key.y * CELL_SIZE)
+		_set_tile_coverage(tile, key)
 		tile.reset_physics_interpolation()
 		tile.restart(true)
 		_tiles[key] = tile

@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="4_frame"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/road_route/road_route_points_editor.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/road_route/road_route_actions_editor.tscn" id="3"]
+
+[node name="RoadRouteDialog" instance=ExtResource("4_frame")]
+script = ExtResource("1")
+dialog_key = "RoadRouteDialog"
+title_text = "Road vehicle route"
+success_btn_text = "Save plan"
+
+[node name="OuterPanel" parent="." index="0"]
+custom_minimum_size = Vector2(724, 0)
+
+[node name="Headline" parent="OuterPanel/OuterMargin/OuterVLayout" index="0"]
+text = "Road vehicle route"
+
+[node name="Tabs" type="TabContainer" parent="OuterPanel/OuterMargin/OuterVLayout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+
+[node name="Route points" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="0" instance=ExtResource("2")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Load and unload" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="1" instance=ExtResource("3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="OkButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="0"]
+visible = true
+size_flags_horizontal = 3
+theme_type_variation = &"ManagementButton"
+text = "Save plan"
+
+[node name="StartButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PrimaryButton"
+text = "Start plan"
+
+[node name="CancelButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="2"]
+size_flags_horizontal = 3
+text = "Cancel"
+
+[connection signal="point_selected" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_on_point_selected"]
+[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_show_status"]
+[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Load and unload" to="." method="_show_status" binds=[true]]
+[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/OkButton" to="." method="_save"]
+[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/StartButton" to="." method="_start"]

@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://cjnlved5jgseb"]
 
 [ext_resource type="PackedScene" uid="uid://cupu45ab07wh7" path="res://assets/meshes/industry/sawmill/mesh/sawmill_merged.gltf" id="1_4tyih"]
+[ext_resource type="Script" uid="uid://djbnfqrei1eq" path="res://game/gamescripts/nodes/construction/building_mesh_3d.gd" id="1_86vfb"]
 
-[node name="MeshSawmill" unique_id=29808110 instance=ExtResource("1_4tyih")]
+[node name="MeshSawmill" type="Node3D" unique_id=449426829]
+script = ExtResource("1_86vfb")
+metadata/_custom_type_script = "uid://djbnfqrei1eq"
+
+[node name="Sawmill_candidate_v01_001" parent="." unique_id=29808110 instance=ExtResource("1_4tyih")]

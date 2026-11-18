@@ -1,15 +1,15 @@
 # Inventory components and manual transfers
 
-Add an `InventoryContainer` node directly below an entity to give it inventory. The entity does not need to inherit `InventoryEntity3D`: road vehicles use the same component while retaining `VehicleBody3D` physics. Existing player, train and stop scenes keep their authored resources and capacities.
+Add an `InventoryContainer` node directly below an entity to give it inventory. The entity does not need to inherit `InventoryEntity3D`: road vehicles use the same component while retaining `VehicleBody3D` physics. Stops and industries can resolve their stock through an interchange with `InventoryEntity3D.get_shared_inventory()`.
 
 The component exports a `GoodsInventory`, an optional display name, an accepted-category list and a capacity override. An empty category list accepts all categories. An override of `-1` keeps the resource's capacity; `0` explicitly means no room. New components without an assigned resource create their own inventory with the existing default capacity. Road vehicles configure capacity and accepted category from the vehicle catalog. Train capacity continues to use the existing train inventory resource.
 
 ## Responsibilities
 
-- `GoodsInventory`: aggregate stock and passenger batches keyed by physical destination stop ID. Existing aggregate consumers, such as station signs, still see the total counts. `change_stack` is a low-level mutation method; it deliberately does not enforce destination capacity or interaction distance.
+- `GoodsInventory`: aggregate stock and passenger batches keyed by destination interchange ID. Existing aggregate consumers, such as station signs, still see the total counts. `change_stack` is a low-level mutation method; it deliberately does not enforce destination capacity or interaction distance.
 - `InventoryContainer`: entity composition, capacity and accepted categories.
 - `InventoryEndpoint`: weak references to a live component and its world access position. Vehicle passengers access their own bag at the occupied vehicle, rather than at the suspended walking body's old position.
-- `InventorySelectionService`: discovers the player, occupied vehicle, nearby road/rail stops, vehicles and industries; deduplicates by inventory resource identity.
+- `InventorySelectionService`: discovers the player, occupied vehicle, nearby road/rail stops, vehicles and industries. When several access points expose the same inventory, it uses the nearest one for manual transfers.
 - `InventoryTransferService`: validates both inventories, resource category, available stock, capacity, finite positive quantity, whole passenger counts and the 20 m access distance. Both inventories change before either emits its change signal.
 - `InventoryTransferPanel`: reusable entity picker, capacity indicator, search and stock table.
 - `InventoryCategoryTabs`: reusable full-width passenger/cargo switch.
@@ -17,13 +17,13 @@ The component exports a `GoodsInventory`, an optional display name, an accepted-
 
 ## Passenger destinations
 
-Passenger rows are grouped by resource type and **physical stop ID**, so two platforms or roadside stops in the same interchange remain distinct destinations. Transfers preserve that ID. The exported destination groups are subsets of existing aggregate passenger totals and survive resource save/load.
+Passenger rows are grouped by resource type and destination interchange. The UI shows the destination's city and station name. Physical stops still determine where vehicles stop and where a transfer is within reach.
 
-Existing aggregate-only passengers appear as `Unassigned`; destinations are not inferred retroactively. New spawning always resolves a valid physical destination or discards the attempt. Legacy removals without a destination can only consume unassigned passengers, preventing accidental removal from a different target group.
+Unloading at any access point for the destination interchange completes the trip. This works through the player inventory and automatic road service, even when the destination stock is full. An intermediate unload keeps the passengers waiting with their original destination. Passengers with no destination remain unassigned.
 
-`PassengerTripPlanner` rebuilds a compact population-weighted list of live residences each attempt. Each building's weight is the sum of its two catalog population counts. It chooses an origin and a different destination by those weights, keeping disconnected residences in the draw. If either chosen building has no live connected stop, or both resolve to the same physical stop, the attempt is discarded without retrying. It uses the connector's first live reachable stop, in access-distance order; transport-network reachability is not checked yet.
+Old saved passenger groups use physical stop IDs. Once the map's stop registry is ready, those IDs resolve to their parent interchange. Groups for stops in the same interchange merge. A deleted stop's passengers become unassigned. Existing road actions with stop targets also resolve them through the stop's parent interchange.
 
-`PassengerSpawnRequest` carries the resolved origin/destination residence IDs and physical stops between planning and spawning. `StationGoodsSpawner` creates exactly one passenger directly in the origin stop inventory, tagged with the destination stop ID. It checks the origin's category and free capacity; destination occupancy does not suppress travel demand. No temporary passenger Node is created. The existing global three-second timer is unchanged, and no timed despawning is introduced.
+The passenger planner draws from live residences according to their population and resolves a live stop for each end of the trip. A missing connection or two stops at the same interchange discard that attempt. The global three-second timer spawns one passenger per successful attempt and clears any passengers already waiting at their own destination.
 
 ## UI and verification
 
@@ -31,19 +31,19 @@ The existing load/unload action opens the new dialog. Cargo and passengers have 
 
 Run `godot --headless --path . --script res://tests/inventory_transfer_test.gd` for component, transaction, passenger and GAZ dialog integration checks. The test runner exits nonzero for failures or aborted tests. `tests/inventory_transfer_preview.tscn` renders both tabs to `/tmp/inventory-{cargo,passengers}.png` and closes automatically.
 
-Run `godot --headless --path . --script res://tests/passenger_spawning_test.gd` for exact seeded weight selection, connection rejection, physical-stop targeting and timer-driven spawning checks.
+Run `godot --headless --path . --script res://tests/passenger_spawning_test.gd` for exact seeded weight selection, connection rejection, interchange targeting and timer-driven spawning checks.
 
 ## Automatic road route actions
 
 At each physical road stop, `RoadPlanExecutor` waits for automatic control and a speed of at most 0.5 m/s, then executes the configured load/unload actions in order. Starting a plan beside a stop while driving does not change inventory until the player releases control and the vehicle stops.
 
-`RoadRouteTransferService` selects matching cargo rows or passenger destination groups and uses `InventoryTransferService` transactions. Each action moves as much matching stock as available capacity allows. Competing resource rows use alphabetical resource order, then physical passenger target ID. Empty sources and full receiving inventories are successful zero moves; these actions do not wait until full or empty. Excess stock stays at its source.
+`RoadRouteTransferService` selects matching cargo rows or passenger destination groups and uses `InventoryTransferService` transactions. Each action moves as much matching stock as available capacity allows. Competing resource rows use alphabetical resource order, then passenger destination interchange ID. Empty sources and full receiving inventories are successful zero moves; these actions do not wait until full or empty. Excess stock stays at its source.
 
-Passengers unloaded at their exact physical destination finish their trip and leave the simulation. This does not consume waiting-room capacity. Explicitly unloading a selected passenger group at another stop keeps its original destination in that stop's inventory. Unassigned legacy passengers do not match destination-specific route actions.
+Passengers unloaded at any stop in their destination interchange finish their trip and leave the simulation. This does not consume waiting-room capacity. Unloading a selected passenger group at another stop preserves its original destination in the inventory accessible from that stop. Unassigned legacy passengers do not match destination-specific route actions.
 
 `RoadRouteTransferResult` reports the amount moved, completed passengers and any error. Missing inventories, deleted targets, unsupported goods and invalid access stop execution at the affected point/action, with an error. Earlier completed actions remain applied; execution does not retry automatically. Starting the plan again is a new run from its first point.
 
-For a simple passenger service, add Load passenger at the origin and Unload passenger at the destination, selecting that same destination stop in both actions. The route still runs once; looping services, wait conditions and map save-game integration remain separate work.
+For a simple passenger service, add Load passenger at the origin and Unload passenger at the destination, selecting the destination interchange in both actions. The route still runs once; looping services, wait conditions and map save-game integration remain separate work.
 
 Automatic reversals travel to a road end and use a short assisted turn before resuming wheel physics. See [road vehicle movement](../vehicles/road_vehicle_movement.md) for the deliberate manual/automatic difference and takeover behaviour.
 

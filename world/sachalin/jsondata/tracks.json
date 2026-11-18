@@ -2,7 +2,7 @@
 	{
 		"num": 1,
 		"name": "JS Zentralny",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [486.0, 31.4, 83.1],
@@ -23,7 +23,7 @@
 	{
 		"num": 2,
 		"name": "JS Dalnee Branch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [488.7, 31.5, 72.2],
@@ -83,7 +83,7 @@
 	{
 		"num": 3,
 		"name": "JS Zentralny-Industry Fork",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [488.7, 31.5, 72.2],
@@ -112,7 +112,7 @@
 	{
 		"num": 4,
 		"name": "JS Industry Fork-Novoalexandrovsk",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [533.4, 31.5, 23.4],
@@ -151,7 +151,7 @@
 	{
 		"num": 5,
 		"name": "Cholmsk Zentralnij Platform 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1388.4, 32.9, -245.2],
@@ -193,7 +193,7 @@
 	{
 		"num": 6,
 		"name": "Cholmsk Mountain Curve",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1419.9, 33.0, -143.4],
@@ -229,7 +229,7 @@
 	{
 		"num": 7,
 		"name": "Cholmsk Zentralnij Platform 2",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1388.4, 32.9, -245.2],
@@ -262,7 +262,7 @@
 	{
 		"num": 9,
 		"name": "Cholmsk Zentralnij Platform 2: Straight",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1419.5, 32.9, -182.1],
@@ -286,7 +286,7 @@
 	{
 		"num": 11,
 		"name": "Cholmsk Zentralnij Bridge Crossing",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1430.0, 33.0, -154.8],
@@ -313,7 +313,7 @@
 	{
 		"num": 12,
 		"name": "Cholmsk Zentralnij Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -335,7 +335,7 @@
 	{
 		"num": 13,
 		"name": "Cholmsk Jushni Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1439.1, 32.3, -104.4],
@@ -389,7 +389,7 @@
 	{
 		"num": 14,
 		"name": "Pravda Magistral",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1493.1, 32.3, 72.0],
@@ -437,7 +437,7 @@
 	{
 		"num": 15,
 		"name": "Cholmsk Northern Exit",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1377.2, 32.1, -307.0],
@@ -470,7 +470,7 @@
 	{
 		"num": 16,
 		"name": "Cholmsk Lakeside Curve",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1363.6, 32.6, -138.3],
@@ -524,7 +524,7 @@
 	{
 		"num": 17,
 		"name": "Devils Bridge Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1226.7, 32.9, 6.4],
@@ -590,7 +590,7 @@
 	{
 		"num": 18,
 		"name": "Chasovaya Valley Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1020.4, 35.5, 83.9],
@@ -643,7 +643,7 @@
 	{
 		"num": 19,
 		"name": "Chaplanovo Branch N",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-846.4, 32.9, 178.9],
@@ -682,7 +682,7 @@
 	{
 		"num": 20,
 		"name": "Chaplanovo Branch S",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 			"pos": [-757.0, 32.14, 236.4],
@@ -728,7 +728,7 @@
 	{
 		"num": 21,
 		"name": "Chaplanovka Stretch ",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-846.4, 32.9, 178.9],
@@ -791,7 +791,7 @@
 	{
 		"num": 22,
 		"name": "Pjatrechnje Stretch ",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-813.6, 33.3, 7.8],
@@ -857,7 +857,7 @@
 	{
 		"num": 23,
 		"name": "Chistovodnoje Stretch ",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-658.2, 34.3, -113.8],
@@ -926,7 +926,7 @@
 	{
 		"num": 24,
 		"name": "Ozhidaevo Valley",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-442.6, 35.8, -151.8],
@@ -977,7 +977,7 @@
 	{
 		"num": 25,
 		"name": "Pochtovaja Climb",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-330.6, 38.0, -240.6],
@@ -1055,7 +1055,7 @@
 	{
 		"num": 26,
 		"name": "Stantsia Pereval Pass W",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-177.6, 43.1, -349.9],
@@ -1100,7 +1100,7 @@
 	{
 		"num": 27,
 		"name": "Stantsia Pereval Pass W",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-56.7, 49.8, -349.7],
@@ -1136,7 +1136,7 @@
 	{
 		"num": 28,
 		"name": "Zabroshenij Climb",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [32.4, 39.3, -295.4],
@@ -1190,7 +1190,7 @@
 	{
 		"num": 29,
 		"name": "Elochki Valley",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [188.4, 34.0, -187.0],
@@ -1247,7 +1247,7 @@
 	{
 		"num": 30,
 		"name": "Dalnee Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -1269,7 +1269,7 @@
 	{
 		"num": 31,
 		"name": "Cholmsk Northern Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -1291,7 +1291,7 @@
 	{
 		"num": 32,
 		"name": "Cholmsk Depot Curve",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1377.0, 32.1, -322.7],
@@ -1326,7 +1326,7 @@
 	{
 		"num": 33,
 		"name": "Novoalexandr. Track 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [614.5, 31.8, -35.0],
@@ -1368,7 +1368,7 @@
 	{
 		"num": 34,
 		"name": "Novoalexandr. Track 2",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [614.5, 31.8, -35.0],
@@ -1413,7 +1413,7 @@
 	{
 		"num": 35,
 		"name": "Novoalexandr. Northern Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [610.1, 31.7, -156.4],
@@ -1443,7 +1443,7 @@
 	{
 		"num": 36,
 		"name": "Novoalexandr. Fork-Sokol",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [607.0, 31.7, -210.4],
@@ -1503,7 +1503,7 @@
 	{
 		"num": 37,
 		"name": "SokolTrack 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [610.6, 31.6, -545.9],
@@ -1548,7 +1548,7 @@
 	{
 		"num": 38,
 		"name": "Sokol Track 2",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [610.6, 31.6, -545.9],
@@ -1590,7 +1590,7 @@
 	{
 		"num": 39,
 		"name": "Sokol Station-Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [595.9, 31.6, -678.8],
@@ -1614,7 +1614,7 @@
 	{
 		"num": 40,
 		"name": "Sokol Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [598.6, 31.5, -703.6],
@@ -1635,7 +1635,7 @@
 	{
 		"num": 41,
 		"name": "Sokol Bridge-Northern Fork",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [602.4, 31.5, -721.6],
@@ -1674,7 +1674,7 @@
 	{
 		"num": 42,
 		"name": "Sokol Northern Fork-Dolinsk",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [645.9, 31.5, -883.1],
@@ -1740,7 +1740,7 @@
 	{
 		"num": 43,
 		"name": "Dolinsk Track 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [706.6, 31.6, -1157.0],
@@ -1785,7 +1785,7 @@
 	{
 		"num": 44,
 		"name": "Dolinsk Track 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [706.6, 31.6, -1157.0],
@@ -1830,7 +1830,7 @@
 	{
 		"num": 45,
 		"name": "Dolinsk Station-Fork",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [713.0, 31.4, -1307.6],
@@ -1872,7 +1872,7 @@
 	{
 		"num": 46,
 		"name": "Dolinsk Fork-Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [695.6, 31.3, -1396.7],
@@ -1898,7 +1898,7 @@
 	{
 		"num": 47,
 		"name": "Dolinsk Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -1919,7 +1919,7 @@
 	{
 		"num": 48,
 		"name": "J-S Station Track 2",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [486.0, 31.4, 83.1],
@@ -1955,7 +1955,7 @@
 	{
 		"num": 49,
 		"name": "J-S Station Track 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [486.0, 31.4, 83.1],
@@ -1994,7 +1994,7 @@
 	{
 		"num": 50,
 		"name": "J-S Station Track 3",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [486.0, 31.4, 83.1],
@@ -2033,7 +2033,7 @@
 	{
 		"num": 51,
 		"name": "J-S Station-Depot Fork",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [482.0, 31.4, 212.1],
@@ -2072,7 +2072,7 @@
 	{
 		"num": 52,
 		"name": "J-S Depot Fork-Depot",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [524.6, 31.3, 277.3],
@@ -2101,7 +2101,7 @@
 	{
 		"num": 53,
 		"name": "J-S Depot Fork-Southern",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [524.6, 31.3, 277.3],
@@ -2161,7 +2161,7 @@
 	{
 		"num": 54,
 		"name": "Listvenichnoe Rail Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2186,7 +2186,7 @@
 	{
 		"num": 55,
 		"name": "Listvenichnoe-Dachnoe",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [585.0, 31.4, 582.4],
@@ -2240,7 +2240,7 @@
 	{
 		"num": 56,
 		"name": "Dachnoe-Korsakov",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [627.9, 31.5, 947.6],
@@ -2303,7 +2303,7 @@
 	{
 		"num": 57,
 		"name": "Korsakov Station Track 1",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [653.0, 31.5, 1333.3],
@@ -2348,7 +2348,7 @@
 	{
 		"num": 58,
 		"name": "Korsakov Station Track 2",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [653.0, 31.5, 1333.3],
@@ -2389,7 +2389,7 @@
 	{
 		"num": 59,
 		"name": "Korsakov Station-Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [710.8, 31.9, 1484.1],
@@ -2418,7 +2418,7 @@
 	{
 		"num": 60,
 		"name": "Korsakov Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2440,7 +2440,7 @@
 	{
 		"num": 61,
 		"name": "Korsakov Bridge-Fork",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [748.8, 31.4, 1519.5],
@@ -2468,7 +2468,7 @@
 	{
 		"num": 62,
 		"name": "Korsakov Fork-Southern St.",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [759.8, 31.5, 1549.8],
@@ -2495,7 +2495,7 @@
 	{
 		"num": 63,
 		"name": "Korsakov Fork-Depot",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [759.8, 31.5, 1549.8],
@@ -2527,7 +2527,7 @@
 	{
 		"num": 64,
 		"name": "Pravda Southern Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2552,7 +2552,7 @@
 	{
 		"num": 65,
 		"name": "Pravda Between Bridges",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1525.4, 32.5, 221.1],
@@ -2588,7 +2588,7 @@
 	{
 		"num": 66,
 		"name": "Ljublino Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2613,7 +2613,7 @@
 	{
 		"num": 67,
 		"name": "Mt. Repovka Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 			"pos": [-1547.8, 32.6, 303.0],
@@ -2686,7 +2686,7 @@
 	{
 		"num": 68,
 		"name": "Kalinino Bridge",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2714,7 +2714,7 @@
 	{
 		"num": 69,
 		"name": "Mt. Jablonova Stretch",
-		"type": "NORMAL_GAUGE",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [-1664.5, 32.53, 542.3],

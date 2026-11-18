@@ -44,3 +44,5 @@ script = ExtResource("9_cursor")
 
 [node name="EditorCache" type="Node3D" parent="." unique_id=936659441]
 script = ExtResource("10_cache")
+
+[editable path="EditorObjects"]

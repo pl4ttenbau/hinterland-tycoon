@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dq7weqlqjc2rw" path="res://game/gamescripts/resources/goods/inventory/goods_inventory.gd" id="5_h1qi2"]
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_ugga5"]
 [ext_resource type="Script" uid="uid://b32yxvwpw1jv7" path="res://game/gamescripts/nodes/industry/industry_production.gd" id="7_fflfh"]
+[ext_resource type="Script" uid="uid://cua2yjqrf5bhm" path="res://game/gamescripts/resources/structures/constructable.gd" id="8_h1qi2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
 size = Vector3(13.507751, 5.4104004, 7.364746)
@@ -25,7 +26,7 @@ metadata/_custom_type_script = "uid://dq7weqlqjc2rw"
 script = ExtResource("1_3njdm")
 metadata/_custom_type_script = "uid://dkjwwmkbxo38y"
 
-[node name="MeshSawmill" parent="." unique_id=29808110 instance=ExtResource("2_nwaj4")]
+[node name="MeshSawmill" parent="." unique_id=449426829 instance=ExtResource("2_nwaj4")]
 
 [node name="IndustryCollider" type="StaticBody3D" parent="." unique_id=1920399736]
 script = ExtResource("3_nygv7")
@@ -44,3 +45,9 @@ metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 script = ExtResource("7_fflfh")
 industry3d = NodePath("..")
 metadata/_custom_type_script = "uid://b32yxvwpw1jv7"
+
+[node name="Constructable" type="Node" parent="." unique_id=517262823 node_paths=PackedStringArray("visual_model", "placement_collision_shape")]
+script = ExtResource("8_h1qi2")
+visual_model = NodePath("../MeshSawmill")
+placement_collision_shape = NodePath("../IndustryCollider/CollisionShape3D")
+metadata/_custom_type_script = "uid://cua2yjqrf5bhm"

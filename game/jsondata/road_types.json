@@ -1,0 +1,26 @@
+[
+  {
+    "key": "rural_road",
+    "scene": "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn",
+    "drivable_width_metres": 5.5,
+    "mesh_height_metres": 0.18
+  },
+  {
+    "key": "dirt_path",
+    "scene": "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn",
+    "drivable_width_metres": 3.34,
+    "mesh_height_metres": 0.18
+  },
+  {
+    "key": "cobblestone_road",
+    "scene": "res://assets/meshes/infr/road/cobblestone_road/path_cobblestone_road.tscn",
+    "drivable_width_metres": 4.8,
+    "mesh_height_metres": 0.17
+  },
+  {
+    "key": "mud_road",
+    "scene": "res://assets/meshes/infr/road/mud_road/path_mud_road.tscn",
+    "drivable_width_metres": 3.6,
+    "mesh_height_metres": 0.125
+  }
+]

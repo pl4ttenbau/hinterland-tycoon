@@ -1,21 +1,14 @@
-class_name VehiclePathSegmentBuilder extends Node
-
-@export var train: Train3D
-
-@export var train_dir: Enums.PathDirection
-
-static func of(_train: Train3D, _train_dir: Enums.PathDirection) -> VehiclePathSegmentBuilder:
-	var builder: VehiclePathSegmentBuilder = VehiclePathSegmentBuilder.new()
-	builder.train = _train
-	builder.train_dir = _train_dir
-	return builder
+## Builds the next route segment from the current switch settings.
+class_name VehiclePathSegmentBuilder extends RefCounted
 
 static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePathSegment:
 	var next_track_num: int = get_next_track_num_from_node(current_segment.end_node)
-	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, current_segment.end_node.position)
+	var next_dir: Enums.PathDirection = get_next_dir_at_fork(next_track_num, current_segment.end_node)
 	if next_track_num >= 0 && next_dir != Enums.PathDirection.STOP:
-		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		var next_linked_segment: VehiclePathSegment = VehiclePathSegment.of_rail(next_track_num, next_dir)
+		if not InfrType.rail_gauges_compatible(current_segment.as_rail_track().infr_type_key, next_linked_segment.as_rail_track().infr_type_key):
+			return null
+		Loggie.info("Continuing %s on track %d" % [PathCurveUtils.get_dir_enum_name(next_dir), next_track_num])
 		next_linked_segment.previous = current_segment
 		# connect to previous
 		current_segment.next = next_linked_segment
@@ -35,8 +28,7 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	## A buffer or unconnected endpoint is a normal end of route.
 	if segment_end == null or segment_end.fork == null:
 		return -1
-	var fork_pos: Vector3 = segment_end.fork.position
-	var fork_parent: NewRailForkData = Managers.forks.get_fork_at_pos(fork_pos)
+	var fork_parent: NewRailForkData = segment_end.fork.junction
 	if fork_parent == null or fork_parent.setting.current == null:
 		return -1
 	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_track.num)
@@ -45,14 +37,14 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 		return -1
 	return next_track_num
 
-static func get_next_dir_at_fork(next_track_num: int, fork_pos: Vector3) -> Enums.PathDirection:
-	if next_track_num <= -1: return Enums.PathDirection.STOP
-	var next_track: RailTrackData = RailTrackData.get_by_num(next_track_num)
-	# could maybe also gotten out of the ForkData object
-	var next_rail_node: RailNodeData = next_track.get_node_at_pos(fork_pos)
-	if next_rail_node == null:
+## Entering the next track at its first node travels with increasing node order, at its last node against it.
+static func get_next_dir_at_fork(next_track_num: int, segment_end: RailNodeData) -> Enums.PathDirection:
+	if next_track_num <= -1 or segment_end == null or segment_end.fork == null or segment_end.fork.junction == null:
 		return Enums.PathDirection.STOP
-	if next_rail_node.is_last(): 
+	var next_leg: RailNodeForkData = segment_end.fork.junction.get_node_fork(next_track_num)
+	if next_leg == null:
+		return Enums.PathDirection.STOP
+	if next_leg.railNode.is_last():
 		return Enums.PathDirection.TRACK_NODES_DECREASE
 	return Enums.PathDirection.TRACK_NODES_INCREASE
 #endregion

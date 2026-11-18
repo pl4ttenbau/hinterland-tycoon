@@ -1,0 +1,59 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/build/rail_construction_dialog.gd" id="2"]
+
+[node name="RailConstructionDialog" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Panel" parent="Center" index="0"]
+custom_minimum_size = Vector2(340, 0)
+
+[node name="Content" parent="Center/Panel/Padding/Layout" index="1"]
+theme_override_constants/separation = 12
+
+[node name="Details" type="GridContainer" parent="Center/Panel/Padding/Layout/Content" index="0"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="LengthLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Track length"
+
+[node name="LengthValue" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="GaugeLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="2"]
+layout_mode = 2
+text = "Gauge"
+
+[node name="GaugeValue" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="3"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="PriceLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="4"]
+layout_mode = 2
+text = "Total price"
+
+[node name="PriceValue" type="Label" parent="Center/Panel/Padding/Layout/Content/Details" index="5"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="Status" type="Label" parent="Center/Panel/Padding/Layout/Content" index="1"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="BuildButton" type="Button" parent="Center/Panel/Padding/Layout/Content" index="2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "Build track"

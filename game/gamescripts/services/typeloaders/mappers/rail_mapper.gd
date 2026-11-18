@@ -4,7 +4,7 @@ class_name RailMapper extends RefCounted
 static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 	var track_instance := RailTrackData.new()
 	track_instance.num = int(_track_dict.num)
-	track_instance.infr_type_key = _track_dict.get("type")
+	track_instance.infr_type_key = InfrType.normalize_rail_gauge(_track_dict.get("type", ""))
 	# start pos
 	var start_pos_arr =  _track_dict.points[0].pos
 	track_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)

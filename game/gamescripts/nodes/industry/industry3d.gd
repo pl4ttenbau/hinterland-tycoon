@@ -1,3 +1,4 @@
+@tool
 @icon("res://assets/icons/nodes_3d/icon_industry.svg")
 class_name Industry3D extends InventoryEntity3D
 
@@ -9,25 +10,46 @@ static var last_ind_num: int = 0
 	get(): return self.entity as IndustryData
 	set(value): 
 		self.entity = value
+		if Engine.is_editor_hint() or value == null:
+			return
 		self.position = value.pos
 		self._set_name(value)
 		
 @export var sign3d: IndustrySign3D
 
+## Production, the info dialog and manual transfers use the same inventory.
+func get_shared_inventory() -> GoodsInventory:
+	if industry == null or industry.station_connection == null:
+		return null
+	var connection: StationIndustryConnection = industry.station_connection
+	if connection.interchange != null:
+		return connection.interchange.inventory
+	# Standalone stations can still be connected by older callers.
+	var stop_view: InventoryEntity3D = connection.station.get_inventory_view() if connection.station != null else null
+	return stop_view.get_inventory() if is_instance_valid(stop_view) else null
+
 #region Static Constructor
 static func of(_industry: IndustryData) -> Industry3D:
-	if ! _industry.ind_type:
-		Loggie.error("cannot spawn industry! type \"%s\" unknown" % _industry.ind_type)
+	if _industry.ind_type == null or _industry.ind_type.building == null:
+		push_error("Industry %s is missing a building definition." % _industry.ind_name)
 		return null
-	var scene_path := _industry.ind_type.get_mesh_path()
-	var packed_scene: PackedScene = load(scene_path)
-	var instanciated: Industry3D = packed_scene.instantiate()
-	instanciated.industry = _industry
-	return instanciated
+	var scene_path: String = _industry.ind_type.building.scene_path
+	var packed_scene := load(scene_path) as PackedScene
+	if packed_scene == null:
+		return null
+	var building: Node = packed_scene.instantiate()
+	if not building is Industry3D:
+		push_error("Industry building scene %s must have an Industry3D root." % scene_path)
+		building.free()
+		return null
+	building.industry = _industry
+	return building
 #endregion
 
 #region Initialization
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	self.spawn_industry_label()
 	self.spawn_inventory_and_production()
 	super._ready()
@@ -36,11 +58,10 @@ func spawn_industry_label() -> IndustrySign3D:
 	return IndustrySign3D.of(self)
 
 func spawn_inventory_and_production():
-	if !self.has_node("Inventory"):
+	if InventoryContainer.find_on(self) == null:
 		var inventory_container: InventoryContainer = InventoryContainer.new()
-		inventory_container.inventory = GoodsInventory.new()
-		self.add_child(inventory_container)
 		inventory_container.name = "Inventory"
+		self.add_child(inventory_container)
 	if !self.has_node("Production"):
 		var production: IndustryProduction = IndustryProduction.new()
 		production.industry3d = self
@@ -53,3 +74,6 @@ func _set_name(ind_obj: IndustryData):
 	var underscored: String = ind_obj.ind_name.replace(" ", "_")
 	self.name = underscored
 #endregion
+
+func _requires_constructable() -> bool:
+	return true

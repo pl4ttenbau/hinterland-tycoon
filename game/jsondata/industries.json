@@ -1,0 +1,210 @@
+[
+	{
+		"key": "FARM",
+		"display_name": "Farm",
+		"building_key": "windmill_2",
+		"workers": 8,
+		"requires": [],
+		"produces": [{"good": "grains", "amount": 4}, {"good": "beets", "amount": 2}]
+	},
+	{
+		"key": "RANCH",
+		"display_name": "Ranch",
+		"building_key": "windmill_2",
+		"workers": 8,
+		"requires": [],
+		"produces": [{"good": "meat", "amount": 3}]
+	},
+	{
+		"key": "FISHERY",
+		"display_name": "Fishery",
+		"building_key": "wooden_storehouse",
+		"workers": 9,
+		"requires": [{"good": "lumber", "amount": 2}, {"good": "grains", "amount": 1}],
+		"produces": [{"good": "fish", "amount": 5}]
+	},
+	{
+		"key": "COAL_MINE",
+		"display_name": "Coal Mine",
+		"building_key": "mineshaft",
+		"workers": 20,
+		"requires": [],
+		"produces": [{"good": "coal", "amount": 4}]
+	},
+	{
+		"key": "IRON_MINE",
+		"display_name": "Iron Mine",
+		"building_key": "mineshaft",
+		"workers": 30,
+		"requires": [],
+		"produces": [{"good": "ore", "amount": 6}]
+	},
+	{
+		"key": "QUARRY",
+		"display_name": "Quarry",
+		"building_key": "mineshaft",
+		"workers": 12,
+		"requires": [],
+		"produces": [{"good": "stone", "amount": 8}, {"good": "gravel", "amount": 3}]
+	},
+	{
+		"key": "FOREST",
+		"display_name": "Forest",
+		"building_key": "sawmill",
+		"workers": 9,
+		"requires": [],
+		"produces": [{"good": "lumber", "amount": 10}]
+	},
+	{
+		"key": "CHARCOAL_BURNER",
+		"display_name": "Charcoal Burner",
+		"building_key": "warehouse_1",
+		"workers": 15,
+		"requires": [{"good": "lumber", "amount": 3}],
+		"produces": [{"good": "coal", "amount": 2}]
+	},
+	{
+		"key": "OIL_WELL",
+		"display_name": "Oil Well",
+		"building_key": "oil_derrick",
+		"workers": 15,
+		"requires": [],
+		"produces": [{"good": "oil", "amount": 9}]
+	},
+	{
+		"key": "SUGAR_MILL",
+		"display_name": "Sugar Mill",
+		"building_key": "factory_small",
+		"workers": 9,
+		"requires": [{"good": "beets", "amount": 6}],
+		"produces": [{"good": "sugar", "amount": 3}]
+	},
+	{
+		"key": "BREWERY",
+		"display_name": "Brewery",
+		"building_key": "factory_small",
+		"workers": 9,
+		"requires": [{"good": "grains", "amount": 6}, {"good": "sugar", "amount": 2}],
+		"produces": [{"good": "alcohol", "amount": 3}]
+	},
+	{
+		"key": "BAKERY",
+		"display_name": "Bakery",
+		"building_key": "restaurant",
+		"workers": 5,
+		"requires": [{"good": "grains", "amount": 5}, {"good": "sugar", "amount": 1}],
+		"produces": [{"good": "bread", "amount": 2}]
+	},
+	{
+		"key": "BUTCHER",
+		"display_name": "Butcher",
+		"building_key": "warehouse_1",
+		"workers": 9,
+		"requires": [{"good": "fish", "amount": 3}],
+		"produces": [{"good": "meat", "amount": 3}]
+	},
+	{
+		"key": "SMELTER",
+		"display_name": "Smelter",
+		"building_key": "factory_small",
+		"workers": 22,
+		"requires": [{"good": "ore", "amount": 3}, {"good": "coal", "amount": 3}],
+		"produces": [{"good": "ingots", "amount": 3}]
+	},
+	{
+		"key": "SAWMILL",
+		"display_name": "Sawmill",
+		"building_key": "sawmill",
+		"workers": 12,
+		"requires": [{"good": "lumber", "amount": 9}],
+		"produces": [{"good": "boards", "amount": 3}]
+	},
+	{
+		"key": "BRICKWORKS",
+		"display_name": "Brickworks",
+		"building_key": "factory_small",
+		"workers": 12,
+		"requires": [{"good": "gravel", "amount": 5}],
+		"produces": [{"good": "bricks", "amount": 2}]
+	},
+	{
+		"key": "PAPER_MILL",
+		"display_name": "Paper Mill",
+		"building_key": "warehouse_1",
+		"workers": 12,
+		"requires": [{"good": "lumber", "amount": 6}, {"good": "chemicals", "amount": 2}],
+		"produces": [{"good": "paper", "amount": 2}]
+	},
+	{
+		"key": "FERTILIZER_FACTORY",
+		"display_name": "Fertilizer Factory",
+		"building_key": "oil_derrick",
+		"workers": 12,
+		"requires": [{"good": "chemicals", "amount": 2}, {"good": "beets", "amount": 5}],
+		"produces": [{"good": "fertilizer", "amount": 2}]
+	},
+	{
+		"key": "SMITHY",
+		"display_name": "Smithy",
+		"building_key": "factory_small",
+		"workers": 12,
+		"requires": [{"good": "ingots", "amount": 2}, {"good": "coal", "amount": 1}, {"good": "lumber", "amount": 2}],
+		"produces": [{"good": "tools", "amount": 2}, {"good": "rail_tracks", "amount": 1}]
+	},
+	{
+		"key": "WORKSHOP",
+		"display_name": "Workshop",
+		"building_key": "factory_small",
+		"workers": 12,
+		"requires": [{"good": "ingots", "amount": 3}, {"good": "coal", "amount": 2}],
+		"produces": [{"good": "weapons", "amount": 1}, {"good": "machines", "amount": 1}]
+	},
+	{
+		"key": "OIL_REFINERY",
+		"display_name": "Refinery",
+		"building_key": "oil_derrick",
+		"workers": 12,
+		"requires": [{"good": "oil", "amount": 6}],
+		"produces": [{"good": "chemicals", "amount": 4}]
+	},
+	{
+		"key": "COAL_PLANT",
+		"display_name": "Coal Plant",
+		"building_key": "factory_small",
+		"workers": 25,
+		"requires": [{"good": "coal", "amount": 4}],
+		"produces": []
+	},
+	{
+		"key": "SMALL_STORE",
+		"display_name": "Small Store",
+		"building_key": "wooden_storehouse",
+		"workers": 10,
+		"requires": [{"good": "bread", "amount": 2}, {"good": "meat", "amount": 2}, {"good": "alcohol", "amount": 1}],
+		"produces": []
+	},
+	{
+		"key": "BIG_STORE",
+		"display_name": "Big Store",
+		"building_key": "corner_mall",
+		"workers": 20,
+		"requires": [{"good": "coal", "amount": 2}, {"good": "bread", "amount": 3}, {"good": "meat", "amount": 3}, {"good": "alcohol", "amount": 2}, {"good": "machines", "amount": 1}],
+		"produces": []
+	},
+	{
+		"key": "RESTAURANT",
+		"display_name": "Restaurant",
+		"building_key": "restaurant",
+		"workers": 12,
+		"requires": [{"good": "alcohol", "amount": 2}, {"good": "bread", "amount": 1}, {"good": "fish", "amount": 2}],
+		"produces": []
+	},
+	{
+		"key": "BARRACKS",
+		"display_name": "Barracks",
+		"building_key": "warehouse_1",
+		"workers": 25,
+		"requires": [{"good": "alcohol", "amount": 3}, {"good": "meat", "amount": 2}, {"good": "weapons", "amount": 1}],
+		"produces": [{"good": "soldier", "amount": 2}]
+	}
+]

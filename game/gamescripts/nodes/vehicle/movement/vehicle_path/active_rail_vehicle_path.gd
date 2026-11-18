@@ -1,23 +1,27 @@
 class_name ActiveRailVehiclePath extends Path3D
 
-## Show the active route with the existing green marker balls.
-const SHOW_DEBUG: bool = true
 const SEGMENT_NODE_MARKER_PATH = "res://assets/meshes/markers/infr_end/selected_node.tscn"
 const DEBUG_MARKERS_PARENT_NAME = "DebugMarkers"
+
+## Show the active route with the existing green marker balls. Off in the game; tests switch it on.
+static var show_debug: bool = false
+
+## Plan at least this far ahead, without committing the fork settings.
+const LOOKAHEAD_METRES: float = 20.0
 
 signal extended(added_segment)
 
 ## The controller supplies distance, occupancy and derailment without depending on node parents.
 @export var movement: TrainMovement
 @export var segments: Array[VehiclePathSegment] = []
+
 ## Each segment ends at this curve point; joined endpoints share one point.
 var segment_end_points: Array[int] = []
 ## Distances identify segment boundaries even when a route visits the same fork twice.
 var segment_end_distances: Array[float] = []
+
 ## Keep callbacks so obsolete routes and freed trains can disconnect their listeners.
 var watched_forks: Dictionary = {}
-## Plan at least this far ahead, without committing the fork settings.
-const LOOKAHEAD_METRES: float = 20.0
 
 static func of_segment(_movement: TrainMovement, _segment: VehiclePathSegment) -> ActiveRailVehiclePath:
 	## The active curve keeps travelled history as well as a provisional route ahead.
@@ -27,6 +31,32 @@ static func of_segment(_movement: TrainMovement, _segment: VehiclePathSegment) -
 	active_path.curve.up_vector_enabled = true
 	active_path.add_segment(_segment)
 	return active_path
+
+## Keep occupied geometry exact while giving each consist its own fork listeners and links.
+func copy_for(controller: TrainMovement) -> ActiveRailVehiclePath:
+	var path := ActiveRailVehiclePath.new()
+	path.name = name
+	path.movement = controller
+	path.curve = curve.duplicate()
+	path.segment_end_points = segment_end_points.duplicate()
+	path.segment_end_distances = segment_end_distances.duplicate()
+	for segment: VehiclePathSegment in segments:
+		var copy := segment.duplicate() as VehiclePathSegment
+		copy.previous = null
+		copy.next = null
+		copy.continues = false
+		if not path.segments.is_empty():
+			copy.previous = path.segments.back()
+			copy.previous.next = copy
+			copy.previous.continues = true
+		path.segments.append(copy)
+	path._refresh_fork_listeners()
+	return path
+
+func retire() -> void:
+	_disconnect_forks()
+	_release_segment_links(0)
+	queue_free()
 
 ## Append geometry, remember the segment boundary, and update its fork listeners and markers.
 func add_segment(added_segment: VehiclePathSegment) -> Curve3D:
@@ -58,8 +88,10 @@ func _append_track_curve(track_curve: Curve3D) -> void:
 			self.curve.add_point(track_curve.get_point_position(point_i), track_curve.get_point_in(point_i), track_curve.get_point_out(point_i))
 
 ## Compare the new point with the current endpoint to avoid duplicate fork points.
-func _ends_at(position: Vector3) -> bool:
-	return self.curve.point_count > 0 and self.curve.get_point_position(self.curve.point_count - 1).is_equal_approx(position)
+func _ends_at(possible_end_position: Vector3) -> bool:
+	if self.curve.point_count <= 0: return false
+	var last_node_pos: Vector3 = self.curve.get_point_position(self.curve.point_count - 1)
+	return last_node_pos.is_equal_approx(possible_end_position)
 
 ## Align only the outgoing span, leaving the existing approach geometry untouched.
 func _join_outgoing_handle(track_curve: Curve3D, point_i: int) -> void:
@@ -99,7 +131,7 @@ func ensure_lookahead(front_distance: float) -> void:
 		self.add_segment(next_segment)
 		extensions += 1
 
-## Return the segment under the locomotive, rather than the furthest planned segment.
+## Return the segment at a particular distance along the route.
 func get_segment_index(distance: float) -> int:
 	for segment_i: int in range(self.segment_end_distances.size()):
 		if distance < self.segment_end_distances[segment_i]:
@@ -124,8 +156,8 @@ func _refresh_fork_listeners() -> void:
 func _watch_fork(node_fork: RailNodeForkData) -> void:
 	if node_fork == null:
 		return
-	## All track endpoints at this position belong to the same physical switch.
-	var fork: NewRailForkData = Managers.forks.get_fork_at_pos(node_fork.position)
+	## All legs of the same physical switch share one junction.
+	var fork: NewRailForkData = node_fork.junction
 	if fork == null or self.watched_forks.has(fork):
 		return
 	## Listen to the setting itself, including changes made outside the fork UI.
@@ -156,13 +188,16 @@ func _get_fork_boundaries(fork: NewRailForkData) -> Array[int]:
 	## Keep every occurrence so loops cannot hide an occupied crossing.
 	var boundaries: Array[int] = []
 	for segment_i: int in range(self.segments.size()):
-		if self.segments[segment_i].end_node.position.is_equal_approx(fork.pos):
+		if _is_at_fork(self.segments[segment_i].end_node, fork):
 			boundaries.append(segment_i)
 	return boundaries
 
+static func _is_at_fork(node: RailNodeData, fork: NewRailForkData) -> bool:
+	return node != null and node.fork != null and node.fork.junction == fork
+
 ## Include the route's starting fork as well as every segment-end crossing.
 func _is_fork_occupied(fork: NewRailForkData, boundaries: Array[int]) -> bool:
-	if self.segments[0].start_node.position.is_equal_approx(fork.pos) and self.movement.occupies_path_distance(0.0):
+	if _is_at_fork(self.segments[0].start_node, fork) and self.movement.occupies_path_distance(0.0):
 		return true
 	for segment_i: int in boundaries:
 		if self.movement.occupies_path_distance(self.segment_end_distances[segment_i]):
@@ -263,7 +298,7 @@ func _exit_tree() -> void:
 #region Debug Markers
 ## Rebuild from the current curve so discarded branches disappear and shared points show once.
 func refresh_debug_markers() -> void:
-	if not SHOW_DEBUG:
+	if not show_debug:
 		return
 	self._clear_debug_markers()
 	for point_i: int in range(self.curve.point_count):

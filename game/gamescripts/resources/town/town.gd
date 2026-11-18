@@ -18,6 +18,9 @@ signal buildings_changed()
 @export var pos_xz: Vector2
 @export var is_minor: bool = false
 
+## Accumulated when local end consumers use up goods.
+@export_storage var wealth: float = 0.0
+
 @export var autogenerate_houses: bool = false
 @export_storage var totalPops: int
 @export_storage var res_bld_containers: Array[Residence3D] = []
@@ -36,6 +39,8 @@ static var last_town_num: int = 0
 
 func _init():
 	super(Enums.EntityTypes.TOWN)
+	# A newly instantiated map starts with its own town data, including wealth.
+	resource_local_to_scene = true
 	# assign town num
 	self.num = TownData.last_town_num
 	TownData.last_town_num += 1

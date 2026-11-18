@@ -57,3 +57,24 @@ static func reverse_curve3d(original_curve: Curve3D) -> Curve3D:
 		
 	reversed_curve.up_vector_enabled = original_curve.up_vector_enabled
 	return reversed_curve
+
+
+## Inclusive point ranges on either side of a gap. A single point has no path.
+static func ranges_after_erase(count: int, left_end: int, right_start: int) -> Array[Vector2i]:
+	var ranges: Array[Vector2i] = []
+	if left_end >= 1:
+		ranges.append(Vector2i(0, left_end))
+	if right_start < count - 1:
+		ranges.append(Vector2i(right_start, count - 1))
+	return ranges
+
+
+## Keep the exact curve handles and tilt of every surviving span.
+static func copy_point_range(source: Curve3D, points: Vector2i, origin_shift: Vector3) -> Curve3D:
+	var section := Curve3D.new()
+	section.bake_interval = source.bake_interval
+	section.up_vector_enabled = source.up_vector_enabled
+	for i: int in range(points.x, points.y + 1):
+		section.add_point(source.get_point_position(i) - origin_shift, source.get_point_in(i), source.get_point_out(i))
+		section.set_point_tilt(section.point_count - 1, source.get_point_tilt(i))
+	return section

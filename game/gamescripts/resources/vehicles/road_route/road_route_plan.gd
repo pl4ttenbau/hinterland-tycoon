@@ -3,6 +3,14 @@ class_name RoadRoutePlan extends Resource
 
 @export var points: Array[RoadRoutePoint] = []
 
+## Legacy plans identify some visits by their road and authored node index.
+func references_road_nodes(road_num: int) -> bool:
+	for point: RoadRoutePoint in points:
+		if point != null and point.kind == RoadRoutePoint.Kind.NODE and point.road_num == road_num:
+			return true
+	return false
+
+
 ## Return a reviewable error without modifying either the plan or its inventories.
 func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], goods: Dictionary, capacity: GoodsCapacity, markers: RoadMarkerStore = null) -> String:
 	if points.size() < 2:

@@ -1,3 +1,16 @@
+Run all automated tests from the project root:
+
+```sh
+sh tests/run-tests.sh
+```
+
+The runner checks PATH for `godot4` or `godot`, then falls back to
+`/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64`. To override either,
+run `GODOT_BIN=/path/to/godot sh tests/run-tests.sh`. Open the project in Godot
+once on a fresh checkout so its assets are imported. The runner starts each
+suite in a separate headless process, prints the log directory, and exits
+with a nonzero status if any suite fails.
+
 Station creator checks:
 
 ```sh
@@ -7,6 +20,16 @@ godot --headless --path . --fixed-fps 60 --script res://tests/station_creator_te
 These exercise supporting-surface picking, runtime rail/road stops, 50 m joining,
 route anchors, catchment updates, both dialogs and real player action dispatch.
 See `doc/station-creator.md` for behavior and optional rendered previews.
+
+Industry batch and station inventory checks:
+
+```sh
+godot --headless --path . --script res://tests/industry_production_test.gd -- --no-mcp
+godot --headless --path . res://tests/interchanges_test.tscn -- --no-mcp
+```
+
+See [industry production and stock](../doc/industry-production.md) for behavior
+and test coverage.
 
 Industry supply warning checks:
 
@@ -36,7 +59,7 @@ godot --headless --path . --fixed-fps 60 --script res://tests/road_routing_test.
 ```
 
 The commented suite covers intermediate/reversed road travel, explicit crossings,
-height separation, arc-length costs, missing anchors, physical passenger targets,
+height separation, arc-length costs, missing anchors, interchange passenger targets,
 resource round trips, independent drafts, action ordering and save/cancel behavior.
 It does not execute passenger or goods transfers.
 Execution checks drive a real vehicle through three visits, preserve progress
@@ -157,7 +180,7 @@ godot --headless --path . --log-file /tmp/road-connection-tests.log --script res
 
 Visible road endpoints in EditorCache and EditorObjects connect when their full XYZ positions are within 0.02 units. Intermediate points, rail endpoints, hidden roads, and self-connections are excluded. EditorInfrLine3D exposes read-only start/end connection arrays (road ID and endpoint 0=start, 1=end) in the Inspector. A cyan sphere marks each connected junction; green pointer snapping remains separate. Curve edits, transforms, visibility changes and adding/removing roads schedule a shared, deferred refresh. Markers and the lookup service are editor-only and not stored in the scene.
 
-Save Roads JSON applies the same endpoint rule to the merged road records, including saved records not currently rendered. It writes reciprocal `cross.connectiveRoads` and records generated additions separately in `autoConnectiveRoads`. Subsequent saves remove stale generated links while preserving manual links and other metadata. Existing backup-before-replacement and flush-after-success behavior is unchanged. No JSON-only snap targets, road splitting, junction meshes, or rail fork generation are added. Source-scene roads remain visible unless a cached copy of the same ID temporarily supersedes them; flushing restores only those automatically suppressed copies.
+Save Roads JSON applies the same endpoint rule to the merged road records, including saved records not currently rendered. Each crossing stores manual links in `connectiveRoads` and generated links in `autoConnectiveRoads`. Each road ID appears once. Subsequent saves remove stale generated links while preserving manual links and other metadata. The runtime reads both lists and deduplicates links in older files. Existing backup-before-replacement and flush-after-success behavior is unchanged. No JSON-only snap targets, road splitting, junction meshes, or rail fork generation are added. Source-scene roads remain visible unless a cached copy of the same ID temporarily supersedes them; flushing restores only those automatically suppressed copies.
 
 JSON formatting: point `pos` coordinates use normal rounding to two decimal places, including trailing zeros (e.g. `2.40`). Curve handles retain their precision. Numeric arrays stay inline when they fit within 120 columns (tabs count as four); longer arrays use one value per line. Serialization walks the data structure so strings containing JSON-like text stay intact. Crossing matching uses the same rounded positions as the file.
 

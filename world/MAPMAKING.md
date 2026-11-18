@@ -17,3 +17,22 @@ python3 /home/cornelinux/.godotproj/hinterland-tycoon/tools/billboards/tree_bill
   --script res://tools/billboards/configure_tree_billboards.gd \
   -- --no-mcp --rebuild-scenes
 ```
+
+### Regenerate Mineral Maps
+
+Open a world scene and select **EditorObjects → EditorResourceTraces** in the
+scene tree. Set **Metres Per Pixel** if needed (default **4**) and click
+**Regenerate Mineral Maps**. The editor uses the terrain and paint currently
+loaded in the open scene.
+
+The command-line tool reads the saved map. Run it from the project root with
+the world key.
+
+```bash
+tools/minerals/generate-minerals.sh mpsb
+```
+
+Both write the mineral PNGs and `minerals.json` to
+`.godot/mineral-maps/<world>` by default. The JSON records the world X/Z
+origin, image size, sampling resolution, and richness counts. The images are
+previews of the same seeded geology sampled during gameplay.
