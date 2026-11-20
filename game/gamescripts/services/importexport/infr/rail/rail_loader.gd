@@ -1,12 +1,10 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
-class_name RailsLoader extends Node
+class_name RailsLoader extends AbstractTrackLoader
 
 const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
 const MAX_VISIBLE_DIST := 300
 const BUFFER_PATH = "res://assets/meshes/infr/rail/rail_buffer_750mm/rail_buffer_750mm.tscn"
-
-signal network_changed()
 
 @export var track_storage: RailTrackStore = RailTrackStore.new()
 @export var fork_storage: RailJunctionArmStore = RailJunctionArmStore.new()
@@ -126,31 +124,9 @@ func _on_map_selected(_selected_map: MapData):
 	self.load_rail_tracks()
 #endregion
 
-
-## A segment is the span between adjacent authored nodes.
-func erase_segment(track: RailTrackData, segment_index: int) -> Error:
-	return erase_span(track, segment_index, segment_index + 1)
-
-
-## The selected endpoints survive if they still have a span on their outside.
-func erase_span(track: RailTrackData, from_index: int, to_index: int) -> Error:
-	var first: int = mini(from_index, to_index)
-	var last: int = maxi(from_index, to_index)
-	if not _has_track(track) or first < 0 or last >= track.nodes.size() or first == last:
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(track, first, last)
-
-
-## Erase the node and both incident spans, leaving a gap.
-func erase_node(track: RailTrackData, index: int) -> Error:
-	if not _has_track(track) or index < 0 or index >= track.nodes.size():
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(track, index - 1, index + 1)
-
-
 ## Disconnect this fork leg. If fewer than two legs remain, remove the junction.
 func erase_fork(track: RailTrackData, index: int) -> Error:
-	if not _has_track(track) or index < 0 or index >= track.nodes.size():
+	if not _has_track(track) or not track.has_node_index(index):
 		return ERR_INVALID_PARAMETER
 	var node: RailNodeData = track.nodes[index]
 	if node.fork == null:
@@ -166,91 +142,77 @@ func erase_fork(track: RailTrackData, index: int) -> Error:
 	return OK
 
 
-func _has_track(track: RailTrackData) -> bool:
-	return track != null and track_storage._by_id.get(track.num) == track
+#region Split hooks
+func _store() -> AbstractTrackStore:
+	return track_storage
 
 
-func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
-	if _track_has_dependencies(track):
+func _new_track() -> AbstractTrack:
+	return RailTrackData.new()
+
+
+func _spawn_view(track: AbstractTrack) -> void:
+	spawn_rail_track(track)
+
+
+func _split_blocker(track: AbstractTrack) -> Error:
+	var rail := track as RailTrackData
+	if _track_has_dependencies(rail):
 		return ERR_BUSY
-	var junctions: Array[RailJunctionData] = []
-	for node: RailNodeData in track.nodes:
-		if node.fork == null:
-			continue
-		var group: RailJunctionData = node.fork.junction
-		if group != null and group not in junctions:
-			if _fork_has_active_train(group):
-				return ERR_BUSY
-			junctions.append(group)
-	if track.curve == null:
-		track.build_curve()
-	var source: Curve3D = track.curve
-	if source.point_count != track.nodes.size():
-		return ERR_INVALID_DATA
-	var old_nodes: Array[RailNodeData] = track.nodes
-	var fragments: Array[RailTrackData] = []
-	var surviving: Dictionary = {}
-	var view: RailTrack3D = track_storage.find_container(track.num)
-	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
-		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, Vector3.ZERO)
-		if section.get_baked_length() <= 0.0:
-			continue
-		var fragment: RailTrackData = track if fragments.is_empty() else RailTrackData.new()
-		if fragment != track:
-			fragment.num = track_storage.next_num()
-			fragment.track_name = track.track_name
-			fragment.tag = track.tag
-			fragment.infr_type_key = track.infr_type_key
-			fragment.hideFill = track.hideFill
-		if points.x > 0:
-			fragment.start_tangent = Vector3.ZERO
-		fragment.nodes = old_nodes.slice(points.x, points.y + 1)
-		fragment.start_pos = fragment.nodes[0].position
-		fragment.forks = []
-		for index: int in fragment.nodes.size():
-			var node: RailNodeData = fragment.nodes[index]
-			node.parent_track = fragment
-			node.index = index
-			surviving[node] = true
-			if node.fork != null:
-				fragment.forks.append(node.fork)
-		if points.x > 0 and fragment.nodes.front().fork == null:
-			fragment.nodes.front().is_end = true
-		if points.y < old_nodes.size() - 1 and fragment.nodes.back().fork == null:
-			fragment.nodes.back().is_end = true
-		fragment.curve = section
-		fragments.append(fragment)
+	for group: RailJunctionData in _junctions_of(rail.nodes):
+		if _fork_has_active_train(group):
+			return ERR_BUSY
+	return OK
+
+
+func _copy_track_fields(fragment: AbstractTrack, source: AbstractTrack) -> void:
+	super(fragment, source)
+	(fragment as RailTrackData).hideFill = (source as RailTrackData).hideFill
+
+
+## A cut end without a fork leg becomes a buffer stop.
+func _init_fragment(fragment: AbstractTrack, cut_start: bool, cut_end: bool) -> void:
+	var rail := fragment as RailTrackData
+	if cut_start:
+		rail.start_tangent = Vector3.ZERO
+	rail.forks.clear()
+	for node: RailNodeData in rail.nodes:
+		if node.fork != null:
+			rail.forks.append(node.fork)
+	if cut_start and rail.nodes.front().fork == null:
+		rail.nodes.front().is_end = true
+	if cut_end and rail.nodes.back().fork == null:
+		rail.nodes.back().is_end = true
+
+
+func _relink(split: AbstractTrackLoader.Split) -> void:
+	# Collect before the erased legs forget their junction.
+	var junctions: Array[RailJunctionData] = _junctions_of(split.old_nodes)
 	var removed_legs: Array[RailJunctionArm] = []
-	for node: RailNodeData in old_nodes:
-		if surviving.has(node):
-			continue
+	for node: RailNodeData in split.removed_nodes():
 		_remove_buffer(node)
 		if node.fork != null:
 			removed_legs.append(node.fork)
 			_remove_fork_leg(node.fork, true)
-		node.index = -1
-		node.parent_track = null
-	if fragments.is_empty():
-		track_storage.remove(track)
-		track.nodes = []
-		track.curve = null
-	# Publish the fragment ID before any fork view accesses it.
-	if fragments.size() == 2:
-		track_storage.add(fragments[1])
 	for junction: RailJunctionData in junctions:
 		_reconcile_fork(junction, removed_legs)
 	fork_storage.rebuild_indexes()
-	# The surviving view refits itself on curve_built below.
-	if is_instance_valid(view) and fragments.size() == 2:
-		spawn_rail_track(fragments[1])
-	for fragment: RailTrackData in fragments:
-		fragment.curve_built.emit(fragment.curve)
-		fragment.track_changed.emit()
-		if is_instance_valid(view):
-			for endpoint: RailNodeData in [fragment.nodes.front(), fragment.nodes.back()]:
-				_ensure_buffer(endpoint)
-	network_changed.emit()
-	return OK
+
+
+func _on_fragment_shown(fragment: AbstractTrack, has_view: bool) -> void:
+	if has_view:
+		var rail := fragment as RailTrackData
+		for endpoint: RailNodeData in [rail.nodes.front(), rail.nodes.back()]:
+			_ensure_buffer(endpoint)
+#endregion
+
+
+func _junctions_of(nodes: Array) -> Array[RailJunctionData]:
+	var junctions: Array[RailJunctionData] = []
+	for node: RailNodeData in nodes:
+		if node.fork != null and node.fork.junction != null and node.fork.junction not in junctions:
+			junctions.append(node.fork.junction)
+	return junctions
 
 
 func _fork_loader() -> RailJunctionLoader:

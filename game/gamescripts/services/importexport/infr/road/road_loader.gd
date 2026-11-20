@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_road_white.png")
-class_name RoadsLoader extends Node
+class_name RoadsLoader extends AbstractTrackLoader
 
 const JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const NODES_GROUP = "Roads"
@@ -12,8 +12,6 @@ func _ready() -> void:
 	var tool: Node = load("res://game/gamescripts/nodes/marker/road_marker_tool.gd").new()
 	tool.roads = self
 	add_child(tool)
-
-signal network_changed()
 
 var network_revision: int = 0
 
@@ -55,31 +53,9 @@ func _on_map_selected(_selected_map: MapData):
 	self.load_roads()
 #endregion
 
-
-## A segment is the span between adjacent authored nodes.
-func erase_segment(road: RoadData, segment_index: int) -> Error:
-	return erase_span(road, segment_index, segment_index + 1)
-
-
-## The selected endpoints survive if they still have a span on their outside.
-func erase_span(road: RoadData, from_index: int, to_index: int) -> Error:
-	var first: int = mini(from_index, to_index)
-	var last: int = maxi(from_index, to_index)
-	if not _has_road(road) or first < 0 or last >= road.nodes.size() or first == last:
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(road, first, last)
-
-
-## Erase the node and both incident spans, leaving a gap.
-func erase_node(road: RoadData, index: int) -> Error:
-	if not _has_road(road) or index < 0 or index >= road.nodes.size():
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(road, index - 1, index + 1)
-
-
 ## Disconnect this junction anchor from other roads. Its geometry survives.
 func erase_cross(road: RoadData, index: int) -> Error:
-	if not _has_road(road) or index < 0 or index >= road.nodes.size():
+	if not _has_track(road) or not road.has_node_index(index):
 		return ERR_INVALID_PARAMETER
 	if _road_has_active_vehicle(road):
 		return ERR_BUSY
@@ -106,64 +82,47 @@ func erase_cross(road: RoadData, index: int) -> Error:
 	return OK
 
 
-func _has_road(road: RoadData) -> bool:
-	return road != null and storage._by_id.get(road.num) == road
+#region Split hooks
+func _store() -> AbstractTrackStore:
+	return storage
 
 
-func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
-	if _road_has_dependencies(road):
-		return ERR_BUSY
-	if road.curve == null:
-		road.build_curve()
-	var source: Curve3D = road.curve
-	if source.point_count != road.nodes.size():
-		return ERR_INVALID_DATA
-	var old_nodes: Array[RoadNode] = road.nodes
-	var old_anchors: Array[RoadNode] = old_nodes.filter(func(node: RoadNode) -> bool:
-		return node == old_nodes.front() or node == old_nodes.back() or node.cross != null)
-	var view: RoadWay3D = storage.find_container(road.num)
-	var fragments: Array[RoadData] = []
-	var surviving: Dictionary = {}
-	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
-		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, Vector3.ZERO)
-		if section.get_baked_length() <= 0.0:
-			continue
-		var fragment: RoadData = road if fragments.is_empty() else RoadData.of(storage.next_num(), road.infr_type_key)
-		fragment.track_name = road.track_name
-		fragment.tag = road.tag
-		fragment.autosmooth = road.autosmooth
-		fragment.nodes = old_nodes.slice(points.x, points.y + 1)
-		fragment.start_pos = fragment.nodes[0].position
-		fragment.crosses = []
-		for index: int in fragment.nodes.size():
-			var node: RoadNode = fragment.nodes[index]
-			node.parent_track = fragment
-			node.index = index
-			if node.cross != null:
-				fragment.crosses.append(node.cross)
-			surviving[node] = true
-		fragment.curve = section
-		fragments.append(fragment)
+func _new_track() -> AbstractTrack:
+	return RoadData.new()
+
+
+func _spawn_view(track: AbstractTrack) -> void:
+	spawn_road(track)
+
+
+func _split_blocker(track: AbstractTrack) -> Error:
+	return ERR_BUSY if _road_has_dependencies(track) else OK
+
+
+func _copy_track_fields(fragment: AbstractTrack, source: AbstractTrack) -> void:
+	super(fragment, source)
+	(fragment as RoadData).autosmooth = (source as RoadData).autosmooth
+
+
+func _init_fragment(fragment: AbstractTrack, _cut_start: bool, _cut_end: bool) -> void:
+	var road := fragment as RoadData
+	road.crosses.clear()
+	for node: RoadNode in road.nodes:
+		if node.cross != null:
+			road.crosses.append(node.cross)
+
+
+func _relink(split: AbstractTrackLoader.Split) -> void:
+	var old_nodes: Array = split.old_nodes
+	# Collect before the erased nodes drop their crosses.
+	var old_anchors: Array[RoadNode] = []
 	for node: RoadNode in old_nodes:
-		if not surviving.has(node):
-			_clear_cross(node)
-			node.parent_track = null
-			node.index = -1
-	if fragments.is_empty():
-		storage.remove(road)
-		road.nodes = []
-		road.curve = null
-	elif fragments.size() == 2:
-		storage.add(fragments[1])
-	_retarget_crosses(road.num, old_anchors, surviving)
-	# The surviving view refits itself on curve_built below.
-	if is_instance_valid(view) and fragments.size() == 2:
-		spawn_road(fragments[1])
-	for fragment: RoadData in fragments:
-		fragment.curve_built.emit(fragment.curve)
-		fragment.track_changed.emit()
-	_publish_network_change()
-	return OK
+		if node == old_nodes.front() or node == old_nodes.back() or node.cross != null:
+			old_anchors.append(node)
+	for node: RoadNode in split.removed_nodes():
+		_clear_cross(node)
+	_retarget_crosses(split.track.num, old_anchors, split.surviving)
+#endregion
 
 
 ## A cross references a road ID plus where the anchors meet. Reassign only
