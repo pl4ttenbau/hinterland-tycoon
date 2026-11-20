@@ -86,7 +86,7 @@ func spawn_rails():
 		self.spawn_rail_track(track_obj)
 		self.spawn_rail_buffers(track_obj)
 	# emit signals
-	SignalBus.rails_spawned.emit(self.track_storage._containers)
+	SignalBus.rails_spawned.emit(self.track_storage.get_containers())
 
 func instanciate_rail_track(rail_track: RailTrackData) -> RailTrack3D:
 	var outer_track := RailTrack3D.of(rail_track)
@@ -95,7 +95,6 @@ func instanciate_rail_track(rail_track: RailTrackData) -> RailTrack3D:
 
 func spawn_rail_track(track_obj: RailTrackData) -> RailTrack3D:
 	var outer_track := self.instanciate_rail_track(track_obj)
-	_fit_path_meshes(outer_track, track_obj.curve)
 	# save in storage and as child
 	self.track_storage.add_container(outer_track)
 	add_child(outer_track, true)
@@ -191,14 +190,14 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 	var old_nodes: Array[RailNodeData] = track.nodes
 	var fragments: Array[RailTrackData] = []
 	var surviving: Dictionary = {}
-	var view: RailTrack3D = track_storage._containers_by_id.get(track.num)
+	var view: RailTrack3D = track_storage.find_container(track.num)
 	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
 		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, Vector3.ZERO)
 		if section.get_baked_length() <= 0.0:
 			continue
 		var fragment: RailTrackData = track if fragments.is_empty() else RailTrackData.new()
 		if fragment != track:
-			fragment.num = track_storage._max_num + 1
+			fragment.num = track_storage.next_num()
 			fragment.track_name = track.track_name
 			fragment.tag = track.tag
 			fragment.infr_type_key = track.infr_type_key
@@ -241,10 +240,9 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 	for junction: RailJunctionData in junctions:
 		_reconcile_fork(junction, removed_legs)
 	fork_storage.rebuild_indexes()
-	if is_instance_valid(view) and not fragments.is_empty():
-		_fit_path_meshes(view, track.curve)
-		if fragments.size() == 2:
-			spawn_rail_track(fragments[1])
+	# The surviving view refits itself on curve_built below.
+	if is_instance_valid(view) and fragments.size() == 2:
+		spawn_rail_track(fragments[1])
 	for fragment: RailTrackData in fragments:
 		fragment.curve_built.emit(fragment.curve)
 		fragment.track_changed.emit()
@@ -273,7 +271,7 @@ func _remove_fork_leg(leg: RailJunctionArm, removing_node: bool) -> void:
 	leg.container = null
 	if not removing_node and (node.is_first() or node.is_last()):
 		node.is_end = true
-		if is_instance_valid(track_storage._containers_by_id.get(track.num)):
+		if track_storage.find_container(track.num) != null:
 			_ensure_buffer(node)
 
 
@@ -378,9 +376,3 @@ func _fork_has_active_train(group: RailJunctionData) -> bool:
 			if _track_has_active_train(leg.track):
 				return true
 	return false
-
-
-func _fit_path_meshes(view: RailTrack3D, curve: Curve3D) -> void:
-	for child: Node in view.get_children():
-		if child is PathMesh3D:
-			InfrUtils.fit_short_path_mesh(child, curve)

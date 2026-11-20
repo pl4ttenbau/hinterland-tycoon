@@ -90,17 +90,29 @@ static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
 	else: return Enums.InfrDomain.STATIONARY
 
 
+## Metadata key holding the authored tile of a PathMesh3D before any fitting.
+const SOURCE_TILE_META := &"source_tile_mesh"
+
 ## PathMesh3D requires at least one complete tile. Compress the source along
 ## the path for short sections, preserving their width, material and collision.
+## Safe to call again whenever the curve changes: it always starts from the
+## authored tile, so a section that grows long again gets the full tile back.
 static func fit_short_path_mesh(path_mesh: PathMesh3D, curve: Curve3D) -> void:
-	var source: Mesh = path_mesh.mesh
-	if source == null or curve == null:
+	if not path_mesh.has_meta(SOURCE_TILE_META):
+		if path_mesh.mesh == null:
+			return
+		path_mesh.set_meta(SOURCE_TILE_META, path_mesh.mesh)
+	var source: Mesh = path_mesh.get_meta(SOURCE_TILE_META)
+	if curve == null:
 		return
 	# The rail and road source tiles are aligned to local Z.
 	var bounds: AABB = source.get_aabb()
 	var tile_length: float = maxf(0.0, bounds.end.z) - minf(0.0, bounds.position.z)
 	var section_length: float = curve.get_baked_length()
-	if section_length <= 0.0 or section_length >= tile_length:
+	if section_length <= 0.0:
+		return
+	if section_length >= tile_length:
+		path_mesh.mesh = source
 		return
 	var scale_z: float = (section_length / tile_length) * 0.99999
 	var transform := Transform3D(Basis.from_scale(Vector3(1.0, 1.0, scale_z)), Vector3.ZERO)

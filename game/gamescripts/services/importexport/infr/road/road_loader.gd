@@ -121,14 +121,14 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 	var old_nodes: Array[RoadNode] = road.nodes
 	var old_anchors: Array[RoadNode] = old_nodes.filter(func(node: RoadNode) -> bool:
 		return node == old_nodes.front() or node == old_nodes.back() or node.cross != null)
-	var view: RoadWay3D = storage._containers_by_id.get(road.num)
+	var view: RoadWay3D = storage.find_container(road.num)
 	var fragments: Array[RoadData] = []
 	var surviving: Dictionary = {}
 	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
 		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, Vector3.ZERO)
 		if section.get_baked_length() <= 0.0:
 			continue
-		var fragment: RoadData = road if fragments.is_empty() else RoadData.of(storage._max_num + 1, road.infr_type_key)
+		var fragment: RoadData = road if fragments.is_empty() else RoadData.of(storage.next_num(), road.infr_type_key)
 		fragment.track_name = road.track_name
 		fragment.tag = road.tag
 		fragment.autosmooth = road.autosmooth
@@ -156,10 +156,9 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 	elif fragments.size() == 2:
 		storage.add(fragments[1])
 	_retarget_crosses(road.num, old_anchors, surviving)
-	if not fragments.is_empty() and is_instance_valid(view):
-		view.road = road
-		if fragments.size() == 2:
-			spawn_road(fragments[1])
+	# The surviving view refits itself on curve_built below.
+	if is_instance_valid(view) and fragments.size() == 2:
+		spawn_road(fragments[1])
 	for fragment: RoadData in fragments:
 		fragment.curve_built.emit(fragment.curve)
 		fragment.track_changed.emit()
@@ -244,7 +243,7 @@ func _road_has_dependencies(road: RoadData) -> bool:
 
 
 func _road_has_active_vehicle(road: RoadData) -> bool:
-	var view: RoadWay3D = storage._containers_by_id.get(road.num)
+	var view: RoadWay3D = storage.find_container(road.num)
 	if Managers.roads == self and is_instance_valid(view) and is_instance_valid(Managers.vehicles):
 		for vehicle: RoadVehicle3D in Managers.vehicles.road_vehicles:
 			if is_instance_valid(vehicle) and vehicle.uses_road(view):

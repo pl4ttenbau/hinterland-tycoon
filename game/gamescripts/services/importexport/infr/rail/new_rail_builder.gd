@@ -109,7 +109,7 @@ func _accept_plan(dialog: RailConstructionDialog) -> String:
 
 func _register_track(track: RailTrackData, fork: RailJunctionData) -> void:
 	var rails: RailsLoader = Managers.rails
-	track.num = rails.track_storage._max_num + 1
+	track.num = rails.track_storage.next_num()
 	track.track_name = "New Track %d" % track.num
 	var connection := RailJunctionArm.new()
 	connection.railNode = track.nodes[0]

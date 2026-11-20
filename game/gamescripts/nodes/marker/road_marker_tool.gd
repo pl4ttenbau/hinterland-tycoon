@@ -47,7 +47,7 @@ func placement_at(position: Vector3, exclude: RID = RID()) -> Dictionary:
 
 ## Confirm the captured location, even if the player was standing just beside its centreline.
 func place(placement: Dictionary, title: String) -> RoadMarkerData:
-	var road: RoadWay3D = roads.storage._containers_by_id.get(placement.road_num)
+	var road: RoadWay3D = roads.storage.find_container(placement.road_num)
 	if road == null or placement.offset < 0 or placement.offset > road.get_path_3d().curve.get_baked_length():
 		return null
 	var marker := RoadMarkerData.new()

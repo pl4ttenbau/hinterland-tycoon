@@ -119,12 +119,11 @@ func placement_at(position: Vector3, exclude: RID = RID(), view_forward: Vector3
 		query.exclude = [exclude]
 	var hit: Dictionary = get_viewport().find_world_3d().direct_space_state.intersect_ray(query)
 	var surface: Node = hit.get("collider")
-	while surface != null and not surface is RoadWay3D and not surface is RailTrack3D:
+	while surface != null and not surface is InfrLine3D:
 		surface = surface.get_parent()
-	if surface is RoadWay3D:
-		return placement_on(surface.road, position, view_forward)
-	if surface is RailTrack3D:
-		return placement_on(surface.track, position)
+	if surface is InfrLine3D:
+		# Only road placement uses the view direction.
+		return placement_on(surface.get_line(), position, view_forward)
 	return {}
 
 func placement_on(infrastructure: AbstractTrack, position: Vector3, view_forward: Vector3 = Vector3.ZERO) -> Dictionary:
