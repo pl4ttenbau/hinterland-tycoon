@@ -33,9 +33,13 @@ func frames(count: int) -> void:
 
 func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
+	# Tests may switch the global driving mode; each one starts from the game default.
+	var default_follow: bool = RoadVehicle3D.follow_road_path
 	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_fixed_path", &"test_depot_spawning", &"test_spawn_dialog"]:
+		RoadVehicle3D.follow_road_path = default_follow
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
+	RoadVehicle3D.follow_road_path = default_follow
 	print("Road vehicle tests: %d passed, %d failures" % [passed, failures])
 	return 0 if failures == 0 else 1
 
@@ -45,8 +49,9 @@ func test_models() -> bool:
 		"trabant_601_green": Vector4(2.0073933, 0.10205, 1.255804, 1.255804),
 		"daimler_1911_bus": Vector4(4.01, 1.28, 1.61, 1.87),
 		"ifa_w50_covered": Vector4(3.20, 0.45, 1.70, 1.78),
+		"vaz1201": Vector4(2.4535582, 0.00995, 1.38, 1.38),
 	}
-	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green", "daimler_1911_bus", "ifa_w50_covered"]:
+	for key: String in ["oldtimer_car", "gaz_aa_truck", "trabant_601_green", "daimler_1911_bus", "ifa_w50_covered", "vaz1201"]:
 		var body := RoadVehicle3D.of(key)
 		check(body != null and body.vehicle_obj.veh_type.key == key, "Catalog vehicle spawns as a road body")
 		if body == null:
@@ -263,6 +268,8 @@ func test_corner_braking() -> bool:
 	for frame: int in range(4):
 		await tree.process_frame
 
+	# Braking and steering through the bend are wheel-physics behaviour.
+	RoadVehicle3D.follow_road_path = false
 	var car_completed: bool = await _check_house_bend(fixture, house, "trabant_601_green", 9.0, 3.0)
 	var bus_completed: bool = await _check_house_bend(fixture, house, "daimler_1911_bus", 5.0, 1.5)
 	_free_driving_fixture(fixture)
@@ -284,7 +291,6 @@ func test_fixed_path() -> bool:
 	RoadVehicle3D.follow_road_path = true
 	var run_completed: bool = await _check_fixed_path_run(fixture)
 	var takeover_completed: bool = await _check_fixed_path_takeover(fixture)
-	RoadVehicle3D.follow_road_path = false
 	_free_driving_fixture(fixture)
 	return run_completed and takeover_completed
 
@@ -460,7 +466,7 @@ func test_spawn_dialog() -> bool:
 		action.free()
 		_free_driving_fixture(fixture)
 		return false
-	check(dialog.get("_list").item_count == 5, "Selector lists the five road vehicles without trains")
+	check(dialog.get("_list").item_count == 6, "Selector lists the six road vehicles without trains")
 	check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog blocks world controls and exposes the mouse")
 	check(fixture.player.process_mode == Node.PROCESS_MODE_DISABLED, "Dialog suspends the actual walking player")
 
@@ -470,7 +476,7 @@ func test_spawn_dialog() -> bool:
 	company.cash = price - 1
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(company.cash == price - 1 and fixture.manager.road_vehicles.is_empty()
-		and dialog.get("_error").text.contains("Insufficient funds"), "Unaffordable purchase reports an error without spawning")
+		and dialog.get_node("%Status").text.contains("Insufficient funds"), "Unaffordable purchase reports an error without spawning")
 	company.cash = CompanyData.STARTING_CASH
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(fixture.manager.road_vehicles.size() == 1, "Buy button creates the selected car")
@@ -484,7 +490,7 @@ func test_spawn_dialog() -> bool:
 	SignalBus.request_road_vehicle_spawn.emit(depot)
 	dialog = UiState.current_diag
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
-	check(not dialog.is_queued_for_deletion() and dialog.get("_error").visible, "Occupied spawn reports an error and keeps the dialog open")
+	check(not dialog.is_queued_for_deletion() and dialog.get_node("%Status").visible, "Occupied spawn reports an error and keeps the dialog open")
 	check(company.cash == CompanyData.STARTING_CASH - price, "Occupied spawn and cancellation leave cash unchanged")
 	dialog.close_all()
 	await tree.process_frame

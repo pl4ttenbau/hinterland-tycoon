@@ -114,15 +114,14 @@ func test_source_removal() -> bool:
 # Real physics travels to the far end before reversing, then turns at the other
 # end for the second visit. This verifies the curve-to-wheel handoff both ways.
 func test_both_road_ends() -> bool:
+	RoadVehicle3D.follow_road_path = false
 	return await _both_road_ends(false)
 
 # With the global fixed-path switch, the body stays held from the road curve into
 # each turn and back; stopping the finished plan still restores wheel physics.
 func test_fixed_path_both_ends() -> bool:
 	RoadVehicle3D.follow_road_path = true
-	var completed: bool = await _both_road_ends(true)
-	RoadVehicle3D.follow_road_path = false
-	return completed
+	return await _both_road_ends(true)
 
 func _both_road_ends(fixed: bool) -> bool:
 	var depot := RoadDepotData.new()

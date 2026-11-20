@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_type_preview.gd" id="1_script"]
+
+[node name="RoadVehicleTypePreview" type="VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
+script = ExtResource("1_script")
+
+[node name="Image" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 160)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Placeholder" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No preview available"
+horizontal_alignment = 1
+
+[node name="Details" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3

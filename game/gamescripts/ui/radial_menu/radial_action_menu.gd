@@ -27,11 +27,8 @@ func available_actions() -> Array[Dictionary]:
 		items.append(_item("Enter train", "Enter", "enter_vehicle"))
 	if in_road_vehicle:
 		items.append(_item("Auto-routing", "AutoRoute", "auto_route"))
-	elif not in_vehicle and is_instance_valid(Managers.roads):
-		items.append(_item("Place road marker", "RoadMarker", "road_marker"))
+	# Placing things (stops, markers, signals, tracks) lives in the Build picker.
 	if not in_vehicle and is_instance_valid(Managers.rails):
-		items.append(_item("Connect tracks", "Connect", "connect_tracks"))
-		items.append(_item("Place rail signal", "RailSignal", "rail_signal"))
 		var signal_tool: RailSignalTool = Managers.rails.get_node_or_null("RailSignalTool")
 		if is_instance_valid(signal_tool) and signal_tool.can_remove_near_player():
 			items.append(_item("Remove rail signal", "RemoveRailSignal", "rail_signal_remove"))
@@ -40,11 +37,6 @@ func available_actions() -> Array[Dictionary]:
 			"title": "Coupling", "id": "Coupling",
 			"texture": preload("res://assets/icons/icon_locomotive_white.png"),
 		})
-	if not in_vehicle and is_instance_valid(Managers.interchanges):
-		var creator: StationCreator = Managers.interchanges.get_node_or_null("StationCreator")
-		if is_instance_valid(creator) and creator.is_available():
-			var walking: BasicFpsPlayer = player.walking_body if is_instance_valid(player) else null
-			items.append(_item(creator.action_title(walking), "CreateStop", "create_stop"))
 	items.append(_item("Prospect", "Prospect", "prospect"))
 	items.append(_item("Build", "Build", "build"))
 	items.append(_item("Inventory", "LoadUnload", "inventory"))

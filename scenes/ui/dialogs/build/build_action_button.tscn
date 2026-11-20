@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/build/build_action_button.gd" id="1"]
+
+[node name="BuildActionButton" type="Button"]
+theme_type_variation = &"ManagementButton"
+theme_override_constants/icon_max_width = 28
+script = ExtResource("1")

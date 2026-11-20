@@ -17,7 +17,7 @@
 	},
 	{
 		"key": "gaz_aa_truck",
-		"purchase_price": 9700,
+		"purchase_price": 10200,
 		"display_name": "GAZ-AA Truck",
 		"model_scene_path": "res://assets/meshes/vehicles/road/gaz_aa_truck/gaz_aa_truck.tscn",
 		"usable_infr": {},
@@ -81,7 +81,7 @@
 	},
 	{
 		"key": "vaz1201",
-		"purchase_price": 11000,
+		"purchase_price": 15700,
 		"display_name": "VAZ-1201",
 		"model_scene_path": "res://assets/meshes/vehicles/road/vaz1201/vaz1201.tscn",
 		"usable_infr": {},
@@ -94,5 +94,5 @@
 		"mass_tonnes": 0.97,
 		"payload_tonnes": 0.39,
 		"motor_power_kw": 46.1
-	},
+	}
 ]

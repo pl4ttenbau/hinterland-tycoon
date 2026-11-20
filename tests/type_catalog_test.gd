@@ -142,9 +142,10 @@ func test_invalid_catalogs() -> bool:
 
 func test_road_catalogs() -> bool:
 	var source: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source.size() == 5 and GameTypes.get_veh_type("daimler_1911_bus") is RoadVehicleTypeData
-		and GameTypes.get_veh_type("ifa_w50_covered") is RoadVehicleTypeData,
-		"Road catalog includes the Daimler bus and covered IFA W50")
+	self.check(source.size() == 6 and GameTypes.get_veh_type("daimler_1911_bus") is RoadVehicleTypeData
+		and GameTypes.get_veh_type("ifa_w50_covered") is RoadVehicleTypeData
+		and GameTypes.get_veh_type("vaz1201") is RoadVehicleTypeData,
+		"Road catalog includes the Daimler bus, covered IFA W50 and VAZ-1201")
 	for entry: Dictionary in source:
 		var definition: VehicleTypeData = GameTypes.get_veh_type(entry["key"])
 		self.check(definition is RoadVehicleTypeData, "Road catalog creates road definitions")

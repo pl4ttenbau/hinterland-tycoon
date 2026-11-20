@@ -1,75 +1,83 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="1"]
 [ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/company_info/company_info_dialog.gd" id="2"]
 
 [node name="CompanyInfoDialog" instance=ExtResource("1")]
 script = ExtResource("2")
+dialog_key = "CompanyInfoDialog"
+title_text = "Company information"
 
-[node name="Totals" type="GridContainer" parent="Center/Panel/Padding/Layout/Content" index="0"]
+[node name="Panel" parent="." index="0"]
+custom_minimum_size = Vector2(520, 320)
+
+[node name="Totals" type="GridContainer" parent="Panel/Padding/Layout/Content" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2
 theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 12
 
-[node name="CashLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="CashLabel" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cash reserves"
 
-[node name="Cash" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="Cash" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "DM 0.00"
 horizontal_alignment = 2
 
-[node name="PassengerTotalLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="PassengerTotalLabel" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Passengers delivered"
 
-[node name="PassengerTotal" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="PassengerTotal" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="CargoTotalLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="CargoTotalLabel" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cargo units delivered"
 
-[node name="CargoTotal" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="CargoTotal" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="IncomeLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="IncomeLabel" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Transport income"
 
-[node name="Income" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="Income" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "DM 0.00"
 horizontal_alignment = 2
 
-[node name="SpendingLabel" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="SpendingLabel" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Construction and vehicle spending"
 
-[node name="Spending" type="Label" parent="Center/Panel/Padding/Layout/Content/Totals"]
+[node name="Spending" type="Label" parent="Panel/Padding/Layout/Content/Totals"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "DM 0.00"
 horizontal_alignment = 2
 
 
-[node name="DeliveryRates" type="Label" parent="Center/Panel/Padding/Layout/Content" index="1"]
+[node name="DeliveryRates" type="Label" parent="Panel/Padding/Layout/Content" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 3
+
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
+text = "Company information"

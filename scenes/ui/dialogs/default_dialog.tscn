@@ -15,55 +15,53 @@ script = ExtResource("1_87kpk")
 metadata/_custom_type_script = "uid://c6yrgee51a65a"
 metadata/_edit_use_anchors_ = true
 
-[node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
+[node name="Panel" type="PanelContainer" parent="." unique_id=102159521]
 custom_minimum_size = Vector2(480, 0)
 layout_mode = 2
 
-[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1264418081]
+[node name="Padding" type="MarginContainer" parent="Panel" unique_id=1264418081]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=1966774023]
+[node name="Layout" type="VBoxContainer" parent="Panel/Padding" unique_id=1966774023]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1318486676]
+[node name="Headline" type="Label" parent="Panel/Padding/Layout" unique_id=1318486676]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeadlineLabel"
 text = "Dialog"
 
-[node name="Content" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1326482309]
+[node name="Content" type="VBoxContainer" parent="Panel/Padding/Layout" unique_id=1326482309]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Status" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout"]
+[node name="Status" type="Label" parent="Panel/Padding/Layout"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_type_variation = &"MutedLabel"
 autowrap_mode = 3
 
-[node name="Buttons" type="HBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout"]
+[node name="Buttons" type="HBoxContainer" parent="Panel/Padding/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="OkButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" unique_id=1348525671]
+[node name="OkButton" type="Button" parent="Panel/Padding/Layout/Buttons" unique_id=1348525671]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_type_variation = &"PrimaryButton"
 text = "OK"
 
-[node name="CancelButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons"]
+[node name="CancelButton" type="Button" parent="Panel/Padding/Layout/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"ManagementButton"
 text = "Close"
-
-[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/CancelButton" to="." method="close_all"]

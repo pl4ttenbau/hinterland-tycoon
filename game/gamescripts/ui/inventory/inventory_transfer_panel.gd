@@ -1,4 +1,5 @@
 ## Reusable endpoint picker + capacity + searchable passenger/cargo table.
+## Layout lives in inventory_transfer_panel.tscn.
 class_name InventoryTransferPanel extends VBoxContainer
 
 signal selection_changed()
@@ -9,46 +10,21 @@ var selected_stack: InventoryStack
 var passengers: bool = false
 var _endpoints: Array[InventoryEndpoint] = []
 var _inventory: GoodsInventory
-var _picker: OptionButton
-var _capacity: Label
-var _meter: ProgressBar
-var _search: LineEdit
-var _table: Tree
-var _empty: Label
+
+@onready var _picker: OptionButton = %Picker
+@onready var _capacity: Label = %Capacity
+@onready var _meter: ProgressBar = %Meter
+@onready var _search: LineEdit = %Search
+@onready var _table: Tree = %Table
+@onready var _empty: Label = %Empty
 
 func _ready() -> void:
-	add_theme_constant_override("separation", 10)
-	_picker = OptionButton.new()
 	_picker.item_selected.connect(_on_endpoint_selected)
-	add_child(_picker)
-	_capacity = Label.new()
-	_capacity.theme_type_variation = &"MutedLabel"
-	add_child(_capacity)
-	_meter = ProgressBar.new()
-	_meter.show_percentage = false
-	_meter.custom_minimum_size.y = 8
-	add_child(_meter)
-	_search = LineEdit.new()
-	_search.placeholder_text = "Filter resources or destinations"
-	_search.text_changed.connect(func(_text: String): _refresh())
-	add_child(_search)
-	_build_table()
-
-func _build_table() -> void:
-	_table = Tree.new()
-	_table.hide_root = true
-	_table.select_mode = Tree.SELECT_ROW
-	_table.column_titles_visible = true
-	_table.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_table.custom_minimum_size = Vector2(300, 240)
-	_table.add_theme_font_size_override("font_size", 18)
+	_search.text_changed.connect(_on_search_text_changed)
 	_table.item_selected.connect(_on_row_selected)
-	add_child(_table)
-	_empty = Label.new()
-	_empty.theme_type_variation = &"MutedLabel"
-	_empty.custom_minimum_size.y = 26
-	_empty.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	add_child(_empty)
+
+func _on_search_text_changed(_text: String) -> void:
+	_refresh()
 
 func set_endpoints(items: Array[InventoryEndpoint], selected: int) -> void:
 	_endpoints = items

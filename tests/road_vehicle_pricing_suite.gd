@@ -64,8 +64,8 @@ func test_unknown_specs() -> bool:
 func test_catalog_and_dialog() -> bool:
 	check(GameTypes.ensure_initialized() == OK, "Catalog initializes with road prices")
 	var expected: Dictionary = {
-		"oldtimer_car": 12300, "gaz_aa_truck": 9700, "trabant_601_green": 9600,
-		"daimler_1911_bus": 12000, "ifa_w50_covered": 23900,
+		"oldtimer_car": 12300, "gaz_aa_truck": 10200, "trabant_601_green": 9600,
+		"daimler_1911_bus": 12000, "ifa_w50_covered": 23900, "vaz1201": 15700,
 	}
 	for key: String in expected:
 		check(GameTypes.get_veh_type(key).get_purchase_price() == expected[key], "%s gets its catalog price" % key)
@@ -79,7 +79,7 @@ func test_catalog_and_dialog() -> bool:
 	tree.root.add_child(dialog)
 	await tree.process_frame
 	var types: Array = dialog.get("_types")
-	var details: Label = dialog.get("_details")
+	var details: Label = dialog._preview.details
 	check(types.size() == expected.size(), "Dialog includes all road types")
 	for index: int in range(types.size()):
 		dialog._on_vehicle_selected(index)

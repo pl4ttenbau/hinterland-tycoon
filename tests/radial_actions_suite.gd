@@ -56,7 +56,7 @@ func run() -> void:
 	check("Company" in _ids(menu) and "Game Menu" in _ids(menu), "Both new menu dialogs are offered on foot")
 	check("Prospect" in _ids(menu), "Prospect is offered on foot")
 	check("Build" in _ids(menu), "Build is offered in the circular menu")
-	check("RoadMarker" in _ids(menu) and "AutoRoute" not in _ids(menu), "Walking offers marker, not auto-routing")
+	check(BuildTools.available(Enums.BuildToolChoice.ROAD_MARKER) and "RoadMarker" not in _ids(menu) and "AutoRoute" not in _ids(menu), "Walking offers the marker in Build, not auto-routing")
 	check("Enter" not in _ids(menu), "No train entry when train list is empty")
 	for unsupported: String in ["Place"]:
 		check(unsupported not in _ids(menu), "Unimplemented action is not shown: " + unsupported)
@@ -68,7 +68,7 @@ func run() -> void:
 	check("Prospect" in _ids(menu), "Prospect remains in the road-vehicle menu")
 	check("AutoRoute" in _ids(menu) and "Enter" in _ids(menu), "Occupied road vehicle offers routing and exit")
 	check("Coupling" not in _ids(menu), "Road vehicles do not offer train coupling")
-	check("RoadMarker" not in _ids(menu) and "Connect" not in _ids(menu), "Road vehicle hides on-foot actions")
+	check(not BuildTools.available(Enums.BuildToolChoice.ROAD_MARKER) and not BuildTools.available(Enums.BuildToolChoice.CONNECT_TRACKS), "Road vehicle hides on-foot placement tools")
 	var train := Train3D.new()
 	var locomotive := Vehicle3D.new()
 	locomotive.train3d = train
@@ -87,7 +87,7 @@ func run() -> void:
 	check(not road_vehicle.player_driving and player.control.current_train() == train and GlobalState.active_cam == train_camera, "Switching targets releases the old driver and changes the camera")
 	click_handler.free()
 	collider.free()
-	check("AutoRoute" not in _ids(menu) and "RoadMarker" not in _ids(menu), "Train occupancy does not expose road actions")
+	check("AutoRoute" not in _ids(menu) and not BuildTools.available(Enums.BuildToolChoice.ROAD_MARKER), "Train occupancy does not expose road actions")
 	check("Prospect" in _ids(menu), "Prospect remains in the train menu")
 	var control: Control = menu.get_node("%RadialMenu")
 	control.set_items(menu.available_actions())
@@ -122,15 +122,17 @@ func run() -> void:
 	enter_action.free()
 	var handler := ActionHandler.new()
 	var action := CountingAction.new()
-	action.name = "ConnectAction"
-	action.key = "Connect"
+	action.name = "CountingAction"
+	action.key = "Counting"
 	handler.add_child(action)
 	root.add_child(handler)
 	menu.action_requested.connect(handler._on_action_triggered)
-	check(handler._on_action_triggered("Connect") and action.calls == 1, "Connect dispatches exactly once")
+	check(handler._on_action_triggered("Counting") and action.calls == 1, "A session action dispatches exactly once")
+	for removed: String in ["Connect", "CreateStop", "RoadMarker", "RailSignal"]:
+		check(not handler._on_action_triggered(removed), "Placement tools are not circle-menu actions: " + removed)
 	check(not handler._on_action_triggered("Unknown"), "Unknown action is rejected")
 	check(not handler._on_action_triggered("AutoRoute"), "Routing rechecks vehicle occupancy at dispatch")
-	check(not handler._on_action_triggered("RoadMarker"), "No marker action when no session placement tool is present")
+	check(not BuildTools.start(Enums.BuildToolChoice.ROAD_MARKER), "The marker tool does not start without a session placement tool")
 	for action_key: String in ["Game Menu", "Company"]:
 		var previous_mouse_mode := Input.mouse_mode
 		var previous_blocked := UiState.movement_blocked
@@ -147,7 +149,7 @@ func run() -> void:
 			check(dialog.get_node("%Content").get_child_count() == 0, "Game menu remains an empty shell")
 		check(UiState.movement_blocked and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Dialog suspends world input")
 		check(not handler._on_action_triggered(action_key), "Cannot open a duplicate dialog")
-		dialog.get_node("%OkButton").pressed.emit()
+		dialog.get_node("%CancelButton").pressed.emit()
 		await get_tree().process_frame
 		check(UiState.current_diag == null and UiState.movement_blocked == previous_blocked and Input.mouse_mode == previous_mouse_mode, "Close button restores previous input state")
 		check(handler._on_action_triggered(action_key), "Dialog can be reopened")
@@ -186,6 +188,9 @@ func run() -> void:
 	radial.set_selected_item(0)
 	handler.remove_child(action)
 	action.free()
+	# Whatever item 0 is, its deferred dispatch must not open a real dialog and
+	# leave input blocked for the Escape check below; only the selection is under test.
+	menu.action_requested.disconnect(handler._on_action_triggered)
 	radial.msecs_at_opened = Time.get_ticks_msec() - 500
 	var selections: Array = []
 	radial.item_selected.connect(func(id: Variant, _position: Vector2): selections.append(id))
@@ -322,12 +327,12 @@ func _test_prospect(menu: RadialActionMenu, handler: ActionHandler, road_vehicle
 	if dialog != null:
 		var captured_position: Vector3 = body.global_position
 		body.global_position += Vector3(30, 0, 0)
-		dialog.find_child("ProspectButton", true, false).pressed.emit()
+		dialog.get_node("%OkButton").pressed.emit()
 		check(dialog.readings == expected, "The Prospect button reads the player's captured position")
 		var grid: GridContainer = dialog.get_node("%Content/Readings")
 		check(grid.get_child_count() == 8, "Prospect displays a row for each of the four resources")
 		check(body.process_mode == Node.PROCESS_MODE_DISABLED and not handler._on_action_triggered("Prospect"), "Prospect suspends walking and rejects duplicate dialogs")
-		dialog.get_node("%OkButton").pressed.emit()
+		dialog.get_node("%CancelButton").pressed.emit()
 		await get_tree().process_frame
 		check(UiState.current_diag == null and body.process_mode == Node.PROCESS_MODE_WHEN_PAUSED, "Closing Prospect restores the walking state")
 		body.global_position = captured_position + Vector3.RIGHT
@@ -431,7 +436,7 @@ func _test_survey_marker(handler: ActionHandler, prospecting: ProspectingManager
 	var dialog := UiState.current_diag as ProspectDialog
 	check(dialog != null and dialog.readings == expected, "Nearby prospecting shows the saved results immediately")
 	if dialog != null:
-		dialog.find_child("ProspectButton", true, false).pressed.emit()
+		dialog.get_node("%OkButton").pressed.emit()
 		dialog.close_all()
 		await get_tree().process_frame
 	check(prospecting.get_marker(1) == marker and prospecting.get_marker(2) == null, "Prospecting nearby reuses the sign")
@@ -515,12 +520,16 @@ func _test_build(handler: ActionHandler, body: BasicFpsPlayer) -> void:
 	if picker == null:
 		return
 	var tabs: CategoryTabs = picker.get_node("%Content/Categories")
-	var options: VBoxContainer = picker.get_node("%Content/Options")
-	check(tabs.get_children().map(func(tab: Button) -> String: return tab.tooltip_text) == ["Industry", "Station", "Misc"], "Build shows the requested tabs")
-	tabs.get_child(1).pressed.emit()
-	check(options.get_node("Station").visible and options.get_node("Empty").visible, "Station tab shows an empty state")
-	tabs.get_child(2).pressed.emit()
-	check(options.get_node("Misc").visible and options.get_node("Empty").visible, "Misc tab shows an empty state")
+	var options: VBoxContainer = picker.get_node("%Options")
+	check(tabs.get_children().map(func(tab: Button) -> String: return tab.tooltip_text) == ["Industry", "Station", "Rail", "Road"], "Build shows the requested tabs")
+	for tab: Array in [[1, "Station", ["CreateStop"]], [2, "Rail", ["Connect", "RailSignal"]], [3, "Road", ["RoadMarker"]]]:
+		tabs.get_child(tab[0]).pressed.emit()
+		var any_available: bool = false
+		for node_name: String in tab[2]:
+			var button := options.get_node("%s/%s" % [tab[1], node_name]) as BuildActionButton
+			check(button != null and button.visible == BuildTools.available(button.tool), "%s tool follows its availability" % node_name)
+			any_available = any_available or (button != null and BuildTools.available(button.tool))
+		check(options.get_node(tab[1]).visible and options.get_node("Empty").visible != any_available, "%s tab shows its tools or an empty state" % tab[1])
 	tabs.get_child(0).pressed.emit()
 	var mine := options.get_node("Industry/Mine") as Button
 	check(mine != null and mine.text.contains("DM 10,000.00"), "Mine reads its construction cost from the scene")
@@ -639,12 +648,12 @@ func _confirm_coal_mine(preview: BuildPreview, world: WorldMapScene, camera: Cam
 	var company := CompanyData.current()
 	var cash_before: float = company.cash
 	company.cash = dialog.construction_cost - 1
-	dialog.get_node("%BuildButton").pressed.emit()
+	dialog.get_node("%OkButton").pressed.emit()
 	check(spawner.storage.get_all().is_empty() and dialog.get_node("%Status").text.contains("Insufficient funds"),
 		"Unaffordable mine placement leaves the site and dialog open")
 	check(company.cash == dialog.construction_cost - 1, "A rejected mine purchase leaves cash unchanged")
 	company.cash = cash_before
-	dialog.get_node("%BuildButton").pressed.emit()
+	dialog.get_node("%OkButton").pressed.emit()
 	check(company.cash == cash_before - 10_000, "Mine construction charges its authored price")
 	await get_tree().process_frame
 	check(UiState.current_diag == null and spawner.storage.get_containers().size() == 1, "Confirming one resource creates a single industry")
@@ -673,7 +682,7 @@ func _confirm_coal_mine(preview: BuildPreview, world: WorldMapScene, camera: Cam
 func _open_mine_preview(handler: ActionHandler) -> BuildPreview:
 	if not handler._on_action_triggered("Build"):
 		return null
-	UiState.current_diag.get_node("%Content/Options/Industry/Mine").pressed.emit()
+	UiState.current_diag.get_node("%Options/Industry/Mine").pressed.emit()
 	for frame: int in 3:
 		await get_tree().process_frame
 	return UiState.current_diag as BuildPreview

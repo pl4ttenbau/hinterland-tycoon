@@ -166,16 +166,16 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 	var dialog := UiState.current_diag as TrainCouplingDialog
 	if dialog == null:
 		return false
-	var dialog_panel: Control = dialog.get_node("OuterPanel")
+	var dialog_panel: Control = dialog.get_node("Panel")
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check(dialog_panel.size.x >= 700.0 and dialog_panel.size.y >= 500.0
 		and (dialog_panel.position + dialog_panel.size * 0.5).is_equal_approx(dialog.size * 0.5),
 		"The expanded coupling panel remains centered")
 	check(dialog.dialog_key == "TrainCouplingDialog" and UiState.movement_blocked, "Coupling is a modal game dialog")
-	dialog._select_vehicle(1)
+	dialog._consist.list.item_selected.emit(1)
 	dialog._preview_split(true)
-	check(train.count() == 2 and dialog._confirm.text == "Confirm split", "Preview leaves the original joint connected")
+	check(train.count() == 2 and dialog._confirm_bar.confirm.text == "Confirm split", "Preview leaves the original joint connected")
 	dialog._commit()
 	var parked: Train3D = wagon.train3d
 	check(parked != train and parked.locomotive == null and parked.train_obj.vehicles == [wagon.vehicle_obj],
@@ -188,7 +188,7 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 	check(dialog._front.pair.text.contains(engine.vehicle_obj.veh_type.display_name)
 		and not dialog._rear.button.visible, "The detached wagon sees the engine in front")
 	dialog._preview_join(true)
-	check(dialog._summary.text.begins_with("Front") and train.count() == 1 and parked.count() == 1,
+	check(dialog._confirm_bar.summary.text.begins_with("Front") and train.count() == 1 and parked.count() == 1,
 		"The dialog previews the front joint of the selected wagon")
 	dialog._commit()
 	check(wagon.train3d == train and player.control.current_train() == train and dialog._selected == wagon,
@@ -252,12 +252,12 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check(two_sided._front.button.visible and two_sided._rear.button.visible
-		and is_equal_approx(two_sided._current_list.get_global_rect().end.y,
+		and is_equal_approx(two_sided._consist.list.get_global_rect().end.y,
 			two_sided._rear.button.get_global_rect().end.y),
 		"Both coupling actions are visible and the columns align at the bottom")
 	var stale: TrainCoupling.Connection = TrainCoupling.nearby(train, false)
 	two_sided._preview_join(false)
-	check(not two_sided._confirm.disabled, "The rear joint can be confirmed while the route fits")
+	check(not two_sided._confirm_bar.confirm.disabled, "The rear joint can be confirmed while the route fits")
 	var spacing: float = (wagon.vehicle_obj.veh_type.length_metres \
 		+ rear_train.locomotive.vehicle_obj.veh_type.length_metres) * 0.5
 	## Both ends still face each other, but closing the joint needs a centre beyond the buffer.
@@ -271,7 +271,7 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 	var route_error: String = "The joined consist cannot fit on the current rail route."
 	check(two_sided._rear.button.visible and two_sided._rear.button.disabled \
 		and two_sided._rear.pair.text.contains(route_error), "The nearby list explains why the join will not fit")
-	check(two_sided._confirm.disabled and two_sided._summary.text.contains(route_error),
+	check(two_sided._confirm_bar.confirm.disabled and two_sided._confirm_bar.summary.text.contains(route_error),
 		"An open preview disables confirmation when the route no longer fits")
 	check(TrainCoupling.join(train, stale) == route_error and train.count() == 2 and rear_train.count() == 1,
 		"Confirmation checks the same route fit before changing either consist")

@@ -210,7 +210,7 @@ func test_dialog() -> bool:
 func _check_dialog_layout(dialog: RoadRouteDialog, tab_name: String) -> void:
 	for frame: int in range(3):
 		await tree.process_frame
-	var panel: PanelContainer = dialog.get_node("OuterPanel")
+	var panel: PanelContainer = dialog.get_node("Panel")
 	var bounds: Rect2 = dialog.get_viewport_rect()
 	var panel_rect: Rect2 = panel.get_global_rect()
 	check(bounds.encloses(panel_rect) and panel_rect.get_center().distance_to(bounds.get_center()) <= 1.0,
@@ -434,8 +434,8 @@ func test_markers() -> bool:
 	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
 	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")
 
-	# Use the same entry point and confirmation control as the circular menu.
-	check(tool.open_placement_dialog(), "Menu action opens the marker naming dialog")
+	# Use the same entry point and confirmation control as the Build picker's road marker tool.
+	check(tool.open_placement_dialog(), "The tool opens the marker naming dialog")
 	var dialog: GameDialog = UiState.current_diag
 	check(dialog != null and dialog.dialog_key == "RoadMarkerDialog", "Marker action opens the naming dialog")
 	(dialog.get("_name") as LineEdit).text = "My marker"
@@ -445,7 +445,7 @@ func test_markers() -> bool:
 	check(absf(loader.markers.markers[0].offset - 17.3) < 0.02, "Marker stores the exact road offset, not a nearby shape node")
 	check(tool.open_placement_dialog(), "Second marker can be placed")
 	dialog = UiState.current_diag
-	(dialog.get("_side") as OptionButton).select(Enums.RoadSide.BOTH)
+	(dialog.get_node("%Choice") as OptionButton).select(Enums.RoadSide.BOTH)
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(loader.markers.markers.size() == 2 and loader.markers.markers[1].side == Enums.RoadSide.BOTH, "Choosing Both creates one BOTH marker")

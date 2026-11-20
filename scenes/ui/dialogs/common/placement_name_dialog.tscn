@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="1_frame"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/common/placement_name_dialog.gd" id="2_script"]
+
+[node name="PlacementNameDialog" instance=ExtResource("1_frame")]
+script = ExtResource("2_script")
+success_btn_text = "Place"
+
+[node name="Panel" parent="." index="0"]
+custom_minimum_size = Vector2(500, 340)
+
+[node name="NameEdit" type="LineEdit" parent="Panel/Padding/Layout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Choice" type="OptionButton" parent="Panel/Padding/Layout/Content" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OkButton" parent="Panel/Padding/Layout/Buttons" index="0"]
+visible = true
+size_flags_horizontal = 3
+text = "Place"
+
+[node name="CancelButton" parent="Panel/Padding/Layout/Buttons" index="1"]
+size_flags_horizontal = 3
+text = "Cancel"

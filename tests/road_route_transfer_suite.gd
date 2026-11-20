@@ -22,9 +22,13 @@ func run(scene_tree: SceneTree) -> int:
 	var old_vehicles: VehiclePlacer = Managers.vehicles
 	var old_catalog: InterchangesLoader = Managers.interchanges
 	_setup()
+	# Tests may switch the global driving mode; each one starts from the game default.
+	var default_follow: bool = RoadVehicle3D.follow_road_path
 	for test: StringName in test_names():
+		RoadVehicle3D.follow_road_path = default_follow
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
+	RoadVehicle3D.follow_road_path = default_follow
 	host.free()
 	for stop: AbstractStation in stops.values():
 		stop.connections.parent = null

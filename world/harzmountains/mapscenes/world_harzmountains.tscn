@@ -2070,7 +2070,7 @@ type_key = "COAL_PLANT"
 ind_name = "Silstedt Kohlenlager"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
-[node name="Fischery_Ilsenburg" type="Marker3D" parent="Industries" unique_id=887653807]
+[node name="Fishery_Ilsenburg" type="Marker3D" parent="Industries" unique_id=887653807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1722.9302, 6.787224, 914.16174)
 gizmo_extents = 10.0
 script = ExtResource("48_76jr6")

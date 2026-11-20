@@ -1,3 +1,7 @@
+## One vehicle type in the catalog list: name, optional preview.png and price. A
+## "~" before the price marks an estimate (pulling strength not yet catalogued).
+## Clicking announces the type on SignalBus.dialog_vehicle_selection; every item
+## listens and highlights itself only when it was the one chosen.
 class_name VehicleListItemUi extends PanelContainer
 
 signal clicked()

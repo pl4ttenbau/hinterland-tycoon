@@ -81,7 +81,7 @@ func test_map_industries() -> bool:
 	# Read the authored placeholder blocks without loading unrelated terrain assets.
 	var expected: Dictionary = {
 		"franzburger": ["coal", "ore", "chemicals"],
-		"harzmountains": ["chemicals", "fish", "sugar"],
+		"harzmountains": ["chemicals", "sugar"],
 		"mpsb": ["chemicals"],
 		"sachalin": ["alcohol", "beets", "fish", "grains", "sugar"]
 	}

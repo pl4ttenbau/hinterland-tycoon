@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="1_frame"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_vehicle_spawn/road_vehicle_spawn_dialog.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/road_vehicle_spawn/road_vehicle_type_preview.tscn" id="3_preview"]
+
+[node name="RoadVehicleSpawnDialog" instance=ExtResource("1_frame")]
+script = ExtResource("2_script")
+dialog_key = "SpawnRoadVehicleDialog"
+title_text = "Buy road vehicle"
+success_btn_text = "Buy vehicle"
+
+[node name="Panel" parent="." index="0"]
+custom_minimum_size = Vector2(704, 517)
+
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
+text = "Buy road vehicle"
+
+[node name="Content" parent="Panel/Padding/Layout" index="1"]
+theme_override_constants/separation = 12
+
+[node name="DepotDescription" type="Label" parent="Panel/Padding/Layout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Selection" type="HBoxContainer" parent="Panel/Padding/Layout/Content" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VehicleList" type="ItemList" parent="Panel/Padding/Layout/Content/Selection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VehiclePreview" parent="Panel/Padding/Layout/Content/Selection" instance=ExtResource("3_preview")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OkButton" parent="Panel/Padding/Layout/Buttons" index="0"]
+visible = true
+size_flags_horizontal = 3
+text = "Buy vehicle"
+
+[node name="CancelButton" parent="Panel/Padding/Layout/Buttons" index="1"]
+size_flags_horizontal = 3
+text = "Cancel"

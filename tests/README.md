@@ -6,10 +6,16 @@ sh tests/run-tests.sh
 
 The runner checks PATH for `godot4` or `godot`, then falls back to
 `/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64`. To override either,
-run `GODOT_BIN=/path/to/godot sh tests/run-tests.sh`. Open the project in Godot
-once on a fresh checkout so its assets are imported. The runner starts each
-suite in a separate headless process, prints the log directory, and exits
-with a nonzero status if any suite fails.
+run `GODOT_BIN=/path/to/godot sh tests/run-tests.sh`. Before the suites, the
+runner calls `godot --headless --import` once. That imports assets and refreshes
+the script class cache, so new or renamed `class_name`s resolve without opening
+the editor first; its output goes to `_import.log`. The runner then starts each
+suite in a separate headless process. Logs go to the git-ignored `tmp/` folder
+in the project, which each full run empties first. For each suite it prints
+PASS, FAIL or TIMEOUT and the seconds taken.
+TIMEOUT means the suite never quit and was stopped after 120 s, usually because
+a script error ended `_run()` before `quit()`. It exits with a nonzero status if
+any suite fails.
 
 Station creator checks:
 

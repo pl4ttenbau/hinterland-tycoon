@@ -1,4 +1,10 @@
-class_name ProspectDialog extends MenuShellDialog
+## Survey readings at one spot: how rich each mineable resource is there.
+## Two uses, set up by Prospecting:
+## - Prospect action: opens unsurveyed, with Prospect as the OK button (can_prospect);
+##   pressing it emits prospect_requested, and the survey places a sign.
+## - Clicking a survey sign: shows that sign's stored readings, no button.
+## message replaces the heading line when prospecting is not possible here.
+class_name ProspectDialog extends ModalGameDialog
 
 signal prospect_requested()
 
@@ -14,25 +20,32 @@ var readings: Dictionary[String, float]
 var message: String
 var can_prospect: bool = false
 
-@onready var _status: Label = %Status
+## Heading above the readings: unsurveyed, surveyed, or why prospecting is not
+## possible here. Content, not the frame's status line.
+@onready var _survey_state: Label = %SurveyState
 @onready var _grid: GridContainer = %Readings
 
 
 func _ready() -> void:
-	dialog_key = "ProspectDialog"
-	title_text = "Prospecting"
-	super._ready()
+	# 1. Wiring.
+	%OkButton.pressed.connect(_on_prospect_button_pressed)
+	# 2. Initial state: Prospect (the frame's OK) is only offered where a survey
+	#    can start; otherwise Close is the only button.
+	%OkButton.visible = can_prospect
 	if can_prospect:
-		_add_prospect_button()
+		%OkButton.grab_focus()
+	else:
+		%CancelButton.grab_focus()
+	# 3. Content.
 	show_readings(readings)
 
 
 func show_readings(result: Dictionary[String, float]) -> void:
 	readings = result
 	if message.is_empty():
-		_status.text = "Unsurveyed" if readings.is_empty() else "Richness at the surveyed spot"
+		_survey_state.text = "Unsurveyed" if readings.is_empty() else "Richness at the surveyed spot"
 	else:
-		_status.text = message
+		_survey_state.text = message
 	_grid.visible = not readings.is_empty()
 	for child: Node in _grid.get_children():
 		child.free()
@@ -56,20 +69,7 @@ static func richness_text(richness: float) -> String:
 	return "Trace" if richness > 0.0 and richness < TRACE_RICHNESS else "%d%%" % roundi(richness * 100.0)
 
 
-func _add_prospect_button() -> void:
-	# Reuse the shell's Close button and its existing modal connection in the two-button footer.
-	var close_button: Button = %OkButton
-	var actions := HBoxContainer.new()
-	close_button.get_parent().add_child(actions)
-	close_button.reparent(actions)
-	close_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
-	var prospect_button := Button.new()
-	prospect_button.name = "ProspectButton"
-	prospect_button.text = "Prospect"
-	prospect_button.theme_type_variation = &"PrimaryButton"
-	prospect_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	prospect_button.pressed.connect(prospect_requested.emit)
-	actions.add_child(prospect_button)
-	actions.move_child(prospect_button, 0)
-	prospect_button.grab_focus()
+
+func _on_prospect_button_pressed() -> void:
+	prospect_requested.emit()

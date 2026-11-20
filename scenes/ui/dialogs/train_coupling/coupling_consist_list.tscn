@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/train_coupling/coupling_consist_list.gd" id="1_script"]
+
+[node name="CouplingConsistList" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_script")
+
+[node name="Heading" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Selected consist"
+
+[node name="Vehicles" type="ItemList" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 232)
+layout_mode = 2
+size_flags_vertical = 3
+text_overrun_behavior = 3

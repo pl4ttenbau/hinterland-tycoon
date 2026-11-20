@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/station_creator/road_stop_options.gd" id="1_script"]
+
+[node name="RoadStopOptions" type="VBoxContainer"]
+script = ExtResource("1_script")
+
+[node name="RoadSideLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Side of the road"
+
+[node name="RoadSide" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Relative to the direction you were facing when you opened this dialog."

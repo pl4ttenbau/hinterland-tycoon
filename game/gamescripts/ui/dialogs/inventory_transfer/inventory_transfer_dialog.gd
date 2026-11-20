@@ -1,135 +1,85 @@
-## Coordinates reusable panels and a transfer service. No stock mutation lives in this UI.
+## Moves goods or passengers between two inventories near the player, e.g. the
+## truck they drive and the stop it stands at. Each side is an
+## InventoryTransferPanel: pick an inventory, then a row (a stack of one good,
+## or passengers for one destination). The middle column moves a quantity of the
+## selected row to the other side.
+##
+## Coordinates the two panels, the Passengers/Cargo tabs and the transfer
+## controls. InventoryTransferService owns all stock mutation and every rule
+## about what may move; layout lives in transfer_inventory_dialog.tscn.
 class_name InventoryTransferDialog extends ModalGameDialog
 
 ## Tests/previews can supply components without requiring a running map.
 var available_endpoints: Array[InventoryEndpoint] = []
 var _selection_service := InventorySelectionService.new()
-var _left: InventoryTransferPanel
-var _right: InventoryTransferPanel
-var _tabs: InventoryCategoryTabs
-var _quantity: SpinBox
-var _maximum: Button
-var _move_right: Button
-var _move_left: Button
-var _hint: Label
-var _status: Label
-var _overlay: ColorRect
+## The side the player touched last (0 = left, 1 = right). Max and the hint use
+## its selected row as the source; the move buttons name their own direction.
 var _active_side: int = 0
 
+@onready var _panel: PanelContainer = %Panel
+@onready var _tabs: InventoryCategoryTabs = %Tabs
+@onready var _left: InventoryTransferPanel = %LeftPanel
+@onready var _right: InventoryTransferPanel = %RightPanel
+@onready var _quantity: SpinBox = %Quantity
+@onready var _maximum: Button = %MaxButton
+@onready var _move_right: Button = %MoveRightButton
+@onready var _move_left: Button = %MoveLeftButton
+@onready var _hint: Label = %Hint
+
 func _ready() -> void:
-	dialog_key = "InventoryTransferDiag"
-	title_text = "Transfer inventory"
-	_build_layout()
+	# 1. Wiring.
+	_connect_signals()
+	# 2. Content: nearby inventories on both sides.
 	_refresh_available()
+	# 3. Initial state: start on Passengers when the left side carries them, else Cargo.
 	var passenger_default: bool = _left.endpoint != null and BaseGoodsType.ResourceCategory.PASSENGER in _left.endpoint.component().accepted_categories
 	_tabs.current_tab = 0 if passenger_default else 1
 	_set_mode(_tabs.current_tab)
-	_resize_dialog.call_deferred()
+	# 4. Layout: fit the window now and whenever it resizes.
+	_resize_dialog()
 	get_viewport().size_changed.connect(_resize_dialog)
 
-#region Composition and layout
-func _build_layout() -> void:
-	# Replace only the old content; keep the existing themed frame, title and close button.
-	var content: Node = get_node("OuterPanel/OuterMargin/OuterVLayout/Container")
-	for child: Node in content.get_children():
-		child.free()
-	get_node("OuterPanel/OuterMargin").custom_minimum_size = Vector2.ZERO
-	get_node("OuterPanel/OuterMargin/OuterVLayout").custom_minimum_size = Vector2.ZERO
-	_overlay = ColorRect.new()
-	_overlay.color = Color(0, 0, 0, 0.38)
-	add_child(_overlay)
-	move_child(_overlay, 0)
-	var layout := VBoxContainer.new()
-	layout.add_theme_constant_override("separation", 14)
-	content.add_child(layout)
-	_build_toolbar(layout)
-	_build_panels(layout)
-	_build_footer(layout)
-
-func _build_toolbar(layout: VBoxContainer) -> void:
-	_tabs = InventoryCategoryTabs.new()
+#region Layout and wiring
+func _connect_signals() -> void:
 	_tabs.tab_changed.connect(_set_mode)
-	layout.add_child(_tabs)
+	for panel: InventoryTransferPanel in [_left, _right]:
+		panel.selection_changed.connect(_update_controls)
+	_left.activated.connect(_on_left_activated)
+	_right.activated.connect(_on_right_activated)
+	_quantity.value_changed.connect(_on_quantity_changed)
+	_maximum.pressed.connect(_set_maximum)
+	_move_right.pressed.connect(_on_move_right_pressed)
+	_move_left.pressed.connect(_on_move_left_pressed)
+	%RefreshButton.pressed.connect(_refresh_available)
+	%CloseButton.pressed.connect(close_all)
 
-func _build_panels(layout: VBoxContainer) -> void:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 18)
-	row.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	layout.add_child(row)
-	_left = InventoryTransferPanel.new()
-	_left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(_left)
-	var controls := VBoxContainer.new()
-	controls.custom_minimum_size.x = 150
-	controls.alignment = BoxContainer.ALIGNMENT_CENTER
-	row.add_child(controls)
-	_build_transfer_controls(controls)
-	_right = InventoryTransferPanel.new()
-	_right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(_right)
-	_left.selection_changed.connect(_update_controls)
-	_right.selection_changed.connect(_update_controls)
-	_left.activated.connect(func(): _active_side = 0; _update_controls())
-	_right.activated.connect(func(): _active_side = 1; _update_controls())
-
-func _build_transfer_controls(box: VBoxContainer) -> void:
-	var caption := Label.new()
-	caption.text = "Quantity"
-	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	box.add_child(caption)
-	_quantity = SpinBox.new()
-	_quantity.min_value = 0.1
-	_quantity.max_value = 1000000
-	_quantity.step = 0.1
-	_quantity.value = 1
-	_quantity.value_changed.connect(func(_value: float): _update_controls())
-	box.add_child(_quantity)
-	_maximum = _button(box, "Max", _set_maximum)
-	_move_right = _button(box, "Move right →", func(): _transfer(_left, _right))
-	_move_left = _button(box, "← Move left", func(): _transfer(_right, _left))
-	_move_right.theme_type_variation = &"PrimaryButton"
-	_move_left.theme_type_variation = &"PrimaryButton"
-	_hint = Label.new()
-	_hint.custom_minimum_size.x = 150
-	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_hint.theme_type_variation = &"MutedLabel"
-	box.add_child(_hint)
-
-func _build_footer(layout: VBoxContainer) -> void:
-	var row := HBoxContainer.new()
-	layout.add_child(row)
-	_status = Label.new()
-	_status.text = "Select a resource, choose a quantity, then move it."
-	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(_status)
-	_button(row, "Refresh nearby", _refresh_available)
-	var close: Button = get_node("%CloseButton")
-	close.theme_type_variation = &"ManagementButton"
-	close.add_theme_font_size_override("font_size", 22)
-	close.pressed.connect(close_all)
-
-func _button(parent: Node, text: String, callback: Callable) -> Button:
-	var button := Button.new()
-	button.text = text
-	button.theme_type_variation = &"ManagementButton"
-	button.pressed.connect(callback)
-	parent.add_child(button)
-	return button
-
+## Grow with the window, but keep a margin around the panel.
 func _resize_dialog() -> void:
 	var viewport: Vector2 = get_viewport_rect().size
-	var extent := Vector2(minf(1140, viewport.x - 48), minf(740, viewport.y - 48)) * 0.5
-	var panel: Control = get_node("OuterPanel")
-	panel.offset_left = -extent.x
-	panel.offset_right = extent.x
-	panel.offset_top = -extent.y
-	panel.offset_bottom = extent.y
-	_overlay.position = -global_position
-	_overlay.size = viewport
+	_panel.custom_minimum_size = Vector2(minf(1140, viewport.x - 48), minf(740, viewport.y - 48))
+
+func _on_left_activated() -> void:
+	_active_side = 0
+	_update_controls()
+
+func _on_right_activated() -> void:
+	_active_side = 1
+	_update_controls()
+
+func _on_quantity_changed(_value: float) -> void:
+	_update_controls()
+
+func _on_move_right_pressed() -> void:
+	_transfer(_left, _right)
+
+func _on_move_left_pressed() -> void:
+	_transfer(_right, _left)
 #endregion
 
 #region Endpoint and row selection
+## Rediscovers nearby inventories, e.g. after the player walked to another stop.
+## Keeps each side on the same inventory if it is still around; otherwise the
+## left side falls back to the first entry and the right side to a stop.
 func _refresh_available() -> void:
 	var left_id: int = _inventory_id(_left.endpoint)
 	var right_id: int = _inventory_id(_right.endpoint)
@@ -140,6 +90,8 @@ func _refresh_available() -> void:
 	_right.set_endpoints(items, right)
 	_update_controls()
 
+## Identity of the inventory behind an endpoint. Endpoint objects are rebuilt on
+## every discovery, so sides are matched by the inventory instance instead.
 func _inventory_id(endpoint: InventoryEndpoint) -> int:
 	return endpoint.inventory().get_instance_id() if endpoint != null and endpoint.available() else -1
 
@@ -149,6 +101,8 @@ func _find_inventory(items: Array[InventoryEndpoint], id: int, fallback: int) ->
 			return index
 	return fallback if fallback < items.size() else -1
 
+## The left side usually starts on the player or their vehicle; the most likely
+## partner is a stop, so the right side prefers one, then anything else.
 func _default_right(items: Array[InventoryEndpoint], left: int) -> int:
 	for index: int in range(items.size()):
 		if index != left and items[index].kind == InventoryEndpoint.Kind.STOP:
@@ -158,6 +112,8 @@ func _default_right(items: Array[InventoryEndpoint], left: int) -> int:
 			return index
 	return -1
 
+## Switches between Passengers (tab 0) and Cargo (tab 1). Passengers move in
+## whole people; cargo in tenths of a unit.
 func _set_mode(index: int) -> void:
 	if _left == null or _right == null:
 		return
@@ -169,6 +125,9 @@ func _set_mode(index: int) -> void:
 	_right.set_passengers(passengers)
 	_update_controls()
 
+## Re-checks both directions after any change of selection or quantity: each
+## move button is enabled only if that transfer would succeed, and its tooltip
+## says why not. The hint shows how much of the active side's row can move.
 func _update_controls() -> void:
 	if _right == null or _move_left == null:
 		return
@@ -188,6 +147,7 @@ func _update_controls() -> void:
 		if maximum <= 0:
 			_hint.text = left_error if _active_side == 0 else right_error
 
+## Max: the most of the active side's selected row the other side can take.
 func _set_maximum() -> void:
 	var source: InventoryTransferPanel = _left if _active_side == 0 else _right
 	var target: InventoryTransferPanel = _right if _active_side == 0 else _left
@@ -197,6 +157,9 @@ func _set_maximum() -> void:
 #endregion
 
 #region Transfer commands
+## Moves the quantity of source's selected row to target and reports the result.
+## Passengers that reach their destination interchange count as arrived and do
+## not join the waiting stock there, hence the separate message.
 func _transfer(source: InventoryTransferPanel, target: InventoryTransferPanel) -> void:
 	var stack: InventoryStack = source.selected_stack
 	var amount: float = _quantity.value
@@ -204,14 +167,12 @@ func _transfer(source: InventoryTransferPanel, target: InventoryTransferPanel) -
 	var completes_trip: bool = InventoryTransferService.completes_passenger_trip(target.endpoint, stack)
 	var error: String = InventoryTransferService.transfer(source.endpoint, target.endpoint, stack, amount)
 	if not error.is_empty():
-		_status.text = error
-		_status.add_theme_color_override("font_color", Color("e9a48d"))
+		show_status(error, StatusTone.ERROR)
 		return
 	var quantity_text: String = InventoryPresentation.quantity(amount)
 	if completes_trip:
-		_status.text = "%s %s arrived at %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label]
+		show_status("%s %s arrived at %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label], StatusTone.SUCCESS)
 	else:
-		_status.text = "Moved %s %s to %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label]
-	_status.add_theme_color_override("font_color", Color("c8dfb1"))
+		show_status("Moved %s %s to %s." % [quantity_text, str(stack.good_key).capitalize(), destination_label], StatusTone.SUCCESS)
 	_update_controls()
 #endregion

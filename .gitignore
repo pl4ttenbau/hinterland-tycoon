@@ -14,3 +14,6 @@ exports/
 
 *.pyc
 tools/__pycache__/
+
+# Local test logs
+/tmp/

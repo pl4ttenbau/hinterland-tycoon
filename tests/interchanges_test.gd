@@ -302,8 +302,8 @@ func test_station_dialogs(rail_link: NodeStationLink3D, bus: BusStop3D) -> bool:
 		var city: Label = dialog.get_node("%TownName")
 		var tabs: TabContainer = dialog.get_node("%StationTabs")
 		var stops: ItemList = dialog.get_node("%Stops")
-		var coverage: ItemList = dialog.get_node("%CoverageList")
-		var goods: ItemList = dialog.get_node("%InventoryList")
+		var coverage: ItemList = dialog.get_node("%Coverage")
+		var goods: ItemList = dialog.get_node("%Inventory/%InventoryList")
 		check(headline.text == bus.station.station_name, "Station dialog shows the interchange name")
 		check(city.visible and city.text == bus.station.town_name, "The station name has a city heading")
 		check(tabs.get_tab_title(0) == "Stops" and tabs.get_tab_title(1) == "Coverage"

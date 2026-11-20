@@ -11,7 +11,6 @@ var _selected_vehicle_type: String
 
 
 func _ready() -> void:
-	dialog_key = "ComposeTrainDialog"
 	%AddVehicleButton.pressed.connect(_on_add_vehicle_pressed)
 	%SpawnTrainButton.pressed.connect(_on_spawn_pressed)
 	%AddableVehiclesList.selection_changed.connect(_on_vehicle_selected)
@@ -53,5 +52,4 @@ func _on_spawn_pressed() -> void:
 		%PurchaseError.text = error
 		%PurchaseError.show()
 		return
-	diag_result = vehicle_rows
-	close_all()
+	close_with(vehicle_rows)

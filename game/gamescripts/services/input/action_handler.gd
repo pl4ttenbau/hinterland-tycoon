@@ -3,6 +3,7 @@
 class_name ActionHandler extends Node
 
 const ROUTE_DIALOG = preload("res://game/gamescripts/ui/dialogs/road_route/road_route_dialog.gd")
+const BUILD_PICKER = preload("res://scenes/ui/dialogs/build/build_picker_dialog.tscn")
 
 
 func _on_action_triggered(action_name: String) -> bool:
@@ -21,17 +22,11 @@ func _on_action_triggered(action_name: String) -> bool:
 		"Prospect":
 			return Prospecting.open_at_player()
 		"Build":
-			return MinePlacement.open_picker(GlobalState.world_container)
-		"CreateStop":
-			return _open_station_creator()
-		"RoadMarker":
-			return _open_road_marker_tool()
-		"RailSignal":
-			return _open_rail_signal_tool()
+			return _open_build_picker()
 		"RemoveRailSignal":
 			return _remove_rail_signal()
 
-	# Enter, Connect and Inventory use the BaseAction children in GameSession.
+	# Enter, Spawn and Inventory use the BaseAction children in GameSession.
 	for child: Node in get_children():
 		if child is BaseAction and child.key == action_name:
 			child.on_trigger()
@@ -43,6 +38,27 @@ func _open_dialog(scene_path: String) -> bool:
 	var scene := load(scene_path) as PackedScene
 	get_tree().root.add_child(scene.instantiate())
 	return true
+
+
+## Build is the one placement action: the picker lists industries and placement
+## tools, and whatever is chosen starts once the picker has left the tree and released world input.
+func _open_build_picker() -> bool:
+	var picker := BUILD_PICKER.instantiate() as GameDialog
+	picker.closed.connect(_on_build_picker_closed.bind(picker), CONNECT_ONE_SHOT)
+	get_tree().root.add_child(picker)
+	return true
+
+
+func _on_build_picker_closed(result: Variant, picker: GameDialog) -> void:
+	if result is BuildChoice:
+		picker.tree_exited.connect(_start_build_choice.bind(result), CONNECT_ONE_SHOT | CONNECT_DEFERRED)
+
+
+func _start_build_choice(choice: BuildChoice) -> void:
+	if choice.is_tool():
+		BuildTools.start(choice.tool)
+	else:
+		MinePlacement.start(GlobalState.world_container, choice)
 
 
 func _open_road_route_dialog() -> bool:
@@ -65,29 +81,6 @@ func _open_coupling_dialog() -> bool:
 		return false
 	get_tree().root.add_child(TrainCouplingDialog.create(train.locomotive))
 	return true
-
-
-func _open_station_creator() -> bool:
-	if not is_instance_valid(Managers.interchanges):
-		return false
-	var creator := Managers.interchanges.get_node_or_null("StationCreator") as StationCreator
-	return is_instance_valid(creator) and creator.open_placement_dialog()
-
-
-func _open_road_marker_tool() -> bool:
-	if not is_instance_valid(Managers.roads):
-		return false
-	for child: Node in Managers.roads.get_children():
-		if child is RoadMarkerTool:
-			return child.open_placement_dialog()
-	return false
-
-
-func _open_rail_signal_tool() -> bool:
-	if not is_instance_valid(Managers.rails):
-		return false
-	var tool := Managers.rails.get_node_or_null("RailSignalTool") as RailSignalTool
-	return is_instance_valid(tool) and tool.open_placement_dialog()
 
 
 func _remove_rail_signal() -> bool:

@@ -77,6 +77,7 @@ theme_type_variation = &"ManagementButton"
 text = "Add action"
 
 [node name="RemoveAction" type="Button" parent="Buttons" unique_id=1352397454]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ManagementButton"
@@ -90,12 +91,8 @@ theme_type_variation = &"ManagementButton"
 text = "Up"
 
 [node name="MoveDown" type="Button" parent="Buttons" unique_id=220298992]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ManagementButton"
 text = "Down"
-
-[connection signal="pressed" from="Buttons/AddAction" to="." method="_add_action"]
-[connection signal="pressed" from="Buttons/RemoveAction" to="." method="_remove_action"]
-[connection signal="pressed" from="Buttons/MoveUp" to="." method="_move_action" binds= [-1]]
-[connection signal="pressed" from="Buttons/MoveDown" to="." method="_move_action" binds= [1]]

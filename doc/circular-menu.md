@@ -9,25 +9,24 @@ gameplay mouse and movement settings before launching an action or dialog.
 | --- | --- |
 | Enter train / Leave vehicle | A train is available / player occupies a vehicle |
 | Auto-routing | Player occupies a road vehicle |
-| Place road marker | On foot, with the session's roads loaded |
-| Create stop | On foot, with the session's station services loaded |
-| Connect tracks | On foot, with rail services loaded |
+| Remove rail signal | On foot, next to a rail signal |
+| Coupling | Player occupies a train that can couple or split |
 | Prospect | During gameplay. Step out of the vehicle to take a reading. |
-| Build | During gameplay with terrain loaded |
+| Build | During gameplay; opens the Build picker |
 | Inventory | During gameplay |
 | Company information | During gameplay; empty themed dialog |
 | Game menu | During gameplay; empty themed dialog |
 
-Auto-routing opens the existing itinerary editor. Marker placement opens the
-existing naming/side dialog at the player's current road position. Choose Both
-there for a two-sided marker. These replace the R and M gameplay shortcuts.
-The dispatcher rechecks road-vehicle occupancy and marker placement conditions.
-Company and Game Menu now open empty themed modal shells with Close/Escape.
-Place remains omitted until there is a working placement action.
+Auto-routing opens the existing itinerary editor; it replaces the R shortcut.
+The dispatcher rechecks road-vehicle occupancy when the action runs.
+Company and Game Menu open themed dialogs that close with Close or Escape.
 Vehicle spawning remains tied to depot selection rather than an arbitrary location.
 
-Create stop captures the player's position on a road or track. A physical stop
-within 50 m opens the add-to-station dialog; otherwise it opens the new-station
+Everything that places something on the map lives in the Build picker, not in
+this menu. Build is the one placement action here.
+
+Create stop (Build, Station tab) captures the player's position on a road or
+track. A physical stop within 50 m opens the add-to-station dialog; otherwise it opens the new-station
 dialog. See [Station creator](station-creator.md).
 
 Prospect opens a dialog for the player's current position. Select Prospect in
@@ -37,7 +36,12 @@ existing sign reuse that sign. Positive readings below 10% display as Trace.
 The session's ProspectingManager owns the signs and supports fresh geology
 queries at a world X/Z point.
 
-Build opens the Industry, Station and Misc tabs. Select Mine under Industry to
+Build opens a picker with Industry, Station, Rail and Road tabs, and a preview
+panel for the hovered option (an empty square until preview images exist).
+Station holds Create stop, Rail holds Connect tracks and Place rail signal, Road
+holds Place road marker (a two-sided marker: choose Both in its dialog). Tools
+that cannot be used where the player stands are hidden, and a tab with nothing
+usable shows "Nothing to build here." Select Mine under Industry to
 move an opaque green model over the terrain and see nearby survey results.
 Press Enter to choose a resource at the selected point, then select Build mine.
 The mine produces that resource through the normal industry inventory, with
@@ -61,10 +65,16 @@ The action icons in `assets/ui/icons/actions/` use a shared 32 px grid and cream
   that opens the dialog.
 - `GameDialog` registers on tree entry and emits its result once when closing.
   The top dialog receives Escape. `ModalGameDialog` holds the input block until
-  tree exit, including when a scene is unloaded. `MenuShellDialog` adds a
-  shared layout, content slot, and Close button. To open the next stage of a
-  flow such as mine placement, take the result from `closed` and wait for
-  `tree_exited` before adding the next dialog.
+  tree exit, including when a scene is unloaded. Dialogs inherit
+  `scenes/ui/dialogs/default_dialog.tscn`: a headline, a `%Content` slot, a
+  `%Status` line (`show_status()` with a hint, error, success or accent tone)
+  and a button row. `%OkButton` is the optional primary action; `%CancelButton`
+  closes without a result and is wired by `GameDialog` itself.
+  `close_with(result)` closes with a result. A `ConfirmDialog` wires OK to
+  `submit()`, either overridden or handed in as `on_submit` by the code that
+  opens it: an error stays in the status line, "" closes. To open the next
+  stage of a flow such as mine placement, take the result from `closed` and
+  wait for `tree_exited` before adding the next dialog.
 
 ## Owned control
 

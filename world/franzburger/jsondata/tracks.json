@@ -1,15 +1,15 @@
 [
 	{
-		"num": 1,
+		"num": 1.0,
 		"name": "Stralsund-Ost Bhf Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [838.2, 23.81, -285.1],
+				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [84],
-					"setTo": 84
+					"connectiveTracks": [84.0],
+					"setTo": 84.0
 				}
 			},
 			{
@@ -29,29 +29,29 @@
 				"handleIn": [2.19, -0.01, 2.89]
 			},
 			{
-				"pos": [808.08, 23.7, -332.94],
+				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [3],
-					"setTo": 3
+					"connectiveTracks": [3.0],
+					"setTo": 3.0
 				}
 			}
 		]
 	},
 	{
-		"num": 2,
+		"num": 2.0,
 		"name": "Stralsund-Ost Bhf Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [838.2, 23.81, -285.1],
+				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [84],
-					"setTo": 84
+					"connectiveTracks": [84.0],
+					"setTo": 84.0
 				}
 			},
 			{
-				"pos": [830.3, 23.57, -291.6],
+				"pos": [830.30, 23.57, -291.60],
 				"handleIn": [3.44, 0.05, 2.73]
 			},
 			{
@@ -67,26 +67,26 @@
 				"handleIn": [1.7, 0.0, 4.26]
 			},
 			{
-				"pos": [808.08, 23.7, -332.94],
+				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [3],
-					"setTo": 3
+					"connectiveTracks": [3.0],
+					"setTo": 3.0
 				}
 			}
-		 ]
+		]
 	},
 	{
-		"num": 3,
+		"num": 3.0,
 		"name": "Stralsund-Ost <> Stadtwald.",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [808.08, 23.7, -332.94],
+				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [2, 3],
+					"connectiveTracks": [2.0, 3.0],
 					"static": true,
-					"setTo": 2
+					"setTo": 2.0
 				}
 			},
 			{
@@ -106,7 +106,7 @@
 				"handleIn": [5.17, 0.0, 2.02]
 			},
 			{
-				"pos": [742.01, 23.6, -385.37],
+				"pos": [742.01, 23.60, -385.37],
 				"handleIn": [9.389999, -0.01, 1.07]
 			},
 			{
@@ -122,31 +122,31 @@
 				"handleIn": [8.309999, -0.07, 0.11]
 			},
 			{
-				"pos": [640.47, 24.09, -377.9],
+				"pos": [640.47, 24.09, -377.90],
 				"handleIn": [10.94, 0.01, 1.18]
 			},
 			{
-				"pos": [610.3, 24.29, -384.44],
+				"pos": [610.30, 24.29, -384.44],
 				"fork": {
-					"connectiveTracks": [4],
+					"connectiveTracks": [4.0],
 					"static": true,
-					"setTo": 4
+					"setTo": 4.0
 				}
 			}
 		]
 	},
 	{
-		"num": 4,
+		"num": 4.0,
 		"name": "Stralsund-Stadtwald <> Krönnewitz",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [610.3, 24.29, -384.44],
+				"pos": [610.30, 24.29, -384.44],
 				"fork": {
-					"connectiveTracks": [3],
+					"connectiveTracks": [3.0],
 					"static": true,
-					"setTo": 3
+					"setTo": 3.0
 				}
 			},
 			{
@@ -154,7 +154,7 @@
 				"handleIn": [5.44, 0.0, 1.65]
 			},
 			{
-				"pos": [573.02, 24.7, -396.92],
+				"pos": [573.02, 24.70, -396.92],
 				"handleIn": [6.93, -0.03, 3.04]
 			},
 			{
@@ -186,27 +186,27 @@
 				"handleIn": [3.99, -0.05, 5.02]
 			},
 			{
-				"pos": [440.4, 24.0, -477.83],
+				"pos": [440.40, 24.00, -477.83],
 				"fork": {
-					"connectiveTracks": [5],
+					"connectiveTracks": [5.0],
 					"static": true,
-					"setTo": 5
+					"setTo": 5.0
 				}
 			}
 		]
 	},
 	{
-		"num": 5,
+		"num": 5.0,
 		"name": "Krönnewitz <> Altenpleen Station",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [440.4, 24.0, -477.83],
+				"pos": [440.40, 24.00, -477.83],
 				"fork": {
-					"connectiveTracks": [4],
+					"connectiveTracks": [4.0],
 					"static": true,
-					"setTo": 4
+					"setTo": 4.0
 				}
 			},
 			{
@@ -214,7 +214,7 @@
 				"handleIn": [2.47, 0.02, 4.14]
 			},
 			{
-				"pos": [424.2, 24.18, -503.5],
+				"pos": [424.20, 24.18, -503.50],
 				"handleIn": [2.38, -0.05, 3.84]
 			},
 			{
@@ -222,7 +222,7 @@
 				"handleIn": [2.73, 0.05, 4.53]
 			},
 			{
-				"pos": [404.05, 23.64, -535.3],
+				"pos": [404.05, 23.64, -535.30],
 				"handleIn": [5.04, 0.01, 7.53]
 			},
 			{
@@ -230,34 +230,34 @@
 				"handleIn": [7.04, -0.01, 5.85]
 			},
 			{
-				"pos": [370.7, 23.8, -569.57],
+				"pos": [370.70, 23.80, -569.57],
 				"handleIn": [5.58, 0.0, 4.34]
 			},
 			{
-				"pos": [355.51, 23.4, -579.73],
+				"pos": [355.51, 23.40, -579.73],
 				"handleIn": [5.26, 0.04, 1.99]
 			},
 			{
-				"pos": [344.8, 23.3, -582.68],
+				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [6, 7],
+					"connectiveTracks": [6.0, 7.0],
 					"static": true,
-					"setTo": 6
+					"setTo": 6.0
 				}
 			}
 		]
 	},
 	{
-		"num": 6,
+		"num": 6.0,
 		"name": "Altenpleen Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [344.8, 23.3, -582.68],
+				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [5],
-					"setTo": 5
+					"connectiveTracks": [5.0],
+					"setTo": 5.0
 				}
 			},
 			{
@@ -269,37 +269,37 @@
 				"handleIn": [4.94, -0.01, -1.05]
 			},
 			{
-				"pos": [303.37, 23.32, -579.5],
+				"pos": [303.37, 23.32, -579.50],
 				"handleIn": [3.91, 0.01, -0.79]
 			},
 			{
-				"pos": [290.2, 23.42, -578.17],
+				"pos": [290.20, 23.42, -578.17],
 				"handleIn": [3.65, -0.01, -0.2]
 			},
 			{
-				"pos": [276.96, 23.27, -578.1],
+				"pos": [276.96, 23.27, -578.10],
 				"handleIn": [4.08, 0.02, 0.0]
 			},
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [8],
-					"setTo": 8
+					"connectiveTracks": [8.0],
+					"setTo": 8.0
 				}
 			}
 		]
 	},
 	{
-		"num": 7,
+		"num": 7.0,
 		"name": "Altenpleen Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [344.8, 23.3, -582.68],
+				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [5],
-					"setTo": 5
+					"connectiveTracks": [5.0],
+					"setTo": 5.0
 				}
 			},
 			{
@@ -307,7 +307,7 @@
 				"handleIn": [3.64, -0.02, -0.58]
 			},
 			{
-				"pos": [325.5, 23.54, -579.05],
+				"pos": [325.50, 23.54, -579.05],
 				"handleIn": [4.09, -0.02, -1.03]
 			},
 			{
@@ -319,7 +319,7 @@
 				"handleIn": [3.79, -0.03, -0.19]
 			},
 			{
-				"pos": [285.5, 23.65, -574.52],
+				"pos": [285.50, 23.65, -574.52],
 				"handleIn": [3.69, 0.0, 0.58]
 			},
 			{
@@ -329,14 +329,14 @@
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [8],
-					"setTo": 8
+					"connectiveTracks": [8.0],
+					"setTo": 8.0
 				}
 			}
 		]
 	},
 	{
-		"num": 8,
+		"num": 8.0,
 		"name": "Altenpleen Station <> Fork",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -344,13 +344,13 @@
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [6, 7],
+					"connectiveTracks": [6.0, 7.0],
 					"static": true,
-					"setTo": 7
+					"setTo": 7.0
 				}
 			},
 			{
-				"pos": [256.55, 23.28, -578.1],
+				"pos": [256.55, 23.28, -578.10],
 				"handleIn": [5.2, 0.0, 0.12]
 			},
 			{
@@ -358,25 +358,25 @@
 				"handleIn": [4.25, 0.0, 0.21]
 			},
 			{
-				"pos": [233.75, 23.45, -580.1],
+				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [9, 10],
-					"setTo": 10
+					"connectiveTracks": [9.0, 10.0],
+					"setTo": 10.0
 				}
 			}
 		]
 	},
 	{
-		"num": 9,
+		"num": 9.0,
 		"name": "Altenpleen Fork Barth Klausdorf Direction",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [233.75, 23.45, -580.1],
+				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [8],
-					"setTo": 8
+					"connectiveTracks": [8.0],
+					"setTo": 8.0
 				}
 			},
 			{
@@ -412,27 +412,27 @@
 				"handleIn": [-2.85, -0.04, 4.35]
 			},
 			{
-				"pos": [204.43, 24.0, -713.11],
+				"pos": [204.43, 24.00, -713.11],
 				"fork": {
-					"connectiveTracks": [11],
+					"connectiveTracks": [11.0],
 					"static": true,
-					"setTo": 11
+					"setTo": 11.0
 				}
 			}
 		]
 	},
 	{
-		"num": 10,
+		"num": 10.0,
 		"name": "Altenpleen Fork Barth Barth Direction",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [233.75, 23.45, -580.1],
+				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [8],
+					"connectiveTracks": [8.0],
 					"static": true,
-					"setTo": 8
+					"setTo": 8.0
 				}
 			},
 			{
@@ -452,63 +452,63 @@
 				"handleIn": [4.31, 0.0, -5.5]
 			},
 			{
-				"pos": [162.51, 23.5, -515.85],
+				"pos": [162.51, 23.50, -515.85],
 				"handleIn": [1.65, 0.0, -4.8]
 			},
 			{
-				"pos": [152.8, 23.9, -501.74],
+				"pos": [152.80, 23.90, -501.74],
 				"handleIn": [4.14, -0.05, -3.55]
 			},
 			{
-				"pos": [139.33, 24.0, -489.16],
+				"pos": [139.33, 24.00, -489.16],
 				"handleIn": [4.73, -0.01, -5.34]
 			},
 			{
-				"pos": [121.52, 24.0, -483.15],
+				"pos": [121.52, 24.00, -483.15],
 				"handleIn": [6.23, 0.0, 0.0]
 			},
 			{
-				"pos": [101.05, 24.0, -484.24],
+				"pos": [101.05, 24.00, -484.24],
 				"fork": {
-					"connectiveTracks": [43],
+					"connectiveTracks": [43.0],
 					"static": true,
-					"setTo": 43
+					"setTo": 43.0
 				}
 			}
 		]
 	},
 	{
-		"num": 11,
+		"num": 11.0,
 		"name": "Muuks Stretch",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [204.43, 24.0, -713.11],
+				"pos": [204.43, 24.00, -713.11],
 				"fork": {
-					"connectiveTracks": [9],
+					"connectiveTracks": [9.0],
 					"static": true,
-					"setTo": 9
+					"setTo": 9.0
 				}
 			},
 			{
-				"pos": [211.27, 23.9, -725.89],
+				"pos": [211.27, 23.90, -725.89],
 				"handleIn": [-4.29, 0.01, 6.94]
 			},
 			{
-				"pos": [225.89, 23.97, -744.8],
+				"pos": [225.89, 23.97, -744.80],
 				"handleIn": [-5.63, -0.01, 6.14]
 			},
 			{
-				"pos": [244.67, 23.75, -759.0],
+				"pos": [244.67, 23.75, -759.00],
 				"handleIn": [-6.88, 0.02, 3.23]
 			},
 			{
-				"pos": [266.69, 23.9, -768.93],
+				"pos": [266.69, 23.90, -768.93],
 				"handleIn": [-6.71, -0.01, 2.33]
 			},
 			{
-				"pos": [288.02, 24.0, -773.86],
+				"pos": [288.02, 24.00, -773.86],
 				"handleIn": [-7.7, -0.01, 2.36]
 			},
 			{
@@ -518,15 +518,15 @@
 			{
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
-					"connectiveTracks": [12],
+					"connectiveTracks": [12.0],
 					"static": true,
-					"setTo": 12
+					"setTo": 12.0
 				}
 			}
 		]
 	},
 	{
-		"num": 12,
+		"num": 12.0,
 		"name": "Muuks <> Klausdorf Fork",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -534,9 +534,9 @@
 			{
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
-					"connectiveTracks": [11],
+					"connectiveTracks": [11.0],
 					"static": true,
-					"setTo": 11
+					"setTo": 11.0
 				}
 			},
 			{
@@ -552,11 +552,11 @@
 				"handleIn": [-4.02, -0.01, 3.08]
 			},
 			{
-				"pos": [410.53, 24.6, -852.06],
+				"pos": [410.53, 24.60, -852.06],
 				"handleIn": [-5.34, -0.02, 3.55]
 			},
 			{
-				"pos": [428.9, 24.5, -863.97],
+				"pos": [428.90, 24.50, -863.97],
 				"handleIn": [-6.33, 0.01, 3.57]
 			},
 			{
@@ -574,15 +574,15 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [13, 16],
+					"connectiveTracks": [13.0, 16.0],
 					"static": true,
-					"setTo": 13
+					"setTo": 13.0
 				}
 			}
 		]
 	},
 	{
-		"num": 13,
+		"num": 13.0,
 		"name": "Klausdorf Fork <> Station",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -590,8 +590,8 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [12],
-					"setTo": 12
+					"connectiveTracks": [12.0],
+					"setTo": 12.0
 				}
 			},
 			{
@@ -605,15 +605,15 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [14, 15],
+					"connectiveTracks": [14.0, 15.0],
 					"static": true,
-					"setTo": 14
+					"setTo": 14.0
 				}
 			}
 		]
 	},
 	{
-		"num": 14,
+		"num": 14.0,
 		"name": "Klausdorf Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -621,30 +621,30 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [13],
-					"setTo": 13
+					"connectiveTracks": [13.0],
+					"setTo": 13.0
 				}
 			},
 			{
-			"pos": [496.97, 23.72, -930.13],
-			"handleIn": [-0.4, 0.01, 4.41]
-		},
-		{
-			"pos": [496.67, 23.72, -941.49],
-			"handleIn": [0.36, 0.0, 3.51]
-		},
-		{
-			"pos": [495.58, 23.57, -953.1],
-			"handleIn": [0.35, 0.02, 2.93]
-		},
-		{
-			"pos": [494.74, 23.52, -961.27],
-			"end": true
-		}
+				"pos": [496.97, 23.72, -930.13],
+				"handleIn": [-0.4, 0.01, 4.41]
+			},
+			{
+				"pos": [496.67, 23.72, -941.49],
+				"handleIn": [0.36, 0.0, 3.51]
+			},
+			{
+				"pos": [495.58, 23.57, -953.10],
+				"handleIn": [0.35, 0.02, 2.93]
+			},
+			{
+				"pos": [494.74, 23.52, -961.27],
+				"end": true
+			}
 		]
 	},
 	{
-		"num": 15,
+		"num": 15.0,
 		"name": "Klausdorf Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -652,8 +652,8 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [13],
-					"setTo": 13
+					"connectiveTracks": [13.0],
+					"setTo": 13.0
 				}
 			},
 			{
@@ -661,7 +661,7 @@
 				"handleIn": [0.37, -0.01, 3.63]
 			},
 			{
-				"pos": [492.08, 23.81, -941.6],
+				"pos": [492.08, 23.81, -941.60],
 				"handleIn": [0.56, 0.0, 3.34]
 			},
 			{
@@ -669,7 +669,7 @@
 				"handleIn": [0.39, 0.04, 3.29]
 			},
 			{
-				"pos": [488.9, 23.63, -967.04],
+				"pos": [488.90, 23.63, -967.04],
 				"handleIn": [0.39, -0.01, 3.71]
 			},
 			{
@@ -679,7 +679,7 @@
 		]
 	},
 	{
-		"num": 16,
+		"num": 16.0,
 		"name": "Klausdorf Depot Branch",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -687,8 +687,8 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [12],
-					"setTo": 12
+					"connectiveTracks": [12.0],
+					"setTo": 12.0
 				}
 			},
 			{
@@ -700,11 +700,11 @@
 				"handleIn": [0.45, -0.05, 4.5]
 			},
 			{
-				"pos": [483.98, 24.0, -932.85],
+				"pos": [483.98, 24.00, -932.85],
 				"handleIn": [0.98, -0.01, 3.49]
 			},
 			{
-				"pos": [480.67, 24.1, -941.68],
+				"pos": [480.67, 24.10, -941.68],
 				"handleIn": [1.2, -0.02, 2.69]
 			},
 			{
@@ -713,16 +713,16 @@
 		]
 	},
 	{
-		"num": 17,
+		"num": 17.0,
 		"name": "Damgarten FKB Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-1382.57,24.24,116.66],
+				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [19],
-					"setTo": 19
+					"connectiveTracks": [19.0],
+					"setTo": 19.0
 				}
 			},
 			{
@@ -730,11 +730,11 @@
 				"handleIn": [3.89, -0.03, -1.54]
 			},
 			{
-				"pos": [-1401.66, 24.4, 123.39],
+				"pos": [-1401.66, 24.40, 123.39],
 				"handleIn": [3.64, 0.0, -1.27]
 			},
 			{
-				"pos": [-1416.59, 24.4, 128.27],
+				"pos": [-1416.59, 24.40, 128.27],
 				"handleIn": [4.38, -0.03, -1.53]
 			},
 			{
@@ -742,29 +742,29 @@
 				"handleIn": [3.0, -0.01, -0.99]
 			},
 			{
-				"pos": [-1438.6, 24.26, 134.94],
+				"pos": [-1438.60, 24.26, 134.94],
 				"handleIn": [3.71, -0.04, -0.39]
 			},
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [20],
-					"setTo": 20
+					"connectiveTracks": [20.0],
+					"setTo": 20.0
 				}
 			}
 		]
 	},
 	{
-		"num": 18,
+		"num": 18.0,
 		"name": "Damgarten FKB Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-1382.57,24.24,116.66],
+				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [19],
-					"setTo": 19
+					"connectiveTracks": [19.0],
+					"setTo": 19.0
 				}
 			},
 			{
@@ -790,24 +790,24 @@
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [20],
-					"setTo": 20
+					"connectiveTracks": [20.0],
+					"setTo": 20.0
 				}
 			}
 		]
 	},
 	{
-		"num": 19,
+		"num": 19.0,
 		"name": "Damgarten FKB Station Depot",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-1382.57,24.24,116.66],
+				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [17, 18],
+					"connectiveTracks": [17.0, 18.0],
 					"static": true,
-					"setTo": 17
+					"setTo": 17.0
 				}
 			},
 			{
@@ -820,7 +820,7 @@
 		]
 	},
 	{
-		"num": 20,
+		"num": 20.0,
 		"name": "Damgarten FKB Bend",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -828,9 +828,9 @@
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [17, 18],
+					"connectiveTracks": [17.0, 18.0],
 					"static": true,
-					"setTo": 18
+					"setTo": 18.0
 				}
 			},
 			{
@@ -846,11 +846,11 @@
 				"handleIn": [6.99, 0.04, -1.37]
 			},
 			{
-				"pos": [-1517.21, 23.4, 178.61],
+				"pos": [-1517.21, 23.40, 178.61],
 				"handleIn": [5.31, 0.08, -1.77]
 			},
 			{
-				"pos": [-1537.96, 23.2, 186.62],
+				"pos": [-1537.96, 23.20, 186.62],
 				"handleIn": [7.47, 0.02, -3.11]
 			},
 			{
@@ -862,7 +862,7 @@
 				"handleIn": [3.3, 0.01, 3.05]
 			},
 			{
-				"pos": [-1575.49, 23.5, 164.0],
+				"pos": [-1575.49, 23.50, 164.00],
 				"handleIn": [1.05, -0.05, 6.69]
 			},
 			{
@@ -870,29 +870,29 @@
 				"handleIn": [-0.95, -0.02, 5.23]
 			},
 			{
-				"pos": [-1567.97, 23.9, 125.61],
+				"pos": [-1567.97, 23.90, 125.61],
 				"fork": {
-					"connectiveTracks": [21],
-					"setTo": 21
+					"connectiveTracks": [21.0],
+					"setTo": 21.0
 				}
 			}
 		]
-	 },
+	},
 	{
-		"num": 21,
+		"num": 21.0,
 		"name": "Damgarten FKB Stretch",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-1567.97, 23.9, 125.61],
+				"pos": [-1567.97, 23.90, 125.61],
 				"fork": {
-					"connectiveTracks": [20],
-					"setTo": 20
+					"connectiveTracks": [20.0],
+					"setTo": 20.0
 				}
 			},
 			{
-				"pos": [-1559.95, 24.0, 109.67],
+				"pos": [-1559.95, 24.00, 109.67],
 				"handleIn": [-2.56, -0.01, 5.55]
 			},
 			{
@@ -904,7 +904,7 @@
 				"handleIn": [-1.42, 0.02, 6.11]
 			},
 			{
-				"pos": [-1545.2, 23.79, 53.5],
+				"pos": [-1545.20, 23.79, 53.50],
 				"handleIn": [-2.02, -0.02, 5.46]
 			},
 			{
@@ -930,14 +930,14 @@
 			{
 				"pos": [-1507.94, 23.54, -68.97],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [22.0],
+					"setTo": 22.0
 				}
 			}
 		]
 	},
 	{
-		"num": 22,
+		"num": 22.0,
 		"name": "Damgarten <> Saal",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -945,8 +945,8 @@
 			{
 				"pos": [-1507.94, 23.54, -68.97],
 				"fork": {
-					"connectiveTracks": [21],
-					"setTo": 21
+					"connectiveTracks": [21.0],
+					"setTo": 21.0
 				}
 			},
 			{
@@ -984,15 +984,15 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [23, 24],
+					"connectiveTracks": [23.0, 24.0],
 					"static": true,
-					"setTo": 23
+					"setTo": 23.0
 				}
 			}
 		]
 	},
 	{
-		"num": 23,
+		"num": 23.0,
 		"name": "Saal Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1000,12 +1000,12 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [22.0],
+					"setTo": 22.0
 				}
 			},
 			{
-				"pos": [-1389.56, 23.5, -199.25],
+				"pos": [-1389.56, 23.50, -199.25],
 				"handleIn": [-1.99, -0.04, 3.66]
 			},
 			{
@@ -1017,20 +1017,20 @@
 				"handleIn": [-5.11, -0.04, 5.7]
 			},
 			{
-				"pos": [-1362.74, 24.0, -230.19],
+				"pos": [-1362.74, 24.00, -230.19],
 				"handleIn": [-4.35, -0.02, 3.11]
 			},
 			{
-				"pos": [-1355.81, 24.0, -236.47],
+				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [25],
-					"setTo": 25
+					"connectiveTracks": [25.0],
+					"setTo": 25.0
 				}
 			}
 		]
 	},
 	{
-		"num": 24,
+		"num": 24.0,
 		"name": "Saal Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1038,8 +1038,8 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [22.0],
+					"setTo": 22.0
 				}
 			},
 			{
@@ -1047,38 +1047,38 @@
 				"handleIn": [-3.13, -0.05, 2.93]
 			},
 			{
-				"pos": [-1378.54, 23.72, -207.0],
+				"pos": [-1378.54, 23.72, -207.00],
 				"handleIn": [-2.96, -0.03, 3.4]
 			},
 			{
-				"pos": [-1369.07, 23.9, -218.48],
+				"pos": [-1369.07, 23.90, -218.48],
 				"handleIn": [-2.54, -0.02, 3.19]
 			},
 			{
-				"pos": [-1363.24, 23.9, -226.39],
+				"pos": [-1363.24, 23.90, -226.39],
 				"handleIn": [-2.36, 0.0, 3.44]
 			},
 			{
-				"pos": [-1355.81, 24.0, -236.47],
+				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [25],
-					"setTo": 25
+					"connectiveTracks": [25.0],
+					"setTo": 25.0
 				}
 			}
 		]
 	},
 	{
-		"num": 25,
+		"num": 25.0,
 		"name": "Saal <> Herrmanshof",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-1355.81, 24.0, -236.47],
+				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [23, 24],
+					"connectiveTracks": [23.0, 24.0],
 					"static": true,
-					"setTo": 24
+					"setTo": 24.0
 				}
 			},
 			{
@@ -1086,7 +1086,7 @@
 				"handleIn": [-5.78, -0.01, 3.86]
 			},
 			{
-				"pos": [-1328.9, 24.29, -249.02],
+				"pos": [-1328.90, 24.29, -249.02],
 				"handleIn": [-6.56, -0.03, 1.16]
 			},
 			{
@@ -1094,11 +1094,11 @@
 				"handleIn": [-6.82, -0.02, -0.09]
 			},
 			{
-				"pos": [-1283.86, 24.39, -249.8],
+				"pos": [-1283.86, 24.39, -249.80],
 				"handleIn": [-7.33, 0.01, -0.14]
 			},
 			{
-				"pos": [-1261.03, 24.39, -249.1],
+				"pos": [-1261.03, 24.39, -249.10],
 				"handleIn": [-9.04, 0.0, -0.54]
 			},
 			{
@@ -1110,7 +1110,7 @@
 				"handleIn": [-5.02, 0.01, -1.12]
 			},
 			{
-				"pos": [-1205.23, 24.8, -238.22],
+				"pos": [-1205.23, 24.80, -238.22],
 				"handleIn": [-6.04, -0.05, -1.34]
 			},
 			{
@@ -1118,7 +1118,7 @@
 				"handleIn": [-3.98, 0.03, -0.87]
 			},
 			{
-				"pos": [-1178.49, 24.9, -232.18],
+				"pos": [-1178.49, 24.90, -232.18],
 				"handleIn": [-5.56, -0.05, -1.88]
 			},
 			{
@@ -1126,20 +1126,20 @@
 				"handleIn": [-7.47, -0.03, -2.33]
 			},
 			{
-				"pos": [-1137.5, 25.29, -221.03],
+				"pos": [-1137.50, 25.29, -221.03],
 				"handleIn": [-4.2, -0.01, -1.1]
 			},
 			{
 				"pos": [-1123.59, 25.02, -217.38],
 				"fork": {
-					"connectiveTracks": [26],
-					"setTo": 26
+					"connectiveTracks": [26.0],
+					"setTo": 26.0
 				}
 			}
 		]
 	},
 	{
-		"num": 26,
+		"num": 26.0,
 		"name": "Herrmannshof <> Lüdershagen",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1147,8 +1147,8 @@
 			{
 				"pos": [-1123.59, 25.02, -217.38],
 				"fork": {
-					"connectiveTracks": [25],
-					"setTo": 25
+					"connectiveTracks": [25.0],
+					"setTo": 25.0
 				}
 			},
 			{
@@ -1168,7 +1168,7 @@
 				"handleIn": [-7.36, 0.07, -0.14]
 			},
 			{
-				"pos": [-1002.74, 25.81, -200.8],
+				"pos": [-1002.74, 25.81, -200.80],
 				"handleIn": [-5.74, -0.05, 0.88]
 			},
 			{
@@ -1176,7 +1176,7 @@
 				"handleIn": [5.31, 0.05, -0.63]
 			},
 			{
-				"pos": [-955.8, 25.35, -206.82],
+				"pos": [-955.80, 25.35, -206.82],
 				"handleIn": [-7.24, -0.01, 0.57]
 			},
 			{
@@ -1184,29 +1184,29 @@
 				"handleIn": [-9.429999, 0.01, 0.12]
 			},
 			{
-				"pos": [-903.0, 25.02, -210.55],
+				"pos": [-903.00, 25.02, -210.55],
 				"fork": {
-					"connectiveTracks": [27],
-					"setTo": 27
+					"connectiveTracks": [27.0],
+					"setTo": 27.0
 				}
 			}
 		]
 	},
 	{
-		"num": 27,
+		"num": 27.0,
 		"name": "Lüdershagen <> Spoldershagen",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-903.0, 25.02, -210.55],
+				"pos": [-903.00, 25.02, -210.55],
 				"fork": {
-					"connectiveTracks": [26],
-					"setTo": 26
+					"connectiveTracks": [26.0],
+					"setTo": 26.0
 				}
 			},
 			{
-				"pos": [-884.88, 24.85, -212.6],
+				"pos": [-884.88, 24.85, -212.60],
 				"handleIn": [-8.42, 0.02, 1.09]
 			},
 			{
@@ -1214,7 +1214,7 @@
 				"handleIn": [-5.83, 0.0, 1.69]
 			},
 			{
-				"pos": [-842.17, 24.7, -224.3],
+				"pos": [-842.17, 24.70, -224.30],
 				"handleIn": [-5.65, 0.02, 2.17]
 			},
 			{
@@ -1230,11 +1230,11 @@
 				"handleIn": [-4.33, 0.03, 2.31]
 			},
 			{
-				"pos": [-775.86, 23.9, -255.43],
+				"pos": [-775.86, 23.90, -255.43],
 				"handleIn": [-5.0, 0.03, 2.67]
 			},
 			{
-				"pos": [-755.53, 23.91, -268.1],
+				"pos": [-755.53, 23.91, -268.10],
 				"handleIn": [-5.86, 0.0, 4.24]
 			},
 			{
@@ -1242,34 +1242,34 @@
 				"handleIn": [-3.38, 0.0, 2.75]
 			},
 			{
-				"pos": [-733.55, 23.9, -285.36],
+				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [28, 29],
+					"connectiveTracks": [28.0, 29.0],
 					"static": true,
-					"setTo": 28
+					"setTo": 28.0
 				}
 			}
 		]
 	},
 	{
-		"num": 28,
+		"num": 28.0,
 		"name": "Spoldershagen Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-733.55, 23.9, -285.36],
+				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [27],
-					"setTo": 27
+					"connectiveTracks": [27.0],
+					"setTo": 27.0
 				}
 			},
 			{
-				"pos": [-727.92, 24.0, -292.5],
+				"pos": [-727.92, 24.00, -292.50],
 				"handleIn": [-1.97, -0.02, 2.47]
 			},
 			{
-				"pos": [-721.04, 23.9, -300.43],
+				"pos": [-721.04, 23.90, -300.43],
 				"handleIn": [-2.27, 0.02, 2.3]
 			},
 			{
@@ -1277,7 +1277,7 @@
 				"handleIn": [-1.81, 0.02, 2.6]
 			},
 			{
-				"pos": [-709.3, 23.81, -316.6],
+				"pos": [-709.30, 23.81, -316.60],
 				"handleIn": [-1.17, 0.0, 2.42]
 			},
 			{
@@ -1285,33 +1285,33 @@
 				"handleIn": [-1.1, 0.0, 2.95]
 			},
 			{
-				"pos": [-703.24, 23.63, -331.9],
+				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [30],
-					"setTo": 30
+					"connectiveTracks": [30.0],
+					"setTo": 30.0
 				}
 			}
 		]
 	},
 	{
-		"num": 29,
+		"num": 29.0,
 		"name": "Spoldershagen Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-733.55, 23.9, -285.36],
+				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [27],
-					"setTo": 27
+					"connectiveTracks": [27.0],
+					"setTo": 27.0
 				}
 			},
 			{
-				"pos": [-726.52, 24.0, -291.48],
+				"pos": [-726.52, 24.00, -291.48],
 				"handleIn": [-2.22, -0.02, 1.28]
 			},
 			{
-				"pos": [-718.83, 24.0, -296.6],
+				"pos": [-718.83, 24.00, -296.60],
 				"handleIn": [-2.38, 0.0, 2.15]
 			},
 			{
@@ -1331,26 +1331,26 @@
 				"handleIn": [-0.12, 0.03, 2.39]
 			},
 			{
-				"pos": [-703.24, 23.63, -331.9],
+				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [30],
-					"setTo": 30
+					"connectiveTracks": [30.0],
+					"setTo": 30.0
 				}
 			}
 		]
 	},
 	{
-		"num": 30,
+		"num": 30.0,
 		"name": "Spoldershagen <> Barth Airport",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-703.24, 23.63, -331.9],
+				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [28, 29],
+					"connectiveTracks": [28.0, 29.0],
 					"static": true,
-					"setTo": 29
+					"setTo": 29.0
 				}
 			},
 			{
@@ -1374,7 +1374,7 @@
 				"handleIn": [-4.57, 0.0, -0.35]
 			},
 			{
-				"pos": [-632.7, 23.54, -377.49],
+				"pos": [-632.70, 23.54, -377.49],
 				"handleIn": [-6.84, 0.0, -0.83]
 			},
 			{
@@ -1390,25 +1390,25 @@
 				"handleIn": [-4.72, -0.01, 2.46]
 			},
 			{
-				"pos": [-559.07, 24.1, -398.85],
+				"pos": [-559.07, 24.10, -398.85],
 				"fork": {
-					"connectiveTracks": [31],
-					"setTo": 31
+					"connectiveTracks": [31.0],
+					"setTo": 31.0
 				}
 			}
 		]
 	},
 	{
-		"num": 31,
+		"num": 31.0,
 		"name": "Barth Airport <> Barth Station Fork",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-559.07, 24.1, -398.85],
+				"pos": [-559.07, 24.10, -398.85],
 				"fork": {
-					"connectiveTracks": [30],
-					"setTo": 30
+					"connectiveTracks": [30.0],
+					"setTo": 30.0
 				}
 			},
 			{
@@ -1420,7 +1420,7 @@
 				"handleIn": [-3.25, -0.08, 3.56]
 			},
 			{
-				"pos": [-524.72, 26.1, -433.06],
+				"pos": [-524.72, 26.10, -433.06],
 				"handleIn": [-0.29, -0.11, 4.49]
 			},
 			{
@@ -1438,15 +1438,15 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [32, 33],
+					"connectiveTracks": [32.0, 33.0],
 					"static": true,
-					"setTo": 32
+					"setTo": 32.0
 				}
 			}
 		]
 	},
 	{
-		"num": 32,
+		"num": 32.0,
 		"name": "Barth Station Ribnitz Exit <> Barth Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1454,21 +1454,21 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [31],
-					"setTo": 31
+					"connectiveTracks": [31.0],
+					"setTo": 31.0
 				}
 			},
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [34],
-					"setTo": 34
+					"connectiveTracks": [34.0],
+					"setTo": 34.0
 				}
 			}
 		]
 	},
 	{
-		"num": 33,
+		"num": 33.0,
 		"name": "Barth Station Ribnitz Exit <> Barth Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1476,21 +1476,21 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [31],
-					"setTo": 31
+					"connectiveTracks": [31.0],
+					"setTo": 31.0
 				}
 			},
 			{
-				"pos": [-536.9, 25.35, -497.38],
+				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [35],
-					"setTo": 35
+					"connectiveTracks": [35.0],
+					"setTo": 35.0
 				}
 			}
 		]
 	},
 	{
-		"num": 34,
+		"num": 34.0,
 		"name": "Barth Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1498,9 +1498,9 @@
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [31, 37],
+					"connectiveTracks": [31.0, 37.0],
 					"static": true,
-					"setTo": 31
+					"setTo": 31.0
 				}
 			},
 			{
@@ -1512,23 +1512,23 @@
 				"handleIn": [0.0, 0.07, 0.0]
 			},
 			{
-				"pos": [-554.04, 23.9, -531.82],
+				"pos": [-554.04, 23.90, -531.82],
 				"end": true
 			}
 		]
 	},
 	{
-		"num": 35,
+		"num": 35.0,
 		"name": "Barth Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-536.9, 25.35, -497.38],
+				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [33, 36],
+					"connectiveTracks": [33.0, 36.0],
 					"static": true,
-					"setTo": 33
+					"setTo": 33.0
 				}
 			},
 			{
@@ -1536,7 +1536,7 @@
 				"handleIn": [0.0, 0.08, 0.0]
 			},
 			{
-				"pos": [-542.29, 24.7, -512.96],
+				"pos": [-542.29, 24.70, -512.96],
 				"handleIn": [0.0, 0.07, 0.0]
 			},
 			{
@@ -1550,16 +1550,16 @@
 		]
 	},
 	{
-		"num": 36,
+		"num": 36.0,
 		"name": "Barth Station Stralsund Exit <> Barth Station Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
 		"points": [
 			{
-				"pos": [-536.9, 25.35, -497.38],
+				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [35],
-					"setTo": 35
+					"connectiveTracks": [35.0],
+					"setTo": 35.0
 				}
 			},
 			{
@@ -1569,14 +1569,14 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [38],
-					"setTo": 38
+					"connectiveTracks": [38.0],
+					"setTo": 38.0
 				}
 			}
 		]
 	},
 	{
-		"num": 37,
+		"num": 37.0,
 		"name": "Barth Station Stralsund Exit <> Barth Station Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1584,8 +1584,8 @@
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [34],
-					"setTo": 34
+					"connectiveTracks": [34.0],
+					"setTo": 34.0
 				}
 			},
 			{
@@ -1595,14 +1595,14 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [38],
-					"setTo": 38
+					"connectiveTracks": [38.0],
+					"setTo": 38.0
 				}
 			}
 		]
 	},
 	{
-		"num": 38,
+		"num": 38.0,
 		"name": "Barth Station Stralsund Exit <> Barth Harbour Fork",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1610,9 +1610,9 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [36, 37],
+					"connectiveTracks": [36.0, 37.0],
 					"static": true,
-					"setTo": 37
+					"setTo": 37.0
 				}
 			},
 			{
@@ -1630,14 +1630,14 @@
 			{
 				"pos": [-488.66, 27.17, -474.28],
 				"fork": {
-					"connectiveTracks": [39],
-					"setTo": 39
+					"connectiveTracks": [39.0],
+					"setTo": 39.0
 				}
 			}
 		]
 	},
 	{
-		"num": 39,
+		"num": 39.0,
 		"name": "Barth Harbour Fork <> Zipke",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1645,12 +1645,12 @@
 			{
 				"pos": [-488.66, 27.17, -474.28],
 				"fork": {
-					"connectiveTracks": [38],
-					"setTo": 38
+					"connectiveTracks": [38.0],
+					"setTo": 38.0
 				}
 			},
 			{
-				"pos": [-477.1, 26.55, -483.99],
+				"pos": [-477.10, 26.55, -483.99],
 				"handleIn": [-3.28, 0.08, 3.27]
 			},
 			{
@@ -1666,7 +1666,7 @@
 				"handleIn": [-2.8, 0.1, 3.25]
 			},
 			{
-				"pos": [-425.34, 25.18, -538.3],
+				"pos": [-425.34, 25.18, -538.30],
 				"handleIn": [-3.77, 0.02, 3.39]
 			},
 			{
@@ -1712,14 +1712,14 @@
 			{
 				"pos": [-264.06, 23.28, -476.59],
 				"fork": {
-					"connectiveTracks": [40],
-					"setTo": 40
+					"connectiveTracks": [40.0],
+					"setTo": 40.0
 				}
 			}
 		]
 	},
 	{
-		"num": 40,
+		"num": 40.0,
 		"name": "Zipke <> Gr. Kordshagen",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1727,8 +1727,8 @@
 			{
 				"pos": [-264.06, 23.28, -476.59],
 				"fork": {
-					"connectiveTracks": [39],
-					"setTo": 39
+					"connectiveTracks": [39.0],
+					"setTo": 39.0
 				}
 			},
 			{
@@ -1748,11 +1748,11 @@
 				"handleIn": [-4.36, -0.01, 0.03]
 			},
 			{
-				"pos": [-201.9, 23.29, -484.61],
+				"pos": [-201.90, 23.29, -484.61],
 				"handleIn": [-4.68, 0.01, -1.13]
 			},
 			{
-				"pos": [-188.1, 23.45, -478.87],
+				"pos": [-188.10, 23.45, -478.87],
 				"handleIn": [-4.19, -0.02, -2.26]
 			},
 			{
@@ -1760,7 +1760,7 @@
 				"handleIn": [-3.67, 0.0, -2.27]
 			},
 			{
-				"pos": [-157.3, 23.54, -463.59],
+				"pos": [-157.30, 23.54, -463.59],
 				"handleIn": [-5.53, -0.01, -1.25]
 			},
 			{
@@ -1774,15 +1774,15 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [41, 42],
+					"connectiveTracks": [41.0, 42.0],
 					"static": true,
-					"setTo": 41
+					"setTo": 41.0
 				}
 			}
 		]
 	},
 	{
-		"num": 41,
+		"num": 41.0,
 		"name": "Gr. Kordshagen Track 1",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1790,8 +1790,8 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [40],
-					"setTo": 40
+					"connectiveTracks": [40.0],
+					"setTo": 40.0
 				}
 			},
 			{
@@ -1817,14 +1817,14 @@
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [43],
-					"setTo": 43
+					"connectiveTracks": [43.0],
+					"setTo": 43.0
 				}
 			}
 		]
 	},
 	{
-		"num": 42,
+		"num": 42.0,
 		"name": "Gr. Kordshagen Track 2",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1832,8 +1832,8 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [40],
-					"setTo": 40
+					"connectiveTracks": [40.0],
+					"setTo": 40.0
 				}
 			},
 			{
@@ -1845,20 +1845,20 @@
 				"handleIn": [-3.72, -0.01, -0.32]
 			},
 			{
-				"pos": [-67.18999, 23.81, -455.4],
+				"pos": [-67.19, 23.81, -455.40],
 				"handleIn": [-4.16, 0.0, -0.2]
 			},
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [43],
-					"setTo": 43
+					"connectiveTracks": [43.0],
+					"setTo": 43.0
 				}
 			}
 		]
 	},
 	{
-		"num": 43,
+		"num": 43.0,
 		"name": "Gr. Kordshagen <> Altenpleen Fork",
 		"type": "1000_MM",
 		"tag": "FKB-N",
@@ -1866,9 +1866,9 @@
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [41, 42],
+					"connectiveTracks": [41.0, 42.0],
 					"static": true,
-					"setTo": 42
+					"setTo": 42.0
 				}
 			},
 			{
@@ -1896,7 +1896,7 @@
 				"handleIn": [-6.32, 0.0, 2.98]
 			},
 			{
-				"pos": [60.2, 23.63, -489.3],
+				"pos": [60.20, 23.63, -489.30],
 				"handleIn": [-8.35, 0.01, -0.43]
 			},
 			{
@@ -1904,16 +1904,16 @@
 				"handleIn": [-6.32, -0.02, -0.95]
 			},
 			{
-				"pos": [101.05, 24.0, -484.24],
+				"pos": [101.05, 24.00, -484.24],
 				"fork": {
-					"connectiveTracks": [10],
-					"setTo": 10
+					"connectiveTracks": [10.0],
+					"setTo": 10.0
 				}
 			}
 		]
 	},
 	{
-		"num": 44,
+		"num": 44.0,
 		"name": "Stralsund HBF Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -1921,9 +1921,9 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [100, 115],
+					"connectiveTracks": [100.0, 115.0],
 					"static": true,
-					"setTo": 100
+					"setTo": 100.0
 				}
 			},
 			{
@@ -1939,21 +1939,21 @@
 				"handleIn": [2.33, 0.0, 4.1]
 			},
 			{
-				"pos": [792.9, 24.05, -289.6],
+				"pos": [792.90, 24.05, -289.60],
 				"handleIn": [1.76, 0.0, 2.68]
 			},
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [46, 47, 49],
+					"connectiveTracks": [46.0, 47.0, 49.0],
 					"static": true,
-					"setTo": 47
+					"setTo": 47.0
 				}
 			}
 		]
 	},
 	{
-		"num": 45,
+		"num": 45.0,
 		"name": "Stralsund HBF Track 3",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -1961,9 +1961,9 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [101, 103, 114],
+					"connectiveTracks": [101.0, 103.0, 114.0],
 					"static": true,
-					"setTo": 101
+					"setTo": 101.0
 				}
 			},
 			{
@@ -1975,7 +1975,7 @@
 				"handleIn": [1.68, 0.01, 3.14]
 			},
 			{
-				"pos": [799.68, 24.1, -267.69],
+				"pos": [799.68, 24.10, -267.69],
 				"handleIn": [2.64, 0.0, 4.53]
 			},
 			{
@@ -1985,15 +1985,15 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [48, 50],
+					"connectiveTracks": [48.0, 50.0],
 					"static": true,
-					"setTo": 50
+					"setTo": 50.0
 				}
 			}
 		]
 	},
 	{
-		"num": 46,
+		"num": 46.0,
 		"name": "Stralsund HBF Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2012,20 +2012,20 @@
 				"handleIn": [2.97, 0.0, 4.73]
 			},
 			{
-				"pos": [791.78, 24.03, -298.2],
+				"pos": [791.78, 24.03, -298.20],
 				"handleIn": [3.39, 0.0, 3.32]
 			},
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [47],
-					"setTo": 47
+					"connectiveTracks": [47.0],
+					"setTo": 47.0
 				}
 			}
 		]
 	},
 	{
-		"num": 47,
+		"num": 47.0,
 		"name": "Stralsund HBF Rostock Exit F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2033,27 +2033,27 @@
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [44, 46],
+					"connectiveTracks": [44.0, 46.0],
 					"static": true,
-					"setTo": 44
+					"setTo": 44.0
 				}
 			},
 			{
-				"pos": [778.4, 23.98, -311.5],
+				"pos": [778.40, 23.98, -311.50],
 				"handleIn": [1.09, 0.0, 1.25]
 			},
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [49, 106],
+					"connectiveTracks": [49.0, 106.0],
 					"static": true,
-					"setTo": 49
+					"setTo": 49.0
 				}
 			}
 		]
 	},
 	{
-		"num": 48,
+		"num": 48.0,
 		"name": "Stralsund HBF Rostock Exit B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2061,26 +2061,25 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45.0],
+					"setTo": 45.0
 				}
-				
 			},
 			{
-				"pos": [771.1, 23.86, -312.63],
+				"pos": [771.10, 23.86, -312.63],
 				"handleIn": [4.14, 0.02, 3.22]
 			},
 			{
-				"pos": [761.4, 23.81, -318.1],
+				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [52],
-					"setTo": 52
+					"connectiveTracks": [52.0],
+					"setTo": 52.0
 				}
 			}
 		]
 	},
 	{
-		"num": 49,
+		"num": 49.0,
 		"name": "Stralsund HBF Rostock Exit Cross B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2088,25 +2087,25 @@
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [47],
-					"setTo": 47
+					"connectiveTracks": [47.0],
+					"setTo": 47.0
 				}
 			},
 			{
-				"pos": [768.88, 23.77, -318.5],
+				"pos": [768.88, 23.77, -318.50],
 				"handleIn": [1.92, 0.0, 0.98]
 			},
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51.0],
+					"setTo": 51.0
 				}
 			}
 		]
 	},
 	{
-		"num": 50,
+		"num": 50.0,
 		"name": "Stralsund HBF Rostock Exit Cross B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2114,8 +2113,8 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45.0],
+					"setTo": 45.0
 				}
 			},
 			{
@@ -2125,14 +2124,14 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51.0],
+					"setTo": 51.0
 				}
 			}
 		]
 	},
 	{
-		"num": 51,
+		"num": 51.0,
 		"name": "Stralsund HBF Rostocker Chaussee F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2140,9 +2139,9 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [49, 50],
+					"connectiveTracks": [49.0, 50.0],
 					"static": true,
-					"setTo": 49
+					"setTo": 49.0
 				}
 			},
 			{
@@ -2150,11 +2149,11 @@
 				"handleIn": [5.79, 0.01, 1.76]
 			},
 			{
-				"pos": [722.95, 23.72, -333.9],
+				"pos": [722.95, 23.72, -333.90],
 				"handleIn": [5.73, -0.01, 0.99]
 			},
 			{
-				"pos": [699.36, 24.17, -336.2],
+				"pos": [699.36, 24.17, -336.20],
 				"handleIn": [6.84, -0.04, 0.05]
 			},
 			{
@@ -2166,34 +2165,34 @@
 				"handleIn": [4.16, -0.07, -1.11]
 			},
 			{
-				"pos": [634.57, 24.8, -325.18],
+				"pos": [634.57, 24.80, -325.18],
 				"handleIn": [3.03, 0.01, -1.09]
 			},
 			{
-				"pos": [616.74, 25.1, -318.31],
+				"pos": [616.74, 25.10, -318.31],
 				"handleIn": [4.27, -0.03, -1.69]
 			},
 			{
 				"pos": [590.27, 26.27, -306.01],
 				"fork": {
-					"connectiveTracks": [53],
-					"setTo": 53
+					"connectiveTracks": [53.0],
+					"setTo": 53.0
 				}
 			}
 		]
 	},
 	{
-		"num": 52,
+		"num": 52.0,
 		"name": "Stralsund Rostocker Chaussee B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [761.4, 23.81, -318.1],
+				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [48, 106],
+					"connectiveTracks": [48.0, 106.0],
 					"static": true,
-					"setTo": 48
+					"setTo": 48.0
 				}
 			},
 			{
@@ -2205,7 +2204,7 @@
 				"handleIn": [4.94, 0.01, 0.56]
 			},
 			{
-				"pos": [700.03, 24.36, -332.3],
+				"pos": [700.03, 24.36, -332.30],
 				"handleIn": [5.49, -0.05, 0.01]
 			},
 			{
@@ -2229,16 +2228,16 @@
 				"handleIn": [6.0, -0.05, -2.69]
 			},
 			{
-				"pos": [590.76, 26.33, -301.9],
+				"pos": [590.76, 26.33, -301.90],
 				"fork": {
-					"connectiveTracks": [54],
-					"setTo": 54
+					"connectiveTracks": [54.0],
+					"setTo": 54.0
 				}
 			}
 		]
 	},
 	{
-		"num": 53,
+		"num": 53.0,
 		"name": "Langendorf F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2246,12 +2245,12 @@
 			{
 				"pos": [590.27, 26.27, -306.01],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51.0],
+					"setTo": 51.0
 				}
 			},
 			{
-				"pos": [576.53, 26.79, -300.0],
+				"pos": [576.53, 26.79, -300.00],
 				"handleIn": [4.91, -0.08, -1.54]
 			},
 			{
@@ -2277,23 +2276,23 @@
 			{
 				"pos": [404.54, 26.32, -279.62],
 				"fork": {
-					"connectiveTracks": [55],
-					"setTo": 55
+					"connectiveTracks": [55.0],
+					"setTo": 55.0
 				}
 			}
 		]
 	},
 	{
-		"num": 54,
+		"num": 54.0,
 		"name": "Langendorf B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [590.76, 26.33, -301.9],
+				"pos": [590.76, 26.33, -301.90],
 				"fork": {
-					"connectiveTracks": [52],
-					"setTo": 52
+					"connectiveTracks": [52.0],
+					"setTo": 52.0
 				}
 			},
 			{
@@ -2327,14 +2326,14 @@
 			{
 				"pos": [405.37, 26.32, -275.62],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56.0],
+					"setTo": 56.0
 				}
 			}
 		]
 	},
 	{
-		"num": 55,
+		"num": 55.0,
 		"name": "Pantelitz F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2342,8 +2341,8 @@
 			{
 				"pos": [404.54, 26.32, -279.62],
 				"fork": {
-					"connectiveTracks": [53],
-					"setTo": 53
+					"connectiveTracks": [53.0],
+					"setTo": 53.0
 				}
 			},
 			{
@@ -2369,15 +2368,15 @@
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [57, 59],
+					"connectiveTracks": [57.0, 59.0],
 					"static": true,
-					"setTo": 59
+					"setTo": 59.0
 				}
 			}
 		]
 	},
 	{
-		"num": 56,
+		"num": 56.0,
 		"name": "Pantelitz B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2385,12 +2384,12 @@
 			{
 				"pos": [405.37, 26.32, -275.62],
 				"fork": {
-					"connectiveTracks": [54],
-					"setTo": 54
+					"connectiveTracks": [54.0],
+					"setTo": 54.0
 				}
 			},
 			{
-				"pos": [383.05, 26.61, -272.6],
+				"pos": [383.05, 26.61, -272.60],
 				"handleIn": [5.92, -0.03, -1.42]
 			},
 			{
@@ -2410,17 +2409,17 @@
 				"handleIn": [6.23, -0.08, -0.17]
 			},
 			{
-				"pos": [276.04, 26.8, -255.0],
+				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [58, 60],
+					"connectiveTracks": [58.0, 60.0],
 					"static": true,
-					"setTo": 58
+					"setTo": 58.0
 				}
 			}
 		]
 	},
 	{
-		"num": 57,
+		"num": 57.0,
 		"name": "Martenshagen Station Stralsund Exit F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2428,66 +2427,65 @@
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [55],
-					"setTo": 55
+					"connectiveTracks": [55.0],
+					"setTo": 55.0
 				}
 			},
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [61],
-					"setTo": 61
+					"connectiveTracks": [61.0],
+					"setTo": 61.0
 				}
 			}
 		]
 	},
 	{
-		"num": 58,
+		"num": 58.0,
 		"name": "Martenshagen Station Stralsund Exit B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [276.04, 26.8, -255.0],
+				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56.0],
+					"setTo": 56.0
 				}
 			},
 			{
-				"pos": [257.7, 27.35, -254.24],
+				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [62],
-					"setTo": 62
+					"connectiveTracks": [62.0],
+					"setTo": 62.0
 				}
 			}
 		]
 	},
 	{
-		"num": 59,
+		"num": 59.0,
 		"name": "Martenshagen Station Stralsund Cross F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [257.7, 27.35, -254.24],
+				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [62],
-					"setTo": 62
+					"connectiveTracks": [62.0],
+					"setTo": 62.0
 				}
 			},
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [55],
-					"setTo": 55
+					"connectiveTracks": [55.0],
+					"setTo": 55.0
 				}
 			}
-			
 		]
 	},
 	{
-		"num": 60,
+		"num": 60.0,
 		"name": "Martenshagen Station Stralsund Cross B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2495,21 +2493,21 @@
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [61],
-					"setTo": 61
+					"connectiveTracks": [61.0],
+					"setTo": 61.0
 				}
 			},
 			{
-				"pos": [276.04, 26.8, -255.0],
+				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56.0],
+					"setTo": 56.0
 				}
 			}
 		]
 	},
 	{
-		"num": 61,
+		"num": 61.0,
 		"name": "Martenshagen Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2517,9 +2515,9 @@
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [57, 60],
+					"connectiveTracks": [57.0, 60.0],
 					"static": true,
-					"setTo": 57
+					"setTo": 57.0
 				}
 			},
 			{
@@ -2541,24 +2539,24 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [63],
-					"setTo": 63
+					"connectiveTracks": [63.0],
+					"setTo": 63.0
 				}
 			}
 		]
 	},
 	{
-		"num": 62,
+		"num": 62.0,
 		"name": "Martenshagen Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [257.7, 27.35, -254.24],
+				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [58, 59],
+					"connectiveTracks": [58.0, 59.0],
 					"static": true,
-					"setTo": 58
+					"setTo": 58.0
 				}
 			},
 			{
@@ -2566,7 +2564,7 @@
 				"handleIn": [3.35, -0.02, 0.04]
 			},
 			{
-				"pos": [231.04, 27.4, -253.59],
+				"pos": [231.04, 27.40, -253.59],
 				"handleIn": [3.5, 0.02, -0.03]
 			},
 			{
@@ -2576,14 +2574,14 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [63],
-					"setTo": 63
+					"connectiveTracks": [63.0],
+					"setTo": 63.0
 				}
 			}
 		]
 	},
 	{
-		"num": 63,
+		"num": 63.0,
 		"name": "Martenshagen Kivitzbarg",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2591,9 +2589,9 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [61, 62],
+					"connectiveTracks": [61.0, 62.0],
 					"static": true,
-					"setTo": 62
+					"setTo": 62.0
 				}
 			},
 			{
@@ -2601,7 +2599,7 @@
 				"handleIn": [6.34, 0.02, -1.0]
 			},
 			{
-				"pos": [161.88, 25.9, -246.46],
+				"pos": [161.88, 25.90, -246.46],
 				"handleIn": [6.42, 0.06, -0.8]
 			},
 			{
@@ -2621,7 +2619,7 @@
 				"handleIn": [5.67, 0.03, -1.16]
 			},
 			{
-				"pos": [54.5, 26.28, -226.62],
+				"pos": [54.50, 26.28, -226.62],
 				"handleIn": [7.1, -0.02, -2.21]
 			},
 			{
@@ -2637,33 +2635,33 @@
 				"handleIn": [6.49, 0.05, -3.19]
 			},
 			{
-				"pos": [-45.04, 24.7, -180.87],
+				"pos": [-45.04, 24.70, -180.87],
 				"fork": {
-					"connectiveTracks": [64],
-					"setTo": 64
+					"connectiveTracks": [64.0],
+					"setTo": 64.0
 				}
 			}
 		]
 	},
 	{
-		"num": 64,
+		"num": 64.0,
 		"name": "Bussin Stretch",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-45.04, 24.7, -180.87],
+				"pos": [-45.04, 24.70, -180.87],
 				"fork": {
-					"connectiveTracks": [63],
-					"setTo": 63
+					"connectiveTracks": [63.0],
+					"setTo": 63.0
 				}
 			},
 			{
-				"pos": [-66.55, 24.7, -169.93],
+				"pos": [-66.55, 24.70, -169.93],
 				"handleIn": [7.65, 0.01, -4.01]
 			},
 			{
-				"pos": [-96.6, 24.7, -158.79],
+				"pos": [-96.60, 24.70, -158.79],
 				"handleIn": [5.32, 0.01, -1.67]
 			},
 			{
@@ -2671,11 +2669,11 @@
 				"handleIn": [4.86, -0.02, -2.37]
 			},
 			{
-				"pos": [-129.6, 24.8, -143.52],
+				"pos": [-129.60, 24.80, -143.52],
 				"handleIn": [6.31, -0.03, -3.46]
 			},
 			{
-				"pos": [-145.31, 24.8, -133.28],
+				"pos": [-145.31, 24.80, -133.28],
 				"handleIn": [4.56, 0.03, -3.34]
 			},
 			{
@@ -2693,15 +2691,15 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [65, 66],
+					"connectiveTracks": [65.0, 66.0],
 					"static": true,
-					"setTo": 66
+					"setTo": 66.0
 				}
 			}
 		]
 	},
 	{
-		"num": 65,
+		"num": 65.0,
 		"name": "Velgast Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2709,8 +2707,8 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [64],
-					"setTo": 64
+					"connectiveTracks": [64.0],
+					"setTo": 64.0
 				}
 			},
 			{
@@ -2722,7 +2720,7 @@
 				"handleIn": [3.1, -0.02, -0.82]
 			},
 			{
-				"pos": [-266.9, 25.09, -62.66],
+				"pos": [-266.90, 25.09, -62.66],
 				"handleIn": [3.57, -0.01, -0.74]
 			},
 			{
@@ -2732,15 +2730,15 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [67, 132],
+					"connectiveTracks": [67.0, 132.0],
 					"static": true,
-					"setTo": 67
+					"setTo": 67.0
 				}
 			}
 		]
 	},
 	{
-		"num": 66,
+		"num": 66.0,
 		"name": "Velgast Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2748,12 +2746,12 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [64],
-					"setTo": 64
+					"connectiveTracks": [64.0],
+					"setTo": 64.0
 				}
 			},
 			{
-				"pos": [-242.66, 24.9, -65.15],
+				"pos": [-242.66, 24.90, -65.15],
 				"handleIn": [3.57, -0.01, -1.94]
 			},
 			{
@@ -2771,15 +2769,15 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [68, 131],
+					"connectiveTracks": [68.0, 131.0],
 					"static": true,
-					"setTo": 68
+					"setTo": 68.0
 				}
 			}
 		]
 	},
 	{
-		"num": 67,
+		"num": 67.0,
 		"name": "Velgast Station Track 1 Rostock Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2787,8 +2785,8 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [65],
-					"setTo": 65
+					"connectiveTracks": [65.0],
+					"setTo": 65.0
 				}
 			},
 			{
@@ -2796,16 +2794,16 @@
 				"handleIn": [4.4, -0.01, -1.15]
 			},
 			{
-				"pos": [-313.73, 25.24, -53.1],
+				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [69],
-					"setTo": 69
+					"connectiveTracks": [69.0],
+					"setTo": 69.0
 				}
 			}
 		]
 	},
 	{
-		"num": 68,
+		"num": 68.0,
 		"name": "Velgast Station Track 2 Rostock Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2813,8 +2811,8 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [66],
-					"setTo": 66
+					"connectiveTracks": [66.0],
+					"setTo": 66.0
 				}
 			},
 			{
@@ -2822,34 +2820,34 @@
 				"handleIn": [4.03, -0.04, -0.01]
 			},
 			{
-				"pos": [-313.73, 25.24, -53.1],
+				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [69],
-					"setTo": 69
+					"connectiveTracks": [69.0],
+					"setTo": 69.0
 				}
 			}
 		]
 	},
 	{
-		"num": 69,
+		"num": 69.0,
 		"name": "Velgast <> Buchenhorst",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-313.73, 25.24, -53.1],
+				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [67, 68],
+					"connectiveTracks": [67.0, 68.0],
 					"static": true,
-					"setTo": 67
+					"setTo": 67.0
 				}
 			},
 			{
-				"pos": [-332.67, 25.24, -50.1],
+				"pos": [-332.67, 25.24, -50.10],
 				"handleIn": [4.87, 0.0, -0.9]
 			},
 			{
-				"pos": [-349.3, 26.29, -45.63],
+				"pos": [-349.30, 26.29, -45.63],
 				"handleIn": [3.42, -0.12, -1.09]
 			},
 			{
@@ -2865,7 +2863,7 @@
 				"handleIn": [4.04, 0.04, -1.51]
 			},
 			{
-				"pos": [-424.72, 23.9, -19.32],
+				"pos": [-424.72, 23.90, -19.32],
 				"handleIn": [5.37, 0.3, -2.04]
 			},
 			{
@@ -2873,7 +2871,7 @@
 				"handleIn": [5.47, -0.04, -0.9]
 			},
 			{
-				"pos": [-467.6, 24.11, -9.37],
+				"pos": [-467.60, 24.11, -9.37],
 				"handleIn": [5.53, 0.02, -1.01]
 			},
 			{
@@ -2889,7 +2887,7 @@
 				"handleIn": [1.95, 0.0, -0.47]
 			},
 			{
-				"pos": [-559.95, 24.24, 7.2],
+				"pos": [-559.95, 24.24, 7.20],
 				"handleIn": [4.08, 0.0, -0.54]
 			},
 			{
@@ -2899,15 +2897,15 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [70, 71],
+					"connectiveTracks": [70.0, 71.0],
 					"static": true,
-					"setTo": 70
+					"setTo": 70.0
 				}
 			}
 		]
 	},
 	{
-		"num": 70,
+		"num": 70.0,
 		"name": "Buchenhorst Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2915,8 +2913,8 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [69],
-					"setTo": 69
+					"connectiveTracks": [69.0],
+					"setTo": 69.0
 				}
 			},
 			{
@@ -2940,16 +2938,16 @@
 				"handleIn": [3.08, -0.07, -1.03]
 			},
 			{
-				"pos": [-652.28, 24.9, 21.32],
+				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [72],
-					"setTo": 72
+					"connectiveTracks": [72.0],
+					"setTo": 72.0
 				}
 			}
 		]
 	},
 	{
-		"num": 71,
+		"num": 71.0,
 		"name": "Buchenhorst Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -2957,12 +2955,12 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [69],
-					"setTo": 69
+					"connectiveTracks": [69.0],
+					"setTo": 69.0
 				}
 			},
 			{
-				"pos": [-592.7, 24.49, 13.55],
+				"pos": [-592.70, 24.49, 13.55],
 				"handleIn": [3.36, 0.0, -0.88]
 			},
 			{
@@ -2970,11 +2968,11 @@
 				"handleIn": [3.59, 0.01, -0.55]
 			},
 			{
-				"pos": [-618.9, 24.37, 18.23],
+				"pos": [-618.90, 24.37, 18.23],
 				"handleIn": [4.44, 0.01, -0.65]
 			},
 			{
-				"pos": [-632.25, 24.7, 20.62],
+				"pos": [-632.25, 24.70, 20.62],
 				"handleIn": [3.64, -0.05, -0.65]
 			},
 			{
@@ -2982,26 +2980,26 @@
 				"handleIn": [3.16, -0.02, 0.06]
 			},
 			{
-				"pos": [-652.28, 24.9, 21.32],
+				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [72],
-					"setTo": 72
+					"connectiveTracks": [72.0],
+					"setTo": 72.0
 				}
 			}
 		]
 	},
 	{
-		"num": 72,
+		"num": 72.0,
 		"name": "Buchenhorst <> Langenhanshagen",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-652.28, 24.9, 21.32],
+				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [70, 71],
+					"connectiveTracks": [70.0, 71.0],
 					"static": true,
-					"setTo": 71
+					"setTo": 71.0
 				}
 			},
 			{
@@ -3013,15 +3011,15 @@
 				"handleIn": [8.16, 0.0, -0.79]
 			},
 			{
-				"pos": [-743.97, 24.7, 34.89],
+				"pos": [-743.97, 24.70, 34.89],
 				"handleIn": [8.88, 0.02, -1.49]
 			},
 			{
-				"pos": [-777.57, 24.7, 40.24],
+				"pos": [-777.57, 24.70, 40.24],
 				"handleIn": [6.28, 0.0, -0.85]
 			},
 			{
-				"pos": [-801.52, 24.7, 43.79],
+				"pos": [-801.52, 24.70, 43.79],
 				"handleIn": [7.93, 0.0, -1.31]
 			},
 			{
@@ -3029,26 +3027,26 @@
 				"handleIn": [7.58, 0.01, -1.63]
 			},
 			{
-				"pos": [-862.03, 24.7, 54.86],
+				"pos": [-862.03, 24.70, 54.86],
 				"handleIn": [6.74, -0.01, -0.76]
 			},
 			{
 				"pos": [-886.67, 24.64, 59.35],
 				"fork": {
-					"connectiveTracks": [85],
-					"setTo": 85
+					"connectiveTracks": [85.0],
+					"setTo": 85.0
 				}
 			}
 		]
 	},
 	{
-		"num": 73,
+		"num": 73.0,
 		"name": "Altefähr RüKB Station Track 1",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1058.3, 24.07, -443.64],
+				"pos": [1058.30, 24.07, -443.64],
 				"end": true
 			},
 			{
@@ -3056,7 +3054,7 @@
 				"handleIn": [-1.69, 0.03, 1.6]
 			},
 			{
-				"pos": [1069.15, 23.71, -454.2],
+				"pos": [1069.15, 23.71, -454.20],
 				"handleIn": [-1.85, 0.03, 1.79]
 			},
 			{
@@ -3068,22 +3066,22 @@
 				"handleIn": [-2.37, 0.09, 1.04]
 			},
 			{
-				"pos": [1087.94, 23.53, -463.9],
+				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75],
-					"setTo": 75
+					"connectiveTracks": [75.0],
+					"setTo": 75.0
 				}
 			}
 		]
 	},
 	{
-		"num": 74,
+		"num": 74.0,
 		"name": "Altefähr RüKB Station Track 2",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1061.5, 24.06, -440.9],
+				"pos": [1061.50, 24.06, -440.90],
 				"end": true
 			},
 			{
@@ -3095,30 +3093,30 @@
 				"handleIn": [-2.19, 0.05, 1.98]
 			},
 			{
-				"pos": [1087.94, 23.53, -463.9],
+				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75],
-					"setTo": 75
+					"connectiveTracks": [75.0],
+					"setTo": 75.0
 				}
 			}
 		]
 	},
 	{
-		"num": 75,
+		"num": 75.0,
 		"name": "Altefähr <> Gustow",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1087.94, 23.53, -463.9],
+				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [73, 74, 83],
+					"connectiveTracks": [73.0, 74.0, 83.0],
 					"static": true,
-					"setTo": 74
+					"setTo": 74.0
 				}
 			},
 			{
-				"pos": [1107.6, 24.14, -463.53],
+				"pos": [1107.60, 24.14, -463.53],
 				"handleIn": [-12.05, -0.06, -3.03]
 			},
 			{
@@ -3146,33 +3144,33 @@
 				"handleIn": [-6.46, 0.0, -1.76]
 			},
 			{
-				"pos": [1238.16, 24.19, -397.9],
+				"pos": [1238.16, 24.19, -397.90],
 				"handleIn": [-4.42, -0.04, -3.2]
 			},
 			{
-				"pos": [1254.95, 24.55, -380.1],
+				"pos": [1254.95, 24.55, -380.10],
 				"handleIn": [-2.55, -0.03, -6.13]
 			},
 			{
-				"pos": [1258.97, 24.19, -363.5],
+				"pos": [1258.97, 24.19, -363.50],
 				"handleIn": [-0.5, 0.04, -3.4]
 			},
 			{
-				"pos": [1259.59, 23.8, -350.54],
+				"pos": [1259.59, 23.80, -350.54],
 				"handleIn": [0.32, 0.06, -3.52]
 			},
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [76, 77],
+					"connectiveTracks": [76.0, 77.0],
 					"static": true,
-					"setTo": 76
+					"setTo": 76.0
 				}
 			}
 		]
 	},
 	{
-		"num": 76,
+		"num": 76.0,
 		"name": "Gustow Station Track 2",
 		"type": "750_MM",
 		"tag": "RÜKB",
@@ -3180,12 +3178,12 @@
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [75],
-					"setTo": 75
+					"connectiveTracks": [75.0],
+					"setTo": 75.0
 				}
 			},
 			{
-				"pos": [1263.3, 23.35, -332.19],
+				"pos": [1263.30, 23.35, -332.19],
 				"handleIn": [-2.32, 0.05, -3.49]
 			},
 			{
@@ -3197,16 +3195,16 @@
 				"handleIn": [-2.77, 0.0, -2.08]
 			},
 			{
-				"pos": [1288.8, 23.31, -308.71],
+				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [78],
-					"setTo": 78
+					"connectiveTracks": [78.0],
+					"setTo": 78.0
 				}
 			}
 		]
 	},
 	{
-		"num": 77,
+		"num": 77.0,
 		"name": "Gustow Station Track 2",
 		"type": "750_MM",
 		"tag": "RÜKB",
@@ -3214,8 +3212,8 @@
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [75],
-					"setTo": 75
+					"connectiveTracks": [75.0],
+					"setTo": 75.0
 				}
 			},
 			{
@@ -3231,30 +3229,30 @@
 				"handleIn": [-2.16, -0.03, -1.76]
 			},
 			{
-				"pos": [1280.2, 23.68, -311.1],
+				"pos": [1280.20, 23.68, -311.10],
 				"handleIn": [-2.65, -0.06, -1.03]
 			},
 			{
-				"pos": [1288.8, 23.31, -308.71],
+				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [78],
-					"setTo": 78
+					"connectiveTracks": [78.0],
+					"setTo": 78.0
 				}
 			}
 		]
 	},
 	{
-		"num": 78,
+		"num": 78.0,
 		"name": "Gustow <> Poseritz W",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1288.8, 23.31, -308.71],
+				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [76, 77],
+					"connectiveTracks": [76.0, 77.0],
 					"static": true,
-					"setTo": 77
+					"setTo": 77.0
 				}
 			},
 			{
@@ -3266,7 +3264,7 @@
 				"handleIn": [-2.79, 0.0, -4.08]
 			},
 			{
-				"pos": [1326.03, 23.46, -267.1],
+				"pos": [1326.03, 23.46, -267.10],
 				"handleIn": [-1.31, -0.01, -4.0]
 			},
 			{
@@ -3274,7 +3272,7 @@
 				"handleIn": [-2.64, -0.01, -6.73]
 			},
 			{
-				"pos": [1343.97, 23.58, -228.7],
+				"pos": [1343.97, 23.58, -228.70],
 				"handleIn": [-2.79, 0.0, -4.23]
 			},
 			{
@@ -3294,29 +3292,29 @@
 				"handleIn": [-8.9, -0.01, -3.68]
 			},
 			{
-				"pos": [1461.62, 23.86, -170.4],
+				"pos": [1461.62, 23.86, -170.40],
 				"handleIn": [-3.95, -0.03, -0.55]
 			},
 			{
-				"pos": [1471.7, 23.88, -170.11],
+				"pos": [1471.70, 23.88, -170.11],
 				"fork": {
-					"connectiveTracks": [79],
-					"setTo": 79
+					"connectiveTracks": [79.0],
+					"setTo": 79.0
 				}
 			}
 		]
 	},
 	{
-		"num": 79,
+		"num": 79.0,
 		"name": "Gustow <> Poseritz E",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1471.7, 23.88, -170.11],
+				"pos": [1471.70, 23.88, -170.11],
 				"fork": {
-					"connectiveTracks": [78],
-					"setTo": 78
+					"connectiveTracks": [78.0],
+					"setTo": 78.0
 				}
 			},
 			{
@@ -3346,15 +3344,15 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [80, 81],
+					"connectiveTracks": [80.0, 81.0],
 					"static": true,
-					"setTo": 81
+					"setTo": 81.0
 				}
 			}
 		]
 	},
 	{
-		"num": 80,
+		"num": 80.0,
 		"name": "Poseritz Station Track 1",
 		"type": "750_MM",
 		"tag": "RÜKB",
@@ -3362,12 +3360,12 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [79],
-					"setTo": 79
+					"connectiveTracks": [79.0],
+					"setTo": 79.0
 				}
 			},
 			{
-				"pos": [1589.85, 24.33, -223.5],
+				"pos": [1589.85, 24.33, -223.50],
 				"handleIn": [-0.26, -0.01, 3.66]
 			},
 			{
@@ -3385,14 +3383,14 @@
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [82],
-					"setTo": 82
+					"connectiveTracks": [82.0],
+					"setTo": 82.0
 				}
 			}
 		]
 	},
 	{
-		"num": 81,
+		"num": 81.0,
 		"name": "Poseritz Station Track 2",
 		"type": "750_MM",
 		"tag": "RÜKB",
@@ -3400,8 +3398,8 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [79],
-					"setTo": 79
+					"connectiveTracks": [79.0],
+					"setTo": 79.0
 				}
 			},
 			{
@@ -3413,20 +3411,20 @@
 				"handleIn": [-1.47, 0.0, 3.77]
 			},
 			{
-				"pos": [1604.0, 24.41, -252.24],
+				"pos": [1604.00, 24.41, -252.24],
 				"handleIn": [-1.25, -0.01, 3.79]
 			},
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [82],
-					"setTo": 82
+					"connectiveTracks": [82.0],
+					"setTo": 82.0
 				}
 			}
 		]
 	},
 	{
-		"num": 82,
+		"num": 82.0,
 		"name": "Poseritz <> Warksow",
 		"type": "750_MM",
 		"tag": "RÜKB",
@@ -3434,9 +3432,9 @@
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [80, 81],
+					"connectiveTracks": [80.0, 81.0],
 					"static": true,
-					"setTo": 81
+					"setTo": 81.0
 				}
 			},
 			{
@@ -3464,7 +3462,7 @@
 				"handleIn": [-4.71, -0.07, 0.2]
 			},
 			{
-				"pos": [1718.05, 24.73, -299.7],
+				"pos": [1718.05, 24.73, -299.70],
 				"handleIn": [-2.0, 0.05, 0.04]
 			},
 			{
@@ -3480,22 +3478,22 @@
 				"handleIn": [-5.42, -0.01, -0.11]
 			},
 			{
-				"pos": [1789.05, 25.3, -297.62],
+				"pos": [1789.05, 25.30, -297.62],
 				"exit": true
 			}
 		]
 	},
 	{
-		"num": 83,
+		"num": 83.0,
 		"name": "Altefähr RüKB Depot",
 		"type": "750_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [1087.94, 23.53, -463.9],
+				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75],
-					"setTo": 75
+					"connectiveTracks": [75.0],
+					"setTo": 75.0
 				}
 			},
 			{
@@ -3507,7 +3505,7 @@
 				"handleIn": [-0.25, -0.08, -3.65]
 			},
 			{
-				"pos": [1082.32, 24.17, -438.7],
+				"pos": [1082.32, 24.17, -438.70],
 				"handleIn": [-1.41, -0.08, -2.97]
 			},
 			{
@@ -3516,25 +3514,25 @@
 		]
 	},
 	{
-		"num": 84,
+		"num": 84.0,
 		"name": "Stralsund FKB-N Depot",
 		"type": "1000_MM",
 		"tag": "RÜKB",
 		"points": [
 			{
-				"pos": [838.2, 23.81, -285.1],
+				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [1, 2],
+					"connectiveTracks": [1.0, 2.0],
 					"static": true,
-					"setTo": 1
+					"setTo": 1.0
 				}
 			},
 			{
-				"pos": [843.47, 23.81, -280.8],
+				"pos": [843.47, 23.81, -280.80],
 				"handleIn": [-3.09, 0.0, -2.11]
 			},
 			{
-				"pos": [851.51, 24.14, -277.0],
+				"pos": [851.51, 24.14, -277.00],
 				"handleIn": [-3.43, -0.07, -0.64]
 			},
 			{
@@ -3543,7 +3541,7 @@
 		]
 	},
 	{
-		"num": 85,
+		"num": 85.0,
 		"name": "Langenmannshagen <> Altenwillershagen",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -3551,8 +3549,8 @@
 			{
 				"pos": [-886.67, 24.64, 59.35],
 				"fork": {
-					"connectiveTracks": [72],
-					"setTo": 72
+					"connectiveTracks": [72.0],
+					"setTo": 72.0
 				}
 			},
 			{
@@ -3560,7 +3558,7 @@
 				"handleIn": [1.96, -0.02, -0.4]
 			},
 			{
-				"pos": [-922.9, 24.8, 66.87],
+				"pos": [-922.90, 24.80, 66.87],
 				"handleIn": [4.39, 0.0, -0.79]
 			},
 			{
@@ -3580,30 +3578,30 @@
 				"handleIn": [1.98, 0.0, -0.31]
 			},
 			{
-				"pos": [-1056.5, 24.8, 88.72],
+				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [86, 87],
+					"connectiveTracks": [86.0, 87.0],
 					"static": true,
-					"setTo": 86
+					"setTo": 86.0
 				}
 			}
 		]
 	},
 	{
-		"num": 86,
+		"num": 86.0,
 		"name": "Altenwillershagen Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1056.5, 24.8, 88.72],
+				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [85],
-					"setTo": 85
+					"connectiveTracks": [85.0],
+					"setTo": 85.0
 				}
 			},
 			{
-				"pos": [-1066.87, 24.68, 88.6],
+				"pos": [-1066.87, 24.68, 88.60],
 				"handleIn": [4.19, 0.02, 0.06]
 			},
 			{
@@ -3615,33 +3613,33 @@
 				"handleIn": [3.77, 0.0, -0.46]
 			},
 			{
-				"pos": [-1105.7, 25.27, 92.43999],
+				"pos": [-1105.70, 25.27, 92.44],
 				"handleIn": [3.52, -0.07, -0.65]
 			},
 			{
-				"pos": [-1119.01, 25.1, 96.77],
+				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [88],
-					"setTo": 88
+					"connectiveTracks": [88.0],
+					"setTo": 88.0
 				}
 			}
 		]
 	},
 	{
-		"num": 87,
+		"num": 87.0,
 		"name": "Altenwillershagen Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1056.5, 24.8, 88.72],
+				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [85],
-					"setTo": 85
+					"connectiveTracks": [85.0],
+					"setTo": 85.0
 				}
 			},
 			{
-				"pos": [-1067.38, 24.7, 91.95],
+				"pos": [-1067.38, 24.70, 91.95],
 				"handleIn": [3.23, 0.02, -1.04]
 			},
 			{
@@ -3657,26 +3655,26 @@
 				"handleIn": [2.95, -0.07, 0.16]
 			},
 			{
-				"pos": [-1119.01, 25.1, 96.77],
+				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [88],
-					"setTo": 88
+					"connectiveTracks": [88.0],
+					"setTo": 88.0
 				}
 			}
 		]
 	},
 	{
-		"num": 88,
+		"num": 88.0,
 		"name": "Altenwillershagen <> Damgarten",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1119.01, 25.1, 96.77],
+				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [86, 87],
+					"connectiveTracks": [86.0, 87.0],
 					"static": true,
-					"setTo": 87
+					"setTo": 87.0
 				}
 			},
 			{
@@ -3688,7 +3686,7 @@
 				"handleIn": [1.98, -0.01, -0.3]
 			},
 			{
-				"pos": [-1173.2, 25.58, 105.77],
+				"pos": [-1173.20, 25.58, 105.77],
 				"handleIn": [4.38, 0.03, -0.97]
 			},
 			{
@@ -3722,15 +3720,15 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [89, 90],
+					"connectiveTracks": [89.0, 90.0],
 					"static": true,
-					"setTo": 89
+					"setTo": 89.0
 				}
 			}
 		]
 	},
 	{
-		"num": 89,
+		"num": 89.0,
 		"name": "Damgarten DR Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -3738,8 +3736,8 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [88],
-					"setTo": 88
+					"connectiveTracks": [88.0],
+					"setTo": 88.0
 				}
 			},
 			{
@@ -3759,20 +3757,20 @@
 				"handleIn": [3.34, 0.02, -0.95]
 			},
 			{
-				"pos": [-1422.3, 24.57, 157.45],
+				"pos": [-1422.30, 24.57, 157.45],
 				"handleIn": [3.5, -0.04, -1.66]
 			},
 			{
-				"pos": [-1435.33, 24.54, 163.3],
+				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [91],
-					"setTo": 91
+					"connectiveTracks": [91.0],
+					"setTo": 91.0
 				}
 			}
 		]
 	},
 	{
-		"num": 90,
+		"num": 90.0,
 		"name": "Damgarten DR Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -3780,8 +3778,8 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [88],
-					"setTo": 88
+					"connectiveTracks": [88.0],
+					"setTo": 88.0
 				}
 			},
 			{
@@ -3793,7 +3791,7 @@
 				"handleIn": [3.53, -0.01, -1.36]
 			},
 			{
-				"pos": [-1387.03, 24.7, 152.74],
+				"pos": [-1387.03, 24.70, 152.74],
 				"handleIn": [3.72, -0.01, -1.02]
 			},
 			{
@@ -3809,26 +3807,26 @@
 				"handleIn": [3.12, -0.01, -0.31]
 			},
 			{
-				"pos": [-1435.33, 24.54, 163.3],
+				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [91],
-					"setTo": 91
+					"connectiveTracks": [91.0],
+					"setTo": 91.0
 				}
 			}
 		]
 	},
 	{
-		"num": 91,
+		"num": 91.0,
 		"name": "Damgarten Station <> Bridge",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1435.33, 24.54, 163.3],
+				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [89, 90],
+					"connectiveTracks": [89.0, 90.0],
 					"static": true,
-					"setTo": 90
+					"setTo": 90.0
 				}
 			},
 			{
@@ -3836,7 +3834,7 @@
 				"handleIn": [3.3, 0.01, -1.15]
 			},
 			{
-				"pos": [-1461.1, 24.4, 171.6],
+				"pos": [-1461.10, 24.40, 171.60],
 				"handleIn": [4.98, 0.01, -1.34]
 			},
 			{
@@ -3848,24 +3846,24 @@
 				"handleIn": [3.74, 0.06, -0.88]
 			},
 			{
-				"pos": [-1511.22, 23.4, 184.57],
+				"pos": [-1511.22, 23.40, 184.57],
 				"handleIn": [3.84, 0.06, -0.99]
 			},
 			{
-				"pos": [-1526.8, 23.39, 191.12],
+				"pos": [-1526.80, 23.39, 191.12],
 				"handleIn": [3.23, 0.0, -1.7]
 			},
 			{
 				"pos": [-1538.82, 23.37, 198.99],
 				"fork": {
-					"connectiveTracks": [92],
-					"setTo": 92
+					"connectiveTracks": [92.0],
+					"setTo": 92.0
 				}
 			}
 		]
 	},
 	{
-		"num": 92,
+		"num": 92.0,
 		"name": "Ribnitz-Damgarten Bridge",
 		"hideBed": true,
 		"type": "NORMAL_GAUGE",
@@ -3874,21 +3872,21 @@
 			{
 				"pos": [-1538.82, 23.37, 198.99],
 				"fork": {
-					"connectiveTracks": [91],
-					"setTo": 91
+					"connectiveTracks": [91.0],
+					"setTo": 91.0
 				}
 			},
 			{
 				"pos": [-1557.29, 23.53, 215.89],
 				"fork": {
-					"connectiveTracks": [93],
-					"setTo": 93
+					"connectiveTracks": [93.0],
+					"setTo": 93.0
 				}
 			}
 		]
 	},
 	{
-		"num": 93,
+		"num": 93.0,
 		"name": "Ribnitz Bridge <> Station",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -3896,8 +3894,8 @@
 			{
 				"pos": [-1557.29, 23.53, 215.89],
 				"fork": {
-					"connectiveTracks": [92],
-					"setTo": 92
+					"connectiveTracks": [92.0],
+					"setTo": 92.0
 				}
 			},
 			{
@@ -3905,11 +3903,11 @@
 				"handleIn": [2.78, 0.01, -2.21]
 			},
 			{
-				"pos": [-1575.68, 23.6, 230.6],
+				"pos": [-1575.68, 23.60, 230.60],
 				"handleIn": [2.65, -0.02, -1.98]
 			},
 			{
-				"pos": [-1587.7, 23.81, 238.81],
+				"pos": [-1587.70, 23.81, 238.81],
 				"handleIn": [3.34, -0.03, -2.24]
 			},
 			{
@@ -3921,26 +3919,26 @@
 				"handleIn": [4.01, -0.03, -1.26]
 			},
 			{
-				"pos": [-1618.77, 23.96, 251.8],
+				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [94, 95, 96],
+					"connectiveTracks": [94.0, 95.0, 96.0],
 					"static": true,
-					"setTo": 95
+					"setTo": 95.0
 				}
 			}
 		]
 	},
 	{
-		"num": 94,
+		"num": 94.0,
 		"name": "Ribnitz Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1618.77, 23.96, 251.8],
+				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93],
-					"setTo": 95
+					"connectiveTracks": [93.0],
+					"setTo": 95.0
 				}
 			},
 			{
@@ -3952,11 +3950,11 @@
 				"handleIn": [2.28, 0.0, -0.46]
 			},
 			{
-				"pos": [-1650.13, 23.98, 255.1],
+				"pos": [-1650.13, 23.98, 255.10],
 				"handleIn": [1.95, 0.0, -0.42]
 			},
 			{
-				"pos": [-1663.69, 24.0, 258.04],
+				"pos": [-1663.69, 24.00, 258.04],
 				"handleIn": [3.71, 0.0, -0.76]
 			},
 			{
@@ -3966,23 +3964,23 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97],
-					"setTo": 97
+					"connectiveTracks": [97.0],
+					"setTo": 97.0
 				}
 			}
 		]
 	},
 	{
-		"num": 95,
+		"num": 95.0,
 		"name": "Ribnitz Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1618.77, 23.96, 251.8],
+				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93],
-					"setTo": 95
+					"connectiveTracks": [93.0],
+					"setTo": 95.0
 				}
 			},
 			{
@@ -4000,27 +3998,27 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97],
-					"setTo": 97
+					"connectiveTracks": [97.0],
+					"setTo": 97.0
 				}
 			}
 		]
 	},
 	{
-		"num": 96,
+		"num": 96.0,
 		"name": "Ribnitz Station Track 3",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-1618.77, 23.96, 251.8],
+				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93],
-					"setTo": 95
+					"connectiveTracks": [93.0],
+					"setTo": 95.0
 				}
 			},
 			{
-				"pos": [-1625.94, 23.96, 256.4],
+				"pos": [-1625.94, 23.96, 256.40],
 				"handleIn": [3.47, 0.0, -1.64]
 			},
 			{
@@ -4028,7 +4026,7 @@
 				"handleIn": [3.21, 0.0, -0.77]
 			},
 			{
-				"pos": [-1668.2, 24.01, 266.23],
+				"pos": [-1668.20, 24.01, 266.23],
 				"handleIn": [3.45, 0.0, -0.71]
 			},
 			{
@@ -4038,14 +4036,14 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97],
-					"setTo": 97
+					"connectiveTracks": [97.0],
+					"setTo": 97.0
 				}
 			}
 		]
 	},
 	{
-		"num": 97,
+		"num": 97.0,
 		"name": "Ribnitz Station <> Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4053,9 +4051,9 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [94, 95, 96],
+					"connectiveTracks": [94.0, 95.0, 96.0],
 					"static": true,
-					"setTo": 96
+					"setTo": 96.0
 				}
 			},
 			{
@@ -4069,15 +4067,15 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [98, 99],
+					"connectiveTracks": [98.0, 99.0],
 					"static": true,
-					"setTo": 99
+					"setTo": 99.0
 				}
 			}
 		]
 	},
 	{
-		"num": 98,
+		"num": 98.0,
 		"name": "Ribnitz Fork <> Exit",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4085,8 +4083,8 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [97],
-					"setTo": 97
+					"connectiveTracks": [97.0],
+					"setTo": 97.0
 				}
 			},
 			{
@@ -4106,13 +4104,13 @@
 				"handleIn": [3.74, 0.01, -1.48]
 			},
 			{
-				"pos": [-1791.23, 24.19, 298.8],
+				"pos": [-1791.23, 24.19, 298.80],
 				"exit": true
 			}
 		]
 	},
 	{
-		"num": 99,
+		"num": 99.0,
 		"name": "Ribnitz Fork <> Industry",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4120,8 +4118,8 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [97],
-					"setTo": 97
+					"connectiveTracks": [97.0],
+					"setTo": 97.0
 				}
 			},
 			{
@@ -4145,13 +4143,13 @@
 				"handleIn": [1.1, 0.07, 1.67]
 			},
 			{
-				"pos": [-1769.45, 23.7, 227.5],
+				"pos": [-1769.45, 23.70, 227.50],
 				"end": true
 			}
 		]
 	},
 	{
-		"num": 100,
+		"num": 100.0,
 		"name": "Stralsund Station Exit 1&2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4159,8 +4157,8 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [44, 46],
-					"setTo": 44
+					"connectiveTracks": [44.0, 46.0],
+					"setTo": 44.0
 				}
 			},
 			{
@@ -4170,14 +4168,14 @@
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [104],
-					"setTo": 104
+					"connectiveTracks": [104.0],
+					"setTo": 104.0
 				}
 			}
 		]
 	},
 	{
-		"num": 101,
+		"num": 101.0,
 		"name": "Stralsund Station Exit 3",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4185,8 +4183,8 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45.0],
+					"setTo": 45.0
 				}
 			},
 			{
@@ -4196,15 +4194,15 @@
 			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
-					"connectiveTracks": [105],
+					"connectiveTracks": [105.0],
 					"static": true,
-					"setTo": 105
+					"setTo": 105.0
 				}
 			}
 		]
 	},
 	{
-		"num": 102,
+		"num": 102.0,
 		"name": "Stralsund South <> Harbour Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4212,8 +4210,8 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [108],
-					"setTo": 108
+					"connectiveTracks": [108.0],
+					"setTo": 108.0
 				}
 			},
 			{
@@ -4231,14 +4229,14 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [117],
-					"setTo": 117
+					"connectiveTracks": [117.0],
+					"setTo": 117.0
 				}
 			}
 		]
 	},
 	{
-		"num": 103,
+		"num": 103.0,
 		"name": "Stralsund HBF Southern Diagonale",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4246,22 +4244,21 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [101],
-					"setTo": 101
+					"connectiveTracks": [101.0],
+					"setTo": 101.0
 				}
 			},
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [104],
-					"setTo": 104
+					"connectiveTracks": [104.0],
+					"setTo": 104.0
 				}
 			}
 		]
 	},
-	
 	{
-		"num": 104,
+		"num": 104.0,
 		"name": "Stralsund Triangle Mainline F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4269,26 +4266,26 @@
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [100, 103],
+					"connectiveTracks": [100.0, 103.0],
 					"static": true,
-					"setTo": 100
+					"setTo": 100.0
 				}
 			},
 			{
-				"pos": [848.8, 24.96, -197.46],
+				"pos": [848.80, 24.96, -197.46],
 				"handleIn": [-2.17, -0.03, -3.19]
 			},
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [108],
-					"setTo": 108
+					"connectiveTracks": [108.0],
+					"setTo": 108.0
 				}
 			}
 		]
 	},
 	{
-		"num": 105,
+		"num": 105.0,
 		"name": "Stralsund Triangle Mainline B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4296,9 +4293,9 @@
 			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
-					"connectiveTracks": [101],
+					"connectiveTracks": [101.0],
 					"static": true,
-					"setTo": 101
+					"setTo": 101.0
 				}
 			},
 			{
@@ -4312,24 +4309,24 @@
 			{
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
-					"connectiveTracks": [107],
+					"connectiveTracks": [107.0],
 					"static": true,
-					"setTo": 107
+					"setTo": 107.0
 				}
 			}
 		]
 	},
 	{
-		"num": 106,
+		"num": 106.0,
 		"name": "Stralsund Triangle Mainline B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [761.4, 23.81, -318.1],
+				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [52],
-					"setTo": 52
+					"connectiveTracks": [52.0],
+					"setTo": 52.0
 				}
 			},
 			{
@@ -4339,14 +4336,14 @@
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [47],
-					"setTo": 47
+					"connectiveTracks": [47.0],
+					"setTo": 47.0
 				}
 			}
 		]
 	},
 	{
-		"num": 107,
+		"num": 107.0,
 		"name": "Stralsund Triangle <> Depot B",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4354,9 +4351,9 @@
 			{
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
-					"connectiveTracks": [105],
+					"connectiveTracks": [105.0],
 					"static": true,
-					"setTo": 105
+					"setTo": 105.0
 				}
 			},
 			{
@@ -4366,14 +4363,14 @@
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [127],
-					"setTo": 127
+					"connectiveTracks": [127.0],
+					"setTo": 127.0
 				}
 			}
 		]
 	},
 	{
-		"num": 108,
+		"num": 108.0,
 		"name": "Stralsund South F",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4381,12 +4378,12 @@
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [127],
-					"setTo": 127
+					"connectiveTracks": [127.0],
+					"setTo": 127.0
 				}
 			},
 			{
-				"pos": [872.21, 25.0, -162.71],
+				"pos": [872.21, 25.00, -162.71],
 				"handleIn": [1.92, -0.01, 3.82]
 			},
 			{
@@ -4396,15 +4393,15 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [104, 102],
+					"connectiveTracks": [104.0, 102.0],
 					"static": true,
-					"setTo": 104
+					"setTo": 104.0
 				}
-			},
+			}
 		]
 	},
 	{
-		"num": 109,
+		"num": 109.0,
 		"name": "Stralsund DR Depot",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4412,8 +4409,8 @@
 			{
 				"pos": [892.07, 25.14, -94.85],
 				"fork": {
-					"connectiveTracks": [128],
-					"setTo": 128
+					"connectiveTracks": [128.0],
+					"setTo": 128.0
 				}
 			},
 			{
@@ -4421,7 +4418,7 @@
 				"handleIn": [0.1, 0.02, -3.6]
 			},
 			{
-				"pos": [891.0, 24.9, -68.7],
+				"pos": [891.00, 24.90, -68.70],
 				"handleIn": [-0.38, 0.02, -4.68]
 			},
 			{
@@ -4429,7 +4426,7 @@
 				"handleIn": [-1.11, -0.04, -3.18]
 			},
 			{
-				"pos": [898.12, 25.35, -46.1],
+				"pos": [898.12, 25.35, -46.10],
 				"handleIn": [-1.25, -0.03, -2.74]
 			},
 			{
@@ -4438,13 +4435,13 @@
 		]
 	},
 	{
-		"num": 110,
+		"num": 110.0,
 		"name": "Feldbahn Spoldershagen Loading",
 		"type": "600_MM",
 		"tag": "FR",
 		"points": [
 			{
-				"pos": [-716.4, 24.97, -316.61],
+				"pos": [-716.40, 24.97, -316.61],
 				"end": true
 			},
 			{
@@ -4452,7 +4449,7 @@
 				"handleIn": [2.97, 0.02, -3.52]
 			},
 			{
-				"pos": [-733.6, 24.03, -295.62],
+				"pos": [-733.60, 24.03, -295.62],
 				"handleIn": [2.26, 0.13, -2.53]
 			},
 			{
@@ -4464,21 +4461,21 @@
 				"handleIn": [-1.97, -0.01, -3.73]
 			},
 			{
-				"pos": [-722.31, 24.28, -255.3],
+				"pos": [-722.31, 24.28, -255.30],
 				"handleIn": [-4.9, -0.03, -10.08]
 			},
 			{
 				"pos": [-724.13, 24.48, -236.78],
 				"handleIn": [1.362, -0.021, -1.91],
 				"fork": {
-					"connectiveTracks": [111],
-					"setTo": 111
+					"connectiveTracks": [111.0],
+					"setTo": 111.0
 				}
 			}
 		]
 	},
 	{
-		"num": 111,
+		"num": 111.0,
 		"name": "Feldbahn Spoldershagen <> Martenshagen",
 		"type": "600_MM",
 		"tag": "FR",
@@ -4486,8 +4483,8 @@
 			{
 				"pos": [-724.13, 24.48, -236.78],
 				"fork": {
-					"connectiveTracks": [110],
-					"setTo": 110
+					"connectiveTracks": [110.0],
+					"setTo": 110.0
 				}
 			},
 			{
@@ -4513,15 +4510,15 @@
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [112, 113],
+					"connectiveTracks": [112.0, 113.0],
 					"static": true,
-					"setTo": 112
+					"setTo": 112.0
 				}
 			}
 		]
-	 },
+	},
 	{
-		"num": 112,
+		"num": 112.0,
 		"name": "Feldbahn Martenshagen Fork <> Farm",
 		"type": "600_MM",
 		"tag": "FR",
@@ -4529,8 +4526,8 @@
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [111],
-					"setTo": 111
+					"connectiveTracks": [111.0],
+					"setTo": 111.0
 				}
 			},
 			{
@@ -4542,7 +4539,7 @@
 				"handleIn": [-3.34, 0.1, -1.29]
 			},
 			{
-				"pos": [-709.23, 24.19, -139.3],
+				"pos": [-709.23, 24.19, -139.30],
 				"handleIn": [-3.87, 0.02, -0.07]
 			},
 			{
@@ -4552,16 +4549,16 @@
 		]
 	},
 	{
-		"num": 113,
-		"name": "Feldbahn Martenshagen Fork <> Depot" ,
+		"num": 113.0,
+		"name": "Feldbahn Martenshagen Fork <> Depot",
 		"type": "600_MM",
 		"tag": "FR",
 		"points": [
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [111],
-					"setTo": 111
+					"connectiveTracks": [111.0],
+					"setTo": 111.0
 				}
 			},
 			{
@@ -4586,70 +4583,70 @@
 		]
 	},
 	{
-		"num": 114,
-		"name": "Stralsund HBF Track 3 <> Harbour Curve" ,
+		"num": 114.0,
+		"name": "Stralsund HBF Track 3 <> Harbour Curve",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45.0],
+					"setTo": 45.0
 				}
 			},
 			{
-				"pos": [832.9, 24.45, -224.4],
+				"pos": [832.90, 24.45, -224.40],
 				"handleIn": [-5.44, -0.03, -0.7]
 			},
 			{
-				"pos": [843.83, 24.6, -223.55],
+				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [116],
-					"setTo": 116
+					"connectiveTracks": [116.0],
+					"setTo": 116.0
 				}
 			}
 		]
 	},
 	{
-		"num": 115,
-		"name": "Stralsund HBF Track 1&2 <> Harbour Curve" ,
+		"num": 115.0,
+		"name": "Stralsund HBF Track 1&2 <> Harbour Curve",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [44, 46],
+					"connectiveTracks": [44.0, 46.0],
 					"static": true,
-					"setTo": 46
+					"setTo": 46.0
 				}
 			},
 			{
-				"pos": [834.99, 24.48, -225.2],
+				"pos": [834.99, 24.48, -225.20],
 				"handleIn": [-3.24, -0.03, -1.4]
 			},
 			{
-				"pos": [843.83, 24.6, -223.55],
+				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [116],
-					"setTo": 116
+					"connectiveTracks": [116.0],
+					"setTo": 116.0
 				}
 			}
 		]
 	},
 	{
-		"num": 116,
-		"name": "Stralsund Harbour Curve <> Harbour Fork" ,
+		"num": 116.0,
+		"name": "Stralsund Harbour Curve <> Harbour Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [843.83, 24.6, -223.55],
+				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [114, 115],
+					"connectiveTracks": [114.0, 115.0],
 					"static": true,
-					"setTo": 115
+					"setTo": 115.0
 				}
 			},
 			{
@@ -4657,20 +4654,20 @@
 				"handleIn": [-2.75, -0.03, 0.7]
 			},
 			{
-				"pos": [857.69, 24.5, -227.91],
+				"pos": [857.69, 24.50, -227.91],
 				"handleIn": [-3.18, 0.05, 2.13]
 			},
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [117],
-					"setTo": 117
+					"connectiveTracks": [117.0],
+					"setTo": 117.0
 				}
 			}
 		]
 	},
 	{
-		"num": 117,
+		"num": 117.0,
 		"name": "Stralsund City Stretch",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
@@ -4678,9 +4675,9 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [102, 116],
+					"connectiveTracks": [102.0, 116.0],
 					"static": true,
-					"setTo": 116
+					"setTo": 116.0
 				}
 			},
 			{
@@ -4710,24 +4707,24 @@
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [118, 119],
+					"connectiveTracks": [118.0, 119.0],
 					"static": true,
-					"setTo": 119
+					"setTo": 119.0
 				}
 			}
 		]
 	},
 	{
-		"num": 118,
-		"name": "Stralsund Harbour Track" ,
+		"num": 118.0,
+		"name": "Stralsund Harbour Track",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [117],
-					"setTo": 117
+					"connectiveTracks": [117.0],
+					"setTo": 117.0
 				}
 			},
 			{
@@ -4739,11 +4736,11 @@
 				"handleIn": [1.06, 0.05, 5.22]
 			},
 			{
-				"pos": [903.05, 23.4, -336.38],
+				"pos": [903.05, 23.40, -336.38],
 				"handleIn": [2.19, 0.0, 3.65]
 			},
 			{
-				"pos": [892.79, 23.4, -348.95],
+				"pos": [892.79, 23.40, -348.95],
 				"handleIn": [4.3, 0.0, 3.75]
 			},
 			{
@@ -4761,16 +4758,16 @@
 		]
 	},
 	{
-		"num": 119,
-		"name": "Stralsund Rügendamm Entry S" ,
+		"num": 119.0,
+		"name": "Stralsund Rügendamm Entry S",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [117],
-					"setTo": 117
+					"connectiveTracks": [117.0],
+					"setTo": 117.0
 				}
 			},
 			{
@@ -4778,26 +4775,26 @@
 				"handleIn": [-2.32, -0.03, 2.23]
 			},
 			{
-				"pos": [921.45, 23.7, -321.55],
+				"pos": [921.45, 23.70, -321.55],
 				"fork": {
-					"connectiveTracks": [120],
-					"setTo": 120
+					"connectiveTracks": [120.0],
+					"setTo": 120.0
 				}
 			}
 		]
 	},
 	{
-		"num": 120,
-		"name": "Stralsund Rügendamm Bridge S" ,
+		"num": 120.0,
+		"name": "Stralsund Rügendamm Bridge S",
 		"type": "NORMAL_GAUGE",
 		"hideBed": true,
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [921.45, 23.7, -321.55],
+				"pos": [921.45, 23.70, -321.55],
 				"fork": {
-					"connectiveTracks": [119],
-					"setTo": 119
+					"connectiveTracks": [119.0],
+					"setTo": 119.0
 				}
 			},
 			{
@@ -4807,27 +4804,27 @@
 			{
 				"pos": [939.21, 23.76, -338.82],
 				"fork": {
-					"connectiveTracks": [121],
-					"setTo": 121
+					"connectiveTracks": [121.0],
+					"setTo": 121.0
 				}
 			}
 		]
 	},
 	{
-		"num": 121,
-		"name": "Stralsund Rügendamm Dänholm" ,
+		"num": 121.0,
+		"name": "Stralsund Rügendamm Dänholm",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [939.21, 23.76, -338.82],
 				"fork": {
-					"connectiveTracks": [120],
-					"setTo": 120
+					"connectiveTracks": [120.0],
+					"setTo": 120.0
 				}
 			},
 			{
-				"pos": [946.68, 23.77, -346.2],
+				"pos": [946.68, 23.77, -346.20],
 				"handleIn": [-1.94, -0.01, 1.92]
 			},
 			{
@@ -4835,30 +4832,30 @@
 				"handleIn": [-1.93, 0.0, 1.87]
 			},
 			{
-				"pos": [962.71, 23.7, -361.67],
+				"pos": [962.71, 23.70, -361.67],
 				"handleIn": [-2.26, 0.01, 2.14]
 			},
 			{
-				"pos": [971.72, 23.7, -369.6],
+				"pos": [971.72, 23.70, -369.60],
 				"fork": {
-					"connectiveTracks": [122],
-					"setTo": 122
+					"connectiveTracks": [122.0],
+					"setTo": 122.0
 				}
 			}
 		]
 	},
 	{
-		"num": 122,
-		"name": "Stralsund Rügendamm Bridge N" ,
+		"num": 122.0,
+		"name": "Stralsund Rügendamm Bridge N",
 		"type": "NORMAL_GAUGE",
 		"hideBed": true,
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [971.72, 23.7, -369.6],
+				"pos": [971.72, 23.70, -369.60],
 				"fork": {
-					"connectiveTracks": [121],
-					"setTo": 121
+					"connectiveTracks": [121.0],
+					"setTo": 121.0
 				}
 			},
 			{
@@ -4878,26 +4875,26 @@
 				"handleIn": [0.0, 0.0, 0.0]
 			},
 			{
-				"pos": [1022.28, 23.6, -425.12],
+				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [123, 124],
+					"connectiveTracks": [123.0, 124.0],
 					"static": true,
-					"setTo": 123
+					"setTo": 123.0
 				}
 			}
 		]
 	},
 	{
-		"num": 123,
-		"name": "Altefähr DR Station Track 1" ,
+		"num": 123.0,
+		"name": "Altefähr DR Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [1022.28, 23.6, -425.12],
+				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [122],
-					"setTo": 122
+					"connectiveTracks": [122.0],
+					"setTo": 122.0
 				}
 			},
 			{
@@ -4909,7 +4906,7 @@
 				"handleIn": [-2.08, -0.01, 1.98]
 			},
 			{
-				"pos": [1041.89, 23.74, -447.4],
+				"pos": [1041.89, 23.74, -447.40],
 				"handleIn": [-2.26, 0.0, 2.2]
 			},
 			{
@@ -4925,29 +4922,29 @@
 				"handleIn": [-2.67, 0.0, 2.04]
 			},
 			{
-				"pos": [1076.26, 23.8, -479.44],
+				"pos": [1076.26, 23.80, -479.44],
 				"handleIn": [-2.49, 0.0, 2.02]
 			},
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [125],
-					"setTo": 125
+					"connectiveTracks": [125.0],
+					"setTo": 125.0
 				}
 			}
 		]
 	},
 	{
-		"num": 124,
-		"name": "Altefähr DR Station Track 2" ,
+		"num": 124.0,
+		"name": "Altefähr DR Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [1022.28, 23.6, -425.12],
+				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [122],
-					"setTo": 122
+					"connectiveTracks": [122.0],
+					"setTo": 122.0
 				}
 			},
 			{
@@ -4973,24 +4970,24 @@
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [125],
-					"setTo": 125
+					"connectiveTracks": [125.0],
+					"setTo": 125.0
 				}
 			}
 		]
 	},
 	{
-		"num": 125,
-		"name": "Altefähr <> Rambin Entry" ,
+		"num": 125.0,
+		"name": "Altefähr <> Rambin Entry",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [123, 124],
+					"connectiveTracks": [123.0, 124.0],
 					"static": true,
-					"setTo": 124
+					"setTo": 124.0
 				}
 			},
 			{
@@ -5002,7 +4999,7 @@
 				"handleIn": [-1.98, -0.03, 5.7]
 			},
 			{
-				"pos": [1106.3, 23.76, -531.33],
+				"pos": [1106.30, 23.76, -531.33],
 				"handleIn": [-2.38, 0.01, 5.79]
 			},
 			{
@@ -5014,7 +5011,7 @@
 				"handleIn": [-4.24, -0.01, 4.63]
 			},
 			{
-				"pos": [1137.33, 23.92, -575.5],
+				"pos": [1137.33, 23.92, -575.50],
 				"handleIn": [-2.83, -0.02, 2.82]
 			},
 			{
@@ -5036,23 +5033,23 @@
 			{
 				"pos": [1211.55, 24.48, -623.94],
 				"fork": {
-					"connectiveTracks": [126],
-					"setTo": 126
+					"connectiveTracks": [126.0],
+					"setTo": 126.0
 				}
 			}
 		]
 	},
 	{
-		"num": 126,
-		"name": "Rambin Station" ,
+		"num": 126.0,
+		"name": "Rambin Station",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [1211.55, 24.48, -623.94],
 				"fork": {
-					"connectiveTracks": [125],
-					"setTo": 125
+					"connectiveTracks": [125.0],
+					"setTo": 125.0
 				}
 			},
 			{
@@ -5076,22 +5073,22 @@
 				"handleIn": [-6.39, -0.01, 1.48]
 			},
 			{
-				"pos": [1331.71, 23.7, -665.77]
+				"pos": [1331.71, 23.70, -665.77]
 			}
 		]
 	},
 	{
-		"num": 127,
-		"name": "Stralsund South Thing" ,
+		"num": 127.0,
+		"name": "Stralsund South Thing",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [107, 108],
+					"connectiveTracks": [107.0, 108.0],
 					"static": true,
-					"setTo": 107
+					"setTo": 107.0
 				}
 			},
 			{
@@ -5101,24 +5098,24 @@
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [128, 129],
+					"connectiveTracks": [128.0, 129.0],
 					"static": true,
-					"setTo": 128
+					"setTo": 128.0
 				}
 			}
 		]
 	},
 	{
-		"num": 128,
-		"name": "Stralsund South Thing" ,
+		"num": 128.0,
+		"name": "Stralsund South Thing",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [127],
-					"setTo": 127
+					"connectiveTracks": [127.0],
+					"setTo": 127.0
 				}
 			},
 			{
@@ -5126,7 +5123,7 @@
 				"handleIn": [-1.19, -0.03, -4.51]
 			},
 			{
-				"pos": [893.3, 25.12, -114.11],
+				"pos": [893.30, 25.12, -114.11],
 				"handleIn": [-0.01, -0.03, -2.8]
 			},
 			{
@@ -5137,24 +5134,24 @@
 				"pos": [892.07, 25.14, -94.85],
 				"static": true,
 				"fork": {
-					"connectiveTracks": [109, 130],
+					"connectiveTracks": [109.0, 130.0],
 					"static": true,
-					"setTo": 130
+					"setTo": 130.0
 				}
 			}
 		]
 	},
 	{
-		"num": 129,
-		"name": "Stralsund South Thing" ,
+		"num": 129.0,
+		"name": "Stralsund South Thing",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [127],
-					"setTo": 127
+					"connectiveTracks": [127.0],
+					"setTo": 127.0
 				}
 			},
 			{
@@ -5186,7 +5183,7 @@
 				"handleIn": [-2.63, 0.0, -4.45]
 			},
 			{
-				"pos": [964.54, 25.3, 21.58],
+				"pos": [964.54, 25.30, 21.58],
 				"handleIn": [-3.49, -0.02, -5.94]
 			},
 			{
@@ -5195,20 +5192,20 @@
 		]
 	},
 	{
-		"num": 130,
-		"name": "Stralsund <> Voigdehagen" ,
+		"num": 130.0,
+		"name": "Stralsund <> Voigdehagen",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [892.07, 25.14, -94.85],
 				"fork": {
-					"connectiveTracks": [128],
-					"setTo": 128
+					"connectiveTracks": [128.0],
+					"setTo": 128.0
 				}
 			},
 			{
-				"pos": [885.8, 25.04, -73.75],
+				"pos": [885.80, 25.04, -73.75],
 				"handleIn": [1.94, 0.01, -5.75]
 			},
 			{
@@ -5220,7 +5217,7 @@
 				"handleIn": [3.18, 0.03, -3.95]
 			},
 			{
-				"pos": [855.5, 24.73, -26.41],
+				"pos": [855.50, 24.73, -26.41],
 				"handleIn": [3.4, 0.0, -4.94]
 			},
 			{
@@ -5232,21 +5229,21 @@
 				"handleIn": [1.58, -0.03, -5.28]
 			},
 			{
-				"pos": [834.6, 25.5, 25.16]
+				"pos": [834.60, 25.50, 25.16]
 			}
 		]
 	},
 	{
-		"num": 131,
-		"name": "Velgast Sternhagen Curve" ,
+		"num": 131.0,
+		"name": "Velgast Sternhagen Curve",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [66],
-					"setTo": 66
+					"connectiveTracks": [66.0],
+					"setTo": 66.0
 				}
 			},
 			{
@@ -5254,15 +5251,15 @@
 				"handleIn": [4.33, -0.05, -3.5]
 			},
 			{
-				"pos": [-313.91, 26.04, -34.5],
+				"pos": [-313.91, 26.04, -34.50],
 				"handleIn": [2.49, -0.09, -5.33]
 			},
 			{
-				"pos": [-315.56, 26.4, -17.95],
+				"pos": [-315.56, 26.40, -17.95],
 				"handleIn": [-0.73, -0.04, -6.19]
 			},
 			{
-				"pos": [-311.2, 26.26, -2.81],
+				"pos": [-311.20, 26.26, -2.81],
 				"handleIn": [-2.8, 0.02, -6.26]
 			},
 			{
@@ -5278,11 +5275,11 @@
 				"handleIn": [-3.73, 0.04, -4.23]
 			},
 			{
-				"pos": [-270.5, 24.28, 58.78],
+				"pos": [-270.50, 24.28, 58.78],
 				"handleIn": [-3.04, 0.01, -5.46]
 			},
 			{
-				"pos": [-264.53, 24.4, 75.27],
+				"pos": [-264.53, 24.40, 75.27],
 				"handleIn": [-1.52, -0.01, -5.64]
 			},
 			{
@@ -5299,20 +5296,20 @@
 		]
 	},
 	{
-		"num": 132,
-		"name": "Velgast <> Saatel Curve" ,
+		"num": 132.0,
+		"name": "Velgast <> Saatel Curve",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [65],
-					"setTo": 65
+					"connectiveTracks": [65.0],
+					"setTo": 65.0
 				}
 			},
 			{
-				"pos": [-301.53, 24.88, -61.9],
+				"pos": [-301.53, 24.88, -61.90],
 				"handleIn": [5.03, 0.01, 1.76]
 			},
 			{
@@ -5324,7 +5321,7 @@
 				"handleIn": [0.26, 0.04, 4.09]
 			},
 			{
-				"pos": [-317.0, 24.37, -102.0],
+				"pos": [-317.00, 24.37, -102.00],
 				"handleIn": [0.84, 0.03, 5.41]
 			},
 			{
@@ -5332,7 +5329,7 @@
 				"handleIn": [2.15, 0.02, 6.34]
 			},
 			{
-				"pos": [-330.23, 23.94, -142.1],
+				"pos": [-330.23, 23.94, -142.10],
 				"handleIn": [2.55, 0.02, 4.6]
 			},
 			{
@@ -5348,31 +5345,31 @@
 				"handleIn": [1.98, 0.0, 4.53]
 			},
 			{
-				"pos": [-362.67, 23.7, -210.54],
+				"pos": [-362.67, 23.70, -210.54],
 				"handleIn": [2.05, 0.01, 6.2]
 			},
 			{
 				"pos": [-370.64, 23.63, -227.36],
 				"fork": {
-					"connectiveTracks": [133],
+					"connectiveTracks": [133.0],
 					"static": true,
-					"setTo": 133
+					"setTo": 133.0
 				}
 			}
 		]
 	},
 	{
-		"num": 133,
-		"name": "Saatel <> Kenz" ,
+		"num": 133.0,
+		"name": "Saatel <> Kenz",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [-370.64, 23.63, -227.36],
 				"fork": {
-					"connectiveTracks": [132],
+					"connectiveTracks": [132.0],
 					"static": true,
-					"setTo": 132
+					"setTo": 132.0
 				}
 			},
 			{
@@ -5380,7 +5377,7 @@
 				"handleIn": [4.4, 0.01, 7.3]
 			},
 			{
-				"pos": [-393.34, 23.55, -265.9],
+				"pos": [-393.34, 23.55, -265.90],
 				"handleIn": [3.14, 0.0, 5.04]
 			},
 			{
@@ -5392,7 +5389,7 @@
 				"handleIn": [4.02, 0.0, 3.91]
 			},
 			{
-				"pos": [-441.42, 23.5, -312.19],
+				"pos": [-441.42, 23.50, -312.19],
 				"handleIn": [4.51, 0.0, 3.82]
 			},
 			{
@@ -5404,31 +5401,31 @@
 				"handleIn": [4.41, -0.04, 3.54]
 			},
 			{
-				"pos": [-493.05, 24.81, -357.6],
+				"pos": [-493.05, 24.81, -357.60],
 				"fork": {
-					"connectiveTracks": [134],
+					"connectiveTracks": [134.0],
 					"static": true,
-					"setTo": 134
+					"setTo": 134.0
 				}
 			}
 		]
 	},
 	{
-		"num": 134,
-		"name": "Kenz <> Barth Stationm Fork" ,
+		"num": 134.0,
+		"name": "Kenz <> Barth Stationm Fork",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-493.05, 24.81, -357.6],
+				"pos": [-493.05, 24.81, -357.60],
 				"fork": {
-					"connectiveTracks": [134],
+					"connectiveTracks": [134.0],
 					"static": true,
-					"setTo": 134
+					"setTo": 134.0
 				}
 			},
 			{
-				"pos": [-501.47, 25.43, -368.0],
+				"pos": [-501.47, 25.43, -368.00],
 				"handleIn": [3.4, -0.09, 4.12]
 			},
 			{
@@ -5448,30 +5445,30 @@
 				"handleIn": [1.29, 0.01, 3.1]
 			},
 			{
-				"pos": [-533.85, 25.74, -431.9],
+				"pos": [-533.85, 25.74, -431.90],
 				"handleIn": [1.02, -0.07, 3.03]
 			},
 			{
-				"pos": [-539.41, 25.14, -444.6],
+				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [135, 136],
+					"connectiveTracks": [135.0, 136.0],
 					"static": true,
-					"setTo": 135
+					"setTo": 135.0
 				}
 			}
 		]
 	},
 	{
-		"num": 135,
-		"name": "Barth DR Station Track 1" ,
+		"num": 135.0,
+		"name": "Barth DR Station Track 1",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-539.41, 25.14, -444.6],
+				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [134],
-					"setTo": 134
+					"connectiveTracks": [134.0],
+					"setTo": 134.0
 				}
 			},
 			{
@@ -5497,23 +5494,23 @@
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [137],
-					"setTo": 137
+					"connectiveTracks": [137.0],
+					"setTo": 137.0
 				}
 			}
 		]
 	},
 	{
-		"num": 136,
-		"name": "Barth DR Station Track 2" ,
+		"num": 136.0,
+		"name": "Barth DR Station Track 2",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
-				"pos": [-539.41, 25.14, -444.6],
+				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [134],
-					"setTo": 134
+					"connectiveTracks": [134.0],
+					"setTo": 134.0
 				}
 			},
 			{
@@ -5529,7 +5526,7 @@
 				"handleIn": [1.63, 0.01, 4.2]
 			},
 			{
-				"pos": [-558.4, 24.67, -506.47],
+				"pos": [-558.40, 24.67, -506.47],
 				"handleIn": [1.47, 0.04, 3.92]
 			},
 			{
@@ -5543,24 +5540,24 @@
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [137],
-					"setTo": 137
+					"connectiveTracks": [137.0],
+					"setTo": 137.0
 				}
 			}
 		]
 	},
 	{
-		"num": 137,
-		"name": "Barth Station <> Settlement" ,
+		"num": 137.0,
+		"name": "Barth Station <> Settlement",
 		"type": "NORMAL_GAUGE",
 		"tag": "DR",
 		"points": [
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [135, 136],
+					"connectiveTracks": [135.0, 136.0],
 					"static": true,
-					"setTo": 136
+					"setTo": 136.0
 				}
 			},
 			{

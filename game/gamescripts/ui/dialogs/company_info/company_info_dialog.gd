@@ -1,12 +1,12 @@
-class_name CompanyInfoDialog extends MenuShellDialog
+## The company's cash, deliveries, income and spending. Totals update live while
+## the dialog is open, since deliveries keep happening.
+class_name CompanyInfoDialog extends ModalGameDialog
 
 var _company: CompanyData
 
 
 func _ready() -> void:
-	dialog_key = "CompanyInfoDialog"
-	title_text = "Company information"
-	super._ready()
+	%CancelButton.grab_focus()
 	_company = CompanyData.current()
 	%DeliveryRates.text = "%s per passenger at their destination. %s per cargo unit used by an industry." % [
 		CompanyData.format_cash(CompanyData.PASSENGER_REWARD),

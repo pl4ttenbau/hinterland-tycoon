@@ -2,14 +2,13 @@ class_name NewRailBuilder extends Node
 
 const BEDDING_OFFSET := Vector3(0, 0.2, 0)
 const Quote = preload("res://game/gamescripts/resources/infr/rail_construction_quote.gd")
-const ConfirmDialog = preload("res://game/gamescripts/ui/dialogs/build/rail_construction_dialog.gd")
 const CONFIRM_SCENE := preload("res://scenes/ui/dialogs/build/rail_construction_dialog.tscn")
 
 var _mode: UiModeBuildInfr
 var _approach: RailNodeData
 var _draft: RailTrackData
 var _preview: RailTrack3D
-var _confirmation: ConfirmDialog
+var _confirmation: RailConstructionDialog
 var _committing: bool = false
 
 
@@ -75,29 +74,29 @@ func review_plan() -> void:
 	if _draft == null or _confirmation != null or UiState.current_diag != null:
 		return
 	var cost: int = (_draft.nodes.size() - 1) * CompanyData.TRACK_SEGMENT_COST
-	var dialog: ConfirmDialog = CONFIRM_SCENE.instantiate()
+	var dialog: RailConstructionDialog = CONFIRM_SCENE.instantiate()
 	dialog.quote = Quote.new(_draft.curve.get_baked_length(), _draft.get_gauge_mm(), cost)
-	dialog.build_requested.connect(_accept_plan.bind(dialog))
+	dialog.on_submit = _accept_plan.bind(dialog)
 	dialog.closed.connect(_on_confirmation_closed.bind(dialog))
 	_confirmation = dialog
 	add_child(dialog)
 
 
-func _accept_plan(dialog: ConfirmDialog) -> void:
+## The review dialog's submit handler. Returns why the track cannot be built,
+## or "" after building it, charging the company and closing the dialog.
+func _accept_plan(dialog: RailConstructionDialog) -> String:
 	if _committing or _confirmation != dialog or _draft == null or _mode == null:
-		return
+		return "This rail plan is no longer active."
 	var fork: NewRailForkData = _mode.at_fork
 	var approach: RailNodeData = _get_approach(fork)
 	if approach == null or approach != _approach or approach.parent_track.infr_type_key != _draft.infr_type_key:
-		dialog.show_error("The rail connection changed. Start a new plan from the junction.")
-		return
+		return "The rail connection changed. Start a new plan from the junction."
 
 	_committing = true
 	var company := CompanyData.current()
 	if company != null and not company.spend(dialog.quote.price):
-		dialog.show_error(company.spending_error(dialog.quote.price))
 		_committing = false
-		return
+		return company.spending_error(dialog.quote.price)
 
 	# Transfer the very same smoothed curve from the preview to the registered track.
 	var track: RailTrackData = _draft
@@ -106,6 +105,7 @@ func _accept_plan(dialog: ConfirmDialog) -> void:
 	dialog.close_all()
 	_finish_build_mode()
 	_committing = false
+	return ""
 
 
 func _register_track(track: RailTrackData, fork: NewRailForkData) -> void:
@@ -142,7 +142,7 @@ func _get_approach(fork: NewRailForkData) -> RailNodeData:
 	return null
 
 
-func _on_confirmation_closed(_result: Variant, dialog: ConfirmDialog) -> void:
+func _on_confirmation_closed(_result: Variant, dialog: RailConstructionDialog) -> void:
 	if _confirmation == dialog:
 		_confirmation = null
 

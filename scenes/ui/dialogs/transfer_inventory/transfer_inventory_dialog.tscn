@@ -1,59 +1,142 @@
 [gd_scene format=3 uid="uid://ccxe40d72tuhc"]
 
 [ext_resource type="Script" uid="uid://csyehw3q3ff80" path="res://game/gamescripts/ui/dialogs/inventory_transfer/inventory_transfer_dialog.gd" id="1_3wb0r"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/inventory/inventory_category_tabs.gd" id="2_tabs"]
+[ext_resource type="PackedScene" path="res://scenes/ui/inventory/inventory_transfer_panel.tscn" id="3_panel"]
 
-[node name="InventoryTransferDialog" type="Control" unique_id=218678304]
+[node name="InventoryTransferDialog" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_right = 350.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_3wb0r")
-dialog_key = "transfer"
-metadata/_custom_type_script = "uid://csyehw3q3ff80"
+dialog_key = "InventoryTransferDiag"
+title_text = "Transfer inventory"
 
-[node name="OuterPanel" type="PanelContainer" parent="." unique_id=102159521]
+[node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -352.0
-offset_top = -258.5
-offset_right = 352.0
-offset_bottom = 258.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.38)
 
-[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1264418081]
-custom_minimum_size = Vector2(0, 500)
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=1966774023]
-custom_minimum_size = Vector2(700, 0)
+[node name="Padding" type="MarginContainer" parent="Center/Panel"]
 layout_mode = 2
 
-[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1318486676]
+[node name="Layout" type="VBoxContainer" parent="Center/Panel/Padding"]
+layout_mode = 2
+
+[node name="Headline" type="Label" parent="Center/Panel/Padding/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Transfer Goods"
+text = "Transfer inventory"
 horizontal_alignment = 1
 
-[node name="Container" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1326482309]
+[node name="Content" type="VBoxContainer" parent="Center/Panel/Padding/Layout"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 14
 
-[node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1348525671]
+[node name="Tabs" type="HBoxContainer" parent="Center/Panel/Padding/Layout/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("2_tabs")
+
+[node name="Panels" type="HBoxContainer" parent="Center/Panel/Padding/Layout/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="LeftPanel" parent="Center/Panel/Padding/Layout/Content/Panels" instance=ExtResource("3_panel")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TransferControls" type="VBoxContainer" parent="Center/Panel/Padding/Layout/Content/Panels"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="QuantityCaption" type="Label" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+layout_mode = 2
+text = "Quantity"
+horizontal_alignment = 1
+
+[node name="Quantity" type="SpinBox" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.1
+max_value = 1000000.0
+step = 0.1
+value = 1.0
+
+[node name="MaxButton" type="Button" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ManagementButton"
+text = "Max"
+
+[node name="MoveRightButton" type="Button" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "Move right →"
+
+[node name="MoveLeftButton" type="Button" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "← Move left"
+
+[node name="Hint" type="Label" parent="Center/Panel/Padding/Layout/Content/Panels/TransferControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+autowrap_mode = 3
+
+[node name="RightPanel" parent="Center/Panel/Padding/Layout/Content/Panels" instance=ExtResource("3_panel")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Center/Panel/Padding/Layout/Content"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="Center/Panel/Padding/Layout/Content/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select a resource, choose a quantity, then move it."
+autowrap_mode = 3
+
+[node name="RefreshButton" type="Button" parent="Center/Panel/Padding/Layout/Content/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ManagementButton"
+text = "Refresh nearby"
+
+[node name="CloseButton" type="Button" parent="Center/Panel/Padding/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 33
+theme_type_variation = &"ManagementButton"
+theme_override_font_sizes/font_size = 22
 text = "Close"

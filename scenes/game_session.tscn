@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://p1dg1niintj2" path="res://game/gamescripts/services/input/action_handler.gd" id="3_oj3vo"]
 [ext_resource type="Script" uid="uid://eja5gchuvysw" path="res://game/gamescripts/actions/enter_action.gd" id="4_oo77m"]
 [ext_resource type="Script" uid="uid://dei7w8gduhci" path="res://game/gamescripts/actions/spawn_action.gd" id="5_drms0"]
-[ext_resource type="Script" uid="uid://c7rapfs44v5lx" path="res://game/gamescripts/actions/show_near_action.gd" id="6_0dtnv"]
 [ext_resource type="Script" uid="uid://jl18qlk1u0hu" path="res://game/gamescripts/nodes/input/world_picker.gd" id="7_6wawu"]
 [ext_resource type="Script" uid="uid://56qvdd74rjl1" path="res://game/gamescripts/actions/loadunload_action.gd" id="7_7yd2d"]
 [ext_resource type="Script" uid="uid://c3n1pjne8toik" path="res://game/gamescripts/nodes/input/base_entity_click_handler.gd" id="8_qsvwm"]
@@ -35,11 +34,6 @@ key = "Enter"
 script = ExtResource("5_drms0")
 key = "Spawn"
 metadata/_custom_type_script = "uid://dei7w8gduhci"
-
-[node name="ConnectAction" type="Node" parent="Input/ActionHandler" unique_id=1407016425]
-script = ExtResource("6_0dtnv")
-key = "Connect"
-metadata/_custom_type_script = "uid://c7rapfs44v5lx"
 
 [node name="LoadUnloadAction" type="Node" parent="Input/ActionHandler" unique_id=1560697283]
 script = ExtResource("7_7yd2d")
