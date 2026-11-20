@@ -52,7 +52,7 @@ func run() -> bool:
 	return true
 
 func test_physical_placement() -> bool:
-	var road_view: RoadWay3D = road.spawn()
+	var road_view: RoadWay3D = RoadWay3D.of(road)
 	services.roads.add_child(road_view)
 	services.rails.spawn_rail_track(rail)
 	for frame: int in 5:

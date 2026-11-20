@@ -303,7 +303,7 @@ func test_execution() -> bool:
 	road.build_curve()
 	loader.storage._list.append(road)
 	loader.storage._by_id[100] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	loader.add_child(view)
 	loader.storage.add_container(view)
 	for frame: int in range(4):
@@ -422,7 +422,7 @@ func test_markers() -> bool:
 	road.build_curve()
 	loader.storage._list.append(road)
 	loader.storage._by_id[110] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	loader.add_child(view)
 	loader.storage.add_container(view)
 	for frame: int in range(4):

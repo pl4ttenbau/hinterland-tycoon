@@ -39,7 +39,7 @@ func spawn_roads():
 	SignalBus.roads_spawned.emit()
 
 func spawn_road(road: RoadData):
-	var instanciated: RoadWay3D = road.spawn()
+	var instanciated: RoadWay3D = RoadWay3D.of(road)
 	if instanciated == null:
 		return
 	add_child(instanciated, true)

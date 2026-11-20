@@ -4351,22 +4351,22 @@ _data = {
 }
 point_count = 10
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_idqx7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nt5iv"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_176de"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7kf6w"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8ewd4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l762k"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7lby4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xumf5"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s7ft1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_niftr"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4qqci"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jkgqr"]
 viewport_path = NodePath("SubViewport")
 
 [node name="EditorObjects" type="Node3D" unique_id=498932354]
@@ -11627,7 +11627,7 @@ material = ExtResource("6_t1wor")
 
 [node name="RoadStop_1" parent="EditorStops" unique_id=703079687 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 873.01, 38.760002, -347.27)
-texture = SubResource("ViewportTexture_idqx7")
+texture = SubResource("ViewportTexture_nt5iv")
 station_name = "Hafen"
 metadata/stop_num = 1
 metadata/interchange_num = 1
@@ -11636,7 +11636,7 @@ metadata/node_index = 3
 
 [node name="RailStop_2" parent="EditorStops" unique_id=1596559202 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.71, 38.45, -301.96)
-texture = SubResource("ViewportTexture_176de")
+texture = SubResource("ViewportTexture_7kf6w")
 station_name = "HBF"
 metadata/stop_num = 2
 metadata/interchange_num = 2
@@ -11645,7 +11645,7 @@ metadata/node_index = 2
 
 [node name="RoadStop_3" parent="EditorStops" unique_id=94387239 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 817.12, 38.92, -297.81)
-texture = SubResource("ViewportTexture_8ewd4")
+texture = SubResource("ViewportTexture_l762k")
 station_name = "HBF"
 metadata/stop_num = 3
 metadata/interchange_num = 2
@@ -11654,7 +11654,7 @@ metadata/node_index = 4
 
 [node name="RailStop_4" parent="EditorStops" unique_id=202055274 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 802.39, 39.09, -273.86)
-texture = SubResource("ViewportTexture_7lby4")
+texture = SubResource("ViewportTexture_xumf5")
 station_name = "HBF"
 metadata/stop_num = 4
 metadata/interchange_num = 2
@@ -11663,7 +11663,7 @@ metadata/node_index = 3
 
 [node name="RailStop_5" parent="EditorStops" unique_id=1834796545 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 809.13, 39.14, -249.51)
-texture = SubResource("ViewportTexture_s7ft1")
+texture = SubResource("ViewportTexture_niftr")
 station_name = "HBF"
 metadata/stop_num = 5
 metadata/interchange_num = 2
@@ -11672,7 +11672,7 @@ metadata/node_index = 2
 
 [node name="RoadStop_6" parent="EditorStops" unique_id=1649113944 instance=ExtResource("8_sfi3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 708.03, 40.379997, -237.02)
-texture = SubResource("ViewportTexture_4qqci")
+texture = SubResource("ViewportTexture_jkgqr")
 station_name = "Tribseer"
 metadata/stop_num = 6
 metadata/interchange_num = 3

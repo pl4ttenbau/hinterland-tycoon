@@ -21,18 +21,6 @@ static func of(_num: int, _type: String) -> RoadData:
 	return inst
 #endregion
 
-#region Creation
-func spawn() -> RoadWay3D:
-	var definition := get_road_type()
-	if definition == null:
-		return null
-	if ! self.curve: self.build_curve()
-	var outer_road := definition.scene.instantiate() as RoadWay3D
-	outer_road.road = self
-	outer_road.apply_mesh_profile(definition)
-	return outer_road
-#endregion
-
 #region Nodes & Curve
 func get_nodes() -> Array:
 	return self.nodes

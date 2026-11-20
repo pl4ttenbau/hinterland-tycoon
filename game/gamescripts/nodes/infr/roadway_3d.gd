@@ -16,6 +16,17 @@ class_name RoadWay3D extends GameEntity3D
 	get(): return self.entity as RoadData
 
 #region Initialization
+## Builds the view from the road type's scene; null for an unknown road type.
+static func of(road_data: RoadData) -> RoadWay3D:
+	var definition: RoadType = road_data.get_road_type()
+	if definition == null:
+		return null
+	road_data.ensure_curve()
+	var view := definition.scene.instantiate() as RoadWay3D
+	view.road = road_data
+	view.apply_mesh_profile(definition)
+	return view
+
 func _enter_tree() -> void:
 	# Configure before the child's READY builds the warped mesh. The addon owns
 	# the static body and rebuilds it whenever the path/mesh changes.

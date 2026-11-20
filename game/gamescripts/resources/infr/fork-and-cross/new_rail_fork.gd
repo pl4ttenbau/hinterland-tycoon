@@ -23,8 +23,6 @@ func _init(_pos: Vector3):
 	# assign number
 	NewRailForkData._last_fork_num += 1
 	self.num = NewRailForkData._last_fork_num
-	# connect 2 signal
-	Managers.forks.forks_spawned.connect(self.refresh_setting)
 	self.node_fork_connected.connect(Callable(self, "_on_node_fork_connected"))
 	
 func connect_rail_node_fork(rail_node_fork: RailNodeForkData):

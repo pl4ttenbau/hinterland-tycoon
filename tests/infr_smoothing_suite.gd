@@ -162,7 +162,7 @@ func test_round_trip() -> bool:
 	legacy_road.build_curve()
 	check(legacy_road.curve.get_point_out(1) == Vector3(1, 0.5, 0), "Legacy runtime road handles remain mirrored")
 	var legacy_node := RailNodeData.new()
-	legacy_node.parse_and_add_special(legacy.points[1])
+	InfrNodeMapper.apply_point_fields(legacy_node, legacy.points[1])
 	check(legacy_node.handle_out == Vector3(1, 0.5, 0), "Legacy runtime rail handles remain mirrored")
 	line.free()
 	reloaded.free()

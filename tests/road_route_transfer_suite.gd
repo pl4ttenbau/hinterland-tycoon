@@ -61,7 +61,7 @@ func _setup() -> void:
 	road.build_curve()
 	Managers.roads.storage._list.append(road)
 	Managers.roads.storage._by_id[100] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	Managers.roads.add_child(view)
 	Managers.roads.storage.add_container(view)
 

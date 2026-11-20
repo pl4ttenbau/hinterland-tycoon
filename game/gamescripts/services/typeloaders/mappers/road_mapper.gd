@@ -30,13 +30,7 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 			var road_cross := cross_from_dict_and_data(road_node, road_node_dict.get("cross"))
 			# and add to road cross list
 			_road.crosses.append(road_cross)
-		# curve handles
-		if road_node_dict.has("handleIn"):
-			road_node.handle_in = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleIn"))
-			road_node.handle_out = -1 * road_node.handle_in
-		# Catmull-Rom needs independent lengths; retain mirrored legacy handles.
-		if road_node_dict.has("handleOut"):
-			road_node.handle_out = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleOut"))
+		InfrNodeMapper.apply_point_fields(road_node, road_node_dict)
 		_road.add_node(road_node)
 		node_index += 1
 

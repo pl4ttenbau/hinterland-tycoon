@@ -74,7 +74,7 @@ func test_road_type_profile() -> bool:
 	var height := rural.mesh_height_metres
 	rural.drivable_width_metres = 8.0
 	rural.mesh_height_metres = 0.45
-	var road := data.spawn()
+	var road := RoadWay3D.of(data)
 	rural.drivable_width_metres = width
 	rural.mesh_height_metres = height
 	if road == null:
@@ -103,7 +103,7 @@ func test_mud_and_cobbles() -> bool:
 		var definition := data.get_road_type()
 		if definition == null or definition.key != key:
 			return false
-		var road := data.spawn()
+		var road := RoadWay3D.of(data)
 		if road == null:
 			return false
 		tree.root.add_child(road)

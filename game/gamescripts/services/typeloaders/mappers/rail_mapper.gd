@@ -24,7 +24,11 @@ static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData
 	for rail_node_dict: Dictionary in _json_track.points:
 		var abs_pos_vec3: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
 		var rail_node_obj := RailNodeData.of(node_index, abs_pos_vec3, _track)
-		rail_node_obj.parse_and_add_special(rail_node_dict)
+		InfrNodeMapper.apply_point_fields(rail_node_obj, rail_node_dict)
+		# The loader registers fork legs in the fork store; mapping stays side-effect free.
+		if rail_node_dict.has("fork"):
+			rail_node_obj.fork = ForkMapper.node_fork_from_dict(rail_node_dict.get("fork"), rail_node_obj)
+		# Stops are attached in the interchange-loading phase, after both networks exist.
 		_track.add_node(rail_node_obj, false)
 		node_index += 1
 

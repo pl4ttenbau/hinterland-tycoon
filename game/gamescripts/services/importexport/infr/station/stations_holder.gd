@@ -102,7 +102,6 @@ func get_station_3d_with_num(_station_num: int) -> RailStation3D:
 #endregion
 
 #region Node Station Links
-## called from RailNodeData.parse_and_add_special
 func add_station_link_from_node(node_station_link: NodeStationLinkData):
 	# add to track & global station list
 	var station_track: RailTrackData = node_station_link.parent_node.parent_track

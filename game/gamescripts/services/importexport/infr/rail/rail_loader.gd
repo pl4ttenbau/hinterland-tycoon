@@ -71,6 +71,10 @@ func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
 		var rail_track: RailTrackData = RailMapper.rail_track_from_dict(json_track)
+		# Register fork legs before the track: the fork loader groups them on track_added.
+		for node: RailNodeData in rail_track.nodes:
+			if node.fork != null:
+				self.fork_storage.add(node.fork)
 		self.track_storage.add(rail_track)
 	# trigger signal
 	SignalBus.rails_loaded.emit(self.track_storage.get_all())

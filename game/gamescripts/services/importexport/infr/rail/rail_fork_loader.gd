@@ -20,6 +20,8 @@ func add_new_or_connection(node_fork: RailNodeForkData):
 	if ! forks_by_pos.has(fork_pos):
 		# create new NewRailFork
 		var new_fork := NewRailForkData.new(fork_pos)
+		# Settings resolve once all junction views exist; erasing a junction disconnects this.
+		self.forks_spawned.connect(new_fork.refresh_setting)
 		new_fork.connect_rail_node_fork(node_fork)
 		self.forks_by_pos.set(fork_pos, new_fork)
 	else:
