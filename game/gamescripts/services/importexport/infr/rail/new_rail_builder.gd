@@ -44,7 +44,7 @@ func _start_preview(end: Vector3) -> void:
 	_draft.add_node(RailNodeData.of(0, _draft.start_pos, _draft), false)
 	_append_point(end)
 
-	var scene: PackedScene = load(RailTrack3D.get_scene_path(_draft))
+	var scene: PackedScene = _draft.get_rail_type().scene
 	_preview = scene.instantiate()
 	_preview.is_construction_preview = true
 	_preview.track = _draft

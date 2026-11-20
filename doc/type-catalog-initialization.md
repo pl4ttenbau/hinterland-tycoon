@@ -25,6 +25,14 @@ New listeners check `GameTypes.is_initialized` to handle already-loaded catalogs
 Initialization returns `ERR_BUSY` during a reentrant attempt. Maps cannot be
 selected before both catalog and world-service initialization succeed.
 
+Infrastructure types come from `game/jsondata/road_types.json` (`RoadType`: scene,
+drivable width, mesh height) and `game/jsondata/rail_types.json` (`RailType`: scene,
+`gauge_mm`, `rail_head_height_metres`). `InfrTypesLoader` checks that each scene's root
+is a `RoadWay3D` or `RailTrack3D`. `GameTypes.get_road_type()` falls back to
+`rural_road` and `GameTypes.get_rail_type()` to `NORMAL_GAUGE`; the rail lookup also
+maps legacy keys such as `1067_MM`. Adding a gauge needs only a catalog entry and its
+scene. Vehicle `usable_infr` subtypes are validated against the rail keys.
+
 Rail definitions live in `game/jsondata/rail_vehicle_types.json` and are loaded by
 `RailVehicleTypesLoader` as `RailVehicleTypeData`, which extends `VehicleTypeData`.
 The shared base contains common fields; rail model/preview conventions belong to

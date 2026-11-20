@@ -13,13 +13,6 @@ class_name RailTrackData extends AbstractTrack
 @export var forks: Array[RailJunctionArm] = []
 
 const NEAR_DISTANCE_MAX: float = 100.0
-## Distance from the track curve to the top of the rail mesh, in metres.
-const RAIL_HEAD_HEIGHT_METRES: Dictionary[String, float] = {
-	"NORMAL_GAUGE": 0.262066,
-	InfrType.GAUGE_1000_MM: 0.262066,
-	"750_MM": 0.262066,
-	"600_MM": 0.262066,
-}
 
 func _init():
 	super(Enums.EntityTypes.RAIL)
@@ -27,18 +20,20 @@ func _init():
 static func get_by_num(_rail_num: int) -> RailTrackData:
 	return Managers.rails.track_storage.get_by_num(_rail_num)
 
+## Gauge definition from the rail type catalog; null when the catalog cannot load.
+func get_rail_type() -> RailType:
+	if GameTypes.rail_types.is_empty() and GameTypes.ensure_initialized() != OK:
+		return null
+	return GameTypes.get_rail_type(self.infr_type_key)
+
+## Distance from the track curve to the top of the rail, in metres.
 func get_rail_head_height() -> float:
-	# Legacy track types use the standard-gauge scene.
-	return RAIL_HEAD_HEIGHT_METRES.get(self.infr_type_key, RAIL_HEAD_HEIGHT_METRES["NORMAL_GAUGE"])
+	var definition: RailType = self.get_rail_type()
+	return definition.rail_head_height_metres if definition != null else 0.0
 
 func get_gauge_mm() -> int:
-	if self.infr_type_key == InfrType.GAUGE_1000_MM:
-		return 1000
-	if self.infr_type_key == "750_MM":
-		return 750
-	if self.infr_type_key == "600_MM":
-		return 600
-	return 1435
+	var definition: RailType = self.get_rail_type()
+	return definition.gauge_mm if definition != null else 0
 	
 #region Nodes & Forks
 func get_nodes() -> Array:

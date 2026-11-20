@@ -2,11 +2,6 @@
 @icon("res://assets/icons/nodes_3d/icon_rail_track.svg")
 class_name RailTrack3D extends GameEntity3D
 
-const SCENE_PATH_NORMAL = "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn"
-const SCENE_PATH_1000MM = "res://assets/meshes/infr/rail/rail_track_1000mm/path_rail_1000mm_bedded.tscn"
-const SCENE_PATH_750MM = "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn"
-const SCENE_PATH_600MM = "res://assets/meshes/infr/rail/rail_track_600mm/path_rail_600mm_bedded.tscn"
-
 signal track_assigned(track: RailTrackData)
 
 var is_construction_preview := false
@@ -54,14 +49,15 @@ func _hide_bed_when_required(track_obj: RailTrackData):
 		bedding.collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH if solid_bedding else PathMesh3D.COLLISION_MODE_NONE
 #endregion
 		
-static func get_scene_path(track_obj: RailTrackData) -> String:
-	if track_obj.infr_type_key == InfrType.GAUGE_1000_MM:
-		return SCENE_PATH_1000MM
-	elif track_obj.infr_type_key == "750_MM":
-		return SCENE_PATH_750MM
-	elif track_obj.infr_type_key == "600_MM":
-		return SCENE_PATH_600MM
-	else: return SCENE_PATH_NORMAL
+## Builds the view from the track's rail type scene; null when the type catalog cannot load.
+static func of(track_data: RailTrackData) -> RailTrack3D:
+	var definition: RailType = track_data.get_rail_type()
+	if definition == null:
+		return null
+	track_data.ensure_curve()
+	var view := definition.scene.instantiate() as RailTrack3D
+	view.track = track_data
+	return view
 	
 func get_bed_mesh() -> PathMesh3D:
 	for child in self.get_children():

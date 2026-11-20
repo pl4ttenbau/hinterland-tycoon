@@ -1,0 +1,26 @@
+[
+  {
+    "key": "NORMAL_GAUGE",
+    "scene": "res://assets/meshes/infr/rail/rail_track_normal/path_rail_normal_bedded.tscn",
+    "gauge_mm": 1435,
+    "rail_head_height_metres": 0.262066
+  },
+  {
+    "key": "1000_MM",
+    "scene": "res://assets/meshes/infr/rail/rail_track_1000mm/path_rail_1000mm_bedded.tscn",
+    "gauge_mm": 1000,
+    "rail_head_height_metres": 0.262066
+  },
+  {
+    "key": "750_MM",
+    "scene": "res://assets/meshes/infr/rail/rail_track_750mm/path_rail_750mm_bedded.tscn",
+    "gauge_mm": 750,
+    "rail_head_height_metres": 0.262066
+  },
+  {
+    "key": "600_MM",
+    "scene": "res://assets/meshes/infr/rail/rail_track_600mm/path_rail_600mm_bedded.tscn",
+    "gauge_mm": 600,
+    "rail_head_height_metres": 0.262066
+  }
+]

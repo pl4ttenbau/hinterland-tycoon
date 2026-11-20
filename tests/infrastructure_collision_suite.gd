@@ -122,8 +122,17 @@ func test_mud_and_cobbles() -> bool:
 	return true
 
 func test_rails() -> bool:
-	for scene_path: String in [RailTrack3D.SCENE_PATH_NORMAL, RailTrack3D.SCENE_PATH_750MM, RailTrack3D.SCENE_PATH_600MM]:
-		var rail: RailTrack3D = load(scene_path).instantiate()
+	if GameTypes.ensure_initialized() != OK:
+		return false
+	var expected_gauges: Dictionary = {"NORMAL_GAUGE": 1435, "1000_MM": 1000, "750_MM": 750, "600_MM": 600}
+	check(GameTypes.rail_types.keys().size() == expected_gauges.size(), "Rail catalog lists every gauge used by the maps")
+	for key: String in expected_gauges:
+		var definition: RailType = GameTypes.rail_types.get(key)
+		check(definition != null and definition.gauge_mm == expected_gauges[key] and definition.rail_head_height_metres > 0.0, "%s loads its gauge and rail height" % key)
+	check(GameTypes.get_rail_type("1067_MM").key == InfrType.GAUGE_1000_MM, "Legacy 1067 mm tracks use the metre-gauge definition")
+	check(GameTypes.get_rail_type("UNKNOWN").key == InfrTypesLoader.DEFAULT_RAIL_TYPE, "Unknown gauges fall back to standard gauge")
+	for key: String in ["NORMAL_GAUGE", "750_MM", "600_MM"]:
+		var rail: RailTrack3D = GameTypes.get_rail_type(key).scene.instantiate()
 		rail.position = Vector3(0, 25, 0)
 		var curve := Curve3D.new()
 		curve.add_point(Vector3.ZERO)
@@ -133,7 +142,7 @@ func test_rails() -> bool:
 		await settle()
 		var path: Path3D = rail.get_child(0)
 		var centre: Vector3 = path.to_global(Vector3(0, 0, -20))
-		check(not ray_at(rail, centre).is_empty(), "Rail bedding supports collision for %s" % scene_path)
+		check(not ray_at(rail, centre).is_empty(), "Rail bedding supports collision for %s" % key)
 		var bedding: PathMesh3D = rail.get_bed_mesh()
 		check(bedding.collision_mode == PathMesh3D.COLLISION_MODE_TRIMESH, "Visible bedding has collision")
 
