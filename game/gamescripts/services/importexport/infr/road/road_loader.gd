@@ -118,7 +118,6 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 	var source: Curve3D = road.curve
 	if source.point_count != road.nodes.size():
 		return ERR_INVALID_DATA
-	var old_origin: Vector3 = road.start_pos
 	var old_nodes: Array[RoadNode] = road.nodes
 	var old_anchors: Array[RoadNode] = old_nodes.filter(func(node: RoadNode) -> bool:
 		return node == old_nodes.front() or node == old_nodes.back() or node.cross != null)
@@ -126,7 +125,7 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 	var fragments: Array[RoadData] = []
 	var surviving: Dictionary = {}
 	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
-		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, old_nodes[points.x].position - old_origin)
+		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, Vector3.ZERO)
 		if section.get_baked_length() <= 0.0:
 			continue
 		var fragment: RoadData = road if fragments.is_empty() else RoadData.of(storage._max_num + 1, road.infr_type_key)
@@ -140,7 +139,6 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 		for node: RoadNode in fragment.nodes:
 			node.parent_track = fragment
 			node.index = fragment.vertices.size()
-			node.rel_position = node.position - fragment.start_pos
 			fragment.vertices.append(node.position)
 			if node.cross != null:
 				fragment.crosses.append(node.cross)

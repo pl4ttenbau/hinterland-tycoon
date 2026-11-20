@@ -11,9 +11,6 @@ class_name NodeStationLinkStore extends Resource
 
 signal node_station_added(node_station: NodeStationLinkData)
 	
-func _enter_tree() -> void:
-	self.node_station_added.connect(Callable(self, "_node_station_added"))
-
 #region Add Node Station
 func add(node_station: NodeStationLinkData):
 	self._list.append(node_station)
@@ -65,9 +62,4 @@ func get_container_by_num(node_station_num: int) -> NodeStationLink3D:
 	var found: NodeStationLink3D = self._containers_by_id.get(node_station_num, null)
 	if ! found: Loggie.error("Cannot get NodeStationLink3D %d; out of index?" % node_station_num)
 	return found
-#endregion
-
-#region Callbacks & Helpers 
-func _on_node_station_added(node_station: NodeStationLinkData):
-	GlobalState.node_stations.append(node_station)
 #endregion

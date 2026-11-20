@@ -131,8 +131,7 @@ func placement_on(infrastructure: AbstractTrack, position: Vector3, view_forward
 	if infrastructure.curve == null or infrastructure.curve.get_point_count() < 2:
 		return {}
 	var road := infrastructure as RoadData
-	var local_position: Vector3 = position - road.start_pos if road != null else position
-	var offset: float = infrastructure.curve.get_closest_offset(local_position)
+	var offset: float = infrastructure.curve.get_closest_offset(position)
 	var center: Vector3 = infrastructure.curve.sample_baked(offset)
 	var nodes: Array = infrastructure.get("nodes")
 	var nearest_index: int = 0
@@ -144,14 +143,14 @@ func placement_on(infrastructure: AbstractTrack, position: Vector3, view_forward
 			nearest_index = index
 	var placement := {"domain": "ROAD" if road != null else "RAIL", "infrastructure_num": infrastructure.num,
 		"offset": offset, "node_index": nearest_index, "origin": position,
-		"position": center + road.start_pos if road != null else center}
+		"position": center}
 	if road != null:
 		var heading: Vector3 = RoadStopsLoader.road_heading(road, nearest_index, offset)
 		var increasing := Enums.RoadStopDirection.ROAD_NODES_INCREASE
 		var decreasing := Enums.RoadStopDirection.ROAD_NODES_DECREASE
 		# Default to the player's physical side. Facing the other way changes
 		# that side's label, while routing still uses the stored road direction.
-		placement.direction = decreasing if (local_position - center).dot(heading.cross(Vector3.UP)) < 0.0 else increasing
+		placement.direction = decreasing if (position - center).dot(heading.cross(Vector3.UP)) < 0.0 else increasing
 		# Use the road direction closest to the captured view. Exact perpendicular
 		# views have no preferred direction, so use the increasing direction there.
 		placement.right_direction = decreasing if heading.dot(view_forward) < -0.0001 else increasing
@@ -191,8 +190,6 @@ func placement_error(placement: Dictionary) -> String:
 	if node_index < 0 or node_index >= nodes.size():
 		return "The road or track has changed. Close this dialog and place again."
 	var position: Vector3 = infrastructure.curve.sample_baked(offset)
-	if infrastructure is RoadData:
-		position += infrastructure.start_pos
 	if not position.is_equal_approx(placement.position):
 		return "The road or track has changed. Close this dialog and place again."
 	for stop: AbstractStation in Managers.interchanges.stops_by_num.values():

@@ -211,7 +211,6 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 		for node: RailNodeData in fragment.nodes:
 			node.parent_track = fragment
 			node.index = fragment.vertices.size()
-			node.rel_position = node.position - fragment.start_pos
 			fragment.vertices.append(node.position)
 			surviving[node] = true
 			if node.fork != null:

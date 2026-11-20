@@ -22,18 +22,14 @@ extends Node
 @export var ind_bld_containers: Array[Industry3D] = []
 
 # == INFR ==
-@export var tracks: Array[RailTrackData] = []
 @export var outer_tracks: Array[RailTrack3D] = []
 
-@export var node_stations: Array[NodeStationLinkData] = []
 @export var station_objs: Array[RailStationData] = []
 
 @export var rail_depots: Array[RailDepotData] = []
 @export var forks: Array[RailNodeForkData] = []
 
-@export var roads: Array[RoadData] = []
 @export var road_depots: Array[RoadDepotData] = []
-@export var outer_roads: Array[RoadWay3D] = []
 
 @export var trains: Array[Train3D] = []
 

@@ -47,7 +47,7 @@ static func prepare_roads(roads: Array[RoadData]) -> Array[RoadCurveCandidate]:
 			continue
 		if road.curve == null:
 			road.build_curve()
-		candidates.append(RoadCurveCandidate.from_curve(road.num, road.curve, Transform3D(Basis.IDENTITY, road.start_pos)))
+		candidates.append(RoadCurveCandidate.from_curve(road.num, road.curve, Transform3D.IDENTITY))
 	return candidates
 
 ## Transform control points AND handles before measuring, so offsets remain metres

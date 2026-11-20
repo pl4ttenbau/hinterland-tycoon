@@ -35,13 +35,9 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 	# Stops are attached in the interchange-loading phase, after both networks
 	# exist. Track geometry no longer creates stations as a parsing side effect.
 
-func as_ref() -> RailNodeRef:
-	var track_num: int = self.parent_track.num
-	return RailNodeRef.new(track_num, self.index)
-
 #region Getters
 func get_previous() -> RailNodeData:
-	if self.index >= 0:
+	if self.index > 0:
 		return self.parent_track.get_rail_node(self.index -1)
 	return null
 	

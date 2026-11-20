@@ -18,7 +18,6 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# create vertexes/curve
 	add_points_from_json(_road_dict, road_instance)
-	road_instance.created.emit(road_instance)
 	return road_instance
 
 static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
@@ -26,7 +25,6 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 	for road_node_dict: Dictionary in _json_track.points:
 		var abs_node_pos: Vector3 = WorldUtils.vec3_from_float_arr(road_node_dict.pos)
 		var road_node := RoadNode.of(node_index, abs_node_pos, _road)
-		road_node.rel_position = abs_node_pos - _road.start_pos
 		# crosing with other roads
 		if road_node_dict.has("cross"):
 			var road_cross := cross_from_dict_and_data(road_node, road_node_dict.get("cross"))

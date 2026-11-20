@@ -68,7 +68,6 @@ func _add_road(roads: RoadsLoader) -> void:
 	# The route editor needs authored node data as well as rendered curve geometry.
 	for index: int in range(data.curve.point_count):
 		var node := RoadNode.of(index, data.curve.get_point_position(index), data)
-		node.rel_position = node.position
 		data.add_node(node)
 	roads.storage.add(data)
 	var road: RoadWay3D = load(RoadData.RURAL_ROAD_SCENE_PATH).instantiate()

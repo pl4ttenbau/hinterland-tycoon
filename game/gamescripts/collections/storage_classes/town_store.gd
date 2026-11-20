@@ -15,9 +15,6 @@ signal town_added(town_obj: TownData)
 @warning_ignore("unused_signal")
 signal center_added(town_center: Town3D)
 	
-func _enter_tree() -> void:
-	self.town_added.connect(Callable(self, "_on_town_loaded"))
-
 #region Add City
 func add(town_obj: TownData):
 	self._list.append(town_obj)
@@ -64,9 +61,4 @@ func get_closest_to(position: Vector3) -> TownData:
 			closest = center.town
 			closest_distance = distance
 	return closest
-#endregion
-
-#region Callbacks & Helpers 
-func _on_town_loaded(town_obj: TownData):
-	GlobalState.towns.append(town_obj)
 #endregion

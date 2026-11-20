@@ -10,16 +10,12 @@ class_name RoadStore extends Resource
 
 signal road_added(road_obj: RoadData)
 	
-func _enter_tree() -> void:
-	self.road_added.connect(Callable(self, "_on_road_loaded"))
-
 #region Add road
 func add(road_obj: RoadData):
 	self._list.append(road_obj)
 	self._create_indexes(road_obj)
 	_max_num = maxi(_max_num, road_obj.num)
 	self.road_added.emit(road_obj)
-	GlobalState.roads.append(road_obj)
 	
 func add_container(outer_road: RoadWay3D):
 	self._containers.append(outer_road)
@@ -35,12 +31,10 @@ func remove(road: RoadData) -> void:
 		return
 	_list.erase(road)
 	_by_id.erase(road.num)
-	GlobalState.roads.erase(road)
 	var view: RoadWay3D = _containers_by_id.get(road.num)
 	_containers_by_id.erase(road.num)
 	if is_instance_valid(view):
 		_containers.erase(view)
-		GlobalState.outer_roads.erase(view)
 		if view.get_parent() != null:
 			view.get_parent().remove_child(view)
 		view.queue_free()
@@ -55,9 +49,6 @@ func get_by_num(road_num: int) -> RoadData:
 	if ! found: Loggie.error("Cannot get road %d; out of index?" % road_num)
 	return found
 	
-func get_by_name(road_name: StringName) -> RoadData:
-	return self._by_name.get(road_name)
-	
 func get_containers() -> Array[RoadWay3D]:
 	return self._containers
 	
@@ -65,9 +56,4 @@ func get_container_by_num(road_num: int) -> RoadWay3D:
 	var found: RoadWay3D = self._containers_by_id.get(road_num, null)
 	if ! found: Loggie.error("Cannot get RoadWay3D %d; out of index?" % road_num)
 	return found
-#endregion
-
-#region Callbacks & Helpers 
-func _on_road_loaded(road_obj: RoadData):
-	GlobalState.roads.append(road_obj)
 #endregion

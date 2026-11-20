@@ -418,7 +418,6 @@ func test_migrated_maps() -> bool:
 				node.cross = null
 			road.nodes.clear()
 			road.crosses.clear()
-		GlobalState.roads.clear()
 	return true
 
 ## Map authors can add stops without changing this loader regression test.

@@ -112,13 +112,6 @@ func get_node_forks() -> Array[RailNodeForkData]:
 	if self.get_end_node().fork:
 		node_forks.append(self.get_end_node().fork)
 	return node_forks
-
-func get_node_at_pos(abs_pos: Vector3) -> RailNodeData:
-	for any_node: RailNodeData in self.nodes:
-		if any_node.position.is_equal_approx(abs_pos):
-			return any_node
-	Loggie.warn("Cannot find RailNode at %v on track %d" % [abs_pos, self.num])
-	return null
 #endregion
 
 func _to_string() -> String:

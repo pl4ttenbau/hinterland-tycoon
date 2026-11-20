@@ -12,9 +12,6 @@ var SAVE_PATH_FORMAT = "res://world/%s/reslists/rail_tracks.dat"
 
 signal track_added(track_obj: RailTrackData)
 	
-func _enter_tree() -> void:
-	self.track_added.connect(Callable(self, "_on_track_loaded"))
-
 #region Add Track
 func add(track_obj: RailTrackData):
 	self._list.append(track_obj)
@@ -37,7 +34,6 @@ func remove(track: RailTrackData) -> void:
 		return
 	_list.erase(track)
 	_by_id.erase(track.num)
-	GlobalState.tracks.erase(track)
 	var view: RailTrack3D = _containers_by_id.get(track.num)
 	_containers_by_id.erase(track.num)
 	if is_instance_valid(view):
@@ -61,9 +57,4 @@ func get_container_by_num(track_num: int) -> RailTrack3D:
 	var found: RailTrack3D = self._containers_by_id.get(track_num, null)
 	if ! found: Loggie.error("Cannot get RailTrack3D %d; out of index?" % track_num)
 	return found
-#endregion
-
-#region Callbacks & Helpers 
-func _on_track_loaded(track_obj: RailTrackData):
-	GlobalState.tracks.append(track_obj)
 #endregion

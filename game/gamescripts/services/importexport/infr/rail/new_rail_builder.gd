@@ -55,7 +55,6 @@ func _start_preview(end: Vector3) -> void:
 
 func _append_point(pos: Vector3) -> void:
 	var node := RailNodeData.of(_draft.nodes.size(), pos, _draft)
-	node.rel_position = pos - _draft.start_pos
 	_draft.add_node(node, true)
 
 

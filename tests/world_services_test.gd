@@ -57,7 +57,6 @@ func test_world_input_wiring() -> void:
 ## Exercise the real road-loaded/spawned signal chain without terrain or rail views.
 func test_road_depot() -> bool:
 	var previous_map: String = GlobalState.selected_map_name
-	var previous_roads: Array[RoadData] = GlobalState.roads.duplicate()
 	var previous_depots: Array[RoadDepotData] = GlobalState.road_depots.duplicate()
 	var coordinator: WorldServicesCoordinator = SERVICES.instantiate()
 	self.add_child(coordinator)
@@ -88,7 +87,6 @@ func test_road_depot() -> bool:
 	self.check((view.get_node("RoadDepotCollider") as RoadDepotCollider).get_click_ref().entity_num == 73, "Collider reports the road depot ID")
 	coordinator.free()
 	GlobalState.selected_map_name = previous_map
-	GlobalState.roads = previous_roads
 	GlobalState.road_depots = previous_depots
 	return true
 
@@ -184,16 +182,16 @@ func test_residence_conversion() -> bool:
 	self.check(door.get_script() == door_script, "Runtime door retains the exit helper")
 	road.start_pos = door.get_exit_position() - Vector3(20, 0, 0)
 	road.curve = Curve3D.new()
-	road.curve.add_point(Vector3.ZERO)
-	road.curve.add_point(Vector3(100, 0, 0))
+	road.curve.add_point(road.start_pos)
+	road.curve.add_point(road.start_pos + Vector3(100, 0, 0))
 	roads.storage.add(road)
 	holder._on_roads_spawned()
 	self.check(runtime.res_bld_obj.road_connection != null and is_equal_approx(runtime.res_bld_obj.road_connection.dist_from_zero, 20), "Runtime loading connects using the door tail")
 	self.check(legacy.res_bld_obj.road_connection != null, "Legacy houses without doors use their origins")
-	road.start_pos.y += 100
+	for point: int in road.curve.point_count:
+		road.curve.set_point_position(point, road.curve.get_point_position(point) + Vector3.UP * 100)
 	holder.refresh_road_connections()
 	self.check(runtime.res_bld_obj.road_connection == null, "Runtime refresh clears a connection outside the cutoff")
-	GlobalState.roads.erase(road)
 	Managers.roads = null
 	roads.free()
 	for residence: Residence3D in holder.placed_buildings:

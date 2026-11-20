@@ -5,9 +5,6 @@ class_name RoadData extends AbstractTrack
 const RURAL_ROAD_SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 const DIRT_PATH_SCENE_PATH = "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn"
 
-@warning_ignore("unused_signal")
-signal created(track: RoadData)
-
 @export var autosmooth: bool = true
 
 @export var nodes: Array[RoadNode] = []
@@ -40,7 +37,7 @@ func build_curve() -> void:
 	self.curve.up_vector_enabled = false
 	# add points to curve (optionally with curve handles)
 	for node: RoadNode in self.nodes:
-		self.curve.add_point(node.rel_position, node.handle_in, node.handle_out)
+		self.curve.add_point(node.position, node.handle_in, node.handle_out)
 	# generate AABB
 	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
 	if self.autosmooth:
@@ -62,11 +59,7 @@ func get_road_type() -> RoadType:
 func get_type_scene() -> String:
 	var definition := get_road_type()
 	return definition.scene.resource_path if definition != null else ""
-	
-func get_road_node(_i: int) -> RoadNode:
-	if _i > 0:
-		return self.nodes.get(_i)
-	return null
+
 #endregion
 
 #region Helper-Methods

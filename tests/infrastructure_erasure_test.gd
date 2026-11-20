@@ -67,9 +67,9 @@ func _test_roads(roads: RoadsLoader, eraser: EraserManager) -> bool:
 	if tail == null:
 		return false
 	_check(end.parent_track == tail and end.index == 1, "Moved road endpoint is reindexed")
-	_check(tail.curve.get_point_in(1) == handle and tail.curve.get_point_position(0) == Vector3.ZERO, "Right curve retains its handles in the new local frame")
+	_check(tail.curve.get_point_in(1) == handle and tail.curve.get_point_position(0) == tail.nodes[0].position, "Right curve retains its handles and world positions")
 	var tail_view: RoadWay3D = roads.storage.get_container_by_num(tail.num)
-	_check(view.get_path_3d().curve == road.curve and tail_view.position == tail.start_pos, "Both road views use the new curves and origins")
+	_check(view.get_path_3d().curve == road.curve and tail_view.position == Vector3.ZERO, "Both road views use the new curves at the world origin")
 	# PathMesh3D rebuilds mesh and collision on the next idle frame; physics then needs a step to see it.
 	await get_tree().process_frame
 	await get_tree().physics_frame
@@ -161,7 +161,6 @@ func _road(roads: RoadsLoader, num: int, positions: Array[Vector3]) -> RoadData:
 	road.start_pos = positions[0]
 	for pos: Vector3 in positions:
 		var node := RoadNode.of(road.nodes.size(), pos, road)
-		node.rel_position = pos - road.start_pos
 		road.add_node(node)
 	roads.storage.add(road)
 	return road

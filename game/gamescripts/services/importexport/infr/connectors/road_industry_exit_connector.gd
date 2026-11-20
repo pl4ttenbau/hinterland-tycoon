@@ -26,7 +26,9 @@ func try_industry_exit_finding():
 #region Find Close
 func find_close_roads(industry: IndustryData) -> Array[RoadData]:
 	var close_roads: Array[RoadData] = []
-	for road: RoadData in GlobalState.roads:
+	if Managers.roads == null:
+		return close_roads
+	for road: RoadData in Managers.roads.storage.get_all():
 		var road_center: Vector3 = road.center
 		var sq_dist_to_center := industry.pos.distance_to(road_center)
 		if sq_dist_to_center <= MAX_IND_ROAD_DIST:

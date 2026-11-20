@@ -9,9 +9,6 @@ class_name IndustryStore extends Resource
 
 signal industry_added(ind_obj: IndustryData)
 	
-func _enter_tree() -> void:
-	self.industry_added.connect(Callable(self, "_on_industry_loaded"))
-
 #region Add Industry
 func add(ind_obj: IndustryData):
 	self._list.append(ind_obj)
@@ -54,9 +51,4 @@ func get_container_by_num(ind_num: int) -> Industry3D:
 	var found: Industry3D = self._containers_by_id.get(ind_num, null)
 	if ! found: Loggie.error("Cannot get Industry3D %d; out of index?" % ind_num)
 	return found
-#endregion
-
-#region Callbacks & Helpers 
-func _on_industry_loaded(ind_obj: IndustryData):
-	GlobalState.industries.append(ind_obj)
 #endregion

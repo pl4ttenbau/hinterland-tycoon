@@ -24,7 +24,6 @@ static func _add_points_from_json(_json_track: Dictionary, _track: RailTrackData
 	for rail_node_dict: Dictionary in _json_track.points:
 		var abs_pos_vec3: Vector3 = WorldUtils.vec3_from_float_arr(rail_node_dict.pos)
 		var rail_node_obj := RailNodeData.of(node_index, abs_pos_vec3, _track)
-		rail_node_obj.rel_position = abs_pos_vec3 - _track.start_pos
 		rail_node_obj.parse_and_add_special(rail_node_dict)
 		_track.add_node(rail_node_obj, false)
 		node_index += 1

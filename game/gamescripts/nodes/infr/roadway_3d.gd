@@ -8,7 +8,8 @@ class_name RoadWay3D extends GameEntity3D
 @export var road: RoadData:
 	set(value):
 		self.entity = value
-		self.position = value.start_pos
+		# Road curves are in world coordinates, like rail tracks.
+		self.position = Vector3.ZERO
 		InfrUtils.fit_short_path_mesh(get_road_mesh(), value.curve)
 		self.get_path_3d().curve = value.curve
 		self.assign_node_names()

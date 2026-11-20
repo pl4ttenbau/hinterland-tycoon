@@ -26,7 +26,7 @@ func test_connections() -> bool:
 	curve.add_point(Vector3(100, 0, 0))
 	var road := RoadData.of(7, "rural_road")
 	road.start_pos = Vector3(10, 4, 20)
-	road.curve = curve
+	road.curve = _shifted(curve, road.start_pos)
 	var roads: Array[RoadData] = [road]
 	var found = CONNECTOR.find_on_roads(Vector3(40, 4, 25), roads)
 	check(found != null and found.road_num == 7 and is_equal_approx(found.dist_from_zero, 30), "Connection stores distance along road, rather than distance to it")
@@ -35,7 +35,7 @@ func test_connections() -> bool:
 	check(CONNECTOR.find_on_roads(Vector3(40, 55, 20), roads) == null, "Height difference counts toward the cutoff")
 	var closer := RoadData.of(8, "rural_road")
 	closer.start_pos = Vector3(10, 4, 24)
-	closer.curve = curve
+	closer.curve = _shifted(curve, closer.start_pos)
 	roads.append(closer)
 	check(CONNECTOR.find_on_roads(Vector3(40, 4, 25), roads).road_num == 8, "Nearest road wins")
 	var line := EditorInfrLine3D.ofRoad(7)
@@ -66,6 +66,13 @@ func test_connections() -> bool:
 	road.curve = Curve3D.new()
 	check(CONNECTOR.find_on_roads(Vector3.ZERO, [road]) == null, "Empty curves are skipped")
 	return true
+
+## Road curves are in world coordinates; place a local test shape at an origin.
+func _shifted(curve: Curve3D, origin: Vector3) -> Curve3D:
+	var result := Curve3D.new()
+	for point: int in curve.point_count:
+		result.add_point(curve.get_point_position(point) + origin, curve.get_point_in(point), curve.get_point_out(point))
+	return result
 
 func test_door() -> bool:
 	var house := Node3D.new()
