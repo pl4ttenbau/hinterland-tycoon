@@ -73,7 +73,7 @@ func add_runtime_stop(stop: RoadStationData) -> void:
 static func road_heading(road: RoadData, node_index: int, curve_offset: float = -1.0) -> Vector3:
 	if road.curve == null:
 		road.build_curve()
-	var offset: float = curve_offset if curve_offset >= 0.0 else road.curve.get_closest_offset(road.nodes[node_index].position)
+	var offset: float = curve_offset if curve_offset >= 0.0 else road.node_offset(node_index)
 	var length: float = road.curve.get_baked_length()
 	var heading: Vector3 = road.curve.sample_baked(minf(length, offset + 0.2), true) \
 		- road.curve.sample_baked(maxf(0.0, offset - 0.2), true)

@@ -31,23 +31,14 @@ func spawn() -> RoadWay3D:
 	outer_road.road = self
 	outer_road.apply_mesh_profile(definition)
 	return outer_road
-	
-func build_curve() -> void:
-	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = false
-	# add points to curve (optionally with curve handles)
-	for node: RoadNode in self.nodes:
-		self.curve.add_point(node.position, node.handle_in, node.handle_out)
-	# generate AABB
-	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	if self.autosmooth:
-		InfrUtils.smooth_curve3d(self.curve, true)
-	# Consumers must receive the finished curve, including its generated handles.
-	self.curve_built.emit(self.curve)
-	
-func add_node(_road_node: RoadNode):
-	self.nodes.append(_road_node) 
-	self.vertices.append(_road_node.position)
+#endregion
+
+#region Nodes & Curve
+func get_nodes() -> Array:
+	return self.nodes
+
+func _smooths_curve() -> bool:
+	return self.autosmooth
 #endregion
 
 #region Getters

@@ -167,7 +167,7 @@ func _road(roads: RoadsLoader, num: int, positions: Array[Vector3]) -> RoadData:
 
 
 func _cross(node: RoadNode, links: Array[int]) -> void:
-	node.parent_track.crosses.append(RoadCross.of(node, links))
+	(node.parent_track as RoadData).crosses.append(RoadCross.of(node, links))
 
 
 func _rail(rails: RailsLoader, num: int, positions: Array[Vector3], fork_index: int, static_track: bool) -> RailTrackData:

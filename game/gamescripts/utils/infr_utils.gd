@@ -68,23 +68,19 @@ static func _handle_with_grade(handle: Vector3, reference: Vector3) -> Vector3:
 		handle.y = reference.y
 	return handle
 			
-static func get_aabb(vec_3_arr: Array[Vector3]) -> AABB:
-	var min_pos: Vector3
-	var max_pos: Vector3
-	for point in vec_3_arr:
-		# min pos
-		if ! min_pos: min_pos = point
-		elif point.x < min_pos.x: min_pos.x = point.x
-		elif point.y < min_pos.y: min_pos.y = point.y
-		elif point.z < min_pos.z: min_pos.z = point.z
-		# max pos
-		if ! max_pos: max_pos = point
-		elif point.x > max_pos.x: max_pos.x = point.x
-		elif point.y > max_pos.y: max_pos.y = point.y
-		elif point.z > max_pos.z: max_pos.z = point.z
-	var aabb = AABB(min_pos, Vector3.ZERO)
-	aabb.end = max_pos
-	return aabb
+## Smallest axis-aligned box that contains every point, in the points' own space.
+## Only the points are bounded: a curve's handles can bulge past this box.
+## No points gives an empty box at the origin.
+static func get_aabb(points: Array[Vector3]) -> AABB:
+	if points.is_empty():
+		return AABB()
+	# Start as a zero-size box on the first point, so a point at the origin is
+	# handled like any other (it is not a "not set yet" marker).
+	var bounds := AABB(points[0], Vector3.ZERO)
+	for point: Vector3 in points:
+		# expand() grows every axis that the point lies outside of, not just one.
+		bounds = bounds.expand(point)
+	return bounds
 
 static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
 	if infr_domain_str == "RAIL": return Enums.InfrDomain.RAIL

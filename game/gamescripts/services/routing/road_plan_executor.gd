@@ -235,7 +235,7 @@ func _make_segments(start: Path3D, offset: float, nodes: Array[RoadNode]) -> Arr
 	return result
 
 func _offset(node: RoadNode) -> float:
-	return RoadRouteAnchor.offset_of(node)
+	return node.offset()
 
 func _stops() -> Dictionary:
 	return Managers.interchanges.stops_by_num if is_instance_valid(Managers.interchanges) else {}

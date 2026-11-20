@@ -206,12 +206,11 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 			fragment.start_tangent = Vector3.ZERO
 		fragment.nodes = old_nodes.slice(points.x, points.y + 1)
 		fragment.start_pos = fragment.nodes[0].position
-		fragment.vertices = []
 		fragment.forks = []
-		for node: RailNodeData in fragment.nodes:
+		for index: int in fragment.nodes.size():
+			var node: RailNodeData = fragment.nodes[index]
 			node.parent_track = fragment
-			node.index = fragment.vertices.size()
-			fragment.vertices.append(node.position)
+			node.index = index
 			surviving[node] = true
 			if node.fork != null:
 				fragment.forks.append(node.fork)
@@ -219,7 +218,6 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 			fragment.nodes.front().is_end = true
 		if points.y < old_nodes.size() - 1 and fragment.nodes.back().fork == null:
 			fragment.nodes.back().is_end = true
-		fragment.abs_aabb = InfrUtils.get_aabb(fragment.vertices)
 		fragment.curve = section
 		fragments.append(fragment)
 	var removed_legs: Array[RailNodeForkData] = []
@@ -235,7 +233,6 @@ func _erase_gap(track: RailTrackData, left_end: int, right_start: int) -> Error:
 	if fragments.is_empty():
 		track_storage.remove(track)
 		track.nodes = []
-		track.vertices = []
 		track.curve = null
 	# Publish the fragment ID before any fork view accesses it.
 	if fragments.size() == 2:

@@ -134,16 +134,14 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 		fragment.autosmooth = road.autosmooth
 		fragment.nodes = old_nodes.slice(points.x, points.y + 1)
 		fragment.start_pos = fragment.nodes[0].position
-		fragment.vertices = []
 		fragment.crosses = []
-		for node: RoadNode in fragment.nodes:
+		for index: int in fragment.nodes.size():
+			var node: RoadNode = fragment.nodes[index]
 			node.parent_track = fragment
-			node.index = fragment.vertices.size()
-			fragment.vertices.append(node.position)
+			node.index = index
 			if node.cross != null:
 				fragment.crosses.append(node.cross)
 			surviving[node] = true
-		fragment.abs_aabb = InfrUtils.get_aabb(fragment.vertices)
 		fragment.curve = section
 		fragments.append(fragment)
 	for node: RoadNode in old_nodes:
@@ -154,7 +152,6 @@ func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
 	if fragments.is_empty():
 		storage.remove(road)
 		road.nodes = []
-		road.vertices = []
 		road.curve = null
 	elif fragments.size() == 2:
 		storage.add(fragments[1])
@@ -215,7 +212,7 @@ func _has_incoming_cross(anchor: RoadNode) -> bool:
 func _clear_cross(node: RoadNode) -> void:
 	if node.cross == null:
 		return
-	node.parent_track.crosses.erase(node.cross)
+	(node.parent_track as RoadData).crosses.erase(node.cross)
 	node.cross.connecting_roads.clear()
 	node.cross.parent_node = null
 	node.cross = null

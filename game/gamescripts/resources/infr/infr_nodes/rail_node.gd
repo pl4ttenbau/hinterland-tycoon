@@ -1,14 +1,8 @@
 @icon("res://assets/icons/icon_infr_node_white.png")
-class_name RailNodeData extends BasicInfrNodeData
-
-@export var parent_track: AbstractTrack:
-	set(value): 
-		parent_track = value
-	get(): return parent_track
+class_name RailNodeData extends AbstractInfrNode
 
 @export var fork: RailNodeForkData
 @export var station: NodeStationLinkData
-@export var is_end: bool = false
 
 static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeData:
 	var instance := RailNodeData.new()
@@ -34,22 +28,3 @@ func parse_and_add_special(rail_node_dict: Dictionary):
 		self.fork = inst
 	# Stops are attached in the interchange-loading phase, after both networks
 	# exist. Track geometry no longer creates stations as a parsing side effect.
-
-#region Getters
-func get_previous() -> RailNodeData:
-	if self.index > 0:
-		return self.parent_track.get_rail_node(self.index -1)
-	return null
-	
-func get_next() -> RailNodeData:
-	var next_index := self.index +1
-	if self.parent_track.has_node_index(next_index):
-		return self.parent_track.get_rail_node(next_index)
-	return null
-	
-func is_first() -> bool:
-	return self.index == 0
-	
-func is_last() -> bool:
-	return self.index == (self.parent_track.nodes.size() -1)
-#endregion

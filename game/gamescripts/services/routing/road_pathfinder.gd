@@ -108,7 +108,7 @@ func _attach(node: RoadNode, destination: bool, temporary: Array[int]) -> int:
 func _allows_arrival(from: RoadNode, to: RoadNode) -> bool:
 	if not to is RoadRouteAnchor or to.arrival_direction == 0:
 		return true
-	return (RoadRouteAnchor.offset_of(to) - RoadRouteAnchor.offset_of(from)) * to.arrival_direction >= -0.001
+	return (to.offset() - from.offset()) * to.arrival_direction >= -0.001
 
 func _release_temporary(ids: Array[int]) -> void:
 	for id: int in ids:
@@ -120,7 +120,7 @@ func _release_temporary(ids: Array[int]) -> void:
 
 func _distance(from: RoadNode, to: RoadNode) -> float:
 	if from.parent_track == to.parent_track:
-		return absf(RoadRouteAnchor.offset_of(to) - RoadRouteAnchor.offset_of(from))
+		return absf(to.offset() - from.offset())
 	return from.position.distance_to(to.position)
 
 func path_length(path: Array[RoadNode]) -> float:

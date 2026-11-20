@@ -40,30 +40,24 @@ func get_gauge_mm() -> int:
 		return 600
 	return 1435
 	
-#region Add Nodes
-func add_node(rail_node: RailNodeData, update: bool):
-	self.nodes.append(rail_node) 
-	self.vertices.append(rail_node.position)
-	if update:
-		self.build_curve()
-		self.track_changed.emit()
-	
+#region Nodes & Forks
+func get_nodes() -> Array:
+	return self.nodes
+
 func add_fork(rail_fork: RailNodeForkData):
 	self.forks.append(rail_fork)
 #endregion
 
-func build_curve() -> void:
-	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = true
-	# add points to curve (optionally with curve handles)
-	for node: RailNodeData in self.nodes:
-		self.curve.add_point(node.position, node.handle_in, node.handle_out)
-	if self.curve.point_count >= 2 and not self.start_tangent.is_zero_approx():
-		var first_span: float = self.vertices[0].distance_to(self.vertices[1])
-		self.curve.set_point_out(0, self.start_tangent * (first_span / 3.0))
-	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	InfrUtils.smooth_curve3d(self.curve, true)
-	self.curve_built.emit(self.curve)
+#region Curve
+func _curve_up_vector_enabled() -> bool:
+	return true
+
+## A track built off a junction leaves it along the approach direction.
+func _adjust_curve_handles(built: Curve3D) -> void:
+	if built.point_count >= 2 and not self.start_tangent.is_zero_approx():
+		var first_span: float = self.nodes[0].position.distance_to(self.nodes[1].position)
+		built.set_point_out(0, self.start_tangent * (first_span / 3.0))
+#endregion
 
 ## The endpoint handle points into the track. Negate it for travel into the junction.
 func get_tangent_into_endpoint(node: RailNodeData) -> Vector3:
@@ -92,18 +86,12 @@ func is_near(pos: Vector3) -> bool:
 #endregion
 
 #region Get Nodes
+## Typed shortcuts for rail callers.
 func get_rail_node(_i: int) -> RailNodeData:
-	if _i >= 0 && _i < self.nodes.size():
-		return self.nodes.get(_i)
-	return null
+	return self.get_node_at(_i)
 	
 func get_end_node() -> RailNodeData:
-	var last_i: int = self.nodes.size() -1
-	return self.nodes[last_i]
-
-func has_node_index(_index: int) -> bool:
-	var last_i: int = self.nodes.size() -1
-	return _index >= 0 && _index <= last_i
+	return self.last_node()
 
 func get_node_forks() -> Array[RailNodeForkData]:
 	var node_forks: Array[RailNodeForkData] = []

@@ -13,12 +13,5 @@ static func at(road: RoadData, offset: float) -> RoadRouteAnchor:
 	anchor.position = road.curve.sample_baked(offset)
 	return anchor
 
-static func offset_of(node: RoadNode) -> float:
-	if node is RoadRouteAnchor:
-		return node.curve_offset
-	# Coincident start/end positions on a loop still represent different arc offsets.
-	if node.index == 0:
-		return 0.0
-	if node.index == node.parent_track.nodes.size() - 1:
-		return node.parent_track.curve.get_baked_length()
-	return node.parent_track.curve.get_closest_offset(node.position)
+func offset() -> float:
+	return self.curve_offset

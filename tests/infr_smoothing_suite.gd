@@ -13,7 +13,7 @@ func check(condition: bool, message: String) -> void:
 func run(test_tree: SceneTree) -> int:
 	tree = test_tree
 	# Count an aborted test as a failure too: runtime errors do not set the exit code.
-	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options"]:
+	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options", &"test_aabb"]:
 		check(call(test) == true, "%s completed" % test)
 	print("Infrastructure smoothing tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures > 0 else 0
@@ -193,4 +193,15 @@ func test_runtime_options() -> bool:
 	line.curve = make_curve([Vector3.ZERO, Vector3(5, 1, 2), Vector3(10, 2, 5)])
 	check(Infr3DExporter.infr3d_to_road_dict(line).autosmooth == false, "Export preserves the road's smoothing option")
 	line.free()
+	return true
+
+## InfrUtils.get_aabb must grow on every axis at once and treat the origin as a real point.
+func test_aabb() -> bool:
+	check(InfrUtils.get_aabb([]) == AABB(), "No points give an empty box")
+	var points: Array[Vector3] = [Vector3(5, 1, -2), Vector3(-3, 4, 7), Vector3.ZERO, Vector3(2, -6, 1)]
+	var bounds: AABB = InfrUtils.get_aabb(points)
+	check(bounds.position.is_equal_approx(Vector3(-3, -6, -2)), "Minimum corner takes the lowest value on each axis")
+	check(bounds.end.is_equal_approx(Vector3(5, 4, 7)), "Maximum corner takes the highest value on each axis")
+	var around_origin: Array[Vector3] = [Vector3.ZERO, Vector3(-1, -1, -1)]
+	check(InfrUtils.get_aabb(around_origin) == AABB(Vector3(-1, -1, -1), Vector3.ONE), "A point at the origin counts like any other point")
 	return true

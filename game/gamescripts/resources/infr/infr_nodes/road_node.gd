@@ -1,9 +1,7 @@
 @icon("icon_infr_node_white")
-class_name RoadNode extends BasicInfrNodeData
+class_name RoadNode extends AbstractInfrNode
 
-@export var parent_track: RoadData
 @export var cross: RoadCross
-@export var is_end: bool = false
 
 static func of(_index: int, _pos: Vector3, _road_obj: RoadData) -> RoadNode:
 	var instance: RoadNode = RoadNode.new()

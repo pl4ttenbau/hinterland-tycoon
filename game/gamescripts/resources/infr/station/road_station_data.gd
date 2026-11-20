@@ -33,7 +33,7 @@ func anchor(roads: RoadStore) -> RoadNode:
 			return node
 		if road.curve == null:
 			road.build_curve()
-		offset = RoadRouteAnchor.offset_of(node)
+		offset = node.offset()
 	if road.curve == null or offset > road.curve.get_baked_length():
 		return null
 	var result := RoadRouteAnchor.at(road, offset)
