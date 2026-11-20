@@ -1,7 +1,7 @@
-## One leg of a junction: a track endpoint that belongs to the physical switch `junction`.
-## The switch setting lives only on the junction (NewRailForkData); legs hold no setting state.
+## One arm of a junction: a track endpoint that belongs to the physical switch `junction`.
+## The switch setting lives only on the junction (RailJunctionData); arms hold no setting state.
 @icon("res://assets/icons/icon_fork_white.png")
-class_name RailNodeForkData extends GameEntityData
+class_name RailJunctionArm extends GameEntityData
 
 static var _last_fork_num = -1
 
@@ -17,12 +17,12 @@ static var _last_fork_num = -1
 
 ## The physical junction this leg belongs to; set when the fork loader connects the leg.
 ## Not exported: the junction already lists its legs, and saving both directions would form a cycle.
-var junction: NewRailForkData
+var junction: RailJunctionData
 
 @export var position: Vector3:
 	get(): return railNode.position
 
-@export_storage var container: RailFork3D
+@export_storage var container: RailJunction3D
 
 @export_storage var track: RailTrackData:
 	get(): return self.railNode.parent_track
@@ -31,9 +31,9 @@ var junction: NewRailForkData
 #region Initialization
 func _init():
 	super(Enums.EntityTypes.FORK)
-	self.num = RailNodeForkData._next_fork_num()
+	self.num = RailJunctionArm._next_fork_num()
 
 static func _next_fork_num() -> int:
-	RailNodeForkData._last_fork_num += 1
-	return RailNodeForkData._last_fork_num
+	RailJunctionArm._last_fork_num += 1
+	return RailJunctionArm._last_fork_num
 #endregion

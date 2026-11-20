@@ -1,4 +1,4 @@
-class_name CurrentForkSetting extends Resource
+class_name CurrentJunctionSetting extends Resource
 
 signal setting_changed()
 

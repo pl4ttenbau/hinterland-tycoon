@@ -1,7 +1,7 @@
 @icon("res://assets/icons/icon_infr_node_white.png")
 class_name RailNodeData extends AbstractInfrNode
 
-@export var fork: RailNodeForkData
+@export var fork: RailJunctionArm
 @export var station: NodeStationLinkData
 
 static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeData:

@@ -153,11 +153,11 @@ func _refresh_fork_listeners() -> void:
 		self._watch_segment_forks(segment)
 
 ## A fork listener also covers changes beneath a stopped train.
-func _watch_fork(node_fork: RailNodeForkData) -> void:
+func _watch_fork(node_fork: RailJunctionArm) -> void:
 	if node_fork == null:
 		return
 	## All legs of the same physical switch share one junction.
-	var fork: NewRailForkData = node_fork.junction
+	var fork: RailJunctionData = node_fork.junction
 	if fork == null or self.watched_forks.has(fork):
 		return
 	## Listen to the setting itself, including changes made outside the fork UI.
@@ -170,12 +170,12 @@ func _watch_fork(node_fork: RailNodeForkData) -> void:
 		fork.setting_initialized.connect(self._on_fork_setting_initialized.bind(fork), CONNECT_ONE_SHOT)
 
 ## Fork settings may become available after the initial train path is created.
-func _on_fork_setting_initialized(_setting: RailForkSetting, fork: NewRailForkData) -> void:
+func _on_fork_setting_initialized(_setting: RailJunctionSetting, fork: RailJunctionData) -> void:
 	if fork.setting.current != null and not fork.setting.current.setting_changed.is_connected(self.watched_forks[fork]):
 		fork.setting.current.setting_changed.connect(self.watched_forks[fork])
 
 ## Check occupancy before rebuilding anything, so a changed switch cannot reshape an occupied route.
-func _on_fork_changed(fork: NewRailForkData) -> void:
+func _on_fork_changed(fork: RailJunctionData) -> void:
 	## A loop may visit the same fork more than once; each visit has its own boundary.
 	var boundaries: Array[int] = self._get_fork_boundaries(fork)
 	if self._is_fork_occupied(fork, boundaries):
@@ -184,7 +184,7 @@ func _on_fork_changed(fork: NewRailForkData) -> void:
 	self._rebuild_ahead_of_fork(boundaries)
 
 ## Collect segment ends at this physical fork in route order.
-func _get_fork_boundaries(fork: NewRailForkData) -> Array[int]:
+func _get_fork_boundaries(fork: RailJunctionData) -> Array[int]:
 	## Keep every occurrence so loops cannot hide an occupied crossing.
 	var boundaries: Array[int] = []
 	for segment_i: int in range(self.segments.size()):
@@ -192,11 +192,11 @@ func _get_fork_boundaries(fork: NewRailForkData) -> Array[int]:
 			boundaries.append(segment_i)
 	return boundaries
 
-static func _is_at_fork(node: RailNodeData, fork: NewRailForkData) -> bool:
+static func _is_at_fork(node: RailNodeData, fork: RailJunctionData) -> bool:
 	return node != null and node.fork != null and node.fork.junction == fork
 
 ## Include the route's starting fork as well as every segment-end crossing.
-func _is_fork_occupied(fork: NewRailForkData, boundaries: Array[int]) -> bool:
+func _is_fork_occupied(fork: RailJunctionData, boundaries: Array[int]) -> bool:
 	if _is_at_fork(self.segments[0].start_node, fork) and self.movement.occupies_path_distance(0.0):
 		return true
 	for segment_i: int in boundaries:
@@ -277,7 +277,7 @@ func get_transf_at_m_passed(m_passed: float) -> Transform3D:
 
 ## Disconnect Resource signals explicitly because fork data can outlive the train.
 func _disconnect_forks() -> void:
-	for fork: NewRailForkData in self.watched_forks:
+	for fork: RailJunctionData in self.watched_forks:
 		if fork.setting.current != null and fork.setting.current.setting_changed.is_connected(self.watched_forks[fork]):
 			fork.setting.current.setting_changed.disconnect(self.watched_forks[fork])
 		if fork.setting_initialized.is_connected(self._on_fork_setting_initialized.bind(fork)):

@@ -10,7 +10,7 @@ class_name RailTrackData extends AbstractTrack
 
 # child objects
 @export var node_stations: Array[NodeStationLinkData] = []
-@export var forks: Array[RailNodeForkData] = []
+@export var forks: Array[RailJunctionArm] = []
 
 const NEAR_DISTANCE_MAX: float = 100.0
 ## Distance from the track curve to the top of the rail mesh, in metres.
@@ -44,7 +44,7 @@ func get_gauge_mm() -> int:
 func get_nodes() -> Array:
 	return self.nodes
 
-func add_fork(rail_fork: RailNodeForkData):
+func add_fork(rail_fork: RailJunctionArm):
 	self.forks.append(rail_fork)
 #endregion
 
@@ -93,8 +93,8 @@ func get_rail_node(_i: int) -> RailNodeData:
 func get_end_node() -> RailNodeData:
 	return self.last_node()
 
-func get_node_forks() -> Array[RailNodeForkData]:
-	var node_forks: Array[RailNodeForkData] = []
+func get_node_forks() -> Array[RailJunctionArm]:
+	var node_forks: Array[RailJunctionArm] = []
 	if self.nodes[0].fork:
 		node_forks.append(self.nodes[0].fork)
 	if self.get_end_node().fork:

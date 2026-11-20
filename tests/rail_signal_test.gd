@@ -3,7 +3,7 @@ extends Node
 
 var failures: int = 0
 var rails: RailsLoader
-var forks: RailForkLoader
+var forks: RailJunctionLoader
 var added_trains: Array[Train3D] = []
 
 func _ready() -> void:
@@ -24,16 +24,16 @@ func make_track(num: int, points: Array[Vector3]) -> RailTrackData:
 	return track
 
 ## Root exits at its last node; branches start at their first node.
-func make_fork(root_track: RailTrackData, branches: Array[RailTrackData]) -> NewRailForkData:
+func make_fork(root_track: RailTrackData, branches: Array[RailTrackData]) -> RailJunctionData:
 	var connected_tracks: Array[RailTrackData] = [root_track]
 	connected_tracks.append_array(branches)
 	for track: RailTrackData in connected_tracks:
-		var node_fork := RailNodeForkData.new()
+		var node_fork := RailJunctionArm.new()
 		node_fork.railNode = track.nodes.back() if track == root_track else track.nodes[0]
 		node_fork.static_track = track == root_track
 		node_fork.railNode.fork = node_fork
 		self.forks.add_new_or_connection(node_fork)
-	var fork: NewRailForkData = self.forks.get_fork_at_pos(root_track.nodes.back().position)
+	var fork: RailJunctionData = self.forks.get_fork_at_pos(root_track.nodes.back().position)
 	fork.setting.init_current_setting()
 	return fork
 
@@ -86,7 +86,7 @@ func clear_for(rail_signal: RailSignalData, direction: Enums.PathDirection, trai
 func _run() -> void:
 	self.rails = RailsLoader.new()
 	Managers.rails = self.rails
-	self.forks = RailForkLoader.new()
+	self.forks = RailJunctionLoader.new()
 	Managers.forks = self.forks
 	var increase := Enums.PathDirection.TRACK_NODES_INCREASE
 	var decrease := Enums.PathDirection.TRACK_NODES_DECREASE

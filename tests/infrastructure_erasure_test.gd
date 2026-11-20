@@ -114,12 +114,12 @@ func _road_hit(x: float) -> bool:
 	return not get_world_3d().direct_space_state.intersect_ray(ray).is_empty()
 
 
-func _test_rails(rails: RailsLoader, forks: RailForkLoader, eraser: EraserManager) -> bool:
+func _test_rails(rails: RailsLoader, forks: RailJunctionLoader, eraser: EraserManager) -> bool:
 	var junction := Vector3(30, 0, 30)
 	var track := _rail(rails, 50, [junction - Vector3.RIGHT * 30, junction - Vector3.RIGHT * 20, junction - Vector3.RIGHT, junction], 3, true)
 	var straight := _rail(rails, 51, [junction, junction + Vector3.RIGHT * 10], 0, false)
 	var branch := _rail(rails, 52, [junction, junction + Vector3.FORWARD * 10], 0, false)
-	var group: NewRailForkData = forks.get_fork_at_pos(junction)
+	var group: RailJunctionData = forks.get_fork_at_pos(junction)
 	rails.spawn_rail_track(track)
 	rails.spawn_rail_track(straight)
 	rails.spawn_rail_track(branch)
@@ -178,7 +178,7 @@ func _rail(rails: RailsLoader, num: int, positions: Array[Vector3], fork_index: 
 	for pos: Vector3 in positions:
 		var node := RailNodeData.of(track.nodes.size(), pos, track)
 		track.add_node(node, false)
-	var leg := RailNodeForkData.new()
+	var leg := RailJunctionArm.new()
 	leg.railNode = track.nodes[fork_index]
 	leg.railNode.fork = leg
 	leg.static_track = static_track

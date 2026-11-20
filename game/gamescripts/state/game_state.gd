@@ -27,7 +27,7 @@ extends Node
 @export var station_objs: Array[RailStationData] = []
 
 @export var rail_depots: Array[RailDepotData] = []
-@export var forks: Array[RailNodeForkData] = []
+@export var forks: Array[RailJunctionArm] = []
 
 @export var road_depots: Array[RoadDepotData] = []
 

@@ -86,7 +86,7 @@ func review_plan() -> void:
 func _accept_plan(dialog: RailConstructionDialog) -> String:
 	if _committing or _confirmation != dialog or _draft == null or _mode == null:
 		return "This rail plan is no longer active."
-	var fork: NewRailForkData = _mode.at_fork
+	var fork: RailJunctionData = _mode.at_fork
 	var approach: RailNodeData = _get_approach(fork)
 	if approach == null or approach != _approach or approach.parent_track.infr_type_key != _draft.infr_type_key:
 		return "The rail connection changed. Start a new plan from the junction."
@@ -107,11 +107,11 @@ func _accept_plan(dialog: RailConstructionDialog) -> String:
 	return ""
 
 
-func _register_track(track: RailTrackData, fork: NewRailForkData) -> void:
+func _register_track(track: RailTrackData, fork: RailJunctionData) -> void:
 	var rails: RailsLoader = Managers.rails
 	track.num = rails.track_storage._max_num + 1
 	track.track_name = "New Track %d" % track.num
-	var connection := RailNodeForkData.new()
+	var connection := RailJunctionArm.new()
 	connection.railNode = track.nodes[0]
 	track.nodes[0].fork = connection
 	track.add_fork(connection)
@@ -130,11 +130,11 @@ func _register_track(track: RailTrackData, fork: NewRailForkData) -> void:
 	Loggie.info("Created connected track: %s" % track.track_name)
 
 
-func _get_approach(fork: NewRailForkData) -> RailNodeData:
+func _get_approach(fork: RailJunctionData) -> RailNodeData:
 	if fork == null or Managers.forks.get_fork_at_pos(fork.pos) != fork or fork.connected_tracks.is_empty():
 		return null
 	var approach_num: int = fork.get_static_track_num()
-	for connection: RailNodeForkData in fork.node_forks:
+	for connection: RailJunctionArm in fork.node_forks:
 		var node: RailNodeData = connection.railNode
 		if connection.track.num == approach_num and (node.is_first() or node.is_last()):
 			return node

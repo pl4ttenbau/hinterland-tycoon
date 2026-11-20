@@ -12,7 +12,7 @@ static func start() -> bool:
 	var player_pos := player.walking_camera.global_position
 	var near_tracks: Array[RailTrackData] = tracks_near(player_pos)
 	Loggie.info("Near tracks: %d" % near_tracks.size())
-	var nearest_fork: NewRailForkData = nearest_fork(player_pos, near_tracks)
+	var nearest_fork: RailJunctionData = nearest_fork(player_pos, near_tracks)
 	if nearest_fork == null:
 		Loggie.warn("No near railway tracks found of %d" % Managers.rails.track_storage.get_all().size())
 		return true
@@ -32,8 +32,8 @@ static func tracks_near(pos: Vector3) -> Array[RailTrackData]:
 	return result
 
 
-static func nearest_fork(pos: Vector3, near_tracks: Array[RailTrackData]) -> NewRailForkData:
-	var nearest: NewRailForkData
+static func nearest_fork(pos: Vector3, near_tracks: Array[RailTrackData]) -> RailJunctionData:
+	var nearest: RailJunctionData
 	var nearest_dist: float = INF
 	for near_track in near_tracks:
 		for node_fork in near_track.get_node_forks():
@@ -44,7 +44,7 @@ static func nearest_fork(pos: Vector3, near_tracks: Array[RailTrackData]) -> New
 	return nearest
 
 
-static func _enable_building_mode(fork: NewRailForkData) -> void:
+static func _enable_building_mode(fork: RailJunctionData) -> void:
 	UiState.build_infr_mode = UiModeBuildInfr.from_fork(fork)
 	UiState.ui_mode = Enums.UiMode.BUILD_INFR
 	SignalBus.ui_mode_switched.emit(Enums.UiMode.BUILD_INFR)

@@ -1,10 +1,10 @@
 @icon("res://assets/icons/nodes_3d/icon_fork.svg")
-class_name RailFork3D extends GameEntity3D
+class_name RailJunction3D extends GameEntity3D
 
-signal fork_obj_set(set_fork_obj: NewRailForkData)
+signal fork_obj_set(set_fork_obj: RailJunctionData)
 
-@export var fork_obj: NewRailForkData:
-	get(): return self.entity as NewRailForkData
+@export var fork_obj: RailJunctionData:
+	get(): return self.entity as RailJunctionData
 	set(value): 
 		self.entity = value
 		fork_obj_set.emit(value)
@@ -46,7 +46,7 @@ func _get_pos_of_next_static_track_node() -> Vector3:
 	return static_track.get_rail_node(next_static_node_i).position
 
 #region Callbacks
-func _on_fork_obj_set(set_fork_obj: NewRailForkData):
+func _on_fork_obj_set(set_fork_obj: RailJunctionData):
 	# rename
 	self.name = "Fork3D_%d_%d" % [set_fork_obj.num, set_fork_obj.connected_tracks[0]]
 	# set pos
@@ -55,14 +55,14 @@ func _on_fork_obj_set(set_fork_obj: NewRailForkData):
 	set_fork_obj.switched.connect(Callable(self, "_on_fork_switched"))
 	set_fork_obj.setting_initialized.connect(Callable(self, "_on_setting_initialized"))
 
-func _on_setting_initialized(_fork_setting: RailForkSetting):
+func _on_setting_initialized(_fork_setting: RailJunctionSetting):
 	var can_switch: bool = self.fork_obj.setting.settable_tracks.size() > 1
 	self.fork_mesh.visible = can_switch
 	self.fork_arrow_mesh.visible = can_switch
 	if can_switch:
 		self.adjust_fork_arrow_rotation()
 
-func _on_fork_switched(new_setting: CurrentForkSetting):
+func _on_fork_switched(new_setting: CurrentJunctionSetting):
 	if new_setting != null:
 		self.adjust_fork_arrow_rotation()
 #endregion

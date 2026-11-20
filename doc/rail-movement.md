@@ -36,9 +36,9 @@ brake-control rate; if that is not enough, the hard stop at the route end still 
 
 ## Junctions
 
-A physical switch is one `NewRailForkData` (the junction). Each track endpoint at it
-is a `RailNodeForkData` leg, which references its junction directly through
-`junction`. The switch setting lives only on the junction. Positions group legs
+A physical switch is one `RailJunctionData` (the junction). Each track endpoint at it
+is a `RailJunctionArm`, which references its junction directly through
+`junction`. The switch setting lives only on the junction. Positions group arms
 into junctions while loading; nothing at runtime looks a junction up by position.
 
 - `get_exit_track_nums(from)`: the root leads to every branch; a branch leads only back to the root.

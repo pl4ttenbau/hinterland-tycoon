@@ -28,7 +28,7 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	## A buffer or unconnected endpoint is a normal end of route.
 	if segment_end == null or segment_end.fork == null:
 		return -1
-	var fork_parent: NewRailForkData = segment_end.fork.junction
+	var fork_parent: RailJunctionData = segment_end.fork.junction
 	if fork_parent == null or fork_parent.setting.current == null:
 		return -1
 	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_track.num)
@@ -41,7 +41,7 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 static func get_next_dir_at_fork(next_track_num: int, segment_end: RailNodeData) -> Enums.PathDirection:
 	if next_track_num <= -1 or segment_end == null or segment_end.fork == null or segment_end.fork.junction == null:
 		return Enums.PathDirection.STOP
-	var next_leg: RailNodeForkData = segment_end.fork.junction.get_node_fork(next_track_num)
+	var next_leg: RailJunctionArm = segment_end.fork.junction.get_node_fork(next_track_num)
 	if next_leg == null:
 		return Enums.PathDirection.STOP
 	if next_leg.railNode.is_last():

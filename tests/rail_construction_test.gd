@@ -70,7 +70,7 @@ func _test_construction() -> bool:
 	approach.infr_type_key = "1000_MM"
 	var junction := RailNodeData.of(0, Vector3(12, 0.2, 10), approach)
 	junction.handle_out = Vector3(-3, 0, 0.3)
-	var endpoint := RailNodeForkData.new()
+	var endpoint := RailJunctionArm.new()
 	endpoint.railNode = junction
 	junction.fork = endpoint
 	approach.add_node(junction, false)
@@ -78,8 +78,8 @@ func _test_construction() -> bool:
 	approach.build_curve()
 	var approach_curve: Curve3D = approach.curve
 	services.rails.track_storage.add(approach)
-	var fork: NewRailForkData = services.forks.get_fork_at_pos(junction.position)
-	var fork_view: RailFork3D = services.forks.spawn_single_fork(fork)
+	var fork: RailJunctionData = services.forks.get_fork_at_pos(junction.position)
+	var fork_view: RailJunction3D = services.forks.spawn_single_fork(fork)
 	fork.refresh_setting()
 	var approach_segment := VehiclePathSegment.of_rail(approach.num, Enums.PathDirection.TRACK_NODES_DECREASE)
 	var active_path := ActiveRailVehiclePath.of_segment(null, approach_segment)
@@ -215,7 +215,7 @@ func _test_construction() -> bool:
 	dialog = UiState.current_diag as RailConstructionDialog
 	if dialog == null:
 		return false
-	var setting: CurrentForkSetting = fork.setting.current
+	var setting: CurrentJunctionSetting = fork.setting.current
 	dialog.get_node("%OkButton").pressed.emit()
 	var second: RailTrackData = RailTrackData.get_by_num(27)
 	check(second != null and fork.setting.current == setting and setting.connected == track.num
@@ -256,7 +256,7 @@ func _test_construction() -> bool:
 	return true
 
 
-func _begin_build(fork: NewRailForkData) -> void:
+func _begin_build(fork: RailJunctionData) -> void:
 	UiState.build_infr_mode = UiModeBuildInfr.from_fork(fork)
 	UiState.ui_mode = Enums.UiMode.BUILD_INFR
 	SignalBus.ui_mode_switched.emit(Enums.UiMode.BUILD_INFR)
