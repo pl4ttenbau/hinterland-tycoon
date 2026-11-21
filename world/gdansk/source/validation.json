@@ -1,0 +1,90 @@
+{
+  "scanlines_checked": 3600,
+  "channels": "RGB Float32",
+  "max_roundtrip_error_m": 0.0,
+  "dimensions": [
+    3600,
+    3600
+  ],
+  "finite": true,
+  "min_height_m": 5.0,
+  "max_height_m": 109.85919952392578,
+  "water_depth_min_m": 2.0,
+  "water_depth_max_m": 15.0,
+  "water_pixels": 1011989,
+  "dry_land_below_water_level_pixels": 2849665,
+  "unclosed_water_rings": 0,
+  "engine_import_tested": false,
+  "check_points": [
+    {
+      "name": "Gda\u0144sk narrow gauge",
+      "latitude": 54.346686,
+      "longitude": 18.672508,
+      "pixel_col": 81,
+      "pixel_row": 259,
+      "raw_land_dem_m": 1.9707484245300293,
+      "output_height_m": 21.970748901367188,
+      "water": false
+    },
+    {
+      "name": "Nowy Dw\u00f3r",
+      "latitude": 54.2146299,
+      "longitude": 19.1150846,
+      "pixel_col": 2962,
+      "pixel_row": 1729,
+      "raw_land_dem_m": 1.8152788877487183,
+      "output_height_m": 20.150602340698242,
+      "water": false
+    },
+    {
+      "name": "Vistula",
+      "latitude": 54.33,
+      "longitude": 18.94,
+      "pixel_col": 1822,
+      "pixel_row": 445,
+      "raw_land_dem_m": 0.0993768647313118,
+      "output_height_m": 8.560609817504883,
+      "water": true
+    },
+    {
+      "name": "Offshore",
+      "latitude": 54.369,
+      "longitude": 19.08,
+      "pixel_col": 2733,
+      "pixel_row": 11,
+      "raw_land_dem_m": 0.13744933903217316,
+      "output_height_m": 5.0,
+      "water": true
+    },
+    {
+      "name": "Lisewo",
+      "latitude": 54.0970049,
+      "longitude": 18.830126,
+      "pixel_col": 1107,
+      "pixel_row": 3037,
+      "raw_land_dem_m": 6.774808406829834,
+      "output_height_m": 26.774808883666992,
+      "water": false
+    }
+  ],
+  "independent_ffmpeg_decode_max_error_m": 0.0,
+  "bank_smoothing_comparison": {
+    "wet_dry_neighbour_step_m_before_p50_p95_max": [
+      4.180912017822266,
+      5.975597763061523,
+      16.91254425048828
+    ],
+    "wet_dry_neighbour_step_m_after_p50_p95_max": [
+      2.1000003814697266,
+      2.1000003814697266,
+      2.1000003814697266
+    ],
+    "changed_pixels": 1857309
+  },
+  "highest_point": {
+    "heightmap_elevation_m": 109.85919952392578,
+    "above_water_m": 89.85919952392578,
+    "latitude": 54.067623228674634,
+    "longitude": 18.677977493748266
+  }
+}

@@ -134,8 +134,6 @@ func _test_spawn() -> bool:
 	action.free()
 	placer.free()
 	Managers.vehicles = previous_vehicles
-	for node: RailNodeData in track.nodes:
-		node.parent_track = null
 	Managers.rails = previous_rails
 	rails.free()
 	return true

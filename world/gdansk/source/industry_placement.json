@@ -1,0 +1,813 @@
+{
+  "created_date": "2026-11-07",
+  "farm_ranch_policy": "4 FARM + 4 RANCH where historical products are unknown; user-directed gameplay allocation",
+  "gps_order": "latitude, longitude; WGS84",
+  "history_notes": "Most sites are historical factory/yard quarters, not surveyed building footprints. Modern OSM locations do not independently prove 1960 operation. See references and per-site confidence.",
+  "industries": [
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 18.1764717102051,
+      "latitude": 54.1358696569478,
+      "location_confidence": "approximate historical factory footprint",
+      "longitude": 19.0156048063346,
+      "name": "Cukrownia Nowy Staw",
+      "neighbourhood_height_range": [
+        17.6423015594482,
+        18.4003639221191
+      ],
+      "node_name": "NowyStaw_Sugarworks",
+      "num": 1,
+      "reference_gps": [
+        54.1356,
+        19.0133
+      ],
+      "references": [
+        "https://fotopolska.eu/Cukrownia-Nowy-Staw-Nowy-Staw",
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/malbork_N-34-63-C_content_1985-1989.jpg"
+      ],
+      "representation_note": "Factory quarter checked against ckr. on the historical scan; marker represents the complex, not a surveyed building corner. Existing beet-to-sugar recipe.",
+      "terrain_adjustment_world_xz": [
+        15.0,
+        -3.0
+      ],
+      "type_key": "SUGAR_MILL",
+      "world_position": [
+        514.324951,
+        18.176472,
+        804.7453
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 19.4828090667725,
+      "latitude": 54.0524801344727,
+      "location_confidence": "heritage register map point",
+      "longitude": 19.1950652524668,
+      "name": "Cukrownia Stare Pole",
+      "neighbourhood_height_range": [
+        18.485164642334,
+        19.8357124328613
+      ],
+      "node_name": "StarePole_Sugarworks",
+      "num": 2,
+      "reference_gps": [
+        54.052480129395,
+        19.195526221216
+      ],
+      "references": [
+        "https://zabytek.pl/pl/obiekty/g-237023"
+      ],
+      "representation_note": "GPS from the National Heritage Institute directions link. Existing beet-to-sugar recipe.",
+      "terrain_adjustment_world_xz": [
+        -3.0,
+        0.0
+      ],
+      "type_key": "SUGAR_MILL",
+      "world_position": [
+        1682.278198,
+        19.482809,
+        1732.469849
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 18.1572666168213,
+      "latitude": 54.1323213019174,
+      "location_confidence": "approximate former building-materials industrial quarter",
+      "longitude": 19.0180487400573,
+      "name": "Cegielnia Nowy Staw",
+      "neighbourhood_height_range": [
+        17.9146003723145,
+        18.5037536621094
+      ],
+      "node_name": "NowyStaw_Brickworks",
+      "num": 3,
+      "reference_gps": [
+        54.1323213,
+        19.0185097
+      ],
+      "references": [
+        "https://www.nowystaw.pl/asp/historia,29",
+        "https://archiwalna.wfos.gdansk.pl/sites/default/files/2017-08-02/informacja2003_0.pdf",
+        "https://www.openstreetmap.org/way/515068950",
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/malbork_N-34-63-C_content_1985-1989.jpg"
+      ],
+      "representation_note": "Approximate site along Obrońców Westerplatte, near the scan m. bud. complex. Municipal sources identify the former brickyard with this street. Exact kiln footprint and 1960 operating status remain uncertain. Current recipe uses gravel, not clay.",
+      "terrain_adjustment_world_xz": [
+        -3.0,
+        0.0
+      ],
+      "type_key": "BRICKWORKS",
+      "world_position": [
+        530.230408,
+        18.157267,
+        844.221436
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.5,
+        10.5
+      ],
+      "ground_height": 16.6933040618896,
+      "latitude": 54.3464709032572,
+      "location_confidence": "modern industrial polygon centre",
+      "longitude": 18.7389229051527,
+      "name": "Rafineria Gdańska",
+      "neighbourhood_height_range": [
+        16.530891418457,
+        16.8723163604736
+      ],
+      "node_name": "Gdansk_Refinery",
+      "num": 4,
+      "reference_gps": [
+        54.3464709,
+        18.7389229
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/60914896",
+        "https://rafineriagdanska.pl/3659/o_firmie/kalendarium"
+      ],
+      "representation_note": "Included at user request despite historical production starting in December 1975. Current recipe oil -> chemicals. Oil import/supply remains unresolved; no fictitious oilfield added.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "OIL_REFINERY",
+      "world_position": [
+        -1286.358887,
+        16.693304,
+        -1538.234253
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        5.0,
+        5.0
+      ],
+      "ground_height": 23.8489322662354,
+      "latitude": 54.3459803372505,
+      "location_confidence": "approximate landing hinterland",
+      "longitude": 19.1131670306843,
+      "name": "Stegna — przystań rybacka",
+      "neighbourhood_height_range": [
+        21.1358985900879,
+        26.7324638366699
+      ],
+      "node_name": "Stegna_Fishery",
+      "num": 5,
+      "reference_gps": [
+        54.34625,
+        19.113628
+      ],
+      "references": [
+        "https://www.sztutowo.pl/nasza-gmina/historia/",
+        "https://odtur.pl/atrakcje/stegna-przystan-rybacka-36409.html"
+      ],
+      "representation_note": "Stegna fishing cooperative documented in 1951. Modern landing reference moved approximately 60 m inland for the game building; exact 1960 facility footprint unverified. Existing fishery recipe.",
+      "terrain_adjustment_world_xz": [
+        -3.0,
+        3.0
+      ],
+      "type_key": "FISHERY",
+      "world_position": [
+        1149.273315,
+        23.848932,
+        -1532.776611
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 37.8347473144531,
+      "latitude": 54.0786421296633,
+      "location_confidence": "modern successor industrial polygon centre",
+      "longitude": 18.7890976114615,
+      "name": "Tczew — Zakłady Sprzętu Motoryzacyjnego",
+      "neighbourhood_height_range": [
+        37.6164016723633,
+        39.1672210693359
+      ],
+      "node_name": "Tczew_GearboxWorks",
+      "num": 6,
+      "reference_gps": [
+        54.0794511,
+        18.7867928
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/1214628611",
+        "https://fabrykasztuk.tczew.pl/historia-rozwoju-techniki-od-muscate-do-eaton-wystawa/"
+      ],
+      "representation_note": "Approximation at the Eaton/Polmo works site; name uses the earlier organization, POLMO from 1968. Unchanged WORKSHOP recipe also produces weapons; not a historical armament-production claim.",
+      "terrain_adjustment_world_xz": [
+        15.0,
+        9.0
+      ],
+      "type_key": "WORKSHOP",
+      "world_position": [
+        -959.815002,
+        37.834747,
+        1441.412598
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 40.7352867126465,
+      "latitude": 54.0870024567371,
+      "location_confidence": "modern successor industrial polygon centre",
+      "longitude": 18.784675403914,
+      "name": "Tczew — Pomorska Fabryka Gazomierzy",
+      "neighbourhood_height_range": [
+        40.3644790649414,
+        41.1880760192871
+      ],
+      "node_name": "Tczew_GasMeterWorks",
+      "num": 7,
+      "reference_gps": [
+        54.0867328,
+        18.7846754
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/244178928",
+        "https://skarbnica.tczew.pl/29495/tczew-ochotnicza-straz-pozarna-miasta-tczewa-zawody-powiatowe-zawody-strazackie-lata-60-xx-wieku/"
+      ],
+      "representation_note": "Modern Metrix site used as a factory-quarter reference for the post-1954 Piaskowa works. WORKSHOP produces generic machines and weapons, not gas meters; recipe approximation only.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        -3.0
+      ],
+      "type_key": "WORKSHOP",
+      "world_position": [
+        -988.595337,
+        40.735287,
+        1348.402344
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 29.7064418792725,
+      "latitude": 54.0851064003035,
+      "location_confidence": "modern gasworks industrial polygon centre",
+      "longitude": 18.8012803015045,
+      "name": "Gazownia Tczew",
+      "neighbourhood_height_range": [
+        25.2209453582764,
+        34.44873046875
+      ],
+      "node_name": "Tczew_Gasworks",
+      "num": 8,
+      "reference_gps": [
+        54.0851064,
+        18.8012803
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/1193310910",
+        "https://www.dawnytczew.pl/de/gospodarka/329-gazownia.html"
+      ],
+      "representation_note": "Coal-demand proxy only. No town-gas, coke or tar output is represented by the current COAL_PLANT recipe.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "COAL_PLANT",
+      "world_position": [
+        -880.528381,
+        29.706442,
+        1369.496338
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 16.4220581054688,
+      "latitude": 54.2122500001426,
+      "location_confidence": "approximate narrow-gauge yard/workshop quarter",
+      "longitude": 19.123760964519,
+      "name": "Nowy Dwór Gdański — warsztaty kolejowe",
+      "neighbourhood_height_range": [
+        16.3408603668213,
+        16.8546180725098
+      ],
+      "node_name": "NowyDwor_RailwayWorkshops",
+      "num": 9,
+      "reference_gps": [
+        54.21225,
+        19.1233
+      ],
+      "references": [
+        "https://kolejzulawska.pl/o-nas/historia/",
+        "https://www.openstreetmap.org/way/391593883"
+      ],
+      "representation_note": "Near existing narrow-gauge workshop spurs. SMITHY is a generic railway/metalworking proxy producing tools and track, not a literal vehicle-repair simulation.",
+      "terrain_adjustment_world_xz": [
+        3.0,
+        0.0
+      ],
+      "type_key": "SMITHY",
+      "world_position": [
+        1218.220093,
+        16.422058,
+        -45.000774
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 22.580436706543,
+      "latitude": 54.1098870005055,
+      "location_confidence": "OSM named railway-workshops point",
+      "longitude": 18.7720938179714,
+      "name": "Zajączkowo Tczewskie — warsztaty kolejowe",
+      "neighbourhood_height_range": [
+        20.800838470459,
+        22.8319664001465
+      ],
+      "node_name": "Zajaczkowo_RailwayWorkshops",
+      "num": 10,
+      "reference_gps": [
+        54.109887,
+        18.7711719
+      ],
+      "references": [
+        "https://www.openstreetmap.org/node/9215821981",
+        "https://skarbnica.tczew.pl/45325/klub-techniki-i-racjonalizacji-wezla-kolejowego-tczew-kronika-z-lat-1950-1980/"
+      ],
+      "representation_note": "Generic SMITHY proxy for the railway service site. Exact 1960 building footprint unverified.",
+      "terrain_adjustment_world_xz": [
+        6.0,
+        0.0
+      ],
+      "type_key": "SMITHY",
+      "world_position": [
+        -1070.478027,
+        22.580437,
+        1093.807373
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 17.5415153503418,
+      "latitude": 54.353856429405,
+      "location_confidence": "official shipyard coordinate",
+      "longitude": 18.781016560488,
+      "name": "Górki Zachodnie — stocznia rzeczna",
+      "neighbourhood_height_range": [
+        16.210958480835,
+        17.9345321655273
+      ],
+      "node_name": "Gorki_Shipyard",
+      "num": 11,
+      "reference_gps": [
+        54.3527778,
+        18.7805556
+      ],
+      "references": [
+        "https://stoczniawisla.pl/about-us,2,en"
+      ],
+      "representation_note": "Official company position. Wisła name dates from 1967. SMITHY follows the existing Franzburger shipyard abstraction; no ship cargo exists.",
+      "terrain_adjustment_world_xz": [
+        3.0,
+        -12.0
+      ],
+      "type_key": "SMITHY",
+      "world_position": [
+        -1012.407593,
+        17.541515,
+        -1620.399658
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        9.5,
+        8.5
+      ],
+      "ground_height": 17.8680286407471,
+      "latitude": 54.3608059005377,
+      "location_confidence": "modern former-works industrial polygon centre",
+      "longitude": 18.6796134977476,
+      "name": "Gdańsk Przeróbka — ZNTK",
+      "neighbourhood_height_range": [
+        17.6202297210693,
+        18.8016471862793
+      ],
+      "node_name": "Przerobka_RailwayWorks",
+      "num": 12,
+      "reference_gps": [
+        54.3608059,
+        18.6796135
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/60995745",
+        "https://gdansk.gedanopedia.pl/gdansk/?title=PRZER%C3%93BKA"
+      ],
+      "representation_note": "Generic railway metalworking proxy; not a literal vehicle repair recipe.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "SMITHY",
+      "world_position": [
+        -1672.352661,
+        17.868029,
+        -1697.713867
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 16.2525768280029,
+      "latitude": 54.3108860006923,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 18.79532619828,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          572.0,
+          584.0
+        ],
+        "sheet": "N-34-62-B"
+      },
+      "name": "PGR Koszwały",
+      "neighbourhood_height_range": [
+        16.0437927246094,
+        16.42018699646
+      ],
+      "node_name": "Koszwaly_Farm",
+      "num": 13,
+      "reference_gps": [
+        54.310886,
+        18.7953262
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/ostaszewo_N-34-62-B_edition_1970-1974.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "FARM",
+      "world_position": [
+        -919.278503,
+        16.252577,
+        -1142.345337
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 17.4290084838867,
+      "latitude": 54.173185999445,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 18.7537385482173,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          270.0,
+          2395.0
+        ],
+        "sheet": "N-34-62-B"
+      },
+      "name": "PGR Krzywe Koło",
+      "neighbourhood_height_range": [
+        17.3153305053711,
+        17.5850486755371
+      ],
+      "node_name": "KrzyweKolo_Ranch",
+      "num": 14,
+      "reference_gps": [
+        54.173186,
+        18.7555824
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/ostaszewo_N-34-62-B_edition_1970-1974.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        -12.0,
+        0.0
+      ],
+      "type_key": "RANCH",
+      "world_position": [
+        -1189.936646,
+        17.429008,
+        389.593781
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 18.3379535675049,
+      "latitude": 54.2267906003773,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 18.7575067611826,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          280.0,
+          1690.0
+        ],
+        "sheet": "N-34-62-B"
+      },
+      "name": "PGR Grabowe Pole",
+      "neighbourhood_height_range": [
+        18.0255947113037,
+        18.4171447753906
+      ],
+      "node_name": "GrabowePole_Farm",
+      "num": 15,
+      "reference_gps": [
+        54.2267906,
+        18.7570458
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/ostaszewo_N-34-62-B_edition_1970-1974.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        3.0,
+        0.0
+      ],
+      "type_key": "FARM",
+      "world_position": [
+        -1165.412598,
+        18.337954,
+        -206.767761
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 17.7954616546631,
+      "latitude": 54.1810203003879,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 18.900804099301,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          1383.0,
+          2292.0
+        ],
+        "sheet": "N-34-62-B"
+      },
+      "name": "PGR Nowa Cerkiew",
+      "neighbourhood_height_range": [
+        17.7185516357422,
+        18.143533706665
+      ],
+      "node_name": "NowaCerkiew_Ranch",
+      "num": 16,
+      "reference_gps": [
+        54.1810203,
+        18.9008041
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/ostaszewo_N-34-62-B_edition_1970-1974.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "RANCH",
+      "world_position": [
+        -232.813828,
+        17.795462,
+        302.435669
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 16.8200626373291,
+      "latitude": 54.1912896423255,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 19.0681580422188,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          725.0,
+          2160.0
+        ],
+        "sheet": "N-34-63-A"
+      },
+      "name": "PGR Orłowo I",
+      "neighbourhood_height_range": [
+        16.7078475952148,
+        16.9278869628906
+      ],
+      "node_name": "OrlowoI_Farm",
+      "num": 17,
+      "reference_gps": [
+        54.1915593,
+        19.068619
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/nowy_dwor_gdanski_N-34-63-A_survey_1985-1989_print_1992.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        -3.0,
+        3.0
+      ],
+      "type_key": "FARM",
+      "world_position": [
+        856.348633,
+        16.820063,
+        188.187256
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 16.6652584075928,
+      "latitude": 54.2147973997652,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 19.0876018024179,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          872.0,
+          1855.0
+        ],
+        "sheet": "N-34-63-A"
+      },
+      "name": "PGR Orłowo II",
+      "neighbourhood_height_range": [
+        16.2530174255371,
+        16.6677398681641
+      ],
+      "node_name": "OrlowoII_Ranch",
+      "num": 18,
+      "reference_gps": [
+        54.2147974,
+        19.0876018
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/nowy_dwor_gdanski_N-34-63-A_survey_1985-1989_print_1992.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "RANCH",
+      "world_position": [
+        982.891296,
+        16.665258,
+        -73.341087
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 15.9576263427734,
+      "latitude": 54.228023541242,
+      "location_confidence": "approximate PGR building-cluster reading from historical scan",
+      "longitude": 19.1163068236457,
+      "map_reading": {
+        "datum": "Pulkovo 1942, transformed to WGS84 using GDAL/PROJ; approximate scan neatline interpolation",
+        "estimated_horizontal_uncertainty_m": 200.0,
+        "pixel": [
+          1085.0,
+          1678.0
+        ],
+        "sheet": "N-34-63-A"
+      },
+      "name": "PGR Cyganka",
+      "neighbourhood_height_range": [
+        15.8018035888672,
+        16.097038269043
+      ],
+      "node_name": "Cyganka_Farm",
+      "num": 19,
+      "reference_gps": [
+        54.2282932,
+        19.1153849
+      ],
+      "references": [
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/nowy_dwor_gdanski_N-34-63-A_survey_1985-1989_print_1992.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        6.0,
+        3.0
+      ],
+      "type_key": "FARM",
+      "world_position": [
+        1169.70752,
+        15.957626,
+        -220.484467
+      ]
+    },
+    {
+      "footprint_half_extents_world": [
+        3.0,
+        2.5
+      ],
+      "ground_height": 16.7868041992188,
+      "latitude": 54.2662601023529,
+      "location_confidence": "modern farmyard centre cross-checked against historical PGR label",
+      "longitude": 19.1174624907336,
+      "name": "PGR Nowotna",
+      "neighbourhood_height_range": [
+        16.3419170379639,
+        16.8553924560547
+      ],
+      "node_name": "Nowotna_Ranch",
+      "num": 20,
+      "reference_gps": [
+        54.2662601,
+        19.1174625
+      ],
+      "references": [
+        "https://www.openstreetmap.org/way/1380902636",
+        "/home/cornelinux/Dokumente/ChatGPT/MapMaking/historical_maps/gdansk/1_50000/nowy_dwor_gdanski_N-34-63-A_survey_1985-1989_print_1992.jpg"
+      ],
+      "representation_note": "Production unknown: FARM/RANCH split is a gameplay assignment requested by the user. Ranch currently produces meat, not milk. Historical scans are later than 1960; no exact 1960 field boundary or ownership reconstruction claimed.",
+      "terrain_adjustment_world_xz": [
+        0.0,
+        0.0
+      ],
+      "type_key": "RANCH",
+      "world_position": [
+        1177.22876,
+        16.786804,
+        -645.873596
+      ]
+    }
+  ],
+  "reserved_for_later": [
+    "milk/dairies and milk collection",
+    "maltings",
+    "yeast/starch works",
+    "phosphogypsum disposal",
+    "drainage infrastructure"
+  ],
+  "status": "placed_in_scene",
+  "terrain_sampling": {
+    "failures": [],
+    "method": "Terrain3D.data.get_height against the current imported heightdata",
+    "region_count": 257,
+    "region_size": 256,
+    "scene_water_plane_y": 14.647888,
+    "vertex_spacing": 1.0
+  },
+  "unresolved_imports": [
+    "oil",
+    "coal",
+    "ingots",
+    "gravel",
+    "lumber"
+  ],
+  "world_key": "gdansk",
+  "scene": "res://world/gdansk/mapscenes/industries_gdansk.tscn",
+  "terrain_adjustment_note": "Small X/Z adjustments choose dry terrain within the local site quarter. Reference GPS and actual placement GPS are retained separately; world units represent roughly 10 real metres horizontally. Markers sit at terrain centre height; existing sloping ground was not flattened.",
+  "terrain_fit_notes": [
+    "Stegna landing and Tczew gasworks are on sloping imported terrain. Generic models may require later visual landscaping; no terrain was changed for these markers."
+  ]
+}

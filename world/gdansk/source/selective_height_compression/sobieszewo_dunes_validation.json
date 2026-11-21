@@ -1,0 +1,151 @@
+{
+  "backup_created": false,
+  "changed_samples": 35370,
+  "config": "res://world/gdansk/source/selective_height_compression/sobieszewo_dunes.json",
+  "date": "2026-11-08",
+  "feature": "Sobieszewo Island wooded dune belt",
+  "method": "Monotonic piecewise height compression with a quadratic transition; no spatial smoothing or averaging",
+  "other_height_samples_unchanged": true,
+  "peak_after_above_water": 16.1097455949305,
+  "peak_after_y": 30.7576335949305,
+  "peak_before_above_water": 26.9994775700684,
+  "peak_before_y": 41.6473655700684,
+  "regions": [
+    {
+      "after_sha256": "b0721250c72d0153e9e25734130c0371d47213a16c827f2b55a88059e31ef932",
+      "changed_samples": 4062,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-04-07.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "13d638c94493529f28110722a8ff02748fc2e3bb6aba61d85c8c1c830cd65258",
+      "changed_samples": 6626,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-03-07.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "1ebe033eb2d52f01ebc5b2963d1070d9124c85b54894fecc47073080ef8d49c3",
+      "changed_samples": 727,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-02-07.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "5ac4dcf22c799c9526fbfbf885dc31dfcadd77842f042f16c63375cdee578478",
+      "changed_samples": 309,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-01-07.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "5e48928c97b735461702503e0025f54a194e78e7fb16a87f46fbc087e7832abc",
+      "changed_samples": 9,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d_00-07.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "ee9e992221a853cc327755ad04833ce3a4aaa1aade40255654a257da5b615da2",
+      "changed_samples": 5307,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-03-06.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "f371b035c288048ca85b2c014cae5a69d20486d5875e332ab258f3cfdabdd5d5",
+      "changed_samples": 7593,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-02-06.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "dbe74109ca93af0845b1de30e05fc4962eae40623bdb3571fceffc399ed794fd",
+      "changed_samples": 10293,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-01-06.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "64b4784612ffad255fc774d38957b06148a843e230f2518e23d45e59c25a9589",
+      "changed_samples": 444,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d_00-06.res",
+      "height_reload_verified": true
+    }
+  ],
+  "reimport_performed": false,
+  "selection_edge_transition_width": 10.0,
+  "selection_polygon_xz": [
+    [
+      -1000.0,
+      -1720.0
+    ],
+    [
+      40.0,
+      -1720.0
+    ],
+    [
+      40.0,
+      -1540.0
+    ],
+    [
+      0.0,
+      -1445.0
+    ],
+    [
+      -120.0,
+      -1425.0
+    ],
+    [
+      -350.0,
+      -1445.0
+    ],
+    [
+      -550.0,
+      -1470.0
+    ],
+    [
+      -750.0,
+      -1495.0
+    ],
+    [
+      -970.0,
+      -1535.0
+    ],
+    [
+      -1000.0,
+      -1580.0
+    ]
+  ],
+  "transition_height": 4.0,
+  "unchanged_below_y": 20.0,
+  "upper_height_factor": 0.2,
+  "water_level": 14.647888,
+  "changed_region_files": [
+    "terrain3d-01-06.res",
+    "terrain3d-01-07.res",
+    "terrain3d-02-06.res",
+    "terrain3d-02-07.res",
+    "terrain3d-03-06.res",
+    "terrain3d-03-07.res",
+    "terrain3d-04-07.res",
+    "terrain3d_00-06.res",
+    "terrain3d_00-07.res"
+  ],
+  "all_other_region_files_unchanged": true,
+  "other_region_files_verified": 248,
+  "source_exr_unchanged": true,
+  "gypsum_pile_samples_outside_selection_unchanged": true,
+  "southwest_hills_unchanged": true
+}

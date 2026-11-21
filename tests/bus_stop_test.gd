@@ -206,6 +206,7 @@ func test_editor_labels() -> bool:
 	broken.close()
 	self.check(not store.load_world(world, history).ok and container.get_child(0) == old_label, "Invalid anchors preserve the previously loaded labels")
 	history.undo.clear_history()
+	history.undo.free()
 	world.free()
 	for filename: String in fixtures:
 		DirAccess.remove_absolute(folder.path_join(filename))

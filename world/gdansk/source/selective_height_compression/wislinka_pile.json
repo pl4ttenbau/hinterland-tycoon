@@ -1,0 +1,30 @@
+{
+  "feature": "Wiślinka phosphogypsum pile only",
+  "bounds_xmin_zmin_xmax_zmax": [
+    -665,
+    -1335,
+    -555,
+    -1195
+  ],
+  "unchanged_below_y": 20.0,
+  "transition_height": 4.0,
+  "upper_height_factor": 0.2,
+  "water_level": 14.647888,
+  "terrain_directory": "res://world/gdansk/heightdata",
+  "region_locations": {
+    "terrain3d-03-06.res": [
+      -3,
+      -6
+    ],
+    "terrain3d-03-05.res": [
+      -3,
+      -5
+    ]
+  },
+  "expected_source_region_sha256": {
+    "terrain3d-03-06.res": "c8b6781ff9ecfd0ebd8d90b0a1961fef4fa0625de896d01866cbfd8972e1c853",
+    "terrain3d-03-05.res": "04d40bad17c6d52e1e3fb985c36cdb1e7731d2026c6fe08b93035beb20c75d6c"
+  },
+  "report_path": "res://world/gdansk/source/selective_height_compression/wislinka_pile_validation.json",
+  "scope_note": "Only the pile is changed. Dunes and southwest hills deferred at user request. No backups. Current on-disk low ground, waterways and texture controls are preserved."
+}

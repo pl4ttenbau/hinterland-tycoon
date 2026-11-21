@@ -409,15 +409,8 @@ func test_migrated_maps() -> bool:
 		# their infrastructure back-references rather than leaking every map node.
 		for track: RailTrackData in rails.get_all():
 			for node: RailNodeData in track.nodes:
-				node.parent_track = null
 				node.fork = null
 			track.nodes.clear()
-		for road: RoadData in roads.get_all():
-			for node: RoadNode in road.nodes:
-				node.parent_track = null
-				node.cross = null
-			road.nodes.clear()
-			road.crosses.clear()
 	return true
 
 ## Map authors can add stops without changing this loader regression test.

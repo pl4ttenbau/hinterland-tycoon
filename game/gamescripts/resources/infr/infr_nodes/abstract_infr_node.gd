@@ -13,7 +13,14 @@ class_name AbstractInfrNode extends Resource
 ## Authored dead end, e.g. where a rail buffer stands.
 @export var is_end: bool = false
 
-@export var parent_track: AbstractTrack
+## Held weakly: the track owns its nodes, so a strong back-reference would form
+## a cycle and leak both. Not exported, the loader sets it.
+var parent_track: AbstractTrack:
+	set(value):
+		_parent_track = weakref(value) if value != null else null
+	get():
+		return _parent_track.get_ref() if _parent_track != null else null
+var _parent_track: WeakRef = null
 
 #region Neighbours
 func get_previous() -> AbstractInfrNode:

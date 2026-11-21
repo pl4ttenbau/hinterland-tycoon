@@ -7,7 +7,11 @@ signal positioned(pos_vec3: Vector3)
 
 ## Physical stops share their interchange's identity metadata. Legacy standalone
 ## objects retain their own fields, which keeps factories and editor tools usable.
-@export var interchange: InterchangeData
+## Held weakly: the interchange owns its stops (InterchangeData.stops).
+var interchange: InterchangeData:
+	set(value): _interchange = weakref(value) if value != null else null
+	get(): return _interchange.get_ref() if _interchange != null else null
+var _interchange: WeakRef = null
 
 var interchange_num: int:
 	get(): return self.interchange.num if self.interchange != null else -1

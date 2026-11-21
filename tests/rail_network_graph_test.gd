@@ -109,7 +109,6 @@ func _run() -> void:
 				rail_node.fork.junction = null
 				rail_node.fork.railNode = null
 				rail_node.fork = null
-			rail_node.parent_track = null
 	self.rails.free()
 	self.forks.free()
 	print("Rail network graph tests: ", self.failures, " failures")

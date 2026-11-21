@@ -1,0 +1,163 @@
+{
+  "affected_regions": [
+    [
+      -5.0,
+      -8.0
+    ],
+    [
+      -4.0,
+      -8.0
+    ],
+    [
+      -4.0,
+      -7.0
+    ],
+    [
+      0.0,
+      -7.0
+    ],
+    [
+      -3.0,
+      -7.0
+    ],
+    [
+      -1.0,
+      -7.0
+    ],
+    [
+      7.0,
+      -7.0
+    ],
+    [
+      6.0,
+      -7.0
+    ],
+    [
+      -2.0,
+      -7.0
+    ],
+    [
+      5.0,
+      -7.0
+    ],
+    [
+      1.0,
+      -7.0
+    ],
+    [
+      4.0,
+      -7.0
+    ],
+    [
+      -1.0,
+      -6.0
+    ],
+    [
+      1.0,
+      -6.0
+    ],
+    [
+      4.0,
+      -6.0
+    ],
+    [
+      3.0,
+      -6.0
+    ],
+    [
+      2.0,
+      -6.0
+    ]
+  ],
+  "autoshader_on_painted_pixels": false,
+  "base_and_overlay": 7.0,
+  "blend": 0.0,
+  "coastal_beach_polygons": 11.0,
+  "dimensions": [
+    3600.0,
+    3600.0
+  ],
+  "hard_edge": true,
+  "painted_samples": 26130.0,
+  "painted_samples_verified": 26130.0,
+  "raster_offset": [
+    -1800.0,
+    -1800.0
+  ],
+  "saved_files_verified": true,
+  "source": "OpenStreetMap natural=beach outlines; retained in originals/osm_beaches.json; ODbL 1.0",
+  "texture_name": "Sand",
+  "texture_slot": 7.0,
+  "unchanged_map_hashes": {
+    "(-1, -6)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "7213dd18219e225a60036f2b196e9e3083455f8b1c10b7305ae4adc1b2a5be99"
+    },
+    "(-1, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "4e93e5c1c795401b9fd41124a828bfcd55223951e5f47a2ec8aca9574e0ce0d8"
+    },
+    "(-2, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "b92c7131cfc8e13c6e0b025411e2b7d68b1bf7784fb22acdbab55aca53d2ae54"
+    },
+    "(-3, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "faf6c2a01e0d59b63a18fa1bd9aa32df7c17e3129b5b8dee6b91a7ae4a7ac5c5"
+    },
+    "(-4, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "58b06e99748a60b7bb1c32dbb0dfc9aa5c63402a17099e10c1897cc5bb824308"
+    },
+    "(-4, -8)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "f2ccfe4611b67b0544432881af60edfe345568a1a779b1d4a9bd9a2f2e2e50ba"
+    },
+    "(-5, -8)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "9d5d5fc4bc1eb96badd780f26588a2e13e68b52cc4f3269499b2d5437edc3e80"
+    },
+    "(0, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "a6c47b71564bcf42269ae3b99b456ad980249087ee0124f23c489e0e75295970"
+    },
+    "(1, -6)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "58e14ec66d36d5884738d74a1358014ca8089f393e1efc97ad97a09e59da4e2c"
+    },
+    "(1, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "2cf1ab7a07b4535a3982eaf07948d6299975a7adf96caa6acd9ebe5036b6fa08"
+    },
+    "(2, -6)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "4aa6bc331fe228874e2aa1e422bb899b588453b889a2de264c1af3fe4d83527f"
+    },
+    "(3, -6)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "bb80a5cdba87f18c0291e3c0024d96bcfb49f367ded4439dd15d4b5234ce9a11"
+    },
+    "(4, -6)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "19acfc97573d5191d524b302569b9035c6901fb8a92e0a91d2493854990b3d41"
+    },
+    "(4, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "7b1a63f15a3184d464b8561a4adb79d391c23279bf611a4bafd01f85f944067e"
+    },
+    "(5, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "071a4374d672e82f50ad9c2580ef874ff6fc670af0d8dcaa9af3dabc99f90301"
+    },
+    "(6, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "05af01ec174dde0ca0d1f6890deade890f89dc41f683fd4f2fe2ec1085bf69aa"
+    },
+    "(7, -7)": {
+      "color": "0ac9bd870f9cc18a30b1b8a9c14d1676305484b3d6e2351b51030d8d8b72c7e3",
+      "height": "663b096debb5495d8b9d0ca13b87836e60ab0566dbebf575bea3fc37e59ff938"
+    }
+  },
+  "unpainted_control_changes": 0.0,
+  "water_pixels_excluded": true
+}

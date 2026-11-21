@@ -2,7 +2,11 @@
 ## supported for legacy callers until connection Resources become packed IDs.
 class_name StationConnections extends Resource
 
-@export var parent: GameEntityData
+## Held weakly: the parent station or interchange owns these connections.
+var parent: GameEntityData:
+	set(value): _parent = weakref(value) if value != null else null
+	get(): return _parent.get_ref() if _parent != null else null
+var _parent: WeakRef = null
 
 @export_storage var industries: Array[StationIndustryConnection] = []
 @export_storage var houses: Array[StationResidentialConnection] = []

@@ -32,8 +32,6 @@ func run(scene_tree: SceneTree) -> int:
 	host.free()
 	for stop: AbstractStation in stops.values():
 		stop.connections.parent = null
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
 	Managers.road_stops = old_stops
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles

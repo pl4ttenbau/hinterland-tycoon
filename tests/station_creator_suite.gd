@@ -42,10 +42,6 @@ func run() -> bool:
 			check(false, test + " aborted")
 	services.free()
 	check(Managers.interchanges == null and town.stations.is_empty(), "Runtime stops clean up with their session")
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
-	for node: RailNodeData in rail.nodes:
-		node.parent_track = null
 	GlobalState.towns.erase(town)
 	GlobalState.station_objs.clear()
 	print("Station creator: %d checks, %d failures" % [checks, failures])

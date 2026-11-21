@@ -47,7 +47,6 @@ func release_network() -> void:
 			if node.station != null:
 				node.station.parent_node = null
 				node.station = null
-			node.parent_track = null
 		track.nodes.clear()
 		track.forks.clear()
 		track.node_stations.clear()

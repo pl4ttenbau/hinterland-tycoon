@@ -1,0 +1,45 @@
+{
+  "backup_created": false,
+  "changed_samples": 2127,
+  "config": "res://world/gdansk/source/selective_height_compression/wislinka_pile.json",
+  "date": "2026-11-08",
+  "feature": "Wiślinka phosphogypsum pile only",
+  "method": "Monotonic piecewise height compression with a quadratic transition; no spatial smoothing or averaging",
+  "other_height_samples_unchanged": true,
+  "peak_after_above_water": 12.9415239262695,
+  "peak_after_y": 27.5894119262695,
+  "peak_before_above_water": 35.2991716313477,
+  "peak_before_y": 49.9470596313477,
+  "regions": [
+    {
+      "after_sha256": "0ad582e8c72c2d91888ad4b1738f313b0e71315e5ba51706b112e566d66c877a",
+      "changed_samples": 586,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-03-06.res",
+      "height_reload_verified": true
+    },
+    {
+      "after_sha256": "14cc3218f618d70e3ecdf3020ded2b2f09b5a64db96c2e990cd9a7b582582f99",
+      "changed_samples": 1541,
+      "color_map_unchanged": true,
+      "control_map_unchanged": true,
+      "file": "terrain3d-03-05.res",
+      "height_reload_verified": true
+    }
+  ],
+  "reimport_performed": false,
+  "transition_height": 4.0,
+  "unchanged_below_y": 20.0,
+  "upper_height_factor": 0.2,
+  "water_level": 14.647888,
+  "changed_region_files": [
+    "terrain3d-03-05.res",
+    "terrain3d-03-06.res"
+  ],
+  "all_other_region_files_unchanged": true,
+  "other_region_files_verified": 255,
+  "source_exr_unchanged": true,
+  "dunes_unchanged": true,
+  "southwest_hills_unchanged": true
+}

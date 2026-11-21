@@ -2,12 +2,16 @@ class_name RoadCross extends Resource
 
 @export var connecting_roads: Array[int] = []
 
-@export var parent_node: RoadNode:
+## Held weakly: the node owns its cross (node.cross), so a strong back-reference
+## would form a cycle and leak both. Not exported, the mapper sets it.
+var parent_node: RoadNode:
 	set(value):
-		parent_node = value
+		_parent_node = weakref(value) if value != null else null
 		if value != null:
 			value.cross = self
-	get(): return parent_node
+	get():
+		return _parent_node.get_ref() if _parent_node != null else null
+var _parent_node: WeakRef = null
 
 static func of(_node: RoadNode, _connected_roads: Array[int]):
 	var inst := RoadCross.new()

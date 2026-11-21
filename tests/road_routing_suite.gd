@@ -347,8 +347,6 @@ func test_execution() -> bool:
 	manager.free()
 	loader.free()
 	catalog.free()
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
 	stop.connections.parent = null
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles
@@ -457,8 +455,6 @@ func test_markers() -> bool:
 	# Restore the surrounding session and break fixture resource back-references.
 	player.free()
 	loader.free()
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
 	Managers.roads = old_roads
 	GlobalState.player = old_player
 	GlobalState.active_cam = old_camera
@@ -490,11 +486,7 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 	dialog.free()
 	vehicle.free()
 
-## Break the fixture's existing road/node/crossing back-reference cycles.
+## Break the fixture's stop back-reference cycles.
 func _cleanup() -> void:
-	for road: RoadData in roads.get_all():
-		for node: RoadNode in road.nodes:
-			node.parent_track = null
-			node.cross = null
 	for stop: AbstractStation in stops.values():
 		stop.connections.parent = null

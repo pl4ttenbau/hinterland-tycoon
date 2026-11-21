@@ -1,0 +1,106 @@
+{
+  "backup_created": false,
+  "color_maps_unchanged": true,
+  "date": "2026-11-08",
+  "gravel_samples_skipped": 0,
+  "hard_edge": true,
+  "height_maps_unchanged": true,
+  "historical_limit": "1970-74 edition used as an approximate guide for the 1968 scenario; individual road dates have not been established.",
+  "modern_expressway_painted": false,
+  "painted_samples": 4334,
+  "regions": [
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        0,
+        -2
+      ],
+      "painted_samples": 51,
+      "path": "res://world/gdansk/heightdata/terrain3d_00-02.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    },
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        0,
+        -1
+      ],
+      "painted_samples": 1903,
+      "path": "res://world/gdansk/heightdata/terrain3d_00-01.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    },
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        1,
+        -1
+      ],
+      "painted_samples": 1,
+      "path": "res://world/gdansk/heightdata/terrain3d_01-01.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    },
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        0,
+        0
+      ],
+      "painted_samples": 1616,
+      "path": "res://world/gdansk/heightdata/terrain3d_00_00.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    },
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        1,
+        0
+      ],
+      "painted_samples": 502,
+      "path": "res://world/gdansk/heightdata/terrain3d_01_00.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    },
+    {
+      "color_unchanged": true,
+      "height_unchanged": true,
+      "location": [
+        -1,
+        0
+      ],
+      "painted_samples": 261,
+      "path": "res://world/gdansk/heightdata/terrain3d-01_00.res",
+      "saved_control_verified": true,
+      "unpainted_control_changes": 0
+    }
+  ],
+  "requested_samples": 4334,
+  "saved_files_verified": true,
+  "scenario_year": 1968,
+  "scope": "Ostaszewo pilot only: main village spine, two connectors and short rural junction arms. Side streets and house layout left for manual work.",
+  "side_streets_added": false,
+  "source": "res://world/gdansk/source/roads_ostaszewo/road_trace.json",
+  "texture_name": "RoadGround",
+  "texture_slot": 11,
+  "unpainted_control_changes": 0,
+  "water_samples_skipped": 0,
+  "width_game_units": 5,
+  "changed_region_files": [
+    "terrain3d-01_00.res",
+    "terrain3d_00-01.res",
+    "terrain3d_00-02.res",
+    "terrain3d_00_00.res",
+    "terrain3d_01-01.res",
+    "terrain3d_01_00.res"
+  ],
+  "all_other_region_files_unchanged": true,
+  "region_files_checked": 257
+}

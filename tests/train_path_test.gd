@@ -205,7 +205,6 @@ func _run() -> void:
 			if rail_node.fork != null:
 				rail_node.fork.railNode = null
 				rail_node.fork = null
-			rail_node.parent_track = null
 	fork.setting.parent = null
 	self.rails.free()
 	self.forks.free()

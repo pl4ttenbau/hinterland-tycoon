@@ -10,7 +10,12 @@ class_name IndustryData extends GameEntityData
 ## Assigned from the town centers on this map when the industry is placed.
 var closest_town: TownData
 
-@export var station_connection: StationIndustryConnection
+## Held weakly: the station's StationConnections owns the entry, and the entry
+## holds this industry, so a strong reference would form a cycle.
+var station_connection: StationIndustryConnection:
+	set(value): _station_connection = weakref(value) if value != null else null
+	get(): return _station_connection.get_ref() if _station_connection != null else null
+var _station_connection: WeakRef = null
 @export_storage var road_exit: RoadNode
 
 static var _last_ind_num: int = 0
