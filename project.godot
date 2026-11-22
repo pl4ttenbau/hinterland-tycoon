@@ -30,7 +30,6 @@ UiState="*res://game/gamescripts/state/ui_state.gd"
 Managers="*res://game/gamescripts/state/managers.gd"
 MapListLoader="*uid://14cjvmakycc"
 ButtonFeedback="*res://addons/button_feedback/button_feedback.gd"
-EditorState="*uid://0ergxaw8n5vf"
 MCPRuntime="*uid://vm45gif4yrcf"
 
 [debug_draw_3d]

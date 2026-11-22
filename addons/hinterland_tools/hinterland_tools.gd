@@ -3,7 +3,6 @@
 class_name HinterlandEditorPlugin extends EditorPlugin
 
 const TOOLS_PANEL_SCENE = preload("res://addons/hinterland_tools/editor_tools_panel.tscn")
-const STATE_AUTOLOAD_NAME = "EditorState"
 const ROAD_AXLE_GIZMO = preload("res://addons/hinterland_tools/vehicles/road_vehicle_axle_gizmo.gd")
 
 var editor_signals: HinterlandEditorSignals
@@ -21,17 +20,6 @@ var road_axle_gizmo: EditorNode3DGizmoPlugin
 var drawing = InfrDrawingTool.new()
 var interchange_authoring := preload("res://addons/hinterland_tools/infr/interchange_authoring.gd").new()
 var station_dialog: ConfirmationDialog
-
-func _enable_plugin() -> void:
-	# Add autoloads here.
-	if Engine.is_editor_hint():
-		get_tree().root.tree_entered.connect(Callable(self, "_on_root_scene_node_added"))
-
-func _disable_plugin() -> void:
-	# Remove autoloads here.
-	# disconnect signals
-	if Engine.is_editor_hint():
-		get_tree().root.tree_entered.disconnect(Callable(self, "_on_root_scene_node_added"))
 
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
@@ -56,7 +44,6 @@ func _enter_tree() -> void:
 	_connect_editor_events()
 	# The plugin may be enabled after a map is already open.
 	self._on_scene_changed(EditorInterface.get_edited_scene_root())
-	self.enable_editor_state()
 
 func _connect_editor_events() -> void:
 	# wire scene change and history
@@ -91,6 +78,7 @@ func add_tool_buttons() -> void:
 	file_status = map_panel.get_node("%FileStatus")
 	tool_buttons[Enums.EnumEditorTool.NONE].pressed.connect(_on_free_tool_pressed)
 	editor_signals.infrastructure_save_requested.connect(_on_cache_save_requested)
+	editor_signals.infrastructure_line_save_requested.connect(_on_line_save_requested)
 	tool_buttons[Enums.EnumEditorTool.CREATE_ROAD].toggled.connect(_on_draw_toggled.bind(Enums.InfrDomain.ROAD))
 	tool_buttons[Enums.EnumEditorTool.CREATE_RAIL].toggled.connect(_on_draw_toggled.bind(Enums.InfrDomain.RAIL))
 	for tool: Enums.EnumEditorTool in tool_buttons:
@@ -116,17 +104,6 @@ func _exit_tree() -> void:
 	self.get_undo_redo().version_changed.disconnect(self._on_history_version_changed)
 	self.remove_control_from_bottom_panel(self.map_panel)
 	self.map_panel.queue_free()
-	self.remove_editor_state()
-
-#region EditorState
-func enable_editor_state():
-	if ! Engine.has_singleton(STATE_AUTOLOAD_NAME):
-		add_autoload_singleton(STATE_AUTOLOAD_NAME, "res://addons/hinterland_tools/editor_state.gd")
-
-func remove_editor_state():
-	if Engine.has_singleton(STATE_AUTOLOAD_NAME):
-		remove_autoload_singleton(STATE_AUTOLOAD_NAME)
-#endregion
 
 #region Callables
 func _handles(object: Object) -> bool:
@@ -234,8 +211,6 @@ func _on_terrain_clicked(position: Vector3) -> void:
 	# Town placement will be implemented by the map-editing tool.
 	print("HinterlandTycoon terrain click: ", position)
 
-func _on_root_scene_node_added():
-	Loggie.info("Node added")
 #endregion
 
 func _on_draw_toggled(enabled: bool, domain: Enums.InfrDomain) -> void:
@@ -267,14 +242,6 @@ func _update_tool_status() -> void:
 	else:
 		self.tool_status.text = "No tool selected · Select Create Road or Create Rail to start drawing."
 
-# Existing editor instances can retain signal connections during script hot reload.
-# Keep old buttons safe until the panel is recreated on the next plugin restart.
-func _on_json_action(save: bool, domain: Enums.InfrDomain) -> void:
-	if save:
-		_on_json_save(domain)
-	else:
-		self.file_status.text = "Load JSON moved to the standalone EditorObjects Inspector. Reopen the plugin to update this panel."
-
 func _on_cache_save_requested(cache: Node3D, domain: int) -> void:
 	if not is_instance_valid(cache) or not is_instance_valid(self.active_world) or cache.get_parent() != self.active_world or cache != self.active_world.get_node_or_null("EditorCache"):
 		push_warning("Open the cache's world map before saving its JSON.")
@@ -282,6 +249,64 @@ func _on_cache_save_requested(cache: Node3D, domain: int) -> void:
 	if domain not in [Enums.InfrDomain.ROAD, Enums.InfrDomain.RAIL]:
 		return
 	_on_json_save(domain)
+
+## "Save Single" on one line: write only that line's record into its map's JSON, replacing the saved
+## record with the same num or adding it. Unlike the full save this also accepts reference lines under
+## EditorInfr (loaded from JSON), and it leaves the cache as it is: nothing else is flushed or reloaded.
+func _on_line_save_requested(line: Node3D) -> void:
+	if not line is EditorInfrLine3D or not is_instance_valid(line) or not line.is_inside_tree():
+		return
+	var infr_line: EditorInfrLine3D = line
+	if infr_line.infr_domain not in [Enums.InfrDomain.ROAD, Enums.InfrDomain.RAIL]:
+		return
+	## A half-drawn draft would be missing from the file, and its endpoints may already snap to this line.
+	if not self.drawing.points.is_empty():
+		_report_file_status("Finish the current draft with Enter or cancel it with Esc before saving.")
+		return
+	var world: Node = _owning_world(infr_line)
+	var path: String = InfrJsonStore.path_for(world, infr_line.infr_domain) if world != null else ""
+	if path.is_empty():
+		_report_file_status("Save Single: the line is not inside a world map or EditorObjects scene with a map key.")
+		return
+	var existed: bool = _record_exists(path, infr_line.num)
+	var lines: Array[EditorInfrLine3D] = [infr_line]
+	var result: EditorActionResult = self.json_store.save_lines(path, lines, infr_line.infr_domain)
+	if not result.ok:
+		_report_file_status("Save Single: " + result.error)
+		return
+	var kind: String = "road" if infr_line.infr_domain == Enums.InfrDomain.ROAD else "track"
+	var message: String = "%s %s %d (%s) in %s." % ["Overwrote" if existed else "Added", kind, infr_line.num, infr_line.infr_name, path.get_file()]
+	message += " Backup: " + result.backup if not result.backup.is_empty() else " New JSON file created."
+	_report_file_status(message, false)
+	EditorInterface.get_resource_filesystem().scan()
+	if is_instance_valid(self.drawing.world):
+		self.drawing.refresh_endpoints()
+
+## The map scene a line belongs to: a WorldMapScene (cache lines) or the standalone WorldEditorObjects
+## scene (reference lines under EditorInfr). Both carry the map_key that names the JSON file.
+static func _owning_world(line: Node) -> Node:
+	var node: Node = line.get_parent()
+	while node != null and not (node is WorldMapScene or node is WorldEditorObjects):
+		node = node.get_parent()
+	return node
+
+static func _record_exists(path: String, num: int) -> bool:
+	var source: InfrCatalogReadResult = InfrJsonStore.read_records(path)
+	if not source.ok:
+		return false
+	for record: Dictionary in source.records:
+		if int(record.num) == num:
+			return true
+	return false
+
+## Show a save outcome in the panel; failures also go to the Output dock.
+func _report_file_status(message: String, failure: bool = true) -> void:
+	if is_instance_valid(self.file_status):
+		self.file_status.text = message
+	if failure:
+		push_warning(message)
+	else:
+		print(message)
 
 func _selection_active() -> bool:
 	# A live pre-update panel may not have the new button until plugin restart.

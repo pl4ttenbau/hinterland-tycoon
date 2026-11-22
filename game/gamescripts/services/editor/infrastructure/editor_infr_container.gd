@@ -1,27 +1,19 @@
 @tool
 @icon("res://assets/icons/nodes_3d/icon_data.svg")
+## EditorInfr: groups the map's reference infrastructure in the EditorObjects scene, with an EditorRails
+## (GeneratedRailLines) and an EditorRoads (GeneratedRoadWays) child. Loading and saving happen on the
+## EditorObjects root and the lines themselves; this node only keeps the layout and hides itself in game.
 class_name GeneratedInfrContainer extends Node3D
 
-@export_group("Infr. Actions")
-@export_tool_button("Empty Infr.")
-var empty_infr = Callable(self, "do_empty_infr")
-
 func _ready() -> void:
-	#if Engine.is_editor_hint():
-	#	self.owner = EditorInterface.get_edited_scene_root()
-	if !Engine.is_editor_hint():
+	## Authoring geometry only. In game the map's real tracks and roads are spawned from JSON instead.
+	if not Engine.is_editor_hint():
 		self.visible = false
-	
-#region Button Action
-func do_empty_infr() -> void:
-	$EditorRails.clear()
-	$EditorRoads.clear()
-#endregion
 
 func _get_configuration_warnings() -> PackedStringArray:
-	var err_msg_arr: PackedStringArray = []
-	if !$EditorRails:
-		err_msg_arr.append("EditorRails (GeneratedRailLines) child node missing")
-	if !$EditorRoads:
-		err_msg_arr.append("EditorRoads (GeneratedRoadWays) child node missing")
-	return err_msg_arr
+	var warnings: PackedStringArray = []
+	if not get_node_or_null("EditorRails") is GeneratedRailLines:
+		warnings.append("EditorRails (GeneratedRailLines) child node missing")
+	if not get_node_or_null("EditorRoads") is GeneratedRoadWays:
+		warnings.append("EditorRoads (GeneratedRoadWays) child node missing")
+	return warnings

@@ -50,8 +50,9 @@ static func infr3d_curve_index_to_node_json(start_pos: Vector3, infr3d_curve: Cu
 	node_dict.set("pos", abs_pos.snappedf(0.01))
 	# Preserve both handles, including the open ends. Unevenly spaced Catmull-Rom
 	# points have unequal in/out lengths; mirroring handleIn changes the curve.
-	var handle_in: Vector3 = infr3d_curve.get_point_in(curve_i)
-	var handle_out: Vector3 = infr3d_curve.get_point_out(curve_i)
+	# Millimetres are plenty for a handle; see InfrJsonFormatter.HANDLE_KEYS.
+	var handle_in: Vector3 = infr3d_curve.get_point_in(curve_i).snappedf(0.001)
+	var handle_out: Vector3 = infr3d_curve.get_point_out(curve_i).snappedf(0.001)
 	# Arrays serialize numerically without rounding through Vector3's display text.
 	node_dict.set("handleIn", [handle_in.x, handle_in.y, handle_in.z])
 	node_dict.set("handleOut", [handle_out.x, handle_out.y, handle_out.z])

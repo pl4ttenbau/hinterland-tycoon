@@ -96,7 +96,8 @@ func test_formatting(_tree: SceneTree) -> bool:
 	check(text.contains('"short": [1, 2, 3]'), "Short numeric arrays stay on one line")
 	check(text.contains('"long": [\n'), "Arrays exceeding line width put each value on its own line")
 	var parsed: Array = JSON.parse_string(text)
-	check(is_equal_approx(parsed[0].points[0].handleOut[0], 1.234567890123), "Handle precision is not reduced to position precision")
+	check(is_equal_approx(parsed[0].points[0].handleOut[0], 1.235), "Handles keep millimetre precision, finer than positions")
+	check(text.contains('"handleOut": [1.235, 0.0, 3.0]'), "Handles are written with 3 decimals and no float noise")
 	check(parsed[0].note == "literal [1, 2, 3]", "Formatting preserves strings containing array-like text")
 	for line: String in text.split("\n"):
 		check(line.replace("\t", "    ").length() <= InfrJsonStore.JSON_LINE_WIDTH, "Numeric array layout respects the line width")

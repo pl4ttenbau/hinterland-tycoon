@@ -6,6 +6,8 @@ static var instance: Node
 
 ## Cache Inspector actions request persistence; the plugin owns the handler.
 signal infrastructure_save_requested(cache: Node3D, domain: int)
+## A single line's "Save Single" button: write just that line's record, adding or replacing it.
+signal infrastructure_line_save_requested(line: Node3D)
 
 func _enter_tree() -> void:
 	instance = self

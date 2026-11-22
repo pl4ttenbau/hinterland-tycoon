@@ -7,7 +7,6 @@ const RAIL_MAT_PATH = "res://assets/packed/materials/line3d_rail_track_mat.tres"
 const ROAD_COLOR = Color.DARK_ORANGE
 const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
 
-const LINE_WIDTH = .5
 var _connection_service: Node
 var _junction_markers: Array[MeshInstance3D] = []
 
@@ -127,6 +126,14 @@ var edit_in_cache = Callable(self, "do_edit_in_cache")
 @export_tool_button("Place On Ground")
 var place_on_ground = Callable(self, "do_place_on_ground")
 
+@export_group("Save JSON")
+## Writes only this line to the map's roads.json / tracks.json: replaces the saved record with the same
+## num, or adds it if there is none. Every other record stays as saved. Works for cache lines and for
+## loaded reference lines under EditorInfr, which a full save deliberately never writes back.
+## The file is backed up first (.bak- copy next to it), like every editor save.
+@export_tool_button("Save Single")
+var save_single = Callable(self, "do_save_single")
+
 @export_group("Road Connections")
 ## Derived editor information; each entry identifies the other road and its end.
 @export var start_connections: Array[EditorEndpointConnection] = []
@@ -214,6 +221,15 @@ func do_edit_in_cache() -> void:
 
 func do_place_on_ground():
 	Infr3DExporter.place_on_ground(self)
+
+## No file writing here, as with EditorCache: the plugin owns JSON persistence and decides where the
+## line's map file is.
+func do_save_single() -> void:
+	var bus: Node = HinterlandEditorSignals.instance
+	if not is_instance_valid(bus):
+		push_warning("Enable HinterlandTools to save infrastructure JSON.")
+		return
+	bus.infrastructure_line_save_requested.emit(self)
 #endregion
 
 #region Helper-Methods

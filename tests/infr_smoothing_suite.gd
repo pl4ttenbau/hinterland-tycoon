@@ -24,12 +24,19 @@ func make_curve(points: Array[Vector3]) -> Curve3D:
 		curve.add_point(point)
 	return curve
 
-func check_curves_equal(actual: Curve3D, expected: Curve3D, message: String) -> void:
+## `handle_tolerance` 0 compares handles exactly (approx); JSON round trips pass 0.0005, since saved
+## handles are rounded to millimetres (InfrJsonFormatter.HANDLE_KEYS).
+func check_curves_equal(actual: Curve3D, expected: Curve3D, message: String, handle_tolerance: float = 0.0) -> void:
 	check(actual.point_count == expected.point_count, message + ": point count")
 	for idx: int in range(mini(actual.point_count, expected.point_count)):
 		check(actual.get_point_position(idx).is_equal_approx(expected.get_point_position(idx)), message + ": position")
-		check(actual.get_point_in(idx).is_equal_approx(expected.get_point_in(idx)), message + ": incoming handle")
-		check(actual.get_point_out(idx).is_equal_approx(expected.get_point_out(idx)), message + ": outgoing handle")
+		check(_handles_match(actual.get_point_in(idx), expected.get_point_in(idx), handle_tolerance), message + ": incoming handle")
+		check(_handles_match(actual.get_point_out(idx), expected.get_point_out(idx), handle_tolerance), message + ": outgoing handle")
+
+func _handles_match(actual: Vector3, expected: Vector3, tolerance: float) -> bool:
+	if tolerance <= 0.0:
+		return actual.is_equal_approx(expected)
+	return absf(actual.x - expected.x) <= tolerance and absf(actual.y - expected.y) <= tolerance and absf(actual.z - expected.z) <= tolerance
 
 ## Independent reference: Barry-Goldman's recursive interpolation evaluates the
 ## Catmull-Rom curve directly, without using the production Bezier derivative formula.
@@ -142,15 +149,15 @@ func test_round_trip() -> bool:
 	var data: Dictionary = JSON.parse_string(json)
 	var reloaded: EditorInfrLine3D = RoadMapper.editor_line_from_data(data)
 	reloaded.create_curve_from_dict(data)
-	check_curves_equal(reloaded.curve, line.curve, "Editor JSON round trip")
+	check_curves_equal(reloaded.curve, line.curve, "Editor JSON round trip", 0.0005)
 	var road: RoadData = RoadMapper.road_from_data_json(data)
 	road.build_curve()
-	check_curves_equal(road.curve, line.curve, "Runtime road JSON round trip")
+	check_curves_equal(road.curve, line.curve, "Runtime road JSON round trip", 0.0005)
 	var rail_data: Dictionary = data.duplicate(true)
 	rail_data["type"] = "NORMAL_GAUGE"
 	var rail: RailTrackData = RailMapper.rail_track_from_dict(rail_data)
 	rail.build_curve()
-	check_curves_equal(rail.curve, line.curve, "Runtime rail JSON round trip")
+	check_curves_equal(rail.curve, line.curve, "Runtime rail JSON round trip", 0.0005)
 	# Legacy maps with only handleIn must still load mirrored handleOut values.
 	var legacy: Dictionary = {"num": 92, "name": "Legacy", "points": [
 		{"pos": [0, 0, 0]}, {"pos": [5, 1, 2], "handleIn": [-1, -0.5, 0]}, {"pos": [10, 2, 5]}
