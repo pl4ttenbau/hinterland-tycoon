@@ -1,6 +1,7 @@
 class_name ForkMapper extends Node
 
-## Map JSON keeps `setTo`; it is not read here because the junction chooses its initial setting.
+## A fork lists the tracks meeting at a track end (connectiveTracks). Junctions choose their own initial
+## setting; maps no longer store one.
 static func node_fork_from_dict(node_fork_dict: Dictionary, parent_node: RailNodeData) -> RailJunctionArm:
 	var node_fork_data := RailJunctionArm.new()
 	node_fork_data.railNode = parent_node

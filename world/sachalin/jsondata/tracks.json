@@ -7,15 +7,13 @@
 			{
 				"pos": [486.0, 31.4, 83.1],
 				"fork": {
-					"connectiveTracks": [48, 49, 50],
-					"setTo": 48
+					"connectiveTracks": [48, 49, 50]
 				}
 			},
 			{
 				"pos": [488.7, 31.5, 72.2],
 				"fork": {
-					"connectiveTracks": [2, 3],
-					"setTo": 3
+					"connectiveTracks": [2, 3]
 				}
 			}
 		]
@@ -28,8 +26,7 @@
 			{
 				"pos": [488.7, 31.5, 72.2],
 				"fork": {
-					"connectiveTracks": [1],
-					"setTo": 1
+					"connectiveTracks": [1]
 				}
 			},
 			{
@@ -74,8 +71,7 @@
 			{
 				"pos": [323.8, 32.2, -70.0],
 				"fork": {
-					"connectiveTracks": [30],
-					"setTo": 30
+					"connectiveTracks": [30]
 				}
 			}
 		]
@@ -88,8 +84,7 @@
 			{
 				"pos": [488.7, 31.5, 72.2],
 				"fork": {
-					"connectiveTracks": [1],
-					"setTo": 1
+					"connectiveTracks": [1]
 				}
 			},
 			{
@@ -117,8 +112,7 @@
 			{
 				"pos": [533.4, 31.5, 23.4],
 				"fork": {
-					"connectiveTracks": [3],
-					"setTo": 3
+					"connectiveTracks": [3]
 				}
 			},
 			{
@@ -142,8 +136,7 @@
 			{
 				"pos": [614.5, 31.8, -35.0],
 				"fork": {
-					"connectiveTracks": [33, 35],
-					"setTo": 33
+					"connectiveTracks": [33, 35]
 				}
 			}
 		]
@@ -156,8 +149,7 @@
 			{
 				"pos": [-1388.4, 32.9, -245.2],
 				"fork": {
-					"connectiveTracks": [15],
-					"setTo": 15
+					"connectiveTracks": [15]
 				}
 			},
 			{
@@ -184,8 +176,7 @@
 			{
 				"pos": [-1419.9, 33.0, -143.4],
 				"fork": {
-					"connectiveTracks": [6],
-					"setTo": 6
+					"connectiveTracks": [6]
 				}
 			},
 		]
@@ -198,8 +189,7 @@
 			{
 				"pos": [-1419.9, 33.0, -143.4],
 				"fork": {
-					"connectiveTracks": [5],
-					"setTo": 5
+					"connectiveTracks": [5]
 				}
 			},
 			{
@@ -220,8 +210,7 @@
 			{
 				"pos": [-1363.6, 32.6, -138.3],
 				"fork": {
-					"connectiveTracks": [16],
-					"setTo": 16
+					"connectiveTracks": [16]
 				}
 			}
 		]
@@ -234,8 +223,7 @@
 			{
 				"pos": [-1388.4, 32.9, -245.2],
 				"fork": {
-					"connectiveTracks": [15],
-					"setTo": 15
+					"connectiveTracks": [15]
 				}
 			},
 			{
@@ -253,8 +241,7 @@
 			{
 				"pos": [-1419.5, 32.9, -182.1],
 				"fork": {
-					"connectiveTracks": [9],
-					"setTo": 9
+					"connectiveTracks": [9]
 				}
 			},
 		]
@@ -267,8 +254,7 @@
 			{
 				"pos": [-1419.5, 32.9, -182.1],
 				"fork": {
-					"connectiveTracks": [7],
-					"setTo": 7
+					"connectiveTracks": [7]
 				}
 			},
 			{
@@ -277,8 +263,7 @@
 			{
 				"pos": [-1430.0, 33.0, -154.8],
 				"fork": {
-					"connectiveTracks": [11],
-					"setTo": 11
+					"connectiveTracks": [11]
 				}
 			},
 		]
@@ -291,8 +276,7 @@
 			{
 				"pos": [-1430.0, 33.0, -154.8],
 				"fork": {
-					"connectiveTracks": [9],
-					"setTo": 9
+					"connectiveTracks": [9]
 				}
 			},
 			{
@@ -304,8 +288,7 @@
 			{
 				"pos": [-1439.7, 32.3, -120.5],
 				"fork": {
-					"connectiveTracks": [12],
-					"setTo": 12
+					"connectiveTracks": [12]
 				}
 			}
 		]
@@ -319,15 +302,13 @@
 			{
 				"pos": [-1439.7, 32.3, -120.5],
 				"fork": {
-					"connectiveTracks": [11],
-					"setTo": 11
+					"connectiveTracks": [11]
 				}
 			},
 			{
 				"pos": [-1439.1, 32.3, -104.4],
 				"fork": {
-					"connectiveTracks": [13],
-					"setTo": 13
+					"connectiveTracks": [13]
 				}
 			}
 		]
@@ -340,8 +321,7 @@
 			{
 				"pos": [-1439.1, 32.3, -104.4],
 				"fork": {
-					"connectiveTracks": [12],
-					"setTo": 12
+					"connectiveTracks": [12]
 				}
 			},
 			{
@@ -380,8 +360,7 @@
 			{
 				"pos": [-1493.1, 32.3, 72.0],
 				"fork": {
-					"connectiveTracks": [14],
-					"setTo": 14
+					"connectiveTracks": [14]
 				}
 			},
 		]
@@ -394,8 +373,7 @@
 			{
 				"pos": [-1493.1, 32.3, 72.0],
 				"fork": {
-					"connectiveTracks": [13],
-					"setTo": 13
+					"connectiveTracks": [13]
 				}
 			},
 			{
@@ -428,8 +406,7 @@
 			{
 				"pos": [-1516.0, 32.6, 198.2],
 				"fork": {
-					"connectiveTracks": [64],
-					"setTo": 64
+					"connectiveTracks": [64]
 				}
 			}
 		]
@@ -442,8 +419,7 @@
 			{
 				"pos": [-1377.2, 32.1, -307.0],
 				"fork": {
-					"connectiveTracks": [31],
-					"setTo": 31
+					"connectiveTracks": [31]
 				}
 			},
 			{
@@ -461,8 +437,7 @@
 			{
 				"pos": [-1388.4, 32.9, -245.2],
 				"fork": {
-					"connectiveTracks": [5, 7],
-					"setTo": 5
+					"connectiveTracks": [5, 7]
 				}
 			}
 		]
@@ -475,8 +450,7 @@
 			{
 				"pos": [-1363.6, 32.6, -138.3],
 				"fork": {
-					"connectiveTracks": [6],
-					"setTo": 6
+					"connectiveTracks": [6]
 				}
 			},
 			{
@@ -515,8 +489,7 @@
 			{
 				"pos": [-1226.7, 32.9, 6.4],
 				"fork": {
-					"connectiveTracks": [17],
-					"setTo": 17
+					"connectiveTracks": [17]
 				}
 			}
 		]
@@ -529,8 +502,7 @@
 			{
 				"pos": [-1226.7, 32.9, 6.4],
 				"fork": {
-					"connectiveTracks": [16],
-					"setTo": 16
+					"connectiveTracks": [16]
 				}
 			},
 			{
@@ -581,8 +553,7 @@
 			{
 				"pos": [-1020.4, 35.5, 83.9],
 				"fork": {
-					"connectiveTracks": [18],
-					"setTo": 18
+					"connectiveTracks": [18]
 				}
 			}
 		]
@@ -595,8 +566,7 @@
 			{
 				"pos": [-1020.4, 35.5, 83.9],
 				"fork": {
-					"connectiveTracks": [17],
-					"setTo": 17
+					"connectiveTracks": [17]
 				}
 			},
 			{
@@ -648,8 +618,7 @@
 			{
 				"pos": [-846.4, 32.9, 178.9],
 				"fork": {
-					"connectiveTracks": [18, 21],
-					"setTo": 18
+					"connectiveTracks": [18, 21]
 				}
 			},
 			{
@@ -673,8 +642,7 @@
 			{
 				"pos": [-757.0, 32.2, 236.4],
 				"fork": {
-					"connectiveTracks": [20],
-					"setTo": 20
+					"connectiveTracks": [20]
 				}
 			}
 		]
@@ -687,8 +655,7 @@
 			{
 			"pos": [-757.0, 32.14, 236.4],
 			"fork": {
-				"connectiveTracks": [19],
-				"setTo": 19
+				"connectiveTracks": [19]
 			}
 			},
 			{
@@ -733,8 +700,7 @@
 			{
 				"pos": [-846.4, 32.9, 178.9],
 				"fork": {
-					"connectiveTracks": [19],
-					"setTo": 19
+					"connectiveTracks": [19]
 				}
 			},
 			{
@@ -782,8 +748,7 @@
 			{
 				"pos": [-813.6, 33.3, 7.8],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [22]
 				}
 			},
 		]
@@ -796,8 +761,7 @@
 			{
 				"pos": [-813.6, 33.3, 7.8],
 				"fork": {
-					"connectiveTracks": [21],
-					"setTo": 21
+					"connectiveTracks": [21]
 				}
 			},
 			{
@@ -848,8 +812,7 @@
 			{
 				"pos": [-658.2, 34.3, -113.8],
 				"fork": {
-					"connectiveTracks": [23],
-					"setTo": 23
+					"connectiveTracks": [23]
 				}
 			},
 		]
@@ -862,8 +825,7 @@
 			{
 				"pos": [-658.2, 34.3, -113.8],
 				"fork": {
-					"connectiveTracks": [22],
-					"setTo": 22
+					"connectiveTracks": [22]
 				}
 			},
 			{
@@ -917,8 +879,7 @@
 			{
 				"pos": [-442.6, 35.8, -151.8],
 				"fork": {
-					"connectiveTracks": [24],
-					"setTo": 24
+					"connectiveTracks": [24]
 				}
 			}
 		]
@@ -931,8 +892,7 @@
 			{
 				"pos": [-442.6, 35.8, -151.8],
 				"fork": {
-					"connectiveTracks": [23],
-					"setTo": 23
+					"connectiveTracks": [23]
 				}
 			},
 			{
@@ -968,8 +928,7 @@
 			{
 				"pos": [-330.6, 38.0, -240.6],
 				"fork": {
-					"connectiveTracks": [25],
-					"setTo": 25
+					"connectiveTracks": [25]
 				}
 			}
 		]
@@ -982,8 +941,7 @@
 			{
 				"pos": [-330.6, 38.0, -240.6],
 				"fork": {
-					"connectiveTracks": [24],
-					"setTo": 24
+					"connectiveTracks": [24]
 				}
 			},
 			{
@@ -1046,8 +1004,7 @@
 			{
 				"pos": [-177.6, 43.1, -349.9],
 				"fork": {
-					"connectiveTracks": [26],
-					"setTo": 26
+					"connectiveTracks": [26]
 				}
 			}
 		]
@@ -1060,8 +1017,7 @@
 			{
 				"pos": [-177.6, 43.1, -349.9],
 				"fork": {
-					"connectiveTracks": [25],
-					"setTo": 25
+					"connectiveTracks": [25]
 				}
 			},
 			{
@@ -1091,8 +1047,7 @@
 			{
 				"pos": [-56.7, 49.8, -349.7],
 				"fork": {
-					"connectiveTracks": [26],
-					"setTo": 26
+					"connectiveTracks": [26]
 				}
 			}
 		]
@@ -1105,8 +1060,7 @@
 			{
 				"pos": [-56.7, 49.8, -349.7],
 				"fork": {
-					"connectiveTracks": [26],
-					"setTo": 26
+					"connectiveTracks": [26]
 				}
 			},
 			{
@@ -1127,8 +1081,7 @@
 			{
 				"pos": [32.4, 39.3, -295.4],
 				"fork": {
-					"connectiveTracks": [28],
-					"setTo": 28
+					"connectiveTracks": [28]
 				}
 			}
 		]
@@ -1141,8 +1094,7 @@
 			{
 				"pos": [32.4, 39.3, -295.4],
 				"fork": {
-					"connectiveTracks": [27],
-					"setTo": 27
+					"connectiveTracks": [27]
 				}
 			},
 			{
@@ -1181,8 +1133,7 @@
 			{
 				"pos": [188.4, 34.0, -187.0],
 				"fork": {
-					"connectiveTracks": [29],
-					"setTo": 29
+					"connectiveTracks": [29]
 				}
 			}
 		]
@@ -1195,8 +1146,7 @@
 			{
 				"pos": [188.4, 34.0, -187.0],
 				"fork": {
-					"connectiveTracks": [28],
-					"setTo": 28
+					"connectiveTracks": [28]
 				}
 			},
 			{
@@ -1238,8 +1188,7 @@
 			{
 				"pos": [295.9, 32.7, -67.4],
 				"fork": {
-					"connectiveTracks": [30],
-					"setTo": 30
+					"connectiveTracks": [30]
 				}
 			}
 		]
@@ -1253,15 +1202,13 @@
 			{
 				"pos": [295.9, 32.7, -67.4],
 				"fork": {
-					"connectiveTracks": [29],
-					"setTo": 29
+					"connectiveTracks": [29]
 				}
 			},
 			{
 				"pos": [323.8, 32.2, -70.0],
 				"fork": {
-					"connectiveTracks": [2],
-					"setTo": 2
+					"connectiveTracks": [2]
 				}
 			}
 		]
@@ -1275,15 +1222,13 @@
 			{
 				"pos": [-1377.0, 32.1, -322.7],
 				"fork": {
-					"connectiveTracks": [32],
-					"setTo": 32
+					"connectiveTracks": [32]
 				}
 			},
 			{
 				"pos": [-1377.2, 32.1, -307.0],
 				"fork": {
-					"connectiveTracks": [15],
-					"setTo": 15
+					"connectiveTracks": [15]
 				}
 			},
 		]
@@ -1296,8 +1241,7 @@
 			{
 				"pos": [-1377.0, 32.1, -322.7],
 				"fork": {
-					"connectiveTracks": [31],
-					"setTo": 31
+					"connectiveTracks": [31]
 				}
 			},
 			{
@@ -1331,8 +1275,7 @@
 			{
 				"pos": [614.5, 31.8, -35.0],
 				"fork": {
-					"connectiveTracks": [4],
-					"setTo": 4
+					"connectiveTracks": [4]
 				}
 			},
 			{
@@ -1359,8 +1302,7 @@
 			{
 				"pos": [610.1, 31.7, -156.4],
 				"fork": {
-					"connectiveTracks": [35],
-					"setTo": 35
+					"connectiveTracks": [35]
 				}
 			}
 		]
@@ -1373,8 +1315,7 @@
 			{
 				"pos": [614.5, 31.8, -35.0],
 				"fork": {
-					"connectiveTracks": [4],
-					"setTo": 4
+					"connectiveTracks": [4]
 				}
 			},
 			{
@@ -1404,8 +1345,7 @@
 			{
 				"pos": [610.1, 31.7, -156.4],
 				"fork": {
-					"connectiveTracks": [35],
-					"setTo": 35
+					"connectiveTracks": [35]
 				}
 			}
 		]
@@ -1418,8 +1358,7 @@
 			{
 				"pos": [610.1, 31.7, -156.4],
 				"fork": {
-					"connectiveTracks": [33, 34],
-					"setTo": 33
+					"connectiveTracks": [33, 34]
 				}
 			},
 			{
@@ -1434,8 +1373,7 @@
 			{
 				"pos": [607.0, 31.7, -210.4],
 				"fork": {
-					"connectiveTracks": [36],
-					"setTo": 36
+					"connectiveTracks": [36]
 				}
 			}
 		]
@@ -1448,8 +1386,7 @@
 			{
 				"pos": [607.0, 31.7, -210.4],
 				"fork": {
-					"connectiveTracks": [35],
-					"setTo": 35
+					"connectiveTracks": [35]
 				}
 			},
 			{
@@ -1494,8 +1431,7 @@
 			{
 				"pos": [610.6, 31.6, -545.9],
 				"fork": {
-					"connectiveTracks": [37, 38],
-					"setTo": 37
+					"connectiveTracks": [37, 38]
 				}
 			},
 		]
@@ -1508,8 +1444,7 @@
 			{
 				"pos": [610.6, 31.6, -545.9],
 				"fork": {
-					"connectiveTracks": [36],
-					"setTo": 36
+					"connectiveTracks": [36]
 				}
 			},
 			{
@@ -1539,8 +1474,7 @@
 			{
 				"pos": [595.9, 31.6, -678.8],
 				"fork": {
-					"connectiveTracks": [39],
-					"setTo": 39
+					"connectiveTracks": [39]
 				}
 			}
 		]
@@ -1553,8 +1487,7 @@
 			{
 				"pos": [610.6, 31.6, -545.9],
 				"fork": {
-					"connectiveTracks": [36],
-					"setTo": 36
+					"connectiveTracks": [36]
 				}
 			},
 			{
@@ -1581,8 +1514,7 @@
 			{
 				"pos": [595.9, 31.6, -678.8],
 				"fork": {
-					"connectiveTracks": [39],
-					"setTo": 39
+					"connectiveTracks": [39]
 				}
 			}
 		]
@@ -1595,8 +1527,7 @@
 			{
 				"pos": [595.9, 31.6, -678.8],
 				"fork": {
-					"connectiveTracks": [37, 38],
-					"setTo": 37
+					"connectiveTracks": [37, 38]
 				}
 			},
 			{
@@ -1605,8 +1536,7 @@
 			{
 				"pos": [598.6, 31.5, -703.6],
 				"fork": {
-					"connectiveTracks": [40],
-					"setTo": 40
+					"connectiveTracks": [40]
 				}
 			}
 		]
@@ -1619,15 +1549,13 @@
 			{
 				"pos": [598.6, 31.5, -703.6],
 				"fork": {
-					"connectiveTracks": [39],
-					"setTo": 39
+					"connectiveTracks": [39]
 				}
 			},
 			{
 				"pos": [602.4, 31.5, -721.6],
 				"fork": {
-					"connectiveTracks": [41],
-					"setTo": 41
+					"connectiveTracks": [41]
 				}
 			}
 		]
@@ -1640,8 +1568,7 @@
 			{
 				"pos": [602.4, 31.5, -721.6],
 				"fork": {
-					"connectiveTracks": [40],
-					"setTo": 40
+					"connectiveTracks": [40]
 				}
 			},
 			{
@@ -1665,8 +1592,7 @@
 			{
 				"pos": [645.9, 31.5, -883.1],
 				"fork": {
-					"connectiveTracks": [42],
-					"setTo": 42
+					"connectiveTracks": [42]
 				}
 			}
 		]
@@ -1679,8 +1605,7 @@
 			{
 				"pos": [645.9, 31.5, -883.1],
 				"fork": {
-					"connectiveTracks": [41],
-					"setTo": 41
+					"connectiveTracks": [41]
 				}
 			},
 			{
@@ -1731,8 +1656,7 @@
 			{
 				"pos": [706.6, 31.6, -1157.0],
 				"fork": {
-					"connectiveTracks": [43, 44],
-					"setTo": 43
+					"connectiveTracks": [43, 44]
 				}
 			}
 		]
@@ -1745,8 +1669,7 @@
 			{
 				"pos": [706.6, 31.6, -1157.0],
 				"fork": {
-					"connectiveTracks": [42],
-					"setTo": 42
+					"connectiveTracks": [42]
 				}
 			},
 			{
@@ -1776,8 +1699,7 @@
 			{
 				"pos": [713.0, 31.4, -1307.6],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45]
 				}
 			}
 		]
@@ -1790,8 +1712,7 @@
 			{
 				"pos": [706.6, 31.6, -1157.0],
 				"fork": {
-					"connectiveTracks": [42],
-					"setTo": 42
+					"connectiveTracks": [42]
 				}
 			},
 			{
@@ -1821,8 +1742,7 @@
 			{
 				"pos": [713.0, 31.4, -1307.6],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45]
 				}
 			}
 		]
@@ -1835,8 +1755,7 @@
 			{
 				"pos": [713.0, 31.4, -1307.6],
 				"fork": {
-					"connectiveTracks": [43, 44],
-					"setTo": 43
+					"connectiveTracks": [43, 44]
 				}
 			},
 			{
@@ -1863,8 +1782,7 @@
 			{
 				"pos": [695.6, 31.3, -1396.7],
 				"fork": {
-					"connectiveTracks": [46],
-					"setTo": 46
+					"connectiveTracks": [46]
 				}
 			}
 		]
@@ -1877,8 +1795,7 @@
 			{
 				"pos": [695.6, 31.3, -1396.7],
 				"fork": {
-					"connectiveTracks": [45],
-					"setTo": 45
+					"connectiveTracks": [45]
 				}
 			},
 			{
@@ -1904,8 +1821,7 @@
 			{
 				"pos": [664.6, 31.3, -1429.6],
 				"fork": {
-					"connectiveTracks": [46],
-					"setTo": 46
+					"connectiveTracks": [46]
 				}
 			},
 			{
@@ -1924,8 +1840,7 @@
 			{
 				"pos": [486.0, 31.4, 83.1],
 				"fork": {
-					"connectiveTracks": [1],
-					"setTo": 1
+					"connectiveTracks": [1]
 				}
 			},
 			{
@@ -1946,8 +1861,7 @@
 			{
 				"pos": [482.0, 31.4, 212.1],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51]
 				}
 			}
 		]
@@ -1960,8 +1874,7 @@
 			{
 				"pos": [486.0, 31.4, 83.1],
 				"fork": {
-					"connectiveTracks": [1],
-					"setTo": 1
+					"connectiveTracks": [1]
 				}
 			},
 			{
@@ -1985,8 +1898,7 @@
 			{
 				"pos": [482.0, 31.4, 212.1],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51]
 				}
 			}
 		]
@@ -1999,8 +1911,7 @@
 			{
 				"pos": [486.0, 31.4, 83.1],
 				"fork": {
-					"connectiveTracks": [1],
-					"setTo": 1
+					"connectiveTracks": [1]
 				}
 			},
 			{
@@ -2024,8 +1935,7 @@
 			{
 				"pos": [482.0, 31.4, 212.1],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51]
 				}
 			}
 		]
@@ -2038,8 +1948,7 @@
 			{
 				"pos": [482.0, 31.4, 212.1],
 				"fork": {
-					"connectiveTracks": [48, 49, 50],
-					"setTo": 48
+					"connectiveTracks": [48, 49, 50]
 				}
 			},
 			{
@@ -2063,8 +1972,7 @@
 			{
 				"pos": [524.6, 31.3, 277.3],
 				"fork": {
-					"connectiveTracks": [52, 53],
-					"setTo": 53
+					"connectiveTracks": [52, 53]
 				}
 			}
 		]
@@ -2077,8 +1985,7 @@
 			{
 				"pos": [524.6, 31.3, 277.3],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51]
 				}
 			},
 			{
@@ -2106,8 +2013,7 @@
 			{
 				"pos": [524.6, 31.3, 277.3],
 				"fork": {
-					"connectiveTracks": [51],
-					"setTo": 51
+					"connectiveTracks": [51]
 				}
 			},
 			{
@@ -2152,8 +2058,7 @@
 			{
 				"pos": [582.8, 31.4, 558.8],
 				"fork": {
-					"connectiveTracks": [54],
-					"setTo": 54
+					"connectiveTracks": [54]
 				}
 			}
 		]
@@ -2167,8 +2072,7 @@
 			{
 				"pos": [582.8, 31.4, 558.8],
 				"fork": {
-					"connectiveTracks": [53],
-					"setTo": 53
+					"connectiveTracks": [53]
 				}
 			},
 			{
@@ -2177,8 +2081,7 @@
 			{
 				"pos": [585.0, 31.4, 582.4],
 				"fork": {
-					"connectiveTracks": [55],
-					"setTo": 55
+					"connectiveTracks": [55]
 				}
 			}
 		]
@@ -2191,8 +2094,7 @@
 			{
 				"pos": [585.0, 31.4, 582.4],
 				"fork": {
-					"connectiveTracks": [54],
-					"setTo": 54
+					"connectiveTracks": [54]
 				}
 			},
 			{
@@ -2231,8 +2133,7 @@
 			{
 				"pos": [627.9, 31.5, 947.6],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56]
 				}
 			}
 		]
@@ -2245,8 +2146,7 @@
 			{
 				"pos": [627.9, 31.5, 947.6],
 				"fork": {
-					"connectiveTracks": [55],
-					"setTo": 55
+					"connectiveTracks": [55]
 				}
 			},
 			{
@@ -2294,8 +2194,7 @@
 			{
 				"pos": [653.0, 31.5, 1333.3],
 				"fork": {
-					"connectiveTracks": [57, 58],
-					"setTo": 57
+					"connectiveTracks": [57, 58]
 				}
 			}
 		]
@@ -2308,8 +2207,7 @@
 			{
 				"pos": [653.0, 31.5, 1333.3],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56]
 				}
 			},
 			{
@@ -2339,8 +2237,7 @@
 			{
 				"pos": [710.8, 31.9, 1484.1],
 				"fork": {
-					"connectiveTracks": [59],
-					"setTo": 59
+					"connectiveTracks": [59]
 				}
 			}
 		]
@@ -2353,8 +2250,7 @@
 			{
 				"pos": [653.0, 31.5, 1333.3],
 				"fork": {
-					"connectiveTracks": [56],
-					"setTo": 56
+					"connectiveTracks": [56]
 				}
 			},
 			{
@@ -2380,8 +2276,7 @@
 			{
 				"pos": [710.8, 31.9, 1484.1],
 				"fork": {
-					"connectiveTracks": [59],
-					"setTo": 59
+					"connectiveTracks": [59]
 				}
 			}
 		]
@@ -2394,8 +2289,7 @@
 			{
 				"pos": [710.8, 31.9, 1484.1],
 				"fork": {
-					"connectiveTracks": [57, 58],
-					"setTo": 57
+					"connectiveTracks": [57, 58]
 				}
 			},
 			{
@@ -2409,8 +2303,7 @@
 			{
 				"pos": [742.0, 31.4, 1508.3],
 				"fork": {
-					"connectiveTracks": [60],
-					"setTo": 60
+					"connectiveTracks": [60]
 				}
 			}
 		]
@@ -2424,15 +2317,13 @@
 			{
 				"pos": [742.0, 31.4, 1508.3],
 				"fork": {
-					"connectiveTracks": [59],
-					"setTo": 59
+					"connectiveTracks": [59]
 				}
 			},
 			{
 				"pos": [748.8, 31.4, 1519.5],
 				"fork": {
-					"connectiveTracks": [61],
-					"setTo": 61
+					"connectiveTracks": [61]
 				}
 			}
 		]
@@ -2445,8 +2336,7 @@
 			{
 				"pos": [748.8, 31.4, 1519.5],
 				"fork": {
-					"connectiveTracks": [60],
-					"setTo": 60
+					"connectiveTracks": [60]
 				}
 			},
 			{
@@ -2459,8 +2349,7 @@
 			{
 				"pos": [759.8, 31.5, 1549.8],
 				"fork": {
-					"connectiveTracks": [62, 63],
-					"setTo": 63
+					"connectiveTracks": [62, 63]
 				}
 			}
 		]
@@ -2473,8 +2362,7 @@
 			{
 				"pos": [759.8, 31.5, 1549.8],
 				"fork": {
-					"connectiveTracks": [61],
-					"setTo": 61
+					"connectiveTracks": [61]
 				}
 			},
 			{
@@ -2500,8 +2388,7 @@
 			{
 				"pos": [759.8, 31.5, 1549.8],
 				"fork": {
-					"connectiveTracks": [61],
-					"setTo": 61
+					"connectiveTracks": [61]
 				}
 			},
 			{
@@ -2533,8 +2420,7 @@
 			{
 				"pos": [-1516.0, 32.6, 198.2],
 				"fork": {
-					"connectiveTracks": [14],
-					"setTo": 14
+					"connectiveTracks": [14]
 				}
 			},
 			{
@@ -2543,8 +2429,7 @@
 			{
 				"pos": [-1525.4, 32.5, 221.1],
 				"fork": {
-					"connectiveTracks": [65],
-					"setTo": 65
+					"connectiveTracks": [65]
 				}
 			}
 		]
@@ -2557,8 +2442,7 @@
 			{
 				"pos": [-1525.4, 32.5, 221.1],
 				"fork": {
-					"connectiveTracks": [64],
-					"setTo": 64
+					"connectiveTracks": [64]
 				}
 			},
 			{
@@ -2579,8 +2463,7 @@
 			{
 				"pos": [-1541.7, 32.5, 278.5],
 				"fork": {
-					"connectiveTracks": [66],
-					"setTo": 66
+					"connectiveTracks": [66]
 				}
 			}
 		]
@@ -2594,8 +2477,7 @@
 			{
 				"pos": [-1541.7, 32.5, 278.5],
 				"fork": {
-					"connectiveTracks": [65],
-					"setTo": 65
+					"connectiveTracks": [65]
 				}
 			},
 			{
@@ -2604,8 +2486,7 @@
 			{
 				"pos": [-1547.8, 32.5, 303.0],
 				"fork": {
-					"connectiveTracks": [67],
-					"setTo": 67
+					"connectiveTracks": [67]
 				}
 			}
 		]
@@ -2618,8 +2499,7 @@
 			{
 			"pos": [-1547.8, 32.6, 303.0],
 			"fork": {
-					"connectiveTracks": [66],
-					"setTo": 66
+					"connectiveTracks": [66]
 				}
 			},
 			{
@@ -2677,8 +2557,7 @@
 			{
 				"pos": [-1649.76, 32.51, 508.62],
 				"fork": {
-					"connectiveTracks": [68],
-					"setTo": 68
+					"connectiveTracks": [68]
 				}
 			}
 		]
@@ -2692,8 +2571,7 @@
 			{
 				"pos": [-1649.76, 32.5, 508.62],
 				"fork": {
-					"connectiveTracks": [67],
-					"setTo": 67
+					"connectiveTracks": [67]
 				}
 			},
 			{
@@ -2705,8 +2583,7 @@
 			{
 				"pos": [-1664.5, 32.5, 542.3],
 				"fork": {
-					"connectiveTracks": [69],
-					"setTo": 69
+					"connectiveTracks": [69]
 				}
 			}
 		]
@@ -2719,8 +2596,7 @@
 			{
 				"pos": [-1664.5, 32.53, 542.3],
 				"fork": {
-					"connectiveTracks": [68],
-					"setTo": 68
+					"connectiveTracks": [68]
 				}
 			},
 			{

@@ -53,8 +53,8 @@ into junctions while loading; nothing at runtime looks a junction up by position
 - `get_exit_track_nums(from)`: the root leads to every branch; a branch leads only back to the root.
 - `set_connected_track(num)`: select a branch directly, for route setting.
 
-The legacy per-leg `setTo` value in map JSON is still not read; junctions choose their
-initial setting as before.
+Junctions choose their initial setting themselves; map JSON stores only which tracks
+meet at a fork (`connectiveTracks`).
 
 ## Rail network graph
 
