@@ -16,13 +16,14 @@ notification:
 | Maximum speed | Slowest `max_speed_kmh` in the consist; 6 m/s (the former fixed speed) if none is known |
 | Mass | Sum of service masses (`service_mass_tonnes`, else `mass_tonnes`); 10 t for a vehicle without mass |
 | Traction force | `min(tractive effort, 0.8 · power / v)`, summed over powered vehicles; the tractive effort uses the [pricing estimate](vehicle-pricing.md) (adhesive mass × 9.81 × 0.25) when not authored |
-| Throttle | Opens from idle to full over 4 s (`NOTCH_UP_SECONDS`), shut while braking or standing without a target |
+| Throttle | Opens from idle to full over 8 s (`NOTCH_UP_SECONDS`), shut while braking, releasing brakes or standing without a target |
 | Running resistance | Strahl: `2.5 + k · ((v_kmh + 12) / 10)²` ‰ of the weight; k = 0.033 (passenger), 0.05 when freight wagons dominate |
 | Rotating mass | ξ = 1.2 for locomotives running light, 1.06 for trains |
-| Acceleration | `(traction − resistance) / (ξ · mass)`; the train settles where traction equals resistance if its target is out of reach; 0.3 m/s² for a motor without any data; zero for an unpowered consist |
-| Brake percentage | Σ `braked_mass_tonnes` / mass; 85 % of a vehicle's mass when not catalogued, 0 for unbraked vehicles |
-| Brake control | Full brake: brake percentage / 100 m/s² (0.85 by default), plus resistance |
-| Service braking | 60 % of the full brake: lowering the target, and stopping ahead |
+| Acceleration | `(traction − resistance) / (ξ · mass)`, but at most 0.2 m/s² (`DRIVER_MAX_ACCELERATION`: drivers do not use full pull on light consists); the train settles where traction equals resistance if its target is out of reach; 0.3 m/s² for a motor without any data; zero for an unpowered consist |
+| Brake percentage | Σ `braked_mass_tonnes` / mass; 65 % of a vehicle's mass when not catalogued, 0 for unbraked vehicles |
+| Full brake | Brake percentage / 100 m/s² (0.65 by default), plus resistance; only when running over the planned stopping curve |
+| Service braking | 50 % of the full brake: the brake control, lowering the target, and stopping ahead |
+| Brake timing | Force builds up over 3 s (`BRAKE_BUILD_UP_SECONDS`) and releases over 2 s; power returns only after release. Stop planning adds 1.5 s of dead time for the build-up |
 
 The formulas live in the stateless `RailPhysics` helper; `TrainDynamics` only collects
 the consist's numbers. Stop planning uses the service brakes alone (never less than

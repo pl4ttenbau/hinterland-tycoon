@@ -130,7 +130,7 @@ func _run() -> void:
 
 	## Once B is gone the block clears and A proceeds past the signal.
 	GlobalState.trains.erase(b)
-	self.simulate(movement, 30.0)
+	self.simulate(movement, 60.0)
 	self.check(movement.get_front_distance() > 110.0, "The train passes the signal once the block is clear")
 
 	## Through a switch, the block follows the current setting.

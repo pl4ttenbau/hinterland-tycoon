@@ -19,7 +19,7 @@ func _ready() -> void:
 		_update_motor_effort()
 	super._ready()
 	# Preserve the original MPSB 12 particle render layer (bit 7).
-	_plume.layers = 64
+	_plume.layers = RenderLayers.VEHICLES
 
 
 func _physics_process(delta: float) -> void:

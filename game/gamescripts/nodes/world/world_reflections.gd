@@ -7,8 +7,6 @@ extends Node3D
 @export_range(0.0, 200.0, 1.0) var minimum_spacing: float = 60.0
 @export_range(0.1, 5.0, 0.1) var refresh_delay: float = 0.75
 
-# Default, Landscape, Buildings, Infrs, Deco. Exclude Water and Vehicles.
-const STATIC_CAPTURE_MASK: int = 1 | 4 | 8 | 16 | 32
 const CAPTURE_SETTLE_FRAMES: int = 8
 
 var _refresh_timer: Timer
@@ -104,7 +102,7 @@ func _make_probe() -> ReflectionProbe:
 	probe.interior = false
 	probe.box_projection = false
 	probe.enable_shadows = false
-	probe.cull_mask = STATIC_CAPTURE_MASK
+	probe.cull_mask = RenderLayers.STATIC_CAPTURE_MASK
 	probe.mesh_lod_threshold = 4.0
 	# Keep diffuse sky lighting consistent inside and outside the captures.
 	probe.ambient_mode = ReflectionProbe.AMBIENT_DISABLED

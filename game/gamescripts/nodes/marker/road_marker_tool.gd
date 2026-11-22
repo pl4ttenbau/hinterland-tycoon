@@ -29,7 +29,7 @@ func placement_at(position: Vector3, exclude: RID = RID()) -> Dictionary:
 	if roads.storage.get_containers().is_empty():
 		return {}
 	var host: RoadWay3D = roads.storage.get_containers()[0]
-	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 0.5, position - Vector3.UP * 2.0, 1)
+	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 0.5, position - Vector3.UP * 2.0, CollisionLayers.WORLD)
 	if exclude.is_valid():
 		query.exclude = [exclude]
 	var hit: Dictionary = host.get_world_3d().direct_space_state.intersect_ray(query)
@@ -79,14 +79,14 @@ func _show_marker(marker: RoadMarkerData, path: Path3D) -> void:
 func _add_sign(root: Node3D, marker: RoadMarkerData, offset: Vector3) -> void:
 	# Set the post on the shoulder/terrain instead of floating at centreline height.
 	var position: Vector3 = root.global_position + offset
-	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 3.0, position - Vector3.UP * 10.0, 1)
+	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 3.0, position - Vector3.UP * 10.0, CollisionLayers.WORLD)
 	var ground: Dictionary = root.get_world_3d().direct_space_state.intersect_ray(query)
 	if not ground.is_empty():
 		offset.y = ground.position.y - root.global_position.y
 	var post: Node3D = load(MARKER_SCENE).instantiate()
 	post.position = offset
 	if post is GeometryInstance3D:
-		post.layers = 16
+		post.layers = RenderLayers.INFRS
 	root.add_child(post)
 	# Face the road horizontally; sloping shoulders must not tilt the signpost.
 	post.look_at(post.global_position + Vector3(-offset.x, 0, -offset.z))

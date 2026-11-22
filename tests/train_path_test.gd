@@ -114,7 +114,8 @@ func _run() -> void:
 	moving_train.movement.speed.current = 1.0
 	moving_train.movement.move_forwards(0.5)
 	self.check(moving_train.movement.current_segment.track_num == 2, "Movement crosses onto the selected branch")
-	self.check(is_equal_approx(moving_train.movement.m_passed_since_start, 22.0), "Movement advances by this physics step's exact distance")
+	self.check(is_equal_approx(moving_train.movement.m_passed_since_start,
+		19.0 + TrainDynamics.LEGACY_MAX_SPEED_MPS * 0.5 * GameConstants.MAP_DISTANCE_SCALE), "Movement advances by this physics step's exact map distance")
 	moving_train.free()
 	## Both reversals preserve locomotive and wagon poses, including their facing direction.
 	train.movement.m_passed_since_start = 16.0
@@ -163,7 +164,7 @@ func _run() -> void:
 	braking_train.movement.start()
 	var top_speed: float = 0.0
 	var last_speed: float = 0.0
-	for _step: int in range(60 * 120):
+	for _step: int in range(60 * 200):
 		if not braking_train.movement.is_started:
 			break
 		braking_train.movement.update_speed(1.0 / 60.0)

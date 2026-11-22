@@ -5,7 +5,6 @@ const DEFAULT_WIDTH_AND_HEIGHT: float = 1.8
 const DEFAULT_WHEELBASE_RATIO: float = 0.6
 const WHEEL_MOUNT_HEIGHT: float = 0.1
 const SUSPENSION_REST_LENGTH: float = 0.18
-const VEHICLE_RENDER_LAYERS: int = 64
 
 static func create(type_key: String) -> RoadVehicle3D:
 	if GameTypes.ensure_initialized() != OK:
@@ -107,8 +106,8 @@ static func _configure_body(body: RoadVehicle3D, type: RoadVehicleTypeData) -> v
 	# The tall chassis box must not lift the centre of mass above the wheels.
 	body.center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	body.center_of_mass = Vector3.ZERO
-	body.collision_layer = 2
-	body.collision_mask = 15
+	body.collision_layer = CollisionLayers.ROAD_VEHICLES
+	body.collision_mask = CollisionLayers.ROAD_VEHICLE_MASK
 
 static func _add_legacy_chassis(body: RoadVehicle3D, ride_height: float) -> void:
 	var dimensions: Vector3 = body.dimensions_metres
@@ -153,7 +152,7 @@ static func _load_model(type: RoadVehicleTypeData) -> Node3D:
 
 static func _prepare_model_visuals(node: Node) -> void:
 	if node is GeometryInstance3D:
-		node.layers = VEHICLE_RENDER_LAYERS
+		node.layers = RenderLayers.VEHICLES
 	for child: Node in node.get_children():
 		if child is CollisionObject3D:
 			child.free()

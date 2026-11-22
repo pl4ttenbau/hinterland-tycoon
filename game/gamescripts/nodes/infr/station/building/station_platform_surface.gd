@@ -1,6 +1,5 @@
 class_name StationPlatformSurface extends MeshInstance3D
 
-const NINETY_DEG_IN_RAD: float = 1.57079
 
 signal passengers_changed(passenger_count: int)
 
@@ -47,7 +46,7 @@ func reset_buffers():
 	for i: int in range(self.multimesh.instance_count):
 		self.multimesh.set_instance_transform(i, WorldUtils.create_transform(
 			pos_on_platform,
-			Vector3(0, NINETY_DEG_IN_RAD, 0),
+			Vector3(0, GameConstants.NINETY_DEG_IN_RAD, 0),
 			Vector3(1, 1, 1)
 		))
 		# self.multimesh.custom_aabb = AABB(pos_on_platform, Vector3(10, 10, 10))

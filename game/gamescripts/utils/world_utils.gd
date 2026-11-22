@@ -1,7 +1,6 @@
 @tool
 class_name WorldUtils extends RefCounted
 
-const NINETY_DEG_IN_RAD = 1.57
 
 #region FloatArr <> Vector3
 static func vec3_from_float_arr(float_arr: Array):

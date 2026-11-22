@@ -32,10 +32,10 @@
 class_name RailPhysics extends RefCounted
 
 #region Constants
-## Standard gravity. Railways use 9.81 throughout; the extra digits would be false precision.
-const GRAVITY: float = 9.81
-## Multiply m/s by this to get km/h, divide km/h by it to get m/s.
-const KMH_PER_MPS: float = 3.6
+## Local names for the project-wide units, so the formulas below read like their textbook form.
+## The values live in GameConstants; change them there.
+const GRAVITY: float = GameConstants.GRAVITY
+const KMH_PER_MPS: float = GameConstants.KMH_PER_MPS
 
 ## Rotating-mass factors ξ (dimensionless, always ≥ 1).
 ## A whole adhesion train is dominated by wagons with light wheelsets, so its factor stays small.
@@ -86,9 +86,9 @@ const STRAHL_K_EMPTY_FREIGHT: float = 0.1
 ## 0.9–1.1 m/s² for well-braked passenger trains. Not a railway standard.
 const FULL_BRAKE_DECELERATION_AT_100_PERCENT: float = 1.0
 ## Ordinary service stops use part of the available brake force, leaving reserve for emergencies.
-## 0.6 of full gives ~0.6 m/s² for a well-braked passenger train and ~0.3–0.4 for a freight train with
-## λ ≈ 55–65 %, both within typical service values.
-const SERVICE_BRAKE_SHARE: float = 0.6
+## Half of full gives ~0.5 m/s² for a well-braked passenger train and ~0.3 m/s² for historic or freight
+## stock with λ ≈ 55–65 %, the gentle end of typical service braking.
+const SERVICE_BRAKE_SHARE: float = 0.5
 ## A comfortable limit for how fast acceleration may change. Passengers start to notice above ~0.5 m/s³;
 ## real drivers notch up over a few seconds, which is a large part of why trains feel slow to start.
 const DEFAULT_MAX_JERK: float = 0.4

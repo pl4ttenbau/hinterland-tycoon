@@ -292,7 +292,7 @@ func _test_movement() -> bool:
 	self.check(movement.process_physics_priority < train.process_physics_priority, "Movement runs before model effects sample displacement")
 	self.check(not train.is_inside_tree() and not movement.is_started, "Wiring does not insert or start the train")
 	## 10 kN on 20 t: the tractive effort limits the force until 1000 kW at 80 % takes over far above 10 m/s.
-	## A locomotive running light uses ξ = 1.2, and uncatalogued brakes count as 85 %.
+	## A locomotive running light uses ξ = 1.2, and uncatalogued brakes count as the default percentage.
 	var engine_type := VehicleTypeData.new()
 	engine_type.has_motor = true
 	engine_type.max_speed_kmh = 36
@@ -307,11 +307,12 @@ func _test_movement() -> bool:
 	self.check(is_equal_approx(dynamics.traction_force(0.0), 10000.0), "Tractive effort limits the starting force")
 	var start_acceleration: float = (10000.0 - dynamics.resistance_force(0.0)) / (1.2 * 20000.0)
 	self.check(is_equal_approx(dynamics.traction_acceleration(0.0), start_acceleration), "Resistance and rotating mass reduce starting acceleration")
-	self.check(is_equal_approx(dynamics.brake_percentage(), 85.0), "Uncatalogued brakes default to 85 %")
+	self.check(is_equal_approx(dynamics.brake_percentage(), TrainDynamics.DEFAULT_BRAKE_PERCENTAGE), "Uncatalogued brakes use the default percentage")
 	var service: float = dynamics.planning_deceleration()
-	var full: float = RailPhysics.full_brake_deceleration(dynamics.brake_percentage())
-	self.check(is_equal_approx(service, 0.85 * RailPhysics.SERVICE_BRAKE_SHARE), "Planning uses the service share of the brakes")
-	self.check(is_equal_approx(dynamics.stopping_distance(5.0), 25.0 / (2.0 * service)), "Stopping distance follows the consist's brakes")
+	self.check(is_equal_approx(service, TrainDynamics.DEFAULT_BRAKE_PERCENTAGE / 100.0 * RailPhysics.SERVICE_BRAKE_SHARE),
+		"Planning uses the service share of the brakes")
+	self.check(is_equal_approx(dynamics.stopping_distance(5.0), 25.0 / (2.0 * service) + 5.0 * TrainDynamics.brake_response_seconds()),
+		"Stopping distance follows the consist's brakes and their build-up")
 	self.check(is_equal_approx(dynamics.approach_speed(dynamics.stopping_distance(5.0)), 5.0), "Approach speed is the inverse of stopping distance")
 	movement.speed.target = 0.5
 	movement.update_speed(1.0)
@@ -323,27 +324,29 @@ func _test_movement() -> bool:
 	self.check(movement.speed_mps > 0.0 and movement.speed_mps < 0.75 * 4.0 * start_acceleration,
 		"Notching up makes the first seconds gentler than full power from the start")
 	self.check(is_equal_approx(movement.speed.current, movement.speed_mps / 10.0), "The UI fraction mirrors the physical speed")
-	self.simulate(movement, 20.0, false)
+	self.simulate(movement, 30.0, false)
 	self.check(is_equal_approx(movement.speed_mps, 5.0), "Acceleration ends at the selected target")
 	self.simulate(movement, 5.0, false)
 	self.check(is_equal_approx(movement.speed_mps, 5.0), "Traction holds the target against running resistance")
-	## The brake control applies the full brake and keeps the driver's traction request.
+	## The brake control applies the service brake, which builds up over a few seconds, and keeps the
+	## driver's traction request. From 5 m/s it sheds only ~0.26 m/s in the first 2 s.
 	movement.speed.brake_applied = true
 	self.simulate(movement, 2.0, false)
-	self.check(movement.speed_mps < 5.0 - 2.0 * full + 0.001 and movement.speed_mps > 5.0 - 2.0 * (full + 0.05),
-		"The brake control decelerates at the full rate, helped a little by resistance")
+	self.check(movement.speed_mps < 5.0 - 0.1 and movement.speed_mps > 5.0 - 2.0 * (service + 0.05),
+		"The brake control applies the service brake gradually")
 	self.check(is_equal_approx(movement.speed.target, 0.5), "Braking preserves the selected target")
-	self.simulate(movement, 5.0, false)
+	self.simulate(movement, 20.0, false)
 	self.check(is_zero_approx(movement.speed_mps) and movement.is_started, "The brake holds zero without switching off movement")
 	movement.speed.brake_applied = false
-	self.simulate(movement, 2.0, false)
-	self.check(movement.speed_mps > 0.0 and movement.speed_mps < 2.0 * start_acceleration,
-		"Releasing the brake resumes towards the selected target, notching up again")
-	self.simulate(movement, 25.0, false)
+	## The brakes need 2 s to release before power returns, then the throttle opens again from idle.
+	self.simulate(movement, 4.0, false)
+	self.check(movement.speed_mps > 0.0 and movement.speed_mps < 2.0 * TrainMovement.DRIVER_MAX_ACCELERATION,
+		"Releasing the brake resumes towards the selected target once the brakes are off")
+	self.simulate(movement, 40.0, false)
 	movement.speed.target = 0.2
 	self.simulate(movement, 1.0, false)
-	self.check(movement.speed_mps < 5.0 - service + 0.001 and movement.speed_mps > 5.0 - (service + 0.05),
-		"A lower target uses service braking")
+	self.check(movement.speed_mps < 5.0 - 0.03 and movement.speed_mps > 5.0 - (service + 0.05),
+		"A lower target uses the service brake, building up")
 	## 50 kW at 80 % gives only 4 kN at 10 m/s.
 	engine_type.motor_power_kw = 50.0
 	self.check(is_equal_approx(movement.get_dynamics().traction_force(10.0), 4000.0), "Power limits the force at higher speed")
@@ -358,7 +361,7 @@ func _test_movement() -> bool:
 	self.check(is_equal_approx(TrainDynamics.of_types(consist).mass_factor, RailPhysics.MASS_FACTOR_TRAIN), "A train uses the train mass factor")
 	self.check(is_zero_approx(TrainDynamics.of_types(wagons_only).traction_acceleration(0.0)), "An unpowered consist cannot accelerate")
 	wagon_type.braked_mass_tonnes = 0.0
-	self.check(is_equal_approx(TrainDynamics.of_types(consist).brake_percentage(), 42.5), "An unbraked wagon halves the brake percentage")
+	self.check(is_equal_approx(TrainDynamics.of_types(consist).brake_percentage(), TrainDynamics.DEFAULT_BRAKE_PERCENTAGE / 2.0), "An unbraked wagon halves the brake percentage")
 	wagon_type.braked_mass_tonnes = null
 	## Stop zeroes the speed; later target edits do nothing until the next start.
 	movement.stop()

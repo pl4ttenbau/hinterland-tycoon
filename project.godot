@@ -125,6 +125,10 @@ enter_exit_vehicle={
 3d_render/layer_6="Deco"
 3d_render/layer_7="Vehicles"
 3d_render/layer_8="Foliage"
+3d_physics/layer_1="World"
+3d_physics/layer_2="RoadVehicles"
+3d_physics/layer_4="Player"
+3d_physics/layer_20="ClickTargets"
 
 [physics]
 

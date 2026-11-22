@@ -61,7 +61,7 @@ func adjust_rotation_from_track():
 	if approach.is_zero_approx():
 		return
 	self.look_at(self.global_position + approach)
-	self.rotate_y(WorldUtils.NINETY_DEG_IN_RAD)
+	self.rotate_y(GameConstants.NINETY_DEG_IN_RAD)
 
 static func placement_basis(curve: Curve3D, offset: float, side: RailStationData.PlatformSide) -> Basis:
 	var heading: Vector3 = curve.sample_baked(minf(curve.get_baked_length(), offset + 0.2)) \
@@ -69,7 +69,7 @@ static func placement_basis(curve: Curve3D, offset: float, side: RailStationData
 	heading.y = 0.0
 	if heading.is_zero_approx():
 		return Basis.IDENTITY
-	var rotation: float = WorldUtils.NINETY_DEG_IN_RAD
+	var rotation: float = GameConstants.NINETY_DEG_IN_RAD
 	if side == RailStationData.PlatformSide.LEFT:
 		rotation += PI
 	return Basis.looking_at(-heading).rotated(Vector3.UP, rotation)

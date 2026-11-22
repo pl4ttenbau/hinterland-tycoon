@@ -266,7 +266,7 @@ func _make_tile() -> GPUParticles3D:
 	tile.draw_pass_1 = _mesh
 	tile.material_override = _draw_material
 	tile.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	tile.layers = 128 # Foliage
+	tile.layers = RenderLayers.FOLIAGE
 	var heights: Vector2 = terrain.data.get_height_range()
 	# Terrain3D returns (minimum, maximum). Include blade and wind margins.
 	tile.custom_aabb = AABB(Vector3(-1.0, heights.x - 1.0, -1.0),

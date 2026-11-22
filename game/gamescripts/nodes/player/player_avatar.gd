@@ -19,6 +19,18 @@ func _enter_tree() -> void:
 	SignalBus.player_exited_station.connect(_on_station_exited)
 
 
+func _ready() -> void:
+	super._ready()
+	## The game's walking pace, not the FPS addon's default (see GameConstants.PLAYER_WALK_SPEED).
+	## The addon re-reads SPEED every physics frame on the ground, so setting it once is enough.
+	if is_instance_valid(walking_body):
+		walking_body.SPEED = GameConstants.PLAYER_WALK_SPEED
+		## Collision is applied here rather than in player.tscn so it comes from CollisionLayers.
+		## PlayerControl later saves and restores exactly these values around driving.
+		walking_body.collision_layer = CollisionLayers.PLAYER
+		walking_body.collision_mask = CollisionLayers.PLAYER_MASK
+
+
 func _exit_tree() -> void:
 	super._exit_tree()
 	SignalBus.player_entered_station.disconnect(_on_station_entered)

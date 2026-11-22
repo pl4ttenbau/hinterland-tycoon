@@ -49,7 +49,7 @@ func tractive_effort_for(vehicle: VehicleTypeData) -> Variant:
 	if not _positive_number(adhesive_tonnes):
 		return null
 	# Tonnes * m/s² gives kN. This is a balancing estimate, not a vehicle specification.
-	return float(adhesive_tonnes) * 9.81 * estimated_adhesion
+	return float(adhesive_tonnes) * GameConstants.GRAVITY * estimated_adhesion
 
 func uses_estimated_strength(vehicle: VehicleTypeData) -> bool:
 	return vehicle != null and vehicle.has_motor and vehicle.tractive_effort_kn == null \

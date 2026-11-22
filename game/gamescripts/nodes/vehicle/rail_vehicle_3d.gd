@@ -15,7 +15,7 @@ static func of_vehicle_obj(_veh_obj: VehicleData, _train3d: Train3D = null) -> R
 	# Some legacy models use Default/Deco. All spawned vehicle geometry belongs
 	# on Vehicles so static reflection captures never retain a parked train.
 	for visual: Node in veh3d.find_children("*", "GeometryInstance3D", true, false):
-		(visual as GeometryInstance3D).layers = 64
+		(visual as GeometryInstance3D).layers = RenderLayers.VEHICLES
 	veh3d.vehicle_obj = _veh_obj
 	if _train3d:
 		veh3d.train3d = _train3d

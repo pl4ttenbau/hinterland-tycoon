@@ -85,11 +85,10 @@ metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.545, 0)
 shape = SubResource("BoxShape3D_qwrwv")
 
-[node name="Steam" type="Node3D" parent="." unique_id=427415751 node_paths=PackedStringArray("child_particles", "locomotive")]
+[node name="Steam" type="Node3D" parent="." unique_id=427415751 node_paths=PackedStringArray("child_particles")]
 script = ExtResource("4_ladnr")
 effect_strength = 0.575
 child_particles = [NodePath("SideSteamParticles3D_R"), NodePath("SideSteamParticles3D_L")]
-locomotive = NodePath("")
 metadata/_custom_type_script = "uid://ikgxu2g2bmw6"
 
 [node name="ChimneyExhaust" parent="Steam" unique_id=1258160990 node_paths=PackedStringArray("locomotive") instance=ExtResource("5_2b155")]

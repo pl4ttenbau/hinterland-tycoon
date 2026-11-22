@@ -212,7 +212,7 @@ func apply_driver_input(turn: float, pedal: float, service_brake: float, delta: 
 	if pedal * speed < -0.3:
 		braking = maxf(braking, absf(pedal))
 		pedal = 0.0
-	if absf(speed) * 3.6 >= (maximum_speed_kmh if pedal >= 0.0 else 15.0):
+	if absf(speed) * GameConstants.KMH_PER_MPS >= (maximum_speed_kmh if pedal >= 0.0 else 15.0):
 		pedal = 0.0
 	engine_force = clampf(pedal, -1.0, 1.0) * _available_engine_force(speed) if braking < 0.01 else 0.0
 	brake = braking * mass * 0.04
@@ -458,7 +458,7 @@ func _is_near_route() -> bool:
 func _desired_route_speed(angle: float, distance_left: float) -> float:
 	if distance_left < 0.3:
 		return 0.0
-	var cruise_speed: float = minf(cruise_speed_kmh, maximum_speed_kmh) / 3.6
+	var cruise_speed: float = minf(cruise_speed_kmh, maximum_speed_kmh) / GameConstants.KMH_PER_MPS
 	var stop_speed: float = sqrt(2.0 * braking_deceleration * distance_left)
 	# Allow for brake response and leave grip available for steering.
 	var approach_deceleration: float = maxf(0.1, braking_deceleration * 0.5)
@@ -485,7 +485,7 @@ func uses_road(road: RoadWay3D) -> bool:
 	if not is_inside_tree() or not path.is_inside_tree():
 		return false
 	# A manually driven or parked vehicle may have no driving route.
-	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP, global_position - Vector3.UP * 2.0, 1)
+	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP, global_position - Vector3.UP * 2.0, CollisionLayers.WORLD)
 	query.exclude = [get_rid()]
 	var hit: Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
 	var collider: Node = hit.get("collider")

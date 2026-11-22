@@ -13,10 +13,14 @@ const DEFAULT_VEHICLE_MASS_TONNES: float = 10.0
 ## A powered vehicle with neither power, tractive effort nor mass in the catalog still moves off gently:
 ## it gets enough force for this acceleration on its own consist. Keeps half-catalogued vehicles drivable.
 const FALLBACK_ACCELERATION: float = 0.3
-## Brake percentage assumed for a vehicle whose braked mass is not catalogued. 85 % gives a full brake of
-## 0.85 m/s² and service braking of ~0.5 m/s², matching the rates the game used before brakes were
-## modelled, so uncatalogued stock keeps its familiar stopping behaviour. Unbraked vehicles (0 t) count 0.
-const DEFAULT_BRAKE_PERCENTAGE: float = 85.0
+## Brake percentage assumed for a vehicle whose braked mass is not catalogued. Historic narrow-gauge and
+## branch-line stock with vacuum or Heberlein brakes rarely reached the brake percentages of later main-line
+## trains; 65 % gives a full brake of 0.65 m/s² and service braking of ~0.33 m/s².
+## Unbraked vehicles (0 t) count 0.
+const DEFAULT_BRAKE_PERCENTAGE: float = 65.0
+## Time for the brakes to reach full force after being applied. Vacuum and air brakes have to propagate
+## along the train and press the blocks on; 3 s is quick for a short passenger train, freight is slower.
+const BRAKE_BUILD_UP_SECONDS: float = 3.0
 ## Floor for the planning deceleration. A consist of only unbraked wagons would otherwise plan with zero
 ## deceleration, i.e. infinite stopping distances, and refuse to move at all. Running resistance alone
 ## gives roughly this much, so it is what such a train really has left.
@@ -139,13 +143,21 @@ func planning_deceleration() -> float:
 	var brakes_only: float = RailPhysics.full_brake_deceleration(self.brake_percentage()) * RailPhysics.SERVICE_BRAKE_SHARE
 	return maxf(brakes_only, MIN_PLANNING_DECELERATION)
 
+## Dead time equivalent to the brake build-up: a force rising linearly over T loses as much distance as
+## braking not at all for T / 2, then fully. Planning adds it so trains start braking early enough.
+static func brake_response_seconds() -> float:
+	return BRAKE_BUILD_UP_SECONDS / 2.0
+
 ## Distance needed to stop from the given speed with service braking.
 func stopping_distance(speed_mps: float) -> float:
-	return RailPhysics.stopping_distance(speed_mps, self.planning_deceleration())
+	return RailPhysics.stopping_distance(speed_mps, self.planning_deceleration(), brake_response_seconds())
 
 ## Highest speed from which the consist can still stop within the given distance.
-func approach_speed(distance: float) -> float:
-	return RailPhysics.approach_speed(distance, self.planning_deceleration())
+## `response_seconds` is the build-up still ahead: the full dead time while the brakes are off, none once
+## they are fully applied. Keeping it after the brakes are on would make the allowed speed shrink only in
+## proportion to the remaining distance near the end, so the train would creep and never quite arrive.
+func approach_speed(distance: float, response_seconds: float = brake_response_seconds()) -> float:
+	return RailPhysics.approach_speed(distance, self.planning_deceleration(), response_seconds)
 #endregion
 
 static func _positive(value: Variant) -> bool:

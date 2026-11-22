@@ -114,7 +114,7 @@ func _rail_platform(station_type: String) -> StationBuildingCatalog:
 
 ## Hit the supporting surface, so a nearby road or a bridge cannot steal placement.
 func placement_at(position: Vector3, exclude: RID = RID(), view_forward: Vector3 = Vector3.ZERO) -> Dictionary:
-	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 0.5, position - Vector3.UP * 2.0, 1)
+	var query := PhysicsRayQueryParameters3D.create(position + Vector3.UP * 0.5, position - Vector3.UP * 2.0, CollisionLayers.WORLD)
 	if exclude.is_valid():
 		query.exclude = [exclude]
 	var hit: Dictionary = get_viewport().find_world_3d().direct_space_state.intersect_ray(query)

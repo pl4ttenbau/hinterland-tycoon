@@ -22,7 +22,7 @@ func adjust_rotation() -> void:
 		return
 	var next_static_node_pos: Vector3 = self._get_pos_of_next_static_track_node()
 	self.look_at(next_static_node_pos)
-	self.rotate_y(WorldUtils.NINETY_DEG_IN_RAD)
+	self.rotate_y(GameConstants.NINETY_DEG_IN_RAD)
 	# reset arrow rotation back to initial
 	self.adjust_fork_arrow_rotation()
 
