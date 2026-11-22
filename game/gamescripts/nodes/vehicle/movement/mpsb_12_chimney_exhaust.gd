@@ -4,7 +4,7 @@ extends "res://addons/steam_exhaust/steam_exhaust.gd"
 ## The movement controller exposes target speed and brake state, not boiler pressure;
 ## these are used as an artistic estimate of exhaust effort.
 
-@export var locomotive: Vehicle3D
+@export var locomotive: RailVehicle3D
 @export_range(0.0, 1.0, 0.01) var idle_exhaust_strength: float = 0.4
 @export_range(0.0, 1.0, 0.01) var cruise_load: float = 0.45
 

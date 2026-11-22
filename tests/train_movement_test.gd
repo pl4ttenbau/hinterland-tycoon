@@ -24,8 +24,8 @@ func simulate(movement: TrainMovement, seconds: float, move: bool = true) -> voi
 			movement.move_forwards(1.0 / 60.0)
 
 ## A bare vehicle with only the data that movement reads.
-func make_vehicle(train: Train3D, veh_type: VehicleTypeData) -> Vehicle3D:
-	var vehicle := Vehicle3D.new()
+func make_vehicle(train: Train3D, veh_type: VehicleTypeData) -> RailVehicle3D:
+	var vehicle := RailVehicle3D.new()
 	vehicle.train3d = train
 	vehicle.vehicle_obj = VehicleData.new()
 	vehicle.vehicle_obj.veh_type = veh_type
@@ -100,7 +100,7 @@ func _test_spawn() -> bool:
 		and player.company.cash == price - 1, "Unaffordable train order leaves cash and the depot unchanged")
 	player.company.cash = CompanyData.STARTING_CASH
 	check(action.spawn_train(composition).is_empty(), "The full consist can be purchased")
-	check(price == 111_200 and player.company.cash == CompanyData.STARTING_CASH - price,
+	check(price == 103_300 and player.company.cash == CompanyData.STARTING_CASH - price,
 		"Train purchase charges both the locomotive and wagon")
 	GlobalState.player = null
 	player.free()
@@ -111,7 +111,7 @@ func _test_spawn() -> bool:
 	self.check(train.train_obj != null and train.train_obj.locomotive == train.locomotive.vehicle_obj, "Production spawn links train data to the locomotive")
 	self.check(train.train_obj.vehicles.size() == 2 and train.vehicles.size() == 2, "Production spawn includes the locomotive and wagon")
 	self.check(movement.train == train and movement.active_path != null, "Production spawn wires movement and initializes the route")
-	for vehicle: Vehicle3D in train.vehicles:
+	for vehicle: RailVehicle3D in train.vehicles:
 		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Depot spawn places the whole train at rail-head height")
 	var start_distance: float = movement.m_passed_since_start
 	self.simulate(movement, 1.0)
@@ -120,7 +120,7 @@ func _test_spawn() -> bool:
 	var rollout_end: float = start_distance + train.length_in_m() + 10.0
 	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The rollout brakes to a stop at the full consist length plus 10 metres")
 	self.check(is_zero_approx(movement.speed_mps) and is_zero_approx(movement.speed.target), "After the rollout the train stands with no target speed")
-	for vehicle: Vehicle3D in train.vehicles:
+	for vehicle: RailVehicle3D in train.vehicles:
 		self.check(is_equal_approx(vehicle.global_position.y, 0.262066), "Rollout keeps each vehicle at rail-head height")
 	self.simulate(movement, 1.0)
 	self.check(is_equal_approx(movement.m_passed_since_start, rollout_end), "The train remains parked at the rollout limit")
@@ -139,8 +139,8 @@ func _test_spawn() -> bool:
 	return true
 
 func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData) -> bool:
-	var engine: Vehicle3D = train.locomotive
-	var wagon: Vehicle3D = train.vehicles.back()
+	var engine: RailVehicle3D = train.locomotive
+	var wagon: RailVehicle3D = train.vehicles.back()
 	var movement: TrainMovement = train.movement
 	movement.stop()
 	movement.m_passed_since_start = 45.0
@@ -226,7 +226,7 @@ func _test_coupling(placer: VehiclePlacer, train: Train3D, track: RailTrackData)
 		+ (engine.vehicle_obj.veh_type.length_metres + 0.3) * (-1.0 if movement.is_reversed else 1.0)
 	facing.movement.update_segment_progress()
 	facing.movement.place_vehicles()
-	var other_engine: Vehicle3D = facing.locomotive
+	var other_engine: RailVehicle3D = facing.locomotive
 	var facing_basis: Basis = other_engine.global_basis
 	var front: TrainCoupling.Connection = TrainCoupling.nearby(train, true)
 	check(front != null and front.other == facing and front.reverse_order, "Front-to-front coupling detects the facing end")
@@ -291,7 +291,8 @@ func _test_movement() -> bool:
 	self.check(movement != null and movement.train == train, "Instantiation wires the explicit train reference")
 	self.check(movement.process_physics_priority < train.process_physics_priority, "Movement runs before model effects sample displacement")
 	self.check(not train.is_inside_tree() and not movement.is_started, "Wiring does not insert or start the train")
-	## 10 kN on 20 t gives 0.5 m/s² until 1000 kW limits the force, far above 10 m/s.
+	## 10 kN on 20 t: the tractive effort limits the force until 1000 kW at 80 % takes over far above 10 m/s.
+	## A locomotive running light uses ξ = 1.2, and uncatalogued brakes count as 85 %.
 	var engine_type := VehicleTypeData.new()
 	engine_type.has_motor = true
 	engine_type.max_speed_kmh = 36
@@ -302,9 +303,16 @@ func _test_movement() -> bool:
 	train.add_vehicle(self.make_vehicle(train, engine_type), true)
 	var dynamics: TrainDynamics = movement.get_dynamics()
 	self.check(is_equal_approx(dynamics.max_speed_mps, 10.0), "Maximum speed comes from the catalog in km/h")
-	self.check(is_equal_approx(dynamics.traction_acceleration(0.0), 0.5), "Tractive effort limits starting acceleration")
-	self.check(is_equal_approx(TrainDynamics.stopping_distance(5.0), 25.0), "Service braking from 5 m/s needs 25 m")
-	self.check(is_equal_approx(TrainDynamics.approach_speed(25.0), 5.0), "Approach speed is the inverse of stopping distance")
+	self.check(is_equal_approx(dynamics.mass_factor, RailPhysics.MASS_FACTOR_LOCOMOTIVE), "A light engine uses the locomotive mass factor")
+	self.check(is_equal_approx(dynamics.traction_force(0.0), 10000.0), "Tractive effort limits the starting force")
+	var start_acceleration: float = (10000.0 - dynamics.resistance_force(0.0)) / (1.2 * 20000.0)
+	self.check(is_equal_approx(dynamics.traction_acceleration(0.0), start_acceleration), "Resistance and rotating mass reduce starting acceleration")
+	self.check(is_equal_approx(dynamics.brake_percentage(), 85.0), "Uncatalogued brakes default to 85 %")
+	var service: float = dynamics.planning_deceleration()
+	var full: float = RailPhysics.full_brake_deceleration(dynamics.brake_percentage())
+	self.check(is_equal_approx(service, 0.85 * RailPhysics.SERVICE_BRAKE_SHARE), "Planning uses the service share of the brakes")
+	self.check(is_equal_approx(dynamics.stopping_distance(5.0), 25.0 / (2.0 * service)), "Stopping distance follows the consist's brakes")
+	self.check(is_equal_approx(dynamics.approach_speed(dynamics.stopping_distance(5.0)), 5.0), "Approach speed is the inverse of stopping distance")
 	movement.speed.target = 0.5
 	movement.update_speed(1.0)
 	self.check(is_zero_approx(movement.speed_mps), "Target requests before startup do not move the train")
@@ -312,26 +320,33 @@ func _test_movement() -> bool:
 	self.get_tree().root.add_child(train)
 	self.check(is_equal_approx(movement.speed.target, 0.5), "Start preserves the selected target")
 	self.simulate(movement, 4.0, false)
-	self.check(is_equal_approx(movement.speed_mps, 2.0) and is_equal_approx(movement.speed.current, 0.2),
-		"Four seconds at 0.5 m/s² reach 2 m/s, shown as 20 % of maximum speed")
-	self.simulate(movement, 10.0, false)
+	self.check(movement.speed_mps > 0.0 and movement.speed_mps < 0.75 * 4.0 * start_acceleration,
+		"Notching up makes the first seconds gentler than full power from the start")
+	self.check(is_equal_approx(movement.speed.current, movement.speed_mps / 10.0), "The UI fraction mirrors the physical speed")
+	self.simulate(movement, 20.0, false)
 	self.check(is_equal_approx(movement.speed_mps, 5.0), "Acceleration ends at the selected target")
-	## The brake control decelerates faster and keeps the driver's traction request.
+	self.simulate(movement, 5.0, false)
+	self.check(is_equal_approx(movement.speed_mps, 5.0), "Traction holds the target against running resistance")
+	## The brake control applies the full brake and keeps the driver's traction request.
 	movement.speed.brake_applied = true
 	self.simulate(movement, 2.0, false)
-	self.check(is_equal_approx(movement.speed_mps, 3.0), "The brake control decelerates at 1 m/s²")
+	self.check(movement.speed_mps < 5.0 - 2.0 * full + 0.001 and movement.speed_mps > 5.0 - 2.0 * (full + 0.05),
+		"The brake control decelerates at the full rate, helped a little by resistance")
 	self.check(is_equal_approx(movement.speed.target, 0.5), "Braking preserves the selected target")
 	self.simulate(movement, 5.0, false)
 	self.check(is_zero_approx(movement.speed_mps) and movement.is_started, "The brake holds zero without switching off movement")
 	movement.speed.brake_applied = false
 	self.simulate(movement, 2.0, false)
-	self.check(is_equal_approx(movement.speed_mps, 1.0), "Releasing the brake resumes towards the selected target")
-	movement.speed.target = 0.05
-	self.simulate(movement, 0.5, false)
-	self.check(is_equal_approx(movement.speed_mps, 0.75), "A lower target uses service braking at 0.5 m/s²")
-	## 50 kW gives only 5 kN at 10 m/s.
+	self.check(movement.speed_mps > 0.0 and movement.speed_mps < 2.0 * start_acceleration,
+		"Releasing the brake resumes towards the selected target, notching up again")
+	self.simulate(movement, 25.0, false)
+	movement.speed.target = 0.2
+	self.simulate(movement, 1.0, false)
+	self.check(movement.speed_mps < 5.0 - service + 0.001 and movement.speed_mps > 5.0 - (service + 0.05),
+		"A lower target uses service braking")
+	## 50 kW at 80 % gives only 4 kN at 10 m/s.
 	engine_type.motor_power_kw = 50.0
-	self.check(is_equal_approx(movement.get_dynamics().traction_acceleration(10.0), 0.25), "Power limits acceleration at higher speed")
+	self.check(is_equal_approx(movement.get_dynamics().traction_force(10.0), 4000.0), "Power limits the force at higher speed")
 	engine_type.motor_power_kw = 1000.0
 	var wagon_type := VehicleTypeData.new()
 	wagon_type.max_speed_kmh = 18
@@ -339,8 +354,12 @@ func _test_movement() -> bool:
 	var consist: Array[VehicleTypeData] = [engine_type, wagon_type]
 	var wagons_only: Array[VehicleTypeData] = [wagon_type]
 	self.check(is_equal_approx(TrainDynamics.of_types(consist).max_speed_mps, 5.0), "The slowest vehicle sets the consist's maximum speed")
-	self.check(is_equal_approx(TrainDynamics.of_types(consist).traction_acceleration(0.0), 0.25), "Wagon mass reduces acceleration")
+	self.check(TrainDynamics.of_types(consist).traction_acceleration(0.0) < 0.6 * start_acceleration, "Wagon mass reduces acceleration")
+	self.check(is_equal_approx(TrainDynamics.of_types(consist).mass_factor, RailPhysics.MASS_FACTOR_TRAIN), "A train uses the train mass factor")
 	self.check(is_zero_approx(TrainDynamics.of_types(wagons_only).traction_acceleration(0.0)), "An unpowered consist cannot accelerate")
+	wagon_type.braked_mass_tonnes = 0.0
+	self.check(is_equal_approx(TrainDynamics.of_types(consist).brake_percentage(), 42.5), "An unbraked wagon halves the brake percentage")
+	wagon_type.braked_mass_tonnes = null
 	## Stop zeroes the speed; later target edits do nothing until the next start.
 	movement.stop()
 	self.check(is_zero_approx(movement.speed_mps) and is_zero_approx(movement.speed.current), "Stop zeroes the speed")

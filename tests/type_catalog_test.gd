@@ -62,13 +62,13 @@ func test_catalog_lifecycle() -> bool:
 	self.check(self.session_ready_count == 1, "First session starts after loading")
 	var source_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RailVehicleTypesLoader.CATALOG_PATH))
 	var road_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source_catalog.size() == 18 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
+	self.check(source_catalog.size() == 19 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
 	for index: int in range(source_catalog.size()):
 		var vehicle: VehicleTypeData = GameTypes.vehicle_types[index]
 		self.check(vehicle is RailVehicleTypeData, "Rail catalog creates rail definitions")
 		self.check(vehicle.mass_tonnes == source_catalog[index].get("mass_tonnes") and vehicle.motor_power_kw == source_catalog[index].get("motor_power_kw"), "Catalog mass and power values are preserved")
 		self.check(vehicle.usable_infr.domain == Enums.InfrDomain.RAIL, "Rail loader supplies the runtime domain")
-	self.check(GameTypes.get_veh_type("loco_faur").max_speed_kmh == 45, "Current FAUR speed survives migration")
+	self.check(GameTypes.get_veh_type("loco_faur").max_speed_kmh == 40, "Current FAUR speed (L45H, 40 km/h) survives migration")
 	self.check(is_equal_approx(GameTypes.get_veh_type("loco_faur").length_metres, 9.5), "Vehicle length survives migration")
 	self.check(GameTypes.get_veh_type("wismar_railbus").capacity.amount == 65, "Current railbus capacity survives migration")
 	self.check(GameTypes.get_veh_type("mpsb_open_wagon").capacity.goods_cat == BaseGoodsType.ResourceCategory.AGGREGATE, "Capacity category survives migration")
@@ -107,6 +107,9 @@ func test_invalid_catalogs() -> bool:
 	var populated: Dictionary = raw_catalog[0].duplicate(true)
 	populated["mass_tonnes"] = null
 	populated["motor_power_kw"] = null
+	## Start without working-order data, whatever the real catalog entry carries.
+	for field: String in ["service_mass_tonnes", "adhesive_mass_tonnes", "braked_mass_tonnes"]:
+		populated.erase(field)
 	var unknown: RailVehicleTypeData = VehicleMapper.rail_type_dict_to_class(populated)
 	self.check(unknown != null and unknown.mass_tonnes == null and unknown.motor_power_kw == null, "Unknown mass and power remain null")
 	populated["mass_tonnes"] = 32
@@ -118,11 +121,28 @@ func test_invalid_catalogs() -> bool:
 	invalid_mass["mass_tonnes"] = "unknown"
 	var invalid_power: Dictionary = populated.duplicate(true)
 	invalid_power["motor_power_kw"] = -1
+	## Masses in working order: optional, loaded when present, and checked against each other.
+	var with_masses: Dictionary = populated.duplicate(true)
+	with_masses["service_mass_tonnes"] = 34.0
+	with_masses["adhesive_mass_tonnes"] = 30.0
+	with_masses["braked_mass_tonnes"] = 0
+	var massed: RailVehicleTypeData = VehicleMapper.rail_type_dict_to_class(with_masses)
+	self.check(massed != null and massed.service_mass_tonnes == 34.0 and massed.adhesive_mass_tonnes == 30.0 \
+		and massed.braked_mass_tonnes == 0.0, "Service, adhesive and braked masses load; zero braked mass means unbraked")
+	self.check(massed != null and massed.get_service_mass_tonnes() == 34.0 and massed.get_adhesive_mass_tonnes() == 30.0,
+		"Mass getters prefer authored values")
+	self.check(mapped.get_service_mass_tonnes() == 32.0 and mapped.get_adhesive_mass_tonnes() == 32.0,
+		"Without service data the empty mass stands in, all on driven axles")
+	var light_service: Dictionary = populated.duplicate(true)
+	light_service["service_mass_tonnes"] = 20.0
+	var heavy_adhesion: Dictionary = with_masses.duplicate(true)
+	heavy_adhesion["adhesive_mass_tonnes"] = 40.0
 	var existing_count: int = GameTypes.vehicle_types.size()
 	var fixture_contents: Array[String] = [
 		"{broken json", "{}", JSON.stringify([raw_catalog[0], raw_catalog[0]]),
 		JSON.stringify([wrong_domain]), JSON.stringify([wrong_speed]),
-		JSON.stringify([invalid_mass]), JSON.stringify([invalid_power])
+		JSON.stringify([invalid_mass]), JSON.stringify([invalid_power]),
+		JSON.stringify([light_service]), JSON.stringify([heavy_adhesion])
 	]
 	print("Checking invalid catalogs; the following validation errors are expected.")
 	for contents: String in fixture_contents:

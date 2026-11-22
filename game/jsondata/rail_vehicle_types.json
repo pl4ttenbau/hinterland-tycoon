@@ -1,17 +1,17 @@
 [
 	{
 		"key": "loco_faur",
-		"purchase_price": 219200,
+		"purchase_price": 182300,
 		"display_name": "FAUR 750mm",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_faur/model_loco_faur.tscn",
-		"max_speed_kmh": 45,
+		"max_speed_kmh": 40,
 		"usable_infr": {
 			"subtype": "750_MM"
 		},
 		"has_motor": true,
 		"length_metres": 9.5,
-		"motor_power_kw": 436.5,
-		"mass_tonnes": 34.0
+		"motor_power_kw": 335,
+		"mass_tonnes": 32.0
 	},
 	{
 		"key": "wismar_railbus",
@@ -87,21 +87,22 @@
 	},
 	{
 		"key": "mpsb_12",
-		"purchase_price": 96100,
+		"purchase_price": 88200,
 		"display_name": "MPSB No 12",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn",
-		"max_speed_kmh": 38,
+		"max_speed_kmh": 25,
 		"usable_infr": {
 			"subtype": "750_MM"
 		},
 		"has_motor": true,
 		"length_metres": 7.367,
 		"motor_power_kw": 147,
-		"mass_tonnes": 16.5
+		"mass_tonnes": 15.5,
+		"service_mass_tonnes": 16.5
 	},
 	{
 		"key": "loco_tu6a",
-		"purchase_price": 60300,
+		"purchase_price": 91200,
 		"display_name": "TU6A",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/loco_tu6a/model_loco_tu6a.tscn",
 		"max_speed_kmh": 40,
@@ -111,7 +112,7 @@
 		"has_motor": true,
 		"length_metres": 9.29,
 		"motor_power_kw": 147.1,
-		"mass_tonnes": 1.4
+		"mass_tonnes": 14.0
 	},
 	{
 		"key": "pv40_soviet_wagon",
@@ -151,17 +152,17 @@
 	},
 	{
 		"key": "dr_v60",
-		"purchase_price": 165200,
+		"purchase_price": 322500,
 		"display_name": "DR V60",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v60/model_dr_v60.tscn",
-		"max_speed_kmh": 50,
+		"max_speed_kmh": 60,
 		"usable_infr": {
 			"subtype": "NORMAL_GAUGE"
 		},
 		"has_motor": true,
 		"length_metres": 10.803,
 		"motor_power_kw": 478,
-		"mass_tonnes": 6.5
+		"mass_tonnes": 60.0
 	},
 	{
 		"key": "laenderbahn_wagon",
@@ -201,7 +202,7 @@
 	},
 	{
 		"key": "soviet_tgm6",
-		"purchase_price": 311000,
+		"purchase_price": 538600,
 		"display_name": "TGM 6",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/soviet_tgm6/model_soviet_tgm6.tscn",
 		"max_speed_kmh": 75,
@@ -210,12 +211,12 @@
 		},
 		"has_motor": true,
 		"length_metres": 13.723,
-		"motor_power_kw": 136,
+		"motor_power_kw": 883,
 		"mass_tonnes": 82.0
 	},
 	{
 		"key": "dr_v100",
-		"purchase_price": 451200,
+		"purchase_price": 538800,
 		"display_name": "DR V100",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/dr_v100/model_dr_v100.tscn",
 		"max_speed_kmh": 80,
@@ -225,7 +226,9 @@
 		"has_motor": true,
 		"length_metres": 14.332,
 		"motor_power_kw": 736,
-		"mass_tonnes": 64.0
+		"mass_tonnes": 64.0,
+		"service_mass_tonnes": 64.0,
+		"tractive_effort_kn": 227.0
 	},
 	{
 		"key": "sakhalin_tg16_diesel",
@@ -262,7 +265,7 @@
 	},
 	{
 		"key": "fkb_t2_137_532",
-		"purchase_price": 108100,
+		"purchase_price": 83300,
 		"display_name": "FKB T2 (DR VT 137 532)",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/fkb_t2_137_532/model_fkb_t2_137_532.tscn",
 		"max_speed_kmh": 60,
@@ -276,7 +279,9 @@
 		},
 		"length_metres": 12.96,
 		"motor_power_kw": 70,
-		"mass_tonnes": 18.0
+		"mass_tonnes": 13.3,
+		"service_mass_tonnes": 18.0,
+		"adhesive_mass_tonnes": 9.0
 	},
 	{
 		"key": "soviet_vz20_tank_wagon",
@@ -295,5 +300,21 @@
 		"length_metres": 12.2,
 		"motor_power_kw": null,
 		"mass_tonnes": 16.0
+	},
+	{
+		"key": "saxon_iv_k",
+		"purchase_price": 88900,
+		"display_name": "Saxon IV K",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/saxon_iv_k/model_saxon_iv_k.tscn",
+		"max_speed_kmh": 30,
+		"usable_infr": {
+			"subtype": "750_MM"
+		},
+		"has_motor": true,
+		"length_metres": 8.873,
+		"motor_power_kw": 154,
+		"mass_tonnes": 21.7,
+		"service_mass_tonnes": 26.8,
+		"tractive_effort_kn": 36.28
 	}
 ]

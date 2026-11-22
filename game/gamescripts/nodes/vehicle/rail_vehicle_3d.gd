@@ -1,5 +1,5 @@
 @icon("res://assets/icons/nodes_3d/icon_locomotive.svg")
-class_name Vehicle3D extends GameEntity3D
+class_name RailVehicle3D extends GameEntity3D
 
 @export var vehicle_obj: VehicleData
 @export var num_in_train: int
@@ -9,9 +9,9 @@ class_name Vehicle3D extends GameEntity3D
 @export var faces_rear: bool = false
 
 #region Static Constructors
-static func of_vehicle_obj(_veh_obj: VehicleData, _train3d: Train3D = null) -> Vehicle3D:
+static func of_vehicle_obj(_veh_obj: VehicleData, _train3d: Train3D = null) -> RailVehicle3D:
 	var mesh_scene_path = _veh_obj.veh_type.model_scene_path
-	var veh3d: Vehicle3D = load(mesh_scene_path).instantiate()
+	var veh3d: RailVehicle3D = load(mesh_scene_path).instantiate()
 	# Some legacy models use Default/Deco. All spawned vehicle geometry belongs
 	# on Vehicles so static reflection captures never retain a parked train.
 	for visual: Node in veh3d.find_children("*", "GeometryInstance3D", true, false):
@@ -31,7 +31,7 @@ func calc_offset_to_first() -> float:
 
 func calc_offset_to_previous(i_in_train: int)-> float:
 	if i_in_train == 0: return 0.0
-	var veh_before: Vehicle3D = self.train3d.vehicles[i_in_train -1]
+	var veh_before: RailVehicle3D = self.train3d.vehicles[i_in_train -1]
 	## Use this pair's following vehicle, not the final wagon for every pair.
 	var half_own_length: float = self.train3d.vehicles[i_in_train].vehicle_obj.veh_type.length_metres /2
 	var half_other_length: float = veh_before.vehicle_obj.veh_type.length_metres /2

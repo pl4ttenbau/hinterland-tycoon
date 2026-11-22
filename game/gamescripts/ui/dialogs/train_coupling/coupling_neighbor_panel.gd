@@ -7,8 +7,8 @@ signal couple_requested(at_front: bool)
 
 ## The connection shown by the last `show_plan`; null when nothing is in range.
 var connection: TrainCoupling.Connection
-var _vehicles: Array[Vehicle3D] = []
-var _facing: Vehicle3D
+var _vehicles: Array[RailVehicle3D] = []
+var _facing: RailVehicle3D
 
 @onready var heading: Label = %Heading
 @onready var list: ItemList = %Vehicles
@@ -47,7 +47,7 @@ func _render_other(other: Train3D) -> void:
 	list.clear()
 	var facing_first: bool = _facing == other.vehicles.front()
 	for index: int in range(other.count()):
-		var vehicle: Vehicle3D = other.vehicles[index if facing_first else -index - 1]
+		var vehicle: RailVehicle3D = other.vehicles[index if facing_first else -index - 1]
 		var row: int = TrainCouplingText.add_vehicle_row(list, vehicle, "Facing end" if index == 0 else "")
 		list.set_item_selectable(row, false)
 

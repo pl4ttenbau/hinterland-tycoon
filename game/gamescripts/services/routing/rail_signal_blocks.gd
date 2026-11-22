@@ -22,7 +22,7 @@ static func occupancy(trains: Array, exclude: Train3D = null) -> Dictionary:
 			continue
 		var rear: float = INF
 		var front: float = -INF
-		for vehicle: Vehicle3D in train.vehicles:
+		for vehicle: RailVehicle3D in train.vehicles:
 			var half: float = half_length(vehicle)
 			var distance: float = train.movement.get_vehicle_distance(vehicle)
 			rear = minf(rear, distance - half)
@@ -112,7 +112,7 @@ static func _is_occupied(spans: Dictionary, track_num: int, from: float, to: flo
 			return true
 	return false
 
-static func half_length(vehicle: Vehicle3D) -> float:
+static func half_length(vehicle: RailVehicle3D) -> float:
 	if vehicle == null or vehicle.vehicle_obj == null or vehicle.vehicle_obj.veh_type == null:
 		return 0.0
 	return vehicle.vehicle_obj.veh_type.length_metres * 0.5

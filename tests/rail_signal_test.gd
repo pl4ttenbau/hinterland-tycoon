@@ -42,7 +42,7 @@ func make_train(track: RailTrackData, distance: float, powered: bool) -> Train3D
 	var train: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate()
 	train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
 	train.movement.last_node = track.nodes[0]
-	var vehicle := Vehicle3D.new()
+	var vehicle := RailVehicle3D.new()
 	vehicle.train3d = train
 	vehicle.vehicle_obj = VehicleData.new()
 	var veh_type := VehicleTypeData.new()

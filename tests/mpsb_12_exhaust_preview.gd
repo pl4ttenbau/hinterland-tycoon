@@ -3,7 +3,7 @@ extends Node3D
 ## Space toggles motion. Escape closes the preview. No world or save is loaded.
 
 var _train: Train3D
-var _locomotive: Vehicle3D
+var _locomotive: RailVehicle3D
 var _exhaust: Node3D
 var _camera: Camera3D
 var _frame: int = 0
@@ -41,7 +41,7 @@ func _ready() -> void:
 	add_child(ground)
 	_train = load(Train3D.EMPTY_SCENE_PATH).instantiate() as Train3D
 	_train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
-	_locomotive = load("res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn").instantiate() as Vehicle3D
+	_locomotive = load("res://assets/meshes/vehicles/rail/mpsb_12/model_mpsb_12.tscn").instantiate() as RailVehicle3D
 	_locomotive.vehicle_obj = VehicleData.new()
 	_locomotive.train3d = _train
 	_train.add_vehicle(_locomotive, true)

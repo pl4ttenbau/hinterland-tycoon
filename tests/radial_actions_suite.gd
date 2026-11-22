@@ -70,7 +70,7 @@ func run() -> void:
 	check("Coupling" not in _ids(menu), "Road vehicles do not offer train coupling")
 	check(not BuildTools.available(Enums.BuildToolChoice.ROAD_MARKER) and not BuildTools.available(Enums.BuildToolChoice.CONNECT_TRACKS), "Road vehicle hides on-foot placement tools")
 	var train := Train3D.new()
-	var locomotive := Vehicle3D.new()
+	var locomotive := RailVehicle3D.new()
 	locomotive.train3d = train
 	train.locomotive = locomotive
 	var train_camera := Camera3D.new()

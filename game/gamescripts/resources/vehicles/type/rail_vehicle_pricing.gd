@@ -5,7 +5,8 @@ class_name RailVehiclePricing extends Resource
 @export_range(0.0, 1000000.0) var locomotive_base: float = 20000.0
 @export_range(0.0, 10000.0) var price_per_kw: float = 250.0
 @export_range(0.0, 10000.0) var price_per_kn: float = 1000.0
-## Temporary estimate using total empty mass; driven axle weights are not catalogued.
+## Adhesion coefficient for estimating starting effort from the mass on driven axles when the catalog
+## states no tractive effort. Keep it in step with RailPhysics.DEFAULT_ADHESION.
 @export_range(0.01, 1.0) var estimated_adhesion: float = 0.25
 
 @export_group("Transport capacity")
@@ -43,10 +44,12 @@ func tractive_effort_for(vehicle: VehicleTypeData) -> Variant:
 		return null
 	if vehicle.tractive_effort_kn != null:
 		return float(vehicle.tractive_effort_kn) if _positive_number(vehicle.tractive_effort_kn) else null
-	if not _positive_number(vehicle.mass_tonnes):
+	## Driven-axle mass in working order: authored, else the service mass, else the empty mass.
+	var adhesive_tonnes: Variant = vehicle.get_adhesive_mass_tonnes()
+	if not _positive_number(adhesive_tonnes):
 		return null
 	# Tonnes * m/s² gives kN. This is a balancing estimate, not a vehicle specification.
-	return float(vehicle.mass_tonnes) * 9.81 * estimated_adhesion
+	return float(adhesive_tonnes) * 9.81 * estimated_adhesion
 
 func uses_estimated_strength(vehicle: VehicleTypeData) -> bool:
 	return vehicle != null and vehicle.has_motor and vehicle.tractive_effort_kn == null \

@@ -41,6 +41,16 @@ the rail subclass. JSON entries use numeric speeds/lengths, `display_name`,
 `capacity`. The rail loader supplies the runtime infrastructure domain. `mass_tonnes`
 (empty mass in metric tonnes) and `motor_power_kw` (power in kilowatts) accept numbers
 or `null` for unknown values. Null values stay unknown when loading.
+
+Optional masses, all in metric tonnes, describe the vehicle as it runs:
+
+| Field | Meaning | When absent |
+| --- | --- | --- |
+| `service_mass_tonnes` | Dienstmasse: empty mass plus fuel, water, sand and crew; at least `mass_tonnes` | Empty mass |
+| `adhesive_mass_tonnes` | Reibungsmasse: mass on driven axles; at most the service mass | Whole service mass for powered vehicles, 0 otherwise |
+| `braked_mass_tonnes` | Bremsgewicht; 0 for an unbraked vehicle | Unknown |
+
+Movement uses the service mass; the tractive-effort estimate uses the adhesive mass.
 The export
 preset includes `game/jsondata/*.json` because these files use `FileAccess`.
 

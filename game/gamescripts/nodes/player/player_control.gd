@@ -38,7 +38,7 @@ func interaction_anchor() -> Node3D:
 func enter_vehicle(vehicle: Node3D) -> bool:
 	if vehicle is RoadVehicle3D:
 		return enter_road_vehicle(vehicle)
-	if vehicle is Vehicle3D:
+	if vehicle is RailVehicle3D:
 		return enter_train(vehicle.train3d)
 	return false
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://42bcdxqv8y0v"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_vehicle"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_vehicle"]
 [ext_resource type="PackedScene" path="res://assets/meshes/vehicles/rail/sakhalin_tg16_diesel/mesh/mesh_sakhalin_tg16_diesel.tscn" id="2_mesh"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_collider"]
 

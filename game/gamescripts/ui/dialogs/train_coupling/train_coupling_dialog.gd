@@ -14,15 +14,15 @@ const SCENE_PATH := "res://scenes/ui/dialogs/train_coupling/train_coupling_dialo
 
 ## The vehicle picked in the consist list. Split buttons work relative to it, and
 ## its train is the one being coupled or split.
-var _selected: Vehicle3D
+var _selected: RailVehicle3D
 ## Confirm bar text for the current preview, before any problem is appended.
 var _preview_summary: String
 ## Join preview: the connection the player chose. null when not joining.
 var _pending_join: TrainCoupling.Connection
 ## Split preview: the last vehicle of the front part and the first of the rear
 ## part. Both null when not splitting.
-var _ahead: Vehicle3D
-var _behind: Vehicle3D
+var _ahead: RailVehicle3D
+var _behind: RailVehicle3D
 
 @onready var _train_status: Label = %TrainStatus
 @onready var _consist: CouplingConsistList = %Consist
@@ -32,7 +32,7 @@ var _behind: Vehicle3D
 @onready var _split_below: Button = %SplitBelowButton
 @onready var _confirm_bar: CouplingConfirmBar = %ConfirmBar
 
-static func create(vehicle: Vehicle3D) -> TrainCouplingDialog:
+static func create(vehicle: RailVehicle3D) -> TrainCouplingDialog:
 	var dialog := (load(SCENE_PATH) as PackedScene).instantiate() as TrainCouplingDialog
 	dialog._selected = vehicle
 	return dialog
@@ -93,7 +93,7 @@ func _preview_problem(train: Train3D) -> String:
 	return plan.error
 
 ## Another vehicle selected: any preview was relative to the old one, so drop it.
-func _on_vehicle_selected(vehicle: Vehicle3D) -> void:
+func _on_vehicle_selected(vehicle: RailVehicle3D) -> void:
 	_selected = vehicle
 	_cancel_preview()
 

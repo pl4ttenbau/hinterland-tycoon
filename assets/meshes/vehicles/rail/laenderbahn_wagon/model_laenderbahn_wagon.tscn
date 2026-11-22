@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5s2vo6gs4tjc"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_xfph4"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_xfph4"]
 [ext_resource type="Texture2D" uid="uid://eugkt7yc41p5" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/tex_laenderbahn_wagon_d.png" id="2_wv2we"]
 [ext_resource type="ArrayMesh" uid="uid://1vh4negobtd7" path="res://assets/meshes/vehicles/rail/laenderbahn_wagon/laenderbahn_wagon.obj" id="2_y3cg3"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_wv2we"]

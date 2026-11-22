@@ -11,7 +11,7 @@ signal player_exited()
 @export var parent_station_3d: RailStation3D
 
 @export var trains_inside: Array[Train3D] = []
-@export var vehicles_inside: Array[Vehicle3D] = []
+@export var vehicles_inside: Array[RailVehicle3D] = []
 @export var player_inside = false
 
 #region Initialization

@@ -1,9 +1,9 @@
 ## The selected consist, front to rear, with an optional split marker.
 class_name CouplingConsistList extends VBoxContainer
 
-signal vehicle_selected(vehicle: Vehicle3D)
+signal vehicle_selected(vehicle: RailVehicle3D)
 
-var _displayed: Array[Vehicle3D] = []
+var _displayed: Array[RailVehicle3D] = []
 var _displayed_cut: int = -1
 
 @onready var heading: Label = %Heading
@@ -14,7 +14,7 @@ func _ready() -> void:
 
 ## Rebuilds only when the consist or the split preview changed, so the
 ## periodic refresh does not reset scrolling.
-func show_consist(train: Train3D, selected: Vehicle3D, cut: int) -> void:
+func show_consist(train: Train3D, selected: RailVehicle3D, cut: int) -> void:
 	if _displayed == train.vehicles and _displayed_cut == cut:
 		return
 	_displayed = train.vehicles.duplicate()
@@ -25,7 +25,7 @@ func show_consist(train: Train3D, selected: Vehicle3D, cut: int) -> void:
 		if index == cut:
 			var divider: int = list.add_item("──────── Split here ────────")
 			list.set_item_selectable(divider, false)
-		var vehicle: Vehicle3D = train.vehicles[index]
+		var vehicle: RailVehicle3D = train.vehicles[index]
 		var row: int = TrainCouplingText.add_vehicle_row(list, vehicle, _end_label(train, index))
 		if vehicle == selected:
 			list.select(row)
@@ -44,4 +44,4 @@ func _end_label(train: Train3D, index: int) -> String:
 	return ""
 
 func _on_vehicles_item_selected(row: int) -> void:
-	vehicle_selected.emit(list.get_item_metadata(row) as Vehicle3D)
+	vehicle_selected.emit(list.get_item_metadata(row) as RailVehicle3D)

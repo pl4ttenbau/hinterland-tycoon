@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbtkgidakqje5"]
 
 [ext_resource type="PackedScene" uid="uid://cxpy7d2icm4nx" path="res://assets/meshes/vehicles/rail/mpsb_open_wagon/mesh/mesh_mpsb_open_wagon.tscn" id="1_mc5ob"]
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_v2elm"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_v2elm"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_akb1p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5rx4p"]

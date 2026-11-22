@@ -59,7 +59,7 @@ func make_train(track: RailTrackData, distance: float, lengths: Array[float]) ->
 	train.movement.last_node = track.nodes[0]
 	for length: float in lengths:
 		## Only length affects path following and fork occupancy.
-		var vehicle := Vehicle3D.new()
+		var vehicle := RailVehicle3D.new()
 		vehicle.train3d = train
 		vehicle.vehicle_obj = VehicleData.new()
 		vehicle.vehicle_obj.veh_type = VehicleTypeData.new()
@@ -120,7 +120,7 @@ func _run() -> void:
 	train.movement.m_passed_since_start = 16.0
 	train.movement.place_vehicles()
 	var poses: Array[Transform3D] = []
-	for vehicle: Vehicle3D in train.vehicles:
+	for vehicle: RailVehicle3D in train.vehicles:
 		poses.append(vehicle.global_transform)
 	train.movement.start()
 	## Reversal must drop the forward speed before constructing its return route.

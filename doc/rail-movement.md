@@ -14,20 +14,28 @@ notification:
 | Quantity | Source |
 | --- | --- |
 | Maximum speed | Slowest `max_speed_kmh` in the consist; 6 m/s (the former fixed speed) if none is known |
-| Mass | Sum of `mass_tonnes`; 10 t for a vehicle without mass |
-| Traction force | `min(tractive effort, power / v)`, summed over powered vehicles; the tractive effort uses the [pricing estimate](vehicle-pricing.md) when not authored |
-| Acceleration | Force / mass, capped at 1.0 m/s²; 0.3 m/s² for a motor without power or effort data; zero for an unpowered consist |
-| Service braking | 0.5 m/s²: lowering the target, and stopping ahead |
-| Brake control | 1.0 m/s² |
+| Mass | Sum of service masses (`service_mass_tonnes`, else `mass_tonnes`); 10 t for a vehicle without mass |
+| Traction force | `min(tractive effort, 0.8 · power / v)`, summed over powered vehicles; the tractive effort uses the [pricing estimate](vehicle-pricing.md) (adhesive mass × 9.81 × 0.25) when not authored |
+| Throttle | Opens from idle to full over 4 s (`NOTCH_UP_SECONDS`), shut while braking or standing without a target |
+| Running resistance | Strahl: `2.5 + k · ((v_kmh + 12) / 10)²` ‰ of the weight; k = 0.033 (passenger), 0.05 when freight wagons dominate |
+| Rotating mass | ξ = 1.2 for locomotives running light, 1.06 for trains |
+| Acceleration | `(traction − resistance) / (ξ · mass)`; the train settles where traction equals resistance if its target is out of reach; 0.3 m/s² for a motor without any data; zero for an unpowered consist |
+| Brake percentage | Σ `braked_mass_tonnes` / mass; 85 % of a vehicle's mass when not catalogued, 0 for unbraked vehicles |
+| Brake control | Full brake: brake percentage / 100 m/s² (0.85 by default), plus resistance |
+| Service braking | 60 % of the full brake: lowering the target, and stopping ahead |
 
-Running resistance and gradients are not modelled yet.
+The formulas live in the stateless `RailPhysics` helper; `TrainDynamics` only collects
+the consist's numbers. Stop planning uses the service brakes alone (never less than
+0.05 m/s²), so trains stop slightly early rather than late. Gradients are not fed in yet.
+
+The driving panel's speedometer has a fixed 0–120 km/h scale (the dial's 0–12 marks × 10).
 
 ### Movement authority
 
 `get_movement_authority()` is the distance the train may still travel: the depot
 rollout limit, the end of its known route (a buffer, an unset fork or a gauge
 change), or the stopping point before the first [signal](#signals) ahead that shows
-stop. The speed never exceeds `sqrt(2 · 0.5 m/s² · authority)`, so trains brake
+stop. The speed never exceeds `sqrt(2 · service deceleration · authority)`, so trains brake
 smoothly to a stop there instead of halting instantly. The route is planned at least
 the stopping distance plus 20 m ahead.
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o8mlyh8q4d0i"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_sp4jc"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_sp4jc"]
 [ext_resource type="PackedScene" uid="uid://b66awn81lssav" path="res://assets/meshes/vehicles/rail/mpsb_12/mat/mesh_mpsb_12.tscn" id="2_qwih4"]
 [ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_igccd"]
 [ext_resource type="Script" uid="uid://ikgxu2g2bmw6" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_driving_particles.gd" id="4_c0lan"]

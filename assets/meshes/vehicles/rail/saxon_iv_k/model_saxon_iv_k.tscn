@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bjsisrymflyi"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_l1yar"]
+[ext_resource type="PackedScene" uid="uid://7e8b8f3j2sd6" path="res://assets/meshes/vehicles/rail/saxon_iv_k/mesh/mesh_saxon_iv_k.tscn" id="2_p4rkt"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_7hxlo"]
+[ext_resource type="Script" uid="uid://ikgxu2g2bmw6" path="res://game/gamescripts/nodes/vehicle/movement/vehicle_driving_particles.gd" id="4_ladnr"]
+[ext_resource type="PackedScene" path="res://addons/steam_exhaust/steam_exhaust.tscn" id="5_2b155"]
+[ext_resource type="Script" uid="uid://dg4qw56elbav5" path="res://game/gamescripts/nodes/vehicle/movement/mpsb_12_chimney_exhaust.gd" id="6_vq7f3"]
+[ext_resource type="Texture2D" uid="uid://boo7hugeeng6u" path="res://assets/textures/particles/smoke/smoke3.png" id="7_4ybsu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(2.0800476, 3.1834717, 8.873482)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og2iv"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_4ybsu")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[sub_resource type="Curve" id="Curve_yuw6k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.71008396, 0.6629214), -1.5781916, -1.5781916, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2g1eo"]
+curve = SubResource("Curve_yuw6k")
+
+[sub_resource type="Gradient" id="Gradient_58lbc"]
+colors = PackedColorArray(0.4045111, 0.40451115, 0.4045111, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8atry"]
+gradient = SubResource("Gradient_58lbc")
+
+[sub_resource type="Curve" id="Curve_dwu20"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ore0"]
+curve = SubResource("Curve_dwu20")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fut1a"]
+lifetime_randomness = 0.38
+emission_shape_scale = Vector3(0.2, 0, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, -0.2, 1)
+scale_min = 0.79999995
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_4ore0")
+color_ramp = SubResource("GradientTexture1D_8atry")
+alpha_curve = SubResource("CurveTexture_2g1eo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mqdw6"]
+size = Vector2(0.6, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fqgg"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_4ybsu")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 8.235
+
+[node name="ModelSaxonIvK" type="Node3D" unique_id=1207799899]
+script = ExtResource("1_l1yar")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="saxon_iv_k2" parent="." unique_id=376929278 instance=ExtResource("2_p4rkt")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -0.1816132)
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=1629833115 node_paths=PackedStringArray("vehicle3d")]
+script = ExtResource("3_7hxlo")
+vehicle3d = NodePath("..")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1983970183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.545, 0)
+shape = SubResource("BoxShape3D_qwrwv")
+
+[node name="Steam" type="Node3D" parent="." unique_id=427415751 node_paths=PackedStringArray("child_particles", "locomotive")]
+script = ExtResource("4_ladnr")
+effect_strength = 0.575
+child_particles = [NodePath("SideSteamParticles3D_R"), NodePath("SideSteamParticles3D_L")]
+locomotive = NodePath("")
+metadata/_custom_type_script = "uid://ikgxu2g2bmw6"
+
+[node name="ChimneyExhaust" parent="Steam" unique_id=1258160990 node_paths=PackedStringArray("locomotive") instance=ExtResource("5_2b155")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002134, 2.925, -2.945838)
+script = ExtResource("6_vq7f3")
+locomotive = NodePath("../..")
+idle_exhaust_strength = 0.4
+cruise_load = 0.45
+auto_velocity = false
+driving_wheel_diameter = 0.7
+outlet_radius = 0.12
+initial_size = 0.34
+final_size = 2.8
+particle_lifetime = 4.0
+opacity = 0.48
+cull_distance = 120.0
+
+[node name="SideSteamParticles3D_R" type="GPUParticles3D" parent="Steam" unique_id=1934660707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6157528, 0.5291842, -0.099583864)
+layers = 64
+material_override = SubResource("StandardMaterial3D_og2iv")
+visibility_range_end = 66.0
+visibility_range_end_margin = 6.6
+amount = 50
+amount_ratio = 0.575
+lifetime = 0.8
+randomness = 0.19
+process_material = SubResource("ParticleProcessMaterial_fut1a")
+draw_pass_1 = SubResource("QuadMesh_mqdw6")
+
+[node name="SideSteamParticles3D_L" type="GPUParticles3D" parent="Steam" unique_id=1100703260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616, 0.529, -0.09920502)
+layers = 64
+material_override = SubResource("StandardMaterial3D_7fqgg")
+visibility_range_end = 66.0
+visibility_range_end_margin = 6.6
+amount = 50
+amount_ratio = 0.575
+lifetime = 0.8
+randomness = 0.19
+process_material = SubResource("ParticleProcessMaterial_fut1a")
+draw_pass_1 = SubResource("QuadMesh_mqdw6")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=609368113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7071308, 1.212426, -3.6021378)
