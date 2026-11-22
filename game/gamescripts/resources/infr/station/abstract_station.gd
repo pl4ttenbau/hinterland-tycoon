@@ -12,6 +12,11 @@ var interchange: InterchangeData:
 	set(value): _interchange = weakref(value) if value != null else null
 	get(): return _interchange.get_ref() if _interchange != null else null
 var _interchange: WeakRef = null
+## Held weakly: the town store owns towns, and TownData.stations links back.
+var connected_town: TownData:
+	set(value): _connected_town = weakref(value) if value != null else null
+	get(): return _connected_town.get_ref() if _connected_town != null else null
+var _connected_town: WeakRef = null
 
 var interchange_num: int:
 	get(): return self.interchange.num if self.interchange != null else -1
@@ -68,7 +73,7 @@ func connect_to_town(_town_num):
 	if ! self.town_name:
 		self.town_name = TownData.get_town_by_num(self.town_num).town_name
 	# connect to town
-	var _connected_town := TownData.get_town_by_num(_town_num)
-	if _connected_town:
-		self.connected_town = _connected_town
-		_connected_town.connect_new_station(self)
+	var town := TownData.get_town_by_num(_town_num)
+	if town:
+		self.connected_town = town
+		town.connect_new_station(self)

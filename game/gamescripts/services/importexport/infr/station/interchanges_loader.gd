@@ -190,7 +190,7 @@ func _on_map_towns_loaded(towns: Array[TownData]) -> void:
 		if interchange.town_name.is_empty():
 			interchange.town_name = town.town_name
 		for stop: AbstractStation in interchange.stops:
-			stop.set("connected_town", town)
+			stop.connected_town = town
 			town.connect_new_station(stop)
 
 func clear() -> void:
@@ -206,14 +206,11 @@ func clear() -> void:
 func _disconnect_interchange(interchange: InterchangeData) -> void:
 	interchange.connections.clear_houses()
 	interchange.connections.clear_industries()
-	interchange.connections.parent = null
 	for stop: AbstractStation in interchange.stops:
-		var town: TownData = stop.get("connected_town")
+		var town: TownData = stop.connected_town
 		if town != null:
 			town.stations.erase(stop)
-		stop.set("connected_town", null)
-		stop.interchange = null
-		stop.connections.parent = null
+		stop.connected_town = null
 	interchange.stops.clear()
 	interchange.connected_town = null
 

@@ -17,9 +17,6 @@ func _run() -> void:
 	self.check(self.test_scene(), "Bus stop scene checks completed")
 	self.check(self.test_shelter_orientation(), "Shelter orientation checks completed")
 	self.check(self.test_editor_labels(), "Editor stop label checks completed")
-	# Existing station connections hold a back-reference to their parent Resource.
-	for station: RoadStationData in self.stations:
-		station.connections.parent = null
 	self.stations.clear()
 	print("Bus stop tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)

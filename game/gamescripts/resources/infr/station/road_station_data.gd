@@ -1,8 +1,6 @@
 @icon("res://assets/icons/icon_station_white.png")
 class_name RoadStationData extends AbstractStation
 
-@export var connected_town: TownData
-
 ## The stopping point is an authored road node, independent of building access links.
 @export var road_num: int = -1
 @export var node_index: int = -1

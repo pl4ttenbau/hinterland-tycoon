@@ -175,8 +175,6 @@ func test_manual_passenger_arrival() -> bool:
 	dialog.close_all()
 	await tree.process_frame
 	view.free()
-	stop.connections.parent = null
-	destination.connections.parent = null
 	Managers.interchanges = previous_catalog
 	catalog.free()
 	return true
@@ -319,8 +317,6 @@ func _test_nearby_stops() -> bool:
 	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Unknown interchange IDs retain distinct fallback labels")
 	stops.free()
 	interchanges.free()
-	for record: RoadStationData in records:
-		record.connections.parent = null
 	Managers.road_stops = previous_stops
 	Managers.interchanges = previous_interchanges
 	return true

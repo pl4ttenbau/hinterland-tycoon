@@ -284,12 +284,10 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		if created_interchange:
 			catalog.interchanges.erase(interchange)
 			catalog.by_num.erase(interchange.num)
-			interchange.connections.parent = null
-		stop.connections.parent = null
 		return {"error": "The stop could not be registered."}
 	if company != null:
 		company.spend(CompanyData.STOP_COST)
-	stop.set("connected_town", interchange.connected_town)
+	stop.connected_town = interchange.connected_town
 	if interchange.connected_town != null:
 		interchange.connected_town.connect_new_station(stop)
 	if stop is RoadStationData:

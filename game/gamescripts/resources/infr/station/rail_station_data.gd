@@ -6,9 +6,6 @@ enum PlatformSide { RIGHT, LEFT }
 
 @export var platform_side: PlatformSide = PlatformSide.RIGHT
 
-## connections
-@export var connected_town: TownData
-
 ## rail nodes
 @export var position: Vector3:
 	get(): return position

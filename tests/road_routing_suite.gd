@@ -9,6 +9,8 @@ var tree: SceneTree
 var roads := RoadStore.new()
 var network := RoadPathfinder.new()
 var stops: Dictionary = {}
+## Stops hold their interchange weakly; the suite owns them like the catalog does.
+var stop_interchanges: Array[InterchangeData] = []
 var depots: Array[RoadDepotData] = []
 
 func check(ok: bool, message: String) -> void:
@@ -25,7 +27,6 @@ func run(scene_tree: SceneTree) -> int:
 	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_stop_directions", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
-	_cleanup()
 	print("Road routing tests: %d passed, %d failed" % [passed, failed])
 	return 0 if failed == 0 else 1
 
@@ -36,10 +37,10 @@ func _setup_network() -> void:
 	_add_road(30, [[30, 5, 0], [30, 5, -30]])
 	RoadCross.of(roads._by_id[10].nodes[1], [20, 30])
 	var stop := RoadStationData.new(201, "Destination")
-	stop.interchange = InterchangeData.new()
+	stop_interchanges.append(InterchangeData.new())
+	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 501
 	stop.interchange.interchange_name = "Destination"
-	stop.interchange.connections.parent = null
 	stop.road_num = 20
 	stop.node_index = 2
 	stops[201] = stop
@@ -101,7 +102,6 @@ func test_stop_directions() -> bool:
 		check(path.size() == 3 and path[1] == from, "Approaching from the opposite end requires routing through the served direction")
 	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
 	check(stop.anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
-	stop.connections.parent = null
 	return true
 
 ## A direct-looking curved road must not beat a genuinely shorter connected route.
@@ -321,9 +321,9 @@ func test_execution() -> bool:
 
 	# A removed inventory must stop the car at its visit, never silently skip it.
 	var stop := RoadStationData.new(401, "Transfer stop")
-	stop.interchange = InterchangeData.new()
+	stop_interchanges.append(InterchangeData.new())
+	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 601
-	stop.interchange.connections.parent = null
 	stop.road_num = 100
 	stop.node_index = 2
 	catalog.stops_by_num[401] = stop
@@ -347,7 +347,6 @@ func test_execution() -> bool:
 	manager.free()
 	loader.free()
 	catalog.free()
-	stop.connections.parent = null
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles
 	Managers.interchanges = old_interchanges
@@ -485,8 +484,3 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 		check(kinds.get_item_id(index) != RoadRoutePoint.Kind.NODE, "Raw nodes cannot be selected as route targets")
 	dialog.free()
 	vehicle.free()
-
-## Break the fixture's stop back-reference cycles.
-func _cleanup() -> void:
-	for stop: AbstractStation in stops.values():
-		stop.connections.parent = null

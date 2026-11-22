@@ -30,8 +30,6 @@ func run(scene_tree: SceneTree) -> int:
 			check(false, "%s aborted" % test)
 	RoadVehicle3D.follow_road_path = default_follow
 	host.free()
-	for stop: AbstractStation in stops.values():
-		stop.connections.parent = null
 	Managers.road_stops = old_stops
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles
