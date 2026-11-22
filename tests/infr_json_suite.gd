@@ -59,7 +59,8 @@ func test_save(tree: SceneTree) -> bool:
 	check(WorldUtils.vec3_from_float_arr(data[0].points[0].handleOut) == Vector3(2, 6, 12), "Handle offsets include parent scale without translation")
 	line.rail_gauge = InfrType.GAUGE_1000_MM
 	var again: EditorActionResult = store.save_lines(path, lines, Enums.InfrDomain.RAIL)
-	check(again.ok and again.backup != saved.backup and FileAccess.file_exists(saved.backup), "Every save retains a separate backup")
+	check(again.ok and again.backup != saved.backup and FileAccess.file_exists(again.backup), "Each save makes a fresh backup")
+	check(not FileAccess.file_exists(saved.backup), "Older backups of the file are removed, keeping only the newest")
 	check(InfrJsonStore.read_records(path).records[0].type == InfrType.GAUGE_1000_MM, "A track gauge selected in the editor is saved")
 	var before: String = FileAccess.get_file_as_string(path)
 	line.curve.add_point(Vector3(9, 0, 0))

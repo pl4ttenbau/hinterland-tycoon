@@ -220,8 +220,30 @@ func do_edit_in_cache() -> void:
 		EditorInterface.get_selection().clear()
 		EditorInterface.get_selection().add_node(copy)
 
-func do_place_on_ground():
-	Infr3DExporter.place_on_ground(self)
+## Drop every point onto its map's terrain, InfrUtils.GROUND_CLEARANCE above it. Only horizontal positions
+## are kept; handles stay as they are (run Auto-Smooth afterwards if the heights changed a lot).
+## Uses the terrain of the world map the line sits in, so it works for cache lines in any open map. The
+## standalone EditorObjects scene has no terrain; there it only reports that. Not undoable, like the
+## other editor tools: the map's history is in git.
+func do_place_on_ground() -> void:
+	var map: Node = WorldUtils.owning_map(self)
+	var terrain: Terrain3D = map.terrain if map is WorldMapScene else null
+	if terrain == null or terrain.data == null:
+		push_warning("Place On Ground: %s is not inside a world map with terrain." % name)
+		return
+	var missed: int = 0
+	for index: int in range(self.curve.point_count):
+		var point: Vector3 = self.to_global(self.curve.get_point_position(index))
+		## Terrain3D answers NaN outside its regions and over holes; such points keep their height.
+		var ground: float = terrain.data.get_height(point)
+		if is_nan(ground):
+			missed += 1
+			continue
+		point.y = ground + InfrUtils.GROUND_CLEARANCE
+		self.curve.set_point_position(index, self.to_local(point))
+	if missed > 0:
+		push_warning("Place On Ground: %d of %d points of %s have no terrain below and were left as they are." \
+			% [missed, self.curve.point_count, name])
 
 ## No file writing here, as with EditorCache: the plugin owns JSON persistence and decides where the
 ## line's map file is.

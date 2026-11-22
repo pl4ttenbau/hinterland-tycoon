@@ -74,11 +74,21 @@ func _merge_line_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, record
 	if line.num < 0 or seen.has(line.num) or line.curve == null or line.curve.point_count < 2:
 		return failure("Cannot save duplicate/negative IDs or curves with fewer than two points.")
 	seen[line.num] = true
-	var record: Dictionary = records.get(line.num, {}).duplicate(true)
-	var old_points: Array = record.get("points", [])
-	var problem: String = _validate_anchor_changes(line, old_points)
+	var old_record: Dictionary = records.get(line.num, {})
+	var problem: String = _validate_anchor_changes(line, old_record.get("points", []))
 	if not problem.is_empty():
 		return failure(problem)
+	records[line.num] = line_to_record(line, domain, old_record)
+	return EditorActionResult.success()
+
+## The JSON record for `line`, exactly as a save builds it before rounding and formatting: world-space
+## positions and handles, number, name, type and (roads) the smoothing flag. `old_record` is the saved
+## record being replaced: its other top-level fields are kept, and so is each point's metadata (forks,
+## stations, ...) when the point count is unchanged. Callers check anchors first (see _merge_line_record).
+## Static and side-effect free, so tests can round-trip lines through the real save conversion.
+static func line_to_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, old_record: Dictionary = {}) -> Dictionary:
+	var record: Dictionary = old_record.duplicate(true)
+	var old_points: Array = record.get("points", [])
 	record["num"] = line.num
 	record["name"] = line.infr_name
 	if domain == Enums.InfrDomain.RAIL and not line.rail_gauge.is_empty():
@@ -91,10 +101,9 @@ func _merge_line_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, record
 	for index: int in range(line.curve.point_count):
 		points.append(_serialize_curve_point(line, index, old_points))
 	record["points"] = points
-	records[line.num] = record
-	return EditorActionResult.success()
+	return record
 
-func _validate_anchor_changes(line: EditorInfrLine3D, old_points: Array) -> String:
+static func _validate_anchor_changes(line: EditorInfrLine3D, old_points: Array) -> String:
 	# Index-based metadata must not silently move to another anchor after edits.
 	if old_points.size() != line.curve.point_count:
 		for point: Dictionary in old_points:
@@ -103,7 +112,7 @@ func _validate_anchor_changes(line: EditorInfrLine3D, old_points: Array) -> Stri
 					return "Record %d has point metadata and a changed point count; preserve its anchors before saving." % line.num
 	return ""
 
-func _serialize_curve_point(line: EditorInfrLine3D, index: int, old_points: Array) -> Dictionary:
+static func _serialize_curve_point(line: EditorInfrLine3D, index: int, old_points: Array) -> Dictionary:
 	var point: Dictionary = old_points[index].duplicate(true) if old_points.size() == line.curve.point_count else {}
 	point["pos"] = vec_array(line.to_global(line.curve.get_point_position(index)))
 	# Handles are offsets, so apply only the basis, without translation.
@@ -163,7 +172,21 @@ static func write_text_with_backup(path: String, contents: String) -> EditorActi
 	if error != OK:
 		DirAccess.remove_absolute(temporary)
 		return failure("Could not replace JSON; original retained: " + error_string(error))
+	# One backup per file is enough: the one just made holds the state before this save.
+	if not backup.is_empty():
+		_remove_older_backups(absolute, backup)
 	return EditorActionResult.success(0, backup)
+
+## Delete every earlier "<file>.bak-*" next to `absolute`, keeping only `keep`. Runs only after a
+## successful save, so the newest backup always exists before older ones go. Failures are ignored:
+## a leftover backup is harmless, and the save itself already succeeded.
+static func _remove_older_backups(absolute: String, keep: String) -> void:
+	var directory: String = absolute.get_base_dir()
+	var prefix: String = absolute.get_file() + ".bak-"
+	for file: String in DirAccess.get_files_at(directory):
+		var candidate: String = directory.path_join(file)
+		if file.begins_with(prefix) and candidate != keep:
+			DirAccess.remove_absolute(candidate)
 
 static func _write_temporary_json(path: String, contents: String) -> EditorActionResult:
 	var file := FileAccess.open(path, FileAccess.WRITE)

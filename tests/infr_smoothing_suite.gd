@@ -142,11 +142,13 @@ func test_round_trip() -> bool:
 	tree.root.add_child(line)
 	line.curve = make_curve([Vector3.ZERO, Vector3(2, 1, 0), Vector3(12, 4, 8), Vector3(13, 3, 9)])
 	InfrUtils.smooth_curve3d(line.curve)
-	# A real text JSON round trip catches arrays vs Vector3 display strings as well
-	# as missing endpoint handles and accidentally mirrored outgoing handles.
-	var exported: Dictionary = Infr3DExporter.infr3d_to_road_dict(line)
-	var json: String = Infr3DExporter.replace_vec3_tuples_with_float_arr(JSON.stringify(exported))
-	var data: Dictionary = JSON.parse_string(json)
+	## Through the real save path and file format: InfrJsonStore builds the record, rounds it (positions to
+	## cm, handles to mm) and formats it, exactly as an editor save writes tracks.json / roads.json. Reloading
+	## that text catches missing endpoint handles and accidentally mirrored outgoing handles.
+	var records: Array = [InfrJsonStore.line_to_record(line, Enums.InfrDomain.ROAD)]
+	InfrJsonStore.round_positions(records)
+	var json: String = InfrJsonStore.format_json(records)
+	var data: Dictionary = JSON.parse_string(json)[0]
 	var reloaded: EditorInfrLine3D = RoadMapper.editor_line_from_data(data)
 	reloaded.create_curve_from_dict(data)
 	check_curves_equal(reloaded.curve, line.curve, "Editor JSON round trip", 0.0005)
@@ -198,7 +200,7 @@ func test_runtime_options() -> bool:
 	var line: EditorInfrLine3D = EditorInfrLine3D.ofRoad(93, "Unsmoothed", false)
 	tree.root.add_child(line)
 	line.curve = make_curve([Vector3.ZERO, Vector3(5, 1, 2), Vector3(10, 2, 5)])
-	check(Infr3DExporter.infr3d_to_road_dict(line).autosmooth == false, "Export preserves the road's smoothing option")
+	check(InfrJsonStore.line_to_record(line, Enums.InfrDomain.ROAD).autosmooth == false, "Saving preserves the road's smoothing option")
 	line.free()
 	return true
 
