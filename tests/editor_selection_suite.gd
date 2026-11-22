@@ -26,6 +26,19 @@ func test_toolbar(tree: SceneTree) -> bool:
 		buttons[tool].button_pressed = true
 		for other: Enums.EnumEditorTool in buttons:
 			check(buttons[other].button_pressed == (other == tool), "Selecting a toolbar tool releases every conflicting tool")
+	## Layout: every visible tool explains itself; Build Town stays hidden until it works; Free Tool is an
+	## action, not a mode; drawing and station tools carry the project's own icons (editor-theme icons
+	## only resolve inside the editor, so Select, Add Stop and Free Tool have none here).
+	for tool: Enums.EnumEditorTool in buttons:
+		if buttons[tool].visible:
+			check(not buttons[tool].tooltip_text.is_empty(), "%s has a tooltip" % buttons[tool].text)
+	check(not buttons[Enums.EnumEditorTool.BUILD_TOWN].visible, "Build Town is hidden until town placement exists")
+	check(not buttons[Enums.EnumEditorTool.NONE].toggle_mode, "Free Tool is a one-shot action")
+	for tool: Enums.EnumEditorTool in [Enums.EnumEditorTool.CREATE_ROAD, Enums.EnumEditorTool.CREATE_RAIL, Enums.EnumEditorTool.CREATE_INTERCHANGE]:
+		check(buttons[tool].icon != null, "%s shows its icon" % buttons[tool].text)
+	buttons[Enums.EnumEditorTool.CREATE_RAIL].button_pressed = true
+	check(not buttons[Enums.EnumEditorTool.CREATE_RAIL].flat and buttons[Enums.EnumEditorTool.CREATE_ROAD].flat,
+		"Only the active tool is drawn raised")
 	var other_panel: Control = load("res://addons/hinterland_tools/editor_tools_panel.tscn").instantiate()
 	tree.root.add_child(other_panel)
 	var other_buttons: Dictionary[Enums.EnumEditorTool, Button] = HinterlandEditorPlugin.create_tool_buttons(other_panel)
