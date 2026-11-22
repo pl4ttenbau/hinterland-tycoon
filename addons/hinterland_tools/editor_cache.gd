@@ -2,6 +2,9 @@
 @icon("res://assets/icons/nodes_3d/icon_editor_cache.svg")
 class_name EditorCache extends Node3D
 
+## Name of the cache node under a map scene. A map holds at most one, found with find().
+const NODE_NAME: String = "EditorCache"
+
 ## Local map-owned authoring lines. JSON saving/loading is handled by InfrJsonStore.
 ## This deliberately does not use the legacy EditorObjects container classes.
 @export_group("Save JSON")
@@ -43,26 +46,25 @@ func _prepare_existing() -> void:
 			_prepare_domain(get_parent(), self, domain)
 
 static func _domain_key(domain: Enums.InfrDomain) -> String:
-	return "initialized_roads" if domain == Enums.InfrDomain.ROAD else "initialized_rails"
+	return "initialized_" + InfrDomains.plural(domain)
+
+## The cache of a map scene, or null if it has none yet.
+static func find(world: Node) -> Node3D:
+	return world.get_node_or_null(NODE_NAME) as Node3D
 
 static func ensure_container(world: WorldMapScene, domain: Enums.InfrDomain) -> Node3D:
-	var cache: Node3D = world.get_node_or_null("EditorCache") as Node3D
+	var cache: Node3D = find(world)
 	if cache == null:
 		cache = EditorCache.new()
-		cache.name = "EditorCache"
+		cache.name = NODE_NAME
 		world.add_child(cache)
 		cache.owner = world
 	_prepare_domain(world, cache, domain)
 	return cache
 
 static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.InfrDomain) -> void:
-	var legacy: Node3D
-	for node: Node in world.find_children("*", "", true, false):
-		if cache.is_ancestor_of(node):
-			continue
-		if (domain == Enums.InfrDomain.ROAD and node is GeneratedRoadWays) or (domain == Enums.InfrDomain.RAIL and node is GeneratedRailLines):
-			legacy = node as Node3D
-			break
+	## The map's reference container (EditorRoads/EditorRails), whose lines the cache edits copies of.
+	var reference: Node3D = InfrJsonStore.reference_container_for(world, domain)
 	var key: String = _domain_key(domain)
 	var was_initialized: bool = cache.has_meta(key)
 	_flatten_cached_lines(world, cache, domain)
@@ -71,8 +73,8 @@ static func _prepare_domain(world: WorldMapScene, cache: Node3D, domain: Enums.I
 	# Older cache versions hid the entire source container. Undo that once on
 	# upgrade; subsequent user visibility changes are left alone.
 	var visibility_key: String = key + "_visible_sources"
-	if legacy != null and was_initialized and not cache.has_meta(visibility_key):
-		legacy.show()
+	if reference != null and was_initialized and not cache.has_meta(visibility_key):
+		reference.show()
 	cache.set_meta(visibility_key, true)
 	refresh_source_visibility(world, domain)
 
@@ -96,7 +98,7 @@ static func _remove_empty_wrappers(cache: Node3D) -> void:
 			node.queue_free()
 
 static func refresh_source_visibility(world: Node, domain: Enums.InfrDomain) -> void:
-	var cache: Node = world.get_node_or_null("EditorCache")
+	var cache: Node = find(world)
 	if cache == null:
 		return
 	var ids: Dictionary = {}

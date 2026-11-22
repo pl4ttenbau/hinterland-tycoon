@@ -16,7 +16,7 @@ static func exit_for(house: Node3D) -> Vector3:
 ## Cached edits take precedence over source lines with the same persistent ID.
 static func editor_roads(world: Node) -> Array[EditorInfrLine3D]:
 	var by_id: Dictionary = {}
-	var cache: Node = world.get_node_or_null("EditorCache")
+	var cache: Node = EditorCache.find(world)
 	for node: Node in world.find_children("*", "", true, false):
 		if node is EditorInfrLine3D and node.infr_domain == Enums.InfrDomain.ROAD and node.num >= 0:
 			if not by_id.has(node.num) or (cache != null and cache.is_ancestor_of(node)):

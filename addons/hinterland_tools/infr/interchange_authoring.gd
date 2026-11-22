@@ -21,9 +21,9 @@ func prepare(world: WorldMapScene, line: EditorInfrLine3D, index: int, adding_st
 		var lines: Dictionary = {}
 		for record: Dictionary in source.records:
 			lines[int(record.num)] = record.points
-		network["ROAD" if domain == Enums.InfrDomain.ROAD else "RAIL"] = lines
-	var domain_key: String = "ROAD" if line.infr_domain == Enums.InfrDomain.ROAD else "RAIL"
-	var id_key: String = "roadNum" if domain_key == "ROAD" else "trackNum"
+		network[InfrDomains.key(domain)] = lines
+	var domain_key: String = InfrDomains.key(line.infr_domain)
+	var id_key: String = InfrDomains.stop_id_key(line.infr_domain)
 	var anchor: Dictionary = {"domain": domain_key, "nodeIndex": index}
 	anchor[id_key] = line.num
 	var position: Vector3 = _anchor_position(anchor, network)

@@ -243,7 +243,7 @@ func _update_tool_status() -> void:
 		self.tool_status.text = "No tool selected · Select Create Road or Create Rail to start drawing."
 
 func _on_cache_save_requested(cache: Node3D, domain: int) -> void:
-	if not is_instance_valid(cache) or not is_instance_valid(self.active_world) or cache.get_parent() != self.active_world or cache != self.active_world.get_node_or_null("EditorCache"):
+	if not is_instance_valid(cache) or not is_instance_valid(self.active_world) or cache.get_parent() != self.active_world or cache != EditorCache.find(self.active_world):
 		push_warning("Open the cache's world map before saving its JSON.")
 		return
 	if domain not in [Enums.InfrDomain.ROAD, Enums.InfrDomain.RAIL]:
@@ -263,7 +263,7 @@ func _on_line_save_requested(line: Node3D) -> void:
 	if not self.drawing.points.is_empty():
 		_report_file_status("Finish the current draft with Enter or cancel it with Esc before saving.")
 		return
-	var world: Node = _owning_world(infr_line)
+	var world: Node = WorldUtils.owning_map(infr_line)
 	var path: String = InfrJsonStore.path_for(world, infr_line.infr_domain) if world != null else ""
 	if path.is_empty():
 		_report_file_status("Save Single: the line is not inside a world map or EditorObjects scene with a map key.")
@@ -274,21 +274,13 @@ func _on_line_save_requested(line: Node3D) -> void:
 	if not result.ok:
 		_report_file_status("Save Single: " + result.error)
 		return
-	var kind: String = "road" if infr_line.infr_domain == Enums.InfrDomain.ROAD else "track"
+	var kind: String = InfrDomains.singular(infr_line.infr_domain)
 	var message: String = "%s %s %d (%s) in %s." % ["Overwrote" if existed else "Added", kind, infr_line.num, infr_line.infr_name, path.get_file()]
 	message += " Backup: " + result.backup if not result.backup.is_empty() else " New JSON file created."
 	_report_file_status(message, false)
 	EditorInterface.get_resource_filesystem().scan()
 	if is_instance_valid(self.drawing.world):
 		self.drawing.refresh_endpoints()
-
-## The map scene a line belongs to: a WorldMapScene (cache lines) or the standalone WorldEditorObjects
-## scene (reference lines under EditorInfr). Both carry the map_key that names the JSON file.
-static func _owning_world(line: Node) -> Node:
-	var node: Node = line.get_parent()
-	while node != null and not (node is WorldMapScene or node is WorldEditorObjects):
-		node = node.get_parent()
-	return node
 
 static func _record_exists(path: String, num: int) -> bool:
 	var source: InfrCatalogReadResult = InfrJsonStore.read_records(path)
@@ -369,7 +361,7 @@ func _on_json_save(domain: Enums.InfrDomain) -> void:
 		self.file_status.text = result.error
 		push_warning(result.error)
 		return
-	var kind: String = "roads" if domain == Enums.InfrDomain.ROAD else "rails"
+	var kind: String = InfrDomains.plural(domain)
 	self.json_store.flush_saved(self.active_world, domain, self.get_undo_redo())
 	self.file_status.text = "Saved %d %s. Cache cleared; load JSON in the EditorObjects Inspector." % [result.count, kind]
 	self.file_status.text += " Backup: " + result.backup if not result.backup.is_empty() else " New JSON file created."

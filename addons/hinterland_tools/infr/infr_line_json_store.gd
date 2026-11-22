@@ -10,7 +10,7 @@ const JSON_LINE_WIDTH: int = 120
 static func path_for(world: Node, domain: Enums.InfrDomain) -> String:
 	if world.map_key.is_empty() or world.map_key.get_file() != world.map_key or world.map_key in [".", ".."]:
 		return ""
-	return INFR_JSON_PATH_TEMPLATE % [world.map_key, "roads" if domain == Enums.InfrDomain.ROAD else "tracks"]
+	return INFR_JSON_PATH_TEMPLATE % [world.map_key, InfrDomains.json_stem(domain)]
 
 static func failure(message: String) -> EditorActionResult:
 	return EditorActionResult.failure(message)
@@ -84,7 +84,7 @@ func _merge_line_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, record
 	if domain == Enums.InfrDomain.RAIL and not line.rail_gauge.is_empty():
 		record["type"] = line.rail_gauge
 	elif not record.has("type"):
-		record["type"] = "rural_road" if domain == Enums.InfrDomain.ROAD else "NORMAL_GAUGE"
+		record["type"] = InfrDomains.default_type(domain)
 	if domain == Enums.InfrDomain.ROAD:
 		record["autosmooth"] = line.autosmooth
 	var points: Array = []
@@ -179,11 +179,11 @@ static func _write_temporary_json(path: String, contents: String) -> EditorActio
 	return EditorActionResult.success()
 
 static func reference_container_for(world: Node, domain: Enums.InfrDomain) -> Node3D:
-	var cache: Node = world.get_node_or_null("EditorCache")
+	var cache: Node = EditorCache.find(world)
 	for node: Node in world.find_children("*", "", true, false):
 		if cache != null and cache.is_ancestor_of(node):
 			continue
-		if (domain == Enums.InfrDomain.ROAD and node is GeneratedRoadWays) or (domain == Enums.InfrDomain.RAIL and node is GeneratedRailLines):
+		if InfrDomains.is_reference_container(node, domain):
 			return node as Node3D
 	return null
 

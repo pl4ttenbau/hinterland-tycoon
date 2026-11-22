@@ -214,7 +214,7 @@ func test_save_requests(tree: SceneTree) -> bool:
 	cache.add_child(cached)
 	cached.do_save_single()
 	check(line_requests == [cached], "Save Single emits one request naming its line")
-	check(HinterlandEditorPlugin._owning_world(cached) == world, "A cache line belongs to its world map")
+	check(WorldUtils.owning_map(cached) == world, "A cache line belongs to its world map")
 	## Reference lines loaded under EditorInfr in the standalone EditorObjects scene can be saved too.
 	var objects := WorldEditorObjects.new()
 	var editor_infr := Node3D.new()
@@ -224,7 +224,7 @@ func test_save_requests(tree: SceneTree) -> bool:
 	editor_infr.add_child(editor_rails)
 	objects.add_child(editor_infr)
 	tree.root.add_child(objects)
-	check(HinterlandEditorPlugin._owning_world(reference) == objects, "A reference line under EditorInfr belongs to its EditorObjects scene")
+	check(WorldUtils.owning_map(reference) == objects, "A reference line under EditorInfr belongs to its EditorObjects scene")
 	objects.free()
 	bus.free()
 	check(HinterlandEditorSignals.instance == null, "Removing the bus clears its static reference")

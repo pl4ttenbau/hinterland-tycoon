@@ -2,11 +2,6 @@
 @icon("res://assets/icons/nodes_3d/icon_infr_node.svg")
 class_name EditorInfrLine3D extends LinePath3D
 
-const RAIL_COLOR = Color.BLACK
-const RAIL_MAT_PATH = "res://assets/packed/materials/line3d_rail_track_mat.tres"
-const ROAD_COLOR = Color.DARK_ORANGE
-const ROAD_MAT_PATH = "res://assets/packed/materials/line3d_roadway_mat.tres"
-
 var _connection_service: Node
 var _junction_markers: Array[MeshInstance3D] = []
 
@@ -15,13 +10,19 @@ func _validate_property(property: Dictionary) -> void:
 		property.usage = PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY
 	elif property.name == "rail_gauge" and infr_domain != Enums.InfrDomain.RAIL:
 		property.usage &= ~PROPERTY_USAGE_EDITOR
+	## Derived values: shown for information, never saved into scenes. `color` is a getter and `abs_aabb`
+	## is recalculated from the points; saving them only bloated map scenes (285 colours in MPSB alone).
+	elif property.name in ["color", "abs_aabb"]:
+		property.usage = PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_READ_ONLY
+	## The line material (from LinePath3D) is assigned in _enter_tree from the domain; storing it would
+	## only freeze an old copy into the scene.
+	elif property.name == "material":
+		property.usage &= ~PROPERTY_USAGE_STORAGE
 
 func _register_connections() -> void:
 	if not is_inside_tree():
 		return
-	var world: Node = get_parent()
-	while world != null and not (world is WorldMapScene or world is WorldEditorObjects):
-		world = world.get_parent()
+	var world: Node = WorldUtils.owning_map(self)
 	if world != null:
 		set_notify_transform(true)
 		if not curve_changed.is_connected(_connections_changed):
@@ -233,23 +234,13 @@ func do_save_single() -> void:
 #endregion
 
 #region Helper-Methods
+## Colour, material and node name per domain come from InfrDomains.
 func _get_color() -> Color:
-	if self.infr_domain == Enums.InfrDomain.RAIL:
-		return RAIL_COLOR
-	elif self.infr_domain == Enums.InfrDomain.ROAD:
-		return ROAD_COLOR
-	return Color.MAGENTA
-	
+	return InfrDomains.editor_color(self.infr_domain)
+
 func _get_material(_domain: Enums.InfrDomain) -> ShaderMaterial:
-	if _domain == Enums.InfrDomain.RAIL:
-		return preload(RAIL_MAT_PATH) as ShaderMaterial
-	elif _domain == Enums.InfrDomain.ROAD:
-		return preload(ROAD_MAT_PATH) as ShaderMaterial
-	return null
-	
+	return InfrDomains.line_material(_domain)
+
 func _get_node_name() -> String:
-	var name_prefix: String = "RailTrack"
-	if self.infr_domain == Enums.InfrDomain.ROAD:
-		name_prefix = "RoadWay"
-	return name_prefix + "_" + str(self.num)
+	return InfrDomains.node_name(self.infr_domain, self.num)
 #endregion

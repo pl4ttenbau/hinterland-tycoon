@@ -68,13 +68,13 @@ func _collect_stop_placement(world: WorldEditorObjects, stop: Dictionary, catalo
 
 func _create_stop_label(placement: EditorStopLabelPlacement, container: Node3D) -> StationSign3D:
 	var label: StationSign3D = load(SIGN_SCENE_PATH).instantiate()
-	label.name = "%sStop_%d" % ["Rail" if placement.domain == Enums.InfrDomain.RAIL else "Road", placement.stop_num]
+	label.name = "%sStop_%d" % [InfrDomains.title(placement.domain), placement.stop_num]
 	label.station_name = placement.station_name
 	label.position = container.to_local(placement.position + Vector3.UP * LABEL_HEIGHT)
 	label.visibility_range_end = 0.0
 	label.set_meta("stop_num", placement.stop_num)
 	label.set_meta("interchange_num", placement.interchange_num)
-	label.set_meta("domain", "RAIL" if placement.domain == Enums.InfrDomain.RAIL else "ROAD")
+	label.set_meta("domain", InfrDomains.key(placement.domain))
 	label.set_meta("node_index", placement.node_index)
 	return label
 
