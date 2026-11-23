@@ -12,7 +12,7 @@ func check(condition: bool, message: String) -> void:
 
 func run(_tree: SceneTree) -> int:
 	for test: Callable in [test_nearest_node, test_resolving, test_normalized, test_far_edits, test_from_dict,
-			test_write_to]:
+			test_write_to, test_same_place, test_curved_nodes]:
 		check(test.call() == true, "%s completed without runtime errors" % test.get_method())
 	print("Track anchor tests: %d failures" % failures)
 	return 1 if failures > 0 else 0
@@ -94,4 +94,39 @@ func test_write_to() -> bool:
 	check(record.nodeIndex == 1 and record.nodeOffset == 12.35, "Offsets are written in centimetres")
 	var reread: TrackAnchor = TrackAnchor.from_dict(record)
 	check(reread.same_place(TrackAnchor.new(1, 12.346)), "A written anchor reads back as the same place")
+	return true
+
+func test_same_place() -> bool:
+	## Same place means the same written anchor: node and offset in whole centimetres.
+	check(TrackAnchor.new(1, 2.0).same_place(TrackAnchor.new(1, 2.001)), "Offsets that write the same centimetre are the same place")
+	check(not TrackAnchor.new(1, 2.0).same_place(TrackAnchor.new(1, 2.02)), "Two centimetres apart is another place")
+	check(not TrackAnchor.new(1, 0.0).same_place(TrackAnchor.new(2, 0.0)), "Another node is another place")
+	check(not TrackAnchor.new(1, 0.0).same_place(null), "No anchor is never the same place")
+	## The editor's re-anchoring report prints anchors like this.
+	check(str(TrackAnchor.new(2, -8.0)) == "node 2 -8.00 m" and str(TrackAnchor.new(1, 2.0)) == "node 1 +2.00 m",
+		"Anchors print as node and signed offset")
+	return true
+
+## On a bent line, distances along the curve are no longer x: the anchor must still find its nodes exactly.
+func test_curved_nodes() -> bool:
+	var track := RailTrackData.new()
+	track.num = 2
+	var positions: Array[Vector3] = [Vector3(0, 0, 0), Vector3(10, 0, 5), Vector3(20, 0, 0), Vector3(30, 0, 8)]
+	for index: int in range(positions.size()):
+		track.add_node(RailNodeData.of(index, positions[index], track), false)
+	track.build_curve()
+	var previous: float = -1.0
+	for index: int in range(positions.size()):
+		var on_node := TrackAnchor.new(index)
+		check(on_node.position_on(track) == positions[index], "A stop on node %d stands exactly on the node" % index)
+		var distance: float = on_node.curve_offset(track)
+		check(distance > previous, "Node %d lies further along the curve than the one before" % index)
+		previous = distance
+		var found: TrackAnchor = TrackAnchor.at_curve_offset(track, distance)
+		check(found.node_index == index and near(found.offset, 0.0), "Node %d's own curve distance anchors back to it" % index)
+	## Between nodes: a place 3 m past node 1 resolves 3 m further along the curve and anchors back the same.
+	var between := TrackAnchor.new(1, 3.0)
+	var back: TrackAnchor = TrackAnchor.at_curve_offset(track, between.curve_offset(track))
+	check(back.node_index == 1 and near(back.offset, 3.0), "A place between nodes survives the round trip through its curve distance")
+	check(between.position_on(track).distance_to(positions[1]) > 2.5, "The place is really off the node")
 	return true

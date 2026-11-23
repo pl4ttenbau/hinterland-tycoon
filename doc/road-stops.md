@@ -42,6 +42,9 @@ physical rail and road access points, with no separate child names.
   toward the next node, negative toward the previous one (default 0, exactly on the
   node). The game re-attaches each stop to its nearest node on load, so an edit to
   the line far from the stop does not move it.
+  When the editor saves a track or road whose point count changed, it moves that
+  line's stops back to where they stood (node indices after the change would name
+  other nodes) and writes `interchanges.json` along with the line file.
 - All IDs and node indices are nonnegative integers. Node index zero is valid.
   Stop numbers must be unique across **both modes and every interchange on the
   map**. Interchange numbers have a separate namespace. Two rail stops may not share
@@ -121,6 +124,7 @@ building leaves its sign visible. Road stops serving both directions have one si
 To preview stops while authoring a map, open `editorobjects_<map>.tscn` separately,
 select the `WorldEditorObjects` root, and click **Load Stop Labels JSON**. This
 reads `interchanges.json` and resolves its `trackNum`/`roadNum` plus `nodeIndex`
+and `nodeOffset`
 against `tracks.json` / `roads.json`. It creates only billboard labels under
 `EditorStops`, 15 metres above each anchor, without platforms, shelters or
 simulation station data. Labels have no editor distance cutoff.

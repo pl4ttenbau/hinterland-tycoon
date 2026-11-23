@@ -65,10 +65,43 @@ func save_lines(path: String, lines: Array[EditorInfrLine3D], domain: Enums.Infr
 		if not result.ok:
 			return result
 	var output: Array = _prepare_records_for_save(records, domain)
+	# Worked out before anything is written: if the stops cannot be updated, nothing is saved.
+	var stops: Dictionary = _reanchor_stops(path, source.records, records, domain)
+	if stops.has("error"):
+		return failure(stops.error)
 	var result: EditorActionResult = write_with_backup(path, output)
 	if result.ok:
 		result.count = output.size()
+	if result.ok and stops.has("records"):
+		var written: EditorActionResult = write_text_with_backup(stops.path, InfrJsonFormatter.interchanges_text(stops.records))
+		if not written.ok:
+			return failure("Saved %s, but the stops on changed lines were not updated: %s" % [path.get_file(), written.error])
 	return result
+
+## Stops (interchanges.json, next to the line file) name a node by its index. When a line gains or loses
+## points, later indices shift and a stop would silently jump to another node; so its stops are moved
+## back to where they stood (EditorStopAnchors.reanchor_stops). Returns {} when nothing needs to change,
+## {"path", "records"} with the updated catalog, or {"error"} when the catalog cannot be read.
+func _reanchor_stops(path: String, old_list: Array, new_records: Dictionary, domain: Enums.InfrDomain) -> Dictionary:
+	var old_records: Dictionary = {}
+	var changed: bool = false
+	for record: Dictionary in old_list:
+		var num: int = int(record.num)
+		old_records[num] = record
+		if new_records.has(num) and new_records[num].points.size() != record.points.size():
+			changed = true
+	var catalog_path: String = path.get_base_dir().path_join("interchanges.json")
+	if not changed or not FileAccess.file_exists(catalog_path):
+		return {}
+	var catalog: Variant = JSON.parse_string(FileAccess.get_file_as_string(catalog_path))
+	if InterchangesLoader.validate_definitions(catalog) != OK:
+		return {"error": "interchanges.json is invalid, so the stops on lines with added or removed points cannot be updated. Fix it first."}
+	var report: Array[String] = EditorStopAnchors.reanchor_stops(catalog, InfrDomains.key(domain), old_records, new_records)
+	if report.is_empty():
+		return {}
+	for line: String in report:
+		print("Re-anchored " + line)
+	return {"path": catalog_path, "records": catalog}
 
 func _merge_line_record(line: EditorInfrLine3D, domain: Enums.InfrDomain, records: Dictionary, seen: Dictionary) -> EditorActionResult:
 	if line.num < 0 or seen.has(line.num) or line.curve == null or line.curve.point_count < 2:
