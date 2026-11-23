@@ -42,7 +42,7 @@ func _setup_network() -> void:
 	stop.interchange.num = 501
 	stop.interchange.interchange_name = "Destination"
 	stop.road_num = 20
-	stop.node_index = 2
+	stop.anchor = TrackAnchor.new(2)
 	stops[201] = stop
 	var depot := RoadDepotData.new()
 	depot.num = 301
@@ -89,11 +89,11 @@ func test_stop_directions() -> bool:
 	pathfinder.build([road])
 	var stop := RoadStationData.new()
 	stop.road_num = road.num
-	stop.node_index = 1
+	stop.anchor = TrackAnchor.new(1)
 	for direction: Enums.RoadStopDirection in [Enums.RoadStopDirection.ROAD_NODES_INCREASE, Enums.RoadStopDirection.ROAD_NODES_DECREASE]:
 		stop.direction = direction
 		var increasing: bool = direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE
-		var anchor := stop.anchor(roads) as RoadRouteAnchor
+		var anchor := stop.route_anchor(roads) as RoadRouteAnchor
 		check(anchor != null and anchor.position.is_equal_approx(road.nodes[1].position), "One-way authored stop keeps its node position")
 		var from: RoadNode = road.nodes[0] if increasing else road.nodes[2]
 		var opposite: RoadNode = road.nodes[2] if increasing else road.nodes[0]
@@ -101,7 +101,13 @@ func test_stop_directions() -> bool:
 		var path: Array[RoadNode] = pathfinder.find_path(opposite, anchor)
 		check(path.size() == 3 and path[1] == from, "Approaching from the opposite end requires routing through the served direction")
 	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
-	check(stop.anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
+	check(stop.route_anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
+	## Between nodes there is no node to reuse: routing targets the exact curve distance, either direction.
+	stop.anchor = TrackAnchor.new(1, 5.0)
+	var between := stop.route_anchor(roads) as RoadRouteAnchor
+	check(between != null and between.arrival_direction == 0 and is_equal_approx(between.curve_offset, road.node_offset(1) + 5.0),
+		"A two-way stop between nodes routes to its exact distance along the road")
+	check(pathfinder.find_path(road.nodes[0], between).size() == 2, "The stop between nodes is reachable")
 	return true
 
 ## A direct-looking curved road must not beat a genuinely shorter connected route.
@@ -325,7 +331,7 @@ func test_execution() -> bool:
 	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 601
 	stop.road_num = 100
-	stop.node_index = 2
+	stop.anchor = TrackAnchor.new(2)
 	catalog.stops_by_num[401] = stop
 	body = manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
 	var point := RoadRoutePoint.new()
@@ -465,9 +471,9 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 	graph.build(loader.storage.get_all())
 	check(graph.graph_node_count() == 2, "A road contributes endpoints, not intermediate shape nodes")
 	var source: RoadRouteAnchor = RoadRouteAnchor.at(road, 35)
-	var right: RoadRouteAnchor = loader.markers.markers[0].anchor(loader.storage)
+	var right: RoadRouteAnchor = loader.markers.markers[0].route_anchor(loader.storage)
 	check(is_equal_approx(graph.path_length(graph.find_path(source, right)), 52.3), "RIGHT marker requires an increasing-order approach")
-	var both: RoadRouteAnchor = loader.markers.markers[1].anchor(loader.storage)
+	var both: RoadRouteAnchor = loader.markers.markers[1].route_anchor(loader.storage)
 	check(absf(graph.path_length(graph.find_path(source, both)) - 17.7) < 0.02, "BOTH marker uses the shorter available approach")
 	check(graph.graph_node_count() == 2, "Temporary query anchors do not grow the permanent graph")
 

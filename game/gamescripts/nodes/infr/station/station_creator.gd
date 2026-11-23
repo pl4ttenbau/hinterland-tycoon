@@ -54,7 +54,7 @@ func make_road_preview(placement: Dictionary) -> Node3D:
 	var preview := Node3D.new()
 	preview.name = "RoadPlacementPreview"
 	preview.position = placement.position
-	var heading: Vector3 = RoadStopsLoader.road_heading(road, placement.node_index, placement.offset)
+	var heading: Vector3 = RoadStopsLoader.road_heading(road, placement.offset)
 	# Keep both sides ready so switching options only changes visibility.
 	for sign: float in [1.0, -1.0]:
 		var shelter := BusStop3D.SHELTER_SCENE.instantiate() as Node3D
@@ -144,7 +144,7 @@ func placement_on(infrastructure: AbstractTrack, position: Vector3, view_forward
 		"offset": offset, "node_index": nearest_index, "origin": position,
 		"position": center}
 	if road != null:
-		var heading: Vector3 = RoadStopsLoader.road_heading(road, nearest_index, offset)
+		var heading: Vector3 = RoadStopsLoader.road_heading(road, offset)
 		var increasing := Enums.RoadStopDirection.ROAD_NODES_INCREASE
 		var decreasing := Enums.RoadStopDirection.ROAD_NODES_DECREASE
 		# Default to the player's physical side. Facing the other way changes
@@ -263,20 +263,21 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 	if placement.domain == "ROAD":
 		var road_stop := RoadStationData.new(catalog.next_stop_num())
 		road_stop.road_num = placement.infrastructure_num
-		road_stop.node_index = placement.node_index
+		# Like rail stops: the clicked curve distance, kept as nearest node + offset.
+		road_stop.anchor = TrackAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
 		road_stop.direction = direction
 		road_stop.position = placement.position
 		stop = road_stop
 	else:
 		var rail_stop := RailStationData.new(catalog.next_stop_num())
 		rail_stop.track_num = placement.infrastructure_num
-		rail_stop.node_index = placement.node_index
+		# The clicked curve distance, kept as nearest node + offset so later edits elsewhere leave it.
+		rail_stop.anchor = TrackAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
 		rail_stop.position = placement.position
 		rail_stop.station_type = station_type
 		rail_stop.platform_side = platform_side
 		rail_stop.hide_building = placement.get("hide_platform", false)
 		stop = rail_stop
-	stop.curve_offset = placement.offset
 	var error: Error = catalog.register_stop(stop, interchange.num)
 	if error != OK:
 		if building != null:

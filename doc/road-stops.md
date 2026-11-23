@@ -38,10 +38,14 @@ physical rail and road access points, with no separate child names.
   Empty interchanges are valid, but have no physical catchment yet.
 - Every stop requires `num`, `domain` (`RAIL` or `ROAD`), and `nodeIndex`.
   Rail stops require `trackNum`. Road stops require `roadNum` and `roadStopDirection`.
+- Stops may add `nodeOffset`: metres along the track or road from that node, positive
+  toward the next node, negative toward the previous one (default 0, exactly on the
+  node). The game re-attaches each stop to its nearest node on load, so an edit to
+  the line far from the stop does not move it.
 - All IDs and node indices are nonnegative integers. Node index zero is valid.
   Stop numbers must be unique across **both modes and every interchange on the
-  map**. Interchange numbers have a separate namespace. A rail node may hold one
-  physical stop; duplicate rail anchors are rejected.
+  map**. Interchange numbers have a separate namespace. Two rail stops may not share
+  the same track, node and offset; duplicate rail anchors are rejected.
 - `roadStopDirection` is `ROAD_NODES_INCREASE`, `ROAD_NODES_DECREASE`, or
   `BOTH_DIRECTIONS`. It specifies which direction a vehicle can approach from.
   In right-hand traffic, increasing node order places the shelter to the right

@@ -92,11 +92,15 @@ static func _validate_stop_anchor(stop: Dictionary, rail_anchors: Dictionary) ->
 	var anchor_key: String = "trackNum" if stop["domain"] == "RAIL" else "roadNum"
 	if not InterchangeData.is_valid_num(stop.get(anchor_key)):
 		return _invalid("Stop %d requires %s" % [int(stop["num"]), anchor_key])
+	var place: TrackAnchor = TrackAnchor.from_dict(stop)
+	if place == null:
+		return _invalid("Stop %d requires a numeric nodeOffset" % int(stop["num"]))
 	if stop["domain"] == "RAIL":
-		var anchor := Vector2i(int(stop["trackNum"]), int(stop["nodeIndex"]))
-		if rail_anchors.has(anchor):
-			return _invalid("Two rail stops use track/node %s" % anchor)
-		rail_anchors[anchor] = true
+		# Same track, node and offset (to the centimetre): two platforms in one place.
+		var key: String = "%d:%s" % [int(stop["trackNum"]), place]
+		if rail_anchors.has(key):
+			return _invalid("Two rail stops use track %d at %s" % [int(stop["trackNum"]), place])
+		rail_anchors[key] = true
 	elif RoadStationData.direction_key(stop).is_empty():
 		return _invalid("Road stop %d requires roadStopDirection ROAD_NODES_INCREASE, ROAD_NODES_DECREASE or BOTH_DIRECTIONS" % int(stop["num"]))
 	return OK
@@ -116,7 +120,7 @@ func _create_interchange(record: Dictionary) -> void:
 		self.stop_definitions.append(definition)
 
 ## Infrastructure must be loaded before this pass. Fail before either stop loader
-## can register a partial rail/road network or overwrite a RailNode.station link.
+## can register a partial rail/road network.
 func validate_anchors(rails: RailTrackStore, roads: RoadStore) -> Error:
 	if not self.is_loaded:
 		return ERR_UNCONFIGURED

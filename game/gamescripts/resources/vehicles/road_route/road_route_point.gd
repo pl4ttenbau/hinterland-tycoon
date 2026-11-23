@@ -13,14 +13,14 @@ enum Kind { NODE, STOP, DEPOT, MARKER }
 func resolve(roads: RoadStore, stops: Dictionary, depots: Array[RoadDepotData], markers: RoadMarkerStore = null) -> RoadNode:
 	if kind == Kind.MARKER:
 		var marker: RoadMarkerData = markers.get_by_num(target_num) if markers != null else null
-		return marker.anchor(roads) if marker != null else null
+		return marker.route_anchor(roads) if marker != null else null
 	var road_id: int = road_num
 	var index: int = node_index
 	if kind == Kind.STOP:
 		var stop: RoadStationData = stops.get(target_num) as RoadStationData
 		if stop == null:
 			return null
-		return stop.anchor(roads)
+		return stop.route_anchor(roads)
 	elif kind == Kind.DEPOT:
 		var depot: RoadDepotData = _find_depot(depots)
 		if depot == null or depot.road_pos not in ["START", "END"]:

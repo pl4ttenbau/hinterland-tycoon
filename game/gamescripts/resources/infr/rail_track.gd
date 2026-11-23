@@ -9,7 +9,6 @@ class_name RailTrackData extends AbstractTrack
 @export_storage var start_tangent: Vector3
 
 # child objects
-@export var node_stations: Array[NodeStationLinkData] = []
 @export var forks: Array[RailJunctionArm] = []
 
 const NEAR_DISTANCE_MAX: float = 100.0

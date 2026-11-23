@@ -57,7 +57,7 @@ func reset_buffers():
 func get_inventory() -> GoodsInventory:
 	var node_link_3d: NodeStationLink3D = self.station_building.node_link_3d
 	if node_link_3d:
-		var station_num: int = node_link_3d.node_station.parent_station_num
+		var station_num: int = node_link_3d.stop.num
 		var station_3d: RailStation3D = Managers.stations.get_station_3d_with_num(station_num)
 		return station_3d.get_inventory()
 	Loggie.error("Cannot get inventory of station from platform %s" % self.name)

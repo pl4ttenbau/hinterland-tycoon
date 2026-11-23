@@ -41,7 +41,6 @@ func clear_houses() -> void:
 			if data.connected_interchange == connection.interchange:
 				data.connected_interchange = null
 				data.reachable_stops.clear()
-				data.connected_station = null
 	houses.clear()
 
 func clear_industries() -> void:

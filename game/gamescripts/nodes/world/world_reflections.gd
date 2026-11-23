@@ -71,7 +71,7 @@ func _collect_candidates() -> Array[Vector3]:
 				# Look out into the yard, rather than capture from inside the shed.
 				candidates.append(depot.global_position - depot.global_basis.z * 12.0)
 	for station: RailStationData in GlobalState.station_objs:
-		if is_instance_valid(station) and not station.node_stations.is_empty():
+		if is_instance_valid(station):
 			candidates.append(station.position)
 	return candidates
 

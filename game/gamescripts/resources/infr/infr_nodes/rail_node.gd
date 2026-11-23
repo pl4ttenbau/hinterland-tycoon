@@ -2,7 +2,6 @@
 class_name RailNodeData extends AbstractInfrNode
 
 @export var fork: RailJunctionArm
-@export var station: NodeStationLinkData
 
 static func of(_index: int, _pos: Vector3, _track: RailTrackData) -> RailNodeData:
 	var instance := RailNodeData.new()

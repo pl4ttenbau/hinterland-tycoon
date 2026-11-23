@@ -98,10 +98,11 @@ func test_create_and_join() -> bool:
 	var rail_stop: RailStationData = joined.stop
 	check(rail_stop.interchange == stop.interchange and rail_stop.station_type == "STATION_GOODS", "Joined stop inherits identity and retains its own type")
 	check(services.interchanges.interchanges.size() == 1 and stop.num != rail_stop.num, "Joining reuses the parent and allocates a unique stop ID across modes")
-	check(rail_stop.node_stations[0].station3d.global_position.is_equal_approx(Vector3(170, 5, 130)), "Rail platform appears at the selected curve position")
+	check(rail_stop.platform_view.global_position.is_equal_approx(Vector3(170, 5, 130)), "Rail platform appears at the selected curve position")
 	check(services.stations.get_station_3d_with_num(rail_stop.num).get_inventory() != null, "New rail stop has a working inventory")
 	check(services.stations.get_station_3d_with_num(rail_stop.num).global_position.is_equal_approx(rail_stop.position), "Rail inventory access is located at the new stop")
-	check(road.nodes.size() == 2 and rail.nodes.size() == 2 and rail.nodes[0].station == null, "Placement preserves authored geometry and node station links")
+	check(road.nodes.size() == 2 and rail.nodes.size() == 2, "Placement preserves authored geometry")
+	check(rail_stop.anchor.position_on(rail).is_equal_approx(rail_stop.position), "The new rail stop is anchored where it was placed")
 	check(services.interchanges.stop_definitions.is_empty(), "Gameplay does not rewrite the authored catalog")
 	check(tool.nearby_interchanges(Vector3(160, 5, 115)).size() == 1, "Several physical stops yield one nearby station entry")
 	GlobalState.industries.erase(industry)
@@ -251,7 +252,7 @@ func test_rail_confirmation() -> bool:
 	if stop == null:
 		_free_placement_player(player, handler)
 		return false
-	var link: NodeStationLink3D = stop.node_stations[0].station3d
+	var link: NodeStationLink3D = stop.platform_view
 	var building := link.get_node("StationBuilding3D") as RailPlatform3D
 	var built_model := building.platform_mesh.get_child(0) as MeshInstance3D
 	check(stop.station_type == "STATION_GOODS" and building.scene_file_path == cargo.building_scene.resource_path
@@ -291,7 +292,7 @@ func test_rail_confirmation() -> bool:
 	var hidden := services.interchanges.stops_by_num.get(next_stop) as RailStationData
 	if hidden == null:
 		return false
-	var hidden_link: NodeStationLink3D = hidden.node_stations[0].station3d
+	var hidden_link: NodeStationLink3D = hidden.platform_view
 	var hidden_shape := hidden_link.get_node("StationBuilding3D/StationBody/StationShape3D") as CollisionShape3D
 	check(hidden.interchange != stop.interchange and hidden.hide_building and hidden_shape.disabled
 		and not hidden_link.get_node("StationBuilding3D").visible and hidden_link.get_node("StationSign3D").visible,

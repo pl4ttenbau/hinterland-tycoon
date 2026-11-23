@@ -27,7 +27,7 @@ func _add_stop_row(connection: AbstractStation, opened_here: bool) -> void:
 		parts.append("Cargo rail" if connection.station_type == "STATION_GOODS" else "Passenger rail")
 		if connection.hide_building:
 			parts.append("Hidden platform")
-		elif connection.curve_offset >= 0.0:
+		else:
 			parts.append("Left side" if connection.platform_side == RailStationData.PlatformSide.LEFT else "Right side")
 		parts.append(_line_label(track, line_id))
 	elif connection is RoadStationData:

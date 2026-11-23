@@ -37,7 +37,8 @@ func _validate_road_anchors(definitions: Array[Dictionary]) -> Error:
 		if definition["domain"] != "ROAD":
 			continue
 		var road: RoadData = Managers.roads.storage._by_id.get(int(definition["roadNum"]))
-		if road == null or int(definition["nodeIndex"]) >= road.nodes.size():
+		var place: TrackAnchor = TrackAnchor.from_dict(definition)
+		if road == null or place == null or not place.is_valid_on(road):
 			return ERR_INVALID_DATA
 	return OK
 
@@ -46,8 +47,10 @@ func _load_road_stop(definition: Dictionary, catalog: InterchangesLoader) -> Err
 	var error: Error = catalog.register_stop(stop, int(definition["interchangeNum"]))
 	if error != OK:
 		return error
+	# Normalized once the road exists: records may name any node, the invariant wants the nearest one.
 	var road: RoadData = Managers.roads.storage._by_id[stop.road_num]
-	stop.position = road.nodes[stop.node_index].position
+	stop.anchor = stop.anchor.normalized(road)
+	stop.position = stop.anchor.position_on(road)
 	self.stops.append(stop)
 	self.by_num[stop.num] = stop
 	return OK
@@ -61,7 +64,7 @@ func spawn_stops() -> void:
 		view.station = stop
 		self.add_child(view)
 		var road: RoadData = Managers.roads.storage._by_id[stop.road_num]
-		view.configure_road_layout(road_heading(road, stop.node_index, stop.curve_offset), self.roadside_offset_metres)
+		view.configure_road_layout(road_heading(road, stop.anchor.curve_offset(road)), self.roadside_offset_metres)
 		self.containers_by_num[stop.num] = view
 	self.stops_spawned.emit()
 
@@ -70,10 +73,10 @@ func add_runtime_stop(stop: RoadStationData) -> void:
 	by_num[stop.num] = stop
 	spawn_stops()
 
-static func road_heading(road: RoadData, node_index: int, curve_offset: float = -1.0) -> Vector3:
+## Direction of the road at a distance along its curve, flat, for turning shelters and previews.
+static func road_heading(road: RoadData, offset: float) -> Vector3:
 	if road.curve == null:
 		road.build_curve()
-	var offset: float = curve_offset if curve_offset >= 0.0 else road.node_offset(node_index)
 	var length: float = road.curve.get_baked_length()
 	var heading: Vector3 = road.curve.sample_baked(minf(length, offset + 0.2), true) \
 		- road.curve.sample_baked(maxf(0.0, offset - 0.2), true)

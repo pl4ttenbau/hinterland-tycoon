@@ -118,11 +118,8 @@ func test_mixed_loading() -> bool:
 	self.check(interchange.stops.size() == 2 and rail.interchange_num == 7 and road.interchange_num == 7, "Nested membership is bidirectional")
 	interchange.interchange_name = "Renamed interchange"
 	self.check(rail.station_name == "Renamed interchange" and road.station_name == rail.station_name, "Name metadata comes from one shared parent")
-	var track: RailTrackData = coordinator.rails.track_storage._by_id[4]
-	var link: NodeStationLinkData = track.nodes[0].station
-	self.check(link.num == 12 and link.parent_station == rail and link.parent_station_num == 12 \
-		and coordinator.stations.node_stations_storage.get_by_num(12) == link, "Rail node adapter preserves the manual stop number")
-	self.check(rail.track_num == 4 and rail.node_index == 0 and rail.position == Vector3(10, 2, 20), "Rail placement comes from explicit track/node JSON")
+	self.check(rail.track_num == 4 and rail.anchor.node_index == 0 and rail.anchor.offset == 0.0 and rail.position == Vector3(10, 2, 20), "Rail placement comes from explicit track/node JSON")
+	self.check(coordinator.stations.stops_on_track(4) == [rail], "Stops on a track are found through the stop store, not the rail nodes")
 	self.check(rail.station_type == "STATION_PASS", "Rail stops without an explicit type retain the passenger default")
 	self.check(road.station_type.is_empty(), "Road stop types remain unspecified until their vocabulary is defined")
 	self.check(road.position == Vector3(10, 2, 25), "Road placement comes from explicit road/node JSON")
@@ -136,8 +133,8 @@ func test_mixed_loading() -> bool:
 	coordinator.road_stops._on_map_towns_loaded(towns)
 	var rail_view: RailStation3D = coordinator.stations.get_station_3d_with_num(12)
 	self.check(rail_view != null and rail_view.global_position.is_equal_approx(rail.position), "Authored rail inventory is located at the stop")
-	self.check(link.station3d != null and link.station3d.global_position.is_equal_approx(rail.position), "Rail node zero spawns at its authored position")
-	var rail_sign: StationSign3D = link.station3d.get_node("StationSign3D")
+	self.check(rail.platform_view != null and rail.platform_view.global_position.is_equal_approx(rail.position), "Rail node zero spawns at its authored position")
+	var rail_sign: StationSign3D = rail.platform_view.get_node("StationSign3D")
 	self.check(rail_sign.station_name == interchange.interchange_name and rail_sign.parent_station == rail, "Runtime rail signs use their stop's shared interchange name")
 	self.check(rail_sign.texture.get_local_scene().get_node(rail_sign.texture.viewport_path) == rail_sign.get_node("SubViewport"), "Legacy rail scene overrides resolve the correct sign viewport")
 	var bus: BusStop3D = coordinator.road_stops.containers_by_num[13]
@@ -155,7 +152,7 @@ func test_mixed_loading() -> bool:
 	inventory.change_stack(&"passenger", rail.num, -2)
 	inventory.remove_goods_amount(GoodsAmount.new("lumber", 4))
 	check(test_shared_stock(rail_view, bus), "Shared-stock test completed")
-	check(test_station_dialogs(link.station3d, bus), "Station dialogs test completed")
+	check(test_station_dialogs(rail.platform_view, bus), "Station dialogs test completed")
 	test_town_wealth_from_shared_stock(bus, town)
 	coordinator.road_stops.spawn_stops()
 	self.check(coordinator.road_stops.containers_by_num.size() == 1, "Repeated road spawning does not duplicate stops")

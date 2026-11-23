@@ -44,12 +44,8 @@ func release_network() -> void:
 				node.fork.junction = null
 				node.fork.railNode = null
 				node.fork = null
-			if node.station != null:
-				node.station.parent_node = null
-				node.station = null
 		track.nodes.clear()
 		track.forks.clear()
-		track.node_stations.clear()
 
 ## Directed track graph shared by route finding and, later, signal blocks.
 func get_network_graph() -> RailNetworkGraph:
@@ -304,14 +300,13 @@ func _remove_buffer(node: RailNodeData) -> void:
 
 
 func _track_has_dependencies(track: RailTrackData) -> bool:
-	if not track.node_stations.is_empty():
-		return true
 	## Signal positions are track offsets that an edit cannot rebase safely.
 	if not signals.get_on_track(track.num).is_empty():
 		return true
-	for node: RailNodeData in track.nodes:
-		if node.station != null:
-			return true
+	## Stops are placed by node + offset on the track; an edit would move or orphan them.
+	if Managers.rails == self and is_instance_valid(Managers.stations) \
+			and not Managers.stations.stops_on_track(track.num).is_empty():
+		return true
 	if Managers.rails == self and is_instance_valid(Managers.depots):
 		for depot: RailDepotData in Managers.depots.rail_depots:
 			if depot.track_num == track.num:

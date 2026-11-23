@@ -31,7 +31,7 @@ func test_json() -> bool:
 	var record: Dictionary = JSON.parse_string('{"num":0,"roadNum":0,"nodeIndex":0,"roadStopDirection":"ROAD_NODES_INCREASE"}')
 	var stop: RoadStationData = self.make_station(record)
 	self.check(stop != null and stop is AbstractStation, "A minimal road record creates station data")
-	self.check(stop.num == 0 and stop.road_num == 0 and stop.node_index == 0, "JSON numbers accept stop ID, road ID and node index zero")
+	self.check(stop.num == 0 and stop.road_num == 0 and stop.anchor.node_index == 0 and stop.anchor.offset == 0.0, "JSON numbers accept stop ID, road ID and node index zero")
 	self.check(stop.direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE and stop.town_num == -1 \
 		and stop.station_name.is_empty() and not stop.hide_building, "Minimal records retain optional station defaults")
 	self.check(not record.has("name") and record["roadStopDirection"] == "ROAD_NODES_INCREASE", "Parsing leaves the source record unchanged")

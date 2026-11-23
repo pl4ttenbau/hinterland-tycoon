@@ -75,7 +75,7 @@ func _stop(id: int, index: int = 0, interchange_id: int = -1) -> RoadStationData
 		data.interchange = interchange
 		interchange.stops.append(data)
 	data.road_num = road.num
-	data.node_index = index
+	data.anchor = TrackAnchor.new(index)
 	data.position = road.nodes[index].position + Vector3(4, 0, 0)
 	data.hide_building = true
 	var view: BusStop3D = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn").instantiate()
