@@ -87,24 +87,24 @@ func _store() -> AbstractTrackStore:
 	return storage
 
 
-func _new_track() -> AbstractTrack:
+func _new_track() -> AbstractInfrLine:
 	return RoadData.new()
 
 
-func _spawn_view(track: AbstractTrack) -> void:
+func _spawn_view(track: AbstractInfrLine) -> void:
 	spawn_road(track)
 
 
-func _split_blocker(track: AbstractTrack) -> Error:
+func _split_blocker(track: AbstractInfrLine) -> Error:
 	return ERR_BUSY if _road_has_dependencies(track) else OK
 
 
-func _copy_track_fields(fragment: AbstractTrack, source: AbstractTrack) -> void:
+func _copy_track_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
 	super(fragment, source)
 	(fragment as RoadData).autosmooth = (source as RoadData).autosmooth
 
 
-func _init_fragment(fragment: AbstractTrack, _cut_start: bool, _cut_end: bool) -> void:
+func _init_fragment(fragment: AbstractInfrLine, _cut_start: bool, _cut_end: bool) -> void:
 	var road := fragment as RoadData
 	road.crosses.clear()
 	for node: RoadNode in road.nodes:

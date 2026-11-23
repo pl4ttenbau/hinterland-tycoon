@@ -42,7 +42,7 @@ func _setup_network() -> void:
 	stop.interchange.num = 501
 	stop.interchange.interchange_name = "Destination"
 	stop.road_num = 20
-	stop.anchor = TrackAnchor.new(2)
+	stop.anchor = LineAnchor.new(2)
 	stops[201] = stop
 	var depot := RoadDepotData.new()
 	depot.num = 301
@@ -89,7 +89,7 @@ func test_stop_directions() -> bool:
 	pathfinder.build([road])
 	var stop := RoadStationData.new()
 	stop.road_num = road.num
-	stop.anchor = TrackAnchor.new(1)
+	stop.anchor = LineAnchor.new(1)
 	for direction: Enums.RoadStopDirection in [Enums.RoadStopDirection.ROAD_NODES_INCREASE, Enums.RoadStopDirection.ROAD_NODES_DECREASE]:
 		stop.direction = direction
 		var increasing: bool = direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE
@@ -103,7 +103,7 @@ func test_stop_directions() -> bool:
 	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
 	check(stop.route_anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
 	## Between nodes there is no node to reuse: routing targets the exact curve distance, either direction.
-	stop.anchor = TrackAnchor.new(1, 5.0)
+	stop.anchor = LineAnchor.new(1, 5.0)
 	var between := stop.route_anchor(roads) as RoadRouteAnchor
 	check(between != null and between.arrival_direction == 0 and is_equal_approx(between.curve_offset, road.node_offset(1) + 5.0),
 		"A two-way stop between nodes routes to its exact distance along the road")
@@ -331,7 +331,7 @@ func test_execution() -> bool:
 	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 601
 	stop.road_num = 100
-	stop.anchor = TrackAnchor.new(2)
+	stop.anchor = LineAnchor.new(2)
 	catalog.stops_by_num[401] = stop
 	body = manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
 	var point := RoadRoutePoint.new()

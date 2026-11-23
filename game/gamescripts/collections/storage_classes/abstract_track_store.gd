@@ -10,7 +10,7 @@ class_name AbstractTrackStore extends Resource
 
 @export_storage var _containers_by_id: Dictionary = {}
 
-signal track_added(track: AbstractTrack)
+signal track_added(track: AbstractInfrLine)
 
 ## The subclass's typed track array.
 @abstract func _tracks() -> Array
@@ -20,7 +20,7 @@ signal track_added(track: AbstractTrack)
 @abstract func _kind_name() -> String
 
 #region Add
-func add(track: AbstractTrack) -> void:
+func add(track: AbstractInfrLine) -> void:
 	self._tracks().append(track)
 	self._by_id.set(track.num, track)
 	self._max_num = maxi(self._max_num, track.num)
@@ -36,7 +36,7 @@ func next_num() -> int:
 #endregion
 
 ## Remove the indexes and detach the view immediately so it stops colliding.
-func remove(track: AbstractTrack) -> void:
+func remove(track: AbstractInfrLine) -> void:
 	if self._by_id.get(track.num) != track:
 		return
 	self._tracks().erase(track)
@@ -56,8 +56,8 @@ func _on_view_removed(_view: InfrLine3D) -> void:
 	pass
 
 #region Lookup
-func get_by_num(num: int) -> AbstractTrack:
-	var found: AbstractTrack = self._by_id.get(num)
+func get_by_num(num: int) -> AbstractInfrLine:
+	var found: AbstractInfrLine = self._by_id.get(num)
 	if found == null:
 		Loggie.error("Cannot get %s %d; out of index?" % [self._kind_name(), num])
 	return found

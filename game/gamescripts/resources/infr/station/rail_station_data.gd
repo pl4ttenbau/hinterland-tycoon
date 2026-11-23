@@ -13,11 +13,11 @@ enum PlatformSide { RIGHT, LEFT }
 		position = value
 		self.positioned.emit(value)
 
-## The track the platform stands on, and where on it (node + offset, see TrackAnchor).
+## The track the platform stands on, and where on it (node + offset, see LineAnchor).
 ## Since 2026-11-23 the stop itself holds its place; rail nodes no longer know about stops (the former
 ## NodeStationLinkData between node and stop was a strong two-way link that leaked at shutdown).
 @export var track_num: int = -1
-@export var anchor: TrackAnchor = TrackAnchor.new()
+@export var anchor: LineAnchor = LineAnchor.new()
 
 ## The platform in the scene (rail_node_station_3d.tscn), set when it is spawned. A scene node, so not
 ## reference-counted: no cycle with the view, which holds this stop as its entity.
@@ -35,7 +35,7 @@ static func of_dict(_station_data: Dictionary) -> RailStationData:
 		if not InterchangeData.is_valid_num(_station_data.get(field)):
 			push_error("Rail stop requires a nonnegative integer %s" % field)
 			return null
-	var place: TrackAnchor = TrackAnchor.from_dict(_station_data)
+	var place: LineAnchor = LineAnchor.from_dict(_station_data)
 	if place == null:
 		push_error("Rail stop requires a nonnegative integer nodeIndex and an optional numeric nodeOffset")
 		return null

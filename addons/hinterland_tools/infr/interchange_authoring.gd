@@ -48,7 +48,7 @@ func prepare(world: WorldMapScene, line: EditorInfrLine3D, index: int, adding_st
 					distance = minf(distance, position.distance_to(stop_position))
 			# New stops are placed on a node (offset 0); a stop elsewhere along the same segment is another place.
 			if adding_stop and stop.domain == domain_key and int(stop[id_key]) == line.num \
-					and TrackAnchor.new(index).same_place(TrackAnchor.from_dict(stop)):
+					and LineAnchor.new(index).same_place(LineAnchor.from_dict(stop)):
 				return {"error": "A stop already exists at this infrastructure node."}
 		if distance <= JOIN_RADIUS_METRES:
 			candidates.append({"record": record, "distance": distance})

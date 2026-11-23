@@ -2,7 +2,7 @@
 ## Curves are in world coordinates.
 @tool
 @abstract
-class_name AbstractTrack extends GameEntityData
+class_name AbstractInfrLine extends GameEntityData
 
 @warning_ignore("unused_signal")
 signal track_changed()

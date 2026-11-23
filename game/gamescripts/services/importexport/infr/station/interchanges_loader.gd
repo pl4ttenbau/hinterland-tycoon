@@ -92,7 +92,7 @@ static func _validate_stop_anchor(stop: Dictionary, rail_anchors: Dictionary) ->
 	var anchor_key: String = "trackNum" if stop["domain"] == "RAIL" else "roadNum"
 	if not InterchangeData.is_valid_num(stop.get(anchor_key)):
 		return _invalid("Stop %d requires %s" % [int(stop["num"]), anchor_key])
-	var place: TrackAnchor = TrackAnchor.from_dict(stop)
+	var place: LineAnchor = LineAnchor.from_dict(stop)
 	if place == null:
 		return _invalid("Stop %d requires a numeric nodeOffset" % int(stop["num"]))
 	if stop["domain"] == "RAIL":
@@ -127,7 +127,7 @@ func validate_anchors(rails: RailTrackStore, roads: RoadStore) -> Error:
 	for definition: Dictionary in self.stop_definitions:
 		var number_key: String = "trackNum" if definition["domain"] == "RAIL" else "roadNum"
 		var lookup: Dictionary = rails._by_id if definition["domain"] == "RAIL" else roads._by_id
-		var infrastructure: AbstractTrack = lookup.get(int(definition[number_key]))
+		var infrastructure: AbstractInfrLine = lookup.get(int(definition[number_key]))
 		if infrastructure == null or int(definition["nodeIndex"]) >= infrastructure.nodes.size():
 			return _invalid("Stop %d references missing infrastructure or node" % int(definition["num"]))
 	return OK

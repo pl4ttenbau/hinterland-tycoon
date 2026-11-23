@@ -65,7 +65,7 @@ func make_road_preview(placement: Dictionary) -> Node3D:
 	return preview
 
 func make_rail_preview(placement: Dictionary) -> Node3D:
-	var track: AbstractTrack = _infrastructure(placement)
+	var track: AbstractInfrLine = _infrastructure(placement)
 	if track == null or track.curve == null:
 		return null
 	var model: BuildingMesh3D = make_rail_preview_model("STATION_PASS")
@@ -126,7 +126,7 @@ func placement_at(position: Vector3, exclude: RID = RID(), view_forward: Vector3
 		return placement_on(surface.get_line(), position, view_forward)
 	return {}
 
-func placement_on(infrastructure: AbstractTrack, position: Vector3, view_forward: Vector3 = Vector3.ZERO) -> Dictionary:
+func placement_on(infrastructure: AbstractInfrLine, position: Vector3, view_forward: Vector3 = Vector3.ZERO) -> Dictionary:
 	if infrastructure.curve == null or infrastructure.curve.get_point_count() < 2:
 		return {}
 	var road := infrastructure as RoadData
@@ -170,7 +170,7 @@ func nearby_interchanges(position: Vector3) -> Array[InterchangeData]:
 		return a.num < b.num if is_equal_approx(distances[a.num], distances[b.num]) else distances[a.num] < distances[b.num])
 	return result
 
-func _infrastructure(placement: Dictionary) -> AbstractTrack:
+func _infrastructure(placement: Dictionary) -> AbstractInfrLine:
 	if placement.get("domain") == "ROAD" and is_instance_valid(Managers.roads):
 		return Managers.roads.storage._by_id.get(placement.get("infrastructure_num"))
 	if placement.get("domain") == "RAIL" and is_instance_valid(Managers.rails):
@@ -178,7 +178,7 @@ func _infrastructure(placement: Dictionary) -> AbstractTrack:
 	return null
 
 func placement_error(placement: Dictionary) -> String:
-	var infrastructure: AbstractTrack = _infrastructure(placement)
+	var infrastructure: AbstractInfrLine = _infrastructure(placement)
 	if infrastructure == null or infrastructure.curve == null:
 		return "The road or track is no longer available."
 	var offset: float = placement.get("offset", -1.0)
@@ -264,7 +264,7 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		var road_stop := RoadStationData.new(catalog.next_stop_num())
 		road_stop.road_num = placement.infrastructure_num
 		# Like rail stops: the clicked curve distance, kept as nearest node + offset.
-		road_stop.anchor = TrackAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
+		road_stop.anchor = LineAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
 		road_stop.direction = direction
 		road_stop.position = placement.position
 		stop = road_stop
@@ -272,7 +272,7 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		var rail_stop := RailStationData.new(catalog.next_stop_num())
 		rail_stop.track_num = placement.infrastructure_num
 		# The clicked curve distance, kept as nearest node + offset so later edits elsewhere leave it.
-		rail_stop.anchor = TrackAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
+		rail_stop.anchor = LineAnchor.at_curve_offset(_infrastructure(placement), placement.offset)
 		rail_stop.position = placement.position
 		rail_stop.station_type = station_type
 		rail_stop.platform_side = platform_side

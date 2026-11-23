@@ -15,7 +15,7 @@ class_name AbstractInfrNode extends Resource
 
 ## Held weakly: the track owns its nodes, so a strong back-reference would form
 ## a cycle and leak both. Not exported, the loader sets it.
-var parent_track: AbstractTrack:
+var parent_track: AbstractInfrLine:
 	set(value):
 		_parent_track = weakref(value) if value != null else null
 	get():

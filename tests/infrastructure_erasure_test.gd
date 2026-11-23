@@ -19,7 +19,7 @@ func _run() -> void:
 		get_tree().quit(1)
 		return
 	var eraser: EraserManager = Managers.eraser
-	eraser.erase_finished.connect(func(_track: AbstractTrack, _op: EraserManager.Operation, result: Error): results.append(result))
+	eraser.erase_finished.connect(func(_track: AbstractInfrLine, _op: EraserManager.Operation, result: Error): results.append(result))
 	_check(await _test_roads(services.roads, eraser) == true, "Road test completed")
 	_check(await _test_rails(services.rails, services.forks, eraser) == true, "Rail test completed")
 	remove_child(services)

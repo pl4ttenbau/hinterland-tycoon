@@ -142,15 +142,15 @@ func _store() -> AbstractTrackStore:
 	return track_storage
 
 
-func _new_track() -> AbstractTrack:
+func _new_track() -> AbstractInfrLine:
 	return RailTrackData.new()
 
 
-func _spawn_view(track: AbstractTrack) -> void:
+func _spawn_view(track: AbstractInfrLine) -> void:
 	spawn_rail_track(track)
 
 
-func _split_blocker(track: AbstractTrack) -> Error:
+func _split_blocker(track: AbstractInfrLine) -> Error:
 	var rail := track as RailTrackData
 	if _track_has_dependencies(rail):
 		return ERR_BUSY
@@ -160,13 +160,13 @@ func _split_blocker(track: AbstractTrack) -> Error:
 	return OK
 
 
-func _copy_track_fields(fragment: AbstractTrack, source: AbstractTrack) -> void:
+func _copy_track_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
 	super(fragment, source)
 	(fragment as RailTrackData).hideFill = (source as RailTrackData).hideFill
 
 
 ## A cut end without a fork leg becomes a buffer stop.
-func _init_fragment(fragment: AbstractTrack, cut_start: bool, cut_end: bool) -> void:
+func _init_fragment(fragment: AbstractInfrLine, cut_start: bool, cut_end: bool) -> void:
 	var rail := fragment as RailTrackData
 	if cut_start:
 		rail.start_tangent = Vector3.ZERO
@@ -194,7 +194,7 @@ func _relink(split: AbstractTrackLoader.Split) -> void:
 	fork_storage.rebuild_indexes()
 
 
-func _on_fragment_shown(fragment: AbstractTrack, has_view: bool) -> void:
+func _on_fragment_shown(fragment: AbstractInfrLine, has_view: bool) -> void:
 	if has_view:
 		var rail := fragment as RailTrackData
 		for endpoint: RailNodeData in [rail.nodes.front(), rail.nodes.back()]:

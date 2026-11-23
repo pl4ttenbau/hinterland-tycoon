@@ -1,6 +1,6 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 @warning_ignore("missing_tool")
-class_name RailTrackData extends AbstractTrack
+class_name RailTrackData extends AbstractInfrLine
 
 @export var nodes: Array[RailNodeData] = []
 @export var hideFill: bool = false

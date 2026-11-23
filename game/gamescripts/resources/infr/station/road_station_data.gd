@@ -1,10 +1,10 @@
 @icon("res://assets/icons/icon_station_white.png")
 class_name RoadStationData extends AbstractStation
 
-## The stopping point: a road, and where on it (node + offset, see TrackAnchor), independent of
+## The stopping point: a road, and where on it (node + offset, see LineAnchor), independent of
 ## building access links. Like rail stops since 2026-11-23.
 @export var road_num: int = -1
-@export var anchor: TrackAnchor = TrackAnchor.new()
+@export var anchor: LineAnchor = LineAnchor.new()
 @export var direction: Enums.RoadStopDirection = Enums.RoadStopDirection.ROAD_NODES_INCREASE
 
 ## World position of the station representation, like RailStationData.position.
@@ -46,7 +46,7 @@ static func of_dict(data: Dictionary) -> RoadStationData:
 		if not _is_nonnegative_integer(data.get(field)):
 			push_error("Road stop requires a nonnegative integer %s" % field)
 			return null
-	var place: TrackAnchor = TrackAnchor.from_dict(data)
+	var place: LineAnchor = LineAnchor.from_dict(data)
 	if place == null:
 		push_error("Road stop requires a nonnegative integer nodeIndex and an optional numeric nodeOffset")
 		return null

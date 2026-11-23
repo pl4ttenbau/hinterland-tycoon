@@ -10,12 +10,12 @@ class_name InfrLine3D extends GameEntity3D
 	set(value): self.get_path_3d().curve = value
 
 ## The shown line as its shared base type; subclasses also expose a typed property.
-func get_line() -> AbstractTrack:
-	return self.entity as AbstractTrack
+func get_line() -> AbstractInfrLine:
+	return self.entity as AbstractInfrLine
 
 ## Shows a line and follows its curve rebuilds from now on.
-func bind_line(line: AbstractTrack) -> void:
-	var previous: AbstractTrack = self.get_line()
+func bind_line(line: AbstractInfrLine) -> void:
+	var previous: AbstractInfrLine = self.get_line()
 	if previous != null and previous.curve_built.is_connected(self._on_curve_built):
 		previous.curve_built.disconnect(self._on_curve_built)
 	self.entity = line

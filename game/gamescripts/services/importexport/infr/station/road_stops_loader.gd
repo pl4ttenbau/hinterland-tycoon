@@ -37,7 +37,7 @@ func _validate_road_anchors(definitions: Array[Dictionary]) -> Error:
 		if definition["domain"] != "ROAD":
 			continue
 		var road: RoadData = Managers.roads.storage._by_id.get(int(definition["roadNum"]))
-		var place: TrackAnchor = TrackAnchor.from_dict(definition)
+		var place: LineAnchor = LineAnchor.from_dict(definition)
 		if road == null or place == null or not place.is_valid_on(road):
 			return ERR_INVALID_DATA
 	return OK

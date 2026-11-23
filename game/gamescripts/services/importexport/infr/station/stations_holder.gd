@@ -34,7 +34,7 @@ func _validate_rail_anchors(definitions: Array[Dictionary]) -> Error:
 		if definition["domain"] != "RAIL":
 			continue
 		var track: RailTrackData = Managers.rails.track_storage._by_id.get(int(definition["trackNum"]))
-		var place: TrackAnchor = TrackAnchor.from_dict(definition)
+		var place: LineAnchor = LineAnchor.from_dict(definition)
 		if track == null or place == null or not place.is_valid_on(track):
 			return ERR_INVALID_DATA
 	return OK

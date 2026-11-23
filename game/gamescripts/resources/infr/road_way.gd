@@ -1,6 +1,6 @@
 @icon("res://assets/icons/icon_road_white.png")
 @warning_ignore("missing_tool")
-class_name RoadData extends AbstractTrack
+class_name RoadData extends AbstractInfrLine
 
 const RURAL_ROAD_SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 const DIRT_PATH_SCENE_PATH = "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn"
