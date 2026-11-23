@@ -284,7 +284,8 @@ func _disconnect_forks() -> void:
 			fork.setting_initialized.disconnect(self._on_fork_setting_initialized.bind(fork))
 	self.watched_forks.clear()
 
-## Break bidirectional Resource links so discarded or freed route segments can be released.
+## Unlink discarded segments, so no kept segment still points to them. `previous` is weak, so this is
+## about stale links, not leaks: segments no longer keep each other alive.
 func _release_segment_links(first_segment_i: int) -> void:
 	for segment_i: int in range(first_segment_i, self.segments.size()):
 		self.segments[segment_i].previous = null

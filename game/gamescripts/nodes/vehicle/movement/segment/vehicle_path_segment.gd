@@ -7,7 +7,16 @@ class_name VehiclePathSegment extends Resource
 
 @export var continues: bool = false
 @export var next: VehiclePathSegment
-@export var previous: VehiclePathSegment
+## Held weakly: `next` already links the pair, so a strong back-reference would form a cycle, and two
+## segments linked to each other (with their start and end nodes) would never be freed. Whoever needs
+## the segments keeps them (ActiveRailVehiclePath.segments); a segment alone does not keep its
+## predecessor alive. Not exported: segments are runtime data and never saved.
+var previous: VehiclePathSegment:
+	set(value):
+		_previous = weakref(value) if value != null else null
+	get():
+		return _previous.get_ref() if _previous != null else null
+var _previous: WeakRef = null
 
 @export var start_node: RailNodeData
 @export var end_node: RailNodeData
