@@ -5,13 +5,13 @@
 class_name AbstractInfrLine extends GameEntityData
 
 @warning_ignore("unused_signal")
-signal track_changed()
+signal line_changed()
 
 @warning_ignore("unused_signal")
 signal curve_built(curve3d: Curve3D)
 
 ## z.B. "Rübeländer Landstr." oder "MPSB Friedland Kurve"
-@export_storage var track_name: String
+@export_storage var line_name: String
 
 ## z.B. "A20" oder "ALKB"
 @export var tag: String
@@ -51,7 +51,7 @@ func add_node(node: AbstractInfrNode, update: bool = false) -> void:
 	self.get_nodes().append(node)
 	if update:
 		self.build_curve()
-		self.track_changed.emit()
+		self.line_changed.emit()
 #endregion
 
 #region Curve

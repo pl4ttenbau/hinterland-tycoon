@@ -66,7 +66,7 @@ func _connect(from_id: int, to_id: int, distance: float, both: bool = true) -> v
 	_graph.connect_points(from_id, to_id, both)
 
 func _id_for(node: RoadNode) -> int:
-	return _ids.get(Vector2i(node.parent_track.num, node.index), -1) if node != null else -1
+	return _ids.get(Vector2i(node.parent_line.num, node.index), -1) if node != null else -1
 
 ## Attach at most two temporary anchors. The permanent graph stays small.
 func find_path(from: RoadNode, to: RoadNode) -> Array[RoadNode]:
@@ -77,7 +77,7 @@ func find_path(from: RoadNode, to: RoadNode) -> Array[RoadNode]:
 	var start: int = _attach(from, false, temporary)
 	var finish: int = start if from == to else _attach(to, true, temporary)
 	if start >= 0 and finish >= 0:
-		if from.parent_track == to.parent_track and _allows_arrival(from, to):
+		if from.parent_line == to.parent_line and _allows_arrival(from, to):
 			_connect(start, finish, _distance(from, to), false)
 		for id: int in _graph.get_id_path(start, finish):
 			result.append(_nodes[id])
@@ -89,7 +89,7 @@ func _attach(node: RoadNode, destination: bool, temporary: Array[int]) -> int:
 	var existing: int = _id_for(node)
 	if existing >= 0:
 		return existing
-	if not _ids.has(Vector2i(node.parent_track.num, 0)):
+	if not _ids.has(Vector2i(node.parent_line.num, 0)):
 		return -1
 	var id: int = _graph.get_available_point_id()
 	_graph.add_point(id, node.position)
@@ -97,7 +97,7 @@ func _attach(node: RoadNode, destination: bool, temporary: Array[int]) -> int:
 	temporary.append(id)
 	for other_id: int in _ids.values():
 		var other: RoadNode = _nodes[other_id]
-		if other.parent_track != node.parent_track:
+		if other.parent_line != node.parent_line:
 			continue
 		if not destination:
 			_connect(id, other_id, _distance(node, other), false)
@@ -119,7 +119,7 @@ func _release_temporary(ids: Array[int]) -> void:
 			_graph.costs.erase(key)
 
 func _distance(from: RoadNode, to: RoadNode) -> float:
-	if from.parent_track == to.parent_track:
+	if from.parent_line == to.parent_line:
 		return absf(to.offset() - from.offset())
 	return from.position.distance_to(to.position)
 

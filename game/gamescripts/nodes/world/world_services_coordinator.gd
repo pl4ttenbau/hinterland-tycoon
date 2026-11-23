@@ -119,7 +119,7 @@ func _wire_towns() -> void:
 	self._listen(self.towns.towns_registered, self.town_buildings._on_map_towns_loaded)
 
 func _wire_rails() -> void:
-	self._listen(self.rails.track_storage.track_added, self.forks._on_track_loaded)
+	self._listen(self.rails.track_storage.line_added, self.forks._on_track_loaded)
 	self._listen(SignalBus.rails_spawned, self.forks._on_rails_spawned)
 	self._listen(SignalBus.ui_mode_switched, self.rail_builder._on_ui_mode_changed)
 	self._listen(SignalBus.rails_spawned, self.residence_connector._on_rails_spawned)

@@ -7,7 +7,7 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	var road_instance := RoadData.of(road_num, type_key)
 	# optionals
 	if _road_dict.has("name"):
-		road_instance.track_name = _road_dict.get("name")
+		road_instance.line_name = _road_dict.get("name")
 	if _road_dict.has("tag"):
 		road_instance.tag = _road_dict.get("tag", null)
 	if _road_dict.has("autosmooth"):

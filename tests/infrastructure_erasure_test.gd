@@ -19,7 +19,7 @@ func _run() -> void:
 		get_tree().quit(1)
 		return
 	var eraser: EraserManager = Managers.eraser
-	eraser.erase_finished.connect(func(_track: AbstractInfrLine, _op: EraserManager.Operation, result: Error): results.append(result))
+	eraser.erase_finished.connect(func(_line: AbstractInfrLine, _op: EraserManager.Operation, result: Error): results.append(result))
 	_check(await _test_roads(services.roads, eraser) == true, "Road test completed")
 	_check(await _test_rails(services.rails, services.forks, eraser) == true, "Rail test completed")
 	remove_child(services)
@@ -66,7 +66,7 @@ func _test_roads(roads: RoadsLoader, eraser: EraserManager) -> bool:
 	_check(tail != null and road.nodes.size() == 2, "Middle cut retains two roads")
 	if tail == null:
 		return false
-	_check(end.parent_track == tail and end.index == 1, "Moved road endpoint is reindexed")
+	_check(end.parent_line == tail and end.index == 1, "Moved road endpoint is reindexed")
 	_check(tail.curve.get_point_in(1) == handle and tail.curve.get_point_position(0) == tail.nodes[0].position, "Right curve retains its handles and world positions")
 	var tail_view: RoadWay3D = roads.storage.get_container_by_num(tail.num)
 	_check(view.get_path_3d().curve == road.curve and tail_view.position == Vector3.ZERO, "Both road views use the new curves at the world origin")
@@ -93,7 +93,7 @@ func _test_roads(roads: RoadsLoader, eraser: EraserManager) -> bool:
 	# A node erase keeps the two outside spans and drops the node itself.
 	var long_road := _road(roads, 40, [Vector3.ZERO, Vector3.RIGHT, Vector3.RIGHT * 2, Vector3.RIGHT * 3, Vector3.RIGHT * 4])
 	var removed: RoadNode = long_road.nodes[2]
-	_check(roads.erase_node(long_road, 2) == OK and removed.parent_track == null, "Erased road node is detached")
+	_check(roads.erase_node(long_road, 2) == OK and removed.parent_line == null, "Erased road node is detached")
 	_check(long_road.nodes.size() == 2 and roads.storage.get_by_num(41).nodes.size() == 2, "Node erasure leaves a gap on both sides")
 	var junction := Vector3(100, 0, 100)
 	var junction_road := _road(roads, 42, [junction - Vector3.RIGHT, junction, junction + Vector3.RIGHT])
@@ -142,7 +142,7 @@ func _test_rails(rails: RailsLoader, forks: RailJunctionLoader, eraser: EraserMa
 	var tail_view: RailTrack3D = rails.track_storage.get_container_by_num(tail.num)
 	_check(tail_view.get_bed_mesh().get_total_triangle_count() > 0, "Sub-tile rail fragments keep their bedding")
 	_check(rails.outer_buffers.size() == 2, "The new rail ends get buffers")
-	_check(endpoint.parent_track == tail and rails.fork_storage.get_by_track(tail.num) == endpoint.fork, "Moved fork is indexed under the new track ID")
+	_check(endpoint.parent_line == tail and rails.fork_storage.get_by_track(tail.num) == endpoint.fork, "Moved fork is indexed under the new track ID")
 	_check(group.setting.current.root == tail.num and group.setting.current.connected == selected, "Moving the root preserves the selected branch")
 	_check(straight.nodes[0].fork.connective_tracks.has(tail.num) and not branch.nodes[0].fork.connective_tracks.has(track.num), "Neighbors reference the new rail fragment")
 	_check(rails.erase_node(branch, 0) == OK and group.connected_tracks.size() == 2, "Erasing a fork endpoint leaves the other two tracks connected")
@@ -167,7 +167,7 @@ func _road(roads: RoadsLoader, num: int, positions: Array[Vector3]) -> RoadData:
 
 
 func _cross(node: RoadNode, links: Array[int]) -> void:
-	(node.parent_track as RoadData).crosses.append(RoadCross.of(node, links))
+	(node.parent_line as RoadData).crosses.append(RoadCross.of(node, links))
 
 
 func _rail(rails: RailsLoader, num: int, positions: Array[Vector3], fork_index: int, static_track: bool) -> RailTrackData:

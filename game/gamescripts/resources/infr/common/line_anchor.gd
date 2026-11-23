@@ -1,4 +1,4 @@
-## A place on a track or road: one of its nodes, plus a signed distance along the curve from that node.
+## A place on a line (rail track or road): one of its nodes, plus a signed distance along the curve from that node.
 ##
 ## Why not just a node index, or just a distance from the line's start?
 ## - A node index alone only allows places exactly on an authored point.

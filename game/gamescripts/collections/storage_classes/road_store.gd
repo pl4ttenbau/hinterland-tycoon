@@ -1,10 +1,10 @@
 @icon("res://assets/icons/icon_road_white.png")
-class_name RoadStore extends AbstractTrackStore
+class_name RoadStore extends AbstractInfrLineStore
 
 @export var _list: Array[RoadData] = []
 @export_storage var _containers: Array[RoadWay3D] = []
 
-func _tracks() -> Array:
+func _lines() -> Array:
 	return self._list
 
 func _views() -> Array:

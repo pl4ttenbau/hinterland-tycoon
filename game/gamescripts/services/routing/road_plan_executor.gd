@@ -121,7 +121,7 @@ func _at_visit(vehicle: RoadVehicle3D, node: RoadNode, radius: float) -> bool:
 	if vehicle.global_position.distance_to(node.position) > radius:
 		return false
 	if node is RoadRouteAnchor and node.arrival_direction != 0:
-		var curve: Curve3D = node.parent_track.curve
+		var curve: Curve3D = node.parent_line.curve
 		var tangent: Vector3 = curve.sample_baked(minf(node.curve_offset + 0.1, curve.get_baked_length())) - curve.sample_baked(maxf(0, node.curve_offset - 0.1))
 		return vehicle.global_basis.z.dot(tangent.normalized()) * node.arrival_direction > 0.5
 	return true
@@ -227,8 +227,8 @@ func _make_segments(start: Path3D, offset: float, nodes: Array[RoadNode]) -> Arr
 	for index: int in range(1, nodes.size()):
 		var from: RoadNode = nodes[index - 1]
 		var to: RoadNode = nodes[index]
-		if from.parent_track == to.parent_track:
-			var road: RoadWay3D = Managers.roads.storage.get_container_by_num(from.parent_track.num)
+		if from.parent_line == to.parent_line:
+			var road: RoadWay3D = Managers.roads.storage.get_container_by_num(from.parent_line.num)
 			if road == null:
 				return []
 			result.append({"path": road.get_path_3d(), "from": _offset(from), "to": _offset(to)})

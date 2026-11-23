@@ -66,13 +66,13 @@ func get_connected_next_node() -> RailNodeData:
 	var node_is_first: bool = true
 	for connected_node_fork: RailJunctionArm in self.parent.node_forks:
 		var fork_node: RailNodeData = connected_node_fork.railNode
-		if fork_node.parent_track.num == self.current.connected:
+		if fork_node.parent_line.num == self.current.connected:
 			conn_fork_node = fork_node
 			if fork_node.index != 0: node_is_first = false
 	var next_node_i: int = 1
 	if ! node_is_first:
 		next_node_i = conn_fork_node.index -1
-	return conn_fork_node.parent_track.nodes[next_node_i]
+	return conn_fork_node.parent_line.nodes[next_node_i]
 
 ## returns whether there's even the possibility of changing for setting: at least 3 connected tracks
 func is_changable() -> bool:

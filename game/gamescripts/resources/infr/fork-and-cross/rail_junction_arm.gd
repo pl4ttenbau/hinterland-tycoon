@@ -25,7 +25,7 @@ var junction: RailJunctionData
 @export_storage var container: RailJunction3D
 
 @export_storage var track: RailTrackData:
-	get(): return self.railNode.parent_track
+	get(): return self.railNode.parent_line
 	set(value): pass
 
 #region Initialization

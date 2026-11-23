@@ -16,7 +16,7 @@ static func start() -> bool:
 	if nearest_fork == null:
 		Loggie.warn("No near railway tracks found of %d" % Managers.rails.track_storage.get_all().size())
 		return true
-	var nearest_track_name: String = nearest_fork.node_forks[0].track.track_name
+	var nearest_track_name: String = nearest_fork.node_forks[0].track.line_name
 	Loggie.info("Nearest fork: Node %d of Track \"%s\"" % [nearest_fork.num, nearest_track_name])
 	_enable_building_mode(nearest_fork)
 	var marker: SelectedNodeMarker3D = load(MARKER_SCENE).instantiate()

@@ -1,12 +1,12 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
-class_name RailTrackStore extends AbstractTrackStore
+class_name RailTrackStore extends AbstractInfrLineStore
 
 var SAVE_PATH_FORMAT = "res://world/%s/reslists/rail_tracks.dat"
 
 @export var _list: Array[RailTrackData] = []
 @export_storage var _containers: Array[RailTrack3D] = []
 
-func _tracks() -> Array:
+func _lines() -> Array:
 	return self._list
 
 func _views() -> Array:

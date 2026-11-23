@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
-class_name RailsLoader extends AbstractTrackLoader
+class_name RailsLoader extends AbstractInfrLineLoader
 
 const MAP_RAILS_FILEPATH_FORMAT := "res://world/%s/jsondata/tracks.json"
 const RAILS_INFR_GROUP := "Rails"
@@ -20,7 +20,7 @@ var _network_graph: RailNetworkGraph
 
 func _init() -> void:
 	network_changed.connect(_invalidate_network_graph)
-	track_storage.track_added.connect(_invalidate_network_graph.unbind(1))
+	track_storage.line_added.connect(_invalidate_network_graph.unbind(1))
 
 func _ready() -> void:
 	var tool: Node = load("res://game/gamescripts/nodes/marker/rail_signal_tool.gd").new()
@@ -64,7 +64,7 @@ func load_rail_tracks() -> void:
 	var rails_arr_str: String = FileAccess.get_file_as_string(rail_file_path)
 	for json_track in JSON.parse_string(rails_arr_str):
 		var rail_track: RailTrackData = RailMapper.rail_track_from_dict(json_track)
-		# Register fork legs before the track: the fork loader groups them on track_added.
+		# Register fork legs before the track: the fork loader groups them on line_added.
 		for node: RailNodeData in rail_track.nodes:
 			if node.fork != null:
 				self.fork_storage.add(node.fork)
@@ -97,8 +97,8 @@ func spawn_rail_track(track_obj: RailTrackData) -> RailTrack3D:
 #endregion
 
 #region Rail Buffers
-func spawn_rail_buffers(parent_track: RailTrackData):
-	for rail_node: RailNodeData in parent_track.nodes:
+func spawn_rail_buffers(parent_line: RailTrackData):
+	for rail_node: RailNodeData in parent_line.nodes:
 		if rail_node.is_end == true:
 			self.spawn_buffer(rail_node)
 
@@ -121,7 +121,7 @@ func _on_map_selected(_selected_map: MapData):
 
 ## Disconnect this fork leg. If fewer than two legs remain, remove the junction.
 func erase_fork(track: RailTrackData, index: int) -> Error:
-	if not _has_track(track) or not track.has_node_index(index):
+	if not _has_line(track) or not track.has_node_index(index):
 		return ERR_INVALID_PARAMETER
 	var node: RailNodeData = track.nodes[index]
 	if node.fork == null:
@@ -138,11 +138,11 @@ func erase_fork(track: RailTrackData, index: int) -> Error:
 
 
 #region Split hooks
-func _store() -> AbstractTrackStore:
+func _store() -> AbstractInfrLineStore:
 	return track_storage
 
 
-func _new_track() -> AbstractInfrLine:
+func _new_line() -> AbstractInfrLine:
 	return RailTrackData.new()
 
 
@@ -160,7 +160,7 @@ func _split_blocker(track: AbstractInfrLine) -> Error:
 	return OK
 
 
-func _copy_track_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
+func _copy_line_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
 	super(fragment, source)
 	(fragment as RailTrackData).hideFill = (source as RailTrackData).hideFill
 
@@ -180,7 +180,7 @@ func _init_fragment(fragment: AbstractInfrLine, cut_start: bool, cut_end: bool) 
 		rail.nodes.back().is_end = true
 
 
-func _relink(split: AbstractTrackLoader.Split) -> void:
+func _relink(split: AbstractInfrLineLoader.Split) -> void:
 	# Collect before the erased legs forget their junction.
 	var junctions: Array[RailJunctionData] = _junctions_of(split.old_nodes)
 	var removed_legs: Array[RailJunctionArm] = []
@@ -219,7 +219,7 @@ func _fork_loader() -> RailJunctionLoader:
 
 func _remove_fork_leg(leg: RailJunctionArm, removing_node: bool) -> void:
 	var node: RailNodeData = leg.railNode
-	var track := node.parent_track as RailTrackData
+	var track := node.parent_line as RailTrackData
 	track.forks.erase(leg)
 	fork_storage.remove(leg)
 	node.fork = null

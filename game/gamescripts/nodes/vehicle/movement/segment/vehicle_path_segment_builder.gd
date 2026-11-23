@@ -18,7 +18,7 @@ static func find_next_segment(current_segment: VehiclePathSegment) -> VehiclePat
 
 static func get_first_segment(movement: TrainMovement) -> VehiclePathSegment:
 	var veh_parking_node: RailNodeData = movement.last_node
-	var first_track_num = veh_parking_node.parent_track.num
+	var first_track_num = veh_parking_node.parent_line.num
 	var motor_direction: Enums.PathDirection = movement.direction
 	return VehiclePathSegment.of_rail(first_track_num, motor_direction)
 
@@ -31,9 +31,9 @@ static func get_next_track_num_from_node(segment_end: RailNodeData) -> int:
 	var fork_parent: RailJunctionData = segment_end.fork.junction
 	if fork_parent == null or fork_parent.setting.current == null:
 		return -1
-	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_track.num)
+	var next_track_num: int = fork_parent.setting.get_next_track_from_track(segment_end.parent_line.num)
 	if next_track_num < 0:
-		Loggie.error("Cannot continue from node %d at track %d: fork hasnt any setting" % [segment_end.parent_track.num, segment_end.index])
+		Loggie.error("Cannot continue from node %d at track %d: fork hasnt any setting" % [segment_end.parent_line.num, segment_end.index])
 		return -1
 	return next_track_num
 

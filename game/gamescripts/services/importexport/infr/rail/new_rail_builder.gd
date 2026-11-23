@@ -36,7 +36,7 @@ func _on_terrain_click(pos: Vector3) -> void:
 
 
 func _start_preview(end: Vector3) -> void:
-	var approach_track: RailTrackData = _approach.parent_track
+	var approach_track: RailTrackData = _approach.parent_line
 	_draft = RailTrackData.new()
 	_draft.start_pos = _mode.at_fork.pos
 	_draft.infr_type_key = approach_track.infr_type_key
@@ -88,7 +88,7 @@ func _accept_plan(dialog: RailConstructionDialog) -> String:
 		return "This rail plan is no longer active."
 	var fork: RailJunctionData = _mode.at_fork
 	var approach: RailNodeData = _get_approach(fork)
-	if approach == null or approach != _approach or approach.parent_track.infr_type_key != _draft.infr_type_key:
+	if approach == null or approach != _approach or approach.parent_line.infr_type_key != _draft.infr_type_key:
 		return "The rail connection changed. Start a new plan from the junction."
 
 	_committing = true
@@ -110,14 +110,14 @@ func _accept_plan(dialog: RailConstructionDialog) -> String:
 func _register_track(track: RailTrackData, fork: RailJunctionData) -> void:
 	var rails: RailsLoader = Managers.rails
 	track.num = rails.track_storage.next_num()
-	track.track_name = "New Track %d" % track.num
+	track.line_name = "New Track %d" % track.num
 	var connection := RailJunctionArm.new()
 	connection.railNode = track.nodes[0]
 	track.nodes[0].fork = connection
 	track.add_fork(connection)
 
 	rails.fork_storage.add(connection)
-	# The track_added listener attaches the endpoint to the selected fork.
+	# The line_added listener attaches the endpoint to the selected fork.
 	rails.track_storage.add(track)
 	var view: RailTrack3D = rails.spawn_rail_track(track)
 	fork.refresh_setting()
@@ -127,7 +127,7 @@ func _register_track(track: RailTrackData, fork: RailJunctionData) -> void:
 	if is_instance_valid(world) and bed != null and bed.mesh != null:
 		var bounds: AABB = bed.mesh.get_aabb()
 		world.clear_rail_vegetation(track.curve, maxf(absf(bounds.position.x), absf(bounds.end.x)))
-	Loggie.info("Created connected track: %s" % track.track_name)
+	Loggie.info("Created connected track: %s" % track.line_name)
 
 
 func _get_approach(fork: RailJunctionData) -> RailNodeData:

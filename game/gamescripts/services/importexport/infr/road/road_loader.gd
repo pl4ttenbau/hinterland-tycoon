@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_road_white.png")
-class_name RoadsLoader extends AbstractTrackLoader
+class_name RoadsLoader extends AbstractInfrLineLoader
 
 const JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const NODES_GROUP = "Roads"
@@ -55,7 +55,7 @@ func _on_map_selected(_selected_map: MapData):
 
 ## Disconnect this junction anchor from other roads. Its geometry survives.
 func erase_cross(road: RoadData, index: int) -> Error:
-	if not _has_track(road) or not road.has_node_index(index):
+	if not _has_line(road) or not road.has_node_index(index):
 		return ERR_INVALID_PARAMETER
 	if _road_has_active_vehicle(road):
 		return ERR_BUSY
@@ -83,11 +83,11 @@ func erase_cross(road: RoadData, index: int) -> Error:
 
 
 #region Split hooks
-func _store() -> AbstractTrackStore:
+func _store() -> AbstractInfrLineStore:
 	return storage
 
 
-func _new_track() -> AbstractInfrLine:
+func _new_line() -> AbstractInfrLine:
 	return RoadData.new()
 
 
@@ -99,7 +99,7 @@ func _split_blocker(track: AbstractInfrLine) -> Error:
 	return ERR_BUSY if _road_has_dependencies(track) else OK
 
 
-func _copy_track_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
+func _copy_line_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
 	super(fragment, source)
 	(fragment as RoadData).autosmooth = (source as RoadData).autosmooth
 
@@ -112,7 +112,7 @@ func _init_fragment(fragment: AbstractInfrLine, _cut_start: bool, _cut_end: bool
 			road.crosses.append(node.cross)
 
 
-func _relink(split: AbstractTrackLoader.Split) -> void:
+func _relink(split: AbstractInfrLineLoader.Split) -> void:
 	var old_nodes: Array = split.old_nodes
 	# Collect before the erased nodes drop their crosses.
 	var old_anchors: Array[RoadNode] = []
@@ -121,7 +121,7 @@ func _relink(split: AbstractTrackLoader.Split) -> void:
 			old_anchors.append(node)
 	for node: RoadNode in split.removed_nodes():
 		_clear_cross(node)
-	_retarget_crosses(split.track.num, old_anchors, split.surviving)
+	_retarget_crosses(split.line.num, old_anchors, split.surviving)
 #endregion
 
 
@@ -138,7 +138,7 @@ func _retarget_crosses(old_num: int, anchors: Array[RoadNode], surviving: Dictio
 			for anchor: RoadNode in anchors:
 				if anchor == node or not surviving.has(anchor) or node.position.distance_to(anchor.position) > RoadPathfinder.JOIN_TOLERANCE:
 					continue
-				var target: int = anchor.parent_track.num
+				var target: int = anchor.parent_line.num
 				if target != other.num and target not in links:
 					links.append(target)
 			if links.is_empty():
@@ -148,7 +148,7 @@ func _retarget_crosses(old_num: int, anchors: Array[RoadNode], surviving: Dictio
 
 func _prune_empty_crosses(anchors: Array[RoadNode]) -> void:
 	for anchor: RoadNode in anchors:
-		var road: RoadData = anchor.parent_track
+		var road: RoadData = anchor.parent_line
 		# Endpoints remain routable without a cross resource. Interior anchors
 		# still need one while another road names them as a junction.
 		var is_endpoint: bool = anchor.index == 0 or anchor.index == road.nodes.size() - 1
@@ -158,10 +158,10 @@ func _prune_empty_crosses(anchors: Array[RoadNode]) -> void:
 
 func _has_incoming_cross(anchor: RoadNode) -> bool:
 	for road: RoadData in storage.get_all():
-		if road == anchor.parent_track:
+		if road == anchor.parent_line:
 			continue
 		for node: RoadNode in road.nodes:
-			if node.cross != null and anchor.parent_track.num in node.cross.connecting_roads \
+			if node.cross != null and anchor.parent_line.num in node.cross.connecting_roads \
 					and node.position.distance_to(anchor.position) <= RoadPathfinder.JOIN_TOLERANCE:
 				return true
 	return false
@@ -170,7 +170,7 @@ func _has_incoming_cross(anchor: RoadNode) -> bool:
 func _clear_cross(node: RoadNode) -> void:
 	if node.cross == null:
 		return
-	(node.parent_track as RoadData).crosses.erase(node.cross)
+	(node.parent_line as RoadData).crosses.erase(node.cross)
 	node.cross.connecting_roads.clear()
 	node.cross.parent_node = null
 	node.cross = null

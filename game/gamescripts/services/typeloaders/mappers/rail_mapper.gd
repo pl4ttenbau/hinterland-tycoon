@@ -10,7 +10,7 @@ static func rail_track_from_dict(_track_dict: Dictionary) -> RailTrackData:
 	track_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# optionals
 	if _track_dict.has("name"):
-		track_instance.track_name = _track_dict.get("name")
+		track_instance.line_name = _track_dict.get("name")
 	if _track_dict.has("hideBed"):
 		track_instance.hideFill = _track_dict.get("hideBed")
 	if _track_dict.has("tag"):

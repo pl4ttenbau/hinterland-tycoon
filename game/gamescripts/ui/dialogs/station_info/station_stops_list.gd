@@ -56,6 +56,6 @@ func _add_stop_row(connection: AbstractStation, opened_here: bool) -> void:
 		set_item_custom_fg_color(row, get_theme_color("caret_color"))
 
 func _line_label(line: AbstractInfrLine, fallback: String) -> String:
-	if line != null and not line.track_name.strip_edges().is_empty():
-		return line.track_name
+	if line != null and not line.line_name.strip_edges().is_empty():
+		return line.line_name
 	return fallback

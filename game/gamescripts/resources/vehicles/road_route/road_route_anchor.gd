@@ -7,7 +7,7 @@ var arrival_direction: int = 0
 
 static func at(road: RoadData, offset: float) -> RoadRouteAnchor:
 	var anchor := RoadRouteAnchor.new()
-	anchor.parent_track = road
+	anchor.parent_line = road
 	anchor.index = -1
 	anchor.curve_offset = offset
 	anchor.position = road.curve.sample_baked(offset)

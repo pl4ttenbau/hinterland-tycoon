@@ -2,48 +2,48 @@
 ## Subclasses keep the typed arrays, because typed arrays cannot be shared, and
 ## expose them through their typed get_all() and get_containers().
 @abstract
-class_name AbstractTrackStore extends Resource
+class_name AbstractInfrLineStore extends Resource
 
 @export var _by_id: Dictionary = {}
-## Highest number added so far; new tracks take next_num().
+## Highest number added so far; new lines take next_num().
 @export var _max_num: int = -1
 
 @export_storage var _containers_by_id: Dictionary = {}
 
-signal track_added(track: AbstractInfrLine)
+signal line_added(line: AbstractInfrLine)
 
-## The subclass's typed track array.
-@abstract func _tracks() -> Array
+## The subclass's typed line array.
+@abstract func _lines() -> Array
 ## The subclass's typed view array.
 @abstract func _views() -> Array
 ## Used in lookup errors, e.g. "road".
 @abstract func _kind_name() -> String
 
 #region Add
-func add(track: AbstractInfrLine) -> void:
-	self._tracks().append(track)
-	self._by_id.set(track.num, track)
-	self._max_num = maxi(self._max_num, track.num)
-	self.track_added.emit(track)
+func add(line: AbstractInfrLine) -> void:
+	self._lines().append(line)
+	self._by_id.set(line.num, line)
+	self._max_num = maxi(self._max_num, line.num)
+	self.line_added.emit(line)
 
 func add_container(view: InfrLine3D) -> void:
 	self._views().append(view)
 	self._containers_by_id.set(view.get_line().num, view)
 
-## Number for a newly built or split-off track.
+## Number for a newly built or split-off line.
 func next_num() -> int:
 	return self._max_num + 1
 #endregion
 
 ## Remove the indexes and detach the view immediately so it stops colliding.
-func remove(track: AbstractInfrLine) -> void:
-	if self._by_id.get(track.num) != track:
+func remove(line: AbstractInfrLine) -> void:
+	if self._by_id.get(line.num) != line:
 		return
-	self._tracks().erase(track)
-	self._by_id.erase(track.num)
+	self._lines().erase(line)
+	self._by_id.erase(line.num)
 	# Untyped: a freed view cannot be assigned to a typed variable.
-	var view: Variant = self._containers_by_id.get(track.num)
-	self._containers_by_id.erase(track.num)
+	var view: Variant = self._containers_by_id.get(line.num)
+	self._containers_by_id.erase(line.num)
 	if is_instance_valid(view):
 		self._views().erase(view)
 		self._on_view_removed(view)
@@ -62,7 +62,7 @@ func get_by_num(num: int) -> AbstractInfrLine:
 		Loggie.error("Cannot get %s %d; out of index?" % [self._kind_name(), num])
 	return found
 
-## Null when the track has no live view; never logs.
+## Null when the line has no live view; never logs.
 func find_container(num: int) -> InfrLine3D:
 	var view: Variant = self._containers_by_id.get(num)
 	return view if is_instance_valid(view) else null
