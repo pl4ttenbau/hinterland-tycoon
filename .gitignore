@@ -15,6 +15,9 @@ exports/
 *.pyc
 tools/__pycache__/
 
+# Backups the JSON writer keeps next to a saved file (tracks.json.bak-<timestamp>); git is the history.
+*.bak-*
+
 # Local test logs
 /tmp/
 **/insp

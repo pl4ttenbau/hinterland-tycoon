@@ -5,14 +5,18 @@ const JSON_LINE_WIDTH: int = 120
 ## Bezier handles (handleIn/handleOut) are written with 3 decimals: millimetres. Auto smoothing computes
 ## them in full float precision, which only bloats the JSON and its diffs without changing the track.
 const HANDLE_KEYS: Array[String] = ["handleIn", "handleOut"]
+## Lists of track or road numbers. JSON has no integer type, so after a read they hold floats and would
+## be written back as "4.0", while freshly generated lists print "4": one file would mix both styles, and
+## every regenerated fork would show up as a diff. These are always written as integers.
+const ID_LIST_KEYS: Array[String] = ["connectiveTracks", "connectiveRoads", "autoConnectiveRoads"]
 
-static func format_json(value: Variant, depth: int = 0, prefix_width: int = 0, position: bool = false, handle: bool = false) -> String:
+static func format_json(value: Variant, depth: int = 0, prefix_width: int = 0, position: bool = false, handle: bool = false, ids: bool = false) -> String:
 	# Serialize structure, not text replacements: names or metadata containing
 	# JSON-looking strings must remain untouched. Only numeric arrays are compacted.
 	if value is Dictionary:
 		return _format_object(value, depth)
 	if value is Array:
-		return _format_array(value, depth, prefix_width, position, handle)
+		return _format_array(value, depth, prefix_width, position, handle, ids)
 	return JSON.stringify(value, "", false, true)
 
 static func _format_object(value: Dictionary, depth: int) -> String:
@@ -24,10 +28,10 @@ static func _format_object(value: Dictionary, depth: int) -> String:
 	for key: Variant in value:
 		var label: String = JSON.stringify(str(key)) + ": "
 		var width: int = (depth + 1) * 4 + label.length()
-		fields.append(child_indent + label + format_json(value[key], depth + 1, width, str(key) == "pos", HANDLE_KEYS.has(str(key))))
+		fields.append(child_indent + label + format_json(value[key], depth + 1, width, str(key) == "pos", HANDLE_KEYS.has(str(key)), ID_LIST_KEYS.has(str(key))))
 	return "{\n" + ",\n".join(fields) + "\n" + indent + "}"
 
-static func _format_array(value: Array, depth: int, prefix_width: int, position: bool, handle: bool = false) -> String:
+static func _format_array(value: Array, depth: int, prefix_width: int, position: bool, handle: bool = false, ids: bool = false) -> String:
 	if value.is_empty():
 		return "[]"
 	var indent: String = "\t".repeat(depth)
@@ -42,6 +46,8 @@ static func _format_array(value: Array, depth: int, prefix_width: int, position:
 		if numeric:
 			if position and value.size() == 3:
 				elements.append(position_text(float(element)))
+			elif ids and float(element) == floorf(float(element)):
+				elements.append(str(int(element)))
 			elif handle and value.size() == 3:
 				elements.append(handle_text(float(element)))
 			else:

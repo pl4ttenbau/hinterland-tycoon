@@ -16,7 +16,7 @@ func write_text(path: String, text: String) -> void:
 	file.close()
 
 func run(tree: SceneTree) -> int:
-	for test: String in ["test_save", "test_formatting", "test_load", "test_standalone_editorobjects", "test_cache_upgrade", "test_runtime_cache", "test_project_json"]:
+	for test: String in ["test_save", "test_rail_forks_on_save", "test_formatting", "test_load", "test_standalone_editorobjects", "test_cache_upgrade", "test_runtime_cache", "test_project_json"]:
 		check(call(test, tree) == true, test + " completed")
 	print("Infrastructure JSON tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures else 0
@@ -26,7 +26,9 @@ func fixture() -> Array:
 		"extension": {"keep": 4}, "points": [
 			{"pos": [1, 2, 3], "fork": {"connectiveTracks": [8]}, "custom": "keep"},
 			{"pos": [8, 3, 4], "station": {"name": "keep"}}
-		]}, {"num": 8, "name": "Unseen", "type": "750_MM", "points": [{"pos": [0, 0, 0]}, {"pos": [3, 0, 0]}]}]
+			## Track 8 runs straight into the start of the saved line 7 (world (10, 5, -3), see make_line), so the
+			## fork 7 -> 8 is what the geometry calls for and survives the fork regeneration on save.
+		]}, {"num": 8, "name": "Unseen", "type": "750_MM", "points": [{"pos": [4, 5, -3]}, {"pos": [10, 5, -3]}]}]
 
 func make_line(tree: SceneTree) -> EditorInfrLine3D:
 	var line: EditorInfrLine3D = EditorInfrLine3D.ofRail(7, "Edited")
@@ -37,6 +39,44 @@ func make_line(tree: SceneTree) -> EditorInfrLine3D:
 	line.curve.add_point(Vector3.ZERO, Vector3.ZERO, Vector3(1, 2, 3))
 	line.curve.add_point(Vector3(4, 1, 0), Vector3(-2, -1, 0))
 	return line
+
+## Rail saves regenerate forks from the geometry, and a fork that only lists tracks no longer blocks
+## changing a track's point count: it is rebuilt on the new end instead.
+func test_rail_forks_on_save(tree: SceneTree) -> bool:
+	var directory: String = "/tmp/hinterland-forks-%d" % OS.get_process_id()
+	DirAccess.make_dir_recursive_absolute(directory)
+	var path: String = directory.path_join("tracks.json")
+	## Track 1 ends at (10, 0, 0) with a fork to track 2, which continues straight on from there.
+	write_text(path, JSON.stringify([
+		{"num": 1, "name": "One", "type": "750_MM", "points": [{"pos": [0, 0, 0]},
+			{"pos": [10, 0, 0], "fork": {"connectiveTracks": [2]}}]},
+		{"num": 2, "name": "Two", "type": "750_MM", "points": [{"pos": [10, 0, 0]}, {"pos": [20, 0, 0]}]},
+	]) + "\n")
+	var store: InfrJsonStore = InfrJsonStore.new()
+	## The editor adds a middle point to track 1: three points now, the fork's old index is a middle point.
+	var line: EditorInfrLine3D = EditorInfrLine3D.ofRail(1, "One")
+	tree.root.add_child(line)
+	line.curve = Curve3D.new()
+	for x: float in [0.0, 5.0, 10.0]:
+		line.curve.add_point(Vector3(x, 0, 0))
+	var lines: Array[EditorInfrLine3D] = [line]
+	check(store.save_lines(path, lines, Enums.InfrDomain.RAIL).ok, "A generated fork does not block a changed point count")
+	var data: Array = InfrJsonStore.read_records(path).records
+	check(not data[0].points[1].has("fork"), "The fork does not stay on what is now a middle point")
+	check(data[0].points[2].fork.connectiveTracks.map(func(n: Variant) -> int: return int(n)) == [2], "The fork is rebuilt on the new end")
+	check(data[1].points[0].fork.connectiveTracks.map(func(n: Variant) -> int: return int(n)) == [1], "The track it meets gets its fork too")
+	check(not data[0].points[0].has("fork") and not data[1].points[1].has("fork"), "Open ends get no fork")
+	## A fork with more than its track list is hand-made meaning and still blocks.
+	var records: Array = InfrJsonStore.read_records(path).records
+	records[0].points[2].fork["static"] = true
+	write_text(path, JSON.stringify(records) + "\n")
+	line.curve.add_point(Vector3(15, 0, 0))
+	check(not store.save_lines(path, lines, Enums.InfrDomain.RAIL).ok, "A fork with extra keys still blocks a changed point count")
+	line.queue_free()
+	for file: String in DirAccess.get_files_at(directory):
+		DirAccess.remove_absolute(directory.path_join(file))
+	DirAccess.remove_absolute(directory)
+	return true
 
 func test_save(tree: SceneTree) -> bool:
 	var directory: String = "/tmp/hinterland-json-%d" % OS.get_process_id()
@@ -100,6 +140,11 @@ func test_formatting(_tree: SceneTree) -> bool:
 	check(is_equal_approx(parsed[0].points[0].handleOut[0], 1.235), "Handles keep millimetre precision, finer than positions")
 	check(text.contains('"handleOut": [1.235, 0.0, 3.0]'), "Handles are written with 3 decimals and no float noise")
 	check(parsed[0].note == "literal [1, 2, 3]", "Formatting preserves strings containing array-like text")
+	## Track and road number lists as JSON parsing returns them (floats) and as generators build them (ints).
+	var links: String = InfrJsonStore.format_json({"fork": {"connectiveTracks": [4.0, 92]},
+		"cross": {"connectiveRoads": [7.0], "autoConnectiveRoads": [3.0, 5]}})
+	check(links.contains('"connectiveTracks": [4, 92]') and links.contains('"connectiveRoads": [7]') \
+		and links.contains('"autoConnectiveRoads": [3, 5]'), "Track and road number lists are always written as integers")
 	for line: String in text.split("\n"):
 		check(line.replace("\t", "    ").length() <= InfrJsonStore.JSON_LINE_WIDTH, "Numeric array layout respects the line width")
 	InfrJsonStore.round_positions(data)

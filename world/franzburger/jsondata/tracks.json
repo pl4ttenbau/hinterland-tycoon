@@ -8,7 +8,7 @@
 			{
 				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [84.0]
+					"connectiveTracks": [84]
 				}
 			},
 			{
@@ -30,7 +30,7 @@
 			{
 				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [3.0]
+					"connectiveTracks": [3]
 				}
 			}
 		]
@@ -44,7 +44,7 @@
 			{
 				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [84.0]
+					"connectiveTracks": [84]
 				}
 			},
 			{
@@ -66,7 +66,7 @@
 			{
 				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [3.0]
+					"connectiveTracks": [3]
 				}
 			}
 		]
@@ -80,7 +80,7 @@
 			{
 				"pos": [808.08, 23.70, -332.94],
 				"fork": {
-					"connectiveTracks": [2.0, 3.0],
+					"connectiveTracks": [1, 2],
 					"static": true
 				}
 			},
@@ -102,7 +102,7 @@
 			},
 			{
 				"pos": [742.01, 23.60, -385.37],
-				"handleIn": [9.389999, -0.01, 1.07]
+				"handleIn": [9.39, -0.01, 1.07]
 			},
 			{
 				"pos": [718.98, 23.45, -380.83],
@@ -114,7 +114,7 @@
 			},
 			{
 				"pos": [674.87, 24.31, -375.74],
-				"handleIn": [8.309999, -0.07, 0.11]
+				"handleIn": [8.31, -0.07, 0.11]
 			},
 			{
 				"pos": [640.47, 24.09, -377.90],
@@ -123,7 +123,7 @@
 			{
 				"pos": [610.30, 24.29, -384.44],
 				"fork": {
-					"connectiveTracks": [4.0],
+					"connectiveTracks": [4],
 					"static": true
 				}
 			}
@@ -138,7 +138,7 @@
 			{
 				"pos": [610.30, 24.29, -384.44],
 				"fork": {
-					"connectiveTracks": [3.0],
+					"connectiveTracks": [3],
 					"static": true
 				}
 			},
@@ -181,7 +181,7 @@
 			{
 				"pos": [440.40, 24.00, -477.83],
 				"fork": {
-					"connectiveTracks": [5.0],
+					"connectiveTracks": [5],
 					"static": true
 				}
 			}
@@ -196,7 +196,7 @@
 			{
 				"pos": [440.40, 24.00, -477.83],
 				"fork": {
-					"connectiveTracks": [4.0],
+					"connectiveTracks": [4],
 					"static": true
 				}
 			},
@@ -231,7 +231,7 @@
 			{
 				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [6.0, 7.0],
+					"connectiveTracks": [6, 7],
 					"static": true
 				}
 			}
@@ -246,7 +246,7 @@
 			{
 				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [5.0]
+					"connectiveTracks": [5]
 				}
 			},
 			{
@@ -272,7 +272,7 @@
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [8.0]
+					"connectiveTracks": [8]
 				}
 			}
 		]
@@ -286,7 +286,7 @@
 			{
 				"pos": [344.80, 23.30, -582.68],
 				"fork": {
-					"connectiveTracks": [5.0]
+					"connectiveTracks": [5]
 				}
 			},
 			{
@@ -316,7 +316,7 @@
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [8.0]
+					"connectiveTracks": [8]
 				}
 			}
 		]
@@ -330,7 +330,7 @@
 			{
 				"pos": [266.21, 23.28, -578.02],
 				"fork": {
-					"connectiveTracks": [6.0, 7.0],
+					"connectiveTracks": [6, 7],
 					"static": true
 				}
 			},
@@ -345,7 +345,7 @@
 			{
 				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [9.0, 10.0]
+					"connectiveTracks": [9, 10]
 				}
 			}
 		]
@@ -359,7 +359,7 @@
 			{
 				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [8.0]
+					"connectiveTracks": [8]
 				}
 			},
 			{
@@ -397,7 +397,7 @@
 			{
 				"pos": [204.43, 24.00, -713.11],
 				"fork": {
-					"connectiveTracks": [11.0],
+					"connectiveTracks": [11],
 					"static": true
 				}
 			}
@@ -412,7 +412,7 @@
 			{
 				"pos": [233.75, 23.45, -580.10],
 				"fork": {
-					"connectiveTracks": [8.0],
+					"connectiveTracks": [8],
 					"static": true
 				}
 			},
@@ -451,7 +451,7 @@
 			{
 				"pos": [101.05, 24.00, -484.24],
 				"fork": {
-					"connectiveTracks": [43.0],
+					"connectiveTracks": [43],
 					"static": true
 				}
 			}
@@ -466,7 +466,7 @@
 			{
 				"pos": [204.43, 24.00, -713.11],
 				"fork": {
-					"connectiveTracks": [9.0],
+					"connectiveTracks": [9],
 					"static": true
 				}
 			},
@@ -497,7 +497,7 @@
 			{
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
-					"connectiveTracks": [12.0],
+					"connectiveTracks": [12],
 					"static": true
 				}
 			}
@@ -512,7 +512,7 @@
 			{
 				"pos": [339.32, 24.16, -798.95],
 				"fork": {
-					"connectiveTracks": [11.0],
+					"connectiveTracks": [11],
 					"static": true
 				}
 			},
@@ -551,7 +551,7 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [13.0, 16.0],
+					"connectiveTracks": [13, 16],
 					"static": true
 				}
 			}
@@ -566,7 +566,7 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [12.0]
+					"connectiveTracks": [12]
 				}
 			},
 			{
@@ -580,7 +580,7 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [14.0, 15.0],
+					"connectiveTracks": [14, 15],
 					"static": true
 				}
 			}
@@ -595,7 +595,7 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [13.0]
+					"connectiveTracks": [13]
 				}
 			},
 			{
@@ -625,7 +625,7 @@
 			{
 				"pos": [494.76, 23.76, -919.73],
 				"fork": {
-					"connectiveTracks": [13.0]
+					"connectiveTracks": [13]
 				}
 			},
 			{
@@ -659,7 +659,7 @@
 			{
 				"pos": [483.24, 23.54, -895.29],
 				"fork": {
-					"connectiveTracks": [12.0]
+					"connectiveTracks": [12]
 				}
 			},
 			{
@@ -692,7 +692,7 @@
 			{
 				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [19.0]
+					"connectiveTracks": [19]
 				}
 			},
 			{
@@ -718,7 +718,7 @@
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [20.0]
+					"connectiveTracks": [20]
 				}
 			}
 		]
@@ -732,7 +732,7 @@
 			{
 				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [19.0]
+					"connectiveTracks": [19]
 				}
 			},
 			{
@@ -758,7 +758,7 @@
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [20.0]
+					"connectiveTracks": [20]
 				}
 			}
 		]
@@ -772,7 +772,7 @@
 			{
 				"pos": [-1382.57, 24.24, 116.66],
 				"fork": {
-					"connectiveTracks": [17.0, 18.0],
+					"connectiveTracks": [17, 18],
 					"static": true
 				}
 			},
@@ -794,7 +794,7 @@
 			{
 				"pos": [-1450.61, 24.29, 137.46],
 				"fork": {
-					"connectiveTracks": [17.0, 18.0],
+					"connectiveTracks": [17, 18],
 					"static": true
 				}
 			},
@@ -837,7 +837,7 @@
 			{
 				"pos": [-1567.97, 23.90, 125.61],
 				"fork": {
-					"connectiveTracks": [21.0]
+					"connectiveTracks": [21]
 				}
 			}
 		]
@@ -851,7 +851,7 @@
 			{
 				"pos": [-1567.97, 23.90, 125.61],
 				"fork": {
-					"connectiveTracks": [20.0]
+					"connectiveTracks": [20]
 				}
 			},
 			{
@@ -893,7 +893,7 @@
 			{
 				"pos": [-1507.94, 23.54, -68.97],
 				"fork": {
-					"connectiveTracks": [22.0]
+					"connectiveTracks": [22]
 				}
 			}
 		]
@@ -907,7 +907,7 @@
 			{
 				"pos": [-1507.94, 23.54, -68.97],
 				"fork": {
-					"connectiveTracks": [21.0]
+					"connectiveTracks": [21]
 				}
 			},
 			{
@@ -945,7 +945,7 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [23.0, 24.0],
+					"connectiveTracks": [23, 24],
 					"static": true
 				}
 			}
@@ -960,7 +960,7 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [22.0]
+					"connectiveTracks": [22]
 				}
 			},
 			{
@@ -982,7 +982,7 @@
 			{
 				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [25.0]
+					"connectiveTracks": [25]
 				}
 			}
 		]
@@ -996,7 +996,7 @@
 			{
 				"pos": [-1393.64, 23.35, -191.74],
 				"fork": {
-					"connectiveTracks": [22.0]
+					"connectiveTracks": [22]
 				}
 			},
 			{
@@ -1018,7 +1018,7 @@
 			{
 				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [25.0]
+					"connectiveTracks": [25]
 				}
 			}
 		]
@@ -1032,7 +1032,7 @@
 			{
 				"pos": [-1355.81, 24.00, -236.47],
 				"fork": {
-					"connectiveTracks": [23.0, 24.0],
+					"connectiveTracks": [23, 24],
 					"static": true
 				}
 			},
@@ -1087,7 +1087,7 @@
 			{
 				"pos": [-1123.59, 25.02, -217.38],
 				"fork": {
-					"connectiveTracks": [26.0]
+					"connectiveTracks": [26]
 				}
 			}
 		]
@@ -1101,7 +1101,7 @@
 			{
 				"pos": [-1123.59, 25.02, -217.38],
 				"fork": {
-					"connectiveTracks": [25.0]
+					"connectiveTracks": [25]
 				}
 			},
 			{
@@ -1134,12 +1134,12 @@
 			},
 			{
 				"pos": [-929.17, 25.24, -207.85],
-				"handleIn": [-9.429999, 0.01, 0.12]
+				"handleIn": [-9.43, 0.01, 0.12]
 			},
 			{
 				"pos": [-903.00, 25.02, -210.55],
 				"fork": {
-					"connectiveTracks": [27.0]
+					"connectiveTracks": [27]
 				}
 			}
 		]
@@ -1153,7 +1153,7 @@
 			{
 				"pos": [-903.00, 25.02, -210.55],
 				"fork": {
-					"connectiveTracks": [26.0]
+					"connectiveTracks": [26]
 				}
 			},
 			{
@@ -1195,7 +1195,7 @@
 			{
 				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [28.0, 29.0],
+					"connectiveTracks": [28, 29],
 					"static": true
 				}
 			}
@@ -1210,7 +1210,7 @@
 			{
 				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [27.0]
+					"connectiveTracks": [27]
 				}
 			},
 			{
@@ -1236,7 +1236,7 @@
 			{
 				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [30.0]
+					"connectiveTracks": [30]
 				}
 			}
 		]
@@ -1250,7 +1250,7 @@
 			{
 				"pos": [-733.55, 23.90, -285.36],
 				"fork": {
-					"connectiveTracks": [27.0]
+					"connectiveTracks": [27]
 				}
 			},
 			{
@@ -1280,7 +1280,7 @@
 			{
 				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [30.0]
+					"connectiveTracks": [30]
 				}
 			}
 		]
@@ -1294,7 +1294,7 @@
 			{
 				"pos": [-703.24, 23.63, -331.90],
 				"fork": {
-					"connectiveTracks": [28.0, 29.0],
+					"connectiveTracks": [28, 29],
 					"static": true
 				}
 			},
@@ -1337,7 +1337,7 @@
 			{
 				"pos": [-559.07, 24.10, -398.85],
 				"fork": {
-					"connectiveTracks": [31.0]
+					"connectiveTracks": [31]
 				}
 			}
 		]
@@ -1351,7 +1351,7 @@
 			{
 				"pos": [-559.07, 24.10, -398.85],
 				"fork": {
-					"connectiveTracks": [30.0]
+					"connectiveTracks": [30]
 				}
 			},
 			{
@@ -1381,7 +1381,7 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [32.0, 33.0],
+					"connectiveTracks": [32, 33],
 					"static": true
 				}
 			}
@@ -1396,13 +1396,13 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [31.0]
+					"connectiveTracks": [31]
 				}
 			},
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [34.0]
+					"connectiveTracks": [34]
 				}
 			}
 		]
@@ -1416,13 +1416,13 @@
 			{
 				"pos": [-537.11, 25.73, -484.83],
 				"fork": {
-					"connectiveTracks": [31.0]
+					"connectiveTracks": [31]
 				}
 			},
 			{
 				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [35.0]
+					"connectiveTracks": [35]
 				}
 			}
 		]
@@ -1436,7 +1436,7 @@
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [31.0, 37.0],
+					"connectiveTracks": [32, 37],
 					"static": true
 				}
 			},
@@ -1463,7 +1463,7 @@
 			{
 				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [33.0, 36.0],
+					"connectiveTracks": [33, 36],
 					"static": true
 				}
 			},
@@ -1494,7 +1494,7 @@
 			{
 				"pos": [-536.90, 25.35, -497.38],
 				"fork": {
-					"connectiveTracks": [35.0]
+					"connectiveTracks": [35]
 				}
 			},
 			{
@@ -1504,7 +1504,7 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [38.0]
+					"connectiveTracks": [38]
 				}
 			}
 		]
@@ -1518,7 +1518,7 @@
 			{
 				"pos": [-541.16, 25.29, -496.18],
 				"fork": {
-					"connectiveTracks": [34.0]
+					"connectiveTracks": [34]
 				}
 			},
 			{
@@ -1528,7 +1528,7 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [38.0]
+					"connectiveTracks": [38]
 				}
 			}
 		]
@@ -1542,7 +1542,7 @@
 			{
 				"pos": [-528.95, 26.39, -479.97],
 				"fork": {
-					"connectiveTracks": [36.0, 37.0],
+					"connectiveTracks": [36, 37],
 					"static": true
 				}
 			},
@@ -1561,7 +1561,7 @@
 			{
 				"pos": [-488.66, 27.17, -474.28],
 				"fork": {
-					"connectiveTracks": [39.0]
+					"connectiveTracks": [39]
 				}
 			}
 		]
@@ -1575,7 +1575,7 @@
 			{
 				"pos": [-488.66, 27.17, -474.28],
 				"fork": {
-					"connectiveTracks": [38.0]
+					"connectiveTracks": [38]
 				}
 			},
 			{
@@ -1641,7 +1641,7 @@
 			{
 				"pos": [-264.06, 23.28, -476.59],
 				"fork": {
-					"connectiveTracks": [40.0]
+					"connectiveTracks": [40]
 				}
 			}
 		]
@@ -1655,7 +1655,7 @@
 			{
 				"pos": [-264.06, 23.28, -476.59],
 				"fork": {
-					"connectiveTracks": [39.0]
+					"connectiveTracks": [39]
 				}
 			},
 			{
@@ -1701,7 +1701,7 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [41.0, 42.0],
+					"connectiveTracks": [41, 42],
 					"static": true
 				}
 			}
@@ -1716,7 +1716,7 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [40.0]
+					"connectiveTracks": [40]
 				}
 			},
 			{
@@ -1742,7 +1742,7 @@
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [43.0]
+					"connectiveTracks": [43]
 				}
 			}
 		]
@@ -1756,7 +1756,7 @@
 			{
 				"pos": [-106.11, 23.63, -458.26],
 				"fork": {
-					"connectiveTracks": [40.0]
+					"connectiveTracks": [40]
 				}
 			},
 			{
@@ -1774,7 +1774,7 @@
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [43.0]
+					"connectiveTracks": [43]
 				}
 			}
 		]
@@ -1788,7 +1788,7 @@
 			{
 				"pos": [-52.77, 23.63, -454.38],
 				"fork": {
-					"connectiveTracks": [41.0, 42.0],
+					"connectiveTracks": [41, 42],
 					"static": true
 				}
 			},
@@ -1827,7 +1827,7 @@
 			{
 				"pos": [101.05, 24.00, -484.24],
 				"fork": {
-					"connectiveTracks": [10.0]
+					"connectiveTracks": [10]
 				}
 			}
 		]
@@ -1841,7 +1841,7 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [100.0, 115.0],
+					"connectiveTracks": [100, 115],
 					"static": true
 				}
 			},
@@ -1864,7 +1864,7 @@
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [46.0, 47.0, 49.0],
+					"connectiveTracks": [47],
 					"static": true
 				}
 			}
@@ -1879,7 +1879,7 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [101.0, 103.0, 114.0],
+					"connectiveTracks": [101, 103, 114],
 					"static": true
 				}
 			},
@@ -1902,7 +1902,7 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [48.0, 50.0],
+					"connectiveTracks": [48, 50],
 					"static": true
 				}
 			}
@@ -1934,7 +1934,7 @@
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [47.0]
+					"connectiveTracks": [47]
 				}
 			}
 		]
@@ -1948,7 +1948,7 @@
 			{
 				"pos": [781.24, 24.01, -308.01],
 				"fork": {
-					"connectiveTracks": [44.0, 46.0],
+					"connectiveTracks": [44, 46],
 					"static": true
 				}
 			},
@@ -1959,7 +1959,7 @@
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [49.0, 106.0],
+					"connectiveTracks": [49, 106],
 					"static": true
 				}
 			}
@@ -1974,7 +1974,7 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [45.0]
+					"connectiveTracks": [45]
 				}
 			},
 			{
@@ -1984,7 +1984,7 @@
 			{
 				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [52.0]
+					"connectiveTracks": [52]
 				}
 			}
 		]
@@ -1998,7 +1998,7 @@
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [47.0]
+					"connectiveTracks": [47]
 				}
 			},
 			{
@@ -2008,7 +2008,7 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [51.0]
+					"connectiveTracks": [51]
 				}
 			}
 		]
@@ -2022,7 +2022,7 @@
 			{
 				"pos": [779.23, 24.01, -302.88],
 				"fork": {
-					"connectiveTracks": [45.0]
+					"connectiveTracks": [45]
 				}
 			},
 			{
@@ -2032,7 +2032,7 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [51.0]
+					"connectiveTracks": [51]
 				}
 			}
 		]
@@ -2046,7 +2046,7 @@
 			{
 				"pos": [762.66, 23.75, -321.39],
 				"fork": {
-					"connectiveTracks": [49.0, 50.0],
+					"connectiveTracks": [49, 50],
 					"static": true
 				}
 			},
@@ -2081,7 +2081,7 @@
 			{
 				"pos": [590.27, 26.27, -306.01],
 				"fork": {
-					"connectiveTracks": [53.0]
+					"connectiveTracks": [53]
 				}
 			}
 		]
@@ -2095,7 +2095,7 @@
 			{
 				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [48.0, 106.0],
+					"connectiveTracks": [48, 106],
 					"static": true
 				}
 			},
@@ -2134,7 +2134,7 @@
 			{
 				"pos": [590.76, 26.33, -301.90],
 				"fork": {
-					"connectiveTracks": [54.0]
+					"connectiveTracks": [54]
 				}
 			}
 		]
@@ -2148,7 +2148,7 @@
 			{
 				"pos": [590.27, 26.27, -306.01],
 				"fork": {
-					"connectiveTracks": [51.0]
+					"connectiveTracks": [51]
 				}
 			},
 			{
@@ -2178,7 +2178,7 @@
 			{
 				"pos": [404.54, 26.32, -279.62],
 				"fork": {
-					"connectiveTracks": [55.0]
+					"connectiveTracks": [55]
 				}
 			}
 		]
@@ -2192,7 +2192,7 @@
 			{
 				"pos": [590.76, 26.33, -301.90],
 				"fork": {
-					"connectiveTracks": [52.0]
+					"connectiveTracks": [52]
 				}
 			},
 			{
@@ -2226,7 +2226,7 @@
 			{
 				"pos": [405.37, 26.32, -275.62],
 				"fork": {
-					"connectiveTracks": [56.0]
+					"connectiveTracks": [56]
 				}
 			}
 		]
@@ -2240,7 +2240,7 @@
 			{
 				"pos": [404.54, 26.32, -279.62],
 				"fork": {
-					"connectiveTracks": [53.0]
+					"connectiveTracks": [53]
 				}
 			},
 			{
@@ -2266,7 +2266,7 @@
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [57.0, 59.0],
+					"connectiveTracks": [57, 59],
 					"static": true
 				}
 			}
@@ -2281,7 +2281,7 @@
 			{
 				"pos": [405.37, 26.32, -275.62],
 				"fork": {
-					"connectiveTracks": [54.0]
+					"connectiveTracks": [54]
 				}
 			},
 			{
@@ -2307,7 +2307,7 @@
 			{
 				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [58.0, 60.0],
+					"connectiveTracks": [58, 60],
 					"static": true
 				}
 			}
@@ -2322,13 +2322,13 @@
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [55.0]
+					"connectiveTracks": [55]
 				}
 			},
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [61.0]
+					"connectiveTracks": [61]
 				}
 			}
 		]
@@ -2342,13 +2342,13 @@
 			{
 				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [56.0]
+					"connectiveTracks": [56]
 				}
 			},
 			{
 				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [62.0]
+					"connectiveTracks": [62]
 				}
 			}
 		]
@@ -2362,13 +2362,13 @@
 			{
 				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [62.0]
+					"connectiveTracks": [62]
 				}
 			},
 			{
 				"pos": [275.96, 26.82, -258.97],
 				"fork": {
-					"connectiveTracks": [55.0]
+					"connectiveTracks": [55]
 				}
 			}
 		]
@@ -2382,13 +2382,13 @@
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [61.0]
+					"connectiveTracks": [61]
 				}
 			},
 			{
 				"pos": [276.04, 26.80, -255.00],
 				"fork": {
-					"connectiveTracks": [56.0]
+					"connectiveTracks": [56]
 				}
 			}
 		]
@@ -2402,7 +2402,7 @@
 			{
 				"pos": [258.04, 27.37, -258.21],
 				"fork": {
-					"connectiveTracks": [57.0, 60.0],
+					"connectiveTracks": [57, 60],
 					"static": true
 				}
 			},
@@ -2425,7 +2425,7 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [63.0]
+					"connectiveTracks": [63]
 				}
 			}
 		]
@@ -2439,7 +2439,7 @@
 			{
 				"pos": [257.70, 27.35, -254.24],
 				"fork": {
-					"connectiveTracks": [58.0, 59.0],
+					"connectiveTracks": [58, 59],
 					"static": true
 				}
 			},
@@ -2458,7 +2458,7 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [63.0]
+					"connectiveTracks": [63]
 				}
 			}
 		]
@@ -2472,7 +2472,7 @@
 			{
 				"pos": [197.66, 26.61, -251.81],
 				"fork": {
-					"connectiveTracks": [61.0, 62.0],
+					"connectiveTracks": [61, 62],
 					"static": true
 				}
 			},
@@ -2519,7 +2519,7 @@
 			{
 				"pos": [-45.04, 24.70, -180.87],
 				"fork": {
-					"connectiveTracks": [64.0]
+					"connectiveTracks": [64]
 				}
 			}
 		]
@@ -2533,7 +2533,7 @@
 			{
 				"pos": [-45.04, 24.70, -180.87],
 				"fork": {
-					"connectiveTracks": [63.0]
+					"connectiveTracks": [63]
 				}
 			},
 			{
@@ -2571,7 +2571,7 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [65.0, 66.0],
+					"connectiveTracks": [65, 66],
 					"static": true
 				}
 			}
@@ -2586,7 +2586,7 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [64.0]
+					"connectiveTracks": [64]
 				}
 			},
 			{
@@ -2608,7 +2608,7 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [67.0, 132.0],
+					"connectiveTracks": [67, 132],
 					"static": true
 				}
 			}
@@ -2623,7 +2623,7 @@
 			{
 				"pos": [-233.71, 24.84, -71.69],
 				"fork": {
-					"connectiveTracks": [64.0]
+					"connectiveTracks": [64]
 				}
 			},
 			{
@@ -2645,7 +2645,7 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [68.0, 131.0],
+					"connectiveTracks": [68, 131],
 					"static": true
 				}
 			}
@@ -2660,7 +2660,7 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [65.0]
+					"connectiveTracks": [65]
 				}
 			},
 			{
@@ -2670,7 +2670,7 @@
 			{
 				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [69.0]
+					"connectiveTracks": [69]
 				}
 			}
 		]
@@ -2684,7 +2684,7 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [66.0]
+					"connectiveTracks": [66]
 				}
 			},
 			{
@@ -2694,7 +2694,7 @@
 			{
 				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [69.0]
+					"connectiveTracks": [69]
 				}
 			}
 		]
@@ -2708,7 +2708,7 @@
 			{
 				"pos": [-313.73, 25.24, -53.10],
 				"fork": {
-					"connectiveTracks": [67.0, 68.0],
+					"connectiveTracks": [67, 68],
 					"static": true
 				}
 			},
@@ -2767,7 +2767,7 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [70.0, 71.0],
+					"connectiveTracks": [70, 71],
 					"static": true
 				}
 			}
@@ -2782,7 +2782,7 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [69.0]
+					"connectiveTracks": [69]
 				}
 			},
 			{
@@ -2808,7 +2808,7 @@
 			{
 				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [72.0]
+					"connectiveTracks": [72]
 				}
 			}
 		]
@@ -2822,7 +2822,7 @@
 			{
 				"pos": [-584.45, 24.49, 10.33],
 				"fork": {
-					"connectiveTracks": [69.0]
+					"connectiveTracks": [69]
 				}
 			},
 			{
@@ -2848,7 +2848,7 @@
 			{
 				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [72.0]
+					"connectiveTracks": [72]
 				}
 			}
 		]
@@ -2862,7 +2862,7 @@
 			{
 				"pos": [-652.28, 24.90, 21.32],
 				"fork": {
-					"connectiveTracks": [70.0, 71.0],
+					"connectiveTracks": [70, 71],
 					"static": true
 				}
 			},
@@ -2897,7 +2897,7 @@
 			{
 				"pos": [-886.67, 24.64, 59.35],
 				"fork": {
-					"connectiveTracks": [85.0]
+					"connectiveTracks": [85]
 				}
 			}
 		]
@@ -2931,7 +2931,7 @@
 			{
 				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75.0]
+					"connectiveTracks": [75]
 				}
 			}
 		]
@@ -2957,7 +2957,7 @@
 			{
 				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75.0]
+					"connectiveTracks": [75]
 				}
 			}
 		]
@@ -2971,7 +2971,7 @@
 			{
 				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [73.0, 74.0, 83.0],
+					"connectiveTracks": [73, 74, 83],
 					"static": true
 				}
 			},
@@ -3022,7 +3022,7 @@
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [76.0, 77.0],
+					"connectiveTracks": [76, 77],
 					"static": true
 				}
 			}
@@ -3037,7 +3037,7 @@
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [75.0]
+					"connectiveTracks": [75]
 				}
 			},
 			{
@@ -3055,7 +3055,7 @@
 			{
 				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [78.0]
+					"connectiveTracks": [78]
 				}
 			}
 		]
@@ -3069,7 +3069,7 @@
 			{
 				"pos": [1259.11, 23.57, -341.27],
 				"fork": {
-					"connectiveTracks": [75.0]
+					"connectiveTracks": [75]
 				}
 			},
 			{
@@ -3091,7 +3091,7 @@
 			{
 				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [78.0]
+					"connectiveTracks": [78]
 				}
 			}
 		]
@@ -3105,7 +3105,7 @@
 			{
 				"pos": [1288.80, 23.31, -308.71],
 				"fork": {
-					"connectiveTracks": [76.0, 77.0],
+					"connectiveTracks": [76, 77],
 					"static": true
 				}
 			},
@@ -3152,7 +3152,7 @@
 			{
 				"pos": [1471.70, 23.88, -170.11],
 				"fork": {
-					"connectiveTracks": [79.0]
+					"connectiveTracks": [79]
 				}
 			}
 		]
@@ -3166,7 +3166,7 @@
 			{
 				"pos": [1471.70, 23.88, -170.11],
 				"fork": {
-					"connectiveTracks": [78.0]
+					"connectiveTracks": [78]
 				}
 			},
 			{
@@ -3196,7 +3196,7 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [80.0, 81.0],
+					"connectiveTracks": [80, 81],
 					"static": true
 				}
 			}
@@ -3211,7 +3211,7 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [79.0]
+					"connectiveTracks": [79]
 				}
 			},
 			{
@@ -3233,7 +3233,7 @@
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [82.0]
+					"connectiveTracks": [82]
 				}
 			}
 		]
@@ -3247,7 +3247,7 @@
 			{
 				"pos": [1588.04, 24.29, -214.81],
 				"fork": {
-					"connectiveTracks": [79.0]
+					"connectiveTracks": [79]
 				}
 			},
 			{
@@ -3265,7 +3265,7 @@
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [82.0]
+					"connectiveTracks": [82]
 				}
 			}
 		]
@@ -3279,7 +3279,7 @@
 			{
 				"pos": [1607.51, 24.78, -262.23],
 				"fork": {
-					"connectiveTracks": [80.0, 81.0],
+					"connectiveTracks": [80, 81],
 					"static": true
 				}
 			},
@@ -3338,7 +3338,7 @@
 			{
 				"pos": [1087.94, 23.53, -463.90],
 				"fork": {
-					"connectiveTracks": [75.0]
+					"connectiveTracks": [75]
 				}
 			},
 			{
@@ -3367,7 +3367,7 @@
 			{
 				"pos": [838.20, 23.81, -285.10],
 				"fork": {
-					"connectiveTracks": [1.0, 2.0],
+					"connectiveTracks": [1, 2],
 					"static": true
 				}
 			},
@@ -3393,7 +3393,7 @@
 			{
 				"pos": [-886.67, 24.64, 59.35],
 				"fork": {
-					"connectiveTracks": [72.0]
+					"connectiveTracks": [72]
 				}
 			},
 			{
@@ -3423,7 +3423,7 @@
 			{
 				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [86.0, 87.0],
+					"connectiveTracks": [86, 87],
 					"static": true
 				}
 			}
@@ -3438,7 +3438,7 @@
 			{
 				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [85.0]
+					"connectiveTracks": [85]
 				}
 			},
 			{
@@ -3460,7 +3460,7 @@
 			{
 				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [88.0]
+					"connectiveTracks": [88]
 				}
 			}
 		]
@@ -3474,7 +3474,7 @@
 			{
 				"pos": [-1056.50, 24.80, 88.72],
 				"fork": {
-					"connectiveTracks": [85.0]
+					"connectiveTracks": [85]
 				}
 			},
 			{
@@ -3496,7 +3496,7 @@
 			{
 				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [88.0]
+					"connectiveTracks": [88]
 				}
 			}
 		]
@@ -3510,7 +3510,7 @@
 			{
 				"pos": [-1119.01, 25.10, 96.77],
 				"fork": {
-					"connectiveTracks": [86.0, 87.0],
+					"connectiveTracks": [86, 87],
 					"static": true
 				}
 			},
@@ -3557,7 +3557,7 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [89.0, 90.0],
+					"connectiveTracks": [89, 90],
 					"static": true
 				}
 			}
@@ -3572,7 +3572,7 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [88.0]
+					"connectiveTracks": [88]
 				}
 			},
 			{
@@ -3598,7 +3598,7 @@
 			{
 				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [91.0]
+					"connectiveTracks": [91]
 				}
 			}
 		]
@@ -3612,7 +3612,7 @@
 			{
 				"pos": [-1351.79, 24.59, 137.98],
 				"fork": {
-					"connectiveTracks": [88.0]
+					"connectiveTracks": [88]
 				}
 			},
 			{
@@ -3642,7 +3642,7 @@
 			{
 				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [91.0]
+					"connectiveTracks": [91]
 				}
 			}
 		]
@@ -3656,7 +3656,7 @@
 			{
 				"pos": [-1435.33, 24.54, 163.30],
 				"fork": {
-					"connectiveTracks": [89.0, 90.0],
+					"connectiveTracks": [89, 90],
 					"static": true
 				}
 			},
@@ -3687,7 +3687,7 @@
 			{
 				"pos": [-1538.82, 23.37, 198.99],
 				"fork": {
-					"connectiveTracks": [92.0]
+					"connectiveTracks": [92]
 				}
 			}
 		]
@@ -3702,13 +3702,13 @@
 			{
 				"pos": [-1538.82, 23.37, 198.99],
 				"fork": {
-					"connectiveTracks": [91.0]
+					"connectiveTracks": [91]
 				}
 			},
 			{
 				"pos": [-1557.29, 23.53, 215.89],
 				"fork": {
-					"connectiveTracks": [93.0]
+					"connectiveTracks": [93]
 				}
 			}
 		]
@@ -3722,7 +3722,7 @@
 			{
 				"pos": [-1557.29, 23.53, 215.89],
 				"fork": {
-					"connectiveTracks": [92.0]
+					"connectiveTracks": [92]
 				}
 			},
 			{
@@ -3748,7 +3748,7 @@
 			{
 				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [94.0, 95.0, 96.0],
+					"connectiveTracks": [94, 95, 96],
 					"static": true
 				}
 			}
@@ -3763,7 +3763,7 @@
 			{
 				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93.0]
+					"connectiveTracks": [93]
 				}
 			},
 			{
@@ -3789,7 +3789,7 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97.0]
+					"connectiveTracks": [97]
 				}
 			}
 		]
@@ -3803,7 +3803,7 @@
 			{
 				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93.0]
+					"connectiveTracks": [93]
 				}
 			},
 			{
@@ -3821,7 +3821,7 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97.0]
+					"connectiveTracks": [97]
 				}
 			}
 		]
@@ -3835,7 +3835,7 @@
 			{
 				"pos": [-1618.77, 23.96, 251.80],
 				"fork": {
-					"connectiveTracks": [93.0]
+					"connectiveTracks": [93]
 				}
 			},
 			{
@@ -3857,7 +3857,7 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [97.0]
+					"connectiveTracks": [97]
 				}
 			}
 		]
@@ -3871,7 +3871,7 @@
 			{
 				"pos": [-1688.55, 24.14, 266.08],
 				"fork": {
-					"connectiveTracks": [94.0, 95.0, 96.0],
+					"connectiveTracks": [94, 95, 96],
 					"static": true
 				}
 			},
@@ -3886,7 +3886,7 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [98.0, 99.0],
+					"connectiveTracks": [98, 99],
 					"static": true
 				}
 			}
@@ -3901,7 +3901,7 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [97.0]
+					"connectiveTracks": [97]
 				}
 			},
 			{
@@ -3935,7 +3935,7 @@
 			{
 				"pos": [-1711.78, 24.67, 271.23],
 				"fork": {
-					"connectiveTracks": [97.0]
+					"connectiveTracks": [97]
 				}
 			},
 			{
@@ -3973,7 +3973,7 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [44.0, 46.0]
+					"connectiveTracks": [44]
 				}
 			},
 			{
@@ -3983,7 +3983,7 @@
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [104.0]
+					"connectiveTracks": [104]
 				}
 			}
 		]
@@ -3997,7 +3997,7 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [45.0]
+					"connectiveTracks": [45]
 				}
 			},
 			{
@@ -4007,7 +4007,7 @@
 			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
-					"connectiveTracks": [105.0],
+					"connectiveTracks": [105],
 					"static": true
 				}
 			}
@@ -4022,7 +4022,7 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [108.0]
+					"connectiveTracks": [108]
 				}
 			},
 			{
@@ -4040,7 +4040,7 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [117.0]
+					"connectiveTracks": [117]
 				}
 			}
 		]
@@ -4054,13 +4054,13 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [101.0]
+					"connectiveTracks": [45]
 				}
 			},
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [104.0]
+					"connectiveTracks": [104]
 				}
 			}
 		]
@@ -4074,7 +4074,7 @@
 			{
 				"pos": [841.12, 24.72, -209.36],
 				"fork": {
-					"connectiveTracks": [100.0, 103.0],
+					"connectiveTracks": [100, 103],
 					"static": true
 				}
 			},
@@ -4085,7 +4085,7 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [108.0]
+					"connectiveTracks": [108]
 				}
 			}
 		]
@@ -4099,7 +4099,7 @@
 			{
 				"pos": [837.73, 24.72, -207.31],
 				"fork": {
-					"connectiveTracks": [101.0],
+					"connectiveTracks": [101],
 					"static": true
 				}
 			},
@@ -4114,7 +4114,7 @@
 			{
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
-					"connectiveTracks": [107.0],
+					"connectiveTracks": [107],
 					"static": true
 				}
 			}
@@ -4129,7 +4129,7 @@
 			{
 				"pos": [761.40, 23.81, -318.10],
 				"fork": {
-					"connectiveTracks": [52.0]
+					"connectiveTracks": [52]
 				}
 			},
 			{
@@ -4139,7 +4139,7 @@
 			{
 				"pos": [774.95, 23.94, -314.81],
 				"fork": {
-					"connectiveTracks": [47.0]
+					"connectiveTracks": [47]
 				}
 			}
 		]
@@ -4153,7 +4153,7 @@
 			{
 				"pos": [859.32, 25.12, -176.61],
 				"fork": {
-					"connectiveTracks": [105.0],
+					"connectiveTracks": [105],
 					"static": true
 				}
 			},
@@ -4164,7 +4164,7 @@
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [127.0]
+					"connectiveTracks": [127]
 				}
 			}
 		]
@@ -4178,7 +4178,7 @@
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [127.0]
+					"connectiveTracks": [127]
 				}
 			},
 			{
@@ -4192,7 +4192,7 @@
 			{
 				"pos": [855.82, 25.18, -187.36],
 				"fork": {
-					"connectiveTracks": [104.0, 102.0],
+					"connectiveTracks": [104, 102],
 					"static": true
 				}
 			}
@@ -4207,7 +4207,7 @@
 			{
 				"pos": [892.07, 25.14, -94.85],
 				"fork": {
-					"connectiveTracks": [128.0]
+					"connectiveTracks": [128]
 				}
 			},
 			{
@@ -4265,7 +4265,7 @@
 				"pos": [-724.13, 24.48, -236.78],
 				"handleIn": [1.362, -0.021, -1.91],
 				"fork": {
-					"connectiveTracks": [111.0]
+					"connectiveTracks": [111]
 				}
 			}
 		]
@@ -4279,7 +4279,7 @@
 			{
 				"pos": [-724.13, 24.48, -236.78],
 				"fork": {
-					"connectiveTracks": [110.0]
+					"connectiveTracks": [110]
 				}
 			},
 			{
@@ -4305,7 +4305,7 @@
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [112.0, 113.0],
+					"connectiveTracks": [112, 113],
 					"static": true
 				}
 			}
@@ -4320,7 +4320,7 @@
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [111.0]
+					"connectiveTracks": [111]
 				}
 			},
 			{
@@ -4350,7 +4350,7 @@
 			{
 				"pos": [-734.66, 25.51, -161.96],
 				"fork": {
-					"connectiveTracks": [111.0]
+					"connectiveTracks": [111]
 				}
 			},
 			{
@@ -4383,7 +4383,7 @@
 			{
 				"pos": [825.08, 24.34, -227.28],
 				"fork": {
-					"connectiveTracks": [45.0]
+					"connectiveTracks": [45]
 				}
 			},
 			{
@@ -4393,7 +4393,7 @@
 			{
 				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [116.0]
+					"connectiveTracks": [116]
 				}
 			}
 		]
@@ -4407,7 +4407,7 @@
 			{
 				"pos": [828.73, 24.35, -228.85],
 				"fork": {
-					"connectiveTracks": [44.0, 46.0],
+					"connectiveTracks": [44],
 					"static": true
 				}
 			},
@@ -4418,7 +4418,7 @@
 			{
 				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [116.0]
+					"connectiveTracks": [116]
 				}
 			}
 		]
@@ -4432,7 +4432,7 @@
 			{
 				"pos": [843.83, 24.60, -223.55],
 				"fork": {
-					"connectiveTracks": [114.0, 115.0],
+					"connectiveTracks": [114, 115],
 					"static": true
 				}
 			},
@@ -4447,7 +4447,7 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [117.0]
+					"connectiveTracks": [117]
 				}
 			}
 		]
@@ -4461,7 +4461,7 @@
 			{
 				"pos": [864.95, 24.26, -234.64],
 				"fork": {
-					"connectiveTracks": [102.0, 116.0],
+					"connectiveTracks": [102, 116],
 					"static": true
 				}
 			},
@@ -4492,7 +4492,7 @@
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [118.0, 119.0],
+					"connectiveTracks": [118, 119],
 					"static": true
 				}
 			}
@@ -4507,7 +4507,7 @@
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [117.0]
+					"connectiveTracks": [117]
 				}
 			},
 			{
@@ -4549,7 +4549,7 @@
 			{
 				"pos": [904.48, 23.48, -304.83],
 				"fork": {
-					"connectiveTracks": [117.0]
+					"connectiveTracks": [117]
 				}
 			},
 			{
@@ -4559,7 +4559,7 @@
 			{
 				"pos": [921.45, 23.70, -321.55],
 				"fork": {
-					"connectiveTracks": [120.0]
+					"connectiveTracks": [120]
 				}
 			}
 		]
@@ -4574,7 +4574,7 @@
 			{
 				"pos": [921.45, 23.70, -321.55],
 				"fork": {
-					"connectiveTracks": [119.0]
+					"connectiveTracks": [119]
 				}
 			},
 			{
@@ -4584,7 +4584,7 @@
 			{
 				"pos": [939.21, 23.76, -338.82],
 				"fork": {
-					"connectiveTracks": [121.0]
+					"connectiveTracks": [121]
 				}
 			}
 		]
@@ -4598,7 +4598,7 @@
 			{
 				"pos": [939.21, 23.76, -338.82],
 				"fork": {
-					"connectiveTracks": [120.0]
+					"connectiveTracks": [120]
 				}
 			},
 			{
@@ -4616,7 +4616,7 @@
 			{
 				"pos": [971.72, 23.70, -369.60],
 				"fork": {
-					"connectiveTracks": [122.0]
+					"connectiveTracks": [122]
 				}
 			}
 		]
@@ -4631,7 +4631,7 @@
 			{
 				"pos": [971.72, 23.70, -369.60],
 				"fork": {
-					"connectiveTracks": [121.0]
+					"connectiveTracks": [121]
 				}
 			},
 			{
@@ -4653,7 +4653,7 @@
 			{
 				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [123.0, 124.0],
+					"connectiveTracks": [123, 124],
 					"static": true
 				}
 			}
@@ -4668,7 +4668,7 @@
 			{
 				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [122.0]
+					"connectiveTracks": [122]
 				}
 			},
 			{
@@ -4702,7 +4702,7 @@
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [125.0]
+					"connectiveTracks": [125]
 				}
 			}
 		]
@@ -4716,7 +4716,7 @@
 			{
 				"pos": [1022.28, 23.60, -425.12],
 				"fork": {
-					"connectiveTracks": [122.0]
+					"connectiveTracks": [122]
 				}
 			},
 			{
@@ -4742,7 +4742,7 @@
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [125.0]
+					"connectiveTracks": [125]
 				}
 			}
 		]
@@ -4756,7 +4756,7 @@
 			{
 				"pos": [1083.78, 23.54, -485.97],
 				"fork": {
-					"connectiveTracks": [123.0, 124.0],
+					"connectiveTracks": [123, 124],
 					"static": true
 				}
 			},
@@ -4803,7 +4803,7 @@
 			{
 				"pos": [1211.55, 24.48, -623.94],
 				"fork": {
-					"connectiveTracks": [126.0]
+					"connectiveTracks": [126]
 				}
 			}
 		]
@@ -4817,7 +4817,7 @@
 			{
 				"pos": [1211.55, 24.48, -623.94],
 				"fork": {
-					"connectiveTracks": [125.0]
+					"connectiveTracks": [125]
 				}
 			},
 			{
@@ -4854,7 +4854,7 @@
 			{
 				"pos": [877.95, 24.92, -149.91],
 				"fork": {
-					"connectiveTracks": [107.0, 108.0],
+					"connectiveTracks": [107, 108],
 					"static": true
 				}
 			},
@@ -4865,7 +4865,7 @@
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [128.0, 129.0],
+					"connectiveTracks": [128, 129],
 					"static": true
 				}
 			}
@@ -4880,7 +4880,7 @@
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [127.0]
+					"connectiveTracks": [127]
 				}
 			},
 			{
@@ -4899,7 +4899,7 @@
 				"pos": [892.07, 25.14, -94.85],
 				"static": true,
 				"fork": {
-					"connectiveTracks": [109.0, 130.0],
+					"connectiveTracks": [109, 130],
 					"static": true
 				}
 			}
@@ -4914,7 +4914,7 @@
 			{
 				"pos": [888.52, 24.82, -134.88],
 				"fork": {
-					"connectiveTracks": [127.0]
+					"connectiveTracks": [127]
 				}
 			},
 			{
@@ -4963,7 +4963,7 @@
 			{
 				"pos": [892.07, 25.14, -94.85],
 				"fork": {
-					"connectiveTracks": [128.0]
+					"connectiveTracks": [128]
 				}
 			},
 			{
@@ -5004,7 +5004,7 @@
 			{
 				"pos": [-293.92, 25.02, -52.79],
 				"fork": {
-					"connectiveTracks": [66.0]
+					"connectiveTracks": [66]
 				}
 			},
 			{
@@ -5065,7 +5065,7 @@
 			{
 				"pos": [-288.14, 24.98, -58.81],
 				"fork": {
-					"connectiveTracks": [65.0]
+					"connectiveTracks": [65]
 				}
 			},
 			{
@@ -5111,7 +5111,7 @@
 			{
 				"pos": [-370.64, 23.63, -227.36],
 				"fork": {
-					"connectiveTracks": [133.0],
+					"connectiveTracks": [133],
 					"static": true
 				}
 			}
@@ -5126,7 +5126,7 @@
 			{
 				"pos": [-370.64, 23.63, -227.36],
 				"fork": {
-					"connectiveTracks": [132.0],
+					"connectiveTracks": [132],
 					"static": true
 				}
 			},
@@ -5161,7 +5161,7 @@
 			{
 				"pos": [-493.05, 24.81, -357.60],
 				"fork": {
-					"connectiveTracks": [134.0],
+					"connectiveTracks": [134],
 					"static": true
 				}
 			}
@@ -5176,7 +5176,7 @@
 			{
 				"pos": [-493.05, 24.81, -357.60],
 				"fork": {
-					"connectiveTracks": [134.0],
+					"connectiveTracks": [133],
 					"static": true
 				}
 			},
@@ -5207,7 +5207,7 @@
 			{
 				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [135.0, 136.0],
+					"connectiveTracks": [135, 136],
 					"static": true
 				}
 			}
@@ -5222,7 +5222,7 @@
 			{
 				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [134.0]
+					"connectiveTracks": [134]
 				}
 			},
 			{
@@ -5248,7 +5248,7 @@
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [137.0]
+					"connectiveTracks": [137]
 				}
 			}
 		]
@@ -5262,7 +5262,7 @@
 			{
 				"pos": [-539.41, 25.14, -444.60],
 				"fork": {
-					"connectiveTracks": [134.0]
+					"connectiveTracks": [134]
 				}
 			},
 			{
@@ -5292,7 +5292,7 @@
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [137.0]
+					"connectiveTracks": [137]
 				}
 			}
 		]
@@ -5306,7 +5306,7 @@
 			{
 				"pos": [-577.56, 23.91, -541.01],
 				"fork": {
-					"connectiveTracks": [135.0, 136.0],
+					"connectiveTracks": [135, 136],
 					"static": true
 				}
 			},

@@ -10,7 +10,14 @@ extends Button
 ## Editor icons only exist inside the editor, so in headless tests the button simply has no icon.
 @export var editor_icon: StringName = &""
 
+## Icon size in the toolbar, before the editor's display scale: the size of Godot's own editor icons.
+## The project's white icons are 32 px; this draws them at the same size as the built-in ones.
+const ICON_SIZE: int = 16
+
 func _ready() -> void:
+	## Scale with the editor UI (Editor Settings > Interface > Display Scale), like built-in icons do.
+	var ui_scale: float = EditorInterface.get_editor_scale() if Engine.is_editor_hint() else 1.0
+	add_theme_constant_override("icon_max_width", roundi(ICON_SIZE * ui_scale))
 	if icon == null and editor_icon != &"" and Engine.is_editor_hint():
 		icon = EditorInterface.get_editor_theme().get_icon(editor_icon, &"EditorIcons")
 	toggled.connect(_sync_appearance.unbind(1))

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://hlj4gvc5jssj"]
 
 [ext_resource type="PackedScene" path="res://addons/hinterland_tools/ui/editor_tool_button.tscn" id="1_tool_button"]
-[ext_resource type="Texture2D" path="res://assets/icons/nodes_3d/icon_road.svg" id="2_road"]
-[ext_resource type="Texture2D" path="res://assets/icons/nodes_3d/icon_rail_track.svg" id="3_rail"]
-[ext_resource type="Texture2D" path="res://assets/icons/nodes_3d/icon_station.svg" id="4_station"]
-[ext_resource type="Texture2D" path="res://assets/icons/nodes_3d/icon_town.svg" id="5_town"]
+[ext_resource type="Texture2D" path="res://assets/icons/icon_road_white.png" id="2_road"]
+[ext_resource type="Texture2D" path="res://assets/icons/icon_rail_track_white.png" id="3_rail"]
+[ext_resource type="Texture2D" path="res://assets/icons/icon_station_white.png" id="4_station"]
+[ext_resource type="Texture2D" path="res://assets/icons/icon_town_white.png" id="5_town"]
 
 [node name="EditorToolsPanel" type="VBoxContainer"]
 offset_right = 720.0

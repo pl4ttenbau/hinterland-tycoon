@@ -108,9 +108,19 @@ static func _validate_anchor_changes(line: EditorInfrLine3D, old_points: Array) 
 	if old_points.size() != line.curve.point_count:
 		for point: Dictionary in old_points:
 			for key: String in point:
-				if key not in ["pos", "handleIn", "handleOut"]:
-					return "Record %d has point metadata and a changed point count; preserve its anchors before saving." % line.num
+				if key in ["pos", "handleIn", "handleOut"]:
+					continue
+				if line.infr_domain == Enums.InfrDomain.RAIL and _is_generated_fork(point, key):
+					continue
+				return "Record %d has point metadata and a changed point count; preserve its anchors before saving." % line.num
 	return ""
+
+## A rail fork that lists only its tracks is rebuilt from the geometry on every save
+## (_prepare_records_for_save), so losing it with a changed point count loses nothing: the generator puts
+## it back on whichever points are the ends now. A fork with anything else in it (e.g. "static") carries
+## hand-made meaning and still blocks the save like any other metadata.
+static func _is_generated_fork(point: Dictionary, key: String) -> bool:
+	return key == "fork" and point.fork is Dictionary and point.fork.keys() == ["connectiveTracks"]
 
 static func _serialize_curve_point(line: EditorInfrLine3D, index: int, old_points: Array) -> Dictionary:
 	var point: Dictionary = old_points[index].duplicate(true) if old_points.size() == line.curve.point_count else {}
@@ -125,6 +135,13 @@ func _prepare_records_for_save(records: Dictionary, domain: Enums.InfrDomain) ->
 	round_positions(records.values())
 	if domain == Enums.InfrDomain.ROAD:
 		RoadEndpointConnection.update_json(records)
+	elif domain == Enums.InfrDomain.RAIL:
+		# Rail switches likewise: every track end gets the tracks a train can continue into. This rewrites
+		# the forks of the whole map, not just the edited lines, so the file always matches the geometry
+		# (the same result as tools/rail/tracks.sh forks --write).
+		var forks: Dictionary = RailForkGenerator.apply(records.values())
+		for record: Dictionary in forks.records:
+			records[int(record.num)] = record
 	var ids: Array = records.keys()
 	ids.sort()
 	var output: Array = []
