@@ -11,8 +11,6 @@ class_name RailTrackData extends AbstractInfrLine
 # child objects
 @export var forks: Array[RailJunctionArm] = []
 
-const NEAR_DISTANCE_MAX: float = 100.0
-
 func _init():
 	super(Enums.EntityTypes.RAIL)
 
@@ -67,17 +65,6 @@ func get_tangent_into_endpoint(node: RailNodeData) -> Vector3:
 	var adjacent_pos: Vector3 = self.curve.get_point_position(adjacent)
 	var tangent: Vector3 = node.position - adjacent_pos - adjacent_handle
 	return tangent.normalized() if not tangent.is_zero_approx() else adjacent_pos.direction_to(node.position)
-
-#region Distance Check
-func is_near(pos: Vector3) -> bool:
-	if self.get_start_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	elif self._get_center().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	elif self.get_end_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	return false
-#endregion
 
 #region Get Nodes
 ## Typed shortcuts for rail callers.

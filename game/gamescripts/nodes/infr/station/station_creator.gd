@@ -74,7 +74,7 @@ func make_rail_preview(placement: Dictionary) -> Node3D:
 	var anchor := Node3D.new()
 	anchor.name = "RailPlacementPreview"
 	anchor.transform = Transform3D(
-		NodeStationLink3D.placement_basis(track.curve, placement.offset, RailStationData.PlatformSide.RIGHT),
+		RailStop3D.placement_basis(track.curve, placement.offset, RailStationData.PlatformSide.RIGHT),
 		placement.position)
 	anchor.add_child(model)
 	var marker := MeshInstance3D.new()

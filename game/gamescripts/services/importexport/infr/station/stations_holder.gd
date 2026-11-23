@@ -98,11 +98,11 @@ func spawn_platforms():
 	Loggie.info("Spawning stations..")
 	for station: RailStationData in self.stations_objs:
 		self.spawn_platform(station)
-	SignalBus.node_station_links_spawned.emit()
+	SignalBus.rail_stops_spawned.emit()
 
 ## The platform view of one stop, placed under its RailStation3D and turned to the track.
-func spawn_platform(station: RailStationData, building: RailPlatform3D = null) -> NodeStationLink3D:
-	var platform: NodeStationLink3D = NodeStationLink3D.of(station, building)
+func spawn_platform(station: RailStationData, building: RailPlatform3D = null) -> RailStop3D:
+	var platform: RailStop3D = RailStop3D.of(station, building)
 	station.platform_view = platform
 	var station_3d: RailStation3D = self.get_station_3d_with_num(station.num)
 	platform.position = station_3d.to_local(station.position)

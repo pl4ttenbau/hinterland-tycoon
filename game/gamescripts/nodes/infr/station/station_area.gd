@@ -21,8 +21,8 @@ func _enter_tree() -> void:
 	self.area_connected.emit(self)
 
 func _ready() -> void:
-	var node_station_3d: NodeStationLink3D = self.get_parent_node_3d() as NodeStationLink3D
-	self.parent_station_3d = node_station_3d.get_parent_station_3d()
+	var rail_stop_3d: RailStop3D = self.get_parent_node_3d() as RailStop3D
+	self.parent_station_3d = rail_stop_3d.get_parent_station_3d()
 
 func _exit_tree() -> void:
 	if player_inside and is_instance_valid(parent_station_3d):

@@ -13,7 +13,7 @@ func check(condition: bool, message: String) -> void:
 func run(test_tree: SceneTree) -> int:
 	tree = test_tree
 	# Count an aborted test as a failure too: runtime errors do not set the exit code.
-	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options", &"test_aabb"]:
+	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options", &"test_aabb", &"test_line_bounds"]:
 		check(call(test) == true, "%s completed" % test)
 	print("Infrastructure smoothing tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures > 0 else 0
@@ -213,4 +213,50 @@ func test_aabb() -> bool:
 	check(bounds.end.is_equal_approx(Vector3(5, 4, 7)), "Maximum corner takes the highest value on each axis")
 	var around_origin: Array[Vector3] = [Vector3.ZERO, Vector3(-1, -1, -1)]
 	check(InfrUtils.get_aabb(around_origin) == AABB(Vector3(-1, -1, -1), Vector3.ONE), "A point at the origin counts like any other point")
+	return true
+
+## Line bounds (AbstractInfrLine.get_bounds / is_near), the pre-filter for "which lines are near here".
+## The old filter measured from the midpoint between a line's two ends, which misses most of a bent line.
+func test_line_bounds() -> bool:
+	## A U-shaped road without smoothing: ends at x = 0 and x = 20, the bend 100 m away at z = -100.
+	var road := RoadData.of(1, InfrDomains.default_type(Enums.InfrDomain.ROAD))
+	road.autosmooth = false
+	for point: Vector3 in [Vector3(0, 0, 0), Vector3(0, 0, -100), Vector3(20, 0, -100), Vector3(20, 0, 0)]:
+		road.add_node(RoadNode.of(road.nodes.size(), point, road), false)
+	road.build_curve()
+	var bounds: AABB = road.get_bounds()
+	check(bounds.position.is_equal_approx(Vector3(0, 0, -100)) and bounds.end.is_equal_approx(Vector3(20, 0, 0)),
+		"Bounds enclose every node of the line: %s" % bounds)
+	check(road.is_near(Vector3(10, 0, -130), 40.0), "A place near the bend is near, though both ends are over 100 m away")
+	check(not road.is_near(Vector3(10, 0, -130), 20.0), "The distance still counts: 30 m off the bend is not within 20 m")
+	check(not road.is_near(Vector3(200, 0, 0), 60.0), "A place far from every part of the line is not near")
+
+	## Moving a point in place, or rebuilding the curve, refreshes the cached bounds.
+	road.curve.set_point_position(1, Vector3(0, 0, -300))
+	check(road.get_bounds().position.z <= -299.9, "Bounds follow points moved in the curve itself")
+	road.nodes[1].position = Vector3(0, 0, -50)
+	road.nodes[2].position = Vector3(20, 0, -50)
+	road.build_curve()
+	check(road.get_bounds().position.z >= -50.1 and not road.is_near(Vector3(10, 0, -130), 40.0),
+		"Bounds follow a rebuilt curve")
+	## A replaced curve (as erasing does with fragments) also refreshes them.
+	var replacement := Curve3D.new()
+	replacement.add_point(Vector3(500, 0, 500))
+	replacement.add_point(Vector3(510, 0, 500))
+	road.curve = replacement
+	check(road.is_near(Vector3(505, 0, 505), 10.0) and not road.is_near(Vector3(10, 0, -40), 10.0), "Bounds follow a replaced curve")
+
+	## The curve, not just its nodes: handles bulge it 7.5 m out to the side between two nodes on the x axis.
+	var bulge := RoadData.of(2, InfrDomains.default_type(Enums.InfrDomain.ROAD))
+	bulge.autosmooth = false
+	var start := RoadNode.of(0, Vector3.ZERO, bulge)
+	start.handle_out = Vector3(0, 0, 10)
+	var finish := RoadNode.of(1, Vector3(10, 0, 0), bulge)
+	finish.handle_in = Vector3(0, 0, 10)
+	bulge.add_node(start, false)
+	bulge.add_node(finish, false)
+	bulge.build_curve()
+	check(bulge.get_bounds().end.z >= 7.0, "Bounds include where the curve bulges out between nodes: %s" % bulge.get_bounds())
+
+	check(not RoadData.of(3, "").is_near(Vector3.ZERO, 100.0), "A line without nodes is near nothing, not even the origin")
 	return true

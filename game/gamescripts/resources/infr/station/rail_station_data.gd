@@ -19,9 +19,9 @@ enum PlatformSide { RIGHT, LEFT }
 @export var track_num: int = -1
 @export var anchor: LineAnchor = LineAnchor.new()
 
-## The platform in the scene (rail_node_station_3d.tscn), set when it is spawned. A scene node, so not
+## The platform in the scene (rail_stop_3d.tscn), set when it is spawned. A scene node, so not
 ## reference-counted: no cycle with the view, which holds this stop as its entity.
-var platform_view: NodeStationLink3D
+var platform_view: RailStop3D
 
 #region Initialization
 func _init(_num: int = -1, _name: String = "", _town_num: int = -1):

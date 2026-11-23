@@ -131,7 +131,7 @@ func _wire_stops_and_catchments() -> void:
 	self._listen(self.towns.towns_registered, self.stations._on_map_towns_loaded)
 	self._listen(self.towns.towns_registered, self.road_stops._on_map_towns_loaded)
 	self._listen(SignalBus.stations_loaded, self.stations._on_stations_loaded)
-	self._listen(SignalBus.node_station_links_spawned, self.industry_connector._on_node_station_links_spawned)
+	self._listen(SignalBus.rail_stops_spawned, self.industry_connector._on_rail_stops_spawned)
 	self._listen(SignalBus.industries_spawned, self.industry_connector._on_industries_spawned)
 	self._listen(SignalBus.stations_loaded, self.residence_connector._on_stations_loaded)
 	self._listen(self.interchanges.stops_linked, self.residence_connector._on_stops_linked)

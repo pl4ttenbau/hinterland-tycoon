@@ -37,6 +37,6 @@ const PLAYER_MASK: int = WORLD | ROAD_VEHICLES
 ## What a road vehicle collides with: the world, other road vehicles, and the walking player.
 const ROAD_VEHICLE_MASK: int = WORLD | ROAD_VEHICLES | PLAYER
 ## What a rail station's Area3D notices: trains (on WORLD) and the walking player, for the
-## trains_inside / player_entered bookkeeping. Set in the inspector by rail_node_station_3d.tscn (9).
+## trains_inside / player_entered bookkeeping. Set in the inspector by rail_stop_3d.tscn (9).
 const STATION_AREA_MASK: int = WORLD | PLAYER
 #endregion

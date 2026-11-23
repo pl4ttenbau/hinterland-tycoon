@@ -23,7 +23,7 @@ func _ready() -> void:
 	SignalBus.roads_spawned.connect(request_refresh)
 	SignalBus.road_spawned.connect(request_refresh.unbind(1))
 	SignalBus.town_buildings_spawned.connect(request_refresh)
-	SignalBus.node_station_links_spawned.connect(request_refresh)
+	SignalBus.rail_stops_spawned.connect(request_refresh)
 	SignalBus.industries_spawned.connect(request_refresh)
 	SignalBus.industry_spawned.connect(request_refresh.unbind(1))
 	request_refresh()

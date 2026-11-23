@@ -24,7 +24,7 @@ static func connect_industry(industry: IndustryData) -> void:
 	if not access.is_empty():
 		access.interchange.connections.connect_industry(industry, access.stops)
 
-func _on_node_station_links_spawned() -> void:
+func _on_rail_stops_spawned() -> void:
 	connect_industries()
 
 func _on_stops_linked() -> void:

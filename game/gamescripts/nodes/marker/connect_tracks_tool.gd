@@ -3,6 +3,8 @@
 class_name ConnectTracksTool extends RefCounted
 
 const MARKER_SCENE = "res://assets/meshes/markers/infr_end/selected_node.tscn"
+## How far from the player a track may be to count as near (to its bounds, see AbstractInfrLine.is_near).
+const NEAR_DISTANCE: float = 100.0
 
 
 static func start() -> bool:
@@ -27,7 +29,7 @@ static func start() -> bool:
 static func tracks_near(pos: Vector3) -> Array[RailTrackData]:
 	var result: Array[RailTrackData] = []
 	for track_data in Managers.rails.track_storage.get_all():
-		if track_data.is_near(pos):
+		if track_data.is_near(pos, NEAR_DISTANCE):
 			result.append(track_data)
 	return result
 

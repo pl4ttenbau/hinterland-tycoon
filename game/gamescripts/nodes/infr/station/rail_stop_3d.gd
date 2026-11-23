@@ -1,10 +1,10 @@
 ## The platform of one rail stop: building, sign and the catchment area trains and the player enter.
-## Its entity is the RailStationData itself. (The name is historical: it used to show a NodeStationLinkData,
-## a link object between rail node and stop that was removed on 2026-11-23.)
+## Its entity is the RailStationData itself; BusStop3D is the road counterpart. (Called NodeStationLink3D
+## until 2026-11-23, from when it showed a NodeStationLinkData link object between rail node and stop.)
 @icon("res://assets/icons/nodes_3d/icon_station.svg")
-class_name NodeStationLink3D extends GameEntity3D
+class_name RailStop3D extends GameEntity3D
 
-const STATION_SCENE := preload("res://scenes/subscenes/infr/station/rail_node_station_3d.tscn")
+const STATION_SCENE := preload("res://scenes/subscenes/infr/station/rail_stop_3d.tscn")
 const DEFAULT_BUILDING := preload("res://assets/meshes/infr/stops/passenger_platform/passenger_platform.tscn")
 
 signal stop_changed(stop: RailStationData)
@@ -27,13 +27,13 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	self._on_stop_changed(self.stop)
 
-static func of(rail_stop: RailStationData, building: RailPlatform3D = null) -> NodeStationLink3D:
-	var instance := STATION_SCENE.instantiate() as NodeStationLink3D
+static func of(rail_stop: RailStationData, building: RailPlatform3D = null) -> RailStop3D:
+	var instance := STATION_SCENE.instantiate() as RailStop3D
 	instance.stop = rail_stop
 	if building == null:
 		building = DEFAULT_BUILDING.instantiate() as RailPlatform3D
 	building.name = "StationBuilding3D"
-	building.node_link_3d = instance
+	building.rail_stop_3d = instance
 	instance.add_child(building)
 	return instance
 #endregion

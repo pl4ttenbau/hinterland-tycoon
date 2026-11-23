@@ -183,7 +183,7 @@ func test_editor_labels() -> bool:
 	self.check(rail.parent_station == null and road.parent_station == null, "Editor labels contain no simulation station data")
 	self.check(rail.global_position.is_equal_approx(Vector3(10, 17, 20)) and road.global_position.is_equal_approx(Vector3(30, 17, 25)), "Labels resolve exact JSON anchors under a transformed editor root")
 	self.check(rail.owner == world and road.owner == world and container.owner == world, "Editor labels are owned by the edited scene for Ctrl+S")
-	self.check(world.find_children("*", "BusStop3D", true, false).is_empty() and world.find_children("*", "NodeStationLink3D", true, false).is_empty(), "Editor loading creates labels without shelters or platforms")
+	self.check(world.find_children("*", "BusStop3D", true, false).is_empty() and world.find_children("*", "RailStop3D", true, false).is_empty(), "Editor loading creates labels without shelters or platforms")
 	history.undo.undo()
 	self.check(container.get_child_count() == 0, "Undo removes the loaded stop labels")
 	history.undo.redo()

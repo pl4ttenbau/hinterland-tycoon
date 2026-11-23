@@ -19,14 +19,24 @@ signal curve_built(curve3d: Curve3D)
 ## global pos of the first node
 @export var start_pos: Vector3
 
-@export var center: Vector3:
-	get(): return _get_center()
-
 # infr type
 @export var infr_type_key: String
 
 # curve; nodes live in the typed array of each subclass
-@export var curve: Curve3D
+@export var curve: Curve3D:
+	set(value):
+		if curve != null and curve.changed.is_connected(self._invalidate_bounds):
+			curve.changed.disconnect(self._invalidate_bounds)
+		curve = value
+		# Curves are also edited in place (points moved, handles smoothed) or swapped by splits: any
+		# change makes the cached bounds stale. A signal connection does not keep the line alive.
+		if value != null and not value.changed.is_connected(self._invalidate_bounds):
+			value.changed.connect(self._invalidate_bounds)
+		self._invalidate_bounds()
+
+## Cached box around the curve, see get_bounds(). Derived data: never exported or saved.
+var _bounds: AABB
+var _bounds_valid: bool = false
 
 #region Nodes
 ## Subclasses keep their own typed node array; typed arrays cannot be shared.
@@ -102,12 +112,31 @@ func position_at(offset: float) -> Vector3:
 	return self.ensure_curve().sample_baked(clampf(offset, 0.0, self.length()))
 #endregion
 
-#region Getter-Methods
-## Midpoint between the end nodes, not the middle of the curve.
-func _get_center() -> Vector3:
-	if self.node_count() <= 1: return Vector3.ZERO
-	return self.first_node().position.lerp(self.last_node().position, .5)
+#region Bounds
+## World-space box around the whole curve, built from its baked points, so a curve that bulges out
+## between two nodes is still inside. Computed on first use after the curve changed, then cached:
+## cheap enough to test every line of a map against, e.g. as a first filter before looking at nodes.
+## Empty (AABB()) for a line without nodes.
+func get_bounds() -> AABB:
+	if not self._bounds_valid:
+		var points: Array[Vector3] = []
+		if self.node_count() > 0:
+			points.assign(self.ensure_curve().get_baked_points())
+		self._bounds = InfrUtils.get_aabb(points)
+		# Set after ensure_curve(): building the curve there invalidates the cache itself.
+		self._bounds_valid = true
+	return self._bounds
 
+## Whether `pos` may lie within `distance` of the line: inside its bounds grown by `distance`. A quick
+## pre-filter, not an exact distance; near the box corners it also accepts places a bit further away.
+func is_near(pos: Vector3, distance: float) -> bool:
+	return self.node_count() > 0 and self.get_bounds().grow(distance).has_point(pos)
+
+func _invalidate_bounds() -> void:
+	self._bounds_valid = false
+#endregion
+
+#region Getter-Methods
 func get_start_pos() -> Vector3:
 	return self.first_node().position
 

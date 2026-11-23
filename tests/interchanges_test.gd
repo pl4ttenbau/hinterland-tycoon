@@ -278,7 +278,7 @@ func test_live_industry_recipe(collider: IndustryCollider, production: IndustryP
 	handler.free()
 	return true
 
-func test_station_dialogs(rail_link: NodeStationLink3D, bus: BusStop3D) -> bool:
+func test_station_dialogs(rail_link: RailStop3D, bus: BusStop3D) -> bool:
 	var handler := BaseEntityClickHandler.new()
 	add_child(handler)
 	var rail_collider: StationCollider = rail_link.get_node("StationBuilding3D/StationBody")

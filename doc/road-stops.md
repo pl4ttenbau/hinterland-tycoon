@@ -106,10 +106,11 @@ Invalid catalog or anchor data prevents terrain spawning and emits the
 coordinator's `map_loading_failed` signal. Loading a second map into an already
 populated service scene is rejected; a new session owns new service instances.
 
-The rail loader retains `NodeStationLinkData` as the adapter for existing signs,
-catchment areas and rail inventory consumers. Its `num` is the authored stop ID,
-matching the associated `RailStationData.num`. Stops are no longer authored inside
-`tracks.json`; their explicit track/node anchors live in the interchange catalog.
+Each rail stop (`RailStationData`) is shown by one `RailStop3D` (`rail_stop_3d.tscn`):
+platform building, sign and catchment area. The stop is the view's entity, and the stop
+holds its view as `platform_view`; there is no link object between rail node and stop
+anymore. Stops are no longer authored inside `tracks.json`; their explicit track/node
+anchors live in the interchange catalog.
 
 ## Road views
 

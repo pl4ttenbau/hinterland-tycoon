@@ -252,7 +252,7 @@ func test_rail_confirmation() -> bool:
 	if stop == null:
 		_free_placement_player(player, handler)
 		return false
-	var link: NodeStationLink3D = stop.platform_view
+	var link: RailStop3D = stop.platform_view
 	var building := link.get_node("StationBuilding3D") as RailPlatform3D
 	var built_model := building.platform_mesh.get_child(0) as MeshInstance3D
 	check(stop.station_type == "STATION_GOODS" and building.scene_file_path == cargo.building_scene.resource_path
@@ -292,7 +292,7 @@ func test_rail_confirmation() -> bool:
 	var hidden := services.interchanges.stops_by_num.get(next_stop) as RailStationData
 	if hidden == null:
 		return false
-	var hidden_link: NodeStationLink3D = hidden.platform_view
+	var hidden_link: RailStop3D = hidden.platform_view
 	var hidden_shape := hidden_link.get_node("StationBuilding3D/StationBody/StationShape3D") as CollisionShape3D
 	check(hidden.interchange != stop.interchange and hidden.hide_building and hidden_shape.disabled
 		and not hidden_link.get_node("StationBuilding3D").visible and hidden_link.get_node("StationSign3D").visible,
