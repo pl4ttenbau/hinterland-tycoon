@@ -59,5 +59,5 @@ const MAP_DISTANCE_SCALE: float = 0.66
 ##
 ## PlayerAvatar applies it to the walking body on startup, overriding the FPS addon's default
 ## (BasicFpsPlayer.SPEED, 5 m/s). Speed in the air and jump height keep the addon's values.
-const PLAYER_WALK_SPEED: float = 3.0
+const PLAYER_WALK_SPEED: float = 4.0
 #endregion
