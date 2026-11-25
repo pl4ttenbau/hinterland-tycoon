@@ -1,0 +1,18 @@
+{
+  "source": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-steam/harz_99_7245_source.wav",
+  "source_range_seconds": [
+    0,
+    2
+  ],
+  "output": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-steam/harz_99_7245_steam_first2s_loop.wav",
+  "duration_seconds": 1.88,
+  "crossfade_seconds": 0.12,
+  "sample_rate": 44100,
+  "channels": 2,
+  "pcm_bits": 16,
+  "peak_dbfs": -3,
+  "clipped_samples": 0,
+  "boundary_step": 0.021123229876720755,
+  "max_internal_step": 0.12440936114992945,
+  "processing": "Only first 2.000 s used; 120 ms equal-power cyclic crossfade, DC removal and peak normalization; no pitch or speed change. Supersedes previous longer loop at user request, because locomotive accelerates later."
+}

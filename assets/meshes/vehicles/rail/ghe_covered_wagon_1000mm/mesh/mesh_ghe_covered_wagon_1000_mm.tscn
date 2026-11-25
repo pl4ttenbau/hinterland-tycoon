@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dfiv5s5qibeir"]
+
+[ext_resource type="PackedScene" uid="uid://ddu324vbeuxj3" path="res://assets/meshes/vehicles/rail/ghe_covered_wagon_1000mm/ghe_covered_wagon_1000mm.gltf" id="1_qf7ee"]
+
+[node name="MeshGheCoveredWagon1000mm" unique_id=852778767 instance=ExtResource("1_qf7ee")]
+
+[node name="ghe_covered_wagon_1000mm" parent="." index="0" unique_id=1838595987]
+layers = 64
+visibility_range_end = 200.0
+visibility_range_end_margin = 20.0

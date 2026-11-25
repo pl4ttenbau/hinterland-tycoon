@@ -15,6 +15,8 @@ var max_speed_kmh: Variant = null
 
 @export var has_motor: bool = false
 
+@export var motor_type: GameEnums.MotorType = GameEnums.MotorType.UNKNOWN
+
 @export var capacity: GoodsCapacity
 
 @export var length_metres: float

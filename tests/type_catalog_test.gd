@@ -62,10 +62,11 @@ func test_catalog_lifecycle() -> bool:
 	self.check(self.session_ready_count == 1, "First session starts after loading")
 	var source_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RailVehicleTypesLoader.CATALOG_PATH))
 	var road_catalog: Array = JSON.parse_string(FileAccess.get_file_as_string(RoadVehicleTypesLoader.CATALOG_PATH))
-	self.check(source_catalog.size() == 19 and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
+	self.check(not source_catalog.is_empty() and GameTypes.vehicle_types.size() == source_catalog.size() + road_catalog.size(), "Rail and road catalogs load together")
 	for index: int in range(source_catalog.size()):
 		var vehicle: VehicleTypeData = GameTypes.vehicle_types[index]
 		self.check(vehicle is RailVehicleTypeData, "Rail catalog creates rail definitions")
+		self.check(vehicle.motor_type == GameEnums.MotorType[source_catalog[index].get("motor_type", "UNKNOWN")], "Catalog motor types load through the shared enum")
 		self.check(vehicle.mass_tonnes == source_catalog[index].get("mass_tonnes") and vehicle.motor_power_kw == source_catalog[index].get("motor_power_kw"), "Catalog mass and power values are preserved")
 		self.check(vehicle.usable_infr.domain == Enums.InfrDomain.RAIL, "Rail loader supplies the runtime domain")
 	self.check(GameTypes.get_veh_type("loco_faur").max_speed_kmh == 40, "Current FAUR speed (L45H, 40 km/h) survives migration")

@@ -64,6 +64,7 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	definition.model_scene_path = data["model_scene_path"]
 	definition.max_speed_kmh = int(data["max_speed_kmh"]) if data.get("max_speed_kmh") != null else null
 	definition.has_motor = data["has_motor"]
+	definition.motor_type = GameEnums.MotorType.get(data.get("motor_type", "UNKNOWN"))
 	definition.length_metres = float(data.get("length_metres", 0.0))
 	definition.mass_tonnes = float(data["mass_tonnes"]) if data.get("mass_tonnes") != null else null
 	definition.service_mass_tonnes = float(data["service_mass_tonnes"]) if data.get("service_mass_tonnes") != null else null
@@ -77,6 +78,13 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 		definition.capacity = GoodsCapacity.of_json(data["capacity"])
 
 static func _is_valid(data: Dictionary, road_vehicle: bool = false) -> bool:
+	var motor_type: Variant = data.get("motor_type", "UNKNOWN")
+	if not motor_type is String or not GameEnums.MotorType.has(motor_type):
+		push_error("Vehicle %s has an invalid motor_type" % data.get("key", ""))
+		return false
+	if not data.get("has_motor", false) and motor_type != "UNKNOWN":
+		push_error("Unpowered vehicle %s cannot specify a motor_type" % data.get("key", ""))
+		return false
 	var price: Variant = data.get("purchase_price")
 	if price != null and (not _is_number(price) or not is_finite(float(price)) \
 			or price <= 0 or int(price) != price):

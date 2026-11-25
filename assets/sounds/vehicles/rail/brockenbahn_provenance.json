@@ -1,0 +1,34 @@
+{
+  "source_url": "https://freesound.org/people/viertelnachvier/sounds/267219/",
+  "title": "Brockenbahn.wav",
+  "author": "viertelnachvier",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "downloaded_url": "https://cdn.freesound.org/previews/267/267219_2633921-hq.mp3",
+  "source_sha256": "e2530ca402c96ea1d9e58b59a44c85a22964569e5bd15863eb3d41445e171cce",
+  "source_quality": "Public high-quality MP3 preview, not the original WAV",
+  "source_start_seconds": 89.0,
+  "source_end_seconds": 105.4,
+  "crossfade_seconds": 0.4,
+  "reference_speed_kmh": null,
+  "processing": "Mono downmix, 400 ms equal-power cyclic crossfade, DC removal, peak normalization to -3 dBFS. Filtered version: 65 Hz high-pass, 6500 Hz low-pass.",
+  "limitations": "No source separation. Whistles, steam exhaust or voices within the selected excerpt are not guaranteed removed. Not auditioned by the agent. Source train speed unknown; do not assume 30 km/h.",
+  "outputs": {
+    "brockenbahn_wagon_natural_loop.wav": {
+      "duration": 16.0,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -19.121188515585498,
+      "boundary_step": 0.0036574434542268885,
+      "maximum_internal_step": 0.2434784412477261,
+      "clipped_samples": 0
+    },
+    "brockenbahn_wagon_filtered_loop.wav": {
+      "duration": 16.0,
+      "peak_dbfs": -3.0,
+      "rms_dbfs": -19.182534872806837,
+      "boundary_step": 0.0013298857129416253,
+      "maximum_internal_step": 0.23495775679625722,
+      "clipped_samples": 0
+    }
+  }
+}

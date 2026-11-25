@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ddk4jv4q07x08" path="res://game/gamescripts/resources/goods/inventory/base_goods_storage.gd" id="6_5404p"]
 
 [ext_resource type="Script" uid="uid://df2ldyahe2024" path="res://game/gamescripts/nodes/vehicle/movement/train_movement.gd" id="7_movement"]
+[ext_resource type="Script" uid="uid://bctnjysj4a8vo" path="res://game/gamescripts/nodes/vehicle/train/train_rolling_audio.gd" id="8_audio"]
 
 [sub_resource type="Resource" id="Resource_gwvd7"]
 script = ExtResource("6_5404p")
@@ -32,3 +33,6 @@ metadata/_custom_type_script = "uid://cbhvwirshj8vf"
 
 [node name="TrainMovement" type="Node" parent="."]
 script = ExtResource("7_movement")
+
+[node name="RollingAudio" type="Node3D" parent="."]
+script = ExtResource("8_audio")

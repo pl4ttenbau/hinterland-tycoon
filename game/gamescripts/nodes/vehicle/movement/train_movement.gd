@@ -126,6 +126,10 @@ func get_max_speed_mps() -> float:
 func get_speed_mps() -> float:
 	return self.speed_mps
 
+## Applied traction control for effects; engine load is independent of wheel speed.
+func get_traction_load() -> float:
+	return clampf(_throttle, 0.0, 1.0) if is_started and not derailed else 0.0
+
 ## Map distance needed to stop from the current speed with service braking.
 func get_stopping_distance() -> float:
 	return self.get_dynamics().stopping_distance(self.speed_mps) * GameConstants.MAP_DISTANCE_SCALE

@@ -1,0 +1,34 @@
+{
+  "wheel_joint_impact.wav": {
+    "seconds": 0.42,
+    "sample_rate": 48000,
+    "peak_dbfs": -2.158107946190392,
+    "rms_dbfs": -21.418783757714948,
+    "boundary_step": 0.0,
+    "clipped_samples": 0
+  },
+  "wagon_roll_30kmh_loop.wav": {
+    "seconds": 11.52,
+    "sample_rate": 48000,
+    "peak_dbfs": -2.158107946190392,
+    "rms_dbfs": -20.41007301811931,
+    "boundary_step": 0.00066995244949105,
+    "clipped_samples": 0
+  },
+  "diesel_idle_720rpm_loop.wav": {
+    "seconds": 12.0,
+    "sample_rate": 48000,
+    "peak_dbfs": -4.013189010928367,
+    "rms_dbfs": -13.03616272870874,
+    "boundary_step": 0.03389056815391886,
+    "clipped_samples": 0
+  },
+  "diesel_work_1440rpm_loop.wav": {
+    "seconds": 12.0,
+    "sample_rate": 48000,
+    "peak_dbfs": -4.013189010928365,
+    "rms_dbfs": -14.313628773887316,
+    "boundary_step": 0.03798709722423284,
+    "clipped_samples": 0
+  }
+}

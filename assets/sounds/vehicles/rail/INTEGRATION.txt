@@ -1,0 +1,99 @@
+Train audio integration
+
+VehicleTypeData.motor_type uses the shared GameEnums.MotorType enum (also
+available via the Enums autoload): STEAM, DIESEL, ELECTRIC, UNKNOWN. UNKNOWN is
+the backwards-compatible default and also applies to unpowered stock; has_motor
+remains the propulsion flag. JSON catalogs store enum names, e.g.
+"motor_type": "DIESEL". Numeric ordinals, unknown names, and assigning a powered
+motor type to an unpowered vehicle are rejected by VehicleMapper.
+Rail catalog types are explicitly annotated. Wismar remains UNKNOWN because
+its original petrol propulsion does not fit the requested three categories.
+Road catalog entries default to UNKNOWN until their propulsion is specified.
+
+Every production Train3D scene includes RollingAudio. All rail vehicles retain
+rolling audio independently of motor_type. At most three emitters cover front,
+middle and rear, with one additional engine emitter for a steam or diesel consist. Gain
+is normalized for rolling emitter count; players use polyphony 1. Local random
+loop phases do not consume gameplay randomness. Coupling updates source
+positions/counts on the next physics tick. Steam/electric/unknown/unpowered
+vehicles never select diesel playback. The first steam or diesel vehicle in a
+consist provides the engine source; multi-engine consists intentionally share
+this bounded bed.
+
+Rolling: brockenbahn_wagon_filtered_loop.wav, unchanged 16-second mono 48 kHz
+CC0 recording from viertelnachvier's Brockenbahn.wav, extracted from the public
+HQ MP3 preview. Source speed is UNKNOWN. rolling_reference_kmh = 30 is an
+adjustable gameplay calibration, not a measured recording speed. Actual
+TrainMovement.get_speed_mps() controls smoothed playback pitch (0.35..2.5),
+and gain fades between 0.3 and 3 m/s to avoid slowed rumble at crawling speed.
+Source and licence: https://freesound.org/people/viertelnachvier/sounds/267219/
+See brockenbahn_provenance.json for processing and limitations, including
+possible steam/whistle/voice bleed in this field recording.
+
+Diesel engine: v100_diesel_loop.wav, unchanged user-approved 5.740748-second stereo
+44.1 kHz cab recording, identified by the user as V100 / BR 202. Used as a
+first-pass shared diesel sound, not an authentic recording for every diesel.
+Source RPM/load is UNKNOWN: this is not labelled idle. Pitch stays near the
+original (0.95..1.05) and responds gently to applied traction throttle through
+TrainMovement.get_traction_load(), independent of wheel speed. Engine gain
+fades in while the movement controller is started and out when stopped or
+derailed. See v100_diesel_loop_report.json for processing and source filename.
+User-supplied source video: https://www.youtube.com/watch?v=SIu1wMrxvGY
+Reuse licence has not been independently established.
+
+Steam engine: harz_99_7245_steam_first2s_loop.wav, unchanged user-supplied stereo
+44.1 kHz 16-bit PCM, 1.88 seconds. Identity Harz locomotive 99 7245
+comes from the source filename. steam_first2s_loop_report.json preserves provenance,
+first 0.000–2.000 seconds only, 120 ms overlap crossfade and checks.
+steam_source_provenance.json retains the earlier clip identity/source report;
+its longer output is superseded and is not selected in the game. No source pitch/speed changes were
+made. Original WAV, video and reproducible make_loop.py remain in the source
+package /home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-steam.
+Reuse licence has not been independently verified.
+
+MotorType.STEAM selects this working-exhaust loop, never the diesel loop.
+Default steam level is -24 dB. Smooth gain follows motion and applied traction:
+it fades at standstill and while coasting, rather than treating uphill working
+exhaust as idle. Pitch varies gently over 0.9..1.1 with actual speed, smoothed
+before playback. Source speed/beat rate is UNKNOWN; this is artistic modulation,
+not calibrated exhaust/wheel synchronization. The shared engine player handles
+pause, time scale, profile changes, removal and bounded polyphony.
+
+wheel_joint_impact.wav is the original procedural 0.42-second mono one shot.
+It is imported with looping DISABLED, reserved for a future distance-triggered
+alternative. It does not double the impacts already in the rolling loop.
+The original synthetic wagon_roll_30kmh_loop.wav is retained but no longer
+selected. source_README.txt and source_audio_report.json describe these original
+procedural assets. All source files outside the project remain unchanged.
+Source packages:
+/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-v1
+/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-brockenbahn
+
+Loop WAV imports enable forward looping, with no trim, normalization,
+resampling or compression. Default rolling level is -16 dB; engine is -22 dB
+with a further 4 dB reduction unloaded. Spatial unit distance is 8 map metres,
+maximum distance 100 map metres. Existing Master routing is preserved.
+RollingAudio exports levels, bus, reference speed and audible distance for
+scene tuning. Doppler is disabled because speed already controls rolling pitch.
+SceneTree pause is inherited. Engine.time_scale scales playback (0.05..4) and
+zero suspends it; extreme time scales/speeds remain approximate.
+
+Run tests:
+/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/train_audio_test.gd -- --no-mcp
+The suite checks imports, speed/pitch, phases, bounded voices, fades, pause,
+clock scaling, removal, engine gating/load and motor enum mapping/validation.
+Technical tests do not audition audio. In-game listening is still required for
+camera distance, nearby trains, crawling, braking and loop transitions.
+
+Validation with Godot 4.7.2: 49 audio/enum checks passed, train movement 86
+passed. The prior catalog suite also passed. The two steam-edited scripts
+validate with 0 invalid. Tests cover steam format, motion/load fades, pause,
+exclusive combustion profiles, diesel and rolling. Catalog validation
+intentionally exercises invalid enum inputs.
+
+Classification references for the newly annotated catalog:
+FAUR L45H: https://www.bemo-modellbahn.de/produkt/cfg-60006-l45h/
+FKB T2: https://www.kleinbahn-museum.de/seite/index.php/mega-menu/menu-headline/unsere-fahrzeuge/triebwagen/triebwagen-t-42
+TU6A: https://tesovouzd.ru/exhibits/teplovoz-tu6a/
+TGM6: https://slrd.ru/библиотека/тепловоз-тгм6/
+Wismar petrol limitation: https://www.vvm-museumsbahn.de/fz/C0/D999PRNA.pdf

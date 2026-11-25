@@ -1,6 +1,14 @@
 ## Shared game and editor enums; the Enums autoload exposes these definitions.
 class_name GameEnums extends Node
 
+## UNKNOWN also covers unpowered vehicles; has_motor remains the propulsion flag.
+enum MotorType {
+	UNKNOWN = -1,
+	STEAM,
+	DIESEL,
+	ELECTRIC
+}
+
 enum Location {
 	NORTHERN_GERMANY,
 	SOUTHERN_GERMANY,
