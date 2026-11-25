@@ -38,7 +38,7 @@ func run(scene_tree: SceneTree) -> int:
 	return 0 if failures == 0 else 1
 
 func test_names() -> Array[StringName]:
-	return [&"test_cargo", &"test_passengers", &"test_invalid_actions", &"test_ordered_execution", &"test_physical_passenger_route"]
+	return [&"test_cargo", &"test_passengers", &"test_invalid_actions", &"test_ordered_execution", &"test_coincident_repeat", &"test_physical_passenger_route"]
 
 func suite_name() -> String:
 	return "Road route transfer tests"
@@ -243,6 +243,27 @@ func test_ordered_execution() -> bool:
 	var amount: float = body.get_inventory().amount_used
 	body.plan_execution.tick(body)
 	check(body.get_inventory().amount_used == amount, "Completed plans do not repeat their actions")
+	body.free()
+	return true
+
+# Coincident points are valid, but repeating them must yield control each tick.
+func test_coincident_repeat() -> bool:
+	_stop(22)
+	var body: RoadVehicle3D = _vehicle()
+	body.set_physics_process(false)
+	body.position.y = 0.8
+	# Match this side's permitted approach so both visits are already satisfied.
+	body.rotation.y = PI
+	body.route_plan.points = [_point(22), _point(22)]
+	body.route_plan.repeat_route = true
+	check(body.plan_execution.start(body), "Repeating coincident visits start without blocking: " + body.plan_execution.status)
+
+	# Several synchronous ticks should return promptly and remain stoppable.
+	for tick: int in range(3):
+		body.plan_execution.tick(body)
+	check(body.plan_execution.running, "Coincident repeating visits remain active across ticks")
+	body.plan_execution.stop(body)
+	check(not body.plan_execution.running, "Repeating coincident visits can be stopped")
 	body.free()
 	return true
 

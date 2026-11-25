@@ -37,11 +37,13 @@ func _ready() -> void:
 		show_status("This vehicle is no longer available.", StatusTone.ERROR)
 		%OkButton.disabled = true
 		%StartButton.disabled = true
+		%RepeatRoute.disabled = true
 		return
 	# 3. Content: copy the plan into the draft and hand the draft to both editors.
 	#    Markers may be missing on maps without a road network; the points editor
 	#    then just offers no marker targets.
 	plan = vehicle.route_plan.duplicate(true)
+	%RepeatRoute.set_pressed_no_signal(plan.repeat_route)
 	var markers: RoadMarkerStore = Managers.roads.markers if is_instance_valid(Managers.roads) else null
 	var stops: Dictionary = _all_stops()
 	# Open with the execution state ("Not started", "Stopped", …) as a reminder
@@ -62,6 +64,12 @@ func _connect_signals() -> void:
 	_actions_editor.status_changed.connect(show_status.bind(StatusTone.ACCENT))
 	%OkButton.pressed.connect(_save)
 	%StartButton.pressed.connect(_start)
+	%RepeatRoute.toggled.connect(_on_repeat_route_toggled)
+
+
+## The checkbox edits only the draft; Save/Start publish it, Cancel discards it.
+func _on_repeat_route_toggled(enabled: bool) -> void:
+	plan.repeat_route = enabled
 
 
 ## Every stop by number, rail and road alike. The editors pick out the road stops.

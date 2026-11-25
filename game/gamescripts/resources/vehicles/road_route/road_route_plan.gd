@@ -2,6 +2,8 @@
 class_name RoadRoutePlan extends Resource
 
 @export var points: Array[RoadRoutePoint] = []
+## After the final visit, navigate back to the first and repeat its actions.
+@export var repeat_route: bool = false
 
 ## Legacy plans identify some visits by their road and authored node index.
 func references_road_nodes(road_num: int) -> bool:
@@ -16,6 +18,7 @@ func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depo
 	if points.size() < 2:
 		return "Add at least two route points."
 	var previous: RoadNode
+	var first: RoadNode
 	for index: int in range(points.size()):
 		var point: RoadRoutePoint = points[index]
 		if point == null:
@@ -23,12 +26,16 @@ func validate(network: RoadPathfinder, roads: RoadStore, stops: Dictionary, depo
 		var node: RoadNode = point.resolve(roads, stops, depots, markers)
 		if node == null:
 			return "Point %d has an invalid road anchor." % (index + 1)
+		if index == 0:
+			first = node
 		if previous != null and network.find_path(previous, node).is_empty():
 			return "No road path from point %d to point %d." % [index, index + 1]
 		var error: String = _validate_actions(point, stops, goods, capacity)
 		if not error.is_empty():
 			return "Point %d: %s" % [index + 1, error]
 		previous = node
+	if repeat_route and network.find_path(previous, first).is_empty():
+		return "No road path from point %d back to point 1." % points.size()
 	return ""
 
 ## Only physical stops have inventories today. Nodes/depots remain navigation points.

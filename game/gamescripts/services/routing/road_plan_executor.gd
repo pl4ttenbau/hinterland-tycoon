@@ -83,13 +83,22 @@ func _finish_visit(vehicle: RoadVehicle3D) -> bool:
 			return false
 	current_point += 1
 	if current_point >= _plan.points.size():
+		if _plan.repeat_route:
+			# Keep the validated execution snapshot. The first visit is resolved
+			# from our actual pose, including a road-end U-turn when needed.
+			current_point = 0
+			return true
 		stop(vehicle, "Plan complete")
 		return false
 	return true
 
 func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 	_servicing_visit = false
-	while running:
+	# Skip at most one lap of nearby, actionless visits per tick. A repeating
+	# plan with coincident points must yield instead of locking the game here.
+	for _visit: int in range(_plan.points.size()):
+		if not running:
+			return false
 		var point: RoadRoutePoint = _plan.points[current_point]
 		var node: RoadNode = point.resolve(Managers.roads.storage, _stops(), GlobalState.road_depots, Managers.roads.markers)
 		if node == null:
@@ -106,7 +115,10 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 			continue
 		return _assign_visit_path(vehicle, point, node)
 
-	return false
+	# All visits were already within reach. Park and resume on the next tick,
+	# using the ordinary stationary-service phase to advance the pending visit.
+	_hold_for_actions(vehicle)
+	return true
 
 ## Starting a plan near its first stop must still wait for automatic control and
 ## a stationary vehicle. Clearing the driving curve applies the parking brake.

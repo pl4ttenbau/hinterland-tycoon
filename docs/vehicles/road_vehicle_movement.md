@@ -1,5 +1,14 @@
 # Road vehicle movement and automatic U-turns
 
+The route dialog's **Repeat route** checkbox makes an itinerary run continuously.
+After the last visit and its actions, the executor navigates from the vehicle's
+actual position back to the first visit using the same pathfinding and road-end
+U-turns as any other visit. Load/unload actions execute on each lap. The setting
+is saved with the plan, defaults to off, and is copied into the running plan;
+editing it takes effect when the edited plan is started again. Stopping the plan
+still parks the vehicle. Coincident visits yield between laps to keep the game
+responsive even when there is no distance to travel.
+
 `RoadVehicle3D` remains the single movement controller. Player driving and ordinary automatic road following use the same `VehicleBody3D` wheel physics, steering limit, suspension, engine and brakes. The player's turning radius is unchanged.
 
 The automatic driver samples the route ahead for bends and uses their curvature to limit corner speed. It works backwards from each bend to find where braking should begin, using half the configured `braking_deceleration` as its approach estimate. `cornering_lateral_acceleration` sets how fast the driver aims to take curves, and longer wheelbases start steering farther ahead. The vehicle follows the bend using wheel physics.

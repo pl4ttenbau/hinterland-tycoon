@@ -129,6 +129,7 @@ func test_curved_cost() -> bool:
 ## Node/stop/depot references stay distinct; passenger selectors use interchange IDs.
 func test_route_data() -> bool:
 	var plan := RoadRoutePlan.new()
+	check(not plan.repeat_route, "Existing itineraries finish after one run by default")
 	plan.points.append(_node_point(10, 0))
 	var stop := RoadRoutePoint.new()
 	stop.kind = RoadRoutePoint.Kind.STOP
@@ -154,12 +155,17 @@ func test_route_data() -> bool:
 	check(legacy.validate(GameTypes.resource_types, stops, null).is_empty() and legacy.destination_ids(stops) == [501], "Saved stop targets resolve to the parent interchange")
 
 	# Editing copies and resource round trips preserve action data without sharing it.
+	plan.repeat_route = true
+	check(_validate(plan).is_empty(), "Repeating itinerary includes a reachable return to its first point")
 	var copy: RoadRoutePlan = plan.duplicate(true)
+	copy.repeat_route = false
+	check(plan.repeat_route, "Draft repeat setting does not mutate the saved plan")
 	copy.points[1].actions[0].passenger_interchange_targets.append(502)
 	check(action.passenger_interchange_targets == [501], "Draft action edits do not mutate the saved plan")
 	check(ResourceSaver.save(plan, "/tmp/road-routing-plan.tres") == OK, "Itinerary can be serialized")
 	var loaded: RoadRoutePlan = ResourceLoader.load("/tmp/road-routing-plan.tres", "", ResourceLoader.CACHE_MODE_IGNORE)
 	check(loaded.points[1].actions[0].passenger_interchange_targets == [501], "Round trip retains destination interchanges")
+	check(loaded.repeat_route, "Resource round trip retains the repeat setting")
 	stop.target_num = 999
 	check(not _validate(plan).is_empty(), "Deleted stop is rejected without retargeting")
 	return true
@@ -185,12 +191,16 @@ func test_dialog() -> bool:
 	tree.root.add_child(viewport)
 	var dialog := RoadRouteDialog.create(vehicle)
 	viewport.add_child(dialog)
+	check(not (dialog.get_node("%RepeatRoute") as CheckBox).button_pressed, "Repeat checkbox starts unchecked for a new route")
+	(dialog.get_node("%RepeatRoute") as CheckBox).button_pressed = true
+	check(dialog.plan.repeat_route and not vehicle.route_plan.repeat_route, "Checkbox updates only the route draft")
 	await _check_dialog_layout(dialog, "Route points")
 	dialog.plan.points.assign([_node_point(10, 0)])
 	_check_action_editing(dialog)
 	await _check_dialog_layout(dialog, "Load and unload")
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(vehicle.route_plan.points.size() == 2, "Save assigns the connected draft to the vehicle")
+	check(vehicle.route_plan.repeat_route, "Save keeps the selected repeat setting")
 	check(not vehicle.route.is_valid() and not vehicle.player_driving, "Saving does not start automatic driving")
 	await tree.process_frame
 	check(UiState.current_diag == null, "Route dialog releases modal state")
@@ -198,10 +208,13 @@ func test_dialog() -> bool:
 	# Cancelling an edited copy must retain the previously saved itinerary.
 	dialog = RoadRouteDialog.create(vehicle)
 	viewport.add_child(dialog)
+	check((dialog.get_node("%RepeatRoute") as CheckBox).button_pressed, "Reopened route shows its saved repeat setting")
+	(dialog.get_node("%RepeatRoute") as CheckBox).button_pressed = false
 	dialog.plan.points.clear()
 	(dialog.get_node("%CancelButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(vehicle.route_plan.points.size() == 2, "Cancel keeps the saved itinerary")
+	check(vehicle.route_plan.repeat_route, "Cancel discards changes to the repeat setting")
 	await _check_grain_action(viewport)
 	viewport.free()
 	vehicle.free()
