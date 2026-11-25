@@ -2,7 +2,7 @@
 ## Stop records of interchanges.json <-> stop Resources (RailStationData, RoadStationData), both ways.
 ##
 ## Owns the format of a single stop record: which fields exist, their types, their defaults, and the key
-## order they are written in (the order of the existing map files, so exported records match them).
+## order they are written in (the order of the existing map files, so written records match them).
 ## Checks that need more than one record (duplicate numbers, two platforms in one place) or the loaded
 ## network (does the track or road exist?) stay in InterchangesLoader and the stop loaders.
 ##

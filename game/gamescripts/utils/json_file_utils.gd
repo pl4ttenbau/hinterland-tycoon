@@ -1,7 +1,7 @@
 @tool
 ## Writing the map's JSON catalogs from game code and editor tools alike: catalog text in the style of
-## the existing files, and a safe replace with one backup. (Moved here from the editor addon on
-## 2026-11-23, so the game can export stops without depending on addons/.)
+## the existing files, and a safe replace with one backup. Lives outside addons/ so game code can
+## write catalogs too without depending on the editor addon.
 class_name JsonFileUtils extends RefCounted
 
 ## Catalog text (e.g. interchanges.json), tab-indented like the existing files. JSON parsing returns

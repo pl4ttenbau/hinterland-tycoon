@@ -1,8 +1,7 @@
 extends RefCounted
-## StopMapper and InterchangeMapper: interchanges.json records <-> stop and interchange Resources, and
-## InterchangesExporter, which merges stops built in game into the file with them.
-## The round trip matters for exporting stops built in game: a record read and written back must come
-## out exactly as it was, fields, defaults and key order included, or every export would rewrite the map.
+## StopMapper and InterchangeMapper: interchanges.json records <-> stop and interchange Resources.
+## A record read and written back must come out exactly as it was, fields, defaults and key order
+## included, so writing a catalog never rewrites records nobody touched.
 
 const MAPS: Array[String] = ["franzburger", "harzmountains", "mpsb", "sachalin"]
 
@@ -14,8 +13,7 @@ func check(condition: bool, message: String) -> void:
 		push_error(message)
 
 func run(_tree: SceneTree) -> int:
-	for test: Callable in [test_real_maps_round_trip, test_all_fields, test_defaults, test_validation, test_catalog_accepts,
-			test_export_merge, test_export_conflicts, test_export_file]:
+	for test: Callable in [test_real_maps_round_trip, test_all_fields, test_defaults, test_validation, test_catalog_accepts]:
 		check(test.call() == true, "%s completed without runtime errors" % test.get_method())
 	print("Stop mapper tests: %d failures" % failures)
 	return 1 if failures > 0 else 0
@@ -50,7 +48,7 @@ func test_real_maps_round_trip() -> bool:
 		check(not records.is_empty(), "The %s catalog has interchanges to compare" % key)
 		for record: Dictionary in records:
 			var written: Dictionary = InterchangeMapper.interchange_to_dict(read_interchange(record))
-			## Tool-only fields are not the mapper's: an export keeps them from the file instead.
+			## Tool-only fields are not the mapper's: the editor addon writes them itself.
 			var expected: Dictionary = record.duplicate(true)
 			expected.erase("editorPosition")
 			check(text(written) == text(expected), "%s interchange %d comes back unchanged:\n%s\n%s" % [key, int(record.num), text(written), text(expected)])
@@ -131,94 +129,3 @@ func test_catalog_accepts() -> bool:
 	print("Checking an invalid platform side; the following validation error is expected.")
 	check(InterchangesLoader.validate_definitions(catalog) != OK, "An unknown platform side makes the catalog invalid")
 	return true
-
-#region Export
-## An authored catalog: one interchange with one platform, and an editor-only field the game never reads.
-static func authored_catalog() -> Array:
-	return [{"num": 1, "name": "Halt", "townNum": 1, "townName": "Dorf", "editorPosition": [1.5, 2.0, 3.0], "stops": [
-		{"num": 1, "domain": "RAIL", "trackNum": 2, "nodeIndex": 0, "type": "STATION_PASS"}]}]
-
-## The game's view of `catalog` after building in it: a road stop added to the authored interchange, and a
-## new interchange with a left platform. Built the way StationCreator builds them.
-static func live_after_building(catalog: Array) -> Array[InterchangeData]:
-	var authored: InterchangeData = read_interchange(catalog[0])
-	var road_stop := RoadStationData.new(2)
-	road_stop.road_num = 4
-	road_stop.anchor = LineAnchor.new(1, 7.5)
-	road_stop.direction = Enums.RoadStopDirection.ROAD_NODES_DECREASE
-	authored.stops.append(road_stop)
-	var created := InterchangeData.new()
-	created.num = 2
-	created.interchange_name = "Neu"
-	created.town_num = 1
-	created.town_name = "Dorf"
-	var platform := RailStationData.new(3)
-	platform.track_num = 2
-	platform.anchor = LineAnchor.new(5, -2.0)
-	platform.station_type = "STATION_GOODS"
-	platform.platform_side = RailStationData.PlatformSide.LEFT
-	created.stops.append(platform)
-	return [authored, created]
-
-func test_export_merge() -> bool:
-	var catalog: Array = authored_catalog()
-	var before: String = text(catalog)
-	var merged: Dictionary = InterchangesExporter.merge(catalog, live_after_building(catalog))
-	check(merged.error.is_empty() and merged.stops == 2 and merged.interchanges == 1,
-		"Two new stops and one new interchange are found: %s" % str(merged))
-	check(text(catalog) == before, "The caller's records are left alone")
-	var expected: Array = authored_catalog()
-	expected[0].stops.append({"num": 2, "domain": "ROAD", "roadNum": 4, "nodeIndex": 1, "nodeOffset": 7.5,
-		"roadStopDirection": "ROAD_NODES_DECREASE"})
-	expected.append({"num": 2, "name": "Neu", "townNum": 1, "townName": "Dorf", "stops": [
-		{"num": 3, "domain": "RAIL", "trackNum": 2, "nodeIndex": 5, "nodeOffset": -2.0, "type": "STATION_GOODS", "platformSide": "LEFT"}]})
-	check(text(merged.records) == text(expected),
-		"Authored records keep every field (editorPosition too); new ones are appended:\n%s\n%s" % [text(merged.records), text(expected)])
-	check(InterchangesLoader.validate_definitions(merged.records) == OK, "The merged catalog loads")
-	var again: Dictionary = InterchangesExporter.merge(merged.records, live_after_building(catalog))
-	check(again.error.is_empty() and again.stops == 0 and again.interchanges == 0 and text(again.records) == text(merged.records),
-		"Exporting the same session twice adds nothing")
-	return true
-
-## The file changed behind the game's back: numbers that mean something else there stop the export.
-func test_export_conflicts() -> bool:
-	var catalog: Array = authored_catalog()
-	var renamed: Array[InterchangeData] = live_after_building(catalog)
-	renamed[0].interchange_name = "Anders"
-	check(not InterchangesExporter.merge(catalog, renamed).error.is_empty(), "A renamed interchange is a conflict")
-	var moved: Array[InterchangeData] = live_after_building(catalog)
-	moved[1].stops[0].num = 1
-	check(not InterchangesExporter.merge(catalog, moved).error.is_empty(),
-		"A new interchange reusing a stop number of the file is a conflict")
-	var other: Array = authored_catalog()
-	other.append({"num": 2, "name": "Neu", "townNum": 1, "stops": [
-		{"num": 2, "domain": "RAIL", "trackNum": 3, "nodeIndex": 0, "type": "STATION_PASS"}]})
-	check(not InterchangesExporter.merge(other, live_after_building(catalog)).error.is_empty(),
-		"A stop number listed under another interchange in the file is a conflict")
-	return true
-
-## The real write: same text style as the maps, a backup, and no write when there is nothing new.
-func test_export_file() -> bool:
-	var directory: String = "user://stop_export_test"
-	DirAccess.make_dir_recursive_absolute(directory)
-	var path: String = directory.path_join("interchanges.json")
-	var original: String = JsonFileUtils.catalog_text(authored_catalog())
-	var file := FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(original)
-	file.close()
-	var result: Dictionary = InterchangesExporter.export_to(path, live_after_building(authored_catalog()))
-	check(result.error.is_empty() and result.stops == 2 and result.interchanges == 1, "The export writes: %s" % str(result))
-	var merged: Dictionary = InterchangesExporter.merge(authored_catalog(), live_after_building(authored_catalog()))
-	check(FileAccess.get_file_as_string(path) == JsonFileUtils.catalog_text(merged.records),
-		"The file holds the merged catalog, formatted like the maps")
-	check(not result.backup.is_empty() and FileAccess.get_file_as_string(result.backup) == original,
-		"The backup holds the file as it was")
-	var again: Dictionary = InterchangesExporter.export_to(path, live_after_building(authored_catalog()))
-	check(again.error.is_empty() and again.stops == 0 and again.backup.is_empty(), "Nothing new: the file is not written again")
-	check(not InterchangesExporter.export_to(directory.path_join("missing.json"), []).error.is_empty(),
-		"A missing catalog is an error")
-	for leftover: String in DirAccess.get_files_at(directory):
-		DirAccess.remove_absolute(directory.path_join(leftover))
-	DirAccess.remove_absolute(directory)
-	return true
-#endregion

@@ -46,7 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://cym4f2u6i3kjx" path="res://assets/meshes/deco/campfire/campfire.tscn" id="44_1oaic"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/static_car_beetle.tscn" id="47_g1iug"]
 [ext_resource type="PackedScene" uid="uid://dy4dkpmarxa52" path="res://assets/meshes/vehicles/road/bus_laz_695/static_bus_laz_965.tscn" id="50_okvmk"]
-[ext_resource type="PackedScene" path="res://scenes/subscenes/interchanges/world_interchanges.tscn" id="world_interchanges"]
 
 [node name="WorldMapScene" type="Node" unique_id=1795391836 node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_nwdjd")
@@ -1044,8 +1043,6 @@ placed_town_num = 25
 [node name="RuVillageHut5" parent="Residences/25_Kluch" unique_id=2142477093 instance=ExtResource("41_plqgf")]
 transform = Transform3D(-0.6996136, 0, -0.7145214, 0, 1, 0, 0.7145214, 0, -0.6996136, 430.3142, 31.609419, -463.72565)
 placed_town_num = 25
-
-[node name="Interchanges" parent="." instance=ExtResource("world_interchanges")]
 
 [node name="EditorObjects" parent="." unique_id=1775929661 instance=ExtResource("42_283bc")]
 

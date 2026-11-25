@@ -301,22 +301,6 @@ func create_stop(placement: Dictionary, interchange_num: int, title: String, tow
 		Managers.world_services.industry_connector.connect_industries()
 	return {"stop": stop}
 
-## Debug: write the stops and interchanges built in game into the map's interchanges.json (see
-## InterchangesExporter), and say what happened. Returns the exporter's result for tests.
-func export_stops() -> Dictionary:
-	var catalog: InterchangesLoader = Managers.interchanges
-	var result: Dictionary = InterchangesExporter.export_to(catalog.source_path, catalog.interchanges)
-	if not result.error.is_empty():
-		push_error("Stop export failed: " + result.error)
-		_show_message("Export failed: " + result.error)
-	elif result.stops == 0 and result.interchanges == 0:
-		_show_message("No new stops to export.")
-	else:
-		print("Exported %d stops, %d new interchanges to %s (backup: %s)" \
-			% [result.stops, result.interchanges, catalog.source_path, result.backup])
-		_show_message("Exported %d stops (%d new stations) to interchanges.json." % [result.stops, result.interchanges])
-	return result
-
 func _show_message(message: String) -> void:
 	if not is_instance_valid(_message):
 		var canvas := CanvasLayer.new()

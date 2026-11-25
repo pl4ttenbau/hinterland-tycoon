@@ -12,8 +12,6 @@ var by_num: Dictionary = {}
 var stops_by_num: Dictionary = {}
 var stop_definitions: Array[Dictionary] = []
 var is_loaded: bool = false
-## The file the catalog came from, "" when loaded from records (tests). The stop export writes back to it.
-var source_path: String = ""
 
 func load_interchanges(map_key: String, catalog_path: String = "") -> Error:
 	var path: String = catalog_path if not catalog_path.is_empty() else CATALOG_PATH_FORMAT % map_key
@@ -26,10 +24,7 @@ func load_interchanges(map_key: String, catalog_path: String = "") -> Error:
 	if error != OK:
 		push_error("Invalid interchange JSON at line %d: %s" % [parser.get_error_line(), parser.get_error_message()])
 		return error
-	error = self.load_definitions(parser.data)
-	if error == OK:
-		self.source_path = path
-	return error
+	return self.load_definitions(parser.data)
 
 ## Validate the entire catalog before publishing any parent. Stop Resources are
 ## deliberately not constructed here: every interchange must exist first.
@@ -194,7 +189,6 @@ func clear() -> void:
 	self.stops_by_num.clear()
 	self.stop_definitions.clear()
 	self.is_loaded = false
-	self.source_path = ""
 
 func _disconnect_interchange(interchange: InterchangeData) -> void:
 	interchange.connections.clear_houses()

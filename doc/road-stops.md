@@ -73,13 +73,6 @@ physical rail and road access points, with no separate child names.
   `RIGHT`, `nodeOffset` 0), so a record read and written back comes out unchanged.
   Rail stops always write `type`. Checks across records (duplicate numbers, rail
   anchors) and against the loaded network stay in `InterchangesLoader`.
-- Stops built in game can be written back with **Ctrl+Shift+E** while the game runs
-  from the editor (handled by the map scene's `Interchanges` node, `WorldInterchanges`). `InterchangesExporter`
-  merges them into the file the catalog was loaded from: authored records keep
-  every field (including `editorPosition`), new stops are appended to their
-  interchange and new interchanges to the catalog, and one `.bak-*` backup is kept.
-  A number that means something else in the file (it was saved while the game
-  ran) stops the export with an error; reload the map and build again.
 
 `InterchangeData.stops` and `AbstractStation.interchange` provide membership in
 both directions. `station_name`, `town_num`, and `town_name` read through to the

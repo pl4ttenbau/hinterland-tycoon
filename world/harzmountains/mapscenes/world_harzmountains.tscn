@@ -61,7 +61,6 @@
 [ext_resource type="PackedScene" uid="uid://b1frhg0v53aq3" path="res://assets/meshes/deco/rail_crossing/andreaskreuz/andreaskreuz.tscn" id="66_tmg1i"]
 [ext_resource type="PackedScene" uid="uid://df81rrarupdip" path="res://assets/meshes/structures/village_house_3/editor_village_house_3.tscn" id="71_gf88f"]
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/city_house_2/editor_city_house_2.tscn" id="77_r10ie"]
-[ext_resource type="PackedScene" path="res://scenes/subscenes/interchanges/world_interchanges.tscn" id="world_interchanges"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoc0b"]
 albedo_texture = ExtResource("16_eoc0b")
@@ -2079,8 +2078,6 @@ num = 31
 type_key = "FISHERY"
 ind_name = "Ilsenburg Angelverein"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
-
-[node name="Interchanges" parent="." instance=ExtResource("world_interchanges")]
 
 [node name="EditorObjects" parent="." unique_id=344995228 instance=ExtResource("59_uau4w")]
 

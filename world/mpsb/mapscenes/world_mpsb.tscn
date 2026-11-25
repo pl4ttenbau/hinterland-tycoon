@@ -58,7 +58,6 @@
 [ext_resource type="PackedScene" uid="uid://bj13sfxqf2aaf" path="res://assets/meshes/vehicles/road/uaz_jeep/uaz_jeep.tscn" id="64_7r2i1"]
 [ext_resource type="PackedScene" uid="uid://chv80r6ig8cjd" path="res://assets/meshes/vehicles/road/car_beetle/static_car_beetle.tscn" id="65_c4uv5"]
 [ext_resource type="Script" uid="uid://byq8dj7pajain" path="res://game/gamescripts/nodes/marker/world_cursor.gd" id="67_ovu55"]
-[ext_resource type="PackedScene" path="res://scenes/subscenes/interchanges/world_interchanges.tscn" id="world_interchanges"]
 
 [node name="WorldMapScene" type="Node" unique_id=864843967 node_paths=PackedStringArray("terrain")]
 script = ExtResource("1_6w6pc")
@@ -1748,8 +1747,6 @@ road_connection = null
 transform = Transform3D(-0.83201224, 0, 0.55475736, 0, 1, 0, -0.55475736, 0, -0.83201224, 639.141, 13.596333, 1542.0205)
 placed_town_num = 37
 road_connection = null
-
-[node name="Interchanges" parent="." instance=ExtResource("world_interchanges")]
 
 [node name="EditorObjects" parent="." unique_id=803418881 instance=ExtResource("55_51ymi")]
 
