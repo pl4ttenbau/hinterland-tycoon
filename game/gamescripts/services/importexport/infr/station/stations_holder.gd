@@ -40,7 +40,7 @@ func _validate_rail_anchors(definitions: Array[Dictionary]) -> Error:
 	return OK
 
 func _load_rail_stop(definition: Dictionary, catalog: InterchangesLoader) -> Error:
-	var station: RailStationData = RailStationData.of_dict(definition)
+	var station: RailStationData = StopMapper.rail_stop_from_dict(definition)
 	if station == null:
 		return ERR_INVALID_DATA
 	var error: Error = catalog.register_stop(station, int(definition["interchangeNum"]))

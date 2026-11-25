@@ -22,7 +22,7 @@ func _run() -> void:
 	get_tree().quit(1 if self.failures > 0 else 0)
 
 func make_station(data: Dictionary) -> RoadStationData:
-	var station: RoadStationData = RoadStationData.of_dict(data)
+	var station: RoadStationData = StopMapper.road_stop_from_dict(data)
 	if station != null:
 		self.stations.append(station)
 	return station

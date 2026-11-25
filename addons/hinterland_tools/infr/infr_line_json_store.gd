@@ -203,53 +203,13 @@ static func write_with_backup(path: String, records: Array) -> EditorActionResul
 	round_positions(records)
 	return write_text_with_backup(path, format_json(records) + "\n")
 
+## Safe replace with one backup. The game's stop export needs the same, so it lives in JsonFileUtils;
+## this only turns its result into the editor's EditorActionResult.
 static func write_text_with_backup(path: String, contents: String) -> EditorActionResult:
-	var absolute: String = ProjectSettings.globalize_path(path)
-	var suffix: String = "%s-%d" % [Time.get_datetime_string_from_system().replace(":", "-"), Time.get_ticks_usec()]
-	var temporary: String = absolute + ".tmp-" + suffix
-	var result: EditorActionResult = _write_temporary_json(temporary, contents)
-	if not result.ok:
-		return result
-	var backup: String = ""
-	if FileAccess.file_exists(absolute):
-		backup = absolute + ".bak-" + suffix
-		var backup_error: Error = DirAccess.copy_absolute(absolute, backup)
-		if backup_error != OK:
-			DirAccess.remove_absolute(temporary)
-			return failure("Backup failed; original JSON was not changed: " + error_string(backup_error))
-	# Replace only after the complete temporary file and backup exist.
-	var error: Error = DirAccess.rename_absolute(temporary, absolute)
-	if error != OK:
-		DirAccess.remove_absolute(temporary)
-		return failure("Could not replace JSON; original retained: " + error_string(error))
-	# One backup per file is enough: the one just made holds the state before this save.
-	if not backup.is_empty():
-		_remove_older_backups(absolute, backup)
-	return EditorActionResult.success(0, backup)
-
-## Delete every earlier "<file>.bak-*" next to `absolute`, keeping only `keep`. Runs only after a
-## successful save, so the newest backup always exists before older ones go. Failures are ignored:
-## a leftover backup is harmless, and the save itself already succeeded.
-static func _remove_older_backups(absolute: String, keep: String) -> void:
-	var directory: String = absolute.get_base_dir()
-	var prefix: String = absolute.get_file() + ".bak-"
-	for file: String in DirAccess.get_files_at(directory):
-		var candidate: String = directory.path_join(file)
-		if file.begins_with(prefix) and candidate != keep:
-			DirAccess.remove_absolute(candidate)
-
-static func _write_temporary_json(path: String, contents: String) -> EditorActionResult:
-	var file := FileAccess.open(path, FileAccess.WRITE)
-	if file == null:
-		return failure("Cannot write temporary JSON: " + error_string(FileAccess.get_open_error()))
-	file.store_string(contents)
-	file.flush()
-	var error: Error = file.get_error()
-	file.close()
-	if error != OK:
-		DirAccess.remove_absolute(path)
-		return failure("Could not finish writing JSON: " + error_string(error))
-	return EditorActionResult.success()
+	var written: Dictionary = JsonFileUtils.write_text_with_backup(path, contents)
+	if not written.error.is_empty():
+		return failure(written.error)
+	return EditorActionResult.success(0, written.backup)
 
 static func reference_container_for(world: Node, domain: Enums.InfrDomain) -> Node3D:
 	var cache: Node = EditorCache.find(world)

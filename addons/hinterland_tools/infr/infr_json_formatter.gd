@@ -87,23 +87,7 @@ static func round_positions(records: Array) -> void:
 					for axis: int in range(3):
 						point[key][axis] = float(handle_text(point[key][axis]))
 
-## interchanges.json text, tab-indented like the existing files. JSON parsing returns every number as a
-## float, which would come back out as "num": 2.0: whole numbers in object fields (IDs, node indices) are
-## written as integers again. Fractions such as nodeOffset stay, and so do array elements (positions).
+## interchanges.json text, tab-indented like the existing files. The game writes the same catalog when
+## it exports stops built in game, so the formatting lives in game code (JsonFileUtils) for both.
 static func interchanges_text(records: Array) -> String:
-	# Keys keep their order (no sort_keys): a save must not reorder every record in the diff.
-	return JSON.stringify(_whole_numbers_as_ints(records), "\t", false) + "\n"
-
-static func _whole_numbers_as_ints(value: Variant) -> Variant:
-	if value is Dictionary:
-		var out: Dictionary = {}
-		for key: Variant in value:
-			var field: Variant = value[key]
-			out[key] = int(field) if field is float and is_finite(field) and field == floorf(field) else _whole_numbers_as_ints(field)
-		return out
-	if value is Array:
-		var items: Array = []
-		for item: Variant in value:
-			items.append(_whole_numbers_as_ints(item) if item is Dictionary or item is Array else item)
-		return items
-	return value
+	return JsonFileUtils.catalog_text(records)

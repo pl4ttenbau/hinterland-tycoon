@@ -12,6 +12,8 @@ var by_num: Dictionary = {}
 var stops_by_num: Dictionary = {}
 var stop_definitions: Array[Dictionary] = []
 var is_loaded: bool = false
+## The file the catalog came from, "" when loaded from records (tests). The stop export writes back to it.
+var source_path: String = ""
 
 func load_interchanges(map_key: String, catalog_path: String = "") -> Error:
 	var path: String = catalog_path if not catalog_path.is_empty() else CATALOG_PATH_FORMAT % map_key
@@ -24,7 +26,10 @@ func load_interchanges(map_key: String, catalog_path: String = "") -> Error:
 	if error != OK:
 		push_error("Invalid interchange JSON at line %d: %s" % [parser.get_error_line(), parser.get_error_message()])
 		return error
-	return self.load_definitions(parser.data)
+	error = self.load_definitions(parser.data)
+	if error == OK:
+		self.source_path = path
+	return error
 
 ## Validate the entire catalog before publishing any parent. Stop Resources are
 ## deliberately not constructed here: every interchange must exist first.
@@ -56,11 +61,10 @@ static func validate_definitions(records: Variant) -> Error:
 	return OK
 
 static func _validate_interchange_record(record: Variant, parent_ids: Dictionary) -> Error:
-	if not record is Dictionary or not InterchangeData.is_valid_num(record.get("num")) \
-			or not record.get("name") is String or record["name"].strip_edges().is_empty() \
-			or not InterchangeData.is_valid_num(record.get("townNum")) \
-			or not record.get("townName", "") is String or not record.get("stops") is Array:
-		return _invalid("Interchange requires num, name, townNum and a stops array")
+	# The record itself (fields, types) is the mapper's; numbering across records is the catalog's.
+	var problem: String = InterchangeMapper.validation_error(record)
+	if not problem.is_empty():
+		return _invalid(problem)
 	var parent_id: int = int(record["num"])
 	if parent_ids.has(parent_id):
 		return _invalid("Duplicate interchange number %d" % parent_id)
@@ -68,10 +72,9 @@ static func _validate_interchange_record(record: Variant, parent_ids: Dictionary
 	return OK
 
 static func _validate_stop_record(stop: Variant, stop_ids: Dictionary, rail_anchors: Dictionary) -> Error:
-	if not stop is Dictionary or not InterchangeData.is_valid_num(stop.get("num")) \
-			or not InterchangeData.is_valid_num(stop.get("nodeIndex")) \
-			or stop.get("domain") not in ["RAIL", "ROAD"]:
-		return _invalid("Stop requires num, nodeIndex and domain RAIL or ROAD")
+	var problem: String = StopMapper.validation_error(stop)
+	if not problem.is_empty():
+		return _invalid(problem)
 	for shared_field: String in ["name", "townNum", "townName", "interchangeNum"]:
 		if stop.has(shared_field):
 			return _invalid("Stop %s belongs to its parent interchange" % shared_field)
@@ -79,38 +82,23 @@ static func _validate_stop_record(stop: Variant, stop_ids: Dictionary, rail_anch
 	if stop_ids.has(stop_id):
 		return _invalid("Duplicate stop number %d across rail/road stops" % stop_id)
 	stop_ids[stop_id] = true
-	var error: Error = _validate_stop_anchor(stop, rail_anchors)
-	if error != OK:
-		return error
-	if stop.has("hideBuilding") and not stop["hideBuilding"] is bool:
-		return _invalid("Stop hideBuilding must be boolean")
-	if stop.has("type") and not stop["type"] is String:
-		return _invalid("Stop type must be a string")
-	return OK
+	return _validate_rail_place(stop, rail_anchors)
 
-static func _validate_stop_anchor(stop: Dictionary, rail_anchors: Dictionary) -> Error:
-	var anchor_key: String = "trackNum" if stop["domain"] == "RAIL" else "roadNum"
-	if not InterchangeData.is_valid_num(stop.get(anchor_key)):
-		return _invalid("Stop %d requires %s" % [int(stop["num"]), anchor_key])
+## Same track, node and offset (to the centimetre): two platforms in one place. Road stops are not
+## checked: two of them may share a place, e.g. one per direction.
+static func _validate_rail_place(stop: Dictionary, rail_anchors: Dictionary) -> Error:
+	if stop["domain"] != "RAIL":
+		return OK
 	var place: LineAnchor = LineAnchor.from_dict(stop)
-	if place == null:
-		return _invalid("Stop %d requires a numeric nodeOffset" % int(stop["num"]))
-	if stop["domain"] == "RAIL":
-		# Same track, node and offset (to the centimetre): two platforms in one place.
-		var key: String = "%d:%s" % [int(stop["trackNum"]), place]
-		if rail_anchors.has(key):
-			return _invalid("Two rail stops use track %d at %s" % [int(stop["trackNum"]), place])
-		rail_anchors[key] = true
-	elif RoadStationData.direction_key(stop).is_empty():
-		return _invalid("Road stop %d requires roadStopDirection ROAD_NODES_INCREASE, ROAD_NODES_DECREASE or BOTH_DIRECTIONS" % int(stop["num"]))
+	var key: String = "%d:%s" % [int(stop["trackNum"]), place]
+	if rail_anchors.has(key):
+		return _invalid("Two rail stops use track %d at %s" % [int(stop["trackNum"]), place])
+	rail_anchors[key] = true
 	return OK
 
 func _create_interchange(record: Dictionary) -> void:
-	var interchange := InterchangeData.new()
-	interchange.num = int(record["num"])
-	interchange.interchange_name = record["name"]
-	interchange.town_num = int(record["townNum"])
-	interchange.town_name = record.get("townName", "")
+	# Validated with the whole catalog before, so the mapper cannot fail here.
+	var interchange: InterchangeData = InterchangeMapper.interchange_from_dict(record)
 	self.interchanges.append(interchange)
 	self.by_num[interchange.num] = interchange
 	for stop: Dictionary in record["stops"]:
@@ -206,6 +194,7 @@ func clear() -> void:
 	self.stops_by_num.clear()
 	self.stop_definitions.clear()
 	self.is_loaded = false
+	self.source_path = ""
 
 func _disconnect_interchange(interchange: InterchangeData) -> void:
 	interchange.connections.clear_houses()

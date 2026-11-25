@@ -29,27 +29,6 @@ func _init(_num: int = -1, _name: String = "", _town_num: int = -1):
 	self.num = _num
 	self.station_name = _name
 	self.town_num = _town_num
-
-static func of_dict(_station_data: Dictionary) -> RailStationData:
-	for field: String in ["num", "trackNum"]:
-		if not InterchangeData.is_valid_num(_station_data.get(field)):
-			push_error("Rail stop requires a nonnegative integer %s" % field)
-			return null
-	var place: LineAnchor = LineAnchor.from_dict(_station_data)
-	if place == null:
-		push_error("Rail stop requires a nonnegative integer nodeIndex and an optional numeric nodeOffset")
-		return null
-	if not _station_data.get("type", "STATION_PASS") is String \
-			or not _station_data.get("hideBuilding", false) is bool:
-		push_error("Rail stop type/hideBuilding metadata is invalid")
-		return null
-	# Name and town are inherited from the interchange after registration.
-	var station_obj := RailStationData.new(int(_station_data["num"]))
-	station_obj.track_num = int(_station_data["trackNum"])
-	station_obj.anchor = place
-	station_obj.station_type = _station_data.get("type", "STATION_PASS")
-	station_obj.hide_building = _station_data.get("hideBuilding", false)
-	return station_obj
 #endregion
 
 static func get_by_num(station_num: int) -> RailStationData:

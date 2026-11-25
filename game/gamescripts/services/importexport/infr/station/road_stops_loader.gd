@@ -43,7 +43,9 @@ func _validate_road_anchors(definitions: Array[Dictionary]) -> Error:
 	return OK
 
 func _load_road_stop(definition: Dictionary, catalog: InterchangesLoader) -> Error:
-	var stop: RoadStationData = RoadStationData.of_dict(definition)
+	var stop: RoadStationData = StopMapper.road_stop_from_dict(definition)
+	if stop == null:
+		return ERR_INVALID_DATA
 	var error: Error = catalog.register_stop(stop, int(definition["interchangeNum"]))
 	if error != OK:
 		return error

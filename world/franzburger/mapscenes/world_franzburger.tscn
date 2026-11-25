@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/old_city_house_bakery/editor_old_city_house_bakery.tscn" id="56_dmvyx"]
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/ddr_ew_65/editor_ddr_ew_65.tscn" id="58_1n2u2"]
 [ext_resource type="Script" uid="uid://b3731raomqh8x" path="res://addons/hinterland_tools/editor_cache.gd" id="59_03nvo"]
+[ext_resource type="PackedScene" path="res://scenes/subscenes/interchanges/world_interchanges.tscn" id="world_interchanges"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xndjc"]
 viewport_path = NodePath("SubViewport")
@@ -2041,6 +2042,8 @@ transform = Transform3D(0.9001288, 0.0232923, 0.43500075, -1.8626451e-09, 0.9985
 
 [node name="Warehouse1Static" parent="Deco/39_Stralsund-Knieper" unique_id=1412775876 instance=ExtResource("39_ldvym")]
 transform = Transform3D(0.96344835, 0, -0.26789424, 0, 1, 0, 0.26789424, 0, 0.96344835, 735.4993, 23.319862, -353.08685)
+
+[node name="Interchanges" parent="." instance=ExtResource("world_interchanges")]
 
 [node name="EditorObjects" parent="." unique_id=498932354 instance=ExtResource("54_xndjc")]
 
