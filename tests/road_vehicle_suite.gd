@@ -35,7 +35,7 @@ func run(scene_tree: SceneTree) -> int:
 	tree = scene_tree
 	# Tests may switch the global driving mode; each one starts from the game default.
 	var default_follow: bool = RoadVehicle3D.follow_road_path
-	for test: StringName in [&"test_models", &"test_routes", &"test_driving", &"test_corner_braking", &"test_fixed_path", &"test_depot_spawning", &"test_spawn_dialog"]:
+	for test: StringName in [&"test_models", &"test_vaz_ground_clearance", &"test_routes", &"test_driving", &"test_corner_braking", &"test_fixed_path", &"test_depot_spawning", &"test_spawn_dialog"]:
 		RoadVehicle3D.follow_road_path = default_follow
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
@@ -84,6 +84,48 @@ func test_models() -> bool:
 		body._physics_process(1.0 / 60.0)
 		check(body.brake > 0.0 and is_zero_approx(body.engine_force), "Unassigned vehicle parks safely")
 		body.free()
+	return true
+
+## A body-sized collider must leave the tyres supporting the car, not the chassis.
+## Exercise real road collision and throttle: valid axle metadata alone is insufficient.
+func test_vaz_ground_clearance() -> bool:
+	var curve := Curve3D.new()
+	curve.add_point(Vector3.ZERO)
+	curve.add_point(Vector3(0, 0, -150))
+	var fixture: DrivingFixture = _create_driving_fixture(curve)
+	fixture.body = fixture.manager.spawn_road_vehicle("vaz1201", [9101])
+	var body: RoadVehicle3D = fixture.body
+	check(body != null, "VAZ spawns on the test road")
+	if body == null:
+		_free_driving_fixture(fixture)
+		return false
+
+	# Let the suspension settle without route movement, then inspect its support.
+	body.set_physics_process(false)
+	body.contact_monitor = true
+	body.max_contacts_reported = 8
+	await frames(120)
+	var contacts: int = 0
+	for child: Node in body.get_children():
+		if child is VehicleWheel3D and child.is_in_contact():
+			contacts += 1
+	check(contacts == 4, "All four VAZ tyres reach the road at rest")
+	check(body.get_colliding_bodies().is_empty(), "VAZ chassis clears the road instead of carrying the car")
+
+	# Manual driving must accelerate using wheel traction, without scripted motion.
+	var start: Vector3 = body.global_position
+	for frame: int in range(240):
+		body.apply_driver_input(0.0, 1.0, 0.0, 1.0 / 60.0)
+		await tree.physics_frame
+	check(body.global_position.distance_to(start) > 5.0 and body.signed_speed_mps() > 2.0,
+		"VAZ accelerates from rest under manual throttle")
+
+	# Re-enable the regular controller and confirm automatic routing still advances.
+	start = body.global_position
+	body.set_physics_process(true)
+	await frames(180)
+	check(body.global_position.distance_to(start) > 5.0, "VAZ resumes automatic route following")
+	_free_driving_fixture(fixture)
 	return true
 
 func test_routes() -> bool:
