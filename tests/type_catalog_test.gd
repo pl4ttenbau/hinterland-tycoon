@@ -76,7 +76,7 @@ func test_catalog_lifecycle() -> bool:
 	var first_vehicle: VehicleTypeData = GameTypes.vehicle_types[0]
 	self.check(GameTypes.get_veh_type(first_vehicle.key) == first_vehicle, "Vehicle array and lookup share definitions")
 	self.check(GameTypes.get_res_bld_type("wooden_shack") != null, "Residential lookup works")
-	self.check(GameTypes.res_bld_type_store.get_all().size() == 35, "All migrated residence types load")
+	self.check(GameTypes.res_bld_type_store.get_all().size() == 36, "All migrated residence types load")
 	self.check(GameTypes.get_res_bld_type("ru_stalinka_1").pops == [55, 18], "Residence population values survive migration")
 	self.check(GameTypes.get_res_bld_type("village_house_3").pops == [4, 1], "Residence population division keeps its original rounding")
 	self.check(GameTypes.get_res_bld_type("city_manor").block_auto_placement, "Manual-only residence flag survives migration")

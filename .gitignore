@@ -24,3 +24,6 @@ tools/__pycache__/
 
 # Local agent instructions (machine-specific paths)
 /AGENTS.md
+
+# Temporary scripts the Godot MCP plugin writes for each snippet it runs
+addons/godot_mcp/__mcp_snippet_*

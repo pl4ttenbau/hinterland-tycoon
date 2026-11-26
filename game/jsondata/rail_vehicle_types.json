@@ -338,7 +338,7 @@
 	},
 	{
 		"key": "ghe_covered_wagon_1000mm",
-		"purchase_price": 12000,
+		"purchase_price": 6300,
 		"display_name": "GHE Covered",
 		"model_scene_path": "res://assets/meshes/vehicles/rail/ghe_covered_wagon_1000mm/ghe_covered_wagon_1000mm.tscn",
 		"max_speed_kmh": 35,

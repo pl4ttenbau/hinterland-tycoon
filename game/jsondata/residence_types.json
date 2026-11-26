@@ -421,7 +421,7 @@
 	{
 		"key": "harz_row_houses",
 		"name": "Harz House",
-		"scene_path": "res://assets/meshes/structures/harz_row_houses/editor_harz_row_houses.tscn",
+		"scene_path": "res://assets/meshes/structures/harz_row_houses/harz_row_houses.tscn",
 		"pops": [
 			8,
 			2
