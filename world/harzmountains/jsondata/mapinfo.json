@@ -2,8 +2,14 @@
 	"key": "harzmountains",
 	"name": "Harz Mountains",
 	"loc": "SOUTHERN_GERMANY",
-	
 	"defaultYear": 1958,
-	
-	"startPos": [3107.843, 1191.622]
+	"startPos": [3107.843, 1191.622],
+	"sizeAndPos": {
+		"longLat": {
+			"topLeft": [51.90564, 10.54166],
+			"bottomRight": [51.71339, 10.85240]
+		},
+		"rasterSize": [4096, 4096],
+		"rasterOffset": [0, 0]
+	}
 }
