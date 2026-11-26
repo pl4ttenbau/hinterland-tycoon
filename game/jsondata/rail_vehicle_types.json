@@ -355,4 +355,59 @@
 		"motor_power_kw": null,
 		"mass_tonnes": 11.0
 	},
+	{
+		"key": "harz_99_23_24",
+		"purchase_price": 251700,
+		"display_name": "Harz Brockenlok 99 7236-5",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/harz_99_23_24/model_harz_99_23_24.tscn",
+		"max_speed_kmh": 40,
+		"usable_infr": {
+			"subtype": "1000_MM"
+		},
+		"has_motor": true,
+		"motor_type": "STEAM",
+		"length_metres": 12.261744,
+		"motor_power_kw": 515,
+		"mass_tonnes": 47.5,
+		"service_mass_tonnes": 60.5,
+		"tractive_effort_kn": 102.9
+	},
+	{
+		"key": "harz_rekowagen",
+		"purchase_price": 14000,
+		"display_name": "Harz Rekowagen (8 Fenster)",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/harz_rekowagen/model_harz_rekowagen.tscn",
+		"max_speed_kmh": 40,
+		"usable_infr": {
+			"subtype": "1000_MM"
+		},
+		"has_motor": false,
+		"motor_type": "UNKNOWN",
+		"capacity": {
+			"cat": "PASSENGER",
+			"amount": 40
+		},
+		"length_metres": 14.8,
+		"motor_power_kw": null,
+		"mass_tonnes": 14.0
+	},
+	{
+		"key": "nwe_rollwagen_omm",
+		"purchase_price": 9200,
+		"display_name": "Open Wagon (Rollw.)",
+		"model_scene_path": "res://assets/meshes/vehicles/rail/nwe_rollwagen_omm/model_nwe_rollwagen_omm.tscn",
+		"max_speed_kmh": 30,
+		"usable_infr": {
+			"subtype": "1000_MM"
+		},
+		"has_motor": false,
+		"motor_type": "UNKNOWN",
+		"capacity": {
+			"cat": "FREIGHT",
+			"amount": 26
+		},
+		"length_metres": 10.36,
+		"motor_power_kw": null,
+		"mass_tonnes": 16.4
+	},
 ]

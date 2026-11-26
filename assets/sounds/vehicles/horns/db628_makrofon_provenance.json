@@ -1,0 +1,17 @@
+{
+  "file": "db628_makrofon.ogg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Makrofon_DB_Baureihe_628.ogg",
+  "download_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Makrofon_DB_Baureihe_628.ogg",
+  "title": "Makrofon DB Baureihe 628.ogg",
+  "author": "MdE (German Wikipedia user), own recording",
+  "recorded": "2008-06-26",
+  "subject": "Makrofon (two-tone horn) of a DB class 628 diesel multiple unit, recorded first outside, then inside the train",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "attribution": "Makrofon of a DB class 628 by MdE, CC BY-SA 3.0, via Wikimedia Commons",
+  "share_alike": "This file and any edited version of it stay under CC BY-SA 3.0. That does not extend to the rest of the game.",
+  "source_format": "Ogg Vorbis, 6.6 s, 266 kbps",
+  "source_sha256": "eb6ea3a6fce32ad5b7f1438b8860fa717136716ab69520f8dcd19ffb71243e0d",
+  "processing": "None: the original file, renamed. VehicleHorn plays only the outside take (MAKROFON_START / MAKROFON_LENGTH) with a 120 ms runtime fade-out.",
+  "limitations": "Not auditioned by the agent. Where the outside take ends is assumed (about the first half) until tuned by ear. Used for every non-steam motorised rail vehicle, not only class 628."
+}

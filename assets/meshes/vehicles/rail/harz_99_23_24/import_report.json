@@ -1,0 +1,47 @@
+{
+  "source": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/harz_99.22/blend/harz_99.23-24_textured.blend",
+  "source_sha256": "6e483cb1c5254f59e401afbcf2887d884bce04e96fa0ce0668ee78222bcb632c",
+  "triangles": 17031,
+  "materials": 1,
+  "source_bounds_xyz": [
+    [
+      -1.3419793844223022,
+      1.3419793844223022
+    ],
+    [
+      -6.126631736755371,
+      6.135112285614014
+    ],
+    [
+      -0.02750033140182495,
+      3.7200000286102295
+    ]
+  ],
+  "centering_blender_y": -0.004240274429321289,
+  "godot_forward": "-Z (Blender +Y)",
+  "metres_per_unit": 1.0,
+  "coupler_envelope_length_metres": 12.261744022369385,
+  "textures": [
+    {
+      "name": "harz_99.23-24_details_normal.png",
+      "size": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "harz_99.23-24_weathered_black_albedo.png",
+      "size": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "harz_99.23-24_weathered_black_surface.png",
+      "size": [
+        4096,
+        4096
+      ]
+    }
+  ]
+}

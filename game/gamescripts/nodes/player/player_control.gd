@@ -106,6 +106,16 @@ func exit_vehicle() -> bool:
 	return true
 
 
+## H while driving blows the vehicle's horn or whistle (VehicleHorn picks the sound).
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event.is_action_pressed(&"horn") or UiState.is_world_input_blocked() or not is_instance_valid(_vehicle):
+		return
+	var horn := VehicleHorn.of(_vehicle)
+	if horn != null:
+		horn.blow()
+		get_viewport().set_input_as_handled()
+
+
 func _on_vehicle_exiting() -> void:
 	exit_vehicle()
 

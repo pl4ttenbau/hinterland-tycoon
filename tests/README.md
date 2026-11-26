@@ -4,6 +4,12 @@ Run all automated tests from the project root:
 sh tests/run-tests.sh
 ```
 
+Harz Brockenlok import and gameplay integration: `sh tests/run-tests.sh harz_99_23_24`.
+This checks the production catalog and gauge picker, imported mesh/material,
+metre scale, rail-head placement, coupler spacing with a GHE wagon, camera,
+steam wiring, acceleration, braking and reverse. See
+[vehicle import workflow](../doc/vehicle-import-workflow.md) for re-export steps.
+
 The runner checks PATH for `godot4` or `godot`, then falls back to
 `/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64`. To override either,
 run `GODOT_BIN=/path/to/godot sh tests/run-tests.sh`. Before the suites, the

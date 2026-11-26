@@ -1,0 +1,125 @@
+{
+  "config": "/home/cornelinux/.godotproj/hinterland-tycoon/tools/vehicles/configs/nwe_rollwagen_omm.json",
+  "assembly_blend": "/home/cornelinux/Dokumente/Assets/3D/Generation/BlenderCodex/projects/nwe_1000mm_rollwagen/exports/nwe_rollwagen_omm.blend",
+  "components": [
+    {
+      "source": "/home/cornelinux/Dokumente/Assets/3D/Generation/BlenderCodex/projects/nwe_1000mm_rollwagen/exports/nwe_1000mm_rollwagen_merged_coupling_rod.blend",
+      "object": "nwe_1000mm_rollwagen_merged",
+      "name": "Rollwagen",
+      "triangles": 1488,
+      "atlas_uv": "Rollwagen_Texture",
+      "sha256": "da1d06676cb2c9da9465abcb59740c56596807bdb42834cb12ee1fac63c3a5c3",
+      "geometry_uv_normals_sha256": "b0622e37a1a196b334eb15ecb5b2867a1676bbdeb608627933d2cf2868de2b4c",
+      "bounds_xyz": [
+        [
+          -0.949999988079071,
+          0.949999988079071
+        ],
+        [
+          -6.0409321784973145,
+          4.5
+        ],
+        [
+          0.0,
+          0.5199999809265137
+        ]
+      ]
+    },
+    {
+      "source": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/omm_open_wagon/omm_klagenfurt_weathered_2k.blend",
+      "object": "DR Ommu Klagenfurt",
+      "name": "Omm_Klagenfurt",
+      "offset_xyz": [
+        0,
+        0,
+        0.52
+      ],
+      "triangles": 1700,
+      "atlas_uv": "Atlas",
+      "sha256": "45e592053aecf9770f0fb49e16e371dd58e28d8bcf46a53da0c4863df3a44bdc",
+      "geometry_uv_normals_sha256": "f63f69635cf921d012883fdd8da375a3223aba250bb8253a58adaf410ca2c514",
+      "bounds_xyz": [
+        [
+          -1.4434999227523804,
+          1.4434999227523804
+        ],
+        [
+          -5.0,
+          5.0
+        ],
+        [
+          0.4899999797344208,
+          3.299999952316284
+        ]
+      ]
+    }
+  ],
+  "meshes": 2,
+  "materials": 2,
+  "triangles": 3188,
+  "assembly_bounds_xyz": [
+    [
+      -1.4434999227523804,
+      1.4434999227523804
+    ],
+    [
+      -6.0409321784973145,
+      5.0
+    ],
+    [
+      0.0,
+      3.299999952316284
+    ]
+  ],
+  "runtime_bounds_xyz": [
+    [
+      -1.4434999227523804,
+      1.4434999227523804
+    ],
+    [
+      -5.270932197570801,
+      5.769999980926514
+    ],
+    [
+      -0.019999999552965164,
+      3.2799999713897705
+    ]
+  ],
+  "coupler_envelope_length_metres": 10.36,
+  "centering_blender_y": 0.77,
+  "tread_correction_blender_z": -0.02,
+  "godot_forward": "-Z (Blender +Y)",
+  "sources_preserved": true,
+  "assembly_saved_reopened": true,
+  "gltf_reimport_verified": true,
+  "atlas_uv_only": true,
+  "gltf": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/vehicles/rail/nwe_rollwagen_omm/mesh/nwe_rollwagen_omm.gltf",
+  "textures": [
+    "klagenfurt_weathered_2k.png",
+    "rollwagen_normal.png",
+    "rollwagen_basecolor.png",
+    "rollwagen_metallic.png-rollwagen_roughness.png.png"
+  ],
+  "notes": [
+    "Upper wagon tread sits at Z=.52 on Rollwagen ledges; upper flanges intentionally extend below the ledge.",
+    "Coupler envelope uses attached/free eye centres, not rod tips or upper wagon buffers. One long rod per vehicle, at the rear (+Z in Godot).",
+    "3188 triangles total; earlier 3000 target exceeded by final accepted support and coupling details. No geometry reduced in this assembly.",
+    "Two independent meshes/materials explicitly requested. Existing Harz exporter logic generalized to JSON component configuration."
+  ],
+  "godot_verification": {
+    "dedicated_test": "nwe_rollwagen_omm_test: PASS",
+    "other_passes": [
+      "harz_99_23_24",
+      "type_catalog",
+      "train_audio",
+      "train_movement",
+      "train_path",
+      "rail_physics"
+    ],
+    "known_baseline_failure": "rail_vehicle_pricing: GHE stored12000/generated6300; new vehicle9200 matches generator",
+    "reference_check": "15 existing errors24 warnings; no new asset references flagged",
+    "visual_review": "Blender assembly overall and wheel-seat close-up",
+    "khronos_validator": "not available: gltf-validator module missing; no dependencies installed",
+    "manual_in_game_check": false
+  }
+}

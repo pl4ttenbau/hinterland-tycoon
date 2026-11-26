@@ -1,0 +1,16 @@
+{
+  "file": "wws_p8_steam_whistle.ogg",
+  "source_url": "https://commons.wikimedia.org/wiki/File:WWS_SteamWhistle.ogg",
+  "download_url": "https://commons.wikimedia.org/wiki/Special:FilePath/WWS_SteamWhistle.ogg",
+  "title": "WWS SteamWhistle.ogg (Steam Whistle)",
+  "author": "Work With Sounds / Konrad Gutkowski; sound recordists Konrad Gutkowski, Julian Blaschke",
+  "recorded": "2014-04-19",
+  "subject": "Steam whistle (bell type) of Prussian P 8 passenger locomotive 38 2267, built 1918 by Berliner Maschinenbau AG; Bochum railway museum",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Steam whistle of P 8 38 2267 by Work With Sounds / Konrad Gutkowski, Julian Blaschke, CC BY 4.0, via Wikimedia Commons",
+  "source_format": "Ogg Vorbis, 11 s, 98 kbps",
+  "source_sha256": "ae2c46cabb7c3050d56676d7d9d42a2be1f5ae9da3f636bacb08cb7235d7fb1f",
+  "processing": "None: the original file, renamed. VehicleHorn plays a cut of it (STEAM_WHISTLE_START / STEAM_WHISTLE_LENGTH) with a 120 ms runtime fade-out.",
+  "limitations": "Not auditioned by the agent. The cut offsets are placeholders until tuned by ear. A museum recording, not one of the game's narrow-gauge locomotives."
+}
