@@ -188,7 +188,7 @@
 			{
 				"pos": [1834.25, 10.65, 940.01],
 				"fork": {
-					"connectiveTracks": [3]
+					"connectiveTracks": [3, 110]
 				}
 			},
 			{
@@ -319,7 +319,7 @@
 	{
 		"num": 8.0,
 		"name": "HSB Drei Annen",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2466.10, 53.70, 2809.60],
@@ -380,7 +380,7 @@
 	{
 		"num": 9.0,
 		"name": "HSB Hasselkopf",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2560.80, 47.20, 2617.10],
@@ -444,7 +444,7 @@
 	{
 		"num": 10.0,
 		"name": "HSB Drängetal Oben",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2526.80, 36.00, 2372.90],
@@ -524,7 +524,7 @@
 	{
 		"num": 11.0,
 		"name": "HSB Drängetal Unten",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2438.10, 25.30, 2099.30],
@@ -583,7 +583,7 @@
 	{
 		"num": 12.0,
 		"name": "HSB Hasserode",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [3012.90, 6.50, 1574.70],
@@ -628,7 +628,7 @@
 	{
 		"num": 13.0,
 		"name": "HSB Wernigerode-Westerntor",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [3012.90, 6.50, 1574.70],
@@ -694,7 +694,7 @@
 	{
 		"num": 14.0,
 		"name": "HSB Elend Bhf",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1966.20, 43.20, 3459.50],
@@ -743,7 +743,7 @@
 	{
 		"num": 15.0,
 		"name": "HSB Wormketal",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2129.70, 49.60, 3155.20]
@@ -756,7 +756,7 @@
 	{
 		"num": 16.0,
 		"name": "HSB Schwarzesteine Curve",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2129.70, 49.60, 3155.20],
@@ -808,7 +808,7 @@
 	{
 		"num": 17.0,
 		"name": "HSB Elend Südbahn",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1796.20, 53.10, 3700.30],
@@ -863,7 +863,7 @@
 	{
 		"num": 18.0,
 		"name": "HSB Elender Ende",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1832.70, 54.80, 4070.10],
@@ -907,7 +907,7 @@
 	{
 		"num": 19.0,
 		"name": "HSB Schierke Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1814.30, 96.70, 2971.00],
@@ -941,7 +941,7 @@
 	{
 		"num": 20.0,
 		"name": "HSB Regensteinkopf-Schierke",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1987.10, 86.90, 2900.10]
@@ -1008,7 +1008,7 @@
 	{
 		"num": 21.0,
 		"name": "HSB DAH Kirchsteig",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2335.70, 56.80, 2926.50],
@@ -1057,7 +1057,7 @@
 	{
 		"num": 22.0,
 		"name": "HSB Schierke Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1814.30, 96.70, 2971.00],
@@ -1097,7 +1097,7 @@
 	{
 		"num": 23.0,
 		"name": "HSB Werningerode Depot",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2987.10, 5.40, 1301.30],
@@ -1125,7 +1125,7 @@
 	{
 		"num": 24.0,
 		"name": "HSB Brockenstieg Unten",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [909.00, 197.30, 2659.00],
@@ -1219,7 +1219,7 @@
 	{
 		"num": 25.0,
 		"name": "HSB Brockenstieg Mitte",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [829.00, 250.20, 2382.30],
@@ -1289,7 +1289,7 @@
 	{
 		"num": 26.0,
 		"name": "HSB Brockenstieg Oben",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1004.20, 270.30, 2386.90],
@@ -1329,7 +1329,7 @@
 	{
 		"num": 27.0,
 		"name": "HSB Brockebahn Ganz Oben",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [891.80, 320.60, 2254.40],
@@ -1393,7 +1393,7 @@
 	{
 		"num": 28.0,
 		"name": "HSB Brockebahn Spitze",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [989.20, 341.60, 2236.00],
@@ -1431,7 +1431,7 @@
 	{
 		"num": 29.0,
 		"name": "HSB Brockebahn Goethemoor",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1057.60, 296.50, 2224.10],
@@ -1508,7 +1508,7 @@
 	{
 		"num": 31.0,
 		"name": "Werningerode HBF HSB Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [3043.50, 5.30, 1237.00],
@@ -1537,7 +1537,7 @@
 	{
 		"num": 32.0,
 		"name": "Werningerode HBF HSB Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [3043.50, 5.30, 1237.00],
@@ -1768,7 +1768,7 @@
 	{
 		"num": 37.0,
 		"name": "Brocken Spitze Runter",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [964.50, 334.90, 2301.20],
@@ -1799,7 +1799,7 @@
 	{
 		"num": 38.0,
 		"name": "HSB Wernigerode Westerntor Fork-HBF Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2987.10, 5.40, 1301.30],
@@ -1825,7 +1825,7 @@
 	{
 		"num": 39.0,
 		"name": "SHE Braunlage Bhf Main Track",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [959.20, 56.40, 3920.20],
@@ -1848,7 +1848,7 @@
 	{
 		"num": 40.0,
 		"name": "SHE Braunlage Bhf Outwards",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1011.50, 55.90, 3949.30],
@@ -1873,7 +1873,7 @@
 	{
 		"num": 41.0,
 		"name": "SHE Braunlage Bhf Bend",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1011.50, 55.90, 3949.30],
@@ -1907,7 +1907,7 @@
 	{
 		"num": 42.0,
 		"name": "SHE Braunlage West River",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1021.40, 53.60, 3917.50],
@@ -1938,7 +1938,7 @@
 	{
 		"num": 43.0,
 		"name": "SHE Braunlage Park Bridge",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [965.50, 56.10, 3851.00],
@@ -1971,7 +1971,7 @@
 	{
 		"num": 44.0,
 		"name": "SHE Braunlage Crossing Elbingeröder",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [973.50, 57.60, 3765.60],
@@ -2005,7 +2005,7 @@
 	{
 		"num": 45.0,
 		"name": "SHE Braunlage Hütteberg Bend",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [950.10, 61.10, 3663.20],
@@ -2039,7 +2039,7 @@
 	{
 		"num": 46.0,
 		"name": "SHE Braunlage Wurmberg Stretch",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [935.70, 64.00, 3612.30],
@@ -2073,7 +2073,7 @@
 	{
 		"num": 47.0,
 		"name": "SHE Braunlage Wurmberg End",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [947.00, 69.20, 3522.90],
@@ -2108,7 +2108,7 @@
 	{
 		"num": 48.0,
 		"name": "SHE Braunlage Bhf Depot",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1011.50, 55.90, 3949.30],
@@ -2335,7 +2335,7 @@
 	{
 		"num": 56.0,
 		"name": "HSB Drei-Annen-Hohne Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2466.10, 53.70, 2809.60],
@@ -2375,7 +2375,7 @@
 	{
 		"num": 57.0,
 		"name": "HSB Drei-Annen-Hohne Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2466.10, 53.70, 2809.60],
@@ -2412,7 +2412,7 @@
 	{
 		"num": 58.0,
 		"name": "HSB DAH Station-Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2354.10, 55.30, 2889.90],
@@ -2437,7 +2437,7 @@
 	{
 		"num": 59.0,
 		"name": "HSB Elend Ütschenpfühle",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1956.90, 45.80, 3359.40],
@@ -2489,7 +2489,7 @@
 	{
 		"num": 60.0,
 		"name": "HSB Elend Wormketal",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2068.60, 50.80, 3274.20],
@@ -2544,7 +2544,7 @@
 	{
 		"num": 61.0,
 		"name": "HSB Steuerkopf-DAH Form",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2203.20, 51.30, 3135.60],
@@ -2614,7 +2614,7 @@
 	{
 		"num": 62.0,
 		"name": "HSB Regensteiner Köpfe",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2211.80, 66.40, 3022.90],
@@ -2657,7 +2657,7 @@
 	{
 		"num": 63.0,
 		"name": "HSB Knaupholz",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2105.40, 77.00, 3006.10],
@@ -2718,7 +2718,7 @@
 	{
 		"num": 64.0,
 		"name": "HSB Knaupholz Wormke Bridge",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"hideBed": true,
 		"points": [
 			{
@@ -2738,7 +2738,7 @@
 	{
 		"num": 65.0,
 		"name": "HSB Schierke-Schlungsklippe",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1734.40, 97.80, 2921.80],
@@ -2802,7 +2802,7 @@
 	{
 		"num": 67.0,
 		"name": "HSB Schluftkopf Downwards",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1473.30, 125.80, 2703.90],
@@ -2839,7 +2839,7 @@
 	{
 		"num": 68.0,
 		"name": "HSB Schluftkopf Upwards",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [1380.80, 133.90, 2682.70],
@@ -2885,7 +2885,7 @@
 	{
 		"num": 69.0,
 		"name": "HSB Hammerklippe",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2560.00, 39.30, 2438.60],
@@ -2928,7 +2928,7 @@
 	{
 		"num": 70.0,
 		"name": "HSB Kantorkopf",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2457.90, 18.80, 1975.60],
@@ -2979,7 +2979,7 @@
 	{
 		"num": 71.0,
 		"name": "HSB Steinerne Renne Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2514.10, 14.10, 1807.30],
@@ -3014,7 +3014,7 @@
 	{
 		"num": 72.0,
 		"name": "HSB Steinerne Renne Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2514.10, 14.10, 1807.30],
@@ -3053,7 +3053,7 @@
 	{
 		"num": 73.0,
 		"name": "HSB Steinerne Renne-Hasserode Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2413.00, 13.40, 1850.80],
@@ -3108,7 +3108,7 @@
 	{
 		"num": 74.0,
 		"name": "HSB Hasserode Track 1 (Full)",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2633.90, 9.30, 1780.20],
@@ -3139,7 +3139,7 @@
 	{
 		"num": 75.0,
 		"name": "HSB Hasserode Track 1 (Outwards)",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2633.90, 9.30, 1780.20],
@@ -3170,7 +3170,7 @@
 	{
 		"num": 76.0,
 		"name": "HSB Hasserode Track 1 (Townwards)",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2685.40, 8.90, 1766.10],
@@ -3197,7 +3197,7 @@
 	{
 		"num": 77.0,
 		"name": "HSB Hasserode Track 3 (Sawmill)",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2685.40, 8.90, 1766.10],
@@ -3416,7 +3416,7 @@
 	{
 		"num": 83.0,
 		"name": "Wernigerode Triangle Fork-HBF",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2992.70, 5.50, 1262.80],
@@ -3443,7 +3443,7 @@
 	{
 		"num": 84.0,
 		"name": "Wernigerode Triangle Fork-Umlade Fork",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2992.70, 5.50, 1262.80],
@@ -3470,7 +3470,7 @@
 	{
 		"num": 85.0,
 		"name": "Wernigerode Umlade Fork-Umladebhf.",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2966.10, 5.60, 1220.70],
@@ -3492,7 +3492,7 @@
 	{
 		"num": 86.0,
 		"name": "Wernigerode Umladebhf. HSB Track 1",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2939.60, 5.70, 1213.60],
@@ -3518,7 +3518,7 @@
 	{
 		"num": 87.0,
 		"name": "Wernigerode Umladebhf. HSB Track 2",
-		"type": "750_MM",
+		"type": "1000_MM",
 		"points": [
 			{
 				"pos": [2939.60, 5.70, 1213.60],
@@ -4108,14 +4108,17 @@
 			{
 				"pos": [1798.10, 9.70, 933.50],
 				"fork": {
-					"connectiveTracks": [4]
+					"connectiveTracks": [4, 113]
 				}
 			},
 			{
 				"pos": [1788.10, 9.10, 928.50]
 			},
 			{
-				"pos": [1774.50, 8.10, 918.60]
+				"pos": [1774.50, 8.10, 918.60],
+				"fork": {
+					"connectiveTracks": [106, 107, 108]
+				}
 			}
 		]
 	},
@@ -4259,6 +4262,447 @@
 			},
 			{
 				"pos": [2400.71, 52.16, 2873.75]
+			}
+		]
+	},
+	{
+		"num": 106,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1774.50, 8.10, 918.60],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [-5.352, -0.366, -4.794],
+				"fork": {
+					"connectiveTracks": [103]
+				}
+			},
+			{
+				"pos": [1758.44, 7.00, 904.22],
+				"handleIn": [5.753, 0.199, 5.273],
+				"handleOut": [-6.829, -0.236, -6.26]
+			},
+			{
+				"pos": [1736.26, 7.00, 883.41],
+				"handleIn": [7.233, -0.002, 7.025],
+				"handleOut": [-7.156, 0.002, -6.95]
+			},
+			{
+				"pos": [1715.27, 7.01, 862.30],
+				"handleIn": [6.041, -0.006, 6.29],
+				"handleOut": [-4.736, 0.005, -4.931]
+			},
+			{
+				"pos": [1702.83, 7.03, 848.88],
+				"handleIn": [3.928, 0.005, 4.253],
+				"handleOut": [-3.548, -0.004, -3.842]
+			},
+			{
+				"pos": [1692.72, 6.99, 837.89],
+				"handleIn": [3.369, 0.013, 3.664],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [109]
+				}
+			}
+		]
+	},
+	{
+		"num": 107,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1774.50, 8.10, 918.60],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [-4.012, -0.355, -4.766],
+				"fork": {
+					"connectiveTracks": [103]
+				}
+			},
+			{
+				"pos": [1762.46, 7.03, 904.30],
+				"handleIn": [3.896, 0.168, 4.341],
+				"handleOut": [-3.428, -0.148, -3.82]
+			},
+			{
+				"pos": [1752.45, 7.02, 893.83],
+				"handleIn": [3.952, 0.005, 4.003],
+				"handleOut": [-5.511, -0.007, -5.582]
+			},
+			{
+				"pos": [1732.34, 6.99, 874.10],
+				"handleIn": [6.166, -0.004, 6.137],
+				"handleOut": [-5.32, 0.003, -5.295]
+			},
+			{
+				"pos": [1717.58, 7.03, 859.20],
+				"handleIn": [4.008, 0.004, 4.027],
+				"handleOut": [-2.743, -0.003, -2.755]
+			},
+			{
+				"pos": [1710.63, 7.00, 852.25],
+				"handleIn": [2.537, 0.005, 2.203],
+				"handleOut": [-2.687, -0.005, -2.333]
+			},
+			{
+				"pos": [1701.83, 7.01, 845.63],
+				"handleIn": [2.926, 0.001, 2.339],
+				"handleOut": [-3.047, -0.001, -2.436]
+			},
+			{
+				"pos": [1692.72, 6.99, 837.89],
+				"handleIn": [3.035, 0.005, 2.579],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [109]
+				}
+			}
+		]
+	},
+	{
+		"num": 108,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1774.50, 8.10, 918.60],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [-5.577, -0.365, -3.665],
+				"fork": {
+					"connectiveTracks": [103]
+				}
+			},
+			{
+				"pos": [1757.77, 7.00, 907.60],
+				"handleIn": [5.22, 0.179, 3.773],
+				"handleOut": [-4.87, -0.167, -3.52]
+			},
+			{
+				"pos": [1744.09, 6.99, 896.76],
+				"handleIn": [4.667, 0.0, 4.126],
+				"handleOut": [-5.395, 0.0, -4.769]
+			},
+			{
+				"pos": [1727.48, 7.01, 880.40],
+				"handleIn": [5.31, -0.005, 5.234],
+				"handleOut": [-4.894, 0.004, -4.825]
+			},
+			{
+				"pos": [1713.38, 7.02, 866.49],
+				"handleIn": [4.026, -0.002, 4.136],
+				"handleOut": [-3.126, 0.001, -3.211]
+			},
+			{
+				"pos": [1705.22, 7.02, 857.76],
+				"handleIn": [2.306, 0.004, 2.938],
+				"handleOut": [-2.051, -0.004, -2.613]
+			},
+			{
+				"pos": [1700.05, 7.00, 849.85],
+				"handleIn": [1.85, 0.005, 2.923],
+				"handleOut": [-2.254, -0.006, -3.562]
+			},
+			{
+				"pos": [1692.72, 6.99, 837.89],
+				"handleIn": [2.442, 0.002, 3.988],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [109]
+				}
+			}
+		]
+	},
+	{
+		"num": 109,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1692.72, 6.99, 837.89],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [-5.165, 0.199, -5.571],
+				"fork": {
+					"connectiveTracks": [106, 107, 108]
+				}
+			},
+			{
+				"pos": [1677.22, 7.59, 821.18],
+				"handleIn": [5.085, -0.158, 5.393],
+				"handleOut": [-4.843, 0.151, -5.136]
+			},
+			{
+				"pos": [1662.91, 7.93, 806.25],
+				"handleIn": [3.778, -0.067, 5.554],
+				"handleOut": [-3.691, 0.066, -5.425]
+			},
+			{
+				"pos": [1654.68, 7.99, 788.32],
+				"handleIn": [2.485, -0.086, 5.812],
+				"handleOut": [-2.3, 0.079, -5.38]
+			},
+			{
+				"pos": [1648.45, 8.40, 772.61],
+				"handleIn": [1.222, -0.15, 4.633],
+				"handleOut": [-0.916, 0.112, -3.471]
+			},
+			{
+				"pos": [1647.14, 8.76, 763.21],
+				"handleIn": [0.771, -0.078, 3.311],
+				"handleOut": [-0.904, 0.091, -3.883]
+			},
+			{
+				"pos": [1643.05, 8.85, 750.82],
+				"handleIn": [2.058, -0.02, 4.088],
+				"handleOut": [-2.338, 0.022, -4.643]
+			},
+			{
+				"pos": [1633.35, 8.87, 737.06],
+				"handleIn": [3.913, 0.009, 4.679],
+				"handleOut": [-4.692, -0.011, -5.61]
+			},
+			{
+				"pos": [1616.34, 8.78, 719.83],
+				"handleIn": [5.781, -0.081, 5.161],
+				"handleOut": [-5.362, 0.075, -4.787]
+			},
+			{
+				"pos": [1599.97, 9.29, 706.97],
+				"handleIn": [5.567, -0.758, 4.053],
+				"handleOut": [-5.593, 0.761, -4.072]
+			},
+			{
+				"pos": [1582.86, 13.35, 695.46],
+				"handleIn": [5.704, -1.352, 3.836],
+				"handleOut": [0.0, 0.0, 0.0]
+			}
+		]
+	},
+	{
+		"num": 110,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1834.25, 10.65, 940.01],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [3.08, -0.065, -1.176],
+				"fork": {
+					"connectiveTracks": [4]
+				}
+			},
+			{
+				"pos": [1843.49, 10.45, 936.48],
+				"handleIn": [-2.811, 0.143, 1.448],
+				"handleOut": [2.627, -0.133, -1.353]
+			},
+			{
+				"pos": [1850.66, 9.85, 931.71],
+				"handleIn": [-1.938, 0.146, 1.604],
+				"handleOut": [1.523, -0.115, -1.26]
+			},
+			{
+				"pos": [1854.39, 9.61, 927.90],
+				"handleIn": [-1.242, 0.081, 1.269],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [111, 112]
+				}
+			}
+		]
+	},
+	{
+		"num": 111,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1854.39, 9.61, 927.90],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [0.857, -0.21, -3.529],
+				"fork": {
+					"connectiveTracks": [110]
+				}
+			},
+			{
+				"pos": [1856.96, 8.98, 917.32],
+				"handleIn": [-0.478, 0.222, 4.399],
+				"handleOut": [0.761, -0.353, -7.005]
+			},
+			{
+				"pos": [1856.36, 7.83, 889.68],
+				"handleIn": [0.427, 0.242, 8.196],
+				"handleOut": [-0.343, -0.195, -6.583]
+			},
+			{
+				"pos": [1854.89, 7.52, 871.90],
+				"handleIn": [0.442, 0.093, 4.738],
+				"handleOut": [-0.295, -0.062, -3.159]
+			},
+			{
+				"pos": [1854.07, 7.35, 864.01],
+				"handleIn": [0.615, 0.053, 2.779],
+				"handleOut": [-0.727, -0.063, -3.286]
+			},
+			{
+				"pos": [1850.46, 7.18, 853.53],
+				"handleIn": [1.749, 0.061, 3.19],
+				"handleOut": [-1.745, -0.061, -3.183]
+			},
+			{
+				"pos": [1843.60, 6.98, 844.89],
+				"handleIn": [2.289, 0.066, 2.88],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [114]
+				}
+			}
+		]
+	},
+	{
+		"num": 112,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1854.39, 9.61, 927.90],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [1.536, -0.165, -2.683],
+				"fork": {
+					"connectiveTracks": [110]
+				}
+			},
+			{
+				"pos": [1859.00, 9.11, 919.86],
+				"handleIn": [-1.137, 0.191, 3.162],
+				"handleOut": [1.4, -0.235, -3.895]
+			},
+			{
+				"pos": [1861.38, 8.29, 905.99],
+				"handleIn": [-0.335, 0.218, 5.334],
+				"handleOut": [0.449, -0.292, -7.146]
+			},
+			{
+				"pos": [1860.26, 7.72, 880.72],
+				"handleIn": [0.583, 0.143, 6.965],
+				"handleOut": [-0.413, -0.101, -4.936]
+			},
+			{
+				"pos": [1858.70, 7.49, 868.11],
+				"handleIn": [1.018, 0.074, 3.752],
+				"handleOut": [-0.88, -0.064, -3.242]
+			},
+			{
+				"pos": [1854.94, 7.30, 859.40],
+				"handleIn": [1.864, 0.068, 3.142],
+				"handleOut": [-2.597, -0.095, -4.376]
+			},
+			{
+				"pos": [1843.60, 6.98, 844.89],
+				"handleIn": [3.783, 0.107, 4.836],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [114]
+				}
+			}
+		]
+	},
+	{
+		"num": 113,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1798.10, 9.70, 933.50],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [3.485, 0.024, -1.383],
+				"fork": {
+					"connectiveTracks": [103]
+				}
+			},
+			{
+				"pos": [1808.56, 9.77, 929.35],
+				"handleIn": [-2.824, 0.102, 2.342],
+				"handleOut": [2.997, -0.108, -2.485]
+			},
+			{
+				"pos": [1815.31, 9.02, 918.66],
+				"handleIn": [-1.12, 0.243, 4.138],
+				"handleOut": [1.272, -0.276, -4.7]
+			},
+			{
+				"pos": [1814.75, 8.22, 902.34],
+				"handleIn": [-0.301, 0.247, 5.237],
+				"handleOut": [0.282, -0.232, -4.912]
+			},
+			{
+				"pos": [1816.88, 7.58, 888.13],
+				"handleIn": [-1.33, 0.157, 4.398],
+				"handleOut": [1.251, -0.148, -4.136]
+			},
+			{
+				"pos": [1822.28, 7.28, 876.62],
+				"handleIn": [-2.544, 0.054, 3.311],
+				"handleOut": [2.59, -0.055, -3.371]
+			},
+			{
+				"pos": [1832.37, 7.26, 868.14],
+				"handleIn": [-3.12, 0.023, 3.077],
+				"handleOut": [3.124, -0.023, -3.081]
+			},
+			{
+				"pos": [1841.01, 7.15, 858.15],
+				"handleIn": [-1.953, 0.037, 3.233],
+				"handleOut": [1.504, -0.029, -2.49]
+			},
+			{
+				"pos": [1843.87, 7.06, 850.85],
+				"handleIn": [-0.389, 0.03, 2.349],
+				"handleOut": [0.339, -0.026, -2.051]
+			},
+			{
+				"pos": [1843.60, 6.98, 844.89],
+				"handleIn": [0.091, 0.027, 1.988],
+				"handleOut": [0.0, 0.0, 0.0],
+				"fork": {
+					"connectiveTracks": [114]
+				}
+			}
+		]
+	},
+	{
+		"num": 114,
+		"name": "Drawn rail",
+		"type": "NORMAL_GAUGE",
+		"points": [
+			{
+				"pos": [1843.60, 6.98, 844.89],
+				"handleIn": [0.0, 0.0, 0.0],
+				"handleOut": [-1.48, -0.048, -2.586],
+				"fork": {
+					"connectiveTracks": [111, 112, 113]
+				}
+			},
+			{
+				"pos": [1839.16, 6.83, 837.13],
+				"handleIn": [0.993, 0.081, 2.975],
+				"handleOut": [-1.152, -0.093, -3.448]
+			},
+			{
+				"pos": [1837.66, 6.42, 825.22],
+				"handleIn": [-0.409, 0.11, 3.599],
+				"handleOut": [0.356, -0.096, -3.137]
+			},
+			{
+				"pos": [1840.80, 6.20, 816.65],
+				"handleIn": [-1.393, 0.076, 2.77],
+				"handleOut": [1.47, -0.08, -2.923]
+			},
+			{
+				"pos": [1846.37, 5.95, 808.17],
+				"handleIn": [-1.857, 0.08, 2.829],
+				"handleOut": [0.0, 0.0, 0.0]
 			}
 		]
 	}

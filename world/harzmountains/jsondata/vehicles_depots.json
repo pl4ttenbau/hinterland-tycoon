@@ -25,6 +25,12 @@
 			"name": "Wernigerode Bus Depot",
 			"roadNum": 262,
 			"roadPos": "END"
+		},
+		{
+			"num": 7,
+			"name": "Quarry Road Depot",
+			"roadNum": 307,
+			"roadPos": "END"
 		}
 	]
 }

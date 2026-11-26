@@ -1,0 +1,20 @@
+[
+  {
+    "file": "terrain3d_11_05.res",
+    "location": [
+      11,
+      5
+    ],
+    "sha256": "dd469d7fc7c2abf9385efe4c220cb963fe0a199cd67e53c1aaf7cac468e471a9",
+    "changed_samples": 2553
+  },
+  {
+    "file": "terrain3d_11_06.res",
+    "location": [
+      11,
+      6
+    ],
+    "sha256": "b7a528dc4bb5d29170f8e6a12e6a1c1d63e36631306f42cab51867abf99bb480",
+    "changed_samples": 1297
+  }
+]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dc4si2vipw041"]
+
+[ext_resource type="PackedScene" uid="uid://dlw8blnsceygi" path="res://assets/meshes/structures/harz_row_houses/mesh/harz_fachwerk_pair_v12_2048.gltf" id="1_8h8d5"]
+[ext_resource type="Script" uid="uid://djbnfqrei1eq" path="res://game/gamescripts/nodes/construction/building_mesh_3d.gd" id="2_dykw0"]
+
+[node name="MeshHarzRowHouses" unique_id=1311222466 instance=ExtResource("1_8h8d5")]
+script = ExtResource("2_dykw0")
+
+[node name="fachwerk_row_houses" parent="." index="0" unique_id=779198985]
+layers = 8
+visibility_range_end = 250.0
+visibility_range_end_margin = 25.0

@@ -1,0 +1,68 @@
+IMPLEMENTED: streets, junction splits, station anchors and five graded terrain regions are now saved. See implementation.json. Godot loaded the road curves and both saved scenes successfully. Gameplay visual/bridge-clearance review and landmark buildings remain outstanding. The checkpoint notes below describe the original starting state. Do not rerun apply_layout.py on the modified map; its hash guard will reject it.
+
+Wernigerode street rebuild — paused checkpoint, 26 November 2026
+
+The user requested a break before leaving. The playable map has NOT been changed.
+No road, station, building, river, paint or terrain region edits have been applied.
+
+User authorization: implement the proposed streets and stations; raze obstructing
+buildings; adjust Terrain3D heights if necessary. Keep correctly placed rivers or
+canals, and remove them only if their placement is shown wrong. Do not touch the
+sand texture beneath streets: the user will repaint it. Every road junction must
+be made from coincident segment ENDPOINTS. Split the through roads at all crosses
+and T-junctions. Do not leave a connection at an interior curve point.
+
+Saved here:
+- road_layout_plan.json: fitted XZ controls, affected road IDs, mandatory splits,
+  intended station changes, landmark areas and terrain findings. This is a plan,
+  not a ready-to-apply dataset; allocate new road IDs from the current catalog.
+- before.zip: original roads/tracks/interchanges and world/reference/terrain
+  scenes, captured before any map modifications. No terrain files were changed.
+- before_hashes.json: hashes of those inputs; reject stale inputs rather than
+  applying this plan over intervening user work.
+- terrain_regions_before.json: file-derived region locations, sizes and input
+  hashes for the sixteen read-only sampled regions.
+
+Inspection artifacts in:
+/home/cornelinux/.codex/visualizations/2026/11/26/01a2174c-20d4-70e3-864a-1a4ebf9b7353
+Includes terrain-layout-before.png (roads, proposals and actual water depressions),
+harz-heights.npy (1024 square, origin X2560/Z1024, one unit/sample), native RF image
+exports, and the interactive wernigerode-proposals.html.
+
+Next implementation:
+1. Recheck live editor/bridge and current hashes. No editor or bridge was running.
+2. Refine the bank-side Leninstraße corridor, especially the Hasserode bridge and
+   level crossing. The initial straight sketch intersected the Holtemme channel;
+   it must not simply be projected to the bottom of the channel.
+3. Generate smooth road geometry, fit grades, and cut every intersecting road at
+   each junction. Rebuild reciprocal endpoint connection lists using the real
+   RoadEndpointConnection rules (0.02 tolerance after centimetre rounding).
+4. Update roads.json and EditorObjects together. Cache in the world scene is
+   empty. JSON is the authoritative network; the reference scene needs syncing.
+5. Move Westerntor stop 19 to the north station area; add Kirchstraße to empty
+   interchange 9 with an unused stop number and valid current curve anchor.
+6. Clear only obstructing scene objects. The WorldResidences.houses export is a
+   derived getter; the old scene serializes a large Object array too, so remove
+   stale entries or regenerate that property when clearing physical child nodes.
+   Preserve existing church, castle and gate anchors where possible. The generic
+   gate has a SOLID box collider, so putting a road through its centre would block
+   driving; keep it beside the route or explicitly handle the obstruction.
+7. Grade only necessary road corridors, using native Terrain3D resources and
+   guarding input hashes. Recheck untouched samples, water beds, texture-control
+   and color bytes. Do not paint RoadGround.
+8. Validate real Godot loading/curves, endpoint-only junctions, reciprocal links,
+   connectivity, grades, bridge/rail clearance and scene references. Produce an
+   after overview and report what was actually applied versus still reserved.
+
+Tools:
+System Python /usr/bin/python3 has NumPy and Pillow. The default python3 is an old
+pyenv Python without NumPy. Godot is:
+/home/cornelinux/Apps/Godot_v4.7.2-stable_linux.x86_64
+The isolated temporary Terrain3D probe has addons/terrain_3d and heightdata symlinks,
+a minimal project, and .godot/extension_list.cfg. Use XDG_DATA_HOME inside /tmp.
+Do not assume /tmp persists; it can be recreated from these notes. See the earlier
+world/gdansk/source/selective_height_compression/compress_heights.gd for native
+region save and byte-for-byte control/color verification.
+
+Other development work is dirty in this repository (vehicles, player controls,
+project.godot, etc.). It predates this map task. Leave it alone.

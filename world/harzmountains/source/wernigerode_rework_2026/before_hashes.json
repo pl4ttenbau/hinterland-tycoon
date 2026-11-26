@@ -1,0 +1,8 @@
+{
+  "jsondata/roads.json": "bc1c1b3d0717ef27b47fcacf6fafb84d3b2b9d9e69bf9598b80eb9a2c4d6cbcd",
+  "jsondata/tracks.json": "a4520e49f3a51a3ba29c1927827fffa7dde4571448b054833266416619f2e00a",
+  "jsondata/interchanges.json": "4f66ff4cb73660637ca9935532ea6f3a84510d962e64e38ee9acd4800d3c01d2",
+  "mapscenes/world_harzmountains.tscn": "ef1772e1a524fff5c15df97eebcd69a42106d83110b13c6449a8813fe70ac2b0",
+  "mapscenes/editorobjects_harzmountains.tscn": "bddc5731561f3182c60ca5314a2702beb11d10ded1d9e22ce63a368185c146ba",
+  "mapscenes/terrain/terrain_harzmountains.tscn": "bb8148d75b2de68c27f0f4ebf33c158f26c995529a6c778f680458e2f19596a7"
+}

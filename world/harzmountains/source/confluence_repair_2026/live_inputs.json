@@ -1,0 +1,30 @@
+[
+	{
+		"file": "terrain3d_11_05.res",
+		"location": [
+			11,
+			5
+		]
+	},
+	{
+		"file": "terrain3d_11_06.res",
+		"location": [
+			11,
+			6
+		]
+	},
+	{
+		"file": "terrain3d_12_05.res",
+		"location": [
+			12,
+			5
+		]
+	},
+	{
+		"file": "terrain3d_12_06.res",
+		"location": [
+			12,
+			6
+		]
+	}
+]

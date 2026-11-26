@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://dcdx38gwigayp"]
 
 [ext_resource type="Terrain3DMaterial" uid="uid://bpandgw7lrhcn" path="res://world/harzmountains/mapscenes/terrain/terrain_mat_harzmountains.res" id="1_kd810"]
-[ext_resource type="Terrain3DAssets" uid="uid://d55gcguyu5ku" path="res://world/harzmountains/mapscenes/terrain/terrain_assets_harzmountains.res" id="1_l3qu8"]
+[ext_resource type="Terrain3DAssets" uid="uid://dbdm5jiaqqxq8" path="res://world/harzmountains/mapscenes/terrain/terrain_assets_harzmountains.res" id="1_l3qu8"]
 [ext_resource type="Material" path="res://assets/packed/shaders/water_lite/materials/water_universal.tres" id="3_l3qu8"]
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="4_jxf6l"]
 [ext_resource type="PackedScene" uid="uid://68lyd8rt6mqc" path="res://assets/packed/CustomTerrain3DParticles.tscn" id="20_grass"]
-
 [ext_resource type="Resource" path="res://world/harzmountains/vegetation/grass_areas.tres" id="21_grass_areas"]
-
 [ext_resource type="PackedScene" path="res://assets/packed/TerrainWheat.tscn" id="22_wheat"]
-[ext_resource type="Resource" path="res://world/harzmountains/vegetation/wheat_areas.tres" id="23_wheat_areas"]
+[ext_resource type="Resource" uid="uid://bj8eyos51n853" path="res://world/harzmountains/vegetation/wheat_areas.tres" id="23_wheat_areas"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w7ts7"]
 
@@ -131,8 +129,10 @@ transform = Transform3D(0.8635188, 0, -0.5043167, 0, 1, 0, 0.5043167, 0, 0.86351
 mesh = SubResource("PlaneMesh_80h4v")
 surface_material_override/0 = ExtResource("3_l3qu8")
 
-[node name="TerrainGrass" parent="." unique_id=760034455 instance=ExtResource("20_grass")]
+[node name="TerrainGrass" parent="." unique_id=760034455 node_paths=PackedStringArray("terrain") instance=ExtResource("20_grass")]
+terrain = NodePath("..")
 grass_areas = ExtResource("21_grass_areas")
 
-[node name="TerrainWheat" parent="." instance=ExtResource("22_wheat")]
+[node name="TerrainWheat" parent="." unique_id=1105348610 node_paths=PackedStringArray("terrain") instance=ExtResource("22_wheat")]
+terrain = NodePath("..")
 grass_areas = ExtResource("23_wheat_areas")

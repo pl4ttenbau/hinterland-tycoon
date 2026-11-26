@@ -417,5 +417,16 @@
 			"SOVIET_UNION"
 		],
 		"block_auto_placement": false
+	},
+	{
+		"key": "harz_row_houses",
+		"name": "Harz House",
+		"scene_path": "res://assets/meshes/structures/harz_row_houses/editor_harz_row_houses.tscn",
+		"pops": [
+			8,
+			2
+		],
+		"themes": ["NORTHERN_GERMANY", "SOUTHERN_GERMANY"],
+		"block_auto_placement": false
 	}
 ]

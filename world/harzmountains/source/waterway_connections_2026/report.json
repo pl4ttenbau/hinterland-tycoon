@@ -1,0 +1,86 @@
+{
+  "changed_samples": 2497,
+  "max_cut": 3.252,
+  "regions": 3,
+  "existing_low_beds_unchanged": true,
+  "roads_for_crossing_review": [
+    {
+      "road_num": 40,
+      "name": "Wernigerode Salzbergstr Townwards",
+      "near_xz": [
+        3042,
+        1440
+      ]
+    },
+    {
+      "road_num": 118,
+      "name": "Wernigerode Am Ziegenberg",
+      "near_xz": [
+        2981,
+        1380
+      ]
+    },
+    {
+      "road_num": 120.0,
+      "name": "Wernigerode Westerntor",
+      "near_xz": [
+        2985,
+        1380
+      ]
+    },
+    {
+      "road_num": 123.0,
+      "name": "Wernigerode Mittelstr.",
+      "near_xz": [
+        2976,
+        1321
+      ]
+    },
+    {
+      "road_num": 127.0,
+      "name": "Wernigerode Ilsenburger Str. Townwards",
+      "near_xz": [
+        2973,
+        1357
+      ]
+    },
+    {
+      "road_num": 128.0,
+      "name": "Wernigerode Ilsenburger Str. Middle",
+      "near_xz": [
+        2975,
+        1305
+      ]
+    },
+    {
+      "road_num": 266,
+      "name": "Wernigerode Johann-Sebastian-Bach-Stra\u00dfe West",
+      "near_xz": [
+        3055,
+        1456
+      ]
+    },
+    {
+      "road_num": 270,
+      "name": "Wernigerode Salzbergstr Townwards",
+      "near_xz": [
+        3054,
+        1473
+      ]
+    },
+    {
+      "road_num": 274,
+      "name": "Wernigerode Leninstra\u00dfe",
+      "near_xz": [
+        2982,
+        1383
+      ]
+    }
+  ],
+  "surface_added": false,
+  "paint_changed": false,
+  "scope": "Missing links within current model excavations; not a wholesale historical rerouting.",
+  "applied": true,
+  "native_reload_verified": true,
+  "unchanged_regions_verified": true
+}

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bseoc0cy4oqv8" path="res://game/gamescripts/nodes/world/collections/world_houses.gd" id="4_vuti8"]
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/northern_german_house/editor_northern_german_house.tscn" id="16_4rfc7"]
 [ext_resource type="Texture2D" uid="uid://qroixh5x3q8m" path="res://assets/textures/terrain_new/packed/rock/rock_dh.png" id="16_eoc0b"]
+[ext_resource type="PackedScene" uid="uid://dqpch0wrejoea" path="res://assets/meshes/structures/harz_row_houses/editor_harz_row_houses.tscn" id="17_7yvfe"]
 [ext_resource type="PackedScene" uid="uid://bvjmkuicpsgx7" path="res://assets/meshes/industry/industrial_silo/industrial_silo_static.tscn" id="23_bhs12"]
 [ext_resource type="PackedScene" path="res://assets/meshes/structures/half_timbered_2/editor_half_timbered_2.tscn" id="23_vbllm"]
 [ext_resource type="Script" uid="uid://bg2vjcvo5b3ar" path="res://game/gamescripts/services/importexport/deco_loader.gd" id="24_uau4w"]
@@ -84,8 +85,10 @@ cast_shadows = 0
 
 [node name="Residences" type="Node" parent="." unique_id=1487374190]
 script = ExtResource("4_vuti8")
-houses = Array[Node3D]([Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9866348, 0, -0.1629471, 0, 1, 0, 0.1629471, 0, -0.9866348, 3131.3682, 5.3775277, 1344.5836),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"half_timbered_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.4450103, 0, -0.89552546, 0, 1, 0, 0.89552546, 0, 0.4450103, 3056.858, 5.266184, 1288.2147),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+houses = Array[Node3D]([Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.7870853, 0, -0.61684424, 0, 1, 0, 0.61684424, 0, 0.7870853, 3033.4636, 5.391563, 1386.3414),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_row_houses","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://dpur36fmhpxlt")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.3634271, 0, -0.9316226, 0, 1, 0, 0.9316226, 0, 0.3634271, 3052.4736, 5.330628, 1286.1908),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_row_houses","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://dpur36fmhpxlt")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.0011690097, 0, -0.99999934, 0, 1, 0, 0.99999934, 0, -0.0011690097, 3079.1035, 5.281688, 1338.8873),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_row_houses","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://dpur36fmhpxlt")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9921968, 0, 0.12468141, 0, 1, 0, -0.12468141, 0, -0.9921968, 3018.7246, 5.134946, 1256.2867),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_row_houses","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://dpur36fmhpxlt")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.991009, 0, -0.13379589, 0, 1, 0, 0.13379589, 0, -0.991009, 3144.5593, 5.1612, 1305.4001),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.42269734, 0, 0.90627086, 0, 1, 0, -0.90627086, 0, -0.42269734, 3135.8677, 4.860477, 1174.7811),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_3","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.90918535, 0, 0.41639185, 0, 1, 0, -0.41639185, 0, 0.90918535, 3096.2031, 4.918289, 1151.9745),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"half_timbered_barn","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -93,7 +96,6 @@ houses = Array[Node3D]([Object(Node3D,"unique_name_in_owner":false,"process_mode
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.12105502, 0, 0.9926459, 0, 1, 0, -0.9926459, 0, 0.12105502, 3166.8474, 4.8233147, 1311.6442),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99103004, 0, -0.13364018, 0, 1, 0, 0.13364018, 0, 0.99103004, 3203.1675, 4.8233147, 1312.3003),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99103004, 0, -0.13364018, 0, 1, 0, 0.13364018, 0, 0.99103004, 3204.3481, 4.8233147, 1303.3694),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99290764, 0, 0.118889086, 0, 1, 0, -0.118889086, 0, -0.99290764, 3174.8286, 4.8233147, 1338.3589),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99290764, 0, 0.118889086, 0, 1, 0, -0.118889086, 0, -0.99290764, 3173.7808, 4.8233147, 1347.3062),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.12105502, 0, 0.9926459, 0, 1, 0, -0.9926459, 0, 0.12105502, 3157.9812, 4.8233147, 1310.5535),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.37897167, 0, -0.9254083, 0, 1, 0, 0.9254083, 0, -0.37897167, 3061.6448, 5.05754, 1265.3555),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -109,33 +111,23 @@ houses = Array[Node3D]([Object(Node3D,"unique_name_in_owner":false,"process_mode
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9993847, 0, 0.035073865, 0, 1, 0, -0.035073865, 0, -0.9993847, 3096.8174, 5.241482, 1326.5347),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99993414, 0, 0.011466518, 0, 1, 0, -0.011466518, 0, -0.99993414, 3085.0378, 5.2481346, 1324.5703),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.9999961, 0, -0.0027751012, 0, 1, 0, 0.0027751012, 0, -0.9999961, 3104.9072, 5.1058245, 1329.0088),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.71550995, 0, -0.6986026, 0, 1, 0, 0.6986026, 0, 0.71550995, 3090.3633, 6.6953993, 1373.0917),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.049860686, 0, 0.9987563, 0, 1, 0, -0.9987563, 0, 0.049860686, 3049.0662, 6.5035343, 1358.5375),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.24161714, 0, 0.9703716, 0, 1, 0, -0.9703716, 0, -0.24161714, 3110.1907, 5.5233173, 1357.1055),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.26446226, 0, 0.96439576, 0, 1, 0, -0.96439576, 0, -0.26446226, 3108.8335, 5.52997, 1345.2407),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.2781698, 0, 0.96053195, 0, 1, 0, -0.96053195, 0, -0.2781698, 3110.0408, 5.38766, 1365.564),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.54472697, 0, 0.8386135, 0, 1, 0, -0.8386135, 0, -0.54472697, 3101.6672, 5.5233173, 1296.0922),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.618381, 0, 0.78587824, 0, 1, 0, -0.78587824, 0, -0.618381, 3096.218, 5.52997, 1285.6145),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9944945, 0, -0.10478897, 0, 1, 0, 0.10478897, 0, 0.9944945, 3154.2876, 5.5233173, 1359.2499),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.9940297, 0, -0.10910976, 0, 1, 0, 0.10910976, 0, 0.9940297, 3166.0625, 5.52997, 1362.3112),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.39954916, 0, 0.9167118, 0, 1, 0, -0.9167118, 0, -0.39954916, 3103.1865, 5.38766, 1303.2816),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.011187514, 0, -0.99993736, 0, 1, 0, 0.99993736, 0, 0.011187514, 3080.9255, 5.4789124, 1346.802),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.034795012, 0, -0.9993945, 0, 1, 0, 0.9993945, 0, 0.034795012, 3079.508, 5.859208, 1358.6598),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99995697, 0, 0.009267404, 0, 1, 0, -0.009267404, 0, -0.99995697, 3042.9856, 5.8692675, 1345.9177),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.48467207, 0, 0.87469584, 0, 1, 0, -0.87469584, 0, 0.48467207, 3036.4607, 6.89017, 1366.9071),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.99989706, 0, -0.014346259, 0, 1, 0, 0.014346259, 0, -0.99989706, 3031.1592, 6.249563, 1344.258),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.017591871, 0, -0.99984527, 0, 1, 0, 0.99984527, 0, -0.017591871, 3024.7847, 5.777646, 1357.656),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.0060214773, 0, -0.9999819, 0, 1, 0, 0.9999819, 0, 0.0060214773, 3023.0264, 6.157942, 1369.468),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_corner_house","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.049024254, 0, -0.99879766, 0, 1, 0, 0.99879766, 0, 0.049024254, 3083.023, 5.2936926, 1338.6064),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.03516095, 0, -0.9993816, 0, 1, 0, 0.9993816, 0, -0.03516095, 3131.757, 5.3007565, 1337.9061),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"old_city_house_1","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.0026879683, 0, -0.9999964, 0, 1, 0, 0.9999964, 0, 0.0026879683, 3134.232, 5.1155367, 1329.8165),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_4","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.64146304, 0, 0.767154, 0, 1, 0, -0.767154, 0, 0.64146304, 3004.2654, 5.7000947, 1333.7439),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"polish_house_3","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.96532243, 0, 0.26106054, 0, 1, 0, -0.26106054, 0, -0.96532243, 3003.9143, 5.763616, 1348.9948),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"polish_house_2","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.96364903, 0, -0.26717114, 0, 1, 0, 0.26717114, 0, -0.96364903, 3060.7908, 7.511577, 1373.2717),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"polish_house_2","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.3039001, 0, -0.9527039, 0, 1, 0, 0.9527039, 0, -0.3039001, 3133.0217, 5.5742617, 1406.2528),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"polish_house_3","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
-, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.3219518, 0, 0.94675606, 0, 1, 0, -0.94675606, 0, 0.3219518, 3130.3108, 5.587716, 1430.4011),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"village_house_3","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.16597696, 0, -0.98612964, 0, 1, 0, 0.98612964, 0, -0.16597696, 3131.7566, 5.4052124, 1388.3785),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"wooden_shack","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.1924534, 0, -0.98130614, 0, 1, 0, 0.98130614, 0, -0.1924534, 3052.0225, 5.6835413, 1388.9237),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"village_house_2","placed_town_num":31,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
+, Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.8714793, 0, 0.49043235, 0, 1, 0, -0.49043235, 0, -0.8714793, 3051.5698, 5.8485775, 1349.0204),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_row_houses","placed_town_num":0,"road_connection":null,"metadata/_custom_type_script":"uid://dpur36fmhpxlt")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 924.16064, 61.456226, 3703.0435),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"harz_house_1","placed_town_num":1,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(0.99318695, 0, -0.11653208, 0, 1, 0, 0.11653208, 0, 0.99318695, 947.5231, 57.245865, 3845.3228),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"city_house_2","placed_town_num":1,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
 , Object(Node3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(-0.6415701, 0, 0.76706445, 0, 1, 0, -0.76706445, 0, -0.6415701, 931.68396, 59.494125, 3826.2927),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://game/gamescripts/nodes/structures/editor_residence_3d.gd"),"placed_res_bld_type":"polish_house_5","placed_town_num":1,"road_connection":null,"metadata/_custom_type_script":"uid://0dm7tfhu5lup")
@@ -286,15 +278,21 @@ metadata/_custom_type_script = "uid://bseoc0cy4oqv8"
 
 [node name="31_Wernigerode" type="Node" parent="Residences" unique_id=117612203]
 
-[node name="HalfTimbered1" parent="Residences/31_Wernigerode" unique_id=677827831 instance=ExtResource("45_u0uu3")]
-transform = Transform3D(-0.9866348, 0, -0.1629471, 0, 1, 0, 0.1629471, 0, -0.9866348, 3131.3682, 5.3775277, 1344.5836)
+[node name="EditorHarzRowHouses2" parent="Residences/31_Wernigerode" unique_id=1821503309 instance=ExtResource("17_7yvfe")]
+transform = Transform3D(0.7870853, 0, -0.61684424, 0, 1, 0, 0.61684424, 0, 0.7870853, 3033.4636, 5.391563, 1386.3414)
 placed_town_num = 31
-road_connection = null
 
-[node name="HarzHouse6" parent="Residences/31_Wernigerode" unique_id=1761105406 instance=ExtResource("53_ksq05")]
-transform = Transform3D(0.4450103, 0, -0.89552546, 0, 1, 0, 0.89552546, 0, 0.4450103, 3056.858, 5.266184, 1288.2147)
+[node name="EditorHarzRowHouses3" parent="Residences/31_Wernigerode" unique_id=1453919193 instance=ExtResource("17_7yvfe")]
+transform = Transform3D(0.3634271, 0, -0.9316226, 0, 1, 0, 0.9316226, 0, 0.3634271, 3052.4736, 5.330628, 1286.1908)
 placed_town_num = 31
-road_connection = null
+
+[node name="EditorHarzRowHouses4" parent="Residences/31_Wernigerode" unique_id=795231952 instance=ExtResource("17_7yvfe")]
+transform = Transform3D(-0.0011690097, 0, -0.99999934, 0, 1, 0, 0.99999934, 0, -0.0011690097, 3079.1035, 5.281688, 1338.8873)
+placed_town_num = 31
+
+[node name="EditorHarzRowHouses5" parent="Residences/31_Wernigerode" unique_id=371838675 instance=ExtResource("17_7yvfe")]
+transform = Transform3D(-0.9921968, 0, 0.12468141, 0, 1, 0, -0.12468141, 0, -0.9921968, 3018.7246, 5.134946, 1256.2867)
+placed_town_num = 31
 
 [node name="HarzHouse5" parent="Residences/31_Wernigerode" unique_id=158587784 instance=ExtResource("53_ksq05")]
 transform = Transform3D(-0.991009, 0, -0.13379589, 0, 1, 0, 0.13379589, 0, -0.991009, 3144.5593, 5.1612, 1305.4001)
@@ -328,11 +326,6 @@ road_connection = null
 
 [node name="CityHouse56" parent="Residences/31_Wernigerode" unique_id=912629585 instance=ExtResource("53_nynls")]
 transform = Transform3D(0.99103004, 0, -0.13364018, 0, 1, 0, 0.13364018, 0, 0.99103004, 3204.3481, 4.8233147, 1303.3694)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityHouse53" parent="Residences/31_Wernigerode" unique_id=141950250 instance=ExtResource("53_nynls")]
-transform = Transform3D(-0.99290764, 0, 0.118889086, 0, 1, 0, -0.118889086, 0, -0.99290764, 3174.8286, 4.8233147, 1338.3589)
 placed_town_num = 31
 road_connection = null
 
@@ -411,23 +404,8 @@ transform = Transform3D(-0.9999961, 0, -0.0027751012, 0, 1, 0, 0.0027751012, 0, 
 placed_town_num = 31
 road_connection = null
 
-[node name="CityHouse47" parent="Residences/31_Wernigerode" unique_id=2024928070 instance=ExtResource("56_4subv")]
-transform = Transform3D(0.71550995, 0, -0.6986026, 0, 1, 0, 0.6986026, 0, 0.71550995, 3090.3633, 6.6953993, 1373.0917)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityHouse52" parent="Residences/31_Wernigerode" unique_id=1038955655 instance=ExtResource("56_4subv")]
-transform = Transform3D(0.049860686, 0, 0.9987563, 0, 1, 0, -0.9987563, 0, 0.049860686, 3049.0662, 6.5035343, 1358.5375)
-placed_town_num = 31
-road_connection = null
-
 [node name="OldCityHouse4" parent="Residences/31_Wernigerode" unique_id=1049499691 instance=ExtResource("57_4subv")]
 transform = Transform3D(-0.24161714, 0, 0.9703716, 0, 1, 0, -0.9703716, 0, -0.24161714, 3110.1907, 5.5233173, 1357.1055)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityCornerHouse4" parent="Residences/31_Wernigerode" unique_id=1641113624 instance=ExtResource("55_c72m3")]
-transform = Transform3D(-0.26446226, 0, 0.96439576, 0, 1, 0, -0.96439576, 0, -0.26446226, 3108.8335, 5.52997, 1345.2407)
 placed_town_num = 31
 road_connection = null
 
@@ -446,11 +424,6 @@ transform = Transform3D(-0.618381, 0, 0.78587824, 0, 1, 0, -0.78587824, 0, -0.61
 placed_town_num = 31
 road_connection = null
 
-[node name="OldCityHouse9" parent="Residences/31_Wernigerode" unique_id=269706002 instance=ExtResource("57_4subv")]
-transform = Transform3D(0.9944945, 0, -0.10478897, 0, 1, 0, 0.10478897, 0, 0.9944945, 3154.2876, 5.5233173, 1359.2499)
-placed_town_num = 31
-road_connection = null
-
 [node name="CityCornerHouse8" parent="Residences/31_Wernigerode" unique_id=997365487 instance=ExtResource("55_c72m3")]
 transform = Transform3D(0.9940297, 0, -0.10910976, 0, 1, 0, 0.10910976, 0, 0.9940297, 3166.0625, 5.52997, 1362.3112)
 placed_town_num = 31
@@ -461,23 +434,8 @@ transform = Transform3D(-0.39954916, 0, 0.9167118, 0, 1, 0, -0.9167118, 0, -0.39
 placed_town_num = 31
 road_connection = null
 
-[node name="OldCityHouse2" parent="Residences/31_Wernigerode" unique_id=1791921379 instance=ExtResource("57_4subv")]
-transform = Transform3D(0.011187514, 0, -0.99993736, 0, 1, 0, 0.99993736, 0, 0.011187514, 3080.9255, 5.4789124, 1346.802)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityCornerHouse3" parent="Residences/31_Wernigerode" unique_id=1473852181 instance=ExtResource("55_c72m3")]
-transform = Transform3D(0.034795012, 0, -0.9993945, 0, 1, 0, 0.9993945, 0, 0.034795012, 3079.508, 5.859208, 1358.6598)
-placed_town_num = 31
-road_connection = null
-
 [node name="OldCityHouse5" parent="Residences/31_Wernigerode" unique_id=1629479147 instance=ExtResource("57_4subv")]
 transform = Transform3D(-0.99995697, 0, 0.009267404, 0, 1, 0, -0.009267404, 0, -0.99995697, 3042.9856, 5.8692675, 1345.9177)
-placed_town_num = 31
-road_connection = null
-
-[node name="OldCityHouse8" parent="Residences/31_Wernigerode" unique_id=1709277791 instance=ExtResource("57_4subv")]
-transform = Transform3D(0.48467207, 0, 0.87469584, 0, 1, 0, -0.87469584, 0, 0.48467207, 3036.4607, 6.89017, 1366.9071)
 placed_town_num = 31
 road_connection = null
 
@@ -488,21 +446,6 @@ road_connection = null
 
 [node name="OldCityHouse6" parent="Residences/31_Wernigerode" unique_id=1677163998 instance=ExtResource("57_4subv")]
 transform = Transform3D(-0.017591871, 0, -0.99984527, 0, 1, 0, 0.99984527, 0, -0.017591871, 3024.7847, 5.777646, 1357.656)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityCornerHouse6" parent="Residences/31_Wernigerode" unique_id=1411397300 instance=ExtResource("55_c72m3")]
-transform = Transform3D(0.0060214773, 0, -0.9999819, 0, 1, 0, 0.9999819, 0, 0.0060214773, 3023.0264, 6.157942, 1369.468)
-placed_town_num = 31
-road_connection = null
-
-[node name="CityHouse49" parent="Residences/31_Wernigerode" unique_id=1103652329 instance=ExtResource("56_4subv")]
-transform = Transform3D(0.049024254, 0, -0.99879766, 0, 1, 0, 0.99879766, 0, 0.049024254, 3083.023, 5.2936926, 1338.6064)
-placed_town_num = 31
-road_connection = null
-
-[node name="OldCityHouse3" parent="Residences/31_Wernigerode" unique_id=1496879560 instance=ExtResource("57_4subv")]
-transform = Transform3D(-0.03516095, 0, -0.9993816, 0, 1, 0, 0.9993816, 0, -0.03516095, 3131.757, 5.3007565, 1337.9061)
 placed_town_num = 31
 road_connection = null
 
@@ -531,10 +474,6 @@ transform = Transform3D(-0.3039001, 0, -0.9527039, 0, 1, 0, 0.9527039, 0, -0.303
 placed_town_num = 31
 road_connection = null
 
-[node name="VillageHouse4" parent="Residences/31_Wernigerode" unique_id=235107708 instance=ExtResource("71_gf88f")]
-transform = Transform3D(0.3219518, 0, 0.94675606, 0, 1, 0, -0.94675606, 0, 0.3219518, 3130.3108, 5.587716, 1430.4011)
-placed_town_num = 31
-
 [node name="WoodenShack4" parent="Residences/31_Wernigerode" unique_id=1494604264 instance=ExtResource("45_ihmag")]
 transform = Transform3D(-0.16597696, 0, -0.98612964, 0, 1, 0, 0.98612964, 0, -0.16597696, 3131.7566, 5.4052124, 1388.3785)
 placed_town_num = 31
@@ -544,6 +483,9 @@ road_connection = null
 transform = Transform3D(-0.1924534, 0, -0.98130614, 0, 1, 0, 0.98130614, 0, -0.1924534, 3052.0225, 5.6835413, 1388.9237)
 placed_town_num = 31
 road_connection = null
+
+[node name="EditorHarzRowHouses" parent="Residences/31_Wernigerode" unique_id=1043915709 instance=ExtResource("17_7yvfe")]
+transform = Transform3D(-0.8714793, 0, 0.49043235, 0, 1, 0, -0.49043235, 0, -0.8714793, 3051.5698, 5.8485775, 1349.0204)
 
 [node name="1_Braunlage" type="Node" parent="Residences" unique_id=1094614807]
 
@@ -2079,12 +2021,21 @@ type_key = "FISHERY"
 ind_name = "Ilsenburg Angelverein"
 metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
 
+[node name="SugarMill_Veckenstedt" type="Marker3D" parent="Industries" unique_id=1972194963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2053.8582, 4.853474, 637.53156)
+gizmo_extents = 10.0
+script = ExtResource("48_76jr6")
+num = 32
+type_key = "SUGAR_MILL"
+ind_name = "Vecklenstedter Mühle"
+metadata/_custom_type_script = "uid://cwdk4vg6bs21l"
+
 [node name="EditorObjects" parent="." unique_id=344995228 instance=ExtResource("59_uau4w")]
 
 [node name="DayEnvironment" parent="." unique_id=662525974 instance=ExtResource("52_vuti8")]
 
 [node name="WorldCursor3D" type="Marker3D" parent="." unique_id=700666635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3391.0486, 3.7801437, 817.5793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2053.8582, 4.853474, 637.53156)
 gizmo_extents = 3.0
 script = ExtResource("56_c72m3")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
@@ -2093,5 +2044,5 @@ metadata/_custom_type_script = "uid://byq8dj7pajain"
 script = ExtResource("61_uau4w")
 metadata/initialized_roads = true
 metadata/initialized_roads_visible_sources = true
-
-[editable path="EditorObjects"]
+metadata/initialized_rails = true
+metadata/initialized_rails_visible_sources = true
