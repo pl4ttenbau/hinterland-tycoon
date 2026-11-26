@@ -213,7 +213,23 @@ func _segments_to(vehicle: RoadVehicle3D, destination: RoadNode) -> Array[Dictio
 		return []
 	var offset: float = start.offset
 	var anchor: RoadRouteAnchor = RoadRouteAnchor.at(nearest.road, offset)
-	return _make_segments(nearest.get_path_3d(), offset, _network.find_path(anchor, destination))
+	var heading: int = _heading_along(nearest.get_path_3d(), offset, vehicle.global_basis.z)
+	return _make_segments(nearest.get_path_3d(), offset, _network.find_path(anchor, destination, heading))
+
+## Which way the vehicle faces along its road: +1 towards increasing offsets, -1 towards
+## decreasing, 0 when it stands across the road. With a heading the pathfinder plans any
+## turn-round itself, at a road end, instead of starting the route behind the vehicle.
+## Across the road both directions stay open and RoadUTurnPlanner handles a target behind.
+func _heading_along(path: Path3D, offset: float, forward: Vector3) -> int:
+	var curve: Curve3D = path.curve
+	var ahead: Vector3 = path.to_global(curve.sample_baked(minf(offset + 0.5, curve.get_baked_length())))
+	var behind: Vector3 = path.to_global(curve.sample_baked(maxf(offset - 0.5, 0.0)))
+	var alignment: float = forward.normalized().dot((ahead - behind).normalized())
+	if alignment > 0.5:
+		return 1
+	if alignment < -0.5:
+		return -1
+	return 0
 
 ## Project onto rendered road curves; do not teleport or attach a far-off car.
 func _nearest_road_position(vehicle: RoadVehicle3D) -> Dictionary:

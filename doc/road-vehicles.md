@@ -97,7 +97,8 @@ driving a road vehicle to edit its plan. Saving validates the plan without start
 automatic driving or executing goods transfers.
 Use **Start plan**, then leave the car, to execute its visits once automatically.
 Execution parks at the final visit or pauses at a visit containing transfer
-instructions; load/unload does not run yet. U-turns require manual steering.
+instructions; load/unload does not run yet. U-turns happen automatically at road
+ends; routes avoid them inside junctions.
 
 ### Depot spawning
 

@@ -83,7 +83,7 @@ for test in tests/*_test.gd tests/*_test.tscn; do
             ;;
     esac
     case "$name" in
-        infrastructure_collision_test|road_vehicle_test|road_routing_test|road_route_transfer_test|road_uturn_test|station_creator_test)
+        infrastructure_collision_test|road_vehicle_test|road_routing_test|road_junction_route_test|road_route_transfer_test|road_uturn_test|station_creator_test)
             set -- --fixed-fps 60 "$@"
             ;;
     esac
