@@ -2074,6 +2074,18 @@ gizmo_extents = 10.0
 script = ExtResource("12_73pql")
 metadata/_custom_type_script = "uid://byq8dj7pajain"
 
+[node name="Proposal_Stralsund_Hauptbahnhof" type="Marker3D" parent="."]
+editor_description = "Planning reference only: proposed Hauptbahnhof platform midpoint, approximately 100 m west of the existing platforms. Preserve the station-to-Tribseer-Damm-to-Altstadt relationship. Move the lake belt west/southwest with the station and blend the outer rail approaches back into their existing routes. Marker height is schematic; adjust after terrain work. No infrastructure has been moved."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 700, 26, -270)
+gizmo_extents = 12.0
+metadata/proposal_only = true
+
+[node name="Proposal_Stralsund_CentralPlaza" type="Marker3D" parent="."]
+editor_description = "Planning reference only: proposed central plaza in a moderately widened Altstadt, approximately 55 m west of the existing town centre. Keep the harbour shoreline as the eastern anchor; preserve Knieperteich and Frankenteich by shifting the lake belt west/southwest. Build compact street blocks and market squares around this point. Marker height is schematic; adjust after terrain work. No terrain, lakes or buildings have been moved."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 805, 26, -305)
+gizmo_extents = 8.0
+metadata/proposal_only = true
+
 [node name="EditorCache" type="Node3D" parent="." unique_id=752478650]
 script = ExtResource("59_03nvo")
 metadata/initialized_roads = true
