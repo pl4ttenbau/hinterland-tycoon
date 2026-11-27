@@ -11,3 +11,7 @@ class_name IndustryBuildingType extends Resource
 @export var construction_cost: int = -1
 @export_file("*.tscn") var preview_scene_path: String
 @export var construction_materials: Array[TransformedGood] = []
+
+## Optional picker image: preview.png in the building scene's folder.
+func get_preview_img_path() -> String:
+	return scene_path.get_base_dir().path_join("preview.png")

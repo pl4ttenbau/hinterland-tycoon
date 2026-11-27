@@ -35,11 +35,22 @@ var running_msec: int = -1
 ## Distinguish this controller's own speed updates from external corrections.
 var _writing_speed: bool = false
 var _rollout_end_distance: float = INF
-
-## Expose the existing speed scale for the speedometer.
-var current_speed_percentage: float:
-	get(): return self.speed.current
-	set(value): self.speed.current = value
+## Share of full power the driver currently applies (0..1). Rises over NOTCH_UP_SECONDS while driving,
+## drops to zero when braking or stopping. Makes starts gradual instead of an instant leap to full force.
+var _throttle: float = 0.0
+## How far the brakes are applied (0..1). Builds up over TrainDynamics.BRAKE_BUILD_UP_SECONDS while
+## braking and falls over BRAKE_RELEASE_SECONDS afterwards; power only returns once it reaches zero.
+var _brake_level: float = 0.0
+## Time to open the throttle from idle to full power. Real drivers notch up over several seconds to avoid
+## wheel slip and coupling snatch; this is a large part of why trains feel heavy when starting.
+const NOTCH_UP_SECONDS: float = 8.0
+## Time for released brakes to stop dragging. Vacuum and air brakes refill and lift the blocks slowly.
+const BRAKE_RELEASE_SECONDS: float = 2.0
+## Most acceleration the driver asks traction for. Physics says what a locomotive *can* do: a light
+## Saxon IV K manages 1.1 m/s² at full regulator and cutoff, right at the slipping limit. Drivers never
+## run like that; passenger trains are driven at about 0.3–0.5 m/s², and a narrow-gauge steam train
+## pulls away far more gently. Heavy trains stay below this anyway, because their pull runs out first.
+const DRIVER_MAX_ACCELERATION: float = 0.2
 
 ## Elapsed engine time since start, preserving the former motor API.
 var running_time: int:
@@ -96,6 +107,8 @@ func cancel_rollout() -> void:
 func stop() -> void:
 	self._rollout_end_distance = INF
 	self.is_started = false
+	self._throttle = 0.0
+	self._brake_level = 0.0
 	self.running_msec = -1
 	self._set_speed_mps(0.0)
 	self.stopped.emit()
@@ -113,9 +126,13 @@ func get_max_speed_mps() -> float:
 func get_speed_mps() -> float:
 	return self.speed_mps
 
-## Distance needed to stop from the current speed with service braking.
+## Applied traction control for effects; engine load is independent of wheel speed.
+func get_traction_load() -> float:
+	return clampf(_throttle, 0.0, 1.0) if is_started and not derailed else 0.0
+
+## Map distance needed to stop from the current speed with service braking.
 func get_stopping_distance() -> float:
-	return TrainDynamics.stopping_distance(self.speed_mps)
+	return self.get_dynamics().stopping_distance(self.speed_mps) * GameConstants.MAP_DISTANCE_SCALE
 
 ## Distance the train may still travel before it must stand: the rollout limit, the end of the known route,
 ## or the stopping point before the first signal ahead that shows stop.
@@ -136,7 +153,7 @@ func get_signal_authority() -> float:
 		return INF
 	var front: float = self.get_front_distance()
 	var lead_half: float = 0.0
-	for veh3d: Vehicle3D in self.train.vehicles:
+	for veh3d: RailVehicle3D in self.train.vehicles:
 		if is_equal_approx(self.get_vehicle_distance(veh3d), front):
 			lead_half = maxf(lead_half, RailSignalBlocks.half_length(veh3d))
 	var ahead: Array = []
@@ -162,6 +179,9 @@ func get_signal_authority() -> float:
 	return INF
 
 ## Accelerate towards the driver's target, or brake for the target, the brake control or the authority end.
+## Every step solves the equation of motion (RailPhysics.acceleration) for the forces acting right now:
+## traction through the notched-up throttle, running resistance, and the brakes when slowing down.
+## Gradients are not fed in yet (grade 0); tracks do not expose their slope to movement so far.
 func update_speed(delta_seconds: float) -> void:
 	if self.derailed or not self.is_started:
 		return
@@ -171,17 +191,48 @@ func update_speed(delta_seconds: float) -> void:
 	## the path adds its own margin beyond that.
 	if self.get_active_path() != null:
 		var next_speed: float = self.speed_mps + dynamics.traction_acceleration(self.speed_mps) * delta_seconds
-		self.get_active_path().ensure_lookahead(self.get_front_distance() + TrainDynamics.stopping_distance(next_speed))
-	var authority_mps: float = TrainDynamics.approach_speed(self.get_movement_authority())
+		self.get_active_path().ensure_lookahead(self.get_front_distance()
+			+ dynamics.stopping_distance(next_speed) * GameConstants.MAP_DISTANCE_SCALE)
+	## Authority is measured on the map; the physics needs the real distance it stands for.
+	## Only the part of the brake build-up that has not happened yet still delays the stop.
+	var response: float = TrainDynamics.brake_response_seconds() * (1.0 - self._brake_level)
+	var authority_mps: float = dynamics.approach_speed(self.get_movement_authority() / GameConstants.MAP_DISTANCE_SCALE, response)
 	var desired: float = minf(target_mps, authority_mps)
-	var next: float = self.speed_mps
-	if next < desired:
-		next = minf(desired, next + dynamics.traction_acceleration(next) * delta_seconds)
-	elif next > desired:
-		## Following the stopping curve: each step lands back on it, so the effective rate is the service rate.
-		var braking: bool = self.speed.brake_applied or next > authority_mps
-		var deceleration: float = TrainDynamics.BRAKE_DECELERATION if braking else TrainDynamics.SERVICE_DECELERATION
-		next = maxf(desired, next - deceleration * delta_seconds)
+	var v: float = self.speed_mps
+	var resistance: float = dynamics.resistance_force(v)
+	var next: float = v
+	if v <= desired and self._brake_level > 0.0:
+		## Brakes still releasing: they keep dragging at their fading level, and no power is applied yet.
+		self._brake_level = RailPhysics.approach_rate_limited(self._brake_level, 0.0, 1.0 / BRAKE_RELEASE_SECONDS, delta_seconds)
+		var dragging: float = self._brake_level * dynamics.service_brake_force()
+		var drag_deceleration: float = RailPhysics.deceleration(dynamics.mass_kg, v, dragging, resistance, 0.0, dynamics.mass_factor)
+		next = maxf(0.0, v - drag_deceleration * delta_seconds)
+	elif v <= desired:
+		## Driving, or holding speed: power is applied gradually, like a driver notching up. Holding needs
+		## traction too, or resistance would drag the train below its target every tick.
+		## Standing with nothing requested is idling: the throttle stays shut so the next start is gradual.
+		var throttle_goal: float = 1.0 if desired > 0.0 else 0.0
+		self._throttle = RailPhysics.approach_rate_limited(self._throttle, throttle_goal, 1.0 / NOTCH_UP_SECONDS, delta_seconds)
+		var acceleration: float = RailPhysics.acceleration(dynamics.mass_kg, v,
+			dynamics.traction_force(v, self._throttle), resistance, 0.0, 0.0, dynamics.mass_factor)
+		## The driver eases off rather than using everything a light engine has (see DRIVER_MAX_ACCELERATION).
+		acceleration = minf(acceleration, DRIVER_MAX_ACCELERATION)
+		## Never past the target. Below the balancing speed acceleration can turn negative, and the train
+		## settles where traction equals resistance instead of reaching an unreachable target.
+		next = minf(desired, v + acceleration * delta_seconds)
+	else:
+		## Power off before braking; it is notched up from zero again afterwards.
+		self._throttle = 0.0
+		## The brakes bite gradually along the train (see TrainDynamics.BRAKE_BUILD_UP_SECONDS).
+		self._brake_level = RailPhysics.approach_rate_limited(self._brake_level, 1.0,
+			1.0 / TrainDynamics.BRAKE_BUILD_UP_SECONDS, delta_seconds)
+		## The driver's brake and a lowered target use the service brake. Only running over the planned
+		## stopping curve (a signal or buffer suddenly closer) calls for the full brake. Following that curve,
+		## each step lands back on it, so the effective rate there is the planned service rate.
+		var full: bool = v > authority_mps
+		var brake: float = self._brake_level * (dynamics.full_brake_force() if full else dynamics.service_brake_force())
+		var deceleration: float = RailPhysics.deceleration(dynamics.mass_kg, v, brake, resistance, 0.0, dynamics.mass_factor)
+		next = maxf(desired, v - deceleration * delta_seconds)
 	self._set_speed_mps(next, dynamics.max_speed_mps)
 
 ## Keep the fraction shown by the UI in step with the physical speed.
@@ -211,7 +262,8 @@ func get_active_path() -> ActiveRailVehiclePath:
 func move_forwards(delta_seconds: float) -> void:
 	if self.derailed or self.get_active_path() == null:
 		return
-	var tick_dist: float = self.speed_mps * delta_seconds
+	## Real speed, scaled to the map (see GameConstants.MAP_DISTANCE_SCALE).
+	var tick_dist: float = self.speed_mps * delta_seconds * GameConstants.MAP_DISTANCE_SCALE
 	if is_zero_approx(tick_dist):
 		return
 	var rollout_remaining: float = self._rollout_end_distance - self.m_passed_since_start
@@ -231,10 +283,10 @@ func move_forwards(delta_seconds: float) -> void:
 		self._set_speed_mps(0.0)
 
 ## Carriages keep their physical order when the train travels backwards.
-func get_vehicle_distance(veh3d: Vehicle3D) -> float:
+func get_vehicle_distance(veh3d: RailVehicle3D) -> float:
 	return self.m_passed_since_start + veh3d.offset_to_first * (1.0 if self.is_reversed else -1.0)
 
-func get_vehicle_segment(veh3d: Vehicle3D) -> VehiclePathSegment:
+func get_vehicle_segment(veh3d: RailVehicle3D) -> VehiclePathSegment:
 	return active_path.segments[active_path.get_segment_index(get_vehicle_distance(veh3d))]
 
 func is_parked() -> bool:
@@ -245,13 +297,13 @@ func is_parked() -> bool:
 func get_front_distance() -> float:
 	## The first vehicle leads normally; the last vehicle leads after reversing.
 	var front_distance: float = self.m_passed_since_start
-	for veh3d: Vehicle3D in self.train.vehicles:
+	for veh3d: RailVehicle3D in self.train.vehicles:
 		front_distance = maxf(front_distance, self.get_vehicle_distance(veh3d))
 	return front_distance
 
 ## A fork under the body of any vehicle is occupied, including a stopped wagon.
 func occupies_path_distance(distance: float) -> bool:
-	for veh3d: Vehicle3D in self.train.vehicles:
+	for veh3d: RailVehicle3D in self.train.vehicles:
 		## Include half the body length on either side of the vehicle centre.
 		var half_length: float = veh3d.vehicle_obj.veh_type.length_metres * 0.5
 		if absf(self.get_vehicle_distance(veh3d) - distance) <= half_length + 0.01:
@@ -268,7 +320,7 @@ func place_vehicles() -> void:
 	var path: ActiveRailVehiclePath = self.get_active_path()
 	if path == null or path.curve.point_count < 2:
 		return
-	for veh3d: Vehicle3D in self.train.vehicles:
+	for veh3d: RailVehicle3D in self.train.vehicles:
 		var distance: float = self.get_vehicle_distance(veh3d)
 		var target_transf: Transform3D = get_rail_transform(distance)
 		if is_reversed != veh3d.faces_rear:

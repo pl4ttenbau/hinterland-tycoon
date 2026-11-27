@@ -1,6 +1,5 @@
-class_name GameMenuDialog extends MenuShellDialog
+## In-game menu. Empty for now; the frame's Close button is its only control.
+class_name GameMenuDialog extends ModalGameDialog
 
 func _ready() -> void:
-	dialog_key = "GameMenuDialog"
-	title_text = "Game menu"
-	super._ready()
+	%CancelButton.grab_focus()

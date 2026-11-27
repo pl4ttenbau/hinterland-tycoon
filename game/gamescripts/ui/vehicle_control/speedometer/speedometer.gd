@@ -1,53 +1,48 @@
+## Needle speedometer for the train the player is driving, on a fixed km/h scale.
+##
+## The scale is static on purpose: a full needle always means MAX_SPEED_KMH, whatever the consist can do,
+## so readings compare between trains (the old version showed a fraction of each consist's top speed).
+## The dial face is a Soviet brake manometer reading 0–12; read ×10 it is a 0–120 km/h scale.
+##
+## Self-contained scene (scenes/ui/ingame/vehicle_control/speedometer.tscn): it shows and hides itself as the
+## player enters and leaves trains and reads the physical speed every frame. Polling instead of a signal,
+## because the speed changes on almost every physics tick while moving anyway.
 class_name SpeedometerControl extends Control
 
-const LINE_ROTATION_ZERO := -35.0
-const LINE_ROTATION_MAX := 35.0
+## Speed at full needle deflection: the "12" mark on the dial.
+const MAX_SPEED_KMH: float = 120.0
 
-@export_storage var current_vehicle: Train3D
+## Needle angles in degrees at 0 and at MAX_SPEED_KMH, matching the dial's printed arc.
+## Exported so the needle can be lined up with the artwork in the editor.
+@export_range(-180.0, 180.0) var zero_angle_degrees: float = -35.0
+@export_range(-180.0, 180.0) var max_angle_degrees: float = 35.0
 
-@export_storage var current_speed: float = 0.0:
-	set(value):
-		current_speed = value
-		self.adjust_speedometer()
-	get():
-		return current_speed
+## Train the player is driving; null while on foot.
+var train: Train3D
 
-func _enter_tree() -> void:
-	self.visible = false
-	# connect to vehicle signals
-	SignalBus.player_entered_train.connect(Callable(self, "_train_entered"))
-	SignalBus.vehicle_exited.connect(Callable(self, "_vehicle_exited"))
-	
-func adjust_speedometer():
-	var angle: float = self.current_speed * self.get_angle_range() + LINE_ROTATION_ZERO
-	self.get_speed_line().rotation_degrees = angle
-	
-#region Vehicle Callbacks
-func _train_entered(vehicle: Train3D):
-	# set current vehicle & speed
-	self.current_vehicle = vehicle
-	self.current_speed = self.current_vehicle.movement.current_speed_percentage
-	# connect to motor speed sifnal
-	vehicle.movement.speed.changed.connect(Callable(self, "_on_motor_speed_changed"))
-	# and show control
-	self.visible = true
-	
-func _vehicle_exited():
-	# disconnect signals
-	self.current_vehicle.movement.speed.changed.disconnect(Callable(self, "_on_motor_speed_changed"))
-	# clear current speed & vehicle & hide
-	self.current_vehicle = null
-	self.current_speed = 0.0
-	self.visible = false
-	
-func _on_motor_speed_changed(speed: float):
-	self.current_speed = speed
-#endregion
-	
-#region Getters
-func get_speed_line() -> Line2D:
-	return $SpeedLine
-	
-func get_angle_range() -> float:
-	return absf(LINE_ROTATION_ZERO) + absf(LINE_ROTATION_MAX)
-#endregion
+@onready var _needle: Line2D = %SpeedLine
+
+func _ready() -> void:
+	SignalBus.player_entered_train.connect(self._on_train_entered)
+	SignalBus.player_exited_train.connect(self._on_train_exited)
+	self._show_speed_kmh(0.0)
+
+func _process(_delta: float) -> void:
+	if not is_instance_valid(self.train) or not is_instance_valid(self.train.movement):
+		return
+	self._show_speed_kmh(RailPhysics.mps_to_kmh(absf(self.train.movement.speed_mps)))
+
+## Turn the needle for the given speed. Speeds beyond the scale pin the needle at the end stop,
+## like a real instrument, instead of wrapping around.
+func _show_speed_kmh(speed_kmh: float) -> void:
+	var fraction: float = clampf(speed_kmh / MAX_SPEED_KMH, 0.0, 1.0)
+	self._needle.rotation_degrees = lerpf(self.zero_angle_degrees, self.max_angle_degrees, fraction)
+	## Exact reading on hover, since the dial has only every 20 km/h printed.
+	self.tooltip_text = "%d km/h" % roundi(speed_kmh)
+
+func _on_train_entered(entered: Train3D) -> void:
+	self.train = entered
+
+func _on_train_exited() -> void:
+	self.train = null
+	self._show_speed_kmh(0.0)

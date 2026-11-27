@@ -1,0 +1,69 @@
+{
+  "historical_source": "doc/harzmountains_pics/StadtplanWernigerode67.webp",
+  "layout": "Compressed model connections, not surveyed positions. Kirchstraße/Klint church approach, Oberengengasse, Dammstraße–Forckestraße–Lindenbergstraße junction south of old town.",
+  "added_routes": [
+    {
+      "id": 325,
+      "name": "Wernigerode Kirchstraße und Klint"
+    },
+    {
+      "id": 326,
+      "name": "Wernigerode Oberengengasse"
+    },
+    {
+      "id": 327,
+      "name": "Wernigerode Dammstraße"
+    },
+    {
+      "id": 328,
+      "name": "Wernigerode Forckestraße"
+    },
+    {
+      "id": 329,
+      "name": "Wernigerode Lindenbergstraße"
+    }
+  ],
+  "split_piece_ids": [
+    320,
+    321,
+    322,
+    323,
+    324
+  ],
+  "changed_ids": [
+    26,
+    31,
+    33,
+    42,
+    116,
+    117,
+    220,
+    243,
+    246,
+    263,
+    265,
+    266,
+    272,
+    320,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    329
+  ],
+  "count": 322,
+  "max_grade": 0.162,
+  "terrain_and_ground_paint_unchanged": true,
+  "world_and_buildings_unchanged": true,
+  "park_side_link_added": false,
+  "short_stream_crossing": {
+    "road": "Forckestraße",
+    "road_at_bank_height": true,
+    "bridge_scenery_placed": false
+  },
+  "native_validation": "322 road curves, reference scene and world scene loaded successfully; endpoint links checked reciprocal and coincident."
+}

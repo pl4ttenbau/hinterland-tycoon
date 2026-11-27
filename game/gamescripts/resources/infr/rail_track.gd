@@ -1,6 +1,6 @@
 @icon("res://assets/icons/icon_rail_track_white.png")
 @warning_ignore("missing_tool")
-class_name RailTrackData extends AbstractTrack
+class_name RailTrackData extends AbstractInfrLine
 
 @export var nodes: Array[RailNodeData] = []
 @export var hideFill: bool = false
@@ -9,17 +9,7 @@ class_name RailTrackData extends AbstractTrack
 @export_storage var start_tangent: Vector3
 
 # child objects
-@export var node_stations: Array[NodeStationLinkData] = []
-@export var forks: Array[RailNodeForkData] = []
-
-const NEAR_DISTANCE_MAX: float = 100.0
-## Distance from the track curve to the top of the rail mesh, in metres.
-const RAIL_HEAD_HEIGHT_METRES: Dictionary[String, float] = {
-	"NORMAL_GAUGE": 0.262066,
-	InfrType.GAUGE_1000_MM: 0.262066,
-	"750_MM": 0.262066,
-	"600_MM": 0.262066,
-}
+@export var forks: Array[RailJunctionArm] = []
 
 func _init():
 	super(Enums.EntityTypes.RAIL)
@@ -27,43 +17,39 @@ func _init():
 static func get_by_num(_rail_num: int) -> RailTrackData:
 	return Managers.rails.track_storage.get_by_num(_rail_num)
 
+## Gauge definition from the rail type catalog; null when the catalog cannot load.
+func get_rail_type() -> RailType:
+	if GameTypes.rail_types.is_empty() and GameTypes.ensure_initialized() != OK:
+		return null
+	return GameTypes.get_rail_type(self.infr_type_key)
+
+## Distance from the track curve to the top of the rail, in metres.
 func get_rail_head_height() -> float:
-	# Legacy track types use the standard-gauge scene.
-	return RAIL_HEAD_HEIGHT_METRES.get(self.infr_type_key, RAIL_HEAD_HEIGHT_METRES["NORMAL_GAUGE"])
+	var definition: RailType = self.get_rail_type()
+	return definition.rail_head_height_metres if definition != null else 0.0
 
 func get_gauge_mm() -> int:
-	if self.infr_type_key == InfrType.GAUGE_1000_MM:
-		return 1000
-	if self.infr_type_key == "750_MM":
-		return 750
-	if self.infr_type_key == "600_MM":
-		return 600
-	return 1435
+	var definition: RailType = self.get_rail_type()
+	return definition.gauge_mm if definition != null else 0
 	
-#region Add Nodes
-func add_node(rail_node: RailNodeData, update: bool):
-	self.nodes.append(rail_node) 
-	self.vertices.append(rail_node.position)
-	if update:
-		self.build_curve()
-		self.track_changed.emit()
-	
-func add_fork(rail_fork: RailNodeForkData):
+#region Nodes & Forks
+func get_nodes() -> Array:
+	return self.nodes
+
+func add_fork(rail_fork: RailJunctionArm):
 	self.forks.append(rail_fork)
 #endregion
 
-func build_curve() -> void:
-	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = true
-	# add points to curve (optionally with curve handles)
-	for node: RailNodeData in self.nodes:
-		self.curve.add_point(node.position, node.handle_in, node.handle_out)
-	if self.curve.point_count >= 2 and not self.start_tangent.is_zero_approx():
-		var first_span: float = self.vertices[0].distance_to(self.vertices[1])
-		self.curve.set_point_out(0, self.start_tangent * (first_span / 3.0))
-	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	InfrUtils.smooth_curve3d(self.curve, true)
-	self.curve_built.emit(self.curve)
+#region Curve
+func _curve_up_vector_enabled() -> bool:
+	return true
+
+## A track built off a junction leaves it along the approach direction.
+func _adjust_curve_handles(built: Curve3D) -> void:
+	if built.point_count >= 2 and not self.start_tangent.is_zero_approx():
+		var first_span: float = self.nodes[0].position.distance_to(self.nodes[1].position)
+		built.set_point_out(0, self.start_tangent * (first_span / 3.0))
+#endregion
 
 ## The endpoint handle points into the track. Negate it for travel into the junction.
 func get_tangent_into_endpoint(node: RailNodeData) -> Vector3:
@@ -80,45 +66,21 @@ func get_tangent_into_endpoint(node: RailNodeData) -> Vector3:
 	var tangent: Vector3 = node.position - adjacent_pos - adjacent_handle
 	return tangent.normalized() if not tangent.is_zero_approx() else adjacent_pos.direction_to(node.position)
 
-#region Distance Check
-func is_near(pos: Vector3) -> bool:
-	if self.get_start_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	elif self._get_center().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	elif self.get_end_pos().distance_to(pos) <= NEAR_DISTANCE_MAX:
-		return true
-	return false
-#endregion
-
 #region Get Nodes
+## Typed shortcuts for rail callers.
 func get_rail_node(_i: int) -> RailNodeData:
-	if _i >= 0 && _i < self.nodes.size():
-		return self.nodes.get(_i)
-	return null
+	return self.get_node_at(_i)
 	
 func get_end_node() -> RailNodeData:
-	var last_i: int = self.nodes.size() -1
-	return self.nodes[last_i]
+	return self.last_node()
 
-func has_node_index(_index: int) -> bool:
-	var last_i: int = self.nodes.size() -1
-	return _index >= 0 && _index <= last_i
-
-func get_node_forks() -> Array[RailNodeForkData]:
-	var node_forks: Array[RailNodeForkData] = []
+func get_node_forks() -> Array[RailJunctionArm]:
+	var node_forks: Array[RailJunctionArm] = []
 	if self.nodes[0].fork:
 		node_forks.append(self.nodes[0].fork)
 	if self.get_end_node().fork:
 		node_forks.append(self.get_end_node().fork)
 	return node_forks
-
-func get_node_at_pos(abs_pos: Vector3) -> RailNodeData:
-	for any_node: RailNodeData in self.nodes:
-		if any_node.position.is_equal_approx(abs_pos):
-			return any_node
-	Loggie.warn("Cannot find RailNode at %v on track %d" % [abs_pos, self.num])
-	return null
 #endregion
 
 func _to_string() -> String:

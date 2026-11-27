@@ -64,8 +64,12 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 	definition.model_scene_path = data["model_scene_path"]
 	definition.max_speed_kmh = int(data["max_speed_kmh"]) if data.get("max_speed_kmh") != null else null
 	definition.has_motor = data["has_motor"]
+	definition.motor_type = GameEnums.MotorType.get(data.get("motor_type", "UNKNOWN"))
 	definition.length_metres = float(data.get("length_metres", 0.0))
 	definition.mass_tonnes = float(data["mass_tonnes"]) if data.get("mass_tonnes") != null else null
+	definition.service_mass_tonnes = float(data["service_mass_tonnes"]) if data.get("service_mass_tonnes") != null else null
+	definition.adhesive_mass_tonnes = float(data["adhesive_mass_tonnes"]) if data.get("adhesive_mass_tonnes") != null else null
+	definition.braked_mass_tonnes = float(data["braked_mass_tonnes"]) if data.get("braked_mass_tonnes") != null else null
 	definition.motor_power_kw = float(data["motor_power_kw"]) if data.get("motor_power_kw") != null else null
 	definition.tractive_effort_kn = float(data["tractive_effort_kn"]) if data.get("tractive_effort_kn") != null else null
 	definition.purchase_price = int(data["purchase_price"]) if data.get("purchase_price") != null else null
@@ -74,6 +78,13 @@ static func _apply_fields(definition: VehicleTypeData, data: Dictionary) -> void
 		definition.capacity = GoodsCapacity.of_json(data["capacity"])
 
 static func _is_valid(data: Dictionary, road_vehicle: bool = false) -> bool:
+	var motor_type: Variant = data.get("motor_type", "UNKNOWN")
+	if not motor_type is String or not GameEnums.MotorType.has(motor_type):
+		push_error("Vehicle %s has an invalid motor_type" % data.get("key", ""))
+		return false
+	if not data.get("has_motor", false) and motor_type != "UNKNOWN":
+		push_error("Unpowered vehicle %s cannot specify a motor_type" % data.get("key", ""))
+		return false
 	var price: Variant = data.get("purchase_price")
 	if price != null and (not _is_number(price) or not is_finite(float(price)) \
 			or price <= 0 or int(price) != price):
@@ -94,12 +105,25 @@ static func _is_valid(data: Dictionary, road_vehicle: bool = false) -> bool:
 		if not _is_number(length) or not is_finite(float(length)) or length <= 0:
 			push_error("Vehicle %s requires a positive length" % data["key"])
 			return false
-	for field: String in ["mass_tonnes", "motor_power_kw", "tractive_effort_kn"]:
+	## Zero is meaningful for power (unpowered) and braked mass (unbraked); a zero mass or effort is not.
+	for field: String in ["mass_tonnes", "service_mass_tonnes", "adhesive_mass_tonnes", "braked_mass_tonnes",
+			"motor_power_kw", "tractive_effort_kn"]:
 		var value: Variant = data.get(field)
 		if value != null and (not _is_number(value) or not is_finite(float(value)) \
-				or value < 0 or (field != "motor_power_kw" and value == 0)):
+				or value < 0 or (field not in ["motor_power_kw", "braked_mass_tonnes"] and value == 0)):
 			push_error("Vehicle %s has an invalid %s" % [data["key"], field])
 			return false
+	## Fuel and water only ever add weight, and driven axles carry part of the vehicle, never more.
+	var empty_mass: Variant = data.get("mass_tonnes")
+	var service_mass: Variant = data.get("service_mass_tonnes")
+	if empty_mass != null and service_mass != null and service_mass < empty_mass:
+		push_error("Vehicle %s has a service mass below its empty mass" % data["key"])
+		return false
+	var adhesive_mass: Variant = data.get("adhesive_mass_tonnes")
+	var running_mass: Variant = service_mass if service_mass != null else empty_mass
+	if adhesive_mass != null and running_mass != null and adhesive_mass > running_mass:
+		push_error("Vehicle %s has more adhesive mass than it weighs" % data["key"])
+		return false
 	if not data.get("has_motor") is bool:
 		return false
 	var infrastructure: Variant = data.get("usable_infr")

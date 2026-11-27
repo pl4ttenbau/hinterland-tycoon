@@ -2,14 +2,13 @@ class_name NewRailBuilder extends Node
 
 const BEDDING_OFFSET := Vector3(0, 0.2, 0)
 const Quote = preload("res://game/gamescripts/resources/infr/rail_construction_quote.gd")
-const ConfirmDialog = preload("res://game/gamescripts/ui/dialogs/build/rail_construction_dialog.gd")
 const CONFIRM_SCENE := preload("res://scenes/ui/dialogs/build/rail_construction_dialog.tscn")
 
 var _mode: UiModeBuildInfr
 var _approach: RailNodeData
 var _draft: RailTrackData
 var _preview: RailTrack3D
-var _confirmation: ConfirmDialog
+var _confirmation: RailConstructionDialog
 var _committing: bool = false
 
 
@@ -37,7 +36,7 @@ func _on_terrain_click(pos: Vector3) -> void:
 
 
 func _start_preview(end: Vector3) -> void:
-	var approach_track: RailTrackData = _approach.parent_track
+	var approach_track: RailTrackData = _approach.parent_line
 	_draft = RailTrackData.new()
 	_draft.start_pos = _mode.at_fork.pos
 	_draft.infr_type_key = approach_track.infr_type_key
@@ -45,7 +44,7 @@ func _start_preview(end: Vector3) -> void:
 	_draft.add_node(RailNodeData.of(0, _draft.start_pos, _draft), false)
 	_append_point(end)
 
-	var scene: PackedScene = load(RailTrack3D.get_scene_path(_draft))
+	var scene: PackedScene = _draft.get_rail_type().scene
 	_preview = scene.instantiate()
 	_preview.is_construction_preview = true
 	_preview.track = _draft
@@ -56,7 +55,6 @@ func _start_preview(end: Vector3) -> void:
 
 func _append_point(pos: Vector3) -> void:
 	var node := RailNodeData.of(_draft.nodes.size(), pos, _draft)
-	node.rel_position = pos - _draft.start_pos
 	_draft.add_node(node, true)
 
 
@@ -75,29 +73,29 @@ func review_plan() -> void:
 	if _draft == null or _confirmation != null or UiState.current_diag != null:
 		return
 	var cost: int = (_draft.nodes.size() - 1) * CompanyData.TRACK_SEGMENT_COST
-	var dialog: ConfirmDialog = CONFIRM_SCENE.instantiate()
+	var dialog: RailConstructionDialog = CONFIRM_SCENE.instantiate()
 	dialog.quote = Quote.new(_draft.curve.get_baked_length(), _draft.get_gauge_mm(), cost)
-	dialog.build_requested.connect(_accept_plan.bind(dialog))
+	dialog.on_submit = _accept_plan.bind(dialog)
 	dialog.closed.connect(_on_confirmation_closed.bind(dialog))
 	_confirmation = dialog
 	add_child(dialog)
 
 
-func _accept_plan(dialog: ConfirmDialog) -> void:
+## The review dialog's submit handler. Returns why the track cannot be built,
+## or "" after building it, charging the company and closing the dialog.
+func _accept_plan(dialog: RailConstructionDialog) -> String:
 	if _committing or _confirmation != dialog or _draft == null or _mode == null:
-		return
-	var fork: NewRailForkData = _mode.at_fork
+		return "This rail plan is no longer active."
+	var fork: RailJunctionData = _mode.at_fork
 	var approach: RailNodeData = _get_approach(fork)
-	if approach == null or approach != _approach or approach.parent_track.infr_type_key != _draft.infr_type_key:
-		dialog.show_error("The rail connection changed. Start a new plan from the junction.")
-		return
+	if approach == null or approach != _approach or approach.parent_line.infr_type_key != _draft.infr_type_key:
+		return "The rail connection changed. Start a new plan from the junction."
 
 	_committing = true
 	var company := CompanyData.current()
 	if company != null and not company.spend(dialog.quote.price):
-		dialog.show_error(company.spending_error(dialog.quote.price))
 		_committing = false
-		return
+		return company.spending_error(dialog.quote.price)
 
 	# Transfer the very same smoothed curve from the preview to the registered track.
 	var track: RailTrackData = _draft
@@ -106,19 +104,20 @@ func _accept_plan(dialog: ConfirmDialog) -> void:
 	dialog.close_all()
 	_finish_build_mode()
 	_committing = false
+	return ""
 
 
-func _register_track(track: RailTrackData, fork: NewRailForkData) -> void:
+func _register_track(track: RailTrackData, fork: RailJunctionData) -> void:
 	var rails: RailsLoader = Managers.rails
-	track.num = rails.track_storage._max_num + 1
-	track.track_name = "New Track %d" % track.num
-	var connection := RailNodeForkData.new()
+	track.num = rails.track_storage.next_num()
+	track.line_name = "New Track %d" % track.num
+	var connection := RailJunctionArm.new()
 	connection.railNode = track.nodes[0]
 	track.nodes[0].fork = connection
 	track.add_fork(connection)
 
 	rails.fork_storage.add(connection)
-	# The track_added listener attaches the endpoint to the selected fork.
+	# The line_added listener attaches the endpoint to the selected fork.
 	rails.track_storage.add(track)
 	var view: RailTrack3D = rails.spawn_rail_track(track)
 	fork.refresh_setting()
@@ -128,21 +127,21 @@ func _register_track(track: RailTrackData, fork: NewRailForkData) -> void:
 	if is_instance_valid(world) and bed != null and bed.mesh != null:
 		var bounds: AABB = bed.mesh.get_aabb()
 		world.clear_rail_vegetation(track.curve, maxf(absf(bounds.position.x), absf(bounds.end.x)))
-	Loggie.info("Created connected track: %s" % track.track_name)
+	Loggie.info("Created connected track: %s" % track.line_name)
 
 
-func _get_approach(fork: NewRailForkData) -> RailNodeData:
+func _get_approach(fork: RailJunctionData) -> RailNodeData:
 	if fork == null or Managers.forks.get_fork_at_pos(fork.pos) != fork or fork.connected_tracks.is_empty():
 		return null
 	var approach_num: int = fork.get_static_track_num()
-	for connection: RailNodeForkData in fork.node_forks:
+	for connection: RailJunctionArm in fork.node_forks:
 		var node: RailNodeData = connection.railNode
 		if connection.track.num == approach_num and (node.is_first() or node.is_last()):
 			return node
 	return null
 
 
-func _on_confirmation_closed(_result: Variant, dialog: ConfirmDialog) -> void:
+func _on_confirmation_closed(_result: Variant, dialog: RailConstructionDialog) -> void:
 	if _confirmation == dialog:
 		_confirmation = null
 

@@ -28,7 +28,7 @@ func _run() -> void:
 func _test_model() -> bool:
 	var train: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate() as Train3D
 	train.movement.direction = Enums.PathDirection.TRACK_NODES_INCREASE
-	var locomotive: Vehicle3D = MODEL.instantiate() as Vehicle3D
+	var locomotive: RailVehicle3D = MODEL.instantiate() as RailVehicle3D
 	locomotive.vehicle_obj = VehicleData.new()
 	locomotive.train3d = train
 	train.add_vehicle(locomotive, true)

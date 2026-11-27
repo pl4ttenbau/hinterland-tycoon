@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://tru5uu3yqd0a"]
+
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_hfkvl"]
+[ext_resource type="PackedScene" uid="uid://dfiv5s5qibeir" path="res://assets/meshes/vehicles/rail/ghe_covered_wagon_1000mm/mesh/mesh_ghe_covered_wagon_1000_mm.tscn" id="2_vwe8r"]
+[ext_resource type="Script" uid="uid://bpv4u2x10mjwb" path="res://game/gamescripts/nodes/vehicle/vehicle_collider.gd" id="3_1q8tt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
+size = Vector3(2.289795, 3.088379, 9.461182)
+
+[node name="GheCoveredWagon1000Mm" type="Node3D" unique_id=810566189]
+script = ExtResource("1_hfkvl")
+metadata/_custom_type_script = "uid://bo44os5px2kcj"
+
+[node name="MeshGheCoveredWagon1000mm" parent="." unique_id=852778767 instance=ExtResource("2_vwe8r")]
+
+[node name="VehicleCollider" type="StaticBody3D" parent="." unique_id=2114313700]
+visible = false
+script = ExtResource("3_1q8tt")
+metadata/_custom_type_script = "uid://bpv4u2x10mjwb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleCollider" unique_id=1827291661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.542, 0)
+shape = SubResource("BoxShape3D_qwrwv")

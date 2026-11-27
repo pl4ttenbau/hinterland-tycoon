@@ -1,3 +1,6 @@
+## Industry dialog panel: where the industry trades. A connected interchange
+## shares one stock across its stops; otherwise a single stop, or the industry's
+## own stock when nothing is connected. Set industry to fill it.
 class_name IndustryStationList extends MarginContainer
 
 @export var industry: IndustryData:

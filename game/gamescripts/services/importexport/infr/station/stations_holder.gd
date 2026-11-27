@@ -3,8 +3,6 @@ class_name StationsHolder extends Node
 
 const STATION_3D_SCENE_PATH = "res://scenes/subscenes/infr/station/rail_station_3d.tscn"
 
-@export var node_stations_storage: NodeStationLinkStore = NodeStationLinkStore.new()
-
 @export var stations_objs: Array[RailStationData] = []
 @export var stations_by_num: Dictionary = {}
 var is_loaded: bool = false
@@ -18,7 +16,7 @@ func load_stations(catalog: InterchangesLoader = null) -> Error:
 		catalog = Managers.interchanges
 	if catalog == null or not catalog.is_loaded or Managers.rails == null:
 		return ERR_UNCONFIGURED
-	# Validate all anchors before any stop can replace an existing node link.
+	# Validate all anchors before any stop is registered, so a bad record leaves no partial network.
 	var error: Error = _validate_rail_anchors(catalog.stop_definitions)
 	if error != OK:
 		return error
@@ -36,13 +34,13 @@ func _validate_rail_anchors(definitions: Array[Dictionary]) -> Error:
 		if definition["domain"] != "RAIL":
 			continue
 		var track: RailTrackData = Managers.rails.track_storage._by_id.get(int(definition["trackNum"]))
-		if track == null or not track.has_node_index(int(definition["nodeIndex"])) \
-				or track.nodes[int(definition["nodeIndex"])].station != null:
+		var place: LineAnchor = LineAnchor.from_dict(definition)
+		if track == null or place == null or not place.is_valid_on(track):
 			return ERR_INVALID_DATA
 	return OK
 
 func _load_rail_stop(definition: Dictionary, catalog: InterchangesLoader) -> Error:
-	var station: RailStationData = RailStationData.of_dict(definition)
+	var station: RailStationData = StopMapper.rail_stop_from_dict(definition)
 	if station == null:
 		return ERR_INVALID_DATA
 	var error: Error = catalog.register_stop(station, int(definition["interchangeNum"]))
@@ -51,31 +49,23 @@ func _load_rail_stop(definition: Dictionary, catalog: InterchangesLoader) -> Err
 	_register_rail_stop(station)
 	return OK
 
-func _register_rail_stop(station: RailStationData) -> NodeStationLinkData:
+## Index the stop and resolve its world position from its track and anchor. The anchor is normalized
+## here, once the track exists: records may name any node, the invariant wants the nearest one.
+func _register_rail_stop(station: RailStationData) -> void:
 	var track: RailTrackData = Managers.rails.track_storage._by_id[station.track_num]
-	var node: RailNodeData = track.nodes[station.node_index]
-	var link := NodeStationLinkData.of(node, station.num)
-	link.num = station.num
-	link.hide_building = station.hide_building
-	if station.curve_offset >= 0.0:
-		link.position = track.curve.sample_baked(station.curve_offset)
-	else:
-		node.station = link
-	station.connect_node_station(link)
-	station.position = link.position
+	station.anchor = station.anchor.normalized(track)
+	station.position = station.anchor.position_on(track)
 	stations_objs.append(station)
 	stations_by_num[station.num] = station
-	add_station_link_from_node(link)
-	return link
 
 func create_3d_stations() -> void:
 	for station_obj: RailStationData in stations_objs:
 		create_station_3d(station_obj)
 
 func add_runtime_stop(station: RailStationData, building: RailPlatform3D) -> void:
-	var link: NodeStationLinkData = _register_rail_stop(station)
+	_register_rail_stop(station)
 	create_station_3d(station)
-	spawn_station_link(link, building).adjust_rotation_from_track()
+	spawn_platform(station, building)
 
 func create_station_3d(station_obj: RailStationData):
 	var instance: RailStation3D = load(STATION_3D_SCENE_PATH).instantiate()
@@ -85,13 +75,6 @@ func create_station_3d(station_obj: RailStationData):
 	self.add_child(instance, true)
 	instance.name = RailStation3D.STATION_NAME_FORMAT % [station_obj.town_name, station_obj.station_name]
 
-func connect_node_stations_to_parents():
-	for track: RailTrackData in Managers.rails.track_storage.get_all():
-		for rail_node_station: NodeStationLinkData in track.node_stations:
-			var parent_num: int = rail_node_station.parent_station_num
-			var parent := RailStationData.get_by_num(parent_num)
-			parent.connect_node_station(rail_node_station)
-
 func get_station_3d_with_num(_station_num: int) -> RailStation3D:
 	for any_child: Node in self.get_children():
 		if any_child is RailStation3D:
@@ -99,35 +82,33 @@ func get_station_3d_with_num(_station_num: int) -> RailStation3D:
 				return any_child as RailStation3D
 	Loggie.warn("Cannot find RailStation3D object for station num %d" % _station_num)
 	return null
+
+## The rail stops on one track, e.g. to keep the track from being erased or edited under them.
+func stops_on_track(track_num: int) -> Array[RailStationData]:
+	var found: Array[RailStationData] = []
+	for station: RailStationData in self.stations_objs:
+		if station.track_num == track_num:
+			found.append(station)
+	return found
 #endregion
 
-#region Node Station Links
-## called from RailNodeData.parse_and_add_special
-func add_station_link_from_node(node_station_link: NodeStationLinkData):
-	# add to track & global station list
-	var station_track: RailTrackData = node_station_link.parent_node.parent_track
-	station_track.node_stations.append(node_station_link)
-	node_stations_storage.add(node_station_link)
-
-## Station objects are created with the rail tracks, but instanciated one by one here
-## this only happens, after the parents - RailStationData - are loaded & spawned in scene tree
-## after this, station initialization has been completely finished
-func spawn_station_links():
+#region Platforms
+## Platforms are spawned once the RailStation3D parents exist (create_3d_stations, after the towns).
+func spawn_platforms():
 	Loggie.info("Spawning stations..")
-	for track: RailTrackData in Managers.rails.track_storage.get_all():
-		for node_station_link: NodeStationLinkData in track.node_stations:
-			var outer_station: NodeStationLink3D = self.spawn_station_link(node_station_link)
-			outer_station.adjust_rotation_from_track()
-	SignalBus.node_station_links_spawned.emit()
+	for station: RailStationData in self.stations_objs:
+		self.spawn_platform(station)
+	SignalBus.rail_stops_spawned.emit()
 
-func spawn_station_link(node_station_link: NodeStationLinkData, building: RailPlatform3D = null) -> NodeStationLink3D:
-	var station_link_3d: NodeStationLink3D = node_station_link.spawn(building)
-	self.node_stations_storage.add_container(station_link_3d)
-	# add to parent station
-	var station_3d: RailStation3D = self.get_station_3d_with_num(node_station_link.parent_station_num)
-	station_link_3d.position = station_3d.to_local(node_station_link.position)
-	station_3d.add_child(station_link_3d, true)
-	return station_link_3d
+## The platform view of one stop, placed under its RailStation3D and turned to the track.
+func spawn_platform(station: RailStationData, building: RailPlatform3D = null) -> RailStop3D:
+	var platform: RailStop3D = RailStop3D.of(station, building)
+	station.platform_view = platform
+	var station_3d: RailStation3D = self.get_station_3d_with_num(station.num)
+	platform.position = station_3d.to_local(station.position)
+	station_3d.add_child(platform, true)
+	platform.adjust_rotation_from_track()
+	return platform
 #endregion
 
 #region Vehicle At Station
@@ -140,7 +121,7 @@ func get_station_around_pos(vec3: Vector3) -> RailStationData:
 
 #region Callbacks
 func _on_stations_loaded(_stations: Array[RailStationData]) -> void:
-	self.spawn_station_links()
+	self.spawn_platforms()
 
 func _on_map_towns_loaded(_map_towns: Array[TownData]):
 	# Data and interchange membership were resolved before terrain/town spawning.
@@ -151,19 +132,8 @@ func _on_map_towns_loaded(_map_towns: Array[TownData]):
 #endregion
 
 func _exit_tree() -> void:
-	# Rail resources can outlive their scene through global/editor references.
-	# Detach our session-owned adapters instead of leaving stale station links.
-	for link: NodeStationLinkData in self.node_stations_storage.get_all():
-		if link.parent_node != null:
-			if link.parent_node.station == link:
-				link.parent_node.station = null
-			var track := link.parent_node.parent_track as RailTrackData
-			if track != null:
-				track.node_stations.erase(link)
-		link.parent_station = null
-		link.parent_node = null
-		link.station3d = null
+	# Stops can outlive their scene through global/editor references; drop the views they point to.
 	for station: RailStationData in self.stations_objs:
-		station.node_stations.clear()
+		station.platform_view = null
 	self.stations_objs.clear()
 	self.stations_by_num.clear()

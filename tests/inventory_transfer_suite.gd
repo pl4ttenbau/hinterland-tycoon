@@ -170,13 +170,11 @@ func test_manual_passenger_arrival() -> bool:
 	dialog._move_right.pressed.emit()
 	check(bag.inventory().get_amount("passenger") == 0, "The player's unload button completes the trip")
 	check(destination.inventory.get_amount("passenger") == 0, "Arrivals do not join waiting stock")
-	check(dialog._status.text.contains("arrived at Stralsund HBF"), "The dialog reports arrival")
+	check(dialog.get_node("%Status").text.contains("arrived at Stralsund HBF"), "The dialog reports arrival")
 
 	dialog.close_all()
 	await tree.process_frame
 	view.free()
-	stop.connections.parent = null
-	destination.connections.parent = null
 	Managers.interchanges = previous_catalog
 	catalog.free()
 	return true
@@ -319,8 +317,6 @@ func _test_nearby_stops() -> bool:
 	check(InventoryPresentation.destination(201) != InventoryPresentation.destination(202), "Unknown interchange IDs retain distinct fallback labels")
 	stops.free()
 	interchanges.free()
-	for record: RoadStationData in records:
-		record.connections.parent = null
 	Managers.road_stops = previous_stops
 	Managers.interchanges = previous_interchanges
 	return true

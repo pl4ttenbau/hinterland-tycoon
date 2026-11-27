@@ -1,0 +1,397 @@
+{
+  "excluded": "Gdansk, Malbork and Pruszcz Gdanski city centres are outside area A; no city centre was shifted inside the frame.",
+  "gps_source": "Original twenty: OpenStreetMap place nodes from the retained source extract. Four Gdańsk additions: mapped residential-street points from osm_gdansk_neighbourhood_streets.json.",
+  "selection": "Original twenty settlements retained unchanged, plus four agreed Gdańsk neighbourhoods for the 1968 scenario. The original ranking used mixed-date modern population references; additions are historical/gameplay choices, not a population ranking.",
+  "towns": [
+    {
+      "latitude": 54.0865756,
+      "longitude": 18.7936245,
+      "name": "Tczew",
+      "osm_node_id": 30116761.0,
+      "place": "town",
+      "population_note": "OSM population tag; reference date 2021-06-30. Not a 1960 census count.",
+      "population_reference": 57990.0,
+      "population_source": "https://www.openstreetmap.org/node/30116761",
+      "town_num": 1,
+      "world_position": [
+        -930.353393554688,
+        41.2526359558105,
+        1353.15124511719
+      ]
+    },
+    {
+      "latitude": 54.2146299,
+      "longitude": 19.1150846,
+      "name": "Nowy Dwór Gdański",
+      "osm_node_id": 31531183.0,
+      "place": "town",
+      "population_note": "OSM population tag; reference date 2021-06-30. Not a 1960 census count.",
+      "population_reference": 9618.0,
+      "population_source": "https://www.openstreetmap.org/node/31531183",
+      "town_num": 2,
+      "world_position": [
+        1161.75317382812,
+        16.0989189147949,
+        -71.4776229858398
+      ]
+    },
+    {
+      "latitude": 54.1342754,
+      "longitude": 19.0086861,
+      "name": "Nowy Staw",
+      "osm_node_id": 31531177.0,
+      "place": "town",
+      "population_note": "OSM population tag; reference date 2021-06-30. Not a 1960 census count.",
+      "population_reference": 4101.0,
+      "population_source": "https://www.openstreetmap.org/node/31531177",
+      "town_num": 3,
+      "world_position": [
+        469.297058105469,
+        16.1516036987305,
+        822.481689453125
+      ]
+    },
+    {
+      "latitude": 54.1735247,
+      "longitude": 18.6959942,
+      "name": "Pszczółki",
+      "osm_node_id": 31530963.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 4053.0,
+      "population_source": "https://www.openstreetmap.org/node/31530963",
+      "town_num": 4,
+      "world_position": [
+        -1565.74475097656,
+        30.4882183074951,
+        385.82568359375
+      ]
+    },
+    {
+      "latitude": 54.3286519,
+      "longitude": 19.1130637,
+      "name": "Stegna",
+      "osm_node_id": 31530640.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 4000.0,
+      "population_source": "https://www.openstreetmap.org/node/31530640",
+      "town_num": 5,
+      "world_position": [
+        1148.60083007812,
+        17.561336517334,
+        -1339.99438476562
+      ]
+    },
+    {
+      "latitude": 54.330086,
+      "longitude": 19.177209,
+      "name": "Sztutowo",
+      "osm_node_id": 31530415.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 2988.0,
+      "population_source": "https://www.openstreetmap.org/node/31530415",
+      "town_num": 6,
+      "world_position": [
+        1566.06726074219,
+        16.3618793487549,
+        -1355.94909667969
+      ]
+    },
+    {
+      "latitude": 54.0546851,
+      "longitude": 19.2035336,
+      "name": "Stare Pole",
+      "osm_node_id": 31530664.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1834.0,
+      "population_source": "https://www.openstreetmap.org/node/31530664",
+      "town_num": 7,
+      "world_position": [
+        1737.39135742188,
+        16.110294342041,
+        1707.93920898438
+      ]
+    },
+    {
+      "latitude": 54.18424,
+      "longitude": 18.679,
+      "name": "Skowarcz",
+      "osm_node_id": 31530730.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1425.0,
+      "population_source": "https://www.openstreetmap.org/node/31530730",
+      "town_num": 8,
+      "world_position": [
+        -1676.34533691406,
+        32.6981811523438,
+        266.615875244141
+      ]
+    },
+    {
+      "latitude": 54.2009435,
+      "longitude": 18.662265,
+      "name": "Różyny",
+      "osm_node_id": 31530897.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1300.0,
+      "population_source": "https://www.openstreetmap.org/node/31530897",
+      "town_num": 9,
+      "world_position": [
+        -1785.25903320312,
+        43.9856758117676,
+        80.7862243652344
+      ]
+    },
+    {
+      "latitude": 54.2441816,
+      "longitude": 18.8457262,
+      "name": "Cedry Wielkie",
+      "osm_node_id": 31532431.0,
+      "place": "village",
+      "population_note": "Permanent residents at end of 2025.",
+      "population_reference": 1293.0,
+      "population_source": "https://www.cedry-wielkie.pl/index.php/5032-jest-nas-nieco-wiecej",
+      "town_num": 10,
+      "world_position": [
+        -591.268371582031,
+        17.7300834655762,
+        -400.246002197266
+      ]
+    },
+    {
+      "latitude": 54.0970049,
+      "longitude": 18.830126,
+      "name": "Lisewo Malborskie",
+      "osm_node_id": 692621819.0,
+      "place": "village",
+      "population_note": "Municipal solectwo figure; covers the settlement and its statistical locality.",
+      "population_reference": 1265.0,
+      "population_source": "https://www.lichnowy.pl/asp/gmina-w-liczbach%2C420",
+      "town_num": 11,
+      "world_position": [
+        -692.796630859375,
+        21.3739147186279,
+        1237.12329101562
+      ]
+    },
+    {
+      "latitude": 54.2064236,
+      "longitude": 18.7673271,
+      "name": "Suchy Dąb",
+      "osm_node_id": 31530606.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1110.0,
+      "population_source": "https://www.openstreetmap.org/node/31530606",
+      "town_num": 12,
+      "world_position": [
+        -1101.50048828125,
+        16.0951137542725,
+        19.8190536499023
+      ]
+    },
+    {
+      "latitude": 54.23832,
+      "longitude": 18.7522738,
+      "name": "Grabiny-Zameczek",
+      "osm_node_id": 31532174.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1106.0,
+      "population_source": "https://www.openstreetmap.org/node/31532174",
+      "town_num": 13,
+      "world_position": [
+        -1199.46948242188,
+        18.4766044616699,
+        -335.034545898438
+      ]
+    },
+    {
+      "latitude": 54.2130083,
+      "longitude": 18.9523594,
+      "name": "Ostaszewo",
+      "osm_node_id": 31531120.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1017.0,
+      "population_source": "https://www.openstreetmap.org/node/31531120",
+      "town_num": 14,
+      "world_position": [
+        102.715156555176,
+        18.2614517211914,
+        -53.4370079040527
+      ]
+    },
+    {
+      "latitude": 54.0982114,
+      "longitude": 18.7363268,
+      "name": "Szpęgawa",
+      "osm_node_id": 31530468.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 1000.0,
+      "population_source": "https://www.openstreetmap.org/node/31530468",
+      "town_num": 15,
+      "world_position": [
+        -1303.25463867188,
+        25.0333347320557,
+        1223.70068359375
+      ]
+    },
+    {
+      "latitude": 54.1146061,
+      "longitude": 18.9133593,
+      "name": "Lichnowy",
+      "osm_node_id": 31531632.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 973.0,
+      "population_source": "https://www.openstreetmap.org/node/31531632",
+      "town_num": 16,
+      "world_position": [
+        -151.10285949707,
+        21.3705711364746,
+        1041.30651855469
+      ]
+    },
+    {
+      "latitude": 54.1891651,
+      "longitude": 19.1497002,
+      "name": "Kmiecin",
+      "osm_node_id": 31531885.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 970.0,
+      "population_source": "https://www.openstreetmap.org/node/31531885",
+      "town_num": 17,
+      "world_position": [
+        1387.03625488281,
+        17.3207302093506,
+        211.823196411133
+      ]
+    },
+    {
+      "latitude": 54.3352789,
+      "longitude": 19.0322591,
+      "name": "Jantar",
+      "osm_node_id": 31532037.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 940.0,
+      "population_source": "https://www.openstreetmap.org/node/31532037",
+      "town_num": 18,
+      "world_position": [
+        622.71337890625,
+        17.2958965301514,
+        -1413.72106933594
+      ]
+    },
+    {
+      "latitude": 54.3306084,
+      "longitude": 18.8006014,
+      "name": "Wiślinka",
+      "osm_node_id": 31529698.0,
+      "place": "village",
+      "population_note": "OSM population tag; reference date unspecified. Not a 1960 census count.",
+      "population_reference": 939.0,
+      "population_source": "https://www.openstreetmap.org/node/31529698",
+      "town_num": 19,
+      "world_position": [
+        -884.94677734375,
+        16.1937294006348,
+        -1361.76086425781
+      ]
+    },
+    {
+      "latitude": 54.2732674,
+      "longitude": 18.8679543,
+      "name": "Cedry Małe",
+      "osm_node_id": 31532432.0,
+      "place": "village",
+      "population_note": "Permanent residents at end of 2025.",
+      "population_reference": 931.0,
+      "population_source": "https://www.cedry-wielkie.pl/index.php/5032-jest-nas-nieco-wiecej",
+      "town_num": 20,
+      "world_position": [
+        -446.604827880859,
+        16.2382774353027,
+        -723.831115722656
+      ]
+    },
+    {
+      "town_num": 21,
+      "name": "Gdańsk–Stogi",
+      "latitude": 54.36163,
+      "longitude": 18.7194009,
+      "world_position": [
+        -1413.410767,
+        17.648745,
+        -1706.88208
+      ],
+      "is_minor": false,
+      "population_reference": null,
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "location_source": "https://www.openstreetmap.org/way/1336986131",
+      "location_anchor": "Stryjewskiego high-street point in the residential settlement; not the district polygon centroid.",
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=STOGI"
+    },
+    {
+      "town_num": 22,
+      "name": "Gdańsk–Przeróbka",
+      "latitude": 54.3561118,
+      "longitude": 18.6839331,
+      "world_position": [
+        -1644.240112,
+        17.16704,
+        -1645.491089
+      ],
+      "is_minor": false,
+      "population_reference": null,
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "location_source": "https://www.openstreetmap.org/way/256364046",
+      "location_anchor": "Bajki / Kryniczna residential junction, in the estate quarter developed during the 1960s.",
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=PRZER%C3%93BKA"
+    },
+    {
+      "town_num": 23,
+      "name": "Gdańsk–Rudno (Długie Ogrody)",
+      "latitude": 54.3510668,
+      "longitude": 18.6739703,
+      "world_position": [
+        -1709.079346,
+        17.733269,
+        -1589.364502
+      ],
+      "is_minor": false,
+      "population_reference": null,
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "location_source": "https://www.openstreetmap.org/node/1847623797",
+      "location_anchor": "Głęboka / Mostek junction in the Rudno housing quarter; the marker represents the adjoining Długie Ogrody area as well.",
+      "history_source": "https://gdansk.gedanopedia.pl/?title=RUDNO"
+    },
+    {
+      "town_num": 24,
+      "name": "Gdańsk–Górki Zachodnie",
+      "latitude": 54.3545794,
+      "longitude": 18.7753425,
+      "world_position": [
+        -1049.335205,
+        17.571831,
+        -1628.442871
+      ],
+      "is_minor": true,
+      "population_reference": null,
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "location_source": "https://www.openstreetmap.org/way/182591717",
+      "location_anchor": "Łowicka residential-road corner near the shipyard-workers housing area; separated from the shipyard marker.",
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=G%C3%93RKI_ZACHODNIE"
+    }
+  ],
+  "scenario_year": 1968,
+  "gdansk_neighbourhood_additions": "See gdansk_town_additions.json for location anchors, sources, terrain validation and major/minor policy."
+}

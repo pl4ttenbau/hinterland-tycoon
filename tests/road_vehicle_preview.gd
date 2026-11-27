@@ -68,7 +68,6 @@ func _add_road(roads: RoadsLoader) -> void:
 	# The route editor needs authored node data as well as rendered curve geometry.
 	for index: int in range(data.curve.point_count):
 		var node := RoadNode.of(index, data.curve.get_point_position(index), data)
-		node.rel_position = node.position
 		data.add_node(node)
 	roads.storage.add(data)
 	var road: RoadWay3D = load(RoadData.RURAL_ROAD_SCENE_PATH).instantiate()
@@ -78,7 +77,8 @@ func _add_road(roads: RoadsLoader) -> void:
 
 ## Show a raised, solid rail bed alongside the road for on-foot inspection.
 func _add_rail() -> void:
-	var rail: RailTrack3D = load(RailTrack3D.SCENE_PATH_750MM).instantiate()
+	GameTypes.ensure_initialized()
+	var rail: RailTrack3D = GameTypes.get_rail_type("750_MM").scene.instantiate()
 	rail.position = Vector3(-15, 0, 0)
 	rail.curve = Curve3D.new()
 	rail.curve.add_point(Vector3.ZERO)

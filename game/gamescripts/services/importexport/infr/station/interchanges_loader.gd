@@ -56,11 +56,10 @@ static func validate_definitions(records: Variant) -> Error:
 	return OK
 
 static func _validate_interchange_record(record: Variant, parent_ids: Dictionary) -> Error:
-	if not record is Dictionary or not InterchangeData.is_valid_num(record.get("num")) \
-			or not record.get("name") is String or record["name"].strip_edges().is_empty() \
-			or not InterchangeData.is_valid_num(record.get("townNum")) \
-			or not record.get("townName", "") is String or not record.get("stops") is Array:
-		return _invalid("Interchange requires num, name, townNum and a stops array")
+	# The record itself (fields, types) is the mapper's; numbering across records is the catalog's.
+	var problem: String = InterchangeMapper.validation_error(record)
+	if not problem.is_empty():
+		return _invalid(problem)
 	var parent_id: int = int(record["num"])
 	if parent_ids.has(parent_id):
 		return _invalid("Duplicate interchange number %d" % parent_id)
@@ -68,10 +67,9 @@ static func _validate_interchange_record(record: Variant, parent_ids: Dictionary
 	return OK
 
 static func _validate_stop_record(stop: Variant, stop_ids: Dictionary, rail_anchors: Dictionary) -> Error:
-	if not stop is Dictionary or not InterchangeData.is_valid_num(stop.get("num")) \
-			or not InterchangeData.is_valid_num(stop.get("nodeIndex")) \
-			or stop.get("domain") not in ["RAIL", "ROAD"]:
-		return _invalid("Stop requires num, nodeIndex and domain RAIL or ROAD")
+	var problem: String = StopMapper.validation_error(stop)
+	if not problem.is_empty():
+		return _invalid(problem)
 	for shared_field: String in ["name", "townNum", "townName", "interchangeNum"]:
 		if stop.has(shared_field):
 			return _invalid("Stop %s belongs to its parent interchange" % shared_field)
@@ -79,34 +77,23 @@ static func _validate_stop_record(stop: Variant, stop_ids: Dictionary, rail_anch
 	if stop_ids.has(stop_id):
 		return _invalid("Duplicate stop number %d across rail/road stops" % stop_id)
 	stop_ids[stop_id] = true
-	var error: Error = _validate_stop_anchor(stop, rail_anchors)
-	if error != OK:
-		return error
-	if stop.has("hideBuilding") and not stop["hideBuilding"] is bool:
-		return _invalid("Stop hideBuilding must be boolean")
-	if stop.has("type") and not stop["type"] is String:
-		return _invalid("Stop type must be a string")
-	return OK
+	return _validate_rail_place(stop, rail_anchors)
 
-static func _validate_stop_anchor(stop: Dictionary, rail_anchors: Dictionary) -> Error:
-	var anchor_key: String = "trackNum" if stop["domain"] == "RAIL" else "roadNum"
-	if not InterchangeData.is_valid_num(stop.get(anchor_key)):
-		return _invalid("Stop %d requires %s" % [int(stop["num"]), anchor_key])
-	if stop["domain"] == "RAIL":
-		var anchor := Vector2i(int(stop["trackNum"]), int(stop["nodeIndex"]))
-		if rail_anchors.has(anchor):
-			return _invalid("Two rail stops use track/node %s" % anchor)
-		rail_anchors[anchor] = true
-	elif RoadStationData.direction_key(stop).is_empty():
-		return _invalid("Road stop %d requires roadStopDirection ROAD_NODES_INCREASE, ROAD_NODES_DECREASE or BOTH_DIRECTIONS" % int(stop["num"]))
+## Same track, node and offset (to the centimetre): two platforms in one place. Road stops are not
+## checked: two of them may share a place, e.g. one per direction.
+static func _validate_rail_place(stop: Dictionary, rail_anchors: Dictionary) -> Error:
+	if stop["domain"] != "RAIL":
+		return OK
+	var place: LineAnchor = LineAnchor.from_dict(stop)
+	var key: String = "%d:%s" % [int(stop["trackNum"]), place]
+	if rail_anchors.has(key):
+		return _invalid("Two rail stops use track %d at %s" % [int(stop["trackNum"]), place])
+	rail_anchors[key] = true
 	return OK
 
 func _create_interchange(record: Dictionary) -> void:
-	var interchange := InterchangeData.new()
-	interchange.num = int(record["num"])
-	interchange.interchange_name = record["name"]
-	interchange.town_num = int(record["townNum"])
-	interchange.town_name = record.get("townName", "")
+	# Validated with the whole catalog before, so the mapper cannot fail here.
+	var interchange: InterchangeData = InterchangeMapper.interchange_from_dict(record)
 	self.interchanges.append(interchange)
 	self.by_num[interchange.num] = interchange
 	for stop: Dictionary in record["stops"]:
@@ -116,14 +103,14 @@ func _create_interchange(record: Dictionary) -> void:
 		self.stop_definitions.append(definition)
 
 ## Infrastructure must be loaded before this pass. Fail before either stop loader
-## can register a partial rail/road network or overwrite a RailNode.station link.
+## can register a partial rail/road network.
 func validate_anchors(rails: RailTrackStore, roads: RoadStore) -> Error:
 	if not self.is_loaded:
 		return ERR_UNCONFIGURED
 	for definition: Dictionary in self.stop_definitions:
 		var number_key: String = "trackNum" if definition["domain"] == "RAIL" else "roadNum"
 		var lookup: Dictionary = rails._by_id if definition["domain"] == "RAIL" else roads._by_id
-		var infrastructure: AbstractTrack = lookup.get(int(definition[number_key]))
+		var infrastructure: AbstractInfrLine = lookup.get(int(definition[number_key]))
 		if infrastructure == null or int(definition["nodeIndex"]) >= infrastructure.nodes.size():
 			return _invalid("Stop %d references missing infrastructure or node" % int(definition["num"]))
 	return OK
@@ -190,7 +177,7 @@ func _on_map_towns_loaded(towns: Array[TownData]) -> void:
 		if interchange.town_name.is_empty():
 			interchange.town_name = town.town_name
 		for stop: AbstractStation in interchange.stops:
-			stop.set("connected_town", town)
+			stop.connected_town = town
 			town.connect_new_station(stop)
 
 func clear() -> void:
@@ -206,14 +193,11 @@ func clear() -> void:
 func _disconnect_interchange(interchange: InterchangeData) -> void:
 	interchange.connections.clear_houses()
 	interchange.connections.clear_industries()
-	interchange.connections.parent = null
 	for stop: AbstractStation in interchange.stops:
-		var town: TownData = stop.get("connected_town")
+		var town: TownData = stop.connected_town
 		if town != null:
 			town.stations.erase(stop)
-		stop.set("connected_town", null)
-		stop.interchange = null
-		stop.connections.parent = null
+		stop.connected_town = null
 	interchange.stops.clear()
 	interchange.connected_town = null
 

@@ -33,7 +33,7 @@ func _update_controls() -> void:
 	%ReverseStatus.text = "Reverse" if reverse else "Forward"
 	%BrakeStatus.text = "Applied" if brake else "Released"
 	%BrakeStatus.add_theme_color_override("font_color", Color("edb75d") if brake else Color("abb7a1"))
-	%BrakeButton.tooltip_text = "Service brake: slows and holds the train. Release to resume the selected target speed."
+	%BrakeButton.tooltip_text = "Brake: a service stop that slows and holds the train. Release to resume the selected target speed."
 
 func _on_brake_click(applied: bool) -> void:
 	if not is_instance_valid(curr_train) or not is_instance_valid(curr_train.movement):

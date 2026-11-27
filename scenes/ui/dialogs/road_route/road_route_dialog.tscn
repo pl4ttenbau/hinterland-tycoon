@@ -11,45 +11,45 @@ dialog_key = "RoadRouteDialog"
 title_text = "Road vehicle route"
 success_btn_text = "Save plan"
 
-[node name="OuterPanel" parent="." index="0"]
+[node name="Panel" parent="." index="0"]
 custom_minimum_size = Vector2(724, 0)
 
-[node name="Headline" parent="OuterPanel/OuterMargin/OuterVLayout" index="0"]
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
 text = "Road vehicle route"
 
-[node name="Tabs" type="TabContainer" parent="OuterPanel/OuterMargin/OuterVLayout/Content" index="0"]
+[node name="Tabs" type="TabContainer" parent="Panel/Padding/Layout/Content" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
 
-[node name="Route points" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="0" instance=ExtResource("2")]
+[node name="Route points" parent="Panel/Padding/Layout/Content/Tabs" index="0" instance=ExtResource("2")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Load and unload" parent="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs" index="1" instance=ExtResource("3")]
+[node name="Load and unload" parent="Panel/Padding/Layout/Content/Tabs" index="1" instance=ExtResource("3")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="OkButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="0"]
+[node name="RepeatRoute" type="CheckBox" parent="Panel/Padding/Layout/Buttons" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "After the last point, return to the first and repeat all visits and actions."
+text = "Repeat route"
+
+[node name="OkButton" parent="Panel/Padding/Layout/Buttons" index="1"]
 visible = true
 size_flags_horizontal = 3
 theme_type_variation = &"ManagementButton"
 text = "Save plan"
 
-[node name="StartButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="1"]
+[node name="StartButton" type="Button" parent="Panel/Padding/Layout/Buttons" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"PrimaryButton"
 text = "Start plan"
 
-[node name="CancelButton" parent="OuterPanel/OuterMargin/OuterVLayout/Buttons" index="2"]
+[node name="CancelButton" parent="Panel/Padding/Layout/Buttons" index="3"]
 size_flags_horizontal = 3
 text = "Cancel"
-
-[connection signal="point_selected" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_on_point_selected"]
-[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Route points" to="." method="_show_status"]
-[connection signal="status_changed" from="OuterPanel/OuterMargin/OuterVLayout/Content/Tabs/Load and unload" to="." method="_show_status" binds=[true]]
-[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/OkButton" to="." method="_save"]
-[connection signal="pressed" from="OuterPanel/OuterMargin/OuterVLayout/Buttons/StartButton" to="." method="_start"]

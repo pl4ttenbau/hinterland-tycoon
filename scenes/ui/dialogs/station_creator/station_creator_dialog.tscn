@@ -1,5 +1,9 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/station_creator/new_station_fields.tscn" id="2_new"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/station_creator/existing_station_picker.tscn" id="3_existing"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/station_creator/road_stop_options.tscn" id="4_road"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/station_creator/rail_platform_options.tscn" id="5_rail"]
 [ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/station_creator/station_creator_dialog.gd" id="1_dialog"]
 
 [node name="StationCreatorDialog" type="Control"]
@@ -12,7 +16,7 @@ grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_dialog")
 
-[node name="OuterPanel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,120 +30,58 @@ offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="OuterPanel"]
+[node name="Padding" type="MarginContainer" parent="Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 18
 theme_override_constants/margin_right = 18
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="Form" type="VBoxContainer" parent="OuterPanel/Margin"]
+[node name="Layout" type="VBoxContainer" parent="Panel/Padding"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Headline" type="Label" parent="OuterPanel/Margin/Form"]
+[node name="Headline" type="Label" parent="Panel/Padding/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Create station"
 horizontal_alignment = 1
 
-[node name="NewStation" type="VBoxContainer" parent="OuterPanel/Margin/Form"]
+[node name="NewStation" parent="Panel/Padding/Layout" instance=ExtResource("2_new")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="OuterPanel/Margin/Form/NewStation"]
-layout_mode = 2
-text = "Station name"
-
-[node name="StationName" type="LineEdit" parent="OuterPanel/Margin/Form/NewStation"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="TownLabel" type="Label" parent="OuterPanel/Margin/Form/NewStation"]
-layout_mode = 2
-text = "Town"
-
-[node name="StationTown" type="OptionButton" parent="OuterPanel/Margin/Form/NewStation"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="ExistingStationOptions" type="VBoxContainer" parent="OuterPanel/Margin/Form"]
+[node name="ExistingStationOptions" parent="Panel/Padding/Layout" instance=ExtResource("3_existing")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="ExistingStationLabel" type="Label" parent="OuterPanel/Margin/Form/ExistingStationOptions"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Nearby station"
-autowrap_mode = 3
-
-[node name="ExistingStation" type="OptionButton" parent="OuterPanel/Margin/Form/ExistingStationOptions"]
+[node name="RoadOptions" parent="Panel/Padding/Layout" instance=ExtResource("4_road")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RoadOptions" type="VBoxContainer" parent="OuterPanel/Margin/Form"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="RoadSideLabel" type="Label" parent="OuterPanel/Margin/Form/RoadOptions"]
-layout_mode = 2
-text = "Side of the road"
-
-[node name="RoadSide" type="OptionButton" parent="OuterPanel/Margin/Form/RoadOptions"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Relative to the direction you were facing when you opened this dialog."
-
-[node name="RailOptions" type="VBoxContainer" parent="OuterPanel/Margin/Form"]
+[node name="RailOptions" parent="Panel/Padding/Layout" instance=ExtResource("5_rail")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="PlatformOptions" type="HBoxContainer" parent="OuterPanel/Margin/Form/RailOptions"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="TypeLabel" type="Label" parent="OuterPanel/Margin/Form/RailOptions/PlatformOptions"]
-layout_mode = 2
-text = "Type"
-
-[node name="PlatformType" type="OptionButton" parent="OuterPanel/Margin/Form/RailOptions/PlatformOptions"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SideLabel" type="Label" parent="OuterPanel/Margin/Form/RailOptions/PlatformOptions"]
-layout_mode = 2
-text = "Side"
-
-[node name="PlatformSide" type="OptionButton" parent="OuterPanel/Margin/Form/RailOptions/PlatformOptions"]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Looking from the track start toward its end."
-
-[node name="HidePlatform" type="CheckBox" parent="OuterPanel/Margin/Form/RailOptions"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Hide platform"
-
-[node name="Status" type="Label" parent="OuterPanel/Margin/Form"]
+[node name="Status" type="Label" parent="Panel/Padding/Layout"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 autowrap_mode = 3
 
-[node name="Buttons" type="HBoxContainer" parent="OuterPanel/Margin/Form"]
+[node name="Buttons" type="HBoxContainer" parent="Panel/Padding/Layout"]
 layout_mode = 2
 
-[node name="OkButton" type="Button" parent="OuterPanel/Margin/Form/Buttons"]
+[node name="OkButton" type="Button" parent="Panel/Padding/Layout/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create station"
 
-[node name="CancelButton" type="Button" parent="OuterPanel/Margin/Form/Buttons"]
+[node name="CancelButton" type="Button" parent="Panel/Padding/Layout/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

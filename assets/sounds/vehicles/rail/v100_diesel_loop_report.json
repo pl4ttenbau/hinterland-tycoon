@@ -1,0 +1,16 @@
+{
+  "source": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-brockenbahn/br202_diesel_295_301.wav",
+  "output": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-brockenbahn/v100_diesel_loop.wav",
+  "identity": "V100 diesel (user identification; source video BR 202)",
+  "duration_seconds": 5.740748299319728,
+  "sample_rate": 44100,
+  "channels": 2,
+  "crossfade_seconds": 0.25,
+  "peak_dbfs": -3,
+  "boundary_step": 0.0059115753533974524,
+  "max_internal_step": 0.23668609245112077,
+  "processing": "DC removal, 250 ms equal-power overlap crossfade, peak normalization; original preserved. No pitch or speed change.",
+  "reference_rpm": null,
+  "reference_speed_kmh": null,
+  "notes": "Cab recording; not auditioned by agent. Engine load and RPM are unverified; do not label as idle or sync engine pitch directly to train speed."
+}

@@ -50,7 +50,7 @@ func _run() -> bool:
 	vehicle_type.model_scene_path = "res://assets/meshes/vehicles/rail/fkb_t2_137_532/model_fkb_t2_137_532.tscn"
 	var vehicle_data := VehicleData.new()
 	vehicle_data.veh_type = vehicle_type
-	var vehicle: Vehicle3D = Vehicle3D.of_vehicle_obj(vehicle_data)
+	var vehicle: RailVehicle3D = RailVehicle3D.of_vehicle_obj(vehicle_data)
 	var visuals: Array[Node] = vehicle.find_children("*", "GeometryInstance3D", true, false)
 	_check(not visuals.is_empty(), "FKB T2 contains renderable geometry")
 	for visual: Node in visuals:

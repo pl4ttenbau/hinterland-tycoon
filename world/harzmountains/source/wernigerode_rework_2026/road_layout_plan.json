@@ -1,0 +1,89 @@
+{
+  "status": "CHECKPOINT_ONLY_NOT_APPLIED",
+  "date": "2026-11-26",
+  "world": "harzmountains",
+  "reference": "res://doc/harzmountains_pics/StadtplanWernigerode67.webp",
+  "authorization": {
+    "place_roads_and_stations": true,
+    "raze_obstructing_objects": true,
+    "adjust_terrain_heights_when_needed": true,
+    "retain_correct_waterways": true,
+    "remove_waterways_only_if_their_placement_is_shown_wrong": true,
+    "paint_road_ground": false
+  },
+  "requirements": [
+    "Every road connection must join segment endpoints in XYZ. Split every participating through road at T-junctions and four-way crossings.",
+    "Use current terrain samples to finalize elevations and curves; these XZ controls describe an indicative layout, not finished roads.",
+    "Keep JSON and the EditorObjects reference scene synchronized.",
+    "Use current input hashes to detect intervening user edits before applying.",
+    "Keep the existing sand texture paint unchanged; the user will repaint it."
+  ],
+  "junctions_xz": {
+    "gate_east": [3011.9, 1380.6],
+    "gate_west": [2984.3, 1379.9],
+    "market": [3082.0, 1355.0],
+    "burg_breite": [3120.0, 1345.0],
+    "johannis": [3120.6, 1316.0],
+    "rimker_tor": [3188.4, 1326.7],
+    "lustgarten": [3204.17, 1460.9],
+    "markt_north": [3049.0, 1332.9],
+    "bach_west": [3044.9, 1445.4],
+    "bach_klint": [3130.0, 1472.0],
+    "eisenberg_north": [2823.3, 1336.7],
+    "eisenberg_cross": [2840.0, 1470.0],
+    "lenin_eisenberg_south": [2925.0, 1550.0],
+    "lenin_cross": [2965.0, 1460.0],
+    "hasserode_join": [2717.2, 1782.9]
+  },
+  "remove_road_ids": [139, 140],
+  "replace_roads": [
+    {"num": 26, "name": "Wernigerode Burgstraße", "type": "cobblestone_road", "controls_xz": [[3120,1345],[3150,1366],[3177,1394],[3194,1424],[3204.17,1460.9]]},
+    {"num": 30, "name": "Wernigerode Große Bergstraße", "type": "cobblestone_road", "controls_xz": [[3120.6,1316],[3120,1345]]},
+    {"num": 31, "name": "Wernigerode Breite Straße Mitte", "type": "cobblestone_road", "controls_xz": [[3082,1355],[3120,1345]]},
+    {"num": 33, "name": "Wernigerode Marktstraße Nord", "type": "cobblestone_road", "controls_xz": [[3049,1332.9],[3065,1344],[3082,1355]]}
+  ],
+  "rename_existing_roads": [
+    {"num": 25, "name": "Wernigerode Johannisstraße West"},
+    {"num": 29, "name": "Wernigerode Johannisstraße Ost"},
+    {"num": 39, "name": "Wernigerode Salzbergstraße Toranbindung"},
+    {"num": 124, "name": "Wernigerode Ringstraße Westgasse"},
+    {"num": 125, "name": "Wernigerode Ringstraße Ostgasse"}
+  ],
+  "add_roads": [
+    {"key": "westernstrasse", "name": "Wernigerode Westernstraße", "type": "cobblestone_road", "controls_xz": [[3011.9,1380.6],[3045,1368],[3082,1355]]},
+    {"key": "breite_ost", "name": "Wernigerode Breite Straße Ost", "type": "cobblestone_road", "controls_xz": [[3120,1345],[3150,1336],[3188.4,1326.7]]},
+    {"key": "markt_klint", "name": "Wernigerode Marktstraße und Klint", "type": "cobblestone_road", "controls_xz": [[3082,1355],[3095,1380],[3116,1415],[3130,1440],[3130,1472]]},
+    {"key": "bachstrasse", "name": "Wernigerode Johann-Sebastian-Bach-Straße West", "type": "cobblestone_road", "controls_xz": [[3044.9,1445.4],[3060,1460],[3090,1472],[3130,1472],[3160,1466],[3204.17,1460.9]]},
+    {"key": "leninstrasse", "name": "Wernigerode Leninstraße", "type": "rural_road", "controls_xz": [[2717.2,1782.9],[2700,1763],[2683,1746],[2670,1727],[2700,1705],[2730,1685],[2765,1660],[2800,1635],[2835,1615],[2865,1595],[2895,1575],[2925,1550],[2948,1520],[2960,1490],[2965,1460],[2965,1430],[2972,1400],[2984.3,1379.9]], "note": "The initial straight sketch overlapped the Holtemme. This bank-side route is provisional: check the Hasserode river/rail crossing, clearances, final grade and bridge support before saving."},
+    {"key": "eisenberg_loop", "name": "Wernigerode Eisenberg", "type": "rural_road", "controls_xz": [[2823.3,1336.7],[2800,1390],[2810,1435],[2840,1470],[2890,1515],[2925,1550]]},
+    {"key": "eisenberg_cross", "name": "Wernigerode Eisenberg Querstraße", "type": "rural_road", "controls_xz": [[2840,1470],[2890,1440],[2965,1460]]}
+  ],
+  "known_required_splits": [
+    {"existing_road": 40, "point_index": 2, "xz": [3044.9,1445.4], "reason": "Bachstraße T-junction"},
+    {"existing_road": 118, "point_index": 7, "xz": [2823.3,1336.7], "reason": "Eisenberg loop T-junction"},
+    {"planned_road": "bachstrasse", "xz": [3130,1472], "reason": "Klint T-junction"},
+    {"planned_road": "leninstrasse", "xz": [2925,1550], "reason": "Eisenberg south T-junction"},
+    {"planned_road": "leninstrasse", "xz": [2965,1460], "reason": "Eisenberg cross-street T-junction"},
+    {"planned_road": "eisenberg_loop", "xz": [2840,1470], "reason": "Eisenberg cross-street T-junction"}
+  ],
+  "station_changes": [
+    {"stop_num": 19, "interchange_num": 19, "track_num": 13, "old_node_index": 8, "proposed_node_index": 12, "proposed_position": [2993.7,5.7,1346.9], "note": "Move Westerntor north of the gate road crossing; check platform side and clearance on the current curve."},
+    {"interchange_num": 9, "track_num": 12, "proposed_xz": [2850,1667], "note": "Kirchstraße is currently an empty interchange. Add one passenger stop with a new unique stop ID and a valid LineAnchor; exact offset to fit current curve."}
+  ],
+  "landmark_layout": [
+    {"key": "rathaus", "approx_xz": [3079,1334], "existing_asset": "res://assets/meshes/structures/rathaus/rathaus.tscn", "note": "Candidate new placement north of the market; keep house/road clearances and a modest square. Asset footprint is about 12.8 by 8.8 after its internal 2.1 scale."},
+    {"key": "old_brewery", "approx_xz": [2910,1335], "note": "Reserve approximate area only. Verify the old parcel near the Georgii hospital; do not use the modern brewery location."},
+    {"key": "waldhofbad", "approx_xz": [2970,1280], "note": "Reserve a small outdoor pool/lawn area from the period plan; not an exact footprint."},
+    {"key": "lustgarten_orangerie", "approx_xz": [3300,1412], "note": "Keep parkland and castle views open; reserve for later detailed landscaping."},
+    {"key": "workshop", "approx_xz": [2960,1255], "note": "Keep existing depot branch; future compact workshop/coaling details."}
+  ],
+  "terrain_findings": [
+    "There was no running Godot editor and no local MCP bridge at checkpoint time.",
+    "Native Terrain3DRegion loading worked in an isolated headless project at /tmp/harz-layout-probe.",
+    "The inspected area uses 256 by 256 FORMAT_RF height images with one-unit sample spacing.",
+    "Region.get_location() returns an unset sentinel when directly loading these resources. Derive the region grid location from terrain3d_XX_ZZ.res filenames, as the earlier Gdańsk helper does; never use that sentinel to place or save regions.",
+    "Existing water channels are visible and broadly follow the expected Holtemme/inner-town drainage corridors. No evidence yet warrants deleting them.",
+    "The road proposal is fitted to native height samples, but longitudinal grades, all geometric crossings and river/rail clearances still require implementation and validation.",
+    "Terrain control maps and color maps must remain bit-for-bit unchanged when grading road beds. Protect submerged channel samples and unrelated terrain."
+  ]
+}

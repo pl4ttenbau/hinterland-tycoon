@@ -1,3 +1,7 @@
+## The train composition dialog's catalog: every rail vehicle type that fits the
+## depot's track gauge, optionally only powered ones (hide_wagons). Items report
+## clicks through SignalBus.dialog_vehicle_selection, so all items can update
+## their highlight; the list passes the choice on as selection_changed.
 class_name VehicleListUi extends MarginContainer
 
 const ITEMS_SCENE_PATH = "res://scenes/ui/list/vehicle_list/vehicle_list_item.tscn"

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/meshes/vehicles/rail/harz_99_23_24/mesh/harz_atlas.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://assets/meshes/vehicles/rail/harz_99_23_24/mesh/harz_99.23-24_weathered_black_albedo.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/meshes/vehicles/rail/harz_99_23_24/mesh/harz_99.23-24_weathered_black_surface.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/meshes/vehicles/rail/harz_99_23_24/mesh/harz_99.23-24_details_normal.png" id="4"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/albedo_map = ExtResource("2")
+shader_parameter/surface_map = ExtResource("3")
+shader_parameter/normal_map = ExtResource("4")
+shader_parameter/normal_strength = 0.78

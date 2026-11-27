@@ -1,0 +1,74 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="1_frame"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/train_coupling/train_coupling_dialog.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/train_coupling/coupling_consist_list.tscn" id="3_consist"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/train_coupling/coupling_neighbor_panel.tscn" id="4_neighbor"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/train_coupling/coupling_confirm_bar.tscn" id="5_confirm"]
+
+[node name="TrainCouplingDialog" instance=ExtResource("1_frame")]
+script = ExtResource("2_script")
+dialog_key = "TrainCouplingDialog"
+title_text = "Coupling"
+
+[node name="Panel" parent="." index="0"]
+custom_minimum_size = Vector2(704, 517)
+
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
+text = "Coupling"
+
+[node name="TrainStatus" type="Label" parent="Panel/Padding/Layout/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Columns" type="HBoxContainer" parent="Panel/Padding/Layout/Content" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Consist" parent="Panel/Padding/Layout/Content/Columns" instance=ExtResource("3_consist")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_stretch_ratio = 1.25
+
+[node name="Nearby" type="VBoxContainer" parent="Panel/Padding/Layout/Content/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="FrontPanel" parent="Panel/Padding/Layout/Content/Columns/Nearby" instance=ExtResource("4_neighbor")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NearbySeparator" type="HSeparator" parent="Panel/Padding/Layout/Content/Columns/Nearby"]
+layout_mode = 2
+
+[node name="RearPanel" parent="Panel/Padding/Layout/Content/Columns/Nearby" instance=ExtResource("4_neighbor")]
+unique_name_in_owner = true
+layout_mode = 2
+at_front = false
+
+[node name="ActionsSeparator" type="HSeparator" parent="Panel/Padding/Layout/Content" index="2"]
+layout_mode = 2
+
+[node name="SplitActions" type="HBoxContainer" parent="Panel/Padding/Layout/Content" index="3"]
+layout_mode = 2
+
+[node name="SplitAboveButton" type="Button" parent="Panel/Padding/Layout/Content/SplitActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Uncouple above"
+
+[node name="SplitBelowButton" type="Button" parent="Panel/Padding/Layout/Content/SplitActions"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Uncouple below"
+
+[node name="ConfirmBar" parent="Panel/Padding/Layout/Content" index="4" instance=ExtResource("5_confirm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RefreshTimer" type="Timer" parent="." index="1"]
+unique_name_in_owner = true
+wait_time = 0.25
+autostart = true

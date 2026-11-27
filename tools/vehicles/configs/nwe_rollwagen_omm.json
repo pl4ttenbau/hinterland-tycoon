@@ -1,0 +1,38 @@
+{
+  "key": "nwe_rollwagen_omm",
+  "destination": "assets/meshes/vehicles/rail/nwe_rollwagen_omm/mesh",
+  "assembly_blend": "/home/cornelinux/Dokumente/Assets/3D/Generation/BlenderCodex/projects/nwe_1000mm_rollwagen/exports/nwe_rollwagen_omm.blend",
+  "material_count": 2,
+  "coupler_y_metres": [
+    -5.95,
+    4.41
+  ],
+  "tread_z_metres": 0.02,
+  "components": [
+    {
+      "source": "/home/cornelinux/Dokumente/Assets/3D/Generation/BlenderCodex/projects/nwe_1000mm_rollwagen/exports/nwe_1000mm_rollwagen_merged_coupling_rod.blend",
+      "object": "nwe_1000mm_rollwagen_merged",
+      "name": "Rollwagen",
+      "triangles": 1488,
+      "atlas_uv": "Rollwagen_Texture"
+    },
+    {
+      "source": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/omm_open_wagon/omm_klagenfurt_weathered_2k.blend",
+      "object": "DR Ommu Klagenfurt",
+      "name": "Omm_Klagenfurt",
+      "offset_xyz": [
+        0,
+        0,
+        0.52
+      ],
+      "triangles": 1700,
+      "atlas_uv": "Atlas"
+    }
+  ],
+  "notes": [
+    "Upper wagon tread sits at Z=.52 on Rollwagen ledges; upper flanges intentionally extend below the ledge.",
+    "Coupler envelope uses attached/free eye centres, not rod tips or upper wagon buffers. One long rod per vehicle, at the rear (+Z in Godot).",
+    "3188 triangles total; earlier 3000 target exceeded by final accepted support and coupling details. No geometry reduced in this assembly.",
+    "Two independent meshes/materials explicitly requested. Existing Harz exporter logic generalized to JSON component configuration."
+  ]
+}

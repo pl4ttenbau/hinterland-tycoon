@@ -2,7 +2,6 @@
 ## godot --headless --path . res://tests/rail_construction_test.tscn -- --no-mcp
 extends Node
 
-const ConfirmDialog = preload("res://game/gamescripts/ui/dialogs/build/rail_construction_dialog.gd")
 const Grass = preload("res://game/gamescripts/nodes/world/terrain_grass.gd")
 const Wheat = preload("res://game/gamescripts/nodes/world/terrain_wheat.gd")
 
@@ -71,7 +70,7 @@ func _test_construction() -> bool:
 	approach.infr_type_key = "1000_MM"
 	var junction := RailNodeData.of(0, Vector3(12, 0.2, 10), approach)
 	junction.handle_out = Vector3(-3, 0, 0.3)
-	var endpoint := RailNodeForkData.new()
+	var endpoint := RailJunctionArm.new()
 	endpoint.railNode = junction
 	junction.fork = endpoint
 	approach.add_node(junction, false)
@@ -79,8 +78,8 @@ func _test_construction() -> bool:
 	approach.build_curve()
 	var approach_curve: Curve3D = approach.curve
 	services.rails.track_storage.add(approach)
-	var fork: NewRailForkData = services.forks.get_fork_at_pos(junction.position)
-	var fork_view: RailFork3D = services.forks.spawn_single_fork(fork)
+	var fork: RailJunctionData = services.forks.get_fork_at_pos(junction.position)
+	var fork_view: RailJunction3D = services.forks.spawn_single_fork(fork)
 	fork.refresh_setting()
 	var approach_segment := VehiclePathSegment.of_rail(approach.num, Enums.PathDirection.TRACK_NODES_DECREASE)
 	var active_path := ActiveRailVehiclePath.of_segment(null, approach_segment)
@@ -119,7 +118,7 @@ func _test_construction() -> bool:
 	enter.physical_keycode = KEY_ENTER
 	enter.pressed = true
 	get_viewport().push_input(enter)
-	var dialog := UiState.current_diag as ConfirmDialog
+	var dialog := UiState.current_diag as RailConstructionDialog
 	check(dialog != null, "Enter opens the rail confirmation")
 	if dialog == null:
 		return false
@@ -134,7 +133,7 @@ func _test_construction() -> bool:
 		and dialog.get_node("%PriceValue").text == CompanyData.format_cash(dialog.quote.price),
 		"The quote is visible in the review")
 	builder._on_terrain_click(Vector3(40, 0, 23))
-	dialog.get_node("%OkButton").pressed.emit()
+	dialog.get_node("%CancelButton").pressed.emit()
 	await get_tree().process_frame
 	check(UiState.current_diag == null and not UiState.movement_blocked
 		and player.walking_body.process_mode == Node.PROCESS_MODE_INHERIT and preview.curve == accepted_curve,
@@ -143,18 +142,18 @@ func _test_construction() -> bool:
 	# Change the cash after review to verify that acceptance rechecks funds.
 	# A rejected acceptance keeps the draft and never stamps a vegetation mask.
 	builder.review_plan()
-	dialog = UiState.current_diag as ConfirmDialog
+	dialog = UiState.current_diag as RailConstructionDialog
 	if dialog == null:
 		return false
 	player.company.cash = dialog.quote.price - 1
-	dialog.get_node("%BuildButton").pressed.emit()
+	dialog.get_node("%OkButton").pressed.emit()
 	check(UiState.current_diag == dialog and dialog.get_node("%Status").visible
 		and services.rails.track_storage.get_all().size() == 1 and player.company.spending == 0
 		and grass._rail_clearance.get_cell(Vector2i.ZERO) == null,
 		"An unaffordable confirmation leaves cash, track, and coverage unchanged")
 	player.company.cash = dialog.quote.price
-	dialog.get_node("%BuildButton").pressed.emit()
-	dialog.get_node("%BuildButton").pressed.emit()
+	dialog.get_node("%OkButton").pressed.emit()
+	dialog.get_node("%OkButton").pressed.emit()
 	check(player.company.cash == 0 and player.company.spending == 2 * CompanyData.TRACK_SEGMENT_COST,
 		"Accepting charges once for the full section")
 	check(not is_instance_valid(preview) and UiState.ui_mode == Enums.UiMode.WALKING,
@@ -213,11 +212,11 @@ func _test_construction() -> bool:
 	player.company.cash = CompanyData.TRACK_SEGMENT_COST
 	builder._on_terrain_click(Vector3(24, 0, 5))
 	builder.review_plan()
-	dialog = UiState.current_diag as ConfirmDialog
+	dialog = UiState.current_diag as RailConstructionDialog
 	if dialog == null:
 		return false
-	var setting: CurrentForkSetting = fork.setting.current
-	dialog.get_node("%BuildButton").pressed.emit()
+	var setting: CurrentJunctionSetting = fork.setting.current
+	dialog.get_node("%OkButton").pressed.emit()
 	var second: RailTrackData = RailTrackData.get_by_num(27)
 	check(second != null and fork.setting.current == setting and setting.connected == track.num
 		and fork_view.fork_mesh.visible and player.company.cash == 0,
@@ -257,7 +256,7 @@ func _test_construction() -> bool:
 	return true
 
 
-func _begin_build(fork: NewRailForkData) -> void:
+func _begin_build(fork: RailJunctionData) -> void:
 	UiState.build_infr_mode = UiModeBuildInfr.from_fork(fork)
 	UiState.ui_mode = Enums.UiMode.BUILD_INFR
 	SignalBus.ui_mode_switched.emit(Enums.UiMode.BUILD_INFR)

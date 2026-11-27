@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cei55pixohws2"]
 
-[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/vehicle_3d.gd" id="1_jucua"]
+[ext_resource type="Script" uid="uid://bo44os5px2kcj" path="res://game/gamescripts/nodes/vehicle/rail_vehicle_3d.gd" id="1_jucua"]
 [ext_resource type="Texture2D" uid="uid://clao1xt7nl737" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/tex_dr_umbauwagen_d.png" id="1_yadvg"]
 [ext_resource type="Texture2D" uid="uid://bq2k5nkveclk6" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/tex_dr_umbauwagen_n.png" id="2_666p3"]
 [ext_resource type="ArrayMesh" uid="uid://dwtx2xmwbp2sy" path="res://assets/meshes/vehicles/rail/dr_umbauwagen/dr_umbauwagen.obj" id="3_jucua"]

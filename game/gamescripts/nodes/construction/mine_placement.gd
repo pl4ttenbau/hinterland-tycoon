@@ -1,7 +1,6 @@
-## Owns the picker, preview and confirmation for one attempt to place a mine.
+## Owns the preview and confirmation for one attempt to place a mine chosen in the build picker.
 class_name MinePlacement extends Node
 
-const PICKER := preload("res://scenes/ui/dialogs/build/build_picker_dialog.tscn")
 const RESOURCE_DIALOG := preload("res://scenes/ui/dialogs/build/mine_resource_dialog.tscn")
 const FULL_RICHNESS_BATCH: float = 4.0
 
@@ -10,28 +9,18 @@ var _building: Industry3D
 var _definition: IndustryBuildingType
 
 
-static func open_picker(world: WorldMapScene) -> bool:
+static func start(world: WorldMapScene, selection: BuildChoice) -> bool:
 	if not is_instance_valid(world) or not is_instance_valid(world.terrain) \
 			or not is_instance_valid(Managers.construction) or not is_instance_valid(Managers.prospecting):
 		return false
 	var placement := MinePlacement.new()
 	placement._world = world
 	world.add_child(placement)
-	var picker := PICKER.instantiate() as MenuShellDialog
-	picker.closed.connect(placement._picker_closed.bind(picker), CONNECT_ONE_SHOT)
-	placement.add_child(picker)
+	placement._start_preview(selection)
 	return true
 
 
-func _picker_closed(result: Variant, picker: MenuShellDialog) -> void:
-	if result is Dictionary:
-		# The close signal carries the result. Wait for tree exit so the next stage starts with input released.
-		picker.tree_exited.connect(_start_preview.bind(result), CONNECT_ONE_SHOT | CONNECT_DEFERRED)
-	else:
-		queue_free()
-
-
-func _start_preview(selection: Dictionary) -> void:
+func _start_preview(selection: BuildChoice) -> void:
 	if not _can_open_dialog():
 		queue_free()
 		return
@@ -49,7 +38,7 @@ func _start_preview(selection: Dictionary) -> void:
 	preview.terrain = _world.terrain
 	preview.construction = Managers.construction
 	preview.model = model
-	preview.model.transform = selection.transform
+	preview.model.transform = selection.model_transform
 	preview.validate_site = _site_error
 	preview.site_changed.connect(_show_survey.bind(preview))
 	preview.closed.connect(_preview_closed.bind(preview), CONNECT_ONE_SHOT)
@@ -80,29 +69,27 @@ func _open_resource_dialog(position: Vector3) -> void:
 	# Use the exact selected location. A nearby survey is only a preview of the site.
 	dialog.construction_cost = _definition.construction_cost
 	dialog.readings = Managers.prospecting.get_traces_at_pos(Vector2(position.x, position.z))
-	dialog.build_requested.connect(_build_mine.bind(position, dialog))
+	dialog.on_submit = _build_mine.bind(position, dialog)
 	dialog.closed.connect(_finish, CONNECT_ONE_SHOT)
 	add_child(dialog)
 
 
-func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog) -> void:
+## The resource dialog's submit handler. Returns why the mine cannot be built,
+## or "" after building it and closing the dialog.
+func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog) -> String:
 	var problem: String = _site_error(position)
 	if not problem.is_empty():
-		dialog.show_error(problem)
-		return
+		return problem
 	var richness: float = dialog.readings.get(resource, 0.0)
 	if richness <= 0.0 or not GameTypes.resource_types.has(resource):
-		dialog.show_error("Choose an available resource.")
-		return
+		return "Choose an available resource."
 	var reserves: Array[MineralReserve] = Managers.prospecting.reserves_for_mine(Vector2(position.x, position.z), resource)
 	if MineralReserve.total(reserves) <= 0.0:
-		dialog.show_error("This mining area is worked out for %s." % ProspectDialog.resource_name(resource))
-		return
+		return "This mining area is worked out for %s." % ProspectDialog.resource_name(resource)
 
 	var company := CompanyData.current()
 	if company != null and not company.spend(dialog.construction_cost):
-		dialog.show_error(company.spending_error(dialog.construction_cost))
-		return
+		return company.spending_error(dialog.construction_cost)
 
 	# Keep the output site-local because authored industries share their catalog recipes.
 	var recipe := IndustryType.new("MINE", "%s mine" % ProspectDialog.resource_name(resource), _definition, 20)
@@ -111,6 +98,7 @@ func _build_mine(resource: String, position: Vector3, dialog: MineResourceDialog
 	_building = null
 	Managers.industries.place_runtime_industry(view, recipe, position, reserves)
 	dialog.close_all()
+	return ""
 
 
 func _site_error(position: Vector3) -> String:

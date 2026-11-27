@@ -1,18 +1,41 @@
-## Edits transfer instructions belonging to the selected visit in the draft.
+## Load and unload tab of the road route dialog: what the vehicle does when it
+## stops at the route point selected on the Route points tab. Each action loads
+## or unloads a set of goods; passenger actions also name the destination
+## interchanges whose passengers it moves. Actions run in this order at the
+## stop. Edits go straight into the dialog's draft; nothing is transferred
+## until the vehicle actually drives the plan.
 class_name RoadRouteActionsEditor extends VBoxContainer
 
+## Rejected inputs, or "" once an action was added. The dialog shows these in
+## the accent tone.
 signal status_changed(message: String)
 
 var _vehicle: RoadVehicle3D
 var _stops: Dictionary
+## The route point being edited, a point of the draft plan; null when none is
+## selected. Only stop points can carry actions.
 var _point: RoadRoutePoint
 
+## Actions at the current point, in execution order.
 @onready var _actions: ItemList = %Actions
+## Load or unload, for the next action to add.
 @onready var _kind: OptionButton = %ActionKind
+## Multi-select: every good the next action applies to (item metadata: good key).
 @onready var _goods: ItemList = %Goods
+## Multi-select: destination interchanges for passengers (item metadata: number).
 @onready var _passenger_targets: ItemList = %PassengerTargets
 
 
+func _ready() -> void:
+	%AddAction.pressed.connect(_add_action)
+	%RemoveAction.pressed.connect(_remove_action)
+	%MoveUp.pressed.connect(_move_action.bind(-1))
+	%MoveDown.pressed.connect(_move_action.bind(1))
+
+
+## Fills the choices once per dialog: every good in the catalog, and every
+## interchange reachable through a known stop. The vehicle is needed to check
+## new actions against its cargo category.
 func edit(vehicle: RoadVehicle3D, stops: Dictionary) -> void:
 	_vehicle = vehicle
 	_stops = stops
@@ -27,6 +50,8 @@ func edit(vehicle: RoadVehicle3D, stops: Dictionary) -> void:
 		_passenger_targets.set_item_metadata(index, id)
 
 
+## Switches to another route point (null clears the tab). label is the point's
+## readable name from the points editor.
 func show_point(point: RoadRoutePoint, label: String = "") -> void:
 	_point = point
 	%ActionContext.text = "Actions at " + label if _point != null else "Select a physical stop on the Route points tab."
@@ -40,6 +65,9 @@ func _refresh_actions() -> void:
 			_actions.add_item(action.describe())
 
 
+## Builds an action from the current choices and appends it to the selected
+## stop, after RoadRouteAction.validate() accepts it (goods exist, fit the
+## vehicle's capacity, passengers have a destination).
 func _add_action() -> void:
 	if not is_instance_valid(_vehicle):
 		_reject_action("This vehicle is no longer available.")
@@ -77,6 +105,8 @@ func _remove_action() -> void:
 		_refresh_actions()
 
 
+## Moves the selected action one place up (-1) or down (+1), which changes the
+## order it runs in at the stop.
 func _move_action(direction: int) -> void:
 	var selected: PackedInt32Array = _actions.get_selected_items()
 	if _point == null or selected.is_empty():

@@ -7,8 +7,8 @@ const PLACEMENT_TOLERANCE_METRES: float = 0.85
 
 class Connection:
 	var other: Train3D
-	var own_end: Vehicle3D
-	var facing_end: Vehicle3D
+	var own_end: RailVehicle3D
+	var facing_end: RailVehicle3D
 	var at_front: bool
 	var reverse_order: bool
 	var gap: float
@@ -23,7 +23,7 @@ class JoinPlan:
 	var error: String
 	var surviving: Train3D
 	var retiring: Train3D
-	var ordered: Array[Vehicle3D]
+	var ordered: Array[RailVehicle3D]
 	var placement: Placement
 
 static func available(train: Train3D) -> bool:
@@ -36,7 +36,7 @@ static func available(train: Train3D) -> bool:
 static func nearby(train: Train3D, at_front: bool) -> Connection:
 	if not available(train):
 		return null
-	var own_end: Vehicle3D = train.vehicles.front() if at_front else train.vehicles.back()
+	var own_end: RailVehicle3D = train.vehicles.front() if at_front else train.vehicles.back()
 	var segment: VehiclePathSegment = train.movement.get_vehicle_segment(own_end)
 	var track: RailTrackData = segment.as_rail_track()
 	var own_position: float = track.curve.get_closest_offset(own_end.global_position)
@@ -46,7 +46,7 @@ static func nearby(train: Train3D, at_front: bool) -> Connection:
 		if other == train or not available(other):
 			continue
 		for other_front: bool in [true, false]:
-			var facing: Vehicle3D = other.vehicles.front() if other_front else other.vehicles.back()
+			var facing: RailVehicle3D = other.vehicles.front() if other_front else other.vehicles.back()
 			if other.movement.get_vehicle_segment(facing).track_num != segment.track_num:
 				continue
 			var facing_sign: float = _outward_sign(other, facing, other_front)
@@ -68,13 +68,13 @@ static func nearby(train: Train3D, at_front: bool) -> Connection:
 			closest.gap = gap
 	return closest
 
-static func _outward_sign(train: Train3D, vehicle: Vehicle3D, at_front: bool) -> float:
+static func _outward_sign(train: Train3D, vehicle: RailVehicle3D, at_front: bool) -> float:
 	var segment: VehiclePathSegment = train.movement.get_vehicle_segment(vehicle)
 	var increasing: bool = segment.movement_dir == Enums.PathDirection.TRACK_NODES_INCREASE
 	var front_sign: float = 1.0 if increasing != train.movement.is_reversed else -1.0
 	return front_sign if at_front else -front_sign
 
-static func split_error(train: Train3D, ahead: Vehicle3D, behind: Vehicle3D) -> String:
+static func split_error(train: Train3D, ahead: RailVehicle3D, behind: RailVehicle3D) -> String:
 	if not available(train) or not is_instance_valid(ahead) or not is_instance_valid(behind) \
 		or ahead.train3d != train or behind.train3d != train or behind.num_in_train != ahead.num_in_train + 1:
 		return "That joint is no longer available."
@@ -82,17 +82,17 @@ static func split_error(train: Train3D, ahead: Vehicle3D, behind: Vehicle3D) -> 
 		return "Bring the train to a stop before uncoupling."
 	return ""
 
-static func split(train: Train3D, ahead: Vehicle3D, behind: Vehicle3D) -> String:
+static func split(train: Train3D, ahead: RailVehicle3D, behind: RailVehicle3D) -> String:
 	var problem: String = split_error(train, ahead, behind)
 	if not problem.is_empty():
 		return problem
 	var cut: int = behind.num_in_train
-	var front: Array[Vehicle3D] = train.vehicles.slice(0, cut)
-	var rear: Array[Vehicle3D] = train.vehicles.slice(cut)
+	var front: Array[RailVehicle3D] = train.vehicles.slice(0, cut)
+	var rear: Array[RailVehicle3D] = train.vehicles.slice(cut)
 	## The cab and its train-level inventory stay together.
 	var keep_front: bool = train.locomotive == null or train.locomotive in front
-	var keep: Array[Vehicle3D] = front if keep_front else rear
-	var detach: Array[Vehicle3D] = rear if keep_front else front
+	var keep: Array[RailVehicle3D] = front if keep_front else rear
+	var detach: Array[RailVehicle3D] = rear if keep_front else front
 	var detached: Train3D = load(Train3D.EMPTY_SCENE_PATH).instantiate()
 	detached.train_obj = TrainData.new()
 	var parked := detached.movement
@@ -154,10 +154,10 @@ static func plan_join(train: Train3D, at_front: bool, expected: Connection = nul
 		plan.error = "Unload some of the trains' stock before coupling. The joined train has one inventory."
 		return plan
 
-	var attached: Array[Vehicle3D] = plan.retiring.vehicles.duplicate()
+	var attached: Array[RailVehicle3D] = plan.retiring.vehicles.duplicate()
 	if connection.reverse_order:
 		attached.reverse()
-	var retained: Array[Vehicle3D] = plan.surviving.vehicles
+	var retained: Array[RailVehicle3D] = plan.surviving.vehicles
 	plan.ordered = attached + retained if at_front else retained + attached
 	plan.placement = _plan_placement(plan.surviving.movement, retained.front(), plan.ordered)
 	if plan.placement == null:
@@ -184,7 +184,7 @@ static func _apply_join(plan: JoinPlan) -> void:
 	var was_unpowered: bool = train.locomotive == null
 	train.movement.cancel_rollout()
 	if plan.connection.reverse_order:
-		for vehicle: Vehicle3D in other.vehicles:
+		for vehicle: RailVehicle3D in other.vehicles:
 			vehicle.faces_rear = not vehicle.faces_rear
 	_apply_placement(train, plan.placement)
 	train.replace_consist(plan.ordered)
@@ -203,7 +203,7 @@ static func _apply_join(plan: JoinPlan) -> void:
 	other.queue_free()
 
 ## Keep the selected vehicles stationary and close only the small gap at the joint.
-static func _plan_placement(controller: TrainMovement, anchor: Vehicle3D, ordered: Array[Vehicle3D],
+static func _plan_placement(controller: TrainMovement, anchor: RailVehicle3D, ordered: Array[RailVehicle3D],
 		flip_order: bool = false) -> Placement:
 	var route: ActiveRailVehiclePath = controller.active_path
 	var reversed: bool = controller.is_reversed != flip_order
@@ -220,7 +220,7 @@ static func _plan_placement(controller: TrainMovement, anchor: Vehicle3D, ordere
 		var distance: float = first_distance + offsets[index] * step
 		if distance < -0.001 or distance > route_length + 0.001:
 			return null
-		var vehicle: Vehicle3D = ordered[index]
+		var vehicle: RailVehicle3D = ordered[index]
 		var segment: VehiclePathSegment = route.segments[route.get_segment_index(distance)]
 		if segment.track_num != vehicle.train3d.movement.get_vehicle_segment(vehicle).track_num:
 			return null

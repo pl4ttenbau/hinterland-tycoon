@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/meshes/structures/ddr_ew_65/mesh/ew_65_albedo.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/meshes/structures/ddr_ew_65/mesh/ew_65_normal.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/meshes/structures/ddr_ew_65/mesh/ew_65_surface.png" id="3_surface"]
+
+[resource]
+resource_name = "EW65 Building"
+metallic = 1.0
+metallic_specular = 0.5
+metallic_texture = ExtResource("3_surface")
+metallic_texture_channel = 1
+roughness = 1.0
+roughness_texture = ExtResource("3_surface")
+roughness_texture_channel = 0
+albedo_texture = ExtResource("1_albedo")
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource("2_normal")
+texture_filter = 3

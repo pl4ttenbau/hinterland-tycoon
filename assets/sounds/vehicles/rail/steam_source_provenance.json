@@ -1,0 +1,23 @@
+{
+  "source_video": "/home/cornelinux/Downloads/Schwere Bergfahrt mit Dampflok 99 7245 im Harz_270_275.mp4",
+  "source_wav": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-steam/harz_99_7245_source.wav",
+  "source_sha256": "8121a758d8662a74d4508b3c7e42e39bb05a7a9d592a00344d605dd450131a60",
+  "output": "/home/cornelinux/Dokumente/Assets/3D/Generation/output/rail-audio-steam/harz_99_7245_steam_loop.wav",
+  "identity": "Harz steam locomotive 99 7245, from user-provided filename",
+  "source_trim_seconds": [
+    0.10501133786848073,
+    4.95
+  ],
+  "duration_seconds": 4.684988662131519,
+  "sample_rate": 44100,
+  "channels": 2,
+  "pcm_bits": 16,
+  "crossfade_seconds": 0.16,
+  "peak_dbfs": -3,
+  "boundary_step": 0.02703035064851267,
+  "max_internal_step": 0.18109980670405862,
+  "clipped_samples": 0,
+  "processing": "Pulse-envelope-matched trim, 160 ms equal-power loop crossfade, DC removal and peak normalization. No time stretch, pitch change or denoising.",
+  "reference_speed_kmh": null,
+  "notes": "Under-load candidate based on clip title, not independently auditioned. No known wheel speed or exhaust beat rate. Original preserved. Rights/provenance derive from user-supplied clip; reuse licence not independently verified."
+}

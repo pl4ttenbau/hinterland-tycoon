@@ -1,34 +1,34 @@
 @tool
+## One tool in the HinterlandTycoon toolbar: icon and label, toggled within the panel's ButtonGroup.
+##
+## The active tool is shown as a raised (non-flat) button with its icon tinted like the pressed label;
+## every other tool stays flat. (Earlier versions used the icon slot for a checkmark instead, which left
+## the tools without icons.)
 extends Button
 
-const CHECKMARK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-var _checkmark: Texture2D
-var _spacer: Texture2D
+## Icon from the Godot editor theme, e.g. &"ToolSelect" or &"Add", used when the scene sets no `icon`.
+## Editor icons only exist inside the editor, so in headless tests the button simply has no icon.
+@export var editor_icon: StringName = &""
+
+## Icon size in the toolbar, before the editor's display scale: the size of Godot's own editor icons.
+## The project's white icons are 32 px; this draws them at the same size as the built-in ones.
+const ICON_SIZE: int = 16
 
 func _ready() -> void:
-	var image := Image.new()
-	image.load_svg_from_string(CHECKMARK_SVG)
-	_checkmark = ImageTexture.create_from_image(image)
-	var blank := Image.create(16, 16, false, Image.FORMAT_RGBA8)
-	blank.fill(Color.TRANSPARENT)
-	_spacer = ImageTexture.create_from_image(blank)
-	toggled.connect(_on_toggled)
+	## Scale with the editor UI (Editor Settings > Interface > Display Scale), like built-in icons do.
+	var ui_scale: float = EditorInterface.get_editor_scale() if Engine.is_editor_hint() else 1.0
+	add_theme_constant_override("icon_max_width", roundi(ICON_SIZE * ui_scale))
+	if icon == null and editor_icon != &"" and Engine.is_editor_hint():
+		icon = EditorInterface.get_editor_theme().get_icon(editor_icon, &"EditorIcons")
+	toggled.connect(_sync_appearance.unbind(1))
 	theme_changed.connect(_sync_appearance)
-	# Silent resets (Free Tool, scene changes) redraw without emitting toggled.
+	# Silent resets (Free Tool, scene changes) set button_pressed without emitting toggled; they redraw.
 	draw.connect(_sync_appearance)
 	_sync_appearance()
 
-func _on_toggled(_pressed: bool) -> void:
-	_sync_appearance()
-
 func _sync_appearance() -> void:
-	if _checkmark == null:
-		return
 	var active: bool = toggle_mode and button_pressed
-	var wanted: Texture2D = _checkmark if active else _spacer
-	# Identical icon sizes reserve the checkmark's space in either state.
-	if icon != wanted:
-		icon = wanted
+	# Compare first: setting these unconditionally from a draw callback would request endless redraws.
 	if flat != (not active):
 		flat = not active
 	for state: String in ["pressed", "hover_pressed"]:

@@ -1,0 +1,34 @@
+[
+	{
+		"file": "terrain3d_11_05.res",
+		"location": [
+			11,
+			5
+		],
+		"sha256": "4c831ec772fbc217b15718ad11360de7d57e0ce89976ec058314ce57161b24ea"
+	},
+	{
+		"file": "terrain3d_12_05.res",
+		"location": [
+			12,
+			5
+		],
+		"sha256": "c277b8941e847b26199b4fe08e08c693cda7aed6fe8136c3795abe751215bad0"
+	},
+	{
+		"file": "terrain3d_11_06.res",
+		"location": [
+			11,
+			6
+		],
+		"sha256": "b7a528dc4bb5d29170f8e6a12e6a1c1d63e36631306f42cab51867abf99bb480"
+	},
+	{
+		"file": "terrain3d_12_06.res",
+		"location": [
+			12,
+			6
+		],
+		"sha256": "5f66bb8d10cc322be76afb1dfda88d3b5445b48b2ef9a743aaca5bf0c2bca579"
+	}
+]

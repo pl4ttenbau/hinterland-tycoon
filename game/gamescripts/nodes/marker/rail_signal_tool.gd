@@ -194,7 +194,7 @@ func _to_track_local(track: RailTrackData, world: Vector3) -> Vector3:
 	return path.to_local(world) if path != null and path.is_inside_tree() else world
 
 func _track_path(track: RailTrackData) -> Path3D:
-	var view: Node = rails.track_storage._containers_by_id.get(track.num)
+	var view: Node = rails.track_storage.find_container(track.num)
 	if not is_instance_valid(view) or view.get_child_count() == 0:
 		return null
 	return view.get_child(0) as Path3D

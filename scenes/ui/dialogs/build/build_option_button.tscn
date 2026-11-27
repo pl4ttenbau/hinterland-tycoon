@@ -6,5 +6,3 @@
 tooltip_text = "Construction cost in game money"
 theme_type_variation = &"ManagementButton"
 script = ExtResource("1")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

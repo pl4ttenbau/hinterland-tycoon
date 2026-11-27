@@ -20,10 +20,11 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_2ybhg")
+dialog_key = "IndustryDialog"
 metadata/_custom_type_script = "uid://b7c7otc1f063h"
 metadata/_edit_use_anchors_ = true
 
-[node name="OuterPanel" type="PanelContainer" parent="." unique_id=816795701]
+[node name="Panel" type="PanelContainer" parent="." unique_id=816795701]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,52 +38,52 @@ offset_bottom = 258.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OuterMargin" type="MarginContainer" parent="OuterPanel" unique_id=1299342225]
+[node name="Padding" type="MarginContainer" parent="Panel" unique_id=1299342225]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="OuterVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin" unique_id=316416679]
+[node name="Layout" type="VBoxContainer" parent="Panel/Padding" unique_id=316416679]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 
-[node name="Headline" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=952405002]
+[node name="Headline" type="Label" parent="Panel/Padding/Layout" unique_id=952405002]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Industry"
 horizontal_alignment = 1
 
-[node name="NameAndTypeBox" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=652769063 instance=ExtResource("2_ordv3")]
+[node name="NameAndTypeBox" parent="Panel/Padding/Layout" unique_id=652769063 instance=ExtResource("2_ordv3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StationAndProductionMargin" type="MarginContainer" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1381284847]
+[node name="StationAndProductionMargin" type="MarginContainer" parent="Panel/Padding/Layout" unique_id=1381284847]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="StationAndProductionVLayout" type="VBoxContainer" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin" unique_id=657883997]
+[node name="StationAndProductionVLayout" type="VBoxContainer" parent="Panel/Padding/Layout/StationAndProductionMargin" unique_id=657883997]
 layout_mode = 2
 
-[node name="IndustryStationList" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=721542442 instance=ExtResource("2_87jv8")]
+[node name="IndustryStationList" parent="Panel/Padding/Layout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=721542442 instance=ExtResource("2_87jv8")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="IndustryConsumption" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=1708451097 instance=ExtResource("3_ordv3")]
+[node name="IndustryConsumption" parent="Panel/Padding/Layout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=1708451097 instance=ExtResource("3_ordv3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="IndustryProduction" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=967139609 instance=ExtResource("4_lpq0g")]
+[node name="IndustryProduction" parent="Panel/Padding/Layout/StationAndProductionMargin/StationAndProductionVLayout" unique_id=967139609 instance=ExtResource("4_lpq0g")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MineReserves" type="Label" parent="OuterPanel/OuterMargin/OuterVLayout/StationAndProductionMargin/StationAndProductionVLayout"]
+[node name="MineReserves" type="Label" parent="Panel/Padding/Layout/StationAndProductionMargin/StationAndProductionVLayout"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="OuterPanel/OuterMargin/OuterVLayout" unique_id=1148532739]
+[node name="CloseButton" type="Button" parent="Panel/Padding/Layout" unique_id=1148532739]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 33

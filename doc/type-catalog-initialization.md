@@ -25,6 +25,14 @@ New listeners check `GameTypes.is_initialized` to handle already-loaded catalogs
 Initialization returns `ERR_BUSY` during a reentrant attempt. Maps cannot be
 selected before both catalog and world-service initialization succeed.
 
+Infrastructure types come from `game/jsondata/road_types.json` (`RoadType`: scene,
+drivable width, mesh height) and `game/jsondata/rail_types.json` (`RailType`: scene,
+`gauge_mm`, `rail_head_height_metres`). `InfrTypesLoader` checks that each scene's root
+is a `RoadWay3D` or `RailTrack3D`. `GameTypes.get_road_type()` falls back to
+`rural_road` and `GameTypes.get_rail_type()` to `NORMAL_GAUGE`; the rail lookup also
+maps legacy keys such as `1067_MM`. Adding a gauge needs only a catalog entry and its
+scene. Vehicle `usable_infr` subtypes are validated against the rail keys.
+
 Rail definitions live in `game/jsondata/rail_vehicle_types.json` and are loaded by
 `RailVehicleTypesLoader` as `RailVehicleTypeData`, which extends `VehicleTypeData`.
 The shared base contains common fields; rail model/preview conventions belong to
@@ -33,6 +41,16 @@ the rail subclass. JSON entries use numeric speeds/lengths, `display_name`,
 `capacity`. The rail loader supplies the runtime infrastructure domain. `mass_tonnes`
 (empty mass in metric tonnes) and `motor_power_kw` (power in kilowatts) accept numbers
 or `null` for unknown values. Null values stay unknown when loading.
+
+Optional masses, all in metric tonnes, describe the vehicle as it runs:
+
+| Field | Meaning | When absent |
+| --- | --- | --- |
+| `service_mass_tonnes` | Dienstmasse: empty mass plus fuel, water, sand and crew; at least `mass_tonnes` | Empty mass |
+| `adhesive_mass_tonnes` | Reibungsmasse: mass on driven axles; at most the service mass | Whole service mass for powered vehicles, 0 otherwise |
+| `braked_mass_tonnes` | Bremsgewicht; 0 for an unbraked vehicle | Unknown |
+
+Movement uses the service mass; the tractive-effort estimate uses the adhesive mass.
 The export
 preset includes `game/jsondata/*.json` because these files use `FileAccess`.
 

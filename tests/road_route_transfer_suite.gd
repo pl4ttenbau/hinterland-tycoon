@@ -22,14 +22,14 @@ func run(scene_tree: SceneTree) -> int:
 	var old_vehicles: VehiclePlacer = Managers.vehicles
 	var old_catalog: InterchangesLoader = Managers.interchanges
 	_setup()
+	# Tests may switch the global driving mode; each one starts from the game default.
+	var default_follow: bool = RoadVehicle3D.follow_road_path
 	for test: StringName in test_names():
+		RoadVehicle3D.follow_road_path = default_follow
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
+	RoadVehicle3D.follow_road_path = default_follow
 	host.free()
-	for stop: AbstractStation in stops.values():
-		stop.connections.parent = null
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
 	Managers.road_stops = old_stops
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles
@@ -38,7 +38,7 @@ func run(scene_tree: SceneTree) -> int:
 	return 0 if failures == 0 else 1
 
 func test_names() -> Array[StringName]:
-	return [&"test_cargo", &"test_passengers", &"test_invalid_actions", &"test_ordered_execution", &"test_physical_passenger_route"]
+	return [&"test_cargo", &"test_passengers", &"test_invalid_actions", &"test_ordered_execution", &"test_coincident_repeat", &"test_physical_passenger_route"]
 
 func suite_name() -> String:
 	return "Road route transfer tests"
@@ -57,7 +57,7 @@ func _setup() -> void:
 	road.build_curve()
 	Managers.roads.storage._list.append(road)
 	Managers.roads.storage._by_id[100] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	Managers.roads.add_child(view)
 	Managers.roads.storage.add_container(view)
 
@@ -75,7 +75,7 @@ func _stop(id: int, index: int = 0, interchange_id: int = -1) -> RoadStationData
 		data.interchange = interchange
 		interchange.stops.append(data)
 	data.road_num = road.num
-	data.node_index = index
+	data.anchor = LineAnchor.new(index)
 	data.position = road.nodes[index].position + Vector3(4, 0, 0)
 	data.hide_building = true
 	var view: BusStop3D = load("res://scenes/subscenes/infr/station/bus_stop_3d.tscn").instantiate()
@@ -243,6 +243,27 @@ func test_ordered_execution() -> bool:
 	var amount: float = body.get_inventory().amount_used
 	body.plan_execution.tick(body)
 	check(body.get_inventory().amount_used == amount, "Completed plans do not repeat their actions")
+	body.free()
+	return true
+
+# Coincident points are valid, but repeating them must yield control each tick.
+func test_coincident_repeat() -> bool:
+	_stop(22)
+	var body: RoadVehicle3D = _vehicle()
+	body.set_physics_process(false)
+	body.position.y = 0.8
+	# Match this side's permitted approach so both visits are already satisfied.
+	body.rotation.y = PI
+	body.route_plan.points = [_point(22), _point(22)]
+	body.route_plan.repeat_route = true
+	check(body.plan_execution.start(body), "Repeating coincident visits start without blocking: " + body.plan_execution.status)
+
+	# Several synchronous ticks should return promptly and remain stoppable.
+	for tick: int in range(3):
+		body.plan_execution.tick(body)
+	check(body.plan_execution.running, "Coincident repeating visits remain active across ticks")
+	body.plan_execution.stop(body)
+	check(not body.plan_execution.running, "Repeating coincident visits can be stopped")
 	body.free()
 	return true
 

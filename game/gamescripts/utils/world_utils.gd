@@ -1,7 +1,14 @@
 @tool
 class_name WorldUtils extends RefCounted
 
-const NINETY_DEG_IN_RAD = 1.57
+## The map scene a node belongs to: the WorldMapScene of an open map, or the standalone EditorObjects
+## scene (WorldEditorObjects). Both carry the map_key naming the map's JSON files. Null outside both.
+## Starts at the parent, so a map scene itself is not its own owner.
+static func owning_map(node: Node) -> Node:
+	var current: Node = node.get_parent()
+	while current != null and not (current is WorldMapScene or current is WorldEditorObjects):
+		current = current.get_parent()
+	return current
 
 #region FloatArr <> Vector3
 static func vec3_from_float_arr(float_arr: Array):

@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/station_creator/new_station_fields.gd" id="1_script"]
+
+[node name="NewStationFields" type="VBoxContainer"]
+script = ExtResource("1_script")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Station name"
+
+[node name="StationName" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TownLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Town"
+
+[node name="StationTown" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2

@@ -48,7 +48,7 @@ func _load_json(domain: Enums.InfrDomain) -> void:
 		push_warning(result.error)
 		return
 	EditorInterface.mark_scene_as_unsaved()
-	print("Loaded %d %s from JSON. Save this EditorObjects scene with Ctrl+S." % [result.count, "roads" if domain == Enums.InfrDomain.ROAD else "rails"])
+	print("Loaded %d %s from JSON. Save this EditorObjects scene with Ctrl+S." % [result.count, InfrDomains.plural(domain)])
 
 
 #region Initializaion

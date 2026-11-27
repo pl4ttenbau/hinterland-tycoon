@@ -1,27 +1,10 @@
 @icon("res://assets/icons/nodes_3d/icon_rail_track.svg")
 @tool
+## EditorRails: holds the map's saved rail tracks as reference lines (EditorInfrLine3D), one per record
+## in world/<map>/jsondata/tracks.json.
+##
+## A marker class only. The lines are put here by "Load Rails JSON" on the EditorObjects root
+## (WorldEditorObjects → InfrJsonStore.load_world), which replaces them with an undoable action, and
+## found again through this type (InfrJsonStore.reference_container_for). A full save never writes them
+## back; a single line can be written with its "Save Single" button.
 class_name GeneratedRailLines extends Node3D
-
-@export_tool_button("Generate Rail Tracks")
-var gen_tracks_btn = Callable(self, "do_generate_rail_tracks")
-
-@export_tool_button("Clear Rail Tracks")
-var clear_btn = Callable(self, "do_clear")
-
-#region Actions
-func do_generate_rail_tracks():
-	var generator := WorldTracksGenerator.new()
-	generator.spawn_track_paths()
-	generator.queue_free()
-	
-func do_clear():
-	self.clear()
-#endregion
-
-func clear():
-	for child in self.get_children():
-		if child is Path3D: child.queue_free()
-
-func add_rail(line3d: EditorInfrLine3D):
-	self.add_child(line3d)
-	line3d.owner = EditorInterface.get_edited_scene_root()

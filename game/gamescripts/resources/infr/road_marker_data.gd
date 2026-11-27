@@ -8,7 +8,7 @@ class_name RoadMarkerData extends Resource
 @export var offset: float
 @export var side: Enums.RoadSide = Enums.RoadSide.RIGHT
 
-func anchor(roads: RoadStore) -> RoadRouteAnchor:
+func route_anchor(roads: RoadStore) -> RoadRouteAnchor:
 	var road: RoadData = roads._by_id.get(road_num)
 	if road == null or road.curve == null or offset < 0 or offset > road.curve.get_baked_length():
 		return null

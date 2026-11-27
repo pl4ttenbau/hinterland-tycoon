@@ -38,7 +38,7 @@ func interaction_anchor() -> Node3D:
 func enter_vehicle(vehicle: Node3D) -> bool:
 	if vehicle is RoadVehicle3D:
 		return enter_road_vehicle(vehicle)
-	if vehicle is Vehicle3D:
+	if vehicle is RailVehicle3D:
 		return enter_train(vehicle.train3d)
 	return false
 
@@ -104,6 +104,16 @@ func exit_vehicle() -> bool:
 	UiState.set_gameplay_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_notify_vehicle_changed(previous)
 	return true
+
+
+## H while driving blows the vehicle's horn or whistle (VehicleHorn picks the sound).
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event.is_action_pressed(&"horn") or UiState.is_world_input_blocked() or not is_instance_valid(_vehicle):
+		return
+	var horn := VehicleHorn.of(_vehicle)
+	if horn != null:
+		horn.blow()
+		get_viewport().set_input_as_handled()
 
 
 func _on_vehicle_exiting() -> void:

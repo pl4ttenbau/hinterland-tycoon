@@ -2,7 +2,7 @@
 class_name RoadIndustryExitConnector extends Node
 
 # Constants
-const MAX_IND_ROAD_DIST = 400
+## How far a road node may be from an industry to become its road exit.
 const MAX_IND_NODE_DIST = 60
 const LOG_EXIT_FINDING = false
 
@@ -26,10 +26,12 @@ func try_industry_exit_finding():
 #region Find Close
 func find_close_roads(industry: IndustryData) -> Array[RoadData]:
 	var close_roads: Array[RoadData] = []
-	for road: RoadData in GlobalState.roads:
-		var road_center: Vector3 = road.center
-		var sq_dist_to_center := industry.pos.distance_to(road_center)
-		if sq_dist_to_center <= MAX_IND_ROAD_DIST:
+	if Managers.roads == null:
+		return close_roads
+	# Only roads whose bounds come within node distance can have a node close enough: a single box test
+	# skips all other roads before their nodes are looked at.
+	for road: RoadData in Managers.roads.storage.get_all():
+		if road.is_near(industry.pos, MAX_IND_NODE_DIST):
 			close_roads.append(road)
 	return close_roads
 	
@@ -39,10 +41,10 @@ func find_closest_road_node(industry: IndustryData) -> RoadNode:
 	var pos: Vector3 = industry.pos
 	for road: RoadData in self.find_close_roads(industry):
 		for road_node: RoadNode in road.nodes:
-			var sq_dist: float = pos.distance_to(road_node.position)
-			if sq_dist > MAX_IND_NODE_DIST: continue
-			if sq_dist <= closest_node_dist:
-				closest_node_dist = sq_dist
+			var dist: float = pos.distance_to(road_node.position)
+			if dist > MAX_IND_NODE_DIST: continue
+			if dist <= closest_node_dist:
+				closest_node_dist = dist
 				closest_node = road_node
 	if LOG_EXIT_FINDING:
 		if closest_node: Loggie.info("Found road exit for industry \"%s\"" % industry.ind_name)

@@ -35,7 +35,7 @@ func request_update() -> void:
 
 static func visible_roads(world: Node) -> Array[Node3D]:
 	var by_id: Dictionary = {}
-	var cache: Node = world.get_node_or_null("EditorCache")
+	var cache: Node = EditorCache.find(world)
 	for node: Node in world.find_children("*", "", true, false):
 		if node is EditorInfrLine3D and node.infr_domain == Enums.InfrDomain.ROAD and node.is_visible_in_tree() and node.curve and node.curve.point_count >= 2:
 			# An explicitly loaded cached road is the editable version of that ID.

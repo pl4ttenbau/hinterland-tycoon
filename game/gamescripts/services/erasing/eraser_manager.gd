@@ -3,8 +3,8 @@ class_name EraserManager extends Node
 
 enum Operation { SEGMENT, SPAN, NODE, JUNCTION }
 
-signal erase_requested(target: AbstractTrack, operation: Operation, from_index: int, to_index: int)
-signal erase_finished(target: AbstractTrack, operation: Operation, result: Error)
+signal erase_requested(target: AbstractInfrLine, operation: Operation, from_index: int, to_index: int)
+signal erase_finished(target: AbstractInfrLine, operation: Operation, result: Error)
 
 var rails: RailsLoader
 var roads: RoadsLoader
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 ## SEGMENT takes its start index. SPAN takes both ends. NODE and JUNCTION take
 ## the selected node index. Callers can use the result or listen for completion.
-func erase(target: AbstractTrack, operation: Operation, from_index: int, to_index: int = -1) -> Error:
+func erase(target: AbstractInfrLine, operation: Operation, from_index: int, to_index: int = -1) -> Error:
 	var result: Error = ERR_INVALID_PARAMETER
 	if target is RailTrackData and is_instance_valid(rails):
 		match operation:

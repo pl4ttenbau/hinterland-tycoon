@@ -36,7 +36,7 @@ func _create_drawing_overlay() -> void:
 	overlay.global_transform = Transform3D.IDENTITY
 	preview_material = StandardMaterial3D.new()
 	preview_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	preview_material.albedo_color = Color.ORANGE if domain == Enums.InfrDomain.ROAD else Color.CYAN
+	preview_material.albedo_color = InfrDomains.preview_color(domain)
 	preview = MeshInstance3D.new()
 	preview.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	overlay.add_child(preview)
@@ -191,7 +191,7 @@ func _next_line_number() -> int:
 	return next_num
 
 func _create_drawn_line(parent: Node3D, number: int) -> EditorInfrLine3D:
-	var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, number, "Drawn road" if domain == Enums.InfrDomain.ROAD else "Drawn rail", true)
+	var line: EditorInfrLine3D = EditorInfrLine3D.of(domain, number, "Drawn " + InfrDomains.singular(domain), true)
 	# Convert the world-space preview to its parent's local coordinates.
 	var inverse: Transform3D = parent.global_transform.affine_inverse()
 	line.position = inverse * points[0]
@@ -205,7 +205,7 @@ func _create_drawn_line(parent: Node3D, number: int) -> EditorInfrLine3D:
 	return line
 
 func _commit_drawn_line(parent: Node3D, line: EditorInfrLine3D, history: Object) -> void:
-	history.create_action("Create road" if domain == Enums.InfrDomain.ROAD else "Create rail", UndoRedo.MERGE_DISABLE, world)
+	history.create_action("Create " + InfrDomains.singular(domain), UndoRedo.MERGE_DISABLE, world)
 	history.add_do_method(parent, "add_child", line, true)
 	history.add_do_method(line, "set_owner", world)
 	history.add_undo_method(parent, "remove_child", line)

@@ -1,12 +1,9 @@
 @icon("res://assets/icons/icon_road_white.png")
 @warning_ignore("missing_tool")
-class_name RoadData extends AbstractTrack
+class_name RoadData extends AbstractInfrLine
 
 const RURAL_ROAD_SCENE_PATH = "res://assets/meshes/infr/road/rural_road_1/path_rural_road_1.tscn"
 const DIRT_PATH_SCENE_PATH = "res://assets/meshes/infr/road/dirt_path/path_dirt_path.tscn"
-
-@warning_ignore("unused_signal")
-signal created(track: RoadData)
 
 @export var autosmooth: bool = true
 
@@ -24,33 +21,12 @@ static func of(_num: int, _type: String) -> RoadData:
 	return inst
 #endregion
 
-#region Creation
-func spawn() -> RoadWay3D:
-	var definition := get_road_type()
-	if definition == null:
-		return null
-	if ! self.curve: self.build_curve()
-	var outer_road := definition.scene.instantiate() as RoadWay3D
-	outer_road.road = self
-	outer_road.apply_mesh_profile(definition)
-	return outer_road
-	
-func build_curve() -> void:
-	self.curve = Curve3D.new()
-	self.curve.up_vector_enabled = false
-	# add points to curve (optionally with curve handles)
-	for node: RoadNode in self.nodes:
-		self.curve.add_point(node.rel_position, node.handle_in, node.handle_out)
-	# generate AABB
-	self.abs_aabb = InfrUtils.get_aabb(self.vertices)
-	if self.autosmooth:
-		InfrUtils.smooth_curve3d(self.curve, true)
-	# Consumers must receive the finished curve, including its generated handles.
-	self.curve_built.emit(self.curve)
-	
-func add_node(_road_node: RoadNode):
-	self.nodes.append(_road_node) 
-	self.vertices.append(_road_node.position)
+#region Nodes & Curve
+func get_nodes() -> Array:
+	return self.nodes
+
+func _smooths_curve() -> bool:
+	return self.autosmooth
 #endregion
 
 #region Getters
@@ -62,11 +38,7 @@ func get_road_type() -> RoadType:
 func get_type_scene() -> String:
 	var definition := get_road_type()
 	return definition.scene.resource_path if definition != null else ""
-	
-func get_road_node(_i: int) -> RoadNode:
-	if _i > 0:
-		return self.nodes.get(_i)
-	return null
+
 #endregion
 
 #region Helper-Methods

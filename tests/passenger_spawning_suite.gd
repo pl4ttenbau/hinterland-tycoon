@@ -32,12 +32,6 @@ func run(scene_tree: SceneTree) -> int:
 		if call(test) != true:
 			check(false, "%s aborted" % test)
 	host.free()
-	for stop: AbstractStation in stops:
-		stop.connections.parent = null
-		stop.interchange = null
-	for station: InterchangeData in [interchange, destination_interchange]:
-		station.stops.clear()
-		station.connections.parent = null
 	Managers.interchanges = old_catalog
 	Managers.road_stops = old_road_stops
 	Managers.stations = old_stations

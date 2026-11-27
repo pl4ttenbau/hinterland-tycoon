@@ -1,7 +1,7 @@
 @tool
 class_name StationSign3D extends Sprite3D
 
-@export var node_station_link_3d: NodeStationLink3D
+@export var rail_stop_3d: RailStop3D
 
 @export var parent_station: AbstractStation
 
@@ -30,9 +30,9 @@ class_name StationSign3D extends Sprite3D
 
 #region Initialization
 func _enter_tree() -> void:
-	if not Engine.is_editor_hint() and is_instance_valid(self.node_station_link_3d) \
-			and not self.node_station_link_3d.node_station_changed.is_connected(self._on_node_station_changed):
-		self.node_station_link_3d.node_station_changed.connect(self._on_node_station_changed)
+	if not Engine.is_editor_hint() and is_instance_valid(self.rail_stop_3d) \
+			and not self.rail_stop_3d.stop_changed.is_connected(self._on_stop_changed):
+		self.rail_stop_3d.stop_changed.connect(self._on_stop_changed)
 
 func _ready() -> void:
 	# Legacy rail scenes override this resource in their enclosing scene. Resolve
@@ -44,18 +44,18 @@ func _ready() -> void:
 		if is_instance_valid(texture_scene):
 			viewport_texture.viewport_path = texture_scene.get_path_to(self.get_node("SubViewport"))
 	self.station_sign_ui.station_name = self.station_name
-	if not Engine.is_editor_hint() and is_instance_valid(self.node_station_link_3d):
-		self._on_node_station_changed(self.node_station_link_3d.node_station)
+	if not Engine.is_editor_hint() and is_instance_valid(self.rail_stop_3d):
+		self._on_stop_changed(self.rail_stop_3d.stop)
 	else:
 		self._on_inventory_change()
 #endregion
 
 #region Callbacks
-func _on_node_station_changed(node_station: NodeStationLinkData):
-	if node_station == null or node_station.parent_station == null:
+func _on_stop_changed(stop: RailStationData):
+	if stop == null:
 		return
-	var station_3d: RailStation3D = self.node_station_link_3d.get_parent_station_3d()
-	self.bind_station(node_station.parent_station, station_3d.get_inventory())
+	var station_3d: RailStation3D = self.rail_stop_3d.get_parent_station_3d()
+	self.bind_station(stop, station_3d.get_inventory())
 
 ## Both rail and road stops use the same name panel and inventory counters.
 ## Editor labels leave the data/inventory unbound and save only station_name.
@@ -79,6 +79,6 @@ func _disconnect_inventory() -> void:
 
 func _exit_tree() -> void:
 	self._disconnect_inventory()
-	if is_instance_valid(self.node_station_link_3d) and self.node_station_link_3d.node_station_changed.is_connected(self._on_node_station_changed):
-		self.node_station_link_3d.node_station_changed.disconnect(self._on_node_station_changed)
+	if is_instance_valid(self.rail_stop_3d) and self.rail_stop_3d.stop_changed.is_connected(self._on_stop_changed):
+		self.rail_stop_3d.stop_changed.disconnect(self._on_stop_changed)
 #endregion

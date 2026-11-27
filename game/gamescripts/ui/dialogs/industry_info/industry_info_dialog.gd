@@ -1,12 +1,18 @@
+## Opened by clicking an industry: its name and type, the stop or interchange it
+## trades through, what it produces and consumes per batch with the current
+## stock, and for mines the reserves left in the deposit. Stock and reserves
+## update live while the dialog is open.
 class_name IndustryDialog extends ModalGameDialog
 
 var industry_view: Industry3D
 var _recipe: IndustryType
+## The stock both recipe tables read; the same one the production cycle uses.
 var _inventory: GoodsInventory
+## Mines only: the deposit cells this mine draws from. Empty for other industries.
 var _reserves: Array[MineralReserve] = []
 
 func _ready() -> void:
-	dialog_key = "IndustryDialog"
+	# The clicked industry may be gone, or not fully loaded, by the time this opens.
 	if not is_instance_valid(industry_view) or industry_view.industry == null or industry_view.industry.ind_type == null:
 		close_all()
 		return
@@ -15,6 +21,7 @@ func _ready() -> void:
 	_recipe = industry.ind_type
 	_inventory = industry_view.get_inventory()
 	_reserves = industry.mine_reserves
+	# Reserves have no change signal, so mines poll them every frame.
 	%MineReserves.visible = not _reserves.is_empty()
 	set_process(not _reserves.is_empty())
 	%NameAndTypeBox.industry = industry

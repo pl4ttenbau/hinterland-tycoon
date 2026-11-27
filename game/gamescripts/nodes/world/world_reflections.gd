@@ -7,8 +7,6 @@ extends Node3D
 @export_range(0.0, 200.0, 1.0) var minimum_spacing: float = 60.0
 @export_range(0.1, 5.0, 0.1) var refresh_delay: float = 0.75
 
-# Default, Landscape, Buildings, Infrs, Deco. Exclude Water and Vehicles.
-const STATIC_CAPTURE_MASK: int = 1 | 4 | 8 | 16 | 32
 const CAPTURE_SETTLE_FRAMES: int = 8
 
 var _refresh_timer: Timer
@@ -25,7 +23,7 @@ func _ready() -> void:
 	SignalBus.roads_spawned.connect(request_refresh)
 	SignalBus.road_spawned.connect(request_refresh.unbind(1))
 	SignalBus.town_buildings_spawned.connect(request_refresh)
-	SignalBus.node_station_links_spawned.connect(request_refresh)
+	SignalBus.rail_stops_spawned.connect(request_refresh)
 	SignalBus.industries_spawned.connect(request_refresh)
 	SignalBus.industry_spawned.connect(request_refresh.unbind(1))
 	request_refresh()
@@ -73,7 +71,7 @@ func _collect_candidates() -> Array[Vector3]:
 				# Look out into the yard, rather than capture from inside the shed.
 				candidates.append(depot.global_position - depot.global_basis.z * 12.0)
 	for station: RailStationData in GlobalState.station_objs:
-		if is_instance_valid(station) and not station.node_stations.is_empty():
+		if is_instance_valid(station):
 			candidates.append(station.position)
 	return candidates
 
@@ -104,7 +102,7 @@ func _make_probe() -> ReflectionProbe:
 	probe.interior = false
 	probe.box_projection = false
 	probe.enable_shadows = false
-	probe.cull_mask = STATIC_CAPTURE_MASK
+	probe.cull_mask = RenderLayers.STATIC_CAPTURE_MASK
 	probe.mesh_lod_threshold = 4.0
 	# Keep diffuse sky lighting consistent inside and outside the captures.
 	probe.ambient_mode = ReflectionProbe.AMBIENT_DISABLED

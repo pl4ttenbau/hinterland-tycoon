@@ -42,17 +42,13 @@ func run() -> bool:
 			check(false, test + " aborted")
 	services.free()
 	check(Managers.interchanges == null and town.stations.is_empty(), "Runtime stops clean up with their session")
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
-	for node: RailNodeData in rail.nodes:
-		node.parent_track = null
 	GlobalState.towns.erase(town)
 	GlobalState.station_objs.clear()
 	print("Station creator: %d checks, %d failures" % [checks, failures])
 	return true
 
 func test_physical_placement() -> bool:
-	var road_view: RoadWay3D = road.spawn()
+	var road_view: RoadWay3D = RoadWay3D.of(road)
 	services.roads.add_child(road_view)
 	services.rails.spawn_rail_track(rail)
 	for frame: int in 5:
@@ -102,10 +98,11 @@ func test_create_and_join() -> bool:
 	var rail_stop: RailStationData = joined.stop
 	check(rail_stop.interchange == stop.interchange and rail_stop.station_type == "STATION_GOODS", "Joined stop inherits identity and retains its own type")
 	check(services.interchanges.interchanges.size() == 1 and stop.num != rail_stop.num, "Joining reuses the parent and allocates a unique stop ID across modes")
-	check(rail_stop.node_stations[0].station3d.global_position.is_equal_approx(Vector3(170, 5, 130)), "Rail platform appears at the selected curve position")
+	check(rail_stop.platform_view.global_position.is_equal_approx(Vector3(170, 5, 130)), "Rail platform appears at the selected curve position")
 	check(services.stations.get_station_3d_with_num(rail_stop.num).get_inventory() != null, "New rail stop has a working inventory")
 	check(services.stations.get_station_3d_with_num(rail_stop.num).global_position.is_equal_approx(rail_stop.position), "Rail inventory access is located at the new stop")
-	check(road.nodes.size() == 2 and rail.nodes.size() == 2 and rail.nodes[0].station == null, "Placement preserves authored geometry and node station links")
+	check(road.nodes.size() == 2 and rail.nodes.size() == 2, "Placement preserves authored geometry")
+	check(rail_stop.anchor.position_on(rail).is_equal_approx(rail_stop.position), "The new rail stop is anchored where it was placed")
 	check(services.interchanges.stop_definitions.is_empty(), "Gameplay does not rewrite the authored catalog")
 	check(tool.nearby_interchanges(Vector3(160, 5, 115)).size() == 1, "Several physical stops yield one nearby station entry")
 	GlobalState.industries.erase(industry)
@@ -135,7 +132,7 @@ func test_dialogs() -> bool:
 	var dialog: ModalGameDialog = StationCreatorDialog.create(tool, placement)
 	add_child(dialog)
 	check(dialog.dialog_key == "CreateStationDialog" and dialog.get_node("%OkButton").text == "Create station · DM 5,000.00", "No nearby stop opens the new-station menu")
-	var sides: OptionButton = dialog.get_node("%RoadSide")
+	var sides: OptionButton = dialog.get_node("%RoadOptions/%RoadSide")
 	check(sides.get_item_text(sides.selected) == "Right"
 		and sides.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
 		"Looking back along the road makes the decreasing shelter the player's right")
@@ -155,7 +152,7 @@ func test_dialogs() -> bool:
 		"Cancel removes the preview, makes no stop, and restores input")
 	dialog = StationCreatorDialog.create(tool, tool.placement_on(road, placement.origin, Vector3.RIGHT))
 	add_child(dialog)
-	sides = dialog.get_node("%RoadSide")
+	sides = dialog.get_node("%RoadOptions/%RoadSide")
 	check(sides.get_item_text(sides.selected) == "Left"
 		and sides.get_selected_id() == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
 		"Turning around changes the label while keeping the default shelter on the player's side of the road")
@@ -182,14 +179,12 @@ func test_dialogs() -> bool:
 	dialog = StationCreatorDialog.create(tool, placement)
 	add_child(dialog)
 	check(dialog.dialog_key == "AddStationStopDialog" and dialog.get_node("%OkButton").text == "Add stop · DM 5,000.00", "Nearby stop opens the add-stop menu")
-	check(not dialog.get_node("%StationName").is_visible_in_tree(), "Existing station dialog does not rename the interchange")
+	check(not dialog.get_node("%NewStation/%StationName").is_visible_in_tree(), "Existing station dialog does not rename the interchange")
 	await capture_preview(dialog, "add")
 	dialog.get_node("%OkButton").pressed.emit()
 	await get_tree().process_frame
 	check(services.interchanges.stops_by_num.size() == before + 2 and services.interchanges.interchanges.size() == 2, "Add-stop dialog reuses the existing parent")
-	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
-	check(menu.available_actions().any(func(item: Dictionary): return item.id == "CreateStop"), "Loaded session offers Create stop in the action menu")
-	menu.free()
+	check(BuildTools.available(Enums.BuildToolChoice.CREATE_STOP), "Loaded session offers Create stop in the Build picker")
 	return true
 
 func test_rail_confirmation() -> bool:
@@ -202,11 +197,8 @@ func test_rail_confirmation() -> bool:
 	var handler := ActionHandler.new()
 	add_child(handler)
 	var cash: int = player.company.cash
-	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
-	check(menu.available_actions().any(func(item: Dictionary): return item.title == "Build platform"),
-		"The radial action says Build platform on the track")
-	menu.free()
-	var opened: bool = handler._on_action_triggered("CreateStop")
+	check(BuildTools.title(Enums.BuildToolChoice.CREATE_STOP) == "Build platform", "The Build picker says Build platform on the track")
+	var opened: bool = BuildTools.start(Enums.BuildToolChoice.CREATE_STOP)
 	var dialog := UiState.current_diag as StationCreatorDialog
 	check(opened and dialog != null, "Create stop opens the rail confirmation while standing on the track")
 	if dialog == null:
@@ -227,7 +219,7 @@ func test_rail_confirmation() -> bool:
 	await get_tree().process_frame
 	check(not is_instance_valid(preview) and services.interchanges.stops_by_num.size() == before
 		and player.company.cash == cash, "No clears the preview without placing or charging for the stop")
-	handler._on_action_triggered("CreateStop")
+	BuildTools.start(Enums.BuildToolChoice.CREATE_STOP)
 	dialog = UiState.current_diag as StationCreatorDialog
 	if dialog == null:
 		_free_placement_player(player, handler)
@@ -260,7 +252,7 @@ func test_rail_confirmation() -> bool:
 	if stop == null:
 		_free_placement_player(player, handler)
 		return false
-	var link: NodeStationLink3D = stop.node_stations[0].station3d
+	var link: RailStop3D = stop.platform_view
 	var building := link.get_node("StationBuilding3D") as RailPlatform3D
 	var built_model := building.platform_mesh.get_child(0) as MeshInstance3D
 	check(stop.station_type == "STATION_GOODS" and building.scene_file_path == cargo.building_scene.resource_path
@@ -283,7 +275,7 @@ func test_rail_confirmation() -> bool:
 		"The same interchange cannot buy another platform on this track")
 
 	player.walking_body.global_position = Vector3(485, 5.5, 130)
-	handler._on_action_triggered("CreateStop")
+	BuildTools.start(Enums.BuildToolChoice.CREATE_STOP)
 	dialog = UiState.current_diag as StationCreatorDialog
 	if dialog == null:
 		_free_placement_player(player, handler)
@@ -300,7 +292,7 @@ func test_rail_confirmation() -> bool:
 	var hidden := services.interchanges.stops_by_num.get(next_stop) as RailStationData
 	if hidden == null:
 		return false
-	var hidden_link: NodeStationLink3D = hidden.node_stations[0].station3d
+	var hidden_link: RailStop3D = hidden.platform_view
 	var hidden_shape := hidden_link.get_node("StationBuilding3D/StationBody/StationShape3D") as CollisionShape3D
 	check(hidden.interchange != stop.interchange and hidden.hide_building and hidden_shape.disabled
 		and not hidden_link.get_node("StationBuilding3D").visible and hidden_link.get_node("StationSign3D").visible,
@@ -342,12 +334,12 @@ func test_action_dispatch() -> bool:
 	add_child(handler)
 	var before: int = services.interchanges.stops_by_num.size()
 	player.walking_camera.look_at(player.walking_camera.global_position + Vector3.LEFT)
-	check(handler._on_action_triggered("CreateStop"), "Action captures a real player's supporting road and opens the dialog")
+	check(BuildTools.start(Enums.BuildToolChoice.CREATE_STOP), "Create stop captures a real player's supporting road and opens the dialog")
 	check(UiState.current_diag != null and body.process_mode == Node.PROCESS_MODE_DISABLED, "Creator dialog suspends the walking player")
-	var road_side: OptionButton = UiState.current_diag.get_node("%RoadSide")
+	var road_side: OptionButton = UiState.current_diag.get_node("%RoadOptions/%RoadSide")
 	check(road_side.get_item_id(1) == Enums.RoadStopDirection.ROAD_NODES_DECREASE,
 		"The real action maps Right from the walking camera's view")
-	check(not handler._on_action_triggered("CreateStop"), "Repeated dispatch cannot open a duplicate dialog")
+	check(not BuildTools.start(Enums.BuildToolChoice.CREATE_STOP), "Starting again cannot open a duplicate dialog")
 	var escape := InputEventAction.new()
 	escape.action = "ui_cancel"
 	escape.pressed = true
@@ -364,16 +356,14 @@ func test_action_dispatch() -> bool:
 	var nearby: Array[InterchangeData] = tool.nearby_interchanges(placement.origin)
 	var created: Dictionary = tool.create_stop(placement, nearby[0].num, "", -1, "", Enums.RoadStopDirection.BOTH_DIRECTIONS)
 	check(created.has("stop") and player.company.cash == 0, "A successful stop charges the company once")
-	var menu: RadialActionMenu = load("res://scenes/ui/radial_menu/radial_action_menu.tscn").instantiate()
 	var vehicle := RoadVehicle3D.of("trabant_601_green")
 	vehicle.freeze = true
 	add_child(vehicle)
 	check(player.control.enter_road_vehicle(vehicle), "Fixture boards the road vehicle")
-	check(not menu.available_actions().any(func(item: Dictionary): return item.id == "CreateStop"), "Create stop is hidden inside a road vehicle")
-	check(not handler._on_action_triggered("CreateStop"), "Dispatcher rechecks vehicle occupancy")
+	check(not BuildTools.available(Enums.BuildToolChoice.CREATE_STOP), "Create stop is hidden inside a road vehicle")
+	check(not BuildTools.start(Enums.BuildToolChoice.CREATE_STOP), "Starting the tool rechecks vehicle occupancy")
 	player.control.exit_vehicle()
 	vehicle.free()
-	menu.free()
 	GlobalState.player = null
 	GlobalState.active_cam = null
 	player_scene.free()
@@ -383,7 +373,7 @@ func test_action_dispatch() -> bool:
 func capture_preview(dialog: Control, kind: String) -> void:
 	for frame: int in 3:
 		await get_tree().process_frame
-	var panel: Control = dialog.get_node("OuterPanel")
+	var panel: Control = dialog.get_node("Panel")
 	check(get_viewport().get_visible_rect().encloses(panel.get_global_rect()), "Dialog fits the viewport: " + kind)
 	if "--station-preview" in OS.get_cmdline_user_args():
 		await RenderingServer.frame_post_draw

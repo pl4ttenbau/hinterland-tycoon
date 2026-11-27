@@ -36,11 +36,6 @@ func _connect_residence(house: Residence3D) -> bool:
 	data.connected_interchange = access.interchange
 	data.reachable_stops.assign(access.stops)
 	access.interchange.connections.connect_house(house, data.reachable_stops)
-	# Compatibility only: passenger spawning uses reachable_stops for both modes.
-	for stop: AbstractStation in data.reachable_stops:
-		if stop is RailStationData and not stop.node_stations.is_empty():
-			data.connected_station = stop.node_stations[0]
-			break
 	return true
 
 func _clear_residence_connection(house: Residence3D, data: ResidenceBuildingData) -> void:
@@ -52,7 +47,6 @@ func _clear_residence_connection(house: Residence3D, data: ResidenceBuildingData
 				old.houses.remove_at(index)
 	data.connected_interchange = null
 	data.reachable_stops.clear()
-	data.connected_station = null
 
 func _on_stops_linked() -> void:
 	has_stations_loaded = true

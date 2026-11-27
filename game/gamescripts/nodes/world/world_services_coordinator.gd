@@ -12,7 +12,7 @@ var _connections: Array[Dictionary] = []
 @onready var towns: TownPlacer = $Towns
 @onready var town_buildings: TownBuildingHolder = $Towns/WorldTownBldPlacer
 @onready var rails: RailsLoader = $Infr/Rails
-@onready var forks: RailForkLoader = $Infr/Rails/RailForkLoader
+@onready var forks: RailJunctionLoader = $Infr/Rails/RailJunctionLoader
 @onready var rail_builder: NewRailBuilder = $Infr/Rails/NewRailBuilder
 @onready var stations: StationsHolder = $Infr/Stations
 @onready var interchanges: InterchangesLoader = $Infr/Interchanges
@@ -119,7 +119,7 @@ func _wire_towns() -> void:
 	self._listen(self.towns.towns_registered, self.town_buildings._on_map_towns_loaded)
 
 func _wire_rails() -> void:
-	self._listen(self.rails.track_storage.track_added, self.forks._on_track_loaded)
+	self._listen(self.rails.track_storage.line_added, self.forks._on_track_loaded)
 	self._listen(SignalBus.rails_spawned, self.forks._on_rails_spawned)
 	self._listen(SignalBus.ui_mode_switched, self.rail_builder._on_ui_mode_changed)
 	self._listen(SignalBus.rails_spawned, self.residence_connector._on_rails_spawned)
@@ -131,7 +131,7 @@ func _wire_stops_and_catchments() -> void:
 	self._listen(self.towns.towns_registered, self.stations._on_map_towns_loaded)
 	self._listen(self.towns.towns_registered, self.road_stops._on_map_towns_loaded)
 	self._listen(SignalBus.stations_loaded, self.stations._on_stations_loaded)
-	self._listen(SignalBus.node_station_links_spawned, self.industry_connector._on_node_station_links_spawned)
+	self._listen(SignalBus.rail_stops_spawned, self.industry_connector._on_rail_stops_spawned)
 	self._listen(SignalBus.industries_spawned, self.industry_connector._on_industries_spawned)
 	self._listen(SignalBus.stations_loaded, self.residence_connector._on_stations_loaded)
 	self._listen(self.interchanges.stops_linked, self.residence_connector._on_stops_linked)

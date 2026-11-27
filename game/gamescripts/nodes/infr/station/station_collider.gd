@@ -6,8 +6,8 @@ class_name StationCollider extends ClickableCollider
 func get_stop() -> AbstractStation:
 	var ancestor: Node = get_parent()
 	while ancestor != null:
-		if ancestor is NodeStationLink3D:
-			return ancestor.node_station.parent_station if ancestor.node_station != null else null
+		if ancestor is RailStop3D:
+			return ancestor.stop
 		if ancestor is BusStop3D:
 			return ancestor.station
 		ancestor = ancestor.get_parent()

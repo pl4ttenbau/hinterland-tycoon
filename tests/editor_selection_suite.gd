@@ -26,6 +26,19 @@ func test_toolbar(tree: SceneTree) -> bool:
 		buttons[tool].button_pressed = true
 		for other: Enums.EnumEditorTool in buttons:
 			check(buttons[other].button_pressed == (other == tool), "Selecting a toolbar tool releases every conflicting tool")
+	## Layout: every visible tool explains itself; Build Town stays hidden until it works; Free Tool is an
+	## action, not a mode; drawing and station tools carry the project's own icons (editor-theme icons
+	## only resolve inside the editor, so Select, Add Stop and Free Tool have none here).
+	for tool: Enums.EnumEditorTool in buttons:
+		if buttons[tool].visible:
+			check(not buttons[tool].tooltip_text.is_empty(), "%s has a tooltip" % buttons[tool].text)
+	check(not buttons[Enums.EnumEditorTool.BUILD_TOWN].visible, "Build Town is hidden until town placement exists")
+	check(not buttons[Enums.EnumEditorTool.NONE].toggle_mode, "Free Tool is a one-shot action")
+	for tool: Enums.EnumEditorTool in [Enums.EnumEditorTool.CREATE_ROAD, Enums.EnumEditorTool.CREATE_RAIL, Enums.EnumEditorTool.CREATE_INTERCHANGE]:
+		check(buttons[tool].icon != null, "%s shows its icon" % buttons[tool].text)
+	buttons[Enums.EnumEditorTool.CREATE_RAIL].button_pressed = true
+	check(not buttons[Enums.EnumEditorTool.CREATE_RAIL].flat and buttons[Enums.EnumEditorTool.CREATE_ROAD].flat,
+		"Only the active tool is drawn raised")
 	var other_panel: Control = load("res://addons/hinterland_tools/editor_tools_panel.tscn").instantiate()
 	tree.root.add_child(other_panel)
 	var other_buttons: Dictionary[Enums.EnumEditorTool, Button] = HinterlandEditorPlugin.create_tool_buttons(other_panel)
@@ -207,6 +220,25 @@ func test_save_requests(tree: SceneTree) -> bool:
 	check(requests[0][0] == cache and requests[0][1] == Enums.InfrDomain.ROAD, "Road request identifies its cache and domain")
 	check(requests[1][0] == cache and requests[1][1] == Enums.InfrDomain.RAIL, "Rail request identifies its cache and domain")
 	check(HinterlandEditorSignals.instance == bus, "EditorCache actions use the active plugin-owned signal bus")
+	## "Save Single" on a cache line asks the plugin to save just that line, from its own map.
+	var line_requests: Array = []
+	bus.infrastructure_line_save_requested.connect(func(sender: Node3D) -> void: line_requests.append(sender))
+	var cached: EditorInfrLine3D = EditorInfrLine3D.ofRoad(41, "Cached road")
+	cache.add_child(cached)
+	cached.do_save_single()
+	check(line_requests == [cached], "Save Single emits one request naming its line")
+	check(WorldUtils.owning_map(cached) == world, "A cache line belongs to its world map")
+	## Reference lines loaded under EditorInfr in the standalone EditorObjects scene can be saved too.
+	var objects := WorldEditorObjects.new()
+	var editor_infr := Node3D.new()
+	var editor_rails := Node3D.new()
+	var reference: EditorInfrLine3D = EditorInfrLine3D.ofRail(42, "Reference track")
+	editor_rails.add_child(reference)
+	editor_infr.add_child(editor_rails)
+	objects.add_child(editor_infr)
+	tree.root.add_child(objects)
+	check(WorldUtils.owning_map(reference) == objects, "A reference line under EditorInfr belongs to its EditorObjects scene")
+	objects.free()
 	bus.free()
 	check(HinterlandEditorSignals.instance == null, "Removing the bus clears its static reference")
 	world.free()

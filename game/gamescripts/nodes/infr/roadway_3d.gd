@@ -1,30 +1,36 @@
 @icon("res://assets/icons/nodes_3d/icon_road.svg")
-class_name RoadWay3D extends GameEntity3D
+class_name RoadWay3D extends InfrLine3D
 
 ## Reference measurements of the source tile, before applying the road type.
 @export var source_drivable_width_metres: float = 0.0
 @export var source_mesh_height_metres: float = 0.0
 
 @export var road: RoadData:
-	set(value):
-		self.entity = value
-		self.position = value.start_pos
-		InfrUtils.fit_short_path_mesh(get_road_mesh(), value.curve)
-		self.get_path_3d().curve = value.curve
-		self.assign_node_names()
+	set(value): self.bind_line(value)
 	get(): return self.entity as RoadData
 
 #region Initialization
+## Builds the view from the road type's scene; null for an unknown road type.
+static func of(road_data: RoadData) -> RoadWay3D:
+	var definition: RoadType = road_data.get_road_type()
+	if definition == null:
+		return null
+	road_data.ensure_curve()
+	var view := definition.scene.instantiate() as RoadWay3D
+	view.road = road_data
+	view.apply_mesh_profile(definition)
+	return view
+
 func _enter_tree() -> void:
 	# Configure before the child's READY builds the warped mesh. The addon owns
 	# the static body and rebuilds it whenever the path/mesh changes.
 	get_road_mesh().collision_mode = PathMesh3D.COLLISION_MODE_TRIMESH
 
-func assign_node_names():
-	var track_num: int = self.entity.num
-	self.name = "Road_%d_Container" % track_num
-	self.get_path_3d().name = "Road_%d_Path" % track_num
-	self.get_road_mesh().name = "Road_%d_Mesh" % track_num
+func _name_prefix() -> String:
+	return "Road"
+
+func _assign_mesh_names(prefix: String, num: int) -> void:
+	self.get_road_mesh().name = "%s_%d_Mesh" % [prefix, num]
 
 func has_mesh_profile() -> bool:
 	return source_drivable_width_metres > 0.0 and get_child_count() >= 2 \
@@ -44,9 +50,6 @@ func apply_mesh_profile(definition: RoadType) -> void:
 #endregion
 
 #region Getters
-func get_path_3d() -> Path3D:
-	return self.get_child(0)
-	
 func get_road_mesh() -> PathMesh3D:
 	return self.get_child(1)
 #endregion

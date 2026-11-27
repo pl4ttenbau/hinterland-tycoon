@@ -1,0 +1,74 @@
+{
+  "config": "/home/cornelinux/.godotproj/hinterland-tycoon/tools/vehicles/configs/harz_rekowagen.json",
+  "assembly_blend": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/harz_rekowagen/exports/harz_rekowagen_godot.blend",
+  "components": [
+    {
+      "source": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/harz_rekowagen/blend/harz_rekowagen_glass_merged.blend",
+      "object": "Harz Rekowagen DR",
+      "name": "Harz_Rekowagen",
+      "triangles": 9514,
+      "atlas_uv": "DR_Livery",
+      "sha256": "b060199a1eec1b8cd21446b66105908158b8e0faacc45766c2e47c5527495a46",
+      "geometry_uv_normals_sha256": "12496fe00fafb8abedcccb1ffe7d32f8cf67f5c09c4ad31846d351a7d2a8c0b2",
+      "bounds_xyz": [
+        [
+          -1.3600000143051147,
+          1.3600000143051147
+        ],
+        [
+          -7.400000095367432,
+          7.400000095367432
+        ],
+        [
+          -0.020000040531158447,
+          3.8474998474121094
+        ]
+      ]
+    }
+  ],
+  "meshes": 1,
+  "materials": 1,
+  "triangles": 9514,
+  "assembly_bounds_xyz": [
+    [
+      -1.3600000143051147,
+      1.3600000143051147
+    ],
+    [
+      -7.400000095367432,
+      7.400000095367432
+    ],
+    [
+      -0.020000040531158447,
+      3.8474998474121094
+    ]
+  ],
+  "runtime_bounds_xyz": [
+    [
+      -1.3600000143051147,
+      1.3600000143051147
+    ],
+    [
+      -7.400000095367432,
+      7.400000095367432
+    ],
+    [
+      -0.020000040531158447,
+      3.8474998474121094
+    ]
+  ],
+  "coupler_envelope_length_metres": 14.8,
+  "centering_blender_y": -0.0,
+  "tread_correction_blender_z": -0.0,
+  "godot_forward": "-Z (Blender +Y)",
+  "sources_preserved": true,
+  "assembly_saved_reopened": true,
+  "gltf_reimport_verified": true,
+  "atlas_uv_only": true,
+  "gltf": "/home/cornelinux/.godotproj/hinterland-tycoon/assets/meshes/vehicles/rail/harz_rekowagen/mesh/harz_rekowagen.gltf",
+  "textures": [
+    "rekowagen_glass_diffuse.png",
+    "rekowagen_glass_roughness.png"
+  ],
+  "notes": []
+}

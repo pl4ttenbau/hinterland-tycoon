@@ -3,7 +3,7 @@ extends Node
 ## Directed rail graph, junction topology and ID-based junction lookups, without loading a world.
 var failures: int = 0
 var rails: RailsLoader
-var forks: RailForkLoader
+var forks: RailJunctionLoader
 
 var INC: Enums.PathDirection = Enums.PathDirection.TRACK_NODES_INCREASE
 var DEC: Enums.PathDirection = Enums.PathDirection.TRACK_NODES_DECREASE
@@ -27,14 +27,14 @@ func make_track(num: int, points: Array[Vector3], gauge: String = "750_MM") -> R
 	return track
 
 ## Join track endpoints at one position. The first listed track is the static root.
-func make_junction(legs: Array[RailNodeData]) -> NewRailForkData:
+func make_junction(legs: Array[RailNodeData]) -> RailJunctionData:
 	for node: RailNodeData in legs:
-		var leg := RailNodeForkData.new()
+		var leg := RailJunctionArm.new()
 		leg.railNode = node
 		leg.static_track = legs.size() > 2 and node == legs[0]
 		node.fork = leg
 		self.forks.add_new_or_connection(leg)
-	var junction: NewRailForkData = legs[0].fork.junction
+	var junction: RailJunctionData = legs[0].fork.junction
 	junction.setting.init_current_setting()
 	return junction
 
@@ -44,7 +44,7 @@ func id(track: RailTrackData, direction: Enums.PathDirection) -> int:
 func _run() -> void:
 	self.rails = RailsLoader.new()
 	Managers.rails = self.rails
-	self.forks = RailForkLoader.new()
+	self.forks = RailJunctionLoader.new()
 	Managers.forks = self.forks
 	## Two routes from the approach to the exit; the one via the straight track is shorter.
 	var approach := self.make_track(0, [Vector3.ZERO, Vector3(0, 0, -20)])
@@ -109,7 +109,6 @@ func _run() -> void:
 				rail_node.fork.junction = null
 				rail_node.fork.railNode = null
 				rail_node.fork = null
-			rail_node.parent_track = null
 	self.rails.free()
 	self.forks.free()
 	print("Rail network graph tests: ", self.failures, " failures")

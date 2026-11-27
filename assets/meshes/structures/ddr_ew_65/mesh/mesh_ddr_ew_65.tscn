@@ -1,10 +1,15 @@
-[gd_scene format=3 uid="uid://dscojh5jxua0u"]
+[gd_scene load_steps=4 format=3 uid="uid://dscojh5jxua0u"]
 
-[ext_resource type="PackedScene" uid="uid://dcldkktwuhgw" path="res://assets/meshes/structures/ddr_ew_65/mesh/ddr_ew_65.obj" id="1_jb3wm"]
+[ext_resource type="ArrayMesh" path="res://assets/meshes/structures/ddr_ew_65/mesh/ddr_ew_65_mesh.res" id="1_mesh"]
+[ext_resource type="Material" path="res://assets/meshes/structures/ddr_ew_65/mesh/ew_65_building.tres" id="2_building"]
+[ext_resource type="Material" path="res://assets/meshes/structures/ddr_ew_65/mesh/ew_65_windows.tres" id="3_windows"]
 
-[node name="MeshDdrEw65" unique_id=1492721111 instance=ExtResource("1_jb3wm")]
+[node name="MeshDdrEw65" type="Node3D" unique_id=1492721111]
 
-[node name="Main" parent="." index="0" unique_id=1675790772]
+[node name="Main" type="MeshInstance3D" parent="." unique_id=1675790772]
 layers = 8
 visibility_range_end = 120.0
 visibility_range_end_margin = 12.0
+mesh = ExtResource("1_mesh")
+surface_material_override/0 = ExtResource("2_building")
+surface_material_override/1 = ExtResource("3_windows")

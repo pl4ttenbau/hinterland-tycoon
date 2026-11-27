@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/placement_name_dialog.tscn" id="1_base"]
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/road_marker/road_marker_dialog.gd" id="2_script"]
+
+[node name="RoadMarkerDialog" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+dialog_key = "RoadMarkerDialog"
+title_text = "Place road marker"
+success_btn_text = "Place marker"
+
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
+text = "Place road marker"
+
+[node name="Choice" parent="Panel/Padding/Layout/Content" index="1"]
+item_count = 3
+popup/item_0/text = "Left"
+popup/item_0/id = 0
+popup/item_1/text = "Right"
+popup/item_1/id = 1
+popup/item_2/text = "Both"
+popup/item_2/id = 2
+
+[node name="OkButton" parent="Panel/Padding/Layout/Buttons" index="0"]
+text = "Place marker"

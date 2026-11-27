@@ -13,7 +13,7 @@ func check(condition: bool, message: String) -> void:
 func run(test_tree: SceneTree) -> int:
 	tree = test_tree
 	# Count an aborted test as a failure too: runtime errors do not set the exit code.
-	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options"]:
+	for test: StringName in [&"test_interpolation", &"test_recalculation", &"test_degenerate_points", &"test_vertical_smoothing", &"test_round_trip", &"test_runtime_options", &"test_aabb", &"test_line_bounds"]:
 		check(call(test) == true, "%s completed" % test)
 	print("Infrastructure smoothing tests: %d checks, %d failures" % [checks, failures])
 	return 1 if failures > 0 else 0
@@ -24,12 +24,19 @@ func make_curve(points: Array[Vector3]) -> Curve3D:
 		curve.add_point(point)
 	return curve
 
-func check_curves_equal(actual: Curve3D, expected: Curve3D, message: String) -> void:
+## `handle_tolerance` 0 compares handles exactly (approx); JSON round trips pass 0.0005, since saved
+## handles are rounded to millimetres (InfrJsonFormatter.HANDLE_KEYS).
+func check_curves_equal(actual: Curve3D, expected: Curve3D, message: String, handle_tolerance: float = 0.0) -> void:
 	check(actual.point_count == expected.point_count, message + ": point count")
 	for idx: int in range(mini(actual.point_count, expected.point_count)):
 		check(actual.get_point_position(idx).is_equal_approx(expected.get_point_position(idx)), message + ": position")
-		check(actual.get_point_in(idx).is_equal_approx(expected.get_point_in(idx)), message + ": incoming handle")
-		check(actual.get_point_out(idx).is_equal_approx(expected.get_point_out(idx)), message + ": outgoing handle")
+		check(_handles_match(actual.get_point_in(idx), expected.get_point_in(idx), handle_tolerance), message + ": incoming handle")
+		check(_handles_match(actual.get_point_out(idx), expected.get_point_out(idx), handle_tolerance), message + ": outgoing handle")
+
+func _handles_match(actual: Vector3, expected: Vector3, tolerance: float) -> bool:
+	if tolerance <= 0.0:
+		return actual.is_equal_approx(expected)
+	return absf(actual.x - expected.x) <= tolerance and absf(actual.y - expected.y) <= tolerance and absf(actual.z - expected.z) <= tolerance
 
 ## Independent reference: Barry-Goldman's recursive interpolation evaluates the
 ## Catmull-Rom curve directly, without using the production Bezier derivative formula.
@@ -135,22 +142,24 @@ func test_round_trip() -> bool:
 	tree.root.add_child(line)
 	line.curve = make_curve([Vector3.ZERO, Vector3(2, 1, 0), Vector3(12, 4, 8), Vector3(13, 3, 9)])
 	InfrUtils.smooth_curve3d(line.curve)
-	# A real text JSON round trip catches arrays vs Vector3 display strings as well
-	# as missing endpoint handles and accidentally mirrored outgoing handles.
-	var exported: Dictionary = Infr3DExporter.infr3d_to_road_dict(line)
-	var json: String = Infr3DExporter.replace_vec3_tuples_with_float_arr(JSON.stringify(exported))
-	var data: Dictionary = JSON.parse_string(json)
+	## Through the real save path and file format: InfrJsonStore builds the record, rounds it (positions to
+	## cm, handles to mm) and formats it, exactly as an editor save writes tracks.json / roads.json. Reloading
+	## that text catches missing endpoint handles and accidentally mirrored outgoing handles.
+	var records: Array = [InfrJsonStore.line_to_record(line, Enums.InfrDomain.ROAD)]
+	InfrJsonStore.round_positions(records)
+	var json: String = InfrJsonStore.format_json(records)
+	var data: Dictionary = JSON.parse_string(json)[0]
 	var reloaded: EditorInfrLine3D = RoadMapper.editor_line_from_data(data)
 	reloaded.create_curve_from_dict(data)
-	check_curves_equal(reloaded.curve, line.curve, "Editor JSON round trip")
+	check_curves_equal(reloaded.curve, line.curve, "Editor JSON round trip", 0.0005)
 	var road: RoadData = RoadMapper.road_from_data_json(data)
 	road.build_curve()
-	check_curves_equal(road.curve, line.curve, "Runtime road JSON round trip")
+	check_curves_equal(road.curve, line.curve, "Runtime road JSON round trip", 0.0005)
 	var rail_data: Dictionary = data.duplicate(true)
 	rail_data["type"] = "NORMAL_GAUGE"
 	var rail: RailTrackData = RailMapper.rail_track_from_dict(rail_data)
 	rail.build_curve()
-	check_curves_equal(rail.curve, line.curve, "Runtime rail JSON round trip")
+	check_curves_equal(rail.curve, line.curve, "Runtime rail JSON round trip", 0.0005)
 	# Legacy maps with only handleIn must still load mirrored handleOut values.
 	var legacy: Dictionary = {"num": 92, "name": "Legacy", "points": [
 		{"pos": [0, 0, 0]}, {"pos": [5, 1, 2], "handleIn": [-1, -0.5, 0]}, {"pos": [10, 2, 5]}
@@ -162,7 +171,7 @@ func test_round_trip() -> bool:
 	legacy_road.build_curve()
 	check(legacy_road.curve.get_point_out(1) == Vector3(1, 0.5, 0), "Legacy runtime road handles remain mirrored")
 	var legacy_node := RailNodeData.new()
-	legacy_node.parse_and_add_special(legacy.points[1])
+	InfrNodeMapper.apply_point_fields(legacy_node, legacy.points[1])
 	check(legacy_node.handle_out == Vector3(1, 0.5, 0), "Legacy runtime rail handles remain mirrored")
 	line.free()
 	reloaded.free()
@@ -191,6 +200,63 @@ func test_runtime_options() -> bool:
 	var line: EditorInfrLine3D = EditorInfrLine3D.ofRoad(93, "Unsmoothed", false)
 	tree.root.add_child(line)
 	line.curve = make_curve([Vector3.ZERO, Vector3(5, 1, 2), Vector3(10, 2, 5)])
-	check(Infr3DExporter.infr3d_to_road_dict(line).autosmooth == false, "Export preserves the road's smoothing option")
+	check(InfrJsonStore.line_to_record(line, Enums.InfrDomain.ROAD).autosmooth == false, "Saving preserves the road's smoothing option")
 	line.free()
+	return true
+
+## InfrUtils.get_aabb must grow on every axis at once and treat the origin as a real point.
+func test_aabb() -> bool:
+	check(InfrUtils.get_aabb([]) == AABB(), "No points give an empty box")
+	var points: Array[Vector3] = [Vector3(5, 1, -2), Vector3(-3, 4, 7), Vector3.ZERO, Vector3(2, -6, 1)]
+	var bounds: AABB = InfrUtils.get_aabb(points)
+	check(bounds.position.is_equal_approx(Vector3(-3, -6, -2)), "Minimum corner takes the lowest value on each axis")
+	check(bounds.end.is_equal_approx(Vector3(5, 4, 7)), "Maximum corner takes the highest value on each axis")
+	var around_origin: Array[Vector3] = [Vector3.ZERO, Vector3(-1, -1, -1)]
+	check(InfrUtils.get_aabb(around_origin) == AABB(Vector3(-1, -1, -1), Vector3.ONE), "A point at the origin counts like any other point")
+	return true
+
+## Line bounds (AbstractInfrLine.get_bounds / is_near), the pre-filter for "which lines are near here".
+## The old filter measured from the midpoint between a line's two ends, which misses most of a bent line.
+func test_line_bounds() -> bool:
+	## A U-shaped road without smoothing: ends at x = 0 and x = 20, the bend 100 m away at z = -100.
+	var road := RoadData.of(1, InfrDomains.default_type(Enums.InfrDomain.ROAD))
+	road.autosmooth = false
+	for point: Vector3 in [Vector3(0, 0, 0), Vector3(0, 0, -100), Vector3(20, 0, -100), Vector3(20, 0, 0)]:
+		road.add_node(RoadNode.of(road.nodes.size(), point, road), false)
+	road.build_curve()
+	var bounds: AABB = road.get_bounds()
+	check(bounds.position.is_equal_approx(Vector3(0, 0, -100)) and bounds.end.is_equal_approx(Vector3(20, 0, 0)),
+		"Bounds enclose every node of the line: %s" % bounds)
+	check(road.is_near(Vector3(10, 0, -130), 40.0), "A place near the bend is near, though both ends are over 100 m away")
+	check(not road.is_near(Vector3(10, 0, -130), 20.0), "The distance still counts: 30 m off the bend is not within 20 m")
+	check(not road.is_near(Vector3(200, 0, 0), 60.0), "A place far from every part of the line is not near")
+
+	## Moving a point in place, or rebuilding the curve, refreshes the cached bounds.
+	road.curve.set_point_position(1, Vector3(0, 0, -300))
+	check(road.get_bounds().position.z <= -299.9, "Bounds follow points moved in the curve itself")
+	road.nodes[1].position = Vector3(0, 0, -50)
+	road.nodes[2].position = Vector3(20, 0, -50)
+	road.build_curve()
+	check(road.get_bounds().position.z >= -50.1 and not road.is_near(Vector3(10, 0, -130), 40.0),
+		"Bounds follow a rebuilt curve")
+	## A replaced curve (as erasing does with fragments) also refreshes them.
+	var replacement := Curve3D.new()
+	replacement.add_point(Vector3(500, 0, 500))
+	replacement.add_point(Vector3(510, 0, 500))
+	road.curve = replacement
+	check(road.is_near(Vector3(505, 0, 505), 10.0) and not road.is_near(Vector3(10, 0, -40), 10.0), "Bounds follow a replaced curve")
+
+	## The curve, not just its nodes: handles bulge it 7.5 m out to the side between two nodes on the x axis.
+	var bulge := RoadData.of(2, InfrDomains.default_type(Enums.InfrDomain.ROAD))
+	bulge.autosmooth = false
+	var start := RoadNode.of(0, Vector3.ZERO, bulge)
+	start.handle_out = Vector3(0, 0, 10)
+	var finish := RoadNode.of(1, Vector3(10, 0, 0), bulge)
+	finish.handle_in = Vector3(0, 0, 10)
+	bulge.add_node(start, false)
+	bulge.add_node(finish, false)
+	bulge.build_curve()
+	check(bulge.get_bounds().end.z >= 7.0, "Bounds include where the curve bulges out between nodes: %s" % bulge.get_bounds())
+
+	check(not RoadData.of(3, "").is_near(Vector3.ZERO, 100.0), "A line without nodes is near nothing, not even the origin")
 	return true

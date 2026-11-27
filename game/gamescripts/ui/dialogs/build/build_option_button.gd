@@ -1,7 +1,6 @@
-class_name BuildOptionButton extends Button
-
-signal option_selected(definition: IndustryBuildingType, building: PackedScene,
-		preview_scene: PackedScene, model_transform: Transform3D)
+## Offers one industry building. Its preview is an optional preview.png next to
+## the building scene, so adding one needs no scene change here.
+class_name BuildOptionButton extends BuildPickerOption
 
 @export var building_key: String
 
@@ -38,4 +37,19 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	if _preview_scene != null:
-		option_selected.emit(_definition, _building_scene, _preview_scene, _model_transform)
+		choice_selected.emit(BuildChoice.of_building(_definition, _building_scene, _preview_scene, _model_transform))
+
+
+func preview_image() -> Texture2D:
+	if _definition == null:
+		return null
+	var path: String = _definition.get_preview_img_path()
+	return load(path) as Texture2D if ResourceLoader.exists(path) else null
+
+
+func preview_title() -> String:
+	return _definition.display_name if _definition != null else text
+
+
+func preview_details() -> String:
+	return "Construction cost: %s" % CompanyData.format_cash(_definition.construction_cost) if _definition != null else ""

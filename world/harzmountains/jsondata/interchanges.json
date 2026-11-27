@@ -117,7 +117,15 @@
 		"name": "Kirchstr.",
 		"townNum": 14,
 		"townName": "Hasserode",
-		"stops": []
+		"stops": [
+			{
+				"num": 27,
+				"domain": "RAIL",
+				"trackNum": 12,
+				"nodeIndex": 4,
+				"type": "STATION_PASS"
+			}
+		]
 	},
 	{
 		"num": 10,
@@ -256,7 +264,7 @@
 				"num": 19,
 				"domain": "RAIL",
 				"trackNum": 13,
-				"nodeIndex": 8,
+				"nodeIndex": 12,
 				"type": "STATION_PASS"
 			}
 		]

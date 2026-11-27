@@ -7,7 +7,7 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	var road_instance := RoadData.of(road_num, type_key)
 	# optionals
 	if _road_dict.has("name"):
-		road_instance.track_name = _road_dict.get("name")
+		road_instance.line_name = _road_dict.get("name")
 	if _road_dict.has("tag"):
 		road_instance.tag = _road_dict.get("tag", null)
 	if _road_dict.has("autosmooth"):
@@ -18,7 +18,6 @@ static func road_from_data_json(_road_dict: Dictionary) -> RoadData:
 	road_instance.start_pos = WorldUtils.vec3_from_float_arr(start_pos_arr)
 	# create vertexes/curve
 	add_points_from_json(_road_dict, road_instance)
-	road_instance.created.emit(road_instance)
 	return road_instance
 
 static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
@@ -26,19 +25,12 @@ static func add_points_from_json(_json_track: Dictionary, _road: RoadData):
 	for road_node_dict: Dictionary in _json_track.points:
 		var abs_node_pos: Vector3 = WorldUtils.vec3_from_float_arr(road_node_dict.pos)
 		var road_node := RoadNode.of(node_index, abs_node_pos, _road)
-		road_node.rel_position = abs_node_pos - _road.start_pos
 		# crosing with other roads
 		if road_node_dict.has("cross"):
 			var road_cross := cross_from_dict_and_data(road_node, road_node_dict.get("cross"))
 			# and add to road cross list
 			_road.crosses.append(road_cross)
-		# curve handles
-		if road_node_dict.has("handleIn"):
-			road_node.handle_in = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleIn"))
-			road_node.handle_out = -1 * road_node.handle_in
-		# Catmull-Rom needs independent lengths; retain mirrored legacy handles.
-		if road_node_dict.has("handleOut"):
-			road_node.handle_out = WorldUtils.vec3_from_float_arr(road_node_dict.get("handleOut"))
+		InfrNodeMapper.apply_point_fields(road_node, road_node_dict)
 		_road.add_node(road_node)
 		node_index += 1
 

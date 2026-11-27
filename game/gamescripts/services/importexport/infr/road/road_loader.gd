@@ -1,5 +1,5 @@
 @icon("res://assets/icons/icon_road_white.png")
-class_name RoadsLoader extends Node
+class_name RoadsLoader extends AbstractInfrLineLoader
 
 const JSON_PATH_FORMAT = "res://world/%s/jsondata/roads.json"
 const NODES_GROUP = "Roads"
@@ -12,8 +12,6 @@ func _ready() -> void:
 	var tool: Node = load("res://game/gamescripts/nodes/marker/road_marker_tool.gd").new()
 	tool.roads = self
 	add_child(tool)
-
-signal network_changed()
 
 var network_revision: int = 0
 
@@ -39,7 +37,7 @@ func spawn_roads():
 	SignalBus.roads_spawned.emit()
 
 func spawn_road(road: RoadData):
-	var instanciated: RoadWay3D = road.spawn()
+	var instanciated: RoadWay3D = RoadWay3D.of(road)
 	if instanciated == null:
 		return
 	add_child(instanciated, true)
@@ -55,31 +53,9 @@ func _on_map_selected(_selected_map: MapData):
 	self.load_roads()
 #endregion
 
-
-## A segment is the span between adjacent authored nodes.
-func erase_segment(road: RoadData, segment_index: int) -> Error:
-	return erase_span(road, segment_index, segment_index + 1)
-
-
-## The selected endpoints survive if they still have a span on their outside.
-func erase_span(road: RoadData, from_index: int, to_index: int) -> Error:
-	var first: int = mini(from_index, to_index)
-	var last: int = maxi(from_index, to_index)
-	if not _has_road(road) or first < 0 or last >= road.nodes.size() or first == last:
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(road, first, last)
-
-
-## Erase the node and both incident spans, leaving a gap.
-func erase_node(road: RoadData, index: int) -> Error:
-	if not _has_road(road) or index < 0 or index >= road.nodes.size():
-		return ERR_INVALID_PARAMETER
-	return _erase_gap(road, index - 1, index + 1)
-
-
 ## Disconnect this junction anchor from other roads. Its geometry survives.
 func erase_cross(road: RoadData, index: int) -> Error:
-	if not _has_road(road) or index < 0 or index >= road.nodes.size():
+	if not _has_line(road) or not road.has_node_index(index):
 		return ERR_INVALID_PARAMETER
 	if _road_has_active_vehicle(road):
 		return ERR_BUSY
@@ -106,70 +82,47 @@ func erase_cross(road: RoadData, index: int) -> Error:
 	return OK
 
 
-func _has_road(road: RoadData) -> bool:
-	return road != null and storage._by_id.get(road.num) == road
+#region Split hooks
+func _store() -> AbstractInfrLineStore:
+	return storage
 
 
-func _erase_gap(road: RoadData, left_end: int, right_start: int) -> Error:
-	if _road_has_dependencies(road):
-		return ERR_BUSY
-	if road.curve == null:
-		road.build_curve()
-	var source: Curve3D = road.curve
-	if source.point_count != road.nodes.size():
-		return ERR_INVALID_DATA
-	var old_origin: Vector3 = road.start_pos
-	var old_nodes: Array[RoadNode] = road.nodes
-	var old_anchors: Array[RoadNode] = old_nodes.filter(func(node: RoadNode) -> bool:
-		return node == old_nodes.front() or node == old_nodes.back() or node.cross != null)
-	var view: RoadWay3D = storage._containers_by_id.get(road.num)
-	var fragments: Array[RoadData] = []
-	var surviving: Dictionary = {}
-	for points: Vector2i in PathCurveUtils.ranges_after_erase(old_nodes.size(), left_end, right_start):
-		var section: Curve3D = PathCurveUtils.copy_point_range(source, points, old_nodes[points.x].position - old_origin)
-		if section.get_baked_length() <= 0.0:
-			continue
-		var fragment: RoadData = road if fragments.is_empty() else RoadData.of(storage._max_num + 1, road.infr_type_key)
-		fragment.track_name = road.track_name
-		fragment.tag = road.tag
-		fragment.autosmooth = road.autosmooth
-		fragment.nodes = old_nodes.slice(points.x, points.y + 1)
-		fragment.start_pos = fragment.nodes[0].position
-		fragment.vertices = []
-		fragment.crosses = []
-		for node: RoadNode in fragment.nodes:
-			node.parent_track = fragment
-			node.index = fragment.vertices.size()
-			node.rel_position = node.position - fragment.start_pos
-			fragment.vertices.append(node.position)
-			if node.cross != null:
-				fragment.crosses.append(node.cross)
-			surviving[node] = true
-		fragment.abs_aabb = InfrUtils.get_aabb(fragment.vertices)
-		fragment.curve = section
-		fragments.append(fragment)
+func _new_line() -> AbstractInfrLine:
+	return RoadData.new()
+
+
+func _spawn_view(track: AbstractInfrLine) -> void:
+	spawn_road(track)
+
+
+func _split_blocker(track: AbstractInfrLine) -> Error:
+	return ERR_BUSY if _road_has_dependencies(track) else OK
+
+
+func _copy_line_fields(fragment: AbstractInfrLine, source: AbstractInfrLine) -> void:
+	super(fragment, source)
+	(fragment as RoadData).autosmooth = (source as RoadData).autosmooth
+
+
+func _init_fragment(fragment: AbstractInfrLine, _cut_start: bool, _cut_end: bool) -> void:
+	var road := fragment as RoadData
+	road.crosses.clear()
+	for node: RoadNode in road.nodes:
+		if node.cross != null:
+			road.crosses.append(node.cross)
+
+
+func _relink(split: AbstractInfrLineLoader.Split) -> void:
+	var old_nodes: Array = split.old_nodes
+	# Collect before the erased nodes drop their crosses.
+	var old_anchors: Array[RoadNode] = []
 	for node: RoadNode in old_nodes:
-		if not surviving.has(node):
-			_clear_cross(node)
-			node.parent_track = null
-			node.index = -1
-	if fragments.is_empty():
-		storage.remove(road)
-		road.nodes = []
-		road.vertices = []
-		road.curve = null
-	elif fragments.size() == 2:
-		storage.add(fragments[1])
-	_retarget_crosses(road.num, old_anchors, surviving)
-	if not fragments.is_empty() and is_instance_valid(view):
-		view.road = road
-		if fragments.size() == 2:
-			spawn_road(fragments[1])
-	for fragment: RoadData in fragments:
-		fragment.curve_built.emit(fragment.curve)
-		fragment.track_changed.emit()
-	_publish_network_change()
-	return OK
+		if node == old_nodes.front() or node == old_nodes.back() or node.cross != null:
+			old_anchors.append(node)
+	for node: RoadNode in split.removed_nodes():
+		_clear_cross(node)
+	_retarget_crosses(split.line.num, old_anchors, split.surviving)
+#endregion
 
 
 ## A cross references a road ID plus where the anchors meet. Reassign only
@@ -185,7 +138,7 @@ func _retarget_crosses(old_num: int, anchors: Array[RoadNode], surviving: Dictio
 			for anchor: RoadNode in anchors:
 				if anchor == node or not surviving.has(anchor) or node.position.distance_to(anchor.position) > RoadPathfinder.JOIN_TOLERANCE:
 					continue
-				var target: int = anchor.parent_track.num
+				var target: int = anchor.parent_line.num
 				if target != other.num and target not in links:
 					links.append(target)
 			if links.is_empty():
@@ -195,7 +148,7 @@ func _retarget_crosses(old_num: int, anchors: Array[RoadNode], surviving: Dictio
 
 func _prune_empty_crosses(anchors: Array[RoadNode]) -> void:
 	for anchor: RoadNode in anchors:
-		var road: RoadData = anchor.parent_track
+		var road: RoadData = anchor.parent_line
 		# Endpoints remain routable without a cross resource. Interior anchors
 		# still need one while another road names them as a junction.
 		var is_endpoint: bool = anchor.index == 0 or anchor.index == road.nodes.size() - 1
@@ -205,10 +158,10 @@ func _prune_empty_crosses(anchors: Array[RoadNode]) -> void:
 
 func _has_incoming_cross(anchor: RoadNode) -> bool:
 	for road: RoadData in storage.get_all():
-		if road == anchor.parent_track:
+		if road == anchor.parent_line:
 			continue
 		for node: RoadNode in road.nodes:
-			if node.cross != null and anchor.parent_track.num in node.cross.connecting_roads \
+			if node.cross != null and anchor.parent_line.num in node.cross.connecting_roads \
 					and node.position.distance_to(anchor.position) <= RoadPathfinder.JOIN_TOLERANCE:
 				return true
 	return false
@@ -217,7 +170,7 @@ func _has_incoming_cross(anchor: RoadNode) -> bool:
 func _clear_cross(node: RoadNode) -> void:
 	if node.cross == null:
 		return
-	node.parent_track.crosses.erase(node.cross)
+	(node.parent_line as RoadData).crosses.erase(node.cross)
 	node.cross.connecting_roads.clear()
 	node.cross.parent_node = null
 	node.cross = null
@@ -249,7 +202,7 @@ func _road_has_dependencies(road: RoadData) -> bool:
 
 
 func _road_has_active_vehicle(road: RoadData) -> bool:
-	var view: RoadWay3D = storage._containers_by_id.get(road.num)
+	var view: RoadWay3D = storage.find_container(road.num)
 	if Managers.roads == self and is_instance_valid(view) and is_instance_valid(Managers.vehicles):
 		for vehicle: RoadVehicle3D in Managers.vehicles.road_vehicles:
 			if is_instance_valid(vehicle) and vehicle.uses_road(view):

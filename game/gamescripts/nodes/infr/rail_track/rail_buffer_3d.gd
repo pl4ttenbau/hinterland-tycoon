@@ -1,6 +1,5 @@
 class_name RailBuffer3D extends GameEntity3D
 
-const NINETY_DEG_IN_RAD = 1.57
 
 @export var parent_node: RailNodeData:
 	get(): return parent_node

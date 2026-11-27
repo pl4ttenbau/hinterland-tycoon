@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://7e8b8f3j2sd6"]
+
+[ext_resource type="PackedScene" uid="uid://b5bqoolupe31i" path="res://assets/meshes/vehicles/rail/saxon_iv_k/mesh/saxon_iv_k.gltf" id="1_7mfei"]
+
+[node name="saxon_iv_k2" unique_id=376929278 instance=ExtResource("1_7mfei")]

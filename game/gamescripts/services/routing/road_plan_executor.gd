@@ -83,13 +83,22 @@ func _finish_visit(vehicle: RoadVehicle3D) -> bool:
 			return false
 	current_point += 1
 	if current_point >= _plan.points.size():
+		if _plan.repeat_route:
+			# Keep the validated execution snapshot. The first visit is resolved
+			# from our actual pose, including a road-end U-turn when needed.
+			current_point = 0
+			return true
 		stop(vehicle, "Plan complete")
 		return false
 	return true
 
 func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 	_servicing_visit = false
-	while running:
+	# Skip at most one lap of nearby, actionless visits per tick. A repeating
+	# plan with coincident points must yield instead of locking the game here.
+	for _visit: int in range(_plan.points.size()):
+		if not running:
+			return false
 		var point: RoadRoutePoint = _plan.points[current_point]
 		var node: RoadNode = point.resolve(Managers.roads.storage, _stops(), GlobalState.road_depots, Managers.roads.markers)
 		if node == null:
@@ -106,7 +115,10 @@ func _begin_visit(vehicle: RoadVehicle3D) -> bool:
 			continue
 		return _assign_visit_path(vehicle, point, node)
 
-	return false
+	# All visits were already within reach. Park and resume on the next tick,
+	# using the ordinary stationary-service phase to advance the pending visit.
+	_hold_for_actions(vehicle)
+	return true
 
 ## Starting a plan near its first stop must still wait for automatic control and
 ## a stationary vehicle. Clearing the driving curve applies the parking brake.
@@ -121,7 +133,7 @@ func _at_visit(vehicle: RoadVehicle3D, node: RoadNode, radius: float) -> bool:
 	if vehicle.global_position.distance_to(node.position) > radius:
 		return false
 	if node is RoadRouteAnchor and node.arrival_direction != 0:
-		var curve: Curve3D = node.parent_track.curve
+		var curve: Curve3D = node.parent_line.curve
 		var tangent: Vector3 = curve.sample_baked(minf(node.curve_offset + 0.1, curve.get_baked_length())) - curve.sample_baked(maxf(0, node.curve_offset - 0.1))
 		return vehicle.global_basis.z.dot(tangent.normalized()) * node.arrival_direction > 0.5
 	return true
@@ -201,7 +213,23 @@ func _segments_to(vehicle: RoadVehicle3D, destination: RoadNode) -> Array[Dictio
 		return []
 	var offset: float = start.offset
 	var anchor: RoadRouteAnchor = RoadRouteAnchor.at(nearest.road, offset)
-	return _make_segments(nearest.get_path_3d(), offset, _network.find_path(anchor, destination))
+	var heading: int = _heading_along(nearest.get_path_3d(), offset, vehicle.global_basis.z)
+	return _make_segments(nearest.get_path_3d(), offset, _network.find_path(anchor, destination, heading))
+
+## Which way the vehicle faces along its road: +1 towards increasing offsets, -1 towards
+## decreasing, 0 when it stands across the road. With a heading the pathfinder plans any
+## turn-round itself, at a road end, instead of starting the route behind the vehicle.
+## Across the road both directions stay open and RoadUTurnPlanner handles a target behind.
+func _heading_along(path: Path3D, offset: float, forward: Vector3) -> int:
+	var curve: Curve3D = path.curve
+	var ahead: Vector3 = path.to_global(curve.sample_baked(minf(offset + 0.5, curve.get_baked_length())))
+	var behind: Vector3 = path.to_global(curve.sample_baked(maxf(offset - 0.5, 0.0)))
+	var alignment: float = forward.normalized().dot((ahead - behind).normalized())
+	if alignment > 0.5:
+		return 1
+	if alignment < -0.5:
+		return -1
+	return 0
 
 ## Project onto rendered road curves; do not teleport or attach a far-off car.
 func _nearest_road_position(vehicle: RoadVehicle3D) -> Dictionary:
@@ -227,15 +255,15 @@ func _make_segments(start: Path3D, offset: float, nodes: Array[RoadNode]) -> Arr
 	for index: int in range(1, nodes.size()):
 		var from: RoadNode = nodes[index - 1]
 		var to: RoadNode = nodes[index]
-		if from.parent_track == to.parent_track:
-			var road: RoadWay3D = Managers.roads.storage.get_container_by_num(from.parent_track.num)
+		if from.parent_line == to.parent_line:
+			var road: RoadWay3D = Managers.roads.storage.get_container_by_num(from.parent_line.num)
 			if road == null:
 				return []
 			result.append({"path": road.get_path_3d(), "from": _offset(from), "to": _offset(to)})
 	return result
 
 func _offset(node: RoadNode) -> float:
-	return RoadRouteAnchor.offset_of(node)
+	return node.offset()
 
 func _stops() -> Dictionary:
 	return Managers.interchanges.stops_by_num if is_instance_valid(Managers.interchanges) else {}

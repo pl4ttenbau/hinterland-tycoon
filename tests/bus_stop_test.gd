@@ -17,15 +17,12 @@ func _run() -> void:
 	self.check(self.test_scene(), "Bus stop scene checks completed")
 	self.check(self.test_shelter_orientation(), "Shelter orientation checks completed")
 	self.check(self.test_editor_labels(), "Editor stop label checks completed")
-	# Existing station connections hold a back-reference to their parent Resource.
-	for station: RoadStationData in self.stations:
-		station.connections.parent = null
 	self.stations.clear()
 	print("Bus stop tests: %d failures" % self.failures)
 	get_tree().quit(1 if self.failures > 0 else 0)
 
 func make_station(data: Dictionary) -> RoadStationData:
-	var station: RoadStationData = RoadStationData.of_dict(data)
+	var station: RoadStationData = StopMapper.road_stop_from_dict(data)
 	if station != null:
 		self.stations.append(station)
 	return station
@@ -34,7 +31,7 @@ func test_json() -> bool:
 	var record: Dictionary = JSON.parse_string('{"num":0,"roadNum":0,"nodeIndex":0,"roadStopDirection":"ROAD_NODES_INCREASE"}')
 	var stop: RoadStationData = self.make_station(record)
 	self.check(stop != null and stop is AbstractStation, "A minimal road record creates station data")
-	self.check(stop.num == 0 and stop.road_num == 0 and stop.node_index == 0, "JSON numbers accept stop ID, road ID and node index zero")
+	self.check(stop.num == 0 and stop.road_num == 0 and stop.anchor.node_index == 0 and stop.anchor.offset == 0.0, "JSON numbers accept stop ID, road ID and node index zero")
 	self.check(stop.direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE and stop.town_num == -1 \
 		and stop.station_name.is_empty() and not stop.hide_building, "Minimal records retain optional station defaults")
 	self.check(not record.has("name") and record["roadStopDirection"] == "ROAD_NODES_INCREASE", "Parsing leaves the source record unchanged")
@@ -186,7 +183,7 @@ func test_editor_labels() -> bool:
 	self.check(rail.parent_station == null and road.parent_station == null, "Editor labels contain no simulation station data")
 	self.check(rail.global_position.is_equal_approx(Vector3(10, 17, 20)) and road.global_position.is_equal_approx(Vector3(30, 17, 25)), "Labels resolve exact JSON anchors under a transformed editor root")
 	self.check(rail.owner == world and road.owner == world and container.owner == world, "Editor labels are owned by the edited scene for Ctrl+S")
-	self.check(world.find_children("*", "BusStop3D", true, false).is_empty() and world.find_children("*", "NodeStationLink3D", true, false).is_empty(), "Editor loading creates labels without shelters or platforms")
+	self.check(world.find_children("*", "BusStop3D", true, false).is_empty() and world.find_children("*", "RailStop3D", true, false).is_empty(), "Editor loading creates labels without shelters or platforms")
 	history.undo.undo()
 	self.check(container.get_child_count() == 0, "Undo removes the loaded stop labels")
 	history.undo.redo()
@@ -206,6 +203,7 @@ func test_editor_labels() -> bool:
 	broken.close()
 	self.check(not store.load_world(world, history).ok and container.get_child(0) == old_label, "Invalid anchors preserve the previously loaded labels")
 	history.undo.clear_history()
+	history.undo.free()
 	world.free()
 	for filename: String in fixtures:
 		DirAccess.remove_absolute(folder.path_join(filename))

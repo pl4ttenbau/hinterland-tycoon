@@ -1,0 +1,47 @@
+{
+  "direct_placeholder_count": 20,
+  "failures": [],
+  "runtime_models_loaded_and_instantiated": [
+    "res://assets/meshes/industry/factory_small/factory_small.tscn",
+    "res://assets/meshes/industry/oil_derrick/oil_derrick.tscn",
+    "res://assets/meshes/industry/wooden_storehouse/wooden_storehouse.tscn",
+    "res://assets/meshes/industry/windmill_2/windmill_2.tscn"
+  ],
+  "supply_warnings": [
+    "Missing producer for coal. Required by: Gazownia Tczew, Gdańsk Przeróbka — ZNTK, Górki Zachodnie — stocznia rzeczna, Nowy Dwór Gdański — warsztaty kolejowe, Tczew — Pomorska Fabryka Gazomierzy, Tczew — Zakłady Sprzętu Motoryzacyjnego, Zajączkowo Tczewskie — warsztaty kolejowe. Add at least one of: Charcoal Burner (CHARCOAL_BURNER), Coal Mine (COAL_MINE).",
+    "Missing producer for gravel. Required by: Cegielnia Nowy Staw. Add at least one of: Quarry (QUARRY).",
+    "Missing producer for ingots. Required by: Gdańsk Przeróbka — ZNTK, Górki Zachodnie — stocznia rzeczna, Nowy Dwór Gdański — warsztaty kolejowe, Tczew — Pomorska Fabryka Gazomierzy, Tczew — Zakłady Sprzętu Motoryzacyjnego, Zajączkowo Tczewskie — warsztaty kolejowe. Add at least one of: Smelter (SMELTER).",
+    "Missing producer for lumber. Required by: Gdańsk Przeróbka — ZNTK, Górki Zachodnie — stocznia rzeczna, Nowy Dwór Gdański — warsztaty kolejowe, Stegna — przystań rybacka, Zajączkowo Tczewskie — warsztaty kolejowe. Add at least one of: Forest (FOREST).",
+    "Missing producer for oil. Required by: Rafineria Gdańska. Add at least one of: Oil Well (OIL_WELL)."
+  ],
+  "type_counts": {
+    "BRICKWORKS": 1,
+    "COAL_PLANT": 1,
+    "FARM": 4,
+    "FISHERY": 1,
+    "OIL_REFINERY": 1,
+    "RANCH": 4,
+    "SMITHY": 4,
+    "SUGAR_MILL": 2,
+    "WORKSHOP": 2
+  },
+  "world_reference_resolved": true,
+  "world_scene_loaded": true,
+  "terrain_sampling": {
+    "failures": [],
+    "method": "Terrain3D.data.get_height against the current imported heightdata",
+    "region_count": 257,
+    "region_size": 256,
+    "scene_water_plane_y": 14.647888,
+    "vertex_spacing": 1.0
+  },
+  "recipes_unchanged": true,
+  "terrain_regions_unchanged": true,
+  "project_reference_check": {
+    "errors_before": 15,
+    "errors_after": 15,
+    "new_errors": [],
+    "gdansk_errors": []
+  },
+  "validation_scope": "Headless Godot: full world PackedScene instantiated, WorldIndustries world reference resolved, direct markers/types/IDs/transforms checked, all four shared runtime model scenes loaded and instantiated. Terrain heights sampled separately. No graphical editor or in-game visual inspection performed."
+}

@@ -18,15 +18,16 @@ func prepare(world: WorldMapScene, line: EditorInfrLine3D, index: int, adding_st
 		var source: InfrCatalogReadResult = InfrJsonStore.read_records(InfrJsonStore.path_for(world, domain))
 		if not source.ok:
 			return {"error": source.error}
-		var lines: Dictionary = {}
+		var by_num: Dictionary = {}
 		for record: Dictionary in source.records:
-			lines[int(record.num)] = record.points
-		network["ROAD" if domain == Enums.InfrDomain.ROAD else "RAIL"] = lines
-	var domain_key: String = "ROAD" if line.infr_domain == Enums.InfrDomain.ROAD else "RAIL"
-	var id_key: String = "roadNum" if domain_key == "ROAD" else "trackNum"
+			by_num[int(record.num)] = record
+		network[InfrDomains.key(domain)] = by_num
+	var lines := EditorStopAnchors.LineCache.new(network)
+	var domain_key: String = InfrDomains.key(line.infr_domain)
+	var id_key: String = InfrDomains.stop_id_key(line.infr_domain)
 	var anchor: Dictionary = {"domain": domain_key, "nodeIndex": index}
 	anchor[id_key] = line.num
-	var position: Vector3 = _anchor_position(anchor, network)
+	var position: Vector3 = EditorStopAnchors.stop_position(anchor, lines)
 	if not position.is_finite() or not position.is_equal_approx(line.to_global(line.curve.get_point_position(index))):
 		return {"error": "This node differs from saved infrastructure. Save and reload the infrastructure JSON first."}
 
@@ -42,10 +43,12 @@ func prepare(world: WorldMapScene, line: EditorInfrLine3D, index: int, adding_st
 		for stop: Dictionary in record.stops:
 			next_stop = maxi(next_stop, int(stop.num) + 1)
 			if not has_manual_position:
-				var stop_position: Vector3 = _anchor_position(stop, network)
+				var stop_position: Vector3 = EditorStopAnchors.stop_position(stop, lines)
 				if stop_position.is_finite():
 					distance = minf(distance, position.distance_to(stop_position))
-			if adding_stop and stop.domain == domain_key and int(stop[id_key]) == line.num and int(stop.nodeIndex) == index:
+			# New stops are placed on a node (offset 0); a stop elsewhere along the same segment is another place.
+			if adding_stop and stop.domain == domain_key and int(stop[id_key]) == line.num \
+					and LineAnchor.new(index).same_place(LineAnchor.from_dict(stop)):
 				return {"error": "A stop already exists at this infrastructure node."}
 		if distance <= JOIN_RADIUS_METRES:
 			candidates.append({"record": record, "distance": distance})
@@ -63,10 +66,4 @@ func save(draft: Dictionary) -> EditorActionResult:
 		return EditorActionResult.failure("Interchange JSON changed. Pick the node again to reload it.")
 	if InterchangesLoader.validate_definitions(draft.records) != OK:
 		return EditorActionResult.failure("Invalid interchange or stop. Check the editor output.")
-	return InfrJsonStore.write_text_with_backup(path, JSON.stringify(draft.records, "\t") + "\n")
-
-func _anchor_position(anchor: Dictionary, network: Dictionary) -> Vector3:
-	var key: String = "roadNum" if anchor.domain == "ROAD" else "trackNum"
-	var points: Array = network[anchor.domain].get(int(anchor[key]), [])
-	var index: int = int(anchor.nodeIndex)
-	return WorldUtils.vec3_from_float_arr(points[index].pos) if index >= 0 and index < points.size() else Vector3.INF
+	return InfrJsonStore.write_text_with_backup(path, InfrJsonFormatter.interchanges_text(draft.records))

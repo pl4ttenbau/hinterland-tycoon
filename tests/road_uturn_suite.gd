@@ -5,7 +5,49 @@ func suite_name() -> String:
 	return "Road U-turn tests"
 
 func test_names() -> Array[StringName]:
-	return [&"test_planning", &"test_geometry", &"test_manual_handoff", &"test_obstacles", &"test_source_removal", &"test_both_road_ends", &"test_fixed_path_both_ends", &"test_returning_passengers"]
+	return [&"test_planning", &"test_geometry", &"test_manual_handoff", &"test_obstacles", &"test_source_removal", &"test_both_road_ends", &"test_fixed_path_both_ends", &"test_returning_passengers", &"test_repeating_passenger_route"]
+
+# Two deliveries exercise the last-to-first path, its U-turns and actions per lap.
+func test_repeating_passenger_route() -> bool:
+	var origin: RoadStationData = _stop(80, 1, 80)
+	var destination: RoadStationData = _stop(81, 2, 81)
+	origin.get_inventory_view().get_inventory().change_stack(&"passenger", 81, 8)
+	var depot := RoadDepotData.new()
+	depot.road_num = road.num
+	depot.road_pos = "START"
+	var body: RoadVehicle3D = Managers.vehicles.spawn_road_vehicle_at_depot("trabant_601_green", depot)
+	check(body != null, "Repeating passenger car spawns")
+	if body == null:
+		return false
+	body.route_plan.points = [
+		_point(80, [_action(RoadRouteAction.Kind.LOAD, [&"passenger"], [81])]),
+		_point(81, [_action(RoadRouteAction.Kind.UNLOAD, [&"passenger"], [81])])]
+	body.route_plan.repeat_route = true
+	var changes: Array[int] = [0]
+	body.get_inventory().goods_change.connect(func(): changes[0] += 1)
+	check(body.plan_execution.start(body), "Repeating passenger route starts")
+
+	# Running plans own a frozen snapshot; unsaved edits must not cancel a lap.
+	body.route_plan.repeat_route = false
+	for frame: int in range(10000):
+		await tree.physics_frame
+		if changes[0] >= 4 or not body.plan_execution.running:
+			break
+	check(changes[0] == 4 and body.get_inventory().amount_used == 0,
+		"Repeated visits perform two pickups and two completed deliveries")
+	check(origin.get_inventory_view().get_inventory().amount_used == 0
+		and destination.get_inventory_view().get_inventory().amount_used == 0,
+		"Both passenger batches finish without duplication or stranding")
+	check(body.plan_execution.running and body.plan_execution.current_point == 0,
+		"After the second delivery, execution wraps to the first point again")
+
+	# Stopping remains authoritative even when the active plan repeats forever.
+	body.plan_execution.stop(body)
+	for frame: int in range(2):
+		await tree.physics_frame
+	check(not body.plan_execution.running and not body.route.is_valid(), "Stopping a repeating route clears its driving path")
+	body.free()
+	return true
 
 # Opposite targets require an endpoint detour; ordinary bends remain physical.
 func test_planning() -> bool:
@@ -114,15 +156,14 @@ func test_source_removal() -> bool:
 # Real physics travels to the far end before reversing, then turns at the other
 # end for the second visit. This verifies the curve-to-wheel handoff both ways.
 func test_both_road_ends() -> bool:
+	RoadVehicle3D.follow_road_path = false
 	return await _both_road_ends(false)
 
 # With the global fixed-path switch, the body stays held from the road curve into
 # each turn and back; stopping the finished plan still restores wheel physics.
 func test_fixed_path_both_ends() -> bool:
 	RoadVehicle3D.follow_road_path = true
-	var completed: bool = await _both_road_ends(true)
-	RoadVehicle3D.follow_road_path = false
-	return completed
+	return await _both_road_ends(true)
 
 func _both_road_ends(fixed: bool) -> bool:
 	var depot := RoadDepotData.new()

@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/train_coupling/coupling_confirm_bar.gd" id="1_script"]
+
+[node name="CouplingConfirmBar" type="HBoxContainer"]
+visible = false
+script = ExtResource("1_script")
+
+[node name="Summary" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+
+[node name="CancelButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cancel"
+
+[node name="ConfirmButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "Confirm"

@@ -1,0 +1,127 @@
+{
+  "world_key": "gdansk",
+  "area": "A",
+  "created_date": "2026-11-03",
+  "bounds_wgs84_sample_centres": {
+    "west": 18.66,
+    "south": 54.0465,
+    "east": 19.213,
+    "north": 54.37
+  },
+  "dimensions": [
+    3600,
+    3600
+  ],
+  "axis_order": "mapinfo corners are [latitude, longitude]",
+  "orientation": "north at row 0; west at column 0; Godot +X east, +Z south",
+  "horizontal_crs_wkt": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",54.20825],PARAMETER[\"latitude_of_origin\",54.20825],PARAMETER[\"central_meridian\",18.9365],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+  "geotransform_pixel_areas": [
+    -18006.310126071785,
+    10.00350562559555,
+    0,
+    18010.930672109254,
+    0,
+    -10.006072595616253
+  ],
+  "sample_spacing_metres": [
+    10.00350562559555,
+    10.006072595616253
+  ],
+  "span_between_outer_samples_metres": [
+    36002.61674651838,
+    36011.855271622895
+  ],
+  "vertical_unit": "metres",
+  "land_source_vertical_datum": "PL-KRON86-NH as declared by GUGiK WCS coverage",
+  "land_elevation_offset_m": 20.0,
+  "land_vertical_scale": 1.0,
+  "water_surface_height_m": 20.0,
+  "water_depth_range_m": [
+    2.0,
+    15.0
+  ],
+  "bathymetry_method": "EMODnet signed elevation used to shape sea depth then clamped 2–15m; inland depth designed from distance to bank; no absolute vertical-datum equivalence claimed",
+  "river_bank_blending": "2-pixel normalized Gaussian bed smoothing; first wet samples at depth 2m, easing into deeper beds over 70m; first dry samples at 20.1m, easing into measured land over 80m; outer limit about 94.2m from water samples; far-field unchanged",
+  "minimum_channel_width_m": 12,
+  "unmapped_width_defaults_m": {
+    "river": 24,
+    "canal": 12
+  },
+  "nodata": "GUGiK coverage audited tile by tile; source zero-only ocean cells excluded by coastline mask; no unknown land gaps silently filled",
+  "historical_limitations": "Contemporary DTM and OSM waterways, not reconstructed 1960 terrain. Modern embankments and infrastructure may remain.",
+  "water_rendering": "Use water meshes limited to water_mask footprint at y=20; a map-wide plane would flood real dry polders below sea level.",
+  "terrain3d_import": {
+    "height_file": "heightmap_gdansk.exr",
+    "format": "32-bit float RGB; linear metre elevations; no alpha",
+    "height_scale": 1,
+    "height_offset": 0,
+    "suggested_vertex_spacing_m": 10,
+    "engine_span_m": 35990,
+    "horizontal_scale_vs_gis": [
+      0.9996495602914862,
+      0.9993931089787502
+    ],
+    "note": "10m spacing is suggested only; no engine scene/import created. Use exact anisotropic sample spacing in GIS; Terrain3D uniform spacing introduces the explicitly recorded tiny scale difference."
+  },
+  "sources": [
+    {
+      "name": "GUGiK bare-earth NMT",
+      "url": "https://www.geoportal.gov.pl/pl/dane/numeryczny-model-terenu-nmt/",
+      "coverage": "DTM_PL-KRON86-NH_TIFF",
+      "native_grid_m": 1,
+      "download_grid_m": 10,
+      "horizontal_crs": "EPSG:2180",
+      "access_constraints": "WCS capabilities: none; fees none; retain attribution to GUGiK/PZGIK"
+    },
+    {
+      "name": "EMODnet Bathymetry",
+      "url": "https://ows.emodnet-bathymetry.eu/wcs",
+      "coverage": "emodnet:mean",
+      "request_grid_degrees": 0.001041666667,
+      "attribution": "EMODnet Bathymetry Consortium (2024). EMODnet Digital Bathymetry (DTM 2024). Created by EMODnet, owned by the European Union.",
+      "release": "DTM 2024",
+      "doi": "https://doi.org/10.12770/cf51df64-56f9-4a99-b1aa-36b8d7b743a1",
+      "licence": "Creative Commons Attribution 4.0 International",
+      "source_vertical_datum": "Lowest Astronomical Tide (LAT)"
+    },
+    {
+      "name": "OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "licence": "ODbL 1.0",
+      "used_for": "coastline, water polygons, river/canal centrelines"
+    }
+  ],
+  "shoreline_constraint": "The 2m minimum depth requires a residual 2.1m step between adjacent wet/dry samples. No unapproved 0–2m-deep shoreline apron added.",
+  "exr_sha256": "4e829824d5daccf2d85fff887988802bd66bb3f4c2e1dc2c5f04d64beffca350",
+  "existing_imported_scene": {
+    "terrain_data_directory": "res://world/gdansk/heightdata",
+    "raster_offset_samples": [
+      -1800,
+      -1800
+    ],
+    "vertex_spacing_m": 1.0,
+    "height_scale_applied_on_import": 0.8,
+    "height_offset_applied_on_import": 0.0,
+    "note": "Existing user import preserved; source EXR values remain unchanged.",
+    "selective_height_compression": {
+      "date": "2026-11-08",
+      "feature": "Wiślinka pile and Sobieszewo dune belt only; southwest hills deferred",
+      "settings": "selective_height_compression/wislinka_pile.json",
+      "validation": "selective_height_compression/wislinka_pile_validation.json",
+      "source_exr_unchanged": true,
+      "note": "Direct changes to imported Terrain3D region height maps. Do not reimport the original EXR expecting these later terrain edits to be present in it.",
+      "features": [
+        {
+          "feature": "Wiślinka pile",
+          "settings": "selective_height_compression/wislinka_pile.json",
+          "validation": "selective_height_compression/wislinka_pile_validation.json"
+        },
+        {
+          "feature": "Sobieszewo dune belt",
+          "settings": "selective_height_compression/sobieszewo_dunes.json",
+          "validation": "selective_height_compression/sobieszewo_dunes_validation.json"
+        }
+      ]
+    }
+  }
+}

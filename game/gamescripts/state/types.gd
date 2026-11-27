@@ -5,6 +5,7 @@ extends Node
 
 @export var infr_types: Array[InfrType]
 var road_types: Dictionary[String, RoadType] = {}
+var rail_types: Dictionary[String, RailType] = {}
 var industry_buildings: Dictionary[String, IndustryBuildingType] = {}
 @export var industry_types: Array[IndustryType]
 @export var res_bld_type_store: ResBldTypeStore = ResBldTypeStore.new()
@@ -54,6 +55,7 @@ func _clear_catalogs() -> void:
 	self.resource_types.clear()
 	self.infr_types.clear()
 	self.road_types.clear()
+	self.rail_types.clear()
 	self.industry_buildings.clear()
 	self.industry_types.clear()
 	self.res_bld_type_store = ResBldTypeStore.new()
@@ -81,6 +83,10 @@ func _validate_references() -> Error:
 #region Infrastructure
 func get_road_type(key: String) -> RoadType:
 	return self.road_types.get(key, self.road_types.get(InfrTypesLoader.DEFAULT_ROAD_TYPE))
+
+## Unknown or legacy gauge keys fall back to standard gauge.
+func get_rail_type(key: String) -> RailType:
+	return self.rail_types.get(InfrType.normalize_rail_gauge(key), self.rail_types.get(InfrTypesLoader.DEFAULT_RAIL_TYPE))
 
 func get_infr_type(key: String) -> InfrType:
 	for infr_type: InfrType in self.infr_types:

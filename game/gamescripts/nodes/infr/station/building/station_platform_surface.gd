@@ -1,6 +1,5 @@
 class_name StationPlatformSurface extends MeshInstance3D
 
-const NINETY_DEG_IN_RAD: float = 1.57079
 
 signal passengers_changed(passenger_count: int)
 
@@ -47,7 +46,7 @@ func reset_buffers():
 	for i: int in range(self.multimesh.instance_count):
 		self.multimesh.set_instance_transform(i, WorldUtils.create_transform(
 			pos_on_platform,
-			Vector3(0, NINETY_DEG_IN_RAD, 0),
+			Vector3(0, GameConstants.NINETY_DEG_IN_RAD, 0),
 			Vector3(1, 1, 1)
 		))
 		# self.multimesh.custom_aabb = AABB(pos_on_platform, Vector3(10, 10, 10))
@@ -56,9 +55,9 @@ func reset_buffers():
 
 #region Getters
 func get_inventory() -> GoodsInventory:
-	var node_link_3d: NodeStationLink3D = self.station_building.node_link_3d
-	if node_link_3d:
-		var station_num: int = node_link_3d.node_station.parent_station_num
+	var rail_stop_3d: RailStop3D = self.station_building.rail_stop_3d
+	if rail_stop_3d:
+		var station_num: int = rail_stop_3d.stop.num
 		var station_3d: RailStation3D = Managers.stations.get_station_3d_with_num(station_num)
 		return station_3d.get_inventory()
 	Loggie.error("Cannot get inventory of station from platform %s" % self.name)

@@ -1,0 +1,113 @@
+{
+  "feature": "Sobieszewo Island wooded dune belt",
+  "bounds_xmin_zmin_xmax_zmax": [
+    -1001,
+    -1721,
+    41,
+    -1424
+  ],
+  "selection_polygon_xz": [
+    [
+      -1000,
+      -1720
+    ],
+    [
+      40,
+      -1720
+    ],
+    [
+      40,
+      -1540
+    ],
+    [
+      0,
+      -1445
+    ],
+    [
+      -120,
+      -1425
+    ],
+    [
+      -350,
+      -1445
+    ],
+    [
+      -550,
+      -1470
+    ],
+    [
+      -750,
+      -1495
+    ],
+    [
+      -970,
+      -1535
+    ],
+    [
+      -1000,
+      -1580
+    ]
+  ],
+  "selection_edge_transition_width": 10.0,
+  "unchanged_below_y": 20.0,
+  "transition_height": 4.0,
+  "upper_height_factor": 0.2,
+  "water_level": 14.647888,
+  "terrain_directory": "res://world/gdansk/heightdata",
+  "region_locations": {
+    "terrain3d-04-07.res": [
+      -4,
+      -7
+    ],
+    "terrain3d-03-07.res": [
+      -3,
+      -7
+    ],
+    "terrain3d-02-07.res": [
+      -2,
+      -7
+    ],
+    "terrain3d-01-07.res": [
+      -1,
+      -7
+    ],
+    "terrain3d_00-07.res": [
+      0,
+      -7
+    ],
+    "terrain3d-04-06.res": [
+      -4,
+      -6
+    ],
+    "terrain3d-03-06.res": [
+      -3,
+      -6
+    ],
+    "terrain3d-02-06.res": [
+      -2,
+      -6
+    ],
+    "terrain3d-01-06.res": [
+      -1,
+      -6
+    ],
+    "terrain3d_00-06.res": [
+      0,
+      -6
+    ]
+  },
+  "expected_source_region_sha256": {
+    "terrain3d-04-07.res": "288f0b051854c026cb2a9c298511042287f64953c3876dfea74345a6f05ae14c",
+    "terrain3d-03-07.res": "0deecdbfee0528224c3724ff614c6f30ebd900b08413fd3b12938e6878119dc3",
+    "terrain3d-02-07.res": "6e1f521e0a547528033fded3b35d2f0532f5609b030d73a8a790a2e5c0c65d73",
+    "terrain3d-01-07.res": "0f4a03b9825234a9c0ad8c3a996ef4ed0d4230160352b6031b15c9f5f4c90c84",
+    "terrain3d_00-07.res": "b384d283b44f2734eff002ce3337f98e7806001acec2af4bf651c15e028128a1",
+    "terrain3d-04-06.res": "ddc353f1301543b20f592244cea795736d79be38e32a75372bcaf495157e123c",
+    "terrain3d-03-06.res": "0ad582e8c72c2d91888ad4b1738f313b0e71315e5ba51706b112e566d66c877a",
+    "terrain3d-02-06.res": "4d34685bcc6230ff1942e8dbf6d352681ac1f49769557c484d81c3d007a93918",
+    "terrain3d-01-06.res": "7caa33a8986b4269e6de7611b8c34716ece114ed15124ff122b324b8efc7fa91",
+    "terrain3d_00-06.res": "63cdacaec6d0b976f10cae0e48026cc72eab64cd25eefb1a8215fa055032a0fc"
+  },
+  "report_path": "res://world/gdansk/source/selective_height_compression/sobieszewo_dunes_validation.json",
+  "scope_note": "Only Sobieszewo dune belt around the marked location; excludes the gypsum heap, southwest hills and river embankment to the south/east. Same vertical curve as accepted pile; spatial transition only at selection boundary, with no height averaging. All heights at or below Y20 are unchanged. No backup or source-heightmap reimport."
+}

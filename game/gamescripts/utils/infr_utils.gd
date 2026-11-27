@@ -68,23 +68,19 @@ static func _handle_with_grade(handle: Vector3, reference: Vector3) -> Vector3:
 		handle.y = reference.y
 	return handle
 			
-static func get_aabb(vec_3_arr: Array[Vector3]) -> AABB:
-	var min_pos: Vector3
-	var max_pos: Vector3
-	for point in vec_3_arr:
-		# min pos
-		if ! min_pos: min_pos = point
-		elif point.x < min_pos.x: min_pos.x = point.x
-		elif point.y < min_pos.y: min_pos.y = point.y
-		elif point.z < min_pos.z: min_pos.z = point.z
-		# max pos
-		if ! max_pos: max_pos = point
-		elif point.x > max_pos.x: max_pos.x = point.x
-		elif point.y > max_pos.y: max_pos.y = point.y
-		elif point.z > max_pos.z: max_pos.z = point.z
-	var aabb = AABB(min_pos, Vector3.ZERO)
-	aabb.end = max_pos
-	return aabb
+## Smallest axis-aligned box that contains every point, in the points' own space.
+## Only the points are bounded: a curve's handles can bulge past this box.
+## No points gives an empty box at the origin.
+static func get_aabb(points: Array[Vector3]) -> AABB:
+	if points.is_empty():
+		return AABB()
+	# Start as a zero-size box on the first point, so a point at the origin is
+	# handled like any other (it is not a "not set yet" marker).
+	var bounds := AABB(points[0], Vector3.ZERO)
+	for point: Vector3 in points:
+		# expand() grows every axis that the point lies outside of, not just one.
+		bounds = bounds.expand(point)
+	return bounds
 
 static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
 	if infr_domain_str == "RAIL": return Enums.InfrDomain.RAIL
@@ -94,17 +90,29 @@ static func infr_domain_str_2_enum(infr_domain_str: String) -> Enums.InfrDomain:
 	else: return Enums.InfrDomain.STATIONARY
 
 
+## Metadata key holding the authored tile of a PathMesh3D before any fitting.
+const SOURCE_TILE_META := &"source_tile_mesh"
+
 ## PathMesh3D requires at least one complete tile. Compress the source along
 ## the path for short sections, preserving their width, material and collision.
+## Safe to call again whenever the curve changes: it always starts from the
+## authored tile, so a section that grows long again gets the full tile back.
 static func fit_short_path_mesh(path_mesh: PathMesh3D, curve: Curve3D) -> void:
-	var source: Mesh = path_mesh.mesh
-	if source == null or curve == null:
+	if not path_mesh.has_meta(SOURCE_TILE_META):
+		if path_mesh.mesh == null:
+			return
+		path_mesh.set_meta(SOURCE_TILE_META, path_mesh.mesh)
+	var source: Mesh = path_mesh.get_meta(SOURCE_TILE_META)
+	if curve == null:
 		return
 	# The rail and road source tiles are aligned to local Z.
 	var bounds: AABB = source.get_aabb()
 	var tile_length: float = maxf(0.0, bounds.end.z) - minf(0.0, bounds.position.z)
 	var section_length: float = curve.get_baked_length()
-	if section_length <= 0.0 or section_length >= tile_length:
+	if section_length <= 0.0:
+		return
+	if section_length >= tile_length:
+		path_mesh.mesh = source
 		return
 	var scale_z: float = (section_length / tile_length) * 0.99999
 	var transform := Transform3D(Basis.from_scale(Vector3(1.0, 1.0, scale_z)), Vector3.ZERO)

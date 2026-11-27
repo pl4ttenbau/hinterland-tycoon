@@ -27,7 +27,7 @@ func _pick_line(line: EditorInfrLine3D, query: EditorPickQuery) -> EditorPickHit
 			best = hit
 	if best != null:
 		best.target = line
-		best.label = "%s · ID %d · %s" % ["Road" if line.infr_domain == Enums.InfrDomain.ROAD else "Rail", line.num, line.infr_name]
+		best.label = "%s · ID %d · %s" % [InfrDomains.title(line.infr_domain), line.num, line.infr_name]
 	return best
 
 func _pick_segment(a: Vector3, b: Vector3, query: EditorPickQuery) -> EditorPickHit:

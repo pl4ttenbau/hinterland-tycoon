@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/dialogs/common/menu_shell_dialog.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://debfh21jesa8u" path="res://scenes/ui/dialogs/default_dialog.tscn" id="1"]
 [ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/game_menu/game_menu_dialog.gd" id="2"]
 
 [node name="GameMenuDialog" instance=ExtResource("1")]
 script = ExtResource("2")
+dialog_key = "GameMenuDialog"
+title_text = "Game menu"
+
+[node name="Panel" parent="." index="0"]
+custom_minimum_size = Vector2(520, 320)
+
+[node name="Headline" parent="Panel/Padding/Layout" index="0"]
+text = "Game menu"

@@ -9,6 +9,8 @@ var tree: SceneTree
 var roads := RoadStore.new()
 var network := RoadPathfinder.new()
 var stops: Dictionary = {}
+## Stops hold their interchange weakly; the suite owns them like the catalog does.
+var stop_interchanges: Array[InterchangeData] = []
 var depots: Array[RoadDepotData] = []
 
 func check(ok: bool, message: String) -> void:
@@ -25,7 +27,6 @@ func run(scene_tree: SceneTree) -> int:
 	for test: StringName in [&"test_pathfinding", &"test_curved_cost", &"test_stop_directions", &"test_route_data", &"test_dialog", &"test_execution", &"test_markers"]:
 		if await call(test) != true:
 			check(false, "%s aborted" % test)
-	_cleanup()
 	print("Road routing tests: %d passed, %d failed" % [passed, failed])
 	return 0 if failed == 0 else 1
 
@@ -36,12 +37,12 @@ func _setup_network() -> void:
 	_add_road(30, [[30, 5, 0], [30, 5, -30]])
 	RoadCross.of(roads._by_id[10].nodes[1], [20, 30])
 	var stop := RoadStationData.new(201, "Destination")
-	stop.interchange = InterchangeData.new()
+	stop_interchanges.append(InterchangeData.new())
+	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 501
 	stop.interchange.interchange_name = "Destination"
-	stop.interchange.connections.parent = null
 	stop.road_num = 20
-	stop.node_index = 2
+	stop.anchor = LineAnchor.new(2)
 	stops[201] = stop
 	var depot := RoadDepotData.new()
 	depot.num = 301
@@ -88,11 +89,11 @@ func test_stop_directions() -> bool:
 	pathfinder.build([road])
 	var stop := RoadStationData.new()
 	stop.road_num = road.num
-	stop.node_index = 1
+	stop.anchor = LineAnchor.new(1)
 	for direction: Enums.RoadStopDirection in [Enums.RoadStopDirection.ROAD_NODES_INCREASE, Enums.RoadStopDirection.ROAD_NODES_DECREASE]:
 		stop.direction = direction
 		var increasing: bool = direction == Enums.RoadStopDirection.ROAD_NODES_INCREASE
-		var anchor := stop.anchor(roads) as RoadRouteAnchor
+		var anchor := stop.route_anchor(roads) as RoadRouteAnchor
 		check(anchor != null and anchor.position.is_equal_approx(road.nodes[1].position), "One-way authored stop keeps its node position")
 		var from: RoadNode = road.nodes[0] if increasing else road.nodes[2]
 		var opposite: RoadNode = road.nodes[2] if increasing else road.nodes[0]
@@ -100,8 +101,13 @@ func test_stop_directions() -> bool:
 		var path: Array[RoadNode] = pathfinder.find_path(opposite, anchor)
 		check(path.size() == 3 and path[1] == from, "Approaching from the opposite end requires routing through the served direction")
 	stop.direction = Enums.RoadStopDirection.BOTH_DIRECTIONS
-	check(stop.anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
-	stop.connections.parent = null
+	check(stop.route_anchor(roads) == road.nodes[1], "A two-way authored stop can use its unrestricted road node")
+	## Between nodes there is no node to reuse: routing targets the exact curve distance, either direction.
+	stop.anchor = LineAnchor.new(1, 5.0)
+	var between := stop.route_anchor(roads) as RoadRouteAnchor
+	check(between != null and between.arrival_direction == 0 and is_equal_approx(between.curve_offset, road.node_offset(1) + 5.0),
+		"A two-way stop between nodes routes to its exact distance along the road")
+	check(pathfinder.find_path(road.nodes[0], between).size() == 2, "The stop between nodes is reachable")
 	return true
 
 ## A direct-looking curved road must not beat a genuinely shorter connected route.
@@ -123,6 +129,7 @@ func test_curved_cost() -> bool:
 ## Node/stop/depot references stay distinct; passenger selectors use interchange IDs.
 func test_route_data() -> bool:
 	var plan := RoadRoutePlan.new()
+	check(not plan.repeat_route, "Existing itineraries finish after one run by default")
 	plan.points.append(_node_point(10, 0))
 	var stop := RoadRoutePoint.new()
 	stop.kind = RoadRoutePoint.Kind.STOP
@@ -148,12 +155,17 @@ func test_route_data() -> bool:
 	check(legacy.validate(GameTypes.resource_types, stops, null).is_empty() and legacy.destination_ids(stops) == [501], "Saved stop targets resolve to the parent interchange")
 
 	# Editing copies and resource round trips preserve action data without sharing it.
+	plan.repeat_route = true
+	check(_validate(plan).is_empty(), "Repeating itinerary includes a reachable return to its first point")
 	var copy: RoadRoutePlan = plan.duplicate(true)
+	copy.repeat_route = false
+	check(plan.repeat_route, "Draft repeat setting does not mutate the saved plan")
 	copy.points[1].actions[0].passenger_interchange_targets.append(502)
 	check(action.passenger_interchange_targets == [501], "Draft action edits do not mutate the saved plan")
 	check(ResourceSaver.save(plan, "/tmp/road-routing-plan.tres") == OK, "Itinerary can be serialized")
 	var loaded: RoadRoutePlan = ResourceLoader.load("/tmp/road-routing-plan.tres", "", ResourceLoader.CACHE_MODE_IGNORE)
 	check(loaded.points[1].actions[0].passenger_interchange_targets == [501], "Round trip retains destination interchanges")
+	check(loaded.repeat_route, "Resource round trip retains the repeat setting")
 	stop.target_num = 999
 	check(not _validate(plan).is_empty(), "Deleted stop is rejected without retargeting")
 	return true
@@ -179,12 +191,16 @@ func test_dialog() -> bool:
 	tree.root.add_child(viewport)
 	var dialog := RoadRouteDialog.create(vehicle)
 	viewport.add_child(dialog)
+	check(not (dialog.get_node("%RepeatRoute") as CheckBox).button_pressed, "Repeat checkbox starts unchecked for a new route")
+	(dialog.get_node("%RepeatRoute") as CheckBox).button_pressed = true
+	check(dialog.plan.repeat_route and not vehicle.route_plan.repeat_route, "Checkbox updates only the route draft")
 	await _check_dialog_layout(dialog, "Route points")
 	dialog.plan.points.assign([_node_point(10, 0)])
 	_check_action_editing(dialog)
 	await _check_dialog_layout(dialog, "Load and unload")
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	check(vehicle.route_plan.points.size() == 2, "Save assigns the connected draft to the vehicle")
+	check(vehicle.route_plan.repeat_route, "Save keeps the selected repeat setting")
 	check(not vehicle.route.is_valid() and not vehicle.player_driving, "Saving does not start automatic driving")
 	await tree.process_frame
 	check(UiState.current_diag == null, "Route dialog releases modal state")
@@ -192,10 +208,13 @@ func test_dialog() -> bool:
 	# Cancelling an edited copy must retain the previously saved itinerary.
 	dialog = RoadRouteDialog.create(vehicle)
 	viewport.add_child(dialog)
+	check((dialog.get_node("%RepeatRoute") as CheckBox).button_pressed, "Reopened route shows its saved repeat setting")
+	(dialog.get_node("%RepeatRoute") as CheckBox).button_pressed = false
 	dialog.plan.points.clear()
 	(dialog.get_node("%CancelButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(vehicle.route_plan.points.size() == 2, "Cancel keeps the saved itinerary")
+	check(vehicle.route_plan.repeat_route, "Cancel discards changes to the repeat setting")
 	await _check_grain_action(viewport)
 	viewport.free()
 	vehicle.free()
@@ -210,7 +229,7 @@ func test_dialog() -> bool:
 func _check_dialog_layout(dialog: RoadRouteDialog, tab_name: String) -> void:
 	for frame: int in range(3):
 		await tree.process_frame
-	var panel: PanelContainer = dialog.get_node("OuterPanel")
+	var panel: PanelContainer = dialog.get_node("Panel")
 	var bounds: Rect2 = dialog.get_viewport_rect()
 	var panel_rect: Rect2 = panel.get_global_rect()
 	check(bounds.encloses(panel_rect) and panel_rect.get_center().distance_to(bounds.get_center()) <= 1.0,
@@ -303,7 +322,7 @@ func test_execution() -> bool:
 	road.build_curve()
 	loader.storage._list.append(road)
 	loader.storage._by_id[100] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	loader.add_child(view)
 	loader.storage.add_container(view)
 	for frame: int in range(4):
@@ -321,11 +340,11 @@ func test_execution() -> bool:
 
 	# A removed inventory must stop the car at its visit, never silently skip it.
 	var stop := RoadStationData.new(401, "Transfer stop")
-	stop.interchange = InterchangeData.new()
+	stop_interchanges.append(InterchangeData.new())
+	stop.interchange = stop_interchanges.back()
 	stop.interchange.num = 601
-	stop.interchange.connections.parent = null
 	stop.road_num = 100
-	stop.node_index = 2
+	stop.anchor = LineAnchor.new(2)
 	catalog.stops_by_num[401] = stop
 	body = manager.spawn_road_vehicle_at_depot("trabant_601_green", depot)
 	var point := RoadRoutePoint.new()
@@ -347,9 +366,6 @@ func test_execution() -> bool:
 	manager.free()
 	loader.free()
 	catalog.free()
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
-	stop.connections.parent = null
 	Managers.roads = old_roads
 	Managers.vehicles = old_vehicles
 	Managers.interchanges = old_interchanges
@@ -422,7 +438,7 @@ func test_markers() -> bool:
 	road.build_curve()
 	loader.storage._list.append(road)
 	loader.storage._by_id[110] = road
-	var view: RoadWay3D = road.spawn()
+	var view: RoadWay3D = RoadWay3D.of(road)
 	loader.add_child(view)
 	loader.storage.add_container(view)
 	for frame: int in range(4):
@@ -434,8 +450,8 @@ func test_markers() -> bool:
 	check(tool.placement_at(Vector3(20, 0.3, -17.3)).is_empty(), "Placement rejects positions outside the road")
 	check(tool.placement_at(Vector3(-1, 0.3, -17.3)).side == Enums.RoadSide.LEFT, "Placement detects the player's road side")
 
-	# Use the same entry point and confirmation control as the circular menu.
-	check(tool.open_placement_dialog(), "Menu action opens the marker naming dialog")
+	# Use the same entry point and confirmation control as the Build picker's road marker tool.
+	check(tool.open_placement_dialog(), "The tool opens the marker naming dialog")
 	var dialog: GameDialog = UiState.current_diag
 	check(dialog != null and dialog.dialog_key == "RoadMarkerDialog", "Marker action opens the naming dialog")
 	(dialog.get("_name") as LineEdit).text = "My marker"
@@ -445,7 +461,7 @@ func test_markers() -> bool:
 	check(absf(loader.markers.markers[0].offset - 17.3) < 0.02, "Marker stores the exact road offset, not a nearby shape node")
 	check(tool.open_placement_dialog(), "Second marker can be placed")
 	dialog = UiState.current_diag
-	(dialog.get("_side") as OptionButton).select(Enums.RoadSide.BOTH)
+	(dialog.get_node("%Choice") as OptionButton).select(Enums.RoadSide.BOTH)
 	(dialog.get_node("%OkButton") as Button).pressed.emit()
 	await tree.process_frame
 	check(loader.markers.markers.size() == 2 and loader.markers.markers[1].side == Enums.RoadSide.BOTH, "Choosing Both creates one BOTH marker")
@@ -457,8 +473,6 @@ func test_markers() -> bool:
 	# Restore the surrounding session and break fixture resource back-references.
 	player.free()
 	loader.free()
-	for node: RoadNode in road.nodes:
-		node.parent_track = null
 	Managers.roads = old_roads
 	GlobalState.player = old_player
 	GlobalState.active_cam = old_camera
@@ -470,9 +484,9 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 	graph.build(loader.storage.get_all())
 	check(graph.graph_node_count() == 2, "A road contributes endpoints, not intermediate shape nodes")
 	var source: RoadRouteAnchor = RoadRouteAnchor.at(road, 35)
-	var right: RoadRouteAnchor = loader.markers.markers[0].anchor(loader.storage)
+	var right: RoadRouteAnchor = loader.markers.markers[0].route_anchor(loader.storage)
 	check(is_equal_approx(graph.path_length(graph.find_path(source, right)), 52.3), "RIGHT marker requires an increasing-order approach")
-	var both: RoadRouteAnchor = loader.markers.markers[1].anchor(loader.storage)
+	var both: RoadRouteAnchor = loader.markers.markers[1].route_anchor(loader.storage)
 	check(absf(graph.path_length(graph.find_path(source, both)) - 17.7) < 0.02, "BOTH marker uses the shorter available approach")
 	check(graph.graph_node_count() == 2, "Temporary query anchors do not grow the permanent graph")
 
@@ -489,12 +503,3 @@ func _check_marker_routing(loader: RoadsLoader, road: RoadData) -> void:
 		check(kinds.get_item_id(index) != RoadRoutePoint.Kind.NODE, "Raw nodes cannot be selected as route targets")
 	dialog.free()
 	vehicle.free()
-
-## Break the fixture's existing road/node/crossing back-reference cycles.
-func _cleanup() -> void:
-	for road: RoadData in roads.get_all():
-		for node: RoadNode in road.nodes:
-			node.parent_track = null
-			node.cross = null
-	for stop: AbstractStation in stops.values():
-		stop.connections.parent = null

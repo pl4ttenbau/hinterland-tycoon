@@ -29,8 +29,10 @@ func _collect_placements(world: WorldEditorObjects, catalog: InterchangesLoader,
 	# Resolve the complete catalog before touching the existing labels. Bad JSON
 	# or an out-of-range anchor must not erase a previously loaded preview.
 	var networks: Dictionary = {}
+	# Shares `networks`, so domains loaded later by _load_network are visible to it.
+	var lines := EditorStopAnchors.LineCache.new(networks)
 	for stop: Dictionary in catalog.stop_definitions:
-		var result: EditorActionResult = _collect_stop_placement(world, stop, catalog, networks, placements)
+		var result: EditorActionResult = _collect_stop_placement(world, stop, catalog, networks, lines, placements)
 		if not result.ok:
 			return result
 	return EditorActionResult.success(placements.size())
@@ -48,19 +50,19 @@ func _load_network(world: WorldEditorObjects, domain: String, networks: Dictiona
 	networks[domain] = records
 	return EditorActionResult.success()
 
-func _collect_stop_placement(world: WorldEditorObjects, stop: Dictionary, catalog: InterchangesLoader, networks: Dictionary, placements: Array[EditorStopLabelPlacement]) -> EditorActionResult:
+func _collect_stop_placement(world: WorldEditorObjects, stop: Dictionary, catalog: InterchangesLoader, networks: Dictionary,
+		lines: EditorStopAnchors.LineCache, placements: Array[EditorStopLabelPlacement]) -> EditorActionResult:
 	var domain: String = stop["domain"]
 	var result: EditorActionResult = _load_network(world, domain, networks)
 	if not result.ok:
 		return result
 	var anchor_key: String = "trackNum" if domain == "RAIL" else "roadNum"
-	var infrastructure: Dictionary = networks[domain].get(int(stop[anchor_key]), {})
-	var index: int = int(stop["nodeIndex"])
-	if infrastructure.is_empty() or index >= infrastructure["points"].size():
-		return EditorActionResult.failure("Stop %d references missing %s/node %d." % [int(stop["num"]), anchor_key, index])
+	# nodeIndex plus the optional nodeOffset, resolved on the line as the game builds it.
+	var position: Vector3 = EditorStopAnchors.stop_position(stop, lines)
+	if not position.is_finite():
+		return EditorActionResult.failure("Stop %d references missing %s/node %d." % [int(stop["num"]), anchor_key, int(stop["nodeIndex"])])
 	var interchange: InterchangeData = catalog.by_num[int(stop["interchangeNum"])]
-	var placement: EditorStopLabelPlacement = EditorStopLabelPlacement.from_definition(stop, interchange.interchange_name,
-		WorldUtils.vec3_from_float_arr(infrastructure["points"][index]["pos"]))
+	var placement: EditorStopLabelPlacement = EditorStopLabelPlacement.from_definition(stop, interchange.interchange_name, position)
 	if placement == null:
 		return EditorActionResult.failure("Invalid stop label placement.")
 	placements.append(placement)
@@ -68,13 +70,13 @@ func _collect_stop_placement(world: WorldEditorObjects, stop: Dictionary, catalo
 
 func _create_stop_label(placement: EditorStopLabelPlacement, container: Node3D) -> StationSign3D:
 	var label: StationSign3D = load(SIGN_SCENE_PATH).instantiate()
-	label.name = "%sStop_%d" % ["Rail" if placement.domain == Enums.InfrDomain.RAIL else "Road", placement.stop_num]
+	label.name = "%sStop_%d" % [InfrDomains.title(placement.domain), placement.stop_num]
 	label.station_name = placement.station_name
 	label.position = container.to_local(placement.position + Vector3.UP * LABEL_HEIGHT)
 	label.visibility_range_end = 0.0
 	label.set_meta("stop_num", placement.stop_num)
 	label.set_meta("interchange_num", placement.interchange_num)
-	label.set_meta("domain", "RAIL" if placement.domain == Enums.InfrDomain.RAIL else "ROAD")
+	label.set_meta("domain", InfrDomains.key(placement.domain))
 	label.set_meta("node_index", placement.node_index)
 	return label
 

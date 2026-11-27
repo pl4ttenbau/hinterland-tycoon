@@ -29,12 +29,3 @@ static func get_open_terrain3d() -> Terrain3D:
 			return any_child as Terrain3D
 	Loggie.error("Cannot find open Terrain3D at all")
 	return null
-	
-static func get_y_at_pos(world_pos: Vector3) -> float:
-	var terr3d: Terrain3D = get_open_terrain3d()
-	Loggie.info("getting height in terrain %s at %v" % [terr3d.name, world_pos])
-	var h: float = terr3d.data.get_height(world_pos)
-	if h == NAN || h <= 0:
-		Loggie.error("Cannot get height")
-		return 0
-	return h

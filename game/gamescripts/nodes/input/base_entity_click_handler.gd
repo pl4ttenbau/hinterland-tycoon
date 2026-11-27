@@ -43,7 +43,7 @@ func _on_station_click(collider: StationCollider) -> bool:
 	return true
 	
 func _on_rail_fork_click(fork_collider: RailForkCollider) -> bool:
-	var fork: NewRailForkData = fork_collider.get_fork()
+	var fork: RailJunctionData = fork_collider.get_fork()
 	if fork:
 		fork.switch()
 	return true

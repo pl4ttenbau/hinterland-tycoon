@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/station_creator/rail_platform_options.gd" id="1_script"]
+
+[node name="RailPlatformOptions" type="VBoxContainer"]
+script = ExtResource("1_script")
+
+[node name="PlatformOptions" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TypeLabel" type="Label" parent="PlatformOptions"]
+layout_mode = 2
+text = "Type"
+
+[node name="PlatformType" type="OptionButton" parent="PlatformOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Passenger"
+popup/item_0/id = 0
+popup/item_1/text = "Cargo"
+popup/item_1/id = 1
+
+[node name="SideLabel" type="Label" parent="PlatformOptions"]
+layout_mode = 2
+text = "Side"
+
+[node name="PlatformSide" type="OptionButton" parent="PlatformOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Looking from the track start toward its end."
+selected = 0
+item_count = 2
+popup/item_0/text = "Right"
+popup/item_0/id = 0
+popup/item_1/text = "Left"
+popup/item_1/id = 1
+
+[node name="HidePlatform" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hide platform"

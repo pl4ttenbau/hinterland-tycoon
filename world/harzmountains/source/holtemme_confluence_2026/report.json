@@ -1,0 +1,20 @@
+{
+  "confluence_xz": [
+    2975.0,
+    1330.0
+  ],
+  "regions": 2,
+  "lowered_samples": 2164,
+  "raised_samples": 1686,
+  "max_cut": 5.093728542327881,
+  "max_fill": 2.209160327911377,
+  "roads_and_rails_unchanged": true,
+  "water_surfaces_unchanged": true,
+  "paint_unchanged": true,
+  "historical_alignment_precision": "Model-scale approximation, not surveyed coordinates",
+  "applied": true,
+  "native_reload_verified": true,
+  "untouched_regions_verified": true,
+  "centreline_bed_max_y": 4.099999904632568,
+  "new_channel_connected": true
+}

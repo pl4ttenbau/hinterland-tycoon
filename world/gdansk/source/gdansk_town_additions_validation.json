@@ -1,0 +1,21 @@
+{
+  "added_major_count": 3,
+  "added_minor_count": 1,
+  "default_year": 1968.0,
+  "failures": [],
+  "industries_preserved_count": 20,
+  "town_count": 24,
+  "unique_ids": 24,
+  "world_reference_resolved": true,
+  "original_twenty_manifest_entries_unchanged": true,
+  "original_twenty_scene_blocks_unchanged": true,
+  "terrain_regions_unchanged": true,
+  "other_mapscenes_unchanged": true,
+  "project_reference_check": {
+    "errors_before": 15,
+    "errors_after": 15,
+    "new_errors": [],
+    "gdansk_errors": []
+  },
+  "validation_scope": "Headless Godot instantiated the complete world PackedScene; checked 24 town resources, IDs, town-data/marker position agreement, sign labels, major/minor settings, world reference and preserved 20-industry container. Heights sampled from current Terrain3D regions. No graphical/in-game visual inspection."
+}

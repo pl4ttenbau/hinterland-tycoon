@@ -1,0 +1,26 @@
+{
+  "changed": [
+    141,
+    257,
+    258,
+    259,
+    276,
+    277
+  ],
+  "removed": [
+    260,
+    261
+  ],
+  "added": [
+    276,
+    277
+  ],
+  "minimum_new_road_centre_to_rail_centre": 15.65,
+  "max_road_ground_height_difference": 0.25,
+  "razed": [],
+  "terrain_and_paint_changed": false,
+  "north_side_changed": false,
+  "godot_scene_and_curve_load_verified": true,
+  "reciprocal_endpoint_links_verified": 25,
+  "gameplay_visual_review_done": false
+}

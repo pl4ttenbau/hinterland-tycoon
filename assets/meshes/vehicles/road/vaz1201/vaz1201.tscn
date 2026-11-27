@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://mgohye4batjb" path="res://game/gamescripts/nodes/vehicle/road/road_vehicle_axle_3d.gd" id="4_sdoar"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qwrwv"]
-size = Vector3(1.5253906, 1.3623047, 3.976593)
+; Keep the roof height, but leave about 25 cm beneath the chassis for wheel support.
+; A box enclosing the tyres rests on the road and prevents suspension/traction.
+size = Vector3(1.5253906, 1.1023047, 3.976593)
 
 [node name="Vaz1201" type="Node3D" unique_id=753769968 node_paths=PackedStringArray("chassis")]
 script = ExtResource("1_y0gst")
@@ -17,7 +19,7 @@ metadata/_custom_type_script = "uid://crmk7g2hykne2"
 [node name="Chassis" type="StaticBody3D" parent="." unique_id=1715217065]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chassis" unique_id=2113787920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051757813, 0.6713909, -0.2157135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051757813, 0.8013909, -0.2157135)
 shape = SubResource("BoxShape3D_qwrwv")
 
 [node name="RearAxle" type="Marker3D" parent="." unique_id=407505534]

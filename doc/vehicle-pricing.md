@@ -35,9 +35,9 @@ balancing values, not historical prices or comparable physical cargo weights.
 Strength means starting tractive effort. Catalog entries can supply a positive
 `tractive_effort_kn` number, or omit it / use `null` when unknown. The mapper
 preserves this distinction and rejects invalid values. Until it is authored,
-the temporary estimate is `empty mass (tonnes) × 9.81 × 0.25`, in kN. This assumes
-all empty mass contributes to adhesion; real driven-axle weights are not yet
-modelled. Estimated prices show `~DM` and an explanatory tooltip in the picker.
+the estimate is `adhesive mass (tonnes) × 9.81 × 0.25`, in kN. The adhesive mass is
+`adhesive_mass_tonnes` when authored, otherwise the service mass, otherwise the
+empty mass (see [catalog masses](type-catalog-initialization.md)). Estimated prices show `~DM` and an explanatory tooltip in the picker.
 Existing catalog masses need review before treating these prices as balanced.
 
 For example, a locomotive with 400 kW, 100 kN and a 50 km/h top speed costs

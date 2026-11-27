@@ -39,18 +39,32 @@ are supported, but game-save integration is not implemented.
 
 ## Pathfinding
 
-`RoadPathfinder` uses road endpoints as its permanent graph. Ordinary shape nodes
+`RoadPathfinder` routes between road ends and junction nodes. Ordinary shape nodes
 stay in road curves, so normal road-to-road travel searches whole road segments.
-Explicit legacy interior crossing anchors are retained defensively if present.
-Stop/marker/current-position anchors attach only for a query; the first and last
-partial segments use curve arc distances. Temporary anchors are removed afterward.
-Authored crossings join matching XYZ anchors within 0.1 metres. Visual overlaps
-and height-separated roads never create connections by themselves. Unreachable
-segments prevent saving; infrastructure subtype restrictions still apply.
+A junction node is any node with a cross (`connectiveRoads` or `autoConnectiveRoads`)
+and any node another road's cross points at, even if only one side lists the link.
+Linked nodes within 0.1 metres (XYZ) form one junction. Visual overlaps and
+height-separated roads never create connections by themselves.
 
-The graph checks connectivity, not traffic lanes or safe arrival poses. The executor stops before node/stop anchors and uses a 10-metre stand-off for
-depot arrivals. Traffic-side/stop approach rules and automatic U-turns still need
-work. If the target lies behind the car, turn manually before resuming.
+The graph is direction-aware: every graph node has arrive and leave states for both
+travel directions. Carrying on and turning onto another road at a junction are free.
+Turning round is a U-turn, offered only at road ends, where the executor can drive
+one: dead ends cost 25 m of planning distance, a junction mouth 1000 m as a last
+resort. So a one-sided stop approached from the wrong side is served via a loop or
+a dead end, never by reversing inside a junction.
+
+Stop/marker/current-position anchors attach only for a query, using curve arc
+distances for the partial segments; they are removed afterward. The executor passes
+the vehicle's heading along its road, so a target behind the car is reached by
+carrying on to a dead end or round a loop instead of starting backwards. Validation
+passes no heading and only checks reachability. Unreachable segments prevent saving;
+infrastructure subtype restrictions still apply.
+
+The graph checks connectivity, not traffic lanes or safe arrival poses. The executor
+stops before node/stop anchors and uses a 10-metre stand-off for depot arrivals.
+`RoadUTurnPlanner` splits a driving path at its road-end reversals and the vehicle
+turns automatically there. `tests/road_junction_route_suite.gd` covers junction
+routing, one-sided stops, headings and a looping two-station bus.
 
 ## Separation of responsibilities
 

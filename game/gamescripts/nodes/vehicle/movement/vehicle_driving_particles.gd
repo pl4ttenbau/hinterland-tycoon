@@ -10,7 +10,7 @@ signal effect_strength_changed(val: float)
 
 @export var child_particles: Array[GPUParticles3D]
 
-@export var locomotive: Vehicle3D
+@export var locomotive: RailVehicle3D
 
 func _ready() -> void:
 	var signal_callable: Callable = Callable(self, "_on_effect_strength_changed")

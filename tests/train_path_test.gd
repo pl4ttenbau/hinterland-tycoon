@@ -4,7 +4,7 @@ extends Node
 var failures: int = 0
 ## Track data and fork data use the same managers as the game, without loading a world.
 var rails: RailsLoader
-var forks: RailForkLoader
+var forks: RailJunctionLoader
 
 func _ready() -> void:
 	self._run.call_deferred()
@@ -35,19 +35,19 @@ func make_track(num: int, points: Array[Vector3]) -> RailTrackData:
 	return track
 
 ## Attach two branches to a root track at one physical switch.
-func make_fork(root_track: RailTrackData, branches: Array[RailTrackData]) -> NewRailForkData:
+func make_fork(root_track: RailTrackData, branches: Array[RailTrackData]) -> RailJunctionData:
 	## The loader groups endpoint records that share this position.
 	var connected_tracks: Array[RailTrackData] = [root_track]
 	connected_tracks.append_array(branches)
 	for track: RailTrackData in connected_tracks:
 		## Root exits at its last node; branches start at their first node.
-		var node_fork := RailNodeForkData.new()
+		var node_fork := RailJunctionArm.new()
 		node_fork.railNode = track.nodes.back() if track == root_track else track.nodes[0]
 		node_fork.static_track = track == root_track
 		node_fork.railNode.fork = node_fork
 		self.forks.add_new_or_connection(node_fork)
 	## Initialize before creating the train, matching the normal map loading sequence.
-	var fork: NewRailForkData = self.forks.get_fork_at_pos(root_track.nodes.back().position)
+	var fork: RailJunctionData = self.forks.get_fork_at_pos(root_track.nodes.back().position)
 	fork.setting.init_current_setting()
 	return fork
 
@@ -59,7 +59,7 @@ func make_train(track: RailTrackData, distance: float, lengths: Array[float]) ->
 	train.movement.last_node = track.nodes[0]
 	for length: float in lengths:
 		## Only length affects path following and fork occupancy.
-		var vehicle := Vehicle3D.new()
+		var vehicle := RailVehicle3D.new()
 		vehicle.train3d = train
 		vehicle.vehicle_obj = VehicleData.new()
 		vehicle.vehicle_obj.veh_type = VehicleTypeData.new()
@@ -78,7 +78,7 @@ func _run() -> void:
 	ActiveRailVehiclePath.show_debug = true
 	self.rails = RailsLoader.new()
 	Managers.rails = self.rails
-	self.forks = RailForkLoader.new()
+	self.forks = RailJunctionLoader.new()
 	Managers.forks = self.forks
 	## Two exits differ immediately beyond a junction at twenty metres.
 	var approach := self.make_track(0, [Vector3.ZERO, Vector3(0, 0, -10), Vector3(0, 0, -20)])
@@ -114,13 +114,14 @@ func _run() -> void:
 	moving_train.movement.speed.current = 1.0
 	moving_train.movement.move_forwards(0.5)
 	self.check(moving_train.movement.current_segment.track_num == 2, "Movement crosses onto the selected branch")
-	self.check(is_equal_approx(moving_train.movement.m_passed_since_start, 22.0), "Movement advances by this physics step's exact distance")
+	self.check(is_equal_approx(moving_train.movement.m_passed_since_start,
+		19.0 + TrainDynamics.LEGACY_MAX_SPEED_MPS * 0.5 * GameConstants.MAP_DISTANCE_SCALE), "Movement advances by this physics step's exact map distance")
 	moving_train.free()
 	## Both reversals preserve locomotive and wagon poses, including their facing direction.
 	train.movement.m_passed_since_start = 16.0
 	train.movement.place_vehicles()
 	var poses: Array[Transform3D] = []
-	for vehicle: Vehicle3D in train.vehicles:
+	for vehicle: RailVehicle3D in train.vehicles:
 		poses.append(vehicle.global_transform)
 	train.movement.start()
 	## Reversal must drop the forward speed before constructing its return route.
@@ -163,7 +164,7 @@ func _run() -> void:
 	braking_train.movement.start()
 	var top_speed: float = 0.0
 	var last_speed: float = 0.0
-	for _step: int in range(60 * 120):
+	for _step: int in range(60 * 200):
 		if not braking_train.movement.is_started:
 			break
 		braking_train.movement.update_speed(1.0 / 60.0)
@@ -205,7 +206,6 @@ func _run() -> void:
 			if rail_node.fork != null:
 				rail_node.fork.railNode = null
 				rail_node.fork = null
-			rail_node.parent_track = null
 	fork.setting.parent = null
 	self.rails.free()
 	self.forks.free()

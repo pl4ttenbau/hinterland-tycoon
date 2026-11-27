@@ -1,0 +1,15 @@
+{
+  "key": "harz_rekowagen",
+  "destination": "assets/meshes/vehicles/rail/harz_rekowagen/mesh",
+  "assembly_blend": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/harz_rekowagen/exports/harz_rekowagen_godot.blend",
+  "material_count": 1,
+  "coupler_y_metres": [-7.4, 7.4],
+  "tread_z_metres": 0.0,
+  "components": [{
+    "source": "/home/cornelinux/Dokumente/Assets/3D/Vehicles/rail/harz_rekowagen/blend/harz_rekowagen_glass_merged.blend",
+    "object": "Harz Rekowagen DR",
+    "name": "Harz_Rekowagen",
+    "triangles": 9514,
+    "atlas_uv": "DR_Livery"
+  }]
+}

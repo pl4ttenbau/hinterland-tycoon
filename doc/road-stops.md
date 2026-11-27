@@ -38,10 +38,17 @@ physical rail and road access points, with no separate child names.
   Empty interchanges are valid, but have no physical catchment yet.
 - Every stop requires `num`, `domain` (`RAIL` or `ROAD`), and `nodeIndex`.
   Rail stops require `trackNum`. Road stops require `roadNum` and `roadStopDirection`.
+- Stops may add `nodeOffset`: metres along the track or road from that node, positive
+  toward the next node, negative toward the previous one (default 0, exactly on the
+  node). The game re-attaches each stop to its nearest node on load, so an edit to
+  the line far from the stop does not move it.
+  When the editor saves a track or road whose point count changed, it moves that
+  line's stops back to where they stood (node indices after the change would name
+  other nodes) and writes `interchanges.json` along with the line file.
 - All IDs and node indices are nonnegative integers. Node index zero is valid.
   Stop numbers must be unique across **both modes and every interchange on the
-  map**. Interchange numbers have a separate namespace. A rail node may hold one
-  physical stop; duplicate rail anchors are rejected.
+  map**. Interchange numbers have a separate namespace. Two rail stops may not share
+  the same track, node and offset; duplicate rail anchors are rejected.
 - `roadStopDirection` is `ROAD_NODES_INCREASE`, `ROAD_NODES_DECREASE`, or
   `BOTH_DIRECTIONS`. It specifies which direction a vehicle can approach from.
   In right-hand traffic, increasing node order places the shelter to the right
@@ -57,6 +64,15 @@ physical rail and road access points, with no separate child names.
   stop types. Road stops share the inherited `station_type` field and optional
   JSON `type`, but their type vocabulary is not defined yet; omission leaves it
   empty.
+- Rail stops may add `platformSide`: `RIGHT` (default) or `LEFT`, seen looking from
+  the track start toward its end.
+- `StopMapper` and `InterchangeMapper` (`services/typeloaders/mappers/`) own this
+  record format in both directions: reading it into stop and interchange Resources,
+  and writing them back. They write fields in the order above and leave optional
+  fields out while they keep their default (`hideBuilding` false, `platformSide`
+  `RIGHT`, `nodeOffset` 0), so a record read and written back comes out unchanged.
+  Rail stops always write `type`. Checks across records (duplicate numbers, rail
+  anchors) and against the loaded network stay in `InterchangesLoader`.
 
 `InterchangeData.stops` and `AbstractStation.interchange` provide membership in
 both directions. `station_name`, `town_num`, and `town_name` read through to the
@@ -99,10 +115,11 @@ Invalid catalog or anchor data prevents terrain spawning and emits the
 coordinator's `map_loading_failed` signal. Loading a second map into an already
 populated service scene is rejected; a new session owns new service instances.
 
-The rail loader retains `NodeStationLinkData` as the adapter for existing signs,
-catchment areas and rail inventory consumers. Its `num` is the authored stop ID,
-matching the associated `RailStationData.num`. Stops are no longer authored inside
-`tracks.json`; their explicit track/node anchors live in the interchange catalog.
+Each rail stop (`RailStationData`) is shown by one `RailStop3D` (`rail_stop_3d.tscn`):
+platform building, sign and catchment area. The stop is the view's entity, and the stop
+holds its view as `platform_view`; there is no link object between rail node and stop
+anymore. Stops are no longer authored inside `tracks.json`; their explicit track/node
+anchors live in the interchange catalog.
 
 ## Road views
 
@@ -117,6 +134,7 @@ building leaves its sign visible. Road stops serving both directions have one si
 To preview stops while authoring a map, open `editorobjects_<map>.tscn` separately,
 select the `WorldEditorObjects` root, and click **Load Stop Labels JSON**. This
 reads `interchanges.json` and resolves its `trackNum`/`roadNum` plus `nodeIndex`
+and `nodeOffset`
 against `tracks.json` / `roads.json`. It creates only billboard labels under
 `EditorStops`, 15 metres above each anchor, without platforms, shelters or
 simulation station data. Labels have no editor distance cutoff.

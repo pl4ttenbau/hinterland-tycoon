@@ -60,10 +60,10 @@ func _transitions(track: RailTrackData, direction: Enums.PathDirection) -> Array
 	var exit: RailNodeData = _exit_node(track, direction)
 	if exit.fork == null or exit.fork.junction == null:
 		return result
-	var junction: NewRailForkData = exit.fork.junction
+	var junction: RailJunctionData = exit.fork.junction
 	for next_num: int in junction.get_exit_track_nums(track.num):
 		var next_track: RailTrackData = _tracks.get(next_num)
-		var leg: RailNodeForkData = junction.get_node_fork(next_num)
+		var leg: RailJunctionArm = junction.get_node_fork(next_num)
 		if next_track == null or leg == null:
 			continue
 		if not InfrType.rail_gauges_compatible(track.infr_type_key, next_track.infr_type_key):

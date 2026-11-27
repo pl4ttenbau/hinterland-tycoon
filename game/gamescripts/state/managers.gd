@@ -16,7 +16,7 @@ func are_world_services_initialized() -> bool:
 
 #region Infrastructure
 @export var rails: RailsLoader
-@export var forks: RailForkLoader
+@export var forks: RailJunctionLoader
 @export var roads: RoadsLoader
 @export var stations: StationsHolder
 @export var interchanges: InterchangesLoader

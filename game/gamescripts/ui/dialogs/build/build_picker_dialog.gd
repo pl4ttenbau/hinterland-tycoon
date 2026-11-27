@@ -1,14 +1,25 @@
-extends MenuShellDialog
+## Everything the player can place on the map. Closes with a BuildChoice;
+## ActionHandler starts the chosen building or tool.
+class_name BuildPickerDialog extends ModalGameDialog
+
+@onready var _categories: BuildCategoryTabs = %Categories
+@onready var _options: BuildOptionList = %Options
+@onready var _preview: BuildOptionPreview = %Preview
 
 
 func _ready() -> void:
-	dialog_key = "BuildPickerDialog"
-	title_text = "Build"
-	super._ready()
-	# Publish the initial tab once the option list and its buttons are ready.
-	%Content.get_node("Categories").publish_selection()
+	# 1. Wiring: tabs drive the option list; the list drives the preview and the result.
+	_connect_signals()
+	# 2. Initial state: show the first tab now that everything is connected.
+	_categories.publish_selection()
+	%CancelButton.grab_focus()
 
 
-func _on_option_selected(definition: IndustryBuildingType, building: PackedScene, preview_scene: PackedScene, model_transform: Transform3D) -> void:
-	diag_result = {"definition": definition, "building": building, "preview": preview_scene, "transform": model_transform}
-	close_all()
+func _connect_signals() -> void:
+	_categories.category_selected.connect(_options.show_category)
+	_options.choice_selected.connect(_on_choice_selected)
+	_options.option_highlighted.connect(_preview.show_option)
+
+
+func _on_choice_selected(choice: BuildChoice) -> void:
+	close_with(choice)

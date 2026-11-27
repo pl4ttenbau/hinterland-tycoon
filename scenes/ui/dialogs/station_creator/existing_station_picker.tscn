@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/gamescripts/ui/dialogs/station_creator/existing_station_picker.gd" id="1_script"]
+
+[node name="ExistingStationPicker" type="VBoxContainer"]
+script = ExtResource("1_script")
+
+[node name="ExistingStationLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Nearby station"
+autowrap_mode = 3
+
+[node name="ExistingStation" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2

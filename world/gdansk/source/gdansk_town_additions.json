@@ -1,0 +1,110 @@
+{
+  "added_date": "2026-11-07",
+  "intent": "Four agreed Gdańsk neighbourhood centres, added to the original twenty towns. No residences or tram infrastructure generated.",
+  "scenario_year": 1968.0,
+  "size_policy": "First three major, Górki Zachodnie minor. Detailed relative sizes are descriptive metadata, not additional engine size tiers.",
+  "terrain_validation": {
+    "failures": [],
+    "method": "Terrain3D.data.get_height against current imported regions",
+    "region_count": 257,
+    "vertex_spacing": 1.0,
+    "water_plane_y": 14.647888
+  },
+  "towns": [
+    {
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=STOGI",
+      "intended_relative_scale": "largest of the four additions",
+      "is_minor": false,
+      "latitude": 54.36163,
+      "location_anchor": "Stryjewskiego high-street point in the residential settlement; not the district polygon centroid.",
+      "location_confidence": "Modern mapped street point chosen within the historical residential quarter; not a surveyed 1968 centre.",
+      "location_source": "https://www.openstreetmap.org/way/1336986131",
+      "longitude": 18.7194009,
+      "name": "Gdańsk–Stogi",
+      "node_name": "Town3D_Gdańsk–Stogi",
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "population_reference": null,
+      "resource_id": "Resource_gdansk_stogi",
+      "scenario_year": 1968,
+      "town_num": 21,
+      "world_position": [
+        -1413.410767,
+        17.648745,
+        -1706.88208
+      ],
+      "node_unique_id": 418370287
+    },
+    {
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=PRZER%C3%93BKA",
+      "intended_relative_scale": "medium workers neighbourhood",
+      "is_minor": false,
+      "latitude": 54.3561118,
+      "location_anchor": "Bajki / Kryniczna residential junction, in the estate quarter developed during the 1960s.",
+      "location_confidence": "Modern mapped street point chosen within the historical residential quarter; not a surveyed 1968 centre.",
+      "location_source": "https://www.openstreetmap.org/way/256364046",
+      "longitude": 18.6839331,
+      "name": "Gdańsk–Przeróbka",
+      "node_name": "Town3D_Gdańsk–Przeróbka",
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "population_reference": null,
+      "resource_id": "Resource_gdansk_przerobka",
+      "scenario_year": 1968,
+      "town_num": 22,
+      "world_position": [
+        -1644.240112,
+        17.16704,
+        -1645.491089
+      ],
+      "node_unique_id": 1665121492
+    },
+    {
+      "history_source": "https://gdansk.gedanopedia.pl/?title=RUDNO",
+      "intended_relative_scale": "compact denser urban cluster",
+      "is_minor": false,
+      "latitude": 54.3510668,
+      "location_anchor": "Głęboka / Mostek junction in the Rudno housing quarter; the marker represents the adjoining Długie Ogrody area as well.",
+      "location_confidence": "Modern mapped street point chosen within the historical residential quarter; not a surveyed 1968 centre.",
+      "location_source": "https://www.openstreetmap.org/node/1847623797",
+      "longitude": 18.6739703,
+      "name": "Gdańsk–Rudno (Długie Ogrody)",
+      "node_name": "Town3D_Gdańsk–Rudno (Długie Ogrody)",
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "population_reference": null,
+      "resource_id": "Resource_gdansk_rudno",
+      "scenario_year": 1968,
+      "town_num": 23,
+      "world_position": [
+        -1709.079346,
+        17.733269,
+        -1589.364502
+      ],
+      "node_unique_id": 1673330385
+    },
+    {
+      "history_source": "https://gdansk.gedanopedia.pl/gdansk/?title=G%C3%93RKI_ZACHODNIE",
+      "intended_relative_scale": "small waterfront/shipyard settlement",
+      "is_minor": true,
+      "latitude": 54.3545794,
+      "location_anchor": "Łowicka residential-road corner near the shipyard-workers housing area; separated from the shipyard marker.",
+      "location_confidence": "Modern mapped street point chosen within the historical residential quarter; not a surveyed 1968 centre.",
+      "location_source": "https://www.openstreetmap.org/way/182591717",
+      "longitude": 18.7753425,
+      "name": "Gdańsk–Górki Zachodnie",
+      "node_name": "Town3D_Gdańsk–Górki Zachodnie",
+      "population_note": "No historical population estimate assigned. Relative scale is a gameplay intention; engine currently exposes major/minor only.",
+      "population_reference": null,
+      "resource_id": "Resource_gdansk_gorki_zachodnie",
+      "scenario_year": 1968,
+      "town_num": 24,
+      "world_position": [
+        -1049.335205,
+        17.571831,
+        -1628.442871
+      ],
+      "node_unique_id": 1495047221
+    }
+  ],
+  "world_key": "gdansk",
+  "status": "placed_in_towns_subscene",
+  "scene": "res://world/gdansk/mapscenes/towns_gdansk.tscn"
+}
