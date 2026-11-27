@@ -4,16 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://dxpgw7agki4gk" path="res://scenes/subscenes/town/town_root.tscn" id="1_tj431"]
 [ext_resource type="Script" uid="uid://0dm7tfhu5lup" path="res://game/gamescripts/nodes/structures/residence_3d.gd" id="2_ftij8"]
 [ext_resource type="Script" uid="uid://c6m8uuhbclnhd" path="res://game/gamescripts/resources/town/town.gd" id="3_4bctd"]
+[ext_resource type="Script" uid="uid://dkff8u6acp5l5" path="res://game/gamescripts/resources/infr/station/abstract_station.gd" id="5_ftij8"]
 
-[sub_resource type="Resource" id="Resource_sdbyp"]
+[sub_resource type="Resource" id="Resource_4bctd"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
-town_name = "Wernigerode"
-pos_xz = Vector2(3107, 1353)
+town_name = "W.-Altstadt"
+pos_xz = Vector2(3110.23, 1405.38)
+center_road_num = 265
+center_node_index = 18
 num = 31
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_1xysp"]
+[sub_resource type="Resource" id="Resource_16jbh"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Braunlage"
 pos_xz = Vector2(938.7, 3749.4)
@@ -21,7 +26,8 @@ num = 1
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_wip5f"]
+[sub_resource type="Resource" id="Resource_v18bd"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Ilsenburg"
 pos_xz = Vector2(1710, 990)
@@ -29,7 +35,8 @@ num = 2
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_g5dug"]
+[sub_resource type="Resource" id="Resource_st08i"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Tanne"
 pos_xz = Vector2(2796, 3860)
@@ -38,7 +45,8 @@ num = 3
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_wdcj3"]
+[sub_resource type="Resource" id="Resource_2japi"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Elend"
 pos_xz = Vector2(1848, 3344)
@@ -47,7 +55,8 @@ num = 4
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_x7ggp"]
+[sub_resource type="Resource" id="Resource_l11tq"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "St Andreasberg"
 pos_xz = Vector2(302, 3685)
@@ -55,7 +64,8 @@ num = 5
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_kbb6g"]
+[sub_resource type="Resource" id="Resource_88kav"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Elbingerode"
 pos_xz = Vector2(3434, 2739)
@@ -63,7 +73,8 @@ num = 6
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_qf7c7"]
+[sub_resource type="Resource" id="Resource_ruikt"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Rübeland"
 pos_xz = Vector2(3971, 3129)
@@ -71,7 +82,8 @@ num = 7
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_p3of0"]
+[sub_resource type="Resource" id="Resource_34xdp"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Drei-Annen-Hohne"
 pos_xz = Vector2(2535, 2810)
@@ -80,7 +92,8 @@ num = 8
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_arug0"]
+[sub_resource type="Resource" id="Resource_gasqo"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Schierke"
 pos_xz = Vector2(1582.709, 2932.773)
@@ -88,7 +101,8 @@ num = 9
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_mmmvw"]
+[sub_resource type="Resource" id="Resource_73x7k"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Brocken"
 pos_xz = Vector2(1001, 2244)
@@ -97,7 +111,8 @@ num = 10
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_y8iud"]
+[sub_resource type="Resource" id="Resource_g7koa"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Silstedt"
 pos_xz = Vector2(3840, 476)
@@ -105,16 +120,18 @@ num = 11
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_fe2ms"]
+[sub_resource type="Resource" id="Resource_2n6pf"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Stapelburg"
-pos_xz = Vector2(1309, 445)
+pos_xz = Vector2(1591.14, 104.16)
 is_minor = true
 num = 12
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_m0c6v"]
+[sub_resource type="Resource" id="Resource_5jqrl"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Bad Harzburg"
 pos_xz = Vector2(198, 610)
@@ -122,7 +139,8 @@ num = 13
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_aui5f"]
+[sub_resource type="Resource" id="Resource_sfxkh"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Hasserode"
 pos_xz = Vector2(2695, 1702)
@@ -130,7 +148,8 @@ num = 14
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_c76fc"]
+[sub_resource type="Resource" id="Resource_bp4jw"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Torfhaus"
 pos_xz = Vector2(280, 2073)
@@ -139,7 +158,8 @@ num = 15
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_1f86c"]
+[sub_resource type="Resource" id="Resource_shnl4"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Darlingerode"
 pos_xz = Vector2(2330.6, 1168.9)
@@ -148,7 +168,8 @@ num = 16
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_f8qlp"]
+[sub_resource type="Resource" id="Resource_m40nf"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Wurmberg"
 pos_xz = Vector2(1034, 3146)
@@ -157,7 +178,8 @@ num = 17
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_dle3q"]
+[sub_resource type="Resource" id="Resource_lyg1y"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Könighshütte"
 pos_xz = Vector2(2953, 3404)
@@ -165,7 +187,8 @@ num = 18
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_qgghu"]
+[sub_resource type="Resource" id="Resource_2re6g"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Plessenburg"
 pos_xz = Vector2(1688, 1611)
@@ -174,7 +197,8 @@ num = 19
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_wdlc3"]
+[sub_resource type="Resource" id="Resource_g6im8"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Eckertalsperre"
 pos_xz = Vector2(432, 1340)
@@ -183,7 +207,8 @@ num = 20
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_6hvp7"]
+[sub_resource type="Resource" id="Resource_5wavf"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Hartenberg"
 pos_xz = Vector2(3736, 2388)
@@ -192,7 +217,8 @@ num = 21
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_rbwgv"]
+[sub_resource type="Resource" id="Resource_jbccw"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Susenburg"
 pos_xz = Vector2(3628, 3376)
@@ -201,7 +227,8 @@ num = 22
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_k8dum"]
+[sub_resource type="Resource" id="Resource_recsv"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Nöschenrode"
 pos_xz = Vector2(3368, 1636)
@@ -209,15 +236,8 @@ num = 23
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_xbdss"]
-script = ExtResource("3_4bctd")
-town_name = "Wasserleben"
-pos_xz = Vector2(2231, 336)
-num = 24
-type = 5
-metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
-
-[sub_resource type="Resource" id="Resource_iwpts"]
+[sub_resource type="Resource" id="Resource_q67xv"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Reddeber"
 pos_xz = Vector2(3391.049, 817.579)
@@ -226,7 +246,8 @@ num = 25
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_tj431"]
+[sub_resource type="Resource" id="Resource_fod3d"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Oderbrück"
 pos_xz = Vector2(191.1, 2799.9)
@@ -235,14 +256,16 @@ num = 26
 type = 5
 metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
 
-[sub_resource type="Resource" id="Resource_16jbh"]
+[sub_resource type="Resource" id="Resource_m8yg0"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Veckenstedt"
-pos_xz = Vector2(2073.563, 579.047)
+pos_xz = Vector2(2508.74, 96.06)
 num = 27
 type = 8
 
-[sub_resource type="Resource" id="Resource_v18bd"]
+[sub_resource type="Resource" id="Resource_bkfbu"]
+resource_local_to_scene = true
 script = ExtResource("3_4bctd")
 town_name = "Minsleben"
 pos_xz = Vector2(3646.947, 756.091)
@@ -250,122 +273,133 @@ is_minor = true
 num = 28
 type = 8
 
+[sub_resource type="Resource" id="Resource_ol7je"]
+resource_local_to_scene = true
+script = ExtResource("3_4bctd")
+town_name = "W.-Neustadt"
+pos_xz = Vector2(3120.6, 1316)
+center_road_num = 25
+center_node_index = 3
+num = 32
+type = 5
+metadata/_custom_type_script = "uid://c6m8uuhbclnhd"
+
 [node name="Towns" type="Node" unique_id=254810491]
 script = ExtResource("1_ftij8")
 metadata/_custom_type_script = "uid://xsl6bgbfr5xs"
 
-[node name="TownCenter_Wernigerode" parent="." unique_id=1073914160 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3107, 5.60901, 1353)
-town = SubResource("Resource_sdbyp")
+[node name="Town3D_W_-Altstadt" parent="." unique_id=1073914160 instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3110.23, 5.9, 1405.38)
+town = SubResource("Resource_4bctd")
 
 [node name="TownCenter_Braunlage" parent="." unique_id=757513285 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 938.7, 58.1, 3749.4)
-town = SubResource("Resource_1xysp")
+town = SubResource("Resource_16jbh")
 
 [node name="TownCenter_Ilsenburg" parent="." unique_id=1807051602 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1710, 7.99872, 990)
-town = SubResource("Resource_wip5f")
+town = SubResource("Resource_v18bd")
 
 [node name="TownCenter_Tanne" parent="." unique_id=1354777594 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2579.783, 38.234352, 4065.088)
-town = SubResource("Resource_g5dug")
+town = SubResource("Resource_st08i")
 
 [node name="TownCenter_Elend" parent="." unique_id=1716368177 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1848, 43.1987, 3344)
-town = SubResource("Resource_wdcj3")
+town = SubResource("Resource_2japi")
 
 [node name="TownCenter_St Andreasberg" parent="." unique_id=399461569 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 302, 61.7432, 3685)
-town = SubResource("Resource_x7ggp")
+town = SubResource("Resource_l11tq")
 
 [node name="TownCenter_Elbingerode" parent="." unique_id=1553225753 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3434, 36.732, 2739)
-town = SubResource("Resource_kbb6g")
+town = SubResource("Resource_88kav")
 
 [node name="TownCenter_Rübeland" parent="." unique_id=968013635 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3971, 21.8634, 3129)
-town = SubResource("Resource_qf7c7")
+town = SubResource("Resource_ruikt")
 
 [node name="TownCenter_Drei-Annen-Hohne" parent="." unique_id=2045389783 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2535, 51.1631, 2810)
-town = SubResource("Resource_p3of0")
+town = SubResource("Resource_34xdp")
 
 [node name="TownCenter_Schierke" parent="." unique_id=94024205 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1582.7091, 85.02575, 2932.773)
-town = SubResource("Resource_arug0")
+town = SubResource("Resource_gasqo")
 
 [node name="TownCenter_Brocken" parent="." unique_id=756701054 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1001, 340.449, 2244)
-town = SubResource("Resource_mmmvw")
+town = SubResource("Resource_73x7k")
 
 [node name="Town3D_Silstedt" parent="." unique_id=569969437 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3948.2437, 2.900487, 873.54095)
-town = SubResource("Resource_y8iud")
+town = SubResource("Resource_g7koa")
 
 [node name="TownCenter_Stapelburg" parent="." unique_id=28499269 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1309, 7.14006, 445)
-town = SubResource("Resource_fe2ms")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1591.14, 4.9001, 104.16)
+town = SubResource("Resource_2n6pf")
 
 [node name="TownCenter_Bad Harzburg" parent="." unique_id=1382138687 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 7.88019, 610)
-town = SubResource("Resource_m0c6v")
+town = SubResource("Resource_5jqrl")
 
 [node name="TownCenter_Hasserode" parent="." unique_id=50646400 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2695, 10.2835, 1702)
-town = SubResource("Resource_aui5f")
+town = SubResource("Resource_sfxkh")
 
 [node name="TownCenter_Torfhaus" parent="." unique_id=1941204117 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280, 117.122, 2073)
-town = SubResource("Resource_c76fc")
+town = SubResource("Resource_bp4jw")
 
 [node name="TownCenter_Darlingerode" parent="." unique_id=396049817 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2330.559, 9.8198595, 1168.9222)
-town = SubResource("Resource_1f86c")
+town = SubResource("Resource_shnl4")
 
 [node name="TownCenter_Wurmberg" parent="." unique_id=1741162498 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1034, 223.524, 3146)
-town = SubResource("Resource_f8qlp")
+town = SubResource("Resource_m40nf")
 
 [node name="TownCenter_Könighshütte" parent="." unique_id=1742039198 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2836.5627, 29.985369, 3336.8352)
-town = SubResource("Resource_dle3q")
+town = SubResource("Resource_lyg1y")
 
 [node name="TownCenter_Plessenburg" parent="." unique_id=1946112319 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1688, 54.3746, 1611)
-town = SubResource("Resource_qgghu")
+town = SubResource("Resource_2re6g")
 
 [node name="TownCenter_Eckertalsperre" parent="." unique_id=1376866318 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 432, 43.9913, 1340)
-town = SubResource("Resource_wdlc3")
+town = SubResource("Resource_g6im8")
 
 [node name="TownCenter_Hartenberg" parent="." unique_id=397097023 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3736, 45.8995, 2388)
-town = SubResource("Resource_6hvp7")
+town = SubResource("Resource_5wavf")
 
 [node name="TownCenter_Susenburg" parent="." unique_id=802131963 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3628, 30.3228, 3376)
-town = SubResource("Resource_rbwgv")
+town = SubResource("Resource_jbccw")
 
 [node name="TownCenter_Nöschenrode" parent="." unique_id=460363285 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3368, 7.67, 1636)
-town = SubResource("Resource_k8dum")
-
-[node name="Town3D_Wasserleben" parent="." unique_id=1046864876 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2443.5278, 2.179844, 85.58118)
-town = SubResource("Resource_xbdss")
+town = SubResource("Resource_recsv")
 
 [node name="Town3D_Reddeber" parent="." unique_id=1879306270 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3391.0486, 3.7801437, 817.5793)
-town = SubResource("Resource_iwpts")
+town = SubResource("Resource_q67xv")
 
 [node name="TownCenter_Oderbrück" parent="." unique_id=1887726468 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.1, 143, 2799.9)
-town = SubResource("Resource_tj431")
+town = SubResource("Resource_fod3d")
 
 [node name="Town3D_Veckenstedt" parent="." unique_id=379283880 instance=ExtResource("1_tj431")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2073.5632, 4.594621, 579.04706)
-town = SubResource("Resource_16jbh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2508.74, 2.4688, 96.06)
+town = SubResource("Resource_m8yg0")
 
 [node name="Town3D_Minsleben" parent="." unique_id=58909277 instance=ExtResource("1_tj431")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3646.9465, 3.7317276, 756.0909)
-town = SubResource("Resource_v18bd")
+town = SubResource("Resource_bkfbu")
+
+[node name="Town3D_W_-Neustadt" parent="." unique_id=812364417 instance=ExtResource("1_tj431")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3120.6, 5.5, 1316)
+town = SubResource("Resource_ol7je")

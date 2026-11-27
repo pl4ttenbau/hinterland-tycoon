@@ -1,0 +1,160 @@
+{
+  "stapelburg": {
+    "reference_lat_lon": [
+      51.90075,
+      10.6624
+    ],
+    "centre_xz": [
+      1591.14,
+      104.16
+    ],
+    "translation_xz": [
+      282.14,
+      -340.84
+    ],
+    "roads_moved": [
+      102,
+      103,
+      104,
+      203
+    ],
+    "nodes_moved": [
+      {
+        "node": "Residences/12_Stapelburg/CityHouse26",
+        "before": [
+          1370.4402,
+          8.118911,
+          505.10416
+        ],
+        "after": [
+          1652.5802,
+          5.904,
+          164.2642
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/HalfTimberedBarn2",
+        "before": [
+          1333.3384,
+          6.7803717,
+          461.2813
+        ],
+        "after": [
+          1615.4784,
+          4.9155,
+          120.4413
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/HalfTimbered4",
+        "before": [
+          1336.937,
+          8.013672,
+          505.98856
+        ],
+        "after": [
+          1619.077,
+          6.322,
+          165.1486
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/CityHouse27",
+        "before": [
+          1347.6409,
+          7.3016844,
+          484.58945
+        ],
+        "after": [
+          1629.7809,
+          5.7743,
+          143.7495
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/VillageHouse12",
+        "before": [
+          1368.695,
+          7.309277,
+          484.38312
+        ],
+        "after": [
+          1650.835,
+          5.5326,
+          143.5431
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/PolishHouse26",
+        "before": [
+          1393.351,
+          8.6335535,
+          509.17572
+        ],
+        "after": [
+          1675.491,
+          6.1146,
+          168.3357
+        ]
+      },
+      {
+        "node": "Residences/12_Stapelburg/PolishHouse27",
+        "before": [
+          1319.881,
+          7.7626343,
+          507.13535
+        ],
+        "after": [
+          1602.021,
+          6.2778,
+          166.2954
+        ]
+      },
+      {
+        "node": "Deco/Stapelburg/CarBeetle7",
+        "before": [
+          1379.8341,
+          7.857139,
+          479.555
+        ],
+        "after": [
+          1661.9741,
+          5.8937,
+          138.715
+        ]
+      },
+      {
+        "node": "Deco/Stapelburg/Tractor7",
+        "before": [
+          1347.806,
+          7.2014475,
+          471.42062
+        ],
+        "after": [
+          1629.946,
+          5.6294,
+          130.5806
+        ]
+      }
+    ]
+  },
+  "road_records_changed": [
+    101,
+    102,
+    103,
+    104,
+    203,
+    204
+  ],
+  "road_count": 318,
+  "terrain_and_paint_unchanged": true,
+  "approach_roads_to_redraw": [
+    101,
+    204
+  ],
+  "outlying_forest_moved": false,
+  "validation": {
+    "native_road_curves_and_scenes_loaded": true,
+    "no_harz_scene_reference_errors": true
+  }
+}

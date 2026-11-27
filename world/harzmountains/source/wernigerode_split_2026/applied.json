@@ -1,0 +1,33 @@
+{
+  "altstadt": {
+    "num": 31,
+    "name": "W.-Altstadt",
+    "pos": [
+      3110.23,
+      5.9,
+      1405.38
+    ],
+    "road": 265,
+    "node_index": 18
+  },
+  "neustadt": {
+    "num": 32,
+    "name": "W.-Neustadt",
+    "pos": [
+      3120.6,
+      5.5,
+      1316.0
+    ],
+    "road": 25,
+    "node_index": 3
+  },
+  "houses_positions_and_assignments_unchanged": true,
+  "roads_and_interchanges_unchanged": true,
+  "automatic_house_generation": false,
+  "validation": {
+    "town_scene_instantiated": true,
+    "unique_town_ids": true,
+    "positions_and_names_match": true,
+    "no_harz_scene_reference_errors": true
+  }
+}

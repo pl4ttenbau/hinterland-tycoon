@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="GrassAreaDefinition" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="GrassAreaDefinition" format=3 uid="uid://bj8eyos51n853"]
 
-[ext_resource type="Script" path="res://game/gamescripts/resources/terrain/grass_area_definition.gd" id="1_areas"]
-
-[ext_resource type="Texture2D" path="res://world/harzmountains/vegetation/wheat_coverage.png" id="2_coverage"]
+[ext_resource type="Script" uid="uid://cnck5ajfnsbtg" path="res://game/gamescripts/resources/terrain/grass_area_definition.gd" id="1_areas"]
+[ext_resource type="Texture2D" uid="uid://bg0mm08bs0yj1" path="res://world/harzmountains/vegetation/wheat_coverage.png" id="2_coverage"]
 
 [resource]
 script = ExtResource("1_areas")

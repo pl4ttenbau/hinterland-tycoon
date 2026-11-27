@@ -1,0 +1,62 @@
+{
+  "roads_added": [
+    {
+      "num": 330,
+      "name": "Stapelburg Dorfverbindung Nord"
+    },
+    {
+      "num": 331,
+      "name": "Stapelburg Dorfverbindung Ost"
+    },
+    {
+      "num": 332,
+      "name": "Stapelburg Kirchzugang"
+    }
+  ],
+  "roads_changed": [
+    102,
+    203,
+    330,
+    331,
+    332
+  ],
+  "road_count": 321,
+  "castle_marker": {
+    "node": "Deco/Stapelburg/StapelburgCastleRuins",
+    "pos": [
+      1684.04,
+      4.966,
+      41.75
+    ],
+    "reference_lat_lon": [
+      51.90368,
+      10.66945
+    ]
+  },
+  "minimum_house_origin_clearance": 12.3,
+  "max_grade": 0.074,
+  "terrain_paint_and_buildings_unchanged": true,
+  "historical_alignment_status": "Approved representative model connection; exact 1960s street alignment not verified.",
+  "validation": {
+    "native_road_curves_and_scenes_loaded": true,
+    "no_harz_scene_reference_errors": true,
+    "reciprocal_endpoint_junctions": true
+  },
+  "T_junction_xyz": [
+    1650.0,
+    5.51,
+    99.0
+  ],
+  "church_marker": {
+    "node": "Deco/Stapelburg/StapelburgChurchSite",
+    "pos": [
+      1643.34,
+      5.249,
+      54.46
+    ],
+    "reference_lat_lon": [
+      51.903083333333335,
+      10.666361111111112
+    ]
+  }
+}

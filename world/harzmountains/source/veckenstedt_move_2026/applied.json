@@ -1,0 +1,208 @@
+{
+  "veckenstedt": {
+    "reference_lat_lon": [
+      51.90113,
+      10.73203
+    ],
+    "centre_xz": [
+      2508.74,
+      96.06
+    ],
+    "translation_xz": [
+      435.18,
+      -482.99
+    ],
+    "roads_moved": [
+      21,
+      22,
+      315,
+      316,
+      317,
+      318,
+      319
+    ],
+    "nodes_moved": [
+      {
+        "node": "Residences/27_Veckenstedt/NorthernGermanHouse",
+        "before": [
+          2079.574,
+          4.796391,
+          602.4539
+        ],
+        "after": [
+          2514.754,
+          2.6071,
+          119.4639
+        ]
+      },
+      {
+        "node": "Residences/27_Veckenstedt/HalfTimberedBarn",
+        "before": [
+          2123.032,
+          4.596937,
+          578.2432
+        ],
+        "after": [
+          2558.212,
+          2.6626,
+          95.2532
+        ]
+      },
+      {
+        "node": "Residences/27_Veckenstedt/HalfTimbered1",
+        "before": [
+          2102.4812,
+          4.498173,
+          569.05896
+        ],
+        "after": [
+          2537.6612,
+          2.6431,
+          86.069
+        ]
+      },
+      {
+        "node": "Residences/27_Veckenstedt/CityHouse3",
+        "before": [
+          2063.3918,
+          4.385029,
+          567.58234
+        ],
+        "after": [
+          2498.5718,
+          2.2415,
+          84.5923
+        ]
+      },
+      {
+        "node": "Residences/27_Veckenstedt/PolishHouse2",
+        "before": [
+          2055.5193,
+          4.7847905,
+          611.49695
+        ],
+        "after": [
+          2490.6993,
+          2.4583,
+          128.5069
+        ]
+      },
+      {
+        "node": "Residences/27_Veckenstedt/VillageHouse2",
+        "before": [
+          2109.0457,
+          4.1547637,
+          544.44824
+        ],
+        "after": [
+          2544.2257,
+          2.3969,
+          61.4582
+        ]
+      },
+      {
+        "node": "Deco/Veckenstedt/VillageWell",
+        "before": [
+          2093.752,
+          4.5431457,
+          579.8013
+        ],
+        "after": [
+          2528.932,
+          2.6562,
+          96.8113
+        ]
+      },
+      {
+        "node": "Deco/Veckenstedt/StaticTrabant601Beige",
+        "before": [
+          2098.2246,
+          4.593169,
+          585.44135
+        ],
+        "after": [
+          2533.4046,
+          2.6446,
+          102.4514
+        ]
+      },
+      {
+        "node": "Deco/Veckenstedt/VeckenstedtChurch",
+        "before": [
+          2054.151,
+          4.912571,
+          591.47327
+        ],
+        "after": [
+          2489.331,
+          2.471,
+          108.4833
+        ]
+      },
+      {
+        "node": "Industries/SugarMill_Veckenstedt",
+        "before": [
+          2053.8582,
+          4.853474,
+          637.53156
+        ],
+        "after": [
+          2489.0382,
+          2.5313,
+          154.5416
+        ]
+      }
+    ]
+  },
+  "wasserleben": {
+    "roads_removed": [
+      217,
+      218,
+      240,
+      241
+    ],
+    "nodes_removed": [
+      "Residences/24_Wasserleben",
+      "Residences/24_Wasserleben/NorthernGermanHouse2",
+      "Residences/24_Wasserleben/CityHouse37",
+      "Residences/24_Wasserleben/HalfTimberedBarn3",
+      "Residences/24_Wasserleben/HalfTimberedBarn4",
+      "Residences/24_Wasserleben/VillageHouse15",
+      "Residences/24_Wasserleben/VillageHouse16",
+      "Residences/24_Wasserleben/HalfTimbered8",
+      "Residences/24_Wasserleben/PolishHouse35",
+      "Residences/24_Wasserleben/PolishHouse36",
+      "Deco/Wasserleben",
+      "Deco/Wasserleben/Tractor8",
+      "Deco/Wasserleben/Tractor9",
+      "Deco/Wasserleben/Statue2",
+      "Deco/Wasserleben/Windmill2Static2",
+      "Deco/Wasserleben/ChurchVeckenstedt",
+      "Deco/Wasserleben/RathausVeckenstedt"
+    ],
+    "town_removed": true
+  },
+  "road_records_changed": [
+    20,
+    21,
+    22,
+    219,
+    238,
+    315,
+    316,
+    317,
+    318,
+    319
+  ],
+  "road_count": 318,
+  "terrain_and_paint_unchanged": true,
+  "approach_road_to_redraw": 20,
+  "outlying_ranch_moved": false,
+  "local_mill_moved": true,
+  "validation": {
+    "native_road_curves_and_scenes_loaded": true,
+    "no_harz_reference_errors": true,
+    "deleted_roads_have_no_references": true,
+    "wasserleben_removed_from_active_scenes": true
+  }
+}

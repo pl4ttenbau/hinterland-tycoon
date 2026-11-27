@@ -1,8 +1,8 @@
 [
 	{
-		"num": 0,
-		"name": "Wernigerode",
-		"pos": [3107, 1353],
+		"num": 31,
+		"name": "W.-Altstadt",
+		"pos": [3110.23, 1405.38],
 		"autogenerateHouses": false
 	},
 	{
@@ -64,7 +64,7 @@
 	{
 		"num": 12,
 		"name": "Stapelburg",
-		"pos": [1309, 445]
+		"pos": [1591.14, 104.16]
 	},
 	{
 		"num": 13,
@@ -131,13 +131,19 @@
 		"autogenerateHouses": false
 	},
 	{
-		"num": 24,
+		"num": 27,
 		"name": "Veckenstedt",
-		"pos": [2231.5, 336.1]
+		"pos": [2508.74, 96.06]
 	},
 	{
 		"num": 25,
 		"name": "Reddeber",
 		"pos": [3058.0, 1079.3]
+	},
+	{
+		"num": 32,
+		"name": "W.-Neustadt",
+		"pos": [3120.6, 1316.0],
+		"autogenerateHouses": false
 	}
 ]
